@@ -37,7 +37,9 @@ function copperToString(c) {
   return [p && p + 'p', g && g + 'g', s && s + 's', cp && cp + 'c'].filter(Boolean).join(' ') || '0c';
 }
 
-// Recursively find every <...>/Ledger/*.json under the game folder
+// Recursively find every ledger file under the game folder. Match by FILE NAME
+// (<Character>_Character_<date>.json / _Social_) rather than requiring a Ledger/
+// subfolder — some characters store the file directly in their own folder.
 function findLedgerFiles(base = GAME_BASE) {
   const out = [];
   (function walk(dir) {
@@ -46,7 +48,7 @@ function findLedgerFiles(base = GAME_BASE) {
     for (const e of entries) {
       const p = path.join(dir, e.name);
       if (e.isDirectory()) walk(p);
-      else if (e.isFile() && e.name.toLowerCase().endsWith('.json') && /[\\/]Ledger[\\/]/.test(p)) out.push(p);
+      else if (e.isFile() && /_(Character|Social)_[\d-]+\.json$/i.test(e.name)) out.push(p);
     }
   })(base);
   return out;
