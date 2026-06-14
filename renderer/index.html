@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>MnM Map</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Overlay control bar (only visible in overlay mode) -->
+  <div id="overlay-bar">
+    <span id="overlay-grip" title="Drag to move the overlay"><i>⠿</i></span>
+    <select id="overlay-zone-select" title="Switch zones"></select>
+    <span id="overlay-spacer"></span>
+    <button id="overlay-lock-btn" class="mode-btn" title="Lock the map so clicks pass through to the game (Ctrl+Shift+X)">Lock</button>
+    <label class="op-wrap" title="Map opacity">
+      <span>Map</span>
+      <input type="range" id="opacity-map" min="10" max="100" value="100" />
+    </label>
+    <label class="op-wrap" title="UI opacity (bar + sidebar)">
+      <span>UI</span>
+      <input type="range" id="opacity-ui" min="20" max="100" value="100" />
+    </label>
+    <button id="overlay-min-btn" title="Minimize">—</button>
+    <button id="overlay-exit-btn" title="Leave overlay mode (Ctrl+Shift+M)">✕</button>
+  </div>
+
+  <div id="app-body">
+  <div id="sidebar">
+    <h1>MnM Map</h1>
+
+    <div class="section" data-overlay-hide>
+      <button id="btn-overlay" title="Float the map on top of your game (Ctrl+Shift+M)">Enter Game Overlay Mode</button>
+    </div>
+
+    <div class="help" data-overlay-hide>
+      <b>Drag</b> to pan &nbsp;•&nbsp; <b>Scroll</b> to zoom<br />
+      <b>Double-click</b> to add a marker<br />
+      <b>Click</b> a marker to edit or delete<br />
+      <b>Click a category button</b> to quick-add that type
+    </div>
+
+    <div class="section" data-overlay-hide>
+      <label class="section-title">Zone</label>
+      <label class="follow-row" title="Reads the game's log file and switches the map to match the zone your character is in">
+        <input type="checkbox" id="follow-zone" checked />
+        <span>Follow my zone</span>
+      </label>
+      <select id="zone-select"></select>
+      <button id="btn-zone-options" title="Show zone tools: rename, change map, import from wiki">Options ▾</button>
+      <div id="zone-options" class="hidden">
+        <div class="btn-row">
+          <button id="btn-rename-zone" title="Rename the current zone (also fixes wiki map lookups)">Rename</button>
+          <button id="btn-zone-image" title="Pick an image file to use as this zone's map">Change Map Image</button>
+        </div>
+        <div class="btn-row">
+          <button id="btn-wiki-zone" title="Download this zone's map from the community wiki">Import Map from Wiki</button>
+          <button id="btn-wiki-all" title="Create every zone from the wiki and download all their maps">Import All</button>
+        </div>
+      </div>
+      <div id="wiki-status"></div>
+    </div>
+
+    <div class="section">
+      <label class="section-title">Category Show + Quick Add</label>
+      <div id="category-list"></div>
+    </div>
+
+    <div class="section" data-overlay-hide>
+      <label class="section-title">Share</label>
+      <div class="btn-row">
+        <button id="btn-export">Export Zones</button>
+        <button id="btn-import">Import Zones</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="map-area">
+    <canvas id="map"></canvas>
+    <button id="btn-sidebar" title="Collapse or expand the sidebar">«</button>
+    <button id="btn-fit" title="Fit the map to the window">⛶</button>
+    <div id="zoom-controls">
+      <button id="btn-zoom-in" title="Zoom in">+</button>
+      <button id="btn-zoom-out" title="Zoom out">−</button>
+    </div>
+    <div id="overlay-passthrough-hint" class="hidden">Locked — clicks go to the game. Click <b>Edit</b> (top bar) or press Ctrl+Shift+X to edit the map.</div>
+    <div id="empty-state" class="hidden">
+      <p>No zones yet.</p>
+      <p>Click <b>Import All</b> to grab every zone from the wiki,<br />
+      or just play — zones appear automatically as you enter them.</p>
+    </div>
+  </div>
+  </div>
+
+  <!-- Add / edit marker dialog -->
+  <div id="marker-modal" class="modal-backdrop hidden">
+    <div class="modal">
+      <h2 id="marker-modal-title">Add Marker</h2>
+      <label>Name</label>
+      <input id="marker-label" type="text" placeholder="e.g. Copper vein" />
+      <label>Category</label>
+      <select id="marker-category"></select>
+      <label>Notes (optional)</label>
+      <textarea id="marker-notes" rows="3" placeholder="e.g. respawns fast, watch for skeletons"></textarea>
+      <div id="marker-error" class="modal-error hidden"></div>
+      <div class="btn-row right">
+        <button id="marker-cancel" class="secondary">Cancel</button>
+        <button id="marker-save" class="primary">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rename zone dialog -->
+  <div id="zone-modal" class="modal-backdrop hidden">
+    <div class="modal">
+      <h2>Rename Zone</h2>
+      <label>Zone name</label>
+      <input id="zone-name" type="text" placeholder="e.g. Night Harbor" />
+      <div class="btn-row right">
+        <button id="zone-cancel" class="secondary">Cancel</button>
+        <button id="zone-save" class="primary">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Export choice dialog -->
+  <div id="export-modal" class="modal-backdrop hidden">
+    <div class="modal">
+      <h2>Export Zones</h2>
+      <p style="font-size: 12px; color: var(--muted); line-height: 1.6;">
+        Each zone's map image is bundled in with its markers, so they stay
+        perfectly aligned for whoever you share with. All-zones files can get large.
+      </p>
+      <div class="btn-row right">
+        <button id="export-cancel">Cancel</button>
+        <button id="export-current" class="primary">Current Zone</button>
+        <button id="export-all" class="primary">All Zones</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Import picker dialog -->
+  <div id="import-modal" class="modal-backdrop hidden">
+    <div class="modal">
+      <h2>Import Zones</h2>
+      <p style="font-size: 12px; color: var(--muted); line-height: 1.6;">
+        Pick which zones to bring in. Your existing markers are kept —
+        only markers you don't already have get added.
+      </p>
+      <label class="follow-row" style="margin: 6px 0;">
+        <input type="checkbox" id="import-all-toggle" checked />
+        <span>Select all</span>
+      </label>
+      <div id="import-list" class="import-list"></div>
+      <div class="btn-row right">
+        <button id="import-cancel">Cancel</button>
+        <button id="import-go" class="primary">Import Selected</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Marker detail popup -->
+  <div id="marker-popup" class="hidden">
+    <div id="popup-title"></div>
+    <div id="popup-category"></div>
+    <div id="popup-notes"></div>
+    <div class="btn-row right">
+      <button id="popup-delete" class="danger">Delete</button>
+      <button id="popup-edit" class="secondary">Edit</button>
+      <button id="popup-close" class="secondary">Close</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

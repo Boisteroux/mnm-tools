@@ -1,0 +1,18 @@
+# Dependencies (huge + platform-specific — never commit)
+node_modules/
+
+# Build output (the installer is attached to GitHub Releases, not committed)
+dist/
+out/
+
+# Local machine settings
+.claude/settings.local.json
+
+# Personal map exports / data
+*-markers.json
+*-mnmmap.json
+crash.log
+
+# OS cruft
+Thumbs.db
+.DS_Store

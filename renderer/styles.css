@@ -1,0 +1,385 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* Tell the browser this is a dark UI so native pieces (dropdown lists,
+   scrollbars, dialogs) render with light text instead of black-on-dark */
+:root { color-scheme: dark; }
+
+/* ---- Overlay HUD theme tokens ----
+   near-black surfaces, teal accent, compact spacing */
+:root {
+  --bg:        #0c0d10;
+  --panel:     #0e1013;
+  --surface:   #14171c;
+  --surface-2: #1a1e24;
+  --line:      #1d242c;
+  --line-2:    #2a323d;
+  --text:      #cfd6dd;
+  --muted:     #7a838f;
+  --accent:    #46d7c8;
+  --accent-dk: #062521;
+  --danger:    #e06c6c;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* ---- Sidebar ---- */
+
+#sidebar {
+  width: 218px;
+  min-width: 218px;
+  background: var(--panel);
+  border-right: 1px solid var(--line);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+}
+
+#sidebar h1 {
+  font-size: 13px;
+  color: var(--accent);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.section { display: flex; flex-direction: column; gap: 7px; }
+
+.section-title {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  color: var(--muted);
+}
+
+select, input, textarea {
+  background: var(--surface);
+  border: 1px solid var(--line-2);
+  color: var(--text);
+  border-radius: 5px;
+  padding: 6px 8px;
+  font-size: 12.5px;
+  width: 100%;
+}
+
+select:focus, input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+select option {
+  background: var(--surface);
+  color: var(--text);
+}
+
+#wiki-status {
+  font-size: 11px;
+  color: var(--muted);
+  min-height: 13px;
+  line-height: 1.5;
+}
+
+button {
+  background: var(--surface);
+  border: 1px solid var(--line-2);
+  color: var(--text);
+  border-radius: 5px;
+  padding: 6px 9px;
+  font-size: 12px;
+  cursor: pointer;
+  flex: 1;
+}
+
+button:hover { background: var(--surface-2); border-color: #39434f; }
+button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-dk); font-weight: 600; }
+button.primary:hover { background: #62e2d5; }
+button.danger { background: #45191c; border-color: #6e2a2e; color: #f0a8a8; }
+button.danger:hover { background: #572025; }
+button.active { background: var(--accent); border-color: var(--accent); color: var(--accent-dk); font-weight: 600; }
+
+.btn-row { display: flex; gap: 7px; }
+.btn-row.right { justify-content: flex-end; margin-top: 12px; }
+.btn-row.right button { flex: 0 0 auto; }
+
+/* Sidebar buttons stay short, matching the category buttons */
+#sidebar button { padding: 4px 8px; }
+
+.follow-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.follow-row input { width: auto; flex: 0 0 auto; accent-color: var(--accent); }
+
+.import-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  max-height: 240px;
+  overflow-y: auto;
+  margin-top: 6px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 6px;
+}
+.import-list label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  padding: 3px 4px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.import-list label:hover { background: var(--surface); }
+.import-list input { width: auto; flex: 0 0 auto; accent-color: var(--accent); }
+.import-list .imp-meta { color: var(--muted); font-size: 10.5px; margin-left: auto; }
+
+/* ---- Category toggles ---- */
+
+.cat-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 1px 0;
+}
+
+.cat-row input { width: auto; cursor: pointer; flex: 0 0 auto; accent-color: var(--accent); }
+
+.cat-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex: 1;
+  padding: 4px 8px;
+  font-size: 12px;
+  text-align: left;
+}
+
+.cat-btn.active .cat-count { color: var(--accent-dk); }
+
+.cat-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+}
+.cat-name { flex: 1; }
+.cat-count { color: var(--muted); font-size: 10.5px; }
+
+.help {
+  font-size: 11px;
+  line-height: 1.7;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 9px 10px;
+}
+.help b { color: #aeb7c0; }
+
+/* ---- Map area ---- */
+
+/* Wrapper around sidebar + map so the overlay bar can stack above them */
+#app-body { flex: 1; display: flex; min-width: 0; min-height: 0; }
+
+#map-area { flex: 1; position: relative; background: #08090b; }
+
+#map {
+  position: absolute;
+  inset: 0;
+  /* canvas ignores inset-stretching, so size it explicitly */
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+#map.dragging { cursor: grabbing; }
+#map.quickplace { cursor: crosshair; }
+
+/* All floating map buttons share one square size */
+#btn-fit, #btn-sidebar, #zoom-controls button {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 1;
+  background: rgba(14, 16, 19, 0.85);
+}
+
+#btn-fit { position: absolute; top: 10px; right: 10px; z-index: 10; }
+#btn-sidebar { position: absolute; top: 10px; left: 10px; z-index: 10; }
+
+/* + / - zoom buttons, stacked under the Fit button (overlay only) */
+#zoom-controls {
+  position: absolute;
+  top: 46px;
+  right: 10px;
+  z-index: 10;
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+}
+body.overlay #zoom-controls { display: flex; }
+#zoom-controls button { font-size: 16px; }
+
+body.sidebar-collapsed #sidebar { display: none; }
+
+#zone-options { display: flex; flex-direction: column; gap: 7px; margin-top: 2px; }
+
+#empty-state {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 13.5px;
+  text-align: center;
+  line-height: 1.7;
+}
+
+/* ---- Modals ---- */
+
+.hidden { display: none !important; }
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.modal {
+  background: var(--panel);
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+  padding: 18px;
+  width: 330px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.modal h2 {
+  font-size: 12px;
+  margin-bottom: 8px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.modal label { font-size: 10.5px; color: var(--muted); margin-top: 6px; text-transform: uppercase; letter-spacing: 1px; }
+.modal-error { color: var(--danger); font-size: 11.5px; margin-top: 8px; }
+
+/* ---- Marker popup ---- */
+
+#marker-popup {
+  position: absolute;
+  background: rgba(14, 16, 19, 0.96);
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+  padding: 12px;
+  width: 230px;
+  z-index: 40;
+}
+
+#popup-title { font-weight: 600; font-size: 13px; margin-bottom: 3px; color: #e6ebef; }
+#popup-category { font-size: 11.5px; color: var(--muted); margin-bottom: 6px; }
+#popup-notes { font-size: 12px; line-height: 1.5; white-space: pre-wrap; }
+
+/* ---- Overlay mode ---- */
+
+#overlay-bar { display: none; }
+
+body.overlay {
+  background: transparent;
+  flex-direction: column;
+}
+
+/* The top control strip is the only solid chrome; it's the drag handle */
+body.overlay #overlay-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 6px;
+  background: rgba(12, 13, 16, 0.92);
+  border-bottom: 1px solid var(--line-2);
+  font-size: 11px;
+  -webkit-app-region: drag;
+  flex: 0 0 auto;
+}
+body.overlay #overlay-bar button,
+body.overlay #overlay-bar input,
+body.overlay #overlay-bar select,
+body.overlay #overlay-bar label { -webkit-app-region: no-drag; }
+
+#overlay-grip { color: var(--accent); cursor: move; }
+#overlay-grip i { font-style: normal; opacity: 0.7; }
+#overlay-zone-select { max-width: 150px; font-size: 11px; padding: 1px 4px; }
+#overlay-spacer { flex: 1; }
+
+.mode-btn {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 2px 12px !important;
+}
+/* Filled when locked (clicks pass through), outline when editable */
+#overlay-lock-btn.locked { background: #d8a13a; border-color: #d8a13a; color: #2a1d05; }
+
+.op-wrap { display: flex; align-items: center; gap: 4px; color: var(--muted); }
+.op-wrap span { font-size: 10px; }
+.op-wrap input { width: 52px; }
+
+#overlay-bar button {
+  flex: 0 0 auto;
+  padding: 2px 6px;
+  font-size: 10.5px;
+}
+
+body.overlay #sidebar {
+  width: auto;
+  min-width: 0;
+  background: rgba(14, 16, 19, 0.82);
+  border-right: 1px solid var(--line);
+  padding: 8px;
+  gap: 8px;
+}
+body.overlay #sidebar h1 { display: none; }
+body.overlay [data-overlay-hide] { display: none !important; }
+body.overlay .section-title { display: none; }
+
+body.overlay #map-area { background: transparent; }
+
+/* A play-mode hint that shows when clicks are passing through to the game */
+#overlay-passthrough-hint {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(58, 45, 18, 0.9);
+  color: #f0c674;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 5px;
+  z-index: 20;
+  pointer-events: none;
+}

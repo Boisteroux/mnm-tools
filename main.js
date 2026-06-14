@@ -1,0 +1,454 @@
+const { app, BrowserWindow, ipcMain, dialog, globalShortcut, screen } = require('electron');
+const fs = require('fs');
+const path = require('path');
+
+let win;
+
+// Crash diagnostics — surface the reason if the app dies unexpectedly, written
+// both to stdout and a log file in the app's data folder.
+function logCrash(tag, info) {
+  const line = '[' + new Date().toISOString() + '] ' + tag + ' ' + JSON.stringify(info) + '\n';
+  console.error(line);
+  try { fs.appendFileSync(path.join(app.getPath('userData'), 'crash.log'), line); } catch {}
+}
+process.on('uncaughtException', (err) => logCrash('uncaughtException', { message: err.message, stack: err.stack }));
+process.on('unhandledRejection', (reason) => logCrash('unhandledRejection', { reason: String(reason) }));
+app.on('render-process-gone', (e, wc, details) => logCrash('render-process-gone', details));
+app.on('child-process-gone', (e, details) => logCrash('child-process-gone', details));
+
+let overlayMode = false;
+let clickThrough = false;
+let overlayFull = false;
+let compactBounds = null; // remembers the floating-panel size while in full-screen
+
+const dataFile = () => path.join(app.getPath('userData'), 'map-data.json');
+const mapsDir = () => path.join(app.getPath('userData'), 'maps');
+
+// Where the overlay first appears: a corner of a second monitor if there is
+// one (so it never fights the game's screen), otherwise the primary display.
+function overlayStartBounds() {
+  const displays = screen.getAllDisplays();
+  const primary = screen.getPrimaryDisplay();
+  const target = displays.find((d) => d.id !== primary.id) || primary;
+  const wa = target.workArea;
+  const w = 440, h = 340, margin = 24;
+  return { x: wa.x + wa.width - w - margin, y: wa.y + margin, width: w, height: h };
+}
+
+// Remember where the user last put each window so it reappears there next time.
+const overlayBoundsFile = () => path.join(app.getPath('userData'), 'overlay-bounds.json');
+const desktopBoundsFile = () => path.join(app.getPath('userData'), 'window-bounds.json');
+
+function loadBounds(file) {
+  try { return JSON.parse(fs.readFileSync(file(), 'utf8')); } catch { return null; }
+}
+function saveBounds(file, b) {
+  try { fs.writeFileSync(file(), JSON.stringify(b)); } catch {}
+}
+const loadOverlayBounds = () => loadBounds(overlayBoundsFile);
+const saveOverlayBounds = (b) => saveBounds(overlayBoundsFile, b);
+const loadDesktopBounds = () => loadBounds(desktopBoundsFile);
+const saveDesktopBounds = (b) => saveBounds(desktopBoundsFile, b);
+
+// Reject saved bounds that would land off every monitor (e.g. a screen was unplugged)
+function boundsOnScreen(b) {
+  if (!b || typeof b.x !== 'number' || typeof b.width !== 'number') return false;
+  return screen.getAllDisplays().some((d) => {
+    const r = d.bounds;
+    return b.x < r.x + r.width && b.x + b.width > r.x && b.y < r.y + r.height && b.y + b.height > r.y;
+  });
+}
+
+function createWindow(overlay = false) {
+  overlayMode = overlay;
+  clickThrough = false;
+  overlayFull = false;
+
+  const base = {
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
+      contextIsolation: true,
+    },
+  };
+
+  if (overlay) {
+    const saved = loadOverlayBounds();
+    const b = boundsOnScreen(saved) ? saved : overlayStartBounds();
+    compactBounds = b;
+    win = new BrowserWindow({
+      ...base,
+      ...b,
+      minWidth: 260,
+      minHeight: 200,
+      title: 'MnM Map (overlay)',
+      frame: false,
+      transparent: true,
+      resizable: true,
+      alwaysOnTop: true,
+      skipTaskbar: false,
+    });
+    win.setAlwaysOnTop(true, 'screen-saver');
+
+    // Persist the panel's position/size as the user moves or resizes it
+    // (but not while expanded to full screen — that's not its "home" spot)
+    const persist = () => {
+      if (overlayMode && !overlayFull && win && !win.isDestroyed()) saveOverlayBounds(win.getBounds());
+    };
+    win.on('move', persist);
+    win.on('resize', persist);
+  } else {
+    const saved = loadDesktopBounds();
+    const useSaved = boundsOnScreen(saved);
+    win = new BrowserWindow({
+      ...base,
+      ...(useSaved
+        ? { x: saved.x, y: saved.y, width: saved.width, height: saved.height }
+        : { width: 1200, height: 800 }),
+      minWidth: 800,
+      minHeight: 500,
+      title: 'MnM Map',
+      backgroundColor: '#0c0d10',
+    });
+    if (useSaved && saved.maximized) win.maximize();
+
+    // Remember the desktop window's position, size and maximized state
+    const persist = () => {
+      if (overlayMode || !win || win.isDestroyed() || win.isMinimized()) return;
+      saveDesktopBounds({ ...win.getNormalBounds(), maximized: win.isMaximized() });
+    };
+    win.on('move', persist);
+    win.on('resize', persist);
+    win.on('maximize', persist);
+    win.on('unmaximize', persist);
+  }
+
+  win.setMenuBarVisibility(false);
+  win.loadFile('renderer/index.html', { query: { overlay: overlay ? '1' : '0' } });
+}
+
+// Swap between desktop and overlay modes by recreating the window (a window's
+// transparency can't be changed once it exists). Create the replacement BEFORE
+// destroying the old window, so there's never a zero-window moment that would
+// trip Electron's "all windows closed -> quit".
+function toggleOverlay() {
+  const wasOverlay = overlayMode;
+  const old = win;
+  try {
+    createWindow(!wasOverlay);
+  } catch (err) {
+    // If the overlay window failed to build, stay in the current window
+    if (old && !old.isDestroyed()) win = old;
+    return;
+  }
+  if (old && !old.isDestroyed() && old !== win) old.destroy();
+}
+
+function setClickThrough(on) {
+  if (!overlayMode || !win || win.isDestroyed()) return;
+  clickThrough = on;
+  win.setIgnoreMouseEvents(on, { forward: true });
+  win.webContents.send('overlay-state', { clickThrough, overlayFull });
+}
+
+function setOverlayFull(on) {
+  if (!overlayMode || !win || win.isDestroyed()) return;
+  overlayFull = on;
+  if (on) {
+    compactBounds = win.getBounds();
+    const d = screen.getDisplayMatching(win.getBounds());
+    win.setBounds(d.workArea);
+  } else if (compactBounds) {
+    win.setBounds(compactBounds);
+  }
+  win.webContents.send('overlay-state', { clickThrough, overlayFull });
+}
+
+function registerShortcuts() {
+  globalShortcut.register('CommandOrControl+Shift+M', toggleOverlay);
+  globalShortcut.register('CommandOrControl+Shift+X', () => setClickThrough(!clickThrough));
+}
+
+ipcMain.handle('toggle-overlay', () => { toggleOverlay(); return true; });
+ipcMain.handle('overlay-click-through', (event, on) => { setClickThrough(on); return clickThrough; });
+ipcMain.handle('overlay-full', (event, on) => { setOverlayFull(on); return overlayFull; });
+ipcMain.handle('overlay-exit', () => { if (overlayMode) toggleOverlay(); return true; });
+ipcMain.handle('overlay-opacity', (event, value) => {
+  if (win && !win.isDestroyed()) win.setOpacity(Math.max(0.1, Math.min(1, value)));
+  return true;
+});
+
+// Lets the renderer briefly make the window clickable again (e.g. while the
+// cursor is over the control bar) even though play mode is otherwise pass-through.
+ipcMain.handle('overlay-set-ignore', (event, ignore) => {
+  if (overlayMode && win && !win.isDestroyed()) win.setIgnoreMouseEvents(ignore, { forward: true });
+  return true;
+});
+ipcMain.handle('window-minimize', () => { if (win && !win.isDestroyed()) win.minimize(); return true; });
+
+app.whenReady().then(() => {
+  createWindow();
+  registerShortcuts();
+  startGameLogWatch();
+});
+
+app.on('will-quit', () => globalShortcut.unregisterAll());
+
+// ---- Game log watching ----
+// MnM's Unity log records zone changes ("Start zoning process to <zone>").
+// Poll for appended lines and tell the renderer when the player zones.
+
+const GAME_LOG = path.join(
+  process.env.USERPROFILE || '',
+  'AppData', 'LocalLow', 'Niche Worlds Cult', 'Monsters and Memories', 'Player.log'
+);
+
+let lastGameZone = null;
+
+// On startup, find the most recent zone line already in the logs
+// (falls back to the previous session's log if the current one has none)
+function scanLogsForLastZone() {
+  for (const file of [GAME_LOG, GAME_LOG.replace('Player.log', 'Player-prev.log')]) {
+    try {
+      const matches = [...fs.readFileSync(file, 'utf8').matchAll(/Start zoning process to (\S+)/g)];
+      if (matches.length) return matches[matches.length - 1][1];
+    } catch {}
+  }
+  return null;
+}
+
+ipcMain.handle('current-game-zone', () => lastGameZone);
+
+function startGameLogWatch() {
+  if (!fs.existsSync(GAME_LOG)) return;
+  let offset = fs.statSync(GAME_LOG).size;
+  lastGameZone = scanLogsForLastZone();
+
+  setInterval(() => {
+    try {
+      const size = fs.statSync(GAME_LOG).size;
+      if (size < offset) offset = 0; // game restarted, log was reset
+      if (size === offset) return;
+
+      const fd = fs.openSync(GAME_LOG, 'r');
+      const buf = Buffer.alloc(size - offset);
+      fs.readSync(fd, buf, 0, buf.length, offset);
+      fs.closeSync(fd);
+      offset = size;
+
+      const matches = [...buf.toString('utf8').matchAll(/Start zoning process to (\S+)/g)];
+      if (matches.length) {
+        lastGameZone = matches[matches.length - 1][1];
+        if (win && !win.isDestroyed()) win.webContents.send('game-zone', lastGameZone);
+      }
+    } catch {
+      // Game may be mid-write; try again on the next tick
+    }
+  }, 2000);
+}
+
+app.on('window-all-closed', () => {
+  // Recreating the window for an overlay toggle briefly closes it; don't quit
+  // if a replacement window already exists.
+  if (BrowserWindow.getAllWindows().length > 0) return;
+  if (process.platform !== 'darwin') app.quit();
+});
+
+// ---- Data persistence ----
+
+ipcMain.handle('load-data', () => {
+  try {
+    return JSON.parse(fs.readFileSync(dataFile(), 'utf8'));
+  } catch {
+    return { zones: [] };
+  }
+});
+
+ipcMain.handle('save-data', (event, data) => {
+  fs.writeFileSync(dataFile(), JSON.stringify(data, null, 2), 'utf8');
+  return true;
+});
+
+// ---- Map images ----
+// Copies the chosen image into the app's own folder so the original
+// can be moved or deleted without breaking the map.
+
+ipcMain.handle('choose-map-image', async () => {
+  const result = await dialog.showOpenDialog(win, {
+    title: 'Choose a map image for this zone',
+    filters: [{ name: 'Images', extensions: ['png', 'jpg', 'jpeg', 'webp', 'gif', 'bmp'] }],
+    properties: ['openFile'],
+  });
+  if (result.canceled || result.filePaths.length === 0) return null;
+
+  fs.mkdirSync(mapsDir(), { recursive: true });
+  const src = result.filePaths[0];
+  const dest = path.join(mapsDir(), Date.now() + '-' + path.basename(src));
+  fs.copyFileSync(src, dest);
+  return dest;
+});
+
+// ---- Sharing markers (and their maps) with friends ----
+// Each zone's map image is embedded as base64 so a friend's markers land
+// on the exact same picture they were drawn on.
+
+ipcMain.handle('export-data', async (event, { scope, zones }) => {
+  const outZones = zones.map((z) => {
+    let image = null;
+    if (z.image && fs.existsSync(z.image)) {
+      try {
+        const buf = fs.readFileSync(z.image);
+        const ext = (z.image.match(/\.(png|jpe?g|webp|gif|bmp)/i) || [, 'jpg'])[1].toLowerCase();
+        image = { ext, data: buf.toString('base64') };
+      } catch {}
+    }
+    return { name: z.name, gameName: z.gameName || null, markers: z.markers, image };
+  });
+
+  const payload = { app: 'mnm-minimap', version: 2, zones: outZones };
+  const base = (scope === 'all' ? 'all-zones' : (zones[0] && zones[0].name) || 'zone')
+    .replace(/[^a-z0-9 _-]/gi, '');
+  const result = await dialog.showSaveDialog(win, {
+    title: 'Export markers and maps',
+    defaultPath: base + '-mnmmap.json',
+    filters: [{ name: 'JSON', extensions: ['json'] }],
+  });
+  if (result.canceled || !result.filePath) return false;
+  fs.writeFileSync(result.filePath, JSON.stringify(payload), 'utf8');
+  return true;
+});
+
+// ---- Wiki map import ----
+// Talks to the community wiki's MediaWiki API to find each zone's map
+// image, then downloads a 4096px version (full-size maps are 30MB+).
+
+const WIKI_API = 'https://monstersandmemories.miraheze.org/w/api.php';
+const WIKI_HEADERS = { 'User-Agent': 'MnM-Map-Companion/0.1 (personal fan-made map tool)' };
+
+async function wikiJson(params) {
+  const url = WIKI_API + '?' + new URLSearchParams({ format: 'json', ...params });
+  const res = await fetch(url, { headers: WIKI_HEADERS });
+  if (!res.ok) throw new Error('Wiki returned HTTP ' + res.status);
+  return res.json();
+}
+
+ipcMain.handle('wiki-zone-list', async () => {
+  try {
+    const j = await wikiJson({ action: 'parse', page: 'Zones', prop: 'links' });
+    return j.parse.links
+      .map((l) => l['*'])
+      .filter((n) => n && n !== 'Zone Connection Map');
+  } catch (err) {
+    return { error: 'Could not reach the wiki: ' + err.message };
+  }
+});
+
+ipcMain.handle('wiki-fetch-map', async (event, zoneName) => {
+  try {
+    // 1. List the images on the zone's wiki page
+    const parsed = await wikiJson({ action: 'parse', page: zoneName, prop: 'images' });
+    if (parsed.error) return { error: 'No wiki page found for "' + zoneName + '"' };
+    const images = (parsed.parse && parsed.parse.images) || [];
+    if (images.length === 0) return { error: 'No images on the wiki page for "' + zoneName + '"' };
+
+    // 2. Get size + download URLs for all of them
+    const q = await wikiJson({
+      action: 'query',
+      titles: images.map((i) => 'File:' + i).join('|'),
+      prop: 'imageinfo',
+      iiprop: 'url|size',
+      iiurlwidth: '4096',
+    });
+    const candidates = Object.values(q.query.pages)
+      .filter((p) => p.imageinfo && p.imageinfo[0])
+      .map((p) => ({ title: p.title, ...p.imageinfo[0] }))
+      .filter((c) => c.width >= 600); // skip icons and banners
+
+    if (candidates.length === 0) return { error: 'No map-sized images found for "' + zoneName + '"' };
+
+    // 3. Prefer a file with "map" in the name; otherwise the largest image
+    candidates.sort((a, b) => b.width * b.height - a.width * a.height);
+    const best = candidates.find((c) => /map/i.test(c.title)) || candidates[0];
+
+    // 4. Download (thumburl = the scaled 4096px version when available)
+    const dlUrl = best.thumburl || best.url;
+    const res = await fetch(dlUrl, { headers: WIKI_HEADERS });
+    if (!res.ok) throw new Error('Image download failed: HTTP ' + res.status);
+    const buf = Buffer.from(await res.arrayBuffer());
+
+    fs.mkdirSync(mapsDir(), { recursive: true });
+    const ext = (dlUrl.match(/\.(png|jpe?g|webp|gif)/i) || [, 'jpg'])[1];
+    const dest = path.join(mapsDir(), zoneName.replace(/[^a-z0-9 _-]/gi, '') + '-wiki-map.' + ext);
+    fs.writeFileSync(dest, buf);
+    return { path: dest, source: best.title };
+  } catch (err) {
+    return { error: 'Wiki import failed for "' + zoneName + '": ' + err.message };
+  }
+});
+
+// Import is two steps: open the file and report which zones it holds,
+// then (after the user picks) write the chosen zones' images to disk.
+let pendingImport = null;
+
+ipcMain.handle('import-open', async () => {
+  const result = await dialog.showOpenDialog(win, {
+    title: 'Import markers',
+    filters: [{ name: 'JSON', extensions: ['json'] }],
+    properties: ['openFile'],
+  });
+  if (result.canceled || result.filePaths.length === 0) return null;
+
+  let parsed;
+  try {
+    parsed = JSON.parse(fs.readFileSync(result.filePaths[0], 'utf8'));
+  } catch {
+    return { error: 'That file could not be read as a marker file.' };
+  }
+  if (!parsed || parsed.app !== 'mnm-minimap') {
+    return { error: 'That file is not an MnM Map marker file.' };
+  }
+
+  // Normalize both the new (zones array) and old (single zone) formats
+  let zones;
+  if (Array.isArray(parsed.zones)) {
+    zones = parsed.zones;
+  } else if (Array.isArray(parsed.markers)) {
+    zones = [{ name: parsed.zone, gameName: parsed.gameName, markers: parsed.markers, image: null }];
+  } else {
+    return { error: 'That file is not an MnM Map marker file.' };
+  }
+
+  pendingImport = zones;
+  return {
+    zones: zones.map((z) => ({
+      name: z.name,
+      markerCount: Array.isArray(z.markers) ? z.markers.length : 0,
+      hasImage: !!(z.image && z.image.data),
+    })),
+  };
+});
+
+ipcMain.handle('import-commit', async (event, selectedNames) => {
+  if (!pendingImport) return { error: 'Nothing to import.' };
+  const pick = new Set((selectedNames || []).map((n) => String(n).toLowerCase()));
+  const out = [];
+  fs.mkdirSync(mapsDir(), { recursive: true });
+
+  for (const z of pendingImport) {
+    if (pick.size && !pick.has(String(z.name).toLowerCase())) continue;
+    let imagePath = null;
+    if (z.image && z.image.data) {
+      try {
+        const ext = (String(z.image.ext || 'jpg').replace(/[^a-z0-9]/gi, '')) || 'jpg';
+        const dest = path.join(
+          mapsDir(),
+          String(z.name).replace(/[^a-z0-9 _-]/gi, '') + '-imported-' + Date.now() + '.' + ext
+        );
+        fs.writeFileSync(dest, Buffer.from(z.image.data, 'base64'));
+        imagePath = dest;
+      } catch {}
+    }
+    out.push({ name: z.name, gameName: z.gameName || null, markers: z.markers || [], image: imagePath });
+  }
+  pendingImport = null;
+  return { zones: out };
+});

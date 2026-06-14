@@ -1,0 +1,39 @@
+{
+  "name": "mnm-minimap",
+  "version": "0.1.0",
+  "description": "Map and marker companion app for the MMO Monsters & Memories",
+  "main": "main.js",
+  "author": "Zak (threefires)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_USERNAME/mnm-map.git"
+  },
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win"
+  },
+  "devDependencies": {
+    "electron": "^32.3.3",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "xyz.threefires.mnmmap",
+    "productName": "MnM Map",
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "MnM-Map-Setup-${version}.${ext}"
+    }
+  }
+}

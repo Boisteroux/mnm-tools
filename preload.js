@@ -1,0 +1,22 @@
+const { contextBridge, ipcRenderer } = require('electron');
+
+contextBridge.exposeInMainWorld('mapAPI', {
+  loadData: () => ipcRenderer.invoke('load-data'),
+  saveData: (data) => ipcRenderer.invoke('save-data', data),
+  chooseMapImage: () => ipcRenderer.invoke('choose-map-image'),
+  exportData: (scope, zones) => ipcRenderer.invoke('export-data', { scope, zones }),
+  importOpen: () => ipcRenderer.invoke('import-open'),
+  importCommit: (names) => ipcRenderer.invoke('import-commit', names),
+  wikiZoneList: () => ipcRenderer.invoke('wiki-zone-list'),
+  wikiFetchMap: (zoneName) => ipcRenderer.invoke('wiki-fetch-map', zoneName),
+  onGameZone: (callback) => ipcRenderer.on('game-zone', (event, name) => callback(name)),
+  currentGameZone: () => ipcRenderer.invoke('current-game-zone'),
+  toggleOverlay: () => ipcRenderer.invoke('toggle-overlay'),
+  overlayClickThrough: (on) => ipcRenderer.invoke('overlay-click-through', on),
+  overlayFull: (on) => ipcRenderer.invoke('overlay-full', on),
+  overlayExit: () => ipcRenderer.invoke('overlay-exit'),
+  overlayOpacity: (value) => ipcRenderer.invoke('overlay-opacity', value),
+  overlaySetIgnore: (ignore) => ipcRenderer.invoke('overlay-set-ignore', ignore),
+  minimizeWindow: () => ipcRenderer.invoke('window-minimize'),
+  onOverlayState: (callback) => ipcRenderer.on('overlay-state', (event, state) => callback(state)),
+});
