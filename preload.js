@@ -19,4 +19,6 @@ contextBridge.exposeInMainWorld('mapAPI', {
   overlaySetIgnore: (ignore) => ipcRenderer.invoke('overlay-set-ignore', ignore),
   minimizeWindow: () => ipcRenderer.invoke('window-minimize'),
   onOverlayState: (callback) => ipcRenderer.on('overlay-state', (event, state) => callback(state)),
+  trackerScan: () => ipcRenderer.invoke('tracker-scan'),
+  trackerExport: () => ipcRenderer.invoke('tracker-export'),
 });

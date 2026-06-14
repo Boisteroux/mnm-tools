@@ -844,6 +844,32 @@ $('btn-zone-options').addEventListener('click', () => {
   $('btn-zone-options').textContent = hidden ? 'Options ▾' : 'Options ▴';
 });
 
+// ---- Drop tracker (data collection) ----
+
+const TRACKER_KEY = 'mnm-tracker-enabled';
+const trackerStatus = (msg) => { $('tracker-status').textContent = msg; };
+
+async function runTrackerScan(silent) {
+  if (!silent) trackerStatus('Scanning ledgers…');
+  const r = await window.mapAPI.trackerScan();
+  if (!r || r.error) { trackerStatus((r && r.error) || 'Scan failed.'); return; }
+  trackerStatus(r.items + ' items · ' + r.mobs + ' mobs · ' + r.events + ' events (' + r.ledgerFiles + ' ledgers)');
+}
+
+$('tracker-enabled').addEventListener('change', (e) => {
+  try { localStorage.setItem(TRACKER_KEY, e.target.checked ? '1' : '0'); } catch {}
+  if (e.target.checked) runTrackerScan();
+  else trackerStatus('Collection off.');
+});
+
+$('tracker-rescan').addEventListener('click', () => runTrackerScan());
+
+$('tracker-export').addEventListener('click', async () => {
+  trackerStatus('Exporting…');
+  const ok = await window.mapAPI.trackerExport();
+  trackerStatus(ok === true ? 'Exported dataset.' : (ok && ok.error) ? ok.error : 'Export cancelled.');
+});
+
 $('btn-overlay').addEventListener('click', () => window.mapAPI.toggleOverlay());
 $('overlay-exit-btn').addEventListener('click', () => window.mapAPI.overlayExit());
 $('overlay-min-btn').addEventListener('click', () => window.mapAPI.minimizeWindow());
@@ -923,6 +949,10 @@ function updateOverlayZoneLabel() {
     if (localStorage.getItem(SIDEBAR_KEY) === '1') document.body.classList.add('sidebar-collapsed');
   } catch {}
   $('btn-sidebar').textContent = document.body.classList.contains('sidebar-collapsed') ? '»' : '«';
+
+  // Restore the drop-tracker toggle and scan if it was left on
+  try { $('tracker-enabled').checked = localStorage.getItem(TRACKER_KEY) === '1'; } catch {}
+  if ($('tracker-enabled').checked) runTrackerScan(true);
 
   data = await window.mapAPI.loadData();
   if (!data || !Array.isArray(data.zones)) data = { zones: [] };

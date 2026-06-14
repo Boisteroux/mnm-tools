@@ -72,6 +72,19 @@
         <button id="btn-import">Import Zones</button>
       </div>
     </div>
+
+    <div class="section" data-overlay-hide>
+      <label class="section-title">Drop Tracker</label>
+      <label class="follow-row" title="Reads the game's Ledger files to tally drops, kills and vendor prices">
+        <input type="checkbox" id="tracker-enabled" />
+        <span>Collect drop &amp; vendor data</span>
+      </label>
+      <div class="btn-row">
+        <button id="tracker-rescan" title="Re-read the Ledger files now">Rescan</button>
+        <button id="tracker-export" title="Save the dataset (for the website)">Export Data</button>
+      </div>
+      <div id="tracker-status"></div>
+    </div>
   </div>
 
   <div id="map-area">

@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain, dialog, globalShortcut, screen, crashReporter } = require('electron');
 const fs = require('fs');
 const path = require('path');
+const ledgerParser = require('./tracker/ledger-parser');
 
 let win;
 let isToggling = false; // true while we deliberately recreate the window (overlay swap)
@@ -45,6 +46,51 @@ let compactBounds = null; // remembers the floating-panel size while in full-scr
 
 const dataFile = () => path.join(app.getPath('userData'), 'map-data.json');
 const mapsDir = () => path.join(app.getPath('userData'), 'maps');
+
+// ---- Drop / vendor tracker ----
+// Parses the game's Ledger files into an aggregated dataset (drops, kill
+// counts, vendor prices, harvest) saved locally and exportable for the website.
+const trackerFile = () => path.join(app.getPath('userData'), 'tracker-data.json');
+
+function scanTracker() {
+  const files = ledgerParser.findLedgerFiles();
+  const agg = ledgerParser.parseLedgers(files);
+  const items = ledgerParser.buildItemReport(agg);
+  const dataset = {
+    generatedAt: new Date().toISOString(),
+    source: 'mnm-tools',
+    ledgerFiles: agg.fileCount,
+    events: agg.events,
+    mobs: agg.mobs,
+    items,
+    harvest: agg.harvest,
+  };
+  fs.writeFileSync(trackerFile(), JSON.stringify(dataset, null, 2));
+  return {
+    ledgerFiles: agg.fileCount,
+    events: agg.events,
+    mobs: Object.keys(agg.mobs).length,
+    items: items.length,
+    harvest: Object.keys(agg.harvest).length,
+    generatedAt: dataset.generatedAt,
+  };
+}
+
+ipcMain.handle('tracker-scan', () => {
+  try { return scanTracker(); } catch (e) { return { error: e.message }; }
+});
+
+ipcMain.handle('tracker-export', async () => {
+  try { scanTracker(); } catch (e) { return { error: e.message }; }
+  const result = await dialog.showSaveDialog(win, {
+    title: 'Export drop & vendor data',
+    defaultPath: 'mnm-tracker-data.json',
+    filters: [{ name: 'JSON', extensions: ['json'] }],
+  });
+  if (result.canceled || !result.filePath) return false;
+  fs.copyFileSync(trackerFile(), result.filePath);
+  return true;
+});
 
 // Where the overlay first appears: a corner of a second monitor if there is
 // one (so it never fights the game's screen), otherwise the primary display.
