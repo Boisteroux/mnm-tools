@@ -35,8 +35,8 @@ Your maps and markers are saved automatically to `%AppData%\mnm-minimap`.
 ## For contributors — want to improve it?
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/mnm-map.git
-cd mnm-map
+git clone https://github.com/Boisteroux/mnm-tools.git
+cd mnm-tools
 npm install
 npm start
 ```
@@ -48,9 +48,8 @@ changes. Building the installer yourself: `npm run dist`.
 
 ## Support the project
 
-MnM Map is free and open-source (MIT). If it's made your adventures easier and
-you'd like to chip in a couple of bucks, there's a **Sponsor** button at the top
-of the repo — entirely optional, always appreciated. 🍻
+MnM Map is free and open-source (MIT) — and always will be. An optional tip jar
+may be added down the road, but it's never required. 🍻
 
 ## License
 

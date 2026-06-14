@@ -1,20 +1,42 @@
-const { app, BrowserWindow, ipcMain, dialog, globalShortcut, screen } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog, globalShortcut, screen, crashReporter } = require('electron');
 const fs = require('fs');
 const path = require('path');
 
 let win;
+let isToggling = false; // true while we deliberately recreate the window (overlay swap)
+
+// Native crash capture — writes minidumps for GPU/driver-level crashes that
+// JavaScript handlers can never see. Dumps land in <userData>/Crashpad.
+crashReporter.start({ submitURL: '', uploadToServer: false });
+
+// Transparent, always-on-top overlay windows can crash the GPU process on some
+// Windows graphics drivers, taking the whole app down with no JS error. Running
+// the map on the CPU avoids that; a 2D canvas map doesn't need the GPU anyway.
+// Must be called before the app is ready.
+app.disableHardwareAcceleration();
 
 // Crash diagnostics — surface the reason if the app dies unexpectedly, written
 // both to stdout and a log file in the app's data folder.
 function logCrash(tag, info) {
-  const line = '[' + new Date().toISOString() + '] ' + tag + ' ' + JSON.stringify(info) + '\n';
+  const line = '[' + new Date().toISOString() + '] ' + tag + ' ' + JSON.stringify(info || {}) + '\n';
   console.error(line);
-  try { fs.appendFileSync(path.join(app.getPath('userData'), 'crash.log'), line); } catch {}
+  try {
+    fs.appendFileSync(path.join(app.getPath('userData'), 'crash.log'), line);
+  } catch (e) {
+    console.error('LOG WRITE FAILED:', e.message); // surface broken logging instead of swallowing it
+  }
 }
 process.on('uncaughtException', (err) => logCrash('uncaughtException', { message: err.message, stack: err.stack }));
 process.on('unhandledRejection', (reason) => logCrash('unhandledRejection', { reason: String(reason) }));
 app.on('render-process-gone', (e, wc, details) => logCrash('render-process-gone', details));
 app.on('child-process-gone', (e, details) => logCrash('child-process-gone', details));
+
+// Lifecycle trail — if the app shuts down in an orderly way, these leave a
+// record. A "random close" that leaves NO quit/close line here was a hard
+// native crash (see the Crashpad dumps); one that DOES log was a real window close.
+app.on('before-quit', () => logCrash('app-before-quit'));
+app.on('will-quit', () => logCrash('app-will-quit'));
+app.on('quit', (e, code) => logCrash('app-quit', { code }));
 
 let overlayMode = false;
 let clickThrough = false;
@@ -122,6 +144,14 @@ function createWindow(overlay = false) {
     win.on('unmaximize', persist);
   }
 
+  // Record any window close that ISN'T our deliberate overlay-swap, so a stray
+  // close (mis-clicked ✕, OS action) shows up in the log.
+  win.on('close', () => {
+    if (!isToggling) logCrash('window-close', { overlay: overlayMode });
+  });
+  win.webContents.on('render-process-gone', (e, details) => logCrash('webcontents-gone', details));
+  win.webContents.on('unresponsive', () => logCrash('window-unresponsive'));
+
   win.setMenuBarVisibility(false);
   win.loadFile('renderer/index.html', { query: { overlay: overlay ? '1' : '0' } });
 }
@@ -133,14 +163,17 @@ function createWindow(overlay = false) {
 function toggleOverlay() {
   const wasOverlay = overlayMode;
   const old = win;
+  isToggling = true;
   try {
     createWindow(!wasOverlay);
   } catch (err) {
     // If the overlay window failed to build, stay in the current window
     if (old && !old.isDestroyed()) win = old;
+    isToggling = false;
     return;
   }
   if (old && !old.isDestroyed() && old !== win) old.destroy();
+  isToggling = false;
 }
 
 function setClickThrough(on) {
@@ -186,6 +219,7 @@ ipcMain.handle('overlay-set-ignore', (event, ignore) => {
 ipcMain.handle('window-minimize', () => { if (win && !win.isDestroyed()) win.minimize(); return true; });
 
 app.whenReady().then(() => {
+  logCrash('app-start', { version: app.getVersion(), pid: process.pid });
   createWindow();
   registerShortcuts();
   startGameLogWatch();

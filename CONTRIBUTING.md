@@ -17,8 +17,8 @@ marker data, bug reports, and ideas.
 You'll need [Node.js](https://nodejs.org) (LTS) installed.
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/mnm-map.git
-cd mnm-map
+git clone https://github.com/Boisteroux/mnm-tools.git
+cd mnm-tools
 npm install        # downloads Electron and other dependencies
 npm start          # launches the app
 ```
