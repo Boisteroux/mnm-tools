@@ -117,17 +117,16 @@ function renderItem(id) {
     if (rows.length) sections.push('<h2>Stats</h2><div class="card"><table><tbody>' + rows.join('') + '</tbody></table></div>');
   }
 
-  // Harvested / sourced from — nodes like Copper Vein (or creatures), per the wiki
-  if (w.from && w.from.length) {
-    sections.push('<h2>Harvested / sourced from</h2><div class="card"><table><tbody>' +
-      w.from.map((s) => '<tr><td>' + sourceLink(s) + '</td></tr>').join('') +
-      '</tbody></table></div>');
-  }
-
-  // Dropped by (mobs)
-  if (it.droppedBy.length) {
-    sections.push('<h2>Dropped by</h2><div class="card"><table><thead><tr><th>Mob</th><th class="num">Drop rate</th></tr></thead><tbody>' +
-      it.droppedBy.map((d) => '<tr><td>' + mobLink(d.mob) + '</td><td class="num">' + rateCell(d.rate, d.drops, d.kills) + '</td></tr>').join('') +
+  // Dropped by — one list combining your observed mobs (with drop rate) and any
+  // wiki-listed sources/nodes (no rate). De-dupes mobs that appear in both.
+  const dropRows = [];
+  const seenSrc = new Set();
+  it.droppedBy.forEach((d) => { seenSrc.add(d.mob); dropRows.push(d); });
+  (w.from || []).forEach((s) => { if (!seenSrc.has(s)) { seenSrc.add(s); dropRows.push({ mob: s, rate: null }); } });
+  if (dropRows.length) {
+    sections.push('<h2>Dropped by</h2><div class="card"><table><thead><tr><th>Source</th><th class="num">Drop rate</th></tr></thead><tbody>' +
+      dropRows.map((r) => '<tr><td>' + sourceLink(r.mob) + '</td><td class="num">' +
+        (r.rate != null ? rateCell(r.rate, r.drops, r.kills) : '<span class="sample">—</span>') + '</td></tr>').join('') +
       '</tbody></table></div>');
   }
 
@@ -330,15 +329,16 @@ const browse = { view: null, key: 'name', dir: 1 };
 const browseCols = {
   items: [
     { key: 'name', label: 'Item' },
+    { key: 'best', label: 'Drop Percent', num: true, render: (v) => (v ? Math.round(v * 100) + '%' : '—') },
+    { key: 'vendor', label: 'Vendor Value', num: true, render: (v) => (v == null ? '—' : coin(v)) },
+    { key: 'shady', label: 'Shady Value', num: true, render: (v) => (v == null ? '—' : coin(v)) },
     { key: 'sources', label: 'Sources', num: true },
-    { key: 'best', label: 'Best drop', num: true, render: (v) => (v ? Math.round(v * 100) + '%' : '—') },
-    { key: 'vendor', label: 'Vendor', num: true, render: (v) => (v == null ? '—' : coin(v)) },
     { key: 'harvested', label: 'Harvested', num: true, render: (v) => v || '—' },
   ],
-  resources: [
+  gathering: [
     { key: 'name', label: 'Resource' },
     { key: 'harvested', label: 'Harvested', num: true },
-    { key: 'vendor', label: 'Vendor', num: true, render: (v) => (v == null ? '—' : coin(v)) },
+    { key: 'vendor', label: 'Vendor Value', num: true, render: (v) => (v == null ? '—' : coin(v)) },
   ],
   mobs: [
     { key: 'name', label: 'Mob' },
@@ -359,15 +359,21 @@ function browseRows(view) {
       };
     });
   }
-  const items = view === 'resources' ? DATA.items.filter((i) => i.harvested > 0) : DATA.items;
-  return items.map((i) => ({
-    _href: '#/item/' + encodeURIComponent(i.id),
-    name: i.name,
-    sources: i.droppedBy.length,
-    best: i.droppedBy.reduce((m, d) => Math.max(m, d.rate || 0), 0),
-    vendor: i.prices.length ? Math.min.apply(null, i.prices.map((p) => p.copper)) : null,
-    harvested: i.harvested || 0,
-  }));
+  const items = view === 'gathering' ? DATA.items.filter((i) => i.harvested > 0) : DATA.items;
+  return items.map((i) => {
+    const prices = i.prices.map((p) => p.copper);
+    const max = prices.length ? Math.max.apply(null, prices) : null;
+    const min = prices.length ? Math.min.apply(null, prices) : null;
+    return {
+      _href: '#/item/' + encodeURIComponent(i.id),
+      name: i.name,
+      sources: i.droppedBy.length,
+      best: i.droppedBy.reduce((m, d) => Math.max(m, d.rate || 0), 0),
+      vendor: max,                       // regular vendor = best (highest) sell
+      shady: min != null && min < max ? min : null, // only if a genuinely lower price was seen
+      harvested: i.harvested || 0,
+    };
+  });
 }
 
 function renderBrowse(view) {
@@ -416,7 +422,7 @@ function route() {
   const q = $('search').value.trim();
   if (q) return renderSearch(q);
   const h = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
-  if (h === 'items' || h === 'mobs' || h === 'resources') return renderBrowse(h);
+  if (h === 'items' || h === 'mobs' || h === 'gathering') return renderBrowse(h);
   if (h.startsWith('item/')) return renderItem(h.slice(5));
   if (h.startsWith('mob/')) return renderMob(h.slice(4));
   if (h.startsWith('zone/')) return renderZone(h.slice(5));
