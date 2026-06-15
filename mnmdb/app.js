@@ -84,6 +84,27 @@ function renderItem(id) {
 
   const sections = [];
 
+  // Stats (from the wiki) — shown first
+  if (it.wiki) {
+    const w = it.wiki;
+    const rows = [];
+    const add = (k, v, num) => {
+      if (v != null && v !== '') rows.push('<tr><td class="muted" style="width:130px">' + k + '</td><td' + (num ? ' class="num"' : '') + '>' + esc(String(v)) + '</td></tr>');
+    };
+    add('Slot', w.slot);
+    add('Weapon DMG', w.dmg, true);
+    add('Attack delay', w.delay, true);
+    add('Skill', w.skill);
+    add('Weight', w.weight, true);
+    add('Size', w.size);
+    add('Class', w.class);
+    add('Race', w.race);
+    if (rows.length) {
+      sections.push('<h2>Stats</h2><div class="card"><table><tbody>' + rows.join('') +
+        '</tbody></table></div>');
+    }
+  }
+
   // Sources (mob drops)
   if (it.droppedBy.length) {
     sections.push('<h2>Dropped by</h2><div class="card"><table><thead><tr><th>Mob</th><th class="num">Drop rate</th></tr></thead><tbody>' +
@@ -319,10 +340,19 @@ function route() {
 
 // ---- Init ----
 
+async function loadWikiStats() {
+  // Optional — merged in if present; never fatal if missing
+  try {
+    const w = await (await fetch('./wiki.json?v=' + Date.now())).json();
+    if (w && w.items) DATA.items.forEach((i) => { if (w.items[i.name]) i.wiki = w.items[i.name]; });
+  } catch {}
+}
+
 fetch('./data.json?v=' + Date.now())
   .then((r) => r.json())
-  .then((d) => {
+  .then(async (d) => {
     DATA = d;
+    await loadWikiStats();
     DATA.items.forEach((i) => { nameToId[i.name] = i.id; itemByName[i.name] = i; });
     const when = d.generatedAt ? new Date(d.generatedAt).toLocaleDateString() : '';
     $('data-meta').textContent = (d.events || 0).toLocaleString() + ' events · ' +
