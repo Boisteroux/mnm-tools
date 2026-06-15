@@ -97,8 +97,8 @@ function renderItem(id) {
   // Stats — wiki stats + your harvest tally + sell price, all in one block
   {
     const rows = [];
-    const add = (k, v, num) => {
-      if (v != null && v !== '') rows.push('<tr><td class="muted" style="width:140px">' + k + '</td><td' + (num ? ' class="num"' : '') + '>' + v + '</td></tr>');
+    const add = (k, v) => {
+      if (v != null && v !== '') rows.push('<tr><td class="muted" style="width:140px">' + k + '</td><td>' + v + '</td></tr>');
     };
     add('Slot', esc(w.slot || ''));
     add('Weapon DMG', w.dmg, true);
@@ -218,14 +218,13 @@ function renderMob(name) {
   sadd('Special', mw.special);
   if (srows.length) statsBlock = '<h2>Stats</h2><div class="card"><table><tbody>' + srows.join('') + '</tbody></table></div>';
 
-  const img = mw.image ? '<img class="entity-icon" src="' + mw.image + '" alt="" /> ' : '';
   const wikiLine = mw.hasPage
     ? '<p class="sub"><a href="' + wikiUrl(mw.title || (name.charAt(0).toUpperCase() + name.slice(1))) + '" target="_blank" rel="noopener">View on the wiki ↗</a></p>'
     : '';
 
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › mob</div>' +
-    '<h1>' + img + esc(name) + '</h1>' +
+    '<h1>' + esc(name) + '</h1>' +
     (zones.length ? '<p class="sub">Found in ' + zones.map(zoneLink).join(', ') + '</p>' : '') +
     wikiLine +
     statsBlock +
