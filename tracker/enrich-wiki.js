@@ -127,6 +127,13 @@ function parseMobPage(wikitext) {
   return has || data.imageFile ? data : null;
 }
 
+// Item "type" from wiki categories (drops class-equipment + meta categories).
+// These types are what decide which vendor NPCs will buy an item.
+function parseCategories(wikitext) {
+  const cats = [...new Set([...wikitext.matchAll(/\[\[Category:([^\]|]+)/gi)].map((x) => x[1].trim()))];
+  return cats.filter((c) => !/Equipment$/i.test(c) && !/^(Items|Old Itembox Items)$/i.test(c));
+}
+
 // Fetch + parse ItemBox/sources for a list of item names into `into`
 async function enrichItems(names, into, label, wikiOnly) {
   for (let i = 0; i < names.length; i += 45) {
@@ -134,10 +141,11 @@ async function enrichItems(names, into, label, wikiOnly) {
     process.stdout.write(`  ${label} ${i + 1}-${i + batch.length}/${names.length}…       \r`);
     let texts; try { texts = await fetchWikitext(batch); } catch { continue; }
     for (const [title, wt] of Object.entries(texts)) {
-      const box = parseItemBox(wt), src = parseSources(wt);
-      if (box || src.zones.length || src.from.length) {
+      const box = parseItemBox(wt), src = parseSources(wt), cats = parseCategories(wt);
+      if (box || src.zones.length || src.from.length || cats.length) {
         into[title] = Object.assign({ hasPage: true }, wikiOnly ? { wikiOnly: true } : {}, box || {},
-          src.zones.length ? { wikiZones: src.zones } : {}, src.from.length ? { from: src.from } : {});
+          src.zones.length ? { wikiZones: src.zones } : {}, src.from.length ? { from: src.from } : {},
+          cats.length ? { categories: cats } : {});
       }
     }
     await sleep(350);

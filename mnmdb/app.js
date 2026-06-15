@@ -104,6 +104,7 @@ function renderItem(id) {
     const add = (k, v) => {
       if (v != null && v !== '') rows.push('<tr><td class="muted" style="width:140px">' + k + '</td><td>' + v + '</td></tr>');
     };
+    add('Type', esc((w.categories || []).join(', ')));
     add('Slot', esc(w.slot || ''));
     add('Weapon DMG', w.dmg, true);
     add('Attack delay', w.delay, true);
