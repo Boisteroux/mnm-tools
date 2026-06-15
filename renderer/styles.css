@@ -101,6 +101,9 @@ select option {
   line-height: 1.5;
 }
 
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
 button {
   background: var(--surface);
   border: 1px solid var(--line-2);
@@ -112,7 +115,8 @@ button {
   flex: 1;
 }
 
-button:hover { background: var(--surface-2); border-color: #39434f; }
+button:hover { background: var(--surface-2); border-color: #8a5a2b; }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-dk); font-weight: 600; }
 button.primary:hover { background: #ffa94d; }
 
@@ -124,13 +128,13 @@ button.primary:hover { background: #ffa94d; }
   -webkit-app-region: no-drag;
   margin: 0;
   border: 1px solid var(--line-2);
-  border-radius: 999px;
+  border-radius: 5px;
   background-color: var(--surface);
   background-repeat: no-repeat;
   color: var(--text);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.4;
   padding: 3px 14px;
   cursor: pointer;
@@ -375,7 +379,7 @@ body.sidebar-collapsed #sidebar { display: none; }
   z-index: 40;
 }
 
-#popup-title { font-weight: 600; font-size: 13px; margin-bottom: 3px; color: #e6ebef; }
+#popup-title { font-weight: 600; font-size: 13px; margin-bottom: 3px; color: var(--text); }
 #popup-category { font-size: 11.5px; color: var(--muted); margin-bottom: 6px; }
 #popup-notes { font-size: 12px; line-height: 1.5; white-space: pre-wrap; }
 

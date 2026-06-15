@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, dialog, globalShortcut, screen, crashReporter } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog, globalShortcut, screen, crashReporter, shell } = require('electron');
 const fs = require('fs');
 const path = require('path');
 const ledgerParser = require('./tracker/ledger-parser');
@@ -350,6 +350,13 @@ function createWindow(overlay = false) {
   });
   win.webContents.on('render-process-gone', (e, details) => logCrash('webcontents-gone', details));
   win.webContents.on('unresponsive', () => logCrash('window-unresponsive'));
+
+  // Open external links (target="_blank") in the user's real browser, never
+  // inside the app window.
+  win.webContents.setWindowOpenHandler(({ url }) => {
+    if (/^https?:\/\//i.test(url)) shell.openExternal(url);
+    return { action: 'deny' };
+  });
 
   win.setMenuBarVisibility(false);
   win.loadFile('renderer/index.html', { query: { overlay: overlay ? '1' : '0', dev: isDev ? '1' : '0' } });
