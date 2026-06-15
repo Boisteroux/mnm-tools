@@ -1,7 +1,7 @@
 // ---------------------------------------------------------------
-// Wiki enrichment — fetches each item's {{ItemBox}} from the M&M
-// community wiki and merges stats (damage, delay, slot, weight,
-// class, race, icon) into mnmdb/data.json.
+// Wiki enrichment — pulls item stats + icons and mob stats from the
+// M&M community wiki into mnmdb/wiki.json (separate from the ledger
+// data so re-generating data.json never clobbers it).
 //
 // Run:  node tracker/enrich-wiki.js          (enrich + write)
 //       node tracker/enrich-wiki.js --test   (parse a few, print, no write)
@@ -13,13 +13,23 @@ const path = require('path');
 const WIKI_API = 'https://monstersandmemories.miraheze.org/w/api.php';
 const HEADERS = { 'User-Agent': 'MnM-Map-Companion/0.1 (personal fan-made map tool)' };
 const DATA = path.join(__dirname, '..', 'mnmdb', 'data.json');
+const OUT = path.join(__dirname, '..', 'mnmdb', 'wiki.json');
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const toNum = (s) => (s == null || s === '' ? null : (isNaN(+s) ? null : +s));
 const clean = (s) =>
   s == null ? null : s.replace(/<[^>]+>/g, ' ').replace(/&[a-z]+;/gi, ' ').replace(/\s+/g, ' ').trim() || null;
+const cap = (s) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : s);
 
-// Fetch raw wikitext for up to 50 page titles at once
+const ZONES = new Set([
+  'Ancient Crypt', 'Blacktide Bay', 'Caves of Irem', 'Evershade Weald', 'Faelindral',
+  'Fallen Pass', 'Fallen Watch', 'Glass Flats', 'Glinting Hollow', 'Grain Cellar',
+  'Grimtide Sanctum', 'Infested Crypt', "Keeper's Bight", 'Night Harbor', 'Night Harbor Sewers',
+  'Rothold', 'Scarwood', 'Shaded Dunes', 'Shallow Shoals', 'Sungreet Strand',
+  'Tel Ekir', 'Tomb of the Last Wyrmsbane', 'Vale of Zintar',
+]);
+
+// Fetch raw wikitext for up to ~45 page titles at once -> { title: wikitext }
 async function fetchWikitext(titles) {
   const url = WIKI_API + '?' + new URLSearchParams({
     format: 'json', action: 'query', prop: 'revisions', rvprop: 'content', rvslots: 'main',
@@ -38,54 +48,57 @@ async function fetchWikitext(titles) {
   return out;
 }
 
-// Parse the {{ItemBox}} template into structured stats
+// Resolve a list of "File:Name.png" titles -> { title: small-thumb url }
+async function fetchImageUrls(fileTitles) {
+  const out = {};
+  for (let i = 0; i < fileTitles.length; i += 45) {
+    const batch = fileTitles.slice(i, i + 45);
+    const url = WIKI_API + '?' + new URLSearchParams({
+      format: 'json', action: 'query', titles: batch.join('|'),
+      prop: 'imageinfo', iiprop: 'url', iiurlwidth: '64',
+    });
+    const j = await (await fetch(url, { headers: HEADERS })).json();
+    const back = {};
+    (j.query && j.query.normalized || []).forEach((n) => { back[n.to] = n.from; });
+    for (const p of Object.values((j.query && j.query.pages) || {})) {
+      if (p.imageinfo && p.imageinfo[0]) out[back[p.title] || p.title] = p.imageinfo[0].thumburl || p.imageinfo[0].url;
+    }
+    await sleep(300);
+  }
+  return out;
+}
+
+function templateParams(body) {
+  const params = {};
+  // NB: `=[ \t]*` (not `\s*`) so an empty field doesn't swallow the next line
+  const re = /\|\s*([a-z_]+)\s*=[ \t]*([\s\S]*?)(?=\n\s*\|\s*[a-z_]+\s*=|\n\}\}|$)/gi;
+  let pm;
+  while ((pm = re.exec(body))) params[pm[1].toLowerCase()] = pm[2].trim();
+  return params;
+}
+
 function parseItemBox(wikitext) {
   const m = wikitext.match(/\{\{\s*ItemBox([\s\S]*?)\n\}\}/i);
   if (!m) return null;
-  const body = m[1];
-
-  // top-level template params: |key = value  (value may span lines)
-  const params = {};
-  const re = /\|\s*([a-z_]+)\s*=\s*([\s\S]*?)(?=\n\s*\|\s*[a-z_]+\s*=|\n\}\}|$)/gi;
-  let pm;
-  while ((pm = re.exec(body))) params[pm[1].toLowerCase()] = pm[2].trim();
-
+  const params = templateParams(m[1]);
   const stats = params.item_stats || '';
   const grab = (rx) => { const x = stats.match(rx); return x ? x[1] : null; };
-
-  // class spans from "Class:" up to "Race:" (can contain <br> + line breaks)
   const classRaw = stats.match(/Class:\s*([\s\S]*?)\s*Race:/i);
-  const sizeVal = (params.size || grab(/Size:\s*([A-Za-z]+)/i) || '').trim().toUpperCase() || null;
-
   const data = {
-    linkId: params.item_link_id || null,
     iconId: params.icon_id || null,
     slot: clean(grab(/Slot:\s*([^\n<]+)/i)),
     dmg: toNum(grab(/Weapon DMG:\s*([\d.]+)/i)),
     delay: toNum(grab(/ATK Delay:\s*([\d.]+)/i)),
     skill: grab(/Skill:\s*([A-Z]{2,4})/),
     weight: toNum(params.weight || grab(/Weight:\s*([\d.]+)/i)),
-    size: sizeVal,
+    size: (params.size || grab(/Size:\s*([A-Za-z]+)/i) || '').trim().toUpperCase() || null,
     class: clean(params.class || (classRaw && classRaw[1]) || grab(/Class:\s*([^\n<]+)/i)),
     race: clean(params.race || grab(/Race:\s*([A-Za-z ]+)/i)),
   };
-  // Drop entirely-empty results (page exists but no usable stats)
-  const hasAny = Object.entries(data).some(([k, v]) => !['linkId', 'iconId'].includes(k) && v != null);
+  const hasAny = Object.entries(data).some(([k, v]) => k !== 'iconId' && v != null);
   return hasAny || data.iconId ? data : null;
 }
 
-// Known M&M zones, so we can split the wiki's "dropsfrom" list into zones vs.
-// other sources (gathering nodes like Copper Vein, or mobs).
-const ZONES = new Set([
-  'Ancient Crypt', 'Blacktide Bay', 'Caves of Irem', 'Evershade Weald', 'Faelindral',
-  'Fallen Pass', 'Fallen Watch', 'Glass Flats', 'Glinting Hollow', 'Grain Cellar',
-  'Grimtide Sanctum', 'Infested Crypt', "Keeper's Bight", 'Night Harbor', 'Night Harbor Sewers',
-  'Rothold', 'Scarwood', 'Shaded Dunes', 'Shallow Shoals', 'Sungreet Strand',
-  'Tel Ekir', 'Tomb of the Last Wyrmsbane', 'Vale of Zintar',
-]);
-
-// Pull the wiki's curated "drops/gathered from" list from the {{Itempage}}
-// section, split into zones and other sources (nodes like "Copper Vein", mobs).
 function parseSources(wikitext) {
   const m = wikitext.match(/\{\{\s*Itempage([\s\S]*?)\n\}\}/i);
   if (!m) return { zones: [], from: [] };
@@ -95,46 +108,75 @@ function parseSources(wikitext) {
   return { zones: links.filter((l) => ZONES.has(l)), from: links.filter((l) => !ZONES.has(l)) };
 }
 
+function parseMobPage(wikitext) {
+  const m = wikitext.match(/\{\{\s*Namedmobpage([\s\S]*?)\n\}\}/i);
+  if (!m) return null;
+  const p = templateParams(m[1]);
+  const data = {
+    level: toNum(p.level), race: clean(p.race), class: clean(p.class),
+    hp: toNum(p.hp), ac: toNum(p.ac),
+    special: clean(p.special), zone: clean(p.zone),
+    imageFile: p.imagefilename || null,
+  };
+  const has = Object.entries(data).some(([k, v]) => k !== 'imageFile' && v != null);
+  return has || data.imageFile ? data : null;
+}
+
 async function run() {
   const test = process.argv.includes('--test');
   const ds = JSON.parse(fs.readFileSync(DATA, 'utf8'));
-  const items = ds.items;
-  const names = test
-    ? ['Rusty Scimitar', 'Bronze Dagger', 'Bone Chips', 'Copper Ore', 'Bat Wing']
-    : items.map((i) => i.name);
+  const itemNames = test ? ['Rusty Scimitar', 'Bronze Dagger', 'Copper Ore'] : ds.items.map((i) => i.name);
+  const mobNames = test ? ['a green drakeling', 'a rotting skeleton'] : Object.keys(ds.mobs);
 
-  const result = {};
-  for (let i = 0; i < names.length; i += 45) {
-    const batch = names.slice(i, i + 45);
-    process.stdout.write(`  fetching ${i + 1}-${i + batch.length} of ${names.length}…\r`);
-    let texts;
-    try { texts = await fetchWikitext(batch); } catch (e) { console.error('\nbatch failed:', e.message); continue; }
+  // ---- Items ----
+  const items = {};
+  for (let i = 0; i < itemNames.length; i += 45) {
+    const batch = itemNames.slice(i, i + 45);
+    process.stdout.write(`  items ${i + 1}-${i + batch.length}/${itemNames.length}…\r`);
+    let texts; try { texts = await fetchWikitext(batch); } catch (e) { console.error('\nbatch failed:', e.message); continue; }
     for (const [title, wt] of Object.entries(texts)) {
-      const box = parseItemBox(wt);
-      const src = parseSources(wt);
+      const box = parseItemBox(wt), src = parseSources(wt);
       if (box || src.zones.length || src.from.length) {
-        result[title] = Object.assign(
-          { hasPage: true }, box || {},
-          src.zones.length ? { wikiZones: src.zones } : {},
-          src.from.length ? { from: src.from } : {}
-        );
+        items[title] = Object.assign({ hasPage: true }, box || {},
+          src.zones.length ? { wikiZones: src.zones } : {}, src.from.length ? { from: src.from } : {});
       }
     }
-    await sleep(400);
+    await sleep(350);
   }
-  console.log(`\nParsed wiki stats for ${Object.keys(result).length} / ${names.length} items.`);
+  // resolve item icons
+  const iconIds = [...new Set(Object.values(items).map((i) => i.iconId).filter(Boolean))];
+  const iconUrls = await fetchImageUrls(iconIds.map((id) => 'File:' + id + '.png'));
+  for (const it of Object.values(items)) if (it.iconId) it.icon = iconUrls['File:' + it.iconId + '.png'] || null;
+
+  // ---- Mobs ----
+  const mobs = {};
+  const titleToMob = {};
+  mobNames.forEach((n) => { titleToMob[cap(n)] = n; });
+  const titles = Object.keys(titleToMob);
+  for (let i = 0; i < titles.length; i += 45) {
+    const batch = titles.slice(i, i + 45);
+    process.stdout.write(`  mobs ${i + 1}-${i + batch.length}/${titles.length}…   \r`);
+    let texts; try { texts = await fetchWikitext(batch); } catch (e) { console.error('\nmob batch failed:', e.message); continue; }
+    for (const [title, wt] of Object.entries(texts)) {
+      const parsed = parseMobPage(wt);
+      if (parsed) mobs[titleToMob[title] || title] = Object.assign({ hasPage: true, title }, parsed);
+    }
+    await sleep(350);
+  }
+  // resolve mob images
+  const mobImgTitles = [...new Set(Object.values(mobs).map((m) => m.imageFile).filter(Boolean))].map((f) => 'File:' + f);
+  const mobImgs = await fetchImageUrls(mobImgTitles);
+  for (const m of Object.values(mobs)) if (m.imageFile) m.image = mobImgs['File:' + m.imageFile] || null;
+
+  console.log(`\nItems with wiki data: ${Object.keys(items).length}/${itemNames.length} (icons: ${Object.values(items).filter((i) => i.icon).length}). Mobs: ${Object.keys(mobs).length}/${mobNames.length}.`);
 
   if (test) {
-    for (const n of names) console.log('\n' + n + ':', JSON.stringify(result[n] || '(no page / no stats)'));
+    console.log('\nRusty Scimitar:', JSON.stringify(items['Rusty Scimitar']));
+    console.log('\na green drakeling:', JSON.stringify(mobs['a green drakeling']));
     return;
   }
-
-  // Write a SEPARATE wiki.json (keyed by item name). The site merges it at load,
-  // so re-generating data.json from the ledger never clobbers the wiki stats and
-  // we don't re-fetch the wiki on every data publish.
-  const outFile = path.join(__dirname, '..', 'mnmdb', 'wiki.json');
-  fs.writeFileSync(outFile, JSON.stringify({ generatedAt: new Date().toISOString(), items: result }, null, 2));
-  console.log(`Wrote wiki stats for ${Object.keys(result).length} items to ${outFile}.`);
+  fs.writeFileSync(OUT, JSON.stringify({ generatedAt: new Date().toISOString(), items, mobs }, null, 2));
+  console.log(`Wrote ${OUT}.`);
 }
 
 run();

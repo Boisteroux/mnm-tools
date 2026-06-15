@@ -91,6 +91,7 @@ main {
 .loading, .muted { color: var(--muted); }
 
 h1 { font-size: 24px; font-weight: 600; margin-bottom: 4px; }
+.entity-icon { width: 32px; height: 32px; object-fit: contain; vertical-align: -7px; image-rendering: pixelated; }
 h2 { font-size: 15px; font-weight: 600; color: var(--accent); margin: 24px 0 10px; text-transform: uppercase; letter-spacing: 1px; }
 .sub { color: var(--muted); font-size: 13px; margin-bottom: 8px; }
 

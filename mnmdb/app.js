@@ -34,6 +34,11 @@ const wikiUrl = (name) => WIKI_BASE + encodeURIComponent(String(name).replace(/ 
 const itemLink = (id, name) => '<a href="#/item/' + encodeURIComponent(id) + '">' + esc(name) + '</a>';
 const mobLink = (name) => '<a href="#/mob/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
 const zoneLink = (name) => '<a href="#/zone/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
+// A wiki "source" (node/creature/item) — link internally where we can, else to the wiki
+const sourceLink = (s) =>
+  DATA.mobs[s] ? mobLink(s)
+    : nameToId[s] ? itemLink(nameToId[s], s)
+    : '<a href="' + wikiUrl(s) + '" target="_blank" rel="noopener">' + esc(s) + ' ↗</a>';
 
 // Regular-vendor sell price = the BEST (highest) you'd get selling — regular
 // vendors pay more than shady ones. Used as the realistic value of an item.
@@ -108,24 +113,17 @@ function renderItem(id) {
     if (rows.length) sections.push('<h2>Stats</h2><div class="card"><table><tbody>' + rows.join('') + '</tbody></table></div>');
   }
 
+  // Harvested / sourced from — nodes like Copper Vein (or creatures), per the wiki
+  if (w.from && w.from.length) {
+    sections.push('<h2>Harvested / sourced from</h2><div class="card"><table><tbody>' +
+      w.from.map((s) => '<tr><td>' + sourceLink(s) + '</td></tr>').join('') +
+      '</tbody></table></div>');
+  }
+
   // Dropped by (mobs)
   if (it.droppedBy.length) {
     sections.push('<h2>Dropped by</h2><div class="card"><table><thead><tr><th>Mob</th><th class="num">Drop rate</th></tr></thead><tbody>' +
       it.droppedBy.map((d) => '<tr><td>' + mobLink(d.mob) + '</td><td class="num">' + rateCell(d.rate, d.drops, d.kills) + '</td></tr>').join('') +
-      '</tbody></table></div>');
-  }
-
-  // Found in — your observed zones plus the wiki's listed zones, linked internally
-  const zoneSet = [...new Set([...(it.zones || []), ...(w.wikiZones || [])])];
-  if (zoneSet.length) {
-    sections.push('<h2>Found in</h2><div class="card"><table><tbody>' +
-      zoneSet.map((z) => '<tr><td>' + zoneLink(z) + '</td></tr>').join('') + '</tbody></table></div>');
-  }
-
-  // Harvested / sourced from — nodes like Copper Vein (or creatures), per the wiki
-  if (w.from && w.from.length) {
-    sections.push('<h2>Harvested / sourced from</h2><div class="card"><table><tbody>' +
-      w.from.map((s) => '<tr><td>' + (DATA.mobs[s] ? mobLink(s) : esc(s)) + '</td></tr>').join('') +
       '</tbody></table></div>');
   }
 
@@ -153,18 +151,26 @@ function renderItem(id) {
         : '<div class="note">Buy prices and confirmed vendor types will come from the wiki in a later update.</div>'));
   }
 
+  // Found in — your observed zones plus the wiki's listed zones (bottom)
+  const zoneSet = [...new Set([...(it.zones || []), ...(w.wikiZones || [])])];
+  if (zoneSet.length) {
+    sections.push('<h2>Found in</h2><div class="card"><table><tbody>' +
+      zoneSet.map((z) => '<tr><td>' + zoneLink(z) + '</td></tr>').join('') + '</tbody></table></div>');
+  }
+
   if (!sections.length) {
     sections.push('<p class="muted">No drop, harvest, or vendor data recorded for this item yet. ' +
       'It\'ll fill in as more is collected.</p>');
   }
 
+  const icon = w.icon ? '<img class="entity-icon" src="' + w.icon + '" alt="" /> ' : '';
   const wikiLine = (it.wiki && it.wiki.hasPage)
     ? '<p class="sub"><a href="' + wikiUrl(it.name) + '" target="_blank" rel="noopener">View on the wiki ↗</a></p>'
     : '';
 
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › item</div>' +
-    '<h1>' + esc(it.name) + '</h1>' +
+    '<h1>' + icon + esc(it.name) + '</h1>' +
     wikiLine +
     sections.join('');
 }
@@ -199,10 +205,30 @@ function renderMob(name) {
     '<div class="vbox"><div class="vlbl">Est. value / kill</div><div class="vval">' + coin(val.total) + '</div></div>' +
     '</div>';
 
+  // Wiki stats block (level / race / class / special)
+  const mw = m.wiki || {};
+  let statsBlock = '';
+  const srows = [];
+  const sadd = (k, v) => { if (v != null && v !== '') srows.push('<tr><td class="muted" style="width:140px">' + k + '</td><td>' + esc(String(v)) + '</td></tr>'); };
+  sadd('Level', mw.level);
+  sadd('Race', mw.race);
+  sadd('Class', mw.class);
+  sadd('HP', mw.hp);
+  sadd('AC', mw.ac);
+  sadd('Special', mw.special);
+  if (srows.length) statsBlock = '<h2>Stats</h2><div class="card"><table><tbody>' + srows.join('') + '</tbody></table></div>';
+
+  const img = mw.image ? '<img class="entity-icon" src="' + mw.image + '" alt="" /> ' : '';
+  const wikiLine = mw.hasPage
+    ? '<p class="sub"><a href="' + wikiUrl(mw.title || (name.charAt(0).toUpperCase() + name.slice(1))) + '" target="_blank" rel="noopener">View on the wiki ↗</a></p>'
+    : '';
+
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › mob</div>' +
-    '<h1>' + esc(name) + '</h1>' +
+    '<h1>' + img + esc(name) + '</h1>' +
     (zones.length ? '<p class="sub">Found in ' + zones.map(zoneLink).join(', ') + '</p>' : '') +
+    wikiLine +
+    statsBlock +
     summary +
     '<h2>Drops &amp; farming value</h2>' + table +
     '<div class="note">“Value / kill” = drop rate × the item’s regular vendor price; add coin/kill for the total. ' +
@@ -381,6 +407,7 @@ async function loadWikiStats() {
   try {
     const w = await (await fetch('./wiki.json?v=' + Date.now())).json();
     if (w && w.items) DATA.items.forEach((i) => { if (w.items[i.name]) i.wiki = w.items[i.name]; });
+    if (w && w.mobs) Object.keys(DATA.mobs).forEach((m) => { if (w.mobs[m]) DATA.mobs[m].wiki = w.mobs[m]; });
   } catch {}
 }
 
