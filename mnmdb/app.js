@@ -192,7 +192,7 @@ function route() {
 
 // ---- Init ----
 
-fetch('./data.json')
+fetch('./data.json?v=' + Date.now())
   .then((r) => r.json())
   .then((d) => {
     DATA = d;
