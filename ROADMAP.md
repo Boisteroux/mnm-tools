@@ -16,6 +16,11 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
 - **Sharing** — public repo, MIT license, Windows installer, sunset branding.
 - **One-click publish** — "Publish to MnMdb" button in the app (owner build only)
   regenerates the site data from your ledger and pushes it live in ~30s.
+- **Multi-map zones** — manual map switcher (Evershade Weald ⇄ Faelindral) in the
+  sidebar + overlay, driven by zone-aliases.json.
+- **Trade value v1** — item pages show a 7-day high/low of player sale prices.
+  Submit prices two ways: the in-app "Log a Trade" panel (merged on Publish) or a
+  phone-friendly GitHub issue form. Data lives in mnmdb/trades.json.
 
 ## 🔜 Next up
 
@@ -26,13 +31,11 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
 - **Harvest zones** — show where each resource is gathered.
 - **Crowdsourcing** — pool everyone's data on a server so the site is live and
   community-wide (needs hosting + moderation — the bigger lift).
-- **Trade value (7-day high/low)** — *blocked by data, not effort.* The game does
-  **not** save chat to disk (Player.log is engine logging; chats.json is only
-  window layout), so we can't scrape Auction/WTS "selling X for Y plat" messages.
-  The Ledger only records *your own* NPC vendor sells (act_24) — no player-to-
-  player trades are logged for Boisterous. Realistic paths: (a) aggregate NPC
-  vendor prices we already have, or (b) a manual/crowd "I sold X for Y" submission
-  form on the site. Live auction scraping would need a game-side chat export.
+- **Trade value — next steps** — v1 ships manual logging (in-app + GitHub issues).
+  Still wanted: an easy way to fold accepted issue submissions into trades.json
+  (a small `gh`-powered ingest script), and — once the crowdsourcing server
+  exists — pooling everyone's logged trades automatically. (Note: live auction
+  scraping stays impossible; the game doesn't save chat to disk.)
 - **Multi-map zones (e.g. Evershade Weald ⇄ Faelindral)** — some zones share one
   game zone-code but have two maps (the weald below vs. the elf city above the
   lift). The log can't tell them apart (no player position in the ledger), so
