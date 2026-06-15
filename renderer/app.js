@@ -1035,25 +1035,32 @@ function multiMapGroup() {
   return null;
 }
 
-// Fill the sidebar + overlay switchers with a segmented button per map, or hide
-// them when the current place only has one map.
+// Show a single toggle that names the *other* map ("Show Faelindral"), with a
+// gradient fill leaning left when you're viewing the first (ground) map and
+// right when viewing the second (city). Hidden when the place has one map.
 function renderMapSwitcher() {
   const group = multiMapGroup();
+  const viewed = currentZone();
+  const charZone = data.zones.find((z) => z.id === characterZoneId);
   for (const id of ['map-switcher', 'overlay-map-switcher']) {
     const el = $(id);
     if (!el) continue;
     el.innerHTML = '';
     if (!group) { el.classList.add('hidden'); continue; }
     el.classList.remove('hidden');
-    for (const m of group.maps) {
-      const zone = data.zones.find((z) => z.name.toLowerCase() === m.name.toLowerCase());
-      const btn = document.createElement('button');
-      btn.className = 'seg' + (zone && zone.id === currentZoneId ? ' active' : '');
-      btn.textContent = m.name;
-      btn.title = m.note ? m.name + ' — ' + m.note : m.name;
-      btn.addEventListener('click', () => switchToMap(m.name));
-      el.appendChild(btn);
-    }
+
+    const names = group.maps.map((m) => m.name.toLowerCase());
+    let curIdx = viewed ? names.indexOf(viewed.name.toLowerCase()) : -1;
+    if (curIdx < 0 && charZone) curIdx = names.indexOf(charZone.name.toLowerCase());
+    if (curIdx < 0) curIdx = 0;
+    const other = group.maps[curIdx === 0 ? 1 : 0];
+
+    const btn = document.createElement('button');
+    btn.className = 'map-toggle ' + (curIdx === 0 ? 'fill-left' : 'fill-right');
+    btn.textContent = 'Show ' + other.name;
+    btn.title = other.note ? 'Show ' + other.name + ' — ' + other.note : 'Show ' + other.name;
+    btn.addEventListener('click', () => switchToMap(other.name));
+    el.appendChild(btn);
   }
 }
 

@@ -109,35 +109,36 @@ button:hover { background: var(--surface-2); border-color: #39434f; }
 button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-dk); font-weight: 600; }
 button.primary:hover { background: #ffa94d; }
 
-/* Manual map switcher — segmented pill shown only in multi-map zones */
-#map-switcher, #overlay-map-switcher {
-  display: inline-flex;
-  align-items: stretch;
-  border: 1px solid var(--line-2);
-  border-radius: 999px;
-  overflow: hidden;
-  background: var(--surface);
-  vertical-align: middle;
-}
+/* Manual map switcher — a single toggle shown only in multi-map zones. The
+   gradient fill leans to the side of the map you're currently viewing. */
+#map-switcher, #overlay-map-switcher { display: inline-flex; vertical-align: middle; }
 #map-switcher { margin-top: 6px; }
-#map-switcher .seg, #overlay-map-switcher .seg {
+#map-switcher .map-toggle, #overlay-map-switcher .map-toggle {
   -webkit-app-region: no-drag;
   margin: 0;
-  border: none;
-  border-radius: 0;
-  background: transparent;
-  color: var(--muted);
+  border: 1px solid var(--line-2);
+  border-radius: 999px;
+  background-color: var(--surface);
+  background-repeat: no-repeat;
+  color: var(--text);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
   font-size: 11px;
   font-weight: 600;
   line-height: 1.4;
-  padding: 3px 12px;
+  padding: 3px 14px;
   cursor: pointer;
   white-space: nowrap;
+  transition: filter 0.12s ease;
 }
-#map-switcher .seg + .seg, #overlay-map-switcher .seg + .seg { border-left: 1px solid var(--line-2); }
-#map-switcher .seg:hover, #overlay-map-switcher .seg:hover { color: var(--text); background: var(--surface-2); }
-#map-switcher .seg.active, #overlay-map-switcher .seg.active { background: var(--accent); color: var(--accent-dk); }
-#map-switcher .seg.active:hover, #overlay-map-switcher .seg.active:hover { background: #ffa94d; }
+#map-switcher .map-toggle:hover, #overlay-map-switcher .map-toggle:hover { filter: brightness(1.18); }
+/* Filled from the left = viewing the ground zone (first map). */
+#map-switcher .fill-left, #overlay-map-switcher .fill-left {
+  background-image: linear-gradient(90deg, rgba(240, 146, 43, 0.62) 0%, rgba(240, 146, 43, 0.5) 36%, rgba(240, 146, 43, 0) 72%);
+}
+/* Filled from the right = viewing the city (second map). */
+#map-switcher .fill-right, #overlay-map-switcher .fill-right {
+  background-image: linear-gradient(270deg, rgba(240, 146, 43, 0.62) 0%, rgba(240, 146, 43, 0.5) 36%, rgba(240, 146, 43, 0) 72%);
+}
 button.danger { background: #45191c; border-color: #6e2a2e; color: #f0a8a8; }
 button.danger:hover { background: #572025; }
 button.active { background: var(--accent); border-color: var(--accent); color: var(--accent-dk); font-weight: 600; }
