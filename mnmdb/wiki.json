@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-15T15:08:06.256Z",
+  "generatedAt": "2026-06-15T16:28:45.704Z",
   "items": {
     "Copper Ore": {
       "hasPage": true,
@@ -29,25 +29,6 @@
         "Smelting"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/4/4d/Itemicon0118AB.png/64px-Itemicon0118AB.png"
-    },
-    "Cracked Staff": {
-      "hasPage": true,
-      "iconId": "Itemicon0185AA",
-      "slot": "PRIMARY SECONDARY",
-      "dmg": 5,
-      "delay": 33,
-      "skill": "BLG",
-      "weight": 6,
-      "size": "LARGE",
-      "class": "ALL",
-      "race": "ALL",
-      "categories": [
-        "Weapon",
-        "Primary",
-        "Secondary",
-        "1H Bludgeoning"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/32/Itemicon0185AA.png/64px-Itemicon0185AA.png"
     },
     "Bone Chips": {
       "hasPage": true,
@@ -104,6 +85,29 @@
         "Jewelcrafting"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/2/21/Itemicon0130AB.png/64px-Itemicon0130AB.png"
+    },
+    "Chipped Black Sapphire": {
+      "hasPage": true,
+      "iconId": "Itemicon0134AB",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "from": [
+        "Copper Vein",
+        "Rich Copper Vein"
+      ],
+      "categories": [
+        "Tradeskill Ingredient"
+      ],
+      "tradeskills": [
+        "Jewelcrafting"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/3d/Itemicon0134AB.png/64px-Itemicon0134AB.png"
     },
     "Chipped Bloodstone": {
       "hasPage": true,
@@ -170,6 +174,29 @@
         "Jewelcrafting"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/8/8b/Itemicon0132AC.png/64px-Itemicon0132AC.png"
+    },
+    "Chipped Emerald": {
+      "hasPage": true,
+      "iconId": "Itemicon0137AC",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "from": [
+        "Copper Vein",
+        "Rich Copper Vein"
+      ],
+      "categories": [
+        "Tradeskill Ingredient"
+      ],
+      "tradeskills": [
+        "Jewelcrafting"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/b4/Itemicon0137AC.png/64px-Itemicon0137AC.png"
     },
     "Chipped Star Ruby": {
       "hasPage": true,
@@ -374,22 +401,6 @@
         "Blacksmithing"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/8/8e/Itemicon0042AB.png/64px-Itemicon0042AB.png"
-    },
-    "Crocodile Hide": {
-      "hasPage": true,
-      "iconId": "Itemicon0062AA",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.1,
-      "size": "MEDIUM",
-      "class": null,
-      "race": null,
-      "from": [
-        "a crocodile hatchling"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/ef/Itemicon0062AA.png/64px-Itemicon0062AA.png"
     },
     "Bat Fur": {
       "hasPage": true,
@@ -913,6 +924,25 @@
       "class": null,
       "race": null
     },
+    "Cracked Staff": {
+      "hasPage": true,
+      "iconId": "Itemicon0185AA",
+      "slot": "PRIMARY SECONDARY",
+      "dmg": 5,
+      "delay": 33,
+      "skill": "BLG",
+      "weight": 6,
+      "size": "LARGE",
+      "class": "ALL",
+      "race": "ALL",
+      "categories": [
+        "Weapon",
+        "Primary",
+        "Secondary",
+        "1H Bludgeoning"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/32/Itemicon0185AA.png/64px-Itemicon0185AA.png"
+    },
     "Rawhide Scraps": {
       "hasPage": true,
       "iconId": "Itemicon0124AB",
@@ -1027,6 +1057,22 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/e6/Itemicon0062AB.png/64px-Itemicon0062AB.png"
     },
+    "Crocodile Hide": {
+      "hasPage": true,
+      "iconId": "Itemicon0062AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "MEDIUM",
+      "class": null,
+      "race": null,
+      "from": [
+        "a crocodile hatchling"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/ef/Itemicon0062AA.png/64px-Itemicon0062AA.png"
+    },
     "Diseased Bat Blood": {
       "hasPage": true,
       "iconId": "Itemicon0085AA",
@@ -1135,27 +1181,6 @@
         "a jackal"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/a/a3/Itemicon0111AA.png/64px-Itemicon0111AA.png"
-    },
-    "Resin": {
-      "hasPage": true,
-      "iconId": "Itemicon0137AL",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0,
-      "size": "SMALL",
-      "class": null,
-      "race": null,
-      "from": [
-        "Wood Pile",
-        "Rich Wood Pile"
-      ],
-      "tradeskills": [
-        "Survival",
-        "Alchemy"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/1/17/Itemicon0137AL.png/64px-Itemicon0137AL.png"
     },
     "Rat Tooth": {
       "hasPage": true,
@@ -1578,25 +1603,6 @@
         "a Fellstone Warrior"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/f7/Itemicon0209AA.png/64px-Itemicon0209AA.png"
-    },
-    "Royal Jelly": {
-      "hasPage": true,
-      "iconId": "Itemicon0085AA",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.1,
-      "size": "SMALL",
-      "class": null,
-      "race": null,
-      "wikiZones": [
-        "Evershade Weald"
-      ],
-      "from": [
-        "a wasp drone"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/3f/Itemicon0085AA.png/64px-Itemicon0085AA.png"
     },
     "Fellstone Warrior's Belt": {
       "hasPage": true,
@@ -2195,22 +2201,6 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/ee/Itemicon0011AA.png/64px-Itemicon0011AA.png"
     },
-    "Torch": {
-      "hasPage": true,
-      "iconId": "Itemicon0006AA",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.5,
-      "size": "SMALL",
-      "class": "ALL",
-      "race": "ALL",
-      "tradeskills": [
-        "Survival"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/61/Itemicon0006AA.png/64px-Itemicon0006AA.png"
-    },
     "Tattered Cloth Tunic": {
       "hasPage": true,
       "iconId": "Itemicon0009AA",
@@ -2305,6 +2295,27 @@
         "a defiled asp"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/ef/Itemicon0062AA.png/64px-Itemicon0062AA.png"
+    },
+    "Resin": {
+      "hasPage": true,
+      "iconId": "Itemicon0137AL",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "from": [
+        "Wood Pile",
+        "Rich Wood Pile"
+      ],
+      "tradeskills": [
+        "Survival",
+        "Alchemy"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/1/17/Itemicon0137AL.png/64px-Itemicon0137AL.png"
     },
     "Scarab Leg": {
       "hasPage": true,
@@ -2408,23 +2419,6 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/7/71/Itemicon0108AB.png/64px-Itemicon0108AB.png"
     },
-    "Tattered Rawhide Vest": {
-      "hasPage": true,
-      "iconId": "Itemicon0026AA",
-      "slot": "SHIRT",
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 1.5,
-      "size": "MEDIUM",
-      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
-      "race": "ALL",
-      "categories": [
-        "Armor",
-        "Shirt"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/c/cd/Itemicon0026AA.png/64px-Itemicon0026AA.png"
-    },
     "Skeleton Jawbone": {
       "hasPage": true,
       "iconId": "Itemicon0056AA",
@@ -2461,6 +2455,25 @@
         "a giant spider"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/4/49/Itemicon0112AA.png/64px-Itemicon0112AA.png"
+    },
+    "Royal Jelly": {
+      "hasPage": true,
+      "iconId": "Itemicon0085AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "wikiZones": [
+        "Evershade Weald"
+      ],
+      "from": [
+        "a wasp drone"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/3f/Itemicon0085AA.png/64px-Itemicon0085AA.png"
     },
     "Rusty Greatsword": {
       "hasPage": true,
@@ -2621,6 +2634,22 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/32/Itemicon0185AA.png/64px-Itemicon0185AA.png"
     },
+    "Torch": {
+      "hasPage": true,
+      "iconId": "Itemicon0006AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "tradeskills": [
+        "Survival"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/61/Itemicon0006AA.png/64px-Itemicon0006AA.png"
+    },
     "Wood": {
       "hasPage": true,
       "iconId": "Itemicon0121AA",
@@ -2648,6 +2677,23 @@
         "Woodworking"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/0/0a/Itemicon0121AA.png/64px-Itemicon0121AA.png"
+    },
+    "Tattered Rawhide Vest": {
+      "hasPage": true,
+      "iconId": "Itemicon0026AA",
+      "slot": "SHIRT",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 1.5,
+      "size": "MEDIUM",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "categories": [
+        "Armor",
+        "Shirt"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/c/cd/Itemicon0026AA.png/64px-Itemicon0026AA.png"
     },
     "Wasp Worker Wax": {
       "hasPage": true,
@@ -2847,30 +2893,6 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/7/70/Itemicon0058AA.png/64px-Itemicon0058AA.png"
     },
-    "Chipped Black Sapphire": {
-      "hasPage": true,
-      "wikiOnly": true,
-      "iconId": "Itemicon0134AB",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.1,
-      "size": "SMALL",
-      "class": null,
-      "race": null,
-      "from": [
-        "Copper Vein",
-        "Rich Copper Vein"
-      ],
-      "categories": [
-        "Tradeskill Ingredient"
-      ],
-      "tradeskills": [
-        "Jewelcrafting"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/3d/Itemicon0134AB.png/64px-Itemicon0134AB.png"
-    },
     "Chipped Cat's Eye Agate": {
       "hasPage": true,
       "wikiOnly": true,
@@ -2918,30 +2940,6 @@
         "Jewelcrafting"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/ba/Itemicon0136AB.png/64px-Itemicon0136AB.png"
-    },
-    "Chipped Emerald": {
-      "hasPage": true,
-      "wikiOnly": true,
-      "iconId": "Itemicon0137AC",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.1,
-      "size": "SMALL",
-      "class": null,
-      "race": null,
-      "from": [
-        "Copper Vein",
-        "Rich Copper Vein"
-      ],
-      "categories": [
-        "Tradeskill Ingredient"
-      ],
-      "tradeskills": [
-        "Jewelcrafting"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/b4/Itemicon0137AC.png/64px-Itemicon0137AC.png"
     },
     "Chipped Fire Opal": {
       "hasPage": true,
@@ -3403,6 +3401,26 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/5/5d/Itemicon0056AA.png/64px-Itemicon0056AA.png"
     },
+    "Harvallen Root": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0060AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 1,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "from": [
+        "an ashira shaman"
+      ],
+      "categories": [
+        "Quest Items"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/1/1c/Itemicon0060AA.png/64px-Itemicon0060AA.png"
+    },
     "Immature Snake Venom Sac": {
       "hasPage": true,
       "wikiOnly": true,
@@ -3616,6 +3634,26 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/c/c0/Itemicon0055AA.png/64px-Itemicon0055AA.png"
     },
+    "Medium-Quality Wolf Pelt": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0062AE",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "MEDIUM",
+      "class": null,
+      "race": null,
+      "from": [
+        "a canyon stalker"
+      ],
+      "tradeskills": [
+        "Tanning"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/0/04/Itemicon0062AE.png"
+    },
     "Spirit Powder": {
       "hasPage": true,
       "wikiOnly": true,
@@ -3644,26 +3682,6 @@
         "Alchemy"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/0/00/Itemicon0201AA.png/64px-Itemicon0201AA.png"
-    },
-    "Harvallen Root": {
-      "hasPage": true,
-      "wikiOnly": true,
-      "iconId": "Itemicon0060AA",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 1,
-      "size": "SMALL",
-      "class": null,
-      "race": null,
-      "from": [
-        "an ashira shaman"
-      ],
-      "categories": [
-        "Quest Items"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/1/1c/Itemicon0060AA.png/64px-Itemicon0060AA.png"
     },
     "Wolf Heart": {
       "hasPage": true,
@@ -3706,26 +3724,6 @@
       ],
       "categories": [
         "Quest Items"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/0/04/Itemicon0062AE.png"
-    },
-    "Medium-Quality Wolf Pelt": {
-      "hasPage": true,
-      "wikiOnly": true,
-      "iconId": "Itemicon0062AE",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.1,
-      "size": "MEDIUM",
-      "class": null,
-      "race": null,
-      "from": [
-        "a canyon stalker"
-      ],
-      "tradeskills": [
-        "Tanning"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/0/04/Itemicon0062AE.png"
     },

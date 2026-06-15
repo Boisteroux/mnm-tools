@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-15T04:54:48.512Z",
+  "generatedAt": "2026-06-15T16:28:38.475Z",
   "source": "mnm-tools",
-  "ledgerFiles": 12,
-  "events": 2730,
+  "ledgerFiles": 13,
+  "events": 2842,
   "mobs": {
     "a desert bat": {
       "kills": 0,
@@ -773,7 +773,7 @@
           "count": 7
         }
       ],
-      "harvested": 231,
+      "harvested": 269,
       "zones": []
     },
     {
@@ -844,6 +844,14 @@
       "zones": []
     },
     {
+      "id": "chipped_black_sapphire",
+      "name": "Chipped Black Sapphire",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": []
+    },
+    {
       "id": "chipped_bloodstone",
       "name": "Chipped Bloodstone",
       "droppedBy": [],
@@ -868,11 +876,19 @@
       "zones": []
     },
     {
+      "id": "chipped_emerald",
+      "name": "Chipped Emerald",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": []
+    },
+    {
       "id": "chipped_fire_emerald",
       "name": "Chipped Fire Emerald",
       "droppedBy": [],
       "prices": [],
-      "harvested": 1,
+      "harvested": 2,
       "zones": []
     },
     {
@@ -896,7 +912,7 @@
       "name": "Chipped Malachite",
       "droppedBy": [],
       "prices": [],
-      "harvested": 2,
+      "harvested": 3,
       "zones": []
     },
     {
@@ -990,7 +1006,7 @@
       "name": "Clouded Crystallized Magic",
       "droppedBy": [],
       "prices": [],
-      "harvested": 2,
+      "harvested": 5,
       "zones": []
     },
     {
@@ -1101,7 +1117,7 @@
       "name": "Copper Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 227,
+      "harvested": 264,
       "zones": []
     },
     {
@@ -1509,7 +1525,7 @@
           "count": 2
         }
       ],
-      "harvested": 11,
+      "harvested": 21,
       "zones": []
     },
     {
@@ -1714,7 +1730,7 @@
       "name": "Lionleaf",
       "droppedBy": [],
       "prices": [],
-      "harvested": 3,
+      "harvested": 7,
       "zones": []
     },
     {
@@ -2161,7 +2177,7 @@
           "count": 8
         }
       ],
-      "harvested": 175,
+      "harvested": 184,
       "zones": []
     },
     {
@@ -3524,7 +3540,7 @@
           "count": 4
         }
       ],
-      "harvested": 146,
+      "harvested": 153,
       "zones": []
     },
     {
@@ -3597,26 +3613,28 @@
     }
   ],
   "harvest": {
-    "Copper Ore": 227,
-    "Brittle Stone": 231,
-    "Clouded Crystallized Magic": 2,
-    "Wood": 146,
-    "Resin": 175,
+    "Copper Ore": 264,
+    "Brittle Stone": 269,
+    "Clouded Crystallized Magic": 5,
+    "Wood": 153,
+    "Resin": 184,
     "Chipped Turquoise": 2,
-    "Lionleaf": 3,
+    "Lionleaf": 7,
     "Chipped Star Ruby": 1,
     "Alunite Ore": 5,
-    "Ghost Poppy": 11,
+    "Ghost Poppy": 21,
     "Nomad's Grace": 3,
-    "Chipped Fire Emerald": 1,
+    "Chipped Fire Emerald": 2,
     "Chipped Bloodstone": 1,
-    "Chipped Malachite": 2,
+    "Chipped Malachite": 3,
     "Chipped Black Pearl": 3,
     "Chipped Amber": 1,
     "Chipped Blue Diamond": 1,
     "Chipped Jacinth": 1,
     "Chipped Onyx": 2,
     "Chipped Hematite": 1,
-    "Chipped Diamond": 1
+    "Chipped Diamond": 1,
+    "Chipped Emerald": 1,
+    "Chipped Black Sapphire": 1
   }
 }
