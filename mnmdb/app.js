@@ -135,7 +135,7 @@ function renderItem(id) {
   }
 
   $('content').innerHTML =
-    '<div class="crumb"><a href="#/">mnmdb</a> › item</div>' +
+    '<div class="crumb"><a href="#/">MnMdb</a> › item</div>' +
     '<h1>' + esc(it.name) + '</h1>' +
     sections.join('');
 }
@@ -171,7 +171,7 @@ function renderMob(name) {
     '</div>';
 
   $('content').innerHTML =
-    '<div class="crumb"><a href="#/">mnmdb</a> › mob</div>' +
+    '<div class="crumb"><a href="#/">MnMdb</a> › mob</div>' +
     '<h1>' + esc(name) + '</h1>' +
     (zones.length ? '<p class="sub">Found in ' + zones.map(esc).join(', ') + '</p>' : '') +
     summary +
@@ -181,7 +181,7 @@ function renderMob(name) {
 }
 
 function notFound(kind, id) {
-  $('content').innerHTML = '<div class="crumb"><a href="#/">mnmdb</a></div><h1>Not found</h1>' +
+  $('content').innerHTML = '<div class="crumb"><a href="#/">MnMdb</a></div><h1>Not found</h1>' +
     '<p class="muted">No ' + esc(kind) + ' matching “' + esc(id) + '”.</p>';
 }
 
@@ -293,7 +293,7 @@ function renderBrowse(view) {
       return '<td class="' + (c.num ? 'num' : '') + '">' + disp + '</td>';
     }).join('') + '</tr>').join('');
   $('content').innerHTML =
-    '<div class="crumb"><a href="#/">mnmdb</a> › ' + view + '</div>' +
+    '<div class="crumb"><a href="#/">MnMdb</a> › ' + view + '</div>' +
     '<h1 style="text-transform:capitalize">' + view + ' <span class="sub" style="font-size:15px">' + rows.length + '</span></h1>' +
     '<p class="sub">Click a column heading to sort. Click a row to open it.</p>' +
     '<div class="card"><table><thead><tr>' + head + '</tr></thead><tbody>' + body + '</tbody></table></div>';
