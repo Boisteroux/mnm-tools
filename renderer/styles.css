@@ -85,7 +85,9 @@ select option {
   color: var(--text);
 }
 
-#wiki-status {
+#wiki-status,
+#tracker-status,
+#publish-status {
   font-size: 11px;
   color: var(--muted);
   min-height: 13px;

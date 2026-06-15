@@ -14,6 +14,8 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
 - **mnmdb website** — searchable item / mob / resource database with sortable
   tables. Live at https://boisteroux.github.io/mnm-tools
 - **Sharing** — public repo, MIT license, Windows installer, sunset branding.
+- **One-click publish** — "Publish to MnMdb" button in the app (owner build only)
+  regenerates the site data from your ledger and pushes it live in ~30s.
 
 ## 🔜 Next up
 
@@ -24,7 +26,19 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
 - **Harvest zones** — show where each resource is gathered.
 - **Crowdsourcing** — pool everyone's data on a server so the site is live and
   community-wide (needs hosting + moderation — the bigger lift).
-- **One-click publish** — push tracker data to the site from the app directly.
+- **Trade value (7-day high/low)** — *blocked by data, not effort.* The game does
+  **not** save chat to disk (Player.log is engine logging; chats.json is only
+  window layout), so we can't scrape Auction/WTS "selling X for Y plat" messages.
+  The Ledger only records *your own* NPC vendor sells (act_24) — no player-to-
+  player trades are logged for Boisterous. Realistic paths: (a) aggregate NPC
+  vendor prices we already have, or (b) a manual/crowd "I sold X for Y" submission
+  form on the site. Live auction scraping would need a game-side chat export.
+- **Multi-map zones (e.g. Evershade Weald ⇄ Faelindral)** — some zones share one
+  game zone-code but have two maps (the weald below vs. the elf city above the
+  lift). The log can't tell them apart (no player position in the ledger), so
+  *automatic* swap-on-lift isn't possible from current data. Plan: a manual
+  map-switch in the overlay for zones flagged as multi-map. Discrepancies are
+  stored in `zone-aliases.json` so new cases are a one-line edit (phone-friendly).
 - **Tip jar** — optional Ko-fi/donation link once you're ready.
 - **First/last seen, leaderboards, table filters** — smaller polish items.
 
