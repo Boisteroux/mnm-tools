@@ -80,6 +80,46 @@ ipcMain.handle('tracker-scan', () => {
   try { return scanTracker(); } catch (e) { return { error: e.message }; }
 });
 
+// Auto-rescan: watch the game folder and re-parse a few seconds after the game
+// writes a ledger file, so the app's data stays current with no manual step.
+let trackerWatcher = null;
+let trackerWatchTimer = null;
+
+function startTrackerWatch() {
+  if (trackerWatcher || !fs.existsSync(ledgerParser.GAME_BASE)) return;
+  try {
+    trackerWatcher = fs.watch(ledgerParser.GAME_BASE, { recursive: true }, (event, filename) => {
+      if (!filename) return;
+      const f = String(filename);
+      // Only react to ledger files — ignore Player.log and other constant writes
+      if (!/_(Character|Social)_/i.test(f) && !/Ledger/i.test(f)) return;
+      clearTimeout(trackerWatchTimer);
+      trackerWatchTimer = setTimeout(() => {
+        try {
+          const summary = scanTracker();
+          if (win && !win.isDestroyed()) win.webContents.send('tracker-updated', summary);
+        } catch {}
+      }, 4000);
+    });
+  } catch {}
+}
+
+function stopTrackerWatch() {
+  if (trackerWatcher) { try { trackerWatcher.close(); } catch {} trackerWatcher = null; }
+  clearTimeout(trackerWatchTimer);
+}
+
+ipcMain.handle('tracker-set-enabled', (event, enabled) => {
+  if (enabled) {
+    let summary;
+    try { summary = scanTracker(); } catch (e) { return { error: e.message }; }
+    startTrackerWatch();
+    return summary;
+  }
+  stopTrackerWatch();
+  return { disabled: true };
+});
+
 ipcMain.handle('tracker-export', async () => {
   try { scanTracker(); } catch (e) { return { error: e.message }; }
   const result = await dialog.showSaveDialog(win, {

@@ -849,26 +849,37 @@ $('btn-zone-options').addEventListener('click', () => {
 const TRACKER_KEY = 'mnm-tracker-enabled';
 const trackerStatus = (msg) => { $('tracker-status').textContent = msg; };
 
-async function runTrackerScan(silent) {
-  if (!silent) trackerStatus('Scanning ledgers…');
-  const r = await window.mapAPI.trackerScan();
-  if (!r || r.error) { trackerStatus((r && r.error) || 'Scan failed.'); return; }
-  trackerStatus(r.items + ' items · ' + r.mobs + ' mobs · ' + r.events + ' events (' + r.ledgerFiles + ' ledgers)');
+function showTrackerSummary(r, suffix) {
+  if (!r || r.error) return trackerStatus((r && r.error) || 'Scan failed.');
+  if (r.disabled) return trackerStatus('Collection off.');
+  trackerStatus(r.items + ' items · ' + r.mobs + ' mobs · ' + r.events + ' events' + (suffix || ''));
 }
 
-$('tracker-enabled').addEventListener('change', (e) => {
-  try { localStorage.setItem(TRACKER_KEY, e.target.checked ? '1' : '0'); } catch {}
-  if (e.target.checked) runTrackerScan();
-  else trackerStatus('Collection off.');
+$('tracker-enabled').addEventListener('change', async (e) => {
+  const on = e.target.checked;
+  try { localStorage.setItem(TRACKER_KEY, on ? '1' : '0'); } catch {}
+  if (on) {
+    trackerStatus('Collecting…');
+    showTrackerSummary(await window.mapAPI.trackerSetEnabled(true), ' · auto-updating');
+  } else {
+    await window.mapAPI.trackerSetEnabled(false);
+    trackerStatus('Collection off.');
+  }
 });
 
-$('tracker-rescan').addEventListener('click', () => runTrackerScan());
+$('tracker-rescan').addEventListener('click', async () => {
+  trackerStatus('Scanning…');
+  showTrackerSummary(await window.mapAPI.trackerScan());
+});
 
 $('tracker-export').addEventListener('click', async () => {
   trackerStatus('Exporting…');
   const ok = await window.mapAPI.trackerExport();
   trackerStatus(ok === true ? 'Exported dataset.' : (ok && ok.error) ? ok.error : 'Export cancelled.');
 });
+
+// The app re-scans itself a few seconds after the game writes new loot/kills
+window.mapAPI.onTrackerUpdated((r) => showTrackerSummary(r, ' · updated just now'));
 
 $('btn-overlay').addEventListener('click', () => window.mapAPI.toggleOverlay());
 $('overlay-exit-btn').addEventListener('click', () => window.mapAPI.overlayExit());
@@ -950,9 +961,11 @@ function updateOverlayZoneLabel() {
   } catch {}
   $('btn-sidebar').textContent = document.body.classList.contains('sidebar-collapsed') ? '»' : '«';
 
-  // Restore the drop-tracker toggle and scan if it was left on
+  // Restore the drop-tracker toggle; if it was left on, scan + start auto-watch
   try { $('tracker-enabled').checked = localStorage.getItem(TRACKER_KEY) === '1'; } catch {}
-  if ($('tracker-enabled').checked) runTrackerScan(true);
+  if ($('tracker-enabled').checked) {
+    window.mapAPI.trackerSetEnabled(true).then((r) => showTrackerSummary(r, ' · auto-updating'));
+  }
 
   data = await window.mapAPI.loadData();
   if (!data || !Array.isArray(data.zones)) data = { zones: [] };
