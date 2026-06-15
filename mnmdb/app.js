@@ -53,20 +53,27 @@ const sourceLink = (s) =>
 // vendors pay more than shady ones. Used as the realistic value of an item.
 const regularPrice = (it) => (it && it.prices.length ? Math.max.apply(null, it.prices.map((p) => p.copper)) : 0);
 
-// Player trade value — high/low of SELL-side prices in the last 7 days.
-function tradeValue7d(name) {
+// Player trade value — 30-day high/low + 7-day average of SELL-side prices.
+function tradeStats(name) {
   const list = TRADES[String(name).toLowerCase()];
   if (!list || !list.length) return null;
-  const cutoff = Date.now() - 7 * 24 * 60 * 60 * 1000;
-  const recent = list.filter((t) => t.side === 'sell' && new Date(t.date).getTime() >= cutoff);
-  const all = list.filter((t) => t.side === 'sell');
-  if (!recent.length) {
-    if (!all.length) return null;
-    const prices = all.map((t) => t.price);
-    return { n: 0, high: Math.max.apply(null, prices), low: Math.min.apply(null, prices), stale: true };
-  }
-  const prices = recent.map((t) => t.price);
-  return { n: recent.length, high: Math.max.apply(null, prices), low: Math.min.apply(null, prices), stale: false };
+  const sells = list.filter((t) => t.side === 'sell');
+  if (!sells.length) return null;
+  const now = Date.now();
+  const within = (days) => sells.filter((t) => new Date(t.date).getTime() >= now - days * 864e5);
+  const d30 = within(30), d7 = within(7);
+  const p30 = d30.map((t) => t.price);
+  const allP = sells.map((t) => t.price);
+  return {
+    n30: d30.length,
+    high: p30.length ? Math.max.apply(null, p30) : null,
+    low: p30.length ? Math.min.apply(null, p30) : null,
+    n7: d7.length,
+    avg7: d7.length ? Math.round(d7.reduce((s, t) => s + t.price, 0) / d7.length) : null,
+    allN: sells.length,
+    allHigh: Math.max.apply(null, allP),
+    allLow: Math.min.apply(null, allP),
+  };
 }
 
 // Pre-filled GitHub issue form for submitting a price from the website.
@@ -88,38 +95,73 @@ function mobValuePerKill(d) {
 function renderHome() {
   const items = DATA.items;
   const mobs = Object.entries(DATA.mobs);
-  const topMobs = mobs.slice().sort((a, b) => b[1].kills - a[1].kills).slice(0, 12);
-  const harvest = Object.entries(DATA.harvest).sort((a, b) => b[1] - a[1]);
   const withVendor = items.filter((i) => i.prices.length).length;
-  const tsCount = {};
-  items.forEach((i) => (i.wiki && i.wiki.tradeskills || []).forEach((t) => { tsCount[t] = (tsCount[t] || 0) + 1; }));
-  const tradeskills = Object.keys(tsCount).sort();
+
+  // Most-valuable mobs — by estimated value per kill (coin + loot)
+  const valMobs = mobs.filter(([, d]) => d.kills)
+    .map(([m, d]) => [m, mobValuePerKill(d).total])
+    .filter(([, v]) => v > 0)
+    .sort((a, b) => b[1] - a[1]).slice(0, 12);
+
+  // Most-killed mobs
+  const topMobs = mobs.slice().sort((a, b) => b[1].kills - a[1].kills).slice(0, 12);
+
+  // Priciest items — by regular vendor sell price
+  const priciest = items.filter((i) => i.prices.length)
+    .map((i) => [i, regularPrice(i)])
+    .sort((a, b) => b[1] - a[1]).slice(0, 12);
+
+  // Valuable resources — harvestable things ranked by sell value, then by how
+  // much you've gathered (ties gathering to economy)
+  const resources = Object.keys(DATA.harvest)
+    .map((r) => ({ name: r, price: itemByName[r] ? regularPrice(itemByName[r]) : 0, n: DATA.harvest[r] }))
+    .sort((a, b) => b.price - a.price || b.n - a.n).slice(0, 12);
+
+  // Recent player trades — newest first
+  const recent = [];
+  Object.values(TRADES).forEach((arr) => arr.forEach((t) => recent.push(t)));
+  recent.sort((a, b) => new Date(b.date) - new Date(a.date));
+  const recentTop = recent.slice(0, 10);
+
+  const mobValRows = valMobs.map(([m, v]) => '<tr><td>' + mobLink(m) + '</td><td class="num coin">' + coin(v) + '</td></tr>').join('');
+  const killRows = topMobs.map(([m, d]) => '<tr><td>' + mobLink(m) + '</td><td class="num sample">' + d.kills + ' kills</td></tr>').join('');
+  const priceRows = priciest.map(([i, v]) => '<tr><td>' + itemLink(i.id, i.name) + '</td><td class="num coin">' + coin(v) + '</td></tr>').join('');
+  const resRows = resources.map((r) => '<tr><td>' + (nameToId[r.name] ? itemLink(nameToId[r.name], r.name) : esc(r.name)) +
+    '</td><td class="num ' + (r.price ? 'coin' : 'sample') + '">' + (r.price ? coin(r.price) : r.n + '× gathered') + '</td></tr>').join('');
+
+  const recentBlock = recentTop.length
+    ? '<h2>Recent player trades</h2><div class="card"><table><tbody>' +
+      recentTop.map((t) => '<tr><td>' + (nameToId[t.item] ? itemLink(nameToId[t.item], t.item) : esc(t.item)) +
+        ' <span class="tag ' + (t.side === 'buy' ? 'warn' : 'good') + '">' + (t.side === 'buy' ? 'WTB' : 'WTS') + '</span></td>' +
+        '<td class="num coin">' + coin(t.price) + '</td><td class="num sample">' + esc(t.date) + '</td></tr>').join('') +
+      '</tbody></table></div>'
+    : '';
 
   $('content').innerHTML =
     '<div class="home-intro">' +
-      '<h1>Monsters &amp; Memories drop &amp; vendor database</h1>' +
-      '<p class="sub">Community-collected drop rates and vendor values, gathered by the ' +
+      '<h1>Monsters &amp; Memories — gathering &amp; economy</h1>' +
+      '<p class="sub">Community drop rates, vendor values and player trade prices, gathered by the ' +
         '<a href="https://github.com/Boisteroux/mnm-tools">mnm-tools</a> companion app. ' +
-        'Search above, or browse below.</p>' +
+        'Search above, or dig into the numbers below.</p>' +
       '<div class="stat-row">' +
         stat(items.length, 'items') + stat(mobs.length, 'mobs') +
         stat(withVendor, 'with vendor prices') + stat(Object.keys(DATA.harvest).length, 'resources') +
       '</div>' +
     '</div>' +
     '<div class="col2">' +
-      '<div><h2>Most-killed mobs</h2><div class="card"><table><tbody>' +
-        topMobs.map(([m, d]) => '<tr><td>' + mobLink(m) + '</td><td class="num sample">' + d.kills + ' kills</td></tr>').join('') +
-      '</tbody></table></div></div>' +
-      '<div><h2>Gathering</h2><div class="card"><table><tbody>' +
-        harvest.map(([r, n]) => '<tr><td>' + (nameToId[r] ? itemLink(nameToId[r], r) : esc(r)) + '</td><td class="num sample">' + n + '</td></tr>').join('') +
-      '</tbody></table></div></div>' +
+      '<div><h2>Most-valuable mobs</h2><p class="sub">Estimated coin + loot per kill.</p><div class="card"><table><tbody>' +
+        (mobValRows || '<tr><td class="muted">No data yet.</td></tr>') + '</tbody></table></div></div>' +
+      '<div><h2>Most-killed mobs</h2><p class="sub">Where the grind has gone.</p><div class="card"><table><tbody>' +
+        killRows + '</tbody></table></div></div>' +
     '</div>' +
-    (tradeskills.length
-      ? '<h2>Tradeskills</h2><div class="card"><table><tbody>' +
-        tradeskills.map((t) => '<tr><td>' + tradeskillLink(t) + '</td><td class="num sample">' + tsCount[t] + ' items</td></tr>').join('') +
-        '</tbody></table></div>'
-      : '') +
-    '<div class="note">Rates are observational — computed as (times looted ÷ times killed) from real play. ' +
+    '<div class="col2">' +
+      '<div><h2>Priciest items</h2><p class="sub">Top regular-vendor sell value.</p><div class="card"><table><tbody>' +
+        (priceRows || '<tr><td class="muted">No vendor prices yet.</td></tr>') + '</tbody></table></div></div>' +
+      '<div><h2>Valuable resources</h2><p class="sub">Gatherables worth the most.</p><div class="card"><table><tbody>' +
+        (resRows || '<tr><td class="muted">No resources yet.</td></tr>') + '</tbody></table></div></div>' +
+    '</div>' +
+    recentBlock +
+    '<div class="note">Values are observational — drop rates are (times looted ÷ times killed) and prices come from real play. ' +
       'Small samples are rough; numbers sharpen as more data is collected.</div>';
 }
 
@@ -169,19 +211,24 @@ function renderItem(id) {
       '</tbody></table></div>');
   }
 
-  // Player trade value — 7-day high/low of what people sell this for
+  // Player trade value — 30-day high/low + 7-day average of player sell prices
   {
-    const tv = tradeValue7d(it.name);
+    const tv = tradeStats(it.name);
     const submit = '<a class="btn-link" href="' + tradeSubmitUrl(it.name) + '" target="_blank" rel="noopener">Submit a price ↗</a>';
     let body;
-    if (tv && !tv.stale) {
+    if (tv && tv.n30) {
+      const avg = tv.avg7 != null
+        ? '<div class="vbox"><div class="vlbl">7-day average</div><div class="vval">' + coin(tv.avg7) + '</div></div>'
+        : '<div class="vbox"><div class="vlbl">7-day average</div><div class="vval sample">no recent</div></div>';
       body = '<div class="vendor-summary">' +
-        '<div class="vbox"><div class="vlbl">7-day high</div><div class="vval">' + coin(tv.high) + '</div></div>' +
-        '<div class="vbox"><div class="vlbl">7-day low</div><div class="vval">' + coin(tv.low) + '</div></div>' +
-        '</div><div class="note">From ' + tv.n + ' player sale' + (tv.n === 1 ? '' : 's') + ' logged in the last 7 days. ' + submit + '</div>';
-    } else if (tv && tv.stale) {
-      body = '<div class="note">No sales in the last 7 days. Last seen ' + coin(tv.low) +
-        (tv.high !== tv.low ? '–' + coin(tv.high) : '') + ' (older data). ' + submit + '</div>';
+        '<div class="vbox"><div class="vlbl">30-day high</div><div class="vval">' + coin(tv.high) + '</div></div>' +
+        '<div class="vbox"><div class="vlbl">30-day low</div><div class="vval">' + coin(tv.low) + '</div></div>' +
+        avg +
+        '</div><div class="note">From ' + tv.n30 + ' sale' + (tv.n30 === 1 ? '' : 's') + ' in the last 30 days' +
+        (tv.n7 ? ' (' + tv.n7 + ' in the last 7)' : '') + '. ' + submit + '</div>';
+    } else if (tv) {
+      body = '<div class="note">No sales in the last 30 days. Last seen ' + coin(tv.allLow) +
+        (tv.allHigh !== tv.allLow ? '–' + coin(tv.allHigh) : '') + ' (older data). ' + submit + '</div>';
     } else {
       body = '<div class="note">No player trades logged yet. ' + submit + '</div>';
     }
@@ -543,7 +590,7 @@ async function loadWikiStats() {
     TRADES = {};
     for (const e of (t && t.trades) || []) {
       const k = String(e.item).toLowerCase();
-      (TRADES[k] = TRADES[k] || []).push({ price: e.price, side: e.side === 'buy' ? 'buy' : 'sell', date: e.date });
+      (TRADES[k] = TRADES[k] || []).push({ item: e.item, price: e.price, side: e.side === 'buy' ? 'buy' : 'sell', date: e.date });
     }
   } catch {}
 }
