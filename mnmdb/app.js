@@ -30,8 +30,12 @@ const pct = (r) => (r == null ? '—' : Math.round(r * 100) + '%');
 function rateCell(rate, drops, total) {
   if (rate == null) return '<span class="sample">' + drops + ' seen</span>';
   const w = Math.min(100, Math.round(rate * 100));
-  return '<span class="rate"><span class="bar"><span class="fill" style="width:' + w + '%"></span></span>' +
-    '<span class="pct">' + pct(rate) + '</span></span> <span class="sample">' + drops + '/' + total + '</span>';
+  // Fade rates from thin samples so they read as rough rather than precise.
+  const rough = total && total < 10;
+  return '<span class="rate' + (rough ? ' rough' : '') + '"' +
+    (rough ? ' title="Only ' + total + ' corpses — rough estimate"' : '') + '>' +
+    '<span class="bar"><span class="fill" style="width:' + w + '%"></span></span>' +
+    '<span class="pct">' + pct(rate) + (rough ? ' ~' : '') + '</span></span> <span class="sample">' + drops + '/' + total + '</span>';
 }
 
 const WIKI_BASE = 'https://monstersandmemories.miraheze.org/wiki/';

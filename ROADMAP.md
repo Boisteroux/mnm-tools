@@ -8,49 +8,57 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
 - **Map app** — community wiki zone maps, custom markers by category, zone
   auto-follow (reads the game log), transparent in-game overlay, remembers
   window/overlay position.
+- **Multi-map zones** — manual map switcher (e.g. Evershade Weald ⇄ Faelindral) in
+  the sidebar + overlay, driven by `zone-aliases.json`. (Auto-swap on the lift
+  isn't possible — the log has no player position.)
 - **Drop tracker** — reads the game's Ledger files and auto-rescans as you play;
-  drop rates, vendor sell values (regular vs. shady), coin per kill, farming
-  value, and which zones things come from.
-- **mnmdb website** — searchable item / mob / resource database with sortable
-  tables. Live at https://boisteroux.github.io/mnm-tools
-- **Sharing** — public repo, MIT license, Windows installer, sunset branding.
-- **One-click publish** — "Publish to MnMdb" button in the app (owner build only)
-  regenerates the site data from your ledger and pushes it live in ~30s.
-- **Multi-map zones** — manual map switcher (Evershade Weald ⇄ Faelindral) in the
-  sidebar + overlay, driven by zone-aliases.json.
+  drop rates, vendor sell values (regular vs. shady), coin per kill, farming value,
+  and which zones things come from.
+- **Accurate drop rates** — rates are per *looted corpse* (loots clustered by
+  time), not per kill, because the game only logs kills for some mobs. Thin-sample
+  rates (<10 corpses) are faded as "rough".
 - **Trade value v1** — item pages show a 30-day high/low + 7-day average of player
   sale prices. Submit two ways: the in-app "Log a Trade" panel (merged on Publish)
-  or a phone-friendly GitHub issue form. Data lives in mnmdb/trades.json. The home
-  "Valuable resources" list ranks by trade price when known, else vendor.
+  or a phone-friendly GitHub issue form. Data lives in `mnmdb/trades.json`.
+- **mnmdb website** — searchable item / mob / resource database, economy-focused
+  home (most-valuable & most-fought mobs, priciest items, valuable resources,
+  recent trades). Live at https://boisteroux.github.io/mnm-tools
+- **One-click publish** — "Publish to MnMdb" button in the app (owner build only)
+  regenerates the site data from your ledger and pushes it live in ~30s.
+- **Sharing & look** — public repo, MIT license, Windows installer, sunset branding,
+  warm UI theme.
 
 ## 🔜 Next up
 
-- **Most-valuable mobs by level bracket** — "best value for L1-10, L11-20, …".
-  *Sourceable:* mob level comes from the wiki (`level` field). Blocked by data, not
-  effort: today only ~36% of observed mobs have a wiki level and everything killed
-  so far is L1-5, so brackets would be one bucket. Needs (a) more wiki-enrichment
-  coverage and (b) higher-level play data before it's meaningful. Final bracket
-  size (10s? 5s?) TBD once the level spread is real.
-- **Wiki enrichment** — item stats (damage / AC / weight / slot / level), vendor
-  *buy* prices, item icons, node → resource links ("Copper Ore from Copper
-  Veins"), mob levels. (One build unlocks several of these.)
-- **Vendor tagging** — confirm regular / shady / specialist vendors per item.
+- **Value by level bracket** — "best value for L1-10, L11-20, …". Sourceable (mob
+  level comes from the wiki), but data-blocked for now: only ~36% of mobs have a
+  wiki level and everything fought so far is L1-5. Needs more enrichment + a wider
+  level range of play. Bracket size (5s vs 10s) TBD once the spread is real.
+- **Biggest movers** — items whose 7-day average jumped/dropped the most (a little
+  market ticker). Unlocks once trade data accumulates.
+- **Trade ingest** — a small `gh`-powered script to fold accepted "trade" issues
+  into `trades.json`, so web submissions don't need hand-copying.
 - **Harvest zones** — show where each resource is gathered.
-- **Crowdsourcing** — pool everyone's data on a server so the site is live and
-  community-wide (needs hosting + moderation — the bigger lift).
-- **Trade value — next steps** — v1 ships manual logging (in-app + GitHub issues).
-  Still wanted: an easy way to fold accepted issue submissions into trades.json
-  (a small `gh`-powered ingest script), and — once the crowdsourcing server
-  exists — pooling everyone's logged trades automatically. (Note: live auction
-  scraping stays impossible; the game doesn't save chat to disk.)
-- **Multi-map zones (e.g. Evershade Weald ⇄ Faelindral)** — some zones share one
-  game zone-code but have two maps (the weald below vs. the elf city above the
-  lift). The log can't tell them apart (no player position in the ledger), so
-  *automatic* swap-on-lift isn't possible from current data. Plan: a manual
-  map-switch in the overlay for zones flagged as multi-map. Discrepancies are
-  stored in `zone-aliases.json` so new cases are a one-line edit (phone-friendly).
+- **More wiki enrichment** — wider item-stat / icon / mob-level coverage.
+  (Note: vendor *buy* prices and live auction prices are NOT obtainable — no
+  merchant data in the wiki or logs, and the game doesn't save chat to disk.)
+- **Crowdsourcing server** — pool everyone's data so the site is live and
+  community-wide, and trades aggregate automatically. The big lift (hosting +
+  moderation); also what makes publishing fully hands-off.
 - **Tip jar** — optional Ko-fi/donation link once you're ready.
-- **First/last seen, leaderboards, table filters** — smaller polish items.
+- **Polish** — first/last seen, table filters, sample-size confidence on values.
+
+## 📱 Good phone tasks (no app needed)
+
+Things you can do from github.com on your phone while away from the PC:
+
+- **Log trade prices** — on any item page, tap **Submit a price** (opens a GitHub
+  issue form). Or open an Issue with the `trade` label.
+- **Map a vendor** — edit `mnmdb/vendors.json` to record which NPC buys which item
+  types (powers the "Sold to" list).
+- **Add a multi-map zone** — edit `zone-aliases.json` when you find another
+  city/under-zone pair like Evershade Weald / Faelindral.
+- **Jot ideas** — add a line to the Inbox below.
 
 ## 📥 Inbox — drop new ideas here
 
