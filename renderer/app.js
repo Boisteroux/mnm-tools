@@ -919,11 +919,6 @@ $('tracker-enabled').addEventListener('change', async (e) => {
   }
 });
 
-$('tracker-rescan').addEventListener('click', async () => {
-  trackerStatus('Scanning…');
-  showTrackerSummary(await window.mapAPI.trackerScan());
-});
-
 $('tracker-export').addEventListener('click', async () => {
   trackerStatus('Exporting…');
   const ok = await window.mapAPI.trackerExport();

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-15T05:59:49.123Z",
+  "generatedAt": "2026-06-15T06:24:07.517Z",
   "items": {
     "Copper Ore": {
       "hasPage": true,
@@ -13,11 +13,13 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "wikiZones": [
         "Shaded Dunes",
         "Night Harbor",
         "Sungreet Strand",
-        "Faelindral",
+        "Faelindral"
+      ],
+      "from": [
         "Copper Vein",
         "Rich Copper Vein"
       ]
@@ -73,7 +75,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "Copper Vein",
         "Rich Copper Vein"
       ]
@@ -90,7 +92,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "Copper Vein",
         "Rich Copper Vein"
       ]
@@ -107,7 +109,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "Copper Vein",
         "Rich Copper Vein"
       ]
@@ -124,7 +126,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "Copper Vein",
         "Rich Copper Vein"
       ]
@@ -141,7 +143,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "Copper Vein",
         "Rich Copper Vein"
       ]
@@ -158,7 +160,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "Copper Vein",
         "Rich Copper Vein"
       ]
@@ -175,7 +177,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "Copper Vein",
         "Rich Copper Vein"
       ]
@@ -192,7 +194,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "Copper Vein",
         "Rich Copper Vein"
       ]
@@ -209,7 +211,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "Copper Vein",
         "Rich Copper Vein"
       ]
@@ -226,7 +228,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "Copper Vein",
         "Rich Copper Vein"
       ]
@@ -243,7 +245,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "Copper Vein",
         "Rich Copper Vein"
       ]
@@ -260,7 +262,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "Copper Vein",
         "Rich Copper Vein"
       ]
@@ -290,7 +292,7 @@
       "size": "MEDIUM",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "a crocodile hatchling"
       ]
     },
@@ -306,8 +308,10 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
-        "Night Harbor",
+      "wikiZones": [
+        "Night Harbor"
+      ],
+      "from": [
         "a desert bat"
       ]
     },
@@ -323,7 +327,7 @@
       "size": "SMALL",
       "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
       "race": "ALL",
-      "sources": [
+      "from": [
         "an ashira warrior"
       ]
     },
@@ -391,12 +395,14 @@
       "size": "MEDIUM",
       "class": null,
       "race": null,
-      "sources": [
+      "wikiZones": [
         "Shaded Dunes",
+        "Sungreet Strand",
+        "Vale of Zintar"
+      ],
+      "from": [
         "an ashira warrior",
         "an ashira lookout",
-        "Sungreet Strand",
-        "Vale of Zintar",
         "a corrupted adept",
         "a corrupted ashira",
         "a corrupted outrider",
@@ -415,8 +421,10 @@
       "size": "SMALL",
       "class": "ALL",
       "race": "ALL",
-      "sources": [
-        "Night Harbor",
+      "wikiZones": [
+        "Night Harbor"
+      ],
+      "from": [
         "an ashira scout",
         "an ashira lookout"
       ]
@@ -446,8 +454,10 @@
       "size": "SMALL",
       "class": "ALL",
       "race": "ALL",
-      "sources": [
-        "Shaded Dunes",
+      "wikiZones": [
+        "Shaded Dunes"
+      ],
+      "from": [
         "an ashira warrior"
       ]
     },
@@ -489,8 +499,10 @@
       "size": "TINY",
       "class": null,
       "race": null,
-      "sources": [
-        "Night Harbor",
+      "wikiZones": [
+        "Night Harbor"
+      ],
+      "from": [
         "a desert bat",
         "a large desert bat"
       ]
@@ -507,8 +519,10 @@
       "size": "SMALL",
       "class": "DRU ENC RNG SHM WIZ",
       "race": "ALL",
-      "sources": [
-        "Night Harbor",
+      "wikiZones": [
+        "Night Harbor"
+      ],
+      "from": [
         "a desert bat"
       ]
     },
@@ -524,8 +538,10 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
-        "Night Harbor",
+      "wikiZones": [
+        "Night Harbor"
+      ],
+      "from": [
         "a desert bat"
       ]
     },
@@ -541,7 +557,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "Cooking",
         "Raw Bat Meat"
       ]
@@ -558,7 +574,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "Copper Vein",
         "Rich Copper Vein"
       ]
@@ -588,9 +604,11 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "wikiZones": [
         "Shaded Dunes",
-        "Night Harbor",
+        "Night Harbor"
+      ],
+      "from": [
         "Copper Vein",
         "Rich Copper Vein"
       ]
@@ -620,7 +638,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "Copper Vein",
         "Rich Copper Vein",
         "Limestone Deposit",
@@ -717,12 +735,14 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "wikiZones": [
+        "Night Harbor"
+      ],
+      "from": [
         "an ashira scout",
         "an ashira lookout",
         "an ashira warrior",
-        "Skill Forage",
-        "Night Harbor"
+        "Skill Forage"
       ]
     },
     "Fire Beetle Eye": {
@@ -737,10 +757,12 @@
       "size": "SMALL",
       "class": "ALL",
       "race": "ALL",
-      "sources": [
+      "wikiZones": [
         "Night Harbor",
-        "a fire beetle",
         "Shaded Dunes"
+      ],
+      "from": [
+        "a fire beetle"
       ]
     },
     "Fire Beetle Carapace": {
@@ -755,10 +777,12 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "wikiZones": [
         "Night Harbor",
-        "a fire beetle",
         "Shaded Dunes"
+      ],
+      "from": [
+        "a fire beetle"
       ]
     },
     "Large Bat Fur": {
@@ -773,10 +797,12 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "wikiZones": [
         "Shaded Dunes",
-        "a large dunes bat",
         "Sungreet Strand"
+      ],
+      "from": [
+        "a large dunes bat"
       ]
     },
     "Diseased Bat Blood": {
@@ -791,8 +817,10 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
-        "Night Harbor",
+      "wikiZones": [
+        "Night Harbor"
+      ],
+      "from": [
         "a diseased desert bat"
       ]
     },
@@ -808,8 +836,10 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
-        "Night Harbor",
+      "wikiZones": [
+        "Night Harbor"
+      ],
+      "from": [
         "a diseased rat",
         "a large diseased rat"
       ]
@@ -826,8 +856,10 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
-        "Night Harbor",
+      "wikiZones": [
+        "Night Harbor"
+      ],
+      "from": [
         "a diseased snake"
       ]
     },
@@ -843,10 +875,12 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "wikiZones": [
         "Night Harbor",
-        "a fire beetle",
         "Shaded Dunes"
+      ],
+      "from": [
+        "a fire beetle"
       ]
     },
     "Jackal Tooth": {
@@ -861,12 +895,14 @@
       "size": "TINY",
       "class": null,
       "race": null,
-      "sources": [
+      "wikiZones": [
         "Night Harbor",
-        "a jackal pup",
-        "a jackal",
         "Shaded Dunes",
         "Sungreet Strand"
+      ],
+      "from": [
+        "a jackal pup",
+        "a jackal"
       ]
     },
     "Resin": {
@@ -881,7 +917,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "Wood Pile",
         "Rich Wood Pile"
       ]
@@ -911,8 +947,10 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
-        "Night Harbor",
+      "wikiZones": [
+        "Night Harbor"
+      ],
+      "from": [
         "a large rat"
       ]
     },
@@ -928,7 +966,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "A large rat"
       ]
     },
@@ -944,10 +982,12 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "wikiZones": [
         "Night Harbor",
-        "a fire beetle",
         "Shaded Dunes"
+      ],
+      "from": [
+        "a fire beetle"
       ]
     },
     "Heavy Cloth Bandage": {
@@ -962,7 +1002,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "Survival",
         "Cloth Scraps"
       ]
@@ -979,8 +1019,10 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
-        "Tel Ekir",
+      "wikiZones": [
+        "Tel Ekir"
+      ],
+      "from": [
         "a bonded jackal",
         "a dire jackal"
       ]
@@ -997,10 +1039,12 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "wikiZones": [
         "Shaded Dunes",
-        "a large dunes bat",
         "Sungreet Strand"
+      ],
+      "from": [
+        "a large dunes bat"
       ]
     },
     "Raw Crocodile Meat": {
@@ -1028,7 +1072,7 @@
       "size": "MEDIUM",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "a crocodile hatchling"
       ]
     },
@@ -1044,7 +1088,7 @@
       "size": "TINY",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "File:Lionleaf.png",
         "Herbalism",
         "sickle"
@@ -1062,7 +1106,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "a large rat"
       ]
     },
@@ -1078,7 +1122,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "a desert bat",
         "a large desert bat"
       ]
@@ -1095,7 +1139,7 @@
       "size": "TINY",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "File:Ghost Poppy.png",
         "Herbalism",
         "sickle"
@@ -1113,7 +1157,7 @@
       "size": "TINY",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "Herbalism",
         "sickle"
       ]
@@ -1130,8 +1174,10 @@
       "size": "TINY",
       "class": null,
       "race": null,
-      "sources": [
-        "Night Harbor",
+      "wikiZones": [
+        "Night Harbor"
+      ],
+      "from": [
         "a crocodile hatchling"
       ]
     },
@@ -1147,7 +1193,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "a green drakeling"
       ]
     },
@@ -1163,7 +1209,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "a green drakeling"
       ]
     },
@@ -1179,7 +1225,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "a green drakeling"
       ]
     },
@@ -1195,8 +1241,10 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
-        "Vale of Zintar",
+      "wikiZones": [
+        "Vale of Zintar"
+      ],
+      "from": [
         "a corrupted adept",
         "a corrupted ashira",
         "a corrupted outrider",
@@ -1228,7 +1276,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "Orcs"
       ]
     },
@@ -1244,8 +1292,10 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
-        "Evershade Weald",
+      "wikiZones": [
+        "Evershade Weald"
+      ],
+      "from": [
         "a Fellstone Warrior"
       ]
     },
@@ -1261,8 +1311,10 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
-        "Evershade Weald",
+      "wikiZones": [
+        "Evershade Weald"
+      ],
+      "from": [
         "a wasp drone"
       ]
     },
@@ -1278,8 +1330,10 @@
       "size": "SMALL",
       "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
       "race": "ALL",
-      "sources": [
-        "Evershade Weald",
+      "wikiZones": [
+        "Evershade Weald"
+      ],
+      "from": [
         "a Fellstone Warrior"
       ]
     },
@@ -1295,12 +1349,14 @@
       "size": "MEDIUM",
       "class": null,
       "race": null,
-      "sources": [
+      "wikiZones": [
         "Night Harbor",
-        "a jackal pup",
-        "a jackal",
         "Shaded Dunes",
         "Sungreet Strand"
+      ],
+      "from": [
+        "a jackal pup",
+        "a jackal"
       ]
     },
     "Low-Quality Wolf Pelt": {
@@ -1328,8 +1384,10 @@
       "size": "TINY",
       "class": null,
       "race": null,
-      "sources": [
-        "Evershade Weald",
+      "wikiZones": [
+        "Evershade Weald"
+      ],
+      "from": [
         "a dryad fawn"
       ]
     },
@@ -1358,7 +1416,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "a green drakeling"
       ]
     },
@@ -1374,10 +1432,12 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "wikiZones": [
         "Evershade Weald",
+        "Vale of Zintar"
+      ],
+      "from": [
         "a green drakeling",
-        "Vale of Zintar",
         "a dust drake sentinel"
       ]
     },
@@ -1393,7 +1453,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "a green drakeling",
         "Kyros Emeraldscale"
       ]
@@ -1553,7 +1613,7 @@
       "size": "LARGE",
       "class": "ARC BRD BST FTR INQ RNG ROG SHD SHM",
       "race": "ALL",
-      "sources": [
+      "from": [
         "a rotting skeleton"
       ]
     },
@@ -1647,7 +1707,7 @@
       "size": "MEDIUM",
       "class": "ALL",
       "race": "ALL",
-      "sources": [
+      "from": [
         "a rotting skeleton"
       ]
     },
@@ -1767,7 +1827,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "a dunes scarab"
       ]
     },
@@ -1783,19 +1843,21 @@
       "size": "TINY",
       "class": null,
       "race": null,
-      "sources": [
+      "wikiZones": [
         "Blacktide Bay",
+        "Faelindral",
+        "Night Harbor",
+        "Shaded Dunes",
+        "Sungreet Strand",
+        "Infested Crypt"
+      ],
+      "from": [
         "a gloom widow",
         "a stream fisher",
-        "Faelindral",
         "a black widow hatchling",
-        "Night Harbor",
         "A cobweaver hatchling",
         "a spiderling",
-        "Shaded Dunes",
         "a giant spider",
-        "Sungreet Strand",
-        "Infested Crypt",
         "a frenzied crypt spiderling",
         "a large crypt broodmatron",
         "a large crypt creeper",
@@ -1815,11 +1877,13 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "wikiZones": [
         "Night Harbor",
+        "Vale of Zintar"
+      ],
+      "from": [
         "a diseased snake",
         "a snake",
-        "Vale of Zintar",
         "a defiled asp"
       ]
     },
@@ -1835,10 +1899,12 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "wikiZones": [
         "Night Harbor",
-        "a dunes scarab",
         "Shaded Dunes"
+      ],
+      "from": [
+        "a dunes scarab"
       ]
     },
     "Spider Legs": {
@@ -1853,13 +1919,15 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "wikiZones": [
         "Blacktide Bay",
+        "Night Harbor",
+        "Shaded Dunes"
+      ],
+      "from": [
         "a gloom widow",
         "a stream fisher",
-        "Night Harbor",
         "a spiderling",
-        "Shaded Dunes",
         "a giant spider"
       ]
     },
@@ -1875,7 +1943,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "a snake"
       ]
     },
@@ -1891,11 +1959,13 @@
       "size": "TINY",
       "class": null,
       "race": null,
-      "sources": [
+      "wikiZones": [
         "Night Harbor",
+        "Vale of Zintar"
+      ],
+      "from": [
         "a rattlesnake",
         "a snake",
-        "Vale of Zintar",
         "a defiled asp"
       ]
     },
@@ -1911,10 +1981,12 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "wikiZones": [
         "Night Harbor",
-        "a dunes scarab",
         "Shaded Dunes"
+      ],
+      "from": [
+        "a dunes scarab"
       ]
     },
     "Tattered Rawhide Vest": {
@@ -1942,7 +2014,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "wikiZones": [
         "Night Harbor"
       ]
     },
@@ -1958,10 +2030,12 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "wikiZones": [
         "Night Harbor",
+        "Shaded Dunes"
+      ],
+      "from": [
         "a spiderling",
-        "Shaded Dunes",
         "a giant spider"
       ]
     },
@@ -2055,8 +2129,10 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
-        "Faelindral",
+      "wikiZones": [
+        "Faelindral"
+      ],
+      "from": [
         "rotting skeleton"
       ]
     },
@@ -2098,9 +2174,11 @@
       "size": "MEDIUM",
       "class": null,
       "race": null,
-      "sources": [
+      "wikiZones": [
         "Night Harbor",
-        "Shaded Dunes",
+        "Shaded Dunes"
+      ],
+      "from": [
         "Wood Pile",
         "Rich Wood Pile"
       ]
@@ -2117,8 +2195,10 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
-        "Evershade Weald",
+      "wikiZones": [
+        "Evershade Weald"
+      ],
+      "from": [
         "a wasp worker"
       ]
     },
@@ -2134,8 +2214,10 @@
       "size": "SMALL",
       "class": "DRU ENC RNG SHM WIZ",
       "race": "ALL",
-      "sources": [
-        "Evershade Weald",
+      "wikiZones": [
+        "Evershade Weald"
+      ],
+      "from": [
         "a wasp drone",
         "a wasp worker"
       ]
@@ -2152,8 +2234,10 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
-        "Evershade Weald",
+      "wikiZones": [
+        "Evershade Weald"
+      ],
+      "from": [
         "a wasp drone",
         "a wasp worker"
       ]
@@ -2170,8 +2254,10 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
-        "Evershade Weald",
+      "wikiZones": [
+        "Evershade Weald"
+      ],
+      "from": [
         "a Fellstone scout"
       ]
     },
@@ -2200,7 +2286,7 @@
       "size": "SMALL",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "A beguiled wolf",
         "A shadow wolf",
         "A timber wolf"
@@ -2218,7 +2304,7 @@
       "size": "TINY",
       "class": null,
       "race": null,
-      "sources": [
+      "from": [
         "a shadow wolf",
         "A beguiled wolf"
       ]

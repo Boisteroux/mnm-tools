@@ -74,15 +74,25 @@ function parseItemBox(wikitext) {
   return hasAny || data.iconId ? data : null;
 }
 
-// Pull the wiki's curated "drops/gathered from" list (zones + nodes) from the
-// {{Itempage}} section — this is where node info like "Copper Vein" lives.
+// Known M&M zones, so we can split the wiki's "dropsfrom" list into zones vs.
+// other sources (gathering nodes like Copper Vein, or mobs).
+const ZONES = new Set([
+  'Ancient Crypt', 'Blacktide Bay', 'Caves of Irem', 'Evershade Weald', 'Faelindral',
+  'Fallen Pass', 'Fallen Watch', 'Glass Flats', 'Glinting Hollow', 'Grain Cellar',
+  'Grimtide Sanctum', 'Infested Crypt', "Keeper's Bight", 'Night Harbor', 'Night Harbor Sewers',
+  'Rothold', 'Scarwood', 'Shaded Dunes', 'Shallow Shoals', 'Sungreet Strand',
+  'Tel Ekir', 'Tomb of the Last Wyrmsbane', 'Vale of Zintar',
+]);
+
+// Pull the wiki's curated "drops/gathered from" list from the {{Itempage}}
+// section, split into zones and other sources (nodes like "Copper Vein", mobs).
 function parseSources(wikitext) {
   const m = wikitext.match(/\{\{\s*Itempage([\s\S]*?)\n\}\}/i);
-  if (!m) return [];
+  if (!m) return { zones: [], from: [] };
   const dm = m[1].match(/\|\s*dropsfrom\s*=\s*([\s\S]*?)(?=\n\s*\|\s*[a-z_]+\s*=|\n\}\}|$)/i);
-  if (!dm) return [];
-  const links = [...dm[1].matchAll(/\[\[([^\]|]+)(?:\|[^\]]*)?\]\]/g)].map((x) => x[1].trim());
-  return [...new Set(links)];
+  if (!dm) return { zones: [], from: [] };
+  const links = [...new Set([...dm[1].matchAll(/\[\[([^\]|]+)(?:\|[^\]]*)?\]\]/g)].map((x) => x[1].trim()))];
+  return { zones: links.filter((l) => ZONES.has(l)), from: links.filter((l) => !ZONES.has(l)) };
 }
 
 async function run() {
@@ -101,9 +111,13 @@ async function run() {
     try { texts = await fetchWikitext(batch); } catch (e) { console.error('\nbatch failed:', e.message); continue; }
     for (const [title, wt] of Object.entries(texts)) {
       const box = parseItemBox(wt);
-      const sources = parseSources(wt);
-      if (box || sources.length) {
-        result[title] = Object.assign({ hasPage: true }, box || {}, sources.length ? { sources } : {});
+      const src = parseSources(wt);
+      if (box || src.zones.length || src.from.length) {
+        result[title] = Object.assign(
+          { hasPage: true }, box || {},
+          src.zones.length ? { wikiZones: src.zones } : {},
+          src.from.length ? { from: src.from } : {}
+        );
       }
     }
     await sleep(400);

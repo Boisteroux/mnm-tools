@@ -33,6 +33,7 @@ const wikiUrl = (name) => WIKI_BASE + encodeURIComponent(String(name).replace(/ 
 
 const itemLink = (id, name) => '<a href="#/item/' + encodeURIComponent(id) + '">' + esc(name) + '</a>';
 const mobLink = (name) => '<a href="#/mob/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
+const zoneLink = (name) => '<a href="#/zone/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
 
 // Regular-vendor sell price = the BEST (highest) you'd get selling — regular
 // vendors pay more than shady ones. Used as the realistic value of an item.
@@ -86,52 +87,45 @@ function renderItem(id) {
   if (!it) return notFound('item', id);
 
   const sections = [];
+  const w = it.wiki || {};
 
-  // Stats (from the wiki) — shown first
-  if (it.wiki) {
-    const w = it.wiki;
+  // Stats — wiki stats + your harvest tally + sell price, all in one block
+  {
     const rows = [];
     const add = (k, v, num) => {
-      if (v != null && v !== '') rows.push('<tr><td class="muted" style="width:130px">' + k + '</td><td' + (num ? ' class="num"' : '') + '>' + esc(String(v)) + '</td></tr>');
+      if (v != null && v !== '') rows.push('<tr><td class="muted" style="width:140px">' + k + '</td><td' + (num ? ' class="num"' : '') + '>' + v + '</td></tr>');
     };
-    add('Slot', w.slot);
+    add('Slot', esc(w.slot || ''));
     add('Weapon DMG', w.dmg, true);
     add('Attack delay', w.delay, true);
-    add('Skill', w.skill);
+    add('Skill', esc(w.skill || ''));
     add('Weight', w.weight, true);
-    add('Size', w.size);
-    add('Class', w.class);
-    add('Race', w.race);
-    if (rows.length) {
-      sections.push('<h2>Stats</h2><div class="card"><table><tbody>' + rows.join('') +
-        '</tbody></table></div>');
-    }
+    add('Size', esc(w.size || ''));
+    add('Class', esc(w.class || ''));
+    add('Race', esc(w.race || ''));
+    if (it.harvested > 0) add('Harvested', it.harvested + '×');
+    if (it.prices.length) add('Sells for', coin(regularPrice(it)));
+    if (rows.length) sections.push('<h2>Stats</h2><div class="card"><table><tbody>' + rows.join('') + '</tbody></table></div>');
   }
 
-  // Sources (mob drops)
+  // Dropped by (mobs)
   if (it.droppedBy.length) {
     sections.push('<h2>Dropped by</h2><div class="card"><table><thead><tr><th>Mob</th><th class="num">Drop rate</th></tr></thead><tbody>' +
       it.droppedBy.map((d) => '<tr><td>' + mobLink(d.mob) + '</td><td class="num">' + rateCell(d.rate, d.drops, d.kills) + '</td></tr>').join('') +
       '</tbody></table></div>');
   }
 
-  // Found in (zones)
-  if (it.zones && it.zones.length) {
+  // Found in — your observed zones plus the wiki's listed zones, linked internally
+  const zoneSet = [...new Set([...(it.zones || []), ...(w.wikiZones || [])])];
+  if (zoneSet.length) {
     sections.push('<h2>Found in</h2><div class="card"><table><tbody>' +
-      it.zones.map((z) => '<tr><td>' + esc(z) + '</td></tr>').join('') + '</tbody></table></div>');
+      zoneSet.map((z) => '<tr><td>' + zoneLink(z) + '</td></tr>').join('') + '</tbody></table></div>');
   }
 
-  // Harvested (your own tally)
-  if (it.harvested > 0) {
-    sections.push('<h2>Harvested</h2><div class="card"><table><tbody>' +
-      '<tr><td>Gathered</td><td class="num sample">' + it.harvested + '×</td></tr>' +
-      '</tbody></table></div>');
-  }
-
-  // Where to find it (per the wiki) — zones + gathering nodes like Copper Vein
-  if (it.wiki && it.wiki.sources && it.wiki.sources.length) {
-    sections.push('<h2>Found / gathered (per wiki)</h2><div class="card"><table><tbody>' +
-      it.wiki.sources.map((s) => '<tr><td><a href="' + wikiUrl(s) + '" target="_blank" rel="noopener">' + esc(s) + ' ↗</a></td></tr>').join('') +
+  // Harvested / sourced from — nodes like Copper Vein (or creatures), per the wiki
+  if (w.from && w.from.length) {
+    sections.push('<h2>Harvested / sourced from</h2><div class="card"><table><tbody>' +
+      w.from.map((s) => '<tr><td>' + (DATA.mobs[s] ? mobLink(s) : esc(s)) + '</td></tr>').join('') +
       '</tbody></table></div>');
   }
 
@@ -208,11 +202,38 @@ function renderMob(name) {
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › mob</div>' +
     '<h1>' + esc(name) + '</h1>' +
-    (zones.length ? '<p class="sub">Found in ' + zones.map(esc).join(', ') + '</p>' : '') +
+    (zones.length ? '<p class="sub">Found in ' + zones.map(zoneLink).join(', ') + '</p>' : '') +
     summary +
     '<h2>Drops &amp; farming value</h2>' + table +
     '<div class="note">“Value / kill” = drop rate × the item’s regular vendor price; add coin/kill for the total. ' +
     'A rough guide to the most profitable mobs and drops.</div>';
+}
+
+function renderZone(name) {
+  const mobs = Object.entries(DATA.mobs)
+    .filter(([, d]) => d.zones && d.zones[name])
+    .sort((a, b) => b[1].kills - a[1].kills);
+  const items = DATA.items
+    .filter((i) => (i.zones || []).includes(name) || (i.wiki && (i.wiki.wikiZones || []).includes(name)))
+    .sort((a, b) => a.name.localeCompare(b.name));
+  if (!mobs.length && !items.length) return notFound('zone', name);
+
+  const mobTable = mobs.length
+    ? '<h2>Mobs</h2><div class="card"><table><tbody>' +
+      mobs.map(([m, d]) => '<tr><td>' + mobLink(m) + '</td><td class="num sample">' + d.kills + ' kills</td></tr>').join('') +
+      '</tbody></table></div>'
+    : '';
+  const itemTable = items.length
+    ? '<h2>Items found here</h2><div class="card"><table><tbody>' +
+      items.map((i) => '<tr><td>' + itemLink(i.id, i.name) + '</td></tr>').join('') +
+      '</tbody></table></div>'
+    : '';
+
+  $('content').innerHTML =
+    '<div class="crumb"><a href="#/">MnMdb</a> › zone</div>' +
+    '<h1>' + esc(name) + '</h1>' +
+    '<p class="sub"><a href="' + wikiUrl(name) + '" target="_blank" rel="noopener">View on the wiki ↗</a></p>' +
+    mobTable + itemTable;
 }
 
 function notFound(kind, id) {
@@ -267,7 +288,7 @@ const browseCols = {
   ],
   resources: [
     { key: 'name', label: 'Resource' },
-    { key: 'harvested', label: 'Gathered', num: true },
+    { key: 'harvested', label: 'Harvested', num: true },
     { key: 'vendor', label: 'Vendor', num: true, render: (v) => (v == null ? '—' : coin(v)) },
   ],
   mobs: [
@@ -349,6 +370,7 @@ function route() {
   if (h === 'items' || h === 'mobs' || h === 'resources') return renderBrowse(h);
   if (h.startsWith('item/')) return renderItem(h.slice(5));
   if (h.startsWith('mob/')) return renderMob(h.slice(4));
+  if (h.startsWith('zone/')) return renderZone(h.slice(5));
   renderHome();
 }
 
