@@ -153,11 +153,11 @@ async function enrichItems(names, into, label, wikiOnly) {
     let texts; try { texts = await fetchWikitext(batch); } catch { continue; }
     for (const [title, wt] of Object.entries(texts)) {
       const box = parseItemBox(wt), src = parseSources(wt);
-      const cats = [...new Set([...parseCategories(wt), ...parseTradeskills(wt)])];
-      if (box || src.zones.length || src.from.length || cats.length) {
+      const cats = parseCategories(wt), ts = parseTradeskills(wt);
+      if (box || src.zones.length || src.from.length || cats.length || ts.length) {
         into[title] = Object.assign({ hasPage: true }, wikiOnly ? { wikiOnly: true } : {}, box || {},
           src.zones.length ? { wikiZones: src.zones } : {}, src.from.length ? { from: src.from } : {},
-          cats.length ? { categories: cats } : {});
+          cats.length ? { categories: cats } : {}, ts.length ? { tradeskills: ts } : {});
       }
     }
     await sleep(350);

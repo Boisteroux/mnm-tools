@@ -38,6 +38,7 @@ const itemLink = (id, name) => '<a href="#/item/' + encodeURIComponent(id) + '">
 const mobLink = (name) => '<a href="#/mob/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
 const zoneLink = (name) => '<a href="#/zone/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
 const nodeLink = (name) => '<a href="#/node/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
+const tradeskillLink = (name) => '<a href="#/tradeskill/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
 // A wiki "source" (node/creature/item) — link internally where we can, else to the wiki
 const sourceLink = (s) =>
   DATA.mobs[s] ? mobLink(s)
@@ -66,6 +67,9 @@ function renderHome() {
   const topMobs = mobs.slice().sort((a, b) => b[1].kills - a[1].kills).slice(0, 12);
   const harvest = Object.entries(DATA.harvest).sort((a, b) => b[1] - a[1]);
   const withVendor = items.filter((i) => i.prices.length).length;
+  const tsCount = {};
+  items.forEach((i) => (i.wiki && i.wiki.tradeskills || []).forEach((t) => { tsCount[t] = (tsCount[t] || 0) + 1; }));
+  const tradeskills = Object.keys(tsCount).sort();
 
   $('content').innerHTML =
     '<div class="home-intro">' +
@@ -86,6 +90,11 @@ function renderHome() {
         harvest.map(([r, n]) => '<tr><td>' + (nameToId[r] ? itemLink(nameToId[r], r) : esc(r)) + '</td><td class="num sample">' + n + '</td></tr>').join('') +
       '</tbody></table></div></div>' +
     '</div>' +
+    (tradeskills.length
+      ? '<h2>Tradeskills</h2><div class="card"><table><tbody>' +
+        tradeskills.map((t) => '<tr><td>' + tradeskillLink(t) + '</td><td class="num sample">' + tsCount[t] + ' items</td></tr>').join('') +
+        '</tbody></table></div>'
+      : '') +
     '<div class="note">Rates are observational — computed as (times looted ÷ times killed) from real play. ' +
       'Small samples are rough; numbers sharpen as more data is collected.</div>';
 }
@@ -105,7 +114,7 @@ function renderItem(id) {
     const add = (k, v) => {
       if (v != null && v !== '') rows.push('<tr><td class="muted" style="width:140px">' + k + '</td><td>' + v + '</td></tr>');
     };
-    add('Type', esc((w.categories || []).join(', ')));
+    add('Type', [...(w.categories || []).map(esc), ...(w.tradeskills || []).map(tradeskillLink)].join(', '));
     add('Slot', esc(w.slot || ''));
     add('Weapon DMG', w.dmg, true);
     add('Attack delay', w.delay, true);
@@ -300,6 +309,21 @@ function renderNode(name) {
     body;
 }
 
+function renderTradeskill(name) {
+  const items = DATA.items
+    .filter((i) => i.wiki && (i.wiki.tradeskills || []).includes(name))
+    .sort((a, b) => a.name.localeCompare(b.name));
+  if (!items.length) return notFound('tradeskill', name);
+  $('content').innerHTML =
+    '<div class="crumb"><a href="#/">MnMdb</a> › tradeskill</div>' +
+    '<h1>' + esc(name) + '</h1>' +
+    '<p class="sub"><a href="' + wikiUrl(name) + '" target="_blank" rel="noopener">View on the wiki ↗</a></p>' +
+    '<h2>Items used in ' + esc(name) + '</h2>' +
+    '<div class="card"><table><tbody>' +
+    items.map((i) => '<tr><td>' + itemLink(i.id, i.name) + '</td></tr>').join('') +
+    '</tbody></table></div>';
+}
+
 function notFound(kind, id) {
   $('content').innerHTML = '<div class="crumb"><a href="#/">MnMdb</a></div><h1>Not found</h1>' +
     '<p class="muted">No ' + esc(kind) + ' matching “' + esc(id) + '”.</p>';
@@ -443,6 +467,7 @@ function route() {
   if (h.startsWith('mob/')) return renderMob(h.slice(4));
   if (h.startsWith('zone/')) return renderZone(h.slice(5));
   if (h.startsWith('node/')) return renderNode(h.slice(5));
+  if (h.startsWith('tradeskill/')) return renderTradeskill(h.slice(11));
   renderHome();
 }
 
