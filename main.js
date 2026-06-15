@@ -2,6 +2,7 @@ const { app, BrowserWindow, ipcMain, dialog, globalShortcut, screen, crashReport
 const fs = require('fs');
 const path = require('path');
 const ledgerParser = require('./tracker/ledger-parser');
+const { execFile } = require('child_process');
 
 let win;
 let isToggling = false; // true while we deliberately recreate the window (overlay swap)
@@ -132,6 +133,55 @@ ipcMain.handle('tracker-export', async () => {
   return true;
 });
 
+// Owner-only: regenerate the MnMdb dataset from the ledger and push it to GitHub.
+// This needs the repo checkout + an authenticated git, so it only exists in the
+// dev build (npm start). The packaged app shared with testers never sees it.
+const isDev = !app.isPackaged;
+const REPO_ROOT = __dirname;
+
+function gitRun(args) {
+  return new Promise((resolve) => {
+    execFile('git', args, { cwd: REPO_ROOT }, (err, stdout, stderr) => {
+      resolve({ code: err && typeof err.code === 'number' ? err.code : (err ? 1 : 0), out: (stdout || '') + (stderr || '') });
+    });
+  });
+}
+
+ipcMain.handle('publish-mnmdb', async () => {
+  if (!isDev) return { error: 'Publishing is only available in the owner (dev) build.' };
+  try {
+    // 1. Regenerate mnmdb/data.json from the latest ledger.
+    const files = ledgerParser.findLedgerFiles();
+    const agg = ledgerParser.parseLedgers(files);
+    const items = ledgerParser.buildItemReport(agg);
+    const dataset = {
+      generatedAt: new Date().toISOString(),
+      source: 'mnm-tools',
+      ledgerFiles: agg.fileCount,
+      events: agg.events,
+      mobs: agg.mobs,
+      items,
+      harvest: agg.harvest,
+    };
+    fs.writeFileSync(path.join(REPO_ROOT, 'mnmdb', 'data.json'), JSON.stringify(dataset, null, 2));
+
+    // 2. Commit + push.
+    await gitRun(['add', 'mnmdb/data.json']);
+    const commit = await gitRun(['commit', '-m', `Publish play data (${agg.events} events, ${items.length} items)`]);
+    if (commit.code !== 0) {
+      if (/nothing to commit/i.test(commit.out)) {
+        return { ok: true, message: 'Already up to date — no new data since last publish.' };
+      }
+      return { error: 'Commit failed: ' + commit.out.trim().slice(0, 200) };
+    }
+    const push = await gitRun(['push']);
+    if (push.code !== 0) return { error: 'Push failed: ' + push.out.trim().slice(0, 200) };
+    return { ok: true, message: `Published ${items.length} items · ${agg.events} events. Live on MnMdb in ~30s.` };
+  } catch (e) {
+    return { error: e.message };
+  }
+});
+
 // Where the overlay first appears: a corner of a second monitor if there is
 // one (so it never fights the game's screen), otherwise the primary display.
 function overlayStartBounds() {
@@ -239,7 +289,7 @@ function createWindow(overlay = false) {
   win.webContents.on('unresponsive', () => logCrash('window-unresponsive'));
 
   win.setMenuBarVisibility(false);
-  win.loadFile('renderer/index.html', { query: { overlay: overlay ? '1' : '0' } });
+  win.loadFile('renderer/index.html', { query: { overlay: overlay ? '1' : '0', dev: isDev ? '1' : '0' } });
 }
 
 // Swap between desktop and overlay modes by recreating the window (a window's

@@ -925,6 +925,21 @@ $('tracker-export').addEventListener('click', async () => {
   trackerStatus(ok === true ? 'Exported dataset.' : (ok && ok.error) ? ok.error : 'Export cancelled.');
 });
 
+// Publish to MnMdb — owner build only (the dev flag is passed from main.js).
+const isDev = new URLSearchParams(location.search).get('dev') === '1';
+const publishStatus = (msg) => { $('publish-status').textContent = msg; };
+if (isDev) {
+  const pubBtn = $('tracker-publish');
+  pubBtn.classList.remove('hidden');
+  pubBtn.addEventListener('click', async () => {
+    pubBtn.disabled = true;
+    publishStatus('Publishing… regenerating data & pushing to GitHub.');
+    const r = await window.mapAPI.publishMnmdb();
+    publishStatus(r && r.ok ? r.message : (r && r.error) ? r.error : 'Publish failed.');
+    pubBtn.disabled = false;
+  });
+}
+
 // The app re-scans itself a few seconds after the game writes new loot/kills
 window.mapAPI.onTrackerUpdated((r) => showTrackerSummary(r, ' · updated just now'));
 

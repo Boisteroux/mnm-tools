@@ -105,7 +105,7 @@ button {
 
 button:hover { background: var(--surface-2); border-color: #39434f; }
 button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-dk); font-weight: 600; }
-button.primary:hover { background: #62e2d5; }
+button.primary:hover { background: #ffa94d; }
 button.danger { background: #45191c; border-color: #6e2a2e; color: #f0a8a8; }
 button.danger:hover { background: #572025; }
 button.active { background: var(--accent); border-color: var(--accent); color: var(--accent-dk); font-weight: 600; }
