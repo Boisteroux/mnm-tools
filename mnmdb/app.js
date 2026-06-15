@@ -114,7 +114,11 @@ function renderItem(id) {
     add('Race', esc(w.race || ''));
     if (it.harvested > 0) add('Harvested', it.harvested + '×');
     if (it.prices.length) add('Sells for', coin(regularPrice(it)));
-    if (rows.length) sections.push('<h2>Stats</h2><div class="card"><table><tbody>' + rows.join('') + '</tbody></table></div>');
+    if (rows.length) {
+      const fromWiki = ['slot', 'dmg', 'delay', 'skill', 'weight', 'size', 'class', 'race'].some((k) => w[k] != null && w[k] !== '');
+      sections.push('<h2>Stats</h2><div class="card"><table><tbody>' + rows.join('') + '</tbody></table></div>' +
+        (fromWiki ? '<div class="note">Item stats are pulled from the community wiki.</div>' : ''));
+    }
   }
 
   // Dropped by — one list combining your observed mobs (with drop rate) and any
@@ -135,9 +139,9 @@ function renderItem(id) {
     const sorted = it.prices.slice().sort((a, b) => b.copper - a.copper); // best sell first
     const high = sorted[0], low = sorted[sorted.length - 1];
     const summary = '<div class="vendor-summary">' +
-      '<div class="vbox"><div class="vlbl">Regular vendor (best sell)</div><div class="vval">' + coin(high.copper) + '</div></div>' +
+      '<div class="vbox"><div class="vlbl">Regular vendor (best price)</div><div class="vval">' + coin(high.copper) + '</div></div>' +
       (sorted.length > 1
-        ? '<div class="vbox warnbox"><div class="vlbl">Shady vendor (worst sell)</div><div class="vval">' + coin(low.copper) + '</div></div>'
+        ? '<div class="vbox warnbox"><div class="vlbl">Shady vendor (worst price)</div><div class="vval">' + coin(low.copper) + '</div></div>'
         : '') +
       '</div>';
     const rows = sorted.map((p) => {
@@ -149,9 +153,8 @@ function renderItem(id) {
     sections.push('<h2>Vendor value (selling)</h2>' + summary +
       '<div class="card"><table><thead><tr><th>Sell prices seen</th><th class="num">Times</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
       (sorted.length > 1
-        ? '<div class="note">Regular vendors pay more when you sell (highest); shady vendors pay less (lowest). ' +
-          'Buy prices aren’t in the game logs — they’ll come from the wiki later.</div>'
-        : '<div class="note">Buy prices and confirmed vendor types will come from the wiki in a later update.</div>'));
+        ? '<div class="note">Regular vendors pay more when you sell (highest); shady vendors pay less (lowest).</div>'
+        : ''));
   }
 
   // Found in — your observed zones plus the wiki's listed zones (bottom)
