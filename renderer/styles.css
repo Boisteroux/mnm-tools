@@ -131,13 +131,15 @@ button.primary:hover { background: #ffa94d; }
   transition: filter 0.12s ease;
 }
 #map-switcher .map-toggle:hover, #overlay-map-switcher .map-toggle:hover { filter: brightness(1.18); }
-/* Filled from the left = viewing the ground zone (first map). */
+/* Slimmer in the overlay bar so it lines up with the Lock / mode buttons. */
+#overlay-map-switcher .map-toggle { padding: 2px 12px; font-size: 10.5px; }
+/* Viewing the ground zone (first map) — fill leans right, dropping off by ~1/3. */
 #map-switcher .fill-left, #overlay-map-switcher .fill-left {
-  background-image: linear-gradient(90deg, rgba(240, 146, 43, 0.62) 0%, rgba(240, 146, 43, 0.5) 36%, rgba(240, 146, 43, 0) 72%);
+  background-image: linear-gradient(270deg, rgba(240, 146, 43, 0.62) 0%, rgba(240, 146, 43, 0.5) 12%, rgba(240, 146, 43, 0) 33%);
 }
-/* Filled from the right = viewing the city (second map). */
+/* Viewing the city (second map) — fill leans left, dropping off by ~1/3. */
 #map-switcher .fill-right, #overlay-map-switcher .fill-right {
-  background-image: linear-gradient(270deg, rgba(240, 146, 43, 0.62) 0%, rgba(240, 146, 43, 0.5) 36%, rgba(240, 146, 43, 0) 72%);
+  background-image: linear-gradient(90deg, rgba(240, 146, 43, 0.62) 0%, rgba(240, 146, 43, 0.5) 12%, rgba(240, 146, 43, 0) 33%);
 }
 button.danger { background: #45191c; border-color: #6e2a2e; color: #f0a8a8; }
 button.danger:hover { background: #572025; }

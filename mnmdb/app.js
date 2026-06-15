@@ -213,17 +213,18 @@ function renderMob(name) {
   const drops = Object.entries(m.drops).map(([item, n]) => {
     const rate = m.kills ? n / m.kills : null;
     const reg = regularPrice(itemByName[item]);
-    return { item, n, rate, perKill: rate ? rate * reg : 0, hasPrice: reg > 0 };
-  }).sort((a, b) => b.perKill - a.perKill || b.n - a.n);
+    return { item, n, rate, reg, perKill: rate ? rate * reg : 0, hasPrice: reg > 0 };
+  }).sort((a, b) => (b.rate || 0) - (a.rate || 0) || b.n - a.n);
 
   let table = '<p class="muted">No drops recorded.</p>';
   if (drops.length) {
-    table = '<div class="card"><table><thead><tr><th>Item</th><th class="num">Drop rate</th><th class="num">Value / kill</th></tr></thead><tbody>' +
+    table = '<div class="card"><table><thead><tr><th>Item</th><th class="num">Drop rate</th><th class="num">Sell value</th><th class="num">Avg kill value</th></tr></thead><tbody>' +
       drops.map((d) => {
         const id = nameToId[d.item] || d.item;
-        const pk = d.hasPrice ? coin(d.perKill) : '<span class="sample">no price yet</span>';
+        const sell = d.hasPrice ? coin(d.reg) : '<span class="sample">no price yet</span>';
+        const pk = d.hasPrice ? coin(d.perKill) : '<span class="sample">—</span>';
         return '<tr><td>' + itemLink(id, d.item) + '</td><td class="num">' + rateCell(d.rate, d.n, m.kills) +
-          '</td><td class="num coin">' + pk + '</td></tr>';
+          '</td><td class="num coin">' + sell + '</td><td class="num coin">' + pk + '</td></tr>';
       }).join('') + '</tbody></table></div>';
   }
 
@@ -258,8 +259,8 @@ function renderMob(name) {
     statsBlock +
     summary +
     '<h2>Drops &amp; farming value</h2>' + table +
-    '<div class="note">“Value / kill” = drop rate × the item’s regular vendor price; add coin/kill for the total. ' +
-    'A rough guide to the most profitable mobs and drops.</div>';
+    '<div class="note">“Sell value” is the item’s regular vendor price. “Avg kill value” = drop rate × sell value — ' +
+    'what that drop is worth per kill on average. Add coin/kill for a mob’s total. A rough guide to the most profitable drops.</div>';
 }
 
 function renderZone(name) {
