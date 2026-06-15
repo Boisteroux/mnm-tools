@@ -28,6 +28,9 @@ function rateCell(rate, drops, kills) {
     '<span class="pct">' + pct(rate) + '</span></span> <span class="sample">' + drops + '/' + kills + '</span>';
 }
 
+const WIKI_BASE = 'https://monstersandmemories.miraheze.org/wiki/';
+const wikiUrl = (name) => WIKI_BASE + encodeURIComponent(String(name).replace(/ /g, '_'));
+
 const itemLink = (id, name) => '<a href="#/item/' + encodeURIComponent(id) + '">' + esc(name) + '</a>';
 const mobLink = (name) => '<a href="#/mob/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
 
@@ -118,12 +121,18 @@ function renderItem(id) {
       it.zones.map((z) => '<tr><td>' + esc(z) + '</td></tr>').join('') + '</tbody></table></div>');
   }
 
-  // Harvested
+  // Harvested (your own tally)
   if (it.harvested > 0) {
     sections.push('<h2>Harvested</h2><div class="card"><table><tbody>' +
-      '<tr><td>Gathered from nodes</td><td class="num sample">' + it.harvested + '×</td></tr>' +
-      '</tbody></table></div>' +
-      '<div class="note">Which node it comes from (e.g. Copper Veins) isn\'t in the game logs — that detail will be pulled from the community wiki in a later update.</div>');
+      '<tr><td>Gathered</td><td class="num sample">' + it.harvested + '×</td></tr>' +
+      '</tbody></table></div>');
+  }
+
+  // Where to find it (per the wiki) — zones + gathering nodes like Copper Vein
+  if (it.wiki && it.wiki.sources && it.wiki.sources.length) {
+    sections.push('<h2>Found / gathered (per wiki)</h2><div class="card"><table><tbody>' +
+      it.wiki.sources.map((s) => '<tr><td><a href="' + wikiUrl(s) + '" target="_blank" rel="noopener">' + esc(s) + ' ↗</a></td></tr>').join('') +
+      '</tbody></table></div>');
   }
 
   // Vendor value
@@ -155,9 +164,14 @@ function renderItem(id) {
       'It\'ll fill in as more is collected.</p>');
   }
 
+  const wikiLine = (it.wiki && it.wiki.hasPage)
+    ? '<p class="sub"><a href="' + wikiUrl(it.name) + '" target="_blank" rel="noopener">View on the wiki ↗</a></p>'
+    : '';
+
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › item</div>' +
     '<h1>' + esc(it.name) + '</h1>' +
+    wikiLine +
     sections.join('');
 }
 

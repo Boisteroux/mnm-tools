@@ -74,6 +74,17 @@ function parseItemBox(wikitext) {
   return hasAny || data.iconId ? data : null;
 }
 
+// Pull the wiki's curated "drops/gathered from" list (zones + nodes) from the
+// {{Itempage}} section — this is where node info like "Copper Vein" lives.
+function parseSources(wikitext) {
+  const m = wikitext.match(/\{\{\s*Itempage([\s\S]*?)\n\}\}/i);
+  if (!m) return [];
+  const dm = m[1].match(/\|\s*dropsfrom\s*=\s*([\s\S]*?)(?=\n\s*\|\s*[a-z_]+\s*=|\n\}\}|$)/i);
+  if (!dm) return [];
+  const links = [...dm[1].matchAll(/\[\[([^\]|]+)(?:\|[^\]]*)?\]\]/g)].map((x) => x[1].trim());
+  return [...new Set(links)];
+}
+
 async function run() {
   const test = process.argv.includes('--test');
   const ds = JSON.parse(fs.readFileSync(DATA, 'utf8'));
@@ -89,8 +100,11 @@ async function run() {
     let texts;
     try { texts = await fetchWikitext(batch); } catch (e) { console.error('\nbatch failed:', e.message); continue; }
     for (const [title, wt] of Object.entries(texts)) {
-      const parsed = parseItemBox(wt);
-      if (parsed) result[title] = parsed;
+      const box = parseItemBox(wt);
+      const sources = parseSources(wt);
+      if (box || sources.length) {
+        result[title] = Object.assign({ hasPage: true }, box || {}, sources.length ? { sources } : {});
+      }
     }
     await sleep(400);
   }
