@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-15T00:05:13.635Z",
+  "generatedAt": "2026-06-15T00:12:10.195Z",
   "source": "mnm-tools",
   "ledgerFiles": 12,
   "events": 2597,
@@ -352,6 +352,13 @@
   },
   "items": [
     {
+      "id": "alunite_ore",
+      "name": "Alunite Ore",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 5
+    },
+    {
       "id": "ashira_necklace_sct",
       "name": "Ashira Scout Necklace",
       "droppedBy": [
@@ -368,7 +375,8 @@
           "rate": 0.46153846153846156
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "ashira_tail",
@@ -393,7 +401,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Ashira Tail",
@@ -404,7 +413,8 @@
           "copper": 5,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "ashira_war_fore",
@@ -417,7 +427,8 @@
           "rate": 0.2727272727272727
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "ashira_necklace_war",
@@ -430,7 +441,8 @@
           "rate": 0.5454545454545454
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "ashira_warrior_pelt",
@@ -443,7 +455,8 @@
           "rate": 0.18181818181818182
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Ashira Warrior Pelt",
@@ -454,7 +467,8 @@
           "copper": 2,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "bat_eye",
@@ -479,7 +493,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Bat Eye",
@@ -490,7 +505,8 @@
           "copper": 4,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "bat_fur",
@@ -509,7 +525,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Bat Fur",
@@ -520,7 +537,8 @@
           "copper": 2,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "bat_tooth",
@@ -539,7 +557,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Bat Tooth",
@@ -550,7 +569,8 @@
           "copper": 2,
           "count": 4
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "bat_wing",
@@ -575,7 +595,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Bat Wing",
@@ -594,7 +615,8 @@
           "copper": 5,
           "count": 2
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "bell_pepper",
@@ -607,7 +629,8 @@
           "rate": 0.18181818181818182
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "bone_chips",
@@ -626,7 +649,8 @@
           "rate": 0.776
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Bone Chips",
@@ -637,13 +661,15 @@
           "copper": 1,
           "count": 5
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "bow",
       "name": "Bow",
       "droppedBy": [],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Brittle Stone",
@@ -654,7 +680,8 @@
           "copper": 1,
           "count": 4
         }
-      ]
+      ],
+      "harvested": 208
     },
     {
       "id": "cabbage",
@@ -667,7 +694,8 @@
           "rate": 0.18181818181818182
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "carrot",
@@ -680,7 +708,8 @@
           "rate": 0.15384615384615385
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "celery",
@@ -693,7 +722,92 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
+    },
+    {
+      "id": "chipped_amber",
+      "name": "Chipped Amber",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1
+    },
+    {
+      "id": "chipped_black_pearl",
+      "name": "Chipped Black Pearl",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 2
+    },
+    {
+      "id": "chipped_bloodstone",
+      "name": "Chipped Bloodstone",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1
+    },
+    {
+      "id": "chipped_blue_diamond",
+      "name": "Chipped Blue Diamond",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1
+    },
+    {
+      "id": "chipped_diamond",
+      "name": "Chipped Diamond",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1
+    },
+    {
+      "id": "chipped_fire_emerald",
+      "name": "Chipped Fire Emerald",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1
+    },
+    {
+      "id": "chipped_hematite",
+      "name": "Chipped Hematite",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1
+    },
+    {
+      "id": "chipped_jacinth",
+      "name": "Chipped Jacinth",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1
+    },
+    {
+      "id": "chipped_malachite",
+      "name": "Chipped Malachite",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 2
+    },
+    {
+      "id": "chipped_onyx",
+      "name": "Chipped Onyx",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1
+    },
+    {
+      "id": "chipped_star_ruby",
+      "name": "Chipped Star Ruby",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1
+    },
+    {
+      "id": "chipped_turquoise",
+      "name": "Chipped Turquoise",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 2
     },
     {
       "id": "cloth_scraps",
@@ -748,7 +862,15 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
+    },
+    {
+      "id": "clouded_crystallized_magic",
+      "name": "Clouded Crystallized Magic",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 2
     },
     {
       "id": "cooked_bat_meat",
@@ -761,7 +883,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "cooked_gator_meat",
@@ -774,7 +897,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "cooked_rat_meat",
@@ -787,7 +911,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Copper Axe",
@@ -798,7 +923,8 @@
           "copper": 43,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "Copper Cauldron",
@@ -809,7 +935,8 @@
           "copper": 25,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "Copper Dagger",
@@ -820,7 +947,15 @@
           "copper": 43,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
+    },
+    {
+      "id": "copper_ore",
+      "name": "Copper Ore",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 199
     },
     {
       "id": "Copper Plate Bracer",
@@ -831,7 +966,8 @@
           "copper": 62,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "Copper Shortsword",
@@ -842,7 +978,8 @@
           "copper": 43,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "cracked_staff",
@@ -855,7 +992,8 @@
           "rate": 0.019230769230769232
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "gator_scale",
@@ -868,7 +1006,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "gator_tooth",
@@ -881,7 +1020,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Crude Handmade Torch",
@@ -896,7 +1036,8 @@
           "copper": 6,
           "count": 2
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "dis_bat_blood",
@@ -909,7 +1050,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "dis_rat_blood",
@@ -922,7 +1064,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Diseased Rat Blood",
@@ -933,7 +1076,8 @@
           "copper": 2,
           "count": 3
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "dis_snake_blood",
@@ -946,7 +1090,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Diseased Snake Blood",
@@ -957,7 +1102,8 @@
           "copper": 2,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "drake_claw",
@@ -970,7 +1116,8 @@
           "rate": 0.17142857142857143
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Drake Claw",
@@ -985,7 +1132,8 @@
           "copper": 50,
           "count": 2
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "drake_fang",
@@ -998,7 +1146,8 @@
           "rate": 0.3142857142857143
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Drake Fang",
@@ -1013,7 +1162,8 @@
           "copper": 5,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "dryad_sap",
@@ -1026,7 +1176,8 @@
           "rate": 0.125
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "orc_warrior_belt",
@@ -1039,7 +1190,8 @@
           "rate": 0.23076923076923078
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "fbeetle_shell",
@@ -1052,7 +1204,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "fbeetle_eye",
@@ -1065,7 +1218,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Fire Beetle Eye",
@@ -1076,7 +1230,8 @@
           "copper": 15,
           "count": 2
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "fbeetle_gland",
@@ -1089,7 +1244,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Fire Beetle Gland",
@@ -1100,7 +1256,8 @@
           "copper": 4,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "fbeetle_leg",
@@ -1113,7 +1270,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Fire Beetle Legs",
@@ -1132,7 +1290,8 @@
           "copper": 5,
           "count": 3
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "fish_bones",
@@ -1145,7 +1304,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "garlic",
@@ -1158,7 +1318,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Ghost Poppy",
@@ -1169,7 +1330,8 @@
           "copper": 1,
           "count": 2
         }
-      ]
+      ],
+      "harvested": 11
     },
     {
       "id": "green_drakeling_hide",
@@ -1182,7 +1344,8 @@
           "rate": 0.2571428571428571
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Green Drakeling Hide",
@@ -1193,7 +1356,8 @@
           "copper": 25,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "green_drakeling_duct",
@@ -1206,7 +1370,8 @@
           "rate": 0.02857142857142857
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "green_drakeling_scale",
@@ -1219,7 +1384,8 @@
           "rate": 0.42857142857142855
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "green_drakeling_wing",
@@ -1232,7 +1398,8 @@
           "rate": 0.5142857142857142
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Green Drakeling Wing",
@@ -1243,7 +1410,8 @@
           "copper": 7,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "Heavy Cloth Bandage",
@@ -1254,7 +1422,8 @@
           "copper": 5,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "jackal_tooth",
@@ -1267,7 +1436,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Jackal Tooth",
@@ -1278,7 +1448,8 @@
           "copper": 2,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "large_bat_fur",
@@ -1291,7 +1462,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Large Bat Fur",
@@ -1302,7 +1474,8 @@
           "copper": 3,
           "count": 3
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "Large Bat Wing",
@@ -1317,7 +1490,8 @@
           "copper": 7,
           "count": 2
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "large_bat_wing",
@@ -1342,7 +1516,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "left_orc_ear",
@@ -1355,7 +1530,15 @@
           "rate": 0.15384615384615385
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
+    },
+    {
+      "id": "lionleaf",
+      "name": "Lionleaf",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 3
     },
     {
       "id": "lowquality_jackal_pelt",
@@ -1368,7 +1551,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Low-Quality Jackal Pelt",
@@ -1379,7 +1563,8 @@
           "copper": 1,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "lowquality_wolf_pelt",
@@ -1392,7 +1577,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Low-Quality Wolf Pelt",
@@ -1407,7 +1593,8 @@
           "copper": 2,
           "count": 2
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "multhele_root",
@@ -1420,7 +1607,8 @@
           "rate": 0.15384615384615385
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Multhele Root",
@@ -1431,7 +1619,8 @@
           "copper": 1,
           "count": 4
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "Nomad's Grace",
@@ -1442,7 +1631,8 @@
           "copper": 1,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 3
     },
     {
       "id": "Onion",
@@ -1453,7 +1643,8 @@
           "copper": 3,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "potato",
@@ -1466,7 +1657,8 @@
           "rate": 0.18181818181818182
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "rat_ear",
@@ -1485,7 +1677,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Rat Ear",
@@ -1500,7 +1693,8 @@
           "copper": 5,
           "count": 2
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "rat_foot",
@@ -1513,7 +1707,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Rat Foot",
@@ -1524,7 +1719,8 @@
           "copper": 5,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "rat_tooth",
@@ -1543,7 +1739,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Rat Tooth",
@@ -1554,7 +1751,8 @@
           "copper": 2,
           "count": 2
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "raw_ash_meat",
@@ -1579,7 +1777,8 @@
           "rate": 0.09090909090909091
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Raw Ashira Meat",
@@ -1590,7 +1789,8 @@
           "copper": 5,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "bat_meat",
@@ -1615,7 +1815,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Raw Bat Meat",
@@ -1630,7 +1831,8 @@
           "copper": 3,
           "count": 3
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "gator_meat",
@@ -1643,7 +1845,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "jackal_meat",
@@ -1656,7 +1859,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "raw_orc_meat",
@@ -1675,7 +1879,8 @@
           "rate": 0.15384615384615385
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Raw Orc Meat",
@@ -1690,7 +1895,8 @@
           "copper": 5,
           "count": 2
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "rat_meat",
@@ -1709,7 +1915,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Raw Rat Meat",
@@ -1720,7 +1927,8 @@
           "copper": 5,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "wolf_meat",
@@ -1745,7 +1953,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Raw Wolf Meat",
@@ -1756,7 +1965,8 @@
           "copper": 3,
           "count": 3
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "rawhide_scraps",
@@ -1781,7 +1991,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Resin",
@@ -1792,7 +2003,8 @@
           "copper": 1,
           "count": 7
         }
-      ]
+      ],
+      "harvested": 160
     },
     {
       "id": "royal_jelly",
@@ -1811,7 +2023,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Royal Jelly",
@@ -1822,7 +2035,8 @@
           "copper": 2,
           "count": 2
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "rusty_axe",
@@ -1841,7 +2055,8 @@
           "rate": 0.019230769230769232
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Rusty Axe",
@@ -1852,7 +2067,8 @@
           "copper": 12,
           "count": 3
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "rusty_2axe",
@@ -1865,7 +2081,8 @@
           "rate": 0.016
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Rusty Battle Axe",
@@ -1876,7 +2093,8 @@
           "copper": 25,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "rusty_dagger",
@@ -1895,7 +2113,8 @@
           "rate": 0.008
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Rusty Dagger",
@@ -1906,7 +2125,8 @@
           "copper": 12,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "rusty_scythe",
@@ -1919,7 +2139,8 @@
           "rate": 0.024
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Rusty Great Scythe",
@@ -1930,7 +2151,8 @@
           "copper": 25,
           "count": 2
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "rusty_2sword",
@@ -1943,7 +2165,8 @@
           "rate": 0.038461538461538464
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Rusty Greatsword",
@@ -1954,7 +2177,8 @@
           "copper": 25,
           "count": 2
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "rusty_kite_shield",
@@ -1967,7 +2191,8 @@
           "rate": 0.024
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Rusty Kite Shield",
@@ -1978,7 +2203,8 @@
           "copper": 25,
           "count": 2
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "rusty_lsword",
@@ -1997,7 +2223,8 @@
           "rate": 0.008
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Rusty Longsword",
@@ -2008,7 +2235,8 @@
           "copper": 12,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "rusty_mace",
@@ -2021,7 +2249,8 @@
           "rate": 0.032
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Rusty Mace",
@@ -2036,7 +2265,8 @@
           "copper": 11,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "rusty_2hammer",
@@ -2049,7 +2279,8 @@
           "rate": 0.16666666666666666
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "rusty_scimitar",
@@ -2068,7 +2299,8 @@
           "rate": 0.048
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Rusty Scimitar",
@@ -2079,7 +2311,8 @@
           "copper": 12,
           "count": 5
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "rusty_ssword",
@@ -2104,7 +2337,8 @@
           "rate": 0.019230769230769232
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Rusty Shortsword",
@@ -2115,7 +2349,8 @@
           "copper": 12,
           "count": 4
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "rusty_spear",
@@ -2134,7 +2369,8 @@
           "rate": 0.016
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Rusty Spear",
@@ -2145,7 +2381,8 @@
           "copper": 12,
           "count": 3
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "rusty_tower_shield",
@@ -2164,7 +2401,8 @@
           "rate": 0.008
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Rusty Tower Shield",
@@ -2175,7 +2413,8 @@
           "copper": 37,
           "count": 3
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "rusty_trident",
@@ -2194,7 +2433,8 @@
           "rate": 0.008
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Rusty Trident",
@@ -2205,7 +2445,8 @@
           "copper": 12,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "rusty_2lance",
@@ -2218,7 +2459,8 @@
           "rate": 0.008
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "rusty_whammer",
@@ -2237,7 +2479,8 @@
           "rate": 0.016
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Rusty Warhammer",
@@ -2252,7 +2495,8 @@
           "copper": 12,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "scarab_carapace",
@@ -2265,7 +2509,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "scarab_eye",
@@ -2278,7 +2523,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Scarab Eye",
@@ -2289,7 +2535,8 @@
           "copper": 5,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "scarab_leg",
@@ -2302,7 +2549,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Scarab Leg",
@@ -2317,7 +2565,8 @@
           "copper": 5,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "shattered_skull",
@@ -2336,7 +2585,8 @@
           "rate": 0.016
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "elrind_skel_jaw",
@@ -2349,7 +2599,8 @@
           "rate": 0.112
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Skeleton Jawbone",
@@ -2360,7 +2611,8 @@
           "copper": 1,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "snake_egg",
@@ -2373,7 +2625,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "snake_fang",
@@ -2392,7 +2645,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Snake Fang",
@@ -2403,7 +2657,8 @@
           "copper": 2,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "snake_skin",
@@ -2416,7 +2671,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Snake Skin",
@@ -2427,7 +2683,8 @@
           "copper": 2,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "spider_leg",
@@ -2452,7 +2709,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Spider Legs",
@@ -2467,7 +2725,8 @@
           "copper": 5,
           "count": 3
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "spider_silk",
@@ -2492,7 +2751,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Spider Silk",
@@ -2511,7 +2771,8 @@
           "copper": 5,
           "count": 3
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "spider_venom",
@@ -2524,7 +2785,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Spider Venom Sac",
@@ -2535,7 +2797,8 @@
           "copper": 5,
           "count": 3
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "spiderling_eye",
@@ -2548,7 +2811,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "tattered_cloth_belt",
@@ -2573,7 +2837,8 @@
           "rate": 0.008
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "tattered_cloth_feet",
@@ -2592,7 +2857,8 @@
           "rate": 0.024
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "tattered_cloth_fore",
@@ -2611,13 +2877,15 @@
           "rate": 0.07692307692307693
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "tattered_cloth_head",
       "name": "Tattered Cloth Cap",
       "droppedBy": [],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "tattered_cloth_cape",
@@ -2636,7 +2904,8 @@
           "rate": 0.016
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "tattered_cloth_hand",
@@ -2649,7 +2918,8 @@
           "rate": 0.016
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "tattered_cloth_neck",
@@ -2668,7 +2938,8 @@
           "rate": 0.019230769230769232
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Tattered Cloth Gorget",
@@ -2679,7 +2950,8 @@
           "copper": 20,
           "count": 2
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "tattered_cloth_shld",
@@ -2698,7 +2970,8 @@
           "rate": 0.016
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "tattered_cloth_legs",
@@ -2723,7 +2996,8 @@
           "rate": 0.008
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Tattered Cloth Pantaloons",
@@ -2734,7 +3008,8 @@
           "copper": 28,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "tattered_cloth_robe",
@@ -2759,7 +3034,8 @@
           "rate": 0.038461538461538464
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Tattered Cloth Robe",
@@ -2770,7 +3046,8 @@
           "copper": 15,
           "count": 2
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "tattered_cloth_arms",
@@ -2789,7 +3066,8 @@
           "rate": 0.008
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "tattered_cloth_vest",
@@ -2814,7 +3092,8 @@
           "rate": 0.016
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "tattered_cloth_face",
@@ -2839,7 +3118,8 @@
           "rate": 0.019230769230769232
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Tattered Cloth Veil",
@@ -2850,7 +3130,8 @@
           "copper": 20,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "Tattered Rawhide Belt",
@@ -2861,7 +3142,8 @@
           "copper": 37,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "tattered_rawhide_arms",
@@ -2874,7 +3156,8 @@
           "rate": 0.18181818181818182
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "torch",
@@ -2905,7 +3188,8 @@
           "rate": 0.016
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Torch",
@@ -2916,7 +3200,8 @@
           "copper": 18,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "archer_orc_writ",
@@ -2929,7 +3214,8 @@
           "rate": 0.19230769230769232
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "wasp_venom_sac",
@@ -2948,7 +3234,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Wasp Venom Sac",
@@ -2963,7 +3250,8 @@
           "copper": 12,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "wasp_wing",
@@ -2982,7 +3270,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Wasp Wing",
@@ -2993,7 +3282,8 @@
           "copper": 1,
           "count": 5
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "wasp_worker_wax",
@@ -3006,7 +3296,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "widow_eye",
@@ -3019,7 +3310,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "wolf_blood",
@@ -3032,7 +3324,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Wolf Blood",
@@ -3043,7 +3336,8 @@
           "copper": 80,
           "count": 10
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "wolf_tooth",
@@ -3056,7 +3350,8 @@
           "rate": null
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Wolf Tooth",
@@ -3067,7 +3362,8 @@
           "copper": 2,
           "count": 2
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "Wood",
@@ -3078,13 +3374,15 @@
           "copper": 1,
           "count": 4
         }
-      ]
+      ],
+      "harvested": 129
     },
     {
       "id": "worn_bow",
       "name": "Worn Bow",
       "droppedBy": [],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "worn_buckler_t1",
@@ -3109,7 +3407,8 @@
           "rate": 0.008
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Worn Buckler",
@@ -3120,7 +3419,8 @@
           "copper": 12,
           "count": 2
         }
-      ]
+      ],
+      "harvested": 0
     },
     {
       "id": "worn_great_staff",
@@ -3133,7 +3433,8 @@
           "rate": 0.024
         }
       ],
-      "prices": []
+      "prices": [],
+      "harvested": 0
     },
     {
       "id": "Worn Great Staff",
@@ -3144,7 +3445,8 @@
           "copper": 22,
           "count": 1
         }
-      ]
+      ],
+      "harvested": 0
     }
   ],
   "harvest": {

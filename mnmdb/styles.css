@@ -127,6 +127,19 @@ tr:hover td { background: var(--panel); }
 .sample { color: var(--muted); font-size: 12px; }
 
 .coin { font-variant-numeric: tabular-nums; }
+
+.vendor-summary { display: flex; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+.vbox {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--good);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 16px;
+  min-width: 130px;
+}
+.vbox.warnbox { border-left-color: var(--warn); }
+.vbox .vlbl { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.vbox .vval { font-size: 20px; font-weight: 600; color: var(--text); font-variant-numeric: tabular-nums; }
 .tag {
   font-size: 11px;
   padding: 1px 7px;

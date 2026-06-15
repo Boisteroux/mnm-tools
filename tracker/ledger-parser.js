@@ -123,9 +123,12 @@ function parseLedgers(files) {
   return { mobs, items, harvest, events, fileCount: files.length };
 }
 
-// Shape the raw aggregate into per-item records ready for display / export
+const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
+
+// Shape the raw aggregate into per-item records ready for display / export.
+// Harvested resources become first-class entries too, so everything has a page.
 function buildItemReport(agg) {
-  return Object.entries(agg.items).map(([id, it]) => {
+  const items = Object.entries(agg.items).map(([id, it]) => {
     const droppedBy = Object.entries(it.sources).map(([mobName, drops]) => {
       const kills = (agg.mobs[mobName] && agg.mobs[mobName].kills) || 0;
       return { mob: mobName, drops, kills, rate: kills ? drops / kills : null };
@@ -135,8 +138,16 @@ function buildItemReport(agg) {
       .map(([copper, count]) => ({ copper: +copper, count }))
       .sort((a, b) => a.copper - b.copper);
 
-    return { id, name: it.name, droppedBy, prices };
-  }).sort((a, b) => a.name.localeCompare(b.name));
+    return { id, name: it.name, droppedBy, prices, harvested: agg.harvest[it.name] || 0 };
+  });
+
+  // Add resource-only entries (gathered but never looted/sold) so they get pages
+  const have = new Set(items.map((i) => i.name));
+  for (const [res, count] of Object.entries(agg.harvest)) {
+    if (!have.has(res)) items.push({ id: slug(res), name: res, droppedBy: [], prices: [], harvested: count });
+  }
+
+  return items.sort((a, b) => a.name.localeCompare(b.name));
 }
 
 module.exports = {

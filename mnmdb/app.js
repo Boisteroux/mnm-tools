@@ -54,7 +54,7 @@ function renderHome() {
         topMobs.map(([m, d]) => '<tr><td>' + mobLink(m) + '</td><td class="num sample">' + d.kills + ' kills</td></tr>').join('') +
       '</tbody></table></div></div>' +
       '<div><h2>Harvested resources</h2><div class="card"><table><tbody>' +
-        harvest.map(([r, n]) => '<tr><td>' + esc(r) + '</td><td class="num sample">' + n + '</td></tr>').join('') +
+        harvest.map(([r, n]) => '<tr><td>' + (nameToId[r] ? itemLink(nameToId[r], r) : esc(r)) + '</td><td class="num sample">' + n + '</td></tr>').join('') +
       '</tbody></table></div></div>' +
     '</div>' +
     '<div class="note">Rates are observational — computed as (times looted ÷ times killed) from real play. ' +
@@ -67,36 +67,54 @@ function renderItem(id) {
   const it = DATA.items.find((i) => i.id === id) || DATA.items.find((i) => i.name === id);
   if (!it) return notFound('item', id);
 
-  let drops = '<p class="muted">No drop sources recorded yet.</p>';
+  const sections = [];
+
+  // Sources (mob drops)
   if (it.droppedBy.length) {
-    drops = '<div class="card"><table><thead><tr><th>Dropped by</th><th class="num">Drop rate</th></tr></thead><tbody>' +
+    sections.push('<h2>Dropped by</h2><div class="card"><table><thead><tr><th>Mob</th><th class="num">Drop rate</th></tr></thead><tbody>' +
       it.droppedBy.map((d) => '<tr><td>' + mobLink(d.mob) + '</td><td class="num">' + rateCell(d.rate, d.drops, d.kills) + '</td></tr>').join('') +
-      '</tbody></table></div>';
+      '</tbody></table></div>');
   }
 
-  let vendor = '<p class="muted">No vendor sales recorded yet.</p>';
+  // Harvested
+  if (it.harvested > 0) {
+    sections.push('<h2>Harvested</h2><div class="card"><table><tbody>' +
+      '<tr><td>Gathered from nodes</td><td class="num sample">' + it.harvested + '×</td></tr>' +
+      '</tbody></table></div>' +
+      '<div class="note">Which node it comes from (e.g. Copper Veins) isn\'t in the game logs — that detail will be pulled from the community wiki in a later update.</div>');
+  }
+
+  // Vendor value
   if (it.prices.length) {
     const sorted = it.prices.slice().sort((a, b) => a.copper - b.copper);
     const low = sorted[0], high = sorted[sorted.length - 1];
-    const rows = sorted.map((p, i) => {
+    const summary = '<div class="vendor-summary">' +
+      '<div class="vbox"><div class="vlbl">Regular vendor</div><div class="vval">' + coin(low.copper) + '</div></div>' +
+      (sorted.length > 1
+        ? '<div class="vbox warnbox"><div class="vlbl">Shady / best seen</div><div class="vval">' + coin(high.copper) + '</div></div>'
+        : '') +
+      '</div>';
+    const rows = sorted.map((p) => {
       let tag = '';
-      if (sorted.length > 1 && p === low) tag = '<span class="tag good">likely regular</span>';
-      else if (sorted.length > 1 && p === high) tag = '<span class="tag warn">likely shady / best</span>';
+      if (sorted.length > 1 && p === low) tag = '<span class="tag good">regular</span>';
+      else if (sorted.length > 1 && p === high) tag = '<span class="tag warn">shady / best</span>';
       return '<tr><td class="coin">' + coin(p.copper) + ' ' + tag + '</td><td class="num sample">seen ' + p.count + '×</td></tr>';
     }).join('');
-    vendor = '<div class="card"><table><thead><tr><th>Sells to vendor for</th><th class="num">Observations</th></tr></thead><tbody>' +
-      rows + '</tbody></table></div>';
-    if (sorted.length > 1) {
-      vendor += '<div class="note">This item sold for different amounts — that\'s the regular vs. shady (or specialist) ' +
-        'vendor split. Vendor tagging is coming; for now the lowest price is most likely the regular vendor.</div>';
-    }
+    sections.push('<h2>Vendor value</h2>' + summary +
+      '<div class="card"><table><thead><tr><th>All prices seen</th><th class="num">Times</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
+      (sorted.length > 1 ? '<div class="note">Different sale amounts = the regular vs. shady (or specialist) vendor split. ' +
+        'Lowest is the regular vendor; higher prices are shady or a specialist who pays more for this item.</div>' : ''));
+  }
+
+  if (!sections.length) {
+    sections.push('<p class="muted">No drop, harvest, or vendor data recorded for this item yet. ' +
+      'It\'ll fill in as more is collected.</p>');
   }
 
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">mnmdb</a> › item</div>' +
     '<h1>' + esc(it.name) + '</h1>' +
-    '<h2>Sources</h2>' + drops +
-    '<h2>Vendor value</h2>' + vendor;
+    sections.join('');
 }
 
 function renderMob(name) {
@@ -132,15 +150,20 @@ function notFound(kind, id) {
 
 function renderSearch(q) {
   const query = q.toLowerCase();
-  const items = DATA.items.filter((i) => i.name.toLowerCase().includes(query)).slice(0, 40)
-    .map((i) => ({ kind: 'item', name: i.name, id: i.id,
-      meta: (i.droppedBy.length ? i.droppedBy.length + ' source(s)' : '') + (i.prices.length ? ' · vendor' : '') }));
+  // Resources are now first-class items, so a single item search covers them
+  const items = DATA.items.filter((i) => i.name.toLowerCase().includes(query)).slice(0, 50)
+    .map((i) => {
+      const bits = [];
+      if (i.droppedBy.length) bits.push(i.droppedBy.length + ' source(s)');
+      if (i.harvested) bits.push('harvested');
+      if (i.prices.length) bits.push('vendor');
+      const isResource = i.harvested && !i.droppedBy.length;
+      return { kind: isResource ? 'harvest' : 'item', name: i.name, id: i.id, meta: bits.join(' · ') };
+    });
   const mobs = Object.entries(DATA.mobs).filter(([m]) => m.toLowerCase().includes(query)).slice(0, 20)
     .map(([m, d]) => ({ kind: 'mob', name: m, meta: d.kills + ' kills' }));
-  const harvest = Object.keys(DATA.harvest).filter((r) => r.toLowerCase().includes(query)).slice(0, 20)
-    .map((r) => ({ kind: 'harvest', name: r, meta: DATA.harvest[r] + ' gathered' }));
 
-  const all = [...mobs, ...items, ...harvest];
+  const all = [...mobs, ...items];
   if (!all.length) {
     $('content').innerHTML = '<h1>No matches</h1><p class="muted">Nothing found for “' + esc(q) + '”.</p>';
     return;
@@ -148,13 +171,11 @@ function renderSearch(q) {
   $('content').innerHTML = '<h2>' + all.length + ' result' + (all.length === 1 ? '' : 's') + '</h2><div class="results">' +
     all.map((r) => {
       const href = r.kind === 'mob' ? '#/mob/' + encodeURIComponent(r.name)
-        : r.kind === 'item' ? '#/item/' + encodeURIComponent(r.id)
-        : '#/';
-      const clickable = r.kind !== 'harvest';
-      const inner = '<span class="kind ' + r.kind + '">' + r.kind + '</span><span class="name">' + esc(r.name) +
+        : '#/item/' + encodeURIComponent(r.id);
+      const label = r.kind === 'harvest' ? 'resource' : r.kind;
+      const inner = '<span class="kind ' + r.kind + '">' + label + '</span><span class="name">' + esc(r.name) +
         '</span><span class="meta">' + esc(r.meta) + '</span>';
-      return clickable ? '<a class="result" href="' + href + '">' + inner + '</a>'
-        : '<div class="result">' + inner + '</div>';
+      return '<a class="result" href="' + href + '">' + inner + '</a>';
     }).join('') + '</div>';
 }
 
