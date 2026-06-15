@@ -1,0 +1,5 @@
+{
+  "_readme": "Maps vendor NPCs to the item Types they buy, so item pages can show a 'Sold to' list. List each vendor once. 'buys' values must match the Type shown on an item page (e.g. Weapon, Armor, Tradeskill Ingredient, Inventory Items, 1H Slashing). 'zone' = where the NPC is. 'shady': true for a shady vendor. Edit this file (even on github.com from your phone) as you discover vendors in-game.",
+  "_example": { "name": "Merchant Tovi", "zone": "Night Harbor", "shady": false, "buys": ["Weapon", "Armor"] },
+  "vendors": []
+}

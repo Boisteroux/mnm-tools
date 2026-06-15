@@ -7,6 +7,7 @@ let DATA = null;
 let nameToId = {};   // item name -> item id (for linking mob drops to item pages)
 let itemByName = {}; // item name -> full item record (for vendor-price lookups)
 let NODES = {};      // gathering nodes (Copper Vein, …) from the wiki
+let VENDORS = [];    // hand-maintained vendor → item-type mapping (vendors.json)
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -156,6 +157,17 @@ function renderItem(id) {
       (sorted.length > 1
         ? '<div class="note">Regular vendors pay more when you sell (highest); shady vendors pay less (lowest).</div>'
         : ''));
+  }
+
+  // Sold to — vendors that buy this item's type(s), from our hand-kept mapping
+  const types = w.categories || [];
+  if (types.length) {
+    const buyers = VENDORS.filter((v) => (v.buys || []).some((b) => types.includes(b)));
+    const body = buyers.length
+      ? buyers.map((v) => '<tr><td>' + esc(v.name) + (v.shady ? ' <span class="tag warn">shady</span>' : '') +
+          '</td><td class="sample">' + esc(v.zone || '') + '</td></tr>').join('')
+      : '<tr><td class="muted" colspan="2">No vendors mapped for these types yet — add them in <code>vendors.json</code>.</td></tr>';
+    sections.push('<h2>Sold to</h2><div class="card"><table><tbody>' + body + '</tbody></table></div>');
   }
 
   // Found in — your observed zones plus the wiki's listed zones (bottom)
@@ -452,6 +464,10 @@ async function loadWikiStats() {
     }
     if (w && w.mobs) Object.keys(DATA.mobs).forEach((m) => { if (w.mobs[m]) DATA.mobs[m].wiki = w.mobs[m]; });
     if (w && w.nodes) NODES = w.nodes;
+  } catch {}
+  try {
+    const v = await (await fetch('./vendors.json?v=' + Date.now())).json();
+    VENDORS = (v && v.vendors) || [];
   } catch {}
 }
 
