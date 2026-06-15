@@ -6,6 +6,7 @@
 let DATA = null;
 let nameToId = {};   // item name -> item id (for linking mob drops to item pages)
 let itemByName = {}; // item name -> full item record (for vendor-price lookups)
+let NODES = {};      // gathering nodes (Copper Vein, …) from the wiki
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -34,9 +35,11 @@ const wikiUrl = (name) => WIKI_BASE + encodeURIComponent(String(name).replace(/ 
 const itemLink = (id, name) => '<a href="#/item/' + encodeURIComponent(id) + '">' + esc(name) + '</a>';
 const mobLink = (name) => '<a href="#/mob/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
 const zoneLink = (name) => '<a href="#/zone/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
+const nodeLink = (name) => '<a href="#/node/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
 // A wiki "source" (node/creature/item) — link internally where we can, else to the wiki
 const sourceLink = (s) =>
   DATA.mobs[s] ? mobLink(s)
+    : NODES[s] ? nodeLink(s)
     : nameToId[s] ? itemLink(nameToId[s], s)
     : '<a href="' + wikiUrl(s) + '" target="_blank" rel="noopener">' + esc(s) + ' ↗</a>';
 
@@ -261,6 +264,26 @@ function renderZone(name) {
     mobTable + itemTable;
 }
 
+function renderNode(name) {
+  const n = NODES[name];
+  if (!n) return notFound('node', name);
+  const yieldLink = (it) => nameToId[it]
+    ? itemLink(nameToId[it], it)
+    : '<a href="' + wikiUrl(it) + '" target="_blank" rel="noopener">' + esc(it) + ' ↗</a>';
+  const body = (n.yields || []).map((y) =>
+    '<h2>' + esc(y.section) + '</h2><div class="card"><table><tbody>' +
+    y.items.map((it) => '<tr><td>' + yieldLink(it) + '</td></tr>').join('') +
+    '</tbody></table></div>'
+  ).join('');
+  $('content').innerHTML =
+    '<div class="crumb"><a href="#/">MnMdb</a> › node</div>' +
+    '<h1>' + esc(name) + '</h1>' +
+    '<p class="sub"><a href="' + wikiUrl(name) + '" target="_blank" rel="noopener">View on the wiki ↗</a></p>' +
+    '<div class="note">The wiki lists what this node can yield. Per-node drop rates aren’t available — ' +
+    'the wiki doesn’t track them, and the game logs don’t record which node a gather came from.</div>' +
+    body;
+}
+
 function notFound(kind, id) {
   $('content').innerHTML = '<div class="crumb"><a href="#/">MnMdb</a></div><h1>Not found</h1>' +
     '<p class="muted">No ' + esc(kind) + ' matching “' + esc(id) + '”.</p>';
@@ -396,6 +419,7 @@ function route() {
   if (h.startsWith('item/')) return renderItem(h.slice(5));
   if (h.startsWith('mob/')) return renderMob(h.slice(4));
   if (h.startsWith('zone/')) return renderZone(h.slice(5));
+  if (h.startsWith('node/')) return renderNode(h.slice(5));
   renderHome();
 }
 
@@ -407,6 +431,7 @@ async function loadWikiStats() {
     const w = await (await fetch('./wiki.json?v=' + Date.now())).json();
     if (w && w.items) DATA.items.forEach((i) => { if (w.items[i.name]) i.wiki = w.items[i.name]; });
     if (w && w.mobs) Object.keys(DATA.mobs).forEach((m) => { if (w.mobs[m]) DATA.mobs[m].wiki = w.mobs[m]; });
+    if (w && w.nodes) NODES = w.nodes;
   } catch {}
 }
 

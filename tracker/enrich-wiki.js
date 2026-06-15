@@ -122,6 +122,21 @@ function parseMobPage(wikitext) {
   return has || data.imageFile ? data : null;
 }
 
+// Gathering-node pages (e.g. Copper Vein) list what they yield, grouped by
+// == Section == headings with bullet [[links]]. No drop rates exist on the wiki.
+function parseNodePage(wikitext) {
+  const sections = [];
+  const re = /==\s*([^=\n]+?)\s*==\s*([\s\S]*?)(?=\n==|$)/g;
+  let m;
+  while ((m = re.exec(wikitext))) {
+    const items = [...new Set(
+      [...m[2].matchAll(/\[\[([^\]|]+)(?:\|[^\]]*)?\]\]/g)].map((x) => x[1].trim()).filter((x) => !/^File:/i.test(x))
+    )];
+    if (items.length) sections.push({ section: m[1].trim(), items });
+  }
+  return sections.length ? { yields: sections } : null;
+}
+
 async function run() {
   const test = process.argv.includes('--test');
   const ds = JSON.parse(fs.readFileSync(DATA, 'utf8'));
@@ -168,14 +183,30 @@ async function run() {
   const mobImgs = await fetchImageUrls(mobImgTitles);
   for (const m of Object.values(mobs)) if (m.imageFile) m.image = mobImgs['File:' + m.imageFile] || null;
 
-  console.log(`\nItems with wiki data: ${Object.keys(items).length}/${itemNames.length} (icons: ${Object.values(items).filter((i) => i.icon).length}). Mobs: ${Object.keys(mobs).length}/${mobNames.length}.`);
+  // ---- Nodes (gathering veins, referenced in items' "from") ----
+  const fromSet = new Set();
+  Object.values(items).forEach((i) => (i.from || []).forEach((f) => fromSet.add(f)));
+  const nodeCandidates = [...fromSet].filter((f) => !ds.mobs[f] && !itemNames.includes(f));
+  const nodes = {};
+  for (let i = 0; i < nodeCandidates.length; i += 45) {
+    const batch = nodeCandidates.slice(i, i + 45);
+    process.stdout.write(`  nodes ${i + 1}-${i + batch.length}/${nodeCandidates.length}…   \r`);
+    let texts; try { texts = await fetchWikitext(batch); } catch { continue; }
+    for (const [title, wt] of Object.entries(texts)) {
+      const parsed = parseNodePage(wt);
+      if (parsed) nodes[title] = Object.assign({ hasPage: true }, parsed);
+    }
+    await sleep(350);
+  }
+
+  console.log(`\nItems with wiki data: ${Object.keys(items).length}/${itemNames.length} (icons: ${Object.values(items).filter((i) => i.icon).length}). Mobs: ${Object.keys(mobs).length}/${mobNames.length}. Nodes: ${Object.keys(nodes).length}.`);
 
   if (test) {
     console.log('\nRusty Scimitar:', JSON.stringify(items['Rusty Scimitar']));
     console.log('\na green drakeling:', JSON.stringify(mobs['a green drakeling']));
     return;
   }
-  fs.writeFileSync(OUT, JSON.stringify({ generatedAt: new Date().toISOString(), items, mobs }, null, 2));
+  fs.writeFileSync(OUT, JSON.stringify({ generatedAt: new Date().toISOString(), items, mobs, nodes }, null, 2));
   console.log(`Wrote ${OUT}.`);
 }
 

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-15T06:38:08.175Z",
+  "generatedAt": "2026-06-15T06:51:47.176Z",
   "items": {
     "Copper Ore": {
       "hasPage": true,
@@ -2684,6 +2684,163 @@
       "zone": "Evershade Weald",
       "imageFile": "phicon.png",
       "image": "https://static.wikitide.net/monstersandmemorieswiki/e/eb/Phicon.png"
+    }
+  },
+  "nodes": {
+    "Skill Forage": {
+      "hasPage": true,
+      "yields": [
+        {
+          "section": "Getting Started",
+          "items": [
+            "Halfling",
+            "Wood Elf",
+            "Druid",
+            "Ranger",
+            "Skill Forage"
+          ]
+        },
+        {
+          "section": "Foraged items",
+          "items": [
+            ":Category:Foraged",
+            "Grub",
+            "Multhele Root",
+            "Wild Carrots",
+            "Category:Skills",
+            "Category:Spells & Abilities",
+            "Category:Racial Abilities"
+          ]
+        }
+      ]
+    },
+    "Rich Copper Vein": {
+      "hasPage": true,
+      "yields": [
+        {
+          "section": "Ore",
+          "items": [
+            "Alunite Ore",
+            "Copper Ore"
+          ]
+        },
+        {
+          "section": "Additional Items",
+          "items": [
+            "Brittle Stone",
+            "Clouded Crystallized Magic"
+          ]
+        },
+        {
+          "section": "Chipped Gems",
+          "items": [
+            "Chipped Black Pearl",
+            "Chipped Black Sapphire",
+            "Chipped Bloodstone",
+            "Chipped Blue Diamond",
+            "Chipped Cat's Eye Agate",
+            "Chipped Diamond",
+            "Chipped Emerald",
+            "Chipped Fire Emerald",
+            "Chipped Fire Opal",
+            "Chipped Hematite",
+            "Chipped Jacinth",
+            "Chipped Jade",
+            "Chipped Onyx",
+            "Chipped Pearl",
+            "Chipped Sapphire",
+            "Chipped Star Ruby",
+            "Chipped Topaz",
+            "Chipped Wolf's Eye Agate"
+          ]
+        }
+      ]
+    },
+    "Copper Vein": {
+      "hasPage": true,
+      "yields": [
+        {
+          "section": "Ore",
+          "items": [
+            "Alunite Ore",
+            "Copper Ore"
+          ]
+        },
+        {
+          "section": "Additional Items",
+          "items": [
+            "Limestone",
+            "Brittle Stone",
+            "Clouded Crystallized Magic"
+          ]
+        },
+        {
+          "section": "Chipped Gems",
+          "items": [
+            "Chipped Black Pearl",
+            "Chipped Black Sapphire",
+            "Chipped Bloodstone",
+            "Chipped Blue Diamond",
+            "Chipped Carnelian",
+            "Chipped Cat's Eye Agate",
+            "Chipped Diamond",
+            "Chipped Emerald",
+            "Chipped Fire Emerald",
+            "Chipped Fire Opal",
+            "Chipped Hematite",
+            "Chipped Jacinth",
+            "Chipped Jade",
+            "Chipped Lapis Lazuli",
+            "Chipped Malachite",
+            "Chipped Onyx",
+            "Chipped Opal",
+            "Chipped Pearl",
+            "Chipped Peridot",
+            "Chipped Ruby",
+            "Chipped Sapphire",
+            "Chipped Star Ruby",
+            "Chipped Topaz",
+            "Chipped Turquoise",
+            "Chipped Wolf's Eye Agate",
+            "Chipped Star Rose Quartz",
+            "Chipped Amber"
+          ]
+        }
+      ]
+    },
+    "Wood Pile": {
+      "hasPage": true,
+      "yields": [
+        {
+          "section": "Wood",
+          "items": [
+            "Wood"
+          ]
+        },
+        {
+          "section": "Additional Items",
+          "items": [
+            "Resin"
+          ]
+        }
+      ]
+    },
+    "Rich Wood Pile": {
+      "hasPage": true,
+      "yields": [
+        {
+          "section": "Wood",
+          "items": [
+            "Wood"
+          ]
+        },
+        {
+          "section": "Additional Items",
+          "items": [
+            "Resin"
+          ]
+        }
+      ]
     }
   }
 }
