@@ -4,7 +4,7 @@
 
 const CATEGORIES = [
   { id: 'ore',      name: 'Ore',        color: '#c0784a', icon: '⛏️' },
-  { id: 'herb',     name: 'Herbs',      color: '#6abf69', icon: '\u{1F33F}' },
+  { id: 'herb',     name: 'Herbs',      color: '#3c8f43', icon: '\u{1F33F}' },
   { id: 'wood',     name: 'Wood',       color: '#8d6e63', icon: '\u{1FAB5}' },
   { id: 'fishing',  name: 'Fish',       color: '#4fc3f7', icon: '\u{1F3A3}' },
   { id: 'crafting', name: 'Crafting',   color: '#f06292', icon: '\u{1F528}' },

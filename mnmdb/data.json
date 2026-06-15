@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-14T23:56:57.813Z",
+  "generatedAt": "2026-06-15T00:05:13.635Z",
   "source": "mnm-tools",
   "ledgerFiles": 12,
-  "events": 2582,
+  "events": 2597,
   "mobs": {
     "a desert bat": {
       "kills": 0,
@@ -348,99 +348,6 @@
       "drops": {
         "Raw Wolf Meat": 2
       }
-    },
-    "����~;": {
-      "kills": 1,
-      "drops": {}
-    },
-    "����n�": {
-      "kills": 0,
-      "drops": {
-        "Cloth Scraps": 12,
-        "Bone Chips": 20,
-        "Bow": 3,
-        "Rusty Dagger": 1,
-        "Tattered Cloth Mantle": 2,
-        "Tattered Cloth Gloves": 1,
-        "Worn Bow": 1,
-        "Tattered Cloth Cap": 1,
-        "Tattered Cloth Veil": 1,
-        "Tattered Cloth Bracer": 2,
-        "Torch": 1
-      }
-    },
-    "���ۭy": {
-      "kills": 4,
-      "drops": {}
-    },
-    "�����4": {
-      "kills": 1,
-      "drops": {
-        "Cloth Scraps": 5,
-        "Bone Chips": 10,
-        "Tattered Cloth Bracer": 1
-      }
-    },
-    "���۝:": {
-      "kills": 17,
-      "drops": {}
-    },
-    "���㎷": {
-      "kills": 2,
-      "drops": {}
-    },
-    "�����:": {
-      "kills": 0,
-      "drops": {
-        "Rawhide Scraps": 1,
-        "Bone Chips": 4,
-        "Cloth Scraps": 2,
-        "Tattered Cloth Bracer": 1
-      }
-    },
-    "����o=": {
-      "kills": 1,
-      "drops": {}
-    },
-    "����~t": {
-      "kills": 6,
-      "drops": {}
-    },
-    "������": {
-      "kills": 10,
-      "drops": {}
-    },
-    "����ou": {
-      "kills": 1,
-      "drops": {}
-    },
-    "����͵": {
-      "kills": 1,
-      "drops": {}
-    },
-    "����~{": {
-      "kills": 1,
-      "drops": {}
-    },
-    "���۽7": {
-      "kills": 2,
-      "drops": {}
-    },
-    "����:": {
-      "kills": 3,
-      "drops": {}
-    },
-    "����|": {
-      "kills": 1,
-      "drops": {}
-    },
-    "���׽|": {
-      "kills": 1,
-      "drops": {}
-    },
-    "���ӎ�": {
-      "kills": 1,
-      "drops": {}
     }
   },
   "items": [
@@ -707,12 +614,6 @@
       "name": "Bone Chips",
       "droppedBy": [
         {
-          "mob": "�����4",
-          "drops": 10,
-          "kills": 1,
-          "rate": 10
-        },
-        {
           "mob": "a skeleton",
           "drops": 9,
           "kills": 6,
@@ -723,18 +624,6 @@
           "drops": 97,
           "kills": 125,
           "rate": 0.776
-        },
-        {
-          "mob": "����n�",
-          "drops": 20,
-          "kills": 0,
-          "rate": null
-        },
-        {
-          "mob": "�����:",
-          "drops": 4,
-          "kills": 0,
-          "rate": null
         }
       ],
       "prices": []
@@ -753,14 +642,7 @@
     {
       "id": "bow",
       "name": "Bow",
-      "droppedBy": [
-        {
-          "mob": "����n�",
-          "drops": 3,
-          "kills": 0,
-          "rate": null
-        }
-      ],
+      "droppedBy": [],
       "prices": []
     },
     {
@@ -818,12 +700,6 @@
       "name": "Cloth Scraps",
       "droppedBy": [
         {
-          "mob": "�����4",
-          "drops": 5,
-          "kills": 1,
-          "rate": 5
-        },
-        {
           "mob": "a skeleton",
           "drops": 6,
           "kills": 6,
@@ -867,18 +743,6 @@
         },
         {
           "mob": "an ashira shaman",
-          "drops": 2,
-          "kills": 0,
-          "rate": null
-        },
-        {
-          "mob": "����n�",
-          "drops": 12,
-          "kills": 0,
-          "rate": null
-        },
-        {
-          "mob": "�����:",
           "drops": 2,
           "kills": 0,
           "rate": null
@@ -1915,12 +1779,6 @@
           "drops": 2,
           "kills": 0,
           "rate": null
-        },
-        {
-          "mob": "�����:",
-          "drops": 1,
-          "kills": 0,
-          "rate": null
         }
       ],
       "prices": []
@@ -2035,12 +1893,6 @@
           "drops": 1,
           "kills": 125,
           "rate": 0.008
-        },
-        {
-          "mob": "����n�",
-          "drops": 1,
-          "kills": 0,
-          "rate": null
         }
       ],
       "prices": []
@@ -2747,12 +2599,6 @@
       "name": "Tattered Cloth Bracer",
       "droppedBy": [
         {
-          "mob": "�����4",
-          "drops": 1,
-          "kills": 1,
-          "rate": 1
-        },
-        {
           "mob": "an ashira warrior",
           "drops": 2,
           "kills": 11,
@@ -2763,18 +2609,6 @@
           "drops": 1,
           "kills": 13,
           "rate": 0.07692307692307693
-        },
-        {
-          "mob": "����n�",
-          "drops": 2,
-          "kills": 0,
-          "rate": null
-        },
-        {
-          "mob": "�����:",
-          "drops": 1,
-          "kills": 0,
-          "rate": null
         }
       ],
       "prices": []
@@ -2782,14 +2616,7 @@
     {
       "id": "tattered_cloth_head",
       "name": "Tattered Cloth Cap",
-      "droppedBy": [
-        {
-          "mob": "����n�",
-          "drops": 1,
-          "kills": 0,
-          "rate": null
-        }
-      ],
+      "droppedBy": [],
       "prices": []
     },
     {
@@ -2820,12 +2647,6 @@
           "drops": 2,
           "kills": 125,
           "rate": 0.016
-        },
-        {
-          "mob": "����n�",
-          "drops": 1,
-          "kills": 0,
-          "rate": null
         }
       ],
       "prices": []
@@ -2875,12 +2696,6 @@
           "drops": 2,
           "kills": 125,
           "rate": 0.016
-        },
-        {
-          "mob": "����n�",
-          "drops": 2,
-          "kills": 0,
-          "rate": null
         }
       ],
       "prices": []
@@ -3022,12 +2837,6 @@
           "drops": 1,
           "kills": 52,
           "rate": 0.019230769230769232
-        },
-        {
-          "mob": "����n�",
-          "drops": 1,
-          "kills": 0,
-          "rate": null
         }
       ],
       "prices": []
@@ -3094,12 +2903,6 @@
           "drops": 2,
           "kills": 125,
           "rate": 0.016
-        },
-        {
-          "mob": "����n�",
-          "drops": 1,
-          "kills": 0,
-          "rate": null
         }
       ],
       "prices": []
@@ -3280,14 +3083,7 @@
     {
       "id": "worn_bow",
       "name": "Worn Bow",
-      "droppedBy": [
-        {
-          "mob": "����n�",
-          "drops": 1,
-          "kills": 0,
-          "rate": null
-        }
-      ],
+      "droppedBy": [],
       "prices": []
     },
     {
@@ -3352,8 +3148,8 @@
     }
   ],
   "harvest": {
-    "Copper Ore": 192,
-    "Brittle Stone": 200,
+    "Copper Ore": 199,
+    "Brittle Stone": 208,
     "Clouded Crystallized Magic": 2,
     "Wood": 129,
     "Resin": 160,

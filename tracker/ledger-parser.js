@@ -20,6 +20,17 @@ function b64(s) {
   try { return Buffer.from(s, 'base64').toString('utf8'); } catch { return s; }
 }
 
+// Decode a name field that may be base64, or an unresolved "ref_*" reference,
+// or (in old ledger formats) garbled binary. Returns '' for anything that isn't
+// clean readable text, so bad data is dropped instead of shown as gibberish.
+function decodeName(s) {
+  if (!s || /^ref_/.test(s)) return '';
+  const t = b64(s);
+  if (!t || t.includes('�')) return '';
+  return t;
+}
+const isClean = (s) => !!s && !s.includes('�');
+
 // "0 platinum 0 gold 0 silver 12 copper" -> total copper.
 // Coin: 1 plat = 10 gold = 100 silver = 1000 copper.
 function priceToCopper(str) {
@@ -73,15 +84,20 @@ function parseLedgers(files) {
       try { p = JSON.parse(ev.f03 || '{}'); } catch {}
 
       if (ev.f01 === 'act_14') {
-        // KILL — a corpse was created
-        const name = b64(p.d13) || b64((ev.f02 || '').replace(/^name_/, ''));
+        // KILL — a corpse was created. New format stores the mob in d13 (base64);
+        // skip old-format entries where it's only an unresolved ref or a sentence.
+        let name = decodeName(p.d13);
+        if (!name) {
+          const alt = decodeName((ev.f02 || '').replace(/^name_/, ''));
+          if (alt && alt.length <= 40 && !/[,]|corpse|copper|split/i.test(alt)) name = alt;
+        }
         if (name) mob(name).kills++;
       } else if (ev.f01 === 'act_13') {
         // LOOT — item taken off a mob
-        const source = b64(p.d02);
+        const source = decodeName(p.d02);
         const name = p.d04 || '';
         const id = p.d05 || name;
-        if (!name) continue;
+        if (!isClean(name)) continue;
         const it = item(id, name);
         if (source) {
           it.sources[source] = (it.sources[source] || 0) + 1;
@@ -91,7 +107,7 @@ function parseLedgers(files) {
         // VENDOR SALE — records the price received (but not which vendor)
         const name = p.d04 || ev.f02 || '';
         const id = p.d05 || name;
-        if (!name) continue;
+        if (!isClean(name)) continue;
         const qty = p.d01 || 1;
         const per = Math.max(1, Math.round(priceToCopper(b64(p.d03)) / qty));
         const it = item(id, name);
@@ -99,7 +115,7 @@ function parseLedgers(files) {
       } else if (ev.f01 === 'act_27') {
         // HARVEST — gathering node
         const res = p.d04 || '';
-        if (res) harvest[res] = (harvest[res] || 0) + 1;
+        if (isClean(res)) harvest[res] = (harvest[res] || 0) + 1;
       }
     }
   }
