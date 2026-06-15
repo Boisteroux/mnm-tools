@@ -81,6 +81,21 @@ const tradeSubmitUrl = (name) =>
   REPO + '/issues/new?labels=trade&template=trade-price.yml&title=' +
   encodeURIComponent('Price: ' + name) + '&item=' + encodeURIComponent(name);
 
+// Best known market value for an item: player trade price when we have it,
+// otherwise the regular vendor sell price. { value, source: 'trade'|'vendor'|null }
+function itemMarketValue(name) {
+  const tv = tradeStats(name);
+  if (tv) {
+    const v = tv.avg7 != null ? tv.avg7
+      : tv.high != null ? Math.round((tv.high + tv.low) / 2)
+      : Math.round((tv.allHigh + tv.allLow) / 2);
+    if (v > 0) return { value: v, source: 'trade' };
+  }
+  const reg = regularPrice(itemByName[name]);
+  if (reg > 0) return { value: reg, source: 'vendor' };
+  return { value: 0, source: null };
+}
+
 // Expected loot value of one kill: coin + Σ(drop rate × item regular price)
 function mobValuePerKill(d) {
   if (!d.kills) return { coin: 0, loot: 0, total: 0 };
@@ -114,8 +129,8 @@ function renderHome() {
   // Valuable resources — harvestable things ranked by sell value, then by how
   // much you've gathered (ties gathering to economy)
   const resources = Object.keys(DATA.harvest)
-    .map((r) => ({ name: r, price: itemByName[r] ? regularPrice(itemByName[r]) : 0, n: DATA.harvest[r] }))
-    .sort((a, b) => b.price - a.price || b.n - a.n).slice(0, 12);
+    .map((r) => { const mv = itemMarketValue(r); return { name: r, value: mv.value, source: mv.source, n: DATA.harvest[r] }; })
+    .sort((a, b) => b.value - a.value || b.n - a.n).slice(0, 12);
 
   // Recent player trades — newest first
   const recent = [];
@@ -127,7 +142,8 @@ function renderHome() {
   const killRows = topMobs.map(([m, d]) => '<tr><td>' + mobLink(m) + '</td><td class="num sample">' + d.kills + ' kills</td></tr>').join('');
   const priceRows = priciest.map(([i, v]) => '<tr><td>' + itemLink(i.id, i.name) + '</td><td class="num coin">' + coin(v) + '</td></tr>').join('');
   const resRows = resources.map((r) => '<tr><td>' + (nameToId[r.name] ? itemLink(nameToId[r.name], r.name) : esc(r.name)) +
-    '</td><td class="num ' + (r.price ? 'coin' : 'sample') + '">' + (r.price ? coin(r.price) : r.n + '× gathered') + '</td></tr>').join('');
+    (r.source === 'trade' ? ' <span class="tag good">trade</span>' : '') +
+    '</td><td class="num ' + (r.value ? 'coin' : 'sample') + '">' + (r.value ? coin(r.value) : r.n + '× gathered') + '</td></tr>').join('');
 
   const recentBlock = recentTop.length
     ? '<h2>Recent player trades</h2><div class="card"><table><tbody>' +
@@ -157,7 +173,7 @@ function renderHome() {
     '<div class="col2">' +
       '<div><h2>Priciest items</h2><p class="sub">Top regular-vendor sell value.</p><div class="card"><table><tbody>' +
         (priceRows || '<tr><td class="muted">No vendor prices yet.</td></tr>') + '</tbody></table></div></div>' +
-      '<div><h2>Valuable resources</h2><p class="sub">Gatherables worth the most.</p><div class="card"><table><tbody>' +
+      '<div><h2>Valuable resources</h2><p class="sub">Gatherables by value — player trade price where known, else vendor.</p><div class="card"><table><tbody>' +
         (resRows || '<tr><td class="muted">No resources yet.</td></tr>') + '</tbody></table></div></div>' +
     '</div>' +
     recentBlock +

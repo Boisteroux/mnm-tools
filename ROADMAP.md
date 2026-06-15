@@ -18,12 +18,19 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
   regenerates the site data from your ledger and pushes it live in ~30s.
 - **Multi-map zones** — manual map switcher (Evershade Weald ⇄ Faelindral) in the
   sidebar + overlay, driven by zone-aliases.json.
-- **Trade value v1** — item pages show a 7-day high/low of player sale prices.
-  Submit prices two ways: the in-app "Log a Trade" panel (merged on Publish) or a
-  phone-friendly GitHub issue form. Data lives in mnmdb/trades.json.
+- **Trade value v1** — item pages show a 30-day high/low + 7-day average of player
+  sale prices. Submit two ways: the in-app "Log a Trade" panel (merged on Publish)
+  or a phone-friendly GitHub issue form. Data lives in mnmdb/trades.json. The home
+  "Valuable resources" list ranks by trade price when known, else vendor.
 
 ## 🔜 Next up
 
+- **Most-valuable mobs by level bracket** — "best value for L1-10, L11-20, …".
+  *Sourceable:* mob level comes from the wiki (`level` field). Blocked by data, not
+  effort: today only ~36% of observed mobs have a wiki level and everything killed
+  so far is L1-5, so brackets would be one bucket. Needs (a) more wiki-enrichment
+  coverage and (b) higher-level play data before it's meaningful. Final bracket
+  size (10s? 5s?) TBD once the level spread is real.
 - **Wiki enrichment** — item stats (damage / AC / weight / slot / level), vendor
   *buy* prices, item icons, node → resource links ("Copper Ore from Copper
   Veins"), mob levels. (One build unlocks several of these.)
