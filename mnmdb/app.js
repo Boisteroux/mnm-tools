@@ -31,8 +31,9 @@ function rateCell(rate, drops, kills) {
 const itemLink = (id, name) => '<a href="#/item/' + encodeURIComponent(id) + '">' + esc(name) + '</a>';
 const mobLink = (name) => '<a href="#/mob/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
 
-// Regular (lowest observed) vendor price for an item, in copper
-const regularPrice = (it) => (it && it.prices.length ? Math.min.apply(null, it.prices.map((p) => p.copper)) : 0);
+// Regular-vendor sell price = the BEST (highest) you'd get selling — regular
+// vendors pay more than shady ones. Used as the realistic value of an item.
+const regularPrice = (it) => (it && it.prices.length ? Math.max.apply(null, it.prices.map((p) => p.copper)) : 0);
 
 // Expected loot value of one kill: coin + Σ(drop rate × item regular price)
 function mobValuePerKill(d) {
@@ -106,24 +107,26 @@ function renderItem(id) {
 
   // Vendor value
   if (it.prices.length) {
-    const sorted = it.prices.slice().sort((a, b) => a.copper - b.copper);
-    const low = sorted[0], high = sorted[sorted.length - 1];
+    const sorted = it.prices.slice().sort((a, b) => b.copper - a.copper); // best sell first
+    const high = sorted[0], low = sorted[sorted.length - 1];
     const summary = '<div class="vendor-summary">' +
-      '<div class="vbox"><div class="vlbl">Regular vendor</div><div class="vval">' + coin(low.copper) + '</div></div>' +
+      '<div class="vbox"><div class="vlbl">Regular vendor (best sell)</div><div class="vval">' + coin(high.copper) + '</div></div>' +
       (sorted.length > 1
-        ? '<div class="vbox warnbox"><div class="vlbl">Shady / best seen</div><div class="vval">' + coin(high.copper) + '</div></div>'
+        ? '<div class="vbox warnbox"><div class="vlbl">Shady vendor (worst sell)</div><div class="vval">' + coin(low.copper) + '</div></div>'
         : '') +
       '</div>';
     const rows = sorted.map((p) => {
       let tag = '';
-      if (sorted.length > 1 && p === low) tag = '<span class="tag good">regular</span>';
-      else if (sorted.length > 1 && p === high) tag = '<span class="tag warn">shady / best</span>';
+      if (sorted.length > 1 && p === high) tag = '<span class="tag good">regular</span>';
+      else if (sorted.length > 1 && p === low) tag = '<span class="tag warn">shady</span>';
       return '<tr><td class="coin">' + coin(p.copper) + ' ' + tag + '</td><td class="num sample">seen ' + p.count + '×</td></tr>';
     }).join('');
-    sections.push('<h2>Vendor value</h2>' + summary +
-      '<div class="card"><table><thead><tr><th>All prices seen</th><th class="num">Times</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
-      (sorted.length > 1 ? '<div class="note">Different sale amounts = the regular vs. shady (or specialist) vendor split. ' +
-        'Lowest is the regular vendor; higher prices are shady or a specialist who pays more for this item.</div>' : ''));
+    sections.push('<h2>Vendor value (selling)</h2>' + summary +
+      '<div class="card"><table><thead><tr><th>Sell prices seen</th><th class="num">Times</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
+      (sorted.length > 1
+        ? '<div class="note">Regular vendors pay more when you sell (highest); shady vendors pay less (lowest). ' +
+          'Buy prices aren’t in the game logs — they’ll come from the wiki later.</div>'
+        : '<div class="note">Buy prices and confirmed vendor types will come from the wiki in a later update.</div>'));
   }
 
   if (!sections.length) {
