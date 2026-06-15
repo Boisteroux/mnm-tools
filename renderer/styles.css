@@ -108,6 +108,36 @@ button {
 button:hover { background: var(--surface-2); border-color: #39434f; }
 button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-dk); font-weight: 600; }
 button.primary:hover { background: #ffa94d; }
+
+/* Manual map switcher — segmented pill shown only in multi-map zones */
+#map-switcher, #overlay-map-switcher {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid var(--line-2);
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--surface);
+  vertical-align: middle;
+}
+#map-switcher { margin-top: 6px; }
+#map-switcher .seg, #overlay-map-switcher .seg {
+  -webkit-app-region: no-drag;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
+  padding: 3px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+#map-switcher .seg + .seg, #overlay-map-switcher .seg + .seg { border-left: 1px solid var(--line-2); }
+#map-switcher .seg:hover, #overlay-map-switcher .seg:hover { color: var(--text); background: var(--surface-2); }
+#map-switcher .seg.active, #overlay-map-switcher .seg.active { background: var(--accent); color: var(--accent-dk); }
+#map-switcher .seg.active:hover, #overlay-map-switcher .seg.active:hover { background: #ffa94d; }
 button.danger { background: #45191c; border-color: #6e2a2e; color: #f0a8a8; }
 button.danger:hover { background: #572025; }
 button.active { background: var(--accent); border-color: var(--accent); color: var(--accent-dk); font-weight: 600; }

@@ -25,5 +25,6 @@ contextBridge.exposeInMainWorld('mapAPI', {
   trackerSetEnabled: (on) => ipcRenderer.invoke('tracker-set-enabled', on),
   trackerExport: () => ipcRenderer.invoke('tracker-export'),
   publishMnmdb: () => ipcRenderer.invoke('publish-mnmdb'),
+  zoneAliases: () => ipcRenderer.invoke('zone-aliases'),
   onTrackerUpdated: (cb) => ipcRenderer.on('tracker-updated', (e, s) => cb(s)),
 });

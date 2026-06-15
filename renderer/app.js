@@ -188,6 +188,7 @@ function refreshSidebar() {
   }
   $('empty-state').classList.toggle('hidden', data.zones.length > 0);
   updateOverlayZoneLabel();
+  renderMapSwitcher();
 
   // Category list with live counts for this zone
   const zone = currentZone();
@@ -374,6 +375,10 @@ function setQuickPlace(on) {
 const ZONE_ALIASES = {
   evergrove: 'Evershade Weald',
 };
+
+// Zones that share one game zone-code but have several maps (loaded from
+// zone-aliases.json at startup). Drives the manual map switcher.
+let MULTI_MAP = {};
 
 const normName = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
 
@@ -1014,6 +1019,62 @@ function updateOverlayZoneLabel() {
   }
 }
 
+// ---- Manual map switcher (multi-map zones, e.g. Evershade Weald ⇄ Faelindral) ----
+
+// Which multi-map group does the player's situation belong to? Prefer the zone
+// the character is actually in; fall back to the one being viewed.
+function multiMapGroup() {
+  const probe = data.zones.find((z) => z.id === characterZoneId) || currentZone();
+  if (!probe) return null;
+  for (const [code, grp] of Object.entries(MULTI_MAP)) {
+    const names = grp.maps.map((m) => m.name.toLowerCase());
+    if (probe.gameName === code || names.includes(probe.name.toLowerCase())) {
+      return { code, ...grp };
+    }
+  }
+  return null;
+}
+
+// Fill the sidebar + overlay switchers with a segmented button per map, or hide
+// them when the current place only has one map.
+function renderMapSwitcher() {
+  const group = multiMapGroup();
+  for (const id of ['map-switcher', 'overlay-map-switcher']) {
+    const el = $(id);
+    if (!el) continue;
+    el.innerHTML = '';
+    if (!group) { el.classList.add('hidden'); continue; }
+    el.classList.remove('hidden');
+    for (const m of group.maps) {
+      const zone = data.zones.find((z) => z.name.toLowerCase() === m.name.toLowerCase());
+      const btn = document.createElement('button');
+      btn.className = 'seg' + (zone && zone.id === currentZoneId ? ' active' : '');
+      btn.textContent = m.name;
+      btn.title = m.note ? m.name + ' — ' + m.note : m.name;
+      btn.addEventListener('click', () => switchToMap(m.name));
+      el.appendChild(btn);
+    }
+  }
+}
+
+// View a sibling map by name, creating + fetching it from the wiki if we don't
+// have it yet. Doesn't change which zone you're tracked as being in.
+async function switchToMap(name) {
+  let zone = data.zones.find((z) => z.name.toLowerCase() === name.toLowerCase());
+  if (zone) {
+    if (zone.id !== currentZoneId) switchZone(zone.id);
+    else renderMapSwitcher();
+    return;
+  }
+  zone = { id: uid(), name, gameName: null, image: null, markers: [] };
+  data.zones.push(zone);
+  save();
+  switchZone(zone.id);
+  wikiStatus('Fetching the ' + name + ' map from the wiki…');
+  const got = await chooseWikiMap(zone, true);
+  wikiStatus(got ? name + ' map ready.' : name + ' added — use Import Map from Wiki if the map is missing.');
+}
+
 (async function init() {
   if (isOverlay) document.body.classList.add('overlay');
 
@@ -1028,6 +1089,16 @@ function updateOverlayZoneLabel() {
   if ($('tracker-enabled').checked) {
     window.mapAPI.trackerSetEnabled(true).then((r) => showTrackerSummary(r, ' · auto-updating'));
   }
+
+  // Multi-map zones (Evershade Weald ⇄ Faelindral, etc.). Also feed each group's
+  // default name into ZONE_ALIASES so auto-follow lands on the right map first.
+  try {
+    const aliases = await window.mapAPI.zoneAliases();
+    MULTI_MAP = (aliases && aliases.zones) || {};
+    for (const [code, grp] of Object.entries(MULTI_MAP)) {
+      if (grp.default && !ZONE_ALIASES[code]) ZONE_ALIASES[code] = grp.default;
+    }
+  } catch {}
 
   data = await window.mapAPI.loadData();
   if (!data || !Array.isArray(data.zones)) data = { zones: [] };

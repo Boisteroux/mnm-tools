@@ -147,6 +147,17 @@ function gitRun(args) {
   });
 }
 
+// Zones that share one game zone-code but have multiple maps (e.g. a city above
+// ground and the wilderness below). The renderer uses this to offer a manual
+// map switch. Bundled with the app; edit zone-aliases.json to add cases.
+ipcMain.handle('zone-aliases', () => {
+  try {
+    return JSON.parse(fs.readFileSync(path.join(__dirname, 'zone-aliases.json'), 'utf8'));
+  } catch {
+    return { zones: {} };
+  }
+});
+
 ipcMain.handle('publish-mnmdb', async () => {
   if (!isDev) return { error: 'Publishing is only available in the owner (dev) build.' };
   try {
