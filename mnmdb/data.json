@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-15T00:12:10.195Z",
+  "generatedAt": "2026-06-15T00:26:07.233Z",
   "source": "mnm-tools",
   "ledgerFiles": 12,
-  "events": 2597,
+  "events": 2599,
   "mobs": {
     "a desert bat": {
       "kills": 0,
@@ -12,7 +12,9 @@
         "Bat Tooth": 7,
         "Raw Bat Meat": 6,
         "Bat Fur": 2
-      }
+      },
+      "zones": {},
+      "coin": 0
     },
     "a rotting skeleton": {
       "kills": 125,
@@ -49,14 +51,22 @@
         "Tattered Cloth Tunic": 2,
         "Rusty Kite Shield": 3,
         "Worn Buckler": 1
-      }
+      },
+      "zones": {
+        "Night Harbor": 26,
+        "Shaded Dunes": 5,
+        "Evershade Weald": 94
+      },
+      "coin": 182
     },
     "a snake": {
       "kills": 0,
       "drops": {
         "Snake Fang": 2,
         "Snake Skin": 2
-      }
+      },
+      "zones": {},
+      "coin": 0
     },
     "a spiderling": {
       "kills": 0,
@@ -64,7 +74,9 @@
         "Spider Silk": 9,
         "Spiderling Eye": 1,
         "Spider Legs": 1
-      }
+      },
+      "zones": {},
+      "coin": 0
     },
     "an ashira scout": {
       "kills": 13,
@@ -76,7 +88,11 @@
         "Torch": 2,
         "Carrot": 2,
         "Tattered Cloth Belt": 1
-      }
+      },
+      "zones": {
+        "Night Harbor": 13
+      },
+      "coin": 51
     },
     "a fire beetle": {
       "kills": 0,
@@ -85,7 +101,9 @@
         "Fire Beetle Legs": 25,
         "Fire Beetle Eye": 8,
         "Fire Beetle Carapace": 3
-      }
+      },
+      "zones": {},
+      "coin": 0
     },
     "a jackal pup": {
       "kills": 0,
@@ -93,7 +111,9 @@
         "Raw Jackal Meat": 2,
         "Jackal Tooth": 4,
         "Low-Quality Jackal Pelt": 2
-      }
+      },
+      "zones": {},
+      "coin": 0
     },
     "a dunes scarab": {
       "kills": 0,
@@ -101,7 +121,9 @@
         "Scarab Leg": 17,
         "Scarab Eye": 5,
         "Scarab Carapace": 1
-      }
+      },
+      "zones": {},
+      "coin": 0
     },
     "a large diseased rat": {
       "kills": 0,
@@ -111,7 +133,9 @@
         "Rat Ear": 4,
         "Cooked Rat Meat": 2,
         "Raw Rat Meat": 4
-      }
+      },
+      "zones": {},
+      "coin": 0
     },
     "a large rat": {
       "kills": 0,
@@ -120,13 +144,17 @@
         "Rat Foot": 6,
         "Rat Tooth": 7,
         "Rat Ear": 11
-      }
+      },
+      "zones": {},
+      "coin": 0
     },
     "a diseased snake": {
       "kills": 0,
       "drops": {
         "Diseased Snake Blood": 2
-      }
+      },
+      "zones": {},
+      "coin": 0
     },
     "an ashira warrior": {
       "kills": 11,
@@ -146,7 +174,12 @@
         "Tattered Rawhide Vest": 2,
         "Potato": 2,
         "Raw Ashira Meat": 1
-      }
+      },
+      "zones": {
+        "Night Harbor": 3,
+        "Shaded Dunes": 8
+      },
+      "coin": 131
     },
     "an ashira shaman": {
       "kills": 0,
@@ -156,7 +189,9 @@
         "Celery": 2,
         "Ashira Tail": 2,
         "Rawhide Scraps": 2
-      }
+      },
+      "zones": {},
+      "coin": 0
     },
     "an ashira lookout": {
       "kills": 6,
@@ -169,14 +204,20 @@
         "Tattered Cloth Pantaloons": 2,
         "Rusty Scimitar": 2,
         "Rusty Spear": 2
-      }
+      },
+      "zones": {
+        "Shaded Dunes": 6
+      },
+      "coin": 74
     },
     "a rattlesnake": {
       "kills": 0,
       "drops": {
         "Snake Fang": 5,
         "Snake Egg": 2
-      }
+      },
+      "zones": {},
+      "coin": 0
     },
     "a skeleton": {
       "kills": 6,
@@ -191,13 +232,20 @@
         "Tattered Cloth Cape": 1,
         "Rawhide Scraps": 1,
         "Worn Buckler": 1
-      }
+      },
+      "zones": {
+        "Shaded Dunes": 1,
+        "Evershade Weald": 5
+      },
+      "coin": 62
     },
     "a large dunes bat": {
       "kills": 0,
       "drops": {
         "Large Bat Wing": 4
-      }
+      },
+      "zones": {},
+      "coin": 0
     },
     "a diseased desert bat": {
       "kills": 0,
@@ -205,13 +253,17 @@
         "Diseased Bat Blood": 1,
         "Bat Eye": 1,
         "Bat Wing": 1
-      }
+      },
+      "zones": {},
+      "coin": 0
     },
     "a large desert bat": {
       "kills": 0,
       "drops": {
         "Large Bat Wing": 1
-      }
+      },
+      "zones": {},
+      "coin": 0
     },
     "a crocodile hatchling": {
       "kills": 0,
@@ -221,7 +273,9 @@
         "Crocodile Hide": 4,
         "Raw Crocodile Meat": 7,
         "Fish Bones": 3
-      }
+      },
+      "zones": {},
+      "coin": 0
     },
     "a black bat": {
       "kills": 0,
@@ -232,7 +286,9 @@
         "Bat Fur": 12,
         "Raw Bat Meat": 9,
         "Cooked Bat Meat": 2
-      }
+      },
+      "zones": {},
+      "coin": 0
     },
     "a black widow hatchling": {
       "kills": 0,
@@ -240,7 +296,9 @@
         "Spider Silk": 109,
         "Spider Legs": 14,
         "Spider Venom Sac": 4
-      }
+      },
+      "zones": {},
+      "coin": 0
     },
     "a black wolf pup": {
       "kills": 0,
@@ -249,7 +307,9 @@
         "Wolf Blood": 10,
         "Raw Wolf Meat": 16,
         "Low-Quality Wolf Pelt": 16
-      }
+      },
+      "zones": {},
+      "coin": 0
     },
     "a wasp drone": {
       "kills": 0,
@@ -257,13 +317,19 @@
         "Wasp Wing": 21,
         "Wasp Venom Sac": 6,
         "Royal Jelly": 6
-      }
+      },
+      "zones": {},
+      "coin": 0
     },
     "a dryad fawn": {
       "kills": 24,
       "drops": {
         "Dryad Sap": 3
-      }
+      },
+      "zones": {
+        "Evershade Weald": 24
+      },
+      "coin": 95
     },
     "a Fellstone scout": {
       "kills": 52,
@@ -286,7 +352,11 @@
         "Tattered Cloth Veil": 1,
         "Rusty Trident": 1,
         "Cracked Staff": 1
-      }
+      },
+      "zones": {
+        "Evershade Weald": 52
+      },
+      "coin": 245
     },
     "a green drakeling": {
       "kills": 35,
@@ -297,7 +367,11 @@
         "Green Drakeling Hide": 9,
         "Drake Fang": 11,
         "Green Drakeling Poison Duct": 1
-      }
+      },
+      "zones": {
+        "Evershade Weald": 35
+      },
+      "coin": 439
     },
     "a large black bat": {
       "kills": 0,
@@ -305,7 +379,9 @@
         "Large Bat Fur": 5,
         "Raw Bat Meat": 5,
         "Large Bat Wing": 2
-      }
+      },
+      "zones": {},
+      "coin": 0
     },
     "a Fellstone warrior": {
       "kills": 13,
@@ -318,7 +394,11 @@
         "Tattered Cloth Bracer": 1,
         "Raw Orc Meat": 2,
         "Cloth Scraps": 3
-      }
+      },
+      "zones": {
+        "Evershade Weald": 13
+      },
+      "coin": 109
     },
     "a black widow": {
       "kills": 0,
@@ -326,7 +406,9 @@
         "Widow Eye": 12,
         "Spider Silk": 17,
         "Spider Legs": 3
-      }
+      },
+      "zones": {},
+      "coin": 0
     },
     "a wasp worker": {
       "kills": 0,
@@ -335,19 +417,25 @@
         "Royal Jelly": 4,
         "Wasp Worker Wax": 2,
         "Wasp Venom Sac": 1
-      }
+      },
+      "zones": {},
+      "coin": 0
     },
     "a black wolf": {
       "kills": 0,
       "drops": {
         "Raw Wolf Meat": 1
-      }
+      },
+      "zones": {},
+      "coin": 0
     },
     "a rabid wolf": {
       "kills": 0,
       "drops": {
         "Raw Wolf Meat": 2
-      }
+      },
+      "zones": {},
+      "coin": 0
     }
   },
   "items": [
@@ -356,7 +444,8 @@
       "name": "Alunite Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 5
+      "harvested": 5,
+      "zones": []
     },
     {
       "id": "ashira_necklace_sct",
@@ -376,7 +465,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor",
+        "Shaded Dunes"
+      ]
     },
     {
       "id": "ashira_tail",
@@ -402,7 +495,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes"
+      ]
     },
     {
       "id": "Ashira Tail",
@@ -414,7 +510,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "ashira_war_fore",
@@ -428,7 +525,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes",
+        "Night Harbor"
+      ]
     },
     {
       "id": "ashira_necklace_war",
@@ -442,7 +543,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes"
+      ]
     },
     {
       "id": "ashira_warrior_pelt",
@@ -456,7 +560,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
     },
     {
       "id": "Ashira Warrior Pelt",
@@ -468,7 +575,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "bat_eye",
@@ -494,7 +602,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor",
+        "Evershade Weald"
+      ]
     },
     {
       "id": "Bat Eye",
@@ -506,7 +618,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "bat_fur",
@@ -526,7 +639,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald",
+        "Night Harbor"
+      ]
     },
     {
       "id": "Bat Fur",
@@ -538,7 +655,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "bat_tooth",
@@ -558,7 +676,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald",
+        "Night Harbor"
+      ]
     },
     {
       "id": "Bat Tooth",
@@ -570,7 +692,8 @@
           "count": 4
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "bat_wing",
@@ -596,7 +719,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald",
+        "Night Harbor"
+      ]
     },
     {
       "id": "Bat Wing",
@@ -616,7 +743,8 @@
           "count": 2
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "bell_pepper",
@@ -630,7 +758,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes"
+      ]
     },
     {
       "id": "bone_chips",
@@ -650,7 +781,13 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald",
+        "Tomb of the Last Wyrmsbane",
+        "Night Harbor",
+        "Shaded Dunes"
+      ]
     },
     {
       "id": "Bone Chips",
@@ -662,14 +799,18 @@
           "count": 5
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "bow",
       "name": "Bow",
       "droppedBy": [],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Tomb of the Last Wyrmsbane"
+      ]
     },
     {
       "id": "Brittle Stone",
@@ -681,7 +822,8 @@
           "count": 4
         }
       ],
-      "harvested": 208
+      "harvested": 208,
+      "zones": []
     },
     {
       "id": "cabbage",
@@ -695,7 +837,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes"
+      ]
     },
     {
       "id": "carrot",
@@ -709,7 +854,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
     },
     {
       "id": "celery",
@@ -723,91 +871,106 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes"
+      ]
     },
     {
       "id": "chipped_amber",
       "name": "Chipped Amber",
       "droppedBy": [],
       "prices": [],
-      "harvested": 1
+      "harvested": 1,
+      "zones": []
     },
     {
       "id": "chipped_black_pearl",
       "name": "Chipped Black Pearl",
       "droppedBy": [],
       "prices": [],
-      "harvested": 2
+      "harvested": 2,
+      "zones": []
     },
     {
       "id": "chipped_bloodstone",
       "name": "Chipped Bloodstone",
       "droppedBy": [],
       "prices": [],
-      "harvested": 1
+      "harvested": 1,
+      "zones": []
     },
     {
       "id": "chipped_blue_diamond",
       "name": "Chipped Blue Diamond",
       "droppedBy": [],
       "prices": [],
-      "harvested": 1
+      "harvested": 1,
+      "zones": []
     },
     {
       "id": "chipped_diamond",
       "name": "Chipped Diamond",
       "droppedBy": [],
       "prices": [],
-      "harvested": 1
+      "harvested": 1,
+      "zones": []
     },
     {
       "id": "chipped_fire_emerald",
       "name": "Chipped Fire Emerald",
       "droppedBy": [],
       "prices": [],
-      "harvested": 1
+      "harvested": 1,
+      "zones": []
     },
     {
       "id": "chipped_hematite",
       "name": "Chipped Hematite",
       "droppedBy": [],
       "prices": [],
-      "harvested": 1
+      "harvested": 1,
+      "zones": []
     },
     {
       "id": "chipped_jacinth",
       "name": "Chipped Jacinth",
       "droppedBy": [],
       "prices": [],
-      "harvested": 1
+      "harvested": 1,
+      "zones": []
     },
     {
       "id": "chipped_malachite",
       "name": "Chipped Malachite",
       "droppedBy": [],
       "prices": [],
-      "harvested": 2
+      "harvested": 2,
+      "zones": []
     },
     {
       "id": "chipped_onyx",
       "name": "Chipped Onyx",
       "droppedBy": [],
       "prices": [],
-      "harvested": 1
+      "harvested": 1,
+      "zones": []
     },
     {
       "id": "chipped_star_ruby",
       "name": "Chipped Star Ruby",
       "droppedBy": [],
       "prices": [],
-      "harvested": 1
+      "harvested": 1,
+      "zones": []
     },
     {
       "id": "chipped_turquoise",
       "name": "Chipped Turquoise",
       "droppedBy": [],
       "prices": [],
-      "harvested": 2
+      "harvested": 2,
+      "zones": []
     },
     {
       "id": "cloth_scraps",
@@ -863,14 +1026,21 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald",
+        "Tomb of the Last Wyrmsbane",
+        "Night Harbor",
+        "Shaded Dunes"
+      ]
     },
     {
       "id": "clouded_crystallized_magic",
       "name": "Clouded Crystallized Magic",
       "droppedBy": [],
       "prices": [],
-      "harvested": 2
+      "harvested": 2,
+      "zones": []
     },
     {
       "id": "cooked_bat_meat",
@@ -884,7 +1054,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "cooked_gator_meat",
@@ -898,7 +1071,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
     },
     {
       "id": "cooked_rat_meat",
@@ -912,7 +1088,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
     },
     {
       "id": "Copper Axe",
@@ -924,7 +1103,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "Copper Cauldron",
@@ -936,7 +1116,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "Copper Dagger",
@@ -948,14 +1129,16 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "copper_ore",
       "name": "Copper Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 199
+      "harvested": 199,
+      "zones": []
     },
     {
       "id": "Copper Plate Bracer",
@@ -967,7 +1150,21 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
+    },
+    {
+      "id": "Copper Scimitar",
+      "name": "Copper Scimitar",
+      "droppedBy": [],
+      "prices": [
+        {
+          "copper": 43,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "Copper Shortsword",
@@ -979,7 +1176,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "cracked_staff",
@@ -993,7 +1191,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "gator_scale",
@@ -1007,7 +1208,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
     },
     {
       "id": "gator_tooth",
@@ -1021,7 +1225,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
     },
     {
       "id": "Crude Handmade Torch",
@@ -1037,7 +1244,8 @@
           "count": 2
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "dis_bat_blood",
@@ -1051,7 +1259,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
     },
     {
       "id": "dis_rat_blood",
@@ -1065,7 +1276,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
     },
     {
       "id": "Diseased Rat Blood",
@@ -1077,7 +1291,8 @@
           "count": 3
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "dis_snake_blood",
@@ -1091,7 +1306,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
     },
     {
       "id": "Diseased Snake Blood",
@@ -1103,7 +1321,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "drake_claw",
@@ -1117,7 +1336,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "Drake Claw",
@@ -1133,7 +1355,8 @@
           "count": 2
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "drake_fang",
@@ -1147,7 +1370,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "Drake Fang",
@@ -1163,7 +1389,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "dryad_sap",
@@ -1177,7 +1404,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "orc_warrior_belt",
@@ -1191,7 +1421,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "fbeetle_shell",
@@ -1205,7 +1438,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes",
+        "Night Harbor"
+      ]
     },
     {
       "id": "fbeetle_eye",
@@ -1219,7 +1456,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor",
+        "Shaded Dunes"
+      ]
     },
     {
       "id": "Fire Beetle Eye",
@@ -1231,7 +1472,8 @@
           "count": 2
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "fbeetle_gland",
@@ -1245,7 +1487,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
     },
     {
       "id": "Fire Beetle Gland",
@@ -1257,7 +1502,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "fbeetle_leg",
@@ -1271,7 +1517,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor",
+        "Shaded Dunes"
+      ]
     },
     {
       "id": "Fire Beetle Legs",
@@ -1291,7 +1541,8 @@
           "count": 3
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "fish_bones",
@@ -1305,7 +1556,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
     },
     {
       "id": "garlic",
@@ -1319,7 +1573,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes"
+      ]
     },
     {
       "id": "Ghost Poppy",
@@ -1331,7 +1588,8 @@
           "count": 2
         }
       ],
-      "harvested": 11
+      "harvested": 11,
+      "zones": []
     },
     {
       "id": "green_drakeling_hide",
@@ -1345,7 +1603,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "Green Drakeling Hide",
@@ -1357,7 +1618,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "green_drakeling_duct",
@@ -1371,7 +1633,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "green_drakeling_scale",
@@ -1385,7 +1650,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "green_drakeling_wing",
@@ -1399,7 +1667,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "Green Drakeling Wing",
@@ -1411,7 +1682,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "Heavy Cloth Bandage",
@@ -1423,7 +1695,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "jackal_tooth",
@@ -1437,7 +1710,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
     },
     {
       "id": "Jackal Tooth",
@@ -1449,7 +1725,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "large_bat_fur",
@@ -1463,7 +1740,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "Large Bat Fur",
@@ -1475,7 +1755,8 @@
           "count": 3
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "Large Bat Wing",
@@ -1491,7 +1772,8 @@
           "count": 2
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "large_bat_wing",
@@ -1517,7 +1799,12 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes",
+        "Evershade Weald",
+        "Night Harbor"
+      ]
     },
     {
       "id": "left_orc_ear",
@@ -1531,14 +1818,18 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "lionleaf",
       "name": "Lionleaf",
       "droppedBy": [],
       "prices": [],
-      "harvested": 3
+      "harvested": 3,
+      "zones": []
     },
     {
       "id": "lowquality_jackal_pelt",
@@ -1552,7 +1843,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
     },
     {
       "id": "Low-Quality Jackal Pelt",
@@ -1564,7 +1858,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "lowquality_wolf_pelt",
@@ -1578,7 +1873,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "Low-Quality Wolf Pelt",
@@ -1594,7 +1892,8 @@
           "count": 2
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "multhele_root",
@@ -1608,7 +1907,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
     },
     {
       "id": "Multhele Root",
@@ -1620,7 +1922,8 @@
           "count": 4
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "Nomad's Grace",
@@ -1632,7 +1935,8 @@
           "count": 1
         }
       ],
-      "harvested": 3
+      "harvested": 3,
+      "zones": []
     },
     {
       "id": "Onion",
@@ -1644,7 +1948,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "potato",
@@ -1658,7 +1963,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes"
+      ]
     },
     {
       "id": "rat_ear",
@@ -1678,7 +1986,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
     },
     {
       "id": "Rat Ear",
@@ -1694,7 +2005,8 @@
           "count": 2
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "rat_foot",
@@ -1708,7 +2020,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
     },
     {
       "id": "Rat Foot",
@@ -1720,7 +2035,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "rat_tooth",
@@ -1740,7 +2056,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
     },
     {
       "id": "Rat Tooth",
@@ -1752,7 +2071,8 @@
           "count": 2
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "raw_ash_meat",
@@ -1778,7 +2098,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor",
+        "Shaded Dunes"
+      ]
     },
     {
       "id": "Raw Ashira Meat",
@@ -1790,7 +2114,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "bat_meat",
@@ -1816,7 +2141,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald",
+        "Night Harbor"
+      ]
     },
     {
       "id": "Raw Bat Meat",
@@ -1832,7 +2161,8 @@
           "count": 3
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "gator_meat",
@@ -1846,7 +2176,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
     },
     {
       "id": "jackal_meat",
@@ -1860,7 +2193,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
     },
     {
       "id": "raw_orc_meat",
@@ -1880,7 +2216,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "Raw Orc Meat",
@@ -1896,7 +2235,8 @@
           "count": 2
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "rat_meat",
@@ -1916,7 +2256,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
     },
     {
       "id": "Raw Rat Meat",
@@ -1928,7 +2271,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "wolf_meat",
@@ -1954,7 +2298,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "Raw Wolf Meat",
@@ -1966,7 +2313,8 @@
           "count": 3
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "rawhide_scraps",
@@ -1992,7 +2340,12 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes",
+        "Evershade Weald",
+        "Tomb of the Last Wyrmsbane"
+      ]
     },
     {
       "id": "Resin",
@@ -2004,7 +2357,8 @@
           "count": 7
         }
       ],
-      "harvested": 160
+      "harvested": 160,
+      "zones": []
     },
     {
       "id": "royal_jelly",
@@ -2024,7 +2378,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "Royal Jelly",
@@ -2036,7 +2393,8 @@
           "count": 2
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "rusty_axe",
@@ -2056,7 +2414,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald",
+        "Night Harbor"
+      ]
     },
     {
       "id": "Rusty Axe",
@@ -2068,7 +2430,8 @@
           "count": 3
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "rusty_2axe",
@@ -2082,7 +2445,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "Rusty Battle Axe",
@@ -2094,7 +2460,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "rusty_dagger",
@@ -2114,7 +2481,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald",
+        "Tomb of the Last Wyrmsbane"
+      ]
     },
     {
       "id": "Rusty Dagger",
@@ -2126,7 +2497,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "rusty_scythe",
@@ -2140,7 +2512,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor",
+        "Evershade Weald"
+      ]
     },
     {
       "id": "Rusty Great Scythe",
@@ -2152,7 +2528,8 @@
           "count": 2
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "rusty_2sword",
@@ -2166,7 +2543,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "Rusty Greatsword",
@@ -2178,7 +2558,8 @@
           "count": 2
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "rusty_kite_shield",
@@ -2192,7 +2573,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "Rusty Kite Shield",
@@ -2204,7 +2588,8 @@
           "count": 2
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "rusty_lsword",
@@ -2224,7 +2609,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "Rusty Longsword",
@@ -2236,7 +2624,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "rusty_mace",
@@ -2250,7 +2639,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor",
+        "Evershade Weald"
+      ]
     },
     {
       "id": "Rusty Mace",
@@ -2266,7 +2659,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "rusty_2hammer",
@@ -2280,7 +2674,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "rusty_scimitar",
@@ -2300,7 +2697,12 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald",
+        "Night Harbor",
+        "Shaded Dunes"
+      ]
     },
     {
       "id": "Rusty Scimitar",
@@ -2312,7 +2714,8 @@
           "count": 5
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "rusty_ssword",
@@ -2338,7 +2741,12 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald",
+        "Shaded Dunes",
+        "Night Harbor"
+      ]
     },
     {
       "id": "Rusty Shortsword",
@@ -2350,7 +2758,8 @@
           "count": 4
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "rusty_spear",
@@ -2370,7 +2779,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes",
+        "Evershade Weald"
+      ]
     },
     {
       "id": "Rusty Spear",
@@ -2382,7 +2795,8 @@
           "count": 3
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "rusty_tower_shield",
@@ -2402,7 +2816,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "Rusty Tower Shield",
@@ -2414,7 +2831,8 @@
           "count": 3
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "rusty_trident",
@@ -2434,7 +2852,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes",
+        "Evershade Weald"
+      ]
     },
     {
       "id": "Rusty Trident",
@@ -2446,7 +2868,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "rusty_2lance",
@@ -2460,7 +2883,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "rusty_whammer",
@@ -2480,7 +2906,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor",
+        "Evershade Weald"
+      ]
     },
     {
       "id": "Rusty Warhammer",
@@ -2496,7 +2926,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "scarab_carapace",
@@ -2510,7 +2941,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
     },
     {
       "id": "scarab_eye",
@@ -2524,7 +2958,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes",
+        "Night Harbor"
+      ]
     },
     {
       "id": "Scarab Eye",
@@ -2536,7 +2974,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "scarab_leg",
@@ -2550,7 +2989,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor",
+        "Shaded Dunes"
+      ]
     },
     {
       "id": "Scarab Leg",
@@ -2566,7 +3009,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "shattered_skull",
@@ -2586,7 +3030,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "elrind_skel_jaw",
@@ -2600,7 +3047,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald",
+        "Night Harbor"
+      ]
     },
     {
       "id": "Skeleton Jawbone",
@@ -2612,7 +3063,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "snake_egg",
@@ -2626,7 +3078,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
     },
     {
       "id": "snake_fang",
@@ -2646,7 +3101,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes",
+        "Night Harbor"
+      ]
     },
     {
       "id": "Snake Fang",
@@ -2658,7 +3117,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "snake_skin",
@@ -2672,7 +3132,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
     },
     {
       "id": "Snake Skin",
@@ -2684,7 +3147,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "spider_leg",
@@ -2710,7 +3174,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald",
+        "Night Harbor"
+      ]
     },
     {
       "id": "Spider Legs",
@@ -2726,7 +3194,8 @@
           "count": 3
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "spider_silk",
@@ -2752,7 +3221,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald",
+        "Night Harbor"
+      ]
     },
     {
       "id": "Spider Silk",
@@ -2772,7 +3245,8 @@
           "count": 3
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "spider_venom",
@@ -2786,7 +3260,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "Spider Venom Sac",
@@ -2798,7 +3275,8 @@
           "count": 3
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "spiderling_eye",
@@ -2812,7 +3290,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
     },
     {
       "id": "tattered_cloth_belt",
@@ -2838,7 +3319,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald",
+        "Night Harbor"
+      ]
     },
     {
       "id": "tattered_cloth_feet",
@@ -2858,7 +3343,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald",
+        "Night Harbor"
+      ]
     },
     {
       "id": "tattered_cloth_fore",
@@ -2878,14 +3367,22 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Tomb of the Last Wyrmsbane",
+        "Shaded Dunes",
+        "Evershade Weald"
+      ]
     },
     {
       "id": "tattered_cloth_head",
       "name": "Tattered Cloth Cap",
       "droppedBy": [],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Tomb of the Last Wyrmsbane"
+      ]
     },
     {
       "id": "tattered_cloth_cape",
@@ -2905,7 +3402,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "tattered_cloth_hand",
@@ -2919,7 +3419,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald",
+        "Tomb of the Last Wyrmsbane"
+      ]
     },
     {
       "id": "tattered_cloth_neck",
@@ -2939,7 +3443,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald",
+        "Shaded Dunes"
+      ]
     },
     {
       "id": "Tattered Cloth Gorget",
@@ -2951,7 +3459,8 @@
           "count": 2
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "tattered_cloth_shld",
@@ -2971,7 +3480,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald",
+        "Tomb of the Last Wyrmsbane"
+      ]
     },
     {
       "id": "tattered_cloth_legs",
@@ -2997,7 +3510,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes",
+        "Night Harbor"
+      ]
     },
     {
       "id": "Tattered Cloth Pantaloons",
@@ -3009,7 +3526,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "tattered_cloth_robe",
@@ -3035,7 +3553,12 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald",
+        "Night Harbor",
+        "Shaded Dunes"
+      ]
     },
     {
       "id": "Tattered Cloth Robe",
@@ -3047,7 +3570,8 @@
           "count": 2
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "tattered_cloth_arms",
@@ -3067,7 +3591,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes",
+        "Evershade Weald"
+      ]
     },
     {
       "id": "tattered_cloth_vest",
@@ -3093,7 +3621,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "tattered_cloth_face",
@@ -3119,7 +3650,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald",
+        "Tomb of the Last Wyrmsbane"
+      ]
     },
     {
       "id": "Tattered Cloth Veil",
@@ -3131,7 +3666,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "Tattered Rawhide Belt",
@@ -3143,7 +3679,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "tattered_rawhide_arms",
@@ -3157,7 +3694,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes"
+      ]
     },
     {
       "id": "torch",
@@ -3189,7 +3729,12 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald",
+        "Night Harbor",
+        "Tomb of the Last Wyrmsbane"
+      ]
     },
     {
       "id": "Torch",
@@ -3201,7 +3746,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "archer_orc_writ",
@@ -3215,7 +3761,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "wasp_venom_sac",
@@ -3235,7 +3784,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "Wasp Venom Sac",
@@ -3251,7 +3803,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "wasp_wing",
@@ -3271,7 +3824,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "Wasp Wing",
@@ -3283,7 +3839,8 @@
           "count": 5
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "wasp_worker_wax",
@@ -3297,7 +3854,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "widow_eye",
@@ -3311,7 +3871,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "wolf_blood",
@@ -3325,7 +3888,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "Wolf Blood",
@@ -3337,7 +3903,8 @@
           "count": 10
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "wolf_tooth",
@@ -3351,7 +3918,10 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "Wolf Tooth",
@@ -3363,7 +3933,8 @@
           "count": 2
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "Wood",
@@ -3375,14 +3946,18 @@
           "count": 4
         }
       ],
-      "harvested": 129
+      "harvested": 129,
+      "zones": []
     },
     {
       "id": "worn_bow",
       "name": "Worn Bow",
       "droppedBy": [],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Tomb of the Last Wyrmsbane"
+      ]
     },
     {
       "id": "worn_buckler_t1",
@@ -3408,7 +3983,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes",
+        "Evershade Weald"
+      ]
     },
     {
       "id": "Worn Buckler",
@@ -3420,7 +3999,8 @@
           "count": 2
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "worn_great_staff",
@@ -3434,7 +4014,11 @@
         }
       ],
       "prices": [],
-      "harvested": 0
+      "harvested": 0,
+      "zones": [
+        "Night Harbor",
+        "Evershade Weald"
+      ]
     },
     {
       "id": "Worn Great Staff",
@@ -3446,7 +4030,8 @@
           "count": 1
         }
       ],
-      "harvested": 0
+      "harvested": 0,
+      "zones": []
     }
   ],
   "harvest": {

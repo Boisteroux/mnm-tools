@@ -41,6 +41,23 @@ function priceToCopper(str) {
   return v.platinum * 1000 + v.gold * 100 + v.silver * 10 + v.copper;
 }
 
+// Internal zone names -> display names (extend as new zones appear)
+const ZONE_NAMES = {
+  evergrove: 'Evershade Weald',
+  nightharbor: 'Night Harbor',
+  shadeddunes: 'Shaded Dunes',
+  wyrmsbanetomb: 'Tomb of the Last Wyrmsbane',
+};
+const zoneName = (z) => ZONE_NAMES[z] || (z ? z.charAt(0).toUpperCase() + z.slice(1) : '');
+
+// Kill coin field d12 = "plat,gold,silver,copper" (base64) -> total copper
+function coinFromD12(s) {
+  const t = b64(s);
+  const p = t.split(',').map(Number);
+  if (p.length !== 4 || p.some(isNaN)) return 0;
+  return p[0] * 1000 + p[1] * 100 + p[2] * 10 + p[3];
+}
+
 function copperToString(c) {
   const p = Math.floor(c / 1000); c %= 1000;
   const g = Math.floor(c / 100); c %= 100;
@@ -72,8 +89,9 @@ function parseLedgers(files) {
   const harvest = {};  // resourceName -> count
   let events = 0;
 
-  const mob = (name) => (mobs[name] = mobs[name] || { kills: 0, drops: {} });
-  const item = (id, name) => (items[id] = items[id] || { name, sources: {}, prices: {} });
+  const mob = (name) => (mobs[name] = mobs[name] || { kills: 0, drops: {}, zones: {}, coin: 0 });
+  const item = (id, name) => (items[id] = items[id] || { name, sources: {}, prices: {}, zones: {} });
+  const bump = (obj, key) => { if (key) obj[key] = (obj[key] || 0) + 1; };
 
   for (const file of files) {
     let data;
@@ -83,6 +101,9 @@ function parseLedgers(files) {
       let p = {};
       try { p = JSON.parse(ev.f03 || '{}'); } catch {}
 
+      const zRaw = b64((ev.f05 || '').replace(/^zone_/, ''));
+      const zone = zRaw && !zRaw.includes('�') ? zoneName(zRaw) : '';
+
       if (ev.f01 === 'act_14') {
         // KILL — a corpse was created. New format stores the mob in d13 (base64);
         // skip old-format entries where it's only an unresolved ref or a sentence.
@@ -91,7 +112,12 @@ function parseLedgers(files) {
           const alt = decodeName((ev.f02 || '').replace(/^name_/, ''));
           if (alt && alt.length <= 40 && !/[,]|corpse|copper|split/i.test(alt)) name = alt;
         }
-        if (name) mob(name).kills++;
+        if (name) {
+          const M = mob(name);
+          M.kills++;
+          bump(M.zones, zone);
+          M.coin += coinFromD12(p.d12);
+        }
       } else if (ev.f01 === 'act_13') {
         // LOOT — item taken off a mob
         const source = decodeName(p.d02);
@@ -99,6 +125,7 @@ function parseLedgers(files) {
         const id = p.d05 || name;
         if (!isClean(name)) continue;
         const it = item(id, name);
+        bump(it.zones, zone);
         if (source) {
           it.sources[source] = (it.sources[source] || 0) + 1;
           mob(source).drops[name] = (mob(source).drops[name] || 0) + 1;
@@ -138,13 +165,15 @@ function buildItemReport(agg) {
       .map(([copper, count]) => ({ copper: +copper, count }))
       .sort((a, b) => a.copper - b.copper);
 
-    return { id, name: it.name, droppedBy, prices, harvested: agg.harvest[it.name] || 0 };
+    const zones = Object.entries(it.zones || {}).sort((a, b) => b[1] - a[1]).map(([z]) => z);
+
+    return { id, name: it.name, droppedBy, prices, harvested: agg.harvest[it.name] || 0, zones };
   });
 
   // Add resource-only entries (gathered but never looted/sold) so they get pages
   const have = new Set(items.map((i) => i.name));
   for (const [res, count] of Object.entries(agg.harvest)) {
-    if (!have.has(res)) items.push({ id: slug(res), name: res, droppedBy: [], prices: [], harvested: count });
+    if (!have.has(res)) items.push({ id: slug(res), name: res, droppedBy: [], prices: [], harvested: count, zones: [] });
   }
 
   return items.sort((a, b) => a.name.localeCompare(b.name));

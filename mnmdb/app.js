@@ -5,6 +5,7 @@
 
 let DATA = null;
 let nameToId = {};   // item name -> item id (for linking mob drops to item pages)
+let itemByName = {}; // item name -> full item record (for vendor-price lookups)
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -28,6 +29,18 @@ function rateCell(rate, drops, kills) {
 
 const itemLink = (id, name) => '<a href="#/item/' + encodeURIComponent(id) + '">' + esc(name) + '</a>';
 const mobLink = (name) => '<a href="#/mob/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
+
+// Regular (lowest observed) vendor price for an item, in copper
+const regularPrice = (it) => (it && it.prices.length ? Math.min.apply(null, it.prices.map((p) => p.copper)) : 0);
+
+// Expected loot value of one kill: coin + Σ(drop rate × item regular price)
+function mobValuePerKill(d) {
+  if (!d.kills) return { coin: 0, loot: 0, total: 0 };
+  const coinPer = (d.coin || 0) / d.kills;
+  let loot = 0;
+  for (const [item, n] of Object.entries(d.drops)) loot += (n / d.kills) * regularPrice(itemByName[item]);
+  return { coin: coinPer, loot, total: coinPer + loot };
+}
 
 // ---- Views ----
 
@@ -76,6 +89,12 @@ function renderItem(id) {
       '</tbody></table></div>');
   }
 
+  // Found in (zones)
+  if (it.zones && it.zones.length) {
+    sections.push('<h2>Found in</h2><div class="card"><table><tbody>' +
+      it.zones.map((z) => '<tr><td>' + esc(z) + '</td></tr>').join('') + '</tbody></table></div>');
+  }
+
   // Harvested
   if (it.harvested > 0) {
     sections.push('<h2>Harvested</h2><div class="card"><table><tbody>' +
@@ -121,24 +140,40 @@ function renderMob(name) {
   const m = DATA.mobs[name];
   if (!m) return notFound('mob', name);
 
-  const drops = Object.entries(m.drops).map(([item, n]) => ({
-    item, n, rate: m.kills ? n / m.kills : null,
-  })).sort((a, b) => b.n - a.n);
+  const zones = Object.keys(m.zones || {});
+  const val = mobValuePerKill(m);
+
+  const drops = Object.entries(m.drops).map(([item, n]) => {
+    const rate = m.kills ? n / m.kills : null;
+    const reg = regularPrice(itemByName[item]);
+    return { item, n, rate, perKill: rate ? rate * reg : 0, hasPrice: reg > 0 };
+  }).sort((a, b) => b.perKill - a.perKill || b.n - a.n);
 
   let table = '<p class="muted">No drops recorded.</p>';
   if (drops.length) {
-    table = '<div class="card"><table><thead><tr><th>Item</th><th class="num">Drop rate</th></tr></thead><tbody>' +
+    table = '<div class="card"><table><thead><tr><th>Item</th><th class="num">Drop rate</th><th class="num">Value / kill</th></tr></thead><tbody>' +
       drops.map((d) => {
         const id = nameToId[d.item] || d.item;
-        return '<tr><td>' + itemLink(id, d.item) + '</td><td class="num">' + rateCell(d.rate, d.n, m.kills) + '</td></tr>';
+        const pk = d.hasPrice ? coin(d.perKill) : '<span class="sample">no price yet</span>';
+        return '<tr><td>' + itemLink(id, d.item) + '</td><td class="num">' + rateCell(d.rate, d.n, m.kills) +
+          '</td><td class="num coin">' + pk + '</td></tr>';
       }).join('') + '</tbody></table></div>';
   }
+
+  const summary = '<div class="vendor-summary">' +
+    '<div class="vbox"><div class="vlbl">Kills observed</div><div class="vval">' + m.kills + '</div></div>' +
+    '<div class="vbox"><div class="vlbl">Coin / kill</div><div class="vval">' + coin(val.coin) + '</div></div>' +
+    '<div class="vbox"><div class="vlbl">Est. value / kill</div><div class="vval">' + coin(val.total) + '</div></div>' +
+    '</div>';
 
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">mnmdb</a> › mob</div>' +
     '<h1>' + esc(name) + '</h1>' +
-    '<p class="sub">' + m.kills + ' kills observed</p>' +
-    '<h2>Drops</h2>' + table;
+    (zones.length ? '<p class="sub">Found in ' + zones.map(esc).join(', ') + '</p>' : '') +
+    summary +
+    '<h2>Drops &amp; farming value</h2>' + table +
+    '<div class="note">“Value / kill” = drop rate × the item’s regular vendor price; add coin/kill for the total. ' +
+    'A rough guide to the most profitable mobs and drops.</div>';
 }
 
 function notFound(kind, id) {
@@ -199,15 +234,21 @@ const browseCols = {
   mobs: [
     { key: 'name', label: 'Mob' },
     { key: 'kills', label: 'Kills', num: true },
-    { key: 'drops', label: 'Distinct drops', num: true },
+    { key: 'drops', label: 'Drops', num: true },
+    { key: 'coinkill', label: 'Coin/kill', num: true, render: (v) => coin(v) },
+    { key: 'valuekill', label: 'Value/kill', num: true, render: (v) => coin(v) },
   ],
 };
 
 function browseRows(view) {
   if (view === 'mobs') {
-    return Object.entries(DATA.mobs).map(([name, d]) => ({
-      _href: '#/mob/' + encodeURIComponent(name), name, kills: d.kills, drops: Object.keys(d.drops).length,
-    }));
+    return Object.entries(DATA.mobs).map(([name, d]) => {
+      const v = mobValuePerKill(d);
+      return {
+        _href: '#/mob/' + encodeURIComponent(name), name, kills: d.kills,
+        drops: Object.keys(d.drops).length, coinkill: v.coin, valuekill: v.total,
+      };
+    });
   }
   const items = view === 'resources' ? DATA.items.filter((i) => i.harvested > 0) : DATA.items;
   return items.map((i) => ({
@@ -273,7 +314,7 @@ fetch('./data.json?v=' + Date.now())
   .then((r) => r.json())
   .then((d) => {
     DATA = d;
-    DATA.items.forEach((i) => { nameToId[i.name] = i.id; });
+    DATA.items.forEach((i) => { nameToId[i.name] = i.id; itemByName[i.name] = i; });
     const when = d.generatedAt ? new Date(d.generatedAt).toLocaleDateString() : '';
     $('data-meta').textContent = (d.events || 0).toLocaleString() + ' events · ' +
       DATA.items.length + ' items · updated ' + when;
