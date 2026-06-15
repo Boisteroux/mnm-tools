@@ -117,7 +117,7 @@ function draw() {
 
 function drawGrid() {
   const step = 100;
-  ctx.strokeStyle = '#161b21';
+  ctx.strokeStyle = '#231810';
   ctx.lineWidth = 1 / view.scale;
   ctx.beginPath();
   for (let i = 0; i <= GRID_SIZE; i += step) {
@@ -125,7 +125,7 @@ function drawGrid() {
     ctx.moveTo(0, i); ctx.lineTo(GRID_SIZE, i);
   }
   ctx.stroke();
-  ctx.strokeStyle = '#26303b';
+  ctx.strokeStyle = '#3a291b';
   ctx.lineWidth = 2 / view.scale;
   ctx.strokeRect(0, 0, GRID_SIZE, GRID_SIZE);
 }
