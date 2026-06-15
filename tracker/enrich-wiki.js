@@ -131,7 +131,18 @@ function parseMobPage(wikitext) {
 // These types are what decide which vendor NPCs will buy an item.
 function parseCategories(wikitext) {
   const cats = [...new Set([...wikitext.matchAll(/\[\[Category:([^\]|]+)/gi)].map((x) => x[1].trim()))];
-  return cats.filter((c) => !/Equipment$/i.test(c) && !/^(Items|Old Itembox Items)$/i.test(c));
+  return cats.filter((c) => !/Equipment$/i.test(c) && !/^(Items|Old Itembox Items|Inventory Items)$/i.test(c));
+}
+
+// Tradeskills an item is used in (e.g. Jewelcrafting), from the Itempage "recipes"
+// field — the [[links]] that aren't the specific recipe outputs (those are in <ul>).
+function parseTradeskills(wikitext) {
+  const m = wikitext.match(/\{\{\s*Itempage([\s\S]*?)\n\}\}/i);
+  if (!m) return [];
+  const rm = m[1].match(/\|\s*recipes\s*=\s*([\s\S]*?)(?=\n\s*\|\s*[a-z_]+\s*=|\n\}\}|$)/i);
+  if (!rm) return [];
+  const text = rm[1].replace(/<ul[\s\S]*?<\/ul>/gi, '');
+  return [...new Set([...text.matchAll(/\[\[([^\]|]+)(?:\|[^\]]*)?\]\]/g)].map((x) => x[1].trim()))];
 }
 
 // Fetch + parse ItemBox/sources for a list of item names into `into`
@@ -141,7 +152,8 @@ async function enrichItems(names, into, label, wikiOnly) {
     process.stdout.write(`  ${label} ${i + 1}-${i + batch.length}/${names.length}…       \r`);
     let texts; try { texts = await fetchWikitext(batch); } catch { continue; }
     for (const [title, wt] of Object.entries(texts)) {
-      const box = parseItemBox(wt), src = parseSources(wt), cats = parseCategories(wt);
+      const box = parseItemBox(wt), src = parseSources(wt);
+      const cats = [...new Set([...parseCategories(wt), ...parseTradeskills(wt)])];
       if (box || src.zones.length || src.from.length || cats.length) {
         into[title] = Object.assign({ hasPage: true }, wikiOnly ? { wikiOnly: true } : {}, box || {},
           src.zones.length ? { wikiZones: src.zones } : {}, src.from.length ? { from: src.from } : {},

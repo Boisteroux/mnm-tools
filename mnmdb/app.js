@@ -345,7 +345,7 @@ const browse = { view: null, key: 'name', dir: 1 };
 const browseCols = {
   items: [
     { key: 'name', label: 'Item' },
-    { key: 'best', label: 'Drop Percent', num: true, render: (v) => (v ? Math.round(v * 100) + '%' : '—') },
+    { key: 'best', label: 'Drop Rate', num: true, render: (v) => (v ? Math.round(v * 100) + '%' : '—') },
     { key: 'vendor', label: 'Vendor Value', num: true, render: (v) => (v == null ? '—' : coin(v)) },
     { key: 'shady', label: 'Shady Value', num: true, render: (v) => (v == null ? '—' : coin(v)) },
     { key: 'sources', label: 'Sources', num: true },
