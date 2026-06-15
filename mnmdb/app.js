@@ -81,7 +81,7 @@ function renderHome() {
       '<div><h2>Most-killed mobs</h2><div class="card"><table><tbody>' +
         topMobs.map(([m, d]) => '<tr><td>' + mobLink(m) + '</td><td class="num sample">' + d.kills + ' kills</td></tr>').join('') +
       '</tbody></table></div></div>' +
-      '<div><h2>Harvested resources</h2><div class="card"><table><tbody>' +
+      '<div><h2>Gathering</h2><div class="card"><table><tbody>' +
         harvest.map(([r, n]) => '<tr><td>' + (nameToId[r] ? itemLink(nameToId[r], r) : esc(r)) + '</td><td class="num sample">' + n + '</td></tr>').join('') +
       '</tbody></table></div></div>' +
     '</div>' +
