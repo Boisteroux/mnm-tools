@@ -10,6 +10,7 @@ let NODES = {};      // gathering nodes (Copper Vein, …) from the wiki
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const slugify = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
 
 function coin(c) {
   c = Math.round(c);
@@ -429,7 +430,16 @@ async function loadWikiStats() {
   // Optional — merged in if present; never fatal if missing
   try {
     const w = await (await fetch('./wiki.json?v=' + Date.now())).json();
-    if (w && w.items) DATA.items.forEach((i) => { if (w.items[i.name]) i.wiki = w.items[i.name]; });
+    if (w && w.items) {
+      DATA.items.forEach((i) => { if (w.items[i.name]) i.wiki = w.items[i.name]; });
+      // Add wiki-only items (e.g. gems you've never looted) so they get pages too
+      const have = new Set(DATA.items.map((i) => i.name));
+      for (const [name, wd] of Object.entries(w.items)) {
+        if (!have.has(name)) {
+          DATA.items.push({ id: wd.linkId || slugify(name), name, droppedBy: [], prices: [], harvested: 0, zones: [], wiki: wd });
+        }
+      }
+    }
     if (w && w.mobs) Object.keys(DATA.mobs).forEach((m) => { if (w.mobs[m]) DATA.mobs[m].wiki = w.mobs[m]; });
     if (w && w.nodes) NODES = w.nodes;
   } catch {}

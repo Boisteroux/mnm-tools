@@ -118,8 +118,30 @@ function parseMobPage(wikitext) {
     special: clean(p.special), zone: clean(p.zone),
     imageFile: p.imagefilename || null,
   };
+  const loot = [];
+  [p.known_loot, p.common_loot].forEach((t) => {
+    if (t) [...t.matchAll(/\[\[([^\]|]+)(?:\|[^\]]*)?\]\]/g)].forEach((x) => loot.push(x[1].trim()));
+  });
+  if (loot.length) data.loot = [...new Set(loot)];
   const has = Object.entries(data).some(([k, v]) => k !== 'imageFile' && v != null);
   return has || data.imageFile ? data : null;
+}
+
+// Fetch + parse ItemBox/sources for a list of item names into `into`
+async function enrichItems(names, into, label, wikiOnly) {
+  for (let i = 0; i < names.length; i += 45) {
+    const batch = names.slice(i, i + 45);
+    process.stdout.write(`  ${label} ${i + 1}-${i + batch.length}/${names.length}…       \r`);
+    let texts; try { texts = await fetchWikitext(batch); } catch { continue; }
+    for (const [title, wt] of Object.entries(texts)) {
+      const box = parseItemBox(wt), src = parseSources(wt);
+      if (box || src.zones.length || src.from.length) {
+        into[title] = Object.assign({ hasPage: true }, wikiOnly ? { wikiOnly: true } : {}, box || {},
+          src.zones.length ? { wikiZones: src.zones } : {}, src.from.length ? { from: src.from } : {});
+      }
+    }
+    await sleep(350);
+  }
 }
 
 // Gathering-node pages (e.g. Copper Vein) list what they yield, grouped by
@@ -143,25 +165,9 @@ async function run() {
   const itemNames = test ? ['Rusty Scimitar', 'Bronze Dagger', 'Copper Ore'] : ds.items.map((i) => i.name);
   const mobNames = test ? ['a green drakeling', 'a rotting skeleton'] : Object.keys(ds.mobs);
 
-  // ---- Items ----
+  // ---- Items (from your ledger) ----
   const items = {};
-  for (let i = 0; i < itemNames.length; i += 45) {
-    const batch = itemNames.slice(i, i + 45);
-    process.stdout.write(`  items ${i + 1}-${i + batch.length}/${itemNames.length}…\r`);
-    let texts; try { texts = await fetchWikitext(batch); } catch (e) { console.error('\nbatch failed:', e.message); continue; }
-    for (const [title, wt] of Object.entries(texts)) {
-      const box = parseItemBox(wt), src = parseSources(wt);
-      if (box || src.zones.length || src.from.length) {
-        items[title] = Object.assign({ hasPage: true }, box || {},
-          src.zones.length ? { wikiZones: src.zones } : {}, src.from.length ? { from: src.from } : {});
-      }
-    }
-    await sleep(350);
-  }
-  // resolve item icons
-  const iconIds = [...new Set(Object.values(items).map((i) => i.iconId).filter(Boolean))];
-  const iconUrls = await fetchImageUrls(iconIds.map((id) => 'File:' + id + '.png'));
-  for (const it of Object.values(items)) if (it.iconId) it.icon = iconUrls['File:' + it.iconId + '.png'] || null;
+  await enrichItems(itemNames, items, 'items', false);
 
   // ---- Mobs ----
   const mobs = {};
@@ -199,7 +205,21 @@ async function run() {
     await sleep(350);
   }
 
-  console.log(`\nItems with wiki data: ${Object.keys(items).length}/${itemNames.length} (icons: ${Object.values(items).filter((i) => i.icon).length}). Mobs: ${Object.keys(mobs).length}/${mobNames.length}. Nodes: ${Object.keys(nodes).length}.`);
+  // ---- Discover more items: every item referenced by node yields or mob loot ----
+  const discovered = new Set();
+  Object.values(nodes).forEach((n) => (n.yields || []).forEach((y) => y.items.forEach((it) => discovered.add(it))));
+  Object.values(mobs).forEach((m) => (m.loot || []).forEach((it) => discovered.add(it)));
+  const known = new Set(Object.keys(items));
+  const toFetch = [...discovered].filter((nm) => !known.has(nm) && !ds.mobs[nm] && !nodes[nm] && !ZONES.has(nm));
+  if (toFetch.length) await enrichItems(toFetch, items, 'extra items', true);
+
+  // ---- Resolve icons for ALL items (ledger + discovered) ----
+  const iconIds = [...new Set(Object.values(items).map((i) => i.iconId).filter(Boolean))];
+  const iconUrls = await fetchImageUrls(iconIds.map((id) => 'File:' + id + '.png'));
+  for (const it of Object.values(items)) if (it.iconId) it.icon = iconUrls['File:' + it.iconId + '.png'] || null;
+
+  const wikiOnlyCount = Object.values(items).filter((i) => i.wikiOnly).length;
+  console.log(`\nItems: ${Object.keys(items).length} (${wikiOnlyCount} wiki-only, icons: ${Object.values(items).filter((i) => i.icon).length}). Mobs: ${Object.keys(mobs).length}/${mobNames.length}. Nodes: ${Object.keys(nodes).length}.`);
 
   if (test) {
     console.log('\nRusty Scimitar:', JSON.stringify(items['Rusty Scimitar']));
