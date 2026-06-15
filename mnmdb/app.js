@@ -233,10 +233,10 @@ const browseCols = {
   ],
   mobs: [
     { key: 'name', label: 'Mob' },
+    { key: 'valuekill', label: 'Value/kill', num: true, render: (v) => coin(v) },
+    { key: 'coinkill', label: 'Coin/kill', num: true, render: (v) => coin(v) },
     { key: 'kills', label: 'Kills', num: true },
     { key: 'drops', label: 'Drops', num: true },
-    { key: 'coinkill', label: 'Coin/kill', num: true, render: (v) => coin(v) },
-    { key: 'valuekill', label: 'Value/kill', num: true, render: (v) => coin(v) },
   ],
 };
 
@@ -262,7 +262,12 @@ function browseRows(view) {
 }
 
 function renderBrowse(view) {
-  browse.view = view;
+  // On entering a view, default-sort sensibly (mobs by value/kill, others by name)
+  if (browse.view !== view) {
+    browse.view = view;
+    browse.key = view === 'mobs' ? 'valuekill' : 'name';
+    browse.dir = view === 'mobs' ? -1 : 1;
+  }
   const cols = browseCols[view];
   const rows = browseRows(view);
   rows.sort((a, b) => {
