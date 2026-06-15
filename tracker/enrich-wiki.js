@@ -134,15 +134,26 @@ function parseCategories(wikitext) {
   return cats.filter((c) => !/Equipment$/i.test(c) && !/^(Items|Old Itembox Items|Inventory Items)$/i.test(c));
 }
 
-// Tradeskills an item is used in (e.g. Jewelcrafting), from the Itempage "recipes"
-// field — the [[links]] that aren't the specific recipe outputs (those are in <ul>).
+// Known tradeskills — filtering against this avoids picking up recipe outputs,
+// crafting stations, etc. that also appear as links in the recipe fields.
+const TRADESKILLS = new Set([
+  'Alchemy', 'Baking', 'Blacksmithing', 'Brewing', 'Cooking', 'Fletching', 'Jewelcrafting',
+  'Leatherworking', 'Pottery', 'Smelting', 'Survival', 'Tailoring', 'Tanning', 'Woodworking',
+]);
+
+// Tradeskills an item is part of — whether used as an ingredient ("recipes") or
+// produced by the skill ("playercrafted"). Filtered to the known set above.
 function parseTradeskills(wikitext) {
   const m = wikitext.match(/\{\{\s*Itempage([\s\S]*?)\n\}\}/i);
   if (!m) return [];
-  const rm = m[1].match(/\|\s*recipes\s*=\s*([\s\S]*?)(?=\n\s*\|\s*[a-z_]+\s*=|\n\}\}|$)/i);
-  if (!rm) return [];
-  const text = rm[1].replace(/<ul[\s\S]*?<\/ul>/gi, '');
-  return [...new Set([...text.matchAll(/\[\[([^\]|]+)(?:\|[^\]]*)?\]\]/g)].map((x) => x[1].trim()))];
+  const body = m[1];
+  const grab = (field) => {
+    const r = body.match(new RegExp('\\|\\s*' + field + '\\s*=\\s*([\\s\\S]*?)(?=\\n\\s*\\|\\s*[a-z_]+\\s*=|\\n\\}\\}|$)', 'i'));
+    return r ? r[1] : '';
+  };
+  const text = grab('recipes') + '\n' + grab('playercrafted');
+  const links = [...text.matchAll(/\[\[([^\]|]+)(?:\|[^\]]*)?\]\]/g)].map((x) => x[1].trim());
+  return [...new Set(links.filter((l) => TRADESKILLS.has(l)))];
 }
 
 // Fetch + parse ItemBox/sources for a list of item names into `into`
