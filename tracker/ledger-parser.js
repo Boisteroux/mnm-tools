@@ -90,7 +90,9 @@ function parseLedgers(files) {
   let events = 0;
 
   const mob = (name) => (mobs[name] = mobs[name] || { kills: 0, drops: {}, zones: {}, coin: 0 });
-  const item = (id, name) => (items[id] = items[id] || { name, sources: {}, prices: {}, zones: {} });
+  // Items are keyed by display NAME so loot and vendor records of the same item
+  // merge into one entry (vendor sales omit the d05 id, which used to duplicate them).
+  const item = (name) => (items[name] = items[name] || { name, id: '', sources: {}, prices: {}, zones: {} });
   const bump = (obj, key) => { if (key) obj[key] = (obj[key] || 0) + 1; };
 
   for (const file of files) {
@@ -122,9 +124,9 @@ function parseLedgers(files) {
         // LOOT — item taken off a mob
         const source = decodeName(p.d02);
         const name = p.d04 || '';
-        const id = p.d05 || name;
         if (!isClean(name)) continue;
-        const it = item(id, name);
+        const it = item(name);
+        if (p.d05 && !it.id) it.id = p.d05;
         bump(it.zones, zone);
         if (source) {
           it.sources[source] = (it.sources[source] || 0) + 1;
@@ -133,11 +135,11 @@ function parseLedgers(files) {
       } else if (ev.f01 === 'act_24') {
         // VENDOR SALE — records the price received (but not which vendor)
         const name = p.d04 || ev.f02 || '';
-        const id = p.d05 || name;
         if (!isClean(name)) continue;
         const qty = p.d01 || 1;
         const per = Math.max(1, Math.round(priceToCopper(b64(p.d03)) / qty));
-        const it = item(id, name);
+        const it = item(name);
+        if (p.d05 && !it.id) it.id = p.d05;
         it.prices[per] = (it.prices[per] || 0) + 1;
       } else if (ev.f01 === 'act_27') {
         // HARVEST — gathering node
@@ -155,7 +157,7 @@ const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g
 // Shape the raw aggregate into per-item records ready for display / export.
 // Harvested resources become first-class entries too, so everything has a page.
 function buildItemReport(agg) {
-  const items = Object.entries(agg.items).map(([id, it]) => {
+  const items = Object.values(agg.items).map((it) => {
     const droppedBy = Object.entries(it.sources).map(([mobName, drops]) => {
       const kills = (agg.mobs[mobName] && agg.mobs[mobName].kills) || 0;
       return { mob: mobName, drops, kills, rate: kills ? drops / kills : null };
@@ -167,8 +169,10 @@ function buildItemReport(agg) {
 
     const zones = Object.entries(it.zones || {}).sort((a, b) => b[1] - a[1]).map(([z]) => z);
 
-    return { id, name: it.name, droppedBy, prices, harvested: agg.harvest[it.name] || 0, zones };
-  });
+    return { id: it.id || slug(it.name), name: it.name, droppedBy, prices, harvested: agg.harvest[it.name] || 0, zones };
+  })
+  // Drop empty entries that have no drops, no prices, and no harvest
+  .filter((i) => i.droppedBy.length || i.prices.length || i.harvested);
 
   // Add resource-only entries (gathered but never looted/sold) so they get pages
   const have = new Set(items.map((i) => i.name));
