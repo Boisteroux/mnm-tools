@@ -31,14 +31,17 @@ function decodeName(s) {
 }
 const isClean = (s) => !!s && !s.includes('�');
 
+// Coin in M&M is base-100: 100 copper = 1 silver, 100 silver = 1 gold,
+// 100 gold = 1 platinum. So 1p = 1,000,000c, 1g = 10,000c, 1s = 100c.
+const PLAT = 1000000, GOLD = 10000, SILVER = 100;
+
 // "0 platinum 0 gold 0 silver 12 copper" -> total copper.
-// Coin: 1 plat = 10 gold = 100 silver = 1000 copper.
 function priceToCopper(str) {
   const v = { platinum: 0, gold: 0, silver: 0, copper: 0 };
   const re = /(\d+)\s*(platinum|gold|silver|copper)/gi;
   let m;
   while ((m = re.exec(str))) v[m[2].toLowerCase()] = parseInt(m[1], 10);
-  return v.platinum * 1000 + v.gold * 100 + v.silver * 10 + v.copper;
+  return v.platinum * PLAT + v.gold * GOLD + v.silver * SILVER + v.copper;
 }
 
 // Internal zone names -> display names (extend as new zones appear)
@@ -55,13 +58,13 @@ function coinFromD12(s) {
   const t = b64(s);
   const p = t.split(',').map(Number);
   if (p.length !== 4 || p.some(isNaN)) return 0;
-  return p[0] * 1000 + p[1] * 100 + p[2] * 10 + p[3];
+  return p[0] * PLAT + p[1] * GOLD + p[2] * SILVER + p[3];
 }
 
 function copperToString(c) {
-  const p = Math.floor(c / 1000); c %= 1000;
-  const g = Math.floor(c / 100); c %= 100;
-  const s = Math.floor(c / 10); const cp = c % 10;
+  const p = Math.floor(c / PLAT); c %= PLAT;
+  const g = Math.floor(c / GOLD); c %= GOLD;
+  const s = Math.floor(c / SILVER); const cp = c % SILVER;
   return [p && p + 'p', g && g + 'g', s && s + 's', cp && cp + 'c'].filter(Boolean).join(' ') || '0c';
 }
 

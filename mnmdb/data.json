@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-15T00:35:37.677Z",
+  "generatedAt": "2026-06-15T01:46:31.128Z",
   "source": "mnm-tools",
   "ledgerFiles": 12,
-  "events": 2601,
+  "events": 2730,
   "mobs": {
     "a desert bat": {
       "kills": 0,
@@ -17,10 +17,10 @@
       "coin": 0
     },
     "a rotting skeleton": {
-      "kills": 125,
+      "kills": 126,
       "drops": {
         "Tattered Cloth Robe": 5,
-        "Bone Chips": 97,
+        "Bone Chips": 99,
         "Rusty Mace": 4,
         "Cloth Scraps": 50,
         "Worn Great Staff": 3,
@@ -35,7 +35,7 @@
         "Tattered Cloth Gorget": 4,
         "Rusty Trident": 1,
         "Tattered Cloth Veil": 3,
-        "Shattered Skull": 2,
+        "Shattered Skull": 3,
         "Rusty Battle Axe": 2,
         "Tattered Cloth Mantle": 2,
         "Torch": 2,
@@ -43,7 +43,7 @@
         "Rusty Spear": 2,
         "Rusty Tower Shield": 1,
         "Rusty Longsword": 1,
-        "Tattered Cloth Shirt": 1,
+        "Tattered Cloth Shirt": 2,
         "Tattered Cloth Cape": 2,
         "Rusty Dagger": 1,
         "Tattered Cloth Belt": 1,
@@ -55,9 +55,9 @@
       "zones": {
         "Night Harbor": 26,
         "Shaded Dunes": 5,
-        "Evershade Weald": 94
+        "Evershade Weald": 95
       },
-      "coin": 182
+      "coin": 183
     },
     "a snake": {
       "kills": 0,
@@ -220,24 +220,26 @@
       "coin": 0
     },
     "a skeleton": {
-      "kills": 6,
+      "kills": 11,
       "drops": {
-        "Bone Chips": 9,
-        "Cloth Scraps": 6,
+        "Bone Chips": 11,
+        "Cloth Scraps": 8,
         "Rusty Shortsword": 1,
+        "Tattered Cloth Cap": 1,
+        "Worn Great Staff": 1,
+        "Rawhide Scraps": 3,
         "Rusty Maul": 1,
         "Torch": 1,
         "Tattered Cloth Veil": 1,
         "Shattered Skull": 1,
         "Tattered Cloth Cape": 1,
-        "Rawhide Scraps": 1,
         "Worn Buckler": 1
       },
       "zones": {
         "Shaded Dunes": 1,
-        "Evershade Weald": 5
+        "Evershade Weald": 10
       },
-      "coin": 62
+      "coin": 113
     },
     "a large dunes bat": {
       "kills": 0,
@@ -359,19 +361,19 @@
       "coin": 245
     },
     "a green drakeling": {
-      "kills": 35,
+      "kills": 37,
       "drops": {
         "Drake Claw": 6,
-        "Green Drakeling Scale": 15,
+        "Green Drakeling Scale": 19,
         "Green Drakeling Wing": 18,
         "Green Drakeling Hide": 9,
         "Drake Fang": 11,
         "Green Drakeling Poison Duct": 1
       },
       "zones": {
-        "Evershade Weald": 35
+        "Evershade Weald": 37
       },
-      "coin": 439
+      "coin": 460
     },
     "a large black bat": {
       "kills": 0,
@@ -384,21 +386,23 @@
       "coin": 0
     },
     "a Fellstone warrior": {
-      "kills": 13,
+      "kills": 15,
       "drops": {
         "Fellstone Warrior's Belt": 3,
         "Tattered Cloth Tunic": 1,
         "Left Orc Ear": 2,
         "Tattered Cloth Mantle": 1,
         "Rusty Longsword": 1,
-        "Tattered Cloth Bracer": 1,
+        "Tattered Cloth Bracer": 2,
         "Raw Orc Meat": 2,
-        "Cloth Scraps": 3
+        "Cloth Scraps": 4,
+        "Tattered Rawhide Bracer": 1,
+        "Rawhide Scraps": 1
       },
       "zones": {
-        "Evershade Weald": 13
+        "Evershade Weald": 15
       },
-      "coin": 109
+      "coin": 139
     },
     "a black widow": {
       "kills": 0,
@@ -721,15 +725,15 @@
       "droppedBy": [
         {
           "mob": "a skeleton",
-          "drops": 9,
-          "kills": 6,
-          "rate": 1.5
+          "drops": 11,
+          "kills": 11,
+          "rate": 1
         },
         {
           "mob": "a rotting skeleton",
-          "drops": 97,
-          "kills": 125,
-          "rate": 0.776
+          "drops": 99,
+          "kills": 126,
+          "rate": 0.7857142857142857
         }
       ],
       "prices": [
@@ -747,16 +751,29 @@
       ]
     },
     {
+      "id": "brittle_dressing_stone",
+      "name": "Brittle Dressing Stone",
+      "droppedBy": [],
+      "prices": [
+        {
+          "copper": 1,
+          "count": 2
+        }
+      ],
+      "harvested": 0,
+      "zones": []
+    },
+    {
       "id": "brittle_stone",
       "name": "Brittle Stone",
       "droppedBy": [],
       "prices": [
         {
           "copper": 1,
-          "count": 5
+          "count": 7
         }
       ],
-      "harvested": 208,
+      "harvested": 231,
       "zones": []
     },
     {
@@ -823,7 +840,7 @@
       "name": "Chipped Black Pearl",
       "droppedBy": [],
       "prices": [],
-      "harvested": 2,
+      "harvested": 3,
       "zones": []
     },
     {
@@ -887,7 +904,7 @@
       "name": "Chipped Onyx",
       "droppedBy": [],
       "prices": [],
-      "harvested": 1,
+      "harvested": 2,
       "zones": []
     },
     {
@@ -912,9 +929,9 @@
       "droppedBy": [
         {
           "mob": "a skeleton",
-          "drops": 6,
-          "kills": 6,
-          "rate": 1
+          "drops": 8,
+          "kills": 11,
+          "rate": 0.7272727272727273
         },
         {
           "mob": "an ashira lookout",
@@ -931,8 +948,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 50,
-          "kills": 125,
-          "rate": 0.4
+          "kills": 126,
+          "rate": 0.3968253968253968
         },
         {
           "mob": "a Fellstone scout",
@@ -941,13 +958,13 @@
           "rate": 0.34615384615384615
         },
         {
-          "mob": "an ashira scout",
-          "drops": 3,
-          "kills": 13,
-          "rate": 0.23076923076923078
+          "mob": "a Fellstone warrior",
+          "drops": 4,
+          "kills": 15,
+          "rate": 0.26666666666666666
         },
         {
-          "mob": "a Fellstone warrior",
+          "mob": "an ashira scout",
           "drops": 3,
           "kills": 13,
           "rate": 0.23076923076923078
@@ -1067,11 +1084,24 @@
       "zones": []
     },
     {
+      "id": "copper_longsword",
+      "name": "Copper Longsword",
+      "droppedBy": [],
+      "prices": [
+        {
+          "copper": 43,
+          "count": 4
+        }
+      ],
+      "harvested": 0,
+      "zones": []
+    },
+    {
       "id": "copper_ore",
       "name": "Copper Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 199,
+      "harvested": 227,
       "zones": []
     },
     {
@@ -1107,7 +1137,7 @@
       "prices": [
         {
           "copper": 43,
-          "count": 1
+          "count": 2
         }
       ],
       "harvested": 0,
@@ -1262,8 +1292,8 @@
         {
           "mob": "a green drakeling",
           "drops": 6,
-          "kills": 35,
-          "rate": 0.17142857142857143
+          "kills": 37,
+          "rate": 0.16216216216216217
         }
       ],
       "prices": [
@@ -1288,8 +1318,8 @@
         {
           "mob": "a green drakeling",
           "drops": 11,
-          "kills": 35,
-          "rate": 0.3142857142857143
+          "kills": 37,
+          "rate": 0.2972972972972973
         }
       ],
       "prices": [
@@ -1331,8 +1361,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 3,
-          "kills": 13,
-          "rate": 0.23076923076923078
+          "kills": 15,
+          "rate": 0.2
         }
       ],
       "prices": [],
@@ -1489,8 +1519,8 @@
         {
           "mob": "a green drakeling",
           "drops": 9,
-          "kills": 35,
-          "rate": 0.2571428571428571
+          "kills": 37,
+          "rate": 0.24324324324324326
         }
       ],
       "prices": [
@@ -1511,8 +1541,8 @@
         {
           "mob": "a green drakeling",
           "drops": 1,
-          "kills": 35,
-          "rate": 0.02857142857142857
+          "kills": 37,
+          "rate": 0.02702702702702703
         }
       ],
       "prices": [],
@@ -1527,12 +1557,17 @@
       "droppedBy": [
         {
           "mob": "a green drakeling",
-          "drops": 15,
-          "kills": 35,
-          "rate": 0.42857142857142855
+          "drops": 19,
+          "kills": 37,
+          "rate": 0.5135135135135135
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 6,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Evershade Weald"
@@ -1545,13 +1580,13 @@
         {
           "mob": "a green drakeling",
           "drops": 18,
-          "kills": 35,
-          "rate": 0.5142857142857142
+          "kills": 37,
+          "rate": 0.4864864864864865
         }
       ],
       "prices": [
         {
-          "copper": 7,
+          "copper": 15,
           "count": 1
         }
       ],
@@ -1664,8 +1699,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 2,
-          "kills": 13,
-          "rate": 0.15384615384615385
+          "kills": 15,
+          "rate": 0.13333333333333333
         }
       ],
       "prices": [],
@@ -1998,8 +2033,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 2,
-          "kills": 13,
-          "rate": 0.15384615384615385
+          "kills": 15,
+          "rate": 0.13333333333333333
         }
       ],
       "prices": [
@@ -2091,9 +2126,15 @@
         },
         {
           "mob": "a skeleton",
+          "drops": 3,
+          "kills": 11,
+          "rate": 0.2727272727272727
+        },
+        {
+          "mob": "a Fellstone warrior",
           "drops": 1,
-          "kills": 6,
-          "rate": 0.16666666666666666
+          "kills": 15,
+          "rate": 0.06666666666666667
         },
         {
           "mob": "an ashira shaman",
@@ -2117,10 +2158,10 @@
       "prices": [
         {
           "copper": 1,
-          "count": 7
+          "count": 8
         }
       ],
-      "harvested": 160,
+      "harvested": 175,
       "zones": []
     },
     {
@@ -2158,8 +2199,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 3,
-          "kills": 125,
-          "rate": 0.024
+          "kills": 126,
+          "rate": 0.023809523809523808
         },
         {
           "mob": "a Fellstone scout",
@@ -2187,8 +2228,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 2,
-          "kills": 125,
-          "rate": 0.016
+          "kills": 126,
+          "rate": 0.015873015873015872
         }
       ],
       "prices": [
@@ -2215,8 +2256,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "kills": 125,
-          "rate": 0.008
+          "kills": 126,
+          "rate": 0.007936507936507936
         }
       ],
       "prices": [
@@ -2238,8 +2279,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 3,
-          "kills": 125,
-          "rate": 0.024
+          "kills": 126,
+          "rate": 0.023809523809523808
         }
       ],
       "prices": [
@@ -2283,8 +2324,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 3,
-          "kills": 125,
-          "rate": 0.024
+          "kills": 126,
+          "rate": 0.023809523809523808
         }
       ],
       "prices": [
@@ -2305,14 +2346,14 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "kills": 13,
-          "rate": 0.07692307692307693
+          "kills": 15,
+          "rate": 0.06666666666666667
         },
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "kills": 125,
-          "rate": 0.008
+          "kills": 126,
+          "rate": 0.007936507936507936
         }
       ],
       "prices": [
@@ -2333,8 +2374,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 4,
-          "kills": 125,
-          "rate": 0.032
+          "kills": 126,
+          "rate": 0.031746031746031744
         }
       ],
       "prices": [
@@ -2360,8 +2401,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "kills": 6,
-          "rate": 0.16666666666666666
+          "kills": 11,
+          "rate": 0.09090909090909091
         }
       ],
       "prices": [],
@@ -2383,8 +2424,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 6,
-          "kills": 125,
-          "rate": 0.048
+          "kills": 126,
+          "rate": 0.047619047619047616
         }
       ],
       "prices": [
@@ -2407,14 +2448,14 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "kills": 6,
-          "rate": 0.16666666666666666
+          "kills": 11,
+          "rate": 0.09090909090909091
         },
         {
           "mob": "a rotting skeleton",
           "drops": 4,
-          "kills": 125,
-          "rate": 0.032
+          "kills": 126,
+          "rate": 0.031746031746031744
         },
         {
           "mob": "a Fellstone scout",
@@ -2449,8 +2490,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 2,
-          "kills": 125,
-          "rate": 0.016
+          "kills": 126,
+          "rate": 0.015873015873015872
         }
       ],
       "prices": [
@@ -2478,8 +2519,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "kills": 125,
-          "rate": 0.008
+          "kills": 126,
+          "rate": 0.007936507936507936
         }
       ],
       "prices": [
@@ -2506,8 +2547,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "kills": 125,
-          "rate": 0.008
+          "kills": 126,
+          "rate": 0.007936507936507936
         }
       ],
       "prices": [
@@ -2529,8 +2570,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "kills": 125,
-          "rate": 0.008
+          "kills": 126,
+          "rate": 0.007936507936507936
         }
       ],
       "prices": [],
@@ -2552,8 +2593,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 2,
-          "kills": 125,
-          "rate": 0.016
+          "kills": 126,
+          "rate": 0.015873015873015872
         }
       ],
       "prices": [
@@ -2646,14 +2687,14 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "kills": 6,
-          "rate": 0.16666666666666666
+          "kills": 11,
+          "rate": 0.09090909090909091
         },
         {
           "mob": "a rotting skeleton",
-          "drops": 2,
-          "kills": 125,
-          "rate": 0.016
+          "drops": 3,
+          "kills": 126,
+          "rate": 0.023809523809523808
         }
       ],
       "prices": [],
@@ -2669,8 +2710,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 14,
-          "kills": 125,
-          "rate": 0.112
+          "kills": 126,
+          "rate": 0.1111111111111111
         }
       ],
       "prices": [
@@ -2893,8 +2934,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "kills": 125,
-          "rate": 0.008
+          "kills": 126,
+          "rate": 0.007936507936507936
         }
       ],
       "prices": [],
@@ -2917,8 +2958,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 3,
-          "kills": 125,
-          "rate": 0.024
+          "kills": 126,
+          "rate": 0.023809523809523808
         }
       ],
       "prices": [],
@@ -2940,9 +2981,9 @@
         },
         {
           "mob": "a Fellstone warrior",
-          "drops": 1,
-          "kills": 13,
-          "rate": 0.07692307692307693
+          "drops": 2,
+          "kills": 15,
+          "rate": 0.13333333333333333
         }
       ],
       "prices": [],
@@ -2954,20 +2995,38 @@
       ]
     },
     {
+      "id": "tattered_cloth_head",
+      "name": "Tattered Cloth Cap",
+      "droppedBy": [
+        {
+          "mob": "a skeleton",
+          "drops": 1,
+          "kills": 11,
+          "rate": 0.09090909090909091
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald",
+        "Tomb of the Last Wyrmsbane"
+      ]
+    },
+    {
       "id": "tattered_cloth_cape",
       "name": "Tattered Cloth Cape",
       "droppedBy": [
         {
           "mob": "a skeleton",
           "drops": 1,
-          "kills": 6,
-          "rate": 0.16666666666666666
+          "kills": 11,
+          "rate": 0.09090909090909091
         },
         {
           "mob": "a rotting skeleton",
           "drops": 2,
-          "kills": 125,
-          "rate": 0.016
+          "kills": 126,
+          "rate": 0.015873015873015872
         }
       ],
       "prices": [],
@@ -2983,8 +3042,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 2,
-          "kills": 125,
-          "rate": 0.016
+          "kills": 126,
+          "rate": 0.015873015873015872
         }
       ],
       "prices": [],
@@ -3001,8 +3060,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 4,
-          "kills": 125,
-          "rate": 0.032
+          "kills": 126,
+          "rate": 0.031746031746031744
         },
         {
           "mob": "a Fellstone scout",
@@ -3030,14 +3089,14 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "kills": 13,
-          "rate": 0.07692307692307693
+          "kills": 15,
+          "rate": 0.06666666666666667
         },
         {
           "mob": "a rotting skeleton",
           "drops": 2,
-          "kills": 125,
-          "rate": 0.016
+          "kills": 126,
+          "rate": 0.015873015873015872
         }
       ],
       "prices": [],
@@ -3066,8 +3125,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "kills": 125,
-          "rate": 0.008
+          "kills": 126,
+          "rate": 0.007936507936507936
         }
       ],
       "prices": [
@@ -3095,8 +3154,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 5,
-          "kills": 125,
-          "rate": 0.04
+          "kills": 126,
+          "rate": 0.03968253968253968
         },
         {
           "mob": "a Fellstone scout",
@@ -3130,9 +3189,9 @@
         },
         {
           "mob": "a rotting skeleton",
-          "drops": 1,
-          "kills": 125,
-          "rate": 0.008
+          "drops": 2,
+          "kills": 126,
+          "rate": 0.015873015873015872
         }
       ],
       "prices": [],
@@ -3149,8 +3208,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "kills": 13,
-          "rate": 0.07692307692307693
+          "kills": 15,
+          "rate": 0.06666666666666667
         },
         {
           "mob": "a Fellstone scout",
@@ -3161,8 +3220,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 2,
-          "kills": 125,
-          "rate": 0.016
+          "kills": 126,
+          "rate": 0.015873015873015872
         }
       ],
       "prices": [],
@@ -3178,14 +3237,14 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "kills": 6,
-          "rate": 0.16666666666666666
+          "kills": 11,
+          "rate": 0.09090909090909091
         },
         {
           "mob": "a rotting skeleton",
           "drops": 3,
-          "kills": 125,
-          "rate": 0.024
+          "kills": 126,
+          "rate": 0.023809523809523808
         },
         {
           "mob": "a Fellstone scout",
@@ -3220,6 +3279,28 @@
       "zones": []
     },
     {
+      "id": "tattered_rawhide_fore",
+      "name": "Tattered Rawhide Bracer",
+      "droppedBy": [
+        {
+          "mob": "a Fellstone warrior",
+          "drops": 1,
+          "kills": 15,
+          "rate": 0.06666666666666667
+        }
+      ],
+      "prices": [
+        {
+          "copper": 37,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
       "id": "tattered_rawhide_arms",
       "name": "Tattered Rawhide Vest",
       "droppedBy": [
@@ -3241,16 +3322,16 @@
       "name": "Torch",
       "droppedBy": [
         {
-          "mob": "a skeleton",
-          "drops": 1,
-          "kills": 6,
-          "rate": 0.16666666666666666
-        },
-        {
           "mob": "an ashira scout",
           "drops": 2,
           "kills": 13,
           "rate": 0.15384615384615385
+        },
+        {
+          "mob": "a skeleton",
+          "drops": 1,
+          "kills": 11,
+          "rate": 0.09090909090909091
         },
         {
           "mob": "a Fellstone scout",
@@ -3261,8 +3342,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 2,
-          "kills": 125,
-          "rate": 0.016
+          "kills": 126,
+          "rate": 0.015873015873015872
         }
       ],
       "prices": [
@@ -3443,7 +3524,7 @@
           "count": 4
         }
       ],
-      "harvested": 129,
+      "harvested": 146,
       "zones": []
     },
     {
@@ -3459,14 +3540,14 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "kills": 6,
-          "rate": 0.16666666666666666
+          "kills": 11,
+          "rate": 0.09090909090909091
         },
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "kills": 125,
-          "rate": 0.008
+          "kills": 126,
+          "rate": 0.007936507936507936
         }
       ],
       "prices": [
@@ -3486,15 +3567,25 @@
       "name": "Worn Great Staff",
       "droppedBy": [
         {
+          "mob": "a skeleton",
+          "drops": 1,
+          "kills": 11,
+          "rate": 0.09090909090909091
+        },
+        {
           "mob": "a rotting skeleton",
           "drops": 3,
-          "kills": 125,
-          "rate": 0.024
+          "kills": 126,
+          "rate": 0.023809523809523808
         }
       ],
       "prices": [
         {
           "copper": 22,
+          "count": 1
+        },
+        {
+          "copper": 56,
           "count": 1
         }
       ],
@@ -3506,11 +3597,11 @@
     }
   ],
   "harvest": {
-    "Copper Ore": 199,
-    "Brittle Stone": 208,
+    "Copper Ore": 227,
+    "Brittle Stone": 231,
     "Clouded Crystallized Magic": 2,
-    "Wood": 129,
-    "Resin": 160,
+    "Wood": 146,
+    "Resin": 175,
     "Chipped Turquoise": 2,
     "Lionleaf": 3,
     "Chipped Star Ruby": 1,
@@ -3520,11 +3611,11 @@
     "Chipped Fire Emerald": 1,
     "Chipped Bloodstone": 1,
     "Chipped Malachite": 2,
-    "Chipped Black Pearl": 2,
+    "Chipped Black Pearl": 3,
     "Chipped Amber": 1,
     "Chipped Blue Diamond": 1,
     "Chipped Jacinth": 1,
-    "Chipped Onyx": 1,
+    "Chipped Onyx": 2,
     "Chipped Hematite": 1,
     "Chipped Diamond": 1
   }

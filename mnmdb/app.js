@@ -12,9 +12,10 @@ const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&l
 
 function coin(c) {
   c = Math.round(c);
-  const p = Math.floor(c / 1000); c %= 1000;
-  const g = Math.floor(c / 100); c %= 100;
-  const s = Math.floor(c / 10); const cp = c % 10;
+  // M&M coin is base-100: 100c = 1s, 100s = 1g, 100g = 1p
+  const p = Math.floor(c / 1000000); c %= 1000000;
+  const g = Math.floor(c / 10000); c %= 10000;
+  const s = Math.floor(c / 100); const cp = c % 100;
   return [p && p + 'p', g && g + 'g', s && s + 's', cp && cp + 'c'].filter(Boolean).join(' ') || '0c';
 }
 
