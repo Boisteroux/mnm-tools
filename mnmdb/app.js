@@ -8,6 +8,9 @@ let nameToId = {};   // item name -> item id (for linking mob drops to item page
 let itemByName = {}; // item name -> full item record (for vendor-price lookups)
 let NODES = {};      // gathering nodes (Copper Vein, …) from the wiki
 let VENDORS = [];    // hand-maintained vendor → item-type mapping (vendors.json)
+let TRADES = {};     // item name (lowercased) -> [{price, side, date}] player trade prices
+
+const REPO = 'https://github.com/Boisteroux/mnm-tools';
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -49,6 +52,27 @@ const sourceLink = (s) =>
 // Regular-vendor sell price = the BEST (highest) you'd get selling — regular
 // vendors pay more than shady ones. Used as the realistic value of an item.
 const regularPrice = (it) => (it && it.prices.length ? Math.max.apply(null, it.prices.map((p) => p.copper)) : 0);
+
+// Player trade value — high/low of SELL-side prices in the last 7 days.
+function tradeValue7d(name) {
+  const list = TRADES[String(name).toLowerCase()];
+  if (!list || !list.length) return null;
+  const cutoff = Date.now() - 7 * 24 * 60 * 60 * 1000;
+  const recent = list.filter((t) => t.side === 'sell' && new Date(t.date).getTime() >= cutoff);
+  const all = list.filter((t) => t.side === 'sell');
+  if (!recent.length) {
+    if (!all.length) return null;
+    const prices = all.map((t) => t.price);
+    return { n: 0, high: Math.max.apply(null, prices), low: Math.min.apply(null, prices), stale: true };
+  }
+  const prices = recent.map((t) => t.price);
+  return { n: recent.length, high: Math.max.apply(null, prices), low: Math.min.apply(null, prices), stale: false };
+}
+
+// Pre-filled GitHub issue form for submitting a price from the website.
+const tradeSubmitUrl = (name) =>
+  REPO + '/issues/new?labels=trade&template=trade-price.yml&title=' +
+  encodeURIComponent('Price: ' + name) + '&item=' + encodeURIComponent(name);
 
 // Expected loot value of one kill: coin + Σ(drop rate × item regular price)
 function mobValuePerKill(d) {
@@ -143,6 +167,25 @@ function renderItem(id) {
       dropRows.map((r) => '<tr><td>' + sourceLink(r.mob) + '</td><td class="num">' +
         (r.rate != null ? rateCell(r.rate, r.drops, r.kills) : '<span class="sample">—</span>') + '</td></tr>').join('') +
       '</tbody></table></div>');
+  }
+
+  // Player trade value — 7-day high/low of what people sell this for
+  {
+    const tv = tradeValue7d(it.name);
+    const submit = '<a class="btn-link" href="' + tradeSubmitUrl(it.name) + '" target="_blank" rel="noopener">Submit a price ↗</a>';
+    let body;
+    if (tv && !tv.stale) {
+      body = '<div class="vendor-summary">' +
+        '<div class="vbox"><div class="vlbl">7-day high</div><div class="vval">' + coin(tv.high) + '</div></div>' +
+        '<div class="vbox"><div class="vlbl">7-day low</div><div class="vval">' + coin(tv.low) + '</div></div>' +
+        '</div><div class="note">From ' + tv.n + ' player sale' + (tv.n === 1 ? '' : 's') + ' logged in the last 7 days. ' + submit + '</div>';
+    } else if (tv && tv.stale) {
+      body = '<div class="note">No sales in the last 7 days. Last seen ' + coin(tv.low) +
+        (tv.high !== tv.low ? '–' + coin(tv.high) : '') + ' (older data). ' + submit + '</div>';
+    } else {
+      body = '<div class="note">No player trades logged yet. ' + submit + '</div>';
+    }
+    sections.push('<h2>Player trade value</h2>' + body);
   }
 
   // Vendor value
@@ -494,6 +537,14 @@ async function loadWikiStats() {
   try {
     const v = await (await fetch('./vendors.json?v=' + Date.now())).json();
     VENDORS = (v && v.vendors) || [];
+  } catch {}
+  try {
+    const t = await (await fetch('./trades.json?v=' + Date.now())).json();
+    TRADES = {};
+    for (const e of (t && t.trades) || []) {
+      const k = String(e.item).toLowerCase();
+      (TRADES[k] = TRADES[k] || []).push({ price: e.price, side: e.side === 'buy' ? 'buy' : 'sell', date: e.date });
+    }
   } catch {}
 }
 

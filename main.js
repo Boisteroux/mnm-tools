@@ -52,6 +52,14 @@ const mapsDir = () => path.join(app.getPath('userData'), 'maps');
 // Parses the game's Ledger files into an aggregated dataset (drops, kill
 // counts, vendor prices, harvest) saved locally and exportable for the website.
 const trackerFile = () => path.join(app.getPath('userData'), 'tracker-data.json');
+const tradesFile = () => path.join(app.getPath('userData'), 'trades.json');
+
+function readTrades(file) {
+  try {
+    const j = JSON.parse(fs.readFileSync(file, 'utf8'));
+    return Array.isArray(j) ? j : (j.trades || []);
+  } catch { return []; }
+}
 
 function scanTracker() {
   const files = ledgerParser.findLedgerFiles();
@@ -79,6 +87,35 @@ function scanTracker() {
 
 ipcMain.handle('tracker-scan', () => {
   try { return scanTracker(); } catch (e) { return { error: e.message }; }
+});
+
+// Log a player trade price to a local file. Merged into the site on Publish.
+ipcMain.handle('trade-log', (event, rec) => {
+  try {
+    if (!rec || !rec.item || !(rec.price > 0)) return { error: 'Need an item name and a price.' };
+    const trades = readTrades(tradesFile());
+    trades.push({
+      item: String(rec.item).trim(),
+      price: Math.round(rec.price),
+      side: rec.side === 'buy' ? 'buy' : 'sell',
+      date: new Date().toISOString().slice(0, 10),
+      who: rec.who ? String(rec.who).trim() : '',
+      src: 'app',
+    });
+    fs.writeFileSync(tradesFile(), JSON.stringify({ trades }, null, 2));
+    return { ok: true, count: trades.length };
+  } catch (e) { return { error: e.message }; }
+});
+
+// Item names for the logger's autocomplete (from what you've collected so far).
+ipcMain.handle('trade-item-names', () => {
+  try {
+    const j = JSON.parse(fs.readFileSync(trackerFile(), 'utf8'));
+    const names = new Set();
+    (j.items || []).forEach((i) => i.name && names.add(i.name));
+    Object.keys(j.harvest || {}).forEach((n) => names.add(n));
+    return [...names].sort();
+  } catch { return []; }
 });
 
 // Auto-rescan: watch the game folder and re-parse a few seconds after the game
@@ -176,9 +213,24 @@ ipcMain.handle('publish-mnmdb', async () => {
     };
     fs.writeFileSync(path.join(REPO_ROOT, 'mnmdb', 'data.json'), JSON.stringify(dataset, null, 2));
 
-    // 2. Commit + push.
-    await gitRun(['add', 'mnmdb/data.json']);
-    const commit = await gitRun(['commit', '-m', `Publish play data (${agg.events} events, ${items.length} items)`]);
+    // 2. Merge any locally-logged trades into the site's trades.json (dedup).
+    const siteTradesPath = path.join(REPO_ROOT, 'mnmdb', 'trades.json');
+    let siteTrades = {};
+    try { siteTrades = JSON.parse(fs.readFileSync(siteTradesPath, 'utf8')); } catch {}
+    const existing = siteTrades.trades || [];
+    const seen = new Set(existing.map((t) => [t.item, t.price, t.side, t.date].join('|')));
+    let added = 0;
+    for (const t of readTrades(tradesFile())) {
+      const key = [t.item, t.price, t.side, t.date].join('|');
+      if (!seen.has(key)) { existing.push(t); seen.add(key); added++; }
+    }
+    siteTrades.trades = existing;
+    fs.writeFileSync(siteTradesPath, JSON.stringify(siteTrades, null, 2));
+
+    // 3. Commit + push.
+    await gitRun(['add', 'mnmdb/data.json', 'mnmdb/trades.json']);
+    const tradeNote = added ? ` + ${added} trade${added === 1 ? '' : 's'}` : '';
+    const commit = await gitRun(['commit', '-m', `Publish play data (${agg.events} events, ${items.length} items${tradeNote})`]);
     if (commit.code !== 0) {
       if (/nothing to commit/i.test(commit.out)) {
         return { ok: true, message: 'Already up to date — no new data since last publish.' };
@@ -187,7 +239,7 @@ ipcMain.handle('publish-mnmdb', async () => {
     }
     const push = await gitRun(['push']);
     if (push.code !== 0) return { error: 'Push failed: ' + push.out.trim().slice(0, 200) };
-    return { ok: true, message: `Published ${items.length} items · ${agg.events} events. Live on MnMdb in ~30s.` };
+    return { ok: true, message: `Published ${items.length} items · ${agg.events} events${added ? ' · ' + added + ' new trade' + (added === 1 ? '' : 's') : ''}. Live on MnMdb in ~30s.` };
   } catch (e) {
     return { error: e.message };
   }

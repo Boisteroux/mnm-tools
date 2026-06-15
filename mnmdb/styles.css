@@ -207,6 +207,17 @@ tr.rowlink { cursor: pointer; }
   color: var(--muted);
   margin: 18px 0;
 }
+.btn-link {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 3px 12px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.btn-link:hover { background: var(--accent); color: var(--accent-dk, #2a1404); }
 
 footer {
   border-top: 1px solid var(--line);

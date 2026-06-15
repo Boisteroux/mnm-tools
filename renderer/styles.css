@@ -85,9 +85,16 @@ select option {
   color: var(--text);
 }
 
+.hint { font-size: 11px; color: var(--muted); margin: 0 0 6px; line-height: 1.45; }
+.coin-row { display: flex; gap: 4px; margin: 6px 0; }
+.coin-row input { width: 100%; text-align: center; padding: 6px 4px; }
+#trade-side { flex: 1 1 auto; }
+#trade-log-btn { flex: 0 0 auto; }
+
 #wiki-status,
 #tracker-status,
-#publish-status {
+#publish-status,
+#trade-status {
   font-size: 11px;
   color: var(--muted);
   min-height: 13px;

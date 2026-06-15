@@ -945,6 +945,42 @@ if (isDev) {
   });
 }
 
+// ---- Log a Trade ----
+
+const tradeStatus = (msg) => { $('trade-status').textContent = msg; };
+
+// Autocomplete from the items you've already collected
+window.mapAPI.tradeItemNames().then((names) => {
+  const dl = $('trade-item-list');
+  dl.innerHTML = (names || []).map((n) => '<option value="' + n.replace(/"/g, '&quot;') + '"></option>').join('');
+}).catch(() => {});
+
+$('trade-log-btn').addEventListener('click', async () => {
+  const item = $('trade-item').value.trim();
+  const p = +$('trade-p').value || 0, g = +$('trade-g').value || 0, s = +$('trade-s').value || 0, c = +$('trade-c').value || 0;
+  const price = p * 1000000 + g * 10000 + s * 100 + c; // M&M coin is base-100
+  if (!item) { tradeStatus('Enter an item name.'); return; }
+  if (price <= 0) { tradeStatus('Enter a price (p / g / s / c).'); return; }
+  const side = $('trade-side').value;
+  const r = await window.mapAPI.tradeLog({ item, price, side });
+  if (r && r.ok) {
+    tradeStatus('Logged ' + item + ' — ' + coinStr(price) + ' (' + (side === 'buy' ? 'buying' : 'selling') + '). ' + r.count + ' total.');
+    $('trade-item').value = ''; $('trade-p').value = ''; $('trade-g').value = ''; $('trade-s').value = ''; $('trade-c').value = '';
+    $('trade-item').focus();
+  } else {
+    tradeStatus((r && r.error) || 'Could not log that trade.');
+  }
+});
+
+// Compact coin string for the confirmation line (base-100)
+function coinStr(c) {
+  c = Math.round(c);
+  const p = Math.floor(c / 1000000); c %= 1000000;
+  const g = Math.floor(c / 10000); c %= 10000;
+  const s = Math.floor(c / 100); const cp = c % 100;
+  return [p && p + 'p', g && g + 'g', s && s + 's', cp && cp + 'c'].filter(Boolean).join(' ') || '0c';
+}
+
 // The app re-scans itself a few seconds after the game writes new loot/kills
 window.mapAPI.onTrackerUpdated((r) => showTrackerSummary(r, ' · updated just now'));
 

@@ -26,5 +26,7 @@ contextBridge.exposeInMainWorld('mapAPI', {
   trackerExport: () => ipcRenderer.invoke('tracker-export'),
   publishMnmdb: () => ipcRenderer.invoke('publish-mnmdb'),
   zoneAliases: () => ipcRenderer.invoke('zone-aliases'),
+  tradeLog: (rec) => ipcRenderer.invoke('trade-log', rec),
+  tradeItemNames: () => ipcRenderer.invoke('trade-item-names'),
   onTrackerUpdated: (cb) => ipcRenderer.on('tracker-updated', (e, s) => cb(s)),
 });
