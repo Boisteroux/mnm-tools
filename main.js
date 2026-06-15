@@ -462,47 +462,84 @@ ipcMain.handle('wiki-zone-list', async () => {
   }
 });
 
+// Find the map-sized images on a zone's wiki page, with small preview thumbs.
+// Sorted: "map"-named files first, then largest.
+async function getMapCandidates(zoneName) {
+  const parsed = await wikiJson({ action: 'parse', page: zoneName, prop: 'images' });
+  if (parsed.error) return { error: 'No wiki page found for "' + zoneName + '"' };
+  const images = (parsed.parse && parsed.parse.images) || [];
+  if (images.length === 0) return { error: 'No images on the wiki page for "' + zoneName + '"' };
+
+  const q = await wikiJson({
+    action: 'query',
+    titles: images.map((i) => 'File:' + i).join('|'),
+    prop: 'imageinfo',
+    iiprop: 'url|size',
+    iiurlwidth: '360', // small preview for the picker
+  });
+  const candidates = Object.values(q.query.pages)
+    .filter((p) => p.imageinfo && p.imageinfo[0])
+    .map((p) => ({ title: p.title, ...p.imageinfo[0] }))
+    .filter((c) => c.width >= 600); // skip icons and banners
+
+  if (candidates.length === 0) return { error: 'No map-sized images found for "' + zoneName + '"' };
+  candidates.sort((a, b) => {
+    const am = /map/i.test(a.title) ? 1 : 0, bm = /map/i.test(b.title) ? 1 : 0;
+    if (am !== bm) return bm - am;
+    return b.width * b.height - a.width * a.height;
+  });
+  return { candidates };
+}
+
+// Download one chosen file at 4096px and save it into the app's maps folder
+async function downloadMap(zoneName, fileTitle) {
+  const q = await wikiJson({
+    action: 'query', titles: fileTitle, prop: 'imageinfo', iiprop: 'url|size', iiurlwidth: '4096',
+  });
+  const page = Object.values(q.query.pages)[0];
+  const info = page && page.imageinfo && page.imageinfo[0];
+  if (!info) throw new Error('Could not resolve the chosen image');
+  const dlUrl = info.thumburl || info.url;
+  const res = await fetch(dlUrl, { headers: WIKI_HEADERS });
+  if (!res.ok) throw new Error('Image download failed: HTTP ' + res.status);
+  const buf = Buffer.from(await res.arrayBuffer());
+  fs.mkdirSync(mapsDir(), { recursive: true });
+  const ext = (dlUrl.match(/\.(png|jpe?g|webp|gif)/i) || [, 'jpg'])[1];
+  const dest = path.join(mapsDir(), zoneName.replace(/[^a-z0-9 _-]/gi, '') + '-wiki-' + Date.now() + '.' + ext);
+  fs.writeFileSync(dest, buf);
+  return { path: dest, source: fileTitle };
+}
+
+// Auto-pick (used by Import All and overlay mode — grabs the best candidate)
 ipcMain.handle('wiki-fetch-map', async (event, zoneName) => {
   try {
-    // 1. List the images on the zone's wiki page
-    const parsed = await wikiJson({ action: 'parse', page: zoneName, prop: 'images' });
-    if (parsed.error) return { error: 'No wiki page found for "' + zoneName + '"' };
-    const images = (parsed.parse && parsed.parse.images) || [];
-    if (images.length === 0) return { error: 'No images on the wiki page for "' + zoneName + '"' };
-
-    // 2. Get size + download URLs for all of them
-    const q = await wikiJson({
-      action: 'query',
-      titles: images.map((i) => 'File:' + i).join('|'),
-      prop: 'imageinfo',
-      iiprop: 'url|size',
-      iiurlwidth: '4096',
-    });
-    const candidates = Object.values(q.query.pages)
-      .filter((p) => p.imageinfo && p.imageinfo[0])
-      .map((p) => ({ title: p.title, ...p.imageinfo[0] }))
-      .filter((c) => c.width >= 600); // skip icons and banners
-
-    if (candidates.length === 0) return { error: 'No map-sized images found for "' + zoneName + '"' };
-
-    // 3. Prefer a file with "map" in the name; otherwise the largest image
-    candidates.sort((a, b) => b.width * b.height - a.width * a.height);
-    const best = candidates.find((c) => /map/i.test(c.title)) || candidates[0];
-
-    // 4. Download (thumburl = the scaled 4096px version when available)
-    const dlUrl = best.thumburl || best.url;
-    const res = await fetch(dlUrl, { headers: WIKI_HEADERS });
-    if (!res.ok) throw new Error('Image download failed: HTTP ' + res.status);
-    const buf = Buffer.from(await res.arrayBuffer());
-
-    fs.mkdirSync(mapsDir(), { recursive: true });
-    const ext = (dlUrl.match(/\.(png|jpe?g|webp|gif)/i) || [, 'jpg'])[1];
-    const dest = path.join(mapsDir(), zoneName.replace(/[^a-z0-9 _-]/gi, '') + '-wiki-map.' + ext);
-    fs.writeFileSync(dest, buf);
-    return { path: dest, source: best.title };
+    const r = await getMapCandidates(zoneName);
+    if (r.error) return { error: r.error };
+    return await downloadMap(zoneName, r.candidates[0].title);
   } catch (err) {
     return { error: 'Wiki import failed for "' + zoneName + '": ' + err.message };
   }
+});
+
+// List candidate maps for the picker (preview thumb + dimensions)
+ipcMain.handle('wiki-list-maps', async (event, zoneName) => {
+  try {
+    const r = await getMapCandidates(zoneName);
+    if (r.error) return { error: r.error };
+    return {
+      candidates: r.candidates.map((c) => ({
+        title: c.title, preview: c.thumburl || c.url, width: c.width, height: c.height,
+      })),
+    };
+  } catch (err) {
+    return { error: 'Wiki lookup failed for "' + zoneName + '": ' + err.message };
+  }
+});
+
+// Download the specific candidate the user chose
+ipcMain.handle('wiki-download-map', async (event, { zoneName, title }) => {
+  try { return await downloadMap(zoneName, title); }
+  catch (err) { return { error: 'Download failed: ' + err.message }; }
 });
 
 // Import is two steps: open the file and report which zones it holds,

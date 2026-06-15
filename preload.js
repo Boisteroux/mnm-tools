@@ -9,6 +9,8 @@ contextBridge.exposeInMainWorld('mapAPI', {
   importCommit: (names) => ipcRenderer.invoke('import-commit', names),
   wikiZoneList: () => ipcRenderer.invoke('wiki-zone-list'),
   wikiFetchMap: (zoneName) => ipcRenderer.invoke('wiki-fetch-map', zoneName),
+  wikiListMaps: (zoneName) => ipcRenderer.invoke('wiki-list-maps', zoneName),
+  wikiDownloadMap: (zoneName, title) => ipcRenderer.invoke('wiki-download-map', { zoneName, title }),
   onGameZone: (callback) => ipcRenderer.on('game-zone', (event, name) => callback(name)),
   currentGameZone: () => ipcRenderer.invoke('current-game-zone'),
   toggleOverlay: () => ipcRenderer.invoke('toggle-overlay'),

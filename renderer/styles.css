@@ -283,6 +283,34 @@ body.sidebar-collapsed #sidebar { display: none; }
   gap: 6px;
 }
 
+.modal-wide { width: 560px; max-width: 92vw; }
+
+.map-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  max-height: 60vh;
+  overflow-y: auto;
+  margin: 10px 0;
+}
+.map-pick {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px;
+  text-align: left;
+  align-items: stretch;
+}
+.map-pick img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 4px;
+  background: var(--surface);
+}
+.map-pick-name { font-size: 11px; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.map-pick-dim { font-size: 10px; color: var(--muted); }
+
 .modal h2 {
   font-size: 12px;
   margin-bottom: 8px;

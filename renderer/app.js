@@ -424,12 +424,17 @@ async function handleGameZone(internalName) {
   characterZoneId = zone.id;
   save();
   switchZone(zone.id);
-  const gotMap = await fetchWikiMapFor(zone);
-  wikiStatus(
-    gotMap
-      ? 'New zone "' + pretty + '" created with its wiki map.'
-      : 'New zone "' + pretty + '" created. If that name looks off, Rename it to the real zone name and press Get This Zone for its map.'
-  );
+  // Desktop: let you pick when several maps exist. Overlay: just grab the best.
+  const got = await chooseWikiMap(zone, isOverlay);
+  if (got === 'picker') {
+    wikiStatus('New zone "' + pretty + '" created — choose its map.');
+  } else {
+    wikiStatus(
+      got
+        ? 'New zone "' + pretty + '" created with its wiki map.'
+        : 'New zone "' + pretty + '" created. If the name looks off, Rename it then use Import Map from Wiki.'
+    );
+  }
 }
 
 // ---- Marker modal (add + edit) ----
@@ -594,6 +599,53 @@ async function fetchWikiMapFor(zone) {
   return true;
 }
 
+async function downloadAndSetMap(zone, title) {
+  wikiStatus('Downloading map for ' + zone.name + '…');
+  const res = await window.mapAPI.wikiDownloadMap(zone.name, title);
+  if (!res || res.error) { wikiStatus((res && res.error) || 'Download failed.'); return false; }
+  zone.image = res.path;
+  save();
+  if (zone.id === currentZoneId) loadZoneImage(zone, true);
+  wikiStatus('Map set for ' + zone.name + '.');
+  return true;
+}
+
+// Look up a zone's wiki maps; auto-pick the best, or show a picker when there
+// are several. `auto` forces the best pick (overlay mode / bulk import).
+async function chooseWikiMap(zone, auto) {
+  wikiStatus('Looking up maps for ' + zone.name + '…');
+  const r = await window.mapAPI.wikiListMaps(zone.name);
+  if (!r || r.error) { wikiStatus((r && r.error) || 'Lookup failed.'); return false; }
+  const cands = r.candidates;
+  if (auto || cands.length === 1) return downloadAndSetMap(zone, cands[0].title);
+  openMapPicker(zone, cands);
+  return 'picker';
+}
+
+function openMapPicker(zone, candidates) {
+  const grid = $('map-picker-grid');
+  grid.innerHTML = '';
+  for (const c of candidates) {
+    const name = c.title.replace(/^File:/, '');
+    const card = document.createElement('button');
+    card.className = 'map-pick';
+    card.title = name;
+    card.innerHTML =
+      '<img src="' + c.preview + '" alt="" />' +
+      '<span class="map-pick-name">' + name + '</span>' +
+      '<span class="map-pick-dim">' + c.width + ' × ' + c.height + '</span>';
+    card.addEventListener('click', () => {
+      $('map-picker-modal').classList.add('hidden');
+      downloadAndSetMap(zone, c.title);
+    });
+    grid.appendChild(card);
+  }
+  $('map-picker-title').textContent = 'Choose a map for ' + zone.name;
+  $('map-picker-modal').classList.remove('hidden');
+}
+
+$('map-picker-cancel').addEventListener('click', () => $('map-picker-modal').classList.add('hidden'));
+
 $('btn-wiki-zone').addEventListener('click', async () => {
   const zone = currentZone();
   if (!zone) {
@@ -604,8 +656,7 @@ $('btn-wiki-zone').addEventListener('click', async () => {
     'This replaces ' + zone.name + "'s current map with the wiki version.\n\n" +
     'If the new image is framed differently, your existing markers may no longer line up. Continue?'
   )) return;
-  const ok = await fetchWikiMapFor(zone);
-  if (ok) wikiStatus('Map for ' + zone.name + ' downloaded.');
+  await chooseWikiMap(zone, false);
 });
 
 $('btn-wiki-all').addEventListener('click', async () => {
@@ -776,6 +827,7 @@ window.addEventListener('keydown', (e) => {
     $('zone-modal').classList.add('hidden');
     $('export-modal').classList.add('hidden');
     $('import-modal').classList.add('hidden');
+    $('map-picker-modal').classList.add('hidden');
     hidePopup();
     setQuickPlace(false);
   }

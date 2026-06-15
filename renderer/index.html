@@ -171,6 +171,20 @@
     </div>
   </div>
 
+  <!-- Wiki map picker (shown when a zone has several map images) -->
+  <div id="map-picker-modal" class="modal-backdrop hidden">
+    <div class="modal modal-wide">
+      <h2 id="map-picker-title">Choose a map</h2>
+      <p style="font-size: 12px; color: var(--muted); line-height: 1.6;">
+        This zone's wiki page has several map images — pick the one you want.
+      </p>
+      <div id="map-picker-grid" class="map-picker-grid"></div>
+      <div class="btn-row right">
+        <button id="map-picker-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Marker detail popup -->
   <div id="marker-popup" class="hidden">
     <div id="popup-title"></div>
