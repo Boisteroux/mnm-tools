@@ -27,11 +27,11 @@ function coin(c) {
 
 const pct = (r) => (r == null ? '—' : Math.round(r * 100) + '%');
 
-function rateCell(rate, drops, kills) {
+function rateCell(rate, drops, total) {
   if (rate == null) return '<span class="sample">' + drops + ' seen</span>';
   const w = Math.min(100, Math.round(rate * 100));
   return '<span class="rate"><span class="bar"><span class="fill" style="width:' + w + '%"></span></span>' +
-    '<span class="pct">' + pct(rate) + '</span></span> <span class="sample">' + drops + '/' + kills + '</span>';
+    '<span class="pct">' + pct(rate) + '</span></span> <span class="sample">' + drops + '/' + total + '</span>';
 }
 
 const WIKI_BASE = 'https://monstersandmemories.miraheze.org/wiki/';
@@ -96,12 +96,15 @@ function itemMarketValue(name) {
   return { value: 0, source: null };
 }
 
-// Expected loot value of one kill: coin + Σ(drop rate × item regular price)
+// Drop-rate denominator: looted corpses (falls back to kills for old data).
+const mobCorpses = (d) => (d.corpses != null ? d.corpses : (d.kills || 0));
+
+// Expected value of one kill: coin/kill + Σ(per-corpse drop rate × item price).
 function mobValuePerKill(d) {
-  if (!d.kills) return { coin: 0, loot: 0, total: 0 };
-  const coinPer = (d.coin || 0) / d.kills;
+  const corpses = mobCorpses(d);
+  const coinPer = d.kills ? (d.coin || 0) / d.kills : 0;
   let loot = 0;
-  for (const [item, n] of Object.entries(d.drops)) loot += (n / d.kills) * regularPrice(itemByName[item]);
+  if (corpses) for (const [item, n] of Object.entries(d.drops)) loot += (n / corpses) * regularPrice(itemByName[item]);
   return { coin: coinPer, loot, total: coinPer + loot };
 }
 
@@ -113,13 +116,14 @@ function renderHome() {
   const withVendor = items.filter((i) => i.prices.length).length;
 
   // Most-valuable mobs — by estimated value per kill (coin + loot)
-  const valMobs = mobs.filter(([, d]) => d.kills)
+  const valMobs = mobs.filter(([, d]) => mobCorpses(d) || d.kills)
     .map(([m, d]) => [m, mobValuePerKill(d).total])
     .filter(([, v]) => v > 0)
     .sort((a, b) => b[1] - a[1]).slice(0, 12);
 
-  // Most-killed mobs
-  const topMobs = mobs.slice().sort((a, b) => b[1].kills - a[1].kills).slice(0, 12);
+  // Most-fought mobs — kills where the game logs them, else corpses looted
+  const activity = (d) => Math.max(d.kills || 0, mobCorpses(d));
+  const topMobs = mobs.slice().sort((a, b) => activity(b[1]) - activity(a[1])).slice(0, 12);
 
   // Priciest items — by regular vendor sell price
   const priciest = items.filter((i) => i.prices.length)
@@ -139,7 +143,8 @@ function renderHome() {
   const recentTop = recent.slice(0, 10);
 
   const mobValRows = valMobs.map(([m, v]) => '<tr><td>' + mobLink(m) + '</td><td class="num coin">' + coin(v) + '</td></tr>').join('');
-  const killRows = topMobs.map(([m, d]) => '<tr><td>' + mobLink(m) + '</td><td class="num sample">' + d.kills + ' kills</td></tr>').join('');
+  const killRows = topMobs.map(([m, d]) => '<tr><td>' + mobLink(m) + '</td><td class="num sample">' +
+    (d.kills ? d.kills + ' kills' : mobCorpses(d) + ' looted') + '</td></tr>').join('');
   const priceRows = priciest.map(([i, v]) => '<tr><td>' + itemLink(i.id, i.name) + '</td><td class="num coin">' + coin(v) + '</td></tr>').join('');
   const resRows = resources.map((r) => '<tr><td>' + (nameToId[r.name] ? itemLink(nameToId[r.name], r.name) : esc(r.name)) +
     (r.source === 'trade' ? ' <span class="tag good">trade</span>' : '') +
@@ -167,7 +172,7 @@ function renderHome() {
     '<div class="col2">' +
       '<div><h2>Most-valuable mobs</h2><p class="sub">Estimated coin + loot per kill.</p><div class="card"><table><tbody>' +
         (mobValRows || '<tr><td class="muted">No data yet.</td></tr>') + '</tbody></table></div></div>' +
-      '<div><h2>Most-killed mobs</h2><p class="sub">Where the grind has gone.</p><div class="card"><table><tbody>' +
+      '<div><h2>Most-fought mobs</h2><p class="sub">Where the grind has gone.</p><div class="card"><table><tbody>' +
         killRows + '</tbody></table></div></div>' +
     '</div>' +
     '<div class="col2">' +
@@ -223,7 +228,7 @@ function renderItem(id) {
   if (dropRows.length) {
     sections.push('<h2>Dropped by</h2><div class="card"><table><thead><tr><th>Source</th><th class="num">Drop rate</th></tr></thead><tbody>' +
       dropRows.map((r) => '<tr><td>' + sourceLink(r.mob) + '</td><td class="num">' +
-        (r.rate != null ? rateCell(r.rate, r.drops, r.kills) : '<span class="sample">—</span>') + '</td></tr>').join('') +
+        (r.rate != null ? rateCell(r.rate, r.drops, r.corpses) : '<span class="sample">—</span>') + '</td></tr>').join('') +
       '</tbody></table></div>');
   }
 
@@ -315,9 +320,10 @@ function renderMob(name) {
 
   const zones = Object.keys(m.zones || {});
   const val = mobValuePerKill(m);
+  const corpses = mobCorpses(m);
 
   const drops = Object.entries(m.drops).map(([item, n]) => {
-    const rate = m.kills ? n / m.kills : null;
+    const rate = corpses ? n / corpses : null;
     const reg = regularPrice(itemByName[item]);
     return { item, n, rate, reg, perKill: rate ? rate * reg : 0, hasPrice: reg > 0 };
   }).sort((a, b) => (b.rate || 0) - (a.rate || 0) || b.n - a.n);
@@ -329,16 +335,15 @@ function renderMob(name) {
         const id = nameToId[d.item] || d.item;
         const sell = d.hasPrice ? coin(d.reg) : '<span class="sample">no price yet</span>';
         const pk = d.hasPrice ? coin(d.perKill) : '<span class="sample">—</span>';
-        return '<tr><td>' + itemLink(id, d.item) + '</td><td class="num">' + rateCell(d.rate, d.n, m.kills) +
+        return '<tr><td>' + itemLink(id, d.item) + '</td><td class="num">' + rateCell(d.rate, d.n, corpses) +
           '</td><td class="num coin">' + sell + '</td><td class="num coin">' + pk + '</td></tr>';
       }).join('') + '</tbody></table></div>';
   }
 
-  const summary = '<div class="vendor-summary">' +
-    '<div class="vbox"><div class="vlbl">Kills observed</div><div class="vval">' + m.kills + '</div></div>' +
-    '<div class="vbox"><div class="vlbl">Coin / kill</div><div class="vval">' + coin(val.coin) + '</div></div>' +
-    '<div class="vbox"><div class="vlbl">Est. value / kill</div><div class="vval">' + coin(val.total) + '</div></div>' +
-    '</div>';
+  const boxes = ['<div class="vbox"><div class="vlbl">Corpses looted</div><div class="vval">' + corpses + '</div></div>'];
+  if (m.kills) boxes.push('<div class="vbox"><div class="vlbl">Coin / kill</div><div class="vval">' + coin(val.coin) + '</div></div>');
+  boxes.push('<div class="vbox"><div class="vlbl">Est. value / kill</div><div class="vval">' + coin(val.total) + '</div></div>');
+  const summary = '<div class="vendor-summary">' + boxes.join('') + '</div>';
 
   // Wiki stats block (level / race / class / special)
   const mw = m.wiki || {};
@@ -365,8 +370,9 @@ function renderMob(name) {
     statsBlock +
     summary +
     '<h2>Drops &amp; farming value</h2>' + table +
-    '<div class="note">“Sell value” is the item’s regular vendor price. “Avg kill value” = drop rate × sell value — ' +
-    'what that drop is worth per kill on average. Add coin/kill for a mob’s total. A rough guide to the most profitable drops.</div>';
+    '<div class="note">Drop rates are per <em>looted corpse</em> (the game doesn’t log a kill for every mob, so loots are grouped into corpses). ' +
+    '“Sell value” is the item’s regular vendor price; “Avg kill value” = drop rate × sell value. ' +
+    'Rates are a floor — corpse items you didn’t loot aren’t recorded.</div>';
 }
 
 function renderZone(name) {
@@ -451,7 +457,7 @@ function renderSearch(q) {
       return { kind: isResource ? 'harvest' : 'item', name: i.name, id: i.id, meta: bits.join(' · ') };
     });
   const mobs = Object.entries(DATA.mobs).filter(([m]) => m.toLowerCase().includes(query)).slice(0, 20)
-    .map(([m, d]) => ({ kind: 'mob', name: m, meta: d.kills + ' kills' }));
+    .map(([m, d]) => ({ kind: 'mob', name: m, meta: mobCorpses(d) + ' looted' }));
 
   const all = [...mobs, ...items];
   if (!all.length) {
@@ -491,7 +497,7 @@ const browseCols = {
     { key: 'name', label: 'Mob' },
     { key: 'valuekill', label: 'Value/kill', num: true, render: (v) => coin(v) },
     { key: 'coinkill', label: 'Coin/kill', num: true, render: (v) => coin(v) },
-    { key: 'kills', label: 'Kills', num: true },
+    { key: 'corpses', label: 'Corpses', num: true },
     { key: 'drops', label: 'Drops', num: true },
   ],
 };
@@ -501,7 +507,7 @@ function browseRows(view) {
     return Object.entries(DATA.mobs).map(([name, d]) => {
       const v = mobValuePerKill(d);
       return {
-        _href: '#/mob/' + encodeURIComponent(name), name, kills: d.kills,
+        _href: '#/mob/' + encodeURIComponent(name), name, corpses: mobCorpses(d),
         drops: Object.keys(d.drops).length, coinkill: v.coin, valuekill: v.total,
       };
     });

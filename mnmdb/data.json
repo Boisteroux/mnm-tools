@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-15T18:35:01.608Z",
+  "generatedAt": "2026-06-15T22:47:37.654Z",
   "source": "mnm-tools",
   "ledgerFiles": 13,
   "events": 2842,
@@ -7,247 +7,291 @@
     "a desert bat": {
       "kills": 0,
       "drops": {
-        "Bat Eye": 5,
-        "Bat Wing": 13,
-        "Bat Tooth": 7,
-        "Raw Bat Meat": 6,
+        "Bat Eye": 4,
+        "Bat Wing": 10,
+        "Bat Tooth": 5,
+        "Raw Bat Meat": 4,
         "Bat Fur": 2
       },
-      "zones": {},
-      "coin": 0
+      "zones": {
+        "Night Harbor": 33
+      },
+      "coin": 0,
+      "corpses": 14
     },
     "a rotting skeleton": {
       "kills": 126,
       "drops": {
-        "Tattered Cloth Robe": 5,
-        "Bone Chips": 99,
-        "Rusty Mace": 4,
-        "Cloth Scraps": 50,
-        "Worn Great Staff": 3,
-        "Rusty Scimitar": 6,
-        "Rusty Great Scythe": 3,
-        "Tattered Cloth Boots": 3,
-        "Rusty Warhammer": 2,
-        "Rusty Shortsword": 4,
-        "Rusty Axe": 3,
-        "Tattered Cloth Pantaloons": 1,
-        "Skeleton Jawbone": 14,
-        "Tattered Cloth Gorget": 4,
-        "Rusty Trident": 1,
-        "Tattered Cloth Veil": 3,
+        "Bone Chips": 53,
+        "Rusty Mace": 3,
+        "Worn Great Staff": 2,
+        "Cloth Scraps": 38,
+        "Tattered Cloth Veil": 2,
         "Shattered Skull": 3,
-        "Rusty Battle Axe": 2,
-        "Tattered Cloth Mantle": 2,
-        "Torch": 2,
+        "Rusty Scimitar": 5,
+        "Tattered Cloth Robe": 3,
+        "Rusty Battle Axe": 1,
+        "Tattered Cloth Gorget": 3,
+        "Worn Buckler": 1,
+        "Tattered Cloth Mantle": 1,
+        "Skeleton Jawbone": 10,
+        "Torch": 1,
+        "Rusty Great Scythe": 2,
         "Tattered Cloth Gloves": 2,
         "Rusty Spear": 2,
         "Rusty Tower Shield": 1,
         "Rusty Longsword": 1,
+        "Rusty Shortsword": 3,
+        "Rusty Axe": 3,
         "Tattered Cloth Shirt": 2,
         "Tattered Cloth Cape": 2,
         "Rusty Dagger": 1,
         "Tattered Cloth Belt": 1,
+        "Tattered Cloth Boots": 2,
         "Rusty War Lance": 1,
-        "Tattered Cloth Tunic": 2,
-        "Rusty Kite Shield": 3,
-        "Worn Buckler": 1
+        "Tattered Cloth Tunic": 1,
+        "Rusty Kite Shield": 2,
+        "Tattered Cloth Pantaloons": 1,
+        "Rusty Warhammer": 1,
+        "Rusty Trident": 1
       },
       "zones": {
-        "Night Harbor": 26,
-        "Shaded Dunes": 5,
-        "Evershade Weald": 95
+        "Night Harbor": 73,
+        "Shaded Dunes": 13,
+        "Evershade Weald": 273
       },
-      "coin": 183
+      "coin": 183,
+      "corpses": 96
     },
     "a snake": {
       "kills": 0,
       "drops": {
-        "Snake Fang": 2,
-        "Snake Skin": 2
+        "Snake Fang": 1,
+        "Snake Skin": 1
       },
-      "zones": {},
-      "coin": 0
+      "zones": {
+        "Night Harbor": 4
+      },
+      "coin": 0,
+      "corpses": 1
     },
     "a spiderling": {
       "kills": 0,
       "drops": {
-        "Spider Silk": 9,
+        "Spider Silk": 6,
         "Spiderling Eye": 1,
         "Spider Legs": 1
       },
-      "zones": {},
-      "coin": 0
+      "zones": {
+        "Night Harbor": 11
+      },
+      "coin": 0,
+      "corpses": 6
     },
     "an ashira scout": {
       "kills": 13,
       "drops": {
-        "Ashira Scout Necklace": 6,
-        "Raw Ashira Meat": 5,
-        "Cloth Scraps": 3,
-        "Multhele Root": 2,
-        "Torch": 2,
-        "Carrot": 2,
-        "Tattered Cloth Belt": 1
+        "Ashira Scout Necklace": 4,
+        "Cloth Scraps": 2,
+        "Raw Ashira Meat": 2,
+        "Multhele Root": 1,
+        "Tattered Cloth Belt": 1,
+        "Torch": 1,
+        "Carrot": 1
       },
       "zones": {
-        "Night Harbor": 13
+        "Night Harbor": 34
       },
-      "coin": 51
+      "coin": 51,
+      "corpses": 6
     },
     "a fire beetle": {
       "kills": 0,
       "drops": {
-        "Fire Beetle Gland": 4,
-        "Fire Beetle Legs": 25,
-        "Fire Beetle Eye": 8,
-        "Fire Beetle Carapace": 3
+        "Fire Beetle Gland": 3,
+        "Fire Beetle Legs": 13,
+        "Fire Beetle Carapace": 2,
+        "Fire Beetle Eye": 5
       },
-      "zones": {},
-      "coin": 0
+      "zones": {
+        "Night Harbor": 34,
+        "Shaded Dunes": 6
+      },
+      "coin": 0,
+      "corpses": 14
     },
     "a jackal pup": {
       "kills": 0,
       "drops": {
-        "Raw Jackal Meat": 2,
-        "Jackal Tooth": 4,
-        "Low-Quality Jackal Pelt": 2
+        "Raw Jackal Meat": 1,
+        "Jackal Tooth": 2,
+        "Low-Quality Jackal Pelt": 1
       },
-      "zones": {},
-      "coin": 0
+      "zones": {
+        "Night Harbor": 8
+      },
+      "coin": 0,
+      "corpses": 2
     },
     "a dunes scarab": {
       "kills": 0,
       "drops": {
-        "Scarab Leg": 17,
-        "Scarab Eye": 5,
-        "Scarab Carapace": 1
+        "Scarab Leg": 8,
+        "Scarab Carapace": 1,
+        "Scarab Eye": 3
       },
-      "zones": {},
-      "coin": 0
+      "zones": {
+        "Night Harbor": 16,
+        "Shaded Dunes": 7
+      },
+      "coin": 0,
+      "corpses": 11
     },
     "a large diseased rat": {
       "kills": 0,
       "drops": {
-        "Diseased Rat Blood": 7,
-        "Rat Tooth": 4,
-        "Rat Ear": 4,
-        "Cooked Rat Meat": 2,
-        "Raw Rat Meat": 4
+        "Diseased Rat Blood": 3,
+        "Rat Tooth": 1,
+        "Rat Ear": 2,
+        "Cooked Rat Meat": 1,
+        "Raw Rat Meat": 2
       },
-      "zones": {},
-      "coin": 0
+      "zones": {
+        "Night Harbor": 21
+      },
+      "coin": 0,
+      "corpses": 3
     },
     "a large rat": {
       "kills": 0,
       "drops": {
-        "Raw Rat Meat": 15,
-        "Rat Foot": 6,
-        "Rat Tooth": 7,
-        "Rat Ear": 11
+        "Raw Rat Meat": 8,
+        "Rat Ear": 6,
+        "Rat Tooth": 4,
+        "Rat Foot": 3
       },
-      "zones": {},
-      "coin": 0
+      "zones": {
+        "Night Harbor": 39
+      },
+      "coin": 0,
+      "corpses": 10
     },
     "a diseased snake": {
       "kills": 0,
       "drops": {
-        "Diseased Snake Blood": 2
+        "Diseased Snake Blood": 1
       },
-      "zones": {},
-      "coin": 0
+      "zones": {
+        "Night Harbor": 2
+      },
+      "coin": 0,
+      "corpses": 1
     },
     "an ashira warrior": {
       "kills": 11,
       "drops": {
-        "Ashira Warrior Pelt": 2,
-        "Tattered Cloth Pantaloons": 2,
-        "Worn Buckler": 2,
-        "Bell Pepper": 2,
-        "Tattered Cloth Bracer": 2,
-        "Cabbage": 2,
-        "Ashira Warrior Necklace": 6,
-        "Ashira Warrior Bracer": 3,
-        "Tattered Cloth Shirt": 2,
-        "Cloth Scraps": 5,
-        "Tattered Cloth Robe": 2,
-        "Ashira Tail": 4,
-        "Tattered Rawhide Vest": 2,
-        "Potato": 2,
-        "Raw Ashira Meat": 1
+        "Ashira Warrior Bracer": 2,
+        "Cloth Scraps": 3,
+        "Raw Ashira Meat": 1,
+        "Ashira Warrior Pelt": 1,
+        "Tattered Cloth Pantaloons": 1,
+        "Worn Buckler": 1,
+        "Bell Pepper": 1,
+        "Tattered Cloth Bracer": 1,
+        "Cabbage": 1,
+        "Ashira Warrior Necklace": 3,
+        "Tattered Cloth Shirt": 1,
+        "Tattered Cloth Robe": 1,
+        "Ashira Tail": 2,
+        "Tattered Rawhide Vest": 1,
+        "Potato": 1
       },
       "zones": {
-        "Night Harbor": 3,
-        "Shaded Dunes": 8
+        "Night Harbor": 8,
+        "Shaded Dunes": 42
       },
-      "coin": 131
+      "coin": 131,
+      "corpses": 10
     },
     "an ashira shaman": {
       "kills": 0,
       "drops": {
-        "Cloth Scraps": 2,
-        "Garlic": 2,
-        "Celery": 2,
-        "Ashira Tail": 2,
-        "Rawhide Scraps": 2
+        "Cloth Scraps": 1,
+        "Garlic": 1,
+        "Celery": 1,
+        "Ashira Tail": 1,
+        "Rawhide Scraps": 1
       },
-      "zones": {},
-      "coin": 0
+      "zones": {
+        "Shaded Dunes": 10
+      },
+      "coin": 0,
+      "corpses": 3
     },
     "an ashira lookout": {
       "kills": 6,
       "drops": {
-        "Ashira Scout Necklace": 4,
-        "Cloth Scraps": 4,
-        "Rawhide Scraps": 2,
-        "Raw Ashira Meat": 2,
-        "Ashira Tail": 2,
-        "Tattered Cloth Pantaloons": 2,
-        "Rusty Scimitar": 2,
-        "Rusty Spear": 2
+        "Ashira Scout Necklace": 2,
+        "Cloth Scraps": 2,
+        "Rawhide Scraps": 1,
+        "Raw Ashira Meat": 1,
+        "Ashira Tail": 1,
+        "Tattered Cloth Pantaloons": 1,
+        "Rusty Scimitar": 1,
+        "Rusty Spear": 1
       },
       "zones": {
-        "Shaded Dunes": 6
+        "Shaded Dunes": 26
       },
-      "coin": 74
+      "coin": 74,
+      "corpses": 5
     },
     "a rattlesnake": {
       "kills": 0,
       "drops": {
-        "Snake Fang": 5,
-        "Snake Egg": 2
+        "Snake Egg": 1,
+        "Snake Fang": 3
       },
-      "zones": {},
-      "coin": 0
+      "zones": {
+        "Shaded Dunes": 4,
+        "Night Harbor": 3
+      },
+      "coin": 0,
+      "corpses": 4
     },
     "a skeleton": {
       "kills": 11,
       "drops": {
-        "Bone Chips": 11,
-        "Cloth Scraps": 8,
-        "Rusty Shortsword": 1,
-        "Tattered Cloth Cap": 1,
-        "Worn Great Staff": 1,
-        "Rawhide Scraps": 3,
         "Rusty Maul": 1,
         "Torch": 1,
+        "Bone Chips": 7,
+        "Cloth Scraps": 6,
         "Tattered Cloth Veil": 1,
         "Shattered Skull": 1,
         "Tattered Cloth Cape": 1,
-        "Worn Buckler": 1
+        "Rawhide Scraps": 3,
+        "Worn Buckler": 1,
+        "Rusty Shortsword": 1,
+        "Tattered Cloth Cap": 1,
+        "Worn Great Staff": 1
       },
       "zones": {
-        "Shaded Dunes": 1,
-        "Evershade Weald": 10
+        "Shaded Dunes": 5,
+        "Evershade Weald": 37
       },
-      "coin": 113
+      "coin": 113,
+      "corpses": 17
     },
     "a large dunes bat": {
       "kills": 0,
       "drops": {
-        "Large Bat Wing": 4
+        "Large Bat Wing": 1
       },
-      "zones": {},
-      "coin": 0
+      "zones": {
+        "Shaded Dunes": 4
+      },
+      "coin": 0,
+      "corpses": 1
     },
     "a diseased desert bat": {
       "kills": 0,
@@ -256,72 +300,93 @@
         "Bat Eye": 1,
         "Bat Wing": 1
       },
-      "zones": {},
-      "coin": 0
+      "zones": {
+        "Night Harbor": 3
+      },
+      "coin": 0,
+      "corpses": 1
     },
     "a large desert bat": {
       "kills": 0,
       "drops": {
         "Large Bat Wing": 1
       },
-      "zones": {},
-      "coin": 0
+      "zones": {
+        "Night Harbor": 1
+      },
+      "coin": 0,
+      "corpses": 1
     },
     "a crocodile hatchling": {
       "kills": 0,
       "drops": {
-        "Cooked Crocodile Meat": 9,
+        "Cooked Crocodile Meat": 7,
         "Crocodile Tooth": 11,
         "Crocodile Hide": 4,
         "Raw Crocodile Meat": 7,
         "Fish Bones": 3
       },
-      "zones": {},
-      "coin": 0
+      "zones": {
+        "Night Harbor": 34
+      },
+      "coin": 0,
+      "corpses": 21
     },
     "a black bat": {
       "kills": 0,
       "drops": {
-        "Bat Tooth": 8,
-        "Bat Wing": 20,
-        "Bat Eye": 6,
-        "Bat Fur": 12,
-        "Raw Bat Meat": 9,
-        "Cooked Bat Meat": 2
+        "Bat Tooth": 6,
+        "Bat Wing": 12,
+        "Bat Eye": 4,
+        "Bat Fur": 9,
+        "Raw Bat Meat": 5,
+        "Cooked Bat Meat": 1
       },
-      "zones": {},
-      "coin": 0
+      "zones": {
+        "Evershade Weald": 57
+      },
+      "coin": 0,
+      "corpses": 22
     },
     "a black widow hatchling": {
       "kills": 0,
       "drops": {
-        "Spider Silk": 109,
-        "Spider Legs": 14,
+        "Spider Silk": 49,
+        "Spider Legs": 13,
         "Spider Venom Sac": 4
       },
-      "zones": {},
-      "coin": 0
+      "zones": {
+        "Evershade Weald": 127
+      },
+      "coin": 0,
+      "corpses": 52
     },
     "a black wolf pup": {
       "kills": 0,
       "drops": {
-        "Wolf Tooth": 16,
+        "Wolf Tooth": 12,
         "Wolf Blood": 10,
-        "Raw Wolf Meat": 16,
-        "Low-Quality Wolf Pelt": 16
+        "Raw Wolf Meat": 11,
+        "Low-Quality Wolf Pelt": 12
       },
-      "zones": {},
-      "coin": 0
+      "zones": {
+        "Evershade Weald": 58
+      },
+      "coin": 0,
+      "corpses": 33
     },
     "a wasp drone": {
       "kills": 0,
       "drops": {
-        "Wasp Wing": 21,
-        "Wasp Venom Sac": 6,
-        "Royal Jelly": 6
+        "Wasp Wing": 11,
+        "Wasp Venom Sac": 5,
+        "Royal Jelly": 4
       },
-      "zones": {},
-      "coin": 0
+      "zones": {
+        "Evershade Weald": 33
+      },
+      "coin": 0,
+      "corpses": 17
     },
     "a dryad fawn": {
       "kills": 24,
@@ -329,20 +394,22 @@
         "Dryad Sap": 3
       },
       "zones": {
-        "Evershade Weald": 24
+        "Evershade Weald": 27
       },
-      "coin": 95
+      "coin": 95,
+      "corpses": 3
     },
     "a Fellstone scout": {
       "kills": 52,
       "drops": {
         "Tattered Cloth Belt": 1,
-        "Raw Orc Meat": 9,
-        "Unintelligible Writings": 10,
+        "Raw Orc Meat": 7,
+        "Unintelligible Writings": 8,
         "Rusty Tower Shield": 2,
-        "Rusty Warhammer": 2,
-        "Tattered Cloth Robe": 2,
-        "Cloth Scraps": 18,
+        "Rusty Warhammer": 1,
+        "Tattered Cloth Robe": 1,
+        "Cloth Scraps": 15,
+        "Cracked Staff": 1,
         "Torch": 1,
         "Rusty Greatsword": 2,
         "Tattered Cloth Gorget": 1,
@@ -352,94 +419,111 @@
         "Rusty Axe": 1,
         "Rusty Shortsword": 1,
         "Tattered Cloth Veil": 1,
-        "Rusty Trident": 1,
-        "Cracked Staff": 1
+        "Rusty Trident": 1
       },
       "zones": {
-        "Evershade Weald": 52
+        "Evershade Weald": 109
       },
-      "coin": 245
+      "coin": 245,
+      "corpses": 33
     },
     "a green drakeling": {
       "kills": 37,
       "drops": {
         "Drake Claw": 6,
-        "Green Drakeling Scale": 19,
-        "Green Drakeling Wing": 18,
+        "Green Drakeling Scale": 16,
+        "Green Drakeling Wing": 16,
         "Green Drakeling Hide": 9,
-        "Drake Fang": 11,
+        "Drake Fang": 10,
         "Green Drakeling Poison Duct": 1
       },
       "zones": {
-        "Evershade Weald": 37
+        "Evershade Weald": 101
       },
-      "coin": 460
+      "coin": 460,
+      "corpses": 34
     },
     "a large black bat": {
       "kills": 0,
       "drops": {
-        "Large Bat Fur": 5,
-        "Raw Bat Meat": 5,
+        "Large Bat Fur": 4,
+        "Raw Bat Meat": 4,
         "Large Bat Wing": 2
       },
-      "zones": {},
-      "coin": 0
+      "zones": {
+        "Evershade Weald": 12
+      },
+      "coin": 0,
+      "corpses": 9
     },
     "a Fellstone warrior": {
       "kills": 15,
       "drops": {
-        "Fellstone Warrior's Belt": 3,
-        "Tattered Cloth Tunic": 1,
         "Left Orc Ear": 2,
+        "Cloth Scraps": 3,
+        "Fellstone Warrior's Belt": 2,
+        "Tattered Cloth Tunic": 1,
         "Tattered Cloth Mantle": 1,
         "Rusty Longsword": 1,
         "Tattered Cloth Bracer": 2,
         "Raw Orc Meat": 2,
-        "Cloth Scraps": 4,
         "Tattered Rawhide Bracer": 1,
         "Rawhide Scraps": 1
       },
       "zones": {
-        "Evershade Weald": 15
+        "Evershade Weald": 33
       },
-      "coin": 139
+      "coin": 139,
+      "corpses": 10
     },
     "a black widow": {
       "kills": 0,
       "drops": {
-        "Widow Eye": 12,
-        "Spider Silk": 17,
+        "Widow Eye": 9,
+        "Spider Silk": 9,
         "Spider Legs": 3
       },
-      "zones": {},
-      "coin": 0
+      "zones": {
+        "Evershade Weald": 32
+      },
+      "coin": 0,
+      "corpses": 12
     },
     "a wasp worker": {
       "kills": 0,
       "drops": {
-        "Wasp Wing": 9,
+        "Wasp Wing": 7,
         "Royal Jelly": 4,
-        "Wasp Worker Wax": 2,
+        "Wasp Worker Wax": 1,
         "Wasp Venom Sac": 1
       },
-      "zones": {},
-      "coin": 0
+      "zones": {
+        "Evershade Weald": 16
+      },
+      "coin": 0,
+      "corpses": 7
     },
     "a black wolf": {
       "kills": 0,
       "drops": {
         "Raw Wolf Meat": 1
       },
-      "zones": {},
-      "coin": 0
+      "zones": {
+        "Evershade Weald": 1
+      },
+      "coin": 0,
+      "corpses": 1
     },
     "a rabid wolf": {
       "kills": 0,
       "drops": {
-        "Raw Wolf Meat": 2
+        "Raw Wolf Meat": 1
       },
-      "zones": {},
-      "coin": 0
+      "zones": {
+        "Evershade Weald": 2
+      },
+      "coin": 0,
+      "corpses": 1
     }
   },
   "items": [
@@ -456,16 +540,16 @@
       "name": "Ashira Scout Necklace",
       "droppedBy": [
         {
-          "mob": "an ashira lookout",
+          "mob": "an ashira scout",
           "drops": 4,
-          "kills": 6,
+          "corpses": 6,
           "rate": 0.6666666666666666
         },
         {
-          "mob": "an ashira scout",
-          "drops": 6,
-          "kills": 13,
-          "rate": 0.46153846153846156
+          "mob": "an ashira lookout",
+          "drops": 2,
+          "corpses": 5,
+          "rate": 0.4
         }
       ],
       "prices": [],
@@ -480,22 +564,22 @@
       "name": "Ashira Tail",
       "droppedBy": [
         {
-          "mob": "an ashira warrior",
-          "drops": 4,
-          "kills": 11,
-          "rate": 0.36363636363636365
-        },
-        {
-          "mob": "an ashira lookout",
-          "drops": 2,
-          "kills": 6,
+          "mob": "an ashira shaman",
+          "drops": 1,
+          "corpses": 3,
           "rate": 0.3333333333333333
         },
         {
-          "mob": "an ashira shaman",
+          "mob": "an ashira lookout",
+          "drops": 1,
+          "corpses": 5,
+          "rate": 0.2
+        },
+        {
+          "mob": "an ashira warrior",
           "drops": 2,
-          "kills": 0,
-          "rate": null
+          "corpses": 10,
+          "rate": 0.2
         }
       ],
       "prices": [
@@ -515,9 +599,9 @@
       "droppedBy": [
         {
           "mob": "an ashira warrior",
-          "drops": 3,
-          "kills": 11,
-          "rate": 0.2727272727272727
+          "drops": 2,
+          "corpses": 10,
+          "rate": 0.2
         }
       ],
       "prices": [],
@@ -533,9 +617,9 @@
       "droppedBy": [
         {
           "mob": "an ashira warrior",
-          "drops": 6,
-          "kills": 11,
-          "rate": 0.5454545454545454
+          "drops": 3,
+          "corpses": 10,
+          "rate": 0.3
         }
       ],
       "prices": [],
@@ -550,9 +634,9 @@
       "droppedBy": [
         {
           "mob": "an ashira warrior",
-          "drops": 2,
-          "kills": 11,
-          "rate": 0.18181818181818182
+          "drops": 1,
+          "corpses": 10,
+          "rate": 0.1
         }
       ],
       "prices": [
@@ -571,22 +655,22 @@
       "name": "Bat Eye",
       "droppedBy": [
         {
-          "mob": "a desert bat",
-          "drops": 5,
-          "kills": 0,
-          "rate": null
-        },
-        {
           "mob": "a diseased desert bat",
           "drops": 1,
-          "kills": 0,
-          "rate": null
+          "corpses": 1,
+          "rate": 1
+        },
+        {
+          "mob": "a desert bat",
+          "drops": 4,
+          "corpses": 14,
+          "rate": 0.2857142857142857
         },
         {
           "mob": "a black bat",
-          "drops": 6,
-          "kills": 0,
-          "rate": null
+          "drops": 4,
+          "corpses": 22,
+          "rate": 0.18181818181818182
         }
       ],
       "prices": [
@@ -606,16 +690,16 @@
       "name": "Bat Fur",
       "droppedBy": [
         {
-          "mob": "a desert bat",
-          "drops": 2,
-          "kills": 0,
-          "rate": null
+          "mob": "a black bat",
+          "drops": 9,
+          "corpses": 22,
+          "rate": 0.4090909090909091
         },
         {
-          "mob": "a black bat",
-          "drops": 12,
-          "kills": 0,
-          "rate": null
+          "mob": "a desert bat",
+          "drops": 2,
+          "corpses": 14,
+          "rate": 0.14285714285714285
         }
       ],
       "prices": [
@@ -636,15 +720,15 @@
       "droppedBy": [
         {
           "mob": "a desert bat",
-          "drops": 7,
-          "kills": 0,
-          "rate": null
+          "drops": 5,
+          "corpses": 14,
+          "rate": 0.35714285714285715
         },
         {
           "mob": "a black bat",
-          "drops": 8,
-          "kills": 0,
-          "rate": null
+          "drops": 6,
+          "corpses": 22,
+          "rate": 0.2727272727272727
         }
       ],
       "prices": [
@@ -664,22 +748,22 @@
       "name": "Bat Wing",
       "droppedBy": [
         {
-          "mob": "a desert bat",
-          "drops": 13,
-          "kills": 0,
-          "rate": null
-        },
-        {
           "mob": "a diseased desert bat",
           "drops": 1,
-          "kills": 0,
-          "rate": null
+          "corpses": 1,
+          "rate": 1
+        },
+        {
+          "mob": "a desert bat",
+          "drops": 10,
+          "corpses": 14,
+          "rate": 0.7142857142857143
         },
         {
           "mob": "a black bat",
-          "drops": 20,
-          "kills": 0,
-          "rate": null
+          "drops": 12,
+          "corpses": 22,
+          "rate": 0.5454545454545454
         }
       ],
       "prices": [
@@ -708,9 +792,9 @@
       "droppedBy": [
         {
           "mob": "an ashira warrior",
-          "drops": 2,
-          "kills": 11,
-          "rate": 0.18181818181818182
+          "drops": 1,
+          "corpses": 10,
+          "rate": 0.1
         }
       ],
       "prices": [],
@@ -724,16 +808,16 @@
       "name": "Bone Chips",
       "droppedBy": [
         {
-          "mob": "a skeleton",
-          "drops": 11,
-          "kills": 11,
-          "rate": 1
+          "mob": "a rotting skeleton",
+          "drops": 53,
+          "corpses": 96,
+          "rate": 0.5520833333333334
         },
         {
-          "mob": "a rotting skeleton",
-          "drops": 99,
-          "kills": 126,
-          "rate": 0.7857142857142857
+          "mob": "a skeleton",
+          "drops": 7,
+          "corpses": 17,
+          "rate": 0.4117647058823529
         }
       ],
       "prices": [
@@ -782,9 +866,9 @@
       "droppedBy": [
         {
           "mob": "an ashira warrior",
-          "drops": 2,
-          "kills": 11,
-          "rate": 0.18181818181818182
+          "drops": 1,
+          "corpses": 10,
+          "rate": 0.1
         }
       ],
       "prices": [],
@@ -799,9 +883,9 @@
       "droppedBy": [
         {
           "mob": "an ashira scout",
-          "drops": 2,
-          "kills": 13,
-          "rate": 0.15384615384615385
+          "drops": 1,
+          "corpses": 6,
+          "rate": 0.16666666666666666
         }
       ],
       "prices": [],
@@ -816,9 +900,9 @@
       "droppedBy": [
         {
           "mob": "an ashira shaman",
-          "drops": 2,
-          "kills": 0,
-          "rate": null
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
         }
       ],
       "prices": [],
@@ -944,52 +1028,52 @@
       "name": "Cloth Scraps",
       "droppedBy": [
         {
-          "mob": "a skeleton",
-          "drops": 8,
-          "kills": 11,
-          "rate": 0.7272727272727273
-        },
-        {
-          "mob": "an ashira lookout",
-          "drops": 4,
-          "kills": 6,
-          "rate": 0.6666666666666666
-        },
-        {
-          "mob": "an ashira warrior",
-          "drops": 5,
-          "kills": 11,
+          "mob": "a Fellstone scout",
+          "drops": 15,
+          "corpses": 33,
           "rate": 0.45454545454545453
         },
         {
+          "mob": "an ashira lookout",
+          "drops": 2,
+          "corpses": 5,
+          "rate": 0.4
+        },
+        {
           "mob": "a rotting skeleton",
-          "drops": 50,
-          "kills": 126,
-          "rate": 0.3968253968253968
+          "drops": 38,
+          "corpses": 96,
+          "rate": 0.3958333333333333
         },
         {
-          "mob": "a Fellstone scout",
-          "drops": 18,
-          "kills": 52,
-          "rate": 0.34615384615384615
-        },
-        {
-          "mob": "a Fellstone warrior",
-          "drops": 4,
-          "kills": 15,
-          "rate": 0.26666666666666666
+          "mob": "a skeleton",
+          "drops": 6,
+          "corpses": 17,
+          "rate": 0.35294117647058826
         },
         {
           "mob": "an ashira scout",
-          "drops": 3,
-          "kills": 13,
-          "rate": 0.23076923076923078
+          "drops": 2,
+          "corpses": 6,
+          "rate": 0.3333333333333333
         },
         {
           "mob": "an ashira shaman",
-          "drops": 2,
-          "kills": 0,
-          "rate": null
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        },
+        {
+          "mob": "an ashira warrior",
+          "drops": 3,
+          "corpses": 10,
+          "rate": 0.3
+        },
+        {
+          "mob": "a Fellstone warrior",
+          "drops": 3,
+          "corpses": 10,
+          "rate": 0.3
         }
       ],
       "prices": [],
@@ -1015,9 +1099,9 @@
       "droppedBy": [
         {
           "mob": "a black bat",
-          "drops": 2,
-          "kills": 0,
-          "rate": null
+          "drops": 1,
+          "corpses": 22,
+          "rate": 0.045454545454545456
         }
       ],
       "prices": [],
@@ -1032,9 +1116,9 @@
       "droppedBy": [
         {
           "mob": "a crocodile hatchling",
-          "drops": 9,
-          "kills": 0,
-          "rate": null
+          "drops": 7,
+          "corpses": 21,
+          "rate": 0.3333333333333333
         }
       ],
       "prices": [],
@@ -1049,9 +1133,9 @@
       "droppedBy": [
         {
           "mob": "a large diseased rat",
-          "drops": 2,
-          "kills": 0,
-          "rate": null
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
         }
       ],
       "prices": [],
@@ -1179,8 +1263,8 @@
         {
           "mob": "a Fellstone scout",
           "drops": 1,
-          "kills": 52,
-          "rate": 0.019230769230769232
+          "corpses": 33,
+          "rate": 0.030303030303030304
         }
       ],
       "prices": [],
@@ -1196,8 +1280,8 @@
         {
           "mob": "a crocodile hatchling",
           "drops": 4,
-          "kills": 0,
-          "rate": null
+          "corpses": 21,
+          "rate": 0.19047619047619047
         }
       ],
       "prices": [],
@@ -1213,8 +1297,8 @@
         {
           "mob": "a crocodile hatchling",
           "drops": 11,
-          "kills": 0,
-          "rate": null
+          "corpses": 21,
+          "rate": 0.5238095238095238
         }
       ],
       "prices": [],
@@ -1247,8 +1331,8 @@
         {
           "mob": "a diseased desert bat",
           "drops": 1,
-          "kills": 0,
-          "rate": null
+          "corpses": 1,
+          "rate": 1
         }
       ],
       "prices": [],
@@ -1263,9 +1347,9 @@
       "droppedBy": [
         {
           "mob": "a large diseased rat",
-          "drops": 7,
-          "kills": 0,
-          "rate": null
+          "drops": 3,
+          "corpses": 3,
+          "rate": 1
         }
       ],
       "prices": [
@@ -1285,9 +1369,9 @@
       "droppedBy": [
         {
           "mob": "a diseased snake",
-          "drops": 2,
-          "kills": 0,
-          "rate": null
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
         }
       ],
       "prices": [
@@ -1308,8 +1392,8 @@
         {
           "mob": "a green drakeling",
           "drops": 6,
-          "kills": 37,
-          "rate": 0.16216216216216217
+          "corpses": 34,
+          "rate": 0.17647058823529413
         }
       ],
       "prices": [
@@ -1333,9 +1417,9 @@
       "droppedBy": [
         {
           "mob": "a green drakeling",
-          "drops": 11,
-          "kills": 37,
-          "rate": 0.2972972972972973
+          "drops": 10,
+          "corpses": 34,
+          "rate": 0.29411764705882354
         }
       ],
       "prices": [
@@ -1360,8 +1444,8 @@
         {
           "mob": "a dryad fawn",
           "drops": 3,
-          "kills": 24,
-          "rate": 0.125
+          "corpses": 3,
+          "rate": 1
         }
       ],
       "prices": [],
@@ -1376,8 +1460,8 @@
       "droppedBy": [
         {
           "mob": "a Fellstone warrior",
-          "drops": 3,
-          "kills": 15,
+          "drops": 2,
+          "corpses": 10,
           "rate": 0.2
         }
       ],
@@ -1393,9 +1477,9 @@
       "droppedBy": [
         {
           "mob": "a fire beetle",
-          "drops": 3,
-          "kills": 0,
-          "rate": null
+          "drops": 2,
+          "corpses": 14,
+          "rate": 0.14285714285714285
         }
       ],
       "prices": [],
@@ -1411,9 +1495,9 @@
       "droppedBy": [
         {
           "mob": "a fire beetle",
-          "drops": 8,
-          "kills": 0,
-          "rate": null
+          "drops": 5,
+          "corpses": 14,
+          "rate": 0.35714285714285715
         }
       ],
       "prices": [
@@ -1434,9 +1518,9 @@
       "droppedBy": [
         {
           "mob": "a fire beetle",
-          "drops": 4,
-          "kills": 0,
-          "rate": null
+          "drops": 3,
+          "corpses": 14,
+          "rate": 0.21428571428571427
         }
       ],
       "prices": [
@@ -1456,9 +1540,9 @@
       "droppedBy": [
         {
           "mob": "a fire beetle",
-          "drops": 25,
-          "kills": 0,
-          "rate": null
+          "drops": 13,
+          "corpses": 14,
+          "rate": 0.9285714285714286
         }
       ],
       "prices": [
@@ -1488,8 +1572,8 @@
         {
           "mob": "a crocodile hatchling",
           "drops": 3,
-          "kills": 0,
-          "rate": null
+          "corpses": 21,
+          "rate": 0.14285714285714285
         }
       ],
       "prices": [],
@@ -1504,9 +1588,9 @@
       "droppedBy": [
         {
           "mob": "an ashira shaman",
-          "drops": 2,
-          "kills": 0,
-          "rate": null
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
         }
       ],
       "prices": [],
@@ -1535,8 +1619,8 @@
         {
           "mob": "a green drakeling",
           "drops": 9,
-          "kills": 37,
-          "rate": 0.24324324324324326
+          "corpses": 34,
+          "rate": 0.2647058823529412
         }
       ],
       "prices": [
@@ -1557,8 +1641,8 @@
         {
           "mob": "a green drakeling",
           "drops": 1,
-          "kills": 37,
-          "rate": 0.02702702702702703
+          "corpses": 34,
+          "rate": 0.029411764705882353
         }
       ],
       "prices": [],
@@ -1573,9 +1657,9 @@
       "droppedBy": [
         {
           "mob": "a green drakeling",
-          "drops": 19,
-          "kills": 37,
-          "rate": 0.5135135135135135
+          "drops": 16,
+          "corpses": 34,
+          "rate": 0.47058823529411764
         }
       ],
       "prices": [
@@ -1595,9 +1679,9 @@
       "droppedBy": [
         {
           "mob": "a green drakeling",
-          "drops": 18,
-          "kills": 37,
-          "rate": 0.4864864864864865
+          "drops": 16,
+          "corpses": 34,
+          "rate": 0.47058823529411764
         }
       ],
       "prices": [
@@ -1630,9 +1714,9 @@
       "droppedBy": [
         {
           "mob": "a jackal pup",
-          "drops": 4,
-          "kills": 0,
-          "rate": null
+          "drops": 2,
+          "corpses": 2,
+          "rate": 1
         }
       ],
       "prices": [
@@ -1652,9 +1736,9 @@
       "droppedBy": [
         {
           "mob": "a large black bat",
-          "drops": 5,
-          "kills": 0,
-          "rate": null
+          "drops": 4,
+          "corpses": 9,
+          "rate": 0.4444444444444444
         }
       ],
       "prices": [
@@ -1674,21 +1758,21 @@
       "droppedBy": [
         {
           "mob": "a large dunes bat",
-          "drops": 4,
-          "kills": 0,
-          "rate": null
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
         },
         {
           "mob": "a large desert bat",
           "drops": 1,
-          "kills": 0,
-          "rate": null
+          "corpses": 1,
+          "rate": 1
         },
         {
           "mob": "a large black bat",
           "drops": 2,
-          "kills": 0,
-          "rate": null
+          "corpses": 9,
+          "rate": 0.2222222222222222
         }
       ],
       "prices": [
@@ -1715,8 +1799,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 2,
-          "kills": 15,
-          "rate": 0.13333333333333333
+          "corpses": 10,
+          "rate": 0.2
         }
       ],
       "prices": [],
@@ -1739,9 +1823,9 @@
       "droppedBy": [
         {
           "mob": "a jackal pup",
-          "drops": 2,
-          "kills": 0,
-          "rate": null
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
         }
       ],
       "prices": [
@@ -1761,9 +1845,9 @@
       "droppedBy": [
         {
           "mob": "a black wolf pup",
-          "drops": 16,
-          "kills": 0,
-          "rate": null
+          "drops": 12,
+          "corpses": 33,
+          "rate": 0.36363636363636365
         }
       ],
       "prices": [
@@ -1787,9 +1871,9 @@
       "droppedBy": [
         {
           "mob": "an ashira scout",
-          "drops": 2,
-          "kills": 13,
-          "rate": 0.15384615384615385
+          "drops": 1,
+          "corpses": 6,
+          "rate": 0.16666666666666666
         }
       ],
       "prices": [
@@ -1835,9 +1919,9 @@
       "droppedBy": [
         {
           "mob": "an ashira warrior",
-          "drops": 2,
-          "kills": 11,
-          "rate": 0.18181818181818182
+          "drops": 1,
+          "corpses": 10,
+          "rate": 0.1
         }
       ],
       "prices": [],
@@ -1852,15 +1936,15 @@
       "droppedBy": [
         {
           "mob": "a large diseased rat",
-          "drops": 4,
-          "kills": 0,
-          "rate": null
+          "drops": 2,
+          "corpses": 3,
+          "rate": 0.6666666666666666
         },
         {
           "mob": "a large rat",
-          "drops": 11,
-          "kills": 0,
-          "rate": null
+          "drops": 6,
+          "corpses": 10,
+          "rate": 0.6
         }
       ],
       "prices": [
@@ -1884,9 +1968,9 @@
       "droppedBy": [
         {
           "mob": "a large rat",
-          "drops": 6,
-          "kills": 0,
-          "rate": null
+          "drops": 3,
+          "corpses": 10,
+          "rate": 0.3
         }
       ],
       "prices": [
@@ -1905,16 +1989,16 @@
       "name": "Rat Tooth",
       "droppedBy": [
         {
-          "mob": "a large diseased rat",
+          "mob": "a large rat",
           "drops": 4,
-          "kills": 0,
-          "rate": null
+          "corpses": 10,
+          "rate": 0.4
         },
         {
-          "mob": "a large rat",
-          "drops": 7,
-          "kills": 0,
-          "rate": null
+          "mob": "a large diseased rat",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
         }
       ],
       "prices": [
@@ -1934,21 +2018,21 @@
       "droppedBy": [
         {
           "mob": "an ashira scout",
-          "drops": 5,
-          "kills": 13,
-          "rate": 0.38461538461538464
+          "drops": 2,
+          "corpses": 6,
+          "rate": 0.3333333333333333
         },
         {
           "mob": "an ashira lookout",
-          "drops": 2,
-          "kills": 6,
-          "rate": 0.3333333333333333
+          "drops": 1,
+          "corpses": 5,
+          "rate": 0.2
         },
         {
           "mob": "an ashira warrior",
           "drops": 1,
-          "kills": 11,
-          "rate": 0.09090909090909091
+          "corpses": 10,
+          "rate": 0.1
         }
       ],
       "prices": [
@@ -1968,22 +2052,22 @@
       "name": "Raw Bat Meat",
       "droppedBy": [
         {
+          "mob": "a large black bat",
+          "drops": 4,
+          "corpses": 9,
+          "rate": 0.4444444444444444
+        },
+        {
           "mob": "a desert bat",
-          "drops": 6,
-          "kills": 0,
-          "rate": null
+          "drops": 4,
+          "corpses": 14,
+          "rate": 0.2857142857142857
         },
         {
           "mob": "a black bat",
-          "drops": 9,
-          "kills": 0,
-          "rate": null
-        },
-        {
-          "mob": "a large black bat",
           "drops": 5,
-          "kills": 0,
-          "rate": null
+          "corpses": 22,
+          "rate": 0.22727272727272727
         }
       ],
       "prices": [
@@ -2009,8 +2093,8 @@
         {
           "mob": "a crocodile hatchling",
           "drops": 7,
-          "kills": 0,
-          "rate": null
+          "corpses": 21,
+          "rate": 0.3333333333333333
         }
       ],
       "prices": [],
@@ -2025,9 +2109,9 @@
       "droppedBy": [
         {
           "mob": "a jackal pup",
-          "drops": 2,
-          "kills": 0,
-          "rate": null
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
         }
       ],
       "prices": [],
@@ -2042,15 +2126,15 @@
       "droppedBy": [
         {
           "mob": "a Fellstone scout",
-          "drops": 9,
-          "kills": 52,
-          "rate": 0.17307692307692307
+          "drops": 7,
+          "corpses": 33,
+          "rate": 0.21212121212121213
         },
         {
           "mob": "a Fellstone warrior",
           "drops": 2,
-          "kills": 15,
-          "rate": 0.13333333333333333
+          "corpses": 10,
+          "rate": 0.2
         }
       ],
       "prices": [
@@ -2073,16 +2157,16 @@
       "name": "Raw Rat Meat",
       "droppedBy": [
         {
-          "mob": "a large diseased rat",
-          "drops": 4,
-          "kills": 0,
-          "rate": null
+          "mob": "a large rat",
+          "drops": 8,
+          "corpses": 10,
+          "rate": 0.8
         },
         {
-          "mob": "a large rat",
-          "drops": 15,
-          "kills": 0,
-          "rate": null
+          "mob": "a large diseased rat",
+          "drops": 2,
+          "corpses": 3,
+          "rate": 0.6666666666666666
         }
       ],
       "prices": [
@@ -2101,22 +2185,22 @@
       "name": "Raw Wolf Meat",
       "droppedBy": [
         {
-          "mob": "a black wolf pup",
-          "drops": 16,
-          "kills": 0,
-          "rate": null
-        },
-        {
           "mob": "a black wolf",
           "drops": 1,
-          "kills": 0,
-          "rate": null
+          "corpses": 1,
+          "rate": 1
         },
         {
           "mob": "a rabid wolf",
-          "drops": 2,
-          "kills": 0,
-          "rate": null
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
+        {
+          "mob": "a black wolf pup",
+          "drops": 11,
+          "corpses": 33,
+          "rate": 0.3333333333333333
         }
       ],
       "prices": [
@@ -2135,28 +2219,28 @@
       "name": "Rawhide Scraps",
       "droppedBy": [
         {
-          "mob": "an ashira lookout",
-          "drops": 2,
-          "kills": 6,
+          "mob": "an ashira shaman",
+          "drops": 1,
+          "corpses": 3,
           "rate": 0.3333333333333333
+        },
+        {
+          "mob": "an ashira lookout",
+          "drops": 1,
+          "corpses": 5,
+          "rate": 0.2
         },
         {
           "mob": "a skeleton",
           "drops": 3,
-          "kills": 11,
-          "rate": 0.2727272727272727
+          "corpses": 17,
+          "rate": 0.17647058823529413
         },
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "kills": 15,
-          "rate": 0.06666666666666667
-        },
-        {
-          "mob": "an ashira shaman",
-          "drops": 2,
-          "kills": 0,
-          "rate": null
+          "corpses": 10,
+          "rate": 0.1
         }
       ],
       "prices": [],
@@ -2185,16 +2269,16 @@
       "name": "Royal Jelly",
       "droppedBy": [
         {
-          "mob": "a wasp drone",
-          "drops": 6,
-          "kills": 0,
-          "rate": null
-        },
-        {
           "mob": "a wasp worker",
           "drops": 4,
-          "kills": 0,
-          "rate": null
+          "corpses": 7,
+          "rate": 0.5714285714285714
+        },
+        {
+          "mob": "a wasp drone",
+          "drops": 4,
+          "corpses": 17,
+          "rate": 0.23529411764705882
         }
       ],
       "prices": [
@@ -2215,14 +2299,14 @@
         {
           "mob": "a rotting skeleton",
           "drops": 3,
-          "kills": 126,
-          "rate": 0.023809523809523808
+          "corpses": 96,
+          "rate": 0.03125
         },
         {
           "mob": "a Fellstone scout",
           "drops": 1,
-          "kills": 52,
-          "rate": 0.019230769230769232
+          "corpses": 33,
+          "rate": 0.030303030303030304
         }
       ],
       "prices": [
@@ -2243,9 +2327,9 @@
       "droppedBy": [
         {
           "mob": "a rotting skeleton",
-          "drops": 2,
-          "kills": 126,
-          "rate": 0.015873015873015872
+          "drops": 1,
+          "corpses": 96,
+          "rate": 0.010416666666666666
         }
       ],
       "prices": [
@@ -2266,14 +2350,14 @@
         {
           "mob": "a Fellstone scout",
           "drops": 1,
-          "kills": 52,
-          "rate": 0.019230769230769232
+          "corpses": 33,
+          "rate": 0.030303030303030304
         },
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "kills": 126,
-          "rate": 0.007936507936507936
+          "corpses": 96,
+          "rate": 0.010416666666666666
         }
       ],
       "prices": [
@@ -2294,9 +2378,9 @@
       "droppedBy": [
         {
           "mob": "a rotting skeleton",
-          "drops": 3,
-          "kills": 126,
-          "rate": 0.023809523809523808
+          "drops": 2,
+          "corpses": 96,
+          "rate": 0.020833333333333332
         }
       ],
       "prices": [
@@ -2318,8 +2402,8 @@
         {
           "mob": "a Fellstone scout",
           "drops": 2,
-          "kills": 52,
-          "rate": 0.038461538461538464
+          "corpses": 33,
+          "rate": 0.06060606060606061
         }
       ],
       "prices": [
@@ -2339,9 +2423,9 @@
       "droppedBy": [
         {
           "mob": "a rotting skeleton",
-          "drops": 3,
-          "kills": 126,
-          "rate": 0.023809523809523808
+          "drops": 2,
+          "corpses": 96,
+          "rate": 0.020833333333333332
         }
       ],
       "prices": [
@@ -2362,14 +2446,14 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "kills": 15,
-          "rate": 0.06666666666666667
+          "corpses": 10,
+          "rate": 0.1
         },
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "kills": 126,
-          "rate": 0.007936507936507936
+          "corpses": 96,
+          "rate": 0.010416666666666666
         }
       ],
       "prices": [
@@ -2389,9 +2473,9 @@
       "droppedBy": [
         {
           "mob": "a rotting skeleton",
-          "drops": 4,
-          "kills": 126,
-          "rate": 0.031746031746031744
+          "drops": 3,
+          "corpses": 96,
+          "rate": 0.03125
         }
       ],
       "prices": [
@@ -2417,8 +2501,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "kills": 11,
-          "rate": 0.09090909090909091
+          "corpses": 17,
+          "rate": 0.058823529411764705
         }
       ],
       "prices": [],
@@ -2433,15 +2517,15 @@
       "droppedBy": [
         {
           "mob": "an ashira lookout",
-          "drops": 2,
-          "kills": 6,
-          "rate": 0.3333333333333333
+          "drops": 1,
+          "corpses": 5,
+          "rate": 0.2
         },
         {
           "mob": "a rotting skeleton",
-          "drops": 6,
-          "kills": 126,
-          "rate": 0.047619047619047616
+          "drops": 5,
+          "corpses": 96,
+          "rate": 0.052083333333333336
         }
       ],
       "prices": [
@@ -2464,20 +2548,20 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "kills": 11,
-          "rate": 0.09090909090909091
+          "corpses": 17,
+          "rate": 0.058823529411764705
         },
         {
           "mob": "a rotting skeleton",
-          "drops": 4,
-          "kills": 126,
-          "rate": 0.031746031746031744
+          "drops": 3,
+          "corpses": 96,
+          "rate": 0.03125
         },
         {
           "mob": "a Fellstone scout",
           "drops": 1,
-          "kills": 52,
-          "rate": 0.019230769230769232
+          "corpses": 33,
+          "rate": 0.030303030303030304
         }
       ],
       "prices": [
@@ -2499,15 +2583,15 @@
       "droppedBy": [
         {
           "mob": "an ashira lookout",
-          "drops": 2,
-          "kills": 6,
-          "rate": 0.3333333333333333
+          "drops": 1,
+          "corpses": 5,
+          "rate": 0.2
         },
         {
           "mob": "a rotting skeleton",
           "drops": 2,
-          "kills": 126,
-          "rate": 0.015873015873015872
+          "corpses": 96,
+          "rate": 0.020833333333333332
         }
       ],
       "prices": [
@@ -2529,14 +2613,14 @@
         {
           "mob": "a Fellstone scout",
           "drops": 2,
-          "kills": 52,
-          "rate": 0.038461538461538464
+          "corpses": 33,
+          "rate": 0.06060606060606061
         },
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "kills": 126,
-          "rate": 0.007936507936507936
+          "corpses": 96,
+          "rate": 0.010416666666666666
         }
       ],
       "prices": [
@@ -2557,14 +2641,14 @@
         {
           "mob": "a Fellstone scout",
           "drops": 1,
-          "kills": 52,
-          "rate": 0.019230769230769232
+          "corpses": 33,
+          "rate": 0.030303030303030304
         },
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "kills": 126,
-          "rate": 0.007936507936507936
+          "corpses": 96,
+          "rate": 0.010416666666666666
         }
       ],
       "prices": [
@@ -2586,8 +2670,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "kills": 126,
-          "rate": 0.007936507936507936
+          "corpses": 96,
+          "rate": 0.010416666666666666
         }
       ],
       "prices": [],
@@ -2602,15 +2686,15 @@
       "droppedBy": [
         {
           "mob": "a Fellstone scout",
-          "drops": 2,
-          "kills": 52,
-          "rate": 0.038461538461538464
+          "drops": 1,
+          "corpses": 33,
+          "rate": 0.030303030303030304
         },
         {
           "mob": "a rotting skeleton",
-          "drops": 2,
-          "kills": 126,
-          "rate": 0.015873015873015872
+          "drops": 1,
+          "corpses": 96,
+          "rate": 0.010416666666666666
         }
       ],
       "prices": [
@@ -2636,8 +2720,8 @@
         {
           "mob": "a dunes scarab",
           "drops": 1,
-          "kills": 0,
-          "rate": null
+          "corpses": 11,
+          "rate": 0.09090909090909091
         }
       ],
       "prices": [],
@@ -2652,9 +2736,9 @@
       "droppedBy": [
         {
           "mob": "a dunes scarab",
-          "drops": 5,
-          "kills": 0,
-          "rate": null
+          "drops": 3,
+          "corpses": 11,
+          "rate": 0.2727272727272727
         }
       ],
       "prices": [
@@ -2675,9 +2759,9 @@
       "droppedBy": [
         {
           "mob": "a dunes scarab",
-          "drops": 17,
-          "kills": 0,
-          "rate": null
+          "drops": 8,
+          "corpses": 11,
+          "rate": 0.7272727272727273
         }
       ],
       "prices": [
@@ -2703,14 +2787,14 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "kills": 11,
-          "rate": 0.09090909090909091
+          "corpses": 17,
+          "rate": 0.058823529411764705
         },
         {
           "mob": "a rotting skeleton",
           "drops": 3,
-          "kills": 126,
-          "rate": 0.023809523809523808
+          "corpses": 96,
+          "rate": 0.03125
         }
       ],
       "prices": [],
@@ -2725,9 +2809,9 @@
       "droppedBy": [
         {
           "mob": "a rotting skeleton",
-          "drops": 14,
-          "kills": 126,
-          "rate": 0.1111111111111111
+          "drops": 10,
+          "corpses": 96,
+          "rate": 0.10416666666666667
         }
       ],
       "prices": [
@@ -2748,9 +2832,9 @@
       "droppedBy": [
         {
           "mob": "a rattlesnake",
-          "drops": 2,
-          "kills": 0,
-          "rate": null
+          "drops": 1,
+          "corpses": 4,
+          "rate": 0.25
         }
       ],
       "prices": [],
@@ -2765,15 +2849,15 @@
       "droppedBy": [
         {
           "mob": "a snake",
-          "drops": 2,
-          "kills": 0,
-          "rate": null
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
         },
         {
           "mob": "a rattlesnake",
-          "drops": 5,
-          "kills": 0,
-          "rate": null
+          "drops": 3,
+          "corpses": 4,
+          "rate": 0.75
         }
       ],
       "prices": [
@@ -2794,9 +2878,9 @@
       "droppedBy": [
         {
           "mob": "a snake",
-          "drops": 2,
-          "kills": 0,
-          "rate": null
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
         }
       ],
       "prices": [
@@ -2815,22 +2899,22 @@
       "name": "Spider Legs",
       "droppedBy": [
         {
-          "mob": "a spiderling",
-          "drops": 1,
-          "kills": 0,
-          "rate": null
-        },
-        {
           "mob": "a black widow hatchling",
-          "drops": 14,
-          "kills": 0,
-          "rate": null
+          "drops": 13,
+          "corpses": 52,
+          "rate": 0.25
         },
         {
           "mob": "a black widow",
           "drops": 3,
-          "kills": 0,
-          "rate": null
+          "corpses": 12,
+          "rate": 0.25
+        },
+        {
+          "mob": "a spiderling",
+          "drops": 1,
+          "corpses": 6,
+          "rate": 0.16666666666666666
         }
       ],
       "prices": [
@@ -2855,21 +2939,21 @@
       "droppedBy": [
         {
           "mob": "a spiderling",
-          "drops": 9,
-          "kills": 0,
-          "rate": null
+          "drops": 6,
+          "corpses": 6,
+          "rate": 1
         },
         {
           "mob": "a black widow hatchling",
-          "drops": 109,
-          "kills": 0,
-          "rate": null
+          "drops": 49,
+          "corpses": 52,
+          "rate": 0.9423076923076923
         },
         {
           "mob": "a black widow",
-          "drops": 17,
-          "kills": 0,
-          "rate": null
+          "drops": 9,
+          "corpses": 12,
+          "rate": 0.75
         }
       ],
       "prices": [
@@ -2899,8 +2983,8 @@
         {
           "mob": "a black widow hatchling",
           "drops": 4,
-          "kills": 0,
-          "rate": null
+          "corpses": 52,
+          "rate": 0.07692307692307693
         }
       ],
       "prices": [
@@ -2921,8 +3005,8 @@
         {
           "mob": "a spiderling",
           "drops": 1,
-          "kills": 0,
-          "rate": null
+          "corpses": 6,
+          "rate": 0.16666666666666666
         }
       ],
       "prices": [],
@@ -2938,20 +3022,20 @@
         {
           "mob": "an ashira scout",
           "drops": 1,
-          "kills": 13,
-          "rate": 0.07692307692307693
+          "corpses": 6,
+          "rate": 0.16666666666666666
         },
         {
           "mob": "a Fellstone scout",
           "drops": 1,
-          "kills": 52,
-          "rate": 0.019230769230769232
+          "corpses": 33,
+          "rate": 0.030303030303030304
         },
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "kills": 126,
-          "rate": 0.007936507936507936
+          "corpses": 96,
+          "rate": 0.010416666666666666
         }
       ],
       "prices": [],
@@ -2968,14 +3052,14 @@
         {
           "mob": "a Fellstone scout",
           "drops": 2,
-          "kills": 52,
-          "rate": 0.038461538461538464
+          "corpses": 33,
+          "rate": 0.06060606060606061
         },
         {
           "mob": "a rotting skeleton",
-          "drops": 3,
-          "kills": 126,
-          "rate": 0.023809523809523808
+          "drops": 2,
+          "corpses": 96,
+          "rate": 0.020833333333333332
         }
       ],
       "prices": [],
@@ -2990,16 +3074,16 @@
       "name": "Tattered Cloth Bracer",
       "droppedBy": [
         {
-          "mob": "an ashira warrior",
-          "drops": 2,
-          "kills": 11,
-          "rate": 0.18181818181818182
-        },
-        {
           "mob": "a Fellstone warrior",
           "drops": 2,
-          "kills": 15,
-          "rate": 0.13333333333333333
+          "corpses": 10,
+          "rate": 0.2
+        },
+        {
+          "mob": "an ashira warrior",
+          "drops": 1,
+          "corpses": 10,
+          "rate": 0.1
         }
       ],
       "prices": [],
@@ -3017,8 +3101,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "kills": 11,
-          "rate": 0.09090909090909091
+          "corpses": 17,
+          "rate": 0.058823529411764705
         }
       ],
       "prices": [],
@@ -3035,14 +3119,14 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "kills": 11,
-          "rate": 0.09090909090909091
+          "corpses": 17,
+          "rate": 0.058823529411764705
         },
         {
           "mob": "a rotting skeleton",
           "drops": 2,
-          "kills": 126,
-          "rate": 0.015873015873015872
+          "corpses": 96,
+          "rate": 0.020833333333333332
         }
       ],
       "prices": [],
@@ -3058,8 +3142,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 2,
-          "kills": 126,
-          "rate": 0.015873015873015872
+          "corpses": 96,
+          "rate": 0.020833333333333332
         }
       ],
       "prices": [],
@@ -3075,15 +3159,15 @@
       "droppedBy": [
         {
           "mob": "a rotting skeleton",
-          "drops": 4,
-          "kills": 126,
-          "rate": 0.031746031746031744
+          "drops": 3,
+          "corpses": 96,
+          "rate": 0.03125
         },
         {
           "mob": "a Fellstone scout",
           "drops": 1,
-          "kills": 52,
-          "rate": 0.019230769230769232
+          "corpses": 33,
+          "rate": 0.030303030303030304
         }
       ],
       "prices": [
@@ -3105,14 +3189,14 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "kills": 15,
-          "rate": 0.06666666666666667
+          "corpses": 10,
+          "rate": 0.1
         },
         {
           "mob": "a rotting skeleton",
-          "drops": 2,
-          "kills": 126,
-          "rate": 0.015873015873015872
+          "drops": 1,
+          "corpses": 96,
+          "rate": 0.010416666666666666
         }
       ],
       "prices": [],
@@ -3128,21 +3212,21 @@
       "droppedBy": [
         {
           "mob": "an ashira lookout",
-          "drops": 2,
-          "kills": 6,
-          "rate": 0.3333333333333333
+          "drops": 1,
+          "corpses": 5,
+          "rate": 0.2
         },
         {
           "mob": "an ashira warrior",
-          "drops": 2,
-          "kills": 11,
-          "rate": 0.18181818181818182
+          "drops": 1,
+          "corpses": 10,
+          "rate": 0.1
         },
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "kills": 126,
-          "rate": 0.007936507936507936
+          "corpses": 96,
+          "rate": 0.010416666666666666
         }
       ],
       "prices": [
@@ -3163,21 +3247,21 @@
       "droppedBy": [
         {
           "mob": "an ashira warrior",
-          "drops": 2,
-          "kills": 11,
-          "rate": 0.18181818181818182
+          "drops": 1,
+          "corpses": 10,
+          "rate": 0.1
         },
         {
           "mob": "a rotting skeleton",
-          "drops": 5,
-          "kills": 126,
-          "rate": 0.03968253968253968
+          "drops": 3,
+          "corpses": 96,
+          "rate": 0.03125
         },
         {
           "mob": "a Fellstone scout",
-          "drops": 2,
-          "kills": 52,
-          "rate": 0.038461538461538464
+          "drops": 1,
+          "corpses": 33,
+          "rate": 0.030303030303030304
         }
       ],
       "prices": [
@@ -3199,15 +3283,15 @@
       "droppedBy": [
         {
           "mob": "an ashira warrior",
-          "drops": 2,
-          "kills": 11,
-          "rate": 0.18181818181818182
+          "drops": 1,
+          "corpses": 10,
+          "rate": 0.1
         },
         {
           "mob": "a rotting skeleton",
           "drops": 2,
-          "kills": 126,
-          "rate": 0.015873015873015872
+          "corpses": 96,
+          "rate": 0.020833333333333332
         }
       ],
       "prices": [],
@@ -3224,20 +3308,20 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "kills": 15,
-          "rate": 0.06666666666666667
+          "corpses": 10,
+          "rate": 0.1
         },
         {
           "mob": "a Fellstone scout",
           "drops": 1,
-          "kills": 52,
-          "rate": 0.019230769230769232
+          "corpses": 33,
+          "rate": 0.030303030303030304
         },
         {
           "mob": "a rotting skeleton",
-          "drops": 2,
-          "kills": 126,
-          "rate": 0.015873015873015872
+          "drops": 1,
+          "corpses": 96,
+          "rate": 0.010416666666666666
         }
       ],
       "prices": [],
@@ -3253,20 +3337,20 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "kills": 11,
-          "rate": 0.09090909090909091
-        },
-        {
-          "mob": "a rotting skeleton",
-          "drops": 3,
-          "kills": 126,
-          "rate": 0.023809523809523808
+          "corpses": 17,
+          "rate": 0.058823529411764705
         },
         {
           "mob": "a Fellstone scout",
           "drops": 1,
-          "kills": 52,
-          "rate": 0.019230769230769232
+          "corpses": 33,
+          "rate": 0.030303030303030304
+        },
+        {
+          "mob": "a rotting skeleton",
+          "drops": 2,
+          "corpses": 96,
+          "rate": 0.020833333333333332
         }
       ],
       "prices": [
@@ -3301,8 +3385,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "kills": 15,
-          "rate": 0.06666666666666667
+          "corpses": 10,
+          "rate": 0.1
         }
       ],
       "prices": [
@@ -3322,9 +3406,9 @@
       "droppedBy": [
         {
           "mob": "an ashira warrior",
-          "drops": 2,
-          "kills": 11,
-          "rate": 0.18181818181818182
+          "drops": 1,
+          "corpses": 10,
+          "rate": 0.1
         }
       ],
       "prices": [],
@@ -3339,27 +3423,27 @@
       "droppedBy": [
         {
           "mob": "an ashira scout",
-          "drops": 2,
-          "kills": 13,
-          "rate": 0.15384615384615385
+          "drops": 1,
+          "corpses": 6,
+          "rate": 0.16666666666666666
         },
         {
           "mob": "a skeleton",
           "drops": 1,
-          "kills": 11,
-          "rate": 0.09090909090909091
+          "corpses": 17,
+          "rate": 0.058823529411764705
         },
         {
           "mob": "a Fellstone scout",
           "drops": 1,
-          "kills": 52,
-          "rate": 0.019230769230769232
+          "corpses": 33,
+          "rate": 0.030303030303030304
         },
         {
           "mob": "a rotting skeleton",
-          "drops": 2,
-          "kills": 126,
-          "rate": 0.015873015873015872
+          "drops": 1,
+          "corpses": 96,
+          "rate": 0.010416666666666666
         }
       ],
       "prices": [
@@ -3381,9 +3465,9 @@
       "droppedBy": [
         {
           "mob": "a Fellstone scout",
-          "drops": 10,
-          "kills": 52,
-          "rate": 0.19230769230769232
+          "drops": 8,
+          "corpses": 33,
+          "rate": 0.24242424242424243
         }
       ],
       "prices": [],
@@ -3398,15 +3482,15 @@
       "droppedBy": [
         {
           "mob": "a wasp drone",
-          "drops": 6,
-          "kills": 0,
-          "rate": null
+          "drops": 5,
+          "corpses": 17,
+          "rate": 0.29411764705882354
         },
         {
           "mob": "a wasp worker",
           "drops": 1,
-          "kills": 0,
-          "rate": null
+          "corpses": 7,
+          "rate": 0.14285714285714285
         }
       ],
       "prices": [
@@ -3429,16 +3513,16 @@
       "name": "Wasp Wing",
       "droppedBy": [
         {
-          "mob": "a wasp drone",
-          "drops": 21,
-          "kills": 0,
-          "rate": null
+          "mob": "a wasp worker",
+          "drops": 7,
+          "corpses": 7,
+          "rate": 1
         },
         {
-          "mob": "a wasp worker",
-          "drops": 9,
-          "kills": 0,
-          "rate": null
+          "mob": "a wasp drone",
+          "drops": 11,
+          "corpses": 17,
+          "rate": 0.6470588235294118
         }
       ],
       "prices": [
@@ -3458,9 +3542,9 @@
       "droppedBy": [
         {
           "mob": "a wasp worker",
-          "drops": 2,
-          "kills": 0,
-          "rate": null
+          "drops": 1,
+          "corpses": 7,
+          "rate": 0.14285714285714285
         }
       ],
       "prices": [],
@@ -3475,9 +3559,9 @@
       "droppedBy": [
         {
           "mob": "a black widow",
-          "drops": 12,
-          "kills": 0,
-          "rate": null
+          "drops": 9,
+          "corpses": 12,
+          "rate": 0.75
         }
       ],
       "prices": [],
@@ -3493,8 +3577,8 @@
         {
           "mob": "a black wolf pup",
           "drops": 10,
-          "kills": 0,
-          "rate": null
+          "corpses": 33,
+          "rate": 0.30303030303030304
         }
       ],
       "prices": [
@@ -3514,9 +3598,9 @@
       "droppedBy": [
         {
           "mob": "a black wolf pup",
-          "drops": 16,
-          "kills": 0,
-          "rate": null
+          "drops": 12,
+          "corpses": 33,
+          "rate": 0.36363636363636365
         }
       ],
       "prices": [
@@ -3549,21 +3633,21 @@
       "droppedBy": [
         {
           "mob": "an ashira warrior",
-          "drops": 2,
-          "kills": 11,
-          "rate": 0.18181818181818182
+          "drops": 1,
+          "corpses": 10,
+          "rate": 0.1
         },
         {
           "mob": "a skeleton",
           "drops": 1,
-          "kills": 11,
-          "rate": 0.09090909090909091
+          "corpses": 17,
+          "rate": 0.058823529411764705
         },
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "kills": 126,
-          "rate": 0.007936507936507936
+          "corpses": 96,
+          "rate": 0.010416666666666666
         }
       ],
       "prices": [
@@ -3585,14 +3669,14 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "kills": 11,
-          "rate": 0.09090909090909091
+          "corpses": 17,
+          "rate": 0.058823529411764705
         },
         {
           "mob": "a rotting skeleton",
-          "drops": 3,
-          "kills": 126,
-          "rate": 0.023809523809523808
+          "drops": 2,
+          "corpses": 96,
+          "rate": 0.020833333333333332
         }
       ],
       "prices": [

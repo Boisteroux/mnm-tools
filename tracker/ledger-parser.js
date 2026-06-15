@@ -92,11 +92,17 @@ function parseLedgers(files) {
   const harvest = {};  // resourceName -> count
   let events = 0;
 
-  const mob = (name) => (mobs[name] = mobs[name] || { kills: 0, drops: {}, zones: {}, coin: 0 });
+  const mob = (name) => (mobs[name] = mobs[name] || { kills: 0, drops: {}, zones: {}, coin: 0, corpses: 0 });
   // Items are keyed by display NAME so loot and vendor records of the same item
   // merge into one entry (vendor sales omit the d05 id, which used to duplicate them).
   const item = (name) => (items[name] = items[name] || { name, id: '', sources: {}, prices: {}, zones: {} });
   const bump = (obj, key) => { if (key) obj[key] = (obj[key] || 0) + 1; };
+
+  // The game only writes a KILL event (act_14) for some mobs, but logs every LOOT
+  // (act_13). So loots ÷ kills is unreliable. Instead we cluster a mob's loot
+  // events by time into "corpses" and use that as the drop-rate denominator —
+  // it tracks kill counts closely where both exist, and works where kills don't.
+  const lootLog = {}; // mobName -> [{ t, item }]
 
   for (const file of files) {
     let data;
@@ -124,7 +130,8 @@ function parseLedgers(files) {
           M.coin += coinFromD12(p.d12);
         }
       } else if (ev.f01 === 'act_13') {
-        // LOOT — item taken off a mob
+        // LOOT — item taken off a mob. Recorded with a timestamp so we can group
+        // loots into corpses afterwards (drop rate = corpses-with-item ÷ corpses).
         const source = decodeName(p.d02);
         const name = p.d04 || '';
         if (!isClean(name)) continue;
@@ -133,7 +140,10 @@ function parseLedgers(files) {
         bump(it.zones, zone);
         if (source) {
           it.sources[source] = (it.sources[source] || 0) + 1;
-          mob(source).drops[name] = (mob(source).drops[name] || 0) + 1;
+          const M = mob(source);            // ensure the mob exists even with no kill event
+          bump(M.zones, zone);              // loots carry the zone; kills may be absent
+          const t = Date.parse(ev.f04) || 0;
+          (lootLog[source] = lootLog[source] || []).push({ t, item: name });
         }
       } else if (ev.f01 === 'act_24') {
         // VENDOR SALE — records the price received (but not which vendor)
@@ -152,6 +162,24 @@ function parseLedgers(files) {
     }
   }
 
+  // Cluster each mob's loot events into corpses: loots more than CORPSE_GAP_MS
+  // apart belong to different corpses. drops[item] becomes the number of corpses
+  // that contained that item (counted once per corpse), and corpses is the count.
+  const CORPSE_GAP_MS = 10000;
+  for (const [mobName, log] of Object.entries(lootLog)) {
+    log.sort((a, b) => a.t - b.t);
+    const M = mob(mobName);
+    const presence = {};
+    let corpses = 0, last = -Infinity, cur = null;
+    for (const e of log) {
+      if (e.t - last > CORPSE_GAP_MS) { corpses++; cur = new Set(); }
+      last = e.t;
+      if (!cur.has(e.item)) { cur.add(e.item); presence[e.item] = (presence[e.item] || 0) + 1; }
+    }
+    M.corpses = corpses;
+    M.drops = presence;
+  }
+
   return { mobs, items, harvest, events, fileCount: files.length };
 }
 
@@ -161,9 +189,11 @@ const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g
 // Harvested resources become first-class entries too, so everything has a page.
 function buildItemReport(agg) {
   const items = Object.values(agg.items).map((it) => {
-    const droppedBy = Object.entries(it.sources).map(([mobName, drops]) => {
-      const kills = (agg.mobs[mobName] && agg.mobs[mobName].kills) || 0;
-      return { mob: mobName, drops, kills, rate: kills ? drops / kills : null };
+    const droppedBy = Object.keys(it.sources).map((mobName) => {
+      const M = agg.mobs[mobName] || {};
+      const corpses = M.corpses || 0;
+      const drops = (M.drops && M.drops[it.name]) || 0; // corpses that held this item
+      return { mob: mobName, drops, corpses, rate: corpses ? drops / corpses : null };
     }).sort((a, b) => (b.rate || 0) - (a.rate || 0));
 
     const prices = Object.entries(it.prices)

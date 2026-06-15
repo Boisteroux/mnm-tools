@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-15T16:28:45.704Z",
+  "generatedAt": "2026-06-15T22:38:20.740Z",
   "items": {
     "Copper Ore": {
       "hasPage": true,
@@ -3727,6 +3727,34 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/0/04/Itemicon0062AE.png"
     },
+    "Ring of the Pauper": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0098AA",
+      "slot": "FINGER",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "wikiZones": [
+        "Evershade Weald",
+        "Night Harbor"
+      ],
+      "from": [
+        "A black widow",
+        "a cobweaver hatchling"
+      ],
+      "categories": [
+        "Finger",
+        "Jewelry",
+        "Resist Gear",
+        "Reward"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/5/55/Itemicon0098AA.png/64px-Itemicon0098AA.png"
+    },
     "Eth-ur Arboreal Journal Page": {
       "hasPage": true,
       "wikiOnly": true,
@@ -4299,6 +4327,21 @@
       "zone": "Evershade Weald",
       "imageFile": "phicon.png",
       "image": "https://static.wikitide.net/monstersandmemorieswiki/e/eb/Phicon.png"
+    },
+    "a black widow": {
+      "hasPage": true,
+      "title": "A black widow",
+      "level": null,
+      "race": null,
+      "class": null,
+      "hp": null,
+      "ac": null,
+      "special": null,
+      "zone": "Evershade Weald",
+      "imageFile": null,
+      "loot": [
+        "Ring of the Pauper"
+      ]
     }
   },
   "nodes": {
