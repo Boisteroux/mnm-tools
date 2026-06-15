@@ -434,7 +434,8 @@ body.overlay #sidebar h1 { display: none; }
 body.overlay [data-overlay-hide] { display: none !important; }
 body.overlay .section-title { display: none; }
 
-body.overlay #map-area { background: transparent; }
+/* A faint warm backing so the map reads as a panel, not a floating cut-out */
+body.overlay #map-area { background: rgba(18, 12, 8, 0.10); }
 
 /* A play-mode hint that shows when clicks are passing through to the game */
 #overlay-passthrough-hint {
