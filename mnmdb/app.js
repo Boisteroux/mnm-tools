@@ -179,12 +179,89 @@ function renderSearch(q) {
     }).join('') + '</div>';
 }
 
+// ---- Browse tables (sortable) ----
+
+const browse = { view: null, key: 'name', dir: 1 };
+
+const browseCols = {
+  items: [
+    { key: 'name', label: 'Item' },
+    { key: 'sources', label: 'Sources', num: true },
+    { key: 'best', label: 'Best drop', num: true, render: (v) => (v ? Math.round(v * 100) + '%' : '—') },
+    { key: 'vendor', label: 'Vendor', num: true, render: (v) => (v == null ? '—' : coin(v)) },
+    { key: 'harvested', label: 'Harvested', num: true, render: (v) => v || '—' },
+  ],
+  resources: [
+    { key: 'name', label: 'Resource' },
+    { key: 'harvested', label: 'Gathered', num: true },
+    { key: 'vendor', label: 'Vendor', num: true, render: (v) => (v == null ? '—' : coin(v)) },
+  ],
+  mobs: [
+    { key: 'name', label: 'Mob' },
+    { key: 'kills', label: 'Kills', num: true },
+    { key: 'drops', label: 'Distinct drops', num: true },
+  ],
+};
+
+function browseRows(view) {
+  if (view === 'mobs') {
+    return Object.entries(DATA.mobs).map(([name, d]) => ({
+      _href: '#/mob/' + encodeURIComponent(name), name, kills: d.kills, drops: Object.keys(d.drops).length,
+    }));
+  }
+  const items = view === 'resources' ? DATA.items.filter((i) => i.harvested > 0) : DATA.items;
+  return items.map((i) => ({
+    _href: '#/item/' + encodeURIComponent(i.id),
+    name: i.name,
+    sources: i.droppedBy.length,
+    best: i.droppedBy.reduce((m, d) => Math.max(m, d.rate || 0), 0),
+    vendor: i.prices.length ? Math.min.apply(null, i.prices.map((p) => p.copper)) : null,
+    harvested: i.harvested || 0,
+  }));
+}
+
+function renderBrowse(view) {
+  browse.view = view;
+  const cols = browseCols[view];
+  const rows = browseRows(view);
+  rows.sort((a, b) => {
+    let x = a[browse.key], y = b[browse.key];
+    if (typeof x === 'string') return browse.dir * x.localeCompare(y);
+    x = x == null ? -1 : x; y = y == null ? -1 : y;
+    return browse.dir * (x - y);
+  });
+  const head = cols.map((c) => {
+    const arrow = browse.key === c.key ? (browse.dir > 0 ? ' ▲' : ' ▼') : '';
+    return '<th class="' + (c.num ? 'num ' : '') + 'sortable" onclick="setSort(\'' + c.key + '\')">' + c.label + arrow + '</th>';
+  }).join('');
+  const body = rows.map((r) =>
+    '<tr class="rowlink" onclick="location.hash=\'' + r._href.slice(1) + '\'">' +
+    cols.map((c) => {
+      const v = r[c.key];
+      const disp = c.key === 'name' ? '<a href="' + r._href + '">' + esc(v) + '</a>'
+        : c.render ? c.render(v) : esc(String(v));
+      return '<td class="' + (c.num ? 'num' : '') + '">' + disp + '</td>';
+    }).join('') + '</tr>').join('');
+  $('content').innerHTML =
+    '<div class="crumb"><a href="#/">mnmdb</a> › ' + view + '</div>' +
+    '<h1 style="text-transform:capitalize">' + view + ' <span class="sub" style="font-size:15px">' + rows.length + '</span></h1>' +
+    '<p class="sub">Click a column heading to sort. Click a row to open it.</p>' +
+    '<div class="card"><table><thead><tr>' + head + '</tr></thead><tbody>' + body + '</tbody></table></div>';
+}
+
+window.setSort = (key) => {
+  if (browse.key === key) browse.dir *= -1;
+  else { browse.key = key; browse.dir = key === 'name' ? 1 : -1; }
+  renderBrowse(browse.view);
+};
+
 // ---- Router ----
 
 function route() {
   const q = $('search').value.trim();
   if (q) return renderSearch(q);
   const h = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
+  if (h === 'items' || h === 'mobs' || h === 'resources') return renderBrowse(h);
   if (h.startsWith('item/')) return renderItem(h.slice(5));
   if (h.startsWith('mob/')) return renderMob(h.slice(4));
   renderHome();

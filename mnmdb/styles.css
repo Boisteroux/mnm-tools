@@ -52,7 +52,16 @@ header {
 }
 .tagline { font-size: 12px; color: var(--muted); }
 
-.search-wrap { flex: 1; min-width: 220px; max-width: 520px; margin-left: auto; }
+.topnav { display: flex; gap: 4px; }
+.topnav a {
+  font-size: 13px;
+  color: var(--muted);
+  padding: 5px 10px;
+  border-radius: 6px;
+}
+.topnav a:hover { color: var(--text); background: var(--panel); text-decoration: none; }
+
+.search-wrap { flex: 1; min-width: 200px; max-width: 420px; margin-left: auto; }
 #search {
   width: 100%;
   background: var(--panel);
@@ -110,6 +119,10 @@ th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--lin
 th { color: var(--muted); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
 td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 tr:hover td { background: var(--panel); }
+
+th.sortable { cursor: pointer; user-select: none; white-space: nowrap; }
+th.sortable:hover { color: var(--accent); }
+tr.rowlink { cursor: pointer; }
 
 .card {
   background: var(--panel);
