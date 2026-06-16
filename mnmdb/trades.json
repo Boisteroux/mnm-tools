@@ -1,5 +1,12 @@
 {
   "_readme": "Player-to-player trade prices (what people buy/sell items for), used to show a 7-day high/low on item pages. Each entry: item (exact name), price (in COPPER; base-100 so 1p=1000000, 1g=10000, 1s=100), side ('sell' = WTS/asking, 'buy' = WTB/offer), date (YYYY-MM-DD or ISO), who (optional source), src ('app' logged in the desktop app, 'web' from a GitHub submission). App-logged trades are merged in automatically when you Publish; web submissions come in as 'trade'-labelled issues you fold in here.",
-  "_example": { "item": "Rusty Sword", "price": 50000, "side": "sell", "date": "2026-06-15", "who": "", "src": "app" },
+  "_example": {
+    "item": "Rusty Sword",
+    "price": 50000,
+    "side": "sell",
+    "date": "2026-06-15",
+    "who": "",
+    "src": "app"
+  },
   "trades": []
 }
