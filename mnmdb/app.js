@@ -105,7 +105,11 @@ function itemMarketValue(name) {
       : Math.round((tv.allHigh + tv.allLow) / 2);
     if (v > 0) return { value: v, source: 'trade' };
   }
-  const reg = regularPrice(itemByName[name]);
+  const it = itemByName[name];
+  // The wiki's "Sold by" base price is the authoritative vendor (buy) price.
+  const sold = it && it.wiki && it.wiki.soldBy && it.wiki.soldBy.base;
+  if (sold > 0) return { value: sold, source: 'vendor' };
+  const reg = regularPrice(it);
   if (reg > 0) return { value: reg, source: 'vendor' };
   return { value: 0, source: null };
 }
@@ -384,7 +388,8 @@ function renderItem(id) {
     const add = (k, v) => {
       if (v != null && v !== '') rows.push('<tr><td class="muted" style="width:140px">' + k + '</td><td>' + v + '</td></tr>');
     };
-    add('Type', [...(w.categories || []).map(esc), ...(w.tradeskills || []).map(tradeskillLink)].join(', '));
+    add('Type', [...(w.categories || []).map(esc), ...(w.tradeskills || []).map(tradeskillLink),
+      ...(w.harvestedBy ? [esc(w.harvestedBy)] : [])].join(', '));
     add('Slot', esc(w.slot || ''));
     add('Weapon DMG', w.dmg, true);
     add('Attack delay', w.delay, true);
@@ -467,6 +472,17 @@ function renderItem(id) {
       (sorted.length > 1
         ? '<div class="note">Regular vendors pay more when you sell (highest); shady vendors pay less (lowest).</div>'
         : ''));
+  }
+
+  // Sold by — vendors that SELL this item (you buy it), with base/shady price (wiki)
+  if (w.soldBy && (w.soldBy.base != null || w.soldBy.shady != null)) {
+    const sb = w.soldBy;
+    const boxes = '<div class="vendor-summary">' +
+      (sb.base != null ? '<div class="vbox"><div class="vlbl">Base price</div><div class="vval">' + coin(sb.base) + '</div></div>' : '') +
+      (sb.shady != null ? '<div class="vbox warnbox"><div class="vlbl">Shady price</div><div class="vval">' + coin(sb.shady) + '</div></div>' : '') +
+      '</div>';
+    const vlist = (sb.vendors || []).map((v) => DATA.mobs[v] ? mobLink(v) : (v.match(/^(a|an) /i) ? esc(v) : zoneLink(v))).join(', ');
+    sections.push('<h2>Sold by</h2>' + boxes + (vlist ? '<div class="note">Vendors: ' + vlist + ' (base = regular price).</div>' : ''));
   }
 
   // Sold to — vendors that buy this item's type(s), from our hand-kept mapping

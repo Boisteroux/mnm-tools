@@ -107,8 +107,44 @@ function parseSources(wikitext) {
   if (!m) return { zones: [], from: [] };
   const dm = m[1].match(/\|\s*dropsfrom\s*=\s*([\s\S]*?)(?=\n\s*\|\s*[a-z_]+\s*=|\n\}\}|$)/i);
   if (!dm) return { zones: [], from: [] };
-  const links = [...new Set([...dm[1].matchAll(/\[\[([^\]|]+)(?:\|[^\]]*)?\]\]/g)].map((x) => x[1].trim()))];
+  // "Harvested by [[Herbalism]] using their [[sickle]]" is a gather method, not a
+  // drop source — strip those lines so we don't list skills/tools/images as droppers.
+  const body = dm[1].replace(/(harvested|gathered|mined|foraged|caught)\s+by[^\n]*/gi, '');
+  const links = [...new Set([...body.matchAll(/\[\[([^\]|]+)(?:\|[^\]]*)?\]\]/g)].map((x) => x[1].trim()))]
+    .filter((l) => !/^File:/i.test(l) && !SKILLS.has(l));
   return { zones: links.filter((l) => ZONES.has(l)), from: links.filter((l) => !ZONES.has(l)) };
+}
+
+// Base-100 coin from wiki text like "Base Price: 2 Gold 5 Silver" -> copper.
+function parseCoinText(s) {
+  if (!s) return null;
+  const mul = { platinum: 1000000, plat: 1000000, gold: 10000, silver: 100, copper: 1 };
+  let total = 0, found = false;
+  for (const m of s.matchAll(/(\d+)\s*(platinum|plat|gold|silver|copper)/gi)) { total += +m[1] * mul[m[2].toLowerCase()]; found = true; }
+  return found ? total : null;
+}
+
+// "Sold by" — vendors that SELL the item (you buy from them), with base (regular)
+// and shady prices. This is the wiki's authoritative vendor price.
+function parseSoldBy(wikitext) {
+  const m = wikitext.match(/\{\{\s*Itempage([\s\S]*?)\n\}\}/i);
+  if (!m) return null;
+  const fm = m[1].match(/\|\s*soldby\s*=\s*([\s\S]*?)(?=\n\s*\|\s*[a-z_]+\s*=|\n\}\}|$)/i);
+  if (!fm) return null;
+  const base = (fm[1].match(/Base Price:\s*([^\n<]*)/i) || [])[1];
+  const shady = (fm[1].match(/Shady Price:\s*([^\n<]*)/i) || [])[1];
+  const b = parseCoinText(base), s = parseCoinText(shady);
+  if (b == null && s == null) return null;
+  const vendors = [...new Set([...fm[1].matchAll(/\[\[([^\]|]+)(?:\|[^\]]*)?\]\]/g)].map((x) => x[1].trim()))]
+    .filter((l) => !/^File:/i.test(l));
+  return { base: b, shady: s, vendors };
+}
+
+// Gather skill from "Harvested by [[Herbalism]]" (a real category for herbs/ore).
+function parseHarvestedBy(wikitext) {
+  const m = wikitext.match(/(harvested|gathered|mined|foraged|caught)\s+by\s+\[\[([^\]|]+)/i);
+  const skill = m ? m[2].trim() : null;
+  return skill && SKILLS.has(skill) ? skill : null;
 }
 
 function parseMobPage(wikitext) {
@@ -143,6 +179,10 @@ const TRADESKILLS = new Set([
   'Alchemy', 'Baking', 'Blacksmithing', 'Brewing', 'Cooking', 'Fletching', 'Jewelcrafting',
   'Leatherworking', 'Pottery', 'Smelting', 'Survival', 'Tailoring', 'Tanning', 'Woodworking',
 ]);
+// Gathering skills + crafting skills — used to filter skill/tool links out of
+// drop sources and to recognise "Harvested by [[Skill]]".
+const GATHER_SKILLS = new Set(['Herbalism', 'Mining', 'Lumberjacking', 'Foraging', 'Fishing', 'Skinning']);
+const SKILLS = new Set([...TRADESKILLS, ...GATHER_SKILLS]);
 
 // Tradeskills an item is part of — whether used as an ingredient ("recipes") or
 // produced by the skill ("playercrafted"). Filtered to the known set above.
@@ -191,10 +231,15 @@ async function enrichItems(names, into, label, wikiOnly) {
     for (const [title, wt] of Object.entries(texts)) {
       const box = parseItemBox(wt), src = parseSources(wt);
       const cats = parseCategories(wt), ts = parseTradeskills(wt);
-      if (box || src.zones.length || src.from.length || cats.length || ts.length) {
+      const soldBy = parseSoldBy(wt), harvestedBy = parseHarvestedBy(wt);
+      // A real item page has an ItemBox. Discovered (wikiOnly) candidates without
+      // one are NPCs / spell lists / skills — skip them so they don't pollute Items.
+      if (wikiOnly && !box) continue;
+      if (box || src.zones.length || src.from.length || cats.length || ts.length || soldBy) {
         into[title] = Object.assign({ hasPage: true }, wikiOnly ? { wikiOnly: true } : {}, box || {},
           src.zones.length ? { wikiZones: src.zones } : {}, src.from.length ? { from: src.from } : {},
-          cats.length ? { categories: cats } : {}, ts.length ? { tradeskills: ts } : {});
+          cats.length ? { categories: cats } : {}, ts.length ? { tradeskills: ts } : {},
+          soldBy ? { soldBy } : {}, harvestedBy ? { harvestedBy } : {});
       }
     }
     await sleep(350);
@@ -247,7 +292,10 @@ async function run() {
   for (const m of Object.values(mobs)) if (m.imageFile) m.image = mobImgs['File:' + m.imageFile] || null;
 
   // ---- Nodes (gathering veins, referenced in items' "from") ----
-  const fromSet = new Set();
+  // Also parse the gathering/cooking skill pages as "yield" pages — their section
+  // lists are how herbs, ores, fish and cooked items get discovered.
+  const SKILL_PAGES = ['Cooking', 'Herbalism', 'Survival', 'Foraging', 'Fishing', 'Mining', 'Lumberjacking', 'Skill Forage'];
+  const fromSet = new Set(SKILL_PAGES);
   Object.values(items).forEach((i) => (i.from || []).forEach((f) => fromSet.add(f)));
   const nodeCandidates = [...fromSet].filter((f) => !ds.mobs[f] && !itemNames.includes(f));
   const nodes = {};
@@ -279,7 +327,9 @@ async function run() {
   Object.values(mobs).forEach((m) => (m.loot || []).forEach((it) => discovered.add(it)));
   recipes.forEach((r) => { discovered.add(r.result.item); r.components.forEach((c) => discovered.add(c.item)); });
   const known = new Set(Object.keys(items));
-  const toFetch = [...discovered].filter((nm) => !known.has(nm) && !ds.mobs[nm] && !nodes[nm] && !ZONES.has(nm));
+  const toFetch = [...discovered].filter((nm) =>
+    !known.has(nm) && !ds.mobs[nm] && !nodes[nm] && !ZONES.has(nm) &&
+    !SKILLS.has(nm) && !/^(a|an|the)\s/i.test(nm) && !/^File:/i.test(nm)); // skip NPCs/skills/images
   if (toFetch.length) await enrichItems(toFetch, items, 'extra items', true);
 
   // ---- Resolve icons for ALL items (ledger + discovered) ----
