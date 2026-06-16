@@ -26,6 +26,9 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
 - **Home charts** — magnitude bars on the home leaderboards, a rarity × value
   scatter (rare + valuable = chase loot), and a per-mob "where the value comes
   from" breakdown bar. All dependency-free inline SVG/CSS.
+- **Value by level bracket** — home "Best value by level" groups mobs into L1-10,
+  L11-20, … by their wiki level and ranks value/kill in each. Lights up further as
+  play spans more levels and wiki-level coverage grows.
 - **One-click publish** — "Publish to MnMdb" button in the app (owner build only)
   regenerates the site data from your ledger and pushes it live in ~30s.
 - **Sharing & look** — public repo, MIT license, Windows installer, sunset branding,
@@ -33,10 +36,10 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
 
 ## 🔜 Next up
 
-- **Value by level bracket** — "best value for L1-10, L11-20, …". Sourceable (mob
-  level comes from the wiki), but data-blocked for now: only ~36% of mobs have a
-  wiki level and everything fought so far is L1-5. Needs more enrichment + a wider
-  level range of play. Bracket size (5s vs 10s) TBD once the spread is real.
+- **Improve mob-level coverage** — the level brackets only rank mobs that have a
+  wiki level; right now ~20 valuable mobs have none, so they're unranked. Widen
+  the mob wiki enrichment (and revisit bracket size 5s vs 10s) as play spans more
+  levels.
 - **Biggest movers** — items whose 7-day average jumped/dropped the most (a little
   market ticker). Unlocks once trade data accumulates.
 - **Trade ingest** — a small `gh`-powered script to fold accepted "trade" issues

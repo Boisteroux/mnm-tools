@@ -103,6 +103,9 @@ function itemMarketValue(name) {
 // Drop-rate denominator: looted corpses (falls back to kills for old data).
 const mobCorpses = (d) => (d.corpses != null ? d.corpses : (d.kills || 0));
 
+// Mob level from wiki enrichment (parses "5" or a "5-7" range), else NaN.
+const mobLevel = (d) => { const l = d.wiki && parseInt(d.wiki.level, 10); return Number.isFinite(l) ? l : NaN; };
+
 // Expected value of one kill: coin/kill + Σ(per-corpse drop rate × item price).
 function mobValuePerKill(d) {
   const corpses = mobCorpses(d);
@@ -219,6 +222,31 @@ function renderHome() {
       ? barCell(r.value, maxRes, '<span class="coin">' + coin(r.value) + '</span>')
       : '<span class="sample">' + r.n + '× gathered</span>') + '</td></tr>').join('');
 
+  // Most valuable by level bracket — needs both a wiki level and a value.
+  const BRACKET = 10;
+  const byBracket = {};
+  mobs.forEach(([m, d]) => {
+    const lvl = mobLevel(d), v = mobValuePerKill(d).total;
+    if (!Number.isFinite(lvl) || v <= 0) return;
+    const start = Math.floor((lvl - 1) / BRACKET) * BRACKET + 1; // 1-10→1, 11-20→11
+    (byBracket[start] = byBracket[start] || []).push({ m, lvl, v });
+  });
+  const bracketKeys = Object.keys(byBracket).map(Number).sort((a, b) => a - b);
+  const unleveled = mobs.filter(([, d]) => mobValuePerKill(d).total > 0 && !Number.isFinite(mobLevel(d))).length;
+  const bracketCols = bracketKeys.map((start) => {
+    const list = byBracket[start].sort((a, b) => b.v - a.v).slice(0, 8);
+    const max = list[0].v;
+    return '<div><h3 class="bracket">Lv ' + start + '–' + (start + BRACKET - 1) + '</h3><div class="card"><table><tbody>' +
+      list.map((x) => '<tr><td>' + mobLink(x.m) + ' <span class="sample">L' + x.lvl + '</span></td><td class="num">' +
+        barCell(x.v, max, '<span class="coin">' + coin(x.v) + '</span>') + '</td></tr>').join('') +
+      '</tbody></table></div></div>';
+  }).join('');
+  const bracketSection = bracketKeys.length
+    ? '<h2>Best value by level</h2><p class="sub">Top value/kill in each level band (level from the wiki).' +
+      (unleveled ? ' ' + unleveled + ' valuable mob' + (unleveled === 1 ? '' : 's') + ' not shown — no wiki level yet.' : '') + '</p>' +
+      '<div class="col2">' + bracketCols + '</div>'
+    : '';
+
   const recentBlock = recentTop.length
     ? '<h2>Recent player trades</h2><div class="card"><table><tbody>' +
       recentTop.map((t) => '<tr><td>' + (nameToId[t.item] ? itemLink(nameToId[t.item], t.item) : esc(t.item)) +
@@ -251,6 +279,7 @@ function renderHome() {
       '<div><h2>Most-fought mobs</h2><p class="sub">Where the grind has gone.</p><div class="card"><table><tbody>' +
         killRows + '</tbody></table></div></div>' +
     '</div>' +
+    bracketSection +
     '<div class="col2">' +
       '<div><h2>Priciest items</h2><p class="sub">Top regular-vendor sell value.</p><div class="card"><table><tbody>' +
         (priceRows || '<tr><td class="muted">No vendor prices yet.</td></tr>') + '</tbody></table></div></div>' +
@@ -259,7 +288,7 @@ function renderHome() {
     '</div>' +
     scatterSection +
     recentBlock +
-    '<div class="note">Values are observational — drop rates are (times looted ÷ times killed) and prices come from real play. ' +
+    '<div class="note">Values are observational — drop rates are per looted corpse and prices come from real play. ' +
       'Small samples are rough; numbers sharpen as more data is collected.</div>';
 }
 

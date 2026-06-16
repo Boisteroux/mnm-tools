@@ -114,6 +114,8 @@ h2 { font-size: 15px; font-weight: 600; color: var(--accent); margin: 24px 0 10p
 .col2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 @media (max-width: 620px) { .col2 { grid-template-columns: 1fr; } }
 
+h3.bracket { font-size: 13px; font-weight: 600; color: var(--text); margin: 4px 0 8px; }
+
 /* ---- Lists & tables ---- */
 
 ul.plain { list-style: none; }
