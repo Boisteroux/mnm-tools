@@ -175,6 +175,34 @@ function switchZone(zoneId, fit = true) {
   draw();
 }
 
+// Enable zone tools only when they're usable, and surface the first-time action.
+const ZONE_BTN_TITLES = {
+  'btn-rename-zone': 'Rename the current zone (also fixes wiki map lookups)',
+  'btn-zone-image': "Pick an image file to use as this zone's map",
+  'btn-wiki-zone': "Download this zone's map from the community wiki",
+  'btn-zone-review': "See every zone's current map at a glance and set defaults",
+};
+function updateZoneControls() {
+  const hasZones = data.zones.length > 0;
+  const hasCurrent = !!currentZone();
+  const setBtn = (id, on, offHint) => {
+    const el = $(id);
+    if (!el) return;
+    el.disabled = !on;
+    el.title = on ? ZONE_BTN_TITLES[id] : offHint;
+  };
+  setBtn('btn-rename-zone', hasCurrent, 'Select or create a zone first');
+  setBtn('btn-zone-image', hasCurrent, 'Select or create a zone first');
+  setBtn('btn-wiki-zone', hasCurrent, 'Select or create a zone first');
+  setBtn('btn-zone-review', hasZones, 'No zones yet — Import All or just play to create them');
+  $('zone-select').disabled = !hasZones;
+  // First run (no zones): open the tools so Import All isn't buried under Options ▾.
+  if (!hasZones) {
+    $('zone-options').classList.remove('hidden');
+    $('btn-zone-options').textContent = 'Options ▴';
+  }
+}
+
 function refreshSidebar() {
   // Zone dropdown
   const sel = $('zone-select');
@@ -189,6 +217,7 @@ function refreshSidebar() {
   $('empty-state').classList.toggle('hidden', data.zones.length > 0);
   updateOverlayZoneLabel();
   renderMapSwitcher();
+  updateZoneControls();
 
   // Category list with live counts for this zone
   const zone = currentZone();

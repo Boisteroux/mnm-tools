@@ -135,6 +135,8 @@ button {
 
 button:hover { background: var(--surface-2); border-color: #8a5a2b; }
 button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+button:disabled { opacity: 0.38; cursor: not-allowed; }
+button:disabled:hover { background: var(--surface); border-color: var(--line-2); }
 button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-dk); font-weight: 600; }
 button.primary:hover { background: #ffa94d; }
 
