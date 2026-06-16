@@ -218,7 +218,7 @@ ipcMain.handle('publish-mnmdb', async () => {
 
     // 2b. Export curated zone maps (images + markers) for the read-only viewer.
     let mapStats = { zones: 0 };
-    try { mapStats = exportMaps(dataFile(), path.join(REPO_ROOT, 'mnmdb')); } catch {}
+    try { mapStats = await exportMaps(dataFile(), path.join(REPO_ROOT, 'mnmdb')); } catch {}
 
     // 3. Commit + push.
     await gitRun(['add', 'mnmdb/data.json', 'mnmdb/trades.json', 'mnmdb/maps.json', 'mnmdb/maps']);

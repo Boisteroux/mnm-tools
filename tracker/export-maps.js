@@ -6,6 +6,27 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 
+// Optional — only needed to downscale big maps for the web. Absent in the
+// packaged app (it's a devDependency), in which case images are copied as-is.
+let Jimp = null;
+try { Jimp = require('jimp'); } catch {}
+const MAX_WEB = 1600; // longest side, px — plenty for the web viewer + tagging
+
+// Web-optimise one image buffer: shrink to MAX_WEB and recompress. Markers on
+// the web are positioned by percentage, so resizing never misaligns them. The
+// app keeps its full-res originals (its markers are in pixel coordinates).
+async function webImage(buf, ext) {
+  if (!Jimp || buf.length < 350 * 1024) return { buf, ext }; // small already — leave it
+  try {
+    const img = await Jimp.read(buf);
+    const long = Math.max(img.bitmap.width, img.bitmap.height);
+    if (long > MAX_WEB) img.scale(MAX_WEB / long);
+    // Big maps recompress far smaller as JPEG (no transparency needed on a map).
+    img.quality(82);
+    return { buf: await img.getBufferAsync(Jimp.MIME_JPEG), ext: '.jpg' };
+  } catch { return { buf, ext }; }
+}
+
 const slug = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
 
 // The wiki's generic "Phformaps.png" placeholder, by content hash — zones whose
@@ -26,7 +47,7 @@ const CATEGORIES = [
 
 // Read map-data.json, copy each zone's image into <destDir>/maps, and write
 // <destDir>/maps.json with zones + markers (ids stripped). Returns a summary.
-function exportMaps(mapDataFile, destDir) {
+async function exportMaps(mapDataFile, destDir) {
   const data = JSON.parse(fs.readFileSync(mapDataFile, 'utf8'));
   const mapsOut = path.join(destDir, 'maps');
   fs.mkdirSync(mapsOut, { recursive: true });
@@ -41,9 +62,10 @@ function exportMaps(mapDataFile, destDir) {
       zones.push({ name: z.name, comingSoon: true, markers: [] });
       continue;
     }
-    const ext = (path.extname(z.image) || '.png').toLowerCase();
-    const fname = slug(z.name) + ext;
-    fs.writeFileSync(path.join(mapsOut, fname), buf);
+    const srcExt = (path.extname(z.image) || '.png').toLowerCase();
+    const out = await webImage(buf, srcExt);
+    const fname = slug(z.name) + out.ext;
+    fs.writeFileSync(path.join(mapsOut, fname), out.buf);
     kept.add(fname);
     zones.push({
       name: z.name,
@@ -73,6 +95,7 @@ module.exports = { exportMaps, CATEGORIES };
 
 if (require.main === module) {
   const userData = path.join(process.env.APPDATA || '', 'mnm-minimap');
-  const r = exportMaps(path.join(userData, 'map-data.json'), path.join(__dirname, '..', 'mnmdb'));
-  console.log('exported maps:', JSON.stringify(r));
+  exportMaps(path.join(userData, 'map-data.json'), path.join(__dirname, '..', 'mnmdb'))
+    .then((r) => console.log('exported maps:', JSON.stringify(r)))
+    .catch((e) => { console.error(e); process.exit(1); });
 }

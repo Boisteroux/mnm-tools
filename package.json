@@ -15,7 +15,8 @@
   },
   "devDependencies": {
     "electron": "^32.3.3",
-    "electron-builder": "^25.1.8"
+    "electron-builder": "^25.1.8",
+    "jimp": "^0.22.12"
   },
   "build": {
     "appId": "xyz.threefires.mnmmap",
