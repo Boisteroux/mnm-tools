@@ -18,8 +18,9 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
   time), not per kill, because the game only logs kills for some mobs. Thin-sample
   rates (<10 corpses) are faded as "rough".
 - **Trade value v1** — item pages show a 30-day high/low + 7-day average of player
-  sale prices. Submit two ways: the in-app "Log a Trade" panel (merged on Publish)
-  or a phone-friendly GitHub issue form. Data lives in `mnmdb/trades.json`.
+  sale prices, with wild outliers auto-trimmed (IQR fence) so one bad value can't
+  skew the range. Logged frictionlessly via the in-app "Log a Trade" panel (merged
+  on Publish). Data lives in `mnmdb/trades.json`.
 - **mnmdb website** — searchable item / mob / resource database, economy-focused
   home (most-valuable & most-fought mobs, priciest items, valuable resources,
   recent trades). Live at https://boisteroux.github.io/mnm-tools
@@ -44,8 +45,13 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
   wiki level; right now ~20 valuable mobs have none, so they're unranked. Widen
   the mob wiki enrichment (and revisit bracket size 5s vs 10s) as play spans more
   levels.
-- **Trade ingest** — a small `gh`-powered script to fold accepted "trade" issues
-  into `trades.json`, so web submissions don't need hand-copying.
+- **Community trade submission (serverless)** — for now, trade prices come from
+  the in-app logger (frictionless, no account). True *web* submission needs a
+  receiver a static site can't provide; the right answer is a tiny serverless
+  endpoint (e.g. a free Cloudflare Worker) that a plain no-login form POSTs to —
+  the minimal version of the crowdsourcing server. Parked until the audience
+  justifies it. (The GitHub-issue form was dropped as too much friction; outlier
+  trimming is already in, which is what makes low-friction submission safe later.)
 - **Map viewer — refinements** (roughly in this order):
   1. Fix maps that aren't displaying correctly (some zones render wrong).
   2. Pick a specific **default map per zone** (several zones have multiple wiki

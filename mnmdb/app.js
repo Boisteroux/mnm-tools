@@ -11,8 +11,6 @@ let VENDORS = [];    // hand-maintained vendor → item-type mapping (vendors.js
 let TRADES = {};     // item name (lowercased) -> [{price, side, date}] player trade prices
 let MAPS = { zones: [], categories: [] }; // curated zone maps for the read-only viewer
 
-const REPO = 'https://github.com/Boisteroux/mnm-tools';
-
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const slugify = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
@@ -58,33 +56,42 @@ const sourceLink = (s) =>
 // vendors pay more than shady ones. Used as the realistic value of an item.
 const regularPrice = (it) => (it && it.prices.length ? Math.max.apply(null, it.prices.map((p) => p.copper)) : 0);
 
-// Player trade value — 30-day high/low + 7-day average of SELL-side prices.
+// Drop extreme outliers with an IQR fence so one fat-fingered price can't skew
+// the range. Needs >=4 points to judge; below that every price is kept.
+function trimOutliers(prices) {
+  if (prices.length < 4) return prices.slice();
+  const s = prices.slice().sort((a, b) => a - b);
+  const q = (p) => { const i = (s.length - 1) * p, lo = Math.floor(i), hi = Math.ceil(i); return s[lo] + (s[hi] - s[lo]) * (i - lo); };
+  const q1 = q(0.25), q3 = q(0.75), iqr = q3 - q1;
+  if (iqr === 0) return prices.slice();
+  const lo = q1 - 3 * iqr, hi = q3 + 3 * iqr;
+  return prices.filter((p) => p >= lo && p <= hi);
+}
+
+const mean = (a) => (a.length ? Math.round(a.reduce((s, x) => s + x, 0) / a.length) : null);
+
+// Player trade value — 30-day high/low + 7-day average of SELL-side prices,
+// with wild outliers trimmed so the displayed range stays trustworthy.
 function tradeStats(name) {
   const list = TRADES[String(name).toLowerCase()];
   if (!list || !list.length) return null;
   const sells = list.filter((t) => t.side === 'sell');
   if (!sells.length) return null;
   const now = Date.now();
-  const within = (days) => sells.filter((t) => new Date(t.date).getTime() >= now - days * 864e5);
-  const d30 = within(30), d7 = within(7);
-  const p30 = d30.map((t) => t.price);
-  const allP = sells.map((t) => t.price);
+  const rawIn = (days) => sells.filter((t) => new Date(t.date).getTime() >= now - days * 864e5).map((t) => t.price);
+  const raw30 = rawIn(30);
+  const p30 = trimOutliers(raw30), p7 = trimOutliers(rawIn(7)), allP = trimOutliers(sells.map((t) => t.price));
   return {
-    n30: d30.length,
+    n30: p30.length,
+    trimmed: raw30.length - p30.length,
     high: p30.length ? Math.max.apply(null, p30) : null,
     low: p30.length ? Math.min.apply(null, p30) : null,
-    n7: d7.length,
-    avg7: d7.length ? Math.round(d7.reduce((s, t) => s + t.price, 0) / d7.length) : null,
-    allN: sells.length,
-    allHigh: Math.max.apply(null, allP),
-    allLow: Math.min.apply(null, allP),
+    n7: p7.length,
+    avg7: mean(p7),
+    allHigh: allP.length ? Math.max.apply(null, allP) : null,
+    allLow: allP.length ? Math.min.apply(null, allP) : null,
   };
 }
-
-// Pre-filled GitHub issue form for submitting a price from the website.
-const tradeSubmitUrl = (name) =>
-  REPO + '/issues/new?labels=trade&template=trade-price.yml&title=' +
-  encodeURIComponent('Price: ' + name) + '&item=' + encodeURIComponent(name);
 
 // Best known market value for an item: player trade price when we have it,
 // otherwise the regular vendor sell price. { value, source: 'trade'|'vendor'|null }
@@ -108,10 +115,9 @@ function tradeMovers() {
   const out = [];
   for (const list of Object.values(TRADES)) {
     const sells = list.filter((t) => t.side === 'sell');
-    const win = (a, b) => {
-      const v = sells.filter((t) => { const d = new Date(t.date).getTime(); return d >= now - a * 864e5 && d < now - b * 864e5; }).map((t) => t.price);
-      return v.length ? v.reduce((s, x) => s + x, 0) / v.length : null;
-    };
+    const win = (a, b) => mean(trimOutliers(
+      sells.filter((t) => { const d = new Date(t.date).getTime(); return d >= now - a * 864e5 && d < now - b * 864e5; }).map((t) => t.price)
+    ));
     const recent = win(7, 0), prior = win(14, 7);
     if (recent == null || prior == null || prior === 0) continue;
     out.push({ name: list[0].item, recent, pct: (recent - prior) / prior });
@@ -395,7 +401,7 @@ function renderItem(id) {
   // Player trade value — 30-day high/low + 7-day average of player sell prices
   {
     const tv = tradeStats(it.name);
-    const submit = '<a class="btn-link" href="' + tradeSubmitUrl(it.name) + '" target="_blank" rel="noopener">Submit a price ↗</a>';
+    const logged = 'Logged in the companion app as people play.';
     let body;
     if (tv && tv.n30) {
       const avg = tv.avg7 != null
@@ -406,12 +412,13 @@ function renderItem(id) {
         '<div class="vbox"><div class="vlbl">30-day low</div><div class="vval">' + coin(tv.low) + '</div></div>' +
         avg +
         '</div><div class="note">From ' + tv.n30 + ' sale' + (tv.n30 === 1 ? '' : 's') + ' in the last 30 days' +
-        (tv.n7 ? ' (' + tv.n7 + ' in the last 7)' : '') + '. ' + submit + '</div>';
+        (tv.n7 ? ' (' + tv.n7 + ' in the last 7)' : '') +
+        (tv.trimmed ? ' · ' + tv.trimmed + ' outlier' + (tv.trimmed === 1 ? '' : 's') + ' excluded' : '') + '. ' + logged + '</div>';
     } else if (tv) {
       body = '<div class="note">No sales in the last 30 days. Last seen ' + coin(tv.allLow) +
-        (tv.allHigh !== tv.allLow ? '–' + coin(tv.allHigh) : '') + ' (older data). ' + submit + '</div>';
+        (tv.allHigh !== tv.allLow ? '–' + coin(tv.allHigh) : '') + ' (older data). ' + logged + '</div>';
     } else {
-      body = '<div class="note">No player trades logged yet. ' + submit + '</div>';
+      body = '<div class="note">No player trades logged yet. ' + logged + '</div>';
     }
     sections.push('<h2>Player trade value</h2>' + body);
   }
