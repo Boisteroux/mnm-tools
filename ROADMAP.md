@@ -46,9 +46,16 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
   levels.
 - **Trade ingest** — a small `gh`-powered script to fold accepted "trade" issues
   into `trades.json`, so web submissions don't need hand-copying.
-- **Official / shared maps** — let the web map viewer carry community or "official"
-  maps, not just your locally-curated set. Also worth optimizing map image sizes
-  (the curated set is ~45MB; large zone maps could be downscaled).
+- **Map viewer — refinements** (roughly in this order):
+  1. Fix maps that aren't displaying correctly (some zones render wrong).
+  2. Pick a specific **default map per zone** (several zones have multiple wiki
+     maps / placeholders; choose the good one).
+  3. **Layered city maps** — multi-level zones (cities with above/below floors)
+     shown as switchable layers in the viewer.
+  4. **Official / shared maps** — carry community or "official" maps, not just the
+     locally-curated set.
+  5. **Downscale images** last — the curated set is ~45MB; large zone maps can be
+     compressed once we've settled which maps are the keepers.
 - **Harvest zones** — show where each resource is gathered.
 - **More wiki enrichment** — wider item-stat / icon / mob-level coverage.
   (Note: vendor *buy* prices and live auction prices are NOT obtainable — no
