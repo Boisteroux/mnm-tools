@@ -58,6 +58,9 @@
           <button id="btn-wiki-zone" title="Download this zone's map from the community wiki">Import Map from Wiki</button>
           <button id="btn-wiki-all" title="Create every zone from the wiki and download all their maps">Import All</button>
         </div>
+        <div class="btn-row">
+          <button id="btn-zone-review" title="See every zone's current map at a glance and set defaults">Review Zone Maps</button>
+        </div>
       </div>
       <div id="wiki-status"></div>
     </div>
@@ -203,6 +206,20 @@
       <div id="map-picker-grid" class="map-picker-grid"></div>
       <div class="btn-row right">
         <button id="map-picker-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Review every zone's current map -->
+  <div id="zone-review-modal" class="modal-backdrop hidden">
+    <div class="modal modal-wide">
+      <h2>Review zone maps</h2>
+      <p style="font-size: 12px; color: var(--muted); line-height: 1.6;">
+        Each zone's current map. Click any to choose or change it — zones marked <b>No map</b> have none yet.
+      </p>
+      <div id="zone-review-grid" class="map-picker-grid"></div>
+      <div class="btn-row right">
+        <button id="zone-review-close">Done</button>
       </div>
     </div>
   </div>

@@ -34,9 +34,13 @@ function exportMaps(mapDataFile, destDir) {
   const zones = [];
   const kept = new Set();
   for (const z of data.zones || []) {
-    if (!z.image || !fs.existsSync(z.image)) continue;
-    const buf = fs.readFileSync(z.image);
-    if (md5(buf) === PLACEHOLDER_MD5) continue; // mapless zone — skip the placeholder
+    let buf = null;
+    if (z.image && fs.existsSync(z.image)) buf = fs.readFileSync(z.image);
+    // No image, or only the wiki placeholder → "map coming soon".
+    if (!buf || md5(buf) === PLACEHOLDER_MD5) {
+      zones.push({ name: z.name, comingSoon: true, markers: [] });
+      continue;
+    }
     const ext = (path.extname(z.image) || '.png').toLowerCase();
     const fname = slug(z.name) + ext;
     fs.writeFileSync(path.join(mapsOut, fname), buf);
@@ -50,7 +54,8 @@ function exportMaps(mapDataFile, destDir) {
       })),
     });
   }
-  zones.sort((a, b) => a.name.localeCompare(b.name));
+  // Mapped zones first (alphabetical), then the "coming soon" ones.
+  zones.sort((a, b) => (!!a.comingSoon - !!b.comingSoon) || a.name.localeCompare(b.name));
 
   // Remove images no longer referenced (e.g. a zone switched maps or lost one)
   for (const f of fs.readdirSync(mapsOut)) {

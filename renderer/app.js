@@ -617,17 +617,22 @@ async function downloadAndSetMap(zone, title) {
 
 // Look up a zone's wiki maps; auto-pick the best, or show a picker when there
 // are several. `auto` forces the best pick (overlay mode / bulk import).
-async function chooseWikiMap(zone, auto) {
+// onClose (optional) is called after the map is set, the picker is cancelled, or
+// no candidates were found — used by the Review panel to come back into view.
+async function chooseWikiMap(zone, auto, onClose) {
   wikiStatus('Looking up maps for ' + zone.name + '…');
   const r = await window.mapAPI.wikiListMaps(zone.name);
-  if (!r || r.error) { wikiStatus((r && r.error) || 'Lookup failed.'); return false; }
+  if (!r || r.error) { wikiStatus((r && r.error) || 'Lookup failed.'); if (onClose) onClose(); return false; }
   const cands = r.candidates;
-  if (auto || cands.length === 1) return downloadAndSetMap(zone, cands[0].title);
-  openMapPicker(zone, cands);
+  if (auto || cands.length === 1) { const ok = await downloadAndSetMap(zone, cands[0].title); if (onClose) onClose(); return ok; }
+  openMapPicker(zone, cands, onClose);
   return 'picker';
 }
 
-function openMapPicker(zone, candidates) {
+let mapPickerOnClose = null;
+
+function openMapPicker(zone, candidates, onClose) {
+  mapPickerOnClose = onClose || null;
   const grid = $('map-picker-grid');
   grid.innerHTML = '';
   for (const c of candidates) {
@@ -639,9 +644,10 @@ function openMapPicker(zone, candidates) {
       '<img src="' + c.preview + '" alt="" />' +
       '<span class="map-pick-name">' + name + '</span>' +
       '<span class="map-pick-dim">' + c.width + ' × ' + c.height + '</span>';
-    card.addEventListener('click', () => {
+    card.addEventListener('click', async () => {
       $('map-picker-modal').classList.add('hidden');
-      downloadAndSetMap(zone, c.title);
+      await downloadAndSetMap(zone, c.title);
+      const cb = mapPickerOnClose; mapPickerOnClose = null; if (cb) cb();
     });
     grid.appendChild(card);
   }
@@ -649,7 +655,40 @@ function openMapPicker(zone, candidates) {
   $('map-picker-modal').classList.remove('hidden');
 }
 
-$('map-picker-cancel').addEventListener('click', () => $('map-picker-modal').classList.add('hidden'));
+$('map-picker-cancel').addEventListener('click', () => {
+  $('map-picker-modal').classList.add('hidden');
+  const cb = mapPickerOnClose; mapPickerOnClose = null; if (cb) cb();
+});
+
+// ---- Review zone maps ----
+
+function openZoneReview() {
+  const grid = $('zone-review-grid');
+  grid.innerHTML = '';
+  const zones = data.zones.slice().sort((a, b) => a.name.localeCompare(b.name));
+  for (const zone of zones) {
+    const card = document.createElement('button');
+    card.className = 'map-pick' + (zone.image ? '' : ' nomap');
+    const thumb = zone.image
+      ? '<img src="file:///' + zone.image.replace(/\\/g, '/') + '" alt="" />'
+      : '<span class="map-pick-empty">No map</span>';
+    const marks = (zone.markers || []).length;
+    card.innerHTML = thumb +
+      '<span class="map-pick-name">' + zone.name + '</span>' +
+      '<span class="map-pick-dim">' + (zone.image ? (marks ? marks + ' markers' : 'mapped') : 'tap to add') + '</span>';
+    card.addEventListener('click', () => changeZoneMap(zone));
+    grid.appendChild(card);
+  }
+  $('zone-review-modal').classList.remove('hidden');
+}
+
+function changeZoneMap(zone) {
+  $('zone-review-modal').classList.add('hidden');
+  chooseWikiMap(zone, false, openZoneReview); // reopens the review when done/cancelled
+}
+
+$('btn-zone-review').addEventListener('click', openZoneReview);
+$('zone-review-close').addEventListener('click', () => $('zone-review-modal').classList.add('hidden'));
 
 $('btn-wiki-zone').addEventListener('click', async () => {
   const zone = currentZone();

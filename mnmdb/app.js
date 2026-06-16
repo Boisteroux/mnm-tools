@@ -780,11 +780,14 @@ function renderMapsList() {
     '<div class="crumb"><a href="#/">MnMdb</a> › maps</div>' +
     '<h1>Zone maps</h1>' +
     '<p class="sub">Curated maps with marked resource nodes, camps and points of interest. View-only.</p>' +
-    '<div class="mapgrid">' + zones.map((z) =>
-      '<a class="mapcard" href="#/map/' + encodeURIComponent(z.name) + '">' +
-      '<span class="mapthumb"><img src="maps/' + encodeURIComponent(z.image) + '" alt="" loading="lazy" /></span>' +
-      '<span class="mapname">' + esc(z.name) +
-      (z.markers.length ? ' <span class="sample">' + z.markers.length + ' marks</span>' : '') + '</span></a>'
+    '<div class="mapgrid">' + zones.map((z) => z.comingSoon
+      ? '<a class="mapcard soon" href="#/map/' + encodeURIComponent(z.name) + '">' +
+        '<span class="mapthumb"><span class="soon-tag">Map coming soon</span></span>' +
+        '<span class="mapname">' + esc(z.name) + '</span></a>'
+      : '<a class="mapcard" href="#/map/' + encodeURIComponent(z.name) + '">' +
+        '<span class="mapthumb"><img src="maps/' + encodeURIComponent(z.image) + '" alt="" loading="lazy" /></span>' +
+        '<span class="mapname">' + esc(z.name) +
+        (z.markers.length ? ' <span class="sample">' + z.markers.length + ' marks</span>' : '') + '</span></a>'
     ).join('') + '</div>';
 }
 
@@ -793,6 +796,13 @@ let pendingMap = null;
 function renderMapView(name) {
   const z = (MAPS.zones || []).find((x) => x.name === name);
   if (!z) return notFound('map', name);
+  if (z.comingSoon) {
+    return $('content').innerHTML =
+      '<div class="crumb"><a href="#/">MnMdb</a> › <a href="#/maps">maps</a> › ' + esc(name) + '</div>' +
+      '<h1>' + esc(name) + '</h1>' +
+      '<div class="mapsoon"><span class="soon-tag big">Map coming soon</span>' +
+      '<p class="sub">No map for this zone has been curated yet — check back later.</p></div>';
+  }
   const catById = {};
   (MAPS.categories || []).forEach((c) => { catById[c.id] = c; });
   const fallback = { name: 'Other', color: '#b0bec5', icon: '📍' };
