@@ -113,7 +113,7 @@ function parseMobPage(wikitext) {
   if (!m) return null;
   const p = templateParams(m[1]);
   const data = {
-    level: toNum(p.level), race: clean(p.race), class: clean(p.class),
+    level: clean(p.level), race: clean(p.race), class: clean(p.class), // keep ranges like "3-7"
     hp: toNum(p.hp), ac: toNum(p.ac),
     special: clean(p.special), zone: clean(p.zone),
     imageFile: p.imagefilename || null,

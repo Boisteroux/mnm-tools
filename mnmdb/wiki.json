@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-15T22:38:20.740Z",
+  "generatedAt": "2026-06-16T15:25:24.286Z",
   "items": {
     "Copper Ore": {
       "hasPage": true,
@@ -382,6 +382,28 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/c/cb/Itemicon0137AG.png/64px-Itemicon0137AG.png"
     },
+    "Copper Mace": {
+      "hasPage": true,
+      "iconId": "Itemicon0161AB",
+      "slot": "PRIMARY SECONDARY",
+      "dmg": 7,
+      "delay": 38,
+      "skill": "BLG",
+      "weight": 7,
+      "size": "LARGE",
+      "class": "BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "categories": [
+        "Weapon",
+        "Primary",
+        "Secondary",
+        "1H Bludgeoning"
+      ],
+      "tradeskills": [
+        "Blacksmithing"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/c/c0/Itemicon0161AB.png/64px-Itemicon0161AB.png"
+    },
     "Copper Plate Bracer": {
       "hasPage": true,
       "iconId": "Itemicon0042AB",
@@ -488,28 +510,6 @@
         "Blacksmithing"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/7/7a/Itemicon0162AB.png/64px-Itemicon0162AB.png"
-    },
-    "Copper Scythe": {
-      "hasPage": true,
-      "iconId": "Itemicon0156AC",
-      "slot": "PRIMARY SECONDARY",
-      "dmg": 5,
-      "delay": 26,
-      "skill": "SLA",
-      "weight": 5,
-      "size": "MEDIUM",
-      "class": "BST DRU FTR INQ NEC RNG SHD SPB",
-      "race": "ALL",
-      "categories": [
-        "Weapon",
-        "Primary",
-        "Secondary",
-        "1H Slashing"
-      ],
-      "tradeskills": [
-        "Blacksmithing"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/3f/Itemicon0156AC.png/64px-Itemicon0156AC.png"
     },
     "Copper Scimitar": {
       "hasPage": true,
@@ -816,6 +816,28 @@
       "race": null,
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/9/91/Itemicon0017AA.png/64px-Itemicon0017AA.png"
     },
+    "Blighted Orc Head": {
+      "hasPage": true,
+      "iconId": "Itemicon0102AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 5,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "wikiZones": [
+        "Evershade Weald"
+      ],
+      "from": [
+        "Vorkuul Blighteye"
+      ],
+      "categories": [
+        "Quest Items"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/1/18/Itemicon0102AA.png/64px-Itemicon0102AA.png"
+    },
     "Clouded Crystallized Magic": {
       "hasPage": true,
       "iconId": "Itemicon0132AA",
@@ -876,25 +898,6 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/f1/Itemicon0145AA.png/64px-Itemicon0145AA.png"
     },
-    "Copper Shortsword": {
-      "hasPage": true,
-      "iconId": "Itemicon0164AA",
-      "slot": "PRIMARY SECONDARY",
-      "dmg": 5,
-      "delay": 24,
-      "skill": "SLA",
-      "weight": 5,
-      "size": "MEDIUM",
-      "class": "ARC BRD BST FTR INQ PAL RNG ROG SHD SPB WIZ",
-      "race": "ALL",
-      "categories": [
-        "Weapon",
-        "Primary",
-        "Secondary",
-        "1H Slashing"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/a/ad/Itemicon0164AA.png/64px-Itemicon0164AA.png"
-    },
     "Cabbage": {
       "hasPage": true,
       "iconId": "Itemicon0082AA",
@@ -942,25 +945,6 @@
         "1H Bludgeoning"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/32/Itemicon0185AA.png/64px-Itemicon0185AA.png"
-    },
-    "Rawhide Scraps": {
-      "hasPage": true,
-      "iconId": "Itemicon0124AB",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.2,
-      "size": "SMALL",
-      "class": null,
-      "race": null,
-      "categories": [
-        "Tradeskill Ingredient"
-      ],
-      "tradeskills": [
-        "Leatherworking"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/2/2d/Itemicon0124AB.png/64px-Itemicon0124AB.png"
     },
     "Multhele Root": {
       "hasPage": true,
@@ -1182,6 +1166,28 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/a/a3/Itemicon0111AA.png/64px-Itemicon0111AA.png"
     },
+    "Copper Scythe": {
+      "hasPage": true,
+      "iconId": "Itemicon0156AC",
+      "slot": "PRIMARY SECONDARY",
+      "dmg": 5,
+      "delay": 26,
+      "skill": "SLA",
+      "weight": 5,
+      "size": "MEDIUM",
+      "class": "BST DRU FTR INQ NEC RNG SHD SPB",
+      "race": "ALL",
+      "categories": [
+        "Weapon",
+        "Primary",
+        "Secondary",
+        "1H Slashing"
+      ],
+      "tradeskills": [
+        "Blacksmithing"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/3f/Itemicon0156AC.png/64px-Itemicon0156AC.png"
+    },
     "Rat Tooth": {
       "hasPage": true,
       "iconId": "Itemicon0111AA",
@@ -1372,25 +1378,6 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/f9/Itemicon0059AA.png/64px-Itemicon0059AA.png"
     },
-    "Raw Rat Meat": {
-      "hasPage": true,
-      "iconId": "Itemicon0079AA",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.8,
-      "size": "SMALL",
-      "class": null,
-      "race": null,
-      "from": [
-        "a large rat"
-      ],
-      "tradeskills": [
-        "Cooking"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/d/db/Itemicon0079AA.png/64px-Itemicon0079AA.png"
-    },
     "Raw Bat Meat": {
       "hasPage": true,
       "iconId": "Itemicon0079AA",
@@ -1550,40 +1537,29 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/d/db/Itemicon0079AA.png/64px-Itemicon0079AA.png"
     },
-    "Raw Wolf Meat": {
+    "Decayed Great Staff": {
       "hasPage": true,
-      "iconId": "Itemicon0079AA",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.8,
-      "size": "SMALL",
-      "class": null,
-      "race": null,
-      "tradeskills": [
-        "Cooking"
+      "iconId": "Itemicon0185AA",
+      "slot": "PRIMARY Two Handed",
+      "dmg": 9,
+      "delay": 38,
+      "skill": "BLG",
+      "weight": 9,
+      "size": "LARGE",
+      "class": "BST CLR DRU ELE ENC FTR MNK NEC PAL SHM SPB WIZ",
+      "race": "ALL",
+      "wikiZones": [
+        "Evershade Weald"
       ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/d/db/Itemicon0079AA.png/64px-Itemicon0079AA.png"
-    },
-    "Raw Orc Meat": {
-      "hasPage": true,
-      "iconId": "Itemicon0079AA",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.8,
-      "size": "SMALL",
-      "class": null,
-      "race": null,
       "from": [
-        "Orcs"
+        "Vorkuul Blighteye"
       ],
-      "tradeskills": [
-        "Cooking"
+      "categories": [
+        "Weapon",
+        "Primary",
+        "2H Bludgeoning"
       ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/d/db/Itemicon0079AA.png/64px-Itemicon0079AA.png"
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/32/Itemicon0185AA.png/64px-Itemicon0185AA.png"
     },
     "Left Orc Ear": {
       "hasPage": true,
@@ -1649,6 +1625,25 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/ef/Itemicon0062AA.png/64px-Itemicon0062AA.png"
     },
+    "Copper Shortsword": {
+      "hasPage": true,
+      "iconId": "Itemicon0164AA",
+      "slot": "PRIMARY SECONDARY",
+      "dmg": 5,
+      "delay": 24,
+      "skill": "SLA",
+      "weight": 5,
+      "size": "MEDIUM",
+      "class": "ARC BRD BST FTR INQ PAL RNG ROG SHD SPB WIZ",
+      "race": "ALL",
+      "categories": [
+        "Weapon",
+        "Primary",
+        "Secondary",
+        "1H Slashing"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/a/ad/Itemicon0164AA.png/64px-Itemicon0164AA.png"
+    },
     "Low-Quality Wolf Pelt": {
       "hasPage": true,
       "iconId": "Itemicon0062AE",
@@ -1664,6 +1659,27 @@
         "Tanning"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/0/04/Itemicon0062AE.png"
+    },
+    "Magic Frond": {
+      "hasPage": true,
+      "iconId": "Itemicon0060AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "from": [
+        "Lionleaf",
+        "Ghost Poppy",
+        "Whispering Sage"
+      ],
+      "categories": [
+        "Tradeskill Ingredient"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/1/1c/Itemicon0060AA.png/64px-Itemicon0060AA.png"
     },
     "Dryad Sap": {
       "hasPage": true,
@@ -1814,23 +1830,6 @@
         "Neck"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/34/Itemicon0008AA.png/64px-Itemicon0008AA.png"
-    },
-    "Tattered Rawhide Bracer": {
-      "hasPage": true,
-      "iconId": "Itemicon0014AA",
-      "slot": "WRIST",
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 1,
-      "size": "SMALL",
-      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
-      "race": "ALL",
-      "categories": [
-        "Armor",
-        "Wrist"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/fc/Itemicon0014AA.png/64px-Itemicon0014AA.png"
     },
     "Rusty Scimitar": {
       "hasPage": true,
@@ -2028,22 +2027,24 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/7/7a/Itemicon0049AA.png/64px-Itemicon0049AA.png"
     },
-    "Tattered Rawhide Belt": {
+    "Rawhide Scraps": {
       "hasPage": true,
-      "iconId": "Itemicon0010AA",
-      "slot": "WAIST",
+      "iconId": "Itemicon0124AB",
+      "slot": null,
       "dmg": null,
       "delay": null,
       "skill": null,
-      "weight": 1,
+      "weight": 0.2,
       "size": "SMALL",
-      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
-      "race": "ALL",
+      "class": null,
+      "race": null,
       "categories": [
-        "Armor",
-        "Waist"
+        "Tradeskill Ingredient"
       ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/bd/Itemicon0010AA.png/64px-Itemicon0010AA.png"
+      "tradeskills": [
+        "Leatherworking"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/2/2d/Itemicon0124AB.png/64px-Itemicon0124AB.png"
     },
     "Tattered Cloth Belt": {
       "hasPage": true,
@@ -2183,40 +2184,6 @@
         "Head"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/bb/Itemicon0044AA.png/64px-Itemicon0044AA.png"
-    },
-    "Tattered Cloth Veil": {
-      "hasPage": true,
-      "iconId": "Itemicon0011AA",
-      "slot": "FACE",
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.3,
-      "size": "SMALL",
-      "class": "ALL",
-      "race": "ALL",
-      "categories": [
-        "Armor",
-        "Face"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/ee/Itemicon0011AA.png/64px-Itemicon0011AA.png"
-    },
-    "Tattered Cloth Tunic": {
-      "hasPage": true,
-      "iconId": "Itemicon0009AA",
-      "slot": "CHEST",
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 1,
-      "size": "MEDIUM",
-      "class": "ALL",
-      "race": "ALL",
-      "categories": [
-        "Armor",
-        "Chest"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/7/7d/Itemicon0009AA.png/64px-Itemicon0009AA.png"
     },
     "Scarab Carapace": {
       "hasPage": true,
@@ -2399,6 +2366,25 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/a/ae/Itemicon0218AA.png/64px-Itemicon0218AA.png"
     },
+    "Raw Rat Meat": {
+      "hasPage": true,
+      "iconId": "Itemicon0079AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.8,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "from": [
+        "a large rat"
+      ],
+      "tradeskills": [
+        "Cooking"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/d/db/Itemicon0079AA.png/64px-Itemicon0079AA.png"
+    },
     "Scarab Eye": {
       "hasPage": true,
       "iconId": "Itemicon0108AB",
@@ -2455,6 +2441,41 @@
         "a giant spider"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/4/49/Itemicon0112AA.png/64px-Itemicon0112AA.png"
+    },
+    "Raw Wolf Meat": {
+      "hasPage": true,
+      "iconId": "Itemicon0079AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.8,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "tradeskills": [
+        "Cooking"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/d/db/Itemicon0079AA.png/64px-Itemicon0079AA.png"
+    },
+    "Raw Orc Meat": {
+      "hasPage": true,
+      "iconId": "Itemicon0079AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.8,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "from": [
+        "Orcs"
+      ],
+      "tradeskills": [
+        "Cooking"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/d/db/Itemicon0079AA.png/64px-Itemicon0079AA.png"
     },
     "Royal Jelly": {
       "hasPage": true,
@@ -2616,6 +2637,23 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/7/7d/Itemicon0009AA.png/64px-Itemicon0009AA.png"
     },
+    "Tattered Rawhide Bracer": {
+      "hasPage": true,
+      "iconId": "Itemicon0014AA",
+      "slot": "WRIST",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 1,
+      "size": "SMALL",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "categories": [
+        "Armor",
+        "Wrist"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/fc/Itemicon0014AA.png/64px-Itemicon0014AA.png"
+    },
     "Worn Great Staff": {
       "hasPage": true,
       "iconId": "Itemicon0185AA",
@@ -2634,6 +2672,91 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/32/Itemicon0185AA.png/64px-Itemicon0185AA.png"
     },
+    "Tattered Rawhide Belt": {
+      "hasPage": true,
+      "iconId": "Itemicon0010AA",
+      "slot": "WAIST",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 1,
+      "size": "SMALL",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "categories": [
+        "Armor",
+        "Waist"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/bd/Itemicon0010AA.png/64px-Itemicon0010AA.png"
+    },
+    "Tattered Rawhide Cloak": {
+      "hasPage": true,
+      "iconId": "Itemicon0012AC",
+      "slot": "BACK",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 2,
+      "size": "MEDIUM",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "categories": [
+        "Armor",
+        "Back"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/f1/Itemicon0012AC.png/64px-Itemicon0012AC.png"
+    },
+    "Tattered Rawhide Gloves": {
+      "hasPage": true,
+      "iconId": "Itemicon0015AA",
+      "slot": "HANDS",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 1,
+      "size": "SMALL",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "categories": [
+        "Armor",
+        "Hands"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/66/Itemicon0015AA.png/64px-Itemicon0015AA.png"
+    },
+    "Tattered Rawhide Leggings": {
+      "hasPage": true,
+      "iconId": "Itemicon0019AA",
+      "slot": "LEGS",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 3,
+      "size": "MEDIUM",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL ROG SHD SHM SPB",
+      "race": "ALL",
+      "categories": [
+        "Armor",
+        "Legs"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/e9/Itemicon0019AA.png/64px-Itemicon0019AA.png"
+    },
+    "Tattered Cloth Veil": {
+      "hasPage": true,
+      "iconId": "Itemicon0011AA",
+      "slot": "FACE",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.3,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "categories": [
+        "Armor",
+        "Face"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/ee/Itemicon0011AA.png/64px-Itemicon0011AA.png"
+    },
     "Torch": {
       "hasPage": true,
       "iconId": "Itemicon0006AA",
@@ -2649,6 +2772,23 @@
         "Survival"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/61/Itemicon0006AA.png/64px-Itemicon0006AA.png"
+    },
+    "Tattered Cloth Tunic": {
+      "hasPage": true,
+      "iconId": "Itemicon0009AA",
+      "slot": "CHEST",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 1,
+      "size": "MEDIUM",
+      "class": "ALL",
+      "race": "ALL",
+      "categories": [
+        "Armor",
+        "Chest"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/7/7d/Itemicon0009AA.png/64px-Itemicon0009AA.png"
     },
     "Wood": {
       "hasPage": true,
@@ -2677,6 +2817,27 @@
         "Woodworking"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/0/0a/Itemicon0121AA.png/64px-Itemicon0121AA.png"
+    },
+    "Whispering Sage": {
+      "hasPage": true,
+      "iconId": "Itemicon0060AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "TINY",
+      "class": null,
+      "race": null,
+      "from": [
+        "File:Whispering Sage.png",
+        "Herbalism",
+        "sickle"
+      ],
+      "categories": [
+        "Tradeskill Ingredient"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/1/1c/Itemicon0060AA.png/64px-Itemicon0060AA.png"
     },
     "Tattered Rawhide Vest": {
       "hasPage": true,
@@ -3727,6 +3888,26 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/0/04/Itemicon0062AE.png"
     },
+    "Diseased Wolf Mantle": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0054AC",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "SMALL",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "wikiZones": [
+        "Evershade Weald"
+      ],
+      "from": [
+        "Vorkuul Blighteye"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/7/7e/Itemicon0054AC.png/64px-Itemicon0054AC.png"
+    },
     "Ring of the Pauper": {
       "hasPage": true,
       "wikiOnly": true,
@@ -3755,6 +3936,26 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/5/55/Itemicon0098AA.png/64px-Itemicon0098AA.png"
     },
+    "Blight-Gnawed Crown": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0031AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "SMALL",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "wikiZones": [
+        "Evershade Weald"
+      ],
+      "from": [
+        "Vorkuul Blighteye"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/fd/Itemicon0031AA.png/64px-Itemicon0031AA.png"
+    },
     "Eth-ur Arboreal Journal Page": {
       "hasPage": true,
       "wikiOnly": true,
@@ -3775,6 +3976,26 @@
         "Quest Items"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/9/91/Itemicon0126AA.png/64px-Itemicon0126AA.png"
+    },
+    "Crooked Ranger Hood": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0031AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "SMALL",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "wikiZones": [
+        "Evershade Weald"
+      ],
+      "from": [
+        "Vorkuul Blighteye"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/fd/Itemicon0031AA.png/64px-Itemicon0031AA.png"
     }
   },
   "mobs": {
@@ -3799,7 +4020,7 @@
     "a rotting skeleton": {
       "hasPage": true,
       "title": "A rotting skeleton",
-      "level": 1,
+      "level": "1",
       "race": "Skeleton",
       "class": null,
       "hp": 16,
@@ -3919,7 +4140,7 @@
     "a large dunes bat": {
       "hasPage": true,
       "title": "A large dunes bat",
-      "level": null,
+      "level": "2-5",
       "race": "Bat",
       "class": null,
       "hp": null,
@@ -3937,7 +4158,7 @@
     "a jackal pup": {
       "hasPage": true,
       "title": "A jackal pup",
-      "level": 1,
+      "level": "1",
       "race": "Jackal",
       "class": null,
       "hp": null,
@@ -3957,7 +4178,7 @@
     "a spiderling": {
       "hasPage": true,
       "title": "A spiderling",
-      "level": 2,
+      "level": "2",
       "race": "Spider",
       "class": null,
       "hp": null,
@@ -3995,7 +4216,7 @@
     "a rattlesnake": {
       "hasPage": true,
       "title": "A rattlesnake",
-      "level": null,
+      "level": "4-7",
       "race": null,
       "class": null,
       "hp": null,
@@ -4014,7 +4235,7 @@
     "a crocodile hatchling": {
       "hasPage": true,
       "title": "A crocodile hatchling",
-      "level": null,
+      "level": "3-4",
       "race": "Crocodile",
       "class": null,
       "hp": null,
@@ -4035,7 +4256,7 @@
     "a large rat": {
       "hasPage": true,
       "title": "A large rat",
-      "level": 1,
+      "level": "1",
       "race": "Rat",
       "class": null,
       "hp": null,
@@ -4054,7 +4275,7 @@
     "a large desert bat": {
       "hasPage": true,
       "title": "A large desert bat",
-      "level": 3,
+      "level": "3",
       "race": null,
       "class": null,
       "hp": null,
@@ -4074,7 +4295,7 @@
     "a dunes scarab": {
       "hasPage": true,
       "title": "A dunes scarab",
-      "level": 3,
+      "level": "3",
       "race": "Scarab",
       "class": null,
       "hp": null,
@@ -4112,7 +4333,7 @@
     "a black bat": {
       "hasPage": true,
       "title": "A black bat",
-      "level": 1,
+      "level": "1",
       "race": "Bat",
       "class": null,
       "hp": null,
@@ -4130,7 +4351,7 @@
     "a wasp drone": {
       "hasPage": true,
       "title": "A wasp drone",
-      "level": 1,
+      "level": "1",
       "race": "Wasp",
       "class": null,
       "hp": null,
@@ -4148,7 +4369,7 @@
     "a black widow hatchling": {
       "hasPage": true,
       "title": "A black widow hatchling",
-      "level": 2,
+      "level": "2",
       "race": "Spider",
       "class": null,
       "hp": null,
@@ -4164,7 +4385,7 @@
     "a black wolf pup": {
       "hasPage": true,
       "title": "A black wolf pup",
-      "level": 1,
+      "level": "1",
       "race": "Wolf",
       "class": null,
       "hp": null,
@@ -4200,7 +4421,7 @@
     "a rabid wolf": {
       "hasPage": true,
       "title": "A rabid wolf",
-      "level": null,
+      "level": "4-6",
       "race": "Wolf",
       "class": null,
       "hp": null,
@@ -4221,7 +4442,7 @@
     "a skeleton": {
       "hasPage": true,
       "title": "A skeleton",
-      "level": null,
+      "level": "4-6",
       "race": "Skeleton",
       "class": null,
       "hp": null,
@@ -4240,7 +4461,7 @@
     "a Fellstone warrior": {
       "hasPage": true,
       "title": "A Fellstone warrior",
-      "level": null,
+      "level": "3-7",
       "race": "Orc",
       "class": "Fighter",
       "hp": null,
@@ -4260,7 +4481,7 @@
     "a green drakeling": {
       "hasPage": true,
       "title": "A green drakeling",
-      "level": 5,
+      "level": "5",
       "race": "Drake",
       "class": null,
       "hp": null,
@@ -4278,10 +4499,31 @@
       ],
       "image": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/b2/A_green_drakeling_photo.png/64px-A_green_drakeling_photo.png"
     },
+    "Vorkuul Blighteye": {
+      "hasPage": true,
+      "title": "Vorkuul Blighteye",
+      "level": "7",
+      "race": "[[Orc]]",
+      "class": "unknown",
+      "hp": null,
+      "ac": null,
+      "special": null,
+      "zone": "[[Evershade Weald]]",
+      "imageFile": "Vorkuul Blighteye Photo.png",
+      "loot": [
+        "Left Orc Ear",
+        "Blighted Orc Head",
+        "Decayed Great Staff",
+        "Diseased Wolf Mantle",
+        "Blight-Gnawed Crown",
+        "Crooked Ranger Hood"
+      ],
+      "image": "https://static.wikitide.net/monstersandmemorieswiki/thumb/7/77/Vorkuul_Blighteye_Photo.png/64px-Vorkuul_Blighteye_Photo.png"
+    },
     "a large black bat": {
       "hasPage": true,
       "title": "A large black bat",
-      "level": 3,
+      "level": "3",
       "race": "Bat",
       "class": null,
       "hp": null,
@@ -4299,7 +4541,7 @@
     "a wasp worker": {
       "hasPage": true,
       "title": "A wasp worker",
-      "level": null,
+      "level": "3-4",
       "race": "Wasp",
       "class": null,
       "hp": null,
