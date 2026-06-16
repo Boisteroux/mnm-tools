@@ -69,7 +69,8 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
   - **Official / shared maps** — carry community or "official" maps, not just the
     locally-curated set.
   - Keep an eye out for any other zones rendering wrong (markers off, bad crop).
-- **Harvest zones** — show where each resource is gathered.
+- ✅ **Harvest zones** — resources now show "Gathered in: [zones]" (item pages,
+  Gathering table, zone pages), from the zone logged on each harvest.
 - **More wiki enrichment** — wider item-stat / icon / mob-level coverage.
   (Note: vendor *buy* prices and live auction prices are NOT obtainable — no
   merchant data in the wiki or logs, and the game doesn't save chat to disk.)
