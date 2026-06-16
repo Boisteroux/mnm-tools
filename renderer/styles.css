@@ -89,10 +89,14 @@ body {
 .section { display: flex; flex-direction: column; gap: 7px; }
 
 .section-title {
-  font-size: 10px;
+  font-size: 10.5px;
   text-transform: uppercase;
-  letter-spacing: 1.8px;
-  color: var(--muted);
+  letter-spacing: 1.6px;
+  font-weight: 600;
+  color: #c9b39d;
+  /* 1px divider above each section header to separate the dense sidebar */
+  border-top: 1px solid var(--line);
+  padding-top: 9px;
 }
 
 select, input, textarea {
