@@ -9,6 +9,8 @@ let itemByName = {}; // item name -> full item record (for vendor-price lookups)
 let NODES = {};      // gathering nodes (Copper Vein, …) from the wiki
 let VENDORS = [];    // hand-maintained vendor → item-type mapping (vendors.json)
 let TRADES = {};     // item name (lowercased) -> [{price, side, date}] player trade prices
+let RECIPES = [];    // crafting recipes from the wiki tradeskill pages
+let recipesByResult = {}; // item name (lowercased) -> [recipe] that produce it
 let MAPS = { zones: [], categories: [] }; // curated zone maps for the read-only viewer
 
 const $ = (id) => document.getElementById(id);
@@ -106,6 +108,21 @@ function itemMarketValue(name) {
   const reg = regularPrice(itemByName[name]);
   if (reg > 0) return { value: reg, source: 'vendor' };
   return { value: 0, source: null };
+}
+
+// Crafting economics for one recipe: cost of the mats vs the value of the
+// output. "Margin" = output value − mats value = what crafting adds over just
+// selling the raw materials. Components without a known price are flagged.
+function recipeEconomics(r) {
+  let matCost = 0, missing = 0;
+  for (const c of r.components) {
+    const v = itemMarketValue(c.item).value;
+    if (v > 0) matCost += c.qty * v; else missing++;
+  }
+  const outMv = itemMarketValue(r.result.item);
+  const outValue = r.result.qty * outMv.value;
+  const margin = outMv.value > 0 ? outValue - matCost : null;
+  return { matCost, missing, outValue, haveOutput: outMv.value > 0, margin };
 }
 
 // Biggest movers — items whose 7-day average sell price changed most vs the
@@ -385,6 +402,12 @@ function renderItem(id) {
     }
   }
 
+  // Crafting — if this item can be made, show how (with profit margin).
+  {
+    const crafts = recipesByResult[it.name.toLowerCase()] || [];
+    if (crafts.length) sections.push('<h2>How to craft</h2>' + recipeTable(crafts, true) + marginNote);
+  }
+
   // Dropped by — one list combining your observed mobs (with drop rate) and any
   // wiki-listed sources/nodes (no rate). De-dupes mobs that appear in both.
   const dropRows = [];
@@ -621,19 +644,44 @@ function renderNode(name) {
     body;
 }
 
+// Build a recipe table sorted by best margin first (unpriced recipes last).
+function recipeTable(recs, showSkill) {
+  const rows = recs.map((r) => ({ r, e: recipeEconomics(r) }))
+    .sort((a, b) => (b.e.margin == null ? -Infinity : b.e.margin) - (a.e.margin == null ? -Infinity : a.e.margin));
+  const head = '<th>Make</th><th>From</th>' + (showSkill ? '<th>Skill</th>' : '') +
+    '<th class="num">Mats</th><th class="num">Output</th><th class="num">Margin</th>';
+  return '<div class="card"><table><thead><tr>' + head + '</tr></thead><tbody>' +
+    rows.map(({ r, e }) => {
+      const rid = nameToId[r.result.item] || r.result.item;
+      const from = r.components.map((c) => c.qty + '× ' + (nameToId[c.item] ? itemLink(nameToId[c.item], c.item) : esc(c.item))).join(', ');
+      const mats = e.matCost > 0 ? coin(e.matCost) + (e.missing ? ' <span class="sample">+?</span>' : '') : (e.missing ? '<span class="sample">?</span>' : '—');
+      const out = e.haveOutput ? coin(e.outValue) : '—';
+      const margin = e.margin == null ? '<span class="sample">—</span>'
+        : '<span class="' + (e.margin >= 0 ? 'pos' : 'neg') + '">' + (e.margin >= 0 ? '+' : '') + coin(e.margin) + '</span>';
+      return '<tr><td>' + (r.result.qty > 1 ? r.result.qty + '× ' : '') + itemLink(rid, r.result.item) + '</td>' +
+        '<td class="sample">' + from + '</td>' + (showSkill ? '<td>' + tradeskillLink(r.tradeskill) + '</td>' : '') +
+        '<td class="num coin">' + mats + '</td><td class="num coin">' + out + '</td><td class="num">' + margin + '</td></tr>';
+    }).join('') + '</tbody></table></div>';
+}
+
+const marginNote = '<div class="note">“Margin” = output value − materials value (best known player-trade or vendor price) — ' +
+  'what crafting adds over selling the raw mats. “?” means a material has no price logged yet; fills in as data grows.</div>';
+
 function renderTradeskill(name) {
   const items = DATA.items
     .filter((i) => i.wiki && (i.wiki.tradeskills || []).includes(name))
     .sort((a, b) => a.name.localeCompare(b.name));
-  if (!items.length) return notFound('tradeskill', name);
+  const recs = RECIPES.filter((r) => r.tradeskill === name);
+  if (!items.length && !recs.length) return notFound('tradeskill', name);
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › tradeskill</div>' +
     '<h1>' + esc(name) + '</h1>' +
     '<p class="sub"><a href="' + wikiUrl(name) + '" target="_blank" rel="noopener">View on the wiki ↗</a></p>' +
-    '<h2>Items used in ' + esc(name) + '</h2>' +
-    '<div class="card"><table><tbody>' +
-    items.map((i) => '<tr><td>' + itemLink(i.id, i.name) + '</td></tr>').join('') +
-    '</tbody></table></div>';
+    (recs.length ? '<h2>Recipes &amp; profit</h2>' + recipeTable(recs, false) + marginNote : '') +
+    (items.length
+      ? '<h2>Items used in ' + esc(name) + '</h2><div class="card"><table><tbody>' +
+        items.map((i) => '<tr><td>' + itemLink(i.id, i.name) + '</td></tr>').join('') + '</tbody></table></div>'
+      : '');
 }
 
 function notFound(kind, id) {
@@ -882,6 +930,10 @@ async function loadWikiStats() {
     }
     if (w && w.mobs) Object.keys(DATA.mobs).forEach((m) => { if (w.mobs[m]) DATA.mobs[m].wiki = w.mobs[m]; });
     if (w && w.nodes) NODES = w.nodes;
+    if (w && w.recipes) {
+      RECIPES = w.recipes;
+      RECIPES.forEach((r) => { const k = r.result.item.toLowerCase(); (recipesByResult[k] = recipesByResult[k] || []).push(r); });
+    }
   } catch {}
   try {
     const v = await (await fetch('./vendors.json?v=' + Date.now())).json();

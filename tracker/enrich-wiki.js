@@ -33,12 +33,15 @@ const ZONES = new Set([
 async function fetchWikitext(titles) {
   const url = WIKI_API + '?' + new URLSearchParams({
     format: 'json', action: 'query', prop: 'revisions', rvprop: 'content', rvslots: 'main',
-    titles: titles.join('|'),
+    redirects: '1', titles: titles.join('|'),
   });
   const j = await (await fetch(url, { headers: HEADERS })).json();
   const out = {};
   const back = {};
+  // Map the final page title back to the name we asked for (title normalization
+  // then redirects, chained) so results stay keyed by the input name.
   (j.query && j.query.normalized || []).forEach((n) => { back[n.to] = n.from; });
+  (j.query && j.query.redirects || []).forEach((r) => { back[r.to] = back[r.from] || r.from; });
   for (const p of Object.values((j.query && j.query.pages) || {})) {
     if (p.missing !== undefined) continue;
     const rev = p.revisions && p.revisions[0];
@@ -156,6 +159,29 @@ function parseTradeskills(wikitext) {
   return [...new Set(links.filter((l) => TRADESKILLS.has(l)))];
 }
 
+// Parse a tradeskill page's "== Recipes ==" table into structured recipes:
+// { tradeskill, result:{qty,item}, components:[{qty,item}], trivial }.
+function parseRecipes(wikitext, tradeskill) {
+  const h = wikitext.search(/==\s*Recipes\s*==/i);
+  if (h < 0) return [];
+  const tStart = wikitext.indexOf('{|', h);
+  if (tStart < 0) return [];
+  const table = wikitext.slice(tStart, wikitext.indexOf('|}', tStart));
+  const out = [];
+  for (const r of table.split(/\n\|-/).slice(1)) {
+    if (/^\s*!/.test(r)) continue;
+    let cells = r.split('||').map((c) => c.trim());
+    if (cells[0] === '') cells = cells.slice(1);
+    if (cells.length < 4) continue;
+    const rm = cells[3].match(/(\d+)\s*x?\s*\[\[([^\]]+)\]\]/i);
+    const components = [...cells[2].matchAll(/(\d+)\s*x\s*\[\[([^\]]+)\]\]/gi)]
+      .map((m) => ({ qty: +m[1], item: m[2].split('|')[0].trim() }));
+    if (!rm || !components.length) continue;
+    out.push({ tradeskill, result: { qty: +rm[1], item: rm[2].split('|')[0].trim() }, components, trivial: parseInt(cells[4], 10) || null });
+  }
+  return out;
+}
+
 // Fetch + parse ItemBox/sources for a list of item names into `into`
 async function enrichItems(names, into, label, wikiOnly) {
   for (let i = 0; i < names.length; i += 45) {
@@ -236,10 +262,22 @@ async function run() {
     await sleep(350);
   }
 
-  // ---- Discover more items: every item referenced by node yields or mob loot ----
+  // ---- Recipes (from each tradeskill page's Recipes table) ----
+  const recipes = [];
+  const tsList = [...TRADESKILLS];
+  for (let i = 0; i < tsList.length; i += 45) {
+    const batch = tsList.slice(i, i + 45);
+    process.stdout.write(`  recipes ${i + 1}-${i + batch.length}/${tsList.length}…   \r`);
+    let texts; try { texts = await fetchWikitext(batch); } catch { continue; }
+    for (const [title, wt] of Object.entries(texts)) parseRecipes(wt, title).forEach((rec) => recipes.push(rec));
+    await sleep(350);
+  }
+
+  // ---- Discover more items: every item referenced by node yields, mob loot, or a recipe ----
   const discovered = new Set();
   Object.values(nodes).forEach((n) => (n.yields || []).forEach((y) => y.items.forEach((it) => discovered.add(it))));
   Object.values(mobs).forEach((m) => (m.loot || []).forEach((it) => discovered.add(it)));
+  recipes.forEach((r) => { discovered.add(r.result.item); r.components.forEach((c) => discovered.add(c.item)); });
   const known = new Set(Object.keys(items));
   const toFetch = [...discovered].filter((nm) => !known.has(nm) && !ds.mobs[nm] && !nodes[nm] && !ZONES.has(nm));
   if (toFetch.length) await enrichItems(toFetch, items, 'extra items', true);
@@ -257,7 +295,8 @@ async function run() {
     console.log('\na green drakeling:', JSON.stringify(mobs['a green drakeling']));
     return;
   }
-  fs.writeFileSync(OUT, JSON.stringify({ generatedAt: new Date().toISOString(), items, mobs, nodes }, null, 2));
+  console.log(`Recipes: ${recipes.length} from ${tsList.length} tradeskills.`);
+  fs.writeFileSync(OUT, JSON.stringify({ generatedAt: new Date().toISOString(), items, mobs, nodes, recipes }, null, 2));
   console.log(`Wrote ${OUT}.`);
 }
 

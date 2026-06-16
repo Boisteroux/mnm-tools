@@ -196,6 +196,8 @@ tr.rowlink { cursor: pointer; }
 .sample { color: var(--muted); font-size: 12px; }
 
 .coin { font-variant-numeric: tabular-nums; }
+.pos { color: var(--good); font-variant-numeric: tabular-nums; }
+.neg { color: var(--warn); font-variant-numeric: tabular-nums; }
 
 /* ---- Home magnitude bars ---- */
 
