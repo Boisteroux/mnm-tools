@@ -55,12 +55,24 @@ body {
   min-width: 218px;
   background: var(--panel);
   border-right: 1px solid var(--line);
-  padding: 12px;
+  padding: 10px 12px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
   overflow-y: auto;
 }
+
+/* Draw the eye to the headline action */
+#btn-overlay {
+  background: linear-gradient(135deg, #d23a1f 0%, #ef7a1c 55%, #f8be24 100%);
+  border: none;
+  color: #2a1404;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  padding: 8px 9px;
+  box-shadow: 0 2px 10px rgba(240, 146, 43, 0.28);
+}
+#btn-overlay:hover { filter: brightness(1.08); background: linear-gradient(135deg, #d23a1f 0%, #ef7a1c 55%, #f8be24 100%); border: none; }
 
 #sidebar h1 {
   font-size: 13px;
@@ -103,8 +115,8 @@ select option {
   color: var(--text);
 }
 
-.hint { font-size: 11px; color: var(--muted); margin: 0 0 6px; line-height: 1.45; }
-.coin-row { display: flex; gap: 4px; margin: 6px 0; }
+.hint { font-size: 11px; color: var(--muted); margin: 0 0 3px; line-height: 1.4; }
+.coin-row { display: flex; gap: 4px; margin: 3px 0; }
 .coin-row input { width: 100%; text-align: center; padding: 6px 4px; }
 #trade-side { flex: 1 1 auto; }
 #trade-log-btn { flex: 0 0 auto; }
@@ -115,9 +127,10 @@ select option {
 #trade-status {
   font-size: 11px;
   color: var(--muted);
-  min-height: 13px;
-  line-height: 1.5;
+  min-height: 0;
+  line-height: 1.4;
 }
+#wiki-status:empty, #tracker-status:empty, #publish-status:empty, #trade-status:empty { display: none; }
 
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }

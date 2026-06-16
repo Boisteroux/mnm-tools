@@ -992,12 +992,6 @@ $('tracker-enabled').addEventListener('change', async (e) => {
   }
 });
 
-$('tracker-export').addEventListener('click', async () => {
-  trackerStatus('Exporting…');
-  const ok = await window.mapAPI.trackerExport();
-  trackerStatus(ok === true ? 'Exported dataset.' : (ok && ok.error) ? ok.error : 'Export cancelled.');
-});
-
 // Publish to MnMdb — owner build only (the dev flag is passed from main.js).
 const isDev = new URLSearchParams(location.search).get('dev') === '1';
 const publishStatus = (msg) => { $('publish-status').textContent = msg; };

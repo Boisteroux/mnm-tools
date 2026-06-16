@@ -23,7 +23,6 @@ contextBridge.exposeInMainWorld('mapAPI', {
   onOverlayState: (callback) => ipcRenderer.on('overlay-state', (event, state) => callback(state)),
   trackerScan: () => ipcRenderer.invoke('tracker-scan'),
   trackerSetEnabled: (on) => ipcRenderer.invoke('tracker-set-enabled', on),
-  trackerExport: () => ipcRenderer.invoke('tracker-export'),
   publishMnmdb: () => ipcRenderer.invoke('publish-mnmdb'),
   zoneAliases: () => ipcRenderer.invoke('zone-aliases'),
   tradeLog: (rec) => ipcRenderer.invoke('trade-log', rec),

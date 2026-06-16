@@ -159,18 +159,6 @@ ipcMain.handle('tracker-set-enabled', (event, enabled) => {
   return { disabled: true };
 });
 
-ipcMain.handle('tracker-export', async () => {
-  try { scanTracker(); } catch (e) { return { error: e.message }; }
-  const result = await dialog.showSaveDialog(win, {
-    title: 'Export drop & vendor data',
-    defaultPath: 'mnm-tracker-data.json',
-    filters: [{ name: 'JSON', extensions: ['json'] }],
-  });
-  if (result.canceled || !result.filePath) return false;
-  fs.copyFileSync(trackerFile(), result.filePath);
-  return true;
-});
-
 // Owner-only: regenerate the MnMdb dataset from the ledger and push it to GitHub.
 // This needs the repo checkout + an authenticated git, so it only exists in the
 // dev build (npm start). The packaged app shared with testers never sees it.
