@@ -29,10 +29,14 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
 - **Value by level bracket** — home "Best value by level" groups mobs into L1-10,
   L11-20, … by their wiki level and ranks value/kill in each. Lights up further as
   play spans more levels and wiki-level coverage grows.
+- **Biggest movers** — home ticker of items whose 7-day average sell price moved
+  most vs the previous week. Fills in as trade data accumulates.
+- **Web map viewer** — read-only "Maps" section on the site shows the curated zone
+  maps with their markers (hover to read). Updated on Publish.
 - **One-click publish** — "Publish to MnMdb" button in the app (owner build only)
   regenerates the site data from your ledger and pushes it live in ~30s.
 - **Sharing & look** — public repo, MIT license, Windows installer, sunset branding,
-  warm UI theme.
+  warm UI theme, Outfit font shared by the app and site.
 
 ## 🔜 Next up
 
@@ -40,10 +44,11 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
   wiki level; right now ~20 valuable mobs have none, so they're unranked. Widen
   the mob wiki enrichment (and revisit bracket size 5s vs 10s) as play spans more
   levels.
-- **Biggest movers** — items whose 7-day average jumped/dropped the most (a little
-  market ticker). Unlocks once trade data accumulates.
 - **Trade ingest** — a small `gh`-powered script to fold accepted "trade" issues
   into `trades.json`, so web submissions don't need hand-copying.
+- **Official / shared maps** — let the web map viewer carry community or "official"
+  maps, not just your locally-curated set. Also worth optimizing map image sizes
+  (the curated set is ~45MB; large zone maps could be downscaled).
 - **Harvest zones** — show where each resource is gathered.
 - **More wiki enrichment** — wider item-stat / icon / mob-level coverage.
   (Note: vendor *buy* prices and live auction prices are NOT obtainable — no
