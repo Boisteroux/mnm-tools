@@ -605,9 +605,10 @@ async function getMapCandidates(zoneName) {
   const candidates = Object.values(q.query.pages)
     .filter((p) => p.imageinfo && p.imageinfo[0])
     .map((p) => ({ title: p.title, ...p.imageinfo[0] }))
-    .filter((c) => c.width >= 600); // skip icons and banners
+    .filter((c) => c.width >= 600)                       // skip icons and banners
+    .filter((c) => !/phformaps|phicon|placeholder/i.test(c.title)); // skip the wiki's "no map" placeholder
 
-  if (candidates.length === 0) return { error: 'No map-sized images found for "' + zoneName + '"' };
+  if (candidates.length === 0) return { error: 'No real map found on the wiki for "' + zoneName + '" yet' };
   candidates.sort((a, b) => {
     const am = /map/i.test(a.title) ? 1 : 0, bm = /map/i.test(b.title) ? 1 : 0;
     if (am !== bm) return bm - am;

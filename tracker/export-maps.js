@@ -4,8 +4,14 @@
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 const slug = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
+
+// The wiki's generic "Phformaps.png" placeholder, by content hash — zones whose
+// only map is this aren't really mapped, so we don't publish it.
+const PLACEHOLDER_MD5 = '8d779540f4e2000004c82893a6ff622b';
+const md5 = (buf) => crypto.createHash('md5').update(buf).digest('hex');
 
 // Marker categories — kept in step with renderer/app.js CATEGORIES.
 const CATEGORIES = [
@@ -26,11 +32,15 @@ function exportMaps(mapDataFile, destDir) {
   fs.mkdirSync(mapsOut, { recursive: true });
 
   const zones = [];
+  const kept = new Set();
   for (const z of data.zones || []) {
     if (!z.image || !fs.existsSync(z.image)) continue;
+    const buf = fs.readFileSync(z.image);
+    if (md5(buf) === PLACEHOLDER_MD5) continue; // mapless zone — skip the placeholder
     const ext = (path.extname(z.image) || '.png').toLowerCase();
     const fname = slug(z.name) + ext;
-    fs.copyFileSync(z.image, path.join(mapsOut, fname));
+    fs.writeFileSync(path.join(mapsOut, fname), buf);
+    kept.add(fname);
     zones.push({
       name: z.name,
       image: fname,
@@ -41,6 +51,11 @@ function exportMaps(mapDataFile, destDir) {
     });
   }
   zones.sort((a, b) => a.name.localeCompare(b.name));
+
+  // Remove images no longer referenced (e.g. a zone switched maps or lost one)
+  for (const f of fs.readdirSync(mapsOut)) {
+    if (!kept.has(f)) { try { fs.unlinkSync(path.join(mapsOut, f)); } catch {} }
+  }
 
   fs.writeFileSync(
     path.join(destDir, 'maps.json'),
