@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-16T06:18:30.605Z",
+  "generatedAt": "2026-06-16T17:04:45.217Z",
   "source": "mnm-tools",
-  "ledgerFiles": 14,
-  "events": 2933,
+  "ledgerFiles": 15,
+  "events": 3000,
   "mobs": {
     "a desert bat": {
       "kills": 0,
@@ -457,26 +457,27 @@
       "corpses": 9
     },
     "a Fellstone warrior": {
-      "kills": 18,
+      "kills": 19,
       "drops": {
-        "Left Orc Ear": 3,
-        "Cloth Scraps": 3,
-        "Fellstone Warrior's Belt": 2,
+        "Left Orc Ear": 4,
+        "Cloth Scraps": 4,
+        "Fellstone Warrior's Belt": 3,
         "Tattered Cloth Tunic": 1,
         "Tattered Cloth Mantle": 1,
         "Rusty Longsword": 1,
         "Tattered Cloth Bracer": 2,
-        "Raw Orc Meat": 3,
+        "Raw Orc Meat": 4,
         "Tattered Rawhide Bracer": 1,
         "Rawhide Scraps": 2,
         "Tattered Cloth Cape": 1,
-        "Tattered Rawhide Leggings": 1
+        "Tattered Rawhide Leggings": 1,
+        "Rusty Great Scythe": 1
       },
       "zones": {
-        "Evershade Weald": 42
+        "Evershade Weald": 48
       },
-      "coin": 178,
-      "corpses": 12
+      "coin": 193,
+      "corpses": 13
     },
     "a black widow": {
       "kills": 0,
@@ -547,7 +548,7 @@
       "name": "Alunite Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 6,
+      "harvested": 7,
       "zones": []
     },
     {
@@ -889,7 +890,7 @@
           "count": 10
         }
       ],
-      "harvested": 287,
+      "harvested": 314,
       "zones": []
     },
     {
@@ -956,7 +957,7 @@
       "name": "Chipped Black Pearl",
       "droppedBy": [],
       "prices": [],
-      "harvested": 3,
+      "harvested": 4,
       "zones": []
     },
     {
@@ -1036,7 +1037,7 @@
       "name": "Chipped Onyx",
       "droppedBy": [],
       "prices": [],
-      "harvested": 2,
+      "harvested": 3,
       "zones": []
     },
     {
@@ -1096,16 +1097,16 @@
           "rate": 0.3333333333333333
         },
         {
+          "mob": "a Fellstone warrior",
+          "drops": 4,
+          "corpses": 13,
+          "rate": 0.3076923076923077
+        },
+        {
           "mob": "an ashira warrior",
           "drops": 3,
           "corpses": 10,
           "rate": 0.3
-        },
-        {
-          "mob": "a Fellstone warrior",
-          "drops": 3,
-          "corpses": 12,
-          "rate": 0.25
         }
       ],
       "prices": [],
@@ -1122,7 +1123,7 @@
       "name": "Clouded Crystallized Magic",
       "droppedBy": [],
       "prices": [],
-      "harvested": 6,
+      "harvested": 7,
       "zones": []
     },
     {
@@ -1246,7 +1247,7 @@
       "name": "Copper Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 285,
+      "harvested": 312,
       "zones": []
     },
     {
@@ -1527,9 +1528,9 @@
       "droppedBy": [
         {
           "mob": "a Fellstone warrior",
-          "drops": 2,
-          "corpses": 12,
-          "rate": 0.16666666666666666
+          "drops": 3,
+          "corpses": 13,
+          "rate": 0.23076923076923078
         }
       ],
       "prices": [],
@@ -1865,9 +1866,9 @@
       "droppedBy": [
         {
           "mob": "a Fellstone warrior",
-          "drops": 3,
-          "corpses": 12,
-          "rate": 0.25
+          "drops": 4,
+          "corpses": 13,
+          "rate": 0.3076923076923077
         }
       ],
       "prices": [],
@@ -1881,7 +1882,7 @@
       "name": "Lionleaf",
       "droppedBy": [],
       "prices": [],
-      "harvested": 8,
+      "harvested": 11,
       "zones": []
     },
     {
@@ -2201,9 +2202,9 @@
       "droppedBy": [
         {
           "mob": "a Fellstone warrior",
-          "drops": 3,
-          "corpses": 12,
-          "rate": 0.25
+          "drops": 4,
+          "corpses": 13,
+          "rate": 0.3076923076923077
         },
         {
           "mob": "a Fellstone scout",
@@ -2314,8 +2315,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 2,
-          "corpses": 12,
-          "rate": 0.16666666666666666
+          "corpses": 13,
+          "rate": 0.15384615384615385
         }
       ],
       "prices": [],
@@ -2452,6 +2453,12 @@
       "name": "Rusty Great Scythe",
       "droppedBy": [
         {
+          "mob": "a Fellstone warrior",
+          "drops": 1,
+          "corpses": 13,
+          "rate": 0.07692307692307693
+        },
+        {
           "mob": "a rotting skeleton",
           "drops": 2,
           "corpses": 96,
@@ -2521,8 +2528,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 12,
-          "rate": 0.08333333333333333
+          "corpses": 13,
+          "rate": 0.07692307692307693
         },
         {
           "mob": "a rotting skeleton",
@@ -3151,8 +3158,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 2,
-          "corpses": 12,
-          "rate": 0.16666666666666666
+          "corpses": 13,
+          "rate": 0.15384615384615385
         },
         {
           "mob": "an ashira warrior",
@@ -3194,8 +3201,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 12,
-          "rate": 0.08333333333333333
+          "corpses": 13,
+          "rate": 0.07692307692307693
         },
         {
           "mob": "a skeleton",
@@ -3275,8 +3282,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 12,
-          "rate": 0.08333333333333333
+          "corpses": 13,
+          "rate": 0.07692307692307693
         },
         {
           "mob": "a rotting skeleton",
@@ -3400,8 +3407,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 12,
-          "rate": 0.08333333333333333
+          "corpses": 13,
+          "rate": 0.07692307692307693
         },
         {
           "mob": "a Fellstone scout",
@@ -3477,8 +3484,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 12,
-          "rate": 0.08333333333333333
+          "corpses": 13,
+          "rate": 0.07692307692307693
         }
       ],
       "prices": [
@@ -3525,8 +3532,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 12,
-          "rate": 0.08333333333333333
+          "corpses": 13,
+          "rate": 0.07692307692307693
         }
       ],
       "prices": [
@@ -3845,25 +3852,25 @@
     }
   ],
   "harvest": {
-    "Copper Ore": 285,
-    "Brittle Stone": 287,
-    "Clouded Crystallized Magic": 6,
+    "Copper Ore": 312,
+    "Brittle Stone": 314,
+    "Clouded Crystallized Magic": 7,
     "Wood": 153,
     "Resin": 184,
     "Chipped Turquoise": 2,
-    "Lionleaf": 8,
+    "Lionleaf": 11,
     "Chipped Star Ruby": 2,
-    "Alunite Ore": 6,
+    "Alunite Ore": 7,
     "Ghost Poppy": 26,
     "Nomad's Grace": 5,
     "Chipped Fire Emerald": 2,
     "Chipped Bloodstone": 1,
     "Chipped Malachite": 3,
-    "Chipped Black Pearl": 3,
+    "Chipped Black Pearl": 4,
     "Chipped Amber": 1,
     "Chipped Blue Diamond": 1,
     "Chipped Jacinth": 1,
-    "Chipped Onyx": 2,
+    "Chipped Onyx": 3,
     "Chipped Hematite": 1,
     "Chipped Diamond": 1,
     "Chipped Emerald": 1,
