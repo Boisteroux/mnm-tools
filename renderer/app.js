@@ -1122,11 +1122,13 @@ function updateOverlayZoneLabel() {
 // Which multi-map group does the player's situation belong to? Prefer the zone
 // the character is actually in; fall back to the one being viewed.
 function multiMapGroup() {
-  const probe = data.zones.find((z) => z.id === characterZoneId) || currentZone();
-  if (!probe) return null;
+  // Show the switcher whenever the map you're VIEWING is part of a multi-map
+  // group — or the zone your character is in is. (Viewing comes first so you can
+  // browse Evershade Weald's maps even while your character is elsewhere.)
+  const probes = [currentZone(), data.zones.find((z) => z.id === characterZoneId)].filter(Boolean);
   for (const [code, grp] of Object.entries(MULTI_MAP)) {
     const names = grp.maps.map((m) => m.name.toLowerCase());
-    if (probe.gameName === code || names.includes(probe.name.toLowerCase())) {
+    if (probes.some((z) => z.gameName === code || names.includes(z.name.toLowerCase()))) {
       return { code, ...grp };
     }
   }
