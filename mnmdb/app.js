@@ -999,7 +999,13 @@ fetch('./data.json?v=' + Date.now())
     const when = d.generatedAt ? new Date(d.generatedAt).toLocaleDateString() : '';
     $('data-meta').textContent = (d.events || 0).toLocaleString() + ' events · ' +
       DATA.items.length + ' items · updated ' + when;
-    window.addEventListener('hashchange', route);
+    window.addEventListener('hashchange', () => {
+      // Clicking a result navigates (changes the hash) — clear the search so the
+      // page shows instead of the search results staying stuck over it.
+      $('search').value = '';
+      $('search').blur();
+      route();
+    });
     $('search').addEventListener('input', () => {
       // typing searches; clearing returns to the current hash view
       route();
