@@ -162,8 +162,16 @@ tr.rowlink { cursor: pointer; }
 
 /* ---- Rarity × value scatter ---- */
 
-.scatter { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+.scatter { position: relative; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
 .scatter svg { width: 100%; height: auto; display: block; max-height: 280px; }
+.scatter-tip {
+  position: absolute; pointer-events: none; z-index: 5;
+  background: var(--panel-2); border: 1px solid var(--accent); border-radius: 6px;
+  padding: 4px 8px; font-size: 12px; color: var(--text); white-space: nowrap;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+}
+.scatter .pt { transition: fill-opacity 0.1s, r 0.1s; }
+.scatter a:hover .pt { r: 6; }
 .scatter .axis { stroke: var(--line); stroke-width: 1; }
 .scatter .guide { stroke: var(--line); stroke-width: 1; stroke-dasharray: 3 3; opacity: 0.6; }
 .scatter .axlabel { fill: var(--muted); font-size: 9px; }

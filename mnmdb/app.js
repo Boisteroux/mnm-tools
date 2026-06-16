@@ -145,8 +145,9 @@ function scatterSvg(points) {
     const x = cx(PAD.l + (1 - clamp01(p.rate)) * pw + jit(p.i.name, 4)).toFixed(1);
     const y = cy(PAD.t + (1 - (Math.log(p.value) - lo) / span) * ph + jit(p.i.name + 'y', 4)).toFixed(1);
     const cls = 'pt' + (p.source === 'trade' ? ' trade' : '');
-    const title = esc(p.i.name) + ' — ' + coin(p.value) + ' · ' + Math.round(clamp01(p.rate) * 100) + '% drop';
-    return '<a href="#/item/' + encodeURIComponent(p.i.id) + '"><circle class="' + cls + '" cx="' + x + '" cy="' + y + '" r="3.4"><title>' + title + '</title></circle></a>';
+    const tip = esc(p.i.name) + ' — ' + coin(p.value) + ' · ' + Math.round(clamp01(p.rate) * 100) + '% drop';
+    return '<a href="#/item/' + encodeURIComponent(p.i.id) + '" aria-label="' + tip + '">' +
+      '<circle class="' + cls + '" cx="' + x + '" cy="' + y + '" r="3.6" data-tip="' + tip + '"></circle></a>';
   }).join('');
   const frame =
     '<line class="axis" x1="' + PAD.l + '" y1="' + axisX + '" x2="' + (W - PAD.r) + '" y2="' + axisX + '"/>' +
@@ -258,8 +259,8 @@ function renderHome() {
   const scatterSection = scatterPts.length >= 5
     ? '<h2>Rarity × value</h2><p class="sub">Each dot is an item — up = more valuable, right = rarer. ' +
       'The top-right is the rare, high-value chase loot. ' +
-      '<span class="tag good">green</span> dots are priced from player trades, orange from vendors. Click a dot to open it.</p>' +
-      '<div class="scatter">' + scatterSvg(scatterPts) + '</div>'
+      '<span class="tag good">green</span> dots are priced from player trades, orange from vendors. Hover to identify, click to open.</p>' +
+      '<div class="scatter">' + scatterSvg(scatterPts) + '<div class="scatter-tip" hidden></div></div>'
     : '';
 
   $('content').innerHTML =
@@ -290,6 +291,28 @@ function renderHome() {
     recentBlock +
     '<div class="note">Values are observational — drop rates are per looted corpse and prices come from real play. ' +
       'Small samples are rough; numbers sharpen as more data is collected.</div>';
+
+  wireScatter();
+}
+
+// Cursor-following tooltip for the rarity × value scatter (the dots are tiny, so
+// a hover label saves a trip to each item page just to see what's what).
+function wireScatter() {
+  const box = document.querySelector('.scatter');
+  if (!box) return;
+  const tip = box.querySelector('.scatter-tip');
+  if (!tip) return;
+  box.addEventListener('mousemove', (e) => {
+    const dot = e.target.closest && e.target.closest('.pt');
+    if (!dot) { tip.hidden = true; return; }
+    tip.innerHTML = dot.getAttribute('data-tip') || '';
+    tip.hidden = false;
+    const r = box.getBoundingClientRect();
+    const x = e.clientX - r.left, y = e.clientY - r.top;
+    tip.style.left = Math.max(4, Math.min(x + 12, box.clientWidth - tip.offsetWidth - 4)) + 'px';
+    tip.style.top = Math.max(4, Math.min(y + 12, box.clientHeight - tip.offsetHeight - 4)) + 'px';
+  });
+  box.addEventListener('mouseleave', () => { tip.hidden = true; });
 }
 
 const stat = (n, l) => '<div class="stat"><div class="num">' + n + '</div><div class="lbl">' + l + '</div></div>';
