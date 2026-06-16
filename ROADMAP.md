@@ -41,10 +41,10 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
 
 ## 🔜 Next up
 
-- **Improve mob-level coverage** — the level brackets only rank mobs that have a
-  wiki level; right now ~20 valuable mobs have none, so they're unranked. Widen
-  the mob wiki enrichment (and revisit bracket size 5s vs 10s) as play spans more
-  levels.
+- **Improve mob-level coverage** — level ranges (e.g. "3-7") are now kept, lifting
+  coverage 36% → 59%. The rest genuinely have no level on the wiki yet (the ashira
+  family especially) — fills in as the wiki is updated. Revisit bracket size
+  (5s vs 10s) once play spans more levels.
 - **Community trade submission (serverless)** — for now, trade prices come from
   the in-app logger (frictionless, no account). True *web* submission needs a
   receiver a static site can't provide; the right answer is a tiny serverless
@@ -53,14 +53,15 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
   justifies it. (The GitHub-issue form was dropped as too much friction; outlier
   trimming is already in, which is what makes low-friction submission safe later.)
 - **Map viewer — refinements** (remaining):
-  - ✅ Wiki "Phformaps" placeholder excluded; mapless zones show **Map coming
-    soon**. ✅ **Review Zone Maps** panel + per-zone picker for choosing defaults.
+  - ✅ Placeholder excluded; mapless zones show **Map coming soon**. ✅ **Review
+    Zone Maps** panel. ✅ **Downscale** on export (37MB → 6.7MB). ✅ **City POI
+    tagger** — pull wiki districts and click them onto the map (districts v1).
+  - **Individual NPC tags** — layer per-NPC pins on top of the district markers
+    (the tagger already has the NPC lists per district).
   - **Layered city maps** — multi-level zones (cities with above/below floors)
     shown as switchable layers in the viewer.
   - **Official / shared maps** — carry community or "official" maps, not just the
     locally-curated set.
-  - **Downscale images** — the set is ~42MB; large zone maps can be compressed
-    once the keepers are settled.
   - Keep an eye out for any other zones rendering wrong (markers off, bad crop).
 - **Harvest zones** — show where each resource is gathered.
 - **More wiki enrichment** — wider item-stat / icon / mob-level coverage.
