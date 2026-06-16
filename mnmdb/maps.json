@@ -1,0 +1,407 @@
+{
+  "generatedAt": "2026-06-16T03:19:04.915Z",
+  "categories": [
+    {
+      "id": "ore",
+      "name": "Ore",
+      "color": "#c0784a",
+      "icon": "⛏️"
+    },
+    {
+      "id": "herb",
+      "name": "Herbs",
+      "color": "#3c8f43",
+      "icon": "🌿"
+    },
+    {
+      "id": "wood",
+      "name": "Wood",
+      "color": "#8a5a2b",
+      "icon": "🪵"
+    },
+    {
+      "id": "fishing",
+      "name": "Fish",
+      "color": "#4fc3f7",
+      "icon": "🎣"
+    },
+    {
+      "id": "crafting",
+      "name": "Crafting",
+      "color": "#f06292",
+      "icon": "🔨"
+    },
+    {
+      "id": "quest",
+      "name": "Quest NPCs",
+      "color": "#fff176",
+      "icon": "❗️"
+    },
+    {
+      "id": "misc",
+      "name": "Other",
+      "color": "#b0bec5",
+      "icon": "📍"
+    }
+  ],
+  "zones": [
+    {
+      "name": "Blacktide Bay",
+      "image": "blacktide_bay.png",
+      "markers": []
+    },
+    {
+      "name": "Caves of Irem",
+      "image": "caves_of_irem.png",
+      "markers": []
+    },
+    {
+      "name": "Evershade Weald",
+      "image": "evershade_weald.jpg",
+      "markers": [
+        {
+          "x": 2374,
+          "y": 804,
+          "label": "Fellstone Scout Camp",
+          "category": "misc",
+          "notes": ""
+        },
+        {
+          "x": 2778,
+          "y": 1004,
+          "label": "Herbs / Plants",
+          "category": "herb",
+          "notes": ""
+        },
+        {
+          "x": 3176,
+          "y": 688,
+          "label": "Herbs / Plants",
+          "category": "herb",
+          "notes": ""
+        },
+        {
+          "x": 2296,
+          "y": 1057,
+          "label": "Ore 1",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 3071,
+          "y": 1143,
+          "label": "Ore / Mining",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 3404,
+          "y": 355,
+          "label": "Ore 3",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 2405,
+          "y": 1528,
+          "label": "Herbs / Plants",
+          "category": "herb",
+          "notes": ""
+        },
+        {
+          "x": 1738,
+          "y": 1711,
+          "label": "Ore 4",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 2090,
+          "y": 477,
+          "label": "Ore 5",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 1324,
+          "y": 715,
+          "label": "Ore 6",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 947,
+          "y": 647,
+          "label": "Ore 7",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 890,
+          "y": 814,
+          "label": "Ore 8",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 1456,
+          "y": 994,
+          "label": "Ore 9",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 2042,
+          "y": 958,
+          "label": "Herbs 4",
+          "category": "herb",
+          "notes": ""
+        },
+        {
+          "x": 1107,
+          "y": 667,
+          "label": "Pixie Glitter Quest Giver",
+          "category": "quest",
+          "notes": "Only available during the day, used in Bard starter quest."
+        },
+        {
+          "x": 907,
+          "y": 909,
+          "label": "Ore 11",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 482,
+          "y": 916,
+          "label": "Ore 12",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 1708,
+          "y": 953,
+          "label": "Ore 13",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 2246,
+          "y": 860,
+          "label": "Ore 14",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 2384,
+          "y": 1249,
+          "label": "Ore 15",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 1233,
+          "y": 609,
+          "label": "Ore 16",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 889,
+          "y": 392,
+          "label": "Ore 17",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 728,
+          "y": 445,
+          "label": "Ore 18",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 532,
+          "y": 479,
+          "label": "Ore 19",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 680,
+          "y": 404,
+          "label": "Glintshade Teleporter Skull",
+          "category": "misc",
+          "notes": "Clicking the skull in the snow room teleports you to glintshade, you should be able to run out via the glowy bulbs that go up a path. Nothing is KOS."
+        },
+        {
+          "x": 1782,
+          "y": 1885,
+          "label": "Ore 20",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 2279,
+          "y": 2272,
+          "label": "Ore 21",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 673,
+          "y": 2395,
+          "label": "Ore 21",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 677,
+          "y": 2228,
+          "label": "Ore 22",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 1565,
+          "y": 576,
+          "label": "Wood 1",
+          "category": "wood",
+          "notes": ""
+        },
+        {
+          "x": 1506,
+          "y": 1162,
+          "label": "Ore 23",
+          "category": "ore",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "name": "Faelindral",
+      "image": "faelindral.jpg",
+      "markers": []
+    },
+    {
+      "name": "Fallen Pass",
+      "image": "fallen_pass.jpg",
+      "markers": []
+    },
+    {
+      "name": "Fallen Watch",
+      "image": "fallen_watch.png",
+      "markers": []
+    },
+    {
+      "name": "Glass Flats",
+      "image": "glass_flats.png",
+      "markers": []
+    },
+    {
+      "name": "Glinting Hollow",
+      "image": "glinting_hollow.png",
+      "markers": []
+    },
+    {
+      "name": "Grain Cellar",
+      "image": "grain_cellar.png",
+      "markers": []
+    },
+    {
+      "name": "Grimtide Sanctum",
+      "image": "grimtide_sanctum.png",
+      "markers": []
+    },
+    {
+      "name": "Infested Crypt",
+      "image": "infested_crypt.png",
+      "markers": []
+    },
+    {
+      "name": "Keeper's Bight",
+      "image": "keeper_s_bight.png",
+      "markers": []
+    },
+    {
+      "name": "Night Harbor",
+      "image": "night_harbor.jpg",
+      "markers": [
+        {
+          "x": 345,
+          "y": 1217,
+          "label": "Ore 1",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 828,
+          "y": 2084,
+          "label": "Ore 2",
+          "category": "ore",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "name": "Night Harbor Sewers",
+      "image": "night_harbor_sewers.png",
+      "markers": []
+    },
+    {
+      "name": "Rothold",
+      "image": "rothold.png",
+      "markers": []
+    },
+    {
+      "name": "Scarwood",
+      "image": "scarwood.png",
+      "markers": []
+    },
+    {
+      "name": "Shaded Dunes",
+      "image": "shaded_dunes.jpg",
+      "markers": [
+        {
+          "x": 3513,
+          "y": 945,
+          "label": "Herbs 1",
+          "category": "herb",
+          "notes": ""
+        },
+        {
+          "x": 3436,
+          "y": 622,
+          "label": "Ore 1",
+          "category": "ore",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "name": "Shallow Shoals",
+      "image": "shallow_shoals.png",
+      "markers": []
+    },
+    {
+      "name": "Sungreet Strand",
+      "image": "sungreet_strand.jpg",
+      "markers": []
+    },
+    {
+      "name": "Tel Ekir",
+      "image": "tel_ekir.jpg",
+      "markers": []
+    },
+    {
+      "name": "Tomb of the Last Wyrmsbane",
+      "image": "tomb_of_the_last_wyrmsbane.jpg",
+      "markers": []
+    },
+    {
+      "name": "Vale of Zintar",
+      "image": "vale_of_zintar.png",
+      "markers": []
+    }
+  ]
+}

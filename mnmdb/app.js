@@ -9,6 +9,7 @@ let itemByName = {}; // item name -> full item record (for vendor-price lookups)
 let NODES = {};      // gathering nodes (Copper Vein, …) from the wiki
 let VENDORS = [];    // hand-maintained vendor → item-type mapping (vendors.json)
 let TRADES = {};     // item name (lowercased) -> [{price, side, date}] player trade prices
+let MAPS = { zones: [], categories: [] }; // curated zone maps for the read-only viewer
 
 const REPO = 'https://github.com/Boisteroux/mnm-tools';
 
@@ -98,6 +99,24 @@ function itemMarketValue(name) {
   const reg = regularPrice(itemByName[name]);
   if (reg > 0) return { value: reg, source: 'vendor' };
   return { value: 0, source: null };
+}
+
+// Biggest movers — items whose 7-day average sell price changed most vs the
+// previous week. Needs sells in both windows; empty until trade data builds up.
+function tradeMovers() {
+  const now = Date.now();
+  const out = [];
+  for (const list of Object.values(TRADES)) {
+    const sells = list.filter((t) => t.side === 'sell');
+    const win = (a, b) => {
+      const v = sells.filter((t) => { const d = new Date(t.date).getTime(); return d >= now - a * 864e5 && d < now - b * 864e5; }).map((t) => t.price);
+      return v.length ? v.reduce((s, x) => s + x, 0) / v.length : null;
+    };
+    const recent = win(7, 0), prior = win(14, 7);
+    if (recent == null || prior == null || prior === 0) continue;
+    out.push({ name: list[0].item, recent, pct: (recent - prior) / prior });
+  }
+  return out.sort((a, b) => Math.abs(b.pct) - Math.abs(a.pct)).slice(0, 10);
 }
 
 // Drop-rate denominator: looted corpses (falls back to kills for old data).
@@ -248,6 +267,17 @@ function renderHome() {
       '<div class="col2">' + bracketCols + '</div>'
     : '';
 
+  const movers = tradeMovers();
+  const moversSection = movers.length
+    ? '<h2>Biggest movers</h2><p class="sub">7-day average sell price vs the previous week.</p>' +
+      '<div class="ticker">' + movers.map((m) => {
+        const up = m.pct >= 0;
+        return '<a class="chip ' + (up ? 'up' : 'down') + '" href="#/item/' + encodeURIComponent(nameToId[m.name] || m.name) + '">' +
+          esc(m.name) + ' <span class="mv">' + (up ? '▲' : '▼') + ' ' + Math.abs(Math.round(m.pct * 100)) + '%</span> ' +
+          '<span class="sample">' + coin(m.recent) + '</span></a>';
+      }).join('') + '</div>'
+    : '';
+
   const recentBlock = recentTop.length
     ? '<h2>Recent player trades</h2><div class="card"><table><tbody>' +
       recentTop.map((t) => '<tr><td>' + (nameToId[t.item] ? itemLink(nameToId[t.item], t.item) : esc(t.item)) +
@@ -274,6 +304,7 @@ function renderHome() {
         stat(withVendor, 'with vendor prices') + stat(Object.keys(DATA.harvest).length, 'resources') +
       '</div>' +
     '</div>' +
+    moversSection +
     '<div class="col2">' +
       '<div><h2>Most-valuable mobs</h2><p class="sub">Estimated coin + loot per kill.</p><div class="card"><table><tbody>' +
         (mobValRows || '<tr><td class="muted">No data yet.</td></tr>') + '</tbody></table></div></div>' +
@@ -730,6 +761,75 @@ window.setSort = (key) => {
   renderBrowse(browse.view);
 };
 
+// ---- Read-only map viewer ----
+
+function renderMapsList() {
+  const zones = (MAPS.zones || []).slice();
+  if (!zones.length) {
+    return $('content').innerHTML = '<div class="crumb"><a href="#/">MnMdb</a> › maps</div><h1>Zone maps</h1>' +
+      '<p class="muted">No maps published yet.</p>';
+  }
+  $('content').innerHTML =
+    '<div class="crumb"><a href="#/">MnMdb</a> › maps</div>' +
+    '<h1>Zone maps</h1>' +
+    '<p class="sub">Curated maps with marked resource nodes, camps and points of interest. View-only.</p>' +
+    '<div class="mapgrid">' + zones.map((z) =>
+      '<a class="mapcard" href="#/map/' + encodeURIComponent(z.name) + '">' +
+      '<span class="mapthumb"><img src="maps/' + encodeURIComponent(z.image) + '" alt="" loading="lazy" /></span>' +
+      '<span class="mapname">' + esc(z.name) +
+      (z.markers.length ? ' <span class="sample">' + z.markers.length + ' marks</span>' : '') + '</span></a>'
+    ).join('') + '</div>';
+}
+
+let pendingMap = null;
+
+function renderMapView(name) {
+  const z = (MAPS.zones || []).find((x) => x.name === name);
+  if (!z) return notFound('map', name);
+  const catById = {};
+  (MAPS.categories || []).forEach((c) => { catById[c.id] = c; });
+  const fallback = { name: 'Other', color: '#b0bec5', icon: '📍' };
+
+  const usedCats = [...new Set(z.markers.map((m) => m.category))];
+  const legend = usedCats.map((id) => {
+    const c = catById[id] || fallback;
+    return '<span class="mlg"><span class="mdot" style="background:' + c.color + '"></span>' + esc(c.name) + '</span>';
+  }).join('');
+
+  pendingMap = z.markers.map((m) => {
+    const c = catById[m.category] || fallback;
+    return { x: m.x, y: m.y, label: m.label, notes: m.notes, color: c.color, icon: c.icon };
+  });
+
+  $('content').innerHTML =
+    '<div class="crumb"><a href="#/">MnMdb</a> › <a href="#/maps">maps</a> › ' + esc(name) + '</div>' +
+    '<h1>' + esc(name) + '</h1>' +
+    (legend ? '<div class="mlegend">' + legend + '</div>' : '<p class="sub">No markers on this map yet.</p>') +
+    '<div class="mapview"><img id="mapimg" src="maps/' + encodeURIComponent(z.image) + '" alt="' + esc(name) + ' map" />' +
+    '<div id="maplayer"></div></div>';
+  wireMapView();
+}
+
+// Markers are stored in image-pixel coords; place them as percentages once the
+// image's natural size is known, so they track the responsive image.
+function wireMapView() {
+  const markers = pendingMap || [];
+  const img = document.getElementById('mapimg');
+  const layer = document.getElementById('maplayer');
+  if (!img || !layer) return;
+  const place = () => {
+    const nw = img.naturalWidth || 1, nh = img.naturalHeight || 1;
+    layer.innerHTML = markers.map((m) =>
+      '<span class="mk" style="left:' + (m.x / nw * 100) + '%;top:' + (m.y / nh * 100) + '%;--mc:' + m.color + '" ' +
+      'title="' + esc(m.label + (m.notes ? ' — ' + m.notes : '')) + '">' +
+      '<span class="mk-ic">' + m.icon + '</span>' +
+      (m.label ? '<span class="mk-lbl">' + esc(m.label) + '</span>' : '') + '</span>'
+    ).join('');
+  };
+  if (img.complete && img.naturalWidth) place();
+  else img.addEventListener('load', place);
+}
+
 // ---- Router ----
 
 function route() {
@@ -737,6 +837,8 @@ function route() {
   if (q) return renderSearch(q);
   const h = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
   if (h === 'items' || h === 'mobs' || h === 'gathering') return renderBrowse(h);
+  if (h === 'maps') return renderMapsList();
+  if (h.startsWith('map/')) return renderMapView(h.slice(4));
   if (h.startsWith('item/')) return renderItem(h.slice(5));
   if (h.startsWith('mob/')) return renderMob(h.slice(4));
   if (h.startsWith('zone/')) return renderZone(h.slice(5));
@@ -775,6 +877,9 @@ async function loadWikiStats() {
       const k = String(e.item).toLowerCase();
       (TRADES[k] = TRADES[k] || []).push({ item: e.item, price: e.price, side: e.side === 'buy' ? 'buy' : 'sell', date: e.date });
     }
+  } catch {}
+  try {
+    MAPS = await (await fetch('./maps.json?v=' + Date.now())).json();
   } catch {}
 }
 
