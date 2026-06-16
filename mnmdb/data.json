@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-16T23:04:57.261Z",
+  "generatedAt": "2026-06-16T23:43:27.714Z",
   "source": "mnm-tools",
   "ledgerFiles": 15,
-  "events": 3170,
+  "events": 3225,
   "mobs": {
     "a desert bat": {
       "kills": 0,
@@ -613,7 +613,7 @@
       "name": "Alunite Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 7,
+      "harvested": 8,
       "zones": []
     },
     {
@@ -961,7 +961,7 @@
           "count": 12
         }
       ],
-      "harvested": 320,
+      "harvested": 344,
       "zones": []
     },
     {
@@ -1067,6 +1067,14 @@
     {
       "id": "chipped_blue_diamond",
       "name": "Chipped Blue Diamond",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 2,
+      "zones": []
+    },
+    {
+      "id": "chipped_cat_s_eye_agate",
+      "name": "Chipped Cat's Eye Agate",
       "droppedBy": [],
       "prices": [],
       "harvested": 1,
@@ -1363,7 +1371,7 @@
       "name": "Copper Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 320,
+      "harvested": 339,
       "zones": []
     },
     {
@@ -2041,7 +2049,7 @@
       "name": "Lionleaf",
       "droppedBy": [],
       "prices": [],
-      "harvested": 15,
+      "harvested": 18,
       "zones": []
     },
     {
@@ -2086,7 +2094,7 @@
       "prices": [
         {
           "copper": 1,
-          "count": 3
+          "count": 4
         },
         {
           "copper": 2,
@@ -2252,6 +2260,19 @@
       "zones": [
         "Night Harbor"
       ]
+    },
+    {
+      "id": "ration",
+      "name": "Ration",
+      "droppedBy": [],
+      "prices": [
+        {
+          "copper": 1,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "raw_ash_meat",
@@ -2459,7 +2480,7 @@
       "prices": [
         {
           "copper": 3,
-          "count": 3
+          "count": 4
         }
       ],
       "harvested": 0,
@@ -4115,7 +4136,7 @@
       "prices": [
         {
           "copper": 2,
-          "count": 2
+          "count": 3
         }
       ],
       "harvested": 0,
@@ -4206,15 +4227,15 @@
     }
   ],
   "harvest": {
-    "Copper Ore": 320,
-    "Brittle Stone": 320,
+    "Copper Ore": 339,
+    "Brittle Stone": 344,
     "Clouded Crystallized Magic": 7,
     "Wood": 158,
     "Resin": 188,
     "Chipped Turquoise": 2,
-    "Lionleaf": 15,
+    "Lionleaf": 18,
     "Chipped Star Ruby": 2,
-    "Alunite Ore": 7,
+    "Alunite Ore": 8,
     "Ghost Poppy": 26,
     "Nomad's Grace": 5,
     "Chipped Fire Emerald": 2,
@@ -4222,7 +4243,7 @@
     "Chipped Malachite": 3,
     "Chipped Black Pearl": 4,
     "Chipped Amber": 1,
-    "Chipped Blue Diamond": 1,
+    "Chipped Blue Diamond": 2,
     "Chipped Jacinth": 1,
     "Chipped Onyx": 3,
     "Chipped Hematite": 1,
@@ -4232,6 +4253,7 @@
     "Magic Frond": 1,
     "Whispering Sage": 4,
     "Chipped Jasper": 1,
-    "Chipped Wolf's Eye Agate": 1
+    "Chipped Wolf's Eye Agate": 1,
+    "Chipped Cat's Eye Agate": 1
   }
 }
