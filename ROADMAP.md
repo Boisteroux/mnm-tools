@@ -23,6 +23,9 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
 - **mnmdb website** — searchable item / mob / resource database, economy-focused
   home (most-valuable & most-fought mobs, priciest items, valuable resources,
   recent trades). Live at https://boisteroux.github.io/mnm-tools
+- **Home charts** — magnitude bars on the home leaderboards, a rarity × value
+  scatter (rare + valuable = chase loot), and a per-mob "where the value comes
+  from" breakdown bar. All dependency-free inline SVG/CSS.
 - **One-click publish** — "Publish to MnMdb" button in the app (owner build only)
   regenerates the site data from your ledger and pushes it live in ~30s.
 - **Sharing & look** — public repo, MIT license, Windows installer, sunset branding,

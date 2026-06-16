@@ -112,6 +112,53 @@ function mobValuePerKill(d) {
   return { coin: coinPer, loot, total: coinPer + loot };
 }
 
+// ---- Charts (dependency-free: inline SVG + CSS bars) ----
+
+// Palette for stacked-segment charts (sunset theme + a few complementary hues).
+const SEG_COLORS = ['#f0922b', '#8bbf5a', '#e0593f', '#c98a3a', '#6fa8c7', '#b07fc9', '#d9b94a', '#7fc9a0'];
+
+// Inline magnitude bar for ranked home tables. `disp` is pre-formatted HTML.
+const barCell = (v, max, disp) => {
+  const w = max > 0 && v > 0 ? Math.max(3, Math.round((v / max) * 100)) : 0;
+  return '<span class="magbar"><span class="track"><span class="fill" style="width:' + w + '%"></span></span>' +
+    '<span class="mag-label">' + disp + '</span></span>';
+};
+
+// Rarity × value scatter — up = more valuable (log scale), right = rarer.
+// Each point links to its item; trade-priced points are tinted differently.
+function scatterSvg(points) {
+  const W = 360, H = 230, PAD = { l: 22, r: 14, t: 16, b: 26 };
+  const pw = W - PAD.l - PAD.r, ph = H - PAD.t - PAD.b;
+  const axisY = PAD.l, axisX = PAD.t + ph;
+  const vals = points.map((p) => p.value);
+  const lo = Math.log(Math.min.apply(null, vals)), hi = Math.log(Math.max.apply(null, vals));
+  const span = hi - lo || 1;
+  const clamp01 = (r) => Math.max(0, Math.min(1, r));
+  // Deterministic jitter so items sharing a rate/price don't fully overlap.
+  const jit = (s, amp) => { let h = 0; for (let k = 0; k < s.length; k++) h = (h * 31 + s.charCodeAt(k)) & 255; return ((h / 255) - 0.5) * 2 * amp; };
+  const cx = (x) => Math.max(PAD.l, Math.min(W - PAD.r, x));
+  const cy = (y) => Math.max(PAD.t, Math.min(axisX, y));
+  const dots = points.map((p) => {
+    const x = cx(PAD.l + (1 - clamp01(p.rate)) * pw + jit(p.i.name, 4)).toFixed(1);
+    const y = cy(PAD.t + (1 - (Math.log(p.value) - lo) / span) * ph + jit(p.i.name + 'y', 4)).toFixed(1);
+    const cls = 'pt' + (p.source === 'trade' ? ' trade' : '');
+    const title = esc(p.i.name) + ' — ' + coin(p.value) + ' · ' + Math.round(clamp01(p.rate) * 100) + '% drop';
+    return '<a href="#/item/' + encodeURIComponent(p.i.id) + '"><circle class="' + cls + '" cx="' + x + '" cy="' + y + '" r="3.4"><title>' + title + '</title></circle></a>';
+  }).join('');
+  const frame =
+    '<line class="axis" x1="' + PAD.l + '" y1="' + axisX + '" x2="' + (W - PAD.r) + '" y2="' + axisX + '"/>' +
+    '<line class="axis" x1="' + axisY + '" y1="' + PAD.t + '" x2="' + axisY + '" y2="' + axisX + '"/>';
+  const guides =
+    '<line class="guide" x1="' + (PAD.l + pw / 2) + '" y1="' + PAD.t + '" x2="' + (PAD.l + pw / 2) + '" y2="' + axisX + '"/>' +
+    '<line class="guide" x1="' + PAD.l + '" y1="' + (PAD.t + ph / 2) + '" x2="' + (W - PAD.r) + '" y2="' + (PAD.t + ph / 2) + '"/>';
+  const labels =
+    '<text class="axlabel" x="' + (PAD.l + pw / 2) + '" y="' + (H - 4) + '" text-anchor="middle">common ← drop chance → rare</text>' +
+    '<text class="axlabel" transform="rotate(-90 9 ' + (PAD.t + ph / 2) + ')" x="9" y="' + (PAD.t + ph / 2) + '" text-anchor="middle">value →</text>' +
+    '<text class="qlabel" x="' + (W - PAD.r - 2) + '" y="' + (PAD.t + 9) + '" text-anchor="end">★ rare &amp; valuable</text>';
+  return '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Item rarity versus value scatter plot">' +
+    guides + frame + labels + dots + '</svg>';
+}
+
 // ---- Views ----
 
 function renderHome() {
@@ -146,13 +193,31 @@ function renderHome() {
   recent.sort((a, b) => new Date(b.date) - new Date(a.date));
   const recentTop = recent.slice(0, 10);
 
-  const mobValRows = valMobs.map(([m, v]) => '<tr><td>' + mobLink(m) + '</td><td class="num coin">' + coin(v) + '</td></tr>').join('');
-  const killRows = topMobs.map(([m, d]) => '<tr><td>' + mobLink(m) + '</td><td class="num sample">' +
-    (d.kills ? d.kills + ' kills' : mobCorpses(d) + ' looted') + '</td></tr>').join('');
-  const priceRows = priciest.map(([i, v]) => '<tr><td>' + itemLink(i.id, i.name) + '</td><td class="num coin">' + coin(v) + '</td></tr>').join('');
+  // Rarity × value — items we both see drop and can put a price on.
+  const scatterPts = items.map((i) => {
+    const rate = (i.droppedBy || []).reduce((m, d) => Math.max(m, d.rate || 0), 0);
+    const mv = itemMarketValue(i.name);
+    return { i, rate, value: mv.value, source: mv.source };
+  }).filter((p) => p.rate > 0 && p.value > 0);
+
+  // Tables get inline magnitude bars (value scaled to the leader in each list).
+  const maxVal = valMobs.length ? valMobs[0][1] : 0;
+  const maxAct = topMobs.length ? activity(topMobs[0][1]) : 0;
+  const maxPrice = priciest.length ? priciest[0][1] : 0;
+  const maxRes = resources.reduce((m, r) => Math.max(m, r.value || 0), 0);
+
+  const mobValRows = valMobs.map(([m, v]) => '<tr><td>' + mobLink(m) + '</td><td class="num">' +
+    barCell(v, maxVal, '<span class="coin">' + coin(v) + '</span>') + '</td></tr>').join('');
+  const killRows = topMobs.map(([m, d]) => '<tr><td>' + mobLink(m) + '</td><td class="num">' +
+    barCell(activity(d), maxAct, '<span class="sample">' + (d.kills ? d.kills + ' kills' : mobCorpses(d) + ' looted') + '</span>') +
+    '</td></tr>').join('');
+  const priceRows = priciest.map(([i, v]) => '<tr><td>' + itemLink(i.id, i.name) + '</td><td class="num">' +
+    barCell(v, maxPrice, '<span class="coin">' + coin(v) + '</span>') + '</td></tr>').join('');
   const resRows = resources.map((r) => '<tr><td>' + (nameToId[r.name] ? itemLink(nameToId[r.name], r.name) : esc(r.name)) +
     (r.source === 'trade' ? ' <span class="tag good">trade</span>' : '') +
-    '</td><td class="num ' + (r.value ? 'coin' : 'sample') + '">' + (r.value ? coin(r.value) : r.n + '× gathered') + '</td></tr>').join('');
+    '</td><td class="num">' + (r.value
+      ? barCell(r.value, maxRes, '<span class="coin">' + coin(r.value) + '</span>')
+      : '<span class="sample">' + r.n + '× gathered</span>') + '</td></tr>').join('');
 
   const recentBlock = recentTop.length
     ? '<h2>Recent player trades</h2><div class="card"><table><tbody>' +
@@ -160,6 +225,13 @@ function renderHome() {
         ' <span class="tag ' + (t.side === 'buy' ? 'warn' : 'good') + '">' + (t.side === 'buy' ? 'WTB' : 'WTS') + '</span></td>' +
         '<td class="num coin">' + coin(t.price) + '</td><td class="num sample">' + esc(t.date) + '</td></tr>').join('') +
       '</tbody></table></div>'
+    : '';
+
+  const scatterSection = scatterPts.length >= 5
+    ? '<h2>Rarity × value</h2><p class="sub">Each dot is an item — up = more valuable, right = rarer. ' +
+      'The top-right is the rare, high-value chase loot. ' +
+      '<span class="tag good">green</span> dots are priced from player trades, orange from vendors. Click a dot to open it.</p>' +
+      '<div class="scatter">' + scatterSvg(scatterPts) + '</div>'
     : '';
 
   $('content').innerHTML =
@@ -185,6 +257,7 @@ function renderHome() {
       '<div><h2>Valuable resources</h2><p class="sub">Gatherables by value — player trade price where known, else vendor.</p><div class="card"><table><tbody>' +
         (resRows || '<tr><td class="muted">No resources yet.</td></tr>') + '</tbody></table></div></div>' +
     '</div>' +
+    scatterSection +
     recentBlock +
     '<div class="note">Values are observational — drop rates are (times looted ÷ times killed) and prices come from real play. ' +
       'Small samples are rough; numbers sharpen as more data is collected.</div>';
@@ -349,6 +422,37 @@ function renderMob(name) {
   boxes.push('<div class="vbox"><div class="vlbl">Est. value / kill</div><div class="vval">' + coin(val.total) + '</div></div>');
   const summary = '<div class="vendor-summary">' + boxes.join('') + '</div>';
 
+  // Value breakdown — what share of an average kill's value each source contributes
+  // (coin + each priced drop). A quick read on "where the worth comes from".
+  let breakdown = '';
+  {
+    const segs = [];
+    if (m.kills && val.coin > 0) segs.push({ label: 'Coin', value: val.coin });
+    drops.forEach((d) => { if (d.perKill > 0) segs.push({ label: d.item, value: d.perKill, id: nameToId[d.item] || d.item }); });
+    const segTotal = segs.reduce((s, x) => s + x.value, 0);
+    if (segTotal > 0 && segs.some((s) => s.id)) {
+      segs.sort((a, b) => b.value - a.value);
+      // Fold a long tail of tiny drops into one "N more" segment to keep it legible.
+      const MAX = 7;
+      let shown = segs;
+      if (segs.length > MAX) {
+        const tail = segs.slice(MAX - 1);
+        shown = segs.slice(0, MAX - 1)
+          .concat([{ label: tail.length + ' more', value: tail.reduce((s, x) => s + x.value, 0), other: true }]);
+      }
+      const pctOf = (v) => Math.round((v / segTotal) * 100);
+      const bar = shown.map((s, idx) => '<span class="seg" style="width:' + ((s.value / segTotal) * 100).toFixed(2) +
+        '%;background:' + SEG_COLORS[idx % SEG_COLORS.length] + '" title="' + esc(s.label) + ' — ' + coin(s.value) +
+        ' (' + pctOf(s.value) + '%)"></span>').join('');
+      const legend = shown.map((s, idx) => '<span class="leg"><span class="dot" style="background:' +
+        SEG_COLORS[idx % SEG_COLORS.length] + '"></span>' + (s.other ? esc(s.label) : (s.id ? itemLink(s.id, s.label) : esc(s.label))) +
+        ' <span class="sample">' + coin(s.value) + ' · ' + pctOf(s.value) + '%</span></span>').join('');
+      breakdown = '<h2>Where the value comes from</h2><div class="breakdown"><div class="stack">' + bar + '</div>' +
+        '<div class="legend">' + legend + '</div></div>' +
+        '<p class="sub">Share of the ~' + coin(segTotal) + ' average value of each kill.</p>';
+    }
+  }
+
   // Wiki stats block (level / race / class / special)
   const mw = m.wiki || {};
   let statsBlock = '';
@@ -373,6 +477,7 @@ function renderMob(name) {
     wikiLine +
     statsBlock +
     summary +
+    breakdown +
     '<h2>Drops &amp; farming value</h2>' + table +
     '<div class="note">Drop rates are per <em>looted corpse</em> (the game doesn’t log a kill for every mob, so loots are grouped into corpses). ' +
     '“Sell value” is the item’s regular vendor price; “Avg kill value” = drop rate × sell value. ' +
