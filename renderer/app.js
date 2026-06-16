@@ -9,6 +9,7 @@ const CATEGORIES = [
   { id: 'fishing',  name: 'Fish',       color: '#4fc3f7', icon: '\u{1F3A3}' },
   { id: 'crafting', name: 'Crafting',   color: '#f06292', icon: '\u{1F528}' },
   { id: 'quest',    name: 'Quest NPCs', color: '#fff176', icon: '❗️' },
+  { id: 'town',     name: 'Town / POI', color: '#d9b94a', icon: '\u{1F3DB}\u{FE0F}' },
   { id: 'misc',     name: 'Other',      color: '#b0bec5', icon: '\u{1F4CD}' },
 ];
 
@@ -33,6 +34,7 @@ let hiddenCategories = new Set();
 let mapImage = null;                           // loaded Image for current zone
 let editingMarkerId = null;                    // marker being edited in the modal
 let pendingWorldPos = null;                    // where a new marker will be placed
+let pendingPOI = null;                          // a city district waiting to be clicked onto the map
 let popupMarkerId = null;
 
 const GRID_SIZE = 2000;                        // blank-map play area in world units
@@ -181,6 +183,7 @@ const ZONE_BTN_TITLES = {
   'btn-zone-image': "Pick an image file to use as this zone's map",
   'btn-wiki-zone': "Download this zone's map from the community wiki",
   'btn-zone-review': "See every zone's current map at a glance and set defaults",
+  'btn-city-pois': "Pull this city's districts from the wiki and place them on the map",
 };
 function updateZoneControls() {
   const hasZones = data.zones.length > 0;
@@ -194,6 +197,7 @@ function updateZoneControls() {
   setBtn('btn-rename-zone', hasCurrent, 'Select or create a zone first');
   setBtn('btn-zone-image', hasCurrent, 'Select or create a zone first');
   setBtn('btn-wiki-zone', hasCurrent, 'Select or create a zone first');
+  setBtn('btn-city-pois', hasCurrent, 'Select or create a zone first');
   setBtn('btn-zone-review', hasZones, 'No zones yet — Import All or just play to create them');
   $('zone-select').disabled = !hasZones;
   // First run (no zones): open the tools so Import All isn't buried under Options ▾.
@@ -342,6 +346,20 @@ function markerAt(sx, sy) {
 canvas.addEventListener('click', (e) => {
   if (dragMoved) return; // it was a pan, not a click
   const rect = canvas.getBoundingClientRect();
+
+  // City POI placement: drop the pending district where the user clicks
+  if (pendingPOI) {
+    const zone = currentZone();
+    if (zone) {
+      const pos = toWorld(e.clientX - rect.left, e.clientY - rect.top);
+      zone.markers.push({ id: uid(), x: pos.x, y: pos.y, label: pendingPOI.label, category: 'town', notes: pendingPOI.notes });
+      save(); refreshSidebar(); draw();
+    }
+    pendingPOI = null;
+    document.body.classList.remove('placing');
+    openCityPoiTagger(); // back to the checklist, now showing it placed
+    return;
+  }
 
   // Quick Place: every click drops a marker of the chosen type, no dialog
   if (quickPlace) {
@@ -718,6 +736,62 @@ function changeZoneMap(zone) {
 
 $('btn-zone-review').addEventListener('click', openZoneReview);
 $('zone-review-close').addEventListener('click', () => $('zone-review-modal').classList.add('hidden'));
+
+// ---- City POI tagger ----
+
+const cityPoiCache = {}; // zone name -> [{ name, npcs }]
+
+async function openCityPoiTagger() {
+  const zone = currentZone();
+  if (!zone) { wikiStatus('Select a zone first.'); return; }
+  const list = $('city-poi-list');
+  $('city-poi-title').textContent = 'Tag districts — ' + zone.name;
+  list.innerHTML = '<p class="hint">Loading districts from the wiki…</p>';
+  $('city-poi-modal').classList.remove('hidden');
+
+  let districts = cityPoiCache[zone.name];
+  if (!districts) {
+    const r = await window.mapAPI.wikiCityPois(zone.name);
+    districts = (r && r.districts) || [];
+    cityPoiCache[zone.name] = districts;
+  }
+  if (!districts.length) {
+    list.innerHTML = '<p class="hint">No districts found on the wiki for this zone — its NPC table may not list locations yet.</p>';
+    return;
+  }
+  list.innerHTML = '';
+  for (const d of districts) {
+    const placed = zone.markers.some((m) => m.category === 'town' && (m.label || '').toLowerCase() === d.name.toLowerCase());
+    const row = document.createElement('div');
+    row.className = 'poi-row';
+    row.innerHTML = '<div class="poi-info"><span class="poi-name">' + d.name + '</span>' +
+      '<span class="poi-sub">' + d.npcs.length + ' NPC' + (d.npcs.length === 1 ? '' : 's') + '</span></div>';
+    const btn = document.createElement('button');
+    btn.textContent = placed ? 'Placed ✓' : 'Place';
+    btn.className = placed ? 'poi-placed' : 'primary';
+    btn.addEventListener('click', () => startPlacePoi(d));
+    row.appendChild(btn);
+    list.appendChild(row);
+  }
+}
+
+function startPlacePoi(d) {
+  pendingPOI = { label: d.name, notes: d.npcs.join(', ') };
+  document.body.classList.add('placing');
+  $('city-poi-modal').classList.add('hidden');
+  wikiStatus('Click the map where “' + d.name + '” is.  (Esc to cancel)');
+}
+
+$('btn-city-pois').addEventListener('click', openCityPoiTagger);
+$('city-poi-close').addEventListener('click', () => $('city-poi-modal').classList.add('hidden'));
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && pendingPOI) {
+    pendingPOI = null;
+    document.body.classList.remove('placing');
+    wikiStatus('Placement cancelled.');
+    openCityPoiTagger();
+  }
+});
 
 $('btn-wiki-zone').addEventListener('click', async () => {
   const zone = currentZone();

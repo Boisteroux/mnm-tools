@@ -656,6 +656,43 @@ ipcMain.handle('wiki-download-map', async (event, { zoneName, title }) => {
   catch (err) { return { error: 'Download failed: ' + err.message }; }
 });
 
+// Parse a city's wiki "NPCs" table into districts (grouped by the Location
+// column) so the app can offer them as a place-on-map checklist.
+function parseCityPois(wt) {
+  const h = wt.search(/==\s*NPCs/i);
+  if (h < 0) return [];
+  const tStart = wt.indexOf('{|', h);
+  if (tStart < 0) return [];
+  const table = wt.slice(tStart, wt.indexOf('|}', tStart));
+  const linkText = (s) => {
+    const m = s.match(/\[\[([^\]]+)\]\]/);
+    if (!m) return s.replace(/\|/g, '').trim();
+    const t = m[1].split('|');
+    return (t[1] || t[0]).trim();
+  };
+  const byLoc = {};
+  for (const r of table.split(/\n\|-/).slice(1)) {
+    if (/^\s*!/.test(r)) continue; // header row
+    const cells = r.trim().replace(/^\|/, '').split('||');
+    if (cells.length < 5) continue;
+    const name = linkText(cells[0]);
+    const loc = (cells[4] || '').replace(/\[\[|\]\]/g, '').split('|')[0].trim();
+    if (!name || /example/i.test(name) || !loc || loc === '-') continue;
+    (byLoc[loc] = byLoc[loc] || []).push(name);
+  }
+  return Object.entries(byLoc).map(([name, npcs]) => ({ name, npcs }));
+}
+
+ipcMain.handle('wiki-city-pois', async (event, zoneName) => {
+  try {
+    const parsed = await wikiJson({ action: 'parse', page: zoneName, prop: 'wikitext', redirects: 1 });
+    const wt = parsed.parse && parsed.parse.wikitext && parsed.parse.wikitext['*'];
+    return { districts: wt ? parseCityPois(wt) : [] };
+  } catch (err) {
+    return { error: 'Wiki lookup failed for "' + zoneName + '": ' + err.message, districts: [] };
+  }
+});
+
 // Import is two steps: open the file and report which zones it holds,
 // then (after the user picks) write the chosen zones' images to disk.
 let pendingImport = null;

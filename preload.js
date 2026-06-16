@@ -11,6 +11,7 @@ contextBridge.exposeInMainWorld('mapAPI', {
   wikiFetchMap: (zoneName) => ipcRenderer.invoke('wiki-fetch-map', zoneName),
   wikiListMaps: (zoneName) => ipcRenderer.invoke('wiki-list-maps', zoneName),
   wikiDownloadMap: (zoneName, title) => ipcRenderer.invoke('wiki-download-map', { zoneName, title }),
+  wikiCityPois: (zoneName) => ipcRenderer.invoke('wiki-city-pois', zoneName),
   onGameZone: (callback) => ipcRenderer.on('game-zone', (event, name) => callback(name)),
   currentGameZone: () => ipcRenderer.invoke('current-game-zone'),
   toggleOverlay: () => ipcRenderer.invoke('toggle-overlay'),
