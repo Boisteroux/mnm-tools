@@ -42,7 +42,6 @@ const CATEGORIES = [
   { id: 'fishing', name: 'Fish', color: '#4fc3f7', icon: '🎣' },
   { id: 'crafting', name: 'Crafting', color: '#f06292', icon: '🔨' },
   { id: 'quest', name: 'Quest NPCs', color: '#fff176', icon: '❗️' },
-  { id: 'town', name: 'Town / POI', color: '#d9b94a', icon: '🏛️' },
   { id: 'misc', name: 'Other', color: '#b0bec5', icon: '📍' },
 ];
 

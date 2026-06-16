@@ -53,11 +53,14 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
   justifies it. (The GitHub-issue form was dropped as too much friction; outlier
   trimming is already in, which is what makes low-friction submission safe later.)
 - **Map viewer — refinements** (remaining):
-  - ✅ Placeholder excluded; mapless zones show **Map coming soon**. ✅ **Review
-    Zone Maps** panel. ✅ **Downscale** on export (37MB → 6.7MB). ✅ **City POI
-    tagger** — pull wiki districts and click them onto the map (districts v1).
-  - **Individual NPC tags** — layer per-NPC pins on top of the district markers
-    (the tagger already has the NPC lists per district).
+  - ✅ Placeholder + screenshots excluded; mapless zones show **Map coming soon**.
+    ✅ **Review Zone Maps** panel. ✅ **Downscale** on export (37MB → 6.7MB).
+  - **NPC map tagging (bigger project — parked)** — tag individual useful NPCs on
+    city maps (esp. **starter quest NPCs**), not whole districts. District-level
+    tagging was tried and reverted as not useful. The wiki has the data: its NPC
+    table lists each NPC + location, and `parseCityPois` (in git history at commit
+    `ccdb9f7`) already extracts NPCs grouped by district — a good starting point.
+    Needs a thought-through per-NPC placement flow + which NPCs are worth showing.
   - **Layered city maps** — multi-level zones (cities with above/below floors)
     shown as switchable layers in the viewer.
   - **Official / shared maps** — carry community or "official" maps, not just the
