@@ -480,10 +480,11 @@ function renderItem(id) {
     sections.push('<h2>Sold to</h2><div class="card"><table><tbody>' + body + '</tbody></table></div>');
   }
 
-  // Found in — your observed zones plus the wiki's listed zones (bottom)
+  // Found / gathered in — observed zones plus the wiki's listed zones
   const zoneSet = [...new Set([...(it.zones || []), ...(w.wikiZones || [])])];
   if (zoneSet.length) {
-    sections.push('<h2>Found in</h2><div class="card"><table><tbody>' +
+    const heading = it.harvested > 0 ? 'Gathered in' : 'Found in';
+    sections.push('<h2>' + heading + '</h2><div class="card"><table><tbody>' +
       zoneSet.map((z) => '<tr><td>' + zoneLink(z) + '</td></tr>').join('') + '</tbody></table></div>');
   }
 
@@ -667,6 +668,24 @@ function recipeTable(recs, showSkill) {
 const marginNote = '<div class="note">“Margin” = output value − materials value (best known player-trade or vendor price) — ' +
   'what crafting adds over selling the raw mats. “?” means a material has no price logged yet; fills in as data grows.</div>';
 
+function renderTradeskills() {
+  const counts = {};
+  const bump = (t, k) => { (counts[t] = counts[t] || { recipes: 0, items: 0 })[k]++; };
+  RECIPES.forEach((r) => bump(r.tradeskill, 'recipes'));
+  DATA.items.forEach((i) => (i.wiki && i.wiki.tradeskills || []).forEach((t) => bump(t, 'items')));
+  const names = Object.keys(counts).sort();
+  if (!names.length) return notFound('tradeskill', '');
+  $('content').innerHTML =
+    '<div class="crumb"><a href="#/">MnMdb</a> › tradeskills</div>' +
+    '<h1>Tradeskills</h1>' +
+    '<p class="sub">Crafting professions — recipes, ingredients, and profit margins.</p>' +
+    '<div class="card"><table><thead><tr><th>Tradeskill</th><th class="num">Recipes</th><th class="num">Items</th></tr></thead><tbody>' +
+    names.map((n) => '<tr><td>' + tradeskillLink(n) + '</td>' +
+      '<td class="num sample">' + (counts[n].recipes || '—') + '</td>' +
+      '<td class="num sample">' + (counts[n].items || '—') + '</td></tr>').join('') +
+    '</tbody></table></div>';
+}
+
 function renderTradeskill(name) {
   const items = DATA.items
     .filter((i) => i.wiki && (i.wiki.tradeskills || []).includes(name))
@@ -738,6 +757,7 @@ const browseCols = {
   gathering: [
     { key: 'name', label: 'Resource' },
     { key: 'harvested', label: 'Harvested', num: true },
+    { key: 'zones', label: 'Gathered in', render: (v) => v || '—' },
     { key: 'vendor', label: 'Vendor Value', num: true, render: (v) => (v == null ? '—' : coin(v)) },
   ],
   mobs: [
@@ -772,6 +792,7 @@ function browseRows(view) {
       vendor: max,                       // regular vendor = best (highest) sell
       shady: min != null && min < max ? min : null, // only if a genuinely lower price was seen
       harvested: i.harvested || 0,
+      zones: (i.zones || []).join(', '),
     };
   });
 }
@@ -902,6 +923,7 @@ function route() {
   if (q) return renderSearch(q);
   const h = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
   if (h === 'items' || h === 'mobs' || h === 'gathering') return renderBrowse(h);
+  if (h === 'tradeskills') return renderTradeskills();
   if (h === 'maps') return renderMapsList();
   if (h.startsWith('map/')) return renderMapView(h.slice(4));
   if (h.startsWith('item/')) return renderItem(h.slice(5));

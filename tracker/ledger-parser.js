@@ -90,6 +90,7 @@ function parseLedgers(files) {
   const mobs = {};     // mobName -> { kills, drops: { itemName: count } }
   const items = {};    // itemId  -> { name, sources: { mob: count }, prices: { copperPerUnit: count } }
   const harvest = {};  // resourceName -> count
+  const harvestZones = {}; // resourceName -> { zone: count } (where it's gathered)
   let events = 0;
 
   const mob = (name) => (mobs[name] = mobs[name] || { kills: 0, drops: {}, zones: {}, coin: 0, corpses: 0 });
@@ -155,9 +156,12 @@ function parseLedgers(files) {
         if (p.d05 && !it.id) it.id = p.d05;
         it.prices[per] = (it.prices[per] || 0) + 1;
       } else if (ev.f01 === 'act_27') {
-        // HARVEST — gathering node
+        // HARVEST — gathering node (record where it was gathered)
         const res = p.d04 || '';
-        if (isClean(res)) harvest[res] = (harvest[res] || 0) + 1;
+        if (isClean(res)) {
+          harvest[res] = (harvest[res] || 0) + 1;
+          if (zone) bump((harvestZones[res] = harvestZones[res] || {}), zone);
+        }
       }
     }
   }
@@ -180,7 +184,7 @@ function parseLedgers(files) {
     M.drops = presence;
   }
 
-  return { mobs, items, harvest, events, fileCount: files.length };
+  return { mobs, items, harvest, harvestZones, events, fileCount: files.length };
 }
 
 const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
@@ -200,7 +204,11 @@ function buildItemReport(agg) {
       .map(([copper, count]) => ({ copper: +copper, count }))
       .sort((a, b) => a.copper - b.copper);
 
-    const zones = Object.entries(it.zones || {}).sort((a, b) => b[1] - a[1]).map(([z]) => z);
+    // Zones = where it was looted AND where it was harvested
+    const zoneCounts = {};
+    for (const [z, c] of Object.entries(it.zones || {})) zoneCounts[z] = (zoneCounts[z] || 0) + c;
+    for (const [z, c] of Object.entries(agg.harvestZones[it.name] || {})) zoneCounts[z] = (zoneCounts[z] || 0) + c;
+    const zones = Object.entries(zoneCounts).sort((a, b) => b[1] - a[1]).map(([z]) => z);
 
     return { id: it.id || slug(it.name), name: it.name, droppedBy, prices, harvested: agg.harvest[it.name] || 0, zones };
   })
@@ -210,7 +218,9 @@ function buildItemReport(agg) {
   // Add resource-only entries (gathered but never looted/sold) so they get pages
   const have = new Set(items.map((i) => i.name));
   for (const [res, count] of Object.entries(agg.harvest)) {
-    if (!have.has(res)) items.push({ id: slug(res), name: res, droppedBy: [], prices: [], harvested: count, zones: [] });
+    if (have.has(res)) continue;
+    const zones = Object.entries(agg.harvestZones[res] || {}).sort((a, b) => b[1] - a[1]).map(([z]) => z);
+    items.push({ id: slug(res), name: res, droppedBy: [], prices: [], harvested: count, zones });
   }
 
   return items.sort((a, b) => a.name.localeCompare(b.name));
