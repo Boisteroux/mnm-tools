@@ -1,5 +1,5 @@
 {
-  "_readme": "Zones where the game reports ONE zone-code but there are really multiple maps (e.g. a city above ground and the wilderness below it). The game log can't tell these apart (it carries no player position), so the app can't auto-swap between them. Instead it offers a manual map switch in the overlay for any zone listed here. To add a discrepancy: add an entry keyed by the game's zone-code (the base64-decoded value of zone_... in the Ledger, e.g. 'evergrove'). 'default' is the map shown on entry; 'maps' lists every map for that zone-code with a short note. You can edit this on github.com from your phone.",
+  "_readme": "Zones where the game reports ONE zone-code but there are really multiple maps (e.g. a city above ground and the wilderness below it). The game log can't tell these apart (it carries no player position), so the app can't auto-swap between them. Instead it offers a manual map switch in the overlay/sidebar for any zone listed here. To add a discrepancy: add an entry under 'zones' keyed by the game's zone-code (the base64-decoded value of zone_... in the Ledger, e.g. 'evergrove'). 'default' is the map shown on entry; 'maps' lists every map for that zone-code with a short note. You can edit this on github.com from your phone — just keep the 'zones' wrapper.",
   "_example": {
     "somecode": {
       "default": "Surface City",

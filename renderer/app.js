@@ -1199,8 +1199,12 @@ async function switchToMap(name) {
   // default name into ZONE_ALIASES so auto-follow lands on the right map first.
   try {
     const aliases = await window.mapAPI.zoneAliases();
-    MULTI_MAP = (aliases && aliases.zones) || {};
-    for (const [code, grp] of Object.entries(MULTI_MAP)) {
+    // Tolerate either format: { zones: { code: {...} } } or a bare { code: {...} }.
+    const raw = (aliases && aliases.zones) || aliases || {};
+    MULTI_MAP = {};
+    for (const [code, grp] of Object.entries(raw)) {
+      if (code.startsWith('_') || !grp || !Array.isArray(grp.maps)) continue; // skip _readme/_example etc.
+      MULTI_MAP[code] = grp;
       if (grp.default && !ZONE_ALIASES[code]) ZONE_ALIASES[code] = grp.default;
     }
   } catch {}
