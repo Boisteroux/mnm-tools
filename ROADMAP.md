@@ -52,16 +52,16 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
   the minimal version of the crowdsourcing server. Parked until the audience
   justifies it. (The GitHub-issue form was dropped as too much friction; outlier
   trimming is already in, which is what makes low-friction submission safe later.)
-- **Map viewer — refinements** (roughly in this order):
-  1. Fix maps that aren't displaying correctly (some zones render wrong).
-  2. Pick a specific **default map per zone** (several zones have multiple wiki
-     maps / placeholders; choose the good one).
-  3. **Layered city maps** — multi-level zones (cities with above/below floors)
-     shown as switchable layers in the viewer.
-  4. **Official / shared maps** — carry community or "official" maps, not just the
-     locally-curated set.
-  5. **Downscale images** last — the curated set is ~45MB; large zone maps can be
-     compressed once we've settled which maps are the keepers.
+- **Map viewer — refinements** (remaining):
+  - ✅ Wiki "Phformaps" placeholder excluded; mapless zones show **Map coming
+    soon**. ✅ **Review Zone Maps** panel + per-zone picker for choosing defaults.
+  - **Layered city maps** — multi-level zones (cities with above/below floors)
+    shown as switchable layers in the viewer.
+  - **Official / shared maps** — carry community or "official" maps, not just the
+    locally-curated set.
+  - **Downscale images** — the set is ~42MB; large zone maps can be compressed
+    once the keepers are settled.
+  - Keep an eye out for any other zones rendering wrong (markers off, bad crop).
 - **Harvest zones** — show where each resource is gathered.
 - **More wiki enrichment** — wider item-stat / icon / mob-level coverage.
   (Note: vendor *buy* prices and live auction prices are NOT obtainable — no
