@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-16T05:47:46.197Z",
+  "generatedAt": "2026-06-16T06:07:41.786Z",
   "source": "mnm-tools",
-  "ledgerFiles": 13,
-  "events": 2928,
+  "ledgerFiles": 14,
+  "events": 2933,
   "mobs": {
     "a desert bat": {
       "kills": 0,
@@ -166,15 +166,15 @@
       "kills": 0,
       "drops": {
         "Raw Rat Meat": 8,
-        "Rat Ear": 6,
+        "Rat Ear": 7,
         "Rat Tooth": 4,
         "Rat Foot": 3
       },
       "zones": {
-        "Night Harbor": 39
+        "Night Harbor": 40
       },
       "coin": 0,
-      "corpses": 10
+      "corpses": 11
     },
     "a diseased snake": {
       "kills": 0,
@@ -428,20 +428,20 @@
       "corpses": 34
     },
     "a green drakeling": {
-      "kills": 37,
+      "kills": 38,
       "drops": {
-        "Drake Claw": 6,
-        "Green Drakeling Scale": 16,
+        "Drake Claw": 7,
+        "Green Drakeling Scale": 17,
         "Green Drakeling Wing": 16,
         "Green Drakeling Hide": 9,
         "Drake Fang": 10,
         "Green Drakeling Poison Duct": 1
       },
       "zones": {
-        "Evershade Weald": 101
+        "Evershade Weald": 105
       },
-      "coin": 460,
-      "corpses": 34
+      "coin": 475,
+      "corpses": 35
     },
     "a large black bat": {
       "kills": 0,
@@ -1458,9 +1458,9 @@
       "droppedBy": [
         {
           "mob": "a green drakeling",
-          "drops": 6,
-          "corpses": 34,
-          "rate": 0.17647058823529413
+          "drops": 7,
+          "corpses": 35,
+          "rate": 0.2
         }
       ],
       "prices": [
@@ -1485,8 +1485,8 @@
         {
           "mob": "a green drakeling",
           "drops": 10,
-          "corpses": 34,
-          "rate": 0.29411764705882354
+          "corpses": 35,
+          "rate": 0.2857142857142857
         }
       ],
       "prices": [
@@ -1686,8 +1686,8 @@
         {
           "mob": "a green drakeling",
           "drops": 9,
-          "corpses": 34,
-          "rate": 0.2647058823529412
+          "corpses": 35,
+          "rate": 0.2571428571428571
         }
       ],
       "prices": [
@@ -1708,8 +1708,8 @@
         {
           "mob": "a green drakeling",
           "drops": 1,
-          "corpses": 34,
-          "rate": 0.029411764705882353
+          "corpses": 35,
+          "rate": 0.02857142857142857
         }
       ],
       "prices": [],
@@ -1724,9 +1724,9 @@
       "droppedBy": [
         {
           "mob": "a green drakeling",
-          "drops": 16,
-          "corpses": 34,
-          "rate": 0.47058823529411764
+          "drops": 17,
+          "corpses": 35,
+          "rate": 0.4857142857142857
         }
       ],
       "prices": [
@@ -1747,8 +1747,8 @@
         {
           "mob": "a green drakeling",
           "drops": 16,
-          "corpses": 34,
-          "rate": 0.47058823529411764
+          "corpses": 35,
+          "rate": 0.45714285714285713
         }
       ],
       "prices": [
@@ -2017,9 +2017,9 @@
         },
         {
           "mob": "a large rat",
-          "drops": 6,
-          "corpses": 10,
-          "rate": 0.6
+          "drops": 7,
+          "corpses": 11,
+          "rate": 0.6363636363636364
         }
       ],
       "prices": [
@@ -2044,8 +2044,8 @@
         {
           "mob": "a large rat",
           "drops": 3,
-          "corpses": 10,
-          "rate": 0.3
+          "corpses": 11,
+          "rate": 0.2727272727272727
         }
       ],
       "prices": [
@@ -2066,8 +2066,8 @@
         {
           "mob": "a large rat",
           "drops": 4,
-          "corpses": 10,
-          "rate": 0.4
+          "corpses": 11,
+          "rate": 0.36363636363636365
         },
         {
           "mob": "a large diseased rat",
@@ -2234,8 +2234,8 @@
         {
           "mob": "a large rat",
           "drops": 8,
-          "corpses": 10,
-          "rate": 0.8
+          "corpses": 11,
+          "rate": 0.7272727272727273
         },
         {
           "mob": "a large diseased rat",
