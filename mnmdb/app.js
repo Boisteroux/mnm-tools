@@ -693,7 +693,8 @@ function mobIcon(name, race) {
     [/widow|spider/, '🕷️'], [/snake|serpent|rattlesnake|viper|cobra/, '🐍'], [/scarab|beetle/, '🪲'],
     [/wasp|hornet|\bdrone\b|\bbee\b/, '🐝'], [/\brat\b|rodent/, '🐀'], [/drake|dragon|wyrm/, '🐉'],
     [/croc|gator|lizard/, '🐊'], [/fawn|dryad|deer|stag/, '🦌'], [/crab/, '🦀'],
-    [/ashira|fellstone|\borc\b|bandit|warrior|scout|shaman|lookout|guard|\bhuman|\belf/, '⚔️'],
+    [/\borc\b|fellstone|goblin|ogre|troll/, '👹'],
+    [/ashira|bandit|warrior|scout|shaman|lookout|guard|\bhuman|\belf|humanoid/, '⚔️'],
     [/elemental/, '💧'], [/fire|flame|ember/, '🔥'],
   ];
   for (const [rx, ic] of map) if (rx.test(n)) return ic;
