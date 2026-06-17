@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-16T23:43:27.714Z",
+  "generatedAt": "2026-06-17T00:54:27.304Z",
   "source": "mnm-tools",
   "ledgerFiles": 15,
-  "events": 3225,
+  "events": 3374,
   "mobs": {
     "a desert bat": {
       "kills": 0,
@@ -958,10 +958,10 @@
       "prices": [
         {
           "copper": 1,
-          "count": 12
+          "count": 16
         }
       ],
-      "harvested": 344,
+      "harvested": 388,
       "zones": []
     },
     {
@@ -1053,7 +1053,7 @@
       "name": "Chipped Black Sapphire",
       "droppedBy": [],
       "prices": [],
-      "harvested": 1,
+      "harvested": 2,
       "zones": []
     },
     {
@@ -1109,7 +1109,7 @@
       "name": "Chipped Hematite",
       "droppedBy": [],
       "prices": [],
-      "harvested": 1,
+      "harvested": 2,
       "zones": []
     },
     {
@@ -1371,7 +1371,7 @@
       "name": "Copper Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 339,
+      "harvested": 373,
       "zones": []
     },
     {
@@ -1433,7 +1433,7 @@
       "prices": [
         {
           "copper": 2,
-          "count": 1
+          "count": 2
         }
       ],
       "harvested": 0,
@@ -1831,7 +1831,7 @@
           "count": 2
         }
       ],
-      "harvested": 26,
+      "harvested": 28,
       "zones": []
     },
     {
@@ -1916,6 +1916,19 @@
       "zones": [
         "Evershade Weald"
       ]
+    },
+    {
+      "id": "grouper",
+      "name": "Grouper",
+      "droppedBy": [],
+      "prices": [
+        {
+          "copper": 2,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "grub",
@@ -2049,7 +2062,7 @@
       "name": "Lionleaf",
       "droppedBy": [],
       "prices": [],
-      "harvested": 18,
+      "harvested": 23,
       "zones": []
     },
     {
@@ -2547,7 +2560,7 @@
           "count": 8
         }
       ],
-      "harvested": 188,
+      "harvested": 218,
       "zones": []
     },
     {
@@ -3570,7 +3583,12 @@
           "rate": 0.010416666666666666
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 25,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Evershade Weald",
@@ -3792,7 +3810,12 @@
           "rate": 0.037037037037037035
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 37,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Evershade Weald"
@@ -4078,6 +4101,19 @@
       "zones": []
     },
     {
+      "id": "whitefish",
+      "name": "Whitefish",
+      "droppedBy": [],
+      "prices": [
+        {
+          "copper": 2,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": []
+    },
+    {
       "id": "widow_eye",
       "name": "Widow Eye",
       "droppedBy": [
@@ -4154,7 +4190,7 @@
           "count": 4
         }
       ],
-      "harvested": 158,
+      "harvested": 181,
       "zones": []
     },
     {
@@ -4227,16 +4263,16 @@
     }
   ],
   "harvest": {
-    "Copper Ore": 339,
-    "Brittle Stone": 344,
+    "Copper Ore": 373,
+    "Brittle Stone": 388,
     "Clouded Crystallized Magic": 7,
-    "Wood": 158,
-    "Resin": 188,
+    "Wood": 181,
+    "Resin": 218,
     "Chipped Turquoise": 2,
-    "Lionleaf": 18,
+    "Lionleaf": 23,
     "Chipped Star Ruby": 2,
     "Alunite Ore": 8,
-    "Ghost Poppy": 26,
+    "Ghost Poppy": 28,
     "Nomad's Grace": 5,
     "Chipped Fire Emerald": 2,
     "Chipped Bloodstone": 1,
@@ -4246,10 +4282,10 @@
     "Chipped Blue Diamond": 2,
     "Chipped Jacinth": 1,
     "Chipped Onyx": 3,
-    "Chipped Hematite": 1,
+    "Chipped Hematite": 2,
     "Chipped Diamond": 1,
     "Chipped Emerald": 1,
-    "Chipped Black Sapphire": 1,
+    "Chipped Black Sapphire": 2,
     "Magic Frond": 1,
     "Whispering Sage": 4,
     "Chipped Jasper": 1,

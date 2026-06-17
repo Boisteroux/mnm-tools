@@ -199,25 +199,50 @@ function parseTradeskills(wikitext) {
   return [...new Set(links.filter((l) => TRADESKILLS.has(l)))];
 }
 
-// Parse a tradeskill page's "== Recipes ==" table into structured recipes:
-// { tradeskill, result:{qty,item}, components:[{qty,item}], trivial }.
+// Strip a wiki table cell's leading "style=...|" attribute segment + pipe.
+const cellLabel = (c) => {
+  c = c.replace(/^\s*[!|]\s*/, '');
+  const p = c.lastIndexOf('|');
+  if (p >= 0 && /style=|align|background|width|colspan|scope|rowspan/i.test(c.slice(0, p))) c = c.slice(p + 1);
+  return c.trim();
+};
+const firstItemLink = (s) => { const m = s.match(/(?:(\d+)\s*x?\s*)?\[\[([^\]]+)\]\]/i); return m ? { qty: +(m[1] || 1), item: m[2].split('|')[0].trim() } : null; };
+const allItemLinks = (s) => [...s.matchAll(/(?:(\d+)\s*x?\s*)?\[\[([^\]]+)\]\]/gi)].map((m) => ({ qty: +(m[1] || 1), item: m[2].split('|')[0].trim() }));
+
+// Parse a tradeskill page's "== Recipes ==" table into structured recipes,
+// reading the column HEADERS so it adapts to each skill's layout (Result/Product/
+// Name for the output, Components/Ingredients for the inputs).
 function parseRecipes(wikitext, tradeskill) {
   const h = wikitext.search(/==\s*Recipes\s*==/i);
   if (h < 0) return [];
   const tStart = wikitext.indexOf('{|', h);
   if (tStart < 0) return [];
   const table = wikitext.slice(tStart, wikitext.indexOf('|}', tStart));
+  const rows = table.split(/\n\|-/);
+
+  // Column map from the header — only lines that START with "!" (so the "{|" table
+  // line's attributes aren't mistaken for a column).
+  let labels = null;
+  for (const r of rows) {
+    const hls = r.split('\n').filter((l) => /^\s*!/.test(l));
+    if (hls.length) { labels = hls.flatMap((l) => l.replace(/^\s*!/, '').split(/\s*!!\s*/)).map(cellLabel).filter(Boolean); break; }
+  }
+  if (!labels) return [];
+  const find = (...rxs) => { for (const rx of rxs) { const i = labels.findIndex((l) => rx.test(l)); if (i >= 0) return i; } return -1; };
+  const resultCol = find(/result/i, /product/i, /yield/i, /^name/i, /^item/i);
+  const compCol = find(/component/i, /ingredient/i);
+  const trivCol = find(/trivial/i);
+  if (resultCol < 0 || compCol < 0) return [];
+
   const out = [];
-  for (const r of table.split(/\n\|-/).slice(1)) {
-    if (/^\s*!/.test(r)) continue;
-    let cells = r.split('||').map((c) => c.trim());
+  for (const r of rows) {
+    if (/(^|\n)\s*!/.test(r) || !/\[\[/.test(r)) continue; // header / empty
+    let cells = r.split('||').map((c) => c.replace(/^\s*\|\s*/, '').trim());
     if (cells[0] === '') cells = cells.slice(1);
-    if (cells.length < 4) continue;
-    const rm = cells[3].match(/(\d+)\s*x?\s*\[\[([^\]]+)\]\]/i);
-    const components = [...cells[2].matchAll(/(\d+)\s*x\s*\[\[([^\]]+)\]\]/gi)]
-      .map((m) => ({ qty: +m[1], item: m[2].split('|')[0].trim() }));
-    if (!rm || !components.length) continue;
-    out.push({ tradeskill, result: { qty: +rm[1], item: rm[2].split('|')[0].trim() }, components, trivial: parseInt(cells[4], 10) || null });
+    const res = firstItemLink(cells[resultCol] || '');
+    const components = allItemLinks(cells[compCol] || '');
+    if (!res || !components.length || /example/i.test(res.item)) continue;
+    out.push({ tradeskill, result: res, components, trivial: trivCol >= 0 ? (parseInt(cells[trivCol], 10) || null) : null });
   }
   return out;
 }

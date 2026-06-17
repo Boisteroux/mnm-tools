@@ -1,35 +1,6 @@
 {
-  "generatedAt": "2026-06-16T21:36:20.367Z",
+  "generatedAt": "2026-06-17T06:16:33.814Z",
   "items": {
-    "Copper Ore": {
-      "hasPage": true,
-      "iconId": "Itemicon0118AB",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.5,
-      "size": "SMALL",
-      "class": null,
-      "race": null,
-      "wikiZones": [
-        "Shaded Dunes",
-        "Night Harbor",
-        "Sungreet Strand",
-        "Faelindral"
-      ],
-      "from": [
-        "Copper Vein",
-        "Rich Copper Vein"
-      ],
-      "categories": [
-        "Tradeskill Ingredient"
-      ],
-      "tradeskills": [
-        "Smelting"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/4/4d/Itemicon0118AB.png/64px-Itemicon0118AB.png"
-    },
     "Bone Chips": {
       "hasPage": true,
       "iconId": "Itemicon0057AA",
@@ -132,6 +103,29 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/5/56/Itemicon0134AC.png/64px-Itemicon0134AC.png"
     },
+    "Chipped Cat's Eye Agate": {
+      "hasPage": true,
+      "iconId": "Itemicon0134AD",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "from": [
+        "Copper Vein",
+        "Rich Copper Vein"
+      ],
+      "categories": [
+        "Tradeskill Ingredient"
+      ],
+      "tradeskills": [
+        "Jewelcrafting"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/5/58/Itemicon0134AD.png/64px-Itemicon0134AD.png"
+    },
     "Chipped Black Pearl": {
       "hasPage": true,
       "iconId": "Itemicon0133AB",
@@ -198,6 +192,29 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/b4/Itemicon0137AC.png/64px-Itemicon0137AC.png"
     },
+    "Chipped Jasper": {
+      "hasPage": true,
+      "iconId": "Itemicon0137AF",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "from": [
+        "Copper Vein",
+        "Rich Copper Vein"
+      ],
+      "categories": [
+        "Tradeskill Ingredient"
+      ],
+      "tradeskills": [
+        "Jewelcrafting"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/9/9f/Itemicon0137AF.png/64px-Itemicon0137AF.png"
+    },
     "Chipped Star Ruby": {
       "hasPage": true,
       "iconId": "Itemicon0137AE",
@@ -220,6 +237,29 @@
         "Jewelcrafting"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/a/a2/Itemicon0137AE.png/64px-Itemicon0137AE.png"
+    },
+    "Chipped Wolf's Eye Agate": {
+      "hasPage": true,
+      "iconId": "Itemicon0133AD",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "from": [
+        "Copper Vein",
+        "Rich Copper Vein"
+      ],
+      "categories": [
+        "Tradeskill Ingredient"
+      ],
+      "tradeskills": [
+        "Jewelcrafting"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/b7/Itemicon0133AD.png/64px-Itemicon0133AD.png"
     },
     "Chipped Turquoise": {
       "hasPage": true,
@@ -382,48 +422,6 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/c/cb/Itemicon0137AG.png/64px-Itemicon0137AG.png"
     },
-    "Copper Mace": {
-      "hasPage": true,
-      "iconId": "Itemicon0161AB",
-      "slot": "PRIMARY SECONDARY",
-      "dmg": 7,
-      "delay": 38,
-      "skill": "BLG",
-      "weight": 7,
-      "size": "LARGE",
-      "class": "BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
-      "race": "ALL",
-      "categories": [
-        "Weapon",
-        "Primary",
-        "Secondary",
-        "1H Bludgeoning"
-      ],
-      "tradeskills": [
-        "Blacksmithing"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/c/c0/Itemicon0161AB.png/64px-Itemicon0161AB.png"
-    },
-    "Copper Plate Bracer": {
-      "hasPage": true,
-      "iconId": "Itemicon0042AB",
-      "slot": "WRIST",
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 2,
-      "size": "SMALL",
-      "class": "CLR FTR INQ PAL SHD",
-      "race": "ALL",
-      "categories": [
-        "Armor",
-        "Wrist"
-      ],
-      "tradeskills": [
-        "Blacksmithing"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/8/8e/Itemicon0042AB.png/64px-Itemicon0042AB.png"
-    },
     "Bat Fur": {
       "hasPage": true,
       "iconId": "Itemicon0062AB",
@@ -510,28 +508,6 @@
         "Blacksmithing"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/7/7a/Itemicon0162AB.png/64px-Itemicon0162AB.png"
-    },
-    "Copper Scimitar": {
-      "hasPage": true,
-      "iconId": "Itemicon0146AB",
-      "slot": "PRIMARY SECONDARY",
-      "dmg": 6,
-      "delay": 34,
-      "skill": "SLA",
-      "weight": 7,
-      "size": "MEDIUM",
-      "class": "ARC BRD BST DRU FTR INQ PAL RNG ROG SHD SPB WIZ",
-      "race": "ALL",
-      "categories": [
-        "Weapon",
-        "Primary",
-        "Secondary",
-        "1H Slashing"
-      ],
-      "tradeskills": [
-        "Blacksmithing"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/3c/Itemicon0146AB.png/64px-Itemicon0146AB.png"
     },
     "Ashira Tail": {
       "hasPage": true,
@@ -815,6 +791,25 @@
       "race": null,
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/9/91/Itemicon0017AA.png/64px-Itemicon0017AA.png"
     },
+    "Broken Shaman Idol": {
+      "hasPage": true,
+      "iconId": "Itemicon0237AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 1,
+      "size": "TINY",
+      "class": null,
+      "race": null,
+      "from": [
+        "a Fellstone shaman"
+      ],
+      "categories": [
+        "Quest Items"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/d/d2/Itemicon0237AA.png/64px-Itemicon0237AA.png"
+    },
     "Blighted Orc Head": {
       "hasPage": true,
       "iconId": "Itemicon0102AA",
@@ -926,6 +921,35 @@
       "class": null,
       "race": null
     },
+    "Copper Ore": {
+      "hasPage": true,
+      "iconId": "Itemicon0118AB",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "wikiZones": [
+        "Shaded Dunes",
+        "Night Harbor",
+        "Sungreet Strand",
+        "Faelindral"
+      ],
+      "from": [
+        "Copper Vein",
+        "Rich Copper Vein"
+      ],
+      "categories": [
+        "Tradeskill Ingredient"
+      ],
+      "tradeskills": [
+        "Smelting"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/4/4d/Itemicon0118AB.png/64px-Itemicon0118AB.png"
+    },
     "Cracked Staff": {
       "hasPage": true,
       "iconId": "Itemicon0185AA",
@@ -944,6 +968,49 @@
         "1H Bludgeoning"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/32/Itemicon0185AA.png/64px-Itemicon0185AA.png"
+    },
+    "Copper Mace": {
+      "hasPage": true,
+      "iconId": "Itemicon0161AB",
+      "slot": "PRIMARY SECONDARY",
+      "dmg": 7,
+      "delay": 38,
+      "skill": "BLG",
+      "weight": 7,
+      "size": "LARGE",
+      "class": "BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "categories": [
+        "Weapon",
+        "Primary",
+        "Secondary",
+        "1H Bludgeoning"
+      ],
+      "tradeskills": [
+        "Blacksmithing"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/c/c0/Itemicon0161AB.png/64px-Itemicon0161AB.png"
+    },
+    "Grub": {
+      "hasPage": true,
+      "iconId": "Itemicon0091AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "soldBy": {
+        "base": 6,
+        "shady": null,
+        "vendors": [
+          "Sungreet Strand",
+          "Fisher Mardan"
+        ]
+      },
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/8/8a/Itemicon0091AA.png/64px-Itemicon0091AA.png"
     },
     "Multhele Root": {
       "hasPage": true,
@@ -970,6 +1037,26 @@
         "Foraged"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/1/1c/Itemicon0060AA.png/64px-Itemicon0060AA.png"
+    },
+    "Copper Plate Bracer": {
+      "hasPage": true,
+      "iconId": "Itemicon0042AB",
+      "slot": "WRIST",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 2,
+      "size": "SMALL",
+      "class": "CLR FTR INQ PAL SHD",
+      "race": "ALL",
+      "categories": [
+        "Armor",
+        "Wrist"
+      ],
+      "tradeskills": [
+        "Blacksmithing"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/8/8e/Itemicon0042AB.png/64px-Itemicon0042AB.png"
     },
     "Fire Beetle Eye": {
       "hasPage": true,
@@ -1187,53 +1274,27 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/3f/Itemicon0156AC.png/64px-Itemicon0156AC.png"
     },
-    "Rat Tooth": {
+    "Copper Scimitar": {
       "hasPage": true,
-      "iconId": "Itemicon0111AA",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.1,
-      "size": "TINY",
-      "class": null,
-      "race": null,
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/a/a3/Itemicon0111AA.png/64px-Itemicon0111AA.png"
-    },
-    "Rat Foot": {
-      "hasPage": true,
-      "iconId": "Itemicon0212AA",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.2,
-      "size": "SMALL",
-      "class": null,
-      "race": null,
-      "wikiZones": [
-        "Night Harbor"
+      "iconId": "Itemicon0146AB",
+      "slot": "PRIMARY SECONDARY",
+      "dmg": 6,
+      "delay": 34,
+      "skill": "SLA",
+      "weight": 7,
+      "size": "MEDIUM",
+      "class": "ARC BRD BST DRU FTR INQ PAL RNG ROG SHD SPB WIZ",
+      "race": "ALL",
+      "categories": [
+        "Weapon",
+        "Primary",
+        "Secondary",
+        "1H Slashing"
       ],
-      "from": [
-        "a large rat"
+      "tradeskills": [
+        "Blacksmithing"
       ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/8/8a/Itemicon0212AA.png/64px-Itemicon0212AA.png"
-    },
-    "Rat Ear": {
-      "hasPage": true,
-      "iconId": "Itemicon0214AA",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.1,
-      "size": "SMALL",
-      "class": null,
-      "race": null,
-      "from": [
-        "A large rat"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/fa/Itemicon0214AA.png/64px-Itemicon0214AA.png"
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/3c/Itemicon0146AB.png/64px-Itemicon0146AB.png"
     },
     "Fire Beetle Gland": {
       "hasPage": true,
@@ -1280,29 +1341,6 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/fa/Itemicon0092AA.png/64px-Itemicon0092AA.png"
     },
-    "Raw Jackal Meat": {
-      "hasPage": true,
-      "iconId": "Itemicon0079AA",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 2.5,
-      "size": "SMALL",
-      "class": null,
-      "race": null,
-      "wikiZones": [
-        "Tel Ekir"
-      ],
-      "from": [
-        "a bonded jackal",
-        "a dire jackal"
-      ],
-      "tradeskills": [
-        "Cooking"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/d/db/Itemicon0079AA.png/64px-Itemicon0079AA.png"
-    },
     "Large Bat Wing": {
       "hasPage": true,
       "iconId": "Itemicon0109AA",
@@ -1322,22 +1360,6 @@
         "a large dunes bat"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/b6/Itemicon0109AA.png/64px-Itemicon0109AA.png"
-    },
-    "Raw Crocodile Meat": {
-      "hasPage": true,
-      "iconId": "Itemicon0079AA",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.8,
-      "size": "SMALL",
-      "class": null,
-      "race": null,
-      "tradeskills": [
-        "Cooking"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/d/db/Itemicon0079AA.png/64px-Itemicon0079AA.png"
     },
     "Crocodile Tooth": {
       "hasPage": true,
@@ -1371,26 +1393,6 @@
       ],
       "harvestedBy": "Herbalism",
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/f9/Itemicon0059AA.png/64px-Itemicon0059AA.png"
-    },
-    "Raw Bat Meat": {
-      "hasPage": true,
-      "iconId": "Itemicon0079AA",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 2,
-      "size": "SMALL",
-      "class": null,
-      "race": null,
-      "from": [
-        "a desert bat",
-        "a large desert bat"
-      ],
-      "tradeskills": [
-        "Cooking"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/d/db/Itemicon0079AA.png/64px-Itemicon0079AA.png"
     },
     "Ghost Poppy": {
       "hasPage": true,
@@ -1498,31 +1500,6 @@
         "a green drakeling"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/b6/Itemicon0109AA.png/64px-Itemicon0109AA.png"
-    },
-    "Raw Ashira Meat": {
-      "hasPage": true,
-      "iconId": "Itemicon0079AA",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.75,
-      "size": "SMALL",
-      "class": null,
-      "race": null,
-      "wikiZones": [
-        "Vale of Zintar"
-      ],
-      "from": [
-        "a corrupted adept",
-        "a corrupted ashira",
-        "a corrupted outrider",
-        "a corrupted warrior"
-      ],
-      "tradeskills": [
-        "Cooking"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/d/db/Itemicon0079AA.png/64px-Itemicon0079AA.png"
     },
     "Decayed Great Staff": {
       "hasPage": true,
@@ -1776,17 +1753,27 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/61/Itemicon0006AA.png/64px-Itemicon0006AA.png"
     },
-    "Potato": {
+    "Foamstalker's Trinket": {
       "hasPage": true,
-      "iconId": null,
+      "iconId": "Itemicon0235AA",
       "slot": null,
       "dmg": null,
       "delay": null,
       "skill": null,
-      "weight": 0.2,
-      "size": "SMALL",
-      "class": null,
-      "race": null
+      "weight": 3,
+      "size": "MEDIUM",
+      "class": "ALL",
+      "race": "ALL",
+      "wikiZones": [
+        "Evershade Weald"
+      ],
+      "from": [
+        "Rotmuzzle"
+      ],
+      "categories": [
+        "RANGE"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/5/5a/Itemicon0235AA.png/64px-Itemicon0235AA.png"
     },
     "Onion": {
       "hasPage": true,
@@ -1800,23 +1787,6 @@
       "class": null,
       "race": null,
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/bd/Itemicon0222AA.png/64px-Itemicon0222AA.png"
-    },
-    "Tattered Cloth Gorget": {
-      "hasPage": true,
-      "iconId": "Itemicon0008AA",
-      "slot": "NECK",
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.2,
-      "size": "SMALL",
-      "class": "ALL",
-      "race": "ALL",
-      "categories": [
-        "Jewelry",
-        "Neck"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/34/Itemicon0008AA.png/64px-Itemicon0008AA.png"
     },
     "Rusty Scimitar": {
       "hasPage": true,
@@ -2016,23 +1986,6 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/6d/Itemicon0161AA.png/64px-Itemicon0161AA.png"
     },
-    "Tattered Cloth Gloves": {
-      "hasPage": true,
-      "iconId": "Itemicon0049AA",
-      "slot": "HANDS",
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.3,
-      "size": "SMALL",
-      "class": "ALL",
-      "race": "ALL",
-      "categories": [
-        "Armor",
-        "Hands"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/7/7a/Itemicon0049AA.png/64px-Itemicon0049AA.png"
-    },
     "Rawhide Scraps": {
       "hasPage": true,
       "iconId": "Itemicon0124AB",
@@ -2068,128 +2021,6 @@
         "Waist"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/bd/Itemicon0010AA.png/64px-Itemicon0010AA.png"
-    },
-    "Tattered Cloth Mantle": {
-      "hasPage": true,
-      "iconId": "Itemicon0054AA",
-      "slot": "SHOULDERS",
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.3,
-      "size": "SMALL",
-      "class": "ALL",
-      "race": "ALL",
-      "categories": [
-        "Armor",
-        "Shoulders"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/a/a3/Itemicon0054AA.png/64px-Itemicon0054AA.png"
-    },
-    "Tattered Cloth Pantaloons": {
-      "hasPage": true,
-      "iconId": "Itemicon0027AA",
-      "slot": "LEGS",
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.8,
-      "size": "MEDIUM",
-      "class": "ALL",
-      "race": "ALL",
-      "from": [
-        "a rotting skeleton"
-      ],
-      "categories": [
-        "Armor",
-        "Legs"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/b1/Itemicon0027AA.png/64px-Itemicon0027AA.png"
-    },
-    "Tattered Cloth Boots": {
-      "hasPage": true,
-      "iconId": "Itemicon0033AA",
-      "slot": "FEET",
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.3,
-      "size": "MEDIUM",
-      "class": "ALL",
-      "race": "ALL",
-      "categories": [
-        "Armor",
-        "Feet"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/7/79/Itemicon0033AA.png/64px-Itemicon0033AA.png"
-    },
-    "Tattered Cloth Robe": {
-      "hasPage": true,
-      "iconId": "Itemicon0021AA",
-      "slot": "CHEST",
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.8,
-      "size": "MEDIUM",
-      "class": "ELE ENC NEC WIZ",
-      "race": "ALL",
-      "categories": [
-        "Armor",
-        "Chest"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/1/12/Itemicon0021AA.png/64px-Itemicon0021AA.png"
-    },
-    "Tattered Cloth Cape": {
-      "hasPage": true,
-      "iconId": "Itemicon0012AA",
-      "slot": "BACK",
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.3,
-      "size": "MEDIUM",
-      "class": "ALL",
-      "race": "ALL",
-      "categories": [
-        "Armor",
-        "Back"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/2/27/Itemicon0012AA.png/64px-Itemicon0012AA.png"
-    },
-    "Tattered Cloth Bracer": {
-      "hasPage": true,
-      "iconId": "Itemicon0041AA",
-      "slot": "WRIST",
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.3,
-      "size": "SMALL",
-      "class": "ALL",
-      "race": "ALL",
-      "categories": [
-        "Armor",
-        "Wrist"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/a/a4/Itemicon0041AA.png/64px-Itemicon0041AA.png"
-    },
-    "Tattered Cloth Cap": {
-      "hasPage": true,
-      "iconId": "Itemicon0044AA",
-      "slot": "HEAD",
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.3,
-      "size": "SMALL",
-      "class": "ALL",
-      "race": "ALL",
-      "categories": [
-        "Armor",
-        "Head"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/bb/Itemicon0044AA.png/64px-Itemicon0044AA.png"
     },
     "Scarab Carapace": {
       "hasPage": true,
@@ -2310,6 +2141,54 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/8/8c/Itemicon0106AC.png/64px-Itemicon0106AC.png"
     },
+    "Rat Tooth": {
+      "hasPage": true,
+      "iconId": "Itemicon0111AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "TINY",
+      "class": null,
+      "race": null,
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/a/a3/Itemicon0111AA.png/64px-Itemicon0111AA.png"
+    },
+    "Rat Foot": {
+      "hasPage": true,
+      "iconId": "Itemicon0212AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.2,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "wikiZones": [
+        "Night Harbor"
+      ],
+      "from": [
+        "a large rat"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/8/8a/Itemicon0212AA.png/64px-Itemicon0212AA.png"
+    },
+    "Rat Ear": {
+      "hasPage": true,
+      "iconId": "Itemicon0214AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "from": [
+        "A large rat"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/fa/Itemicon0214AA.png/64px-Itemicon0214AA.png"
+    },
     "Spider Legs": {
       "hasPage": true,
       "iconId": "Itemicon0115AA",
@@ -2372,6 +2251,45 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/a/ae/Itemicon0218AA.png/64px-Itemicon0218AA.png"
     },
+    "Raw Jackal Meat": {
+      "hasPage": true,
+      "iconId": "Itemicon0079AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 2.5,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "wikiZones": [
+        "Tel Ekir"
+      ],
+      "from": [
+        "a bonded jackal",
+        "a dire jackal"
+      ],
+      "tradeskills": [
+        "Cooking"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/d/db/Itemicon0079AA.png/64px-Itemicon0079AA.png"
+    },
+    "Raw Crocodile Meat": {
+      "hasPage": true,
+      "iconId": "Itemicon0079AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.8,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "tradeskills": [
+        "Cooking"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/d/db/Itemicon0079AA.png/64px-Itemicon0079AA.png"
+    },
     "Raw Rat Meat": {
       "hasPage": true,
       "iconId": "Itemicon0079AA",
@@ -2385,6 +2303,26 @@
       "race": null,
       "from": [
         "a large rat"
+      ],
+      "tradeskills": [
+        "Cooking"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/d/db/Itemicon0079AA.png/64px-Itemicon0079AA.png"
+    },
+    "Raw Bat Meat": {
+      "hasPage": true,
+      "iconId": "Itemicon0079AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 2,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "from": [
+        "a desert bat",
+        "a large desert bat"
       ],
       "tradeskills": [
         "Cooking"
@@ -2427,6 +2365,33 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/5/5d/Itemicon0056AA.png/64px-Itemicon0056AA.png"
     },
+    "Ration": {
+      "hasPage": true,
+      "iconId": "Itemicon0129AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "soldBy": {
+        "base": 6,
+        "shady": 21,
+        "vendors": [
+          "Night Harbor",
+          "a barkeep",
+          "a shifty gnome",
+          "a suspicious salesman",
+          "Chef Belle",
+          "Clint the Innocent",
+          "Halrinn Grimsul",
+          "Quartermaster Obaid"
+        ]
+      },
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/b2/Itemicon0129AA.png/64px-Itemicon0129AA.png"
+    },
     "Spider Venom Sac": {
       "hasPage": true,
       "iconId": "Itemicon0112AA",
@@ -2447,6 +2412,31 @@
         "a giant spider"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/4/49/Itemicon0112AA.png/64px-Itemicon0112AA.png"
+    },
+    "Raw Ashira Meat": {
+      "hasPage": true,
+      "iconId": "Itemicon0079AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.75,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "wikiZones": [
+        "Vale of Zintar"
+      ],
+      "from": [
+        "a corrupted adept",
+        "a corrupted ashira",
+        "a corrupted outrider",
+        "a corrupted warrior"
+      ],
+      "tradeskills": [
+        "Cooking"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/d/db/Itemicon0079AA.png/64px-Itemicon0079AA.png"
     },
     "Raw Wolf Meat": {
       "hasPage": true,
@@ -2635,22 +2625,51 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/5/5d/Itemicon0056AA.png/64px-Itemicon0056AA.png"
     },
-    "Tattered Cloth Shirt": {
+    "Potato": {
       "hasPage": true,
-      "iconId": "Itemicon0009AA",
-      "slot": "SHIRT",
+      "iconId": null,
+      "slot": null,
       "dmg": null,
       "delay": null,
       "skill": null,
-      "weight": 2,
-      "size": "MEDIUM",
+      "weight": 0.2,
+      "size": "SMALL",
+      "class": null,
+      "race": null
+    },
+    "Rune-Etched Bone": {
+      "hasPage": true,
+      "iconId": "Itemicon0058AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "categories": [
+        "Reward",
+        "Quest Items"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/7/70/Itemicon0058AA.png/64px-Itemicon0058AA.png"
+    },
+    "Tattered Cloth Gorget": {
+      "hasPage": true,
+      "iconId": "Itemicon0008AA",
+      "slot": "NECK",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.2,
+      "size": "SMALL",
       "class": "ALL",
       "race": "ALL",
       "categories": [
-        "Armor",
-        "Shirt"
+        "Jewelry",
+        "Neck"
       ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/7/7d/Itemicon0009AA.png/64px-Itemicon0009AA.png"
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/34/Itemicon0008AA.png/64px-Itemicon0008AA.png"
     },
     "Tattered Rawhide Bracer": {
       "hasPage": true,
@@ -2687,6 +2706,40 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/32/Itemicon0185AA.png/64px-Itemicon0185AA.png"
     },
+    "Tattered Rawhide Boots": {
+      "hasPage": true,
+      "iconId": "Itemicon0037AA",
+      "slot": "FEET",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 1,
+      "size": "MEDIUM",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "categories": [
+        "Armor",
+        "Feet"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/bd/Itemicon0037AA.png/64px-Itemicon0037AA.png"
+    },
+    "Tattered Cloth Gloves": {
+      "hasPage": true,
+      "iconId": "Itemicon0049AA",
+      "slot": "HANDS",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.3,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "categories": [
+        "Armor",
+        "Hands"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/7/7a/Itemicon0049AA.png/64px-Itemicon0049AA.png"
+    },
     "Tattered Rawhide Belt": {
       "hasPage": true,
       "iconId": "Itemicon0010AA",
@@ -2703,6 +2756,23 @@
         "Waist"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/bd/Itemicon0010AA.png/64px-Itemicon0010AA.png"
+    },
+    "Tattered Rawhide Mask": {
+      "hasPage": true,
+      "iconId": "Itemicon0011AA",
+      "slot": "FACE",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 1,
+      "size": "SMALL",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "categories": [
+        "Armor",
+        "Face"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/ee/Itemicon0011AA.png/64px-Itemicon0011AA.png"
     },
     "Tattered Rawhide Cloak": {
       "hasPage": true,
@@ -2754,6 +2824,128 @@
         "Legs"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/e9/Itemicon0019AA.png/64px-Itemicon0019AA.png"
+    },
+    "Tattered Cloth Mantle": {
+      "hasPage": true,
+      "iconId": "Itemicon0054AA",
+      "slot": "SHOULDERS",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.3,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "categories": [
+        "Armor",
+        "Shoulders"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/a/a3/Itemicon0054AA.png/64px-Itemicon0054AA.png"
+    },
+    "Tattered Cloth Pantaloons": {
+      "hasPage": true,
+      "iconId": "Itemicon0027AA",
+      "slot": "LEGS",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.8,
+      "size": "MEDIUM",
+      "class": "ALL",
+      "race": "ALL",
+      "from": [
+        "a rotting skeleton"
+      ],
+      "categories": [
+        "Armor",
+        "Legs"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/b1/Itemicon0027AA.png/64px-Itemicon0027AA.png"
+    },
+    "Tattered Cloth Boots": {
+      "hasPage": true,
+      "iconId": "Itemicon0033AA",
+      "slot": "FEET",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.3,
+      "size": "MEDIUM",
+      "class": "ALL",
+      "race": "ALL",
+      "categories": [
+        "Armor",
+        "Feet"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/7/79/Itemicon0033AA.png/64px-Itemicon0033AA.png"
+    },
+    "Tattered Cloth Robe": {
+      "hasPage": true,
+      "iconId": "Itemicon0021AA",
+      "slot": "CHEST",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.8,
+      "size": "MEDIUM",
+      "class": "ELE ENC NEC WIZ",
+      "race": "ALL",
+      "categories": [
+        "Armor",
+        "Chest"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/1/12/Itemicon0021AA.png/64px-Itemicon0021AA.png"
+    },
+    "Tattered Cloth Cape": {
+      "hasPage": true,
+      "iconId": "Itemicon0012AA",
+      "slot": "BACK",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.3,
+      "size": "MEDIUM",
+      "class": "ALL",
+      "race": "ALL",
+      "categories": [
+        "Armor",
+        "Back"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/2/27/Itemicon0012AA.png/64px-Itemicon0012AA.png"
+    },
+    "Tattered Cloth Bracer": {
+      "hasPage": true,
+      "iconId": "Itemicon0041AA",
+      "slot": "WRIST",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.3,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "categories": [
+        "Armor",
+        "Wrist"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/a/a4/Itemicon0041AA.png/64px-Itemicon0041AA.png"
+    },
+    "Tattered Cloth Cap": {
+      "hasPage": true,
+      "iconId": "Itemicon0044AA",
+      "slot": "HEAD",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.3,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "categories": [
+        "Armor",
+        "Head"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/bb/Itemicon0044AA.png/64px-Itemicon0044AA.png"
     },
     "Tattered Cloth Veil": {
       "hasPage": true,
@@ -2997,6 +3189,23 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/3f/Itemicon0085AA.png/64px-Itemicon0085AA.png"
     },
+    "Tattered Cloth Shirt": {
+      "hasPage": true,
+      "iconId": "Itemicon0009AA",
+      "slot": "SHIRT",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 2,
+      "size": "MEDIUM",
+      "class": "ALL",
+      "race": "ALL",
+      "categories": [
+        "Armor",
+        "Shirt"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/7/7d/Itemicon0009AA.png/64px-Itemicon0009AA.png"
+    },
     "Wolf Tooth": {
       "hasPage": true,
       "iconId": "Itemicon0111AA",
@@ -3013,6 +3222,19 @@
         "A beguiled wolf"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/a/a3/Itemicon0111AA.png/64px-Itemicon0111AA.png"
+    },
+    "Unintelligible Report": {
+      "hasPage": true,
+      "iconId": "Itemicon0129AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/b2/Itemicon0129AA.png/64px-Itemicon0129AA.png"
     },
     "Raw Basa": {
       "hasPage": true,
@@ -3758,28 +3980,6 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/b1/Itemicon0067AA.png/64px-Itemicon0067AA.png"
     },
-    "Grub": {
-      "hasPage": true,
-      "wikiOnly": true,
-      "iconId": "Itemicon0091AA",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.1,
-      "size": "SMALL",
-      "class": "ALL",
-      "race": "ALL",
-      "soldBy": {
-        "base": 6,
-        "shady": null,
-        "vendors": [
-          "Sungreet Strand",
-          "Fisher Mardan"
-        ]
-      },
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/8/8a/Itemicon0091AA.png/64px-Itemicon0091AA.png"
-    },
     "Raw Bay Crab": {
       "hasPage": true,
       "wikiOnly": true,
@@ -3939,6 +4139,24 @@
         "Belt"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/9/92/Itemicon0017AB.png/64px-Itemicon0017AB.png"
+    },
+    "Stranglevine": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0059AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "TINY",
+      "class": null,
+      "race": null,
+      "categories": [
+        "Tradeskill Ingredient"
+      ],
+      "harvestedBy": "Herbalism",
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/f9/Itemicon0059AA.png/64px-Itemicon0059AA.png"
     },
     "Lemon": {
       "hasPage": true,
@@ -4217,30 +4435,6 @@
       },
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/f9/Itemicon0059AA.png/64px-Itemicon0059AA.png"
     },
-    "Chipped Cat's Eye Agate": {
-      "hasPage": true,
-      "wikiOnly": true,
-      "iconId": "Itemicon0134AD",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.1,
-      "size": "SMALL",
-      "class": null,
-      "race": null,
-      "from": [
-        "Copper Vein",
-        "Rich Copper Vein"
-      ],
-      "categories": [
-        "Tradeskill Ingredient"
-      ],
-      "tradeskills": [
-        "Jewelcrafting"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/5/58/Itemicon0134AD.png/64px-Itemicon0134AD.png"
-    },
     "Chipped Sapphire": {
       "hasPage": true,
       "wikiOnly": true,
@@ -4384,30 +4578,6 @@
         "Jewelcrafting"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/9/95/Itemicon0137AA.png/64px-Itemicon0137AA.png"
-    },
-    "Chipped Wolf's Eye Agate": {
-      "hasPage": true,
-      "wikiOnly": true,
-      "iconId": "Itemicon0133AD",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.1,
-      "size": "SMALL",
-      "class": null,
-      "race": null,
-      "from": [
-        "Copper Vein",
-        "Rich Copper Vein"
-      ],
-      "categories": [
-        "Tradeskill Ingredient"
-      ],
-      "tradeskills": [
-        "Jewelcrafting"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/b7/Itemicon0133AD.png/64px-Itemicon0133AD.png"
     },
     "Chipped Topaz": {
       "hasPage": true,
@@ -4596,24 +4766,6 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/30/Itemicon0156AA.png/64px-Itemicon0156AA.png"
     },
-    "Stranglevine": {
-      "hasPage": true,
-      "wikiOnly": true,
-      "iconId": "Itemicon0059AA",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.1,
-      "size": "TINY",
-      "class": null,
-      "race": null,
-      "categories": [
-        "Tradeskill Ingredient"
-      ],
-      "harvestedBy": "Herbalism",
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/f9/Itemicon0059AA.png/64px-Itemicon0059AA.png"
-    },
     "Golden Palm Wood": {
       "hasPage": true,
       "wikiOnly": true,
@@ -4629,6 +4781,27 @@
       "from": [
         "Golden Palm Wood Pile",
         "Rich Golden Palm Wood Pile"
+      ],
+      "categories": [
+        "Tradeskill Ingredient"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/0/0a/Itemicon0121AA.png/64px-Itemicon0121AA.png"
+    },
+    "Whisperpine Wood": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0121AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "MEDIUM",
+      "class": null,
+      "race": null,
+      "from": [
+        "Whisperpine Wood Pile",
+        "Rich Whisperpine Wood Pile"
       ],
       "categories": [
         "Tradeskill Ingredient"
@@ -5143,27 +5316,6 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/4/49/Itemicon0112AA.png/64px-Itemicon0112AA.png"
     },
-    "Whisperpine Wood": {
-      "hasPage": true,
-      "wikiOnly": true,
-      "iconId": "Itemicon0121AA",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.1,
-      "size": "MEDIUM",
-      "class": null,
-      "race": null,
-      "from": [
-        "Whisperpine Wood Pile",
-        "Rich Whisperpine Wood Pile"
-      ],
-      "categories": [
-        "Tradeskill Ingredient"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/0/0a/Itemicon0121AA.png/64px-Itemicon0121AA.png"
-    },
     "Ashira Tooth": {
       "hasPage": true,
       "wikiOnly": true,
@@ -5293,6 +5445,82 @@
         "Tanning"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/0/04/Itemicon0062AE.png"
+    },
+    "Ring of the Pauper": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0098AA",
+      "slot": "FINGER",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "wikiZones": [
+        "Evershade Weald",
+        "Night Harbor"
+      ],
+      "from": [
+        "A black widow",
+        "a cobweaver hatchling"
+      ],
+      "categories": [
+        "Finger",
+        "Jewelry",
+        "Resist Gear",
+        "Reward"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/5/55/Itemicon0098AA.png/64px-Itemicon0098AA.png"
+    },
+    "Rabid-Hide Wristguards": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0014AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "SMALL",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "wikiZones": [
+        "Evershade Weald"
+      ],
+      "from": [
+        "Rotmuzzle"
+      ],
+      "categories": [
+        "Wrist",
+        "Armor"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/fc/Itemicon0014AA.png/64px-Itemicon0014AA.png"
+    },
+    "Gloves of the Rotting Hound": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0015AA",
+      "slot": "HANDS",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "SMALL",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "wikiZones": [
+        "Evershade Weald"
+      ],
+      "from": [
+        "Rotmuzzle"
+      ],
+      "categories": [
+        "Armor",
+        "Hands"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/66/Itemicon0015AA.png/64px-Itemicon0015AA.png"
     },
     "Blight-Gnawed Crown": {
       "hasPage": true,
@@ -5487,6 +5715,60 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/3/3c/Itemicon0196AB.png"
     },
+    "Smithing Hammer": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0161AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 5,
+      "size": "LARGE",
+      "class": null,
+      "race": null,
+      "tradeskills": [
+        "Blacksmithing"
+      ],
+      "soldBy": {
+        "base": 150,
+        "shady": null,
+        "vendors": [
+          "Faelindral",
+          "Night Harbor",
+          "a blacksmith",
+          "a weaponsmith"
+        ]
+      },
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/6d/Itemicon0161AA.png/64px-Itemicon0161AA.png"
+    },
+    "Smithing Pliers": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0104AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 2,
+      "size": "MEDIUM",
+      "class": null,
+      "race": null,
+      "tradeskills": [
+        "Blacksmithing"
+      ],
+      "soldBy": {
+        "base": 150,
+        "shady": null,
+        "vendors": [
+          "Faelindral",
+          "Night Harbor",
+          "a blacksmith",
+          "a weaponsmith"
+        ]
+      },
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/66/Itemicon0104AA.png/64px-Itemicon0104AA.png"
+    },
     "Rawhide Strap": {
       "hasPage": true,
       "wikiOnly": true,
@@ -5528,27 +5810,6 @@
         "Smelting"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/fe/Itemicon0123AA.png/64px-Itemicon0123AA.png"
-    },
-    "Silver Bar": {
-      "hasPage": true,
-      "wikiOnly": true,
-      "iconId": "Itemicon0123AE",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.1,
-      "size": "SMALL",
-      "class": null,
-      "race": null,
-      "categories": [
-        "Tradeskill Ingredient"
-      ],
-      "tradeskills": [
-        "Blacksmithing",
-        "Smelting"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/4/4a/Itemicon0123AE.png/64px-Itemicon0123AE.png"
     },
     "Bat Fur Braid": {
       "hasPage": true,
@@ -5607,26 +5868,6 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/8/81/Itemicon0224AA.png/64px-Itemicon0224AA.png"
     },
-    "Bronze Cauldron": {
-      "hasPage": true,
-      "wikiOnly": true,
-      "iconId": "Itemicon0217AB",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 2.5,
-      "size": "MEDIUM",
-      "class": null,
-      "race": null,
-      "categories": [
-        "Clickies"
-      ],
-      "tradeskills": [
-        "Blacksmithing"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/4/4b/Itemicon0217AB.png"
-    },
     "Copper Fasteners": {
       "hasPage": true,
       "wikiOnly": true,
@@ -5666,26 +5907,6 @@
         "a large crypt broodmatron"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/7/7b/Itemicon0116AA.png/64px-Itemicon0116AA.png"
-    },
-    "Tin Cauldron": {
-      "hasPage": true,
-      "wikiOnly": true,
-      "iconId": "Itemicon0217AA",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 2.5,
-      "size": "MEDIUM",
-      "class": null,
-      "race": null,
-      "categories": [
-        "Clickies"
-      ],
-      "tradeskills": [
-        "Blacksmithing"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/e3/Itemicon0217AA.png/64px-Itemicon0217AA.png"
     },
     "Bolt of Wool": {
       "hasPage": true,
@@ -5807,34 +6028,6 @@
         "Blacksmithing"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/3/3c/Itemicon0196AB.png"
-    },
-    "Ring of the Pauper": {
-      "hasPage": true,
-      "wikiOnly": true,
-      "iconId": "Itemicon0098AA",
-      "slot": "FINGER",
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.1,
-      "size": "SMALL",
-      "class": "ALL",
-      "race": "ALL",
-      "wikiZones": [
-        "Evershade Weald",
-        "Night Harbor"
-      ],
-      "from": [
-        "A black widow",
-        "a cobweaver hatchling"
-      ],
-      "categories": [
-        "Finger",
-        "Jewelry",
-        "Resist Gear",
-        "Reward"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/5/55/Itemicon0098AA.png/64px-Itemicon0098AA.png"
     },
     "Bolt of Cotton": {
       "hasPage": true,
@@ -6117,6 +6310,78 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/7/70/Itemicon0223AA.png/64px-Itemicon0223AA.png"
     },
+    "Hideclaw Grips": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0015AA",
+      "slot": "HANDS",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "SMALL",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "wikiZones": [
+        "Evershade Weald"
+      ],
+      "from": [
+        "Rotmuzzle"
+      ],
+      "categories": [
+        "Hands",
+        "Armor"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/66/Itemicon0015AA.png/64px-Itemicon0015AA.png"
+    },
+    "Frostmaw": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0145AA",
+      "slot": "PRIMARY",
+      "dmg": 6,
+      "delay": 35,
+      "skill": "SLA",
+      "weight": 6,
+      "size": "MEDIUM",
+      "class": "ARC BRD BST FTR INQ PAL RNG ROG SHD SPB WIZ",
+      "race": "ALL",
+      "wikiZones": [
+        "Evershade Weald"
+      ],
+      "from": [
+        "Rotmuzzle"
+      ],
+      "categories": [
+        "1H Slashing",
+        "Weapon"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/f1/Itemicon0145AA.png/64px-Itemicon0145AA.png"
+    },
+    "Moonlit Scruff": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0012AD",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "MEDIUM",
+      "class": "BST CLR DRU PAL RNG SHM",
+      "race": "ALL",
+      "wikiZones": [
+        "Evershade Weald"
+      ],
+      "from": [
+        "Rotmuzzle"
+      ],
+      "categories": [
+        "Back",
+        "Armor"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/c/c2/Itemicon0012AD.png"
+    },
     "Bronze Hinge": {
       "hasPage": true,
       "wikiOnly": true,
@@ -6178,6 +6443,27 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/a/aa/Itemicon0123AD.png/64px-Itemicon0123AD.png"
     },
+    "Silver Bar": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0123AE",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "categories": [
+        "Tradeskill Ingredient"
+      ],
+      "tradeskills": [
+        "Blacksmithing",
+        "Smelting"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/4/4a/Itemicon0123AE.png/64px-Itemicon0123AE.png"
+    },
     "Enchanted Bronze Bar": {
       "hasPage": true,
       "wikiOnly": true,
@@ -6197,6 +6483,26 @@
         "Jewelcrafting"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/fe/Itemicon0123AA.png/64px-Itemicon0123AA.png"
+    },
+    "Bronze Cauldron": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0217AB",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 2.5,
+      "size": "MEDIUM",
+      "class": null,
+      "race": null,
+      "categories": [
+        "Clickies"
+      ],
+      "tradeskills": [
+        "Blacksmithing"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/4/4b/Itemicon0217AB.png"
     },
     "Platinum Bar": {
       "hasPage": true,
@@ -6260,6 +6566,26 @@
         "Smelting"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/a/aa/Itemicon0123AD.png/64px-Itemicon0123AD.png"
+    },
+    "Tin Cauldron": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0217AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 2.5,
+      "size": "MEDIUM",
+      "class": null,
+      "race": null,
+      "categories": [
+        "Clickies"
+      ],
+      "tradeskills": [
+        "Blacksmithing"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/e3/Itemicon0217AA.png/64px-Itemicon0217AA.png"
     },
     "Leather Scraps": {
       "hasPage": true,
@@ -6454,23 +6780,6 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/3/37/Itemicon0217AC.png"
     },
-    "Padded Leather Scraps": {
-      "hasPage": true,
-      "wikiOnly": true,
-      "iconId": "Itemicon0124AB",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.2,
-      "size": "SMALL",
-      "class": null,
-      "race": null,
-      "categories": [
-        "Tradeskill Ingredient"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/2/2d/Itemicon0124AB.png/64px-Itemicon0124AB.png"
-    },
     "Enchanted Bronze Chain Links": {
       "hasPage": true,
       "wikiOnly": true,
@@ -6611,6 +6920,23 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/5/5b/Itemicon0125AA.png/64px-Itemicon0125AA.png"
     },
+    "Bronze Scraps": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0124AD",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 2.5,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "categories": [
+        "Tradeskill Ingredient"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/2/26/Itemicon0124AD.png/64px-Itemicon0124AD.png"
+    },
     "Iron Scraps": {
       "hasPage": true,
       "wikiOnly": true,
@@ -6627,6 +6953,30 @@
         "Tradeskill Ingredient"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/9/93/Itemicon0124AE.png/64px-Itemicon0124AE.png"
+    },
+    "Arrow": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0189AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "soldBy": {
+        "base": 1,
+        "shady": null,
+        "vendors": [
+          "Faelindral",
+          "Night Harbor",
+          "a bowyer",
+          "a fletcher"
+        ]
+      },
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/b0/Itemicon0189AA.png/64px-Itemicon0189AA.png"
     },
     "Tin Ore": {
       "hasPage": true,
@@ -6739,6 +7089,77 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/e0/Itemicon0118AA.png/64px-Itemicon0118AA.png"
     },
+    "Stonehead Arrow": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0189AA",
+      "slot": "AMMO",
+      "dmg": 1,
+      "delay": 0,
+      "skill": "ARC",
+      "weight": 0,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "categories": [
+        "Ammo",
+        "Arrow"
+      ],
+      "tradeskills": [
+        "Fletching"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/b0/Itemicon0189AA.png/64px-Itemicon0189AA.png"
+    },
+    "Copperhead Arrow": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0189AA",
+      "slot": "AMMO",
+      "dmg": 2,
+      "delay": 0,
+      "skill": "ARC",
+      "weight": 0,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "categories": [
+        "Ammo",
+        "Arrow"
+      ],
+      "tradeskills": [
+        "Fletching",
+        "Blacksmithing"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/b0/Itemicon0189AA.png/64px-Itemicon0189AA.png"
+    },
+    "Bronzehead Arrow": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0189AA",
+      "slot": "AMMO",
+      "dmg": 3,
+      "delay": 0,
+      "skill": "ARC",
+      "weight": 0,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/b0/Itemicon0189AA.png/64px-Itemicon0189AA.png"
+    },
+    "Ironhead Arrow": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0189AA",
+      "slot": "AMMO",
+      "dmg": 4,
+      "delay": 0,
+      "skill": "ARC",
+      "weight": 0,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/b0/Itemicon0189AA.png/64px-Itemicon0189AA.png"
+    },
     "Coal": {
       "hasPage": true,
       "wikiOnly": true,
@@ -6788,6 +7209,33 @@
         "Smelting"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/a/a9/Itemicon0118AF.png/64px-Itemicon0118AF.png"
+    },
+    "Rope, Hempen, 50 Length": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0200AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 4,
+      "size": "LARGE",
+      "class": null,
+      "race": null,
+      "tradeskills": [
+        "Fletching"
+      ],
+      "soldBy": {
+        "base": 25,
+        "shady": null,
+        "vendors": [
+          "Faelindral",
+          "Adventure Gear",
+          "Night Harbor",
+          "Sproggets Bedsprings"
+        ]
+      },
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/4/43/Itemicon0200AA.png/64px-Itemicon0200AA.png"
     },
     "Crude Ingot Mold": {
       "hasPage": true,
@@ -6919,6 +7367,23 @@
       },
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/9/91/Itemicon0017AA.png/64px-Itemicon0017AA.png"
     },
+    "Padded Leather Scraps": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0124AB",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.2,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "categories": [
+        "Tradeskill Ingredient"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/2/2d/Itemicon0124AB.png/64px-Itemicon0124AB.png"
+    },
     "Steel Scraps": {
       "hasPage": true,
       "wikiOnly": true,
@@ -6956,6 +7421,379 @@
         "Blacksmithing"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/2/26/Itemicon0124AD.png/64px-Itemicon0124AD.png"
+    },
+    "Pitch-Wrapped Arrow": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0180AB",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0,
+      "size": "SMALL",
+      "class": "ARC",
+      "race": "ALL",
+      "categories": [
+        "Tradeskill Ingredient"
+      ],
+      "tradeskills": [
+        "Fletching"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/c/c6/Itemicon0180AB.png/64px-Itemicon0180AB.png"
+    },
+    "Smoke Bomb Arrow (item)": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0180AB",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0,
+      "size": "SMALL",
+      "class": "ARC",
+      "race": "ALL",
+      "categories": [
+        "Tradeskill Ingredient"
+      ],
+      "tradeskills": [
+        "Fletching"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/c/c6/Itemicon0180AB.png/64px-Itemicon0180AB.png"
+    },
+    "Net Arrow": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0180AB",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.2,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "categories": [
+        "Tradeskill Ingredient"
+      ],
+      "tradeskills": [
+        "Fletching"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/c/c6/Itemicon0180AB.png/64px-Itemicon0180AB.png"
+    },
+    "Vial of Smoke (reagent)": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0227AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "tradeskills": [
+        "Fletching"
+      ],
+      "soldBy": {
+        "base": 25,
+        "shady": null,
+        "vendors": [
+          "Faelindral",
+          "A Poison Maker",
+          "Night Harbor"
+        ]
+      },
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/7/75/Itemicon0227AA.png/64px-Itemicon0227AA.png"
+    },
+    "Wood Board": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0225AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "MEDIUM",
+      "class": null,
+      "race": null,
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/2/23/Itemicon0225AA.png/64px-Itemicon0225AA.png"
+    },
+    "Lionleaf Powder": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0201AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "TINY",
+      "class": null,
+      "race": null,
+      "from": [
+        "Mortar and Pestle",
+        "Lionleaf"
+      ],
+      "categories": [
+        "Tradeskill Ingredient"
+      ],
+      "tradeskills": [
+        "Alchemy"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/0/00/Itemicon0201AA.png/64px-Itemicon0201AA.png"
+    },
+    "Ironroot Powder": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0201AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "TINY",
+      "class": null,
+      "race": null,
+      "from": [
+        "Mortar and Pestle",
+        "Ironroot"
+      ],
+      "categories": [
+        "Tradeskill Ingredient"
+      ],
+      "tradeskills": [
+        "Alchemy"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/0/00/Itemicon0201AA.png/64px-Itemicon0201AA.png"
+    },
+    "Nomad's Grace Powder": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0201AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "TINY",
+      "class": null,
+      "race": null,
+      "from": [
+        "Mortar and Pestle",
+        "Nomad's Grace"
+      ],
+      "categories": [
+        "Tradeskill Ingredient"
+      ],
+      "tradeskills": [
+        "Alchemy"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/0/00/Itemicon0201AA.png/64px-Itemicon0201AA.png"
+    },
+    "Ghost Poppy Powder": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0201AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "TINY",
+      "class": null,
+      "race": null,
+      "from": [
+        "Mortar and Pestle",
+        "Ghost Poppy"
+      ],
+      "categories": [
+        "Tradeskill Ingredient"
+      ],
+      "tradeskills": [
+        "Alchemy"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/0/00/Itemicon0201AA.png/64px-Itemicon0201AA.png"
+    },
+    "Gadolvine Powder": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0201AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "TINY",
+      "class": null,
+      "race": null,
+      "from": [
+        "Mortar and Pestle",
+        "Gadolvine"
+      ],
+      "categories": [
+        "Tradeskill Ingredient"
+      ],
+      "tradeskills": [
+        "Alchemy"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/0/00/Itemicon0201AA.png/64px-Itemicon0201AA.png"
+    },
+    "Moonveil Powder": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0201AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "TINY",
+      "class": null,
+      "race": null,
+      "from": [
+        "Mortar and Pestle",
+        "Moonveil"
+      ],
+      "categories": [
+        "Tradeskill Ingredient"
+      ],
+      "tradeskills": [
+        "Alchemy"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/0/00/Itemicon0201AA.png/64px-Itemicon0201AA.png"
+    },
+    "Sylvine Powder": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0201AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "TINY",
+      "class": null,
+      "race": null,
+      "from": [
+        "Mortar and Pestle",
+        "Sylvine"
+      ],
+      "categories": [
+        "Tradeskill Ingredient"
+      ],
+      "tradeskills": [
+        "Alchemy"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/0/00/Itemicon0201AA.png/64px-Itemicon0201AA.png"
+    },
+    "Whispering Sage Powder": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0201AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "TINY",
+      "class": null,
+      "race": null,
+      "from": [
+        "Mortar and Pestle",
+        "Whispering Sage"
+      ],
+      "categories": [
+        "Tradeskill Ingredient"
+      ],
+      "tradeskills": [
+        "Alchemy"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/0/00/Itemicon0201AA.png/64px-Itemicon0201AA.png"
+    },
+    "Bone Ash": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0201AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0,
+      "size": "TINY",
+      "class": null,
+      "race": null,
+      "from": [
+        "Mortar and Pestle",
+        "Bone Chips"
+      ],
+      "categories": [
+        "Tradeskill Ingredient"
+      ],
+      "tradeskills": [
+        "Alchemy"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/0/00/Itemicon0201AA.png/64px-Itemicon0201AA.png"
+    },
+    "High-Quality Wolf Pelt": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0062AE",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "MEDIUM",
+      "class": null,
+      "race": null,
+      "tradeskills": [
+        "Tanning"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/0/04/Itemicon0062AE.png"
+    },
+    "High-Quality Jackal Pelt": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0062AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "MEDIUM",
+      "class": null,
+      "race": null,
+      "from": [
+        "a jackal pup"
+      ],
+      "tradeskills": [
+        "Tanning"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/ef/Itemicon0062AA.png/64px-Itemicon0062AA.png"
+    },
+    "Medium-Quality Bear Pelt": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "iconId": "Itemicon0062AB",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "MEDIUM",
+      "class": null,
+      "race": null,
+      "from": [
+        "an elder black bear"
+      ],
+      "tradeskills": [
+        "Tanning"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/e6/Itemicon0062AB.png/64px-Itemicon0062AB.png"
     }
   },
   "mobs": {
@@ -7459,6 +8297,26 @@
       ],
       "image": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/b2/A_green_drakeling_photo.png/64px-A_green_drakeling_photo.png"
     },
+    "a Fellstone shaman": {
+      "hasPage": true,
+      "title": "A Fellstone shaman",
+      "level": "9-11",
+      "race": "Orc",
+      "class": null,
+      "hp": null,
+      "ac": null,
+      "special": null,
+      "zone": "Evershade Weald",
+      "imageFile": "phicon.png",
+      "loot": [
+        "Broken Shaman Idol",
+        "Left Orc Ear",
+        "Cloth Scraps",
+        "Raw Orc Meat",
+        "Rawhide Scraps"
+      ],
+      "image": "https://static.wikitide.net/monstersandmemorieswiki/e/eb/Phicon.png"
+    },
     "Vorkuul Blighteye": {
       "hasPage": true,
       "title": "Vorkuul Blighteye",
@@ -7543,6 +8401,45 @@
       "imageFile": null,
       "loot": [
         "Ring of the Pauper"
+      ]
+    },
+    "Rotmuzzle": {
+      "hasPage": true,
+      "title": "Rotmuzzle",
+      "level": null,
+      "race": "Wolf",
+      "class": null,
+      "hp": null,
+      "ac": null,
+      "special": null,
+      "zone": "Evershade Weald",
+      "imageFile": "Rotmuzzle.png",
+      "loot": [
+        "Rabid-Hide Wristguards",
+        "Gloves of the Rotting Hound",
+        "Frostmaw",
+        "Hideclaw Grips",
+        "Moonlit Scruff",
+        "Foamstalker's Trinket"
+      ],
+      "image": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/b2/Rotmuzzle.png/64px-Rotmuzzle.png"
+    },
+    "a Fellstone tracker": {
+      "hasPage": true,
+      "title": "A Fellstone tracker",
+      "level": "8-10",
+      "race": "Orc",
+      "class": "Ranger",
+      "hp": null,
+      "ac": null,
+      "special": null,
+      "zone": "Evershade Weald",
+      "imageFile": null,
+      "loot": [
+        "Left Orc Ear",
+        "Cloth Scraps",
+        "Rawhide Scraps",
+        "Raw Orc Meat"
       ]
     }
   },
@@ -8035,7 +8932,7 @@
           "item": "Cloth Scraps"
         }
       ],
-      "trivial": null
+      "trivial": 5
     },
     {
       "tradeskill": "Tailoring",
@@ -8049,7 +8946,7 @@
           "item": "Cloth Scraps"
         }
       ],
-      "trivial": null
+      "trivial": 5
     },
     {
       "tradeskill": "Tailoring",
@@ -8063,7 +8960,7 @@
           "item": "Bat Fur"
         }
       ],
-      "trivial": null
+      "trivial": 10
     },
     {
       "tradeskill": "Tailoring",
@@ -8077,7 +8974,7 @@
           "item": "Spider Silk"
         }
       ],
-      "trivial": null
+      "trivial": 15
     },
     {
       "tradeskill": "Tailoring",
@@ -8105,7 +9002,7 @@
           "item": "Wool Scraps"
         }
       ],
-      "trivial": null
+      "trivial": 80
     },
     {
       "tradeskill": "Tailoring",
@@ -8119,7 +9016,7 @@
           "item": "Wool Scraps"
         }
       ],
-      "trivial": null
+      "trivial": 80
     },
     {
       "tradeskill": "Tailoring",
@@ -8243,9 +9140,13 @@
         {
           "qty": 6,
           "item": "Copper Bar"
+        },
+        {
+          "qty": 1,
+          "item": "Smithing Pliers"
         }
       ],
-      "trivial": null
+      "trivial": 5
     },
     {
       "tradeskill": "Blacksmithing",
@@ -8259,7 +9160,7 @@
           "item": "Copper Bar"
         }
       ],
-      "trivial": null
+      "trivial": 5
     },
     {
       "tradeskill": "Blacksmithing",
@@ -8271,9 +9172,13 @@
         {
           "qty": 6,
           "item": "Copper Bar"
+        },
+        {
+          "qty": 1,
+          "item": "Smithing Hammer"
         }
       ],
-      "trivial": null
+      "trivial": 5
     },
     {
       "tradeskill": "Blacksmithing",
@@ -8291,7 +9196,7 @@
           "item": "Rawhide Strap"
         }
       ],
-      "trivial": null
+      "trivial": 60
     },
     {
       "tradeskill": "Blacksmithing",
@@ -8305,7 +9210,7 @@
           "item": "Copper Bar"
         }
       ],
-      "trivial": null
+      "trivial": 15
     },
     {
       "tradeskill": "Blacksmithing",
@@ -8319,7 +9224,7 @@
           "item": "Copper Bar"
         }
       ],
-      "trivial": null
+      "trivial": 15
     },
     {
       "tradeskill": "Blacksmithing",
@@ -8331,9 +9236,13 @@
         {
           "qty": 6,
           "item": "Enchanted Copper Bar"
+        },
+        {
+          "qty": 1,
+          "item": "Smithing Pliers"
         }
       ],
-      "trivial": null
+      "trivial": 40
     },
     {
       "tradeskill": "Blacksmithing",
@@ -8345,9 +9254,13 @@
         {
           "qty": 6,
           "item": "Enchanted Copper Bar"
+        },
+        {
+          "qty": 1,
+          "item": "Smithing Hammer"
         }
       ],
-      "trivial": null
+      "trivial": 40
     },
     {
       "tradeskill": "Blacksmithing",
@@ -8365,7 +9278,7 @@
           "item": "Rawhide Strap"
         }
       ],
-      "trivial": null
+      "trivial": 50
     },
     {
       "tradeskill": "Blacksmithing",
@@ -8379,7 +9292,7 @@
           "item": "Bronze Bar"
         }
       ],
-      "trivial": null
+      "trivial": 80
     },
     {
       "tradeskill": "Blacksmithing",
@@ -8391,9 +9304,13 @@
         {
           "qty": 4,
           "item": "Bronze Bar"
+        },
+        {
+          "qty": 1,
+          "item": "Smithing Pliers"
         }
       ],
-      "trivial": null
+      "trivial": 80
     },
     {
       "tradeskill": "Blacksmithing",
@@ -8407,7 +9324,7 @@
           "item": "Bronze Bar"
         }
       ],
-      "trivial": null
+      "trivial": 80
     },
     {
       "tradeskill": "Blacksmithing",
@@ -8421,7 +9338,7 @@
           "item": "Bronze Plate"
         }
       ],
-      "trivial": null
+      "trivial": 80
     },
     {
       "tradeskill": "Blacksmithing",
@@ -8433,9 +9350,13 @@
         {
           "qty": 6,
           "item": "Bronze Bar"
+        },
+        {
+          "qty": 1,
+          "item": "Smithing Hammer"
         }
       ],
-      "trivial": null
+      "trivial": 80
     },
     {
       "tradeskill": "Blacksmithing",
@@ -8465,9 +9386,13 @@
         {
           "qty": 4,
           "item": "Silver Bar"
+        },
+        {
+          "qty": 1,
+          "item": "Smithing Pliers"
         }
       ],
-      "trivial": null
+      "trivial": 80
     },
     {
       "tradeskill": "Blacksmithing",
@@ -8479,9 +9404,13 @@
         {
           "qty": 6,
           "item": "Silver Bar"
+        },
+        {
+          "qty": 1,
+          "item": "Smithing Hammer"
         }
       ],
-      "trivial": null
+      "trivial": 80
     },
     {
       "tradeskill": "Blacksmithing",
@@ -8495,7 +9424,7 @@
           "item": "Bronze Bar"
         }
       ],
-      "trivial": null
+      "trivial": 90
     },
     {
       "tradeskill": "Blacksmithing",
@@ -8509,7 +9438,7 @@
           "item": "Tin Bar"
         }
       ],
-      "trivial": null
+      "trivial": 90
     },
     {
       "tradeskill": "Blacksmithing",
@@ -8521,6 +9450,10 @@
         {
           "qty": 6,
           "item": "Enchanted Bronze Bar"
+        },
+        {
+          "qty": 1,
+          "item": "Smithing Pliers"
         }
       ],
       "trivial": null
@@ -8535,6 +9468,10 @@
         {
           "qty": 6,
           "item": "Enchanted Bronze Bar"
+        },
+        {
+          "qty": 1,
+          "item": "Smithing Hammer"
         }
       ],
       "trivial": null
@@ -8567,6 +9504,10 @@
         {
           "qty": 4,
           "item": "Gold Bar"
+        },
+        {
+          "qty": 1,
+          "item": "Smithing Pliers"
         }
       ],
       "trivial": null
@@ -8581,6 +9522,10 @@
         {
           "qty": 6,
           "item": "Gold Bar"
+        },
+        {
+          "qty": 1,
+          "item": "Smithing Hammer"
         }
       ],
       "trivial": null
@@ -8595,6 +9540,10 @@
         {
           "qty": 4,
           "item": "Iron Bar"
+        },
+        {
+          "qty": 1,
+          "item": "Smithing Pliers"
         }
       ],
       "trivial": null
@@ -8623,6 +9572,10 @@
         {
           "qty": 6,
           "item": "Iron Bar"
+        },
+        {
+          "qty": 1,
+          "item": "Smithing Hammer"
         }
       ],
       "trivial": null
@@ -8669,6 +9622,10 @@
         {
           "qty": 6,
           "item": "Enchanted Iron Bar"
+        },
+        {
+          "qty": 1,
+          "item": "Smithing Pliers"
         }
       ],
       "trivial": null
@@ -8683,6 +9640,10 @@
         {
           "qty": 6,
           "item": "Enchanted Iron Bar"
+        },
+        {
+          "qty": 1,
+          "item": "Smithing Hammer"
         }
       ],
       "trivial": null
@@ -8715,6 +9676,10 @@
         {
           "qty": 4,
           "item": "Platinum Bar"
+        },
+        {
+          "qty": 1,
+          "item": "Smithing Pliers"
         }
       ],
       "trivial": null
@@ -8729,6 +9694,10 @@
         {
           "qty": 6,
           "item": "Platinum Bar"
+        },
+        {
+          "qty": 1,
+          "item": "Smithing Hammer"
         }
       ],
       "trivial": null
@@ -8743,6 +9712,10 @@
         {
           "qty": 4,
           "item": "Steel Bar"
+        },
+        {
+          "qty": 1,
+          "item": "Smithing Pliers"
         }
       ],
       "trivial": null
@@ -8771,6 +9744,10 @@
         {
           "qty": 6,
           "item": "Steel Bar"
+        },
+        {
+          "qty": 1,
+          "item": "Smithing Hammer"
         }
       ],
       "trivial": null
@@ -8817,6 +9794,10 @@
         {
           "qty": 6,
           "item": "Enchanted Steel Bar"
+        },
+        {
+          "qty": 1,
+          "item": "Smithing Pliers"
         }
       ],
       "trivial": null
@@ -8831,6 +9812,10 @@
         {
           "qty": 6,
           "item": "Enchanted Steel Bar"
+        },
+        {
+          "qty": 1,
+          "item": "Smithing Hammer"
         }
       ],
       "trivial": null
@@ -8865,7 +9850,7 @@
           "item": "Rawhide Scraps"
         }
       ],
-      "trivial": null
+      "trivial": 5
     },
     {
       "tradeskill": "Leatherworking",
@@ -8879,7 +9864,7 @@
           "item": "Rawhide Scraps"
         }
       ],
-      "trivial": null
+      "trivial": 5
     },
     {
       "tradeskill": "Leatherworking",
@@ -8893,7 +9878,7 @@
           "item": "Enchanted Rawhide"
         }
       ],
-      "trivial": null
+      "trivial": 55
     },
     {
       "tradeskill": "Leatherworking",
@@ -8907,7 +9892,7 @@
           "item": "Hide Scraps"
         }
       ],
-      "trivial": null
+      "trivial": 80
     },
     {
       "tradeskill": "Leatherworking",
@@ -8921,7 +9906,7 @@
           "item": "Hide Scraps"
         }
       ],
-      "trivial": null
+      "trivial": 80
     },
     {
       "tradeskill": "Leatherworking",
@@ -9017,6 +10002,924 @@
         {
           "qty": 6,
           "item": "Enchanted Padded Leather"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Fletching",
+      "result": {
+        "qty": 100,
+        "item": "Arrow"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Wood"
+        }
+      ],
+      "trivial": 25
+    },
+    {
+      "tradeskill": "Fletching",
+      "result": {
+        "qty": 500,
+        "item": "Arrow"
+      },
+      "components": [
+        {
+          "qty": 5,
+          "item": "Wood"
+        }
+      ],
+      "trivial": 25
+    },
+    {
+      "tradeskill": "Fletching",
+      "result": {
+        "qty": 100,
+        "item": "Stonehead Arrow"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Wood"
+        },
+        {
+          "qty": 1,
+          "item": "Brittle Stone"
+        }
+      ],
+      "trivial": 25
+    },
+    {
+      "tradeskill": "Fletching",
+      "result": {
+        "qty": 500,
+        "item": "Stonehead Arrow"
+      },
+      "components": [
+        {
+          "qty": 5,
+          "item": "Wood"
+        },
+        {
+          "qty": 5,
+          "item": "Brittle Stone"
+        }
+      ],
+      "trivial": 25
+    },
+    {
+      "tradeskill": "Fletching",
+      "result": {
+        "qty": 20,
+        "item": "Pitch-Wrapped Arrow"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Wood"
+        },
+        {
+          "qty": 2,
+          "item": "Resin"
+        },
+        {
+          "qty": 1,
+          "item": "Cloth Scraps"
+        }
+      ],
+      "trivial": 40
+    },
+    {
+      "tradeskill": "Fletching",
+      "result": {
+        "qty": 100,
+        "item": "Copperhead Arrow"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Wood"
+        },
+        {
+          "qty": 1,
+          "item": "Copper Scraps"
+        }
+      ],
+      "trivial": 50
+    },
+    {
+      "tradeskill": "Fletching",
+      "result": {
+        "qty": 500,
+        "item": "Copperhead Arrow"
+      },
+      "components": [
+        {
+          "qty": 5,
+          "item": "Wood"
+        },
+        {
+          "qty": 5,
+          "item": "Copper Scraps"
+        }
+      ],
+      "trivial": 50
+    },
+    {
+      "tradeskill": "Fletching",
+      "result": {
+        "qty": 20,
+        "item": "Net Arrow"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Wood"
+        },
+        {
+          "qty": 1,
+          "item": "Rope, Hempen, 50 Length"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Fletching",
+      "result": {
+        "qty": 100,
+        "item": "Bronzehead Arrow"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Wood"
+        },
+        {
+          "qty": 1,
+          "item": "Bronze Scraps"
+        }
+      ],
+      "trivial": 75
+    },
+    {
+      "tradeskill": "Fletching",
+      "result": {
+        "qty": 500,
+        "item": "Bronzehead Arrow"
+      },
+      "components": [
+        {
+          "qty": 5,
+          "item": "Wood"
+        },
+        {
+          "qty": 5,
+          "item": "Bronze Scraps"
+        }
+      ],
+      "trivial": 75
+    },
+    {
+      "tradeskill": "Fletching",
+      "result": {
+        "qty": 20,
+        "item": "Smoke Bomb Arrow (item)"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Fine Wood"
+        },
+        {
+          "qty": 1,
+          "item": "Vial of Smoke (reagent)"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Fletching",
+      "result": {
+        "qty": 100,
+        "item": "Ironhead Arrow"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Wood"
+        },
+        {
+          "qty": 1,
+          "item": "Iron Scraps"
+        }
+      ],
+      "trivial": 100
+    },
+    {
+      "tradeskill": "Fletching",
+      "result": {
+        "qty": 500,
+        "item": "Ironhead Arrow"
+      },
+      "components": [
+        {
+          "qty": 5,
+          "item": "Wood"
+        },
+        {
+          "qty": 5,
+          "item": "Iron Scraps"
+        }
+      ],
+      "trivial": 100
+    },
+    {
+      "tradeskill": "Fletching",
+      "result": {
+        "qty": 100,
+        "item": "Steelhead Arrow"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Wood"
+        },
+        {
+          "qty": 1,
+          "item": "Steel Scraps"
+        }
+      ],
+      "trivial": 125
+    },
+    {
+      "tradeskill": "Fletching",
+      "result": {
+        "qty": 500,
+        "item": "Steelhead Arrow"
+      },
+      "components": [
+        {
+          "qty": 5,
+          "item": "Wood"
+        },
+        {
+          "qty": 5,
+          "item": "Steel Scraps"
+        }
+      ],
+      "trivial": 125
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Cooked Ashira Meat"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Raw Ashira Meat"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Cooked Basilisk Meat"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Raw Basilisk Meat"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Cooked Crocodile Meat"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Raw Crocodile Meat"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Raw Basa Fillet"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Raw Basa"
+        },
+        {
+          "qty": 1,
+          "item": "Cleaver"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Grouper Fillet"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Raw Grouper"
+        },
+        {
+          "qty": 1,
+          "item": "Cleaver"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Cooked Whitefish Fillet"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Raw Whitefish"
+        },
+        {
+          "qty": 1,
+          "item": "Cleaver"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Raw Tide Minnow Fillet"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Raw Tide Minnow"
+        },
+        {
+          "qty": 1,
+          "item": "Cleaver"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Cooked Bat Meat"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Raw Bat Meat"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Cooked Beetle Meat"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Raw Beetle Meat"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Cooked Jackal Meat"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Raw Jackal Meat"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Cooked Rat Meat"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Raw Rat Meat"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Cooked Scarab Meat"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Raw Scarab Meat"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Cooked Snake Meat"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Raw Snake Meat"
+        }
+      ],
+      "trivial": 10
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Cooked Wolf Meat"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Raw Wolf Meat"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Crocodile Steak"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Raw Crocodile Meat"
+        },
+        {
+          "qty": 1,
+          "item": "Butter"
+        },
+        {
+          "qty": 1,
+          "item": "Basil"
+        }
+      ],
+      "trivial": 10
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Fish Bones"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Cleaver"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Fish Stock"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Fish Bones"
+        },
+        {
+          "qty": 8,
+          "item": "Water Flask"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Pan Fried Whitefish"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Cooked Whitefish Fillet"
+        },
+        {
+          "qty": 1,
+          "item": "Butter"
+        }
+      ],
+      "trivial": 15
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Roasted Rat with Onion"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Raw Rat Meat"
+        },
+        {
+          "qty": 1,
+          "item": "Onion"
+        },
+        {
+          "qty": 1,
+          "item": "Black Pepper"
+        }
+      ],
+      "trivial": 15
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Boiled Scarab Legs"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Scarab Leg"
+        }
+      ],
+      "trivial": 20
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Cabbage Stew"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Cabbage"
+        },
+        {
+          "qty": 1,
+          "item": "Onion"
+        },
+        {
+          "qty": 1,
+          "item": "Stock"
+        }
+      ],
+      "trivial": 20
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Peppered Wolf Meat"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Raw Wolf Meat"
+        },
+        {
+          "qty": 1,
+          "item": "Black Pepper"
+        }
+      ],
+      "trivial": 20
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Bat Jerky"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Raw Bat Meat"
+        },
+        {
+          "qty": 1,
+          "item": "Black Pepper"
+        },
+        {
+          "qty": 2,
+          "item": "Crystallized Salt"
+        }
+      ],
+      "trivial": 25
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Cured Jackal Meat"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Raw Jackal Meat"
+        },
+        {
+          "qty": 1,
+          "item": "Crystallized Salt"
+        }
+      ],
+      "trivial": 30
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Spiced Snake Cutlet"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Raw Snake Meat"
+        },
+        {
+          "qty": 1,
+          "item": "Garlic"
+        },
+        {
+          "qty": 1,
+          "item": "Basil"
+        },
+        {
+          "qty": 1,
+          "item": "Paprika"
+        }
+      ],
+      "trivial": 40
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Garlic Rat Haunch"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Raw Rat Fillet"
+        },
+        {
+          "qty": 1,
+          "item": "Garlic"
+        },
+        {
+          "qty": 1,
+          "item": "Butter"
+        }
+      ],
+      "trivial": 45
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Lemon Basa Fillet"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Raw Basa Fillet"
+        },
+        {
+          "qty": 1,
+          "item": "Lemon"
+        },
+        {
+          "qty": 1,
+          "item": "Crystallized Salt"
+        }
+      ],
+      "trivial": 45
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Spicy Scarab Stew"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Raw Scarab Meat"
+        },
+        {
+          "qty": 1,
+          "item": "Onion"
+        },
+        {
+          "qty": 1,
+          "item": "Stock"
+        },
+        {
+          "qty": 1,
+          "item": "Black Pepper"
+        },
+        {
+          "qty": 1,
+          "item": "Carrot"
+        }
+      ],
+      "trivial": 50
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Cheesy Mushshroom Soup"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Mushshroom"
+        },
+        {
+          "qty": 2,
+          "item": "Cheese"
+        },
+        {
+          "qty": 1,
+          "item": "Stock"
+        },
+        {
+          "qty": 1,
+          "item": "Black Pepper"
+        }
+      ],
+      "trivial": 60
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Slow-Roasted Bear Shoulder"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Raw Bear Meat"
+        },
+        {
+          "qty": 1,
+          "item": "Butter"
+        },
+        {
+          "qty": 1,
+          "item": "Crystallized Salt"
+        },
+        {
+          "qty": 1,
+          "item": "Garlic"
+        }
+      ],
+      "trivial": 60
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Crab Cakes"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Raw Bay Crab"
+        },
+        {
+          "qty": 2,
+          "item": "Lemon"
+        },
+        {
+          "qty": 1,
+          "item": "Parsley"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Tomato Onion Relish"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Tomato"
+        },
+        {
+          "qty": 2,
+          "item": "Onion"
+        },
+        {
+          "qty": 1,
+          "item": "White Vinegar"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Basilisk Skewers"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Raw Basilisk Fillet"
+        },
+        {
+          "qty": 1,
+          "item": "Bell Pepper"
+        },
+        {
+          "qty": 1,
+          "item": "Onion"
+        },
+        {
+          "qty": 1,
+          "item": "Crystallized Salt"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Cooking",
+      "result": {
+        "qty": 1,
+        "item": "Creamy Grouper Stew"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Grouper Fillet"
+        },
+        {
+          "qty": 2,
+          "item": "Garlic"
+        },
+        {
+          "qty": 1,
+          "item": "Mushroom"
+        },
+        {
+          "qty": 1,
+          "item": "Stock"
+        },
+        {
+          "qty": 1,
+          "item": "Carrot"
         }
       ],
       "trivial": null
@@ -9388,6 +11291,634 @@
         }
       ],
       "trivial": null
+    },
+    {
+      "tradeskill": "Survival",
+      "result": {
+        "qty": 1,
+        "item": "Campfire"
+      },
+      "components": [
+        {
+          "qty": 8,
+          "item": "Wood"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Survival",
+      "result": {
+        "qty": 2,
+        "item": "Cloth Bandage"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Cloth Scraps"
+        }
+      ],
+      "trivial": 5
+    },
+    {
+      "tradeskill": "Survival",
+      "result": {
+        "qty": 2,
+        "item": "Heavy Cloth Bandage"
+      },
+      "components": [
+        {
+          "qty": 2,
+          "item": "Cloth Scraps"
+        }
+      ],
+      "trivial": 10
+    },
+    {
+      "tradeskill": "Survival",
+      "result": {
+        "qty": 1,
+        "item": "Crude Handmade Torch"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Wood"
+        },
+        {
+          "qty": 1,
+          "item": "Resin"
+        }
+      ],
+      "trivial": 5
+    },
+    {
+      "tradeskill": "Survival",
+      "result": {
+        "qty": 2,
+        "item": "Wool Bandage"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Wool Scraps"
+        }
+      ],
+      "trivial": 20
+    },
+    {
+      "tradeskill": "Survival",
+      "result": {
+        "qty": 1,
+        "item": "Handmade Torch"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Wood"
+        },
+        {
+          "qty": 1,
+          "item": "Resin"
+        },
+        {
+          "qty": 1,
+          "item": "Cloth Scraps"
+        }
+      ],
+      "trivial": 25
+    },
+    {
+      "tradeskill": "Survival",
+      "result": {
+        "qty": 2,
+        "item": "Heavy Wool Bandage"
+      },
+      "components": [
+        {
+          "qty": 2,
+          "item": "Wool Scraps"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Survival",
+      "result": {
+        "qty": 2,
+        "item": "Cotton Bandage"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Cotton Scraps"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Survival",
+      "result": {
+        "qty": 2,
+        "item": "Heavy Cotton Bandage"
+      },
+      "components": [
+        {
+          "qty": 2,
+          "item": "Cotton Scraps"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Alchemy",
+      "result": {
+        "qty": 4,
+        "item": "Coarse Blue Diamond Powder"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Chipped Blue Diamond"
+        }
+      ],
+      "trivial": 1
+    },
+    {
+      "tradeskill": "Alchemy",
+      "result": {
+        "qty": 1,
+        "item": "Dragon's Vigil Powder"
+      },
+      "components": [
+        {
+          "qty": 2,
+          "item": "Dragon's Vigil"
+        }
+      ],
+      "trivial": 1
+    },
+    {
+      "tradeskill": "Alchemy",
+      "result": {
+        "qty": 1,
+        "item": "Duneleaf Powder"
+      },
+      "components": [
+        {
+          "qty": 2,
+          "item": "Duneleaf"
+        }
+      ],
+      "trivial": 1
+    },
+    {
+      "tradeskill": "Alchemy",
+      "result": {
+        "qty": 1,
+        "item": "Ethtongue Powder"
+      },
+      "components": [
+        {
+          "qty": 2,
+          "item": "Ethtongue"
+        }
+      ],
+      "trivial": 1
+    },
+    {
+      "tradeskill": "Alchemy",
+      "result": {
+        "qty": 1,
+        "item": "Flamestalk Powder"
+      },
+      "components": [
+        {
+          "qty": 2,
+          "item": "Flamestalk"
+        }
+      ],
+      "trivial": 1
+    },
+    {
+      "tradeskill": "Alchemy",
+      "result": {
+        "qty": 1,
+        "item": "Gadolvine Powder"
+      },
+      "components": [
+        {
+          "qty": 2,
+          "item": "Gadolvine"
+        }
+      ],
+      "trivial": 1
+    },
+    {
+      "tradeskill": "Alchemy",
+      "result": {
+        "qty": 1,
+        "item": "Ghost Poppy Powder"
+      },
+      "components": [
+        {
+          "qty": 2,
+          "item": "Ghost Poppy"
+        }
+      ],
+      "trivial": 1
+    },
+    {
+      "tradeskill": "Alchemy",
+      "result": {
+        "qty": 1,
+        "item": "Ironroot Powder"
+      },
+      "components": [
+        {
+          "qty": 2,
+          "item": "Ironroot"
+        }
+      ],
+      "trivial": 1
+    },
+    {
+      "tradeskill": "Alchemy",
+      "result": {
+        "qty": 1,
+        "item": "Last Breath Powder"
+      },
+      "components": [
+        {
+          "qty": 2,
+          "item": "Last Breath"
+        }
+      ],
+      "trivial": 1
+    },
+    {
+      "tradeskill": "Alchemy",
+      "result": {
+        "qty": 1,
+        "item": "Lionleaf Powder"
+      },
+      "components": [
+        {
+          "qty": 2,
+          "item": "Lionleaf"
+        }
+      ],
+      "trivial": 1
+    },
+    {
+      "tradeskill": "Alchemy",
+      "result": {
+        "qty": 1,
+        "item": "Magebloom Powder"
+      },
+      "components": [
+        {
+          "qty": 2,
+          "item": "Magebloom"
+        }
+      ],
+      "trivial": 1
+    },
+    {
+      "tradeskill": "Alchemy",
+      "result": {
+        "qty": 1,
+        "item": "Moonveil Powder"
+      },
+      "components": [
+        {
+          "qty": 2,
+          "item": "Moonveil"
+        }
+      ],
+      "trivial": 1
+    },
+    {
+      "tradeskill": "Alchemy",
+      "result": {
+        "qty": 1,
+        "item": "Nomad's Grace Powder"
+      },
+      "components": [
+        {
+          "qty": 2,
+          "item": "Nomad's Grace"
+        }
+      ],
+      "trivial": 1
+    },
+    {
+      "tradeskill": "Alchemy",
+      "result": {
+        "qty": 1,
+        "item": "Phoenix Flower Powder"
+      },
+      "components": [
+        {
+          "qty": 2,
+          "item": "Phoenix Flower"
+        }
+      ],
+      "trivial": 1
+    },
+    {
+      "tradeskill": "Alchemy",
+      "result": {
+        "qty": 1,
+        "item": "Shadeshroom Powder"
+      },
+      "components": [
+        {
+          "qty": 2,
+          "item": "Shadeshroom"
+        }
+      ],
+      "trivial": 1
+    },
+    {
+      "tradeskill": "Alchemy",
+      "result": {
+        "qty": 1,
+        "item": "Stranglevine Powder"
+      },
+      "components": [
+        {
+          "qty": 2,
+          "item": "Stranglevine"
+        }
+      ],
+      "trivial": 1
+    },
+    {
+      "tradeskill": "Alchemy",
+      "result": {
+        "qty": 1,
+        "item": "Stygian Moss Powder"
+      },
+      "components": [
+        {
+          "qty": 2,
+          "item": "Stygian Moss"
+        }
+      ],
+      "trivial": 1
+    },
+    {
+      "tradeskill": "Alchemy",
+      "result": {
+        "qty": 1,
+        "item": "Sylvine Powder"
+      },
+      "components": [
+        {
+          "qty": 2,
+          "item": "Sylvine"
+        }
+      ],
+      "trivial": 1
+    },
+    {
+      "tradeskill": "Alchemy",
+      "result": {
+        "qty": 1,
+        "item": "Whispering Sage Powder"
+      },
+      "components": [
+        {
+          "qty": 2,
+          "item": "Whispering Sage"
+        }
+      ],
+      "trivial": 1
+    },
+    {
+      "tradeskill": "Alchemy",
+      "result": {
+        "qty": 1,
+        "item": "Witherweed Powder"
+      },
+      "components": [
+        {
+          "qty": 2,
+          "item": "Witherweed"
+        }
+      ],
+      "trivial": 1
+    },
+    {
+      "tradeskill": "Alchemy",
+      "result": {
+        "qty": 1,
+        "item": "Bone Ash"
+      },
+      "components": [
+        {
+          "qty": 2,
+          "item": "Bone Chips"
+        }
+      ],
+      "trivial": 20
+    },
+    {
+      "tradeskill": "Alchemy",
+      "result": {
+        "qty": 1,
+        "item": "Saffron Powder"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Jar of Saffron"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Tanning",
+      "result": {
+        "qty": 24,
+        "item": "Rawhide Scraps"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Low-Quality Jackal Pelt"
+        }
+      ],
+      "trivial": 25
+    },
+    {
+      "tradeskill": "Tanning",
+      "result": {
+        "qty": 24,
+        "item": "Rawhide Scraps"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Low-Quality Wolf Pelt"
+        }
+      ],
+      "trivial": 25
+    },
+    {
+      "tradeskill": "Tanning",
+      "result": {
+        "qty": 24,
+        "item": "Rawhide Scraps"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Low-Quality Bear Pelt"
+        }
+      ],
+      "trivial": 25
+    },
+    {
+      "tradeskill": "Tanning",
+      "result": {
+        "qty": 24,
+        "item": "Hide Scraps"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Medium Quality Jackal Pelt"
+        }
+      ],
+      "trivial": 50
+    },
+    {
+      "tradeskill": "Tanning",
+      "result": {
+        "qty": 24,
+        "item": "Hide Scraps"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Medium-Quality Wolf Pelt"
+        }
+      ],
+      "trivial": 50
+    },
+    {
+      "tradeskill": "Tanning",
+      "result": {
+        "qty": 24,
+        "item": "Hide Scraps"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Medium-Quality Bear Pelt"
+        }
+      ],
+      "trivial": 50
+    },
+    {
+      "tradeskill": "Tanning",
+      "result": {
+        "qty": 24,
+        "item": "Leather Scraps"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "High-Quality Jackal Pelt"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Tanning",
+      "result": {
+        "qty": 24,
+        "item": "Leather Scraps"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "High-Quality Wolf Pelt"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Tanning",
+      "result": {
+        "qty": 24,
+        "item": "Leather Scraps"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "High-Quality Bear Pelt"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Woodworking",
+      "result": {
+        "qty": 1,
+        "item": "Elder Wood Panel Board"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Elder Wood"
+        }
+      ],
+      "trivial": 25
+    },
+    {
+      "tradeskill": "Woodworking",
+      "result": {
+        "qty": 1,
+        "item": "Fine Wood Board"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Fine Wood"
+        }
+      ],
+      "trivial": null
+    },
+    {
+      "tradeskill": "Woodworking",
+      "result": {
+        "qty": 1,
+        "item": "Ironbark Board"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Ironbark Wood"
+        }
+      ],
+      "trivial": 25
+    },
+    {
+      "tradeskill": "Woodworking",
+      "result": {
+        "qty": 1,
+        "item": "Wood Board"
+      },
+      "components": [
+        {
+          "qty": 2,
+          "item": "Wood"
+        }
+      ],
+      "trivial": 25
     }
   ]
 }
