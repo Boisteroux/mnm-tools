@@ -730,11 +730,9 @@ function renderBestiary() {
     const drops = Object.entries(d.drops)
       .map(([item, n]) => ({ item, rate: corpses ? n / corpses : 0, value: regularPrice(itemByName[item]) }))
       .sort((a, b) => b.value - a.value || b.rate - a.rate).slice(0, 3);
-    const chase = drops.length && drops[0].value > 0 ? drops[0].item : null;
     const dropRows = drops.map((dr) => {
       const id = nameToId[dr.item] || dr.item;
-      return '<div class="bdrop"><span class="bd-name">' + itemLink(id, dr.item) +
-        (dr.item === chase ? ' <span class="tag good">chase</span>' : '') + '</span>' +
+      return '<div class="bdrop"><span class="bd-name">' + itemLink(id, dr.item) + '</span>' +
         '<span class="bd-rate">' + Math.round(dr.rate * 100) + '%</span>' +
         '<span class="bd-val coin">' + (dr.value > 0 ? coin(dr.value) : '—') + '</span></div>';
     }).join('');
@@ -752,7 +750,7 @@ function renderBestiary() {
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › bestiary</div>' +
     '<h1>Bestiary</h1>' +
-    '<p class="sub">Every creature you\'ve fought, by value. Drops are value-sorted; the priciest is the “chase”. Artwork slots in later.</p>' +
+    '<p class="sub">Every creature you\'ve fought, by value. Drops are value-sorted (priciest first). Artwork slots in later.</p>' +
     '<div class="beastgrid">' + mobs.map(card).join('') + '</div>';
 }
 
