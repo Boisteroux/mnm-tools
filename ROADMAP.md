@@ -91,8 +91,8 @@ it needs (★ = data we already have).
 - **"Best farm right now" recommender** — rank mobs/zones by value-per-time for a
   goal (coin / a mat / a tradeskill stack). ★
 - **Session Replay** — animate a play session on the map (dot hops zones, loot
-  pops, coin ticks). Login is detectable in Player.log; logout inferred from the
-  ledger going quiet. Could auto-generate a recap when the game closes. ★
+  pops, coin ticks). Login is detectable in Player.log; **session ends after ~15
+  min with no ledger events**. Auto-recap when the game closes. ★ [approved]
 - **Spawn-timer estimation** — infer named-mob respawn windows from kill
   timestamps. Rough solo, strong once crowdsourced. ★
 
@@ -104,10 +104,12 @@ it needs (★ = data we already have).
 - **Inflation tracker** — total coin minted (kill coin) over time = money supply. ★
 
 **Personal / gamified (per-character add-ons)**
-- **M&M Wrapped** — shareable recap card (hours, coin, fav zone, rarest drop). Run
-  monthly and/or a live "your stats" page on the site. ★
-- **Drop-luck meter** — your observed rate vs community average (needs crowdsourced
-  baseline). Tracks per character. ★ (personal half)
+- **M&M Wrapped** — start with a **live in-app "your stats" dashboard**; the
+  shareable recap card comes later once we see how it feels. ★ [dashboard first]
+- **Drop-luck meter** — **auto-tracks** all drops vs a community baseline and
+  surfaces notable luck; optional "pin an item I'm hunting." **Skip drops >10%**
+  (variance only matters on rares). Per character; the "vs average" needs the
+  crowdsourced baseline. ★ (personal half)
 - **Auto-achievements** — milestones mined from the ledger. ★
 - **Drop Simulator** — Monte-Carlo "kill this 100×" from observed rates. ★
 

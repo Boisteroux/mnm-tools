@@ -684,6 +684,51 @@ function recipeTable(recs, showSkill) {
 const marginNote = '<div class="note">“Margin” = output value − materials value (best known player-trade or vendor price) — ' +
   'what crafting adds over selling the raw mats. “?” means a material has no price logged yet; fills in as data grows.</div>';
 
+// Illustrated bestiary — a card per mob (image slot left empty for now, wired so
+// art can drop in later). Stats + value + the best drops at a glance.
+function renderBestiary() {
+  const mobs = Object.entries(DATA.mobs)
+    .map(([name, d]) => ({ name, d, val: mobValuePerKill(d).total, corpses: mobCorpses(d) }))
+    .filter((m) => m.corpses > 0)
+    .sort((a, b) => b.val - a.val || b.corpses - a.corpses);
+  if (!mobs.length) return notFound('bestiary', '');
+
+  const card = ({ name, d, val, corpses }) => {
+    const w = d.wiki || {};
+    const lvl = mobLevel(d);
+    const zone = Object.keys(d.zones || {})[0] || w.zone || '';
+    const chips = [
+      Number.isFinite(lvl) ? 'Lv ' + (w.level || lvl) : '',
+      w.race || '', zone,
+    ].filter(Boolean).map((c) => '<span class="bchip">' + esc(c) + '</span>').join('');
+    const drops = Object.entries(d.drops)
+      .map(([item, n]) => ({ item, rate: corpses ? n / corpses : 0, value: regularPrice(itemByName[item]) }))
+      .sort((a, b) => b.value - a.value || b.rate - a.rate).slice(0, 3);
+    const chase = drops.length && drops[0].value > 0 ? drops[0].item : null;
+    const dropRows = drops.map((dr) => {
+      const id = nameToId[dr.item] || dr.item;
+      return '<div class="bdrop"><span class="bd-name">' + itemLink(id, dr.item) +
+        (dr.item === chase ? ' <span class="tag good">chase</span>' : '') + '</span>' +
+        '<span class="bd-rate">' + Math.round(dr.rate * 100) + '%</span>' +
+        '<span class="bd-val coin">' + (dr.value > 0 ? coin(dr.value) : '—') + '</span></div>';
+    }).join('');
+    return '<div class="beast">' +
+      '<div class="beast-art" title="Art coming later"><span>' + esc((w.race || 'Creature')) + '</span></div>' +
+      '<div class="beast-body"><div class="beast-name">' + mobLink(name) + '</div>' +
+      '<div class="bchips">' + chips + '</div>' +
+      '<div class="beast-stats"><span>Value/kill <b class="coin">' + coin(val) + '</b></span>' +
+      '<span>Looted <b>' + corpses + '</b></span></div>' +
+      (dropRows ? '<div class="bdrops">' + dropRows + '</div>' : '') +
+      '</div></div>';
+  };
+
+  $('content').innerHTML =
+    '<div class="crumb"><a href="#/">MnMdb</a> › bestiary</div>' +
+    '<h1>Bestiary</h1>' +
+    '<p class="sub">Every creature you\'ve fought, by value. Drops are value-sorted; the priciest is the “chase”. Artwork slots in later.</p>' +
+    '<div class="beastgrid">' + mobs.map(card).join('') + '</div>';
+}
+
 function renderTradeskills() {
   const counts = {};
   const bump = (t, k) => { (counts[t] = counts[t] || { recipes: 0, items: 0 })[k]++; };
@@ -702,21 +747,95 @@ function renderTradeskills() {
     '</tbody></table></div>';
 }
 
+// ---- Crafting-flow (Sankey-ish) — ingredients flow into finished goods ----
+const METALS = ['Copper', 'Bronze', 'Tin', 'Iron', 'Steel', 'Silver', 'Gold', 'Platinum'];
+const familyOf = (item) => METALS.find((m) => item.includes(m)) || 'Other';
+
+let flowRecipes = [];
+function craftFamilies(recs) {
+  const fams = METALS.filter((m) => recs.some((r) => familyOf(r.result.item) === m));
+  if (recs.some((r) => familyOf(r.result.item) === 'Other')) fams.push('Other');
+  return fams;
+}
+
+// Layered node-link diagram: depth = longest path from a raw ingredient. Ribbon
+// width grows with the output's value, so you see where worth concentrates.
+function craftFlowSvg(recipes) {
+  if (!recipes.length) return '<p class="muted">No recipes for this material.</p>';
+  const nodes = new Set(), edges = [];
+  recipes.forEach((r) => { nodes.add(r.result.item); r.components.forEach((c) => { nodes.add(c.item); edges.push({ from: c.item, to: r.result.item, value: itemMarketValue(r.result.item).value }); }); });
+  const incoming = {}; nodes.forEach((n) => (incoming[n] = []));
+  edges.forEach((e) => incoming[e.to].push(e.from));
+  const depth = {};
+  const dep = (n, seen) => {
+    if (depth[n] != null) return depth[n];
+    if (seen.has(n)) return 0;
+    seen.add(n);
+    const ins = incoming[n];
+    depth[n] = ins.length ? 1 + Math.max.apply(null, ins.map((p) => dep(p, seen))) : 0;
+    seen.delete(n);
+    return depth[n];
+  };
+  [...nodes].forEach((n) => dep(n, new Set()));
+  const maxD = Math.max(0, ...Object.values(depth));
+  const cols = Array.from({ length: maxD + 1 }, () => []);
+  [...nodes].sort().forEach((n) => cols[depth[n]].push(n));
+
+  const NW = 152, NH = 26, VGAP = 12, COLGAP = 232, PADX = 8, PADY = 14;
+  const pos = {}; let maxRows = 0;
+  cols.forEach((col, ci) => { col.forEach((n, ri) => { pos[n] = { x: PADX + ci * COLGAP, y: PADY + ri * (NH + VGAP) }; }); maxRows = Math.max(maxRows, col.length); });
+  const W = PADX * 2 + maxD * COLGAP + NW, H = PADY * 2 + maxRows * (NH + VGAP);
+  const maxVal = Math.max(1, ...edges.map((e) => e.value));
+
+  const links = edges.map((e) => {
+    const a = pos[e.from], b = pos[e.to];
+    const x1 = a.x + NW, y1 = a.y + NH / 2, x2 = b.x, y2 = b.y + NH / 2, dx = (x2 - x1) / 2;
+    const wpx = 2 + Math.round((e.value / maxVal) * 8);
+    return '<path d="M' + x1 + ' ' + y1 + ' C' + (x1 + dx) + ' ' + y1 + ',' + (x2 - dx) + ' ' + y2 + ',' + x2 + ' ' + y2 + '" fill="none" stroke="#f0922b" stroke-opacity="0.3" stroke-width="' + wpx + '"/>';
+  }).join('');
+  const boxes = [...nodes].map((n) => {
+    const p = pos[n], isSrc = depth[n] === 0, isFin = depth[n] === maxD;
+    const stroke = isSrc ? '#6f9a4a' : isFin ? '#f0922b' : '#4a3320';
+    const id = nameToId[n] || n, short = n.length > 23 ? n.slice(0, 22) + '…' : n;
+    return '<a href="#/item/' + encodeURIComponent(id) + '">' +
+      '<rect x="' + p.x + '" y="' + p.y + '" width="' + NW + '" height="' + NH + '" rx="5" fill="#2c1e14" stroke="' + stroke + '"/>' +
+      '<text x="' + (p.x + 8) + '" y="' + (p.y + NH / 2 + 4) + '" font-size="11" fill="#ece0d2">' + esc(short) + '</text></a>';
+  }).join('');
+  return '<div class="flow-wrap"><svg viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H + '">' + links + boxes + '</svg></div>';
+}
+
+window.flowPick = (fam) => {
+  document.querySelectorAll('.flow-pick').forEach((b) => b.classList.toggle('active', b.dataset.fam === fam));
+  const el = $('craftflow');
+  if (el) el.innerHTML = craftFlowSvg(flowRecipes.filter((r) => familyOf(r.result.item) === fam));
+};
+
 function renderTradeskill(name) {
   const items = DATA.items
     .filter((i) => i.wiki && (i.wiki.tradeskills || []).includes(name))
     .sort((a, b) => a.name.localeCompare(b.name));
   const recs = RECIPES.filter((r) => r.tradeskill === name);
   if (!items.length && !recs.length) return notFound('tradeskill', name);
+
+  flowRecipes = recs;
+  const fams = craftFamilies(recs);
+  const flowSection = recs.length && fams.length
+    ? '<h2>Crafting flow</h2><p class="sub">Ingredients (left) flow into finished goods (right). Pick a material; thicker links = higher output value. Click a box to open the item.</p>' +
+      '<div class="flow-tabs">' + fams.map((f, i) => '<button class="flow-pick' + (i === 0 ? ' active' : '') + '" data-fam="' + esc(f) + '" onclick="flowPick(\'' + esc(f) + '\')">' + esc(f) + '</button>').join('') + '</div>' +
+      '<div id="craftflow"></div>'
+    : '';
+
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › tradeskill</div>' +
     '<h1>' + esc(name) + '</h1>' +
     '<p class="sub"><a href="' + wikiUrl(name) + '" target="_blank" rel="noopener">View on the wiki ↗</a></p>' +
     (recs.length ? '<h2>Recipes &amp; profit</h2>' + recipeTable(recs, false) + marginNote : '') +
+    flowSection +
     (items.length
       ? '<h2>Items used in ' + esc(name) + '</h2><div class="card"><table><tbody>' +
         items.map((i) => '<tr><td>' + itemLink(i.id, i.name) + '</td></tr>').join('') + '</tbody></table></div>'
       : '');
+  if (fams.length) flowPick(fams[0]);
 }
 
 function notFound(kind, id) {
@@ -994,6 +1113,7 @@ function route() {
   const h = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
   if (h === 'items' || h === 'mobs' || h === 'gathering') return renderBrowse(h);
   if (h === 'tradeskills') return renderTradeskills();
+  if (h === 'bestiary') return renderBestiary();
   if (h === 'maps') return renderMapsList();
   if (h.startsWith('map/')) return renderMapView(h.slice(4));
   if (h.startsWith('item/')) return renderItem(h.slice(5));

@@ -116,6 +116,40 @@ h2 { font-size: 15px; font-weight: 600; color: var(--accent); margin: 24px 0 10p
 
 h3.bracket { font-size: 13px; font-weight: 600; color: var(--text); margin: 4px 0 8px; }
 
+/* ---- Crafting flow (Sankey) ---- */
+.flow-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 12px; }
+.flow-pick {
+  font-size: 12px; color: var(--muted); background: var(--panel); border: 1px solid var(--line-2);
+  border-radius: 20px; padding: 4px 12px; cursor: pointer;
+}
+.flow-pick:hover { color: var(--text); }
+.flow-pick.active { color: var(--accent-dk, #2a1404); background: var(--accent); border-color: var(--accent); font-weight: 600; }
+.flow-wrap { overflow-x: auto; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 6px; }
+.flow-wrap svg { display: block; }
+.flow-wrap a text { cursor: pointer; }
+.flow-wrap a:hover rect { stroke: var(--accent); }
+
+/* ---- Bestiary ---- */
+.beastgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
+.beast { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.beast-art {
+  height: 96px; display: flex; align-items: center; justify-content: center;
+  background: repeating-linear-gradient(45deg, var(--bg) 0 12px, #15100a 12px 24px);
+  border-bottom: 1px dashed var(--line-2);
+}
+.beast-art span { font-size: 12px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+.beast-body { padding: 11px 13px 13px; }
+.beast-name { font-size: 15px; }
+.bchips { display: flex; flex-wrap: wrap; gap: 5px; margin: 7px 0 9px; }
+.bchip { font-size: 10.5px; color: var(--muted); border: 1px solid var(--line-2); border-radius: 12px; padding: 1px 8px; }
+.beast-stats { display: flex; gap: 14px; font-size: 12px; color: var(--muted); margin-bottom: 9px; }
+.beast-stats b { color: var(--text); font-weight: 600; }
+.bdrops { display: flex; flex-direction: column; gap: 4px; border-top: 1px solid var(--line); padding-top: 8px; }
+.bdrop { display: flex; align-items: center; gap: 8px; font-size: 12.5px; }
+.bd-name { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bd-rate { color: var(--muted); width: 34px; text-align: right; }
+.bd-val { width: 44px; text-align: right; }
+
 /* ---- Read-only map viewer ---- */
 .mapgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
 .mapcard { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--panel); }
