@@ -1,0 +1,30 @@
+#!/bin/sh
+# Blocks commits that look like they contain a secret (API key, token, private
+# key, password). A safety net so a credential never lands in the public repo.
+#
+# Bypass for a genuine false positive:  git commit --no-verify
+#
+# Enable in a fresh clone:  git config core.hooksPath .githooks
+
+# High-confidence secret formats — these are almost never anything but a leak.
+strong='ghp_[A-Za-z0-9]{20,}|gho_[A-Za-z0-9]{20,}|ghs_[A-Za-z0-9]{20,}|ghu_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|AKIA[0-9A-Z]{16}|ASIA[0-9A-Z]{16}|-----BEGIN [A-Z ]*PRIVATE KEY-----|xox[baprs]-[A-Za-z0-9-]{10,}|AIza[0-9A-Za-z_-]{30,}|sk-[A-Za-z0-9]{20,}|glpat-[A-Za-z0-9_-]{20,}'
+
+# Env-style assignment of a long quoted value to a secret-looking name.
+generic='(SECRET|TOKEN|PASSWORD|PASSWD|API[_-]?KEY|ACCESS[_-]?KEY|PRIVATE[_-]?KEY|CLIENT[_-]?SECRET)["'"'"' ]*[:=]["'"'"' ]+[A-Za-z0-9/+_=.-]{12,}'
+
+# Only look at lines being ADDED in this commit.
+added=$(git diff --cached --no-color -U0 -- . ':(exclude)package-lock.json' | grep '^+' | grep -v '^+++')
+hits=$(printf '%s\n' "$added" | grep -nE "$strong"; printf '%s\n' "$added" | grep -nEi "$generic")
+
+if [ -n "$hits" ]; then
+  echo "------------------------------------------------------------"
+  echo " Commit blocked: a staged line looks like a secret."
+  echo "------------------------------------------------------------"
+  printf '%s\n' "$hits" | head -20
+  echo ""
+  echo " Remove the secret (and rotate it if it was ever real)."
+  echo " False positive? Bypass once with:  git commit --no-verify"
+  echo "------------------------------------------------------------"
+  exit 1
+fi
+exit 0
