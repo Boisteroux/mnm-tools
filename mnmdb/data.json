@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-17T00:54:27.304Z",
+  "generatedAt": "2026-06-17T07:06:54.689Z",
   "source": "mnm-tools",
   "ledgerFiles": 15,
-  "events": 3374,
+  "events": 3476,
   "mobs": {
     "a desert bat": {
       "kills": 0,
@@ -605,6 +605,19 @@
       },
       "coin": 0,
       "corpses": 1
+    },
+    "a small river elemental": {
+      "kills": 0,
+      "drops": {
+        "Torn Fishing Net": 2,
+        "Encrusted Calafreyan Dagger": 1,
+        "Encrusted Calafreyan Buckler": 1
+      },
+      "zones": {
+        "Evershade Weald": 4
+      },
+      "coin": 0,
+      "corpses": 2
     }
   },
   "items": [
@@ -614,7 +627,9 @@
       "droppedBy": [],
       "prices": [],
       "harvested": 8,
-      "zones": []
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "ashira_necklace_sct",
@@ -961,8 +976,12 @@
           "count": 16
         }
       ],
-      "harvested": 388,
-      "zones": []
+      "harvested": 423,
+      "zones": [
+        "Evershade Weald",
+        "Night Harbor",
+        "Shaded Dunes"
+      ]
     },
     {
       "id": "druid_shaman_idol",
@@ -1038,7 +1057,9 @@
       "droppedBy": [],
       "prices": [],
       "harvested": 1,
-      "zones": []
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "chipped_black_pearl",
@@ -1046,7 +1067,9 @@
       "droppedBy": [],
       "prices": [],
       "harvested": 4,
-      "zones": []
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "chipped_black_sapphire",
@@ -1054,7 +1077,9 @@
       "droppedBy": [],
       "prices": [],
       "harvested": 2,
-      "zones": []
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "chipped_bloodstone",
@@ -1062,7 +1087,9 @@
       "droppedBy": [],
       "prices": [],
       "harvested": 1,
-      "zones": []
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "chipped_blue_diamond",
@@ -1070,7 +1097,9 @@
       "droppedBy": [],
       "prices": [],
       "harvested": 2,
-      "zones": []
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "chipped_cat_s_eye_agate",
@@ -1078,7 +1107,9 @@
       "droppedBy": [],
       "prices": [],
       "harvested": 1,
-      "zones": []
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "chipped_diamond",
@@ -1086,7 +1117,9 @@
       "droppedBy": [],
       "prices": [],
       "harvested": 1,
-      "zones": []
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "chipped_emerald",
@@ -1094,7 +1127,9 @@
       "droppedBy": [],
       "prices": [],
       "harvested": 1,
-      "zones": []
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "chipped_fire_emerald",
@@ -1102,7 +1137,9 @@
       "droppedBy": [],
       "prices": [],
       "harvested": 2,
-      "zones": []
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "chipped_hematite",
@@ -1110,7 +1147,9 @@
       "droppedBy": [],
       "prices": [],
       "harvested": 2,
-      "zones": []
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "chipped_jacinth",
@@ -1118,7 +1157,9 @@
       "droppedBy": [],
       "prices": [],
       "harvested": 1,
-      "zones": []
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "chipped_jasper",
@@ -1126,7 +1167,9 @@
       "droppedBy": [],
       "prices": [],
       "harvested": 1,
-      "zones": []
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "chipped_malachite",
@@ -1134,7 +1177,9 @@
       "droppedBy": [],
       "prices": [],
       "harvested": 3,
-      "zones": []
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "chipped_onyx",
@@ -1142,7 +1187,9 @@
       "droppedBy": [],
       "prices": [],
       "harvested": 3,
-      "zones": []
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "chipped_star_ruby",
@@ -1150,7 +1197,9 @@
       "droppedBy": [],
       "prices": [],
       "harvested": 2,
-      "zones": []
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "chipped_turquoise",
@@ -1158,7 +1207,9 @@
       "droppedBy": [],
       "prices": [],
       "harvested": 2,
-      "zones": []
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "chipped_wolf_s_eye_agate",
@@ -1166,7 +1217,9 @@
       "droppedBy": [],
       "prices": [],
       "harvested": 1,
-      "zones": []
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "cloth_scraps",
@@ -1248,7 +1301,10 @@
       "droppedBy": [],
       "prices": [],
       "harvested": 7,
-      "zones": []
+      "zones": [
+        "Evershade Weald",
+        "Night Harbor"
+      ]
     },
     {
       "id": "cooked_bat_meat",
@@ -1371,8 +1427,12 @@
       "name": "Copper Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 373,
-      "zones": []
+      "harvested": 406,
+      "zones": [
+        "Evershade Weald",
+        "Night Harbor",
+        "Shaded Dunes"
+      ]
     },
     {
       "id": "copper_plate_bracer",
@@ -1660,6 +1720,50 @@
       ]
     },
     {
+      "id": "esw_encrusted_calafreyan_buckler",
+      "name": "Encrusted Calafreyan Buckler",
+      "droppedBy": [
+        {
+          "mob": "a small river elemental",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        }
+      ],
+      "prices": [
+        {
+          "copper": 5,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
+      "id": "esw_encrusted_calafreyan_dagger",
+      "name": "Encrusted Calafreyan Dagger",
+      "droppedBy": [
+        {
+          "mob": "a small river elemental",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        }
+      ],
+      "prices": [
+        {
+          "copper": 12,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
       "id": "orc_warrior_belt",
       "name": "Fellstone Warrior's Belt",
       "droppedBy": [
@@ -1832,7 +1936,9 @@
         }
       ],
       "harvested": 28,
-      "zones": []
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "green_drakeling_hide",
@@ -2061,9 +2167,16 @@
       "id": "lionleaf",
       "name": "Lionleaf",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 1,
+          "count": 1
+        }
+      ],
       "harvested": 23,
-      "zones": []
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "lowquality_jackal_pelt",
@@ -2123,8 +2236,28 @@
       "id": "magic_frond",
       "name": "Magic Frond",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 2,
+          "count": 1
+        }
+      ],
       "harvested": 1,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
+      "id": "makeshift_vial",
+      "name": "Makeshift Vial",
+      "droppedBy": [],
+      "prices": [
+        {
+          "copper": 1,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
       "zones": []
     },
     {
@@ -2141,7 +2274,7 @@
       "prices": [
         {
           "copper": 1,
-          "count": 4
+          "count": 5
         }
       ],
       "harvested": 0,
@@ -2160,7 +2293,9 @@
         }
       ],
       "harvested": 5,
-      "zones": []
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "onion",
@@ -2557,11 +2692,14 @@
       "prices": [
         {
           "copper": 1,
-          "count": 8
+          "count": 10
         }
       ],
-      "harvested": 218,
-      "zones": []
+      "harvested": 228,
+      "zones": [
+        "Evershade Weald",
+        "Night Harbor"
+      ]
     },
     {
       "id": "royal_jelly",
@@ -3112,6 +3250,16 @@
       "zones": [
         "Night Harbor",
         "Shaded Dunes"
+      ]
+    },
+    {
+      "id": "selstie_kelp",
+      "name": "Selstie Kelp",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Evershade Weald"
       ]
     },
     {
@@ -3982,6 +4130,23 @@
       ]
     },
     {
+      "id": "esw_torn_fishing_net",
+      "name": "Torn Fishing Net",
+      "droppedBy": [
+        {
+          "mob": "a small river elemental",
+          "drops": 2,
+          "corpses": 2,
+          "rate": 1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
       "id": "ranger_orc_report",
       "name": "Unintelligible Report",
       "droppedBy": [
@@ -4098,7 +4263,9 @@
       "droppedBy": [],
       "prices": [],
       "harvested": 4,
-      "zones": []
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "whitefish",
@@ -4187,11 +4354,14 @@
       "prices": [
         {
           "copper": 1,
-          "count": 4
+          "count": 5
         }
       ],
-      "harvested": 181,
-      "zones": []
+      "harvested": 186,
+      "zones": [
+        "Evershade Weald",
+        "Night Harbor"
+      ]
     },
     {
       "id": "worn_buckler_t1",
@@ -4263,11 +4433,11 @@
     }
   ],
   "harvest": {
-    "Copper Ore": 373,
-    "Brittle Stone": 388,
+    "Copper Ore": 406,
+    "Brittle Stone": 423,
     "Clouded Crystallized Magic": 7,
-    "Wood": 181,
-    "Resin": 218,
+    "Wood": 186,
+    "Resin": 228,
     "Chipped Turquoise": 2,
     "Lionleaf": 23,
     "Chipped Star Ruby": 2,
@@ -4290,6 +4460,7 @@
     "Whispering Sage": 4,
     "Chipped Jasper": 1,
     "Chipped Wolf's Eye Agate": 1,
-    "Chipped Cat's Eye Agate": 1
+    "Chipped Cat's Eye Agate": 1,
+    "Selstie Kelp": 1
   }
 }
