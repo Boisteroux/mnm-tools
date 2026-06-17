@@ -81,6 +81,53 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
 - **Tip jar** — optional Ko-fi/donation link once you're ready.
 - **Polish** — first/last seen, table filters, sample-size confidence on values.
 
+## 💡 Potential features (idea log)
+
+A running brainstorm to pull from when deciding what's next. Each notes the data
+it needs (★ = data we already have).
+
+**Time-based (★ ledger has timestamps on every event)**
+- **Coin/hour & kills/hour** — real ROI of a farm spot from event timing. ★
+- **"Best farm right now" recommender** — rank mobs/zones by value-per-time for a
+  goal (coin / a mat / a tradeskill stack). ★
+- **Session Replay** — animate a play session on the map (dot hops zones, loot
+  pops, coin ticks). Login is detectable in Player.log; logout inferred from the
+  ledger going quiet. Could auto-generate a recap when the game closes. ★
+- **Spawn-timer estimation** — infer named-mob respawn windows from kill
+  timestamps. Rough solo, strong once crowdsourced. ★
+
+**Economy**
+- **M&M Market Index** — a commodity basket charted over time (stock-ticker vibe).
+- **Arbitrage finder** — vendor buy ("Sold by") < player sell → flip for profit.
+- **Supply-chain calculator** — walk raw mats → intermediates → finished goods
+  through the 182-recipe graph (value at each step). ★ (recipes)
+- **Inflation tracker** — total coin minted (kill coin) over time = money supply. ★
+
+**Personal / gamified (per-character add-ons)**
+- **M&M Wrapped** — shareable recap card (hours, coin, fav zone, rarest drop). Run
+  monthly and/or a live "your stats" page on the site. ★
+- **Drop-luck meter** — your observed rate vs community average (needs crowdsourced
+  baseline). Tracks per character. ★ (personal half)
+- **Auto-achievements** — milestones mined from the ledger. ★
+- **Drop Simulator** — Monte-Carlo "kill this 100×" from observed rates. ★
+
+**Community**
+- **Discord bot** — `!price`, `!drops` in chat. *Best owned/supported by the M&M
+  QA team* rather than self-hosted; tag as a "hand-off" feature.
+- **Natural-language queries** — "most profitable thing to cook?" answered from the
+  dataset via an LLM.
+
+**Visualization (outlandish-but-buildable)**
+- **The Economy Web** — force-directed graph: mobs → drops → recipes → outputs →
+  vendors; click a node, see what flows. ★
+- **Sankey food-chain** — raw mats flowing through tradeskills into finished goods,
+  ribbon width = volume/value. ★ (recipes + harvest)
+- **Illustrated Bestiary** — mob compendium (wiki art + stats + drop/value). ★
+- **Economic what-if** — ripple a price change through the crafting graph. ★
+
+**Off the table** (so we don't chase them): live player x/y position (not in
+logs), auction-chat scraping (chat isn't on disk).
+
 ## 📱 Good phone tasks (no app needed)
 
 Things you can do from github.com on your phone while away from the PC:
