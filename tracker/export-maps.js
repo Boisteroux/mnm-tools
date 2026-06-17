@@ -10,21 +10,20 @@ const crypto = require('crypto');
 // packaged app (it's a devDependency), in which case images are copied as-is.
 let Jimp = null;
 try { Jimp = require('jimp'); } catch {}
-const MAX_WEB = 1600; // longest side, px — plenty for the web viewer + tagging
+const MAX_WEB = 2400; // longest side, px — big enough to zoom into on the web viewer
 
-// Web-optimise one image buffer: shrink to MAX_WEB and recompress. Markers on
-// the web are positioned by percentage, so resizing never misaligns them. The
-// app keeps its full-res originals (its markers are in pixel coordinates).
+// Web-optimise one image buffer: shrink to MAX_WEB and recompress as JPEG. Returns
+// the scale factor applied so marker coordinates can be scaled to match.
 async function webImage(buf, ext) {
-  if (!Jimp || buf.length < 350 * 1024) return { buf, ext }; // small already — leave it
+  if (!Jimp || buf.length < 350 * 1024) return { buf, ext, scale: 1 }; // small already — leave it
   try {
     const img = await Jimp.read(buf);
     const long = Math.max(img.bitmap.width, img.bitmap.height);
-    if (long > MAX_WEB) img.scale(MAX_WEB / long);
-    // Big maps recompress far smaller as JPEG (no transparency needed on a map).
+    const scale = long > MAX_WEB ? MAX_WEB / long : 1;
+    if (scale < 1) img.scale(scale);
     img.quality(82);
-    return { buf: await img.getBufferAsync(Jimp.MIME_JPEG), ext: '.jpg' };
-  } catch { return { buf, ext }; }
+    return { buf: await img.getBufferAsync(Jimp.MIME_JPEG), ext: '.jpg', scale };
+  } catch { return { buf, ext, scale: 1 }; }
 }
 
 const slug = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
@@ -71,7 +70,7 @@ async function exportMaps(mapDataFile, destDir) {
       name: z.name,
       image: fname,
       markers: (z.markers || []).map((m) => ({
-        x: Math.round(m.x), y: Math.round(m.y),
+        x: Math.round(m.x * out.scale), y: Math.round(m.y * out.scale), // match the downscaled image
         label: m.label || '', category: m.category || 'misc', notes: m.notes || '',
       })),
     });

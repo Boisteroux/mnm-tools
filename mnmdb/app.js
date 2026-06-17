@@ -890,22 +890,50 @@ function markerLayerHTML(markers, nw, nh) {
   ).join('');
 }
 
-// Full-size map overlay: shows the image as large as the viewport allows, markers
-// included. Close with the ✕, a click outside, or Esc.
+// Full-size map overlay with zoom + pan. Scroll or +/− to zoom, drag to pan.
+// Close with ✕, a backdrop click, or Esc.
 function openMapLightbox() {
   if (!mapLightSrc || document.querySelector('.lightbox')) return;
   const lb = document.createElement('div');
   lb.className = 'lightbox';
-  lb.innerHTML = '<button class="lb-close" aria-label="Close">✕</button>' +
+  lb.innerHTML =
+    '<button class="lb-close" aria-label="Close">✕</button>' +
+    '<div class="lb-zoom"><button data-z="out" aria-label="Zoom out">−</button>' +
+    '<button data-z="reset" aria-label="Reset">⤢</button>' +
+    '<button data-z="in" aria-label="Zoom in">+</button></div>' +
     '<div class="lb-inner"><img src="' + mapLightSrc + '" alt="" /><div class="lb-layer"></div></div>';
   document.body.appendChild(lb);
-  const img = lb.querySelector('img'), layer = lb.querySelector('.lb-layer');
+  const inner = lb.querySelector('.lb-inner'), img = lb.querySelector('img'), layer = lb.querySelector('.lb-layer');
+
+  let scale = 1, tx = 0, ty = 0;
+  const apply = () => {
+    inner.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + scale + ')';
+    inner.classList.toggle('zoomed', scale > 1);
+  };
+  const zoom = (f) => { scale = Math.max(1, Math.min(8, scale * f)); if (scale === 1) { tx = 0; ty = 0; } apply(); };
   const place = () => { layer.innerHTML = markerLayerHTML(pendingMap || [], img.naturalWidth || 1, img.naturalHeight || 1); };
   img.complete && img.naturalWidth ? place() : img.addEventListener('load', place);
-  const close = () => { lb.remove(); document.removeEventListener('keydown', onKey); };
-  const onKey = (e) => { if (e.key === 'Escape') close(); };
+
+  lb.querySelector('[data-z=in]').onclick = (e) => { e.stopPropagation(); zoom(1.4); };
+  lb.querySelector('[data-z=out]').onclick = (e) => { e.stopPropagation(); zoom(1 / 1.4); };
+  lb.querySelector('[data-z=reset]').onclick = (e) => { e.stopPropagation(); scale = 1; tx = 0; ty = 0; apply(); };
+  lb.addEventListener('wheel', (e) => { e.preventDefault(); zoom(e.deltaY < 0 ? 1.18 : 1 / 1.18); }, { passive: false });
+
+  let dragging = false, moved = false, sx = 0, sy = 0;
+  inner.addEventListener('mousedown', (e) => { if (scale <= 1) return; dragging = true; moved = false; sx = e.clientX - tx; sy = e.clientY - ty; e.preventDefault(); });
+  const onMove = (e) => { if (!dragging) return; moved = true; tx = e.clientX - sx; ty = e.clientY - sy; apply(); };
+  const onUp = () => { dragging = false; };
+  window.addEventListener('mousemove', onMove);
+  window.addEventListener('mouseup', onUp);
+
+  const close = () => { lb.remove(); document.removeEventListener('keydown', onKey); window.removeEventListener('mousemove', onMove); window.removeEventListener('mouseup', onUp); };
+  const onKey = (e) => { if (e.key === 'Escape') close(); else if (e.key === '+' || e.key === '=') zoom(1.4); else if (e.key === '-') zoom(1 / 1.4); };
   document.addEventListener('keydown', onKey);
-  lb.addEventListener('click', (e) => { if (e.target === lb || e.target.closest('.lb-close')) close(); });
+  lb.addEventListener('click', (e) => {
+    if (e.target.closest('.lb-close')) return close();
+    if (e.target.closest('.lb-inner') || e.target.closest('.lb-zoom')) return; // map/controls
+    if (!moved) close(); // backdrop
+  });
 }
 
 function renderMapView(name) {
