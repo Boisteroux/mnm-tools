@@ -684,8 +684,24 @@ function recipeTable(recs, showSkill) {
 const marginNote = '<div class="note">“Margin” = output value − materials value (best known player-trade or vendor price) — ' +
   'what crafting adds over selling the raw mats. “?” means a material has no price logged yet; fills in as data grows.</div>';
 
-// Illustrated bestiary — a card per mob (image slot left empty for now, wired so
-// art can drop in later). Stats + value + the best drops at a glance.
+// Simple placeholder icon per creature, mapped from its name/race. Stand-in until
+// real art; keeps the grid scannable.
+function mobIcon(name, race) {
+  const n = (name + ' ' + (race || '')).toLowerCase();
+  const map = [
+    [/bat/, '🦇'], [/wolf|\bpup\b|jackal|hound|\bdog\b/, '🐺'], [/skeleton|skull|\bbone/, '💀'],
+    [/widow|spider/, '🕷️'], [/snake|serpent|rattlesnake|viper|cobra/, '🐍'], [/scarab|beetle/, '🪲'],
+    [/wasp|hornet|\bdrone\b|\bbee\b/, '🐝'], [/\brat\b|rodent/, '🐀'], [/drake|dragon|wyrm/, '🐉'],
+    [/croc|gator|lizard/, '🐊'], [/fawn|dryad|deer|stag/, '🦌'], [/crab/, '🦀'],
+    [/ashira|fellstone|\borc\b|bandit|warrior|scout|shaman|lookout|guard|\bhuman|\belf/, '⚔️'],
+    [/elemental/, '💧'], [/fire|flame|ember/, '🔥'],
+  ];
+  for (const [rx, ic] of map) if (rx.test(n)) return ic;
+  return '🐾';
+}
+
+// Illustrated bestiary — a card per mob with a simple type icon (real art can
+// replace it later). Stats + value + the best drops at a glance.
 function renderBestiary() {
   const mobs = Object.entries(DATA.mobs)
     .map(([name, d]) => ({ name, d, val: mobValuePerKill(d).total, corpses: mobCorpses(d) }))
@@ -713,7 +729,7 @@ function renderBestiary() {
         '<span class="bd-val coin">' + (dr.value > 0 ? coin(dr.value) : '—') + '</span></div>';
     }).join('');
     return '<div class="beast">' +
-      '<div class="beast-art" title="Art coming later"><span>' + esc((w.race || 'Creature')) + '</span></div>' +
+      '<div class="beast-art" title="' + esc(w.race || name) + '"><span class="beast-emoji">' + mobIcon(name, w.race) + '</span></div>' +
       '<div class="beast-body"><div class="beast-name">' + mobLink(name) + '</div>' +
       '<div class="bchips">' + chips + '</div>' +
       '<div class="beast-stats"><span>Value/kill <b class="coin">' + coin(val) + '</b></span>' +

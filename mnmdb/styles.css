@@ -134,10 +134,10 @@ h3.bracket { font-size: 13px; font-weight: 600; color: var(--text); margin: 4px 
 .beast { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
 .beast-art {
   height: 96px; display: flex; align-items: center; justify-content: center;
-  background: repeating-linear-gradient(45deg, var(--bg) 0 12px, #15100a 12px 24px);
-  border-bottom: 1px dashed var(--line-2);
+  background: radial-gradient(circle at 50% 38%, #241a10, #14100b);
+  border-bottom: 1px solid var(--line);
 }
-.beast-art span { font-size: 12px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+.beast-emoji { font-size: 48px; line-height: 1; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.5)); }
 .beast-body { padding: 11px 13px 13px; }
 .beast-name { font-size: 15px; }
 .bchips { display: flex; flex-wrap: wrap; gap: 5px; margin: 7px 0 9px; }
