@@ -136,7 +136,22 @@ h3.bracket { font-size: 13px; font-weight: 600; color: var(--text); margin: 4px 
 .mlg { display: inline-flex; align-items: center; gap: 6px; }
 .mdot { width: 10px; height: 10px; border-radius: 50%; }
 
-.mapview { position: relative; display: inline-block; max-width: 100%; line-height: 0; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.mapview { position: relative; display: inline-block; max-width: 100%; line-height: 0; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; cursor: zoom-in; }
+
+/* Click-to-enlarge full-size map overlay */
+.lightbox {
+  position: fixed; inset: 0; z-index: 100; background: rgba(0, 0, 0, 0.88);
+  display: flex; align-items: center; justify-content: center; padding: 2vmin; cursor: zoom-out;
+}
+.lb-inner { position: relative; display: inline-block; line-height: 0; }
+.lb-inner img { display: block; max-width: 96vw; max-height: 92vh; width: auto; height: auto; border-radius: 6px; }
+.lb-layer { position: absolute; inset: 0; }
+.lb-close {
+  position: fixed; top: 14px; right: 16px; z-index: 101; width: 38px; height: 38px;
+  border-radius: 50%; border: 1px solid var(--line-2, #4a3320); background: var(--panel);
+  color: var(--text); font-size: 16px; cursor: pointer;
+}
+.lb-close:hover { background: var(--panel-2); }
 .mapview img { display: block; max-width: 100%; height: auto; }
 #maplayer { position: absolute; inset: 0; }
 .mk { position: absolute; transform: translate(-50%, -50%); display: flex; align-items: center; gap: 5px; line-height: 1; }

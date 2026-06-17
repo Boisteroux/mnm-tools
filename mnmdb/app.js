@@ -877,6 +877,36 @@ function renderMapsList() {
 }
 
 let pendingMap = null;
+let mapLightSrc = '';   // current map image, for the click-to-enlarge lightbox
+
+// Marker HTML positioned by percentage of the image's natural size (works at any
+// display size — inline map or lightbox).
+function markerLayerHTML(markers, nw, nh) {
+  return markers.map((m) =>
+    '<span class="mk" style="left:' + (m.x / nw * 100) + '%;top:' + (m.y / nh * 100) + '%;--mc:' + m.color + '" ' +
+    'title="' + esc(m.label + (m.notes ? ' — ' + m.notes : '')) + '">' +
+    '<span class="mk-ic">' + m.icon + '</span>' +
+    (m.label ? '<span class="mk-lbl">' + esc(m.label) + '</span>' : '') + '</span>'
+  ).join('');
+}
+
+// Full-size map overlay: shows the image as large as the viewport allows, markers
+// included. Close with the ✕, a click outside, or Esc.
+function openMapLightbox() {
+  if (!mapLightSrc || document.querySelector('.lightbox')) return;
+  const lb = document.createElement('div');
+  lb.className = 'lightbox';
+  lb.innerHTML = '<button class="lb-close" aria-label="Close">✕</button>' +
+    '<div class="lb-inner"><img src="' + mapLightSrc + '" alt="" /><div class="lb-layer"></div></div>';
+  document.body.appendChild(lb);
+  const img = lb.querySelector('img'), layer = lb.querySelector('.lb-layer');
+  const place = () => { layer.innerHTML = markerLayerHTML(pendingMap || [], img.naturalWidth || 1, img.naturalHeight || 1); };
+  img.complete && img.naturalWidth ? place() : img.addEventListener('load', place);
+  const close = () => { lb.remove(); document.removeEventListener('keydown', onKey); };
+  const onKey = (e) => { if (e.key === 'Escape') close(); };
+  document.addEventListener('keydown', onKey);
+  lb.addEventListener('click', (e) => { if (e.target === lb || e.target.closest('.lb-close')) close(); });
+}
 
 function renderMapView(name) {
   const z = (MAPS.zones || []).find((x) => x.name === name);
@@ -903,12 +933,14 @@ function renderMapView(name) {
     return { x: m.x, y: m.y, label: m.label, notes: m.notes, color: c.color, icon: c.icon };
   });
 
+  mapLightSrc = 'maps/' + encodeURIComponent(z.image);
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › <a href="#/maps">maps</a> › ' + esc(name) + '</div>' +
     '<h1>' + esc(name) + '</h1>' +
     (legend ? '<div class="mlegend">' + legend + '</div>' : '<p class="sub">No markers on this map yet.</p>') +
-    '<div class="mapview"><img id="mapimg" src="maps/' + encodeURIComponent(z.image) + '" alt="' + esc(name) + ' map" />' +
-    '<div id="maplayer"></div></div>';
+    '<div class="mapview" title="Click to enlarge"><img id="mapimg" src="' + mapLightSrc + '" alt="' + esc(name) + ' map" />' +
+    '<div id="maplayer"></div></div>' +
+    '<p class="sub">Click the map to view it full size.</p>';
   wireMapView();
 }
 
@@ -919,17 +951,11 @@ function wireMapView() {
   const img = document.getElementById('mapimg');
   const layer = document.getElementById('maplayer');
   if (!img || !layer) return;
-  const place = () => {
-    const nw = img.naturalWidth || 1, nh = img.naturalHeight || 1;
-    layer.innerHTML = markers.map((m) =>
-      '<span class="mk" style="left:' + (m.x / nw * 100) + '%;top:' + (m.y / nh * 100) + '%;--mc:' + m.color + '" ' +
-      'title="' + esc(m.label + (m.notes ? ' — ' + m.notes : '')) + '">' +
-      '<span class="mk-ic">' + m.icon + '</span>' +
-      (m.label ? '<span class="mk-lbl">' + esc(m.label) + '</span>' : '') + '</span>'
-    ).join('');
-  };
+  const place = () => { layer.innerHTML = markerLayerHTML(markers, img.naturalWidth || 1, img.naturalHeight || 1); };
   if (img.complete && img.naturalWidth) place();
   else img.addEventListener('load', place);
+  const box = img.closest('.mapview');
+  if (box) box.addEventListener('click', openMapLightbox);
 }
 
 // ---- Router ----
