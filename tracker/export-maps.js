@@ -6,24 +6,41 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 
-// Optional — only needed to downscale big maps for the web. Absent in the
-// packaged app (it's a devDependency), in which case images are copied as-is.
-let Jimp = null;
+// Optional image libs — only used to downscale big maps for the web (dev-only;
+// never bundled in the packaged app). sharp (mozjpeg) compresses best; jimp is a
+// pure-JS fallback. If neither is present, images are copied as-is.
+let sharp = null, Jimp = null;
+try { sharp = require('sharp'); } catch {}
 try { Jimp = require('jimp'); } catch {}
-const MAX_WEB = 2400; // longest side, px — big enough to zoom into on the web viewer
+const MAX_WEB = 3200; // longest side, px — high enough to read detail when zoomed
+const JPEG_Q = 84;
 
 // Web-optimise one image buffer: shrink to MAX_WEB and recompress as JPEG. Returns
 // the scale factor applied so marker coordinates can be scaled to match.
 async function webImage(buf, ext) {
-  if (!Jimp || buf.length < 350 * 1024) return { buf, ext, scale: 1 }; // small already — leave it
-  try {
-    const img = await Jimp.read(buf);
-    const long = Math.max(img.bitmap.width, img.bitmap.height);
-    const scale = long > MAX_WEB ? MAX_WEB / long : 1;
-    if (scale < 1) img.scale(scale);
-    img.quality(82);
-    return { buf: await img.getBufferAsync(Jimp.MIME_JPEG), ext: '.jpg', scale };
-  } catch { return { buf, ext, scale: 1 }; }
+  if (buf.length < 300 * 1024) return { buf, ext, scale: 1 }; // small / line-art — leave it
+  if (sharp) {
+    try {
+      const meta = await sharp(buf).metadata();
+      const long = Math.max(meta.width || 1, meta.height || 1);
+      const scale = long > MAX_WEB ? MAX_WEB / long : 1;
+      let p = sharp(buf);
+      if (scale < 1) p = p.resize(Math.round(meta.width * scale), Math.round(meta.height * scale));
+      const out = await p.jpeg({ quality: JPEG_Q, mozjpeg: true }).toBuffer();
+      return { buf: out, ext: '.jpg', scale };
+    } catch {}
+  }
+  if (Jimp) {
+    try {
+      const img = await Jimp.read(buf);
+      const long = Math.max(img.bitmap.width, img.bitmap.height);
+      const scale = long > MAX_WEB ? MAX_WEB / long : 1;
+      if (scale < 1) img.scale(scale);
+      img.quality(JPEG_Q);
+      return { buf: await img.getBufferAsync(Jimp.MIME_JPEG), ext: '.jpg', scale };
+    } catch {}
+  }
+  return { buf, ext, scale: 1 };
 }
 
 const slug = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
