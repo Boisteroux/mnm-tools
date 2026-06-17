@@ -36,7 +36,8 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
   maps with their markers (hover to read). Updated on Publish.
 - **One-click publish** — "Publish to MnMdb" button in the app (owner build only)
   regenerates the site data from your ledger and pushes it live in ~30s.
-- **Crafting profitability** — 89 wiki recipes (ingredients → output, trivial) on
+- **Crafting profitability** — 182 wiki recipes across 11 tradeskills (header-aware
+  parser; ingredients → output, trivial) on
   tradeskill + item pages, with a craft **margin** (output value − materials value).
   Recipe reference is live now; margins fill in as crafted-item prices accumulate.
 - **Sharing & look** — public repo, MIT license, Windows installer, sunset branding,
