@@ -700,6 +700,16 @@ function mobIcon(name, race) {
   return '🐾';
 }
 
+// A unique colour per creature name (FNV hash → hue) so same-type mobs still look
+// distinct, plus a size factor from descriptors. Keeps the placeholder unique.
+function hashHue(s) { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return (h >>> 0) % 360; }
+function creatureScale(name) {
+  const n = name.toLowerCase();
+  if (/\blarge\b|greater|\belder\b|\bgiant\b|\bdire\b|\bold\b/.test(n)) return 1.22;
+  if (/hatchling|\bpup\b|\bsmall\b|spiderling|\bdrone\b|whelp|\byoung\b|worker/.test(n)) return 0.82;
+  return 1;
+}
+
 // Illustrated bestiary — a card per mob with a simple type icon (real art can
 // replace it later). Stats + value + the best drops at a glance.
 function renderBestiary() {
@@ -729,7 +739,8 @@ function renderBestiary() {
         '<span class="bd-val coin">' + (dr.value > 0 ? coin(dr.value) : '—') + '</span></div>';
     }).join('');
     return '<div class="beast">' +
-      '<div class="beast-art" title="' + esc(w.race || name) + '"><span class="beast-emoji">' + mobIcon(name, w.race) + '</span></div>' +
+      '<div class="beast-art" style="background:radial-gradient(circle at 50% 36%, hsl(' + hashHue(name) + ' 42% 15%), #130f0a);border-bottom-color:hsl(' + hashHue(name) + ' 35% 26%)" title="' + esc(w.race || name) + '">' +
+      '<span class="beast-emoji" style="font-size:' + Math.round(48 * creatureScale(name)) + 'px">' + mobIcon(name, w.race) + '</span></div>' +
       '<div class="beast-body"><div class="beast-name">' + mobLink(name) + '</div>' +
       '<div class="bchips">' + chips + '</div>' +
       '<div class="beast-stats"><span>Value/kill <b class="coin">' + coin(val) + '</b></span>' +
