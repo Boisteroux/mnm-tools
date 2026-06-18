@@ -513,6 +513,12 @@ body.overlay #map-area { background: rgba(18, 12, 8, 0.10); }
 #replay-modal .modal { width: 600px; }
 .replay-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .replay-head h2 { margin: 0; }
+.replay-head-right { display: flex; align-items: center; gap: 10px; }
+.modal-x {
+  flex: 0 0 auto; background: transparent; border: none; color: var(--muted);
+  font-size: 15px; line-height: 1; padding: 4px 6px; border-radius: 5px;
+}
+.modal-x:hover { background: var(--surface-2); border-color: transparent; color: var(--text); }
 .replay-nav { display: flex; align-items: center; gap: 8px; }
 .replay-nav button { padding: 3px 9px; }
 .replay-count { font-size: 11px; color: var(--muted); min-width: 70px; text-align: center; }

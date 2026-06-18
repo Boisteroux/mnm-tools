@@ -229,16 +229,19 @@
     <div class="modal modal-wide">
       <div class="replay-head">
         <h2>Session Replay</h2>
-        <div class="replay-nav">
-          <button id="replay-prev" class="secondary" title="Older session">‹ Older</button>
-          <span id="replay-count" class="replay-count"></span>
-          <button id="replay-next" class="secondary" title="More recent session">Newer ›</button>
+        <div class="replay-head-right">
+          <div class="replay-nav">
+            <button id="replay-prev" class="secondary" title="Older session">‹ Older</button>
+            <span id="replay-count" class="replay-count"></span>
+            <button id="replay-next" class="secondary" title="More recent session">Newer ›</button>
+          </div>
+          <button id="replay-x" class="modal-x" title="Close" aria-label="Close">✕</button>
         </div>
       </div>
       <div id="replay-today"></div>
       <div id="replay-body"></div>
       <div class="btn-row right">
-        <button id="replay-close">Done</button>
+        <button id="replay-close" class="primary">Done</button>
       </div>
     </div>
   </div>

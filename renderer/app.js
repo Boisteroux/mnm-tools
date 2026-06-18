@@ -1170,6 +1170,7 @@ async function openReplay() {
 
 $('btn-session-replay').addEventListener('click', openReplay);
 $('replay-close').addEventListener('click', () => $('replay-modal').classList.add('hidden'));
+$('replay-x').addEventListener('click', () => $('replay-modal').classList.add('hidden'));
 $('replay-prev').addEventListener('click', () => { if (replayIdx < replaySessions.length - 1) { replayIdx++; renderReplay(); } });
 $('replay-next').addEventListener('click', () => { if (replayIdx > 0) { replayIdx--; renderReplay(); } });
 
