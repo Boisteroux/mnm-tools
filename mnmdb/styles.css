@@ -126,8 +126,13 @@ h3.bracket { font-size: 13px; font-weight: 600; color: var(--text); margin: 4px 
 .flow-pick.active { color: var(--accent-dk, #2a1404); background: var(--accent); border-color: var(--accent); font-weight: 600; }
 .flow-wrap { overflow-x: auto; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 6px; }
 .flow-wrap svg { display: block; }
-.flow-wrap a text { cursor: pointer; }
-.flow-wrap a:hover rect { stroke: var(--accent); }
+.flow-wrap .fnode { cursor: pointer; }
+.flow-wrap .fnode rect, .flow-wrap .flink { transition: opacity 0.12s ease, stroke-opacity 0.12s ease; }
+.flow-wrap .fnode:hover rect { stroke: var(--accent); }
+.flow-wrap svg.tracing .fnode.off { opacity: 0.22; }
+.flow-wrap svg.tracing .flink.off { opacity: 0.05; }
+.flow-wrap svg.tracing .fnode.on rect { stroke: var(--accent); stroke-width: 2; }
+.flow-wrap svg.tracing .flink.on { stroke-opacity: 0.75; }
 
 /* ---- Bestiary ---- */
 .beastgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }

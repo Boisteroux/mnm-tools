@@ -779,6 +779,26 @@ const METALS = ['Copper', 'Bronze', 'Tin', 'Iron', 'Steel', 'Silver', 'Gold', 'P
 const familyOf = (item) => METALS.find((m) => item.includes(m)) || 'Other';
 
 let flowRecipes = [];
+let flowDownstream = {}; // item -> Set of itself + everything it crafts into
+let flowActive = null;   // currently-traced item (click to toggle)
+
+// Click a node: highlight it + its derivatives, grey the rest. Click again resets.
+function flowTrace(item) {
+  const svg = document.querySelector('#craftflow svg');
+  if (!svg) return;
+  if (flowActive === item) {
+    flowActive = null;
+    svg.classList.remove('tracing');
+    svg.querySelectorAll('.fnode, .flink').forEach((el) => el.classList.remove('on', 'off'));
+    return;
+  }
+  flowActive = item;
+  const set = flowDownstream[item] || new Set([item]);
+  svg.classList.add('tracing');
+  svg.querySelectorAll('.fnode').forEach((g) => { const on = set.has(g.dataset.item); g.classList.toggle('on', on); g.classList.toggle('off', !on); });
+  svg.querySelectorAll('.flink').forEach((p) => { const on = set.has(p.dataset.from) && set.has(p.dataset.to); p.classList.toggle('on', on); p.classList.toggle('off', !on); });
+}
+
 function craftFamilies(recs) {
   const fams = METALS.filter((m) => recs.some((r) => familyOf(r.result.item) === m));
   if (recs.some((r) => familyOf(r.result.item) === 'Other')) fams.push('Other');
@@ -808,6 +828,17 @@ function craftFlowSvg(recipes) {
   const cols = Array.from({ length: maxD + 1 }, () => []);
   [...nodes].sort().forEach((n) => cols[depth[n]].push(n));
 
+  // Downstream set per node (itself + everything it crafts into, transitively),
+  // for the click-to-trace highlight.
+  const adj = {}; nodes.forEach((n) => (adj[n] = []));
+  edges.forEach((e) => adj[e.from].push(e.to));
+  flowDownstream = {};
+  [...nodes].forEach((start) => {
+    const seen = new Set([start]), stack = [start];
+    while (stack.length) { const x = stack.pop(); (adj[x] || []).forEach((y) => { if (!seen.has(y)) { seen.add(y); stack.push(y); } }); }
+    flowDownstream[start] = seen;
+  });
+
   const NW = 152, NH = 26, VGAP = 12, COLGAP = 232, PADX = 8, PADY = 14;
   const pos = {}; let maxRows = 0;
   cols.forEach((col, ci) => { col.forEach((n, ri) => { pos[n] = { x: PADX + ci * COLGAP, y: PADY + ri * (NH + VGAP) }; }); maxRows = Math.max(maxRows, col.length); });
@@ -818,15 +849,15 @@ function craftFlowSvg(recipes) {
     const a = pos[e.from], b = pos[e.to];
     const x1 = a.x + NW, y1 = a.y + NH / 2, x2 = b.x, y2 = b.y + NH / 2, dx = (x2 - x1) / 2;
     const wpx = 2 + Math.round((e.value / maxVal) * 8);
-    return '<path d="M' + x1 + ' ' + y1 + ' C' + (x1 + dx) + ' ' + y1 + ',' + (x2 - dx) + ' ' + y2 + ',' + x2 + ' ' + y2 + '" fill="none" stroke="#f0922b" stroke-opacity="0.3" stroke-width="' + wpx + '"/>';
+    return '<path class="flink" data-from="' + esc(e.from) + '" data-to="' + esc(e.to) + '" d="M' + x1 + ' ' + y1 + ' C' + (x1 + dx) + ' ' + y1 + ',' + (x2 - dx) + ' ' + y2 + ',' + x2 + ' ' + y2 + '" fill="none" stroke="#f0922b" stroke-opacity="0.3" stroke-width="' + wpx + '"/>';
   }).join('');
   const boxes = [...nodes].map((n) => {
     const p = pos[n], isSrc = depth[n] === 0, isFin = depth[n] === maxD;
     const stroke = isSrc ? '#6f9a4a' : isFin ? '#f0922b' : '#4a3320';
-    const id = nameToId[n] || n, short = n.length > 23 ? n.slice(0, 22) + '…' : n;
-    return '<a href="#/item/' + encodeURIComponent(id) + '">' +
+    const short = n.length > 23 ? n.slice(0, 22) + '…' : n;
+    return '<g class="fnode" data-item="' + esc(n) + '">' +
       '<rect x="' + p.x + '" y="' + p.y + '" width="' + NW + '" height="' + NH + '" rx="5" fill="#2c1e14" stroke="' + stroke + '"/>' +
-      '<text x="' + (p.x + 8) + '" y="' + (p.y + NH / 2 + 4) + '" font-size="11" fill="#ece0d2">' + esc(short) + '</text></a>';
+      '<text x="' + (p.x + 8) + '" y="' + (p.y + NH / 2 + 4) + '" font-size="11" fill="#ece0d2">' + esc(short) + '</text></g>';
   }).join('');
   return '<div class="flow-wrap"><svg viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H + '">' + links + boxes + '</svg></div>';
 }
@@ -834,7 +865,14 @@ function craftFlowSvg(recipes) {
 window.flowPick = (fam) => {
   document.querySelectorAll('.flow-pick').forEach((b) => b.classList.toggle('active', b.dataset.fam === fam));
   const el = $('craftflow');
-  if (el) el.innerHTML = craftFlowSvg(flowRecipes.filter((r) => familyOf(r.result.item) === fam));
+  if (!el) return;
+  flowActive = null;
+  el.innerHTML = craftFlowSvg(flowRecipes.filter((r) => familyOf(r.result.item) === fam));
+  el.onclick = (e) => {
+    const node = e.target.closest('.fnode');
+    if (node) flowTrace(node.dataset.item);
+    else if (flowActive) flowTrace(flowActive); // click empty space to reset
+  };
 };
 
 function renderTradeskill(name) {
@@ -847,7 +885,7 @@ function renderTradeskill(name) {
   flowRecipes = recs;
   const fams = craftFamilies(recs);
   const flowSection = recs.length && fams.length
-    ? '<h2>Crafting flow</h2><p class="sub">Ingredients (left) flow into finished goods (right). Pick a material; thicker links = higher output value. Click a box to open the item.</p>' +
+    ? '<h2>Crafting flow</h2><p class="sub">Ingredients (left) flow into finished goods (right). Pick a material; thicker links = higher output value. Click a box to trace what it crafts into (the rest greys out); click it again or the background to reset.</p>' +
       '<div class="flow-tabs">' + fams.map((f, i) => '<button class="flow-pick' + (i === 0 ? ' active' : '') + '" data-fam="' + esc(f) + '" onclick="flowPick(\'' + esc(f) + '\')">' + esc(f) + '</button>').join('') + '</div>' +
       '<div id="craftflow"></div>'
     : '';
