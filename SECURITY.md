@@ -30,5 +30,5 @@ Bypass for a genuine false positive: `git commit --no-verify`.
 2. Then remove it from the code (and history if needed).
 
 ## Reporting
-Found something? Open an issue (without including the secret) or email
-zak@threefires.xyz.
+Found something? Open an issue (without including the secret) or message
+**Boisterous** on the Monsters & Memories Discord.
