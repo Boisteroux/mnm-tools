@@ -342,8 +342,47 @@ function summarizeSession(s) {
   };
 }
 
+// Roll up "today" from a list of summarised sessions. "Today" is defined by
+// SESSIONS, not the clock: any session that touches today is included whole — so
+// a session that began before midnight but ran continuously into today (no 30-min
+// break) is pulled in entirely, stretching the window past 24h. A session that
+// ended before midnight (i.e. there WAS a break) stays in yesterday. Returns null
+// if nothing was played today.
+function todayRollup(sessions) {
+  const d = new Date(); d.setHours(0, 0, 0, 0);
+  const start0 = d.getTime();
+  const today = sessions.filter((s) => s.end >= start0);
+  if (!today.length) return null;
+
+  const sum = (f) => today.reduce((a, s) => a + f(s), 0);
+  const mergeTop = (key) => {
+    const m = {};
+    today.forEach((s) => s[key].forEach((r) => { m[r.name] = (m[r.name] || 0) + r.count; }));
+    return Object.entries(m).sort((a, b) => b[1] - a[1]).map(([name, count]) => ({ name, count }));
+  };
+  const zoneMs = {};
+  today.forEach((s) => s.zones.forEach((z) => { zoneMs[z.zone] = (zoneMs[z.zone] || 0) + z.ms; }));
+
+  return {
+    sessionCount: today.length,
+    spanStart: Math.min(...today.map((s) => s.start)), // < start0 when a session carried over midnight
+    spanEnd: Math.max(...today.map((s) => s.end)),
+    playMs: sum((s) => s.durationMs),
+    active: today.some((s) => s.active),
+    counts: {
+      kills: sum((s) => s.counts.kills), loot: sum((s) => s.counts.loot),
+      harvest: sum((s) => s.counts.harvest), sales: sum((s) => s.counts.sales),
+    },
+    coin: {
+      fromKills: sum((s) => s.coin.fromKills), fromSales: sum((s) => s.coin.fromSales), total: sum((s) => s.coin.total),
+    },
+    topKills: mergeTop('topKills'), topLoot: mergeTop('topLoot'), topHarvest: mergeTop('topHarvest'),
+    zones: Object.entries(zoneMs).sort((a, b) => b[1] - a[1]).map(([zone, ms]) => ({ zone, ms })),
+  };
+}
+
 module.exports = {
   GAME_BASE, b64, priceToCopper, copperToString,
   findLedgerFiles, parseLedgers, buildItemReport,
-  buildSessions, SESSION_GAP_MS,
+  buildSessions, todayRollup, SESSION_GAP_MS,
 };

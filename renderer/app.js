@@ -1049,7 +1049,32 @@ function coinStr(c) {
 // what you killed/looted/harvested, and the coin you made.
 
 let replaySessions = [];
+let replayToday = null;
 let replayIdx = 0;
+
+const startOfTodayMs = () => { const d = new Date(); d.setHours(0, 0, 0, 0); return d.getTime(); };
+
+function renderToday() {
+  const el = $('replay-today');
+  const t = replayToday;
+  if (!t) { el.innerHTML = ''; return; }
+  const extended = t.spanStart < startOfTodayMs(); // a session carried over from before midnight
+  const sub = t.sessionCount + ' session' + (t.sessionCount === 1 ? '' : 's') + ' · ' + fmtDur(t.playMs) + ' played' +
+    (extended ? ' · since ' + fmtClock(t.spanStart) + ' (carried over midnight)' : '');
+  const coinSub = [];
+  if (t.coin.fromKills) coinSub.push(coinStr(t.coin.fromKills) + ' kills');
+  if (t.coin.fromSales) coinSub.push(coinStr(t.coin.fromSales) + ' vendor');
+  const stats = [t.counts.kills + ' killed', t.counts.loot + ' looted', t.counts.harvest + ' harvested', t.counts.sales + ' sold'].join(' · ');
+  el.innerHTML =
+    '<div class="replay-today-card">' +
+      '<div class="rt-head"><span class="rt-title">Today</span>' +
+        '<span class="rt-sub">' + reEsc(sub) + '</span>' +
+        (t.active ? '<span class="replay-live">● Live</span>' : '') + '</div>' +
+      '<div class="replay-coin rt-coin">+' + reEsc(coinStr(t.coin.total)) + ' earned' +
+        (coinSub.length ? ' <span class="replay-coin-sub">(' + reEsc(coinSub.join(' · ')) + ')</span>' : '') + '</div>' +
+      '<div class="rt-stats">' + reEsc(stats) + '</div>' +
+    '</div>';
+}
 
 const reEsc = (s) => String(s == null ? '' : s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
@@ -1131,12 +1156,15 @@ function renderReplay() {
 
 async function openReplay() {
   $('replay-modal').classList.remove('hidden');
+  $('replay-today').innerHTML = '';
   $('replay-body').innerHTML = '<p class="replay-empty">Reading your Ledger…</p>';
   $('replay-count').textContent = '';
   const r = await window.mapAPI.sessionReplay();
   replaySessions = (r && r.sessions) || [];
+  replayToday = (r && r.today) || null;
   replayIdx = 0;
-  if (r && r.error) { $('replay-body').innerHTML = '<p class="replay-empty">Could not read sessions: ' + reEsc(r.error) + '</p>'; return; }
+  if (r && r.error) { $('replay-today').innerHTML = ''; $('replay-body').innerHTML = '<p class="replay-empty">Could not read sessions: ' + reEsc(r.error) + '</p>'; return; }
+  renderToday();
   renderReplay();
 }
 

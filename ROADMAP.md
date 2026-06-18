@@ -44,7 +44,10 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
   (split on ~30 min idle; shows the most recent 3, with the in-progress one
   flagged **Live**). Each session shows duration, coin earned (kills +
   vendor), kill/loot/harvest/sale counts, a zone-by-zone timeline, and top
-  mobs/loot/harvest. Local-only (not published).
+  mobs/loot/harvest. A **Today** rollup tops the panel — defined by sessions, not
+  the clock, so a session played continuously across midnight counts as one
+  "today" (the window stretches past 24h instead of splitting at 00:00).
+  Local-only (not published).
 - **Sharing & look** — public repo, MIT license, Windows installer, sunset branding,
   warm UI theme, Outfit font shared by the app and site.
 

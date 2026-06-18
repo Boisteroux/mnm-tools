@@ -518,6 +518,14 @@ body.overlay #map-area { background: rgba(18, 12, 8, 0.10); }
 .replay-count { font-size: 11px; color: var(--muted); min-width: 70px; text-align: center; }
 .replay-live { color: #5fbf6a; font-weight: 600; }
 
+.replay-today-card { background: var(--surface-2); border: 1px solid var(--line-2); border-radius: 8px; padding: 10px 12px; }
+.rt-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.rt-title { font-size: 14px; font-weight: 600; color: var(--text); }
+.rt-sub { font-size: 11px; color: var(--muted); }
+.rt-head .replay-live { margin-left: auto; }
+.replay-coin.rt-coin { font-size: 16px; margin-top: 2px; }
+.rt-stats { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+
 #replay-body { display: flex; flex-direction: column; gap: 10px; margin: 6px 0 4px; max-height: 66vh; overflow-y: auto; }
 .replay-empty { color: var(--muted); font-size: 12px; padding: 14px 2px; }
 

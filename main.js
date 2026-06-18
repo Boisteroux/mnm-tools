@@ -123,7 +123,10 @@ ipcMain.handle('trade-item-names', () => {
 ipcMain.handle('session-replay', () => {
   try {
     const files = ledgerParser.findLedgerFiles();
-    return { sessions: ledgerParser.buildSessions(files, { limit: 3 }) };
+    // Build all sessions so the "today" rollup can span however many there were,
+    // then show only the 3 most recent as individually browsable.
+    const all = ledgerParser.buildSessions(files);
+    return { sessions: all.slice(0, 3), today: ledgerParser.todayRollup(all) };
   } catch (e) { return { error: e.message }; }
 });
 
