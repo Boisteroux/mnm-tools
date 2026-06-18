@@ -197,8 +197,15 @@ button.active { background: var(--accent); border-color: var(--accent); color: v
 .btn-row.right { justify-content: flex-end; margin-top: 12px; }
 .btn-row.right button { flex: 0 0 auto; }
 
-/* Sidebar buttons stay short, matching the category buttons */
-#sidebar button { padding: 4px 8px; }
+/* One consistent size for every sidebar button (height + font) */
+#sidebar button {
+  padding: 6px 9px;
+  font-size: 12px;
+  font-weight: 500;
+  min-height: 30px;
+  line-height: 1.2;
+  box-sizing: border-box;
+}
 
 .follow-row {
   display: flex;
@@ -508,8 +515,6 @@ body.overlay #map-area { background: rgba(18, 12, 8, 0.10); }
 }
 
 /* ---- Session Replay ---- */
-#btn-session-replay { width: 100%; margin-top: 6px; text-align: left; }
-
 #replay-modal .modal { width: 600px; }
 .replay-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .replay-head h2 { margin: 0; }

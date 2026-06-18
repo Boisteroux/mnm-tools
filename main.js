@@ -284,7 +284,7 @@ function boundsOnScreen(b) {
   });
 }
 
-function createWindow(overlay = false) {
+function createWindow(overlay = false, fromOverlay = false) {
   overlayMode = overlay;
   clickThrough = false;
   overlayFull = false;
@@ -363,7 +363,7 @@ function createWindow(overlay = false) {
   });
 
   win.setMenuBarVisibility(false);
-  win.loadFile('renderer/index.html', { query: { overlay: overlay ? '1' : '0', dev: isDev ? '1' : '0' } });
+  win.loadFile('renderer/index.html', { query: { overlay: overlay ? '1' : '0', dev: isDev ? '1' : '0', fromOverlay: fromOverlay ? '1' : '0' } });
 }
 
 // Swap between desktop and overlay modes by recreating the window (a window's
@@ -375,7 +375,9 @@ function toggleOverlay() {
   const old = win;
   isToggling = true;
   try {
-    createWindow(!wasOverlay);
+    // When leaving the overlay (wasOverlay), tell the new desktop window so it
+    // always opens with the sidebar expanded, regardless of the overlay's state.
+    createWindow(!wasOverlay, wasOverlay);
   } catch (err) {
     // If the overlay window failed to build, stay in the current window
     if (old && !old.isDestroyed()) win = old;

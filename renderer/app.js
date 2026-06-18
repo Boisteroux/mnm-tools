@@ -6,8 +6,6 @@ const CATEGORIES = [
   { id: 'ore',      name: 'Ore',        color: '#c0784a', icon: '⛏️' },
   { id: 'herb',     name: 'Herbs',      color: '#3c8f43', icon: '\u{1F33F}' },
   { id: 'wood',     name: 'Wood',       color: '#8a5a2b', icon: '\u{1FAB5}' },
-  { id: 'fishing',  name: 'Fish',       color: '#4fc3f7', icon: '\u{1F3A3}' },
-  { id: 'crafting', name: 'Crafting',   color: '#f06292', icon: '\u{1F528}' },
   { id: 'quest',    name: 'Quest NPCs', color: '#fff176', icon: '❗️' },
   { id: 'misc',     name: 'Other',      color: '#b0bec5', icon: '\u{1F4CD}' },
 ];
@@ -949,7 +947,10 @@ let hintTimer = null;
 
 // ---- Collapsible sidebar ----
 
-const SIDEBAR_KEY = 'mnm-sidebar-collapsed';
+// Keep the overlay's collapse state separate from the desktop's, so collapsing
+// the sidebar in the overlay never carries over to the full desktop window.
+const SIDEBAR_KEY = isOverlay ? 'mnm-sidebar-collapsed-overlay' : 'mnm-sidebar-collapsed';
+const cameFromOverlay = new URLSearchParams(location.search).get('fromOverlay') === '1';
 
 function setSidebarCollapsed(collapsed) {
   document.body.classList.toggle('sidebar-collapsed', collapsed);
@@ -1316,9 +1317,10 @@ async function switchToMap(name) {
 (async function init() {
   if (isOverlay) document.body.classList.add('overlay');
 
-  // Restore the saved sidebar collapsed/expanded state
+  // Restore the saved sidebar state — but when we just left the overlay, always
+  // open the sidebar (don't inherit a collapse the user set while in overlay).
   try {
-    if (localStorage.getItem(SIDEBAR_KEY) === '1') document.body.classList.add('sidebar-collapsed');
+    if (!cameFromOverlay && localStorage.getItem(SIDEBAR_KEY) === '1') document.body.classList.add('sidebar-collapsed');
   } catch {}
   $('btn-sidebar').textContent = document.body.classList.contains('sidebar-collapsed') ? '»' : '«';
 
