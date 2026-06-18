@@ -236,13 +236,15 @@ function buildItemReport(agg) {
 // ---------------------------------------------------------------
 
 // A play "session" is a run of activity with no gap longer than this. About
-// 15 minutes with nothing logged (kill / loot / harvest / sale) is treated as
+// 30 minutes with nothing logged (kill / loot / harvest / sale) is treated as
 // the player having logged off, so the next activity starts a new session.
-const SESSION_GAP_MS = 15 * 60 * 1000;
+const SESSION_GAP_MS = 30 * 60 * 1000;
 
 // Pull a flat, chronological stream of meaningful events out of the ledger,
 // split it into sessions on idle gaps, and summarise each. Sessions are
 // returned most-recent-first so the UI can open on "your last session".
+// opts.limit caps how many recent sessions are returned (nothing is stored —
+// this is built fresh from the ledger each call).
 function buildSessions(files, opts = {}) {
   const gap = opts.gapMs || SESSION_GAP_MS;
   const evs = [];
@@ -285,7 +287,12 @@ function buildSessions(files, opts = {}) {
     cur.events.push(e);
     cur.end = e.t;
   }
-  return sessions.map(summarizeSession).reverse();
+  const now = Date.now();
+  const summaries = sessions.map(summarizeSession);
+  // The most recent session is still "live" if its last event is within the gap.
+  summaries.forEach((s) => { s.active = now - s.end < gap; });
+  summaries.reverse(); // most-recent first
+  return opts.limit ? summaries.slice(0, opts.limit) : summaries;
 }
 
 function summarizeSession(s) {

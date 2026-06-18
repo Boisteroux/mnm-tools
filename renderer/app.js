@@ -1076,9 +1076,11 @@ function renderReplay() {
     return;
   }
   const s = replaySessions[replayIdx];
+  const live = s.active && replayIdx === 0; // most-recent session still within the idle window
   // replayIdx 0 = most recent; "Newer" decreases the index.
-  $('replay-count').textContent = (replayIdx === 0 ? 'Latest' : (replayIdx + 1) + ' of ' + replaySessions.length) +
-    (replayIdx === 0 ? '' : ' ago');
+  $('replay-count').innerHTML = live
+    ? '<span class="replay-live">● Live</span>'
+    : (replayIdx === 0 ? 'Latest' : (replayIdx + 1) + ' of ' + replaySessions.length);
   $('replay-next').disabled = replayIdx <= 0;
   $('replay-prev').disabled = replayIdx >= replaySessions.length - 1;
 
@@ -1113,10 +1115,13 @@ function renderReplay() {
   if (s.coin.fromKills) coinSub.push(coinStr(s.coin.fromKills) + ' from kills');
   if (s.coin.fromSales) coinSub.push(coinStr(s.coin.fromSales) + ' from vendor');
 
+  const whenHTML = live
+    ? reEsc(fmtDay(s.start)) + ' · started ' + reEsc(fmtClock(s.start)) + ' · <b>in progress</b> · ' + reEsc(fmtDur(Date.now() - s.start)) + ' so far'
+    : reEsc(fmtDay(s.start)) + ' · ' + reEsc(fmtClock(s.start)) + '–' + reEsc(fmtClock(s.end)) + ' · <b>' + reEsc(fmtDur(s.durationMs)) + '</b>';
+
   body.innerHTML =
-    '<div class="replay-when">' + reEsc(fmtDay(s.start)) + ' · ' + reEsc(fmtClock(s.start)) + '–' + reEsc(fmtClock(s.end)) +
-      ' · <b>' + reEsc(fmtDur(s.durationMs)) + '</b></div>' +
-    '<div class="replay-coin">+' + reEsc(coinStr(s.coin.total)) + ' earned' +
+    '<div class="replay-when">' + whenHTML + '</div>' +
+    '<div class="replay-coin">+' + reEsc(coinStr(s.coin.total)) + (live ? ' earned so far' : ' earned') +
       (coinSub.length ? ' <span class="replay-coin-sub">(' + reEsc(coinSub.join(' · ')) + ')</span>' : '') + '</div>' +
     '<div class="replay-tiles">' + tiles + '</div>' +
     '<div class="replay-col-title">Where you went</div>' +

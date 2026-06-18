@@ -123,7 +123,7 @@ ipcMain.handle('trade-item-names', () => {
 ipcMain.handle('session-replay', () => {
   try {
     const files = ledgerParser.findLedgerFiles();
-    return { sessions: ledgerParser.buildSessions(files) };
+    return { sessions: ledgerParser.buildSessions(files, { limit: 3 }) };
   } catch (e) { return { error: e.message }; }
 });
 

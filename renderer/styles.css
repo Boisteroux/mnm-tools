@@ -516,6 +516,7 @@ body.overlay #map-area { background: rgba(18, 12, 8, 0.10); }
 .replay-nav { display: flex; align-items: center; gap: 8px; }
 .replay-nav button { padding: 3px 9px; }
 .replay-count { font-size: 11px; color: var(--muted); min-width: 70px; text-align: center; }
+.replay-live { color: #5fbf6a; font-weight: 600; }
 
 #replay-body { display: flex; flex-direction: column; gap: 10px; margin: 6px 0 4px; max-height: 66vh; overflow-y: auto; }
 .replay-empty { color: var(--muted); font-size: 12px; padding: 14px 2px; }

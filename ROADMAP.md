@@ -41,7 +41,8 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
   tradeskill + item pages, with a craft **margin** (output value − materials value).
   Recipe reference is live now; margins fill in as crafted-item prices accumulate.
 - **Session Replay** — in-app recap of recent play sessions read from the Ledger
-  (split on ~15 min idle). Each session shows duration, coin earned (kills +
+  (split on ~30 min idle; shows the most recent 3, with the in-progress one
+  flagged **Live**). Each session shows duration, coin earned (kills +
   vendor), kill/loot/harvest/sale counts, a zone-by-zone timeline, and top
   mobs/loot/harvest. Local-only (not published).
 - **Sharing & look** — public repo, MIT license, Windows installer, sunset branding,
