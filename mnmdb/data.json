@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-17T16:26:22.956Z",
+  "generatedAt": "2026-06-18T15:00:50.664Z",
   "source": "mnm-tools",
   "ledgerFiles": 16,
   "events": 3579,
@@ -370,11 +370,9 @@
       "kills": 0,
       "drops": {
         "Wolf Tooth": 12,
-        "Wolf Blood": 10,
-        "Raw Wolf Meat": 11,
-        "Low-Quality Wolf Pelt": 12,
-        "6643400|Wolf Blood": 1,
-        "6643401|Raw Wolf Meat": 1
+        "Wolf Blood": 11,
+        "Raw Wolf Meat": 12,
+        "Low-Quality Wolf Pelt": 12
       },
       "zones": {
         "Evershade Weald": 60
@@ -612,22 +610,14 @@
       "kills": 0,
       "drops": {
         "Torn Fishing Net": 2,
-        "Encrusted Calafreyan Dagger": 1,
-        "Encrusted Calafreyan Buckler": 1,
-        "6642399|Encrusted Calafreyan Spear": 1,
-        "6642453|Encrusted Calafreyan Dagger": 1,
-        "6642643|Encrusted Calafreyan Buckler": 1,
-        "6642644|River Trout": 1,
-        "6644700|Smooth River Stone": 1,
-        "6644701|Encrusted Calafreyan Spear": 1,
-        "6644783|Encrusted Calafreyan Dagger": 1,
-        "6645089|River Essence": 1,
-        "6645090|Moldy Sandals": 1,
-        "6645093|Encrusted Calafreyan Arrow": 1,
-        "6645256|River Trout": 1,
-        "6645257|Encrusted Calafreyan Dagger": 1,
-        "0|Smooth River Stone": 1,
-        "0|Encrusted Calafreyan Arrow": 1
+        "Encrusted Calafreyan Dagger": 4,
+        "Encrusted Calafreyan Buckler": 2,
+        "Encrusted Calafreyan Spear": 2,
+        "River Trout": 2,
+        "Smooth River Stone": 2,
+        "River Essence": 1,
+        "Moldy Sandals": 1,
+        "Encrusted Calafreyan Arrow": 2
       },
       "zones": {
         "Evershade Weald": 18
@@ -637,278 +627,6 @@
     }
   },
   "items": [
-    {
-      "id": "ec721deef6178d43dbb37d8d",
-      "name": "0|Encrusted Calafreyan Arrow",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "bbf41074d578e6441f621fcd",
-      "name": "0|Smooth River Stone",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "f9287339adb95737f6ee34d4",
-      "name": "6642399|Encrusted Calafreyan Spear",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "c364505c47a5f01389191b8d",
-      "name": "6642453|Encrusted Calafreyan Dagger",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "f61854b52a126991d69e6f29",
-      "name": "6642643|Encrusted Calafreyan Buckler",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "4e061489681d11ae8de74f9b",
-      "name": "6642644|River Trout",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "19e856e25a4c153caabb4896",
-      "name": "6643400|Wolf Blood",
-      "droppedBy": [
-        {
-          "mob": "a black wolf pup",
-          "drops": 1,
-          "corpses": 34,
-          "rate": 0.029411764705882353
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "8793c163f2ef7aab67bd87ee",
-      "name": "6643401|Raw Wolf Meat",
-      "droppedBy": [
-        {
-          "mob": "a black wolf pup",
-          "drops": 1,
-          "corpses": 34,
-          "rate": 0.029411764705882353
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "bbf41074d578e6441f621fcd",
-      "name": "6644700|Smooth River Stone",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "f9287339adb95737f6ee34d4",
-      "name": "6644701|Encrusted Calafreyan Spear",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "c364505c47a5f01389191b8d",
-      "name": "6644783|Encrusted Calafreyan Dagger",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "439347b9bdc1ac6da088b261",
-      "name": "6645089|River Essence",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "f43328f6abbdd2379b7ac3d7",
-      "name": "6645090|Moldy Sandals",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "ec721deef6178d43dbb37d8d",
-      "name": "6645093|Encrusted Calafreyan Arrow",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "4e061489681d11ae8de74f9b",
-      "name": "6645256|River Trout",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "c364505c47a5f01389191b8d",
-      "name": "6645257|Encrusted Calafreyan Dagger",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
     {
       "id": "alunite_ore",
       "name": "Alunite Ore",
@@ -2008,14 +1726,31 @@
       ]
     },
     {
+      "id": "ec721deef6178d43dbb37d8d",
+      "name": "Encrusted Calafreyan Arrow",
+      "droppedBy": [
+        {
+          "mob": "a small river elemental",
+          "drops": 2,
+          "corpses": 10,
+          "rate": 0.2
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
       "id": "esw_encrusted_calafreyan_buckler",
       "name": "Encrusted Calafreyan Buckler",
       "droppedBy": [
         {
           "mob": "a small river elemental",
-          "drops": 1,
+          "drops": 2,
           "corpses": 10,
-          "rate": 0.1
+          "rate": 0.2
         }
       ],
       "prices": [
@@ -2035,9 +1770,9 @@
       "droppedBy": [
         {
           "mob": "a small river elemental",
-          "drops": 1,
+          "drops": 4,
           "corpses": 10,
-          "rate": 0.1
+          "rate": 0.4
         }
       ],
       "prices": [
@@ -2052,9 +1787,16 @@
       ]
     },
     {
-      "id": "encrusted_calafreyan_spear",
+      "id": "f9287339adb95737f6ee34d4",
       "name": "Encrusted Calafreyan Spear",
-      "droppedBy": [],
+      "droppedBy": [
+        {
+          "mob": "a small river elemental",
+          "drops": 2,
+          "corpses": 10,
+          "rate": 0.2
+        }
+      ],
       "prices": [
         {
           "copper": 12,
@@ -2062,7 +1804,9 @@
         }
       ],
       "harvested": 0,
-      "zones": []
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "orc_warrior_belt",
@@ -2562,6 +2306,23 @@
       "zones": []
     },
     {
+      "id": "f43328f6abbdd2379b7ac3d7",
+      "name": "Moldy Sandals",
+      "droppedBy": [
+        {
+          "mob": "a small river elemental",
+          "drops": 1,
+          "corpses": 10,
+          "rate": 0.1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
       "id": "multhele_root",
       "name": "Multhele Root",
       "droppedBy": [
@@ -2921,9 +2682,9 @@
         },
         {
           "mob": "a black wolf pup",
-          "drops": 11,
+          "drops": 12,
           "corpses": 34,
-          "rate": 0.3235294117647059
+          "rate": 0.35294117647058826
         }
       ],
       "prices": [
@@ -3007,9 +2768,33 @@
       ]
     },
     {
-      "id": "river_trout",
+      "id": "439347b9bdc1ac6da088b261",
+      "name": "River Essence",
+      "droppedBy": [
+        {
+          "mob": "a small river elemental",
+          "drops": 1,
+          "corpses": 10,
+          "rate": 0.1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
+      "id": "4e061489681d11ae8de74f9b",
       "name": "River Trout",
-      "droppedBy": [],
+      "droppedBy": [
+        {
+          "mob": "a small river elemental",
+          "drops": 2,
+          "corpses": 10,
+          "rate": 0.2
+        }
+      ],
       "prices": [
         {
           "copper": 2,
@@ -3021,7 +2806,9 @@
         }
       ],
       "harvested": 0,
-      "zones": []
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "royal_jelly",
@@ -3628,6 +3415,23 @@
       "zones": [
         "Evershade Weald",
         "Night Harbor"
+      ]
+    },
+    {
+      "id": "bbf41074d578e6441f621fcd",
+      "name": "Smooth River Stone",
+      "droppedBy": [
+        {
+          "mob": "a small river elemental",
+          "drops": 2,
+          "corpses": 10,
+          "rate": 0.2
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
       ]
     },
     {
@@ -4625,9 +4429,9 @@
       "droppedBy": [
         {
           "mob": "a black wolf pup",
-          "drops": 10,
+          "drops": 11,
           "corpses": 34,
-          "rate": 0.29411764705882354
+          "rate": 0.3235294117647059
         }
       ],
       "prices": [

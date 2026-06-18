@@ -31,6 +31,11 @@ function decodeName(s) {
 }
 const isClean = (s) => !!s && !s.includes('�');
 
+// Newer ledger entries prefix loot/vendor/harvest names with a numeric id, e.g.
+// "6642399|Encrusted Calafreyan Spear". Strip the leading "<id>|" so item keys
+// stay clean and merge with older, un-prefixed names for the same item.
+const cleanItemName = (s) => (s || '').replace(/^\s*\d+\s*\|\s*/, '').trim();
+
 // Coin in M&M is base-100: 100 copper = 1 silver, 100 silver = 1 gold,
 // 100 gold = 1 platinum. So 1p = 1,000,000c, 1g = 10,000c, 1s = 100c.
 const PLAT = 1000000, GOLD = 10000, SILVER = 100;
@@ -134,7 +139,7 @@ function parseLedgers(files) {
         // LOOT — item taken off a mob. Recorded with a timestamp so we can group
         // loots into corpses afterwards (drop rate = corpses-with-item ÷ corpses).
         const source = decodeName(p.d02);
-        const name = p.d04 || '';
+        const name = cleanItemName(p.d04);
         if (!isClean(name)) continue;
         const it = item(name);
         if (p.d05 && !it.id) it.id = p.d05;
@@ -148,7 +153,7 @@ function parseLedgers(files) {
         }
       } else if (ev.f01 === 'act_24') {
         // VENDOR SALE — records the price received (but not which vendor)
-        const name = p.d04 || ev.f02 || '';
+        const name = cleanItemName(p.d04 || ev.f02);
         if (!isClean(name)) continue;
         const qty = p.d01 || 1;
         const per = Math.max(1, Math.round(priceToCopper(b64(p.d03)) / qty));
@@ -157,7 +162,7 @@ function parseLedgers(files) {
         it.prices[per] = (it.prices[per] || 0) + 1;
       } else if (ev.f01 === 'act_27') {
         // HARVEST — gathering node (record where it was gathered)
-        const res = p.d04 || '';
+        const res = cleanItemName(p.d04);
         if (isClean(res)) {
           harvest[res] = (harvest[res] || 0) + 1;
           if (zone) bump((harvestZones[res] = harvestZones[res] || {}), zone);
