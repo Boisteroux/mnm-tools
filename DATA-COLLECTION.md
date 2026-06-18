@@ -38,6 +38,12 @@ their own public GitHub repo. No raw log files are ever uploaded.
   | `act_24` (vendor sale) | item name + the price the player sold it for | vendor sell values |
   | `act_27` (harvest) | resource name | gathering tallies |
 
+- For those four event types only, the app also reads each event's **timestamp
+  and current-zone tag** (both already present on the event). These are used
+  locally to (a) group loots into "corpses" for drop rates and (b) power a local
+  **Session Replay** recap — a per-play-session summary of zones visited, kills,
+  loot, harvests and coin earned. Timestamps and the session timeline stay on
+  the user's machine; they are **not** part of what gets published.
 - **Every other event type in these files is ignored.**
 
 It then derives aggregate tallies — drop rates (items looted ÷ looted corpses),
@@ -77,4 +83,4 @@ resource **name**.
 
 *mnm-tools is a fan-made, unofficial, non-commercial companion tool. We want to
 respect the game and its team — if any of the above is a concern, we'll adjust
-or remove it. Please reach out.*
+or remove it. Reach out to **Boisterous** on the Monsters & Memories Discord.*
