@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-18T16:00:07.774Z",
+  "generatedAt": "2026-06-18T23:29:50.267Z",
   "source": "mnm-tools",
   "ledgerFiles": 18,
-  "events": 3634,
+  "events": 3681,
   "mobs": {
     "a desert bat": {
       "kills": 0,
@@ -356,11 +356,9 @@
     "a black widow hatchling": {
       "kills": 0,
       "drops": {
-        "Spider Silk": 49,
+        "Spider Silk": 50,
         "Spider Legs": 13,
-        "Spider Venom Sac": 4,
-        "6718238|Spider Silk": 1,
-        "0|Spider Silk": 1
+        "Spider Venom Sac": 4
       },
       "zones": {
         "Evershade Weald": 129
@@ -372,13 +370,9 @@
       "kills": 0,
       "drops": {
         "Wolf Tooth": 12,
-        "Wolf Blood": 10,
-        "Raw Wolf Meat": 11,
-        "Low-Quality Wolf Pelt": 12,
-        "6643400|Wolf Blood": 1,
-        "6643401|Raw Wolf Meat": 1,
-        "6717752|Wolf Blood": 1,
-        "6719348|Wolf Blood": 1
+        "Wolf Blood": 13,
+        "Raw Wolf Meat": 12,
+        "Low-Quality Wolf Pelt": 12
       },
       "zones": {
         "Evershade Weald": 63
@@ -411,7 +405,7 @@
       "corpses": 3
     },
     "a Fellstone scout": {
-      "kills": 53,
+      "kills": 54,
       "drops": {
         "Tattered Cloth Belt": 1,
         "Raw Orc Meat": 7,
@@ -430,13 +424,14 @@
         "Rusty Axe": 1,
         "Rusty Shortsword": 1,
         "Tattered Cloth Veil": 1,
-        "Rusty Trident": 1
+        "Rusty Trident": 1,
+        "Worn Bow": 1
       },
       "zones": {
-        "Evershade Weald": 111
+        "Evershade Weald": 113
       },
-      "coin": 248,
-      "corpses": 34
+      "coin": 253,
+      "corpses": 35
     },
     "a green drakeling": {
       "kills": 38,
@@ -468,10 +463,10 @@
       "corpses": 9
     },
     "a Fellstone warrior": {
-      "kills": 23,
+      "kills": 27,
       "drops": {
         "Left Orc Ear": 4,
-        "Cloth Scraps": 6,
+        "Cloth Scraps": 8,
         "Fellstone Warrior's Belt": 3,
         "Tattered Cloth Tunic": 1,
         "Tattered Cloth Mantle": 1,
@@ -479,18 +474,22 @@
         "Tattered Cloth Bracer": 2,
         "Raw Orc Meat": 6,
         "Tattered Rawhide Bracer": 1,
-        "Rawhide Scraps": 4,
+        "Rawhide Scraps": 5,
         "Tattered Cloth Cape": 1,
         "Tattered Rawhide Leggings": 1,
         "Rusty Great Scythe": 1,
         "Tattered Cloth Robe": 1,
-        "Tattered Rawhide Vest": 1
+        "Tattered Rawhide Vest": 1,
+        "Tattered Rawhide Belt": 1,
+        "Tattered Cloth Shirt": 1,
+        "Tattered Rawhide Gorget": 1,
+        "Worn Great Staff": 1
       },
       "zones": {
-        "Evershade Weald": 62
+        "Evershade Weald": 73
       },
-      "coin": 267,
-      "corpses": 16
+      "coin": 331,
+      "corpses": 20
     },
     "a black widow": {
       "kills": 0,
@@ -548,16 +547,14 @@
       "drops": {
         "Bone Chips": 10,
         "Rune-Etched Bone": 3,
-        "Rawhide Scraps": 6,
+        "Rawhide Scraps": 7,
         "Torch": 1,
         "Tattered Cloth Gorget": 1,
-        "Cloth Scraps": 4,
+        "Cloth Scraps": 5,
         "Tattered Cloth Boots": 1,
         "Tattered Cloth Belt": 1,
         "Rusty Axe": 1,
-        "6719477|Rusty Longsword": 1,
-        "0|Rawhide Scraps": 1,
-        "6719481|Cloth Scraps": 1
+        "Rusty Longsword": 1
       },
       "zones": {
         "Evershade Weald": 48
@@ -566,16 +563,19 @@
       "corpses": 13
     },
     "a Fellstone shaman": {
-      "kills": 1,
+      "kills": 2,
       "drops": {
         "Broken Shaman Idol": 1,
-        "Raw Orc Meat": 1
+        "Raw Orc Meat": 1,
+        "Left Orc Ear": 1,
+        "Tattered Cloth Belt": 1,
+        "Rawhide Scraps": 1
       },
       "zones": {
-        "Evershade Weald": 3
+        "Evershade Weald": 7
       },
-      "coin": 13,
-      "corpses": 1
+      "coin": 28,
+      "corpses": 2
     },
     "a Fellstone tracker": {
       "kills": 1,
@@ -619,512 +619,25 @@
       "kills": 0,
       "drops": {
         "Torn Fishing Net": 2,
-        "Encrusted Calafreyan Dagger": 1,
-        "Encrusted Calafreyan Buckler": 1,
-        "6642399|Encrusted Calafreyan Spear": 1,
-        "6642453|Encrusted Calafreyan Dagger": 1,
-        "6642643|Encrusted Calafreyan Buckler": 1,
-        "6642644|River Trout": 1,
-        "6644700|Smooth River Stone": 1,
-        "6644701|Encrusted Calafreyan Spear": 1,
-        "6644783|Encrusted Calafreyan Dagger": 1,
-        "6645089|River Essence": 1,
-        "6645090|Moldy Sandals": 1,
-        "6645093|Encrusted Calafreyan Arrow": 1,
-        "6645256|River Trout": 1,
-        "6645257|Encrusted Calafreyan Dagger": 1,
-        "0|Smooth River Stone": 1,
-        "0|Encrusted Calafreyan Arrow": 1,
-        "6717649|Encrusted Calafreyan Spear": 1,
-        "6718084|Encrusted Heartleaf Spangenhelm": 1,
-        "6718508|Woven Heartleaf Tunic": 1,
-        "0|River Essence": 2,
-        "6718728|Woven Heartleaf Tunic": 1
+        "Encrusted Calafreyan Dagger": 4,
+        "Encrusted Calafreyan Buckler": 2,
+        "Encrusted Calafreyan Spear": 3,
+        "River Trout": 2,
+        "Smooth River Stone": 4,
+        "River Essence": 3,
+        "Moldy Sandals": 1,
+        "Encrusted Calafreyan Arrow": 2,
+        "Encrusted Heartleaf Spangenhelm": 2,
+        "Woven Heartleaf Tunic": 3
       },
       "zones": {
-        "Evershade Weald": 24
+        "Evershade Weald": 28
       },
       "coin": 0,
-      "corpses": 14
+      "corpses": 16
     }
   },
   "items": [
-    {
-      "id": "ec721deef6178d43dbb37d8d",
-      "name": "0|Encrusted Calafreyan Arrow",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 14,
-          "rate": 0.07142857142857142
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "6a2f49f8c5733b91b9fa1bd9",
-      "name": "0|Rawhide Scraps",
-      "droppedBy": [
-        {
-          "mob": "an old elven skeleton",
-          "drops": 1,
-          "corpses": 13,
-          "rate": 0.07692307692307693
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "439347b9bdc1ac6da088b261",
-      "name": "0|River Essence",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 2,
-          "corpses": 14,
-          "rate": 0.14285714285714285
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "bbf41074d578e6441f621fcd",
-      "name": "0|Smooth River Stone",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 14,
-          "rate": 0.07142857142857142
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "5583a7751aeac27084d53c98",
-      "name": "0|Spider Silk",
-      "droppedBy": [
-        {
-          "mob": "a black widow hatchling",
-          "drops": 1,
-          "corpses": 53,
-          "rate": 0.018867924528301886
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "f9287339adb95737f6ee34d4",
-      "name": "6642399|Encrusted Calafreyan Spear",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 14,
-          "rate": 0.07142857142857142
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "c364505c47a5f01389191b8d",
-      "name": "6642453|Encrusted Calafreyan Dagger",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 14,
-          "rate": 0.07142857142857142
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "f61854b52a126991d69e6f29",
-      "name": "6642643|Encrusted Calafreyan Buckler",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 14,
-          "rate": 0.07142857142857142
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "4e061489681d11ae8de74f9b",
-      "name": "6642644|River Trout",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 14,
-          "rate": 0.07142857142857142
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "19e856e25a4c153caabb4896",
-      "name": "6643400|Wolf Blood",
-      "droppedBy": [
-        {
-          "mob": "a black wolf pup",
-          "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "8793c163f2ef7aab67bd87ee",
-      "name": "6643401|Raw Wolf Meat",
-      "droppedBy": [
-        {
-          "mob": "a black wolf pup",
-          "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "bbf41074d578e6441f621fcd",
-      "name": "6644700|Smooth River Stone",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 14,
-          "rate": 0.07142857142857142
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "f9287339adb95737f6ee34d4",
-      "name": "6644701|Encrusted Calafreyan Spear",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 14,
-          "rate": 0.07142857142857142
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "c364505c47a5f01389191b8d",
-      "name": "6644783|Encrusted Calafreyan Dagger",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 14,
-          "rate": 0.07142857142857142
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "439347b9bdc1ac6da088b261",
-      "name": "6645089|River Essence",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 14,
-          "rate": 0.07142857142857142
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "f43328f6abbdd2379b7ac3d7",
-      "name": "6645090|Moldy Sandals",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 14,
-          "rate": 0.07142857142857142
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "ec721deef6178d43dbb37d8d",
-      "name": "6645093|Encrusted Calafreyan Arrow",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 14,
-          "rate": 0.07142857142857142
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "4e061489681d11ae8de74f9b",
-      "name": "6645256|River Trout",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 14,
-          "rate": 0.07142857142857142
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "c364505c47a5f01389191b8d",
-      "name": "6645257|Encrusted Calafreyan Dagger",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 14,
-          "rate": 0.07142857142857142
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "f9287339adb95737f6ee34d4",
-      "name": "6717649|Encrusted Calafreyan Spear",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 14,
-          "rate": 0.07142857142857142
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "19e856e25a4c153caabb4896",
-      "name": "6717752|Wolf Blood",
-      "droppedBy": [
-        {
-          "mob": "a black wolf pup",
-          "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "233423dee978b13c203650a3",
-      "name": "6718084|Encrusted Heartleaf Spangenhelm",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 14,
-          "rate": 0.07142857142857142
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "5583a7751aeac27084d53c98",
-      "name": "6718238|Spider Silk",
-      "droppedBy": [
-        {
-          "mob": "a black widow hatchling",
-          "drops": 1,
-          "corpses": 53,
-          "rate": 0.018867924528301886
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "e59bf5cae204bc6970fde93d",
-      "name": "6718508|Woven Heartleaf Tunic",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 14,
-          "rate": 0.07142857142857142
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "e59bf5cae204bc6970fde93d",
-      "name": "6718728|Woven Heartleaf Tunic",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 14,
-          "rate": 0.07142857142857142
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "19e856e25a4c153caabb4896",
-      "name": "6719348|Wolf Blood",
-      "droppedBy": [
-        {
-          "mob": "a black wolf pup",
-          "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "3f5cd6f4894a79ea05badfa2",
-      "name": "6719477|Rusty Longsword",
-      "droppedBy": [
-        {
-          "mob": "an old elven skeleton",
-          "drops": 1,
-          "corpses": 13,
-          "rate": 0.07692307692307693
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "b688897ebe26c20e25e8b0b8",
-      "name": "6719481|Cloth Scraps",
-      "droppedBy": [
-        {
-          "mob": "an old elven skeleton",
-          "drops": 1,
-          "corpses": 13,
-          "rate": 0.07692307692307693
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
     {
       "id": "alunite_ore",
       "name": "Alunite Ore",
@@ -1480,7 +993,7 @@
           "count": 16
         }
       ],
-      "harvested": 460,
+      "harvested": 463,
       "zones": [
         "Evershade Weald",
         "Night Harbor",
@@ -1494,8 +1007,8 @@
         {
           "mob": "a Fellstone shaman",
           "drops": 1,
-          "corpses": 1,
-          "rate": 1
+          "corpses": 2,
+          "rate": 0.5
         }
       ],
       "prices": [],
@@ -1738,8 +1251,8 @@
         {
           "mob": "a Fellstone scout",
           "drops": 16,
-          "corpses": 34,
-          "rate": 0.47058823529411764
+          "corpses": 35,
+          "rate": 0.45714285714285713
         },
         {
           "mob": "a skeleton",
@@ -1754,16 +1267,22 @@
           "rate": 0.4
         },
         {
+          "mob": "a Fellstone warrior",
+          "drops": 8,
+          "corpses": 20,
+          "rate": 0.4
+        },
+        {
           "mob": "a rotting skeleton",
           "drops": 38,
           "corpses": 96,
           "rate": 0.3958333333333333
         },
         {
-          "mob": "a Fellstone warrior",
-          "drops": 6,
-          "corpses": 16,
-          "rate": 0.375
+          "mob": "an old elven skeleton",
+          "drops": 5,
+          "corpses": 13,
+          "rate": 0.38461538461538464
         },
         {
           "mob": "an ashira scout",
@@ -1776,12 +1295,6 @@
           "drops": 1,
           "corpses": 3,
           "rate": 0.3333333333333333
-        },
-        {
-          "mob": "an old elven skeleton",
-          "drops": 4,
-          "corpses": 13,
-          "rate": 0.3076923076923077
         },
         {
           "mob": "an ashira warrior",
@@ -1931,7 +1444,7 @@
       "name": "Copper Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 445,
+      "harvested": 449,
       "zones": [
         "Evershade Weald",
         "Night Harbor",
@@ -1996,8 +1509,25 @@
       "droppedBy": [],
       "prices": [
         {
+          "copper": 1,
+          "count": 1
+        },
+        {
           "copper": 2,
           "count": 2
+        }
+      ],
+      "harvested": 0,
+      "zones": []
+    },
+    {
+      "id": "copper_war_lance",
+      "name": "Copper War Lance",
+      "droppedBy": [],
+      "prices": [
+        {
+          "copper": 56,
+          "count": 5
         }
       ],
       "harvested": 0,
@@ -2010,8 +1540,8 @@
         {
           "mob": "a Fellstone scout",
           "drops": 1,
-          "corpses": 34,
-          "rate": 0.029411764705882353
+          "corpses": 35,
+          "rate": 0.02857142857142857
         }
       ],
       "prices": [],
@@ -2224,14 +1754,31 @@
       ]
     },
     {
+      "id": "ec721deef6178d43dbb37d8d",
+      "name": "Encrusted Calafreyan Arrow",
+      "droppedBy": [
+        {
+          "mob": "a small river elemental",
+          "drops": 2,
+          "corpses": 16,
+          "rate": 0.125
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
       "id": "esw_encrusted_calafreyan_buckler",
       "name": "Encrusted Calafreyan Buckler",
       "droppedBy": [
         {
           "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 14,
-          "rate": 0.07142857142857142
+          "drops": 2,
+          "corpses": 16,
+          "rate": 0.125
         }
       ],
       "prices": [
@@ -2251,9 +1798,9 @@
       "droppedBy": [
         {
           "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 14,
-          "rate": 0.07142857142857142
+          "drops": 4,
+          "corpses": 16,
+          "rate": 0.25
         }
       ],
       "prices": [
@@ -2268,9 +1815,16 @@
       ]
     },
     {
-      "id": "encrusted_calafreyan_spear",
+      "id": "f9287339adb95737f6ee34d4",
       "name": "Encrusted Calafreyan Spear",
-      "droppedBy": [],
+      "droppedBy": [
+        {
+          "mob": "a small river elemental",
+          "drops": 3,
+          "corpses": 16,
+          "rate": 0.1875
+        }
+      ],
       "prices": [
         {
           "copper": 12,
@@ -2278,7 +1832,31 @@
         }
       ],
       "harvested": 0,
-      "zones": []
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
+      "id": "233423dee978b13c203650a3",
+      "name": "Encrusted Heartleaf Spangenhelm",
+      "droppedBy": [
+        {
+          "mob": "a small river elemental",
+          "drops": 2,
+          "corpses": 16,
+          "rate": 0.125
+        }
+      ],
+      "prices": [
+        {
+          "copper": 5,
+          "count": 2
+        }
+      ],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "orc_warrior_belt",
@@ -2287,8 +1865,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 3,
-          "corpses": 16,
-          "rate": 0.1875
+          "corpses": 20,
+          "rate": 0.15
         }
       ],
       "prices": [],
@@ -2668,10 +2246,16 @@
       "name": "Left Orc Ear",
       "droppedBy": [
         {
+          "mob": "a Fellstone shaman",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
           "mob": "a Fellstone warrior",
           "drops": 4,
-          "corpses": 16,
-          "rate": 0.25
+          "corpses": 20,
+          "rate": 0.2
         }
       ],
       "prices": [],
@@ -2778,9 +2362,16 @@
       "zones": []
     },
     {
-      "id": "moldy_sandals",
+      "id": "f43328f6abbdd2379b7ac3d7",
       "name": "Moldy Sandals",
-      "droppedBy": [],
+      "droppedBy": [
+        {
+          "mob": "a small river elemental",
+          "drops": 1,
+          "corpses": 16,
+          "rate": 0.0625
+        }
+      ],
       "prices": [
         {
           "copper": 8,
@@ -2788,7 +2379,9 @@
         }
       ],
       "harvested": 0,
-      "zones": []
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "multhele_root",
@@ -3065,28 +2658,28 @@
       "name": "Raw Orc Meat",
       "droppedBy": [
         {
-          "mob": "a Fellstone shaman",
-          "drops": 1,
-          "corpses": 1,
-          "rate": 1
-        },
-        {
           "mob": "a Fellstone tracker",
           "drops": 1,
           "corpses": 1,
           "rate": 1
         },
         {
+          "mob": "a Fellstone shaman",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
           "mob": "a Fellstone warrior",
           "drops": 6,
-          "corpses": 16,
-          "rate": 0.375
+          "corpses": 20,
+          "rate": 0.3
         },
         {
           "mob": "a Fellstone scout",
           "drops": 7,
-          "corpses": 34,
-          "rate": 0.20588235294117646
+          "corpses": 35,
+          "rate": 0.2
         }
       ],
       "prices": [
@@ -3150,9 +2743,9 @@
         },
         {
           "mob": "a black wolf pup",
-          "drops": 11,
+          "drops": 12,
           "corpses": 36,
-          "rate": 0.3055555555555556
+          "rate": 0.3333333333333333
         }
       ],
       "prices": [
@@ -3182,9 +2775,15 @@
         },
         {
           "mob": "an old elven skeleton",
-          "drops": 6,
+          "drops": 7,
           "corpses": 13,
-          "rate": 0.46153846153846156
+          "rate": 0.5384615384615384
+        },
+        {
+          "mob": "a Fellstone shaman",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
         },
         {
           "mob": "an ashira shaman",
@@ -3200,8 +2799,8 @@
         },
         {
           "mob": "a Fellstone warrior",
-          "drops": 4,
-          "corpses": 16,
+          "drops": 5,
+          "corpses": 20,
           "rate": 0.25
         },
         {
@@ -3236,9 +2835,33 @@
       ]
     },
     {
-      "id": "river_trout",
+      "id": "439347b9bdc1ac6da088b261",
+      "name": "River Essence",
+      "droppedBy": [
+        {
+          "mob": "a small river elemental",
+          "drops": 3,
+          "corpses": 16,
+          "rate": 0.1875
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
+      "id": "4e061489681d11ae8de74f9b",
       "name": "River Trout",
-      "droppedBy": [],
+      "droppedBy": [
+        {
+          "mob": "a small river elemental",
+          "drops": 2,
+          "corpses": 16,
+          "rate": 0.125
+        }
+      ],
       "prices": [
         {
           "copper": 2,
@@ -3250,7 +2873,9 @@
         }
       ],
       "harvested": 0,
-      "zones": []
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "royal_jelly",
@@ -3316,8 +2941,8 @@
         {
           "mob": "a Fellstone scout",
           "drops": 1,
-          "corpses": 34,
-          "rate": 0.029411764705882353
+          "corpses": 35,
+          "rate": 0.02857142857142857
         }
       ],
       "prices": [
@@ -3361,8 +2986,8 @@
         {
           "mob": "a Fellstone scout",
           "drops": 1,
-          "corpses": 34,
-          "rate": 0.029411764705882353
+          "corpses": 35,
+          "rate": 0.02857142857142857
         },
         {
           "mob": "a rotting skeleton",
@@ -3390,8 +3015,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 16,
-          "rate": 0.0625
+          "corpses": 20,
+          "rate": 0.05
         },
         {
           "mob": "a rotting skeleton",
@@ -3419,8 +3044,8 @@
         {
           "mob": "a Fellstone scout",
           "drops": 2,
-          "corpses": 34,
-          "rate": 0.058823529411764705
+          "corpses": 35,
+          "rate": 0.05714285714285714
         }
       ],
       "prices": [
@@ -3461,10 +3086,16 @@
       "name": "Rusty Longsword",
       "droppedBy": [
         {
+          "mob": "an old elven skeleton",
+          "drops": 1,
+          "corpses": 13,
+          "rate": 0.07692307692307693
+        },
+        {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 16,
-          "rate": 0.0625
+          "corpses": 20,
+          "rate": 0.05
         },
         {
           "mob": "a rotting skeleton",
@@ -3476,7 +3107,7 @@
       "prices": [
         {
           "copper": 12,
-          "count": 1
+          "count": 2
         }
       ],
       "harvested": 0,
@@ -3577,8 +3208,8 @@
         {
           "mob": "a Fellstone scout",
           "drops": 1,
-          "corpses": 34,
-          "rate": 0.029411764705882353
+          "corpses": 35,
+          "rate": 0.02857142857142857
         }
       ],
       "prices": [
@@ -3630,8 +3261,8 @@
         {
           "mob": "a Fellstone scout",
           "drops": 2,
-          "corpses": 34,
-          "rate": 0.058823529411764705
+          "corpses": 35,
+          "rate": 0.05714285714285714
         },
         {
           "mob": "a rotting skeleton",
@@ -3664,8 +3295,8 @@
         {
           "mob": "a Fellstone scout",
           "drops": 1,
-          "corpses": 34,
-          "rate": 0.029411764705882353
+          "corpses": 35,
+          "rate": 0.02857142857142857
         },
         {
           "mob": "a rotting skeleton",
@@ -3710,8 +3341,8 @@
         {
           "mob": "a Fellstone scout",
           "drops": 1,
-          "corpses": 34,
-          "rate": 0.029411764705882353
+          "corpses": 35,
+          "rate": 0.02857142857142857
         },
         {
           "mob": "a rotting skeleton",
@@ -3860,6 +3491,23 @@
       ]
     },
     {
+      "id": "bbf41074d578e6441f621fcd",
+      "name": "Smooth River Stone",
+      "droppedBy": [
+        {
+          "mob": "a small river elemental",
+          "drops": 4,
+          "corpses": 16,
+          "rate": 0.25
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
       "id": "snake_egg",
       "name": "Snake Egg",
       "droppedBy": [
@@ -3978,9 +3626,9 @@
         },
         {
           "mob": "a black widow hatchling",
-          "drops": 49,
+          "drops": 50,
           "corpses": 53,
-          "rate": 0.9245283018867925
+          "rate": 0.9433962264150944
         },
         {
           "mob": "a black widow",
@@ -4053,6 +3701,12 @@
       "name": "Tattered Cloth Belt",
       "droppedBy": [
         {
+          "mob": "a Fellstone shaman",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
           "mob": "an ashira scout",
           "drops": 1,
           "corpses": 6,
@@ -4067,8 +3721,8 @@
         {
           "mob": "a Fellstone scout",
           "drops": 1,
-          "corpses": 34,
-          "rate": 0.029411764705882353
+          "corpses": 35,
+          "rate": 0.02857142857142857
         },
         {
           "mob": "a rotting skeleton",
@@ -4102,8 +3756,8 @@
         {
           "mob": "a Fellstone scout",
           "drops": 2,
-          "corpses": 34,
-          "rate": 0.058823529411764705
+          "corpses": 35,
+          "rate": 0.05714285714285714
         },
         {
           "mob": "a rotting skeleton",
@@ -4129,15 +3783,15 @@
       "name": "Tattered Cloth Bracer",
       "droppedBy": [
         {
-          "mob": "a Fellstone warrior",
-          "drops": 2,
-          "corpses": 16,
-          "rate": 0.125
-        },
-        {
           "mob": "an ashira warrior",
           "drops": 1,
           "corpses": 10,
+          "rate": 0.1
+        },
+        {
+          "mob": "a Fellstone warrior",
+          "drops": 2,
+          "corpses": 20,
           "rate": 0.1
         },
         {
@@ -4185,8 +3839,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 16,
-          "rate": 0.0625
+          "corpses": 20,
+          "rate": 0.05
         },
         {
           "mob": "a skeleton",
@@ -4249,8 +3903,8 @@
         {
           "mob": "a Fellstone scout",
           "drops": 1,
-          "corpses": 34,
-          "rate": 0.029411764705882353
+          "corpses": 35,
+          "rate": 0.02857142857142857
         }
       ],
       "prices": [
@@ -4272,8 +3926,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 16,
-          "rate": 0.0625
+          "corpses": 20,
+          "rate": 0.05
         },
         {
           "mob": "a rotting skeleton",
@@ -4349,8 +4003,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 16,
-          "rate": 0.0625
+          "corpses": 20,
+          "rate": 0.05
         },
         {
           "mob": "a rotting skeleton",
@@ -4361,8 +4015,8 @@
         {
           "mob": "a Fellstone scout",
           "drops": 1,
-          "corpses": 34,
-          "rate": 0.029411764705882353
+          "corpses": 35,
+          "rate": 0.02857142857142857
         }
       ],
       "prices": [
@@ -4393,6 +4047,12 @@
           "rate": 0.1
         },
         {
+          "mob": "a Fellstone warrior",
+          "drops": 1,
+          "corpses": 20,
+          "rate": 0.05
+        },
+        {
           "mob": "a rotting skeleton",
           "drops": 2,
           "corpses": 96,
@@ -4402,8 +4062,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Shaded Dunes",
-        "Evershade Weald"
+        "Evershade Weald",
+        "Shaded Dunes"
       ]
     },
     {
@@ -4419,14 +4079,14 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 16,
-          "rate": 0.0625
+          "corpses": 20,
+          "rate": 0.05
         },
         {
           "mob": "a Fellstone scout",
           "drops": 1,
-          "corpses": 34,
-          "rate": 0.029411764705882353
+          "corpses": 35,
+          "rate": 0.02857142857142857
         },
         {
           "mob": "a rotting skeleton",
@@ -4454,8 +4114,8 @@
         {
           "mob": "a Fellstone scout",
           "drops": 1,
-          "corpses": 34,
-          "rate": 0.029411764705882353
+          "corpses": 35,
+          "rate": 0.02857142857142857
         },
         {
           "mob": "a rotting skeleton",
@@ -4480,6 +4140,12 @@
       "id": "tattered_rawhide_belt",
       "name": "Tattered Rawhide Belt",
       "droppedBy": [
+        {
+          "mob": "a Fellstone warrior",
+          "drops": 1,
+          "corpses": 20,
+          "rate": 0.05
+        },
         {
           "mob": "a skeleton",
           "drops": 1,
@@ -4527,8 +4193,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 16,
-          "rate": 0.0625
+          "corpses": 20,
+          "rate": 0.05
         }
       ],
       "prices": [
@@ -4569,14 +4235,31 @@
       "zones": []
     },
     {
+      "id": "f75c687d69de378200f20bf1",
+      "name": "Tattered Rawhide Gorget",
+      "droppedBy": [
+        {
+          "mob": "a Fellstone warrior",
+          "drops": 1,
+          "corpses": 20,
+          "rate": 0.05
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
       "id": "tattered_rawhide_legs",
       "name": "Tattered Rawhide Leggings",
       "droppedBy": [
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 16,
-          "rate": 0.0625
+          "corpses": 20,
+          "rate": 0.05
         }
       ],
       "prices": [
@@ -4616,8 +4299,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 16,
-          "rate": 0.0625
+          "corpses": 20,
+          "rate": 0.05
         }
       ],
       "prices": [
@@ -4657,8 +4340,8 @@
         {
           "mob": "a Fellstone scout",
           "drops": 1,
-          "corpses": 34,
-          "rate": 0.029411764705882353
+          "corpses": 35,
+          "rate": 0.02857142857142857
         },
         {
           "mob": "a rotting skeleton",
@@ -4687,8 +4370,8 @@
         {
           "mob": "a small river elemental",
           "drops": 2,
-          "corpses": 14,
-          "rate": 0.14285714285714285
+          "corpses": 16,
+          "rate": 0.125
         }
       ],
       "prices": [],
@@ -4721,8 +4404,8 @@
         {
           "mob": "a Fellstone scout",
           "drops": 8,
-          "corpses": 34,
-          "rate": 0.23529411764705882
+          "corpses": 35,
+          "rate": 0.22857142857142856
         }
       ],
       "prices": [],
@@ -4854,9 +4537,9 @@
       "droppedBy": [
         {
           "mob": "a black wolf pup",
-          "drops": 10,
+          "drops": 13,
           "corpses": 36,
-          "rate": 0.2777777777777778
+          "rate": 0.3611111111111111
         }
       ],
       "prices": [
@@ -4915,6 +4598,29 @@
       ]
     },
     {
+      "id": "4a3a4919e69d4dfb1cb47dd7",
+      "name": "Worn Bow",
+      "droppedBy": [
+        {
+          "mob": "a Fellstone scout",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
+        }
+      ],
+      "prices": [
+        {
+          "copper": 25,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald",
+        "Tomb of the Last Wyrmsbane"
+      ]
+    },
+    {
       "id": "worn_buckler_t1",
       "name": "Worn Buckler",
       "droppedBy": [
@@ -4954,6 +4660,12 @@
       "name": "Worn Great Staff",
       "droppedBy": [
         {
+          "mob": "a Fellstone warrior",
+          "drops": 1,
+          "corpses": 20,
+          "rate": 0.05
+        },
+        {
           "mob": "a skeleton",
           "drops": 1,
           "corpses": 27,
@@ -4978,14 +4690,31 @@
       ],
       "harvested": 0,
       "zones": [
-        "Night Harbor",
+        "Evershade Weald",
+        "Night Harbor"
+      ]
+    },
+    {
+      "id": "e59bf5cae204bc6970fde93d",
+      "name": "Woven Heartleaf Tunic",
+      "droppedBy": [
+        {
+          "mob": "a small river elemental",
+          "drops": 3,
+          "corpses": 16,
+          "rate": 0.1875
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
         "Evershade Weald"
       ]
     }
   ],
   "harvest": {
-    "Copper Ore": 445,
-    "Brittle Stone": 460,
+    "Copper Ore": 449,
+    "Brittle Stone": 463,
     "Clouded Crystallized Magic": 8,
     "Wood": 196,
     "Resin": 237,
