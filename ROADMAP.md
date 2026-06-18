@@ -40,6 +40,10 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
   parser; ingredients → output, trivial) on
   tradeskill + item pages, with a craft **margin** (output value − materials value).
   Recipe reference is live now; margins fill in as crafted-item prices accumulate.
+- **Session Replay** — in-app recap of recent play sessions read from the Ledger
+  (split on ~15 min idle). Each session shows duration, coin earned (kills +
+  vendor), kill/loot/harvest/sale counts, a zone-by-zone timeline, and top
+  mobs/loot/harvest. Local-only (not published).
 - **Sharing & look** — public repo, MIT license, Windows installer, sunset branding,
   warm UI theme, Outfit font shared by the app and site.
 
@@ -49,6 +53,22 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
   coverage 36% → 59%. The rest genuinely have no level on the wiki yet (the ashira
   family especially) — fills in as the wiki is updated. Revisit bracket size
   (5s vs 10s) once play spans more levels.
+- **Item identity — readable URLs + keep the game id** — From investigating the
+  `6642399|Encrusted Calafreyan Spear` ledger format: the **number before the `|`
+  is a per-*drop* instance id** (it changes every drop — the same dagger appeared
+  as `6642453`, `6644783`, `6645257`), so it's noise and is now stripped at parse
+  time. The **stable per-item id is the ledger's `d05` field**, which we *already*
+  store as `item.id` and use for page URLs. But `d05` is imperfect: it comes in
+  two encodings — readable slugs (`copper_ore`) **and** opaque hashes
+  (`f9287339…`) — and 11 items appear under *both*, so we still **aggregate by
+  name** (the robust key), not by `d05`. Proposed polish (not a bug): for the
+  **~6 items** currently stuck with an ugly `…/#/item/f9287339…` URL, use a
+  readable slug from the name as the public id and move `d05` into its own
+  **`gameId`** attribute — keeps clean URLs *and* preserves the precise game id
+  for later (matching an official item DB, disambiguating same-named items).
+  Touch points: `buildItemReport` in `tracker/ledger-parser.js` (set
+  `id = slug(name)`, add `gameId = it.id`) and the item lookup in `mnmdb/app.js`
+  (`DATA.items.find(i => i.id === id)`).
 - **Community trade submission (serverless)** — for now, trade prices come from
   the in-app logger (frictionless, no account). True *web* submission needs a
   receiver a static site can't provide; the right answer is a tiny serverless
@@ -90,9 +110,9 @@ it needs (★ = data we already have).
 - **Coin/hour & kills/hour** — real ROI of a farm spot from event timing. ★
 - **"Best farm right now" recommender** — rank mobs/zones by value-per-time for a
   goal (coin / a mat / a tradeskill stack). ★
-- **Session Replay** — animate a play session on the map (dot hops zones, loot
-  pops, coin ticks). Login is detectable in Player.log; **session ends after ~15
-  min with no ledger events**. Auto-recap when the game closes. ★ [approved]
+- ✅ **Session Replay** — shipped (see above). Future extension: *animate* a
+  session on the map (dot hops zones, loot pops, coin ticks) and auto-recap when
+  the game closes. ★
 - **Spawn-timer estimation** — infer named-mob respawn windows from kill
   timestamps. Rough solo, strong once crowdsourced. ★
 
