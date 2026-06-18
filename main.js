@@ -119,6 +119,14 @@ ipcMain.handle('trade-item-names', () => {
   } catch { return []; }
 });
 
+// Session Replay — group the ledger into play sessions and recap each one.
+ipcMain.handle('session-replay', () => {
+  try {
+    const files = ledgerParser.findLedgerFiles();
+    return { sessions: ledgerParser.buildSessions(files) };
+  } catch (e) { return { error: e.message }; }
+});
+
 // Auto-rescan: watch the game folder and re-parse a few seconds after the game
 // writes a ledger file, so the app's data stays current with no manual step.
 let trackerWatcher = null;

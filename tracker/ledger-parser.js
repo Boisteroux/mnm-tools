@@ -231,7 +231,112 @@ function buildItemReport(agg) {
   return items.sort((a, b) => a.name.localeCompare(b.name));
 }
 
+// ---------------------------------------------------------------
+// Session Replay — group the raw ledger into play sessions and recap each one.
+// ---------------------------------------------------------------
+
+// A play "session" is a run of activity with no gap longer than this. About
+// 15 minutes with nothing logged (kill / loot / harvest / sale) is treated as
+// the player having logged off, so the next activity starts a new session.
+const SESSION_GAP_MS = 15 * 60 * 1000;
+
+// Pull a flat, chronological stream of meaningful events out of the ledger,
+// split it into sessions on idle gaps, and summarise each. Sessions are
+// returned most-recent-first so the UI can open on "your last session".
+function buildSessions(files, opts = {}) {
+  const gap = opts.gapMs || SESSION_GAP_MS;
+  const evs = [];
+  for (const file of files) {
+    let data;
+    try { data = JSON.parse(fs.readFileSync(file, 'utf8')); } catch { continue; }
+    for (const ev of data.c01 || []) {
+      const t = Date.parse(ev.f04);
+      if (!t) continue;
+      let p = {};
+      try { p = JSON.parse(ev.f03 || '{}'); } catch {}
+      const zRaw = b64((ev.f05 || '').replace(/^zone_/, ''));
+      const zone = zRaw && !zRaw.includes('�') ? zoneName(zRaw) : '';
+
+      if (ev.f01 === 'act_14') {            // kill
+        let name = decodeName(p.d13);
+        if (!name) {
+          const alt = decodeName((ev.f02 || '').replace(/^name_/, ''));
+          if (alt && alt.length <= 40 && !/[,]|corpse|copper|split/i.test(alt)) name = alt;
+        }
+        if (name) evs.push({ t, zone, kind: 'kill', name, coin: coinFromD12(p.d12) });
+      } else if (ev.f01 === 'act_13') {     // loot
+        const name = cleanItemName(p.d04);
+        if (isClean(name)) evs.push({ t, zone, kind: 'loot', name, source: decodeName(p.d02) });
+      } else if (ev.f01 === 'act_24') {     // vendor sale
+        const name = cleanItemName(p.d04 || ev.f02);
+        if (isClean(name)) evs.push({ t, zone, kind: 'sale', name, coin: priceToCopper(b64(p.d03)) });
+      } else if (ev.f01 === 'act_27') {     // harvest
+        const res = cleanItemName(p.d04);
+        if (isClean(res)) evs.push({ t, zone, kind: 'harvest', name: res });
+      }
+    }
+  }
+  evs.sort((a, b) => a.t - b.t);
+
+  const sessions = [];
+  let cur = null;
+  for (const e of evs) {
+    if (!cur || e.t - cur.end > gap) { cur = { start: e.t, end: e.t, events: [] }; sessions.push(cur); }
+    cur.events.push(e);
+    cur.end = e.t;
+  }
+  return sessions.map(summarizeSession).reverse();
+}
+
+function summarizeSession(s) {
+  const kills = {}, loot = {}, harvest = {}, sales = {};
+  let killCoin = 0, saleCoin = 0;
+
+  // Break the session into zone segments. A blank/garbled zone carries the last
+  // known zone forward so a momentary gap doesn't fragment the timeline.
+  const segs = [];
+  let seg = null, lastZone = '';
+  for (const e of s.events) {
+    const z = e.zone || lastZone || 'Unknown';
+    if (e.zone) lastZone = e.zone;
+    if (!seg || seg.zone !== z) {
+      seg = { zone: z, start: e.t, end: e.t, kills: 0, loot: 0, harvest: 0, sales: 0, coin: 0 };
+      segs.push(seg);
+    }
+    seg.end = e.t;
+    if (e.kind === 'kill') { kills[e.name] = (kills[e.name] || 0) + 1; killCoin += e.coin; seg.kills++; seg.coin += e.coin; }
+    else if (e.kind === 'loot') { loot[e.name] = (loot[e.name] || 0) + 1; seg.loot++; }
+    else if (e.kind === 'harvest') { harvest[e.name] = (harvest[e.name] || 0) + 1; seg.harvest++; }
+    else if (e.kind === 'sale') { sales[e.name] = (sales[e.name] || 0) + 1; saleCoin += e.coin; seg.sales++; seg.coin += e.coin; }
+  }
+
+  // Coalesce neighbouring segments of the same zone (e.g. a brief unknown blip).
+  const merged = [];
+  for (const g of segs) {
+    const last = merged[merged.length - 1];
+    if (last && last.zone === g.zone) {
+      last.end = g.end; last.kills += g.kills; last.loot += g.loot;
+      last.harvest += g.harvest; last.sales += g.sales; last.coin += g.coin;
+    } else merged.push({ ...g });
+  }
+
+  const top = (obj) => Object.entries(obj).sort((a, b) => b[1] - a[1]).map(([name, count]) => ({ name, count }));
+  const sum = (obj) => Object.values(obj).reduce((a, b) => a + b, 0);
+  const zoneMs = {};
+  for (const g of merged) zoneMs[g.zone] = (zoneMs[g.zone] || 0) + (g.end - g.start);
+
+  return {
+    start: s.start, end: s.end, durationMs: s.end - s.start,
+    counts: { kills: sum(kills), loot: sum(loot), harvest: sum(harvest), sales: sum(sales) },
+    coin: { fromKills: killCoin, fromSales: saleCoin, total: killCoin + saleCoin },
+    topKills: top(kills), topLoot: top(loot), topHarvest: top(harvest), topSales: top(sales),
+    zones: Object.entries(zoneMs).sort((a, b) => b[1] - a[1]).map(([zone, ms]) => ({ zone, ms })),
+    segments: merged,
+  };
+}
+
 module.exports = {
   GAME_BASE, b64, priceToCopper, copperToString,
   findLedgerFiles, parseLedgers, buildItemReport,
+  buildSessions, SESSION_GAP_MS,
 };

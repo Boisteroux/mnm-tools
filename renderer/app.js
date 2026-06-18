@@ -901,6 +901,7 @@ window.addEventListener('keydown', (e) => {
     $('export-modal').classList.add('hidden');
     $('import-modal').classList.add('hidden');
     $('map-picker-modal').classList.add('hidden');
+    $('replay-modal').classList.add('hidden');
     hidePopup();
     setQuickPlace(false);
   }
@@ -1042,6 +1043,102 @@ function coinStr(c) {
   const s = Math.floor(c / 100); const cp = c % 100;
   return [p && p + 'p', g && g + 'g', s && s + 's', cp && cp + 'c'].filter(Boolean).join(' ') || '0c';
 }
+
+// ---- Session Replay ----
+// A recap of recent play sessions read from the game's Ledger: where you went,
+// what you killed/looted/harvested, and the coin you made.
+
+let replaySessions = [];
+let replayIdx = 0;
+
+const reEsc = (s) => String(s == null ? '' : s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+function fmtDur(ms) {
+  const m = Math.round(ms / 60000);
+  if (m < 60) return m + ' min';
+  return Math.floor(m / 60) + 'h ' + String(m % 60).padStart(2, '0') + 'm';
+}
+const fmtClock = (ts) => new Date(ts).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+const fmtDay = (ts) => new Date(ts).toLocaleDateString([], { weekday: 'long', month: 'long', day: 'numeric' });
+
+function topList(rows) {
+  if (!rows.length) return '<p class="replay-empty">Nothing this session.</p>';
+  return '<ul class="replay-list">' + rows.slice(0, 6).map((r) =>
+    '<li><span class="rl-name">' + reEsc(r.name) + '</span><span class="rl-count">' + r.count + '</span></li>').join('') + '</ul>';
+}
+
+function renderReplay() {
+  const body = $('replay-body');
+  if (!replaySessions.length) {
+    $('replay-count').textContent = '';
+    body.innerHTML = '<p class="replay-empty">No play sessions found yet. Go play, then check back — sessions are read straight from the game\'s Ledger.</p>';
+    $('replay-prev').disabled = $('replay-next').disabled = true;
+    return;
+  }
+  const s = replaySessions[replayIdx];
+  // replayIdx 0 = most recent; "Newer" decreases the index.
+  $('replay-count').textContent = (replayIdx === 0 ? 'Latest' : (replayIdx + 1) + ' of ' + replaySessions.length) +
+    (replayIdx === 0 ? '' : ' ago');
+  $('replay-next').disabled = replayIdx <= 0;
+  $('replay-prev').disabled = replayIdx >= replaySessions.length - 1;
+
+  const tiles = [
+    { n: s.counts.kills, l: 'kills' },
+    { n: s.counts.loot, l: 'looted' },
+    { n: s.counts.harvest, l: 'harvested' },
+    { n: s.counts.sales, l: 'vendor sales' },
+  ].map((t) => '<div class="rtile"><span class="rt-num">' + t.n + '</span><span class="rt-lbl">' + t.l + '</span></div>').join('');
+
+  const segMax = Math.max(1, ...s.segments.map((g) => g.end - g.start));
+  const timeline = s.segments.map((g) => {
+    const bits = [fmtDur(g.end - g.start)];
+    if (g.harvest) bits.push(g.harvest + ' harvested');
+    if (g.kills) bits.push(g.kills + ' killed');
+    if (g.loot) bits.push(g.loot + ' looted');
+    if (g.sales) bits.push(g.sales + ' sold');
+    const w = Math.max(8, Math.round(((g.end - g.start) / segMax) * 100));
+    return '<div class="rseg">' +
+      '<div class="rseg-top"><span class="rseg-zone">' + reEsc(g.zone) + '</span>' +
+      (g.coin ? '<span class="rseg-coin">+' + reEsc(coinStr(g.coin)) + '</span>' : '') + '</div>' +
+      '<div class="rseg-track"><div class="rseg-bar" style="width:' + w + '%"></div></div>' +
+      '<div class="rseg-meta">' + reEsc(bits.join(' · ')) + '</div></div>';
+  }).join('');
+
+  const cols = [];
+  if (s.topKills.length) cols.push('<div><div class="replay-col-title">Most killed</div>' + topList(s.topKills) + '</div>');
+  if (s.topLoot.length) cols.push('<div><div class="replay-col-title">Top loot</div>' + topList(s.topLoot) + '</div>');
+  if (s.topHarvest.length) cols.push('<div><div class="replay-col-title">Most harvested</div>' + topList(s.topHarvest) + '</div>');
+
+  const coinSub = [];
+  if (s.coin.fromKills) coinSub.push(coinStr(s.coin.fromKills) + ' from kills');
+  if (s.coin.fromSales) coinSub.push(coinStr(s.coin.fromSales) + ' from vendor');
+
+  body.innerHTML =
+    '<div class="replay-when">' + reEsc(fmtDay(s.start)) + ' · ' + reEsc(fmtClock(s.start)) + '–' + reEsc(fmtClock(s.end)) +
+      ' · <b>' + reEsc(fmtDur(s.durationMs)) + '</b></div>' +
+    '<div class="replay-coin">+' + reEsc(coinStr(s.coin.total)) + ' earned' +
+      (coinSub.length ? ' <span class="replay-coin-sub">(' + reEsc(coinSub.join(' · ')) + ')</span>' : '') + '</div>' +
+    '<div class="replay-tiles">' + tiles + '</div>' +
+    '<div class="replay-col-title">Where you went</div>' +
+    '<div class="replay-timeline">' + timeline + '</div>' +
+    (cols.length ? '<div class="replay-cols">' + cols.join('') + '</div>' : '');
+}
+
+async function openReplay() {
+  $('replay-modal').classList.remove('hidden');
+  $('replay-body').innerHTML = '<p class="replay-empty">Reading your Ledger…</p>';
+  $('replay-count').textContent = '';
+  const r = await window.mapAPI.sessionReplay();
+  replaySessions = (r && r.sessions) || [];
+  replayIdx = 0;
+  if (r && r.error) { $('replay-body').innerHTML = '<p class="replay-empty">Could not read sessions: ' + reEsc(r.error) + '</p>'; return; }
+  renderReplay();
+}
+
+$('btn-session-replay').addEventListener('click', openReplay);
+$('replay-close').addEventListener('click', () => $('replay-modal').classList.add('hidden'));
+$('replay-prev').addEventListener('click', () => { if (replayIdx < replaySessions.length - 1) { replayIdx++; renderReplay(); } });
+$('replay-next').addEventListener('click', () => { if (replayIdx > 0) { replayIdx--; renderReplay(); } });
 
 // The app re-scans itself a few seconds after the game writes new loot/kills
 window.mapAPI.onTrackerUpdated((r) => showTrackerSummary(r, ' · updated just now'));

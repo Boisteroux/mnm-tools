@@ -87,6 +87,7 @@
       <button id="tracker-publish" class="primary hidden" title="Regenerate the site data from your ledger and push it live to MnMdb (owner only)">Publish to MnMdb</button>
       <div id="tracker-status"></div>
       <div id="publish-status"></div>
+      <button id="btn-session-replay" title="Recap your recent play sessions from the game's Ledger — zones, kills, loot, harvests and coin">Session Replay ▸</button>
     </div>
 
     <div class="section" data-overlay-hide>
@@ -219,6 +220,24 @@
       <div id="zone-review-grid" class="map-picker-grid"></div>
       <div class="btn-row right">
         <button id="zone-review-close">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Session Replay -->
+  <div id="replay-modal" class="modal-backdrop hidden">
+    <div class="modal modal-wide">
+      <div class="replay-head">
+        <h2>Session Replay</h2>
+        <div class="replay-nav">
+          <button id="replay-prev" class="secondary" title="Older session">‹ Older</button>
+          <span id="replay-count" class="replay-count"></span>
+          <button id="replay-next" class="secondary" title="More recent session">Newer ›</button>
+        </div>
+      </div>
+      <div id="replay-body"></div>
+      <div class="btn-row right">
+        <button id="replay-close">Done</button>
       </div>
     </div>
   </div>
