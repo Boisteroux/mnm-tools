@@ -121,13 +121,28 @@ ipcMain.handle('trade-item-names', () => {
 });
 
 // Session Replay — group the ledger into play sessions and recap each one.
+const sessionEndsFile = () => path.join(app.getPath('userData'), 'session-ends.json');
+function readSessionEnds() {
+  try { return JSON.parse(fs.readFileSync(sessionEndsFile(), 'utf8')).ends || []; } catch { return []; }
+}
 ipcMain.handle('session-replay', () => {
   try {
     const files = ledgerParser.findLedgerFiles();
     // Build all sessions so the "today" rollup can span however many there were,
-    // then show only the 3 most recent as individually browsable.
-    const all = ledgerParser.buildSessions(files);
+    // then show only the 3 most recent as individually browsable. Manual "end
+    // session" markers force a boundary so an ended session isn't shown as live.
+    const all = ledgerParser.buildSessions(files, { ends: readSessionEnds() });
     return { sessions: all.slice(0, 3), today: ledgerParser.todayRollup(all) };
+  } catch (e) { return { error: e.message }; }
+});
+
+// Manually close out the current session (records "now" as a session boundary).
+ipcMain.handle('session-end', () => {
+  try {
+    const ends = readSessionEnds();
+    ends.push(Date.now());
+    fs.writeFileSync(sessionEndsFile(), JSON.stringify({ ends }, null, 2));
+    return { ok: true };
   } catch (e) { return { error: e.message }; }
 });
 

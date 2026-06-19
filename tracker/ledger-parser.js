@@ -312,6 +312,7 @@ const SESSION_GAP_MS = 30 * 60 * 1000;
 // this is built fresh from the ledger each call).
 function buildSessions(files, opts = {}) {
   const gap = opts.gapMs || SESSION_GAP_MS;
+  const ends = (opts.ends || []).slice().sort((a, b) => a - b); // manual "end session" timestamps
   const evs = [];
   for (const file of files) {
     let data;
@@ -348,14 +349,19 @@ function buildSessions(files, opts = {}) {
   const sessions = [];
   let cur = null;
   for (const e of evs) {
-    if (!cur || e.t - cur.end > gap) { cur = { start: e.t, end: e.t, events: [] }; sessions.push(cur); }
+    // Start a new session on an idle gap, OR when a manual "end session" marker
+    // falls between the previous event and this one (so resuming after ending
+    // starts fresh instead of merging back in).
+    const crossedEnd = cur && ends.some((t) => cur.end <= t && e.t > t);
+    if (!cur || e.t - cur.end > gap || crossedEnd) { cur = { start: e.t, end: e.t, events: [] }; sessions.push(cur); }
     cur.events.push(e);
     cur.end = e.t;
   }
   const now = Date.now();
   const summaries = sessions.map(summarizeSession);
-  // The most recent session is still "live" if its last event is within the gap.
-  summaries.forEach((s) => { s.active = now - s.end < gap; });
+  // A session is "live" if its last event is within the gap AND it wasn't manually
+  // ended (no end marker sits at/after its last event).
+  summaries.forEach((s) => { s.active = (now - s.end < gap) && !ends.some((t) => t >= s.end && t <= now); });
   summaries.reverse(); // most-recent first
   return opts.limit ? summaries.slice(0, opts.limit) : summaries;
 }

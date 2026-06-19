@@ -1109,6 +1109,7 @@ function renderReplay() {
     : (replayIdx === 0 ? 'Latest' : (replayIdx + 1) + ' of ' + replaySessions.length);
   $('replay-next').disabled = replayIdx <= 0;
   $('replay-prev').disabled = replayIdx >= replaySessions.length - 1;
+  $('replay-end').classList.toggle('hidden', !live); // only offer "end" on the live session
 
   const tiles = [
     { n: s.counts.kills, l: 'kills' },
@@ -1172,6 +1173,12 @@ async function openReplay() {
 $('btn-session-replay').addEventListener('click', openReplay);
 $('replay-close').addEventListener('click', () => $('replay-modal').classList.add('hidden'));
 $('replay-x').addEventListener('click', () => $('replay-modal').classList.add('hidden'));
+$('replay-end').addEventListener('click', async () => {
+  $('replay-end').disabled = true;
+  await window.mapAPI.sessionEnd();
+  await openReplay(); // re-read — the current session is now closed out
+  $('replay-end').disabled = false;
+});
 $('replay-prev').addEventListener('click', () => { if (replayIdx < replaySessions.length - 1) { replayIdx++; renderReplay(); } });
 $('replay-next').addEventListener('click', () => { if (replayIdx > 0) { replayIdx--; renderReplay(); } });
 
