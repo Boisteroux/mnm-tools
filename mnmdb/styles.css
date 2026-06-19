@@ -247,7 +247,7 @@ tr.rowlink { cursor: pointer; }
 
 .rate { display: inline-flex; align-items: center; gap: 8px; justify-content: flex-end; }
 .rate .bar { width: 60px; height: 6px; background: var(--panel-2); border-radius: 3px; overflow: hidden; }
-.rate .fill { height: 100%; background: var(--accent); }
+.rate .fill { display: block; height: 100%; background: var(--accent); }
 .rate .pct { min-width: 38px; text-align: right; }
 /* Thin sample (<10 corpses): fade + desaturate so it reads as a rough estimate */
 .rate.rough { opacity: 0.5; }
