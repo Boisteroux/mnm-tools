@@ -1249,6 +1249,27 @@ function wireMapView() {
 
 // ---- Router ----
 
+// ---- Feedback — opens a pre-filled GitHub issue for the page you're on ----
+const FEEDBACK_REPO = 'Boisteroux/mnm-tools';
+function openFeedback() {
+  const h1 = document.querySelector('#content h1');
+  const h = decodeURIComponent(location.hash.replace(/^#\/?/, '')) || 'home';
+  const label = h1 ? h1.textContent.trim() : (h || 'Home');
+  const body =
+    '**Page:** ' + label + '\n' +
+    '**Link:** ' + location.href + '\n\n' +
+    "**What's off?** (e.g. wrong vendor price, bad drop rate, missing item, a typo)\n\n\n" +
+    '---\n_Sent from the MnMdb “Give feedback” button._';
+  const url = 'https://github.com/' + FEEDBACK_REPO + '/issues/new?labels=feedback' +
+    '&title=' + encodeURIComponent('Feedback: ' + label) +
+    '&body=' + encodeURIComponent(body);
+  window.open(url, '_blank', 'noopener');
+}
+document.addEventListener('click', (e) => {
+  const fb = e.target.closest('.feedback-link');
+  if (fb) { e.preventDefault(); openFeedback(); }
+});
+
 function route() {
   const q = $('search').value.trim();
   if (q) return renderSearch(q);
