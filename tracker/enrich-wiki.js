@@ -163,19 +163,23 @@ function parseMerchant(wikitext) {
   const m = wikitext.match(/\{\{\s*Merchantpage([\s\S]*?)\n\}\}/i);
   if (!m) return null;
   const p = templateParams(m[1]);
-  const stripLinks = (s) => (s || '').replace(/\[\[([^\]|]+)(?:\|[^\]]*)?\]\]/g, '$1');
+  // Render wiki markup as plain text: [[Target|Display]] -> Display, [[Page]] -> Page,
+  // and strip '' / ''' italic/bold markers.
+  const wikiText = (s) => (s || '')
+    .replace(/\[\[([^\]]+)\]\]/g, (mm, inner) => { const seg = inner.split('|'); return seg[seg.length - 1].trim(); })
+    .replace(/''+/g, '').replace(/\s+/g, ' ').trim();
   const itemLinks = (s) => [...new Set([...(s || '').matchAll(/\[\[([^\]|]+)(?:\|[^\]]*)?\]\]/g)].map((x) => x[1].trim()))]
     .filter((l) => !/^File:/i.test(l));
   const bullets = (s) => (s || '').split('\n').filter((l) => /^\s*\*/.test(l))
-    .map((l) => clean(stripLinks(l.replace(/^\s*\*\s*/, '')))).filter(Boolean);
-  const notPlaceholder = (s) => { const c = clean(s); return c && !/^unknown$|place\s*holder/i.test(c) ? c : null; };
+    .map((l) => clean(wikiText(l.replace(/^\s*\*\s*/, '')))).filter(Boolean);
+  const notPlaceholder = (s) => { const c = clean(wikiText(s)); return c && !/^unknown$|place\s*holder/i.test(c) ? c : null; };
   const zoneM = (p.zone || '').match(/\[\[([^\]|]+)/);
   return {
     sells: itemLinks(p.sells),
     buys: bullets(p.buys),
     zone: zoneM ? zoneM[1].trim() : notPlaceholder(p.zone),
     location: notPlaceholder(p.location),
-    race: notPlaceholder(stripLinks(p.race)),
+    race: notPlaceholder(p.race),
     desc: notPlaceholder(p.description),
   };
 }
