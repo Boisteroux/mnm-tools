@@ -485,17 +485,27 @@ function renderItem(id) {
     if (crafts.length) sections.push('<h2>How to craft</h2>' + recipeTable(crafts, true) + marginNote);
   }
 
-  // Dropped by — one list combining your observed mobs (with drop rate) and any
-  // wiki-listed sources/nodes (no rate). De-dupes mobs that appear in both.
+  // Dropped by — one list combining observed mobs (corpse drop rate) and gathering
+  // nodes (harvest yield rate), plus any wiki-listed sources without a rate. A node
+  // "drops" its yields, so we treat its harvest rate as the drop rate.
   const dropRows = [];
   const seenSrc = new Set();
   it.droppedBy.forEach((d) => { seenSrc.add(d.mob); dropRows.push(d); });
-  (w.from || []).forEach((s) => { if (!seenSrc.has(s)) { seenSrc.add(s); dropRows.push({ mob: s, rate: null }); } });
+  const obs = (resNodes[it.name] || [])[0]; // observed harvest rate (combined across vein tiers)
+  let anyNode = false;
+  (w.from || []).forEach((s) => {
+    if (seenSrc.has(s)) return;
+    seenSrc.add(s);
+    if (NODES[s] && obs) { dropRows.push({ mob: s, rate: obs.rate, drops: obs.count, corpses: obs.pulls, node: true }); anyNode = true; }
+    else dropRows.push({ mob: s, rate: null });
+  });
   if (dropRows.length) {
     sections.push('<h2>Dropped by</h2><div class="card"><table><thead><tr><th>Source</th><th class="num">Drop rate</th></tr></thead><tbody>' +
-      dropRows.map((r) => '<tr><td>' + sourceLink(r.mob) + '</td><td class="num">' +
-        (r.rate != null ? rateCell(r.rate, r.drops, r.corpses) : '<span class="sample">—</span>') + '</td></tr>').join('') +
-      '</tbody></table></div>');
+      dropRows.map((r) => '<tr><td>' + sourceLink(r.mob) + (r.node ? ' <span class="sample">node</span>' : '') + '</td><td class="num">' +
+        (r.rate == null ? '<span class="sample">—</span>'
+          : r.node ? harvestRateCell(r.rate, r.drops, r.corpses) : rateCell(r.rate, r.drops, r.corpses)) + '</td></tr>').join('') +
+      '</tbody></table></div>' +
+      (anyNode ? '<div class="note">Node drop rates are observed <b>per harvest</b> and combined across vein tiers (e.g. Copper Vein + Rich Copper Vein) — the game log records what dropped, not which vein. Click a node for its full table.</div>' : ''));
   }
 
   // Player trade value — 30-day high/low + 7-day average of player sell prices
@@ -573,16 +583,6 @@ function renderItem(id) {
       buyers.map((v) => '<tr><td>' + vendorLink(v.name) + '</td><td class="sample">' + esc(v.zone || '') +
         (v.matched ? ' · buys ' + esc(v.matched) : '') + '</td></tr>').join('') +
       '</tbody></table></div><div class="note">Matched on each vendor’s stated buy categories — approximate.</div>');
-  }
-
-  // Harvest yield — how often this comes out of the node(s) that produce it
-  const fromNodes = resNodes[it.name] || [];
-  if (fromNodes.length) {
-    const rows = fromNodes.sort((a, b) => b.rate - a.rate).map((n) =>
-      '<tr><td>' + esc(n.node) + ' <span class="sample">node</span></td>' +
-      '<td class="num">' + harvestRateCell(n.rate, n.count, n.pulls) + '</td></tr>').join('');
-    sections.push('<h2>Harvest yield</h2><div class="card"><table><thead><tr><th>From node</th><th class="num">Chance / pull</th></tr></thead><tbody>' +
-      rows + '</tbody></table></div><div class="note">Chance this comes out of one node harvest (a “pull”). See <a href="#/gathering">Gathering</a> for the full node tables.</div>');
   }
 
   // Found / gathered in — observed zones plus the wiki's listed zones
@@ -736,8 +736,23 @@ function renderNode(name) {
   const yieldLink = (it) => nameToId[it]
     ? itemLink(nameToId[it], it)
     : '<a href="' + wikiUrl(it) + '" target="_blank" rel="noopener">' + esc(it) + ' ↗</a>';
-  const body = (n.yields || []).map((y) =>
-    '<h2>' + esc(y.section) + '</h2><div class="card"><table><tbody>' +
+
+  // Observed drop rates: the harvest cluster whose yields the wiki maps to this node.
+  const hn = HARVEST_NODES.find((node) => node.yields.some((y) => {
+    const it = itemByName[y.res]; return it && it.wiki && (it.wiki.from || []).includes(name);
+  }));
+  let observed = '';
+  if (hn) {
+    const rows = hn.yields.map((y) => '<tr><td>' + (nameToId[y.res] ? itemLink(nameToId[y.res], y.res) : esc(y.res)) +
+      '</td><td class="num">' + harvestRateCell(y.rate, y.count, hn.pulls) + '</td></tr>').join('');
+    observed = '<h2>Drop rates</h2><div class="card"><table><thead><tr><th>Yield</th><th class="num">Chance / harvest</th></tr></thead><tbody>' +
+      rows + '</tbody></table></div>' +
+      '<div class="note">From ' + hn.pulls + ' observed harvests' + (hn.zones.length ? ' in ' + esc(hn.zones.slice(0, 3).join(', ')) : '') +
+      '. Rates are <b>combined across vein tiers</b> — the log records what dropped, not which vein, so Copper Vein and Rich Copper Vein share this data. Rare yields fade when the sample is thin.</div>';
+  }
+
+  const wikiBody = (n.yields || []).map((y) =>
+    '<h3 class="bracket">' + esc(y.section) + '</h3><div class="card"><table><tbody>' +
     y.items.map((it) => '<tr><td>' + yieldLink(it) + '</td></tr>').join('') +
     '</tbody></table></div>'
   ).join('');
@@ -745,9 +760,8 @@ function renderNode(name) {
     '<div class="crumb"><a href="#/">MnMdb</a> › node</div>' +
     '<h1>' + esc(name) + '</h1>' +
     '<p class="sub"><a href="' + wikiUrl(name) + '" target="_blank" rel="noopener">View on the wiki ↗</a></p>' +
-    '<div class="note">The wiki lists what this node can yield. Per-node drop rates aren’t available — ' +
-    'the wiki doesn’t track them, and the game logs don’t record which node a gather came from.</div>' +
-    body;
+    observed +
+    (wikiBody ? '<h2>Everything it can yield</h2><p class="sub">From the wiki — includes things you haven’t harvested yet.</p>' + wikiBody : '');
 }
 
 // Build a recipe table sorted by best margin first (unpriced recipes last).
@@ -1135,19 +1149,25 @@ function harvestRateCell(rate, count, pulls) {
     '<span class="sample">' + count + '/' + pulls + '</span>';
 }
 
-// "Node yields" — per node type, the chance each thing comes out of one pull.
+// Gathering nodes — a compact, clickable index; full drop tables live on each
+// node's page. Each observed harvest cluster is labelled with the wiki node(s) it
+// maps to (Copper Vein / Rich Copper Vein, etc.).
 function harvestNodesSection() {
   if (!HARVEST_NODES.length) return '';
-  return '<h2>Node yields</h2><p class="sub">What each gathering node drops, as a chance per <b>pull</b> ' +
-    '(one node harvest — which can yield several things at once). Built by clustering your harvests over time; ' +
-    'rare yields fade when the sample is thin.</p>' +
-    HARVEST_NODES.map((n) => {
-      const rows = n.yields.map((y) => '<tr><td>' + (nameToId[y.res] ? itemLink(nameToId[y.res], y.res) : esc(y.res)) +
-        '</td><td class="num">' + harvestRateCell(y.rate, y.count, n.pulls) + '</td></tr>').join('');
-      return '<h3 class="bracket">' + esc(n.name) + ' <span class="sample">' + n.pulls + ' pulls' +
-        (n.zones.length ? ' · ' + esc(n.zones.slice(0, 3).join(', ')) : '') + '</span></h3>' +
-        '<div class="card"><table><thead><tr><th>Yield</th><th class="num">Chance / pull</th></tr></thead><tbody>' + rows + '</tbody></table></div>';
-    }).join('');
+  const rows = HARVEST_NODES.map((n) => {
+    const top = n.yields[0];
+    const it = top && itemByName[top.res];
+    const wikiNodes = ((it && it.wiki && it.wiki.from) || []).filter((f) => NODES[f]);
+    const label = wikiNodes.length ? wikiNodes.map(nodeLink).join(' / ') : esc(n.name);
+    const rares = n.yields.filter((y) => y.rate < 0.4).length;
+    return '<tr><td>' + label + '</td>' +
+      '<td class="num sample">' + n.pulls + ' harvests</td>' +
+      '<td class="sample">' + (rares ? rares + ' rare yield' + (rares === 1 ? '' : 's') : '—') + '</td>' +
+      '<td class="sample">' + esc(n.zones.slice(0, 3).join(', ')) + '</td></tr>';
+  }).join('');
+  return '<h2>Gathering nodes</h2><p class="sub">Click a node for its full drop table (observed yield rates per harvest).</p>' +
+    '<div class="card"><table><thead><tr><th>Node</th><th class="num">Worked</th><th>Rare yields</th><th>Zones</th></tr></thead><tbody>' +
+    rows + '</tbody></table></div>';
 }
 
 function renderBrowse(view) {
