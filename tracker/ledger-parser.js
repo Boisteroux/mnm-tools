@@ -343,7 +343,9 @@ function buildSessions(files, opts = {}) {
   const gap = opts.gapMs || SESSION_GAP_MS;
   const ends = (opts.ends || []).slice().sort((a, b) => a - b); // manual "end session" timestamps
   const evs = [];
+  const partyEvents = []; // { t, size } from the Social ledger (PartyJoin/Leave/...)
   for (const file of files) {
+    const isSocial = /_Social_/i.test(file);
     let data;
     try { data = JSON.parse(fs.readFileSync(file, 'utf8')); } catch { continue; }
     for (const ev of data.c01 || []) {
@@ -351,6 +353,12 @@ function buildSessions(files, opts = {}) {
       if (!t) continue;
       let p = {};
       try { p = JSON.parse(ev.f03 || '{}'); } catch {}
+      if (isSocial) {
+        // Party size changes carry the new size in d62 (PartyJoin/PartyLeave/...).
+        const kind = b64(p.d63 || '');
+        if (/^Party/i.test(kind) && +p.d62 > 0) partyEvents.push({ t, size: +p.d62 });
+        continue; // the social ledger logs party + other players' activity, not yours
+      }
       const zRaw = b64((ev.f05 || '').replace(/^zone_/, ''));
       const zone = zRaw && !zRaw.includes('�') ? zoneName(zRaw) : '';
 
@@ -373,6 +381,11 @@ function buildSessions(files, opts = {}) {
       }
     }
   }
+  // The ledger logs the FULL mob coin; in a party it's split, so credit only your
+  // share (full ÷ party size at that moment, from the party-event timeline).
+  partyEvents.sort((a, b) => a.t - b.t);
+  const partySizeAt = (t) => { let size = 1; for (const pe of partyEvents) { if (pe.t <= t) size = pe.size; else break; } return Math.max(1, size); };
+  evs.forEach((e) => { if (e.kind === 'kill') { e.party = partySizeAt(e.t); if (e.party > 1) e.coin = Math.round(e.coin / e.party); } });
   evs.sort((a, b) => a.t - b.t);
 
   const sessions = [];
@@ -397,7 +410,7 @@ function buildSessions(files, opts = {}) {
 
 function summarizeSession(s) {
   const kills = {}, loot = {}, harvest = {}, sales = {};
-  let killCoin = 0, saleCoin = 0;
+  let killCoin = 0, saleCoin = 0, partyKills = 0, partyMax = 1;
 
   // Break the session into zone segments. A blank/garbled zone carries the last
   // known zone forward so a momentary gap doesn't fragment the timeline.
@@ -411,7 +424,7 @@ function summarizeSession(s) {
       segs.push(seg);
     }
     seg.end = e.t;
-    if (e.kind === 'kill') { kills[e.name] = (kills[e.name] || 0) + 1; killCoin += e.coin; seg.kills++; seg.coin += e.coin; }
+    if (e.kind === 'kill') { kills[e.name] = (kills[e.name] || 0) + 1; killCoin += e.coin; seg.kills++; seg.coin += e.coin; if (e.party > 1) { partyKills++; partyMax = Math.max(partyMax, e.party); } }
     else if (e.kind === 'loot') { loot[e.name] = (loot[e.name] || 0) + 1; seg.loot++; }
     else if (e.kind === 'harvest') { harvest[e.name] = (harvest[e.name] || 0) + 1; seg.harvest++; }
     else if (e.kind === 'sale') { sales[e.name] = (sales[e.name] || 0) + 1; saleCoin += e.coin; seg.sales++; seg.coin += e.coin; }
@@ -436,6 +449,7 @@ function summarizeSession(s) {
     start: s.start, end: s.end, durationMs: s.end - s.start,
     counts: { kills: sum(kills), loot: sum(loot), harvest: sum(harvest), sales: sum(sales) },
     coin: { fromKills: killCoin, fromSales: saleCoin, total: killCoin + saleCoin },
+    party: { kills: partyKills, max: partyMax }, // kill coin already split by party size
     topKills: top(kills), topLoot: top(loot), topHarvest: top(harvest), topSales: top(sales),
     zones: Object.entries(zoneMs).sort((a, b) => b[1] - a[1]).map(([zone, ms]) => ({ zone, ms })),
     segments: merged,
@@ -476,6 +490,7 @@ function todayRollup(sessions) {
     coin: {
       fromKills: sum((s) => s.coin.fromKills), fromSales: sum((s) => s.coin.fromSales), total: sum((s) => s.coin.total),
     },
+    party: { kills: sum((s) => (s.party ? s.party.kills : 0)), max: Math.max(1, ...today.map((s) => (s.party ? s.party.max : 1))) },
     topKills: mergeTop('topKills'), topLoot: mergeTop('topLoot'), topHarvest: mergeTop('topHarvest'),
     zones: Object.entries(zoneMs).sort((a, b) => b[1] - a[1]).map(([zone, ms]) => ({ zone, ms })),
   };

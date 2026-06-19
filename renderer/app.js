@@ -1065,6 +1065,7 @@ function renderToday() {
   const coinSub = [];
   if (t.coin.fromKills) coinSub.push(coinStr(t.coin.fromKills) + ' kills');
   if (t.coin.fromSales) coinSub.push(coinStr(t.coin.fromSales) + ' vendor');
+  if (t.party && t.party.kills) coinSub.push('kills split ÷' + t.party.max + ' party');
   const stats = [t.counts.kills + ' killed', t.counts.loot + ' looted', t.counts.harvest + ' harvested', t.counts.sales + ' sold'].join(' · ');
   el.innerHTML =
     '<div class="replay-today-card">' +
@@ -1141,6 +1142,7 @@ function renderReplay() {
   const coinSub = [];
   if (s.coin.fromKills) coinSub.push(coinStr(s.coin.fromKills) + ' from kills');
   if (s.coin.fromSales) coinSub.push(coinStr(s.coin.fromSales) + ' from vendor');
+  if (s.party && s.party.kills) coinSub.push('kill coin split ÷' + s.party.max + ' party');
 
   const whenHTML = live
     ? reEsc(fmtDay(s.start)) + ' · started ' + reEsc(fmtClock(s.start)) + ' · <b>in progress</b> · ' + reEsc(fmtDur(Date.now() - s.start)) + ' so far'
