@@ -909,12 +909,15 @@ function levelingPath(recs) {
   while (s < maxTriv && guard++ < 500) {
     const avail = cand.filter((c) => c.trivial > s);
     if (!avail.length) break;
-    // Prefer recipes we can actually price; fall back to unknown-cost ones (e.g.
-    // enchanted) only where nothing cheaper-and-known covers the band.
     const known = avail.filter((c) => !c.unknown);
-    const best = known.length
-      ? known.reduce((a, b) => (b.cost < a.cost || (b.cost === a.cost && b.qty < a.qty)) ? b : a)
-      : avail.reduce((a, b) => b.qty < a.qty ? b : a); // unknown cost — pick the fewest mats
+    const pool = known.length ? known : avail; // prefer recipes we can actually price
+    // Advance recipe-by-recipe up the trivial milestones (you switch recipes as
+    // each goes grey — you don't grind one recipe +60 levels). Within the next
+    // milestone, pick the cheapest (known) / fewest-mats (unknown).
+    const best = pool.reduce((a, b) => {
+      if (b.trivial !== a.trivial) return b.trivial < a.trivial ? b : a;
+      return (!a.unknown && !b.unknown) ? (b.cost < a.cost ? b : a) : (b.qty < a.qty ? b : a);
+    });
     const crafts = best.trivial - s;
     segments.push({ from: s, to: best.trivial, name: best.name, id: best.id, crafts, coin: best.cost * crafts, unknown: best.unknown });
     for (const [n, q] of Object.entries(best.raws)) totalRaws[n] = (totalRaws[n] || 0) + q * crafts;
@@ -936,8 +939,9 @@ function levelingPathSection(recs) {
       (v > 0 ? ' <span class="sample">(' + coin(q * v) + ')</span>' : '') + '</li>';
   }).join('');
   return '<h2>Cheapest leveling path</h2>' +
-    '<p class="sub">The cheapest recipe to craft through each skill band (1–' + path.maxTriv + ', as far as recipes are known). ' +
-    '“Cheapest” = least coin on <i>bought</i> mats (e.g. molds); gathered mats are free but listed below. ' +
+    '<p class="sub">A recipe for each skill band up to ' + path.maxTriv + ' (as far as recipes are known), advancing through the ' +
+    '<b>trivial</b> milestones the way you actually level — you switch recipes as each goes grey, not grind one for 60 levels. ' +
+    'Within each band it’s the cheapest by <i>bought</i>-mat coin (e.g. molds); gathered mats are free but listed below. ' +
     'Crafts are ~1 per skill point — expect more as you near a recipe’s trivial.' +
     (path.anyUnknown ? ' Bands marked <span class="tag warn">cost unknown</span> need a material we can’t price yet (e.g. enchanted bars) — used only where nothing priceable covers that band.' : '') + '</p>' +
     '<div class="card"><table><thead><tr><th>Skill</th><th>Craft</th><th class="num">~Crafts</th><th class="num">Bought-mat coin</th></tr></thead><tbody>' +
