@@ -850,22 +850,74 @@ function rawMaterials(name, qty, seen) {
 
 const fmtQty = (q) => { const n = Math.round(q * 100) / 100; return Number.isInteger(n) ? String(n) : String(n); };
 
-// Raw-material breakdown + total cost for ONE craft of a recipe (its components,
-// each fully expanded). Cost uses best-known market value; unpriced mats are flagged.
-function recipeRawCost(r) {
+// Raw materials for ONE craft of a recipe (components fully expanded, tools out).
+function recipeRaws(r) {
   const out = {};
   for (const c of r.components) {
     if (isReusableTool(c.item)) continue; // exclude one-time tools (hammers, pliers)
     const sub = rawMaterials(c.item, c.qty);
     for (const [k, v] of Object.entries(sub)) out[k] = (out[k] || 0) + v;
   }
+  return out;
+}
+
+// Raw-material breakdown + total cost for one craft. Cost uses best-known market
+// value (gathered mats with no price count as 0 and are flagged).
+function recipeRawCost(r) {
   let cost = 0, missing = 0;
-  const parts = Object.entries(out).map(([n, q]) => {
+  const parts = Object.entries(recipeRaws(r)).map(([n, q]) => {
     const v = itemMarketValue(n).value;
     if (v > 0) cost += q * v; else missing++;
     return { name: n, qty: q, value: v };
   }).sort((a, b) => (b.qty * b.value) - (a.qty * a.value) || b.qty - a.qty);
   return { parts, cost, missing };
+}
+
+// Cheapest path to level a tradeskill: at each skill point, the recipe that still
+// gives skill (trivial > skill) with the lowest bought-material coin (tiebreak:
+// fewest total mats). Greedy is optimal here since each skill-up is independent.
+// Returns the segments + a combined gathering list for the whole grind.
+function levelingPath(recs) {
+  const cand = recs.filter((r) => r.trivial).map((r) => {
+    const raws = recipeRaws(r);
+    const cost = Object.entries(raws).reduce((s, [n, q]) => s + q * itemMarketValue(n).value, 0);
+    const qty = Object.values(raws).reduce((s, q) => s + q, 0);
+    return { name: r.result.item, id: nameToId[r.result.item] || r.result.item, trivial: r.trivial, cost, qty, raws };
+  }).filter((c) => c.qty > 0);
+  if (!cand.length) return null;
+  const maxTriv = Math.max(...cand.map((c) => c.trivial));
+  const segments = [], totalRaws = {};
+  let s = 1, guard = 0;
+  while (s < maxTriv && guard++ < 500) {
+    const avail = cand.filter((c) => c.trivial > s);
+    if (!avail.length) break;
+    const best = avail.reduce((a, b) => (b.cost < a.cost || (b.cost === a.cost && b.qty < a.qty)) ? b : a);
+    const crafts = best.trivial - s;
+    segments.push({ from: s, to: best.trivial, name: best.name, id: best.id, crafts, coin: best.cost * crafts });
+    for (const [n, q] of Object.entries(best.raws)) totalRaws[n] = (totalRaws[n] || 0) + q * crafts;
+    s = best.trivial;
+  }
+  return { segments, totalRaws, maxTriv, coinTotal: segments.reduce((x, seg) => x + seg.coin, 0) };
+}
+
+function levelingPathSection(recs) {
+  const path = levelingPath(recs);
+  if (!path || !path.segments.length) return '';
+  const segs = path.segments.map((s) => '<tr><td>' + s.from + '–' + s.to + '</td><td>' + itemLink(s.id, s.name) + '</td>' +
+    '<td class="num sample">~' + s.crafts + '</td><td class="num coin">' + (s.coin > 0 ? coin(s.coin) : '—') + '</td></tr>').join('');
+  const raws = Object.entries(path.totalRaws).sort((a, b) => b[1] - a[1]).map(([n, q]) => {
+    const v = itemMarketValue(n).value;
+    return '<li>' + Math.round(q) + '× ' + (nameToId[n] ? itemLink(nameToId[n], n) : esc(n)) +
+      (v > 0 ? ' <span class="sample">(' + coin(q * v) + ')</span>' : '') + '</li>';
+  }).join('');
+  return '<h2>Cheapest leveling path</h2>' +
+    '<p class="sub">The cheapest recipe to craft through each skill band (1–' + path.maxTriv + ', as far as recipes are known). ' +
+    '“Cheapest” = least coin on <i>bought</i> mats (e.g. molds); gathered mats are free but listed below. ' +
+    'Crafts are ~1 per skill point — expect more as you near a recipe’s trivial.</p>' +
+    '<div class="card"><table><thead><tr><th>Skill</th><th>Craft</th><th class="num">~Crafts</th><th class="num">Bought-mat coin</th></tr></thead><tbody>' +
+    segs + '</tbody></table></div>' +
+    '<div class="note"><b>Total to gather / buy' + (path.coinTotal > 0 ? ' (~' + coin(path.coinTotal) + ' in bought mats)' : '') +
+    ':</b><ul class="vbuys">' + raws + '</ul></div>';
 }
 
 // Table of recipes broken down to raw materials, cheapest first — for skilling up.
@@ -1135,6 +1187,7 @@ function renderTradeskill(name) {
     '<h1>' + esc(name) + '</h1>' +
     '<p class="sub"><a href="' + wikiUrl(name) + '" target="_blank" rel="noopener">View on the wiki ↗</a></p>' +
     (recs.length ? '<h2>Recipes &amp; profit</h2>' + recipeTable(recs, false) + marginNote : '') +
+    (recs.length ? levelingPathSection(recs) : '') +
     (recs.length ? '<h2>Raw-material cost</h2><p class="sub">Every recipe broken all the way down to gathered/base materials — cheapest first, for finding the cheapest skill-ups. Reusable tools (hammers, pliers) are left out; consumables like molds are counted. “Trivials at” is the level the recipe stops giving skill. “?” = a material has no price logged yet.</p>' + rawCostTable(recs) : '') +
     flowSection +
     (items.length
