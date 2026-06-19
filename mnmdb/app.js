@@ -738,35 +738,36 @@ function renderZone(name) {
 function renderNode(name) {
   const n = NODES[name];
   if (!n) return notFound('node', name);
-  const yieldLink = (it) => nameToId[it]
-    ? itemLink(nameToId[it], it)
-    : '<a href="' + wikiUrl(it) + '" target="_blank" rel="noopener">' + esc(it) + ' ↗</a>';
 
   // Observed drop rates: the harvest cluster whose yields the wiki maps to this node.
   const hn = HARVEST_NODES.find((node) => node.yields.some((y) => {
     const it = itemByName[y.res]; return it && it.wiki && (it.wiki.from || []).includes(name);
   }));
-  let observed = '';
+
+  const richSibling = NODES['Rich ' + name] ? 'Rich ' + name : null;
+  const topNote = '<div class="note">' +
+    (richSibling ? '<b>' + esc(name) + '</b> and <b>' + esc(richSibling) + '</b> share the same loot table, so their drops are shown together. ' : '') +
+    'These rates are built from harvests collected through the app, so the <a href="' + wikiUrl(name) + '" target="_blank" rel="noopener">wiki</a> may list items that haven’t been picked up yet. ' +
+    'As more people use the app, the rare yields fill in and the numbers get more accurate.' +
+    '</div>';
+
+  let body;
   if (hn) {
     const rows = hn.yields.map((y) => '<tr><td>' + (nameToId[y.res] ? itemLink(nameToId[y.res], y.res) : esc(y.res)) +
       '</td><td class="num">' + harvestRateCell(y.rate, y.count, hn.pulls) + '</td></tr>').join('');
-    observed = '<h2>Drop rates</h2><div class="card"><table><thead><tr><th>Yield</th><th class="num">Chance / harvest</th></tr></thead><tbody>' +
+    body = '<h2>Drop rates</h2><div class="card"><table><thead><tr><th>Yield</th><th class="num">Chance / harvest</th></tr></thead><tbody>' +
       rows + '</tbody></table></div>' +
-      '<div class="note">From ' + hn.pulls + ' observed harvests' + (hn.zones.length ? ' in ' + esc(hn.zones.slice(0, 3).join(', ')) : '') +
-      '. Rates are <b>combined across the node’s tiers</b> (regular + rich) — the log records what dropped, not which node, so they can’t be split. Rare yields fade when the sample is thin.</div>';
+      '<div class="note">From ' + hn.pulls + ' observed harvest' + (hn.pulls === 1 ? '' : 's') +
+      (hn.zones.length ? ' in ' + esc(hn.zones.slice(0, 3).join(', ')) : '') + '. Rare yields fade when the sample is thin.</div>';
+  } else {
+    body = '<p class="muted">No harvests collected through the app for this node yet — drop rates will appear as data comes in.</p>';
   }
 
-  const wikiBody = (n.yields || []).map((y) =>
-    '<h3 class="bracket">' + esc(y.section) + '</h3><div class="card"><table><tbody>' +
-    y.items.map((it) => '<tr><td>' + yieldLink(it) + '</td></tr>').join('') +
-    '</tbody></table></div>'
-  ).join('');
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › node</div>' +
     '<h1>' + esc(name) + '</h1>' +
-    '<p class="sub"><a href="' + wikiUrl(name) + '" target="_blank" rel="noopener">View on the wiki ↗</a></p>' +
-    observed +
-    (wikiBody ? '<h2>Everything it can yield</h2><p class="sub">From the wiki — includes things you haven’t harvested yet.</p>' + wikiBody : '');
+    topNote +
+    body;
 }
 
 // Build a recipe table sorted by best margin first (unpriced recipes last).
