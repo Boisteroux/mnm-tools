@@ -894,13 +894,19 @@ function recipeRawCost(r) {
 // gives skill (trivial > skill) with the lowest bought-material coin (tiebreak:
 // fewest total mats). Greedy is optimal here since each skill-up is independent.
 // Returns the segments + a combined gathering list for the whole grind.
+// A recipe gives skill from when it turns "white" (~50% success — the middle of
+// the 7 difficulty colours) up to its trivial (goes grey, no more skill). M&M
+// doesn't publish the exact white point, so we estimate it as half the trivial.
+const WHITE_FRACTION = 0.5;
+const whiteSkill = (trivial) => Math.max(1, Math.round(trivial * WHITE_FRACTION));
+
 function levelingPath(recs) {
   const cand = recs.filter((r) => r.trivial).map((r) => {
     const raws = recipeRaws(r);
     const unknown = Object.keys(raws).some(isUnresolvedRaw); // needs an unpriceable intermediate (e.g. enchanted bars)
     const cost = Object.entries(raws).reduce((s, [n, q]) => s + q * itemMarketValue(n).value, 0);
     const qty = Object.values(raws).reduce((s, q) => s + q, 0);
-    return { name: r.result.item, id: nameToId[r.result.item] || r.result.item, trivial: r.trivial, cost, qty, raws, unknown };
+    return { name: r.result.item, id: nameToId[r.result.item] || r.result.item, trivial: r.trivial, white: whiteSkill(r.trivial), cost, qty, raws, unknown };
   }).filter((c) => c.qty > 0);
   if (!cand.length) return null;
   const maxTriv = Math.max(...cand.map((c) => c.trivial));
@@ -909,27 +915,34 @@ function levelingPath(recs) {
   while (s < maxTriv && guard++ < 500) {
     const avail = cand.filter((c) => c.trivial > s);
     if (!avail.length) break;
-    const known = avail.filter((c) => !c.unknown);
-    const pool = known.length ? known : avail; // prefer recipes we can actually price
-    // Advance recipe-by-recipe up the trivial milestones (you switch recipes as
-    // each goes grey — you don't grind one recipe +60 levels). Within the next
-    // milestone, pick the cheapest (known) / fewest-mats (unknown).
-    const best = pool.reduce((a, b) => {
-      if (b.trivial !== a.trivial) return b.trivial < a.trivial ? b : a;
-      return (!a.unknown && !b.unknown) ? (b.cost < a.cost ? b : a) : (b.qty < a.qty ? b : a);
-    });
+    // Recipes in their white→trivial window are the efficient picks (you succeed
+    // ~half the time). If none are (a recipe gap), grind the next one up early.
+    const inWindow = avail.filter((c) => c.white <= s);
+    const belowWhite = inWindow.length === 0;
+    const base = belowWhite ? avail : inWindow;
+    const known = base.filter((c) => !c.unknown);
+    const pool = known.length ? known : base; // prefer recipes we can actually price
+    const best = belowWhite
+      ? pool.reduce((a, b) => (b.trivial < a.trivial || (b.trivial === a.trivial && b.cost < a.cost)) ? b : a) // grow into the nearest
+      : pool.reduce((a, b) => (b.cost < a.cost || (b.cost === a.cost && b.qty < a.qty)) ? b : a); // cheapest in the efficient window
     const crafts = best.trivial - s;
-    segments.push({ from: s, to: best.trivial, name: best.name, id: best.id, crafts, coin: best.cost * crafts, unknown: best.unknown });
+    segments.push({ from: s, to: best.trivial, name: best.name, id: best.id, crafts, coin: best.cost * crafts, unknown: best.unknown, belowWhite });
     for (const [n, q] of Object.entries(best.raws)) totalRaws[n] = (totalRaws[n] || 0) + q * crafts;
     s = best.trivial;
   }
-  return { segments, totalRaws, maxTriv, anyUnknown: segments.some((x) => x.unknown), coinTotal: segments.filter((x) => !x.unknown).reduce((x, seg) => x + seg.coin, 0) };
+  return {
+    segments, totalRaws, maxTriv,
+    anyUnknown: segments.some((x) => x.unknown),
+    anyBelowWhite: segments.some((x) => x.belowWhite),
+    coinTotal: segments.filter((x) => !x.unknown).reduce((x, seg) => x + seg.coin, 0),
+  };
 }
 
 function levelingPathSection(recs) {
   const path = levelingPath(recs);
   if (!path || !path.segments.length) return '';
   const segs = path.segments.map((s) => '<tr><td>' + s.from + '–' + s.to + '</td><td>' + itemLink(s.id, s.name) +
+    (s.belowWhite ? ' <span class="tag warn" title="No recipe turns white in this band yet — you’ll grind a harder (sub-white) recipe, slow with many fails">below white</span>' : '') +
     (s.unknown ? ' <span class="tag warn">cost unknown</span>' : '') + '</td>' +
     '<td class="num sample">~' + s.crafts + '</td><td class="num coin">' +
     (s.unknown ? '<span class="sample">?</span>' : (s.coin > 0 ? coin(s.coin) : '—')) + '</td></tr>').join('');
@@ -939,11 +952,12 @@ function levelingPathSection(recs) {
       (v > 0 ? ' <span class="sample">(' + coin(q * v) + ')</span>' : '') + '</li>';
   }).join('');
   return '<h2>Cheapest leveling path</h2>' +
-    '<p class="sub">A recipe for each skill band up to ' + path.maxTriv + ' (as far as recipes are known), advancing through the ' +
-    '<b>trivial</b> milestones the way you actually level — you switch recipes as each goes grey, not grind one for 60 levels. ' +
-    'Within each band it’s the cheapest by <i>bought</i>-mat coin (e.g. molds); gathered mats are free but listed below. ' +
-    'Crafts are ~1 per skill point — expect more as you near a recipe’s trivial.' +
-    (path.anyUnknown ? ' Bands marked <span class="tag warn">cost unknown</span> need a material we can’t price yet (e.g. enchanted bars) — used only where nothing priceable covers that band.' : '') + '</p>' +
+    '<p class="sub">A recipe for each skill band up to ' + path.maxTriv + ' (as far as recipes are known). Each recipe is used from ' +
+    'about when it turns <b>white</b> (≈50% success — estimated at half its trivial, since M&amp;M doesn’t publish the exact point) up to its ' +
+    '<b>trivial</b> (goes grey). Within a band it’s the cheapest by <i>bought</i>-mat coin (molds etc.); gathered mats are free but listed below. ' +
+    'Crafts are ~1 per skill point — expect more near a trivial.' +
+    (path.anyBelowWhite ? ' <span class="tag warn">below white</span> bands have no white-level recipe yet — you’d grind a harder one (slow, many fails); a recipe-coverage gap.' : '') +
+    (path.anyUnknown ? ' <span class="tag warn">cost unknown</span> bands need a material we can’t price yet (e.g. enchanted bars).' : '') + '</p>' +
     '<div class="card"><table><thead><tr><th>Skill</th><th>Craft</th><th class="num">~Crafts</th><th class="num">Bought-mat coin</th></tr></thead><tbody>' +
     segs + '</tbody></table></div>' +
     '<div class="note"><b>Total to gather / buy' + (path.coinTotal > 0 ? ' (~' + coin(path.coinTotal) + ' in known bought mats)' : '') +
