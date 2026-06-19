@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-19T15:20:06.548Z",
+  "generatedAt": "2026-06-19T18:14:22.936Z",
   "source": "mnm-tools",
   "ledgerFiles": 19,
-  "events": 4026,
+  "events": 4232,
   "mobs": {
     "a desert bat": {
       "kills": 0,
@@ -466,12 +466,12 @@
       "corpses": 9
     },
     "a Fellstone warrior": {
-      "kills": 28,
+      "kills": 29,
       "drops": {
         "Left Orc Ear": 4,
         "Cloth Scraps": 9,
         "Fellstone Warrior's Belt": 3,
-        "Tattered Cloth Tunic": 1,
+        "Tattered Cloth Tunic": 2,
         "Tattered Cloth Mantle": 1,
         "Rusty Longsword": 1,
         "Tattered Cloth Bracer": 2,
@@ -489,10 +489,10 @@
         "Worn Great Staff": 1
       },
       "zones": {
-        "Evershade Weald": 76
+        "Evershade Weald": 78
       },
-      "coin": 337,
-      "corpses": 21
+      "coin": 343,
+      "corpses": 22
     },
     "a black widow": {
       "kills": 0,
@@ -653,7 +653,7 @@
       "name": "Alunite Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 9,
+      "harvested": 11,
       "zones": [
         "Evershade Weald"
       ]
@@ -1014,10 +1014,10 @@
       "prices": [
         {
           "copper": 1,
-          "count": 16
+          "count": 26
         }
       ],
-      "harvested": 546,
+      "harvested": 633,
       "zones": [
         "Evershade Weald",
         "Night Harbor",
@@ -1190,7 +1190,7 @@
       "name": "Chipped Fire Emerald",
       "droppedBy": [],
       "prices": [],
-      "harvested": 3,
+      "harvested": 4,
       "zones": [
         "Evershade Weald"
       ]
@@ -1262,6 +1262,28 @@
       ]
     },
     {
+      "id": "chipped_sapphire",
+      "gameId": null,
+      "name": "Chipped Sapphire",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 2,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
+      "id": "chipped_star_rose_quartz",
+      "gameId": null,
+      "name": "Chipped Star Rose Quartz",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
       "id": "chipped_star_ruby",
       "gameId": null,
       "name": "Chipped Star Ruby",
@@ -1320,8 +1342,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 9,
-          "corpses": 21,
-          "rate": 0.42857142857142855
+          "corpses": 22,
+          "rate": 0.4090909090909091
         },
         {
           "mob": "an ashira lookout",
@@ -1511,7 +1533,7 @@
       "name": "Copper Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 527,
+      "harvested": 599,
       "zones": [
         "Evershade Weald",
         "Night Harbor",
@@ -1600,7 +1622,7 @@
       "prices": [
         {
           "copper": 56,
-          "count": 5
+          "count": 15
         }
       ],
       "harvested": 0,
@@ -1874,7 +1896,7 @@
         },
         {
           "copper": 5,
-          "count": 2
+          "count": 3
         }
       ],
       "harvested": 0,
@@ -1959,8 +1981,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 3,
-          "corpses": 21,
-          "rate": 0.14285714285714285
+          "corpses": 22,
+          "rate": 0.13636363636363635
         }
       ],
       "prices": [],
@@ -2132,7 +2154,7 @@
           "count": 2
         }
       ],
-      "harvested": 30,
+      "harvested": 33,
       "zones": [
         "Evershade Weald"
       ]
@@ -2367,8 +2389,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 4,
-          "corpses": 21,
-          "rate": 0.19047619047619047
+          "corpses": 22,
+          "rate": 0.18181818181818182
         }
       ],
       "prices": [],
@@ -2460,7 +2482,7 @@
           "count": 1
         }
       ],
-      "harvested": 1,
+      "harvested": 2,
       "zones": [
         "Evershade Weald"
       ]
@@ -2804,8 +2826,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 7,
-          "corpses": 21,
-          "rate": 0.3333333333333333
+          "corpses": 22,
+          "rate": 0.3181818181818182
         },
         {
           "mob": "a Fellstone scout",
@@ -2817,7 +2839,7 @@
       "prices": [
         {
           "copper": 2,
-          "count": 1
+          "count": 2
         },
         {
           "copper": 5,
@@ -2935,8 +2957,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 5,
-          "corpses": 21,
-          "rate": 0.23809523809523808
+          "corpses": 22,
+          "rate": 0.22727272727272727
         },
         {
           "mob": "an ashira lookout",
@@ -2964,7 +2986,7 @@
           "count": 12
         }
       ],
-      "harvested": 257,
+      "harvested": 263,
       "zones": [
         "Evershade Weald",
         "Night Harbor"
@@ -3159,8 +3181,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 21,
-          "rate": 0.047619047619047616
+          "corpses": 22,
+          "rate": 0.045454545454545456
         },
         {
           "mob": "a rotting skeleton",
@@ -3235,8 +3257,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 21,
-          "rate": 0.047619047619047616
+          "corpses": 22,
+          "rate": 0.045454545454545456
         },
         {
           "mob": "an old elven skeleton",
@@ -3981,8 +4003,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 2,
-          "corpses": 21,
-          "rate": 0.09523809523809523
+          "corpses": 22,
+          "rate": 0.09090909090909091
         },
         {
           "mob": "a skeleton",
@@ -4031,8 +4053,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 21,
-          "rate": 0.047619047619047616
+          "corpses": 22,
+          "rate": 0.045454545454545456
         },
         {
           "mob": "a skeleton",
@@ -4133,8 +4155,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 21,
-          "rate": 0.047619047619047616
+          "corpses": 22,
+          "rate": 0.045454545454545456
         },
         {
           "mob": "a rotting skeleton",
@@ -4212,8 +4234,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 21,
-          "rate": 0.047619047619047616
+          "corpses": 22,
+          "rate": 0.045454545454545456
         },
         {
           "mob": "a rotting skeleton",
@@ -4259,8 +4281,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 21,
-          "rate": 0.047619047619047616
+          "corpses": 22,
+          "rate": 0.045454545454545456
         },
         {
           "mob": "a skeleton",
@@ -4295,9 +4317,9 @@
         },
         {
           "mob": "a Fellstone warrior",
-          "drops": 1,
-          "corpses": 21,
-          "rate": 0.047619047619047616
+          "drops": 2,
+          "corpses": 22,
+          "rate": 0.09090909090909091
         },
         {
           "mob": "a Fellstone scout",
@@ -4368,8 +4390,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 21,
-          "rate": 0.047619047619047616
+          "corpses": 22,
+          "rate": 0.045454545454545456
         }
       ],
       "prices": [
@@ -4414,8 +4436,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 21,
-          "rate": 0.047619047619047616
+          "corpses": 22,
+          "rate": 0.045454545454545456
         }
       ],
       "prices": [
@@ -4488,8 +4510,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 21,
-          "rate": 0.047619047619047616
+          "corpses": 22,
+          "rate": 0.045454545454545456
         }
       ],
       "prices": [
@@ -4511,8 +4533,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 21,
-          "rate": 0.047619047619047616
+          "corpses": 22,
+          "rate": 0.045454545454545456
         }
       ],
       "prices": [
@@ -4577,8 +4599,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 21,
-          "rate": 0.047619047619047616
+          "corpses": 22,
+          "rate": 0.045454545454545456
         }
       ],
       "prices": [
@@ -4782,7 +4804,7 @@
       "name": "Whispering Sage",
       "droppedBy": [],
       "prices": [],
-      "harvested": 8,
+      "harvested": 9,
       "zones": [
         "Evershade Weald"
       ]
@@ -4882,7 +4904,7 @@
           "count": 5
         }
       ],
-      "harvested": 212,
+      "harvested": 217,
       "zones": [
         "Evershade Weald",
         "Night Harbor"
@@ -4988,8 +5010,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 21,
-          "rate": 0.047619047619047616
+          "corpses": 22,
+          "rate": 0.045454545454545456
         },
         {
           "mob": "a rotting skeleton",
@@ -5034,18 +5056,18 @@
     }
   ],
   "harvest": {
-    "Copper Ore": 527,
-    "Brittle Stone": 546,
+    "Copper Ore": 599,
+    "Brittle Stone": 633,
     "Clouded Crystallized Magic": 9,
-    "Wood": 212,
-    "Resin": 257,
+    "Wood": 217,
+    "Resin": 263,
     "Chipped Turquoise": 3,
     "Lionleaf": 23,
     "Chipped Star Ruby": 2,
-    "Alunite Ore": 9,
-    "Ghost Poppy": 30,
+    "Alunite Ore": 11,
+    "Ghost Poppy": 33,
     "Nomad's Grace": 6,
-    "Chipped Fire Emerald": 3,
+    "Chipped Fire Emerald": 4,
     "Chipped Bloodstone": 1,
     "Chipped Malachite": 4,
     "Chipped Black Pearl": 4,
@@ -5057,128 +5079,140 @@
     "Chipped Diamond": 1,
     "Chipped Emerald": 2,
     "Chipped Black Sapphire": 2,
-    "Magic Frond": 1,
-    "Whispering Sage": 8,
+    "Magic Frond": 2,
+    "Whispering Sage": 9,
     "Chipped Jasper": 1,
     "Chipped Wolf's Eye Agate": 1,
     "Chipped Cat's Eye Agate": 1,
     "Selstie Kelp": 1,
-    "Chipped Ruby": 1
+    "Chipped Ruby": 1,
+    "Chipped Sapphire": 2,
+    "Chipped Star Rose Quartz": 1
   },
   "harvestNodes": [
     {
       "name": "Copper Ore & Brittle Stone",
-      "pulls": 583,
+      "pulls": 668,
       "yields": [
         {
           "res": "Copper Ore",
-          "count": 527,
-          "rate": 0.9039451114922813
+          "count": 599,
+          "rate": 0.8967065868263473
         },
         {
           "res": "Brittle Stone",
-          "count": 440,
-          "rate": 0.7547169811320755
+          "count": 507,
+          "rate": 0.7589820359281437
+        },
+        {
+          "res": "Alunite Ore",
+          "count": 10,
+          "rate": 0.014970059880239521
         },
         {
           "res": "Clouded Crystallized Magic",
           "count": 9,
-          "rate": 0.015437392795883362
+          "rate": 0.01347305389221557
         },
         {
-          "res": "Alunite Ore",
-          "count": 8,
-          "rate": 0.0137221269296741
+          "res": "Chipped Fire Emerald",
+          "count": 4,
+          "rate": 0.005988023952095809
         },
         {
           "res": "Chipped Malachite",
           "count": 4,
-          "rate": 0.00686106346483705
+          "rate": 0.005988023952095809
         },
         {
           "res": "Chipped Black Pearl",
           "count": 4,
-          "rate": 0.00686106346483705
+          "rate": 0.005988023952095809
         },
         {
           "res": "Chipped Turquoise",
           "count": 3,
-          "rate": 0.005145797598627788
-        },
-        {
-          "res": "Chipped Fire Emerald",
-          "count": 3,
-          "rate": 0.005145797598627788
+          "rate": 0.004491017964071856
         },
         {
           "res": "Chipped Onyx",
           "count": 3,
-          "rate": 0.005145797598627788
+          "rate": 0.004491017964071856
         },
         {
           "res": "Chipped Hematite",
           "count": 3,
-          "rate": 0.005145797598627788
+          "rate": 0.004491017964071856
         },
         {
           "res": "Chipped Star Ruby",
           "count": 2,
-          "rate": 0.003430531732418525
+          "rate": 0.0029940119760479044
         },
         {
           "res": "Chipped Amber",
           "count": 2,
-          "rate": 0.003430531732418525
+          "rate": 0.0029940119760479044
         },
         {
           "res": "Chipped Blue Diamond",
           "count": 2,
-          "rate": 0.003430531732418525
+          "rate": 0.0029940119760479044
         },
         {
           "res": "Chipped Black Sapphire",
           "count": 2,
-          "rate": 0.003430531732418525
+          "rate": 0.0029940119760479044
+        },
+        {
+          "res": "Chipped Sapphire",
+          "count": 2,
+          "rate": 0.0029940119760479044
         },
         {
           "res": "Chipped Bloodstone",
           "count": 1,
-          "rate": 0.0017152658662092624
+          "rate": 0.0014970059880239522
         },
         {
           "res": "Chipped Jacinth",
           "count": 1,
-          "rate": 0.0017152658662092624
+          "rate": 0.0014970059880239522
         },
         {
           "res": "Chipped Diamond",
           "count": 1,
-          "rate": 0.0017152658662092624
+          "rate": 0.0014970059880239522
         },
         {
           "res": "Chipped Emerald",
           "count": 1,
-          "rate": 0.0017152658662092624
+          "rate": 0.0014970059880239522
         },
         {
           "res": "Chipped Jasper",
           "count": 1,
-          "rate": 0.0017152658662092624
+          "rate": 0.0014970059880239522
         },
         {
           "res": "Chipped Wolf's Eye Agate",
           "count": 1,
-          "rate": 0.0017152658662092624
+          "rate": 0.0014970059880239522
         },
         {
           "res": "Chipped Cat's Eye Agate",
           "count": 1,
-          "rate": 0.0017152658662092624
+          "rate": 0.0014970059880239522
         },
         {
           "res": "Chipped Ruby",
           "count": 1,
-          "rate": 0.0017152658662092624
+          "rate": 0.0014970059880239522
+        },
+        {
+          "res": "Chipped Star Rose Quartz",
+          "count": 1,
+          "rate": 0.0014970059880239522
         }
       ],
       "zones": [
@@ -5189,17 +5223,17 @@
     },
     {
       "name": "Wood & Resin",
-      "pulls": 212,
+      "pulls": 217,
       "yields": [
         {
           "res": "Wood",
-          "count": 212,
+          "count": 217,
           "rate": 1
         },
         {
           "res": "Resin",
-          "count": 183,
-          "rate": 0.8632075471698113
+          "count": 188,
+          "rate": 0.8663594470046083
         }
       ],
       "zones": [
@@ -5209,17 +5243,17 @@
     },
     {
       "name": "Ghost Poppy",
-      "pulls": 17,
+      "pulls": 20,
       "yields": [
         {
           "res": "Ghost Poppy",
-          "count": 17,
+          "count": 20,
           "rate": 1
         },
         {
           "res": "Magic Frond",
-          "count": 1,
-          "rate": 0.058823529411764705
+          "count": 2,
+          "rate": 0.1
         }
       ],
       "zones": [
@@ -5242,11 +5276,11 @@
     },
     {
       "name": "Whispering Sage",
-      "pulls": 5,
+      "pulls": 6,
       "yields": [
         {
           "res": "Whispering Sage",
-          "count": 5,
+          "count": 6,
           "rate": 1
         }
       ],
