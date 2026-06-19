@@ -215,7 +215,10 @@ function buildItemReport(agg) {
     for (const [z, c] of Object.entries(agg.harvestZones[it.name] || {})) zoneCounts[z] = (zoneCounts[z] || 0) + c;
     const zones = Object.entries(zoneCounts).sort((a, b) => b[1] - a[1]).map(([z]) => z);
 
-    return { id: it.id || slug(it.name), name: it.name, droppedBy, prices, harvested: agg.harvest[it.name] || 0, zones };
+    // Public id is a readable name slug (clean, shareable URLs). The raw ledger
+    // d05 (a stable per-item-type id, but sometimes an opaque hash) is kept as
+    // gameId for future use — matching an official item DB, disambiguation, etc.
+    return { id: slug(it.name), gameId: it.id || null, name: it.name, droppedBy, prices, harvested: agg.harvest[it.name] || 0, zones };
   })
   // Drop empty entries that have no drops, no prices, and no harvest
   .filter((i) => i.droppedBy.length || i.prices.length || i.harvested);
@@ -225,7 +228,7 @@ function buildItemReport(agg) {
   for (const [res, count] of Object.entries(agg.harvest)) {
     if (have.has(res)) continue;
     const zones = Object.entries(agg.harvestZones[res] || {}).sort((a, b) => b[1] - a[1]).map(([z]) => z);
-    items.push({ id: slug(res), name: res, droppedBy: [], prices: [], harvested: count, zones });
+    items.push({ id: slug(res), gameId: null, name: res, droppedBy: [], prices: [], harvested: count, zones });
   }
 
   return items.sort((a, b) => a.name.localeCompare(b.name));

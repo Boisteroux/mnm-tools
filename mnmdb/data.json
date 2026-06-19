@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-18T23:29:50.267Z",
+  "generatedAt": "2026-06-19T14:52:43.976Z",
   "source": "mnm-tools",
-  "ledgerFiles": 18,
-  "events": 3681,
+  "ledgerFiles": 19,
+  "events": 3912,
   "mobs": {
     "a desert bat": {
       "kills": 0,
@@ -260,32 +260,35 @@
       "corpses": 4
     },
     "a skeleton": {
-      "kills": 24,
+      "kills": 36,
       "drops": {
-        "Rusty Maul": 1,
+        "Rusty Maul": 2,
         "Torch": 1,
-        "Bone Chips": 12,
-        "Cloth Scraps": 11,
-        "Tattered Cloth Veil": 1,
-        "Shattered Skull": 3,
+        "Bone Chips": 17,
+        "Cloth Scraps": 14,
+        "Tattered Cloth Veil": 2,
+        "Shattered Skull": 4,
         "Tattered Cloth Cape": 1,
-        "Rawhide Scraps": 7,
+        "Rawhide Scraps": 9,
         "Worn Buckler": 1,
         "Rusty Shortsword": 1,
         "Tattered Cloth Cap": 1,
-        "Worn Great Staff": 1,
+        "Worn Great Staff": 2,
         "Tattered Cloth Pantaloons": 1,
-        "Tattered Rawhide Belt": 1,
-        "Rusty Trident": 1,
-        "Tattered Cloth Bracer": 1,
-        "Tattered Rawhide Boots": 1
+        "Tattered Rawhide Belt": 2,
+        "Rusty Trident": 2,
+        "Tattered Cloth Bracer": 3,
+        "Tattered Rawhide Boots": 1,
+        "Tattered Rawhide Tunic": 3,
+        "Rusty Longsword": 1,
+        "Tattered Cloth Shirt": 1
       },
       "zones": {
         "Shaded Dunes": 5,
-        "Evershade Weald": 76
+        "Evershade Weald": 114
       },
-      "coin": 319,
-      "corpses": 27
+      "coin": 479,
+      "corpses": 36
     },
     "a large dunes bat": {
       "kills": 0,
@@ -370,15 +373,15 @@
       "kills": 0,
       "drops": {
         "Wolf Tooth": 12,
-        "Wolf Blood": 13,
+        "Wolf Blood": 14,
         "Raw Wolf Meat": 12,
         "Low-Quality Wolf Pelt": 12
       },
       "zones": {
-        "Evershade Weald": 63
+        "Evershade Weald": 64
       },
       "coin": 0,
-      "corpses": 36
+      "corpses": 37
     },
     "a wasp drone": {
       "kills": 0,
@@ -463,16 +466,16 @@
       "corpses": 9
     },
     "a Fellstone warrior": {
-      "kills": 27,
+      "kills": 28,
       "drops": {
         "Left Orc Ear": 4,
-        "Cloth Scraps": 8,
+        "Cloth Scraps": 9,
         "Fellstone Warrior's Belt": 3,
         "Tattered Cloth Tunic": 1,
         "Tattered Cloth Mantle": 1,
         "Rusty Longsword": 1,
         "Tattered Cloth Bracer": 2,
-        "Raw Orc Meat": 6,
+        "Raw Orc Meat": 7,
         "Tattered Rawhide Bracer": 1,
         "Rawhide Scraps": 5,
         "Tattered Cloth Cape": 1,
@@ -486,10 +489,10 @@
         "Worn Great Staff": 1
       },
       "zones": {
-        "Evershade Weald": 73
+        "Evershade Weald": 76
       },
-      "coin": 331,
-      "corpses": 20
+      "coin": 337,
+      "corpses": 21
     },
     "a black widow": {
       "kills": 0,
@@ -543,24 +546,30 @@
       "corpses": 1
     },
     "an old elven skeleton": {
-      "kills": 14,
+      "kills": 28,
       "drops": {
-        "Bone Chips": 10,
+        "Bone Chips": 21,
         "Rune-Etched Bone": 3,
-        "Rawhide Scraps": 7,
+        "Rawhide Scraps": 12,
         "Torch": 1,
         "Tattered Cloth Gorget": 1,
-        "Cloth Scraps": 5,
+        "Cloth Scraps": 13,
         "Tattered Cloth Boots": 1,
         "Tattered Cloth Belt": 1,
         "Rusty Axe": 1,
-        "Rusty Longsword": 1
+        "Rusty Longsword": 1,
+        "Worn Buckler": 2,
+        "Tattered Cloth Mantle": 2,
+        "Tattered Rawhide Cap": 1,
+        "Rusty Shortsword": 1,
+        "Worn Bow": 1,
+        "Tattered Cloth Gloves": 1
       },
       "zones": {
-        "Evershade Weald": 48
+        "Evershade Weald": 100
       },
-      "coin": 319,
-      "corpses": 13
+      "coin": 623,
+      "corpses": 25
     },
     "a Fellstone shaman": {
       "kills": 2,
@@ -618,28 +627,29 @@
     "a small river elemental": {
       "kills": 0,
       "drops": {
-        "Torn Fishing Net": 2,
+        "Torn Fishing Net": 3,
         "Encrusted Calafreyan Dagger": 4,
-        "Encrusted Calafreyan Buckler": 2,
+        "Encrusted Calafreyan Buckler": 4,
         "Encrusted Calafreyan Spear": 3,
         "River Trout": 2,
-        "Smooth River Stone": 4,
-        "River Essence": 3,
+        "Smooth River Stone": 5,
+        "River Essence": 4,
         "Moldy Sandals": 1,
         "Encrusted Calafreyan Arrow": 2,
         "Encrusted Heartleaf Spangenhelm": 2,
-        "Woven Heartleaf Tunic": 3
+        "Woven Heartleaf Tunic": 4
       },
       "zones": {
-        "Evershade Weald": 28
+        "Evershade Weald": 35
       },
       "coin": 0,
-      "corpses": 16
+      "corpses": 18
     }
   },
   "items": [
     {
       "id": "alunite_ore",
+      "gameId": null,
       "name": "Alunite Ore",
       "droppedBy": [],
       "prices": [],
@@ -649,7 +659,8 @@
       ]
     },
     {
-      "id": "ashira_necklace_sct",
+      "id": "ashira_scout_necklace",
+      "gameId": "ashira_necklace_sct",
       "name": "Ashira Scout Necklace",
       "droppedBy": [
         {
@@ -674,6 +685,7 @@
     },
     {
       "id": "ashira_tail",
+      "gameId": "ashira_tail",
       "name": "Ashira Tail",
       "droppedBy": [
         {
@@ -707,7 +719,8 @@
       ]
     },
     {
-      "id": "ashira_war_fore",
+      "id": "ashira_warrior_bracer",
+      "gameId": "ashira_war_fore",
       "name": "Ashira Warrior Bracer",
       "droppedBy": [
         {
@@ -725,7 +738,8 @@
       ]
     },
     {
-      "id": "ashira_necklace_war",
+      "id": "ashira_warrior_necklace",
+      "gameId": "ashira_necklace_war",
       "name": "Ashira Warrior Necklace",
       "droppedBy": [
         {
@@ -743,6 +757,7 @@
     },
     {
       "id": "ashira_warrior_pelt",
+      "gameId": "ashira_warrior_pelt",
       "name": "Ashira Warrior Pelt",
       "droppedBy": [
         {
@@ -765,6 +780,7 @@
     },
     {
       "id": "bat_eye",
+      "gameId": "bat_eye",
       "name": "Bat Eye",
       "droppedBy": [
         {
@@ -800,6 +816,7 @@
     },
     {
       "id": "bat_fur",
+      "gameId": "bat_fur",
       "name": "Bat Fur",
       "droppedBy": [
         {
@@ -829,6 +846,7 @@
     },
     {
       "id": "bat_tooth",
+      "gameId": "bat_tooth",
       "name": "Bat Tooth",
       "droppedBy": [
         {
@@ -858,6 +876,7 @@
     },
     {
       "id": "bat_wing",
+      "gameId": "bat_wing",
       "name": "Bat Wing",
       "droppedBy": [
         {
@@ -901,6 +920,7 @@
     },
     {
       "id": "bell_pepper",
+      "gameId": "bell_pepper",
       "name": "Bell Pepper",
       "droppedBy": [
         {
@@ -917,7 +937,8 @@
       ]
     },
     {
-      "id": "bst_blighted_head",
+      "id": "blighted_orc_head",
+      "gameId": "bst_blighted_head",
       "name": "Blighted Orc Head",
       "droppedBy": [
         {
@@ -935,13 +956,14 @@
     },
     {
       "id": "bone_chips",
+      "gameId": "bone_chips",
       "name": "Bone Chips",
       "droppedBy": [
         {
           "mob": "an old elven skeleton",
-          "drops": 10,
-          "corpses": 13,
-          "rate": 0.7692307692307693
+          "drops": 21,
+          "corpses": 25,
+          "rate": 0.84
         },
         {
           "mob": "a rotting skeleton",
@@ -951,9 +973,9 @@
         },
         {
           "mob": "a skeleton",
-          "drops": 12,
-          "corpses": 27,
-          "rate": 0.4444444444444444
+          "drops": 17,
+          "corpses": 36,
+          "rate": 0.4722222222222222
         }
       ],
       "prices": [
@@ -972,6 +994,7 @@
     },
     {
       "id": "brittle_dressing_stone",
+      "gameId": null,
       "name": "Brittle Dressing Stone",
       "droppedBy": [],
       "prices": [
@@ -985,6 +1008,7 @@
     },
     {
       "id": "brittle_stone",
+      "gameId": null,
       "name": "Brittle Stone",
       "droppedBy": [],
       "prices": [
@@ -993,7 +1017,7 @@
           "count": 16
         }
       ],
-      "harvested": 463,
+      "harvested": 500,
       "zones": [
         "Evershade Weald",
         "Night Harbor",
@@ -1001,7 +1025,8 @@
       ]
     },
     {
-      "id": "druid_shaman_idol",
+      "id": "broken_shaman_idol",
+      "gameId": "druid_shaman_idol",
       "name": "Broken Shaman Idol",
       "droppedBy": [
         {
@@ -1019,6 +1044,7 @@
     },
     {
       "id": "cabbage",
+      "gameId": "cabbage",
       "name": "Cabbage",
       "droppedBy": [
         {
@@ -1036,6 +1062,7 @@
     },
     {
       "id": "carrot",
+      "gameId": "carrot",
       "name": "Carrot",
       "droppedBy": [
         {
@@ -1053,6 +1080,7 @@
     },
     {
       "id": "celery",
+      "gameId": "celery",
       "name": "Celery",
       "droppedBy": [
         {
@@ -1070,6 +1098,7 @@
     },
     {
       "id": "chipped_amber",
+      "gameId": null,
       "name": "Chipped Amber",
       "droppedBy": [],
       "prices": [],
@@ -1080,6 +1109,7 @@
     },
     {
       "id": "chipped_black_pearl",
+      "gameId": null,
       "name": "Chipped Black Pearl",
       "droppedBy": [],
       "prices": [],
@@ -1090,6 +1120,7 @@
     },
     {
       "id": "chipped_black_sapphire",
+      "gameId": null,
       "name": "Chipped Black Sapphire",
       "droppedBy": [],
       "prices": [],
@@ -1100,6 +1131,7 @@
     },
     {
       "id": "chipped_bloodstone",
+      "gameId": null,
       "name": "Chipped Bloodstone",
       "droppedBy": [],
       "prices": [],
@@ -1110,6 +1142,7 @@
     },
     {
       "id": "chipped_blue_diamond",
+      "gameId": null,
       "name": "Chipped Blue Diamond",
       "droppedBy": [],
       "prices": [],
@@ -1120,6 +1153,7 @@
     },
     {
       "id": "chipped_cat_s_eye_agate",
+      "gameId": null,
       "name": "Chipped Cat's Eye Agate",
       "droppedBy": [],
       "prices": [],
@@ -1130,6 +1164,7 @@
     },
     {
       "id": "chipped_diamond",
+      "gameId": null,
       "name": "Chipped Diamond",
       "droppedBy": [],
       "prices": [],
@@ -1140,17 +1175,8 @@
     },
     {
       "id": "chipped_emerald",
+      "gameId": null,
       "name": "Chipped Emerald",
-      "droppedBy": [],
-      "prices": [],
-      "harvested": 1,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "chipped_fire_emerald",
-      "name": "Chipped Fire Emerald",
       "droppedBy": [],
       "prices": [],
       "harvested": 2,
@@ -1159,7 +1185,19 @@
       ]
     },
     {
+      "id": "chipped_fire_emerald",
+      "gameId": null,
+      "name": "Chipped Fire Emerald",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 3,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
       "id": "chipped_hematite",
+      "gameId": null,
       "name": "Chipped Hematite",
       "droppedBy": [],
       "prices": [],
@@ -1170,6 +1208,7 @@
     },
     {
       "id": "chipped_jacinth",
+      "gameId": null,
       "name": "Chipped Jacinth",
       "droppedBy": [],
       "prices": [],
@@ -1180,6 +1219,7 @@
     },
     {
       "id": "chipped_jasper",
+      "gameId": null,
       "name": "Chipped Jasper",
       "droppedBy": [],
       "prices": [],
@@ -1190,6 +1230,7 @@
     },
     {
       "id": "chipped_malachite",
+      "gameId": null,
       "name": "Chipped Malachite",
       "droppedBy": [],
       "prices": [],
@@ -1200,6 +1241,7 @@
     },
     {
       "id": "chipped_onyx",
+      "gameId": null,
       "name": "Chipped Onyx",
       "droppedBy": [],
       "prices": [],
@@ -1209,7 +1251,19 @@
       ]
     },
     {
+      "id": "chipped_ruby",
+      "gameId": null,
+      "name": "Chipped Ruby",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
       "id": "chipped_star_ruby",
+      "gameId": null,
       "name": "Chipped Star Ruby",
       "droppedBy": [],
       "prices": [],
@@ -1220,6 +1274,7 @@
     },
     {
       "id": "chipped_turquoise",
+      "gameId": null,
       "name": "Chipped Turquoise",
       "droppedBy": [],
       "prices": [],
@@ -1230,6 +1285,7 @@
     },
     {
       "id": "chipped_wolf_s_eye_agate",
+      "gameId": null,
       "name": "Chipped Wolf's Eye Agate",
       "droppedBy": [],
       "prices": [],
@@ -1240,6 +1296,7 @@
     },
     {
       "id": "cloth_scraps",
+      "gameId": "cloth_scraps",
       "name": "Cloth Scraps",
       "droppedBy": [
         {
@@ -1249,27 +1306,27 @@
           "rate": 1
         },
         {
+          "mob": "an old elven skeleton",
+          "drops": 13,
+          "corpses": 25,
+          "rate": 0.52
+        },
+        {
           "mob": "a Fellstone scout",
           "drops": 16,
           "corpses": 35,
           "rate": 0.45714285714285713
         },
         {
-          "mob": "a skeleton",
-          "drops": 11,
-          "corpses": 27,
-          "rate": 0.4074074074074074
+          "mob": "a Fellstone warrior",
+          "drops": 9,
+          "corpses": 21,
+          "rate": 0.42857142857142855
         },
         {
           "mob": "an ashira lookout",
           "drops": 2,
           "corpses": 5,
-          "rate": 0.4
-        },
-        {
-          "mob": "a Fellstone warrior",
-          "drops": 8,
-          "corpses": 20,
           "rate": 0.4
         },
         {
@@ -1279,10 +1336,10 @@
           "rate": 0.3958333333333333
         },
         {
-          "mob": "an old elven skeleton",
-          "drops": 5,
-          "corpses": 13,
-          "rate": 0.38461538461538464
+          "mob": "a skeleton",
+          "drops": 14,
+          "corpses": 36,
+          "rate": 0.3888888888888889
         },
         {
           "mob": "an ashira scout",
@@ -1314,10 +1371,11 @@
     },
     {
       "id": "clouded_crystallized_magic",
+      "gameId": null,
       "name": "Clouded Crystallized Magic",
       "droppedBy": [],
       "prices": [],
-      "harvested": 8,
+      "harvested": 9,
       "zones": [
         "Evershade Weald",
         "Night Harbor"
@@ -1325,6 +1383,7 @@
     },
     {
       "id": "cooked_bat_meat",
+      "gameId": "cooked_bat_meat",
       "name": "Cooked Bat Meat",
       "droppedBy": [
         {
@@ -1341,7 +1400,8 @@
       ]
     },
     {
-      "id": "cooked_gator_meat",
+      "id": "cooked_crocodile_meat",
+      "gameId": "cooked_gator_meat",
       "name": "Cooked Crocodile Meat",
       "droppedBy": [
         {
@@ -1359,6 +1419,7 @@
     },
     {
       "id": "cooked_rat_meat",
+      "gameId": "cooked_rat_meat",
       "name": "Cooked Rat Meat",
       "droppedBy": [
         {
@@ -1376,6 +1437,7 @@
     },
     {
       "id": "copper_axe",
+      "gameId": null,
       "name": "Copper Axe",
       "droppedBy": [],
       "prices": [
@@ -1389,6 +1451,7 @@
     },
     {
       "id": "copper_cauldron",
+      "gameId": null,
       "name": "Copper Cauldron",
       "droppedBy": [],
       "prices": [
@@ -1402,6 +1465,7 @@
     },
     {
       "id": "copper_dagger",
+      "gameId": null,
       "name": "Copper Dagger",
       "droppedBy": [],
       "prices": [
@@ -1415,6 +1479,7 @@
     },
     {
       "id": "copper_longsword",
+      "gameId": null,
       "name": "Copper Longsword",
       "droppedBy": [],
       "prices": [
@@ -1428,6 +1493,7 @@
     },
     {
       "id": "copper_mace",
+      "gameId": null,
       "name": "Copper Mace",
       "droppedBy": [],
       "prices": [
@@ -1441,10 +1507,11 @@
     },
     {
       "id": "copper_ore",
+      "gameId": null,
       "name": "Copper Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 449,
+      "harvested": 481,
       "zones": [
         "Evershade Weald",
         "Night Harbor",
@@ -1453,6 +1520,7 @@
     },
     {
       "id": "copper_plate_bracer",
+      "gameId": null,
       "name": "Copper Plate Bracer",
       "droppedBy": [],
       "prices": [
@@ -1466,6 +1534,7 @@
     },
     {
       "id": "copper_scimitar",
+      "gameId": null,
       "name": "Copper Scimitar",
       "droppedBy": [],
       "prices": [
@@ -1479,6 +1548,7 @@
     },
     {
       "id": "copper_scythe",
+      "gameId": null,
       "name": "Copper Scythe",
       "droppedBy": [],
       "prices": [
@@ -1492,6 +1562,7 @@
     },
     {
       "id": "copper_shortsword",
+      "gameId": null,
       "name": "Copper Shortsword",
       "droppedBy": [],
       "prices": [
@@ -1505,6 +1576,7 @@
     },
     {
       "id": "copper_tread",
+      "gameId": null,
       "name": "Copper Tread",
       "droppedBy": [],
       "prices": [
@@ -1522,6 +1594,7 @@
     },
     {
       "id": "copper_war_lance",
+      "gameId": null,
       "name": "Copper War Lance",
       "droppedBy": [],
       "prices": [
@@ -1535,6 +1608,7 @@
     },
     {
       "id": "cracked_staff",
+      "gameId": "cracked_staff",
       "name": "Cracked Staff",
       "droppedBy": [
         {
@@ -1551,7 +1625,8 @@
       ]
     },
     {
-      "id": "gator_scale",
+      "id": "crocodile_hide",
+      "gameId": "gator_scale",
       "name": "Crocodile Hide",
       "droppedBy": [
         {
@@ -1568,7 +1643,8 @@
       ]
     },
     {
-      "id": "gator_tooth",
+      "id": "crocodile_tooth",
+      "gameId": "gator_tooth",
       "name": "Crocodile Tooth",
       "droppedBy": [
         {
@@ -1586,6 +1662,7 @@
     },
     {
       "id": "crude_handmade_torch",
+      "gameId": null,
       "name": "Crude Handmade Torch",
       "droppedBy": [],
       "prices": [
@@ -1603,6 +1680,7 @@
     },
     {
       "id": "decayed_great_staff",
+      "gameId": "decayed_great_staff",
       "name": "Decayed Great Staff",
       "droppedBy": [
         {
@@ -1624,7 +1702,8 @@
       ]
     },
     {
-      "id": "dis_bat_blood",
+      "id": "diseased_bat_blood",
+      "gameId": "dis_bat_blood",
       "name": "Diseased Bat Blood",
       "droppedBy": [
         {
@@ -1641,7 +1720,8 @@
       ]
     },
     {
-      "id": "dis_rat_blood",
+      "id": "diseased_rat_blood",
+      "gameId": "dis_rat_blood",
       "name": "Diseased Rat Blood",
       "droppedBy": [
         {
@@ -1663,7 +1743,8 @@
       ]
     },
     {
-      "id": "dis_snake_blood",
+      "id": "diseased_snake_blood",
+      "gameId": "dis_snake_blood",
       "name": "Diseased Snake Blood",
       "droppedBy": [
         {
@@ -1686,6 +1767,7 @@
     },
     {
       "id": "drake_claw",
+      "gameId": "drake_claw",
       "name": "Drake Claw",
       "droppedBy": [
         {
@@ -1712,6 +1794,7 @@
     },
     {
       "id": "drake_fang",
+      "gameId": "drake_fang",
       "name": "Drake Fang",
       "droppedBy": [
         {
@@ -1738,6 +1821,7 @@
     },
     {
       "id": "dryad_sap",
+      "gameId": "dryad_sap",
       "name": "Dryad Sap",
       "droppedBy": [
         {
@@ -1754,14 +1838,15 @@
       ]
     },
     {
-      "id": "ec721deef6178d43dbb37d8d",
+      "id": "encrusted_calafreyan_arrow",
+      "gameId": "ec721deef6178d43dbb37d8d",
       "name": "Encrusted Calafreyan Arrow",
       "droppedBy": [
         {
           "mob": "a small river elemental",
           "drops": 2,
-          "corpses": 16,
-          "rate": 0.125
+          "corpses": 18,
+          "rate": 0.1111111111111111
         }
       ],
       "prices": [],
@@ -1771,17 +1856,22 @@
       ]
     },
     {
-      "id": "esw_encrusted_calafreyan_buckler",
+      "id": "encrusted_calafreyan_buckler",
+      "gameId": "esw_encrusted_calafreyan_buckler",
       "name": "Encrusted Calafreyan Buckler",
       "droppedBy": [
         {
           "mob": "a small river elemental",
-          "drops": 2,
-          "corpses": 16,
-          "rate": 0.125
+          "drops": 4,
+          "corpses": 18,
+          "rate": 0.2222222222222222
         }
       ],
       "prices": [
+        {
+          "copper": 2,
+          "count": 1
+        },
         {
           "copper": 5,
           "count": 2
@@ -1793,14 +1883,15 @@
       ]
     },
     {
-      "id": "esw_encrusted_calafreyan_dagger",
+      "id": "encrusted_calafreyan_dagger",
+      "gameId": "esw_encrusted_calafreyan_dagger",
       "name": "Encrusted Calafreyan Dagger",
       "droppedBy": [
         {
           "mob": "a small river elemental",
           "drops": 4,
-          "corpses": 16,
-          "rate": 0.25
+          "corpses": 18,
+          "rate": 0.2222222222222222
         }
       ],
       "prices": [
@@ -1815,14 +1906,15 @@
       ]
     },
     {
-      "id": "f9287339adb95737f6ee34d4",
+      "id": "encrusted_calafreyan_spear",
+      "gameId": "f9287339adb95737f6ee34d4",
       "name": "Encrusted Calafreyan Spear",
       "droppedBy": [
         {
           "mob": "a small river elemental",
           "drops": 3,
-          "corpses": 16,
-          "rate": 0.1875
+          "corpses": 18,
+          "rate": 0.16666666666666666
         }
       ],
       "prices": [
@@ -1837,14 +1929,15 @@
       ]
     },
     {
-      "id": "233423dee978b13c203650a3",
+      "id": "encrusted_heartleaf_spangenhelm",
+      "gameId": "233423dee978b13c203650a3",
       "name": "Encrusted Heartleaf Spangenhelm",
       "droppedBy": [
         {
           "mob": "a small river elemental",
           "drops": 2,
-          "corpses": 16,
-          "rate": 0.125
+          "corpses": 18,
+          "rate": 0.1111111111111111
         }
       ],
       "prices": [
@@ -1859,14 +1952,15 @@
       ]
     },
     {
-      "id": "orc_warrior_belt",
+      "id": "fellstone_warrior_s_belt",
+      "gameId": "orc_warrior_belt",
       "name": "Fellstone Warrior's Belt",
       "droppedBy": [
         {
           "mob": "a Fellstone warrior",
           "drops": 3,
-          "corpses": 20,
-          "rate": 0.15
+          "corpses": 21,
+          "rate": 0.14285714285714285
         }
       ],
       "prices": [],
@@ -1876,7 +1970,8 @@
       ]
     },
     {
-      "id": "fbeetle_shell",
+      "id": "fire_beetle_carapace",
+      "gameId": "fbeetle_shell",
       "name": "Fire Beetle Carapace",
       "droppedBy": [
         {
@@ -1894,7 +1989,8 @@
       ]
     },
     {
-      "id": "fbeetle_eye",
+      "id": "fire_beetle_eye",
+      "gameId": "fbeetle_eye",
       "name": "Fire Beetle Eye",
       "droppedBy": [
         {
@@ -1917,7 +2013,8 @@
       ]
     },
     {
-      "id": "fbeetle_gland",
+      "id": "fire_beetle_gland",
+      "gameId": "fbeetle_gland",
       "name": "Fire Beetle Gland",
       "droppedBy": [
         {
@@ -1939,7 +2036,8 @@
       ]
     },
     {
-      "id": "fbeetle_leg",
+      "id": "fire_beetle_legs",
+      "gameId": "fbeetle_leg",
       "name": "Fire Beetle Legs",
       "droppedBy": [
         {
@@ -1971,6 +2069,7 @@
     },
     {
       "id": "fish_bones",
+      "gameId": "fish_bones",
       "name": "Fish Bones",
       "droppedBy": [
         {
@@ -1987,7 +2086,8 @@
       ]
     },
     {
-      "id": "ip_esw_rabid_wolf_cmn_ranged_int_6",
+      "id": "foamstalker_s_trinket",
+      "gameId": "ip_esw_rabid_wolf_cmn_ranged_int_6",
       "name": "Foamstalker's Trinket",
       "droppedBy": [
         {
@@ -2005,6 +2105,7 @@
     },
     {
       "id": "garlic",
+      "gameId": "garlic",
       "name": "Garlic",
       "droppedBy": [
         {
@@ -2022,6 +2123,7 @@
     },
     {
       "id": "ghost_poppy",
+      "gameId": null,
       "name": "Ghost Poppy",
       "droppedBy": [],
       "prices": [
@@ -2037,6 +2139,7 @@
     },
     {
       "id": "green_drakeling_hide",
+      "gameId": "green_drakeling_hide",
       "name": "Green Drakeling Hide",
       "droppedBy": [
         {
@@ -2058,7 +2161,8 @@
       ]
     },
     {
-      "id": "green_drakeling_duct",
+      "id": "green_drakeling_poison_duct",
+      "gameId": "green_drakeling_duct",
       "name": "Green Drakeling Poison Duct",
       "droppedBy": [
         {
@@ -2076,6 +2180,7 @@
     },
     {
       "id": "green_drakeling_scale",
+      "gameId": "green_drakeling_scale",
       "name": "Green Drakeling Scale",
       "droppedBy": [
         {
@@ -2098,6 +2203,7 @@
     },
     {
       "id": "green_drakeling_wing",
+      "gameId": "green_drakeling_wing",
       "name": "Green Drakeling Wing",
       "droppedBy": [
         {
@@ -2120,6 +2226,7 @@
     },
     {
       "id": "grouper",
+      "gameId": null,
       "name": "Grouper",
       "droppedBy": [],
       "prices": [
@@ -2133,6 +2240,7 @@
     },
     {
       "id": "grub",
+      "gameId": null,
       "name": "Grub",
       "droppedBy": [],
       "prices": [
@@ -2146,6 +2254,7 @@
     },
     {
       "id": "heavy_cloth_bandage",
+      "gameId": null,
       "name": "Heavy Cloth Bandage",
       "droppedBy": [],
       "prices": [
@@ -2159,6 +2268,7 @@
     },
     {
       "id": "jackal_tooth",
+      "gameId": "jackal_tooth",
       "name": "Jackal Tooth",
       "droppedBy": [
         {
@@ -2181,6 +2291,7 @@
     },
     {
       "id": "large_bat_fur",
+      "gameId": "large_bat_fur",
       "name": "Large Bat Fur",
       "droppedBy": [
         {
@@ -2203,6 +2314,7 @@
     },
     {
       "id": "large_bat_wing",
+      "gameId": "large_bat_wing",
       "name": "Large Bat Wing",
       "droppedBy": [
         {
@@ -2243,6 +2355,7 @@
     },
     {
       "id": "left_orc_ear",
+      "gameId": "left_orc_ear",
       "name": "Left Orc Ear",
       "droppedBy": [
         {
@@ -2254,8 +2367,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 4,
-          "corpses": 20,
-          "rate": 0.2
+          "corpses": 21,
+          "rate": 0.19047619047619047
         }
       ],
       "prices": [],
@@ -2266,6 +2379,7 @@
     },
     {
       "id": "lionleaf",
+      "gameId": null,
       "name": "Lionleaf",
       "droppedBy": [],
       "prices": [
@@ -2280,7 +2394,8 @@
       ]
     },
     {
-      "id": "lowquality_jackal_pelt",
+      "id": "low_quality_jackal_pelt",
+      "gameId": "lowquality_jackal_pelt",
       "name": "Low-Quality Jackal Pelt",
       "droppedBy": [
         {
@@ -2302,7 +2417,8 @@
       ]
     },
     {
-      "id": "lowquality_wolf_pelt",
+      "id": "low_quality_wolf_pelt",
+      "gameId": "lowquality_wolf_pelt",
       "name": "Low-Quality Wolf Pelt",
       "droppedBy": [
         {
@@ -2314,8 +2430,8 @@
         {
           "mob": "a black wolf pup",
           "drops": 12,
-          "corpses": 36,
-          "rate": 0.3333333333333333
+          "corpses": 37,
+          "rate": 0.32432432432432434
         }
       ],
       "prices": [
@@ -2335,6 +2451,7 @@
     },
     {
       "id": "magic_frond",
+      "gameId": null,
       "name": "Magic Frond",
       "droppedBy": [],
       "prices": [
@@ -2350,6 +2467,7 @@
     },
     {
       "id": "makeshift_vial",
+      "gameId": null,
       "name": "Makeshift Vial",
       "droppedBy": [],
       "prices": [
@@ -2362,14 +2480,15 @@
       "zones": []
     },
     {
-      "id": "f43328f6abbdd2379b7ac3d7",
+      "id": "moldy_sandals",
+      "gameId": "f43328f6abbdd2379b7ac3d7",
       "name": "Moldy Sandals",
       "droppedBy": [
         {
           "mob": "a small river elemental",
           "drops": 1,
-          "corpses": 16,
-          "rate": 0.0625
+          "corpses": 18,
+          "rate": 0.05555555555555555
         }
       ],
       "prices": [
@@ -2385,6 +2504,7 @@
     },
     {
       "id": "multhele_root",
+      "gameId": "multhele_root",
       "name": "Multhele Root",
       "droppedBy": [
         {
@@ -2407,6 +2527,7 @@
     },
     {
       "id": "nomad_s_grace",
+      "gameId": null,
       "name": "Nomad's Grace",
       "droppedBy": [],
       "prices": [
@@ -2422,6 +2543,7 @@
     },
     {
       "id": "onion",
+      "gameId": null,
       "name": "Onion",
       "droppedBy": [],
       "prices": [
@@ -2435,6 +2557,7 @@
     },
     {
       "id": "potato",
+      "gameId": "potato",
       "name": "Potato",
       "droppedBy": [
         {
@@ -2452,6 +2575,7 @@
     },
     {
       "id": "rat_ear",
+      "gameId": "rat_ear",
       "name": "Rat Ear",
       "droppedBy": [
         {
@@ -2484,6 +2608,7 @@
     },
     {
       "id": "rat_foot",
+      "gameId": "rat_foot",
       "name": "Rat Foot",
       "droppedBy": [
         {
@@ -2506,6 +2631,7 @@
     },
     {
       "id": "rat_tooth",
+      "gameId": "rat_tooth",
       "name": "Rat Tooth",
       "droppedBy": [
         {
@@ -2534,6 +2660,7 @@
     },
     {
       "id": "ration",
+      "gameId": null,
       "name": "Ration",
       "droppedBy": [],
       "prices": [
@@ -2546,7 +2673,8 @@
       "zones": []
     },
     {
-      "id": "raw_ash_meat",
+      "id": "raw_ashira_meat",
+      "gameId": "raw_ash_meat",
       "name": "Raw Ashira Meat",
       "droppedBy": [
         {
@@ -2581,7 +2709,8 @@
       ]
     },
     {
-      "id": "bat_meat",
+      "id": "raw_bat_meat",
+      "gameId": "bat_meat",
       "name": "Raw Bat Meat",
       "droppedBy": [
         {
@@ -2620,7 +2749,8 @@
       ]
     },
     {
-      "id": "gator_meat",
+      "id": "raw_crocodile_meat",
+      "gameId": "gator_meat",
       "name": "Raw Crocodile Meat",
       "droppedBy": [
         {
@@ -2637,7 +2767,8 @@
       ]
     },
     {
-      "id": "jackal_meat",
+      "id": "raw_jackal_meat",
+      "gameId": "jackal_meat",
       "name": "Raw Jackal Meat",
       "droppedBy": [
         {
@@ -2655,6 +2786,7 @@
     },
     {
       "id": "raw_orc_meat",
+      "gameId": "raw_orc_meat",
       "name": "Raw Orc Meat",
       "droppedBy": [
         {
@@ -2671,9 +2803,9 @@
         },
         {
           "mob": "a Fellstone warrior",
-          "drops": 6,
-          "corpses": 20,
-          "rate": 0.3
+          "drops": 7,
+          "corpses": 21,
+          "rate": 0.3333333333333333
         },
         {
           "mob": "a Fellstone scout",
@@ -2698,7 +2830,8 @@
       ]
     },
     {
-      "id": "rat_meat",
+      "id": "raw_rat_meat",
+      "gameId": "rat_meat",
       "name": "Raw Rat Meat",
       "droppedBy": [
         {
@@ -2726,7 +2859,8 @@
       ]
     },
     {
-      "id": "wolf_meat",
+      "id": "raw_wolf_meat",
+      "gameId": "wolf_meat",
       "name": "Raw Wolf Meat",
       "droppedBy": [
         {
@@ -2744,8 +2878,8 @@
         {
           "mob": "a black wolf pup",
           "drops": 12,
-          "corpses": 36,
-          "rate": 0.3333333333333333
+          "corpses": 37,
+          "rate": 0.32432432432432434
         }
       ],
       "prices": [
@@ -2765,6 +2899,7 @@
     },
     {
       "id": "rawhide_scraps",
+      "gameId": "rawhide_scraps",
       "name": "Rawhide Scraps",
       "droppedBy": [
         {
@@ -2774,16 +2909,16 @@
           "rate": 1
         },
         {
-          "mob": "an old elven skeleton",
-          "drops": 7,
-          "corpses": 13,
-          "rate": 0.5384615384615384
-        },
-        {
           "mob": "a Fellstone shaman",
           "drops": 1,
           "corpses": 2,
           "rate": 0.5
+        },
+        {
+          "mob": "an old elven skeleton",
+          "drops": 12,
+          "corpses": 25,
+          "rate": 0.48
         },
         {
           "mob": "an ashira shaman",
@@ -2793,15 +2928,15 @@
         },
         {
           "mob": "a skeleton",
-          "drops": 7,
-          "corpses": 27,
-          "rate": 0.25925925925925924
+          "drops": 9,
+          "corpses": 36,
+          "rate": 0.25
         },
         {
           "mob": "a Fellstone warrior",
           "drops": 5,
-          "corpses": 20,
-          "rate": 0.25
+          "corpses": 21,
+          "rate": 0.23809523809523808
         },
         {
           "mob": "an ashira lookout",
@@ -2820,29 +2955,31 @@
     },
     {
       "id": "resin",
+      "gameId": null,
       "name": "Resin",
       "droppedBy": [],
       "prices": [
         {
           "copper": 1,
-          "count": 10
+          "count": 12
         }
       ],
-      "harvested": 237,
+      "harvested": 252,
       "zones": [
         "Evershade Weald",
         "Night Harbor"
       ]
     },
     {
-      "id": "439347b9bdc1ac6da088b261",
+      "id": "river_essence",
+      "gameId": "439347b9bdc1ac6da088b261",
       "name": "River Essence",
       "droppedBy": [
         {
           "mob": "a small river elemental",
-          "drops": 3,
-          "corpses": 16,
-          "rate": 0.1875
+          "drops": 4,
+          "corpses": 18,
+          "rate": 0.2222222222222222
         }
       ],
       "prices": [],
@@ -2852,14 +2989,15 @@
       ]
     },
     {
-      "id": "4e061489681d11ae8de74f9b",
+      "id": "river_trout",
+      "gameId": "4e061489681d11ae8de74f9b",
       "name": "River Trout",
       "droppedBy": [
         {
           "mob": "a small river elemental",
           "drops": 2,
-          "corpses": 16,
-          "rate": 0.125
+          "corpses": 18,
+          "rate": 0.1111111111111111
         }
       ],
       "prices": [
@@ -2879,6 +3017,7 @@
     },
     {
       "id": "royal_jelly",
+      "gameId": "royal_jelly",
       "name": "Royal Jelly",
       "droppedBy": [
         {
@@ -2906,14 +3045,15 @@
       ]
     },
     {
-      "id": "archer_rune_bone",
+      "id": "rune_etched_bone",
+      "gameId": "archer_rune_bone",
       "name": "Rune-Etched Bone",
       "droppedBy": [
         {
           "mob": "an old elven skeleton",
           "drops": 3,
-          "corpses": 13,
-          "rate": 0.23076923076923078
+          "corpses": 25,
+          "rate": 0.12
         }
       ],
       "prices": [],
@@ -2924,13 +3064,14 @@
     },
     {
       "id": "rusty_axe",
+      "gameId": "rusty_axe",
       "name": "Rusty Axe",
       "droppedBy": [
         {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 13,
-          "rate": 0.07692307692307693
+          "corpses": 25,
+          "rate": 0.04
         },
         {
           "mob": "a rotting skeleton",
@@ -2958,7 +3099,8 @@
       ]
     },
     {
-      "id": "rusty_2axe",
+      "id": "rusty_battle_axe",
+      "gameId": "rusty_2axe",
       "name": "Rusty Battle Axe",
       "droppedBy": [
         {
@@ -2981,6 +3123,7 @@
     },
     {
       "id": "rusty_dagger",
+      "gameId": "rusty_dagger",
       "name": "Rusty Dagger",
       "droppedBy": [
         {
@@ -3009,14 +3152,15 @@
       ]
     },
     {
-      "id": "rusty_scythe",
+      "id": "rusty_great_scythe",
+      "gameId": "rusty_scythe",
       "name": "Rusty Great Scythe",
       "droppedBy": [
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
+          "corpses": 21,
+          "rate": 0.047619047619047616
         },
         {
           "mob": "a rotting skeleton",
@@ -3038,7 +3182,8 @@
       ]
     },
     {
-      "id": "rusty_2sword",
+      "id": "rusty_greatsword",
+      "gameId": "rusty_2sword",
       "name": "Rusty Greatsword",
       "droppedBy": [
         {
@@ -3061,6 +3206,7 @@
     },
     {
       "id": "rusty_kite_shield",
+      "gameId": "rusty_kite_shield",
       "name": "Rusty Kite Shield",
       "droppedBy": [
         {
@@ -3082,20 +3228,27 @@
       ]
     },
     {
-      "id": "rusty_lsword",
+      "id": "rusty_longsword",
+      "gameId": "rusty_lsword",
       "name": "Rusty Longsword",
       "droppedBy": [
         {
-          "mob": "an old elven skeleton",
-          "drops": 1,
-          "corpses": 13,
-          "rate": 0.07692307692307693
-        },
-        {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
+          "corpses": 21,
+          "rate": 0.047619047619047616
+        },
+        {
+          "mob": "an old elven skeleton",
+          "drops": 1,
+          "corpses": 25,
+          "rate": 0.04
+        },
+        {
+          "mob": "a skeleton",
+          "drops": 1,
+          "corpses": 36,
+          "rate": 0.027777777777777776
         },
         {
           "mob": "a rotting skeleton",
@@ -3107,7 +3260,7 @@
       "prices": [
         {
           "copper": 12,
-          "count": 2
+          "count": 3
         }
       ],
       "harvested": 0,
@@ -3117,6 +3270,7 @@
     },
     {
       "id": "rusty_mace",
+      "gameId": "rusty_mace",
       "name": "Rusty Mace",
       "droppedBy": [
         {
@@ -3143,17 +3297,23 @@
       ]
     },
     {
-      "id": "rusty_2hammer",
+      "id": "rusty_maul",
+      "gameId": "2bef8fd0cbf142a97506c28c",
       "name": "Rusty Maul",
       "droppedBy": [
         {
           "mob": "a skeleton",
-          "drops": 1,
-          "corpses": 27,
-          "rate": 0.037037037037037035
+          "drops": 2,
+          "corpses": 36,
+          "rate": 0.05555555555555555
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 25,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Evershade Weald"
@@ -3161,6 +3321,7 @@
     },
     {
       "id": "rusty_scimitar",
+      "gameId": "rusty_scimitar",
       "name": "Rusty Scimitar",
       "droppedBy": [
         {
@@ -3190,14 +3351,15 @@
       ]
     },
     {
-      "id": "rusty_ssword",
+      "id": "rusty_shortsword",
+      "gameId": "rusty_ssword",
       "name": "Rusty Shortsword",
       "droppedBy": [
         {
-          "mob": "a skeleton",
+          "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 27,
-          "rate": 0.037037037037037035
+          "corpses": 25,
+          "rate": 0.04
         },
         {
           "mob": "a rotting skeleton",
@@ -3210,12 +3372,18 @@
           "drops": 1,
           "corpses": 35,
           "rate": 0.02857142857142857
+        },
+        {
+          "mob": "a skeleton",
+          "drops": 1,
+          "corpses": 36,
+          "rate": 0.027777777777777776
         }
       ],
       "prices": [
         {
           "copper": 12,
-          "count": 4
+          "count": 5
         }
       ],
       "harvested": 0,
@@ -3227,6 +3395,7 @@
     },
     {
       "id": "rusty_spear",
+      "gameId": "rusty_spear",
       "name": "Rusty Spear",
       "droppedBy": [
         {
@@ -3256,6 +3425,7 @@
     },
     {
       "id": "rusty_tower_shield",
+      "gameId": "rusty_tower_shield",
       "name": "Rusty Tower Shield",
       "droppedBy": [
         {
@@ -3284,13 +3454,14 @@
     },
     {
       "id": "rusty_trident",
+      "gameId": "rusty_trident",
       "name": "Rusty Trident",
       "droppedBy": [
         {
           "mob": "a skeleton",
-          "drops": 1,
-          "corpses": 27,
-          "rate": 0.037037037037037035
+          "drops": 2,
+          "corpses": 36,
+          "rate": 0.05555555555555555
         },
         {
           "mob": "a Fellstone scout",
@@ -3308,7 +3479,7 @@
       "prices": [
         {
           "copper": 12,
-          "count": 2
+          "count": 3
         }
       ],
       "harvested": 0,
@@ -3318,7 +3489,8 @@
       ]
     },
     {
-      "id": "rusty_2lance",
+      "id": "rusty_war_lance",
+      "gameId": "rusty_2lance",
       "name": "Rusty War Lance",
       "droppedBy": [
         {
@@ -3335,7 +3507,8 @@
       ]
     },
     {
-      "id": "rusty_whammer",
+      "id": "rusty_warhammer",
+      "gameId": "rusty_whammer",
       "name": "Rusty Warhammer",
       "droppedBy": [
         {
@@ -3369,6 +3542,7 @@
     },
     {
       "id": "scarab_carapace",
+      "gameId": "scarab_carapace",
       "name": "Scarab Carapace",
       "droppedBy": [
         {
@@ -3386,6 +3560,7 @@
     },
     {
       "id": "scarab_eye",
+      "gameId": "scarab_eye",
       "name": "Scarab Eye",
       "droppedBy": [
         {
@@ -3409,6 +3584,7 @@
     },
     {
       "id": "scarab_leg",
+      "gameId": "scarab_leg",
       "name": "Scarab Leg",
       "droppedBy": [
         {
@@ -3436,6 +3612,7 @@
     },
     {
       "id": "selstie_kelp",
+      "gameId": null,
       "name": "Selstie Kelp",
       "droppedBy": [],
       "prices": [],
@@ -3446,12 +3623,13 @@
     },
     {
       "id": "shattered_skull",
+      "gameId": "shattered_skull",
       "name": "Shattered Skull",
       "droppedBy": [
         {
           "mob": "a skeleton",
-          "drops": 3,
-          "corpses": 27,
+          "drops": 4,
+          "corpses": 36,
           "rate": 0.1111111111111111
         },
         {
@@ -3468,7 +3646,8 @@
       ]
     },
     {
-      "id": "elrind_skel_jaw",
+      "id": "skeleton_jawbone",
+      "gameId": "elrind_skel_jaw",
       "name": "Skeleton Jawbone",
       "droppedBy": [
         {
@@ -3491,14 +3670,15 @@
       ]
     },
     {
-      "id": "bbf41074d578e6441f621fcd",
+      "id": "smooth_river_stone",
+      "gameId": "bbf41074d578e6441f621fcd",
       "name": "Smooth River Stone",
       "droppedBy": [
         {
           "mob": "a small river elemental",
-          "drops": 4,
-          "corpses": 16,
-          "rate": 0.25
+          "drops": 5,
+          "corpses": 18,
+          "rate": 0.2777777777777778
         }
       ],
       "prices": [],
@@ -3509,6 +3689,7 @@
     },
     {
       "id": "snake_egg",
+      "gameId": "snake_egg",
       "name": "Snake Egg",
       "droppedBy": [
         {
@@ -3526,6 +3707,7 @@
     },
     {
       "id": "snake_fang",
+      "gameId": "snake_fang",
       "name": "Snake Fang",
       "droppedBy": [
         {
@@ -3555,6 +3737,7 @@
     },
     {
       "id": "snake_skin",
+      "gameId": "snake_skin",
       "name": "Snake Skin",
       "droppedBy": [
         {
@@ -3576,7 +3759,8 @@
       ]
     },
     {
-      "id": "spider_leg",
+      "id": "spider_legs",
+      "gameId": "spider_leg",
       "name": "Spider Legs",
       "droppedBy": [
         {
@@ -3616,6 +3800,7 @@
     },
     {
       "id": "spider_silk",
+      "gameId": "spider_silk",
       "name": "Spider Silk",
       "droppedBy": [
         {
@@ -3658,7 +3843,8 @@
       ]
     },
     {
-      "id": "spider_venom",
+      "id": "spider_venom_sac",
+      "gameId": "spider_venom",
       "name": "Spider Venom Sac",
       "droppedBy": [
         {
@@ -3681,6 +3867,7 @@
     },
     {
       "id": "spiderling_eye",
+      "gameId": "spiderling_eye",
       "name": "Spiderling Eye",
       "droppedBy": [
         {
@@ -3698,6 +3885,7 @@
     },
     {
       "id": "tattered_cloth_belt",
+      "gameId": "tattered_cloth_belt",
       "name": "Tattered Cloth Belt",
       "droppedBy": [
         {
@@ -3715,8 +3903,8 @@
         {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 13,
-          "rate": 0.07692307692307693
+          "corpses": 25,
+          "rate": 0.04
         },
         {
           "mob": "a Fellstone scout",
@@ -3744,20 +3932,21 @@
       ]
     },
     {
-      "id": "tattered_cloth_feet",
+      "id": "tattered_cloth_boots",
+      "gameId": "tattered_cloth_feet",
       "name": "Tattered Cloth Boots",
       "droppedBy": [
-        {
-          "mob": "an old elven skeleton",
-          "drops": 1,
-          "corpses": 13,
-          "rate": 0.07692307692307693
-        },
         {
           "mob": "a Fellstone scout",
           "drops": 2,
           "corpses": 35,
           "rate": 0.05714285714285714
+        },
+        {
+          "mob": "an old elven skeleton",
+          "drops": 1,
+          "corpses": 25,
+          "rate": 0.04
         },
         {
           "mob": "a rotting skeleton",
@@ -3779,7 +3968,8 @@
       ]
     },
     {
-      "id": "tattered_cloth_fore",
+      "id": "tattered_cloth_bracer",
+      "gameId": "tattered_cloth_fore",
       "name": "Tattered Cloth Bracer",
       "droppedBy": [
         {
@@ -3791,14 +3981,14 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 2,
-          "corpses": 20,
-          "rate": 0.1
+          "corpses": 21,
+          "rate": 0.09523809523809523
         },
         {
           "mob": "a skeleton",
-          "drops": 1,
-          "corpses": 27,
-          "rate": 0.037037037037037035
+          "drops": 3,
+          "corpses": 36,
+          "rate": 0.08333333333333333
         }
       ],
       "prices": [
@@ -3809,20 +3999,21 @@
       ],
       "harvested": 0,
       "zones": [
-        "Tomb of the Last Wyrmsbane",
         "Evershade Weald",
+        "Tomb of the Last Wyrmsbane",
         "Shaded Dunes"
       ]
     },
     {
-      "id": "tattered_cloth_head",
+      "id": "tattered_cloth_cap",
+      "gameId": "tattered_cloth_head",
       "name": "Tattered Cloth Cap",
       "droppedBy": [
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 27,
-          "rate": 0.037037037037037035
+          "corpses": 36,
+          "rate": 0.027777777777777776
         }
       ],
       "prices": [],
@@ -3834,19 +4025,20 @@
     },
     {
       "id": "tattered_cloth_cape",
+      "gameId": "tattered_cloth_cape",
       "name": "Tattered Cloth Cape",
       "droppedBy": [
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
+          "corpses": 21,
+          "rate": 0.047619047619047616
         },
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 27,
-          "rate": 0.037037037037037035
+          "corpses": 36,
+          "rate": 0.027777777777777776
         },
         {
           "mob": "a rotting skeleton",
@@ -3867,9 +4059,16 @@
       ]
     },
     {
-      "id": "tattered_cloth_hand",
+      "id": "tattered_cloth_gloves",
+      "gameId": "tattered_cloth_hand",
       "name": "Tattered Cloth Gloves",
       "droppedBy": [
+        {
+          "mob": "an old elven skeleton",
+          "drops": 1,
+          "corpses": 25,
+          "rate": 0.04
+        },
         {
           "mob": "a rotting skeleton",
           "drops": 2,
@@ -3885,14 +4084,15 @@
       ]
     },
     {
-      "id": "tattered_cloth_neck",
+      "id": "tattered_cloth_gorget",
+      "gameId": "tattered_cloth_neck",
       "name": "Tattered Cloth Gorget",
       "droppedBy": [
         {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 13,
-          "rate": 0.07692307692307693
+          "corpses": 25,
+          "rate": 0.04
         },
         {
           "mob": "a rotting skeleton",
@@ -3920,14 +4120,21 @@
       ]
     },
     {
-      "id": "tattered_cloth_shld",
+      "id": "tattered_cloth_mantle",
+      "gameId": "tattered_cloth_shld",
       "name": "Tattered Cloth Mantle",
       "droppedBy": [
         {
+          "mob": "an old elven skeleton",
+          "drops": 2,
+          "corpses": 25,
+          "rate": 0.08
+        },
+        {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
+          "corpses": 21,
+          "rate": 0.047619047619047616
         },
         {
           "mob": "a rotting skeleton",
@@ -3949,7 +4156,8 @@
       ]
     },
     {
-      "id": "tattered_cloth_legs",
+      "id": "tattered_cloth_pantaloons",
+      "gameId": "tattered_cloth_legs",
       "name": "Tattered Cloth Pantaloons",
       "droppedBy": [
         {
@@ -3967,8 +4175,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 27,
-          "rate": 0.037037037037037035
+          "corpses": 36,
+          "rate": 0.027777777777777776
         },
         {
           "mob": "a rotting skeleton",
@@ -3992,6 +4200,7 @@
     },
     {
       "id": "tattered_cloth_robe",
+      "gameId": "tattered_cloth_robe",
       "name": "Tattered Cloth Robe",
       "droppedBy": [
         {
@@ -4003,8 +4212,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
+          "corpses": 21,
+          "rate": 0.047619047619047616
         },
         {
           "mob": "a rotting skeleton",
@@ -4037,7 +4246,8 @@
       ]
     },
     {
-      "id": "tattered_cloth_arms",
+      "id": "tattered_cloth_shirt",
+      "gameId": "tattered_cloth_arms",
       "name": "Tattered Cloth Shirt",
       "droppedBy": [
         {
@@ -4049,8 +4259,14 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
+          "corpses": 21,
+          "rate": 0.047619047619047616
+        },
+        {
+          "mob": "a skeleton",
+          "drops": 1,
+          "corpses": 36,
+          "rate": 0.027777777777777776
         },
         {
           "mob": "a rotting skeleton",
@@ -4067,7 +4283,8 @@
       ]
     },
     {
-      "id": "tattered_cloth_vest",
+      "id": "tattered_cloth_tunic",
+      "gameId": "tattered_cloth_vest",
       "name": "Tattered Cloth Tunic",
       "droppedBy": [
         {
@@ -4079,8 +4296,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
+          "corpses": 21,
+          "rate": 0.047619047619047616
         },
         {
           "mob": "a Fellstone scout",
@@ -4102,14 +4319,15 @@
       ]
     },
     {
-      "id": "tattered_cloth_face",
+      "id": "tattered_cloth_veil",
+      "gameId": "tattered_cloth_face",
       "name": "Tattered Cloth Veil",
       "droppedBy": [
         {
           "mob": "a skeleton",
-          "drops": 1,
-          "corpses": 27,
-          "rate": 0.037037037037037035
+          "drops": 2,
+          "corpses": 36,
+          "rate": 0.05555555555555555
         },
         {
           "mob": "a Fellstone scout",
@@ -4138,25 +4356,26 @@
     },
     {
       "id": "tattered_rawhide_belt",
+      "gameId": "tattered_rawhide_belt",
       "name": "Tattered Rawhide Belt",
       "droppedBy": [
         {
-          "mob": "a Fellstone warrior",
-          "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
+          "mob": "a skeleton",
+          "drops": 2,
+          "corpses": 36,
+          "rate": 0.05555555555555555
         },
         {
-          "mob": "a skeleton",
+          "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 27,
-          "rate": 0.037037037037037035
+          "corpses": 21,
+          "rate": 0.047619047619047616
         }
       ],
       "prices": [
         {
           "copper": 37,
-          "count": 2
+          "count": 4
         }
       ],
       "harvested": 0,
@@ -4165,14 +4384,15 @@
       ]
     },
     {
-      "id": "tattered_rawhide_feet",
+      "id": "tattered_rawhide_boots",
+      "gameId": "tattered_rawhide_feet",
       "name": "Tattered Rawhide Boots",
       "droppedBy": [
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 27,
-          "rate": 0.037037037037037035
+          "corpses": 36,
+          "rate": 0.027777777777777776
         }
       ],
       "prices": [
@@ -4187,19 +4407,43 @@
       ]
     },
     {
-      "id": "tattered_rawhide_fore",
+      "id": "tattered_rawhide_bracer",
+      "gameId": "tattered_rawhide_fore",
       "name": "Tattered Rawhide Bracer",
       "droppedBy": [
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
+          "corpses": 21,
+          "rate": 0.047619047619047616
         }
       ],
       "prices": [
         {
           "copper": 37,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
+      "id": "tattered_rawhide_cap",
+      "gameId": "a154e40b4e02cacea0f01eee",
+      "name": "Tattered Rawhide Cap",
+      "droppedBy": [
+        {
+          "mob": "an old elven skeleton",
+          "drops": 1,
+          "corpses": 25,
+          "rate": 0.04
+        }
+      ],
+      "prices": [
+        {
+          "copper": 41,
           "count": 1
         }
       ],
@@ -4210,6 +4454,7 @@
     },
     {
       "id": "tattered_rawhide_cloak",
+      "gameId": null,
       "name": "Tattered Rawhide Cloak",
       "droppedBy": [],
       "prices": [
@@ -4223,6 +4468,7 @@
     },
     {
       "id": "tattered_rawhide_gloves",
+      "gameId": null,
       "name": "Tattered Rawhide Gloves",
       "droppedBy": [],
       "prices": [
@@ -4235,31 +4481,38 @@
       "zones": []
     },
     {
-      "id": "f75c687d69de378200f20bf1",
+      "id": "tattered_rawhide_gorget",
+      "gameId": "f75c687d69de378200f20bf1",
       "name": "Tattered Rawhide Gorget",
       "droppedBy": [
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
+          "corpses": 21,
+          "rate": 0.047619047619047616
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 37,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Evershade Weald"
       ]
     },
     {
-      "id": "tattered_rawhide_legs",
+      "id": "tattered_rawhide_leggings",
+      "gameId": "tattered_rawhide_legs",
       "name": "Tattered Rawhide Leggings",
       "droppedBy": [
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
+          "corpses": 21,
+          "rate": 0.047619047619047616
         }
       ],
       "prices": [
@@ -4275,6 +4528,7 @@
     },
     {
       "id": "tattered_rawhide_mask",
+      "gameId": null,
       "name": "Tattered Rawhide Mask",
       "droppedBy": [],
       "prices": [
@@ -4287,7 +4541,31 @@
       "zones": []
     },
     {
-      "id": "tattered_rawhide_arms",
+      "id": "tattered_rawhide_tunic",
+      "gameId": "2ec74ceea19b0b689be4fd5f",
+      "name": "Tattered Rawhide Tunic",
+      "droppedBy": [
+        {
+          "mob": "a skeleton",
+          "drops": 3,
+          "corpses": 36,
+          "rate": 0.08333333333333333
+        }
+      ],
+      "prices": [
+        {
+          "copper": 56,
+          "count": 3
+        }
+      ],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
+      "id": "tattered_rawhide_vest",
+      "gameId": "tattered_rawhide_arms",
       "name": "Tattered Rawhide Vest",
       "droppedBy": [
         {
@@ -4299,8 +4577,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
+          "corpses": 21,
+          "rate": 0.047619047619047616
         }
       ],
       "prices": [
@@ -4317,6 +4595,7 @@
     },
     {
       "id": "torch",
+      "gameId": "torch",
       "name": "Torch",
       "droppedBy": [
         {
@@ -4328,20 +4607,20 @@
         {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 13,
-          "rate": 0.07692307692307693
-        },
-        {
-          "mob": "a skeleton",
-          "drops": 1,
-          "corpses": 27,
-          "rate": 0.037037037037037035
+          "corpses": 25,
+          "rate": 0.04
         },
         {
           "mob": "a Fellstone scout",
           "drops": 1,
           "corpses": 35,
           "rate": 0.02857142857142857
+        },
+        {
+          "mob": "a skeleton",
+          "drops": 1,
+          "corpses": 36,
+          "rate": 0.027777777777777776
         },
         {
           "mob": "a rotting skeleton",
@@ -4364,14 +4643,15 @@
       ]
     },
     {
-      "id": "esw_torn_fishing_net",
+      "id": "torn_fishing_net",
+      "gameId": "esw_torn_fishing_net",
       "name": "Torn Fishing Net",
       "droppedBy": [
         {
           "mob": "a small river elemental",
-          "drops": 2,
-          "corpses": 16,
-          "rate": 0.125
+          "drops": 3,
+          "corpses": 18,
+          "rate": 0.16666666666666666
         }
       ],
       "prices": [],
@@ -4381,7 +4661,8 @@
       ]
     },
     {
-      "id": "ranger_orc_report",
+      "id": "unintelligible_report",
+      "gameId": "ranger_orc_report",
       "name": "Unintelligible Report",
       "droppedBy": [
         {
@@ -4398,7 +4679,8 @@
       ]
     },
     {
-      "id": "archer_orc_writ",
+      "id": "unintelligible_writings",
+      "gameId": "archer_orc_writ",
       "name": "Unintelligible Writings",
       "droppedBy": [
         {
@@ -4416,6 +4698,7 @@
     },
     {
       "id": "wasp_venom_sac",
+      "gameId": "wasp_venom_sac",
       "name": "Wasp Venom Sac",
       "droppedBy": [
         {
@@ -4448,6 +4731,7 @@
     },
     {
       "id": "wasp_wing",
+      "gameId": "wasp_wing",
       "name": "Wasp Wing",
       "droppedBy": [
         {
@@ -4476,6 +4760,7 @@
     },
     {
       "id": "wasp_worker_wax",
+      "gameId": "wasp_worker_wax",
       "name": "Wasp Worker Wax",
       "droppedBy": [
         {
@@ -4493,6 +4778,7 @@
     },
     {
       "id": "whispering_sage",
+      "gameId": null,
       "name": "Whispering Sage",
       "droppedBy": [],
       "prices": [],
@@ -4503,6 +4789,7 @@
     },
     {
       "id": "whitefish",
+      "gameId": null,
       "name": "Whitefish",
       "droppedBy": [],
       "prices": [
@@ -4516,6 +4803,7 @@
     },
     {
       "id": "widow_eye",
+      "gameId": "widow_eye",
       "name": "Widow Eye",
       "droppedBy": [
         {
@@ -4533,13 +4821,14 @@
     },
     {
       "id": "wolf_blood",
+      "gameId": "wolf_blood",
       "name": "Wolf Blood",
       "droppedBy": [
         {
           "mob": "a black wolf pup",
-          "drops": 13,
-          "corpses": 36,
-          "rate": 0.3611111111111111
+          "drops": 14,
+          "corpses": 37,
+          "rate": 0.3783783783783784
         }
       ],
       "prices": [
@@ -4555,13 +4844,14 @@
     },
     {
       "id": "wolf_tooth",
+      "gameId": "wolf_tooth",
       "name": "Wolf Tooth",
       "droppedBy": [
         {
           "mob": "a black wolf pup",
           "drops": 12,
-          "corpses": 36,
-          "rate": 0.3333333333333333
+          "corpses": 37,
+          "rate": 0.32432432432432434
         },
         {
           "mob": "a rabid wolf",
@@ -4583,6 +4873,7 @@
     },
     {
       "id": "wood",
+      "gameId": null,
       "name": "Wood",
       "droppedBy": [],
       "prices": [
@@ -4591,16 +4882,37 @@
           "count": 5
         }
       ],
-      "harvested": 196,
+      "harvested": 208,
       "zones": [
         "Evershade Weald",
         "Night Harbor"
       ]
     },
     {
-      "id": "4a3a4919e69d4dfb1cb47dd7",
+      "id": "wood_board",
+      "gameId": null,
+      "name": "Wood Board",
+      "droppedBy": [],
+      "prices": [
+        {
+          "copper": 1,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": []
+    },
+    {
+      "id": "worn_bow",
+      "gameId": "4a3a4919e69d4dfb1cb47dd7",
       "name": "Worn Bow",
       "droppedBy": [
+        {
+          "mob": "an old elven skeleton",
+          "drops": 1,
+          "corpses": 25,
+          "rate": 0.04
+        },
         {
           "mob": "a Fellstone scout",
           "drops": 1,
@@ -4611,7 +4923,7 @@
       "prices": [
         {
           "copper": 25,
-          "count": 1
+          "count": 2
         }
       ],
       "harvested": 0,
@@ -4621,7 +4933,8 @@
       ]
     },
     {
-      "id": "worn_buckler_t1",
+      "id": "worn_buckler",
+      "gameId": "worn_buckler_t1",
       "name": "Worn Buckler",
       "droppedBy": [
         {
@@ -4631,10 +4944,16 @@
           "rate": 0.1
         },
         {
+          "mob": "an old elven skeleton",
+          "drops": 2,
+          "corpses": 25,
+          "rate": 0.08
+        },
+        {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 27,
-          "rate": 0.037037037037037035
+          "corpses": 36,
+          "rate": 0.027777777777777776
         },
         {
           "mob": "a rotting skeleton",
@@ -4646,30 +4965,31 @@
       "prices": [
         {
           "copper": 12,
-          "count": 2
+          "count": 4
         }
       ],
       "harvested": 0,
       "zones": [
-        "Shaded Dunes",
-        "Evershade Weald"
+        "Evershade Weald",
+        "Shaded Dunes"
       ]
     },
     {
       "id": "worn_great_staff",
+      "gameId": "worn_great_staff",
       "name": "Worn Great Staff",
       "droppedBy": [
         {
-          "mob": "a Fellstone warrior",
-          "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
+          "mob": "a skeleton",
+          "drops": 2,
+          "corpses": 36,
+          "rate": 0.05555555555555555
         },
         {
-          "mob": "a skeleton",
+          "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 27,
-          "rate": 0.037037037037037035
+          "corpses": 21,
+          "rate": 0.047619047619047616
         },
         {
           "mob": "a rotting skeleton",
@@ -4685,7 +5005,7 @@
         },
         {
           "copper": 56,
-          "count": 1
+          "count": 3
         }
       ],
       "harvested": 0,
@@ -4695,14 +5015,15 @@
       ]
     },
     {
-      "id": "e59bf5cae204bc6970fde93d",
+      "id": "woven_heartleaf_tunic",
+      "gameId": "e59bf5cae204bc6970fde93d",
       "name": "Woven Heartleaf Tunic",
       "droppedBy": [
         {
           "mob": "a small river elemental",
-          "drops": 3,
-          "corpses": 16,
-          "rate": 0.1875
+          "drops": 4,
+          "corpses": 18,
+          "rate": 0.2222222222222222
         }
       ],
       "prices": [],
@@ -4713,18 +5034,18 @@
     }
   ],
   "harvest": {
-    "Copper Ore": 449,
-    "Brittle Stone": 463,
-    "Clouded Crystallized Magic": 8,
-    "Wood": 196,
-    "Resin": 237,
+    "Copper Ore": 481,
+    "Brittle Stone": 500,
+    "Clouded Crystallized Magic": 9,
+    "Wood": 208,
+    "Resin": 252,
     "Chipped Turquoise": 3,
     "Lionleaf": 23,
     "Chipped Star Ruby": 2,
     "Alunite Ore": 9,
     "Ghost Poppy": 28,
     "Nomad's Grace": 5,
-    "Chipped Fire Emerald": 2,
+    "Chipped Fire Emerald": 3,
     "Chipped Bloodstone": 1,
     "Chipped Malachite": 3,
     "Chipped Black Pearl": 4,
@@ -4734,13 +5055,14 @@
     "Chipped Onyx": 3,
     "Chipped Hematite": 2,
     "Chipped Diamond": 1,
-    "Chipped Emerald": 1,
+    "Chipped Emerald": 2,
     "Chipped Black Sapphire": 2,
     "Magic Frond": 1,
     "Whispering Sage": 4,
     "Chipped Jasper": 1,
     "Chipped Wolf's Eye Agate": 1,
     "Chipped Cat's Eye Agate": 1,
-    "Selstie Kelp": 1
+    "Selstie Kelp": 1,
+    "Chipped Ruby": 1
   }
 }

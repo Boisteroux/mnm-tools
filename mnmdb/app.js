@@ -407,7 +407,8 @@ function wireScatter() {
 const stat = (n, l) => '<div class="stat"><div class="num">' + n + '</div><div class="lbl">' + l + '</div></div>';
 
 function renderItem(id) {
-  const it = DATA.items.find((i) => i.id === id) || DATA.items.find((i) => i.name === id);
+  const it = DATA.items.find((i) => i.id === id) || DATA.items.find((i) => i.name === id)
+    || DATA.items.find((i) => i.gameId === id); // keep old hash-based URLs working
   if (!it) return notFound('item', id);
 
   const sections = [];
