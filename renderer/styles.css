@@ -525,7 +525,7 @@ body.overlay #map-area { background: rgba(18, 12, 8, 0.10); }
 }
 .modal-x:hover { background: var(--surface-2); border-color: transparent; color: var(--text); }
 .replay-nav { display: flex; align-items: center; gap: 8px; }
-.replay-nav button { padding: 3px 9px; }
+.replay-nav button { padding: 3px 9px; white-space: nowrap; flex: 0 0 auto; }
 .replay-count { font-size: 11px; color: var(--muted); min-width: 70px; text-align: center; }
 .replay-live { color: #5fbf6a; font-weight: 600; }
 
