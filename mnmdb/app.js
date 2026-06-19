@@ -822,6 +822,11 @@ function recipeTable(recs, showSkill) {
 const marginNote = '<div class="note">“Margin” = output value − materials value (best known player-trade or vendor price) — ' +
   'what crafting adds over selling the raw mats. “?” means a material has no price logged yet; fills in as data grows.</div>';
 
+// Reusable, one-time crafting tools (a hammer/pliers lasts many crafts), so they
+// don't count toward per-craft material cost. Molds ARE consumed (1 per bar) — kept.
+const isReusableTool = (name) => !/mold/i.test(name) &&
+  /\b(hammer|pliers|tongs|mallet|chisel|shears|awl|whetstone|spindle|needle|loom|saw|file)\b/i.test(name);
+
 // Recursively expand an item into its base (gathered/looted) materials. A material
 // is "raw" when no recipe makes it. Returns { rawName: qty }. The `seen` set guards
 // against recipe cycles; the first known recipe is used when several exist.
@@ -836,6 +841,7 @@ function rawMaterials(name, qty, seen) {
   const next = new Set(seen); next.add(key);
   const out = {};
   for (const c of r.components) {
+    if (isReusableTool(c.item)) continue; // one-time tool, not a per-craft cost
     const sub = rawMaterials(c.item, c.qty * factor, next);
     for (const [k, v] of Object.entries(sub)) out[k] = (out[k] || 0) + v;
   }
@@ -849,6 +855,7 @@ const fmtQty = (q) => { const n = Math.round(q * 100) / 100; return Number.isInt
 function recipeRawCost(r) {
   const out = {};
   for (const c of r.components) {
+    if (isReusableTool(c.item)) continue; // exclude one-time tools (hammers, pliers)
     const sub = rawMaterials(c.item, c.qty);
     for (const [k, v] of Object.entries(sub)) out[k] = (out[k] || 0) + v;
   }
@@ -1128,7 +1135,7 @@ function renderTradeskill(name) {
     '<h1>' + esc(name) + '</h1>' +
     '<p class="sub"><a href="' + wikiUrl(name) + '" target="_blank" rel="noopener">View on the wiki ↗</a></p>' +
     (recs.length ? '<h2>Recipes &amp; profit</h2>' + recipeTable(recs, false) + marginNote : '') +
-    (recs.length ? '<h2>Raw-material cost</h2><p class="sub">Every recipe broken all the way down to gathered/base materials — cheapest first, for finding the cheapest skill-ups. “Trivials at” is the level the recipe stops giving skill (gather the cheap ones up to there). “?” = a material has no price logged yet.</p>' + rawCostTable(recs) : '') +
+    (recs.length ? '<h2>Raw-material cost</h2><p class="sub">Every recipe broken all the way down to gathered/base materials — cheapest first, for finding the cheapest skill-ups. Reusable tools (hammers, pliers) are left out; consumables like molds are counted. “Trivials at” is the level the recipe stops giving skill. “?” = a material has no price logged yet.</p>' + rawCostTable(recs) : '') +
     flowSection +
     (items.length
       ? '<h2>Items used in ' + esc(name) + '</h2><div class="card"><table><tbody>' +
