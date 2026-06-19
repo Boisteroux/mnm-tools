@@ -56,6 +56,16 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
 - **Give feedback** — a footer button on the site opens a pre-filled GitHub issue
   (page name + URL + prompt, `feedback` label) so anyone can flag bad data;
   submissions land in the repo's issues for review before any change.
+- **Harvest yields (node drop rates)** — the gathering analog of mob drop rates.
+  Harvests are clustered into "pulls" (3s gap; one node yields several things at
+  once), pulls grouped into node types by co-occurring bulk resources (Copper Ore
+  + Brittle Stone = a mining node), and each yield gets a chance-per-pull rate.
+  Gathering page shows per-node yield tables; resource pages show their pull
+  chance. E.g. mining nodes drop a gem/crystal ~8% of pulls. First-of-its-kind.
+- **Flip finder** — home-page arbitrage widget (buy from a vendor, resell to
+  players); lights up as player sell prices are logged.
+- **Readable item URLs** — item pages use a name slug; the raw ledger id is kept
+  as `gameId` (old hash URLs still resolve).
 - **Sharing & look** — public repo, MIT license, Windows installer, sunset branding,
   warm UI theme, Outfit font shared by the app and site.
 
