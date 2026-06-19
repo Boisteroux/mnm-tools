@@ -109,6 +109,7 @@ function parseLedgers(files) {
   // events by time into "corpses" and use that as the drop-rate denominator —
   // it tracks kill counts closely where both exist, and works where kills don't.
   const lootLog = {}; // mobName -> [{ t, item }]
+  const harvestLog = []; // { t, res, zone } — clustered into "pulls" for node yield rates
 
   for (const file of files) {
     let data;
@@ -166,6 +167,7 @@ function parseLedgers(files) {
         if (isClean(res)) {
           harvest[res] = (harvest[res] || 0) + 1;
           if (zone) bump((harvestZones[res] = harvestZones[res] || {}), zone);
+          harvestLog.push({ t: Date.parse(ev.f04) || 0, res, zone });
         }
       }
     }
@@ -189,7 +191,67 @@ function parseLedgers(files) {
     M.drops = presence;
   }
 
-  return { mobs, items, harvest, harvestZones, events, fileCount: files.length };
+  return { mobs, items, harvest, harvestZones, harvestNodes: buildHarvestNodes(harvestLog), events, fileCount: files.length };
+}
+
+// Turn raw harvest events into "node" yield rates. A node "pull" is a burst of
+// harvests within HARVEST_GAP_MS (one node yields several things at once). We then
+// group pulls into node TYPES by which bulk resources co-occur (e.g. Copper Ore +
+// Brittle Stone = a mining node), so a rare yield's rate = pulls-with-it ÷ pulls of
+// that node type — the gathering equivalent of corpse-based drop rates.
+const HARVEST_GAP_MS = 3000;
+function buildHarvestNodes(log) {
+  if (!log.length) return [];
+  log.sort((a, b) => a.t - b.t);
+  const pulls = [];
+  let cur = null, last = -Infinity;
+  for (const e of log) {
+    if (e.t - last > HARVEST_GAP_MS) { cur = { items: new Set(), zones: {} }; pulls.push(cur); }
+    last = e.t;
+    cur.items.add(e.res);
+    if (e.zone) cur.zones[e.zone] = (cur.zones[e.zone] || 0) + 1;
+  }
+  const N = pulls.length;
+  const freq = {};
+  pulls.forEach((p) => p.items.forEach((r) => { freq[r] = (freq[r] || 0) + 1; }));
+
+  // "Anchor" = a bulk resource present in a meaningful share of pulls. Anchors that
+  // co-occur belong to the same node type (union-find).
+  const anchors = Object.keys(freq).filter((r) => freq[r] >= Math.max(3, N * 0.05));
+  const parent = {}; anchors.forEach((a) => { parent[a] = a; });
+  const find = (x) => { while (parent[x] !== x) { parent[x] = parent[parent[x]]; x = parent[x]; } return x; };
+  const co = {};
+  pulls.forEach((p) => {
+    const as = anchors.filter((a) => p.items.has(a));
+    for (let i = 0; i < as.length; i++) for (let j = i + 1; j < as.length; j++) {
+      const k = [as[i], as[j]].sort().join(' '); co[k] = (co[k] || 0) + 1;
+    }
+  });
+  Object.entries(co).forEach(([k, c]) => {
+    const [a, b] = k.split(' ');
+    if (c >= 0.12 * Math.min(freq[a], freq[b])) parent[find(a)] = find(b);
+  });
+
+  // Assign each pull to a node type (its anchors' group; anchorless pulls bucket by
+  // their most-common resource so they don't pollute a real node's denominator).
+  const groups = {};
+  pulls.forEach((p) => {
+    const as = anchors.filter((a) => p.items.has(a));
+    const rep = as.length ? find(as[0]) : [...p.items].sort((x, y) => freq[y] - freq[x])[0];
+    (groups[rep] = groups[rep] || []).push(p);
+  });
+
+  const nodes = Object.values(groups).map((ps) => {
+    const total = ps.length;
+    const yc = {}, zc = {};
+    ps.forEach((p) => { p.items.forEach((r) => { yc[r] = (yc[r] || 0) + 1; }); for (const [z, c] of Object.entries(p.zones)) zc[z] = (zc[z] || 0) + c; });
+    const yields = Object.entries(yc).map(([res, count]) => ({ res, count, rate: count / total })).sort((a, b) => b.rate - a.rate);
+    const common = yields.filter((y) => y.rate >= 0.4).map((y) => y.res);
+    const name = (common.length ? common : [yields[0].res]).slice(0, 2).join(' & ');
+    const zones = Object.entries(zc).sort((a, b) => b[1] - a[1]).map(([z]) => z);
+    return { name, pulls: total, yields, zones };
+  }).filter((n) => n.pulls >= 3).sort((a, b) => b.pulls - a.pulls);
+  return nodes;
 }
 
 const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');

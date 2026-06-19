@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-19T14:52:43.976Z",
+  "generatedAt": "2026-06-19T15:20:06.548Z",
   "source": "mnm-tools",
   "ledgerFiles": 19,
-  "events": 3912,
+  "events": 4026,
   "mobs": {
     "a desert bat": {
       "kills": 0,
@@ -408,7 +408,7 @@
       "corpses": 3
     },
     "a Fellstone scout": {
-      "kills": 54,
+      "kills": 55,
       "drops": {
         "Tattered Cloth Belt": 1,
         "Raw Orc Meat": 7,
@@ -431,9 +431,9 @@
         "Worn Bow": 1
       },
       "zones": {
-        "Evershade Weald": 113
+        "Evershade Weald": 114
       },
-      "coin": 253,
+      "coin": 257,
       "corpses": 35
     },
     "a green drakeling": {
@@ -1017,7 +1017,7 @@
           "count": 16
         }
       ],
-      "harvested": 500,
+      "harvested": 546,
       "zones": [
         "Evershade Weald",
         "Night Harbor",
@@ -1102,7 +1102,7 @@
       "name": "Chipped Amber",
       "droppedBy": [],
       "prices": [],
-      "harvested": 1,
+      "harvested": 2,
       "zones": [
         "Evershade Weald"
       ]
@@ -1201,7 +1201,7 @@
       "name": "Chipped Hematite",
       "droppedBy": [],
       "prices": [],
-      "harvested": 2,
+      "harvested": 3,
       "zones": [
         "Evershade Weald"
       ]
@@ -1234,7 +1234,7 @@
       "name": "Chipped Malachite",
       "droppedBy": [],
       "prices": [],
-      "harvested": 3,
+      "harvested": 4,
       "zones": [
         "Evershade Weald"
       ]
@@ -1511,7 +1511,7 @@
       "name": "Copper Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 481,
+      "harvested": 527,
       "zones": [
         "Evershade Weald",
         "Night Harbor",
@@ -2132,7 +2132,7 @@
           "count": 2
         }
       ],
-      "harvested": 28,
+      "harvested": 30,
       "zones": [
         "Evershade Weald"
       ]
@@ -2536,7 +2536,7 @@
           "count": 1
         }
       ],
-      "harvested": 5,
+      "harvested": 6,
       "zones": [
         "Evershade Weald"
       ]
@@ -2964,7 +2964,7 @@
           "count": 12
         }
       ],
-      "harvested": 252,
+      "harvested": 257,
       "zones": [
         "Evershade Weald",
         "Night Harbor"
@@ -4782,7 +4782,7 @@
       "name": "Whispering Sage",
       "droppedBy": [],
       "prices": [],
-      "harvested": 4,
+      "harvested": 8,
       "zones": [
         "Evershade Weald"
       ]
@@ -4834,7 +4834,7 @@
       "prices": [
         {
           "copper": 80,
-          "count": 13
+          "count": 14
         }
       ],
       "harvested": 0,
@@ -4882,7 +4882,7 @@
           "count": 5
         }
       ],
-      "harvested": 208,
+      "harvested": 212,
       "zones": [
         "Evershade Weald",
         "Night Harbor"
@@ -5034,35 +5034,239 @@
     }
   ],
   "harvest": {
-    "Copper Ore": 481,
-    "Brittle Stone": 500,
+    "Copper Ore": 527,
+    "Brittle Stone": 546,
     "Clouded Crystallized Magic": 9,
-    "Wood": 208,
-    "Resin": 252,
+    "Wood": 212,
+    "Resin": 257,
     "Chipped Turquoise": 3,
     "Lionleaf": 23,
     "Chipped Star Ruby": 2,
     "Alunite Ore": 9,
-    "Ghost Poppy": 28,
-    "Nomad's Grace": 5,
+    "Ghost Poppy": 30,
+    "Nomad's Grace": 6,
     "Chipped Fire Emerald": 3,
     "Chipped Bloodstone": 1,
-    "Chipped Malachite": 3,
+    "Chipped Malachite": 4,
     "Chipped Black Pearl": 4,
-    "Chipped Amber": 1,
+    "Chipped Amber": 2,
     "Chipped Blue Diamond": 2,
     "Chipped Jacinth": 1,
     "Chipped Onyx": 3,
-    "Chipped Hematite": 2,
+    "Chipped Hematite": 3,
     "Chipped Diamond": 1,
     "Chipped Emerald": 2,
     "Chipped Black Sapphire": 2,
     "Magic Frond": 1,
-    "Whispering Sage": 4,
+    "Whispering Sage": 8,
     "Chipped Jasper": 1,
     "Chipped Wolf's Eye Agate": 1,
     "Chipped Cat's Eye Agate": 1,
     "Selstie Kelp": 1,
     "Chipped Ruby": 1
-  }
+  },
+  "harvestNodes": [
+    {
+      "name": "Copper Ore & Brittle Stone",
+      "pulls": 583,
+      "yields": [
+        {
+          "res": "Copper Ore",
+          "count": 527,
+          "rate": 0.9039451114922813
+        },
+        {
+          "res": "Brittle Stone",
+          "count": 440,
+          "rate": 0.7547169811320755
+        },
+        {
+          "res": "Clouded Crystallized Magic",
+          "count": 9,
+          "rate": 0.015437392795883362
+        },
+        {
+          "res": "Alunite Ore",
+          "count": 8,
+          "rate": 0.0137221269296741
+        },
+        {
+          "res": "Chipped Malachite",
+          "count": 4,
+          "rate": 0.00686106346483705
+        },
+        {
+          "res": "Chipped Black Pearl",
+          "count": 4,
+          "rate": 0.00686106346483705
+        },
+        {
+          "res": "Chipped Turquoise",
+          "count": 3,
+          "rate": 0.005145797598627788
+        },
+        {
+          "res": "Chipped Fire Emerald",
+          "count": 3,
+          "rate": 0.005145797598627788
+        },
+        {
+          "res": "Chipped Onyx",
+          "count": 3,
+          "rate": 0.005145797598627788
+        },
+        {
+          "res": "Chipped Hematite",
+          "count": 3,
+          "rate": 0.005145797598627788
+        },
+        {
+          "res": "Chipped Star Ruby",
+          "count": 2,
+          "rate": 0.003430531732418525
+        },
+        {
+          "res": "Chipped Amber",
+          "count": 2,
+          "rate": 0.003430531732418525
+        },
+        {
+          "res": "Chipped Blue Diamond",
+          "count": 2,
+          "rate": 0.003430531732418525
+        },
+        {
+          "res": "Chipped Black Sapphire",
+          "count": 2,
+          "rate": 0.003430531732418525
+        },
+        {
+          "res": "Chipped Bloodstone",
+          "count": 1,
+          "rate": 0.0017152658662092624
+        },
+        {
+          "res": "Chipped Jacinth",
+          "count": 1,
+          "rate": 0.0017152658662092624
+        },
+        {
+          "res": "Chipped Diamond",
+          "count": 1,
+          "rate": 0.0017152658662092624
+        },
+        {
+          "res": "Chipped Emerald",
+          "count": 1,
+          "rate": 0.0017152658662092624
+        },
+        {
+          "res": "Chipped Jasper",
+          "count": 1,
+          "rate": 0.0017152658662092624
+        },
+        {
+          "res": "Chipped Wolf's Eye Agate",
+          "count": 1,
+          "rate": 0.0017152658662092624
+        },
+        {
+          "res": "Chipped Cat's Eye Agate",
+          "count": 1,
+          "rate": 0.0017152658662092624
+        },
+        {
+          "res": "Chipped Ruby",
+          "count": 1,
+          "rate": 0.0017152658662092624
+        }
+      ],
+      "zones": [
+        "Evershade Weald",
+        "Night Harbor",
+        "Shaded Dunes"
+      ]
+    },
+    {
+      "name": "Wood & Resin",
+      "pulls": 212,
+      "yields": [
+        {
+          "res": "Wood",
+          "count": 212,
+          "rate": 1
+        },
+        {
+          "res": "Resin",
+          "count": 183,
+          "rate": 0.8632075471698113
+        }
+      ],
+      "zones": [
+        "Evershade Weald",
+        "Night Harbor"
+      ]
+    },
+    {
+      "name": "Ghost Poppy",
+      "pulls": 17,
+      "yields": [
+        {
+          "res": "Ghost Poppy",
+          "count": 17,
+          "rate": 1
+        },
+        {
+          "res": "Magic Frond",
+          "count": 1,
+          "rate": 0.058823529411764705
+        }
+      ],
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
+      "name": "Lionleaf",
+      "pulls": 14,
+      "yields": [
+        {
+          "res": "Lionleaf",
+          "count": 14,
+          "rate": 1
+        }
+      ],
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
+      "name": "Whispering Sage",
+      "pulls": 5,
+      "yields": [
+        {
+          "res": "Whispering Sage",
+          "count": 5,
+          "rate": 1
+        }
+      ],
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
+      "name": "Nomad's Grace",
+      "pulls": 4,
+      "yields": [
+        {
+          "res": "Nomad's Grace",
+          "count": 4,
+          "rate": 1
+        }
+      ],
+      "zones": [
+        "Evershade Weald"
+      ]
+    }
+  ]
 }

@@ -74,6 +74,7 @@ function scanTracker() {
     mobs: agg.mobs,
     items,
     harvest: agg.harvest,
+    harvestNodes: agg.harvestNodes,
   };
   fs.writeFileSync(trackerFile(), JSON.stringify(dataset, null, 2));
   return {
@@ -210,6 +211,7 @@ ipcMain.handle('publish-mnmdb', async () => {
       mobs: agg.mobs,
       items,
       harvest: agg.harvest,
+      harvestNodes: agg.harvestNodes,
     };
     fs.writeFileSync(path.join(REPO_ROOT, 'mnmdb', 'data.json'), JSON.stringify(dataset, null, 2));
 

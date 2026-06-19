@@ -9,6 +9,8 @@ let itemByName = {}; // item name -> full item record (for vendor-price lookups)
 let NODES = {};      // gathering nodes (Copper Vein, …) from the wiki
 let VENDORS = [];    // wiki Merchant pages: { name, zone, sells[], buys[] } (vendors.json)
 let vendorsSelling = {}; // item name -> [vendor] that stock it (inverted from sells)
+let HARVEST_NODES = []; // node-type yield rates from clustered harvests (data.json)
+let resNodes = {};      // resource name -> [{ node, pulls, count, rate }]
 let TRADES = {};     // item name (lowercased) -> [{price, side, date}] player trade prices
 let RECIPES = [];    // crafting recipes from the wiki tradeskill pages
 let recipesByResult = {}; // item name (lowercased) -> [recipe] that produce it
@@ -573,6 +575,16 @@ function renderItem(id) {
       '</tbody></table></div><div class="note">Matched on each vendor’s stated buy categories — approximate.</div>');
   }
 
+  // Harvest yield — how often this comes out of the node(s) that produce it
+  const fromNodes = resNodes[it.name] || [];
+  if (fromNodes.length) {
+    const rows = fromNodes.sort((a, b) => b.rate - a.rate).map((n) =>
+      '<tr><td>' + esc(n.node) + ' <span class="sample">node</span></td>' +
+      '<td class="num">' + harvestRateCell(n.rate, n.count, n.pulls) + '</td></tr>').join('');
+    sections.push('<h2>Harvest yield</h2><div class="card"><table><thead><tr><th>From node</th><th class="num">Chance / pull</th></tr></thead><tbody>' +
+      rows + '</tbody></table></div><div class="note">Chance this comes out of one node harvest (a “pull”). See <a href="#/gathering">Gathering</a> for the full node tables.</div>');
+  }
+
   // Found / gathered in — observed zones plus the wiki's listed zones
   const zoneSet = [...new Set([...(it.zones || []), ...(w.wikiZones || [])])];
   if (zoneSet.length) {
@@ -1113,6 +1125,31 @@ function browseRows(view) {
   });
 }
 
+// A harvest-rate cell — bar + chance, faded when the yield count is a thin sample.
+function harvestRateCell(rate, count, pulls) {
+  const w = Math.min(100, Math.round(rate * 100));
+  const rough = count < 5;
+  return '<span class="rate' + (rough ? ' rough' : '') + '"' + (rough ? ' title="' + count + ' seen — rough estimate"' : '') + '>' +
+    '<span class="bar"><span class="fill" style="width:' + w + '%"></span></span>' +
+    '<span class="pct">' + (rate * 100).toFixed(rate < 0.1 ? 2 : 0) + '%' + (rough ? ' ~' : '') + '</span></span> ' +
+    '<span class="sample">' + count + '/' + pulls + '</span>';
+}
+
+// "Node yields" — per node type, the chance each thing comes out of one pull.
+function harvestNodesSection() {
+  if (!HARVEST_NODES.length) return '';
+  return '<h2>Node yields</h2><p class="sub">What each gathering node drops, as a chance per <b>pull</b> ' +
+    '(one node harvest — which can yield several things at once). Built by clustering your harvests over time; ' +
+    'rare yields fade when the sample is thin.</p>' +
+    HARVEST_NODES.map((n) => {
+      const rows = n.yields.map((y) => '<tr><td>' + (nameToId[y.res] ? itemLink(nameToId[y.res], y.res) : esc(y.res)) +
+        '</td><td class="num">' + harvestRateCell(y.rate, y.count, n.pulls) + '</td></tr>').join('');
+      return '<h3 class="bracket">' + esc(n.name) + ' <span class="sample">' + n.pulls + ' pulls' +
+        (n.zones.length ? ' · ' + esc(n.zones.slice(0, 3).join(', ')) : '') + '</span></h3>' +
+        '<div class="card"><table><thead><tr><th>Yield</th><th class="num">Chance / pull</th></tr></thead><tbody>' + rows + '</tbody></table></div>';
+    }).join('');
+}
+
 function renderBrowse(view) {
   // On entering a view, default-sort sensibly (mobs by value/kill, others by name)
   if (browse.view !== view) {
@@ -1143,6 +1180,8 @@ function renderBrowse(view) {
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › ' + view + '</div>' +
     '<h1 style="text-transform:capitalize">' + view + ' <span class="sub" style="font-size:15px">' + rows.length + '</span></h1>' +
+    (view === 'gathering' ? harvestNodesSection() : '') +
+    '<h2 style="text-transform:capitalize">' + (view === 'gathering' ? 'All resources' : view) + '</h2>' +
     '<p class="sub">Click a column heading to sort. Click a row to open it.</p>' +
     '<div class="card"><table><thead><tr>' + head + '</tr></thead><tbody>' + body + '</tbody></table></div>';
 }
@@ -1376,6 +1415,11 @@ fetch('./data.json?v=' + Date.now())
     DATA = d;
     await loadWikiStats();
     DATA.items.forEach((i) => { nameToId[i.name] = i.id; itemByName[i.name] = i; });
+    HARVEST_NODES = DATA.harvestNodes || [];
+    resNodes = {};
+    HARVEST_NODES.forEach((node) => node.yields.forEach((y) => {
+      (resNodes[y.res] = resNodes[y.res] || []).push({ node: node.name, pulls: node.pulls, count: y.count, rate: y.rate });
+    }));
     const when = d.generatedAt ? new Date(d.generatedAt).toLocaleDateString() : '';
     $('data-meta').textContent = (d.events || 0).toLocaleString() + ' events · ' +
       DATA.items.length + ' items · updated ' + when;
