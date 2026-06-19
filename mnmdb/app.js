@@ -1174,7 +1174,14 @@ function craftFamilies(recs) {
 function craftFlowSvg(recipes) {
   if (!recipes.length) return '<p class="muted">No recipes for this material.</p>';
   const nodes = new Set(), edges = [];
-  recipes.forEach((r) => { nodes.add(r.result.item); r.components.forEach((c) => { nodes.add(c.item); edges.push({ from: c.item, to: r.result.item, value: itemMarketValue(r.result.item).value }); }); });
+  recipes.forEach((r) => {
+    nodes.add(r.result.item);
+    r.components.forEach((c) => {
+      if (isReusableTool(c.item)) return; // reusable tools aren't part of the crafting flow
+      nodes.add(c.item);
+      edges.push({ from: c.item, to: r.result.item, value: itemMarketValue(r.result.item).value });
+    });
+  });
   const incoming = {}; nodes.forEach((n) => (incoming[n] = []));
   edges.forEach((e) => incoming[e.to].push(e.from));
   const depth = {};
