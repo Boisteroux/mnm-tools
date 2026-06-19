@@ -827,6 +827,23 @@ const marginNote = '<div class="note">“Margin” = output value − materials 
 const isReusableTool = (name) => !/mold/i.test(name) &&
   /\b(hammer|pliers|tongs|mallet|chisel|shears|awl|whetstone|spindle|needle|loom|saw|file)\b/i.test(name);
 
+// Is this a base material we can actually get for ~free (gathered / looted / has a
+// known source) — as opposed to an unknown crafted intermediate?
+function isGatherableRaw(name) {
+  const it = itemByName[name];
+  if (!it) return false;
+  const w = it.wiki || {};
+  return (it.harvested > 0) || !!w.harvestedBy || (DATA.harvest && DATA.harvest[name] != null) ||
+    (it.droppedBy && it.droppedBy.length > 0) || ((w.from || []).length > 0);
+}
+// A "raw" (no recipe) we can neither price nor gather/loot is an unresolved crafted
+// intermediate — e.g. Enchanted Copper Bar, whose enchanting cost we can't see.
+// Treating it as free makes recipes that use it look falsely cheap, so we flag it
+// and keep those recipes out of the cheapest-path ranking.
+function isUnresolvedRaw(name) {
+  return !recipesByResult[name.toLowerCase()] && itemMarketValue(name).value <= 0 && !isGatherableRaw(name);
+}
+
 // Recursively expand an item into its base (gathered/looted) materials. A material
 // is "raw" when no recipe makes it. Returns { rawName: qty }. The `seen` set guards
 // against recipe cycles; the first known recipe is used when several exist.
@@ -864,13 +881,13 @@ function recipeRaws(r) {
 // Raw-material breakdown + total cost for one craft. Cost uses best-known market
 // value (gathered mats with no price count as 0 and are flagged).
 function recipeRawCost(r) {
-  let cost = 0, missing = 0;
+  let cost = 0, missing = 0, unresolved = false;
   const parts = Object.entries(recipeRaws(r)).map(([n, q]) => {
     const v = itemMarketValue(n).value;
-    if (v > 0) cost += q * v; else missing++;
+    if (v > 0) cost += q * v; else { missing++; if (isUnresolvedRaw(n)) unresolved = true; }
     return { name: n, qty: q, value: v };
   }).sort((a, b) => (b.qty * b.value) - (a.qty * a.value) || b.qty - a.qty);
-  return { parts, cost, missing };
+  return { parts, cost, missing, unresolved };
 }
 
 // Cheapest path to level a tradeskill: at each skill point, the recipe that still
@@ -880,9 +897,10 @@ function recipeRawCost(r) {
 function levelingPath(recs) {
   const cand = recs.filter((r) => r.trivial).map((r) => {
     const raws = recipeRaws(r);
+    const unknown = Object.keys(raws).some(isUnresolvedRaw); // needs an unpriceable intermediate (e.g. enchanted bars)
     const cost = Object.entries(raws).reduce((s, [n, q]) => s + q * itemMarketValue(n).value, 0);
     const qty = Object.values(raws).reduce((s, q) => s + q, 0);
-    return { name: r.result.item, id: nameToId[r.result.item] || r.result.item, trivial: r.trivial, cost, qty, raws };
+    return { name: r.result.item, id: nameToId[r.result.item] || r.result.item, trivial: r.trivial, cost, qty, raws, unknown };
   }).filter((c) => c.qty > 0);
   if (!cand.length) return null;
   const maxTriv = Math.max(...cand.map((c) => c.trivial));
@@ -891,20 +909,27 @@ function levelingPath(recs) {
   while (s < maxTriv && guard++ < 500) {
     const avail = cand.filter((c) => c.trivial > s);
     if (!avail.length) break;
-    const best = avail.reduce((a, b) => (b.cost < a.cost || (b.cost === a.cost && b.qty < a.qty)) ? b : a);
+    // Prefer recipes we can actually price; fall back to unknown-cost ones (e.g.
+    // enchanted) only where nothing cheaper-and-known covers the band.
+    const known = avail.filter((c) => !c.unknown);
+    const best = known.length
+      ? known.reduce((a, b) => (b.cost < a.cost || (b.cost === a.cost && b.qty < a.qty)) ? b : a)
+      : avail.reduce((a, b) => b.qty < a.qty ? b : a); // unknown cost — pick the fewest mats
     const crafts = best.trivial - s;
-    segments.push({ from: s, to: best.trivial, name: best.name, id: best.id, crafts, coin: best.cost * crafts });
+    segments.push({ from: s, to: best.trivial, name: best.name, id: best.id, crafts, coin: best.cost * crafts, unknown: best.unknown });
     for (const [n, q] of Object.entries(best.raws)) totalRaws[n] = (totalRaws[n] || 0) + q * crafts;
     s = best.trivial;
   }
-  return { segments, totalRaws, maxTriv, coinTotal: segments.reduce((x, seg) => x + seg.coin, 0) };
+  return { segments, totalRaws, maxTriv, anyUnknown: segments.some((x) => x.unknown), coinTotal: segments.filter((x) => !x.unknown).reduce((x, seg) => x + seg.coin, 0) };
 }
 
 function levelingPathSection(recs) {
   const path = levelingPath(recs);
   if (!path || !path.segments.length) return '';
-  const segs = path.segments.map((s) => '<tr><td>' + s.from + '–' + s.to + '</td><td>' + itemLink(s.id, s.name) + '</td>' +
-    '<td class="num sample">~' + s.crafts + '</td><td class="num coin">' + (s.coin > 0 ? coin(s.coin) : '—') + '</td></tr>').join('');
+  const segs = path.segments.map((s) => '<tr><td>' + s.from + '–' + s.to + '</td><td>' + itemLink(s.id, s.name) +
+    (s.unknown ? ' <span class="tag warn">cost unknown</span>' : '') + '</td>' +
+    '<td class="num sample">~' + s.crafts + '</td><td class="num coin">' +
+    (s.unknown ? '<span class="sample">?</span>' : (s.coin > 0 ? coin(s.coin) : '—')) + '</td></tr>').join('');
   const raws = Object.entries(path.totalRaws).sort((a, b) => b[1] - a[1]).map(([n, q]) => {
     const v = itemMarketValue(n).value;
     return '<li>' + Math.round(q) + '× ' + (nameToId[n] ? itemLink(nameToId[n], n) : esc(n)) +
@@ -913,10 +938,11 @@ function levelingPathSection(recs) {
   return '<h2>Cheapest leveling path</h2>' +
     '<p class="sub">The cheapest recipe to craft through each skill band (1–' + path.maxTriv + ', as far as recipes are known). ' +
     '“Cheapest” = least coin on <i>bought</i> mats (e.g. molds); gathered mats are free but listed below. ' +
-    'Crafts are ~1 per skill point — expect more as you near a recipe’s trivial.</p>' +
+    'Crafts are ~1 per skill point — expect more as you near a recipe’s trivial.' +
+    (path.anyUnknown ? ' Bands marked <span class="tag warn">cost unknown</span> need a material we can’t price yet (e.g. enchanted bars) — used only where nothing priceable covers that band.' : '') + '</p>' +
     '<div class="card"><table><thead><tr><th>Skill</th><th>Craft</th><th class="num">~Crafts</th><th class="num">Bought-mat coin</th></tr></thead><tbody>' +
     segs + '</tbody></table></div>' +
-    '<div class="note"><b>Total to gather / buy' + (path.coinTotal > 0 ? ' (~' + coin(path.coinTotal) + ' in bought mats)' : '') +
+    '<div class="note"><b>Total to gather / buy' + (path.coinTotal > 0 ? ' (~' + coin(path.coinTotal) + ' in known bought mats)' : '') +
     ':</b><ul class="vbuys">' + raws + '</ul></div>';
 }
 
