@@ -49,6 +49,9 @@ const itemLink = (id, name) => '<a href="#/item/' + encodeURIComponent(id) + '">
 const mobLink = (name) => '<a href="#/mob/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
 const zoneLink = (name) => '<a href="#/zone/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
 const nodeLink = (name) => '<a href="#/node/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
+// Rich vs regular node tiers are indistinguishable in the log, so we show one:
+// collapse "Rich Copper Vein" -> "Copper Vein" when the base node exists.
+const collapseNode = (name) => { const b = name.replace(/^Rich\s+/i, ''); return b !== name && NODES[b] ? b : name; };
 const tradeskillLink = (name) => '<a href="#/tradeskill/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
 const vendorLink = (name) => '<a href="#/vendor/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
 // A wiki "source" (node/creature/item) — link internally where we can, else to the wiki
@@ -491,13 +494,15 @@ function renderItem(id) {
   const dropRows = [];
   const seenSrc = new Set();
   it.droppedBy.forEach((d) => { seenSrc.add(d.mob); dropRows.push(d); });
-  const obs = (resNodes[it.name] || [])[0]; // observed harvest rate (combined across vein tiers)
+  const obs = (resNodes[it.name] || [])[0]; // observed harvest rate (combined across node tiers)
   let anyNode = false;
   (w.from || []).forEach((s) => {
-    if (seenSrc.has(s)) return;
-    seenSrc.add(s);
-    if (NODES[s] && obs) { dropRows.push({ mob: s, rate: obs.rate, drops: obs.count, corpses: obs.pulls, node: true }); anyNode = true; }
-    else dropRows.push({ mob: s, rate: null });
+    const isNode = !!NODES[s];
+    const key = isNode ? collapseNode(s) : s; // merge rich/regular tiers into one row
+    if (seenSrc.has(key)) return;
+    seenSrc.add(key);
+    if (isNode && obs) { dropRows.push({ mob: key, rate: obs.rate, drops: obs.count, corpses: obs.pulls, node: true }); anyNode = true; }
+    else dropRows.push({ mob: key, rate: null });
   });
   if (dropRows.length) {
     sections.push('<h2>Dropped by</h2><div class="card"><table><thead><tr><th>Source</th><th class="num">Drop rate</th></tr></thead><tbody>' +
@@ -505,7 +510,7 @@ function renderItem(id) {
         (r.rate == null ? '<span class="sample">—</span>'
           : r.node ? harvestRateCell(r.rate, r.drops, r.corpses) : rateCell(r.rate, r.drops, r.corpses)) + '</td></tr>').join('') +
       '</tbody></table></div>' +
-      (anyNode ? '<div class="note">Node drop rates are observed <b>per harvest</b> and combined across vein tiers (e.g. Copper Vein + Rich Copper Vein) — the game log records what dropped, not which vein. Click a node for its full table.</div>' : ''));
+      (anyNode ? '<div class="note">Node drop rates are observed <b>per harvest</b> and combined across a node’s tiers (regular + rich) — the game log records what dropped, not which node. Click a node for its full table.</div>' : ''));
   }
 
   // Player trade value — 30-day high/low + 7-day average of player sell prices
@@ -748,7 +753,7 @@ function renderNode(name) {
     observed = '<h2>Drop rates</h2><div class="card"><table><thead><tr><th>Yield</th><th class="num">Chance / harvest</th></tr></thead><tbody>' +
       rows + '</tbody></table></div>' +
       '<div class="note">From ' + hn.pulls + ' observed harvests' + (hn.zones.length ? ' in ' + esc(hn.zones.slice(0, 3).join(', ')) : '') +
-      '. Rates are <b>combined across vein tiers</b> — the log records what dropped, not which vein, so Copper Vein and Rich Copper Vein share this data. Rare yields fade when the sample is thin.</div>';
+      '. Rates are <b>combined across the node’s tiers</b> (regular + rich) — the log records what dropped, not which node, so they can’t be split. Rare yields fade when the sample is thin.</div>';
   }
 
   const wikiBody = (n.yields || []).map((y) =>
@@ -1157,7 +1162,7 @@ function harvestNodesSection() {
   const rows = HARVEST_NODES.map((n) => {
     const top = n.yields[0];
     const it = top && itemByName[top.res];
-    const wikiNodes = ((it && it.wiki && it.wiki.from) || []).filter((f) => NODES[f]);
+    const wikiNodes = [...new Set(((it && it.wiki && it.wiki.from) || []).filter((f) => NODES[f]).map(collapseNode))];
     const label = wikiNodes.length ? wikiNodes.map(nodeLink).join(' / ') : esc(n.name);
     const rares = n.yields.filter((y) => y.rate < 0.4).length;
     return '<tr><td>' + label + '</td>' +
