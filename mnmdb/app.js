@@ -240,6 +240,27 @@ function scatterSvg(points) {
     guides + frame + labels + dots + '</svg>';
 }
 
+// Average price players SELL an item for (WTS trades) — the realistic resale value.
+function playerSellValue(name) {
+  const arr = TRADES[name.toLowerCase()] || [];
+  const sells = arr.filter((t) => t.side === 'sell').map((t) => t.price);
+  return sells.length ? sells.reduce((a, b) => a + b, 0) / sells.length : 0;
+}
+
+// Arbitrage: items you can buy from a vendor (wiki base price) and resell to
+// players for more. Margin = player sell − vendor buy. Empty until enough player
+// SELL prices are logged for items that vendors stock.
+function flipFinder() {
+  const out = [];
+  DATA.items.forEach((it) => {
+    const base = it.wiki && it.wiki.soldBy && it.wiki.soldBy.base;
+    if (base == null || !(base > 0)) return;
+    const sell = playerSellValue(it.name);
+    if (sell > base) out.push({ it, buy: base, sell, margin: sell - base, pct: (sell - base) / base });
+  });
+  return out.sort((a, b) => b.margin - a.margin).slice(0, 15);
+}
+
 // ---- Views ----
 
 function renderHome() {
@@ -336,6 +357,22 @@ function renderHome() {
       }).join('') + '</div>'
     : '';
 
+  const flips = flipFinder();
+  const hasVendorBuys = items.some((i) => i.wiki && i.wiki.soldBy && i.wiki.soldBy.base != null);
+  const flipSection = flips.length
+    ? '<h2>Flip finder</h2><p class="sub">Buy from a vendor, resell to players for profit. Margin = player sell price − vendor price.</p>' +
+      '<div class="card"><table><thead><tr><th>Item</th><th class="num">Buy (vendor)</th><th class="num">Sell (players)</th><th class="num">Margin</th></tr></thead><tbody>' +
+      flips.map((f) => '<tr><td>' + itemLink(f.it.id, f.it.name) + '</td>' +
+        '<td class="num coin">' + coin(f.buy) + '</td>' +
+        '<td class="num coin">' + coin(f.sell) + '</td>' +
+        '<td class="num"><span class="pos">+' + coin(f.margin) + ' (' + Math.round(f.pct * 100) + '%)</span></td></tr>').join('') +
+      '</tbody></table></div>'
+    : hasVendorBuys
+      ? '<h2>Flip finder</h2><p class="sub">Buy cheap from a vendor, resell to players for profit. ' +
+        'No flips yet — this lights up once player <b>sell</b> prices are logged for items that vendors stock ' +
+        '(we already have vendor buy prices). Log trades in the app to power it.</p>'
+      : '';
+
   const recentBlock = recentTop.length
     ? '<h2>Recent player trades</h2><div class="card"><table><tbody>' +
       recentTop.map((t) => '<tr><td>' + (nameToId[t.item] ? itemLink(nameToId[t.item], t.item) : esc(t.item)) +
@@ -363,6 +400,7 @@ function renderHome() {
       '</div>' +
     '</div>' +
     moversSection +
+    flipSection +
     '<div class="col2">' +
       '<div><h2>Most-valuable mobs</h2><p class="sub">Estimated coin + loot per kill.</p><div class="card"><table><tbody>' +
         (mobValRows || '<tr><td class="muted">No data yet.</td></tr>') + '</tbody></table></div></div>' +
