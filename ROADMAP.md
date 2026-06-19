@@ -64,6 +64,12 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
   chance. E.g. mining nodes drop a gem/crystal ~8% of pulls. First-of-its-kind.
 - **Flip finder** — home-page arbitrage widget (buy from a vendor, resell to
   players); lights up as player sell prices are logged.
+- **Raw-material cost + cheapest leveling path** — recipes expand recursively to
+  base/gathered mats (sub-recipe yields factored; reusable tools like hammers/
+  pliers excluded, molds counted). Tradeskill pages show a raw-cost table and a
+  **cheapest leveling path**: the cheapest recipe per skill band (greedy on
+  bought-mat coin, tiebreak fewest mats) + a combined gathering/shopping list for
+  the whole grind. e.g. Fletching: Arrow → Copperhead → … → Steelhead Arrow.
 - **Readable item URLs** — item pages use a name slug; the raw ledger id is kept
   as `gameId` (old hash URLs still resolve).
 - **Sharing & look** — public repo, MIT license, Windows installer, sunset branding,
