@@ -1,0 +1,19 @@
+{
+  "_note": "Manual in-game crafting difficulty-color observations, used to reverse-engineer recipe trivials the wiki is missing (it shows '?'). Difficulty colors easiest->hardest: green (= trivial, no more skill-ups), lightblue, darkblue, white (~50% success), yellow, orange, red. A recipe seen GREEN at skill S has trivial <= S; any other color means trivial > S. Recording the same recipe at several skill levels pins the exact trivial (it turns green at its trivial) and calibrates each colour's skill-gap. Edit this file as you hit new skill milestones; the site merges it over the wiki recipe data.",
+  "_colorOrder": ["green", "lightblue", "darkblue", "white", "yellow", "orange", "red"],
+  "observations": {
+    "Blacksmithing": [
+      {
+        "skill": 48,
+        "note": "All copper recipes not listed here were green/trivial at skill 48. Enchanted variants matched their base item's colour.",
+        "lightblue": ["Copper Chain Coif", "Copper Chain Shoulderguards", "Copper Plate Helm", "Copper Plate Pauldrons", "Enchanted Copper Chain Coif", "Enchanted Copper Plate Helm"],
+        "darkblue": ["Copper War Lance"],
+        "white": ["Copper Chain Leggings", "Copper Plate Greaves", "Enchanted Copper Chain Leggings", "Enchanted Copper Plate Greaves"],
+        "yellow": ["Copper Plate Barding"],
+        "orange": ["Copper Chain Tunic", "Copper Plate Breastplate", "Enchanted Copper Chain Tunic", "Enchanted Copper Plate Breastplate"],
+        "red": ["Copper Greatsword", "Copper Maul", "Copper Tower Shield", "Bronze Bracket"],
+        "greenTrivialAtOrBelow": ["Copper Tread", "Copper Stirrups", "(and every other copper recipe not listed above)"]
+      }
+    ]
+  }
+}
