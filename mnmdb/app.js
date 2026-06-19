@@ -490,16 +490,7 @@ function renderItem(id) {
   // Crafting — if this item can be made, show how (with profit margin).
   {
     const crafts = recipesByResult[it.name.toLowerCase()] || [];
-    if (crafts.length) {
-      const rc = recipeRawCost(crafts[0]);
-      const deeper = rc.parts.some((p) => !crafts[0].components.some((c) => c.item === p.name)); // multi-level?
-      const rawLine = rc.parts.length
-        ? '<div class="note">Broken down to raw materials' + (deeper ? '' : ' (already base mats)') + ': ' +
-          rc.parts.map((p) => fmtQty(p.qty) + '× ' + (nameToId[p.name] ? itemLink(nameToId[p.name], p.name) : esc(p.name))).join(', ') +
-          (rc.cost > 0 ? ' — about ' + coin(rc.cost) + (rc.missing ? ' (+ unpriced)' : '') : '') + '.</div>'
-        : '';
-      sections.push('<h2>How to craft</h2>' + recipeTable(crafts, true) + rawLine + marginNote);
-    }
+    if (crafts.length) sections.push('<h2>How to craft</h2>' + recipeTable(crafts, true) + marginNote);
   }
 
   // Dropped by — one list combining observed mobs (corpse drop rate) and gathering
@@ -800,32 +791,50 @@ function renderNode(name) {
 }
 
 // Build a recipe table sorted by best margin first (unpriced recipes last).
+// Compact raw-material list for a recipe (base mats, tools excluded).
+function rawMatsHtml(rc) {
+  return rc.parts.map((p) => fmtQty(p.qty) + '× ' + (nameToId[p.name] ? itemLink(nameToId[p.name], p.name) : esc(p.name)) +
+    (p.value <= 0 ? ' <span class="sample">?</span>' : '')).join(', ');
+}
+
+// One combined recipe table: raw materials, trivial, raw-material cost, sell value
+// (best market price of the output) and margin (sell − raw cost). Sorted by trivial.
 function recipeTable(recs, showSkill) {
-  const rows = recs.map((r) => ({ r, e: recipeEconomics(r) }))
-    .sort((a, b) => (b.e.margin == null ? -Infinity : b.e.margin) - (a.e.margin == null ? -Infinity : a.e.margin));
-  const head = '<th>Make</th><th>From</th>' + (showSkill ? '<th>Skill</th>' : '') +
-    '<th class="num">Mats</th><th class="num">Output</th><th class="num">Margin</th>';
+  const rows = recs.map((r) => {
+    const rc = recipeRawCost(r);
+    const sellEach = itemMarketValue(r.result.item).value;
+    const sell = r.result.qty * sellEach;
+    const margin = (sellEach > 0 && !rc.unresolved) ? sell - rc.cost : null;
+    return { r, rc, sell, haveSell: sellEach > 0, margin };
+  }).sort((a, b) => (a.r.trivial || 1e9) - (b.r.trivial || 1e9) || a.rc.cost - b.rc.cost);
+  const head = '<th>Make</th><th>Raw materials</th>' + (showSkill ? '<th>Skill</th>' : '') +
+    '<th class="num">Trivial</th><th class="num">Raw cost</th><th class="num">Sell value</th><th class="num">Margin</th>';
   return '<div class="card"><table><thead><tr>' + head + '</tr></thead><tbody>' +
-    rows.map(({ r, e }) => {
+    rows.map(({ r, rc, sell, haveSell, margin }) => {
       const rid = nameToId[r.result.item] || r.result.item;
-      const from = r.components.map((c) => c.qty + '× ' + (nameToId[c.item] ? itemLink(nameToId[c.item], c.item) : esc(c.item))).join(', ');
-      const mats = e.matCost > 0 ? coin(e.matCost) + (e.missing ? ' <span class="sample">+?</span>' : '') : (e.missing ? '<span class="sample">?</span>' : '—');
-      const out = e.haveOutput ? coin(e.outValue) : '—';
-      const margin = e.margin == null ? '<span class="sample">—</span>'
-        : '<span class="' + (e.margin >= 0 ? 'pos' : 'neg') + '">' + (e.margin >= 0 ? '+' : '') + coin(e.margin) + '</span>';
+      const cost = rc.cost > 0 ? coin(rc.cost) + (rc.missing ? ' <span class="sample">+?</span>' : '') : (rc.missing ? '<span class="sample">?</span>' : '—');
+      const mg = margin == null ? '<span class="sample">—</span>'
+        : '<span class="' + (margin >= 0 ? 'pos' : 'neg') + '">' + (margin >= 0 ? '+' : '') + coin(margin) + '</span>';
       return '<tr><td>' + (r.result.qty > 1 ? r.result.qty + '× ' : '') + itemLink(rid, r.result.item) + '</td>' +
-        '<td class="sample">' + from + '</td>' + (showSkill ? '<td>' + tradeskillLink(r.tradeskill) + '</td>' : '') +
-        '<td class="num coin">' + mats + '</td><td class="num coin">' + out + '</td><td class="num">' + margin + '</td></tr>';
+        '<td class="sample">' + rawMatsHtml(rc) + '</td>' + (showSkill ? '<td>' + tradeskillLink(r.tradeskill) + '</td>' : '') +
+        '<td class="num sample">' + (r.trivial || '—') + '</td>' +
+        '<td class="num coin">' + cost + '</td>' +
+        '<td class="num coin">' + (haveSell ? coin(sell) : '—') + '</td>' +
+        '<td class="num">' + mg + '</td></tr>';
     }).join('') + '</tbody></table></div>';
 }
 
-const marginNote = '<div class="note">“Margin” = output value − materials value (best known player-trade or vendor price) — ' +
-  'what crafting adds over selling the raw mats. “?” means a material has no price logged yet; fills in as data grows.</div>';
+const marginNote = '<div class="note">Sorted by trivial. <b>Raw materials</b> = everything broken down to gathered/base mats (reusable tools like hammers &amp; pliers excluded; molds and other consumables counted). ' +
+  '<b>Raw cost</b> values those at the best known price (gathered mats are free). <b>Sell value</b> = the output’s best player-trade/vendor price. <b>Margin</b> = sell − raw cost. “?” = a price isn’t known yet; fills in as data grows.</div>';
 
 // Reusable, one-time crafting tools (a hammer/pliers lasts many crafts), so they
 // don't count toward per-craft material cost. Molds ARE consumed (1 per bar) — kept.
 const isReusableTool = (name) => !/mold/i.test(name) &&
   /\b(hammer|pliers|tongs|mallet|chisel|shears|awl|whetstone|spindle|needle|loom|saw|file)\b/i.test(name);
+
+// Leather "scraps" are the real crafting base: pelts (looted) are tanned into
+// scraps, so we stop the raw-material expansion at scraps rather than pelts.
+const isBaseMaterial = (name) => /^(rawhide|hide|leather)\s+scraps$/i.test(name);
 
 // Is this a base material we can actually get for ~free (gathered / looted / has a
 // known source) — as opposed to an unknown crafted intermediate?
@@ -852,7 +861,7 @@ function rawMaterials(name, qty, seen) {
   seen = seen || new Set();
   const key = name.toLowerCase();
   const recipes = recipesByResult[key];
-  if (!recipes || !recipes.length || seen.has(key)) return { [name]: qty };
+  if (!recipes || !recipes.length || seen.has(key) || isBaseMaterial(name)) return { [name]: qty };
   const r = recipes[0];
   const factor = qty / (r.result.qty || 1);
   const next = new Set(seen); next.add(key);
@@ -926,7 +935,7 @@ function levelingPath(recs) {
       ? pool.reduce((a, b) => (b.trivial < a.trivial || (b.trivial === a.trivial && b.cost < a.cost)) ? b : a) // grow into the nearest
       : pool.reduce((a, b) => (b.cost < a.cost || (b.cost === a.cost && b.qty < a.qty)) ? b : a); // cheapest in the efficient window
     const crafts = best.trivial - s;
-    segments.push({ from: s, to: best.trivial, name: best.name, id: best.id, crafts, coin: best.cost * crafts, unknown: best.unknown, belowWhite });
+    segments.push({ from: s, to: best.trivial, name: best.name, id: best.id, raws: best.raws, crafts, coin: best.cost * crafts, unknown: best.unknown, belowWhite });
     for (const [n, q] of Object.entries(best.raws)) totalRaws[n] = (totalRaws[n] || 0) + q * crafts;
     s = best.trivial;
   }
@@ -941,9 +950,12 @@ function levelingPath(recs) {
 function levelingPathSection(recs) {
   const path = levelingPath(recs);
   if (!path || !path.segments.length) return '';
+  const segMats = (s) => Object.entries(s.raws || {}).sort((a, b) => b[1] - a[1])
+    .map(([n, q]) => fmtQty(q) + '× ' + (nameToId[n] ? itemLink(nameToId[n], n) : esc(n))).join(', ');
   const segs = path.segments.map((s) => '<tr><td>' + s.from + '–' + s.to + '</td><td>' + itemLink(s.id, s.name) +
     (s.belowWhite ? ' <span class="tag warn" title="No recipe turns white in this band yet — you’ll grind a harder (sub-white) recipe, slow with many fails">below white</span>' : '') +
     (s.unknown ? ' <span class="tag warn">cost unknown</span>' : '') + '</td>' +
+    '<td class="sample">' + segMats(s) + '</td>' +
     '<td class="num sample">~' + s.crafts + '</td><td class="num coin">' +
     (s.unknown ? '<span class="sample">?</span>' : (s.coin > 0 ? coin(s.coin) : '—')) + '</td></tr>').join('');
   const raws = Object.entries(path.totalRaws).sort((a, b) => b[1] - a[1]).map(([n, q]) => {
@@ -958,7 +970,7 @@ function levelingPathSection(recs) {
     'Crafts are ~1 per skill point — expect more near a trivial.' +
     (path.anyBelowWhite ? ' <span class="tag warn">below white</span> bands have no white-level recipe yet — you’d grind a harder one (slow, many fails); a recipe-coverage gap.' : '') +
     (path.anyUnknown ? ' <span class="tag warn">cost unknown</span> bands need a material we can’t price yet (e.g. enchanted bars).' : '') + '</p>' +
-    '<div class="card"><table><thead><tr><th>Skill</th><th>Craft</th><th class="num">~Crafts</th><th class="num">Bought-mat coin</th></tr></thead><tbody>' +
+    '<div class="card"><table><thead><tr><th>Skill</th><th>Craft</th><th>Materials / craft</th><th class="num">~Crafts</th><th class="num">Bought-mat coin</th></tr></thead><tbody>' +
     segs + '</tbody></table></div>' +
     '<div class="note"><b>Total to gather / buy' + (path.coinTotal > 0 ? ' (~' + coin(path.coinTotal) + ' in known bought mats)' : '') +
     ':</b><ul class="vbuys">' + raws + '</ul></div>';
@@ -1230,14 +1242,9 @@ function renderTradeskill(name) {
     '<div class="crumb"><a href="#/">MnMdb</a> › tradeskill</div>' +
     '<h1>' + esc(name) + '</h1>' +
     '<p class="sub"><a href="' + wikiUrl(name) + '" target="_blank" rel="noopener">View on the wiki ↗</a></p>' +
-    (recs.length ? '<h2>Recipes &amp; profit</h2>' + recipeTable(recs, false) + marginNote : '') +
     (recs.length ? levelingPathSection(recs) : '') +
-    (recs.length ? '<h2>Raw-material cost</h2><p class="sub">Every recipe broken all the way down to gathered/base materials — cheapest first, for finding the cheapest skill-ups. Reusable tools (hammers, pliers) are left out; consumables like molds are counted. “Trivials at” is the level the recipe stops giving skill. “?” = a material has no price logged yet.</p>' + rawCostTable(recs) : '') +
-    flowSection +
-    (items.length
-      ? '<h2>Items used in ' + esc(name) + '</h2><div class="card"><table><tbody>' +
-        items.map((i) => '<tr><td>' + itemLink(i.id, i.name) + '</td></tr>').join('') + '</tbody></table></div>'
-      : '');
+    (recs.length ? '<h2>Recipes</h2>' + recipeTable(recs, false) + marginNote : '') +
+    flowSection;
   if (fams.length) flowPick(fams[0]);
 }
 
