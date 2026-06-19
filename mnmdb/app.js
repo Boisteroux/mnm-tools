@@ -12,6 +12,8 @@ let vendorsSelling = {}; // item name -> [vendor] that stock it (inverted from s
 let HARVEST_NODES = []; // node-type yield rates from clustered harvests (data.json)
 let resNodes = {};      // resource name -> [{ node, pulls, count, rate }]
 let NODE_RICH = new Set(); // node base-names that have a "Rich" tier (for the node note)
+let nodeDrops = {};        // collapsed node name -> Set of items the wiki says drop there
+let harvestWikiNodes = {}; // harvest-cluster name -> Set of wiki node names it represents
 let TRADES = {};     // item name (lowercased) -> [{price, side, date}] player trade prices
 let RECIPES = [];    // crafting recipes from the wiki tradeskill pages
 let recipesByResult = {}; // item name (lowercased) -> [recipe] that produce it
@@ -497,15 +499,19 @@ function renderItem(id) {
   const dropRows = [];
   const seenSrc = new Set();
   it.droppedBy.forEach((d) => { seenSrc.add(d.mob); dropRows.push(d); });
-  const obs = (resNodes[it.name] || [])[0]; // observed harvest rate (combined across node tiers)
+  const obs = (resNodes[it.name] || [])[0]; // observed harvest rate (from a specific cluster)
+  const obsNodes = obs ? harvestWikiNodes[obs.node] : null; // which node names that rate applies to
   let anyRate = false;
   (w.from || []).forEach((s) => {
     const isNode = !!NODES[s] || isNodeName(s);
     const key = isNode ? collapseNode(s) : s; // merge rich/regular tiers into one row
     if (seenSrc.has(key)) return;
     seenSrc.add(key);
-    if (isNode && obs) { dropRows.push({ mob: key, rate: obs.rate, drops: obs.count, corpses: obs.pulls, node: true }); anyRate = true; }
-    else dropRows.push({ mob: key, rate: null, node: isNode });
+    // Only show the observed rate next to the node it was actually measured at; a
+    // gem that also drops elsewhere shows "—" for those other nodes.
+    if (isNode && obs && obsNodes && obsNodes.has(key)) {
+      dropRows.push({ mob: key, rate: obs.rate, drops: obs.count, corpses: obs.pulls, node: true }); anyRate = true;
+    } else dropRows.push({ mob: key, rate: null, node: isNode });
   });
   if (dropRows.length) {
     sections.push('<h2>Dropped by</h2><div class="card"><table><thead><tr><th>Source</th><th class="num">Drop rate</th></tr></thead><tbody>' +
@@ -744,6 +750,7 @@ function renderNode(name) {
   // Observed drop rates: the harvest cluster whose yields the wiki maps to this node
   // (matched on either the base or rich tier name).
   const hn = HARVEST_NODES.find((node) => node.yields.some((y) => {
+    if (y.rate < 0.4) return false; // match on bulk anchors only, not rare gems shared between nodes
     const it = itemByName[y.res]; const from = (it && it.wiki && it.wiki.from) || [];
     return from.includes(name) || from.includes('Rich ' + name);
   }));
@@ -756,16 +763,24 @@ function renderNode(name) {
     'As more people use the app, the rare yields fill in and the numbers get more accurate.' +
     '</div>';
 
+  // Unified drop table: every item the wiki says drops here, plus anything we've
+  // observed — with the observed rate, or a blank "—" when we don't have data yet.
+  const observedByRes = {};
+  if (hn) hn.yields.forEach((y) => { observedByRes[y.res] = y; });
+  const allRes = new Set([...(nodeDrops[name] || []), ...Object.keys(observedByRes)]);
   let body;
-  if (hn) {
-    const rows = hn.yields.map((y) => '<tr><td>' + (nameToId[y.res] ? itemLink(nameToId[y.res], y.res) : esc(y.res)) +
-      '</td><td class="num">' + harvestRateCell(y.rate, y.count, hn.pulls) + '</td></tr>').join('');
-    body = '<h2>Drop rates</h2><div class="card"><table><thead><tr><th>Yield</th><th class="num">Chance / harvest</th></tr></thead><tbody>' +
-      rows + '</tbody></table></div>' +
-      '<div class="note">From ' + hn.pulls + ' observed harvest' + (hn.pulls === 1 ? '' : 's') +
-      (hn.zones.length ? ' in ' + esc(hn.zones.slice(0, 3).join(', ')) : '') + '. Rare yields fade when the sample is thin.</div>';
+  if (allRes.size) {
+    const rows = [...allRes].map((res) => { const o = observedByRes[res]; return { res, rate: o ? o.rate : null, count: o ? o.count : 0 }; })
+      .sort((a, b) => (b.rate == null ? -1 : b.rate) - (a.rate == null ? -1 : a.rate) || a.res.localeCompare(b.res));
+    const tbody = rows.map((r) => '<tr><td>' + (nameToId[r.res] ? itemLink(nameToId[r.res], r.res) : esc(r.res)) +
+      '</td><td class="num">' + (r.rate == null ? '<span class="sample">—</span>' : harvestRateCell(r.rate, r.count, hn.pulls)) + '</td></tr>').join('');
+    body = '<h2>Drops</h2><div class="card"><table><thead><tr><th>Yield</th><th class="num">Chance / harvest</th></tr></thead><tbody>' +
+      tbody + '</tbody></table></div>' +
+      (hn ? '<div class="note">Rates from ' + hn.pulls + ' observed harvest' + (hn.pulls === 1 ? '' : 's') +
+        (hn.zones.length ? ' in ' + esc(hn.zones.slice(0, 3).join(', ')) : '') + '. A “—” means the wiki lists it but it hasn’t been collected through the app yet; rare yields fade when the sample is thin.</div>'
+        : '<div class="note">The wiki lists these as possible drops — no harvest rates collected through the app yet, so they’re blank for now.</div>');
   } else {
-    body = '<p class="muted">No harvests collected through the app for this node yet — drop rates will appear as data comes in.</p>';
+    body = '<p class="muted">Nothing recorded for this node yet.</p>';
   }
 
   $('content').innerHTML =
@@ -1452,7 +1467,22 @@ fetch('./data.json?v=' + Date.now())
       (resNodes[y.res] = resNodes[y.res] || []).push({ node: node.name, pulls: node.pulls, count: y.count, rate: y.rate });
     }));
     NODE_RICH = new Set();
-    DATA.items.forEach((i) => ((i.wiki && i.wiki.from) || []).forEach((f) => { const m = /^Rich\s+(.+)/i.exec(f); if (m) NODE_RICH.add(m[1]); }));
+    nodeDrops = {};
+    DATA.items.forEach((i) => ((i.wiki && i.wiki.from) || []).forEach((f) => {
+      const m = /^Rich\s+(.+)/i.exec(f); if (m) NODE_RICH.add(m[1]);
+      if (NODES[f] || isNodeName(f)) { const k = collapseNode(f); (nodeDrops[k] = nodeDrops[k] || new Set()).add(i.name); }
+    }));
+    // Which wiki node(s) each harvest cluster represents — by its BULK anchors only
+    // (rate ≥ 40%), so a rare gem shared between veins doesn't mis-map the cluster.
+    harvestWikiNodes = {};
+    HARVEST_NODES.forEach((node) => {
+      const set = new Set();
+      node.yields.filter((y) => y.rate >= 0.4).forEach((y) => {
+        const it = itemByName[y.res];
+        ((it && it.wiki && it.wiki.from) || []).forEach((f) => { if (NODES[f] || isNodeName(f)) set.add(collapseNode(f)); });
+      });
+      harvestWikiNodes[node.name] = set;
+    });
     const when = d.generatedAt ? new Date(d.generatedAt).toLocaleDateString() : '';
     $('data-meta').textContent = (d.events || 0).toLocaleString() + ' events · ' +
       DATA.items.length + ' items · updated ' + when;
