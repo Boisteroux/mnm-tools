@@ -410,7 +410,7 @@ function buildSessions(files, opts = {}) {
 
 function summarizeSession(s) {
   const kills = {}, loot = {}, harvest = {}, sales = {};
-  let killCoin = 0, saleCoin = 0, partyKills = 0, partyMax = 1;
+  let killCoin = 0, saleCoin = 0, partyKills = 0, partyMax = 1, soloKillCoin = 0, partyKillCoin = 0;
 
   // Break the session into zone segments. A blank/garbled zone carries the last
   // known zone forward so a momentary gap doesn't fragment the timeline.
@@ -424,7 +424,10 @@ function summarizeSession(s) {
       segs.push(seg);
     }
     seg.end = e.t;
-    if (e.kind === 'kill') { kills[e.name] = (kills[e.name] || 0) + 1; killCoin += e.coin; seg.kills++; seg.coin += e.coin; if (e.party > 1) { partyKills++; partyMax = Math.max(partyMax, e.party); } }
+    if (e.kind === 'kill') {
+      kills[e.name] = (kills[e.name] || 0) + 1; killCoin += e.coin; seg.kills++; seg.coin += e.coin;
+      if (e.party > 1) { partyKills++; partyMax = Math.max(partyMax, e.party); partyKillCoin += e.coin; } else soloKillCoin += e.coin;
+    }
     else if (e.kind === 'loot') { loot[e.name] = (loot[e.name] || 0) + 1; seg.loot++; }
     else if (e.kind === 'harvest') { harvest[e.name] = (harvest[e.name] || 0) + 1; seg.harvest++; }
     else if (e.kind === 'sale') { sales[e.name] = (sales[e.name] || 0) + 1; saleCoin += e.coin; seg.sales++; seg.coin += e.coin; }
@@ -448,8 +451,8 @@ function summarizeSession(s) {
   return {
     start: s.start, end: s.end, durationMs: s.end - s.start,
     counts: { kills: sum(kills), loot: sum(loot), harvest: sum(harvest), sales: sum(sales) },
-    coin: { fromKills: killCoin, fromSales: saleCoin, total: killCoin + saleCoin },
-    party: { kills: partyKills, max: partyMax }, // kill coin already split by party size
+    coin: { fromKills: killCoin, fromSales: saleCoin, total: killCoin + saleCoin, killsSolo: soloKillCoin, killsParty: partyKillCoin },
+    party: { kills: partyKills, solo: sum(kills) - partyKills, max: partyMax }, // kill coin already split by party size
     topKills: top(kills), topLoot: top(loot), topHarvest: top(harvest), topSales: top(sales),
     zones: Object.entries(zoneMs).sort((a, b) => b[1] - a[1]).map(([zone, ms]) => ({ zone, ms })),
     segments: merged,
@@ -489,8 +492,13 @@ function todayRollup(sessions) {
     },
     coin: {
       fromKills: sum((s) => s.coin.fromKills), fromSales: sum((s) => s.coin.fromSales), total: sum((s) => s.coin.total),
+      killsSolo: sum((s) => s.coin.killsSolo || 0), killsParty: sum((s) => s.coin.killsParty || 0),
     },
-    party: { kills: sum((s) => (s.party ? s.party.kills : 0)), max: Math.max(1, ...today.map((s) => (s.party ? s.party.max : 1))) },
+    party: {
+      kills: sum((s) => (s.party ? s.party.kills : 0)),
+      solo: sum((s) => (s.party ? s.party.solo : s.counts.kills)),
+      max: Math.max(1, ...today.map((s) => (s.party ? s.party.max : 1))),
+    },
     topKills: mergeTop('topKills'), topLoot: mergeTop('topLoot'), topHarvest: mergeTop('topHarvest'),
     zones: Object.entries(zoneMs).sort((a, b) => b[1] - a[1]).map(([zone, ms]) => ({ zone, ms })),
   };

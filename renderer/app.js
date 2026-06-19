@@ -1063,9 +1063,12 @@ function renderToday() {
   const sub = t.sessionCount + ' session' + (t.sessionCount === 1 ? '' : 's') + ' · ' + fmtDur(t.playMs) + ' played' +
     (extended ? ' · since ' + fmtClock(t.spanStart) + ' (carried over midnight)' : '');
   const coinSub = [];
-  if (t.coin.fromKills) coinSub.push(coinStr(t.coin.fromKills) + ' kills');
+  const tPK = t.party ? t.party.kills : 0, tSK = t.party ? t.party.solo : t.counts.kills;
+  if (tPK > 0) {
+    if (tSK > 0) coinSub.push(coinStr(t.coin.killsSolo) + ' from ' + tSK + ' solo kills');
+    coinSub.push(coinStr(t.coin.killsParty) + ' from ' + tPK + ' party kills (÷' + t.party.max + ')');
+  } else if (t.coin.fromKills) coinSub.push(coinStr(t.coin.fromKills) + ' kills');
   if (t.coin.fromSales) coinSub.push(coinStr(t.coin.fromSales) + ' vendor');
-  if (t.party && t.party.kills) coinSub.push('kills split ÷' + t.party.max + ' party');
   const stats = [t.counts.kills + ' killed', t.counts.loot + ' looted', t.counts.harvest + ' harvested', t.counts.sales + ' sold'].join(' · ');
   el.innerHTML =
     '<div class="replay-today-card">' +
@@ -1140,9 +1143,12 @@ function renderReplay() {
   if (s.topHarvest.length) cols.push('<div><div class="replay-col-title">Most harvested</div>' + topList(s.topHarvest) + '</div>');
 
   const coinSub = [];
-  if (s.coin.fromKills) coinSub.push(coinStr(s.coin.fromKills) + ' from kills');
+  const sPK = s.party ? s.party.kills : 0, sSK = s.party ? s.party.solo : s.counts.kills;
+  if (sPK > 0) {
+    if (sSK > 0) coinSub.push(coinStr(s.coin.killsSolo) + ' from ' + sSK + ' solo kills');
+    coinSub.push(coinStr(s.coin.killsParty) + ' from ' + sPK + ' party kills (÷' + s.party.max + ')');
+  } else if (s.coin.fromKills) coinSub.push(coinStr(s.coin.fromKills) + ' from kills');
   if (s.coin.fromSales) coinSub.push(coinStr(s.coin.fromSales) + ' from vendor');
-  if (s.party && s.party.kills) coinSub.push('kill coin split ÷' + s.party.max + ' party');
 
   const whenHTML = live
     ? reEsc(fmtDay(s.start)) + ' · started ' + reEsc(fmtClock(s.start)) + ' · <b>in progress</b> · ' + reEsc(fmtDur(Date.now() - s.start)) + ' so far'
