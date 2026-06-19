@@ -774,7 +774,7 @@ function renderNode(name) {
       .sort((a, b) => (b.rate == null ? -1 : b.rate) - (a.rate == null ? -1 : a.rate) || a.res.localeCompare(b.res));
     const tbody = rows.map((r) => '<tr><td>' + (nameToId[r.res] ? itemLink(nameToId[r.res], r.res) : esc(r.res)) +
       '</td><td class="num">' + (r.rate == null ? '<span class="sample">—</span>' : harvestRateCell(r.rate, r.count, hn.pulls)) + '</td></tr>').join('');
-    body = '<h2>Drops</h2><div class="card"><table><thead><tr><th>Yield</th><th class="num">Chance / harvest</th></tr></thead><tbody>' +
+    body = '<h2>Drops</h2><div class="card"><table><thead><tr><th>Yield</th><th class="num">Drop rate</th></tr></thead><tbody>' +
       tbody + '</tbody></table></div>' +
       (hn ? '<div class="note">Rates from ' + hn.pulls + ' observed harvest' + (hn.pulls === 1 ? '' : 's') +
         (hn.zones.length ? ' in ' + esc(hn.zones.slice(0, 3).join(', ')) : '') + '. A “—” means the wiki lists it but it hasn’t been collected through the app yet; rare yields fade when the sample is thin.</div>'
@@ -1167,7 +1167,9 @@ function browseRows(view) {
 
 // A harvest-rate cell — bar + chance, faded when the yield count is a thin sample.
 function harvestRateCell(rate, count, pulls) {
-  const w = Math.min(100, Math.round(rate * 100));
+  // Floor the bar so rare yields (well under 1%) still show a visible nub instead
+  // of an empty track; the exact % text alongside stays precise.
+  const w = rate > 0 ? Math.max(6, Math.min(100, Math.round(rate * 100))) : 0;
   const rough = count < 5;
   return '<span class="rate' + (rough ? ' rough' : '') + '"' + (rough ? ' title="' + count + ' seen — rough estimate"' : '') + '>' +
     '<span class="bar"><span class="fill" style="width:' + w + '%"></span></span>' +
