@@ -11,6 +11,7 @@ let VENDORS = [];    // wiki Merchant pages: { name, zone, sells[], buys[] } (ve
 let vendorsSelling = {}; // item name -> [vendor] that stock it (inverted from sells)
 let HARVEST_NODES = []; // node-type yield rates from clustered harvests (data.json)
 let resNodes = {};      // resource name -> [{ node, pulls, count, rate }]
+let NODE_RICH = new Set(); // node base-names that have a "Rich" tier (for the node note)
 let TRADES = {};     // item name (lowercased) -> [{price, side, date}] player trade prices
 let RECIPES = [];    // crafting recipes from the wiki tradeskill pages
 let recipesByResult = {}; // item name (lowercased) -> [recipe] that produce it
@@ -49,9 +50,11 @@ const itemLink = (id, name) => '<a href="#/item/' + encodeURIComponent(id) + '">
 const mobLink = (name) => '<a href="#/mob/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
 const zoneLink = (name) => '<a href="#/zone/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
 const nodeLink = (name) => '<a href="#/node/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
-// Rich vs regular node tiers are indistinguishable in the log, so we show one:
-// collapse "Rich Copper Vein" -> "Copper Vein" when the base node exists.
-const collapseNode = (name) => { const b = name.replace(/^Rich\s+/i, ''); return b !== name && NODES[b] ? b : name; };
+// A gathering node (vein / pile / deposit …) as opposed to a mob or other source.
+const isNodeName = (s) => /\b(vein|pile|deposit|node|outcrop|bush|patch)\b/i.test(s);
+// Rich and regular tiers are indistinguishable in the log and share a loot table,
+// so we collapse "Rich Copper Vein" -> "Copper Vein" everywhere.
+const collapseNode = (name) => name.replace(/^Rich\s+/i, '');
 const tradeskillLink = (name) => '<a href="#/tradeskill/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
 const vendorLink = (name) => '<a href="#/vendor/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
 // A wiki "source" (node/creature/item) — link internally where we can, else to the wiki
@@ -495,22 +498,22 @@ function renderItem(id) {
   const seenSrc = new Set();
   it.droppedBy.forEach((d) => { seenSrc.add(d.mob); dropRows.push(d); });
   const obs = (resNodes[it.name] || [])[0]; // observed harvest rate (combined across node tiers)
-  let anyNode = false;
+  let anyRate = false;
   (w.from || []).forEach((s) => {
-    const isNode = !!NODES[s];
+    const isNode = !!NODES[s] || isNodeName(s);
     const key = isNode ? collapseNode(s) : s; // merge rich/regular tiers into one row
     if (seenSrc.has(key)) return;
     seenSrc.add(key);
-    if (isNode && obs) { dropRows.push({ mob: key, rate: obs.rate, drops: obs.count, corpses: obs.pulls, node: true }); anyNode = true; }
-    else dropRows.push({ mob: key, rate: null });
+    if (isNode && obs) { dropRows.push({ mob: key, rate: obs.rate, drops: obs.count, corpses: obs.pulls, node: true }); anyRate = true; }
+    else dropRows.push({ mob: key, rate: null, node: isNode });
   });
   if (dropRows.length) {
     sections.push('<h2>Dropped by</h2><div class="card"><table><thead><tr><th>Source</th><th class="num">Drop rate</th></tr></thead><tbody>' +
-      dropRows.map((r) => '<tr><td>' + sourceLink(r.mob) + (r.node ? ' <span class="sample">node</span>' : '') + '</td><td class="num">' +
+      dropRows.map((r) => '<tr><td>' + (r.node ? nodeLink(r.mob) + ' <span class="sample">node</span>' : sourceLink(r.mob)) + '</td><td class="num">' +
         (r.rate == null ? '<span class="sample">—</span>'
           : r.node ? harvestRateCell(r.rate, r.drops, r.corpses) : rateCell(r.rate, r.drops, r.corpses)) + '</td></tr>').join('') +
       '</tbody></table></div>' +
-      (anyNode ? '<div class="note">Node drop rates are observed <b>per harvest</b> and combined across a node’s tiers (regular + rich) — the game log records what dropped, not which node. Click a node for its full table.</div>' : ''));
+      (anyRate ? '<div class="note">Node drop rates are observed <b>per harvest</b> and combined across a node’s tiers (regular + rich) — the game log records what dropped, not which node. Click a node for its full table.</div>' : ''));
   }
 
   // Player trade value — 30-day high/low + 7-day average of player sell prices
@@ -736,15 +739,17 @@ function renderZone(name) {
 }
 
 function renderNode(name) {
-  const n = NODES[name];
-  if (!n) return notFound('node', name);
+  name = collapseNode(name); // canonicalise "Rich X" -> "X" (shared loot table)
 
-  // Observed drop rates: the harvest cluster whose yields the wiki maps to this node.
+  // Observed drop rates: the harvest cluster whose yields the wiki maps to this node
+  // (matched on either the base or rich tier name).
   const hn = HARVEST_NODES.find((node) => node.yields.some((y) => {
-    const it = itemByName[y.res]; return it && it.wiki && (it.wiki.from || []).includes(name);
+    const it = itemByName[y.res]; const from = (it && it.wiki && it.wiki.from) || [];
+    return from.includes(name) || from.includes('Rich ' + name);
   }));
+  if (!NODES[name] && !isNodeName(name) && !hn) return notFound('node', name);
 
-  const richSibling = NODES['Rich ' + name] ? 'Rich ' + name : null;
+  const richSibling = NODE_RICH.has(name) ? 'Rich ' + name : null;
   const topNote = '<div class="note">' +
     (richSibling ? '<b>' + esc(name) + '</b> and <b>' + esc(richSibling) + '</b> share the same loot table, so their drops are shown together. ' : '') +
     'These rates are built from harvests collected through the app, so the <a href="' + wikiUrl(name) + '" target="_blank" rel="noopener">wiki</a> may list items that haven’t been picked up yet. ' +
@@ -1163,7 +1168,7 @@ function harvestNodesSection() {
   const rows = HARVEST_NODES.map((n) => {
     const top = n.yields[0];
     const it = top && itemByName[top.res];
-    const wikiNodes = [...new Set(((it && it.wiki && it.wiki.from) || []).filter((f) => NODES[f]).map(collapseNode))];
+    const wikiNodes = [...new Set(((it && it.wiki && it.wiki.from) || []).filter((f) => NODES[f] || isNodeName(f)).map(collapseNode))];
     const label = wikiNodes.length ? wikiNodes.map(nodeLink).join(' / ') : esc(n.name);
     const rares = n.yields.filter((y) => y.rate < 0.4).length;
     return '<tr><td>' + label + '</td>' +
@@ -1446,6 +1451,8 @@ fetch('./data.json?v=' + Date.now())
     HARVEST_NODES.forEach((node) => node.yields.forEach((y) => {
       (resNodes[y.res] = resNodes[y.res] || []).push({ node: node.name, pulls: node.pulls, count: y.count, rate: y.rate });
     }));
+    NODE_RICH = new Set();
+    DATA.items.forEach((i) => ((i.wiki && i.wiki.from) || []).forEach((f) => { const m = /^Rich\s+(.+)/i.exec(f); if (m) NODE_RICH.add(m[1]); }));
     const when = d.generatedAt ? new Date(d.generatedAt).toLocaleDateString() : '';
     $('data-meta').textContent = (d.events || 0).toLocaleString() + ' events · ' +
       DATA.items.length + ' items · updated ' + when;
