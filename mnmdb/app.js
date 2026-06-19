@@ -490,7 +490,16 @@ function renderItem(id) {
   // Crafting — if this item can be made, show how (with profit margin).
   {
     const crafts = recipesByResult[it.name.toLowerCase()] || [];
-    if (crafts.length) sections.push('<h2>How to craft</h2>' + recipeTable(crafts, true) + marginNote);
+    if (crafts.length) {
+      const rc = recipeRawCost(crafts[0]);
+      const deeper = rc.parts.some((p) => !crafts[0].components.some((c) => c.item === p.name)); // multi-level?
+      const rawLine = rc.parts.length
+        ? '<div class="note">Broken down to raw materials' + (deeper ? '' : ' (already base mats)') + ': ' +
+          rc.parts.map((p) => fmtQty(p.qty) + '× ' + (nameToId[p.name] ? itemLink(nameToId[p.name], p.name) : esc(p.name))).join(', ') +
+          (rc.cost > 0 ? ' — about ' + coin(rc.cost) + (rc.missing ? ' (+ unpriced)' : '') : '') + '.</div>'
+        : '';
+      sections.push('<h2>How to craft</h2>' + recipeTable(crafts, true) + rawLine + marginNote);
+    }
   }
 
   // Dropped by — one list combining observed mobs (corpse drop rate) and gathering
@@ -813,6 +822,62 @@ function recipeTable(recs, showSkill) {
 const marginNote = '<div class="note">“Margin” = output value − materials value (best known player-trade or vendor price) — ' +
   'what crafting adds over selling the raw mats. “?” means a material has no price logged yet; fills in as data grows.</div>';
 
+// Recursively expand an item into its base (gathered/looted) materials. A material
+// is "raw" when no recipe makes it. Returns { rawName: qty }. The `seen` set guards
+// against recipe cycles; the first known recipe is used when several exist.
+function rawMaterials(name, qty, seen) {
+  qty = qty == null ? 1 : qty;
+  seen = seen || new Set();
+  const key = name.toLowerCase();
+  const recipes = recipesByResult[key];
+  if (!recipes || !recipes.length || seen.has(key)) return { [name]: qty };
+  const r = recipes[0];
+  const factor = qty / (r.result.qty || 1);
+  const next = new Set(seen); next.add(key);
+  const out = {};
+  for (const c of r.components) {
+    const sub = rawMaterials(c.item, c.qty * factor, next);
+    for (const [k, v] of Object.entries(sub)) out[k] = (out[k] || 0) + v;
+  }
+  return out;
+}
+
+const fmtQty = (q) => { const n = Math.round(q * 100) / 100; return Number.isInteger(n) ? String(n) : String(n); };
+
+// Raw-material breakdown + total cost for ONE craft of a recipe (its components,
+// each fully expanded). Cost uses best-known market value; unpriced mats are flagged.
+function recipeRawCost(r) {
+  const out = {};
+  for (const c of r.components) {
+    const sub = rawMaterials(c.item, c.qty);
+    for (const [k, v] of Object.entries(sub)) out[k] = (out[k] || 0) + v;
+  }
+  let cost = 0, missing = 0;
+  const parts = Object.entries(out).map(([n, q]) => {
+    const v = itemMarketValue(n).value;
+    if (v > 0) cost += q * v; else missing++;
+    return { name: n, qty: q, value: v };
+  }).sort((a, b) => (b.qty * b.value) - (a.qty * a.value) || b.qty - a.qty);
+  return { parts, cost, missing };
+}
+
+// Table of recipes broken down to raw materials, cheapest first — for skilling up.
+function rawCostTable(recs) {
+  const rows = recs.map((r) => ({ r, rc: recipeRawCost(r) }))
+    .sort((a, b) => (a.rc.cost > 0 ? a.rc.cost : Infinity) - (b.rc.cost > 0 ? b.rc.cost : Infinity));
+  const matsHtml = (rc) => rc.parts.map((p) => fmtQty(p.qty) + '× ' +
+    (nameToId[p.name] ? itemLink(nameToId[p.name], p.name) : esc(p.name)) + (p.value <= 0 ? ' <span class="sample">?</span>' : '')).join(', ');
+  return '<div class="card"><table><thead><tr><th>Make</th><th>Raw materials</th><th class="num">Raw cost</th><th class="num">Trivials at</th></tr></thead><tbody>' +
+    rows.map(({ r, rc }) => {
+      const rid = nameToId[r.result.item] || r.result.item;
+      const cost = rc.cost > 0 ? coin(rc.cost) + (rc.missing ? ' <span class="sample">+?</span>' : '') : (rc.missing ? '<span class="sample">?</span>' : '—');
+      return '<tr><td>' + (r.result.qty > 1 ? r.result.qty + '× ' : '') + itemLink(rid, r.result.item) + '</td>' +
+        '<td class="sample">' + matsHtml(rc) + '</td>' +
+        '<td class="num coin">' + cost + '</td>' +
+        '<td class="num sample">' + (r.trivial || '—') + '</td></tr>';
+    }).join('') + '</tbody></table></div>';
+}
+
 // Simple placeholder icon per creature, mapped from its name/race. Stand-in until
 // real art; keeps the grid scannable.
 function mobIcon(name, race) {
@@ -1063,6 +1128,7 @@ function renderTradeskill(name) {
     '<h1>' + esc(name) + '</h1>' +
     '<p class="sub"><a href="' + wikiUrl(name) + '" target="_blank" rel="noopener">View on the wiki ↗</a></p>' +
     (recs.length ? '<h2>Recipes &amp; profit</h2>' + recipeTable(recs, false) + marginNote : '') +
+    (recs.length ? '<h2>Raw-material cost</h2><p class="sub">Every recipe broken all the way down to gathered/base materials — cheapest first, for finding the cheapest skill-ups. “Trivials at” is the level the recipe stops giving skill (gather the cheap ones up to there). “?” = a material has no price logged yet.</p>' + rawCostTable(recs) : '') +
     flowSection +
     (items.length
       ? '<h2>Items used in ' + esc(name) + '</h2><div class="card"><table><tbody>' +
