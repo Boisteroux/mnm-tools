@@ -62,9 +62,20 @@ function readTrades(file) {
   } catch { return []; }
 }
 
+// Map each resource to its gather skill (from the wiki) so harvest nodes can split
+// herbs/fish out by skill+zone. Read from mnmdb/wiki.json; empty if unavailable.
+function harvestSkillOpts() {
+  try {
+    const w = JSON.parse(fs.readFileSync(path.join(__dirname, 'mnmdb', 'wiki.json'), 'utf8'));
+    const map = {};
+    for (const [n, it] of Object.entries(w.items || {})) if (it && it.harvestedBy) map[n] = it.harvestedBy;
+    return { skillOf: (n) => map[n] || null };
+  } catch { return {}; }
+}
+
 function scanTracker() {
   const files = ledgerParser.findLedgerFiles();
-  const agg = ledgerParser.parseLedgers(files);
+  const agg = ledgerParser.parseLedgers(files, harvestSkillOpts());
   const items = ledgerParser.buildItemReport(agg);
   const dataset = {
     generatedAt: new Date().toISOString(),
@@ -216,7 +227,7 @@ ipcMain.handle('publish-mnmdb', async () => {
   try {
     // 1. Regenerate mnmdb/data.json from the latest ledger.
     const files = ledgerParser.findLedgerFiles();
-    const agg = ledgerParser.parseLedgers(files);
+    const agg = ledgerParser.parseLedgers(files, harvestSkillOpts());
     const items = ledgerParser.buildItemReport(agg);
     const dataset = {
       generatedAt: new Date().toISOString(),

@@ -744,7 +744,23 @@ function renderZone(name) {
     mobTable + itemTable;
 }
 
+// A skill-zone / named harvest cluster (e.g. "Herbs - Evershade Weald") renders
+// straight from its observed yields.
+function renderHarvestNode(node) {
+  const rows = node.yields.map((y) => '<tr><td>' + (nameToId[y.res] ? itemLink(nameToId[y.res], y.res) : esc(y.res)) +
+    '</td><td class="num">' + harvestRateCell(y.rate, y.count, node.pulls) + '</td></tr>').join('');
+  $('content').innerHTML =
+    '<div class="crumb"><a href="#/">MnMdb</a> › <a href="#/gathering">gathering</a></div>' +
+    '<h1>' + esc(node.name) + '</h1>' +
+    '<p class="sub">' + node.pulls + ' harvests' + (node.zones.length ? ' in ' + node.zones.map(zoneLink).join(', ') : '') + '</p>' +
+    '<h2>Yields</h2><div class="card"><table><thead><tr><th>Yield</th><th class="num">Drop rate</th></tr></thead><tbody>' +
+    rows + '</tbody></table></div>' +
+    '<div class="note">Chance per harvest from this gathering node, observed through the app. Rare yields fade when the sample is thin.</div>';
+}
+
 function renderNode(name) {
+  const direct = HARVEST_NODES.find((n) => n.name === name); // skill-zone / named cluster
+  if (direct) return renderHarvestNode(direct);
   name = collapseNode(name); // canonicalise "Rich X" -> "X" (shared loot table)
 
   // Observed drop rates: the harvest cluster whose yields the wiki maps to this node
@@ -1363,7 +1379,7 @@ function harvestNodesSection() {
     const top = n.yields[0];
     const it = top && itemByName[top.res];
     const wikiNodes = [...new Set(((it && it.wiki && it.wiki.from) || []).filter((f) => NODES[f] || isNodeName(f)).map(collapseNode))];
-    const label = wikiNodes.length ? wikiNodes.map(nodeLink).join(' / ') : esc(n.name);
+    const label = wikiNodes.length ? wikiNodes.map(nodeLink).join(' / ') : nodeLink(n.name);
     const rares = n.yields.filter((y) => y.rate < 0.4).length;
     return '<tr><td>' + label + '</td>' +
       '<td class="num sample">' + n.pulls + ' harvests</td>' +
