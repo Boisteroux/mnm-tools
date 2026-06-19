@@ -308,6 +308,8 @@ tr.rowlink { cursor: pointer; }
 .vbox.warnbox { border-left-color: var(--warn); }
 .vbox .vlbl { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
 .vbox .vval { font-size: 20px; font-weight: 600; color: var(--text); font-variant-numeric: tabular-nums; }
+.vbuys { margin: 0; padding: 4px 4px 4px 22px; }
+.vbuys li { padding: 2px 0; color: var(--text); }
 .tag {
   font-size: 11px;
   padding: 1px 7px;

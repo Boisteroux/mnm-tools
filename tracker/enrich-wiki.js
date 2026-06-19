@@ -51,6 +51,22 @@ async function fetchWikitext(titles) {
   return out;
 }
 
+// Every page title in a wiki category (handles pagination).
+async function fetchCategory(name) {
+  const members = [];
+  let cont;
+  do {
+    const url = WIKI_API + '?' + new URLSearchParams({
+      format: 'json', action: 'query', list: 'categorymembers',
+      cmtitle: 'Category:' + name, cmlimit: '500', ...(cont ? { cmcontinue: cont } : {}),
+    });
+    const j = await (await fetch(url, { headers: HEADERS })).json();
+    members.push(...((j.query && j.query.categorymembers) || []).map((m) => m.title));
+    cont = j.continue && j.continue.cmcontinue;
+  } while (cont);
+  return members;
+}
+
 // Resolve a list of "File:Name.png" titles -> { title: small-thumb url }
 async function fetchImageUrls(fileTitles) {
   const out = {};
@@ -138,6 +154,30 @@ function parseSoldBy(wikitext) {
   const vendors = [...new Set([...fm[1].matchAll(/\[\[([^\]|]+)(?:\|[^\]]*)?\]\]/g)].map((x) => x[1].trim()))]
     .filter((l) => !/^File:/i.test(l));
   return { base: b, shady: s, vendors };
+}
+
+// Vendor (merchant) page — {{Merchantpage}} with `sells` (exact item links),
+// `buys` (freeform bullet categories like "Weapons" / "Animal parts (meat …)"),
+// plus zone, location, race, description.
+function parseMerchant(wikitext) {
+  const m = wikitext.match(/\{\{\s*Merchantpage([\s\S]*?)\n\}\}/i);
+  if (!m) return null;
+  const p = templateParams(m[1]);
+  const stripLinks = (s) => (s || '').replace(/\[\[([^\]|]+)(?:\|[^\]]*)?\]\]/g, '$1');
+  const itemLinks = (s) => [...new Set([...(s || '').matchAll(/\[\[([^\]|]+)(?:\|[^\]]*)?\]\]/g)].map((x) => x[1].trim()))]
+    .filter((l) => !/^File:/i.test(l));
+  const bullets = (s) => (s || '').split('\n').filter((l) => /^\s*\*/.test(l))
+    .map((l) => clean(stripLinks(l.replace(/^\s*\*\s*/, '')))).filter(Boolean);
+  const notPlaceholder = (s) => { const c = clean(s); return c && !/^unknown$|place\s*holder/i.test(c) ? c : null; };
+  const zoneM = (p.zone || '').match(/\[\[([^\]|]+)/);
+  return {
+    sells: itemLinks(p.sells),
+    buys: bullets(p.buys),
+    zone: zoneM ? zoneM[1].trim() : notPlaceholder(p.zone),
+    location: notPlaceholder(p.location),
+    race: notPlaceholder(stripLinks(p.race)),
+    desc: notPlaceholder(p.description),
+  };
 }
 
 // Gather skill from "Harvested by [[Herbalism]]" (a real category for herbs/ore).
@@ -365,14 +405,38 @@ async function run() {
   const wikiOnlyCount = Object.values(items).filter((i) => i.wikiOnly).length;
   console.log(`\nItems: ${Object.keys(items).length} (${wikiOnlyCount} wiki-only, icons: ${Object.values(items).filter((i) => i.icon).length}). Mobs: ${Object.keys(mobs).length}/${mobNames.length}. Nodes: ${Object.keys(nodes).length}.`);
 
+  // ---- Vendors (from the wiki's Merchant pages) ----
+  const vendorNames = test ? ['Quartermaster Obaid', 'Chef Belle', 'A baker'] : await fetchCategory('Merchant');
+  const vendors = [];
+  for (let i = 0; i < vendorNames.length; i += 45) {
+    const batch = vendorNames.slice(i, i + 45);
+    process.stdout.write(`  vendors ${i + 1}-${i + batch.length}/${vendorNames.length}…   \r`);
+    let texts; try { texts = await fetchWikitext(batch); } catch { continue; }
+    for (const [title, wt] of Object.entries(texts)) {
+      const mer = parseMerchant(wt);
+      if (mer && (mer.sells.length || mer.buys.length)) vendors.push(Object.assign({ name: title }, mer));
+    }
+    await sleep(350);
+  }
+  vendors.sort((a, b) => a.name.localeCompare(b.name));
+  console.log(`\nVendors: ${vendors.length}/${vendorNames.length} (with ${vendors.reduce((n, v) => n + v.sells.length, 0)} sell-listings).`);
+
   if (test) {
     console.log('\nRusty Scimitar:', JSON.stringify(items['Rusty Scimitar']));
     console.log('\na green drakeling:', JSON.stringify(mobs['a green drakeling']));
+    console.log('\nVendor sample:', JSON.stringify(vendors, null, 1));
     return;
   }
   console.log(`Recipes: ${recipes.length} from ${tsList.length} tradeskills.`);
   fs.writeFileSync(OUT, JSON.stringify({ generatedAt: new Date().toISOString(), items, mobs, nodes, recipes }, null, 2));
   console.log(`Wrote ${OUT}.`);
+  const VOUT = path.join(__dirname, '..', 'mnmdb', 'vendors.json');
+  fs.writeFileSync(VOUT, JSON.stringify({
+    generatedAt: new Date().toISOString(),
+    _note: "Auto-generated from the wiki's Merchant pages by tracker/enrich-wiki.js — do not hand-edit.",
+    vendors,
+  }, null, 2));
+  console.log(`Wrote ${VOUT} (${vendors.length} vendors).`);
 }
 
 run();

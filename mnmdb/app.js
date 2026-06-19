@@ -7,7 +7,8 @@ let DATA = null;
 let nameToId = {};   // item name -> item id (for linking mob drops to item pages)
 let itemByName = {}; // item name -> full item record (for vendor-price lookups)
 let NODES = {};      // gathering nodes (Copper Vein, …) from the wiki
-let VENDORS = [];    // hand-maintained vendor → item-type mapping (vendors.json)
+let VENDORS = [];    // wiki Merchant pages: { name, zone, sells[], buys[] } (vendors.json)
+let vendorsSelling = {}; // item name -> [vendor] that stock it (inverted from sells)
 let TRADES = {};     // item name (lowercased) -> [{price, side, date}] player trade prices
 let RECIPES = [];    // crafting recipes from the wiki tradeskill pages
 let recipesByResult = {}; // item name (lowercased) -> [recipe] that produce it
@@ -47,6 +48,7 @@ const mobLink = (name) => '<a href="#/mob/' + encodeURIComponent(name) + '">' + 
 const zoneLink = (name) => '<a href="#/zone/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
 const nodeLink = (name) => '<a href="#/node/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
 const tradeskillLink = (name) => '<a href="#/tradeskill/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
+const vendorLink = (name) => '<a href="#/vendor/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
 // A wiki "source" (node/creature/item) — link internally where we can, else to the wiki
 const sourceLink = (s) =>
   DATA.mobs[s] ? mobLink(s)
@@ -57,6 +59,35 @@ const sourceLink = (s) =>
 // Regular-vendor sell price = the BEST (highest) you'd get selling — regular
 // vendors pay more than shady ones. Used as the realistic value of an item.
 const regularPrice = (it) => (it && it.prices.length ? Math.max.apply(null, it.prices.map((p) => p.copper)) : 0);
+
+// Price a vendor SELLS an item for (you buy it) — the wiki's base price, if known.
+const vendorSellPrice = (name) => {
+  const it = itemByName[name];
+  return it && it.wiki && it.wiki.soldBy && it.wiki.soldBy.base != null ? it.wiki.soldBy.base : null;
+};
+
+// Vendors that would BUY this item, matched loosely on their stated buy categories
+// (the wiki lists these as freeform groups like "Weapons" or "Animal parts (…)").
+function vendorsBuying(it) {
+  const w = it.wiki || {};
+  const types = w.categories || [];
+  // Derive a coarse weapon/armor/ammo kind from the ItemBox slot/dmg so generic
+  // buy categories ("Weapons", "Armor") still match where we have the stats.
+  const slot = (w.slot || '').toUpperCase();
+  const kinds = [];
+  if (w.dmg != null || /PRIMARY/.test(slot)) kinds.push('weapon');
+  if (/WRIST|NECK|HAND|WAIST|FEET|FACE|BACK|LEG|CHEST|SHOULDER|HEAD|BELT|FINGER|SHIRT|SECONDARY/.test(slot)) kinds.push('armor');
+  if (slot.includes('AMMO')) kinds.push('ammo');
+  const hay = (types.join(' ') + ' ' + kinds.join(' ') + ' ' + it.name).toLowerCase();
+  const out = [];
+  for (const v of VENDORS) {
+    for (const b of (v.buys || [])) {
+      const word = b.toLowerCase().replace(/\(.*?\)/g, '').trim().replace(/s$/, '');
+      if (word.length > 2 && hay.includes(word)) { out.push(Object.assign({ matched: b.replace(/\s*\(.*?\)/g, '') }, v)); break; }
+    }
+  }
+  return out;
+}
 
 // Drop extreme outliers with an IQR fence so one fat-fingered price can't skew
 // the range. Needs >=4 points to judge; below that every price is kept.
@@ -474,26 +505,33 @@ function renderItem(id) {
         : ''));
   }
 
-  // Sold by — vendors that SELL this item (you buy it), with base/shady price (wiki)
-  if (w.soldBy && (w.soldBy.base != null || w.soldBy.shady != null)) {
-    const sb = w.soldBy;
-    const boxes = '<div class="vendor-summary">' +
+  // Sold by — where you can BUY this item: wiki base/shady price + the vendors who stock it
+  const sellers = vendorsSelling[it.name] || [];
+  if ((w.soldBy && (w.soldBy.base != null || w.soldBy.shady != null)) || sellers.length) {
+    const sb = w.soldBy || {};
+    const boxes = (sb.base != null || sb.shady != null) ? '<div class="vendor-summary">' +
       (sb.base != null ? '<div class="vbox"><div class="vlbl">Base price</div><div class="vval">' + coin(sb.base) + '</div></div>' : '') +
       (sb.shady != null ? '<div class="vbox warnbox"><div class="vlbl">Shady price</div><div class="vval">' + coin(sb.shady) + '</div></div>' : '') +
-      '</div>';
-    const vlist = (sb.vendors || []).map((v) => DATA.mobs[v] ? mobLink(v) : (v.match(/^(a|an) /i) ? esc(v) : zoneLink(v))).join(', ');
-    sections.push('<h2>Sold by</h2>' + boxes + (vlist ? '<div class="note">Vendors: ' + vlist + ' (base = regular price).</div>' : ''));
+      '</div>' : '';
+    let listHtml;
+    if (sellers.length) {
+      listHtml = '<div class="card"><table><tbody>' + sellers.map((v) =>
+        '<tr><td>' + vendorLink(v.name) + '</td><td class="sample">' + esc(v.zone || '') + '</td></tr>').join('') + '</tbody></table></div>';
+    } else {
+      const vlist = (sb.vendors || []).map((v) => DATA.mobs[v] ? mobLink(v) : (v.match(/^(a|an) /i) ? esc(v) : zoneLink(v))).join(', ');
+      listHtml = vlist ? '<div class="note">Vendors: ' + vlist + '</div>' : '';
+    }
+    sections.push('<h2>Sold by</h2>' + boxes + listHtml +
+      (sb.base != null ? '<div class="note">Base = regular vendor price; shady vendors charge more.</div>' : ''));
   }
 
-  // Sold to — vendors that buy this item's type(s), from our hand-kept mapping
-  const types = w.categories || [];
-  if (types.length) {
-    const buyers = VENDORS.filter((v) => (v.buys || []).some((b) => types.includes(b)));
-    const body = buyers.length
-      ? buyers.map((v) => '<tr><td>' + esc(v.name) + (v.shady ? ' <span class="tag warn">shady</span>' : '') +
-          '</td><td class="sample">' + esc(v.zone || '') + '</td></tr>').join('')
-      : '<tr><td class="muted" colspan="2">No vendors mapped for these types yet — add them in <code>vendors.json</code>.</td></tr>';
-    sections.push('<h2>Sold to</h2><div class="card"><table><tbody>' + body + '</tbody></table></div>');
+  // Sold to — vendors that would buy this item (approximate, from their buy categories)
+  const buyers = vendorsBuying(it);
+  if (buyers.length) {
+    sections.push('<h2>Sold to</h2><div class="card"><table><tbody>' +
+      buyers.map((v) => '<tr><td>' + vendorLink(v.name) + '</td><td class="sample">' + esc(v.zone || '') +
+        (v.matched ? ' · buys ' + esc(v.matched) : '') + '</td></tr>').join('') +
+      '</tbody></table></div><div class="note">Matched on each vendor’s stated buy categories — approximate.</div>');
   }
 
   // Found / gathered in — observed zones plus the wiki's listed zones
@@ -772,6 +810,45 @@ function renderTradeskills() {
       '<td class="num sample">' + (counts[n].recipes || '—') + '</td>' +
       '<td class="num sample">' + (counts[n].items || '—') + '</td></tr>').join('') +
     '</tbody></table></div>';
+}
+
+// ---- Vendors (from the wiki's Merchant pages) ----
+
+function renderVendors() {
+  if (!VENDORS.length) return notFound('vendors', '');
+  const byZone = {};
+  VENDORS.forEach((v) => { const z = v.zone || 'Unknown'; (byZone[z] = byZone[z] || []).push(v); });
+  const zones = Object.keys(byZone).sort((a, b) => byZone[b].length - byZone[a].length || a.localeCompare(b));
+  $('content').innerHTML =
+    '<div class="crumb"><a href="#/">MnMdb</a> › vendors</div>' +
+    '<h1>Vendors</h1>' +
+    '<p class="sub">Merchants from the community wiki — what they sell and buy, grouped by zone.</p>' +
+    zones.map((z) => '<h2>' + esc(z) + ' <span class="sample">(' + byZone[z].length + ')</span></h2>' +
+      '<div class="card"><table><tbody>' +
+      byZone[z].slice().sort((a, b) => a.name.localeCompare(b.name)).map((v) =>
+        '<tr><td>' + vendorLink(v.name) + '</td>' +
+        '<td class="sample">' + esc(v.desc || v.location || '') + '</td>' +
+        '<td class="num sample">' + (v.sells.length ? v.sells.length + ' sold' : '') + '</td></tr>').join('') +
+      '</tbody></table></div>').join('');
+}
+
+function renderVendor(name) {
+  const v = VENDORS.find((x) => x.name === name);
+  if (!v) return notFound('vendor', name);
+  const meta = [v.race, v.desc].filter(Boolean).join(' · ');
+  const sells = v.sells.map((n) => {
+    const price = vendorSellPrice(n);
+    return '<tr><td>' + (nameToId[n] ? itemLink(nameToId[n], n) : esc(n)) + '</td>' +
+      '<td class="num">' + (price != null ? coin(price) : '—') + '</td></tr>';
+  }).join('');
+  const buys = (v.buys || []).map((b) => '<li>' + esc(b) + '</li>').join('');
+  $('content').innerHTML =
+    '<div class="crumb"><a href="#/">MnMdb</a> › <a href="#/vendors">vendors</a></div>' +
+    '<h1>' + esc(v.name) + '</h1>' +
+    '<p class="sub">' + (v.zone ? zoneLink(v.zone) : '') + (v.location ? ' · ' + esc(v.location) : '') + (meta ? ' · ' + esc(meta) : '') + '</p>' +
+    (sells ? '<h2>Sells</h2><div class="card"><table><thead><tr><th>Item</th><th class="num">Vendor price</th></tr></thead><tbody>' + sells + '</tbody></table></div>' : '') +
+    (buys ? '<h2>Buys</h2><div class="card"><ul class="vbuys">' + buys + '</ul></div>' : '') +
+    '<p class="note">From the wiki’s <a href="' + wikiUrl(v.name) + '" target="_blank" rel="noopener">' + esc(v.name) + ' ↗</a> page.</p>';
 }
 
 // ---- Crafting-flow (Sankey-ish) — ingredients flow into finished goods ----
@@ -1178,8 +1255,10 @@ function route() {
   const h = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
   if (h === 'items' || h === 'mobs' || h === 'gathering') return renderBrowse(h);
   if (h === 'tradeskills') return renderTradeskills();
+  if (h === 'vendors') return renderVendors();
   if (h === 'bestiary') return renderBestiary();
   if (h === 'maps') return renderMapsList();
+  if (h.startsWith('vendor/')) return renderVendor(h.slice(7));
   if (h.startsWith('map/')) return renderMapView(h.slice(4));
   if (h.startsWith('item/')) return renderItem(h.slice(5));
   if (h.startsWith('mob/')) return renderMob(h.slice(4));
@@ -1215,6 +1294,8 @@ async function loadWikiStats() {
   try {
     const v = await (await fetch('./vendors.json?v=' + Date.now())).json();
     VENDORS = (v && v.vendors) || [];
+    vendorsSelling = {};
+    VENDORS.forEach((vn) => (vn.sells || []).forEach((n) => { (vendorsSelling[n] = vendorsSelling[n] || []).push(vn); }));
   } catch {}
   try {
     const t = await (await fetch('./trades.json?v=' + Date.now())).json();

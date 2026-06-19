@@ -1,5 +1,1111 @@
 {
-  "_readme": "Maps vendor NPCs to the item Types they buy, so item pages can show a 'Sold to' list. List each vendor once. 'buys' values must match the Type shown on an item page (e.g. Weapon, Armor, Tradeskill Ingredient, Inventory Items, 1H Slashing). 'zone' = where the NPC is. 'shady': true for a shady vendor. Edit this file (even on github.com from your phone) as you discover vendors in-game.",
-  "_example": { "name": "Merchant Tovi", "zone": "Night Harbor", "shady": false, "buys": ["Weapon", "Armor"] },
-  "vendors": []
+  "generatedAt": "2026-06-19T01:15:38.429Z",
+  "_note": "Auto-generated from the wiki Merchant pages by tracker/enrich-wiki.js — do not hand-edit.",
+  "vendors": [
+    {
+      "name": "A bag merchant",
+      "sells": [
+        "Backpack",
+        "Pouch",
+        "Satchel",
+        "Small Field Pack"
+      ],
+      "buys": [
+        "Bags and packs",
+        "Hides"
+      ],
+      "zone": "Faelindral",
+      "location": "In Faelindral: ... In Night Harbor: Night Market / North Gate / Shortfolk Area",
+      "race": "Elf, Human, Gnome",
+      "desc": null
+    },
+    {
+      "name": "A baker",
+      "sells": [
+        "Halva",
+        "Harissa",
+        "Knafeh",
+        "Mountain Flatbread",
+        "Szuur's Famous Foods",
+        "Water Flask"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "Night market, at a window near the forge",
+      "race": "Human Halfling",
+      "desc": null
+    },
+    {
+      "name": "A barkeep",
+      "sells": [
+        "Langsdorf Pale Ale",
+        "Ration",
+        "Twilight Bay Rum",
+        "Water Flask",
+        "Weak Beer"
+      ],
+      "buys": [
+        "Charred fish",
+        "Cooked meat",
+        "Roots (Harvallen, Multhele)",
+        "Snake eggs",
+        "Vegetables (Wild Carrots ...)"
+      ],
+      "zone": "Night Harbor",
+      "location": "The North gate inn",
+      "race": "Human",
+      "desc": "Bartender"
+    },
+    {
+      "name": "A blacksmith",
+      "sells": [
+        "Rivet Cutters",
+        "Smithing Hammer",
+        "Smithing Pliers"
+      ],
+      "buys": [
+        "Carapaces",
+        "Gems",
+        "Ores",
+        "Stones",
+        "Metal Scraps"
+      ],
+      "zone": "Night Harbor",
+      "location": "Night Market",
+      "race": "Human",
+      "desc": "[[Skill Blacksmithing|Blacksmithing]] Merchant"
+    },
+    {
+      "name": "A bowyer",
+      "sells": [
+        "Arrow",
+        "Bow",
+        "Hip Quiver",
+        "Large Back Quiver",
+        "Small Back Quiver",
+        "Throwing Dagger",
+        "Recipe: Pitch-Wrapped Arrow",
+        "Recipe: Net Arrow",
+        "Recipe: Smoke Bomb Arrow"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "Shortfolk Area",
+      "race": "Halfling",
+      "desc": "[[Skill Archery|Archery]] Merchant"
+    },
+    {
+      "name": "A chain armorer",
+      "sells": [],
+      "buys": [
+        "Chain Armor",
+        "Metal Scraps"
+      ],
+      "zone": "Night Harbor",
+      "location": "Night Market",
+      "race": "Human",
+      "desc": "Chain Armor Merchant"
+    },
+    {
+      "name": "A cloth armorer",
+      "sells": [
+        "Heavy Thread",
+        "Light Thread",
+        "Rough Thread",
+        "Satin Thread",
+        "Seam Ripper",
+        "Tailoring Kit"
+      ],
+      "buys": [
+        "Cloth Armor",
+        "Thread",
+        "Cloth Scraps"
+      ],
+      "zone": "Night Harbor",
+      "location": "Night Market. Shortfolk area",
+      "race": "Human / Halfling",
+      "desc": "Cloth Armor and [[Skill Tailoring|Tailoring]] Merchant"
+    },
+    {
+      "name": "A cobbler",
+      "sells": [
+        "Patched Cloth Boots"
+      ],
+      "buys": [
+        "Boots"
+      ],
+      "zone": "Night Harbor",
+      "location": "The Night Market",
+      "race": "Human",
+      "desc": "A merchant located within The Night Market who sells [[Patched Cloth Boots]] and purchases some types of footware."
+    },
+    {
+      "name": "A cook",
+      "sells": [
+        "Bottle of High-Quality Olive Oil",
+        "Camp Kitchen",
+        "Cellar of Sea Salt",
+        "Crab Leg Stew",
+        "Roasting Spit",
+        "Wooden Skewers",
+        "Basil",
+        "Black Pepper",
+        "Butter",
+        "Cleaver",
+        "Cooking Sage",
+        "Milk",
+        "Paprika",
+        "Parsley",
+        "Rice",
+        "Stock",
+        "Thyme",
+        "Wheat Flour"
+      ],
+      "buys": [
+        "Animal parts (meat, foot, legs, ear, tooth, eye, fang, egg ...)",
+        "Cleaver",
+        "Fish (raw, charred, grilled, scales ...)",
+        "Herbs (thyme ...)",
+        "Skeleton parts (chips, jawbone ...)",
+        "Vegetables (wild carrots ...)",
+        "Wood",
+        "Nothing!"
+      ],
+      "zone": "Night Harbor",
+      "location": "The Shaded Bloom Inn",
+      "race": "Human",
+      "desc": null
+    },
+    {
+      "name": "A fisherman (Faelindral)",
+      "sells": [
+        "Fishing Pole",
+        "Grub"
+      ],
+      "buys": [
+        "Bait (Grub ...)",
+        "Fish",
+        "Wood"
+      ],
+      "zone": "Faelindral",
+      "location": "Base of the Traveler's Lift (aka Noob lift)",
+      "race": "Wood Elf",
+      "desc": null
+    },
+    {
+      "name": "A fishwife",
+      "sells": [
+        "Cooked Whitefish Fillet",
+        "Raw Whitefish"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "Saltbreeze Park, on the west wall",
+      "race": "Human",
+      "desc": null
+    },
+    {
+      "name": "A fletcher",
+      "sells": [
+        "Arrow",
+        "Fletching Kit"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "Halfling Area",
+      "race": "Halfling",
+      "desc": "[[Skill Fletching|Fletching]] Merchant"
+    },
+    {
+      "name": "A goods merchant",
+      "sells": [
+        "Animal Glue",
+        "Backpack",
+        "Candle",
+        "Cellar of Sea Salt",
+        "Charcoal",
+        "Cleaver",
+        "Lantern",
+        "Lantern Fuel",
+        "Lumberjack Axe",
+        "Parchment",
+        "Portion of Olive Oil",
+        "Pouch",
+        "Torch"
+      ],
+      "buys": [
+        "Bags",
+        "Torches"
+      ],
+      "zone": "Night Harbor",
+      "location": "North gate, first building on the right when heading to the Mage Tower. Smallfolk area in Night Harbor",
+      "race": "Human or Gnome",
+      "desc": null
+    },
+    {
+      "name": "A greedy halfling",
+      "sells": [
+        "Candle",
+        "Dispel Stone",
+        "Lantern",
+        "Lantern Fuel",
+        "Lock Pick",
+        "Lumberjack Axe",
+        "Malleable Bone Ornamented Coffin",
+        "Torch",
+        "Volatile Rift Potion"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "Tucked away in a ruined building within the Sojourner's Camp.",
+      "race": "Halfling",
+      "desc": null
+    },
+    {
+      "name": "A grocer",
+      "sells": [
+        "Bell Pepper",
+        "Carrots",
+        "Cauliflower",
+        "Cayenne Peppers",
+        "Celery",
+        "Chicken Egg",
+        "Grape Leaves",
+        "Habanero Pepper",
+        "Lemon",
+        "Red Cabbage",
+        "Tomatoes",
+        "White Onion"
+      ],
+      "buys": [
+        "Wild Carrots (foraged)"
+      ],
+      "zone": "Night Harbor",
+      "location": "Night Market, next to [[Used Weapons Dealer]]. Appears only at night.",
+      "race": "Human",
+      "desc": null
+    },
+    {
+      "name": "A jewelcrafter",
+      "sells": [
+        "Jewelcrafting Kit"
+      ],
+      "buys": [
+        "Jewelry",
+        "Gems"
+      ],
+      "zone": "Night Harbor",
+      "location": "Night Market",
+      "race": "Human",
+      "desc": "[[Skill Jewelcrafting|Jewelcrafting]] Supplies Merchant"
+    },
+    {
+      "name": "A leatherworker",
+      "sells": [
+        "Heavy Thread",
+        "Leatherworking Kit",
+        "Light Thread",
+        "Rough Thread",
+        "Satin Thread",
+        "Seam Ripper",
+        "Skinning Knife"
+      ],
+      "buys": [
+        "Leather Armor",
+        "Hides",
+        "Thread"
+      ],
+      "zone": "Night Harbor",
+      "location": "Tannery",
+      "race": "Human",
+      "desc": "[[Skill Leatherworking|Leatherworking]] Merchant"
+    },
+    {
+      "name": "A lumberjack",
+      "sells": [
+        "Lumberjack Axe",
+        "Lumberjack Pouch"
+      ],
+      "buys": [
+        "Lumberjack Materials"
+      ],
+      "zone": "Night Harbor",
+      "location": "Located in Sojourner's Camp.",
+      "race": "Human",
+      "desc": "Lumberjack Merchant"
+    },
+    {
+      "name": "A medic",
+      "sells": [],
+      "buys": [
+        "Bandages"
+      ],
+      "zone": "Night Harbor",
+      "location": "Sojourner Camp",
+      "race": "Human",
+      "desc": null
+    },
+    {
+      "name": "A merchant traveler",
+      "sells": [
+        "Carrots",
+        "Cauliflower",
+        "Celery",
+        "Green Onions",
+        "Lemon",
+        "Ration",
+        "Red Cabbage",
+        "Tomato",
+        "Water Flask"
+      ],
+      "buys": [
+        "Animal parts (meat, silk, skin, teeth, wings ...)"
+      ],
+      "zone": "Vale of Zintar",
+      "location": null,
+      "race": "Gnome",
+      "desc": "Found with his alligator pet"
+    },
+    {
+      "name": "A miner",
+      "sells": [
+        "Mining Pick",
+        "Mining Pouch"
+      ],
+      "buys": [
+        "Ores",
+        "Gems"
+      ],
+      "zone": "Night Harbor",
+      "location": "Sojourner Camp",
+      "race": "Human",
+      "desc": "[[Skill Mining|Mining]] Merchant"
+    },
+    {
+      "name": "A pelt trader",
+      "sells": [
+        "Heavy Thread",
+        "Leatherworking Kit",
+        "Light Thread",
+        "Rough Thread",
+        "Satin Thread",
+        "Seam Ripper",
+        "Skinning Knife"
+      ],
+      "buys": [
+        "Leather Armor",
+        "Hides",
+        "Thread"
+      ],
+      "zone": "Night Harbor",
+      "location": "Blackfeather Bazaar",
+      "race": "Human",
+      "desc": "[[Skill Leatherworking|Leatherworking]] Merchant"
+    },
+    {
+      "name": "A plate armorer",
+      "sells": [],
+      "buys": [
+        "Plate Armor",
+        "Metal Scraps"
+      ],
+      "zone": "Night Harbor",
+      "location": "Night Market",
+      "race": "Human",
+      "desc": "Plate Armor Merchant"
+    },
+    {
+      "name": "A produce vendor",
+      "sells": [
+        "Carrots",
+        "Cauliflower",
+        "Chicken Egg",
+        "Red Cabbage",
+        "Tomatoes",
+        "White Onion"
+      ],
+      "buys": [
+        "Wild Carrots"
+      ],
+      "zone": "Night Harbor",
+      "location": "Saltbreeze Park, on the west wall",
+      "race": "Human",
+      "desc": null
+    },
+    {
+      "name": "A reagent vendor",
+      "sells": [
+        "Ethereal Dagger"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "Spellbinders of the Spire bottom floor, in [[Registrar Vauquelin]]'s room. Take 2 rights when entering from the entrance in the residential area",
+      "race": "Human",
+      "desc": null
+    },
+    {
+      "name": "A rider",
+      "sells": [
+        "Basic Pack Rigging"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "Sojourner Camp",
+      "race": "Human",
+      "desc": "Riding Merchant"
+    },
+    {
+      "name": "A shady peddler",
+      "sells": [
+        "Backpack",
+        "Cracked Amphora",
+        "Dispel Stone",
+        "Scroll: Speed of the Wild",
+        "Malleable Bone Ornamented Coffin",
+        "Unguent of Revealing",
+        "Volatile Rift Potion"
+      ],
+      "buys": [
+        "about anything at a reduced cost compared to regular merchants"
+      ],
+      "zone": "Night Harbor",
+      "location": "Tucked in an alley in the Night Market, just southeast of the forge. Appears only at night (spawns at 6 PM in-game time and despawns at 6 AM in-game time.)",
+      "race": "Human",
+      "desc": "A [[Greedy Merchant|greedy merchant]]."
+    },
+    {
+      "name": "A shady trader",
+      "sells": [
+        "Backpack",
+        "Cracked Amphora",
+        "Dispel Stone",
+        "Malleable Bone Ornamented Coffin",
+        "Unguent of Revealing",
+        "Volatile Rift Potion"
+      ],
+      "buys": [
+        "about anything at a reduced cost compared to regular merchants"
+      ],
+      "zone": "Faelindral",
+      "location": "By a caravan near the stables",
+      "race": "Human",
+      "desc": "A [[Greedy Merchant|greedy merchant]]."
+    },
+    {
+      "name": "A shifty gnome",
+      "sells": [
+        "Candle",
+        "Charcoal",
+        "Dispel Stone",
+        "Lantern",
+        "Lantern Fuel",
+        "Lock Pick",
+        "Lumberjack Axe",
+        "Malleable Bone Ornamented Coffin",
+        "Parchment",
+        "Ration",
+        "Torch",
+        "Volatile Rift Potion",
+        "Water Flask"
+      ],
+      "buys": [
+        "about anything although at a lesser price compared to regular merchants"
+      ],
+      "zone": "Night Harbor",
+      "location": "Out in the western newbie yard by a campfire.",
+      "race": "Gnome",
+      "desc": "A [[Greedy Merchant|greedy merchant]]."
+    },
+    {
+      "name": "A smelter",
+      "sells": [
+        "Crude Ingot Mold",
+        "Hardened Ingot Mold",
+        "Masterwork Ingot Mold",
+        "Sturdy Ingot Mold",
+        "Tempered Ingot Mold"
+      ],
+      "buys": [
+        "Antique Billon Coin"
+      ],
+      "zone": "Night Harbor",
+      "location": "Night Market",
+      "race": "Human",
+      "desc": "[[Skill Smelting|Smelting]] Supplies Merchant"
+    },
+    {
+      "name": "A spicemonger",
+      "sells": [
+        "Cardamom Pods",
+        "Cayenne Peppers",
+        "Coriander Seeds",
+        "Cumin Seeds",
+        "Dried Dragon's Breath Peppers",
+        "Dried Garlic",
+        "Fenugrek Seeds",
+        "Paprika",
+        "Pinch of Saffron",
+        "Sesame Seeds",
+        "Sumac Berries"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "Night Market, under the arcades",
+      "race": "Human",
+      "desc": "Spice Merchant for [[Skill Cooking|Cooking]]"
+    },
+    {
+      "name": "A spymaster",
+      "sells": [
+        "Charcoal",
+        "Parchment"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "Underneath the Bard Guild stage in Night Harbor",
+      "race": "Human",
+      "desc": "[[Skill Spycraft|Spycraft]] Merchant"
+    },
+    {
+      "name": "A survivalist",
+      "sells": [],
+      "buys": [
+        "Lighting items",
+        "Resins"
+      ],
+      "zone": "Night Harbor",
+      "location": "Sojourner Camp",
+      "race": "Human",
+      "desc": "Survivalist Merchant"
+    },
+    {
+      "name": "A suspicious salesman",
+      "sells": [
+        "Candle",
+        "Charcoal",
+        "Dispel Stone",
+        "Lantern",
+        "Lantern Fuel",
+        "Lock Pick",
+        "Lumberjack Axe",
+        "Malleable Bone Ornamented Coffin",
+        "Parchment",
+        "Ration",
+        "Torch",
+        "Volatile Rift Potion",
+        "Water Flask"
+      ],
+      "buys": [
+        "about anything at a reduced cost compared to regular merchants"
+      ],
+      "zone": "Night Harbor",
+      "location": "Just inside the North Gate and to the west. Tucked in an alley. Seems to appear only at night.",
+      "race": "Human",
+      "desc": "A [[Greedy Merchant|greedy merchant]]."
+    },
+    {
+      "name": "A tanner",
+      "sells": [],
+      "buys": [
+        "Hides",
+        "Leather",
+        "Thread"
+      ],
+      "zone": "Night Harbor",
+      "location": "The Tannery",
+      "race": "Human",
+      "desc": "[[Skill Tanning|Tanning]] Merchant"
+    },
+    {
+      "name": "A used weapons dealer",
+      "sells": [
+        "Rusty Dagger",
+        "Rusty Mace",
+        "Rusty Shortsword"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "Night Market, Shortfolk area",
+      "race": "Human / Halfling",
+      "desc": "Weapon Merchant"
+    },
+    {
+      "name": "A weaponsmith",
+      "sells": [
+        "Rivet Cutters",
+        "Smithing Hammer",
+        "Smithing Pliers",
+        "Water Flask"
+      ],
+      "buys": [
+        "Carapaces",
+        "Gems",
+        "Ores",
+        "Stones",
+        "Blacksmithed items"
+      ],
+      "zone": "Night Harbor",
+      "location": "Night Market",
+      "race": "Human",
+      "desc": "[[Skill Blacksmithing|Blacksmithing]] Merchant"
+    },
+    {
+      "name": "Adventure Gear",
+      "sells": [
+        "Animal Glue",
+        "Backpack",
+        "Candle",
+        "Charcoal",
+        "Cooking Pot",
+        "Fish Scaler",
+        "Grappling Hook",
+        "Lantern",
+        "Lantern Fuel",
+        "Lumberjack Axe",
+        "Parchment",
+        "Rope, Hempen, 50 Length",
+        "Rope, Silk, 50 Length",
+        "Small Field Pack"
+      ],
+      "buys": [],
+      "zone": "Faelindral",
+      "location": "Trader's Terrace",
+      "race": "Wood Elf",
+      "desc": null
+    },
+    {
+      "name": "An alchemist",
+      "sells": [
+        "Annealed Vial",
+        "Crude Flask",
+        "Crystallized Vial",
+        "Makeshift Vial",
+        "Mortar and Pestle",
+        "Potion Bandolier",
+        "Runed Flask",
+        "Tempered Vial"
+      ],
+      "buys": [
+        "Cauldrons",
+        "Ghoul Bile",
+        "Limestone",
+        "Sealants",
+        "Spectral Dust"
+      ],
+      "zone": "Night Harbor",
+      "location": "Alchemy Supplies shop in the Black Feather Bazaar",
+      "race": "Human",
+      "desc": null
+    },
+    {
+      "name": "An elemental quartermaster",
+      "sells": [
+        "Crushed Malachite",
+        "Water Flask"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "Bottom alcove in the School of the Fourfold Path (ELE/MNK guildhall)",
+      "race": "Elemental",
+      "desc": null
+    },
+    {
+      "name": "An herbalist",
+      "sells": [
+        "Sickle",
+        "Herb Pouch"
+      ],
+      "buys": [
+        "Herbs"
+      ],
+      "zone": "Night Harbor",
+      "location": "Sojourner Camp",
+      "race": "Human",
+      "desc": "[[Skill Herbalism|Herbalism]] Merchant"
+    },
+    {
+      "name": "An innkeeper",
+      "sells": [
+        "Ration",
+        "Water Flask"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "The Shaded Bloom Inn",
+      "race": "Human",
+      "desc": null
+    },
+    {
+      "name": "Chef Belle",
+      "sells": [
+        "Bottle of High-Quality Olive Oil",
+        "Camp Kitchen",
+        "Cellar of Sea Salt",
+        "Ration",
+        "Water Flask"
+      ],
+      "buys": [
+        "Animal parts (meat, legs ...)",
+        "Skeleton parts (chips, jawbone ...)",
+        "Vegetables (wild carrots ...)",
+        "Fish",
+        "Wood"
+      ],
+      "zone": "Night Harbor",
+      "location": null,
+      "race": "Halfling",
+      "desc": null
+    },
+    {
+      "name": "Cheswik Barrelgirth",
+      "sells": [
+        "Langsdorf Pale Ale",
+        "Twilight Bay Rum",
+        "Water Flask",
+        "Weak Beer"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "East of the Steel Talon Garrison",
+      "race": "Human",
+      "desc": "Bartender"
+    },
+    {
+      "name": "Cleric Reagents",
+      "sells": [
+        "Blessed Beeswax Candle",
+        "Prayer Beads",
+        "Spellbook",
+        "Vial of Anointing Oil"
+      ],
+      "buys": [
+        "Animal parts",
+        "Limestone",
+        "Multhele Root",
+        "Resin",
+        "Sealants",
+        "Undead parts"
+      ],
+      "zone": "Night Harbor",
+      "location": "Wayfarers Hospice in the Sojourners camp",
+      "race": "Human",
+      "desc": null
+    },
+    {
+      "name": "Clint the Innocent",
+      "sells": [
+        "Candle",
+        "Charcoal",
+        "Clint's Special Formula",
+        "Dispel Stone",
+        "Lantern",
+        "Lantern Fuel",
+        "Lock Pick",
+        "Lumberjack Axe",
+        "Malleable Bone Ornamented Coffin",
+        "Parchment",
+        "Ration",
+        "Torch",
+        "Volatile Rift Potion",
+        "Water Flask"
+      ],
+      "buys": [
+        "About anything but at a reduced cost compared to regular merchants"
+      ],
+      "zone": "Night Harbor",
+      "location": "A [[Greedy Merchant|greedy merchant]] out in the northern newbie yard, tucked away in the southeast corner.",
+      "race": "Goblin",
+      "desc": "Clint the Innocent, was added to the game as a memorial to the player \"Innocent\", who sadly passed away in January 2024. His friend put together [https://youtu.be/OwLZcJrEf_g?si=3G5ioxV1UtInxCLL a YouTube video] during the June playtest for his family, to show them the character, explain his role in the game and recount some fun stories that were the inspiration for his dialogue. {{#ev:youtube|https://www.youtube.com/watch?v=OwLZcJrEf_g|dimensions=640x360}}"
+    },
+    {
+      "name": "Dilshad Abolfazl",
+      "sells": [
+        "Backpack",
+        "Pouch",
+        "Satchel",
+        "Small Field Pack"
+      ],
+      "buys": [
+        "Bags",
+        "Hides"
+      ],
+      "zone": "Night Harbor",
+      "location": "West building in the Tannery",
+      "race": "Human",
+      "desc": "Bags and Packs Merchant"
+    },
+    {
+      "name": "Enchanter Reagents",
+      "sells": [
+        "Ethereal Dagger"
+      ],
+      "buys": [
+        "Animal parts",
+        "Chipped gems",
+        "Limestone",
+        "Multhele Roots (1c)",
+        "Resin (1c)",
+        "Sealants",
+        "Undead parts (bone chips - 1c)"
+      ],
+      "zone": "Night Harbor",
+      "location": "Spellbinders of the Spire, outside the door an on a balcony from [[Jaakima]]",
+      "race": "Human",
+      "desc": "''' Please use [[Karsyn]] now that his name has changed.'''"
+    },
+    {
+      "name": "Enchanting Supplies",
+      "sells": [
+        "An Introduction to Enchanting",
+        "Disenchanting Cube",
+        "Tome of Enchantment"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "Inside the Library, in [[Vaclav]]'s room (requires [[Silver Key of Candor]])",
+      "race": "Human",
+      "desc": null
+    },
+    {
+      "name": "Fisher Mardan",
+      "sells": [
+        "Fishing Pole",
+        "Grub"
+      ],
+      "buys": [],
+      "zone": "Sungreet Strand",
+      "location": null,
+      "race": "Human",
+      "desc": "[[Skill Fishing|Fishing]] Merchant"
+    },
+    {
+      "name": "Fishing Supplies",
+      "sells": [
+        "An Introduction to Fishing",
+        "Fishing Pole",
+        "Grub"
+      ],
+      "buys": [
+        "Bait (Grub ...)",
+        "Fish",
+        "Wood"
+      ],
+      "zone": "Night Harbor",
+      "location": "Twilight Harbor at the end of the 3rd pier from the west",
+      "race": "Human",
+      "desc": "You say, \"Hail, Fishing Supplies.\" Fishing Supplies gives you a relaxed nod. Fishing Supplies says, \"Greetings, friend. Are you wanting to learn how to fish?\""
+    },
+    {
+      "name": "Halrinn Grimsul",
+      "sells": [
+        "Crab Leg Stew",
+        "Langsdorf Pale Ale",
+        "Ration",
+        "Water Flask",
+        "Weak Beer"
+      ],
+      "buys": [
+        "Drinks"
+      ],
+      "zone": "Night Harbor",
+      "location": "The Shaded Bloom Inn",
+      "race": "Human",
+      "desc": "Bartender You say, \"Hail, Halrinn Grimsul.\" Halrinn Grimsul says, \"Hello, friend! I hope you're thirsty.\""
+    },
+    {
+      "name": "Karsyn",
+      "sells": [
+        "Ethereal Dagger"
+      ],
+      "buys": [
+        "Animal parts",
+        "Chipped gems",
+        "Limestone",
+        "Multhele Roots",
+        "Resin",
+        "Sealants",
+        "Undead parts"
+      ],
+      "zone": "Night Harbor",
+      "location": "Enchanters guild (near the docks), outside the door an on a balcony from [[Jaakima]]",
+      "race": "Human",
+      "desc": "Was previously named [[Enchanter Regents]]."
+    },
+    {
+      "name": "Leatherworking Supplies",
+      "sells": [
+        "Leatherworking Kit",
+        "Seam Ripper",
+        "Skinning Knife"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "[[Sojourner Camp]]",
+      "race": "Human",
+      "desc": "Leatherworking Supplies Merchant"
+    },
+    {
+      "name": "Maheed the Butcher",
+      "sells": [],
+      "buys": [
+        "Monster Parts"
+      ],
+      "zone": "Night Harbor",
+      "location": "Night Market",
+      "race": "Human",
+      "desc": "Butcher Merchant for [[Skill Cooking|Cooking]]"
+    },
+    {
+      "name": "Master Tailor Sansha",
+      "sells": [
+        "Fine Blue Cloth Robe",
+        "Fine Green Cloth Robe",
+        "Fine Red Cloth Robe",
+        "Heavy Thread",
+        "Light Thread",
+        "Rough Thread",
+        "Satin Thread",
+        "Seam Ripper",
+        "Tailoring Kit"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "North gate, third door on the right when heading to the Mage Tower",
+      "race": "Human",
+      "desc": null
+    },
+    {
+      "name": "Mira Gables",
+      "sells": [
+        "Heavy Thread",
+        "Light Thread",
+        "Rough Thread",
+        "Satin Thread",
+        "Seam Ripper",
+        "Tailoring Kit"
+      ],
+      "buys": [
+        "Animal fur, fangs, silk",
+        "Bandages",
+        "Skeleton parts",
+        "Tailored armor",
+        "Tailoring material (scraps ...)"
+      ],
+      "zone": "Night Harbor",
+      "location": "North gate, third door on the right when heading to the Mage Tower",
+      "race": "Human",
+      "desc": null
+    },
+    {
+      "name": "Nerida Thinblade",
+      "sells": [
+        "Black Feather Whiskey",
+        "Rusty Dagger",
+        "Twilight Bay Rum",
+        "Water Flask",
+        "Weak Beer"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "The Spirit Tap",
+      "race": "Human",
+      "desc": "Bartender '''You say, \"Hail, Nerida Thinblade.\"''' : Nerida Thinblade says, \"Take a look at our selection. Hope you ain't picky.\""
+    },
+    {
+      "name": "Quartermaster Obaid",
+      "sells": [
+        "Buckler",
+        "Candle",
+        "Garrison Longsword",
+        "Kite Shield",
+        "Lumberjack Axe",
+        "Ration",
+        "Small Field Pack",
+        "Torch",
+        "Tower Shield",
+        "Water Flask"
+      ],
+      "buys": [
+        "Weapons",
+        "Armor",
+        "Food"
+      ],
+      "zone": "Night Harbor",
+      "location": "The Steel Talons Garrison",
+      "race": "Human",
+      "desc": "Weapons and Armor Merchant"
+    },
+    {
+      "name": "Rais Alyssum",
+      "sells": [
+        "Simple Brass Horn",
+        "Simple Wood Flute",
+        "Simple Wooden Lute",
+        "Small Hand Drum"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "Glimmermoon Hall",
+      "race": "Human",
+      "desc": "Instrument Merchant"
+    },
+    {
+      "name": "Riham",
+      "sells": [
+        "Tallow Potash",
+        "Tallow Soap"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "Docks",
+      "race": "Human",
+      "desc": "Dye Merchant, Only around during the day."
+    },
+    {
+      "name": "Sproggets Bedsprings",
+      "sells": [
+        "Animal Glue",
+        "Backpack",
+        "Candle",
+        "Charcoal",
+        "Cooking Pot",
+        "Fish Scaler",
+        "Grappling Hook",
+        "Lantern",
+        "Lantern Fuel",
+        "Lumberjack Axe",
+        "Parchment",
+        "Rope, Hempen, 50 Length",
+        "Rope, Silk, 50 Length",
+        "Small Field Pack",
+        "Torch"
+      ],
+      "buys": [
+        "Bags",
+        "Bandages",
+        "Light Stones",
+        "Giant Beetle Eyes",
+        "Torches"
+      ],
+      "zone": "Night Harbor",
+      "location": "Night market inside the house just northwest of [[a used weapons dealer]]",
+      "race": "Gnome",
+      "desc": "Sproggets Bedsprings buys and sells adventuring supplies. You say, \"Hail, Sproggets Bedsprings.\" Sproggets Bedsprings says, \"Heyo! Looking to get into some adventuring? Take a look at my wares.\""
+    },
+    {
+      "name": "Weaponsmith Sielah Zefir",
+      "sells": [
+        "Rusty Dagger",
+        "Rusty Mace",
+        "Rusty Shortsword"
+      ],
+      "buys": [
+        "Weapons"
+      ],
+      "zone": "Night Harbor",
+      "location": "Blackfeather Bazaar",
+      "race": "Human",
+      "desc": "Weapon Merchant"
+    }
+  ]
 }
