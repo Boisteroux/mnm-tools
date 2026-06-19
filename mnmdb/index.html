@@ -7,7 +7,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" />
-  <link rel="stylesheet" href="./styles.css" />
+  <!-- Cache-bust the stylesheet so edits show without a hard refresh (written
+       synchronously in <head> to avoid a flash of unstyled content). -->
+  <script>document.write('<link rel="stylesheet" href="styles.css?v=' + Date.now() + '">');</script>
+  <noscript><link rel="stylesheet" href="styles.css" /></noscript>
 </head>
 <body>
   <header>
@@ -41,6 +44,6 @@
     </span>
   </footer>
 
-  <script src="./app.js"></script>
+  <script>(function () { var s = document.createElement('script'); s.src = 'app.js?v=' + Date.now(); document.body.appendChild(s); })();</script>
 </body>
 </html>
