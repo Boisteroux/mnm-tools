@@ -13,7 +13,52 @@
         "orange": ["Copper Chain Tunic", "Copper Plate Breastplate", "Enchanted Copper Chain Tunic", "Enchanted Copper Plate Breastplate"],
         "red": ["Copper Greatsword", "Copper Maul", "Copper Tower Shield", "Bronze Bracket"],
         "greenTrivialAtOrBelow": ["Copper Tread", "Copper Stirrups", "(and every other copper recipe not listed above)"]
+      },
+      {
+        "skill": 50,
+        "note": "+2 skill from the level-48 reading. EVERY recipe moved exactly one colour step easier, so a colour band is worth ~2 skill points in this range (both data points agree). The level-48 lightblue recipes are now green (trivial), pinning their trivial at ~49-50. Enchanted variants still match their base item's colour.",
+        "lightblue": ["Copper War Lance", "Enchanted Copper Plate Helm"],
+        "darkblue": ["Copper Chain Leggings", "Copper Plate Greaves", "Enchanted Copper Chain Leggings", "Enchanted Copper Plate Greaves"],
+        "white": ["Copper Plate Barding"],
+        "yellow": ["Copper Chain Tunic", "Copper Plate Breastplate", "Enchanted Copper Chain Tunic", "Enchanted Copper Plate Breastplate"],
+        "orange": ["Copper Greatsword", "Copper Maul", "Copper Tower Shield", "Bronze Bracket", "Bronze Chain Links"],
+        "red": ["Bronze Fasteners", "Bronze Hinge", "Bronze Plate", "Jagged Sharpening Stone", "Jagged Weightstone", "Silver Chain Links", "Silver Plate", "Bronze Chain Gorget"],
+        "greenTrivialAtOrBelow": ["Copper Chain Coif", "Copper Chain Shoulderguards", "Copper Plate Helm", "Copper Plate Pauldrons", "Enchanted Copper Chain Coif", "(and every other copper recipe not listed above)"]
       }
     ]
+  },
+  "trivialEstimates": {
+    "_method": "Derived from the colour of each recipe at skill 48 AND skill 50. Every recipe shifted exactly one colour step easier over those +2 skill, so each colour band is ~2 skill points wide here; estimates are +/-1-2 and tighten with each new milestone reading. Recipes still RED at skill 50 are a lower bound only until a higher-skill reading shows them shift colour.",
+    "Blacksmithing": {
+      "Copper Chain Coif": "49-50",
+      "Copper Chain Shoulderguards": "49-50",
+      "Copper Plate Helm": "49-50",
+      "Copper Plate Pauldrons": "49-50",
+      "Enchanted Copper Chain Coif": "49-50",
+      "Enchanted Copper Plate Helm": "51-52",
+      "Copper War Lance": "51-52",
+      "Copper Chain Leggings": "53-54",
+      "Copper Plate Greaves": "53-54",
+      "Enchanted Copper Chain Leggings": "53-54",
+      "Enchanted Copper Plate Greaves": "53-54",
+      "Copper Plate Barding": "55-56",
+      "Copper Chain Tunic": "57-58",
+      "Copper Plate Breastplate": "57-58",
+      "Enchanted Copper Chain Tunic": "57-58",
+      "Enchanted Copper Plate Breastplate": "57-58",
+      "Copper Greatsword": "59-60",
+      "Copper Maul": "59-60",
+      "Copper Tower Shield": "59-60",
+      "Bronze Bracket": "59-60",
+      "Bronze Chain Links": "59-60",
+      "Bronze Fasteners": "61+",
+      "Bronze Hinge": "61+",
+      "Bronze Plate": "61+",
+      "Bronze Chain Gorget": "61+",
+      "Jagged Sharpening Stone": "61+",
+      "Jagged Weightstone": "61+",
+      "Silver Chain Links": "61+",
+      "Silver Plate": "61+"
+    }
   }
 }
