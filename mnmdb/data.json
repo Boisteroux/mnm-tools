@@ -1,8 +1,9 @@
 {
-  "generatedAt": "2026-06-19T21:48:09.418Z",
+  "generatedAt": "2026-06-20T07:16:48.616Z",
   "source": "mnm-tools",
-  "ledgerFiles": 19,
-  "events": 4232,
+  "ledgerFiles": 22,
+  "events": 6208,
+  "contributors": [],
   "mobs": {
     "a desert bat": {
       "kills": 0,
@@ -20,16 +21,16 @@
       "corpses": 14
     },
     "a rotting skeleton": {
-      "kills": 126,
+      "kills": 128,
       "drops": {
-        "Bone Chips": 53,
+        "Bone Chips": 54,
         "Rusty Mace": 3,
         "Worn Great Staff": 2,
         "Cloth Scraps": 38,
-        "Tattered Cloth Veil": 2,
+        "Tattered Cloth Veil": 3,
         "Shattered Skull": 3,
         "Rusty Scimitar": 5,
-        "Tattered Cloth Robe": 3,
+        "Tattered Cloth Robe": 4,
         "Rusty Battle Axe": 1,
         "Tattered Cloth Gorget": 3,
         "Worn Buckler": 1,
@@ -56,12 +57,12 @@
         "Rusty Trident": 1
       },
       "zones": {
-        "Night Harbor": 73,
+        "Night Harbor": 79,
         "Shaded Dunes": 13,
         "Evershade Weald": 273
       },
-      "coin": 183,
-      "corpses": 96
+      "coin": 187,
+      "corpses": 98
     },
     "a snake": {
       "kills": 0,
@@ -125,13 +126,13 @@
       "drops": {
         "Raw Jackal Meat": 1,
         "Jackal Tooth": 2,
-        "Low-Quality Jackal Pelt": 1
+        "Low-Quality Jackal Pelt": 2
       },
       "zones": {
-        "Night Harbor": 8
+        "Night Harbor": 9
       },
       "coin": 0,
-      "corpses": 2
+      "corpses": 3
     },
     "a dunes scarab": {
       "kills": 0,
@@ -260,17 +261,17 @@
       "corpses": 4
     },
     "a skeleton": {
-      "kills": 36,
+      "kills": 49,
       "drops": {
         "Rusty Maul": 2,
         "Torch": 1,
-        "Bone Chips": 17,
-        "Cloth Scraps": 14,
+        "Bone Chips": 23,
+        "Cloth Scraps": 17,
         "Tattered Cloth Veil": 2,
-        "Shattered Skull": 4,
+        "Shattered Skull": 5,
         "Tattered Cloth Cape": 1,
-        "Rawhide Scraps": 9,
-        "Worn Buckler": 1,
+        "Rawhide Scraps": 13,
+        "Worn Buckler": 2,
         "Rusty Shortsword": 1,
         "Tattered Cloth Cap": 1,
         "Worn Great Staff": 2,
@@ -281,14 +282,20 @@
         "Tattered Rawhide Boots": 1,
         "Tattered Rawhide Tunic": 3,
         "Rusty Longsword": 1,
-        "Tattered Cloth Shirt": 1
+        "Tattered Cloth Shirt": 1,
+        "Rusty Scimitar": 1,
+        "Tattered Rawhide Mask": 1,
+        "Tattered Cloth Robe": 2,
+        "Rusty Scythe": 1,
+        "Tattered Cloth Mantle": 1,
+        "Tattered Cloth Boots": 1
       },
       "zones": {
         "Shaded Dunes": 5,
-        "Evershade Weald": 114
+        "Evershade Weald": 159
       },
-      "coin": 479,
-      "corpses": 36
+      "coin": 630,
+      "corpses": 46
     },
     "a large dunes bat": {
       "kills": 0,
@@ -300,6 +307,104 @@
       },
       "coin": 0,
       "corpses": 1
+    },
+    "a skeletal fighter": {
+      "kills": 192,
+      "drops": {
+        "Tattered Cloth Robe": 2,
+        "Bone Chips": 63,
+        "Cloth Scraps": 59,
+        "Tattered Cloth Shirt": 4,
+        "Tattered Cloth Gorget": 2,
+        "Tattered Cloth Pantaloons": 2,
+        "Rusty Longsword": 2,
+        "Tattered Cloth Belt": 5,
+        "Rusty Axe": 2,
+        "Tattered Cloth Veil": 3,
+        "Incarnal Residue": 4,
+        "Rusty Tower Shield": 2,
+        "Tattered Cloth Tunic": 2,
+        "Rusty Scythe": 2,
+        "Rusty Spear": 1,
+        "Rusty Greatsword": 3,
+        "Tattered Cloth Bracer": 3,
+        "Tattered Cloth Cap": 5,
+        "Scorched Academy Folio": 1,
+        "Rusty War Lance": 2,
+        "Rusty Warhammer": 1,
+        "Tattered Cloth Mantle": 1,
+        "Cracked Staff": 1,
+        "Torch": 1,
+        "Tattered Cloth Boots": 1
+      },
+      "zones": {
+        "Tomb of the Last Wyrmsbane": 465
+      },
+      "coin": 1082,
+      "corpses": 105
+    },
+    "a skeletal warrior": {
+      "kills": 34,
+      "drops": {
+        "Tattered Cloth Cape": 3,
+        "Tattered Rawhide Leggings": 2,
+        "Rawhide Scraps": 11,
+        "Worn Bow": 1,
+        "Tattered Cloth Boots": 1,
+        "Bone Chips": 16,
+        "Cloth Scraps": 9,
+        "Tattered Cloth Gorget": 2,
+        "Tattered Rawhide Boots": 1,
+        "Rusty Mace": 2,
+        "Tattered Cloth Robe": 1,
+        "Tattered Rawhide Mask": 1,
+        "Rusty Dagger": 2,
+        "Tattered Cloth Pantaloons": 1,
+        "Tattered Rawhide Tunic": 1,
+        "Worn Great Staff": 1,
+        "Tattered Rawhide Bracer": 1,
+        "Tattered Cloth Bracer": 1,
+        "Tattered Cloth Gloves": 1
+      },
+      "zones": {
+        "Tomb of the Last Wyrmsbane": 109
+      },
+      "coin": 432,
+      "corpses": 32
+    },
+    "a skeletal cleric": {
+      "kills": 125,
+      "drops": {
+        "Cloth Scraps": 30,
+        "Bone Chips": 48,
+        "Tattered Cloth Shirt": 3,
+        "Rusty Tower Shield": 1,
+        "Tattered Cloth Bracer": 2,
+        "Tattered Cloth Cape": 2,
+        "Tattered Cloth Belt": 1,
+        "Tattered Cloth Cap": 1,
+        "Tattered Cloth Boots": 1,
+        "Incarnal Residue": 2,
+        "Rusty Dagger": 2,
+        "Worn Buckler": 2,
+        "Rusty Spear": 1,
+        "Rusty Longsword": 1,
+        "Tattered Cloth Pantaloons": 3,
+        "Tattered Cloth Gloves": 2,
+        "Rusty Trident": 1,
+        "Worn Bow": 1,
+        "Worn Great Staff": 1,
+        "Tattered Cloth Robe": 1,
+        "Tattered Cloth Veil": 2,
+        "Tattered Cloth Tunic": 1,
+        "Rusty Scythe": 1,
+        "Rusty Scimitar": 1
+      },
+      "zones": {
+        "Tomb of the Last Wyrmsbane": 308
+      },
+      "coin": 693,
+      "corpses": 78
     },
     "a diseased desert bat": {
       "kills": 0,
@@ -375,13 +480,13 @@
         "Wolf Tooth": 12,
         "Wolf Blood": 14,
         "Raw Wolf Meat": 12,
-        "Low-Quality Wolf Pelt": 12
+        "Low-Quality Wolf Pelt": 14
       },
       "zones": {
-        "Evershade Weald": 64
+        "Evershade Weald": 67
       },
       "coin": 0,
-      "corpses": 37
+      "corpses": 39
     },
     "a wasp drone": {
       "kills": 0,
@@ -486,13 +591,14 @@
         "Tattered Rawhide Belt": 1,
         "Tattered Cloth Shirt": 1,
         "Tattered Rawhide Gorget": 1,
-        "Worn Great Staff": 1
+        "Worn Great Staff": 1,
+        "Tattered Cloth Cap": 1
       },
       "zones": {
-        "Evershade Weald": 78
+        "Evershade Weald": 79
       },
       "coin": 343,
-      "corpses": 22
+      "corpses": 23
     },
     "a black widow": {
       "kills": 0,
@@ -546,14 +652,14 @@
       "corpses": 1
     },
     "an old elven skeleton": {
-      "kills": 28,
+      "kills": 43,
       "drops": {
-        "Bone Chips": 21,
+        "Bone Chips": 27,
         "Rune-Etched Bone": 3,
-        "Rawhide Scraps": 12,
+        "Rawhide Scraps": 18,
         "Torch": 1,
-        "Tattered Cloth Gorget": 1,
-        "Cloth Scraps": 13,
+        "Tattered Cloth Gorget": 2,
+        "Cloth Scraps": 18,
         "Tattered Cloth Boots": 1,
         "Tattered Cloth Belt": 1,
         "Rusty Axe": 1,
@@ -563,13 +669,18 @@
         "Tattered Rawhide Cap": 1,
         "Rusty Shortsword": 1,
         "Worn Bow": 1,
-        "Tattered Cloth Gloves": 1
+        "Tattered Cloth Gloves": 1,
+        "Rusty War Lance": 1,
+        "Tattered Cloth Bracer": 1,
+        "Tattered Rawhide Mask": 1,
+        "Rusty Dagger": 1,
+        "Rusty Warhammer": 1
       },
       "zones": {
-        "Evershade Weald": 100
+        "Evershade Weald": 154
       },
-      "coin": 623,
-      "corpses": 25
+      "coin": 953,
+      "corpses": 34
     },
     "a Fellstone shaman": {
       "kills": 2,
@@ -587,31 +698,43 @@
       "corpses": 2
     },
     "a Fellstone tracker": {
-      "kills": 1,
+      "kills": 15,
       "drops": {
-        "Rawhide Scraps": 1,
+        "Rawhide Scraps": 3,
         "Unintelligible Report": 1,
-        "Cloth Scraps": 1,
-        "Raw Orc Meat": 1
+        "Cloth Scraps": 3,
+        "Raw Orc Meat": 1,
+        "Tattered Rawhide Belt": 1,
+        "Tattered Rawhide Vest": 1,
+        "Left Orc Ear": 2,
+        "Tattered Cloth Tunic": 1,
+        "Rusty Maul": 1,
+        "Tattered Cloth Belt": 1,
+        "Rusty Dagger": 1,
+        "Tattered Cloth Bracer": 1,
+        "Tattered Rawhide Gloves": 1,
+        "Rusty Scimitar": 1
       },
       "zones": {
-        "Evershade Weald": 5
+        "Evershade Weald": 5,
+        "Blacktidebay": 34
       },
-      "coin": 24,
-      "corpses": 1
+      "coin": 508,
+      "corpses": 12
     },
     "a rabid wolf": {
       "kills": 0,
       "drops": {
         "Raw Wolf Meat": 2,
-        "Low-Quality Wolf Pelt": 2,
-        "Wolf Tooth": 1
+        "Low-Quality Wolf Pelt": 3,
+        "Wolf Tooth": 1,
+        "Wolf Blood": 2
       },
       "zones": {
-        "Evershade Weald": 6
+        "Evershade Weald": 9
       },
       "coin": 0,
-      "corpses": 4
+      "corpses": 6
     },
     "Rotmuzzle": {
       "kills": 0,
@@ -644,6 +767,210 @@
       },
       "coin": 0,
       "corpses": 18
+    },
+    "a Calafreyan soldier": {
+      "kills": 10,
+      "drops": {
+        "Tattered Rawhide Gorget": 1,
+        "Rusty War Lance": 1,
+        "Rawhide Scraps": 3,
+        "Rusty Mace": 1,
+        "Tattered Cloth Belt": 1,
+        "Bone Chips": 2,
+        "Rusty Long Spear": 1,
+        "Rusty Tower Shield": 1,
+        "Cloth Scraps": 1
+      },
+      "zones": {
+        "Evershade Weald": 29
+      },
+      "coin": 337,
+      "corpses": 8
+    },
+    "a Calafreyan archer": {
+      "kills": 7,
+      "drops": {
+        "Tattered Rawhide Tunic": 1,
+        "Bone Chips": 2,
+        "Cloth Scraps": 1,
+        "Rawhide Scraps": 1
+      },
+      "zones": {
+        "Evershade Weald": 16
+      },
+      "coin": 286,
+      "corpses": 4
+    },
+    "an elven thaumaturge": {
+      "kills": 2,
+      "drops": {
+        "Cloth Scraps": 1,
+        "Rawhide Scraps": 1,
+        "Bone Chips": 1
+      },
+      "zones": {
+        "Evershade Weald": 8
+      },
+      "coin": 56,
+      "corpses": 1
+    },
+    "a Calafreyan theurgist": {
+      "kills": 3,
+      "drops": {
+        "Bone Chips": 1
+      },
+      "zones": {
+        "Evershade Weald": 5
+      },
+      "coin": 120,
+      "corpses": 1
+    },
+    "a Fellstone sentry": {
+      "kills": 114,
+      "drops": {
+        "Rawhide Scraps": 29,
+        "Cloth Scraps": 31,
+        "Rusty Shortsword": 2,
+        "Tattered Cloth Cap": 1,
+        "Rusty Long Spear": 2,
+        "Left Orc Ear": 9,
+        "Tattered Cloth Veil": 2,
+        "Rusty Mace": 1,
+        "Rusty Greatsword": 1,
+        "Tattered Rawhide Leggings": 3,
+        "Tattered Rawhide Bracer": 2,
+        "Rusty Tower Shield": 1,
+        "Rusty Scimitar": 1,
+        "Worn Bow": 2,
+        "Raw Orc Meat": 17,
+        "Tattered Cloth Tunic": 3,
+        "Tattered Rawhide Mask": 3,
+        "Tattered Rawhide Gorget": 1,
+        "Worn Great Staff": 1,
+        "Tattered Cloth Cape": 2,
+        "Eth-ur Geological Journal Page": 1,
+        "Rusty Trident": 1,
+        "Tattered Cloth Bracer": 4,
+        "Tattered Cloth Gorget": 1,
+        "Rusty Longsword": 1,
+        "Tattered Cloth Robe": 1,
+        "Cracked Staff": 1,
+        "Tattered Rawhide Cap": 1,
+        "Tattered Rawhide Cloak": 1,
+        "Rusty Maul": 1,
+        "Tattered Rawhide Tunic": 1,
+        "Rusty Great Scythe": 2,
+        "Rusty Scythe": 1,
+        "Rusty Warhammer": 1,
+        "Rusty Battle Axe": 2,
+        "Tattered Cloth Belt": 1
+      },
+      "zones": {
+        "Blacktidebay": 325
+      },
+      "coin": 4030,
+      "corpses": 60
+    },
+    "a Fellstone guard": {
+      "kills": 56,
+      "drops": {
+        "Cloth Scraps": 15,
+        "Tattered Rawhide Cap": 1,
+        "Rawhide Scraps": 12,
+        "Raw Orc Meat": 11,
+        "Rusty Dagger": 1,
+        "Tattered Cloth Cape": 1,
+        "Left Orc Ear": 12,
+        "Rusty Spear": 2,
+        "Rusty Great Scythe": 2,
+        "Tattered Cloth Cap": 1,
+        "Tattered Cloth Tunic": 2,
+        "Tattered Cloth Belt": 1,
+        "Torch": 2,
+        "Tattered Cloth Gorget": 2,
+        "Worn Buckler": 2,
+        "Spirit World Ch. 1": 1,
+        "Tattered Cloth Shirt": 1,
+        "Tattered Cloth Mantle": 1,
+        "Rusty Longsword": 1,
+        "Tattered Rawhide Gorget": 1
+      },
+      "zones": {
+        "Blacktidebay": 173
+      },
+      "coin": 1746,
+      "corpses": 34
+    },
+    "a Fellstone ragecaller": {
+      "kills": 8,
+      "drops": {
+        "Rawhide Scraps": 4,
+        "Tattered Cloth Belt": 1,
+        "Cloth Scraps": 2,
+        "Rusty Kite Shield": 1
+      },
+      "zones": {
+        "Blacktidebay": 20
+      },
+      "coin": 252,
+      "corpses": 6
+    },
+    "a trained wolf": {
+      "kills": 0,
+      "drops": {
+        "Raw Wolf Meat": 4,
+        "Wolf Tooth": 3,
+        "Low-Quality Wolf Pelt": 4,
+        "Wolf Blood": 4
+      },
+      "zones": {
+        "Blacktidebay": 22
+      },
+      "coin": 0,
+      "corpses": 14
+    },
+    "a Fellstone sentinel": {
+      "kills": 7,
+      "drops": {
+        "Rawhide Scraps": 3,
+        "Left Orc Ear": 1,
+        "Cloth Scraps": 2,
+        "Rusty War Lance": 1
+      },
+      "zones": {
+        "Blacktidebay": 18
+      },
+      "coin": 226,
+      "corpses": 4
+    },
+    "a Fellstone defiler": {
+      "kills": 7,
+      "drops": {
+        "Cloth Scraps": 3,
+        "Tattered Rawhide Gorget": 1,
+        "Raw Orc Meat": 2,
+        "Torch": 1,
+        "Worn Bow": 1
+      },
+      "zones": {
+        "Blacktidebay": 18
+      },
+      "coin": 245,
+      "corpses": 5
+    },
+    "a dark-robed figure": {
+      "kills": 1,
+      "drops": {
+        "Letter of Correspondence": 1,
+        "Dark Hood": 1,
+        "Cloth Scraps": 1,
+        "Tattered Rawhide Belt": 1
+      },
+      "zones": {
+        "Evershade Weald": 5
+      },
+      "coin": 53,
+      "corpses": 1
     }
   },
   "items": [
@@ -960,22 +1287,64 @@
       "name": "Bone Chips",
       "droppedBy": [
         {
+          "mob": "an elven thaumaturge",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
+        {
+          "mob": "a Calafreyan theurgist",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
+        {
           "mob": "an old elven skeleton",
-          "drops": 21,
-          "corpses": 25,
-          "rate": 0.84
+          "drops": 27,
+          "corpses": 34,
+          "rate": 0.7941176470588235
+        },
+        {
+          "mob": "a skeletal cleric",
+          "drops": 48,
+          "corpses": 78,
+          "rate": 0.6153846153846154
+        },
+        {
+          "mob": "a skeletal fighter",
+          "drops": 63,
+          "corpses": 105,
+          "rate": 0.6
         },
         {
           "mob": "a rotting skeleton",
-          "drops": 53,
-          "corpses": 96,
-          "rate": 0.5520833333333334
+          "drops": 54,
+          "corpses": 98,
+          "rate": 0.5510204081632653
         },
         {
           "mob": "a skeleton",
-          "drops": 17,
-          "corpses": 36,
-          "rate": 0.4722222222222222
+          "drops": 23,
+          "corpses": 46,
+          "rate": 0.5
+        },
+        {
+          "mob": "a skeletal warrior",
+          "drops": 16,
+          "corpses": 32,
+          "rate": 0.5
+        },
+        {
+          "mob": "a Calafreyan archer",
+          "drops": 2,
+          "corpses": 4,
+          "rate": 0.5
+        },
+        {
+          "mob": "a Calafreyan soldier",
+          "drops": 2,
+          "corpses": 8,
+          "rate": 0.25
         }
       ],
       "prices": [
@@ -986,8 +1355,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Evershade Weald",
         "Tomb of the Last Wyrmsbane",
+        "Evershade Weald",
         "Night Harbor",
         "Shaded Dunes"
       ]
@@ -1014,10 +1383,10 @@
       "prices": [
         {
           "copper": 1,
-          "count": 26
+          "count": 29
         }
       ],
-      "harvested": 633,
+      "harvested": 680,
       "zones": [
         "Evershade Weald",
         "Night Harbor",
@@ -1146,7 +1515,7 @@
       "name": "Chipped Blue Diamond",
       "droppedBy": [],
       "prices": [],
-      "harvested": 2,
+      "harvested": 3,
       "zones": [
         "Evershade Weald"
       ]
@@ -1157,7 +1526,7 @@
       "name": "Chipped Cat's Eye Agate",
       "droppedBy": [],
       "prices": [],
-      "harvested": 1,
+      "harvested": 2,
       "zones": [
         "Evershade Weald"
       ]
@@ -1191,6 +1560,17 @@
       "droppedBy": [],
       "prices": [],
       "harvested": 4,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
+      "id": "chipped_fire_opal",
+      "gameId": null,
+      "name": "Chipped Fire Opal",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
       "zones": [
         "Evershade Weald"
       ]
@@ -1322,16 +1702,46 @@
       "name": "Cloth Scraps",
       "droppedBy": [
         {
-          "mob": "a Fellstone tracker",
+          "mob": "an elven thaumaturge",
           "drops": 1,
           "corpses": 1,
           "rate": 1
         },
         {
+          "mob": "a dark-robed figure",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
+        {
+          "mob": "a Fellstone defiler",
+          "drops": 3,
+          "corpses": 5,
+          "rate": 0.6
+        },
+        {
+          "mob": "a skeletal fighter",
+          "drops": 59,
+          "corpses": 105,
+          "rate": 0.5619047619047619
+        },
+        {
           "mob": "an old elven skeleton",
-          "drops": 13,
-          "corpses": 25,
-          "rate": 0.52
+          "drops": 18,
+          "corpses": 34,
+          "rate": 0.5294117647058824
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 31,
+          "corpses": 60,
+          "rate": 0.5166666666666667
+        },
+        {
+          "mob": "a Fellstone sentinel",
+          "drops": 2,
+          "corpses": 4,
+          "rate": 0.5
         },
         {
           "mob": "a Fellstone scout",
@@ -1340,10 +1750,10 @@
           "rate": 0.45714285714285713
         },
         {
-          "mob": "a Fellstone warrior",
-          "drops": 9,
-          "corpses": 22,
-          "rate": 0.4090909090909091
+          "mob": "a Fellstone guard",
+          "drops": 15,
+          "corpses": 34,
+          "rate": 0.4411764705882353
         },
         {
           "mob": "an ashira lookout",
@@ -1352,16 +1762,28 @@
           "rate": 0.4
         },
         {
+          "mob": "a Fellstone warrior",
+          "drops": 9,
+          "corpses": 23,
+          "rate": 0.391304347826087
+        },
+        {
           "mob": "a rotting skeleton",
           "drops": 38,
-          "corpses": 96,
-          "rate": 0.3958333333333333
+          "corpses": 98,
+          "rate": 0.3877551020408163
+        },
+        {
+          "mob": "a skeletal cleric",
+          "drops": 30,
+          "corpses": 78,
+          "rate": 0.38461538461538464
         },
         {
           "mob": "a skeleton",
-          "drops": 14,
-          "corpses": 36,
-          "rate": 0.3888888888888889
+          "drops": 17,
+          "corpses": 46,
+          "rate": 0.3695652173913043
         },
         {
           "mob": "an ashira scout",
@@ -1376,17 +1798,48 @@
           "rate": 0.3333333333333333
         },
         {
+          "mob": "a Fellstone ragecaller",
+          "drops": 2,
+          "corpses": 6,
+          "rate": 0.3333333333333333
+        },
+        {
           "mob": "an ashira warrior",
           "drops": 3,
           "corpses": 10,
           "rate": 0.3
+        },
+        {
+          "mob": "a skeletal warrior",
+          "drops": 9,
+          "corpses": 32,
+          "rate": 0.28125
+        },
+        {
+          "mob": "a Fellstone tracker",
+          "drops": 3,
+          "corpses": 12,
+          "rate": 0.25
+        },
+        {
+          "mob": "a Calafreyan archer",
+          "drops": 1,
+          "corpses": 4,
+          "rate": 0.25
+        },
+        {
+          "mob": "a Calafreyan soldier",
+          "drops": 1,
+          "corpses": 8,
+          "rate": 0.125
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Evershade Weald",
         "Tomb of the Last Wyrmsbane",
+        "Evershade Weald",
+        "Blacktidebay",
         "Night Harbor",
         "Shaded Dunes"
       ]
@@ -1533,7 +1986,7 @@
       "name": "Copper Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 599,
+      "harvested": 639,
       "zones": [
         "Evershade Weald",
         "Night Harbor",
@@ -1622,7 +2075,7 @@
       "prices": [
         {
           "copper": 56,
-          "count": 15
+          "count": 17
         }
       ],
       "harvested": 0,
@@ -1630,7 +2083,7 @@
     },
     {
       "id": "cracked_staff",
-      "gameId": "cracked_staff",
+      "gameId": "902802015e7f03b879687c3b",
       "name": "Cracked Staff",
       "droppedBy": [
         {
@@ -1638,11 +2091,30 @@
           "drops": 1,
           "corpses": 35,
           "rate": 0.02857142857142857
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 1,
+          "corpses": 60,
+          "rate": 0.016666666666666666
+        },
+        {
+          "mob": "a skeletal fighter",
+          "drops": 1,
+          "corpses": 105,
+          "rate": 0.009523809523809525
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 526,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
+        "Blacktidebay",
+        "Tomb of the Last Wyrmsbane",
         "Evershade Weald"
       ]
     },
@@ -1699,6 +2171,24 @@
       ],
       "harvested": 0,
       "zones": []
+    },
+    {
+      "id": "dark_hood",
+      "gameId": "b46da7a1c4b284c6f4c07fee",
+      "name": "Dark Hood",
+      "droppedBy": [
+        {
+          "mob": "a dark-robed figure",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
     },
     {
       "id": "decayed_great_staff",
@@ -1974,6 +2464,24 @@
       ]
     },
     {
+      "id": "eth_ur_geological_journal_page",
+      "gameId": "dae5a9bb1f661adcc0eabdfb",
+      "name": "Eth-ur Geological Journal Page",
+      "droppedBy": [
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 1,
+          "corpses": 60,
+          "rate": 0.016666666666666666
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Blacktidebay"
+      ]
+    },
+    {
       "id": "fellstone_warrior_s_belt",
       "gameId": "orc_warrior_belt",
       "name": "Fellstone Warrior's Belt",
@@ -1981,8 +2489,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 3,
-          "corpses": 22,
-          "rate": 0.13636363636363635
+          "corpses": 23,
+          "rate": 0.13043478260869565
         }
       ],
       "prices": [],
@@ -2289,6 +2797,30 @@
       "zones": []
     },
     {
+      "id": "incarnal_residue",
+      "gameId": "c87406a86ee3c870601a6746",
+      "name": "Incarnal Residue",
+      "droppedBy": [
+        {
+          "mob": "a skeletal fighter",
+          "drops": 4,
+          "corpses": 105,
+          "rate": 0.0380952380952381
+        },
+        {
+          "mob": "a skeletal cleric",
+          "drops": 2,
+          "corpses": 78,
+          "rate": 0.02564102564102564
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Tomb of the Last Wyrmsbane"
+      ]
+    },
+    {
       "id": "jackal_tooth",
       "gameId": "jackal_tooth",
       "name": "Jackal Tooth",
@@ -2296,8 +2828,8 @@
         {
           "mob": "a jackal pup",
           "drops": 2,
-          "corpses": 2,
-          "rate": 1
+          "corpses": 3,
+          "rate": 0.6666666666666666
         }
       ],
       "prices": [
@@ -2387,10 +2919,53 @@
           "rate": 0.5
         },
         {
+          "mob": "a Fellstone guard",
+          "drops": 12,
+          "corpses": 34,
+          "rate": 0.35294117647058826
+        },
+        {
+          "mob": "a Fellstone sentinel",
+          "drops": 1,
+          "corpses": 4,
+          "rate": 0.25
+        },
+        {
           "mob": "a Fellstone warrior",
           "drops": 4,
-          "corpses": 22,
-          "rate": 0.18181818181818182
+          "corpses": 23,
+          "rate": 0.17391304347826086
+        },
+        {
+          "mob": "a Fellstone tracker",
+          "drops": 2,
+          "corpses": 12,
+          "rate": 0.16666666666666666
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 9,
+          "corpses": 60,
+          "rate": 0.15
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Blacktidebay",
+        "Evershade Weald"
+      ]
+    },
+    {
+      "id": "letter_of_correspondence",
+      "gameId": "c59549f78fe8e924cb9da0f0",
+      "name": "Letter of Correspondence",
+      "droppedBy": [
+        {
+          "mob": "a dark-robed figure",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
         }
       ],
       "prices": [],
@@ -2410,7 +2985,7 @@
           "count": 1
         }
       ],
-      "harvested": 23,
+      "harvested": 28,
       "zones": [
         "Evershade Weald"
       ]
@@ -2422,9 +2997,9 @@
       "droppedBy": [
         {
           "mob": "a jackal pup",
-          "drops": 1,
-          "corpses": 2,
-          "rate": 0.5
+          "drops": 2,
+          "corpses": 3,
+          "rate": 0.6666666666666666
         }
       ],
       "prices": [
@@ -2445,15 +3020,21 @@
       "droppedBy": [
         {
           "mob": "a rabid wolf",
-          "drops": 2,
-          "corpses": 4,
+          "drops": 3,
+          "corpses": 6,
           "rate": 0.5
         },
         {
           "mob": "a black wolf pup",
-          "drops": 12,
-          "corpses": 37,
-          "rate": 0.32432432432432434
+          "drops": 14,
+          "corpses": 39,
+          "rate": 0.358974358974359
+        },
+        {
+          "mob": "a trained wolf",
+          "drops": 4,
+          "corpses": 14,
+          "rate": 0.2857142857142857
         }
       ],
       "prices": [
@@ -2468,7 +3049,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Evershade Weald"
+        "Evershade Weald",
+        "Blacktidebay"
       ]
     },
     {
@@ -2796,8 +3378,8 @@
         {
           "mob": "a jackal pup",
           "drops": 1,
-          "corpses": 2,
-          "rate": 0.5
+          "corpses": 3,
+          "rate": 0.3333333333333333
         }
       ],
       "prices": [],
@@ -2812,28 +3394,46 @@
       "name": "Raw Orc Meat",
       "droppedBy": [
         {
-          "mob": "a Fellstone tracker",
-          "drops": 1,
-          "corpses": 1,
-          "rate": 1
-        },
-        {
           "mob": "a Fellstone shaman",
           "drops": 1,
           "corpses": 2,
           "rate": 0.5
         },
         {
+          "mob": "a Fellstone defiler",
+          "drops": 2,
+          "corpses": 5,
+          "rate": 0.4
+        },
+        {
+          "mob": "a Fellstone guard",
+          "drops": 11,
+          "corpses": 34,
+          "rate": 0.3235294117647059
+        },
+        {
           "mob": "a Fellstone warrior",
           "drops": 7,
-          "corpses": 22,
-          "rate": 0.3181818181818182
+          "corpses": 23,
+          "rate": 0.30434782608695654
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 17,
+          "corpses": 60,
+          "rate": 0.2833333333333333
         },
         {
           "mob": "a Fellstone scout",
           "drops": 7,
           "corpses": 35,
           "rate": 0.2
+        },
+        {
+          "mob": "a Fellstone tracker",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
         }
       ],
       "prices": [
@@ -2848,6 +3448,7 @@
       ],
       "harvested": 0,
       "zones": [
+        "Blacktidebay",
         "Evershade Weald"
       ]
     },
@@ -2894,14 +3495,20 @@
         {
           "mob": "a rabid wolf",
           "drops": 2,
-          "corpses": 4,
-          "rate": 0.5
+          "corpses": 6,
+          "rate": 0.3333333333333333
         },
         {
           "mob": "a black wolf pup",
           "drops": 12,
-          "corpses": 37,
-          "rate": 0.32432432432432434
+          "corpses": 39,
+          "rate": 0.3076923076923077
+        },
+        {
+          "mob": "a trained wolf",
+          "drops": 4,
+          "corpses": 14,
+          "rate": 0.2857142857142857
         }
       ],
       "prices": [
@@ -2916,8 +3523,37 @@
       ],
       "harvested": 0,
       "zones": [
-        "Evershade Weald"
+        "Evershade Weald",
+        "Blacktidebay"
       ]
+    },
+    {
+      "id": "rawhide_belt",
+      "gameId": null,
+      "name": "Rawhide Belt",
+      "droppedBy": [],
+      "prices": [
+        {
+          "copper": 52,
+          "count": 2
+        }
+      ],
+      "harvested": 0,
+      "zones": []
+    },
+    {
+      "id": "rawhide_gloves",
+      "gameId": null,
+      "name": "Rawhide Gloves",
+      "droppedBy": [],
+      "prices": [
+        {
+          "copper": 52,
+          "count": 3
+        }
+      ],
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "rawhide_scraps",
@@ -2925,10 +3561,28 @@
       "name": "Rawhide Scraps",
       "droppedBy": [
         {
-          "mob": "a Fellstone tracker",
+          "mob": "an elven thaumaturge",
           "drops": 1,
           "corpses": 1,
           "rate": 1
+        },
+        {
+          "mob": "a Fellstone sentinel",
+          "drops": 3,
+          "corpses": 4,
+          "rate": 0.75
+        },
+        {
+          "mob": "a Fellstone ragecaller",
+          "drops": 4,
+          "corpses": 6,
+          "rate": 0.6666666666666666
+        },
+        {
+          "mob": "an old elven skeleton",
+          "drops": 18,
+          "corpses": 34,
+          "rate": 0.5294117647058824
         },
         {
           "mob": "a Fellstone shaman",
@@ -2937,10 +3591,28 @@
           "rate": 0.5
         },
         {
-          "mob": "an old elven skeleton",
+          "mob": "a Fellstone sentry",
+          "drops": 29,
+          "corpses": 60,
+          "rate": 0.48333333333333334
+        },
+        {
+          "mob": "a Calafreyan soldier",
+          "drops": 3,
+          "corpses": 8,
+          "rate": 0.375
+        },
+        {
+          "mob": "a Fellstone guard",
           "drops": 12,
-          "corpses": 25,
-          "rate": 0.48
+          "corpses": 34,
+          "rate": 0.35294117647058826
+        },
+        {
+          "mob": "a skeletal warrior",
+          "drops": 11,
+          "corpses": 32,
+          "rate": 0.34375
         },
         {
           "mob": "an ashira shaman",
@@ -2950,15 +3622,27 @@
         },
         {
           "mob": "a skeleton",
-          "drops": 9,
-          "corpses": 36,
+          "drops": 13,
+          "corpses": 46,
+          "rate": 0.2826086956521739
+        },
+        {
+          "mob": "a Fellstone tracker",
+          "drops": 3,
+          "corpses": 12,
+          "rate": 0.25
+        },
+        {
+          "mob": "a Calafreyan archer",
+          "drops": 1,
+          "corpses": 4,
           "rate": 0.25
         },
         {
           "mob": "a Fellstone warrior",
           "drops": 5,
-          "corpses": 22,
-          "rate": 0.22727272727272727
+          "corpses": 23,
+          "rate": 0.21739130434782608
         },
         {
           "mob": "an ashira lookout",
@@ -2970,9 +3654,10 @@
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Blacktidebay",
         "Evershade Weald",
-        "Shaded Dunes",
-        "Tomb of the Last Wyrmsbane"
+        "Tomb of the Last Wyrmsbane",
+        "Shaded Dunes"
       ]
     },
     {
@@ -2986,7 +3671,7 @@
           "count": 12
         }
       ],
-      "harvested": 263,
+      "harvested": 288,
       "zones": [
         "Evershade Weald",
         "Night Harbor"
@@ -3074,8 +3759,8 @@
         {
           "mob": "an old elven skeleton",
           "drops": 3,
-          "corpses": 25,
-          "rate": 0.12
+          "corpses": 34,
+          "rate": 0.08823529411764706
         }
       ],
       "prices": [],
@@ -3090,22 +3775,28 @@
       "name": "Rusty Axe",
       "droppedBy": [
         {
-          "mob": "an old elven skeleton",
-          "drops": 1,
-          "corpses": 25,
-          "rate": 0.04
-        },
-        {
           "mob": "a rotting skeleton",
           "drops": 3,
-          "corpses": 96,
-          "rate": 0.03125
+          "corpses": 98,
+          "rate": 0.030612244897959183
+        },
+        {
+          "mob": "an old elven skeleton",
+          "drops": 1,
+          "corpses": 34,
+          "rate": 0.029411764705882353
         },
         {
           "mob": "a Fellstone scout",
           "drops": 1,
           "corpses": 35,
           "rate": 0.02857142857142857
+        },
+        {
+          "mob": "a skeletal fighter",
+          "drops": 2,
+          "corpses": 105,
+          "rate": 0.01904761904761905
         }
       ],
       "prices": [
@@ -3117,6 +3808,7 @@
       "harvested": 0,
       "zones": [
         "Evershade Weald",
+        "Tomb of the Last Wyrmsbane",
         "Night Harbor"
       ]
     },
@@ -3126,10 +3818,16 @@
       "name": "Rusty Battle Axe",
       "droppedBy": [
         {
+          "mob": "a Fellstone sentry",
+          "drops": 2,
+          "corpses": 60,
+          "rate": 0.03333333333333333
+        },
+        {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 96,
-          "rate": 0.010416666666666666
+          "corpses": 98,
+          "rate": 0.01020408163265306
         }
       ],
       "prices": [
@@ -3140,14 +3838,39 @@
       ],
       "harvested": 0,
       "zones": [
+        "Blacktidebay",
         "Evershade Weald"
       ]
     },
     {
       "id": "rusty_dagger",
-      "gameId": "rusty_dagger",
+      "gameId": "e8d3195fde3a66b0223bf5e4",
       "name": "Rusty Dagger",
       "droppedBy": [
+        {
+          "mob": "a Fellstone tracker",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
+        },
+        {
+          "mob": "a skeletal warrior",
+          "drops": 2,
+          "corpses": 32,
+          "rate": 0.0625
+        },
+        {
+          "mob": "a Fellstone guard",
+          "drops": 1,
+          "corpses": 34,
+          "rate": 0.029411764705882353
+        },
+        {
+          "mob": "an old elven skeleton",
+          "drops": 1,
+          "corpses": 34,
+          "rate": 0.029411764705882353
+        },
         {
           "mob": "a Fellstone scout",
           "drops": 1,
@@ -3155,10 +3878,16 @@
           "rate": 0.02857142857142857
         },
         {
+          "mob": "a skeletal cleric",
+          "drops": 2,
+          "corpses": 78,
+          "rate": 0.02564102564102564
+        },
+        {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 96,
-          "rate": 0.010416666666666666
+          "corpses": 98,
+          "rate": 0.01020408163265306
         }
       ],
       "prices": [
@@ -3169,8 +3898,9 @@
       ],
       "harvested": 0,
       "zones": [
+        "Tomb of the Last Wyrmsbane",
         "Evershade Weald",
-        "Tomb of the Last Wyrmsbane"
+        "Blacktidebay"
       ]
     },
     {
@@ -3179,16 +3909,28 @@
       "name": "Rusty Great Scythe",
       "droppedBy": [
         {
+          "mob": "a Fellstone guard",
+          "drops": 2,
+          "corpses": 34,
+          "rate": 0.058823529411764705
+        },
+        {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 22,
-          "rate": 0.045454545454545456
+          "corpses": 23,
+          "rate": 0.043478260869565216
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 2,
+          "corpses": 60,
+          "rate": 0.03333333333333333
         },
         {
           "mob": "a rotting skeleton",
           "drops": 2,
-          "corpses": 96,
-          "rate": 0.020833333333333332
+          "corpses": 98,
+          "rate": 0.02040816326530612
         }
       ],
       "prices": [
@@ -3199,13 +3941,14 @@
       ],
       "harvested": 0,
       "zones": [
+        "Blacktidebay",
         "Night Harbor",
         "Evershade Weald"
       ]
     },
     {
       "id": "rusty_greatsword",
-      "gameId": "rusty_2sword",
+      "gameId": "260771fe4344d5709aa81d05",
       "name": "Rusty Greatsword",
       "droppedBy": [
         {
@@ -3213,6 +3956,18 @@
           "drops": 2,
           "corpses": 35,
           "rate": 0.05714285714285714
+        },
+        {
+          "mob": "a skeletal fighter",
+          "drops": 3,
+          "corpses": 105,
+          "rate": 0.02857142857142857
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 1,
+          "corpses": 60,
+          "rate": 0.016666666666666666
         }
       ],
       "prices": [
@@ -3223,7 +3978,9 @@
       ],
       "harvested": 0,
       "zones": [
-        "Evershade Weald"
+        "Tomb of the Last Wyrmsbane",
+        "Evershade Weald",
+        "Blacktidebay"
       ]
     },
     {
@@ -3232,10 +3989,16 @@
       "name": "Rusty Kite Shield",
       "droppedBy": [
         {
+          "mob": "a Fellstone ragecaller",
+          "drops": 1,
+          "corpses": 6,
+          "rate": 0.16666666666666666
+        },
+        {
           "mob": "a rotting skeleton",
           "drops": 2,
-          "corpses": 96,
-          "rate": 0.020833333333333332
+          "corpses": 98,
+          "rate": 0.02040816326530612
         }
       ],
       "prices": [
@@ -3246,37 +4009,87 @@
       ],
       "harvested": 0,
       "zones": [
+        "Evershade Weald",
+        "Blacktidebay"
+      ]
+    },
+    {
+      "id": "rusty_long_spear",
+      "gameId": "e3fa2ab12c4eaf0a5480712f",
+      "name": "Rusty Long Spear",
+      "droppedBy": [
+        {
+          "mob": "a Calafreyan soldier",
+          "drops": 1,
+          "corpses": 8,
+          "rate": 0.125
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 2,
+          "corpses": 60,
+          "rate": 0.03333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Blacktidebay",
         "Evershade Weald"
       ]
     },
     {
       "id": "rusty_longsword",
-      "gameId": "rusty_lsword",
+      "gameId": "3f5cd6f4894a79ea05badfa2",
       "name": "Rusty Longsword",
       "droppedBy": [
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 22,
-          "rate": 0.045454545454545456
+          "corpses": 23,
+          "rate": 0.043478260869565216
         },
         {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 25,
-          "rate": 0.04
+          "corpses": 34,
+          "rate": 0.029411764705882353
+        },
+        {
+          "mob": "a Fellstone guard",
+          "drops": 1,
+          "corpses": 34,
+          "rate": 0.029411764705882353
         },
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
+          "corpses": 46,
+          "rate": 0.021739130434782608
+        },
+        {
+          "mob": "a skeletal fighter",
+          "drops": 2,
+          "corpses": 105,
+          "rate": 0.01904761904761905
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 1,
+          "corpses": 60,
+          "rate": 0.016666666666666666
+        },
+        {
+          "mob": "a skeletal cleric",
+          "drops": 1,
+          "corpses": 78,
+          "rate": 0.01282051282051282
         },
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 96,
-          "rate": 0.010416666666666666
+          "corpses": 98,
+          "rate": 0.01020408163265306
         }
       ],
       "prices": [
@@ -3287,7 +4100,9 @@
       ],
       "harvested": 0,
       "zones": [
-        "Evershade Weald"
+        "Evershade Weald",
+        "Tomb of the Last Wyrmsbane",
+        "Blacktidebay"
       ]
     },
     {
@@ -3296,10 +4111,28 @@
       "name": "Rusty Mace",
       "droppedBy": [
         {
+          "mob": "a Calafreyan soldier",
+          "drops": 1,
+          "corpses": 8,
+          "rate": 0.125
+        },
+        {
+          "mob": "a skeletal warrior",
+          "drops": 2,
+          "corpses": 32,
+          "rate": 0.0625
+        },
+        {
           "mob": "a rotting skeleton",
           "drops": 3,
-          "corpses": 96,
-          "rate": 0.03125
+          "corpses": 98,
+          "rate": 0.030612244897959183
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 1,
+          "corpses": 60,
+          "rate": 0.016666666666666666
         }
       ],
       "prices": [
@@ -3310,12 +4143,18 @@
         {
           "copper": 11,
           "count": 1
+        },
+        {
+          "copper": 12,
+          "count": 1
         }
       ],
       "harvested": 0,
       "zones": [
+        "Tomb of the Last Wyrmsbane",
+        "Evershade Weald",
         "Night Harbor",
-        "Evershade Weald"
+        "Blacktidebay"
       ]
     },
     {
@@ -3324,10 +4163,22 @@
       "name": "Rusty Maul",
       "droppedBy": [
         {
+          "mob": "a Fellstone tracker",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
+        },
+        {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 36,
-          "rate": 0.05555555555555555
+          "corpses": 46,
+          "rate": 0.043478260869565216
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 1,
+          "corpses": 60,
+          "rate": 0.016666666666666666
         }
       ],
       "prices": [
@@ -3338,7 +4189,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Evershade Weald"
+        "Evershade Weald",
+        "Blacktidebay"
       ]
     },
     {
@@ -3353,23 +4205,87 @@
           "rate": 0.2
         },
         {
+          "mob": "a Fellstone tracker",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
+        },
+        {
           "mob": "a rotting skeleton",
           "drops": 5,
-          "corpses": 96,
-          "rate": 0.052083333333333336
+          "corpses": 98,
+          "rate": 0.05102040816326531
+        },
+        {
+          "mob": "a skeleton",
+          "drops": 1,
+          "corpses": 46,
+          "rate": 0.021739130434782608
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 1,
+          "corpses": 60,
+          "rate": 0.016666666666666666
+        },
+        {
+          "mob": "a skeletal cleric",
+          "drops": 1,
+          "corpses": 78,
+          "rate": 0.01282051282051282
         }
       ],
       "prices": [
         {
           "copper": 12,
-          "count": 5
+          "count": 6
         }
       ],
       "harvested": 0,
       "zones": [
         "Evershade Weald",
         "Night Harbor",
-        "Shaded Dunes"
+        "Shaded Dunes",
+        "Blacktidebay",
+        "Tomb of the Last Wyrmsbane"
+      ]
+    },
+    {
+      "id": "rusty_scythe",
+      "gameId": "8180fc84a84d696fde659d11",
+      "name": "Rusty Scythe",
+      "droppedBy": [
+        {
+          "mob": "a skeleton",
+          "drops": 1,
+          "corpses": 46,
+          "rate": 0.021739130434782608
+        },
+        {
+          "mob": "a skeletal fighter",
+          "drops": 2,
+          "corpses": 105,
+          "rate": 0.01904761904761905
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 1,
+          "corpses": 60,
+          "rate": 0.016666666666666666
+        },
+        {
+          "mob": "a skeletal cleric",
+          "drops": 1,
+          "corpses": 78,
+          "rate": 0.01282051282051282
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Tomb of the Last Wyrmsbane",
+        "Evershade Weald",
+        "Blacktidebay"
       ]
     },
     {
@@ -3378,16 +4294,22 @@
       "name": "Rusty Shortsword",
       "droppedBy": [
         {
-          "mob": "an old elven skeleton",
-          "drops": 1,
-          "corpses": 25,
-          "rate": 0.04
+          "mob": "a Fellstone sentry",
+          "drops": 2,
+          "corpses": 60,
+          "rate": 0.03333333333333333
         },
         {
           "mob": "a rotting skeleton",
           "drops": 3,
-          "corpses": 96,
-          "rate": 0.03125
+          "corpses": 98,
+          "rate": 0.030612244897959183
+        },
+        {
+          "mob": "an old elven skeleton",
+          "drops": 1,
+          "corpses": 34,
+          "rate": 0.029411764705882353
         },
         {
           "mob": "a Fellstone scout",
@@ -3398,19 +4320,20 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
+          "corpses": 46,
+          "rate": 0.021739130434782608
         }
       ],
       "prices": [
         {
           "copper": 12,
-          "count": 5
+          "count": 6
         }
       ],
       "harvested": 0,
       "zones": [
         "Evershade Weald",
+        "Blacktidebay",
         "Shaded Dunes",
         "Night Harbor"
       ]
@@ -3427,29 +4350,55 @@
           "rate": 0.2
         },
         {
+          "mob": "a Fellstone guard",
+          "drops": 2,
+          "corpses": 34,
+          "rate": 0.058823529411764705
+        },
+        {
           "mob": "a rotting skeleton",
           "drops": 2,
-          "corpses": 96,
-          "rate": 0.020833333333333332
+          "corpses": 98,
+          "rate": 0.02040816326530612
+        },
+        {
+          "mob": "a skeletal cleric",
+          "drops": 1,
+          "corpses": 78,
+          "rate": 0.01282051282051282
+        },
+        {
+          "mob": "a skeletal fighter",
+          "drops": 1,
+          "corpses": 105,
+          "rate": 0.009523809523809525
         }
       ],
       "prices": [
         {
           "copper": 12,
-          "count": 3
+          "count": 4
         }
       ],
       "harvested": 0,
       "zones": [
+        "Blacktidebay",
         "Shaded Dunes",
+        "Tomb of the Last Wyrmsbane",
         "Evershade Weald"
       ]
     },
     {
       "id": "rusty_tower_shield",
-      "gameId": "rusty_tower_shield",
+      "gameId": "b40ebfd2200c23576ccb0939",
       "name": "Rusty Tower Shield",
       "droppedBy": [
+        {
+          "mob": "a Calafreyan soldier",
+          "drops": 1,
+          "corpses": 8,
+          "rate": 0.125
+        },
         {
           "mob": "a Fellstone scout",
           "drops": 2,
@@ -3457,10 +4406,28 @@
           "rate": 0.05714285714285714
         },
         {
+          "mob": "a skeletal fighter",
+          "drops": 2,
+          "corpses": 105,
+          "rate": 0.01904761904761905
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 1,
+          "corpses": 60,
+          "rate": 0.016666666666666666
+        },
+        {
+          "mob": "a skeletal cleric",
+          "drops": 1,
+          "corpses": 78,
+          "rate": 0.01282051282051282
+        },
+        {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 96,
-          "rate": 0.010416666666666666
+          "corpses": 98,
+          "rate": 0.01020408163265306
         }
       ],
       "prices": [
@@ -3471,7 +4438,9 @@
       ],
       "harvested": 0,
       "zones": [
-        "Evershade Weald"
+        "Evershade Weald",
+        "Tomb of the Last Wyrmsbane",
+        "Blacktidebay"
       ]
     },
     {
@@ -3482,8 +4451,8 @@
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 36,
-          "rate": 0.05555555555555555
+          "corpses": 46,
+          "rate": 0.043478260869565216
         },
         {
           "mob": "a Fellstone scout",
@@ -3492,10 +4461,22 @@
           "rate": 0.02857142857142857
         },
         {
+          "mob": "a Fellstone sentry",
+          "drops": 1,
+          "corpses": 60,
+          "rate": 0.016666666666666666
+        },
+        {
+          "mob": "a skeletal cleric",
+          "drops": 1,
+          "corpses": 78,
+          "rate": 0.01282051282051282
+        },
+        {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 96,
-          "rate": 0.010416666666666666
+          "corpses": 98,
+          "rate": 0.01020408163265306
         }
       ],
       "prices": [
@@ -3507,25 +4488,58 @@
       "harvested": 0,
       "zones": [
         "Evershade Weald",
-        "Shaded Dunes"
+        "Blacktidebay",
+        "Shaded Dunes",
+        "Tomb of the Last Wyrmsbane"
       ]
     },
     {
       "id": "rusty_war_lance",
-      "gameId": "rusty_2lance",
+      "gameId": "5b820d054de0d21a061071c4",
       "name": "Rusty War Lance",
       "droppedBy": [
         {
+          "mob": "a Fellstone sentinel",
+          "drops": 1,
+          "corpses": 4,
+          "rate": 0.25
+        },
+        {
+          "mob": "a Calafreyan soldier",
+          "drops": 1,
+          "corpses": 8,
+          "rate": 0.125
+        },
+        {
+          "mob": "an old elven skeleton",
+          "drops": 1,
+          "corpses": 34,
+          "rate": 0.029411764705882353
+        },
+        {
+          "mob": "a skeletal fighter",
+          "drops": 2,
+          "corpses": 105,
+          "rate": 0.01904761904761905
+        },
+        {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 96,
-          "rate": 0.010416666666666666
+          "corpses": 98,
+          "rate": 0.01020408163265306
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 25,
+          "count": 2
+        }
+      ],
       "harvested": 0,
       "zones": [
-        "Evershade Weald"
+        "Evershade Weald",
+        "Tomb of the Last Wyrmsbane",
+        "Blacktidebay"
       ]
     },
     {
@@ -3534,16 +4548,34 @@
       "name": "Rusty Warhammer",
       "droppedBy": [
         {
+          "mob": "an old elven skeleton",
+          "drops": 1,
+          "corpses": 34,
+          "rate": 0.029411764705882353
+        },
+        {
           "mob": "a Fellstone scout",
           "drops": 1,
           "corpses": 35,
           "rate": 0.02857142857142857
         },
         {
+          "mob": "a Fellstone sentry",
+          "drops": 1,
+          "corpses": 60,
+          "rate": 0.016666666666666666
+        },
+        {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 96,
-          "rate": 0.010416666666666666
+          "corpses": 98,
+          "rate": 0.01020408163265306
+        },
+        {
+          "mob": "a skeletal fighter",
+          "drops": 1,
+          "corpses": 105,
+          "rate": 0.009523809523809525
         }
       ],
       "prices": [
@@ -3558,8 +4590,10 @@
       ],
       "harvested": 0,
       "zones": [
+        "Evershade Weald",
         "Night Harbor",
-        "Evershade Weald"
+        "Tomb of the Last Wyrmsbane",
+        "Blacktidebay"
       ]
     },
     {
@@ -3633,6 +4667,24 @@
       ]
     },
     {
+      "id": "scorched_academy_folio",
+      "gameId": "efbce906d2cab46bda6084b6",
+      "name": "Scorched Academy Folio",
+      "droppedBy": [
+        {
+          "mob": "a skeletal fighter",
+          "drops": 1,
+          "corpses": 105,
+          "rate": 0.009523809523809525
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Tomb of the Last Wyrmsbane"
+      ]
+    },
+    {
       "id": "selstie_kelp",
       "gameId": null,
       "name": "Selstie Kelp",
@@ -3650,15 +4702,15 @@
       "droppedBy": [
         {
           "mob": "a skeleton",
-          "drops": 4,
-          "corpses": 36,
-          "rate": 0.1111111111111111
+          "drops": 5,
+          "corpses": 46,
+          "rate": 0.10869565217391304
         },
         {
           "mob": "a rotting skeleton",
           "drops": 3,
-          "corpses": 96,
-          "rate": 0.03125
+          "corpses": 98,
+          "rate": 0.030612244897959183
         }
       ],
       "prices": [],
@@ -3675,8 +4727,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 10,
-          "corpses": 96,
-          "rate": 0.10416666666666667
+          "corpses": 98,
+          "rate": 0.10204081632653061
         }
       ],
       "prices": [
@@ -3906,8 +4958,26 @@
       ]
     },
     {
+      "id": "spirit_world_ch_1",
+      "gameId": "23bfb3b854e105ba5243f372",
+      "name": "Spirit World Ch. 1",
+      "droppedBy": [
+        {
+          "mob": "a Fellstone guard",
+          "drops": 1,
+          "corpses": 34,
+          "rate": 0.029411764705882353
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Blacktidebay"
+      ]
+    },
+    {
       "id": "tattered_cloth_belt",
-      "gameId": "tattered_cloth_belt",
+      "gameId": "b91d4603d8526220419e56cb",
       "name": "Tattered Cloth Belt",
       "droppedBy": [
         {
@@ -3923,10 +4993,40 @@
           "rate": 0.16666666666666666
         },
         {
+          "mob": "a Fellstone ragecaller",
+          "drops": 1,
+          "corpses": 6,
+          "rate": 0.16666666666666666
+        },
+        {
+          "mob": "a Calafreyan soldier",
+          "drops": 1,
+          "corpses": 8,
+          "rate": 0.125
+        },
+        {
+          "mob": "a Fellstone tracker",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
+        },
+        {
+          "mob": "a skeletal fighter",
+          "drops": 5,
+          "corpses": 105,
+          "rate": 0.047619047619047616
+        },
+        {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 25,
-          "rate": 0.04
+          "corpses": 34,
+          "rate": 0.029411764705882353
+        },
+        {
+          "mob": "a Fellstone guard",
+          "drops": 1,
+          "corpses": 34,
+          "rate": 0.029411764705882353
         },
         {
           "mob": "a Fellstone scout",
@@ -3935,21 +5035,39 @@
           "rate": 0.02857142857142857
         },
         {
+          "mob": "a Fellstone sentry",
+          "drops": 1,
+          "corpses": 60,
+          "rate": 0.016666666666666666
+        },
+        {
+          "mob": "a skeletal cleric",
+          "drops": 1,
+          "corpses": 78,
+          "rate": 0.01282051282051282
+        },
+        {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 96,
-          "rate": 0.010416666666666666
+          "corpses": 98,
+          "rate": 0.01020408163265306
         }
       ],
       "prices": [
         {
           "copper": 20,
           "count": 1
+        },
+        {
+          "copper": 21,
+          "count": 1
         }
       ],
       "harvested": 0,
       "zones": [
+        "Tomb of the Last Wyrmsbane",
         "Evershade Weald",
+        "Blacktidebay",
         "Night Harbor"
       ]
     },
@@ -3965,16 +5083,40 @@
           "rate": 0.05714285714285714
         },
         {
+          "mob": "a skeletal warrior",
+          "drops": 1,
+          "corpses": 32,
+          "rate": 0.03125
+        },
+        {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 25,
-          "rate": 0.04
+          "corpses": 34,
+          "rate": 0.029411764705882353
+        },
+        {
+          "mob": "a skeleton",
+          "drops": 1,
+          "corpses": 46,
+          "rate": 0.021739130434782608
         },
         {
           "mob": "a rotting skeleton",
           "drops": 2,
-          "corpses": 96,
-          "rate": 0.020833333333333332
+          "corpses": 98,
+          "rate": 0.02040816326530612
+        },
+        {
+          "mob": "a skeletal cleric",
+          "drops": 1,
+          "corpses": 78,
+          "rate": 0.01282051282051282
+        },
+        {
+          "mob": "a skeletal fighter",
+          "drops": 1,
+          "corpses": 105,
+          "rate": 0.009523809523809525
         }
       ],
       "prices": [
@@ -3986,6 +5128,7 @@
       "harvested": 0,
       "zones": [
         "Evershade Weald",
+        "Tomb of the Last Wyrmsbane",
         "Night Harbor"
       ]
     },
@@ -4003,70 +5146,166 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 2,
-          "corpses": 22,
-          "rate": 0.09090909090909091
+          "corpses": 23,
+          "rate": 0.08695652173913043
+        },
+        {
+          "mob": "a Fellstone tracker",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 4,
+          "corpses": 60,
+          "rate": 0.06666666666666667
         },
         {
           "mob": "a skeleton",
           "drops": 3,
-          "corpses": 36,
-          "rate": 0.08333333333333333
+          "corpses": 46,
+          "rate": 0.06521739130434782
+        },
+        {
+          "mob": "a skeletal warrior",
+          "drops": 1,
+          "corpses": 32,
+          "rate": 0.03125
+        },
+        {
+          "mob": "an old elven skeleton",
+          "drops": 1,
+          "corpses": 34,
+          "rate": 0.029411764705882353
+        },
+        {
+          "mob": "a skeletal fighter",
+          "drops": 3,
+          "corpses": 105,
+          "rate": 0.02857142857142857
+        },
+        {
+          "mob": "a skeletal cleric",
+          "drops": 2,
+          "corpses": 78,
+          "rate": 0.02564102564102564
         }
       ],
       "prices": [
         {
           "copper": 20,
           "count": 1
+        },
+        {
+          "copper": 21,
+          "count": 1
         }
       ],
       "harvested": 0,
       "zones": [
-        "Evershade Weald",
         "Tomb of the Last Wyrmsbane",
+        "Evershade Weald",
+        "Blacktidebay",
         "Shaded Dunes"
       ]
     },
     {
       "id": "tattered_cloth_cap",
-      "gameId": "tattered_cloth_head",
+      "gameId": "7e634f0347f2755ca6bf1712",
       "name": "Tattered Cloth Cap",
       "droppedBy": [
         {
+          "mob": "a skeletal fighter",
+          "drops": 5,
+          "corpses": 105,
+          "rate": 0.047619047619047616
+        },
+        {
+          "mob": "a Fellstone warrior",
+          "drops": 1,
+          "corpses": 23,
+          "rate": 0.043478260869565216
+        },
+        {
+          "mob": "a Fellstone guard",
+          "drops": 1,
+          "corpses": 34,
+          "rate": 0.029411764705882353
+        },
+        {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
+          "corpses": 46,
+          "rate": 0.021739130434782608
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 1,
+          "corpses": 60,
+          "rate": 0.016666666666666666
+        },
+        {
+          "mob": "a skeletal cleric",
+          "drops": 1,
+          "corpses": 78,
+          "rate": 0.01282051282051282
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Tomb of the Last Wyrmsbane",
         "Evershade Weald",
-        "Tomb of the Last Wyrmsbane"
+        "Blacktidebay"
       ]
     },
     {
       "id": "tattered_cloth_cape",
-      "gameId": "tattered_cloth_cape",
+      "gameId": "daf197fd2b29e1f92c519af4",
       "name": "Tattered Cloth Cape",
       "droppedBy": [
         {
+          "mob": "a skeletal warrior",
+          "drops": 3,
+          "corpses": 32,
+          "rate": 0.09375
+        },
+        {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 22,
-          "rate": 0.045454545454545456
+          "corpses": 23,
+          "rate": 0.043478260869565216
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 2,
+          "corpses": 60,
+          "rate": 0.03333333333333333
+        },
+        {
+          "mob": "a Fellstone guard",
+          "drops": 1,
+          "corpses": 34,
+          "rate": 0.029411764705882353
+        },
+        {
+          "mob": "a skeletal cleric",
+          "drops": 2,
+          "corpses": 78,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
+          "corpses": 46,
+          "rate": 0.021739130434782608
         },
         {
           "mob": "a rotting skeleton",
           "drops": 2,
-          "corpses": 96,
-          "rate": 0.020833333333333332
+          "corpses": 98,
+          "rate": 0.02040816326530612
         }
       ],
       "prices": [
@@ -4077,32 +5316,46 @@
       ],
       "harvested": 0,
       "zones": [
+        "Tomb of the Last Wyrmsbane",
+        "Blacktidebay",
         "Evershade Weald"
       ]
     },
     {
       "id": "tattered_cloth_gloves",
-      "gameId": "tattered_cloth_hand",
+      "gameId": "bcbfff539564fc4866f60931",
       "name": "Tattered Cloth Gloves",
       "droppedBy": [
         {
+          "mob": "a skeletal warrior",
+          "drops": 1,
+          "corpses": 32,
+          "rate": 0.03125
+        },
+        {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 25,
-          "rate": 0.04
+          "corpses": 34,
+          "rate": 0.029411764705882353
+        },
+        {
+          "mob": "a skeletal cleric",
+          "drops": 2,
+          "corpses": 78,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a rotting skeleton",
           "drops": 2,
-          "corpses": 96,
-          "rate": 0.020833333333333332
+          "corpses": 98,
+          "rate": 0.02040816326530612
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Evershade Weald",
-        "Tomb of the Last Wyrmsbane"
+        "Tomb of the Last Wyrmsbane",
+        "Evershade Weald"
       ]
     },
     {
@@ -4111,22 +5364,46 @@
       "name": "Tattered Cloth Gorget",
       "droppedBy": [
         {
+          "mob": "a skeletal warrior",
+          "drops": 2,
+          "corpses": 32,
+          "rate": 0.0625
+        },
+        {
           "mob": "an old elven skeleton",
-          "drops": 1,
-          "corpses": 25,
-          "rate": 0.04
+          "drops": 2,
+          "corpses": 34,
+          "rate": 0.058823529411764705
+        },
+        {
+          "mob": "a Fellstone guard",
+          "drops": 2,
+          "corpses": 34,
+          "rate": 0.058823529411764705
         },
         {
           "mob": "a rotting skeleton",
           "drops": 3,
-          "corpses": 96,
-          "rate": 0.03125
+          "corpses": 98,
+          "rate": 0.030612244897959183
         },
         {
           "mob": "a Fellstone scout",
           "drops": 1,
           "corpses": 35,
           "rate": 0.02857142857142857
+        },
+        {
+          "mob": "a skeletal fighter",
+          "drops": 2,
+          "corpses": 105,
+          "rate": 0.01904761904761905
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 1,
+          "corpses": 60,
+          "rate": 0.016666666666666666
         }
       ],
       "prices": [
@@ -4138,31 +5415,51 @@
       "harvested": 0,
       "zones": [
         "Evershade Weald",
+        "Blacktidebay",
+        "Tomb of the Last Wyrmsbane",
         "Shaded Dunes"
       ]
     },
     {
       "id": "tattered_cloth_mantle",
-      "gameId": "tattered_cloth_shld",
+      "gameId": "3d2d789a5f74419de95301fa",
       "name": "Tattered Cloth Mantle",
       "droppedBy": [
         {
           "mob": "an old elven skeleton",
           "drops": 2,
-          "corpses": 25,
-          "rate": 0.08
+          "corpses": 34,
+          "rate": 0.058823529411764705
         },
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 22,
-          "rate": 0.045454545454545456
+          "corpses": 23,
+          "rate": 0.043478260869565216
+        },
+        {
+          "mob": "a Fellstone guard",
+          "drops": 1,
+          "corpses": 34,
+          "rate": 0.029411764705882353
+        },
+        {
+          "mob": "a skeleton",
+          "drops": 1,
+          "corpses": 46,
+          "rate": 0.021739130434782608
         },
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 96,
-          "rate": 0.010416666666666666
+          "corpses": 98,
+          "rate": 0.01020408163265306
+        },
+        {
+          "mob": "a skeletal fighter",
+          "drops": 1,
+          "corpses": 105,
+          "rate": 0.009523809523809525
         }
       ],
       "prices": [
@@ -4174,7 +5471,8 @@
       "harvested": 0,
       "zones": [
         "Evershade Weald",
-        "Tomb of the Last Wyrmsbane"
+        "Tomb of the Last Wyrmsbane",
+        "Blacktidebay"
       ]
     },
     {
@@ -4195,16 +5493,34 @@
           "rate": 0.1
         },
         {
+          "mob": "a skeletal cleric",
+          "drops": 3,
+          "corpses": 78,
+          "rate": 0.038461538461538464
+        },
+        {
+          "mob": "a skeletal warrior",
+          "drops": 1,
+          "corpses": 32,
+          "rate": 0.03125
+        },
+        {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
+          "corpses": 46,
+          "rate": 0.021739130434782608
+        },
+        {
+          "mob": "a skeletal fighter",
+          "drops": 2,
+          "corpses": 105,
+          "rate": 0.01904761904761905
         },
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 96,
-          "rate": 0.010416666666666666
+          "corpses": 98,
+          "rate": 0.01020408163265306
         }
       ],
       "prices": [
@@ -4215,6 +5531,7 @@
       ],
       "harvested": 0,
       "zones": [
+        "Tomb of the Last Wyrmsbane",
         "Shaded Dunes",
         "Night Harbor",
         "Evershade Weald"
@@ -4234,13 +5551,25 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 22,
-          "rate": 0.045454545454545456
+          "corpses": 23,
+          "rate": 0.043478260869565216
+        },
+        {
+          "mob": "a skeleton",
+          "drops": 2,
+          "corpses": 46,
+          "rate": 0.043478260869565216
         },
         {
           "mob": "a rotting skeleton",
-          "drops": 3,
-          "corpses": 96,
+          "drops": 4,
+          "corpses": 98,
+          "rate": 0.04081632653061224
+        },
+        {
+          "mob": "a skeletal warrior",
+          "drops": 1,
+          "corpses": 32,
           "rate": 0.03125
         },
         {
@@ -4248,6 +5577,24 @@
           "drops": 1,
           "corpses": 35,
           "rate": 0.02857142857142857
+        },
+        {
+          "mob": "a skeletal fighter",
+          "drops": 2,
+          "corpses": 105,
+          "rate": 0.01904761904761905
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 1,
+          "corpses": 60,
+          "rate": 0.016666666666666666
+        },
+        {
+          "mob": "a skeletal cleric",
+          "drops": 1,
+          "corpses": 78,
+          "rate": 0.01282051282051282
         }
       ],
       "prices": [
@@ -4263,8 +5610,10 @@
       "harvested": 0,
       "zones": [
         "Evershade Weald",
+        "Tomb of the Last Wyrmsbane",
         "Night Harbor",
-        "Shaded Dunes"
+        "Shaded Dunes",
+        "Blacktidebay"
       ]
     },
     {
@@ -4281,32 +5630,52 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 22,
-          "rate": 0.045454545454545456
+          "corpses": 23,
+          "rate": 0.043478260869565216
+        },
+        {
+          "mob": "a skeletal cleric",
+          "drops": 3,
+          "corpses": 78,
+          "rate": 0.038461538461538464
+        },
+        {
+          "mob": "a skeletal fighter",
+          "drops": 4,
+          "corpses": 105,
+          "rate": 0.0380952380952381
+        },
+        {
+          "mob": "a Fellstone guard",
+          "drops": 1,
+          "corpses": 34,
+          "rate": 0.029411764705882353
         },
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
+          "corpses": 46,
+          "rate": 0.021739130434782608
         },
         {
           "mob": "a rotting skeleton",
           "drops": 2,
-          "corpses": 96,
-          "rate": 0.020833333333333332
+          "corpses": 98,
+          "rate": 0.02040816326530612
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Tomb of the Last Wyrmsbane",
         "Evershade Weald",
-        "Shaded Dunes"
+        "Shaded Dunes",
+        "Blacktidebay"
       ]
     },
     {
       "id": "tattered_cloth_tunic",
-      "gameId": "tattered_cloth_vest",
+      "gameId": "6af654f72aafec6719f9c29f",
       "name": "Tattered Cloth Tunic",
       "droppedBy": [
         {
@@ -4318,8 +5687,26 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 2,
-          "corpses": 22,
-          "rate": 0.09090909090909091
+          "corpses": 23,
+          "rate": 0.08695652173913043
+        },
+        {
+          "mob": "a Fellstone tracker",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
+        },
+        {
+          "mob": "a Fellstone guard",
+          "drops": 2,
+          "corpses": 34,
+          "rate": 0.058823529411764705
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 3,
+          "corpses": 60,
+          "rate": 0.05
         },
         {
           "mob": "a Fellstone scout",
@@ -4328,28 +5715,60 @@
           "rate": 0.02857142857142857
         },
         {
+          "mob": "a skeletal fighter",
+          "drops": 2,
+          "corpses": 105,
+          "rate": 0.01904761904761905
+        },
+        {
+          "mob": "a skeletal cleric",
+          "drops": 1,
+          "corpses": 78,
+          "rate": 0.01282051282051282
+        },
+        {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 96,
-          "rate": 0.010416666666666666
+          "corpses": 98,
+          "rate": 0.01020408163265306
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Evershade Weald"
+        "Blacktidebay",
+        "Evershade Weald",
+        "Tomb of the Last Wyrmsbane"
       ]
     },
     {
       "id": "tattered_cloth_veil",
-      "gameId": "tattered_cloth_face",
+      "gameId": "1739f902090356c4087cac3f",
       "name": "Tattered Cloth Veil",
       "droppedBy": [
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 36,
-          "rate": 0.05555555555555555
+          "corpses": 46,
+          "rate": 0.043478260869565216
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 2,
+          "corpses": 60,
+          "rate": 0.03333333333333333
+        },
+        {
+          "mob": "a rotting skeleton",
+          "drops": 3,
+          "corpses": 98,
+          "rate": 0.030612244897959183
+        },
+        {
+          "mob": "a skeletal fighter",
+          "drops": 3,
+          "corpses": 105,
+          "rate": 0.02857142857142857
         },
         {
           "mob": "a Fellstone scout",
@@ -4358,10 +5777,10 @@
           "rate": 0.02857142857142857
         },
         {
-          "mob": "a rotting skeleton",
+          "mob": "a skeletal cleric",
           "drops": 2,
-          "corpses": 96,
-          "rate": 0.020833333333333332
+          "corpses": 78,
+          "rate": 0.02564102564102564
         }
       ],
       "prices": [
@@ -4372,8 +5791,10 @@
       ],
       "harvested": 0,
       "zones": [
+        "Tomb of the Last Wyrmsbane",
         "Evershade Weald",
-        "Tomb of the Last Wyrmsbane"
+        "Blacktidebay",
+        "Night Harbor"
       ]
     },
     {
@@ -4382,72 +5803,118 @@
       "name": "Tattered Rawhide Belt",
       "droppedBy": [
         {
+          "mob": "a dark-robed figure",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
+        {
+          "mob": "a Fellstone tracker",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
+        },
+        {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 36,
-          "rate": 0.05555555555555555
+          "corpses": 46,
+          "rate": 0.043478260869565216
         },
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 22,
-          "rate": 0.045454545454545456
+          "corpses": 23,
+          "rate": 0.043478260869565216
         }
       ],
       "prices": [
         {
           "copper": 37,
           "count": 4
+        },
+        {
+          "copper": 39,
+          "count": 3
         }
       ],
       "harvested": 0,
       "zones": [
-        "Evershade Weald"
+        "Evershade Weald",
+        "Blacktidebay"
       ]
     },
     {
       "id": "tattered_rawhide_boots",
-      "gameId": "tattered_rawhide_feet",
+      "gameId": "4f3e4218adc23c7ef3206b54",
       "name": "Tattered Rawhide Boots",
       "droppedBy": [
         {
+          "mob": "a skeletal warrior",
+          "drops": 1,
+          "corpses": 32,
+          "rate": 0.03125
+        },
+        {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
+          "corpses": 46,
+          "rate": 0.021739130434782608
         }
       ],
       "prices": [
         {
           "copper": 37,
           "count": 1
+        },
+        {
+          "copper": 39,
+          "count": 2
         }
       ],
       "harvested": 0,
       "zones": [
+        "Tomb of the Last Wyrmsbane",
         "Evershade Weald"
       ]
     },
     {
       "id": "tattered_rawhide_bracer",
-      "gameId": "tattered_rawhide_fore",
+      "gameId": "ae5224e7e3ff338e04d7733b",
       "name": "Tattered Rawhide Bracer",
       "droppedBy": [
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 22,
-          "rate": 0.045454545454545456
+          "corpses": 23,
+          "rate": 0.043478260869565216
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 2,
+          "corpses": 60,
+          "rate": 0.03333333333333333
+        },
+        {
+          "mob": "a skeletal warrior",
+          "drops": 1,
+          "corpses": 32,
+          "rate": 0.03125
         }
       ],
       "prices": [
         {
           "copper": 37,
           "count": 1
+        },
+        {
+          "copper": 39,
+          "count": 1
         }
       ],
       "harvested": 0,
       "zones": [
+        "Blacktidebay",
+        "Tomb of the Last Wyrmsbane",
         "Evershade Weald"
       ]
     },
@@ -4459,48 +5926,91 @@
         {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 25,
-          "rate": 0.04
+          "corpses": 34,
+          "rate": 0.029411764705882353
+        },
+        {
+          "mob": "a Fellstone guard",
+          "drops": 1,
+          "corpses": 34,
+          "rate": 0.029411764705882353
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 1,
+          "corpses": 60,
+          "rate": 0.016666666666666666
         }
       ],
       "prices": [
         {
           "copper": 41,
           "count": 1
+        },
+        {
+          "copper": 43,
+          "count": 2
         }
       ],
       "harvested": 0,
       "zones": [
+        "Blacktidebay",
         "Evershade Weald"
       ]
     },
     {
       "id": "tattered_rawhide_cloak",
-      "gameId": null,
+      "gameId": "fb0a6b915f808f08569451ad",
       "name": "Tattered Rawhide Cloak",
-      "droppedBy": [],
+      "droppedBy": [
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 1,
+          "corpses": 60,
+          "rate": 0.016666666666666666
+        }
+      ],
       "prices": [
         {
           "copper": 37,
           "count": 1
+        },
+        {
+          "copper": 39,
+          "count": 2
         }
       ],
       "harvested": 0,
-      "zones": []
+      "zones": [
+        "Blacktidebay"
+      ]
     },
     {
       "id": "tattered_rawhide_gloves",
-      "gameId": null,
+      "gameId": "27a5df3bdd81439a38b7c42b",
       "name": "Tattered Rawhide Gloves",
-      "droppedBy": [],
+      "droppedBy": [
+        {
+          "mob": "a Fellstone tracker",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
+        }
+      ],
       "prices": [
         {
           "copper": 37,
           "count": 1
+        },
+        {
+          "copper": 39,
+          "count": 1
         }
       ],
       "harvested": 0,
-      "zones": []
+      "zones": [
+        "Blacktidebay"
+      ]
     },
     {
       "id": "tattered_rawhide_gorget",
@@ -4508,54 +6018,148 @@
       "name": "Tattered Rawhide Gorget",
       "droppedBy": [
         {
+          "mob": "a Fellstone defiler",
+          "drops": 1,
+          "corpses": 5,
+          "rate": 0.2
+        },
+        {
+          "mob": "a Calafreyan soldier",
+          "drops": 1,
+          "corpses": 8,
+          "rate": 0.125
+        },
+        {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 22,
-          "rate": 0.045454545454545456
+          "corpses": 23,
+          "rate": 0.043478260869565216
+        },
+        {
+          "mob": "a Fellstone guard",
+          "drops": 1,
+          "corpses": 34,
+          "rate": 0.029411764705882353
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 1,
+          "corpses": 60,
+          "rate": 0.016666666666666666
         }
       ],
       "prices": [
         {
           "copper": 37,
           "count": 1
+        },
+        {
+          "copper": 39,
+          "count": 2
         }
       ],
       "harvested": 0,
       "zones": [
+        "Blacktidebay",
         "Evershade Weald"
       ]
     },
     {
       "id": "tattered_rawhide_leggings",
-      "gameId": "tattered_rawhide_legs",
+      "gameId": "efd987be58200adfa89588a7",
       "name": "Tattered Rawhide Leggings",
       "droppedBy": [
         {
+          "mob": "a skeletal warrior",
+          "drops": 2,
+          "corpses": 32,
+          "rate": 0.0625
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 3,
+          "corpses": 60,
+          "rate": 0.05
+        },
+        {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 22,
-          "rate": 0.045454545454545456
+          "corpses": 23,
+          "rate": 0.043478260869565216
         }
       ],
       "prices": [
         {
           "copper": 47,
           "count": 1
+        },
+        {
+          "copper": 50,
+          "count": 2
         }
       ],
       "harvested": 0,
       "zones": [
+        "Blacktidebay",
+        "Tomb of the Last Wyrmsbane",
         "Evershade Weald"
       ]
     },
     {
       "id": "tattered_rawhide_mask",
-      "gameId": null,
+      "gameId": "d67afa867326c45fb9fac175",
       "name": "Tattered Rawhide Mask",
-      "droppedBy": [],
+      "droppedBy": [
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 3,
+          "corpses": 60,
+          "rate": 0.05
+        },
+        {
+          "mob": "a skeletal warrior",
+          "drops": 1,
+          "corpses": 32,
+          "rate": 0.03125
+        },
+        {
+          "mob": "an old elven skeleton",
+          "drops": 1,
+          "corpses": 34,
+          "rate": 0.029411764705882353
+        },
+        {
+          "mob": "a skeleton",
+          "drops": 1,
+          "corpses": 46,
+          "rate": 0.021739130434782608
+        }
+      ],
       "prices": [
         {
           "copper": 37,
+          "count": 1
+        },
+        {
+          "copper": 39,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": [
+        "Blacktidebay",
+        "Evershade Weald",
+        "Tomb of the Last Wyrmsbane"
+      ]
+    },
+    {
+      "id": "tattered_rawhide_shoulderpads",
+      "gameId": null,
+      "name": "Tattered Rawhide Shoulderpads",
+      "droppedBy": [],
+      "prices": [
+        {
+          "copper": 46,
           "count": 1
         }
       ],
@@ -4568,21 +6172,45 @@
       "name": "Tattered Rawhide Tunic",
       "droppedBy": [
         {
+          "mob": "a Calafreyan archer",
+          "drops": 1,
+          "corpses": 4,
+          "rate": 0.25
+        },
+        {
           "mob": "a skeleton",
           "drops": 3,
-          "corpses": 36,
-          "rate": 0.08333333333333333
+          "corpses": 46,
+          "rate": 0.06521739130434782
+        },
+        {
+          "mob": "a skeletal warrior",
+          "drops": 1,
+          "corpses": 32,
+          "rate": 0.03125
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 1,
+          "corpses": 60,
+          "rate": 0.016666666666666666
         }
       ],
       "prices": [
         {
           "copper": 56,
           "count": 3
+        },
+        {
+          "copper": 59,
+          "count": 1
         }
       ],
       "harvested": 0,
       "zones": [
-        "Evershade Weald"
+        "Evershade Weald",
+        "Blacktidebay",
+        "Tomb of the Last Wyrmsbane"
       ]
     },
     {
@@ -4597,10 +6225,16 @@
           "rate": 0.1
         },
         {
+          "mob": "a Fellstone tracker",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
+        },
+        {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 22,
-          "rate": 0.045454545454545456
+          "corpses": 23,
+          "rate": 0.043478260869565216
         }
       ],
       "prices": [
@@ -4612,7 +6246,8 @@
       "harvested": 0,
       "zones": [
         "Shaded Dunes",
-        "Evershade Weald"
+        "Evershade Weald",
+        "Blacktidebay"
       ]
     },
     {
@@ -4621,16 +6256,28 @@
       "name": "Torch",
       "droppedBy": [
         {
+          "mob": "a Fellstone defiler",
+          "drops": 1,
+          "corpses": 5,
+          "rate": 0.2
+        },
+        {
           "mob": "an ashira scout",
           "drops": 1,
           "corpses": 6,
           "rate": 0.16666666666666666
         },
         {
+          "mob": "a Fellstone guard",
+          "drops": 2,
+          "corpses": 34,
+          "rate": 0.058823529411764705
+        },
+        {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 25,
-          "rate": 0.04
+          "corpses": 34,
+          "rate": 0.029411764705882353
         },
         {
           "mob": "a Fellstone scout",
@@ -4641,14 +6288,20 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
+          "corpses": 46,
+          "rate": 0.021739130434782608
         },
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 96,
-          "rate": 0.010416666666666666
+          "corpses": 98,
+          "rate": 0.01020408163265306
+        },
+        {
+          "mob": "a skeletal fighter",
+          "drops": 1,
+          "corpses": 105,
+          "rate": 0.009523809523809525
         }
       ],
       "prices": [
@@ -4660,6 +6313,7 @@
       "harvested": 0,
       "zones": [
         "Evershade Weald",
+        "Blacktidebay",
         "Night Harbor",
         "Tomb of the Last Wyrmsbane"
       ]
@@ -4690,8 +6344,8 @@
         {
           "mob": "a Fellstone tracker",
           "drops": 1,
-          "corpses": 1,
-          "rate": 1
+          "corpses": 12,
+          "rate": 0.08333333333333333
         }
       ],
       "prices": [],
@@ -4849,8 +6503,20 @@
         {
           "mob": "a black wolf pup",
           "drops": 14,
-          "corpses": 37,
-          "rate": 0.3783783783783784
+          "corpses": 39,
+          "rate": 0.358974358974359
+        },
+        {
+          "mob": "a rabid wolf",
+          "drops": 2,
+          "corpses": 6,
+          "rate": 0.3333333333333333
+        },
+        {
+          "mob": "a trained wolf",
+          "drops": 4,
+          "corpses": 14,
+          "rate": 0.2857142857142857
         }
       ],
       "prices": [
@@ -4861,7 +6527,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Evershade Weald"
+        "Evershade Weald",
+        "Blacktidebay"
       ]
     },
     {
@@ -4872,14 +6539,20 @@
         {
           "mob": "a black wolf pup",
           "drops": 12,
-          "corpses": 37,
-          "rate": 0.32432432432432434
+          "corpses": 39,
+          "rate": 0.3076923076923077
+        },
+        {
+          "mob": "a trained wolf",
+          "drops": 3,
+          "corpses": 14,
+          "rate": 0.21428571428571427
         },
         {
           "mob": "a rabid wolf",
           "drops": 1,
-          "corpses": 4,
-          "rate": 0.25
+          "corpses": 6,
+          "rate": 0.16666666666666666
         }
       ],
       "prices": [
@@ -4890,7 +6563,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Evershade Weald"
+        "Evershade Weald",
+        "Blacktidebay"
       ]
     },
     {
@@ -4904,7 +6578,7 @@
           "count": 5
         }
       ],
-      "harvested": 217,
+      "harvested": 244,
       "zones": [
         "Evershade Weald",
         "Night Harbor"
@@ -4930,16 +6604,40 @@
       "name": "Worn Bow",
       "droppedBy": [
         {
+          "mob": "a Fellstone defiler",
+          "drops": 1,
+          "corpses": 5,
+          "rate": 0.2
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 2,
+          "corpses": 60,
+          "rate": 0.03333333333333333
+        },
+        {
+          "mob": "a skeletal warrior",
+          "drops": 1,
+          "corpses": 32,
+          "rate": 0.03125
+        },
+        {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 25,
-          "rate": 0.04
+          "corpses": 34,
+          "rate": 0.029411764705882353
         },
         {
           "mob": "a Fellstone scout",
           "drops": 1,
           "corpses": 35,
           "rate": 0.02857142857142857
+        },
+        {
+          "mob": "a skeletal cleric",
+          "drops": 1,
+          "corpses": 78,
+          "rate": 0.01282051282051282
         }
       ],
       "prices": [
@@ -4950,8 +6648,9 @@
       ],
       "harvested": 0,
       "zones": [
-        "Evershade Weald",
-        "Tomb of the Last Wyrmsbane"
+        "Tomb of the Last Wyrmsbane",
+        "Blacktidebay",
+        "Evershade Weald"
       ]
     },
     {
@@ -4968,20 +6667,32 @@
         {
           "mob": "an old elven skeleton",
           "drops": 2,
-          "corpses": 25,
-          "rate": 0.08
+          "corpses": 34,
+          "rate": 0.058823529411764705
+        },
+        {
+          "mob": "a Fellstone guard",
+          "drops": 2,
+          "corpses": 34,
+          "rate": 0.058823529411764705
         },
         {
           "mob": "a skeleton",
-          "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
+          "drops": 2,
+          "corpses": 46,
+          "rate": 0.043478260869565216
+        },
+        {
+          "mob": "a skeletal cleric",
+          "drops": 2,
+          "corpses": 78,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 96,
-          "rate": 0.010416666666666666
+          "corpses": 98,
+          "rate": 0.01020408163265306
         }
       ],
       "prices": [
@@ -4993,7 +6704,9 @@
       "harvested": 0,
       "zones": [
         "Evershade Weald",
-        "Shaded Dunes"
+        "Shaded Dunes",
+        "Tomb of the Last Wyrmsbane",
+        "Blacktidebay"
       ]
     },
     {
@@ -5004,20 +6717,38 @@
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 36,
-          "rate": 0.05555555555555555
+          "corpses": 46,
+          "rate": 0.043478260869565216
         },
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 22,
-          "rate": 0.045454545454545456
+          "corpses": 23,
+          "rate": 0.043478260869565216
+        },
+        {
+          "mob": "a skeletal warrior",
+          "drops": 1,
+          "corpses": 32,
+          "rate": 0.03125
         },
         {
           "mob": "a rotting skeleton",
           "drops": 2,
-          "corpses": 96,
-          "rate": 0.020833333333333332
+          "corpses": 98,
+          "rate": 0.02040816326530612
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 1,
+          "corpses": 60,
+          "rate": 0.016666666666666666
+        },
+        {
+          "mob": "a skeletal cleric",
+          "drops": 1,
+          "corpses": 78,
+          "rate": 0.01282051282051282
         }
       ],
       "prices": [
@@ -5033,7 +6764,9 @@
       "harvested": 0,
       "zones": [
         "Evershade Weald",
-        "Night Harbor"
+        "Night Harbor",
+        "Tomb of the Last Wyrmsbane",
+        "Blacktidebay"
       ]
     },
     {
@@ -5056,13 +6789,13 @@
     }
   ],
   "harvest": {
-    "Copper Ore": 599,
-    "Brittle Stone": 633,
+    "Copper Ore": 639,
+    "Brittle Stone": 680,
     "Clouded Crystallized Magic": 9,
-    "Wood": 217,
-    "Resin": 263,
+    "Wood": 244,
+    "Resin": 288,
     "Chipped Turquoise": 3,
-    "Lionleaf": 23,
+    "Lionleaf": 28,
     "Chipped Star Ruby": 2,
     "Alunite Ore": 11,
     "Ghost Poppy": 33,
@@ -5072,7 +6805,7 @@
     "Chipped Malachite": 4,
     "Chipped Black Pearl": 4,
     "Chipped Amber": 2,
-    "Chipped Blue Diamond": 2,
+    "Chipped Blue Diamond": 3,
     "Chipped Jacinth": 1,
     "Chipped Onyx": 3,
     "Chipped Hematite": 3,
@@ -5083,136 +6816,142 @@
     "Whispering Sage": 9,
     "Chipped Jasper": 1,
     "Chipped Wolf's Eye Agate": 1,
-    "Chipped Cat's Eye Agate": 1,
+    "Chipped Cat's Eye Agate": 2,
     "Selstie Kelp": 1,
     "Chipped Ruby": 1,
     "Chipped Sapphire": 2,
-    "Chipped Star Rose Quartz": 1
+    "Chipped Star Rose Quartz": 1,
+    "Chipped Fire Opal": 1
   },
   "harvestNodes": [
     {
       "name": "Copper Ore & Brittle Stone",
-      "pulls": 668,
+      "pulls": 713,
       "yields": [
         {
           "res": "Copper Ore",
-          "count": 599,
-          "rate": 0.8967065868263473
+          "count": 638,
+          "rate": 0.8948106591865358
         },
         {
           "res": "Brittle Stone",
-          "count": 507,
-          "rate": 0.7589820359281437
+          "count": 543,
+          "rate": 0.761570827489481
         },
         {
           "res": "Alunite Ore",
           "count": 10,
-          "rate": 0.014970059880239521
+          "rate": 0.014025245441795231
         },
         {
           "res": "Clouded Crystallized Magic",
           "count": 9,
-          "rate": 0.01347305389221557
+          "rate": 0.012622720897615708
         },
         {
           "res": "Chipped Fire Emerald",
           "count": 4,
-          "rate": 0.005988023952095809
+          "rate": 0.005610098176718092
         },
         {
           "res": "Chipped Malachite",
           "count": 4,
-          "rate": 0.005988023952095809
+          "rate": 0.005610098176718092
         },
         {
           "res": "Chipped Black Pearl",
           "count": 4,
-          "rate": 0.005988023952095809
+          "rate": 0.005610098176718092
         },
         {
           "res": "Chipped Turquoise",
           "count": 3,
-          "rate": 0.004491017964071856
+          "rate": 0.004207573632538569
+        },
+        {
+          "res": "Chipped Blue Diamond",
+          "count": 3,
+          "rate": 0.004207573632538569
         },
         {
           "res": "Chipped Onyx",
           "count": 3,
-          "rate": 0.004491017964071856
+          "rate": 0.004207573632538569
         },
         {
           "res": "Chipped Hematite",
           "count": 3,
-          "rate": 0.004491017964071856
+          "rate": 0.004207573632538569
         },
         {
           "res": "Chipped Star Ruby",
           "count": 2,
-          "rate": 0.0029940119760479044
+          "rate": 0.002805049088359046
         },
         {
           "res": "Chipped Amber",
           "count": 2,
-          "rate": 0.0029940119760479044
-        },
-        {
-          "res": "Chipped Blue Diamond",
-          "count": 2,
-          "rate": 0.0029940119760479044
+          "rate": 0.002805049088359046
         },
         {
           "res": "Chipped Black Sapphire",
           "count": 2,
-          "rate": 0.0029940119760479044
+          "rate": 0.002805049088359046
+        },
+        {
+          "res": "Chipped Cat's Eye Agate",
+          "count": 2,
+          "rate": 0.002805049088359046
         },
         {
           "res": "Chipped Sapphire",
           "count": 2,
-          "rate": 0.0029940119760479044
+          "rate": 0.002805049088359046
         },
         {
           "res": "Chipped Bloodstone",
           "count": 1,
-          "rate": 0.0014970059880239522
+          "rate": 0.001402524544179523
         },
         {
           "res": "Chipped Jacinth",
           "count": 1,
-          "rate": 0.0014970059880239522
+          "rate": 0.001402524544179523
         },
         {
           "res": "Chipped Diamond",
           "count": 1,
-          "rate": 0.0014970059880239522
+          "rate": 0.001402524544179523
         },
         {
           "res": "Chipped Emerald",
           "count": 1,
-          "rate": 0.0014970059880239522
+          "rate": 0.001402524544179523
         },
         {
           "res": "Chipped Jasper",
           "count": 1,
-          "rate": 0.0014970059880239522
+          "rate": 0.001402524544179523
         },
         {
           "res": "Chipped Wolf's Eye Agate",
           "count": 1,
-          "rate": 0.0014970059880239522
-        },
-        {
-          "res": "Chipped Cat's Eye Agate",
-          "count": 1,
-          "rate": 0.0014970059880239522
+          "rate": 0.001402524544179523
         },
         {
           "res": "Chipped Ruby",
           "count": 1,
-          "rate": 0.0014970059880239522
+          "rate": 0.001402524544179523
         },
         {
           "res": "Chipped Star Rose Quartz",
           "count": 1,
-          "rate": 0.0014970059880239522
+          "rate": 0.001402524544179523
+        },
+        {
+          "res": "Chipped Fire Opal",
+          "count": 1,
+          "rate": 0.001402524544179523
         }
       ],
       "zones": [
@@ -5223,17 +6962,17 @@
     },
     {
       "name": "Wood & Resin",
-      "pulls": 217,
+      "pulls": 243,
       "yields": [
         {
           "res": "Wood",
-          "count": 217,
+          "count": 243,
           "rate": 1
         },
         {
           "res": "Resin",
-          "count": 188,
-          "rate": 0.8663594470046083
+          "count": 207,
+          "rate": 0.8518518518518519
         }
       ],
       "zones": [
@@ -5243,37 +6982,37 @@
     },
     {
       "name": "Herbs - Evershade Weald",
-      "pulls": 45,
+      "pulls": 47,
       "yields": [
         {
           "res": "Ghost Poppy",
           "count": 20,
-          "rate": 0.4444444444444444
+          "rate": 0.425531914893617
         },
         {
           "res": "Lionleaf",
-          "count": 14,
-          "rate": 0.3111111111111111
+          "count": 16,
+          "rate": 0.3404255319148936
         },
         {
           "res": "Whispering Sage",
           "count": 6,
-          "rate": 0.13333333333333333
+          "rate": 0.1276595744680851
         },
         {
           "res": "Nomad's Grace",
           "count": 4,
-          "rate": 0.08888888888888889
+          "rate": 0.0851063829787234
         },
         {
           "res": "Magic Frond",
           "count": 2,
-          "rate": 0.044444444444444446
+          "rate": 0.0425531914893617
         },
         {
           "res": "Selstie Kelp",
           "count": 1,
-          "rate": 0.022222222222222223
+          "rate": 0.02127659574468085
         }
       ],
       "zones": [
