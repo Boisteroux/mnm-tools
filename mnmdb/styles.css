@@ -10,6 +10,12 @@
   --accent-dk: #2a1404;
   --good:      #8bbf5a;
   --warn:      #e0593f;
+  /* Stat / data-viz palette — kept distinct from the gold --accent (which is for
+     interactive elements) so charts read as data, not buttons. */
+  --stat:      #bd6a3e; /* clay — primary stat colour */
+  --stat-dk:   #4a2a1a;
+  --stat-2:    #5a9a82; /* sage — secondary stat colour */
+  --stat-2-dk: #24382e;
   color-scheme: dark;
 }
 
@@ -111,7 +117,7 @@ h2 { font-size: 15px; font-weight: 600; color: var(--accent); margin: 24px 0 10p
   padding: 12px 16px;
   min-width: 110px;
 }
-.stat .num { font-size: 22px; font-weight: 600; color: var(--accent); }
+.stat .num { font-size: 22px; font-weight: 600; color: var(--stat); }
 .stat .lbl { font-size: 12px; color: var(--muted); }
 
 .col2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -250,7 +256,7 @@ tr.rowlink { cursor: pointer; }
 
 .rate { display: inline-flex; align-items: center; gap: 8px; justify-content: flex-end; }
 .rate .bar { width: 60px; height: 6px; background: var(--panel-2); border-radius: 3px; overflow: hidden; }
-.rate .fill { display: block; height: 100%; background: var(--accent); }
+.rate .fill { display: block; height: 100%; background: var(--stat); }
 .rate .pct { min-width: 38px; text-align: right; }
 /* Thin sample (<10 corpses): fade + desaturate so it reads as a rough estimate */
 .rate.rough { opacity: 0.5; }
@@ -266,7 +272,7 @@ tr.rowlink { cursor: pointer; }
 
 .magbar { display: inline-flex; align-items: center; gap: 8px; justify-content: flex-end; }
 .magbar .track { width: 60px; height: 6px; background: var(--panel-2); border-radius: 3px; overflow: hidden; flex: none; }
-.magbar .fill { display: block; height: 100%; background: linear-gradient(90deg, var(--accent-dk), var(--accent)); border-radius: 3px; }
+.magbar .fill { display: block; height: 100%; background: linear-gradient(90deg, var(--stat-dk), var(--stat)); border-radius: 3px; }
 .magbar .mag-label { min-width: 62px; text-align: right; }
 
 /* ---- Rarity × value scatter ---- */
@@ -284,9 +290,9 @@ tr.rowlink { cursor: pointer; }
 .scatter .axis { stroke: var(--line); stroke-width: 1; }
 .scatter .guide { stroke: var(--line); stroke-width: 1; stroke-dasharray: 3 3; opacity: 0.6; }
 .scatter .axlabel { fill: var(--muted); font-size: 9px; }
-.scatter .qlabel { fill: var(--accent); font-size: 9px; opacity: 0.85; }
-.scatter .pt { fill: var(--accent); fill-opacity: 0.7; stroke: var(--bg); stroke-width: 0.5; transition: fill-opacity 0.1s; }
-.scatter .pt.trade { fill: var(--good); }
+.scatter .qlabel { fill: var(--stat); font-size: 9px; opacity: 0.85; }
+.scatter .pt { fill: var(--stat); fill-opacity: 0.7; stroke: var(--bg); stroke-width: 0.5; transition: fill-opacity 0.1s; }
+.scatter .pt.trade { fill: var(--stat-2); }
 .scatter a:hover .pt { fill-opacity: 1; stroke: var(--text); }
 
 /* ---- Mob value breakdown ---- */

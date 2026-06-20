@@ -206,7 +206,7 @@ function mobValuePerKill(d) {
 // ---- Charts (dependency-free: inline SVG + CSS bars) ----
 
 // Palette for stacked-segment charts (sunset theme + a few complementary hues).
-const SEG_COLORS = ['#f0922b', '#8bbf5a', '#e0593f', '#c98a3a', '#6fa8c7', '#b07fc9', '#d9b94a', '#7fc9a0'];
+const SEG_COLORS = ['#bd6a3e', '#5a9a82', '#e0593f', '#c98a3a', '#6fa8c7', '#b07fc9', '#d9b94a', '#7fc9a0'];
 
 // Inline magnitude bar for ranked home tables. `disp` is pre-formatted HTML.
 const barCell = (v, max, disp) => {
