@@ -136,14 +136,21 @@ const sessionEndsFile = () => path.join(app.getPath('userData'), 'session-ends.j
 function readSessionEnds() {
   try { return JSON.parse(fs.readFileSync(sessionEndsFile(), 'utf8')).ends || []; } catch { return []; }
 }
-ipcMain.handle('session-replay', () => {
+ipcMain.handle('session-replay', (event, opts = {}) => {
   try {
     const files = ledgerParser.findLedgerFiles();
     // Build all sessions so the "today" rollup can span however many there were,
     // then show only the 3 most recent as individually browsable. Manual "end
     // session" markers force a boundary so an ended session isn't shown as live.
-    const all = ledgerParser.buildSessions(files, { ends: readSessionEnds() });
-    return { sessions: all.slice(0, 3), today: ledgerParser.todayRollup(all) };
+    // opts.character (optional) restricts the recap to one character's ledgers.
+    const character = opts.character || null;
+    const all = ledgerParser.buildSessions(files, { ends: readSessionEnds(), character });
+    return {
+      sessions: all.slice(0, 3),
+      today: ledgerParser.todayRollup(all),
+      characters: ledgerParser.charactersFromFiles(files),
+      character,
+    };
   } catch (e) { return { error: e.message }; }
 });
 

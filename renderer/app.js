@@ -1170,8 +1170,9 @@ function renderReplay() {
     ? reEsc(fmtDay(s.start)) + ' · started ' + reEsc(fmtClock(s.start)) + ' · <b>in progress</b> · ' + reEsc(fmtDur(Date.now() - s.start)) + ' so far'
     : reEsc(fmtDay(s.start)) + ' · ' + reEsc(fmtClock(s.start)) + '–' + reEsc(fmtClock(s.end)) + ' · <b>' + reEsc(fmtDur(s.durationMs)) + '</b>';
 
+  const charBadge = (replayMultiChar && s.character) ? '<span class="replay-char-badge">' + reEsc(s.character) + '</span> ' : '';
   body.innerHTML =
-    '<div class="replay-when">' + whenHTML + '</div>' +
+    '<div class="replay-when">' + charBadge + whenHTML + '</div>' +
     '<div class="replay-coin">+' + reEsc(coinStr(s.coin.total)) + (live ? ' earned so far' : ' earned') +
       (coinSub.length ? ' <span class="replay-coin-sub">(' + reEsc(coinSub.join(' · ')) + ')</span>' : '') + '</div>' +
     '<div class="replay-tiles">' + tiles + '</div>' +
@@ -1180,19 +1181,39 @@ function renderReplay() {
     (cols.length ? '<div class="replay-cols">' + cols.join('') + '</div>' : '');
 }
 
+let replayCharacter = null;   // null = all characters
+let replayMultiChar = false;  // true when 2+ characters exist (show picker + badges)
+
 async function openReplay() {
   $('replay-modal').classList.remove('hidden');
   $('replay-today').innerHTML = '';
   $('replay-body').innerHTML = '<p class="replay-empty">Reading your Ledger…</p>';
   $('replay-count').textContent = '';
-  const r = await window.mapAPI.sessionReplay();
+  const r = await window.mapAPI.sessionReplay(replayCharacter ? { character: replayCharacter } : undefined);
   replaySessions = (r && r.sessions) || [];
   replayToday = (r && r.today) || null;
   replayIdx = 0;
   if (r && r.error) { $('replay-today').innerHTML = ''; $('replay-body').innerHTML = '<p class="replay-empty">Could not read sessions: ' + reEsc(r.error) + '</p>'; return; }
+  populateCharacterPicker((r && r.characters) || []);
   renderToday();
   renderReplay();
 }
+
+// Show a character dropdown only when more than one character has been played.
+function populateCharacterPicker(characters) {
+  const sel = $('replay-character');
+  replayMultiChar = characters.length > 1;
+  if (!replayMultiChar) { sel.classList.add('hidden'); replayCharacter = null; return; }
+  sel.innerHTML = ['<option value="">All characters</option>']
+    .concat(characters.map((c) => '<option value="' + reEsc(c) + '">' + reEsc(c) + '</option>')).join('');
+  sel.value = replayCharacter || '';
+  sel.classList.remove('hidden');
+}
+
+$('replay-character').addEventListener('change', (e) => {
+  replayCharacter = e.target.value || null;
+  openReplay();
+});
 
 $('btn-session-replay').addEventListener('click', openReplay);
 $('replay-close').addEventListener('click', () => $('replay-modal').classList.add('hidden'));

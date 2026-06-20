@@ -26,7 +26,7 @@ contextBridge.exposeInMainWorld('mapAPI', {
   publishMnmdb: () => ipcRenderer.invoke('publish-mnmdb'),
   exportContribution: () => ipcRenderer.invoke('export-contribution'),
   zoneAliases: () => ipcRenderer.invoke('zone-aliases'),
-  sessionReplay: () => ipcRenderer.invoke('session-replay'),
+  sessionReplay: (opts) => ipcRenderer.invoke('session-replay', opts),
   sessionEnd: () => ipcRenderer.invoke('session-end'),
   tradeLog: (rec) => ipcRenderer.invoke('trade-log', rec),
   tradeItemNames: () => ipcRenderer.invoke('trade-item-names'),

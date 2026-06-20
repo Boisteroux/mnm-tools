@@ -344,10 +344,16 @@ function buildSessions(files, opts = {}) {
   const ends = (opts.ends || []).slice().sort((a, b) => a - b); // manual "end session" timestamps
   const evs = [];
   const partyEvents = []; // { t, size } from the Social ledger (PartyJoin/Leave/...)
+  // Each ledger file belongs to one character (<Name>_Character_<date>.json), so
+  // we can tag events by character and optionally show just one (opts.character).
+  const charOf = (f) => { const m = path.basename(f).match(/^(.+?)_(?:Character|Social)_/); return m ? m[1] : 'Unknown'; };
   for (const file of files) {
+    const character = charOf(file);
+    if (opts.character && character !== opts.character) continue;
     const isSocial = /_Social_/i.test(file);
     let data;
     try { data = JSON.parse(fs.readFileSync(file, 'utf8')); } catch { continue; }
+    const startLen = evs.length;
     for (const ev of data.c01 || []) {
       const t = Date.parse(ev.f04);
       if (!t) continue;
@@ -380,6 +386,7 @@ function buildSessions(files, opts = {}) {
         if (isClean(res)) evs.push({ t, zone, kind: 'harvest', name: res });
       }
     }
+    for (let i = startLen; i < evs.length; i++) evs[i].character = character;
   }
   // The ledger logs the FULL mob coin; in a party it's split, so credit only your
   // share (full ÷ party size at that moment, from the party-event timeline).
@@ -411,6 +418,11 @@ function buildSessions(files, opts = {}) {
 function summarizeSession(s) {
   const kills = {}, loot = {}, harvest = {}, sales = {};
   let killCoin = 0, saleCoin = 0, partyKills = 0, partyMax = 1, soloKillCoin = 0, partyKillCoin = 0;
+
+  // Which character this session belongs to (the most-logged one; normally just one).
+  const charCount = {};
+  for (const e of s.events) if (e.character) charCount[e.character] = (charCount[e.character] || 0) + 1;
+  const character = Object.entries(charCount).sort((a, b) => b[1] - a[1]).map(([c]) => c)[0] || null;
 
   // Break the session into zone segments. A blank/garbled zone carries the last
   // known zone forward so a momentary gap doesn't fragment the timeline.
@@ -449,7 +461,7 @@ function summarizeSession(s) {
   for (const g of merged) zoneMs[g.zone] = (zoneMs[g.zone] || 0) + (g.end - g.start);
 
   return {
-    start: s.start, end: s.end, durationMs: s.end - s.start,
+    start: s.start, end: s.end, durationMs: s.end - s.start, character,
     counts: { kills: sum(kills), loot: sum(loot), harvest: sum(harvest), sales: sum(sales) },
     coin: { fromKills: killCoin, fromSales: saleCoin, total: killCoin + saleCoin, killsSolo: soloKillCoin, killsParty: partyKillCoin },
     party: { kills: partyKills, solo: sum(kills) - partyKills, max: partyMax }, // kill coin already split by party size

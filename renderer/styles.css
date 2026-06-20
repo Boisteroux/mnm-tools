@@ -528,6 +528,12 @@ body.overlay #map-area { background: rgba(18, 12, 8, 0.10); }
 .replay-nav button { padding: 3px 9px; white-space: nowrap; flex: 0 0 auto; }
 .replay-count { font-size: 11px; color: var(--muted); min-width: 70px; text-align: center; }
 .replay-live { color: #5fbf6a; font-weight: 600; }
+/* Character filter dropdown — hugs the title, pushes the nav to the far right. */
+.replay-character { margin-right: auto; max-width: 180px; font-size: 12px; padding: 2px 7px; }
+.replay-char-badge {
+  display: inline-block; background: var(--surface-2); border: 1px solid var(--line-2);
+  border-radius: 5px; padding: 1px 7px; font-size: 11px; font-weight: 600; color: var(--text); margin-right: 6px;
+}
 
 .replay-today-card { background: var(--surface-2); border: 1px solid var(--line-2); border-radius: 8px; padding: 10px 12px; }
 .rt-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
