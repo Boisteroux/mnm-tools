@@ -11,7 +11,8 @@
   },
   "scripts": {
     "start": "electron .",
-    "dist": "electron-builder --win"
+    "dist": "electron-builder --win --config.asar=false",
+    "release": "node scripts/release.js"
   },
   "devDependencies": {
     "electron": "^32.3.3",
