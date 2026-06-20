@@ -334,6 +334,37 @@ function buildItemReport(agg) {
 // the player having logged off, so the next activity starts a new session.
 const SESSION_GAP_MS = 30 * 60 * 1000;
 
+// Turn raw party events into a timeline of { t, size } where size is the party
+// size AFTER the event. A Disband — or you yourself leaving — drops you to solo (1);
+// a Join/Create/LeaderChange (or another member leaving) carries the logged size.
+function partyTimeline(events) {
+  return events.map((pe) => {
+    let size;
+    if (/Disband/i.test(pe.type)) size = 1;
+    else if (/Leave/i.test(pe.type) && pe.who && pe.who === pe.character) size = 1;
+    else size = pe.size || 1;
+    return { t: pe.t, size: Math.max(1, size) };
+  });
+}
+
+// Divide each kill's full mob coin by the party size you were in AT THAT MOMENT,
+// scoped to the session: a party can't survive a logout gap, so each session
+// starts solo and only counts party events from its own window (the lead-up plus
+// the session itself). Joining a party right before the first kill still counts.
+function applyPartySplit(sessions, partyEvents, gap) {
+  const tl = partyTimeline(partyEvents); // already chronological
+  for (const s of sessions) {
+    const win = tl.filter((pe) => pe.t >= s.start - gap && pe.t <= s.end);
+    for (const e of s.events) {
+      if (e.kind !== 'kill') continue;
+      let size = 1;
+      for (const pe of win) { if (pe.t <= e.t) size = pe.size; else break; }
+      e.party = size;
+      if (size > 1) e.coin = Math.round(e.coin / size);
+    }
+  }
+}
+
 // Pull a flat, chronological stream of meaningful events out of the ledger,
 // split it into sessions on idle gaps, and summarise each. Sessions are
 // returned most-recent-first so the UI can open on "your last session".
@@ -360,9 +391,11 @@ function buildSessions(files, opts = {}) {
       let p = {};
       try { p = JSON.parse(ev.f03 || '{}'); } catch {}
       if (isSocial) {
-        // Party size changes carry the new size in d62 (PartyJoin/PartyLeave/...).
+        // Party membership events (PartyCreate/Join/Leave/Disband). d62 = the party
+        // size after the event; we also keep the type + who so a Disband — or you
+        // yourself leaving — correctly drops you back to solo (size 1) below.
         const kind = b64(p.d63 || '');
-        if (/^Party/i.test(kind) && +p.d62 > 0) partyEvents.push({ t, size: +p.d62 });
+        if (/^Party/i.test(kind)) partyEvents.push({ t, type: kind, size: +p.d62 || 0, who: b64((ev.f02 || '').replace(/^name_/, '')), character });
         continue; // the social ledger logs party + other players' activity, not yours
       }
       const zRaw = b64((ev.f05 || '').replace(/^zone_/, ''));
@@ -388,11 +421,7 @@ function buildSessions(files, opts = {}) {
     }
     for (let i = startLen; i < evs.length; i++) evs[i].character = character;
   }
-  // The ledger logs the FULL mob coin; in a party it's split, so credit only your
-  // share (full ÷ party size at that moment, from the party-event timeline).
   partyEvents.sort((a, b) => a.t - b.t);
-  const partySizeAt = (t) => { let size = 1; for (const pe of partyEvents) { if (pe.t <= t) size = pe.size; else break; } return Math.max(1, size); };
-  evs.forEach((e) => { if (e.kind === 'kill') { e.party = partySizeAt(e.t); if (e.party > 1) e.coin = Math.round(e.coin / e.party); } });
   evs.sort((a, b) => a.t - b.t);
 
   const sessions = [];
@@ -406,6 +435,13 @@ function buildSessions(files, opts = {}) {
     cur.events.push(e);
     cur.end = e.t;
   }
+
+  // The ledger logs the FULL mob coin; in a party it's split, so credit only your
+  // share. Apply that per session so the party size RESETS to solo at every session
+  // boundary (a party can't survive a logout gap) — otherwise a stale party size
+  // from hours ago would wrongly divide later solo kills.
+  applyPartySplit(sessions, partyEvents, gap);
+
   const now = Date.now();
   const summaries = sessions.map(summarizeSession);
   // A session is "live" if its last event is within the gap AND it wasn't manually
