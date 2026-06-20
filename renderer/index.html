@@ -30,7 +30,7 @@
     <h1>MnM Map</h1>
 
     <div class="section" data-overlay-hide>
-      <button id="btn-overlay" title="Float the map on top of your game (Ctrl+Shift+M)">Enter Game Minimap Mode</button>
+      <button id="btn-overlay" class="btn-hero" title="Float the map on top of your game (Ctrl+Shift+M)">Enter Game Minimap Mode</button>
       <button id="btn-session-replay" class="btn-spotlight" title="Recap your recent play sessions from the game's Ledger — zones, kills, loot, harvests and coin">Session Recap</button>
     </div>
 
@@ -82,7 +82,7 @@
         <span>Collect drop &amp; vendor data</span>
       </label>
       <button id="tracker-publish" class="primary hidden" title="Regenerate the site data from your ledger and push it live to MnMdb (owner only)">Publish to MnMdb</button>
-      <button id="btn-export-contribution" title="Save your rolled-up play data (drops, kills, harvests, prices) to a file you can send to the site owner to pool into MnMdb">Export my data to share</button>
+      <button id="btn-export-contribution" class="btn-spotlight" title="Save your rolled-up play data (drops, kills, harvests, prices) to a file you can send to the site owner to pool into MnMdb">Export my data to share</button>
       <div id="tracker-status"></div>
       <div id="publish-status"></div>
       <div id="contribution-status"></div>
@@ -217,7 +217,7 @@
       </p>
       <div id="zone-review-grid" class="map-picker-grid"></div>
       <div class="btn-row right">
-        <button id="zone-review-close">Done</button>
+        <button id="zone-review-close" class="primary">Done</button>
       </div>
     </div>
   </div>
@@ -227,12 +227,14 @@
     <div class="modal modal-wide">
       <div class="replay-head">
         <h2>Session Recap</h2>
-        <button id="replay-x" class="modal-x" title="Close" aria-label="Close">✕</button>
+        <div class="replay-head-right">
+          <select id="replay-character" class="replay-character hidden" title="Show only one character's sessions"></select>
+          <button id="replay-x" class="modal-x" title="Close" aria-label="Close">✕</button>
+        </div>
       </div>
       <div class="replay-controls">
-        <select id="replay-character" class="replay-character hidden" title="Show only one character's sessions"></select>
         <div class="replay-toggle">
-          <button id="rv-session" class="rv-btn active" title="Your current / most recent play session">Current</button>
+          <button id="rv-session" class="rv-btn active" title="Your current session, or your most recent one if you've stopped playing">Latest</button>
           <button id="rv-today" class="rv-btn" title="Everything today, all of today's sessions combined">Today</button>
         </div>
         <div id="replay-nav" class="replay-nav">

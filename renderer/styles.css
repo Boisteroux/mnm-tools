@@ -63,16 +63,7 @@ body {
 }
 
 /* Draw the eye to the headline action */
-#btn-overlay {
-  background: linear-gradient(135deg, #d23a1f 0%, #ef7a1c 55%, #f8be24 100%);
-  border: none;
-  color: #2a1404;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-  padding: 8px 9px;
-  box-shadow: 0 2px 10px rgba(240, 146, 43, 0.28);
-}
-#btn-overlay:hover { filter: brightness(1.08); background: linear-gradient(135deg, #d23a1f 0%, #ef7a1c 55%, #f8be24 100%); border: none; }
+/* Tier-1 gradient now lives on the reusable .btn-hero class (see button hierarchy below). */
 
 #sidebar h1 {
   font-size: 13px;
@@ -139,6 +130,15 @@ select option {
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
+/* ── Button hierarchy ────────────────────────────────────────────────────────
+   Tier 1  .btn-hero       sunset gradient — THE marquee action; max one per screen
+   Tier 2  .primary        solid gold — frequent primary actions + modal confirms
+   Tier 3  .btn-spotlight   thick accent outline — notable secondary features
+   Tier 4  (no class)       plain 1px outline — everything else
+   Extras  .danger destructive red · .secondary quiet/dismiss (renders as Tier 4)
+   ──────────────────────────────────────────────────────────────────────────── */
+
+/* Tier 4 — the default for every button. */
 button {
   background: var(--surface);
   border: 1px solid var(--line-2);
@@ -149,49 +149,54 @@ button {
   cursor: pointer;
   flex: 1;
 }
-
 button:hover { background: var(--surface-2); border-color: #8a5a2b; }
 button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 button:disabled { opacity: 0.38; cursor: not-allowed; }
 button:disabled:hover { background: var(--surface); border-color: var(--line-2); }
+
+/* Tier 1 — marquee gradient (e.g. Enter Game Minimap Mode). Use sparingly. */
+button.btn-hero {
+  background: linear-gradient(135deg, #d23a1f 0%, #ef7a1c 55%, #f8be24 100%);
+  border: none; color: #2a1404; font-weight: 600; letter-spacing: 0.3px;
+  padding: 8px 9px; box-shadow: 0 2px 10px rgba(240, 146, 43, 0.28);
+}
+button.btn-hero:hover { filter: brightness(1.08); background: linear-gradient(135deg, #d23a1f 0%, #ef7a1c 55%, #f8be24 100%); border: none; }
+
+/* Tier 2 — solid gold primary / confirm. */
 button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-dk); font-weight: 600; }
 button.primary:hover { background: #ffa94d; }
-/* Spotlight — a thicker accent outline for extra visibility (no gradient). */
-button.btn-spotlight { border: 2px solid var(--accent); color: var(--text); font-weight: 600; }
-button.btn-spotlight:hover { background: var(--surface-2); border-color: #ffa94d; }
+
+/* Tier 3 — soft accent fill for notable secondary actions (gentler than an outline). */
+button.btn-spotlight { background: rgba(240, 146, 43, 0.14); border: 1px solid rgba(240, 146, 43, 0.5); color: #f3b173; font-weight: 600; }
+button.btn-spotlight:hover { background: rgba(240, 146, 43, 0.22); border-color: rgba(240, 146, 43, 0.7); }
 
 /* Manual map switcher — a single toggle shown only in multi-map zones. The
    gradient fill leans to the side of the map you're currently viewing. */
 #map-switcher, #overlay-map-switcher { display: inline-flex; vertical-align: middle; }
 #map-switcher { margin-top: 6px; }
+/* A standard (Tier 4) button with a gold swap icon to signal it switches maps. */
 #map-switcher .map-toggle, #overlay-map-switcher .map-toggle {
   -webkit-app-region: no-drag;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   margin: 0;
   border: 1px solid var(--line-2);
   border-radius: 5px;
   background-color: var(--surface);
-  background-repeat: no-repeat;
   color: var(--text);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
   font-size: 11px;
   font-weight: 400;
   line-height: 1.4;
-  padding: 3px 14px;
+  padding: 3px 12px;
   cursor: pointer;
   white-space: nowrap;
-  transition: filter 0.12s ease;
+  transition: background-color 0.12s ease, border-color 0.12s ease;
 }
-#map-switcher .map-toggle:hover, #overlay-map-switcher .map-toggle:hover { filter: brightness(1.18); }
+#map-switcher .map-toggle:hover, #overlay-map-switcher .map-toggle:hover { background-color: var(--surface-2); border-color: #8a5a2b; }
+.map-swap { color: var(--accent); flex: 0 0 auto; }
 /* Slimmer in the overlay bar so it lines up with the Lock / mode buttons. */
-#overlay-map-switcher .map-toggle { padding: 2px 12px; font-size: 10.5px; }
-/* Viewing the ground zone (first map) — fill leans right, dropping off by ~1/3. */
-#map-switcher .fill-left, #overlay-map-switcher .fill-left {
-  background-image: linear-gradient(270deg, rgba(240, 146, 43, 0.62) 0%, rgba(240, 146, 43, 0.5) 12%, rgba(240, 146, 43, 0) 33%);
-}
-/* Viewing the city (second map) — fill leans left, dropping off by ~1/3. */
-#map-switcher .fill-right, #overlay-map-switcher .fill-right {
-  background-image: linear-gradient(90deg, rgba(240, 146, 43, 0.62) 0%, rgba(240, 146, 43, 0.5) 12%, rgba(240, 146, 43, 0) 33%);
-}
+#overlay-map-switcher .map-toggle { padding: 2px 11px; font-size: 10.5px; }
 button.danger { background: #45191c; border-color: #6e2a2e; color: #f0a8a8; }
 button.danger:hover { background: #572025; }
 button.active { background: var(--accent); border-color: var(--accent); color: var(--accent-dk); font-weight: 600; }
@@ -520,15 +525,17 @@ body.overlay #map-area { background: rgba(18, 12, 8, 0.10); }
 /* ---- Session Replay ---- */
 /* Fixed size so the modal never rescales (and the buttons never move) when you
    switch sessions — content scrolls inside .replay-scroll instead. */
-#replay-modal .modal { width: 600px; height: 600px; max-height: 88vh; }
+#replay-modal .modal { width: 660px; height: 720px; max-height: 92vh; }
 .replay-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .replay-head h2 { margin: 0; }
-/* Controls row: character picker (far left), then the Current/Today toggle, then Older/Newer. */
-.replay-controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-/* Uniform height across the toggle, character picker and Older/Newer buttons. */
+/* Title row holds the character filter ("who") + close, separate from the view nav. */
+.replay-head-right { display: flex; align-items: center; gap: 8px; }
+/* Controls row: the Latest/Today toggle (left) and the Older/Newer nav (right). */
+.replay-controls { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+/* Uniform height across the toggle, nav buttons and the character picker. */
 .replay-controls .replay-toggle,
 .replay-controls .replay-nav button,
-.replay-controls .replay-character { height: 28px; box-sizing: border-box; }
+.replay-character { height: 28px; box-sizing: border-box; }
 .replay-scroll { flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; margin: 4px 0; }
 .modal-x {
   flex: 0 0 auto; background: transparent; border: none; color: var(--muted);
@@ -537,7 +544,8 @@ body.overlay #map-area { background: rgba(18, 12, 8, 0.10); }
 .modal-x:hover { background: var(--surface-2); border-color: transparent; color: var(--text); }
 .replay-nav { display: flex; align-items: center; gap: 8px; }
 .replay-nav button { padding: 0 10px; white-space: nowrap; flex: 0 0 auto; display: inline-flex; align-items: center; }
-.replay-count { font-size: 11px; color: var(--muted); min-width: 70px; text-align: center; }
+.replay-count { font-size: 11px; color: var(--muted); text-align: center; white-space: nowrap; }
+.replay-count:empty { display: none; }
 .replay-live { color: #5fbf6a; font-weight: 600; }
 /* Segmented toggle: current session vs the whole-day rollup. */
 .replay-toggle { display: flex; flex: 0 0 auto; border: 1px solid var(--line-2); border-radius: 7px; overflow: hidden; }

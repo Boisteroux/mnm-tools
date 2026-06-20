@@ -1150,9 +1150,11 @@ function renderReplay() {
   const live = s.active && replayIdx === 0; // most-recent session still within the idle window
   replayLive = live;
   // replayIdx 0 = most recent; "Newer" decreases the index.
+  // No "Latest" text here — the toggle already says it and the card shows the date.
+  // Just a Live dot for the live session, or a position counter when browsing older.
   $('replay-count').innerHTML = live
     ? '<span class="replay-live">● Live</span>'
-    : (replayIdx === 0 ? 'Latest' : (replayIdx + 1) + ' of ' + replaySessions.length);
+    : (replayIdx === 0 ? '' : (replayIdx + 1) + ' of ' + replaySessions.length);
   $('replay-next').disabled = replayIdx <= 0;
   $('replay-prev').disabled = replayIdx >= replaySessions.length - 1;
   updateEndBtn(); // "end session" only on the live session, in session view
@@ -1385,8 +1387,9 @@ function renderMapSwitcher() {
     const other = group.maps[curIdx === 0 ? 1 : 0];
 
     const btn = document.createElement('button');
-    btn.className = 'map-toggle ' + (curIdx === 0 ? 'fill-left' : 'fill-right');
-    btn.textContent = 'Show ' + other.name;
+    btn.className = 'map-toggle';
+    btn.innerHTML = '<svg class="map-swap" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h16"/><path d="M16 6l3 3l-3 3"/><path d="M21 15H5"/><path d="M8 12l-3 3l3 3"/></svg>';
+    btn.appendChild(document.createTextNode('Show ' + other.name));
     btn.title = other.note ? 'Show ' + other.name + ' — ' + other.note : 'Show ' + other.name;
     btn.addEventListener('click', () => switchToMap(other.name));
     el.appendChild(btn);
