@@ -10,6 +10,7 @@ let NODES = {};      // gathering nodes (Copper Vein, …) from the wiki
 let VENDORS = [];    // wiki Merchant pages: { name, zone, sells[], buys[] } (vendors.json)
 let vendorsSelling = {}; // item name -> [vendor] that stock it (inverted from sells)
 let HARVEST_NODES = []; // node-type yield rates from clustered harvests (data.json)
+let RECIPE_OBS = null;  // recipe-observations.json — trivials reverse-engineered in-game
 let resNodes = {};      // resource name -> [{ node, pulls, count, rate }]
 let NODE_RICH = new Set(); // node base-names that have a "Rich" tier (for the node note)
 let nodeDrops = {};        // collapsed node name -> Set of items the wiki says drop there
@@ -813,6 +814,55 @@ function rawMatsHtml(rc) {
     (p.value <= 0 ? ' <span class="sample">?</span>' : '')).join(', ');
 }
 
+// Apply trivials reverse-engineered from in-game crafting difficulty colours
+// (recipe-observations.json) where the wiki has none. The wiki value always wins;
+// estimates only fill the blanks and are flagged so the UI can mark them.
+function applyTrivialEstimates(recipes, obs) {
+  const est = (obs && obs.trivialEstimates) || {};
+  for (const r of recipes || []) {
+    if (r.trivial) continue;                       // keep any real wiki trivial
+    const bySkill = est[r.tradeskill];
+    const v = bySkill && bySkill[r.result.item];
+    if (v == null) continue;
+    const num = parseInt(v, 10);
+    if (!num) continue;
+    r.trivial = num;
+    r.trivialEstimated = true;
+    if (typeof v === 'string' && /\+\s*$/.test(v)) r.trivialMin = true; // "80+" = lower bound
+  }
+}
+
+// Trivials we've reverse-engineered from in-game crafting colours for recipes the
+// wiki doesn't list at all — shown as their own section so they don't pollute the
+// cost/profit/leveling tables (which need ingredients we don't have for these yet).
+function observedTrivialsSection(name) {
+  const est = RECIPE_OBS && RECIPE_OBS.trivialEstimates && RECIPE_OBS.trivialEstimates[name];
+  if (!est) return '';
+  const have = new Set(RECIPES.filter((r) => r.tradeskill === name).map((r) => r.result.item));
+  const extra = Object.keys(est).filter((k) => k !== '_method' && !have.has(k));
+  if (!extra.length) return '';
+  const rows = extra
+    .map((item) => ({ item, v: est[item], n: parseInt(est[item], 10) || 9999 }))
+    .sort((a, b) => a.n - b.n)
+    .map((e) => {
+      const known = DATA.items.find((i) => i.name === e.item);
+      const cell = known ? itemLink(nameToId[e.item] || e.item, e.item) : esc(e.item);
+      const label = '~' + (parseInt(e.v, 10) || '?') + (/\+\s*$/.test(String(e.v)) ? '+' : '');
+      return '<tr><td>' + cell + '</td><td class="num sample"><span class="est">' + label + '</span></td></tr>';
+    }).join('');
+  return '<h2>Observed trivials <span class="sub">— not in the wiki yet</span></h2>' +
+    '<p class="note">Reverse-engineered from in-game crafting difficulty colours for recipes the wiki doesn’t list. Estimated to the nearest 5 (in-game breakpoints fall every 5 skill); “+” is a lower bound until higher-skill data lands. These join the tables above once their full recipes are added.</p>' +
+    '<div class="card"><table><thead><tr><th>Recipe</th><th class="num">Trivial</th></tr></thead><tbody>' + rows + '</tbody></table></div>';
+}
+
+// How a recipe's trivial reads in a table: a plain number from the wiki, or our
+// estimate marked "~55" (and "~80+" when it's only a lower bound so far).
+function trivialCell(r) {
+  if (!r.trivial) return '—';
+  if (!r.trivialEstimated) return String(r.trivial);
+  return '<span class="est" title="Estimated from in-game crafting difficulty colours — the wiki has no trivial for this recipe">~' + r.trivial + (r.trivialMin ? '+' : '') + '</span>';
+}
+
 // One combined recipe table: raw materials, trivial, raw-material cost, sell value
 // (best market price of the output) and margin (sell − raw cost). Sorted by trivial.
 function recipeTable(recs, showSkill) {
@@ -833,7 +883,7 @@ function recipeTable(recs, showSkill) {
         : '<span class="' + (margin >= 0 ? 'pos' : 'neg') + '">' + (margin >= 0 ? '+' : '') + coin(margin) + '</span>';
       return '<tr><td>' + (r.result.qty > 1 ? r.result.qty + '× ' : '') + itemLink(rid, r.result.item) + '</td>' +
         '<td class="sample">' + rawMatsHtml(rc) + '</td>' + (showSkill ? '<td>' + tradeskillLink(r.tradeskill) + '</td>' : '') +
-        '<td class="num sample">' + (r.trivial || '—') + '</td>' +
+        '<td class="num sample">' + trivialCell(r) + '</td>' +
         '<td class="num coin">' + cost + '</td>' +
         '<td class="num coin">' + (haveSell ? coin(sell) : '—') + '</td>' +
         '<td class="num">' + mg + '</td></tr>';
@@ -841,7 +891,8 @@ function recipeTable(recs, showSkill) {
 }
 
 const marginNote = '<div class="note">Sorted by trivial. <b>Raw materials</b> = everything broken down to gathered/base mats (reusable tools like hammers &amp; pliers excluded; molds and other consumables counted). ' +
-  '<b>Raw cost</b> values those at the best known price (gathered mats are free). <b>Sell value</b> = the output’s best player-trade/vendor price. <b>Margin</b> = sell − raw cost. “?” = a price isn’t known yet; fills in as data grows.</div>';
+  '<b>Raw cost</b> values those at the best known price (gathered mats are free). <b>Sell value</b> = the output’s best player-trade/vendor price. <b>Margin</b> = sell − raw cost. “?” = a price isn’t known yet; fills in as data grows. ' +
+  'A <b class="est">~</b> trivial (e.g. <span class="est">~55</span>) is our own estimate from in-game crafting colours where the wiki has none — “+” means a lower bound until more data lands.</div>';
 
 // Reusable, one-time crafting tools (a hammer/pliers lasts many crafts), so they
 // don't count toward per-craft material cost. Molds ARE consumed (1 per bar) — kept.
@@ -1005,7 +1056,7 @@ function rawCostTable(recs) {
       return '<tr><td>' + (r.result.qty > 1 ? r.result.qty + '× ' : '') + itemLink(rid, r.result.item) + '</td>' +
         '<td class="sample">' + matsHtml(rc) + '</td>' +
         '<td class="num coin">' + cost + '</td>' +
-        '<td class="num sample">' + (r.trivial || '—') + '</td></tr>';
+        '<td class="num sample">' + trivialCell(r) + '</td></tr>';
     }).join('') + '</tbody></table></div>';
 }
 
@@ -1267,6 +1318,7 @@ function renderTradeskill(name) {
     '<p class="sub"><a href="' + wikiUrl(name) + '" target="_blank" rel="noopener">View on the wiki ↗</a></p>' +
     (recs.length ? levelingPathSection(recs) : '') +
     (recs.length ? '<h2>Recipes</h2>' + recipeTable(recs, false) + marginNote : '') +
+    observedTrivialsSection(name) +
     flowSection;
   if (fams.length) flowPick(fams[0]);
 }
@@ -1637,6 +1689,12 @@ async function loadWikiStats() {
       RECIPES = w.recipes;
       RECIPES.forEach((r) => { const k = r.result.item.toLowerCase(); (recipesByResult[k] = recipesByResult[k] || []).push(r); });
     }
+  } catch {}
+  // Fill in recipe trivials we've reverse-engineered from in-game crafting colours
+  // where the wiki has none — our own observations beat the wiki's "?".
+  try {
+    RECIPE_OBS = await (await fetch('./recipe-observations.json?v=' + Date.now())).json();
+    applyTrivialEstimates(RECIPES, RECIPE_OBS);
   } catch {}
   try {
     const v = await (await fetch('./vendors.json?v=' + Date.now())).json();

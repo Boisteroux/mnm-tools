@@ -57,6 +57,9 @@ header {
 }
 .tagline { font-size: 12px; color: var(--muted); }
 
+/* Estimated trivial (reverse-engineered from in-game crafting colours, not the wiki) */
+.est { color: var(--accent); border-bottom: 1px dotted var(--accent); cursor: help; }
+
 .topnav { display: flex; gap: 4px; }
 .topnav a {
   font-size: 13px;

@@ -34,14 +34,14 @@
         "darkblue": ["Copper Chain Leggings", "Copper Plate Greaves", "Enchanted Copper Chain Leggings", "Enchanted Copper Plate Greaves"],
         "white": ["Copper Plate Barding"],
         "yellow": ["Copper Chain Tunic", "Copper Plate Breastplate", "Enchanted Copper Chain Tunic", "Enchanted Copper Plate Breastplate"],
-        "orange": ["Copper Greatsword", "Copper Maul", "Copper Tower Shield", "Bronze Bracket", "Bronze Chain Links"],
-        "red": ["Bronze Fasteners", "Bronze Hinge", "Bronze Plate", "Jagged Sharpening Stone", "Jagged Weightstone", "Silver Chain Links", "Silver Plate", "Bronze Chain Gorget"],
+        "orange": ["Copper Greatsword", "Copper Maul", "Copper Tower Shield"],
+        "red": ["Bronze Bracket", "Bronze Chain Links", "Bronze Fasteners", "Bronze Hinge", "Bronze Plate", "Jagged Sharpening Stone", "Jagged Weightstone", "Silver Chain Links", "Silver Plate", "Bronze Chain Gorget"],
         "greenTrivialAtOrBelow": ["Copper Chain Coif", "Copper Chain Shoulderguards", "Copper Plate Helm", "Copper Plate Pauldrons", "Enchanted Copper Chain Coif", "Enchanted Copper Plate Helm", "(and every other copper recipe not listed above)"]
       }
     ]
   },
   "trivialEstimates": {
-    "_method": "Derived from the colour at skill 48 AND skill 50 via the multiples-of-5 / 5-wide-band model in _model, which reproduces both readings exactly. Values are the nearest multiple of 5; red-at-50 items are a lower bound (>= 80) until a higher-skill reading shifts their colour. Enchanted variants share their base item's trivial.",
+    "_method": "Derived from the colour at skill 48 AND skill 50 via the multiples-of-5 / 5-wide-band model in _model, which reproduces both readings exactly. Values are the nearest multiple of 5; red-at-50 items are a lower bound (>= 80) until a higher-skill reading shifts their colour. Enchanted variants share their base item's trivial. CROSS-CHECK: the wiki independently lists the whole bronze/silver plate tier at trivial 80, which confirms the high end of the model and corrected Bronze Bracket/Chain Links from 75 to 80 (orange vs red is hard to read on the dark crafting UI). The copper weapons (Greatsword/Maul/Tower Shield) read orange = 75 but could be 80 for the same reason; a higher-skill reading will settle it.",
     "Blacksmithing": {
       "Copper Chain Coif": 50,
       "Copper Chain Shoulderguards": 50,
@@ -62,8 +62,8 @@
       "Copper Greatsword": 75,
       "Copper Maul": 75,
       "Copper Tower Shield": 75,
-      "Bronze Bracket": 75,
-      "Bronze Chain Links": 75,
+      "Bronze Bracket": 80,
+      "Bronze Chain Links": 80,
       "Bronze Fasteners": "80+",
       "Bronze Hinge": "80+",
       "Bronze Plate": "80+",
