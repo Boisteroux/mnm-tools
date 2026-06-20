@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-19T18:14:32.913Z",
+  "generatedAt": "2026-06-20T17:45:16.947Z",
   "categories": [
     {
       "id": "ore",
@@ -410,6 +410,20 @@
           "label": "Ore 39",
           "category": "ore",
           "notes": ""
+        },
+        {
+          "x": 1411,
+          "y": 1936,
+          "label": "Ore 40",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 701,
+          "y": 1749,
+          "label": "Nighttime Herb",
+          "category": "herb",
+          "notes": ""
         }
       ]
     },
@@ -545,6 +559,11 @@
     },
     {
       "name": "Rothold",
+      "comingSoon": true,
+      "markers": []
+    },
+    {
+      "name": "Wyrmsbanetomb",
       "comingSoon": true,
       "markers": []
     }
