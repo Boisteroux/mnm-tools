@@ -31,7 +31,7 @@
 
     <div class="section" data-overlay-hide>
       <button id="btn-overlay" title="Float the map on top of your game (Ctrl+Shift+M)">Enter Game Minimap Mode</button>
-      <button id="btn-session-replay" title="Recap your recent play sessions from the game's Ledger — zones, kills, loot, harvests and coin">Session Recap</button>
+      <button id="btn-session-replay" class="btn-spotlight" title="Recap your recent play sessions from the game's Ledger — zones, kills, loot, harvests and coin">Session Recap</button>
     </div>
 
     <div class="help" data-overlay-hide>
@@ -62,21 +62,17 @@
         <div class="btn-row">
           <button id="btn-zone-review" title="See every zone's current map at a glance and set defaults">Review Zone Maps</button>
         </div>
+        <div class="btn-row">
+          <button id="btn-export" title="Save your markers (and maps) to a file to share with friends">Export Markers</button>
+          <button id="btn-import" title="Load markers (and maps) from a shared file">Import Markers</button>
+        </div>
       </div>
       <div id="wiki-status"></div>
     </div>
 
     <div class="section">
-      <label class="section-title">Category Quick Add</label>
+      <label class="section-title">Marker Quick Add</label>
       <div id="category-list"></div>
-    </div>
-
-    <div class="section" data-overlay-hide>
-      <label class="section-title">Share Map Markers</label>
-      <div class="btn-row">
-        <button id="btn-export">Export Zones</button>
-        <button id="btn-import">Import Zones</button>
-      </div>
     </div>
 
     <div class="section" data-overlay-hide>
@@ -165,7 +161,7 @@
   <!-- Export choice dialog -->
   <div id="export-modal" class="modal-backdrop hidden">
     <div class="modal">
-      <h2>Export Zones</h2>
+      <h2>Export Markers</h2>
       <p style="font-size: 12px; color: var(--muted); line-height: 1.6;">
         Each zone's map image is bundled in with its markers, so they stay
         perfectly aligned for whoever you share with. All-zones files can get large.
@@ -181,7 +177,7 @@
   <!-- Import picker dialog -->
   <div id="import-modal" class="modal-backdrop hidden">
     <div class="modal">
-      <h2>Import Zones</h2>
+      <h2>Import Markers</h2>
       <p style="font-size: 12px; color: var(--muted); line-height: 1.6;">
         Pick which zones to bring in. Your existing markers are kept —
         only markers you don't already have get added.
@@ -230,19 +226,25 @@
   <div id="replay-modal" class="modal-backdrop hidden">
     <div class="modal modal-wide">
       <div class="replay-head">
-        <h2>Session Replay</h2>
+        <h2>Session Recap</h2>
+        <button id="replay-x" class="modal-x" title="Close" aria-label="Close">✕</button>
+      </div>
+      <div class="replay-controls">
         <select id="replay-character" class="replay-character hidden" title="Show only one character's sessions"></select>
-        <div class="replay-head-right">
-          <div class="replay-nav">
-            <button id="replay-prev" class="secondary" title="Older session">‹ Older</button>
-            <span id="replay-count" class="replay-count"></span>
-            <button id="replay-next" class="secondary" title="More recent session">Newer ›</button>
-          </div>
-          <button id="replay-x" class="modal-x" title="Close" aria-label="Close">✕</button>
+        <div class="replay-toggle">
+          <button id="rv-session" class="rv-btn active" title="Your current / most recent play session">Current</button>
+          <button id="rv-today" class="rv-btn" title="Everything today, all of today's sessions combined">Today</button>
+        </div>
+        <div id="replay-nav" class="replay-nav">
+          <button id="replay-prev" class="secondary" title="Older session">‹ Older</button>
+          <span id="replay-count" class="replay-count"></span>
+          <button id="replay-next" class="secondary" title="More recent session">Newer ›</button>
         </div>
       </div>
-      <div id="replay-today"></div>
-      <div id="replay-body"></div>
+      <div class="replay-scroll">
+        <div id="replay-today"></div>
+        <div id="replay-body"></div>
+      </div>
       <div class="btn-row right">
         <button id="replay-end" class="secondary hidden" title="Close out the current session now, instead of waiting for 30 minutes of inactivity">End session now</button>
         <button id="replay-close" class="primary">Done</button>

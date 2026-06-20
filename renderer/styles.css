@@ -156,6 +156,9 @@ button:disabled { opacity: 0.38; cursor: not-allowed; }
 button:disabled:hover { background: var(--surface); border-color: var(--line-2); }
 button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-dk); font-weight: 600; }
 button.primary:hover { background: #ffa94d; }
+/* Spotlight — a thicker accent outline for extra visibility (no gradient). */
+button.btn-spotlight { border: 2px solid var(--accent); color: var(--text); font-weight: 600; }
+button.btn-spotlight:hover { background: var(--surface-2); border-color: #ffa94d; }
 
 /* Manual map switcher — a single toggle shown only in multi-map zones. The
    gradient fill leans to the side of the map you're currently viewing. */
@@ -515,21 +518,35 @@ body.overlay #map-area { background: rgba(18, 12, 8, 0.10); }
 }
 
 /* ---- Session Replay ---- */
-#replay-modal .modal { width: 600px; }
+/* Fixed size so the modal never rescales (and the buttons never move) when you
+   switch sessions — content scrolls inside .replay-scroll instead. */
+#replay-modal .modal { width: 600px; height: 600px; max-height: 88vh; }
 .replay-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .replay-head h2 { margin: 0; }
-.replay-head-right { display: flex; align-items: center; gap: 10px; }
+/* Controls row: character picker (far left), then the Current/Today toggle, then Older/Newer. */
+.replay-controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+/* Uniform height across the toggle, character picker and Older/Newer buttons. */
+.replay-controls .replay-toggle,
+.replay-controls .replay-nav button,
+.replay-controls .replay-character { height: 28px; box-sizing: border-box; }
+.replay-scroll { flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; margin: 4px 0; }
 .modal-x {
   flex: 0 0 auto; background: transparent; border: none; color: var(--muted);
   font-size: 15px; line-height: 1; padding: 4px 6px; border-radius: 5px;
 }
 .modal-x:hover { background: var(--surface-2); border-color: transparent; color: var(--text); }
 .replay-nav { display: flex; align-items: center; gap: 8px; }
-.replay-nav button { padding: 3px 9px; white-space: nowrap; flex: 0 0 auto; }
+.replay-nav button { padding: 0 10px; white-space: nowrap; flex: 0 0 auto; display: inline-flex; align-items: center; }
 .replay-count { font-size: 11px; color: var(--muted); min-width: 70px; text-align: center; }
 .replay-live { color: #5fbf6a; font-weight: 600; }
-/* Character filter dropdown — hugs the title, pushes the nav to the far right. */
-.replay-character { margin-right: auto; max-width: 180px; font-size: 12px; padding: 2px 7px; }
+/* Segmented toggle: current session vs the whole-day rollup. */
+.replay-toggle { display: flex; flex: 0 0 auto; border: 1px solid var(--line-2); border-radius: 7px; overflow: hidden; }
+.rv-btn { background: var(--surface-2); border: none; border-radius: 0; height: 100%; padding: 0 13px; font-size: 12px; color: var(--muted); cursor: pointer; white-space: nowrap; display: inline-flex; align-items: center; }
+.rv-btn + .rv-btn { border-left: 1px solid var(--line-2); }
+.rv-btn:not(.active):hover { color: var(--text); background: var(--line); }
+.rv-btn.active { background: var(--accent); color: var(--accent-dk); font-weight: 600; }
+
+.replay-character { width: auto; max-width: 130px; font-size: 12px; padding: 0 8px; }
 .replay-char-badge {
   display: inline-block; background: var(--surface-2); border: 1px solid var(--line-2);
   border-radius: 5px; padding: 1px 7px; font-size: 11px; font-weight: 600; color: var(--text); margin-right: 6px;
@@ -543,7 +560,7 @@ body.overlay #map-area { background: rgba(18, 12, 8, 0.10); }
 .replay-coin.rt-coin { font-size: 16px; margin-top: 2px; }
 .rt-stats { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
 
-#replay-body { display: flex; flex-direction: column; gap: 10px; margin: 6px 0 4px; max-height: 66vh; overflow-y: auto; }
+#replay-body { display: flex; flex-direction: column; gap: 10px; }
 .replay-empty { color: var(--muted); font-size: 12px; padding: 14px 2px; }
 
 .replay-when { font-size: 12px; color: var(--muted); }

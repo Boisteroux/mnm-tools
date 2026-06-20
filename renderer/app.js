@@ -442,7 +442,6 @@ async function handleGameZone(internalName) {
     characterZoneId = zone.id;
     if (zone.id !== currentZoneId) {
       switchZone(zone.id);
-      wikiStatus('Followed you into ' + zone.name + '.');
     } else {
       updateOverlayZoneLabel(); // refresh the [current zone] marker even if the map didn't change
     }
@@ -1000,6 +999,9 @@ const publishStatus = (msg) => { $('publish-status').textContent = msg; };
 if (isDev) {
   const pubBtn = $('tracker-publish');
   pubBtn.classList.remove('hidden');
+  // The owner publishes their own data directly, so the friend-facing
+  // "Export my data to share" button is redundant on the owner build — hide it.
+  $('btn-export-contribution').classList.add('hidden');
   pubBtn.addEventListener('click', async () => {
     pubBtn.disabled = true;
     publishStatus('Publishing… regenerating data & pushing to GitHub.');
@@ -1068,13 +1070,15 @@ function coinStr(c) {
 let replaySessions = [];
 let replayToday = null;
 let replayIdx = 0;
+let replayView = 'session'; // 'session' (current/browsable) or 'today' (whole-day rollup)
+let replayLive = false;     // is the shown session the live current one?
 
 const startOfTodayMs = () => { const d = new Date(); d.setHours(0, 0, 0, 0); return d.getTime(); };
 
 function renderToday() {
   const el = $('replay-today');
   const t = replayToday;
-  if (!t) { el.innerHTML = ''; return; }
+  if (!t) { el.innerHTML = '<p class="replay-empty">Nothing logged today yet — go play and it’ll fill in.</p>'; return; }
   const extended = t.spanStart < startOfTodayMs(); // a session carried over from before midnight
   const sub = t.sessionCount + ' session' + (t.sessionCount === 1 ? '' : 's') + ' · ' + fmtDur(t.playMs) + ' played' +
     (extended ? ' · since ' + fmtClock(t.spanStart) + ' (carried over midnight)' : '');
@@ -1083,18 +1087,38 @@ function renderToday() {
   if (tPK > 0) {
     if (tSK > 0) coinSub.push(coinStr(t.coin.killsSolo) + ' from ' + tSK + ' solo kills');
     coinSub.push(coinStr(t.coin.killsParty) + ' from ' + tPK + ' party kills (÷' + t.party.max + ')');
-  } else if (t.coin.fromKills) coinSub.push(coinStr(t.coin.fromKills) + ' kills');
-  if (t.coin.fromSales) coinSub.push(coinStr(t.coin.fromSales) + ' vendor');
-  const stats = [t.counts.kills + ' killed', t.counts.loot + ' looted', t.counts.harvest + ' harvested', t.counts.sales + ' sold'].join(' · ');
+  } else if (t.coin.fromKills) coinSub.push(coinStr(t.coin.fromKills) + ' from kills');
+  if (t.coin.fromSales) coinSub.push(coinStr(t.coin.fromSales) + ' from vendor');
+
+  const tiles = [
+    { n: t.counts.kills, l: 'kills' },
+    { n: t.counts.loot, l: 'looted' },
+    { n: t.counts.harvest, l: 'harvested' },
+    { n: t.counts.sales, l: 'vendor sales' },
+  ].map((x) => '<div class="rtile"><span class="rt-num">' + x.n + '</span><span class="rt-lbl">' + x.l + '</span></div>').join('');
+
+  // Zones played today, ranked by time (no per-zone timeline across sessions, so bars by total time).
+  const zones = (t.zones || []).filter((z) => z.ms > 0);
+  const zMax = Math.max(1, ...zones.map((z) => z.ms));
+  const zoneHtml = zones.map((z) => {
+    const w = Math.max(8, Math.round((z.ms / zMax) * 100));
+    return '<div class="rseg"><div class="rseg-top"><span class="rseg-zone">' + reEsc(z.zone) + '</span></div>' +
+      '<div class="rseg-track"><div class="rseg-bar" style="width:' + w + '%"></div></div>' +
+      '<div class="rseg-meta">' + reEsc(fmtDur(z.ms)) + '</div></div>';
+  }).join('');
+
+  const cols = [];
+  if (t.topKills.length) cols.push('<div><div class="replay-col-title">Most killed</div>' + topList(t.topKills) + '</div>');
+  if (t.topLoot.length) cols.push('<div><div class="replay-col-title">Top loot</div>' + topList(t.topLoot) + '</div>');
+  if (t.topHarvest.length) cols.push('<div><div class="replay-col-title">Most harvested</div>' + topList(t.topHarvest) + '</div>');
+
   el.innerHTML =
-    '<div class="replay-today-card">' +
-      '<div class="rt-head"><span class="rt-title">Today</span>' +
-        '<span class="rt-sub">' + reEsc(sub) + '</span>' +
-        (t.active ? '<span class="replay-live">● Live</span>' : '') + '</div>' +
-      '<div class="replay-coin rt-coin">+' + reEsc(coinStr(t.coin.total)) + ' earned' +
-        (coinSub.length ? ' <span class="replay-coin-sub">(' + reEsc(coinSub.join(' · ')) + ')</span>' : '') + '</div>' +
-      '<div class="rt-stats">' + reEsc(stats) + '</div>' +
-    '</div>';
+    '<div class="replay-when"><b>Today</b> · ' + reEsc(sub) + (t.active ? ' · <span class="replay-live">● Live</span>' : '') + '</div>' +
+    '<div class="replay-coin">+' + reEsc(coinStr(t.coin.total)) + ' earned' +
+      (coinSub.length ? ' <span class="replay-coin-sub">(' + reEsc(coinSub.join(' · ')) + ')</span>' : '') + '</div>' +
+    '<div class="replay-tiles">' + tiles + '</div>' +
+    (zoneHtml ? '<div class="replay-col-title">Where you played</div><div class="replay-timeline">' + zoneHtml + '</div>' : '') +
+    (cols.length ? '<div class="replay-cols">' + cols.join('') + '</div>' : '');
 }
 
 const reEsc = (s) => String(s == null ? '' : s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -1119,17 +1143,19 @@ function renderReplay() {
     $('replay-count').textContent = '';
     body.innerHTML = '<p class="replay-empty">No play sessions found yet. Go play, then check back — sessions are read straight from the game\'s Ledger.</p>';
     $('replay-prev').disabled = $('replay-next').disabled = true;
+    replayLive = false; updateEndBtn();
     return;
   }
   const s = replaySessions[replayIdx];
   const live = s.active && replayIdx === 0; // most-recent session still within the idle window
+  replayLive = live;
   // replayIdx 0 = most recent; "Newer" decreases the index.
   $('replay-count').innerHTML = live
     ? '<span class="replay-live">● Live</span>'
     : (replayIdx === 0 ? 'Latest' : (replayIdx + 1) + ' of ' + replaySessions.length);
   $('replay-next').disabled = replayIdx <= 0;
   $('replay-prev').disabled = replayIdx >= replaySessions.length - 1;
-  $('replay-end').classList.toggle('hidden', !live); // only offer "end" on the live session
+  updateEndBtn(); // "end session" only on the live session, in session view
 
   const tiles = [
     { n: s.counts.kills, l: 'kills' },
@@ -1197,7 +1223,24 @@ async function openReplay() {
   populateCharacterPicker((r && r.characters) || []);
   renderToday();
   renderReplay();
+  setReplayView(replayView); // default 'session' — always opens on the current session
 }
+
+// Switch between the current-session card and the whole-day rollup. Both are already
+// rendered; this just toggles which is visible (plus the Older/Newer nav, which only
+// applies to browsing sessions).
+function setReplayView(view) {
+  replayView = view;
+  const isSession = view === 'session';
+  $('replay-body').classList.toggle('hidden', !isSession);
+  $('replay-today').classList.toggle('hidden', isSession);
+  $('replay-nav').classList.toggle('hidden', !isSession);
+  $('rv-session').classList.toggle('active', isSession);
+  $('rv-today').classList.toggle('active', !isSession);
+  updateEndBtn();
+}
+// "End session now" only applies to the live current session, in session view.
+function updateEndBtn() { $('replay-end').classList.toggle('hidden', !(replayView === 'session' && replayLive)); }
 
 // Show a character dropdown only when more than one character has been played.
 function populateCharacterPicker(characters) {
@@ -1215,7 +1258,9 @@ $('replay-character').addEventListener('change', (e) => {
   openReplay();
 });
 
-$('btn-session-replay').addEventListener('click', openReplay);
+$('btn-session-replay').addEventListener('click', () => { replayView = 'session'; openReplay(); });
+$('rv-session').addEventListener('click', () => setReplayView('session'));
+$('rv-today').addEventListener('click', () => setReplayView('today'));
 $('replay-close').addEventListener('click', () => $('replay-modal').classList.add('hidden'));
 $('replay-x').addEventListener('click', () => $('replay-modal').classList.add('hidden'));
 $('replay-end').addEventListener('click', async () => {
