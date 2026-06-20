@@ -74,6 +74,16 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
   as `gameId` (old hash URLs still resolve).
 - **Sharing & look** — public repo, MIT license, Windows installer, sunset branding,
   warm UI theme, Outfit font shared by the app and site.
+- **Versioned releases** — `npm run release [patch|minor|major]` bumps the version,
+  builds the installer, commits/tags/pushes, and publishes the GitHub Release with
+  the installer + an auto changelog. Every update is a clean, traceable version.
+- **Pooled data from trusted friends** — anyone can **Export my data to share**
+  (Drop Tracker section) → one counts-only file (drops / kills / harvests / vendor
+  prices / logged trades; no chat, nothing uploaded). The owner drops friends' files
+  into `contributions/` and **Publish** pools them via `mergeAggs`, which **sums raw
+  counts before computing rates** so 200 corpses across four players count like 200
+  from one. Friends contribute *data*, never push access. The no-backend half of
+  crowdsourcing; `data.json` lists its `contributors`.
 
 ## 🔜 Next up
 
@@ -123,9 +133,11 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
 - **More wiki enrichment** — wider item-stat / icon / mob-level coverage.
   (Note: vendor *buy* prices and live auction prices are NOT obtainable — no
   merchant data in the wiki or logs, and the game doesn't save chat to disk.)
-- **Crowdsourcing server** — pool everyone's data so the site is live and
-  community-wide, and trades aggregate automatically. The big lift (hosting +
-  moderation); also what makes publishing fully hands-off.
+- **Crowdsourcing server** — the *trusted-friends* version shipped (see "Pooled
+  data from trusted friends" above: export a file → owner merges on Publish). The
+  remaining big lift is the **automatic, open** version: a backend that receives
+  everyone's data directly (no file hand-off, no manual merge) with moderation —
+  what makes publishing fully hands-off and the site truly community-wide.
 - **Tip jar** — optional Ko-fi/donation link once you're ready.
 - **Polish** — first/last seen, table filters, sample-size confidence on values.
 

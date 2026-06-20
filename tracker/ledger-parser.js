@@ -504,8 +504,68 @@ function todayRollup(sessions) {
   };
 }
 
+// ---------------------------------------------------------------
+// Crowdsourcing — merge several players' aggregates into one.
+// ---------------------------------------------------------------
+
+// Character name(s) inferred from the ledger filenames (<Name>_Character_<date>.json),
+// most-active first. Used to label a player's exported contribution.
+function charactersFromFiles(files) {
+  const counts = {};
+  for (const f of files) {
+    const m = path.basename(f).match(/^(.+?)_(?:Character|Social)_/);
+    if (m) counts[m[1]] = (counts[m[1]] || 0) + 1;
+  }
+  return Object.keys(counts).sort((a, b) => counts[b] - counts[a]);
+}
+
+// Pool several `parseLedgers` aggregates into one by SUMMING raw counts (corpses,
+// drops, prices, pulls) — never by averaging finished rates, which would be wrong.
+// Drop/harvest rates are then recomputed by buildItemReport / the node rebuild from
+// the combined totals, so 200 corpses from 4 players count like 200 from one.
+function mergeAggs(aggs) {
+  const merged = { mobs: {}, items: {}, harvest: {}, harvestZones: {}, harvestNodes: [], events: 0, fileCount: 0 };
+  const add = (dst, src) => { for (const [k, v] of Object.entries(src || {})) dst[k] = (dst[k] || 0) + v; };
+  const list = (aggs || []).filter(Boolean);
+
+  for (const agg of list) {
+    merged.events += agg.events || 0;
+    merged.fileCount += agg.fileCount || 0;
+    for (const [name, M] of Object.entries(agg.mobs || {})) {
+      const D = merged.mobs[name] || (merged.mobs[name] = { kills: 0, drops: {}, zones: {}, coin: 0, corpses: 0 });
+      D.kills += M.kills || 0; D.coin += M.coin || 0; D.corpses += M.corpses || 0;
+      add(D.drops, M.drops); add(D.zones, M.zones);
+    }
+    for (const [name, it] of Object.entries(agg.items || {})) {
+      const D = merged.items[name] || (merged.items[name] = { name, id: '', sources: {}, prices: {}, zones: {} });
+      if (it.id && !D.id) D.id = it.id;
+      add(D.sources, it.sources); add(D.prices, it.prices); add(D.zones, it.zones);
+    }
+    add(merged.harvest, agg.harvest);
+    for (const [res, zc] of Object.entries(agg.harvestZones || {})) add((merged.harvestZones[res] = merged.harvestZones[res] || {}), zc);
+  }
+
+  // Harvest nodes carry their own pull/yield counts, so merge by node name: sum
+  // pulls + per-yield counts, recompute the rate, union the zone lists.
+  const nodes = {};
+  for (const agg of list) for (const n of agg.harvestNodes || []) {
+    const D = nodes[n.name] || (nodes[n.name] = { name: n.name, pulls: 0, yc: {}, zones: [] });
+    D.pulls += n.pulls || 0;
+    for (const y of n.yields || []) D.yc[y.res] = (D.yc[y.res] || 0) + (y.count || 0);
+    for (const z of n.zones || []) if (!D.zones.includes(z)) D.zones.push(z);
+  }
+  merged.harvestNodes = Object.values(nodes).map((D) => ({
+    name: D.name, pulls: D.pulls,
+    yields: Object.entries(D.yc).map(([res, count]) => ({ res, count, rate: D.pulls ? count / D.pulls : 0 })).sort((a, b) => b.rate - a.rate),
+    zones: D.zones,
+  })).sort((a, b) => b.pulls - a.pulls);
+
+  return merged;
+}
+
 module.exports = {
   GAME_BASE, b64, priceToCopper, copperToString,
   findLedgerFiles, parseLedgers, buildItemReport,
   buildSessions, todayRollup, SESSION_GAP_MS,
+  charactersFromFiles, mergeAggs,
 };

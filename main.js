@@ -225,15 +225,35 @@ ipcMain.handle('zone-aliases', () => {
 ipcMain.handle('publish-mnmdb', async () => {
   if (!isDev) return { error: 'Publishing is only available in the owner (dev) build.' };
   try {
-    // 1. Regenerate mnmdb/data.json from the latest ledger.
+    // 1. Regenerate mnmdb/data.json from the latest ledger, pooling any trusted-
+    //    friend contributions dropped into contributions/*.json. Counts are summed
+    //    (mergeAggs) before rates are computed, so everyone's corpses add up.
     const files = ledgerParser.findLedgerFiles();
-    const agg = ledgerParser.parseLedgers(files, harvestSkillOpts());
+    const aggs = [ledgerParser.parseLedgers(files, harvestSkillOpts())];
+    const contributors = [];
+    let contribTrades = [];
+    try {
+      const contribDir = path.join(REPO_ROOT, 'contributions');
+      for (const f of fs.readdirSync(contribDir)) {
+        if (!/\.json$/i.test(f) || /^README/i.test(f)) continue;
+        try {
+          const c = JSON.parse(fs.readFileSync(path.join(contribDir, f), 'utf8'));
+          if (c && c.agg) {
+            aggs.push(c.agg);
+            contributors.push({ character: c.character || f.replace(/\.json$/i, ''), events: c.events || 0 });
+            if (Array.isArray(c.trades)) contribTrades = contribTrades.concat(c.trades);
+          }
+        } catch {}
+      }
+    } catch {}
+    const agg = aggs.length > 1 ? ledgerParser.mergeAggs(aggs) : aggs[0];
     const items = ledgerParser.buildItemReport(agg);
     const dataset = {
       generatedAt: new Date().toISOString(),
       source: 'mnm-tools',
       ledgerFiles: agg.fileCount,
       events: agg.events,
+      contributors,
       mobs: agg.mobs,
       items,
       harvest: agg.harvest,
@@ -248,7 +268,7 @@ ipcMain.handle('publish-mnmdb', async () => {
     const existing = siteTrades.trades || [];
     const seen = new Set(existing.map((t) => [t.item, t.price, t.side, t.date].join('|')));
     let added = 0;
-    for (const t of readTrades(tradesFile())) {
+    for (const t of [...readTrades(tradesFile()), ...contribTrades]) {
       const key = [t.item, t.price, t.side, t.date].join('|');
       if (!seen.has(key)) { existing.push(t); seen.add(key); added++; }
     }
@@ -260,9 +280,10 @@ ipcMain.handle('publish-mnmdb', async () => {
     try { mapStats = await exportMaps(dataFile(), path.join(REPO_ROOT, 'mnmdb')); } catch {}
 
     // 3. Commit + push.
-    await gitRun(['add', 'mnmdb/data.json', 'mnmdb/trades.json', 'mnmdb/maps.json', 'mnmdb/maps']);
+    await gitRun(['add', 'mnmdb/data.json', 'mnmdb/trades.json', 'mnmdb/maps.json', 'mnmdb/maps', 'contributions']);
     const tradeNote = added ? ` + ${added} trade${added === 1 ? '' : 's'}` : '';
-    const commit = await gitRun(['commit', '-m', `Publish play data (${agg.events} events, ${items.length} items${tradeNote})`]);
+    const contribNote = contributors.length ? ` + ${contributors.length} contributor${contributors.length === 1 ? '' : 's'}` : '';
+    const commit = await gitRun(['commit', '-m', `Publish play data (${agg.events} events, ${items.length} items${tradeNote}${contribNote})`]);
     if (commit.code !== 0) {
       if (/nothing to commit/i.test(commit.out)) {
         return { ok: true, message: 'Already up to date — no new data since last publish.' };
@@ -271,7 +292,7 @@ ipcMain.handle('publish-mnmdb', async () => {
     }
     const push = await gitRun(['push']);
     if (push.code !== 0) return { error: 'Push failed: ' + push.out.trim().slice(0, 200) };
-    return { ok: true, message: `Published ${items.length} items · ${agg.events} events${added ? ' · ' + added + ' new trade' + (added === 1 ? '' : 's') : ''}${mapStats.zones ? ' · ' + mapStats.zones + ' maps' : ''}. Live on MnMdb in ~30s.` };
+    return { ok: true, message: `Published ${items.length} items · ${agg.events} events${contributors.length ? ' · ' + contributors.length + ' contributor' + (contributors.length === 1 ? '' : 's') : ''}${added ? ' · ' + added + ' new trade' + (added === 1 ? '' : 's') : ''}${mapStats.zones ? ' · ' + mapStats.zones + ' maps' : ''}. Live on MnMdb in ~30s.` };
   } catch (e) {
     return { error: e.message };
   }
@@ -589,6 +610,43 @@ ipcMain.handle('export-data', async (event, { scope, zones }) => {
   if (result.canceled || !result.filePath) return false;
   fs.writeFileSync(result.filePath, JSON.stringify(payload), 'utf8');
   return true;
+});
+
+// Export this player's rolled-up play data so the owner can merge it into the
+// shared site (the trusted-friend crowdsourcing flow). Contains only the same
+// aggregated counts the parser already builds (drops, kills, harvests, vendor
+// prices, logged trades) — no raw chat, no personal files, nothing uploaded.
+ipcMain.handle('export-contribution', async () => {
+  try {
+    const files = ledgerParser.findLedgerFiles();
+    if (!files.length) return { error: 'No Monsters & Memories Ledger files found yet — play a little first.' };
+    const agg = ledgerParser.parseLedgers(files, harvestSkillOpts());
+    const characters = ledgerParser.charactersFromFiles(files);
+    const payload = {
+      schema: 'mnm-contribution/1',
+      character: characters[0] || 'unknown',
+      characters,
+      exportedAt: new Date().toISOString(),
+      events: agg.events,
+      agg: {
+        mobs: agg.mobs, items: agg.items, harvest: agg.harvest,
+        harvestZones: agg.harvestZones, harvestNodes: agg.harvestNodes,
+        events: agg.events, fileCount: agg.fileCount,
+      },
+      trades: readTrades(tradesFile()),
+    };
+    const safe = (characters[0] || 'data').replace(/[^a-z0-9 _-]/gi, '') || 'data';
+    const result = await dialog.showSaveDialog(win, {
+      title: 'Export my play data to share',
+      defaultPath: `mnm-data-${safe}-${new Date().toISOString().slice(0, 10)}.json`,
+      filters: [{ name: 'JSON', extensions: ['json'] }],
+    });
+    if (result.canceled || !result.filePath) return { canceled: true };
+    fs.writeFileSync(result.filePath, JSON.stringify(payload), 'utf8');
+    return { ok: true, character: characters[0] || 'unknown', events: agg.events, mobs: Object.keys(agg.mobs).length, items: Object.keys(agg.items).length };
+  } catch (e) {
+    return { error: e.message };
+  }
 });
 
 // ---- Wiki map import ----

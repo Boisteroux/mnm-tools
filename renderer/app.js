@@ -1009,6 +1009,22 @@ if (isDev) {
   });
 }
 
+// Export my data to share — everyone can do this (it's how trusted friends
+// contribute their play data; the owner merges the file in on Publish).
+const contributionStatus = (msg) => { $('contribution-status').textContent = msg; };
+{
+  const exBtn = $('btn-export-contribution');
+  exBtn.addEventListener('click', async () => {
+    exBtn.disabled = true;
+    contributionStatus('Building your data file…');
+    const r = await window.mapAPI.exportContribution();
+    if (r && r.ok) contributionStatus(`Saved ${r.events.toLocaleString()} events (${r.mobs} mobs, ${r.items} items). Send the file to the site owner to pool it in.`);
+    else if (r && r.canceled) contributionStatus('');
+    else contributionStatus((r && r.error) || 'Export failed.');
+    exBtn.disabled = false;
+  });
+}
+
 // ---- Log a Trade ----
 
 const tradeStatus = (msg) => { $('trade-status').textContent = msg; };
