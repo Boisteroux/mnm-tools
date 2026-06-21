@@ -1211,17 +1211,20 @@ function renderReplay() {
 
 let replayCharacter = null;   // null = all characters
 let replayMultiChar = false;  // true when 2+ characters exist (show picker + badges)
+let replayDefaultRecent = false; // on a fresh open, default to the most recently played character
 
 async function openReplay() {
   $('replay-modal').classList.remove('hidden');
   $('replay-today').innerHTML = '';
   $('replay-body').innerHTML = '<p class="replay-empty">Reading your Ledger…</p>';
   $('replay-count').textContent = '';
-  const r = await window.mapAPI.sessionReplay(replayCharacter ? { character: replayCharacter } : undefined);
+  const r = await window.mapAPI.sessionReplay({ character: replayCharacter || undefined, defaultRecent: replayDefaultRecent });
+  replayDefaultRecent = false;
   replaySessions = (r && r.sessions) || [];
   replayToday = (r && r.today) || null;
   replayIdx = 0;
   if (r && r.error) { $('replay-today').innerHTML = ''; $('replay-body').innerHTML = '<p class="replay-empty">Could not read sessions: ' + reEsc(r.error) + '</p>'; return; }
+  replayCharacter = (r && r.character) || null; // reflect the resolved character (e.g. most-recent default)
   populateCharacterPicker((r && r.characters) || []);
   renderToday();
   renderReplay();
@@ -1260,7 +1263,7 @@ $('replay-character').addEventListener('change', (e) => {
   openReplay();
 });
 
-$('btn-session-replay').addEventListener('click', () => { replayView = 'session'; openReplay(); });
+$('btn-session-replay').addEventListener('click', () => { replayView = 'session'; replayCharacter = null; replayDefaultRecent = true; openReplay(); });
 $('rv-session').addEventListener('click', () => setReplayView('session'));
 $('rv-today').addEventListener('click', () => setReplayView('today'));
 $('replay-close').addEventListener('click', () => $('replay-modal').classList.add('hidden'));
@@ -1273,6 +1276,58 @@ $('replay-end').addEventListener('click', async () => {
 });
 $('replay-prev').addEventListener('click', () => { if (replayIdx < replaySessions.length - 1) { replayIdx++; renderReplay(); } });
 $('replay-next').addEventListener('click', () => { if (replayIdx > 0) { replayIdx--; renderReplay(); } });
+
+// ---- Mob respawn timer (countdown pinned to the map) ----
+(() => {
+  let tick = null, endAt = 0;
+  const soundCb = $('mt-sound-cb');
+  soundCb.checked = localStorage.getItem('mt-sound') !== '0'; // remembered; default on
+  soundCb.addEventListener('change', () => localStorage.setItem('mt-sound', soundCb.checked ? '1' : '0'));
+  const fmt = (ms) => { const s = Math.max(0, Math.ceil(ms / 1000)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+  const beep = (n = 3) => {
+    try {
+      const Ctx = window.AudioContext || window.webkitAudioContext; if (!Ctx) return;
+      const ctx = new Ctx();
+      for (let i = 0; i < n; i++) {
+        const o = ctx.createOscillator(), g = ctx.createGain(), t0 = ctx.currentTime + i * 0.32;
+        o.type = 'sine'; o.frequency.value = 880; o.connect(g); g.connect(ctx.destination);
+        g.gain.setValueAtTime(0.0001, t0);
+        g.gain.exponentialRampToValueAtTime(0.3, t0 + 0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.26);
+        o.start(t0); o.stop(t0 + 0.28);
+      }
+    } catch {}
+  };
+  function update() {
+    const left = endAt - Date.now();
+    $('mt-display').textContent = fmt(left);
+    if (left <= 0) { clearInterval(tick); tick = null; $('mt-display').textContent = '0:00'; $('mob-timer').classList.add('mt-alarm'); if (soundCb.checked) beep(); }
+  }
+  function start() {
+    const min = Math.max(0, Math.min(99, parseInt($('mt-min').value, 10) || 0));
+    const sec = Math.max(0, Math.min(59, parseInt($('mt-sec').value, 10) || 0));
+    const total = (min * 60 + sec) * 1000;
+    if (total <= 0) return;
+    endAt = Date.now() + total;
+    $('mob-timer').classList.remove('mt-alarm');
+    $('mt-setup').classList.add('hidden');
+    $('mt-running').classList.remove('hidden');
+    $('mt-display').textContent = fmt(total);
+    clearInterval(tick); tick = setInterval(update, 250);
+  }
+  function reset() {
+    clearInterval(tick); tick = null;
+    $('mob-timer').classList.remove('mt-alarm');
+    $('mt-running').classList.add('hidden');
+    $('mt-setup').classList.remove('hidden');
+  }
+  $('mt-start').addEventListener('click', start);
+  $('mt-reset').addEventListener('click', reset);
+  [$('mt-min'), $('mt-sec')].forEach((el) => el.addEventListener('keydown', (e) => { if (e.key === 'Enter') start(); }));
+  // Tidy the fields on blur: minutes clamped 0-99, seconds clamped 0-59 and padded to 2 digits.
+  $('mt-min').addEventListener('blur', () => { $('mt-min').value = String(Math.max(0, Math.min(99, parseInt($('mt-min').value, 10) || 0))); });
+  $('mt-sec').addEventListener('blur', () => { $('mt-sec').value = String(Math.max(0, Math.min(59, parseInt($('mt-sec').value, 10) || 0))).padStart(2, '0'); });
+})();
 
 // The app re-scans itself a few seconds after the game writes new loot/kills
 window.mapAPI.onTrackerUpdated((r) => showTrackerSummary(r, ' · updated just now'));

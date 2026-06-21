@@ -35,8 +35,12 @@
   --muted:     #ad917c;
   --accent:    #f0922b;
   --accent-dk: #2a1404;
+  --accent-2:  #5b87bf; /* steel blue — secondary accent (checkboxes, sliders, secondary highlights) */
   --danger:    #e0593f;
 }
+
+/* Steel-blue secondary on all the native form controls, replacing the OS-default blue. */
+input[type="checkbox"], input[type="radio"], input[type="range"] { accent-color: var(--accent-2); }
 
 body {
   font-family: 'Outfit', 'Segoe UI', sans-serif;
@@ -172,20 +176,21 @@ button.btn-spotlight:hover { background: rgba(240, 146, 43, 0.22); border-color:
 
 /* Manual map switcher — a single toggle shown only in multi-map zones. The
    gradient fill leans to the side of the map you're currently viewing. */
-#map-switcher, #overlay-map-switcher { display: inline-flex; vertical-align: middle; }
-#map-switcher { margin-top: 6px; }
+#overlay-map-switcher { display: inline-flex; vertical-align: middle; }
+#map-switcher { display: flex; margin-top: 6px; }
 /* A standard (Tier 4) button with a gold swap icon to signal it switches maps. */
 #map-switcher .map-toggle, #overlay-map-switcher .map-toggle {
   -webkit-app-region: no-drag;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   margin: 0;
   border: 1px solid var(--line-2);
   border-radius: 5px;
   background-color: var(--surface);
   color: var(--text);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 400;
   line-height: 1.4;
   padding: 3px 12px;
@@ -288,7 +293,7 @@ button.active { background: var(--accent); border-color: var(--accent); color: v
   border-radius: 6px;
   padding: 9px 10px;
 }
-.help b { color: #aeb7c0; }
+.help b { color: var(--accent); }
 
 /* ---- Map area ---- */
 
@@ -324,6 +329,24 @@ button.active { background: var(--accent); border-color: var(--accent); color: v
 
 #btn-fit { position: absolute; top: 10px; right: 10px; z-index: 10; }
 #btn-sidebar { position: absolute; top: 10px; left: 10px; z-index: 10; }
+
+/* Mob respawn timer — a small countdown pinned bottom-left of the map (both modes). */
+#mob-timer {
+  position: absolute; right: 10px; bottom: 10px; z-index: 10;
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(22, 14, 8, 0.88); border: 1px solid var(--line-2); border-radius: 7px; padding: 5px 7px;
+}
+#mt-setup, #mt-running { display: flex; align-items: center; gap: 6px; }
+#mob-timer input[type="text"] { width: 40px; text-align: center; padding: 3px 4px; font-size: 12px; }
+#mt-sound { display: inline-flex; align-items: center; gap: 4px; color: var(--muted); cursor: pointer; }
+#mt-sound input { width: auto; margin: 0; flex: 0 0 auto; cursor: pointer; }
+#mt-sound-cb:checked ~ svg { color: var(--accent); }
+#mob-timer .mt-colon { color: var(--muted); font-weight: 600; }
+#mob-timer button { flex: 0 0 auto; padding: 3px 11px; font-size: 11px; }
+#mt-display { font-size: 18px; font-weight: 600; font-variant-numeric: tabular-nums; min-width: 58px; text-align: center; color: var(--text); }
+#mob-timer.mt-alarm { border-color: #e0593f; animation: mt-flash 0.7s ease-in-out infinite; }
+#mob-timer.mt-alarm #mt-display { color: #ff7a5f; }
+@keyframes mt-flash { 0%, 100% { background: rgba(22, 14, 8, 0.88); } 50% { background: rgba(224, 89, 63, 0.4); } }
 
 /* + / - zoom buttons, stacked under the Fit button (overlay only) */
 #zoom-controls {
@@ -480,7 +503,7 @@ body.overlay #overlay-bar label { -webkit-app-region: no-drag; }
   padding: 2px 12px !important;
 }
 /* Filled when locked (clicks pass through), outline when editable */
-#overlay-lock-btn.locked { background: #d8a13a; border-color: #d8a13a; color: #2a1d05; }
+#overlay-lock-btn.locked { background: var(--accent); border-color: var(--accent); color: var(--accent-dk); }
 
 .op-wrap { display: flex; align-items: center; gap: 4px; color: var(--muted); }
 .op-wrap span { font-size: 10px; }
@@ -514,7 +537,7 @@ body.overlay #map-area { background: rgba(18, 12, 8, 0.10); }
   left: 50%;
   transform: translateX(-50%);
   background: rgba(58, 45, 18, 0.9);
-  color: #f0c674;
+  color: var(--accent);
   font-size: 11px;
   padding: 4px 10px;
   border-radius: 5px;
@@ -554,7 +577,12 @@ body.overlay #map-area { background: rgba(18, 12, 8, 0.10); }
 .rv-btn:not(.active):hover { color: var(--text); background: var(--line); }
 .rv-btn.active { background: var(--accent); color: var(--accent-dk); font-weight: 600; }
 
-.replay-character { width: auto; max-width: 130px; font-size: 12px; padding: 0 8px; }
+.replay-character {
+  width: auto; max-width: 145px; font-size: 12px; padding: 0 11px;
+  background: var(--surface-2); border: 1px solid var(--line); border-radius: 14px; color: var(--muted);
+}
+.replay-character:hover { border-color: var(--line-2); color: var(--text); }
+.replay-character:focus { color: var(--text); }
 .replay-char-badge {
   display: inline-block; background: var(--surface-2); border: 1px solid var(--line-2);
   border-radius: 5px; padding: 1px 7px; font-size: 11px; font-weight: 600; color: var(--text); margin-right: 6px;

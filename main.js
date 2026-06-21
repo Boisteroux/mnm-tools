@@ -136,21 +136,31 @@ const sessionEndsFile = () => path.join(app.getPath('userData'), 'session-ends.j
 function readSessionEnds() {
   try { return JSON.parse(fs.readFileSync(sessionEndsFile(), 'utf8')).ends || []; } catch { return []; }
 }
+// The character whose Character ledger was written most recently = who you last played.
+function mostRecentCharacter(files) {
+  let best = null, bestT = -1;
+  for (const f of files) {
+    const m = path.basename(f).match(/^(.+?)_Character_/i);
+    if (!m) continue;
+    let t = 0; try { t = fs.statSync(f).mtimeMs; } catch {}
+    if (t > bestT) { bestT = t; best = m[1]; }
+  }
+  return best;
+}
+
 ipcMain.handle('session-replay', (event, opts = {}) => {
   try {
     const files = ledgerParser.findLedgerFiles();
     // Build all sessions so the "today" rollup can span however many there were,
     // then show only the 3 most recent as individually browsable. Manual "end
     // session" markers force a boundary so an ended session isn't shown as live.
-    // opts.character (optional) restricts the recap to one character's ledgers.
-    const character = opts.character || null;
+    // opts.character restricts to one character; opts.defaultRecent picks the most
+    // recently played character when none is specified (the recap's open default).
+    const characters = ledgerParser.charactersFromFiles(files);
+    let character = opts.character || null;
+    if (!character && opts.defaultRecent && characters.length > 1) character = mostRecentCharacter(files) || null;
     const all = ledgerParser.buildSessions(files, { ends: readSessionEnds(), character });
-    return {
-      sessions: all.slice(0, 3),
-      today: ledgerParser.todayRollup(all),
-      characters: ledgerParser.charactersFromFiles(files),
-      character,
-    };
+    return { sessions: all.slice(0, 3), today: ledgerParser.todayRollup(all), characters, character };
   } catch (e) { return { error: e.message }; }
 });
 
