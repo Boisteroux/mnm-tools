@@ -3,20 +3,23 @@
   "_conModel": {
     "note": "Estimated mob level = the player's level when they conned it + the offset for that colour. Rough first pass — expect to refine the boundaries as data comes in.",
     "offsetByColor": {
-      "green":    { "range": "5+ levels below you", "confidence": "low (trivial — could be even lower)" },
-      "darkblue": { "range": "1 to 4 levels below you" },
-      "white":    { "range": "your level" },
-      "yellow":   { "range": "1 to 2 levels above you" },
-      "red":      { "range": "3+ levels above you" }
+      "green":     { "range": "5+ levels below you", "confidence": "low (trivial — could be even lower)" },
+      "lightblue": { "range": "~4 levels below you" },
+      "darkblue":  { "range": "1 to 3 levels below you" },
+      "white":     { "range": "your level" },
+      "yellow":    { "range": "1 to 2 levels above you" },
+      "red":       { "range": "3+ levels above you" }
     },
-    "caveats": "Light-blue (typically between green and dark blue) isn't calibrated yet — flag it if it appears. Boundaries are estimates and may shift; treat every derived level as approximate."
+    "caveats": "Boundaries are estimates and may shift as data accumulates; treat every derived level as approximate. Some mobs span a level range."
   },
   "observations": [
-    { "mob": "a Fellstone guard",  "playerLevel": 15, "con": "green",    "note": "trivial / low confidence" },
-    { "mob": "a Fellstone sentry", "playerLevel": 15, "con": "darkblue" }
+    { "mob": "a Fellstone guard",    "playerLevel": 15, "con": "green",    "note": "trivial / low confidence" },
+    { "mob": "a Fellstone sentry",   "playerLevel": 15, "con": "darkblue" },
+    { "mob": "a Fellstone sentinel", "playerLevel": 15, "con": "darkblue" }
   ],
   "estimates": {
-    "a Fellstone guard":  { "level": 10, "range": "≤10",   "confidence": "low", "from": "con green at player level 15" },
-    "a Fellstone sentry": { "level": 13, "range": "11–14",                      "from": "con dark blue at player level 15" }
+    "a Fellstone guard":    { "level": 10, "range": "≤10",   "confidence": "low", "from": "con green at player level 15" },
+    "a Fellstone sentry":   { "level": 13, "range": "12–14",                      "from": "con dark blue at player level 15" },
+    "a Fellstone sentinel": { "level": 13, "range": "12–14",                      "from": "con dark blue at player level 15" }
   }
 }
