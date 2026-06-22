@@ -926,7 +926,13 @@ const isBaseMaterial = (name) => /^(rawhide|hide|leather|wool|cloth|silk|linen|c
 
 // Is this a base material we can actually get for ~free (gathered / looted / has a
 // known source) — as opposed to an unknown crafted intermediate?
+// Materials you obtain by playing (disenchanting magic drops, occasional mining) rather
+// than buying — treated as free like gathered ore. From in-game knowledge; the wiki doesn't
+// list these sources. The copper-tier disenchant reagent is "Clouded Crystallized Magic";
+// higher-tier powders appear as mining/disenchanting levels up — add them here as found.
+const OBTAINED_MATS = new Set(['Enchanted Powder', 'Magic Powder', 'Arcane Powder', 'Astral Powder', 'Clouded Crystallized Magic']);
 function isGatherableRaw(name) {
+  if (OBTAINED_MATS.has(name)) return true;
   const it = itemByName[name];
   if (!it) return false;
   const w = it.wiki || {};
