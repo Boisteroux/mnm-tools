@@ -1725,6 +1725,17 @@ async function loadWikiStats() {
       RECIPES.forEach((r) => { const k = r.result.item.toLowerCase(); (recipesByResult[k] = recipesByResult[k] || []).push(r); });
     }
   } catch {}
+  // Merge in manually-confirmed recipes (recipe-overrides.json) for items the wiki gets
+  // wrong, leaves empty, or has no page for — read off the in-game anvil. An override
+  // replaces any wiki recipe for the same result, so our data wins and survives a re-scrape.
+  try {
+    const ov = await (await fetch('./recipe-overrides.json?v=' + Date.now())).json();
+    const overrides = (ov && ov.recipes) || [];
+    const overridden = new Set(overrides.map((r) => r.result.item.toLowerCase()));
+    RECIPES = RECIPES.filter((r) => !overridden.has(r.result.item.toLowerCase())).concat(overrides);
+    recipesByResult = {};
+    RECIPES.forEach((r) => { const k = r.result.item.toLowerCase(); (recipesByResult[k] = recipesByResult[k] || []).push(r); });
+  } catch {}
   // Fill in recipe trivials we've reverse-engineered from in-game crafting colours
   // where the wiki has none — our own observations beat the wiki's "?".
   try {

@@ -1,0 +1,27 @@
+{
+  "_note": "Manually-confirmed recipes read off the in-game anvil, for items the wiki gets wrong, leaves empty, or has no page for. Merged OVER the scraped wiki.json recipes: an override replaces any wiki recipe for the same result item, so our confirmed data wins and SURVIVES a re-scrape. Trivials are filled from recipe-observations.json (leave trivial null here). Add new ones as you read them off the anvil.",
+  "_knownIngredients": "As of copper->bronze, Blacksmithing recipes only use: Copper Bar, Copper Plate, Rawhide Strap, Copper Chain Links (and Enchanted versions). Flux (e.g. Weak Flux) is deprecated from old updates — no recipe up to bronze uses it, so omit it even where a stale wiki page still lists it.",
+  "recipes": [
+    {
+      "tradeskill": "Blacksmithing",
+      "result": { "qty": 1, "item": "Copper Maul" },
+      "components": [ { "qty": 9, "item": "Copper Bar" } ],
+      "trivial": null,
+      "source": "in-game anvil 2026-06-22 (wiki had 'x? Copper Bar + 1 Weak Flux'; flux is deprecated)"
+    },
+    {
+      "tradeskill": "Blacksmithing",
+      "result": { "qty": 1, "item": "Copper Greatsword" },
+      "components": [ { "qty": 9, "item": "Copper Bar" } ],
+      "trivial": null,
+      "source": "in-game anvil 2026-06-22 (wiki recipe section was empty)"
+    },
+    {
+      "tradeskill": "Blacksmithing",
+      "result": { "qty": 1, "item": "Copper Tower Shield" },
+      "components": [ { "qty": 10, "item": "Copper Bar" } ],
+      "trivial": null,
+      "source": "in-game anvil 2026-06-22 (no wiki page exists)"
+    }
+  ]
+}
