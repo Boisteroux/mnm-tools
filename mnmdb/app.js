@@ -922,17 +922,20 @@ const isReusableTool = (name) => !/mold/i.test(name) &&
 
 // Leather "scraps" are the real crafting base: pelts (looted) are tanned into
 // scraps, so we stop the raw-material expansion at scraps rather than pelts.
-const isBaseMaterial = (name) => /^(rawhide|hide|leather|wool|cloth|silk|linen|cotton)\s+scraps$/i.test(name);
+// "X Scraps" (rawhide, leather, padded leather, wool, cloth…) are always base looted/
+// gathered materials — never a crafted intermediate, so stop expansion and treat as free.
+const isBaseMaterial = (name) => /\bscraps$/i.test(name);
 
 // Is this a base material we can actually get for ~free (gathered / looted / has a
 // known source) — as opposed to an unknown crafted intermediate?
-// Materials you obtain by playing (disenchanting magic drops, occasional mining) rather
-// than buying — treated as free like gathered ore. From in-game knowledge; the wiki doesn't
-// list these sources. The copper-tier disenchant reagent is "Clouded Crystallized Magic";
-// higher-tier powders appear as mining/disenchanting levels up — add them here as found.
-const OBTAINED_MATS = new Set(['Enchanted Powder', 'Magic Powder', 'Arcane Powder', 'Astral Powder', 'Clouded Crystallized Magic']);
+// Materials you obtain by playing (disenchant magic drops, mining, lumberjacking) rather
+// than buying — treated as free like gathered ore. From in-game knowledge where the wiki
+// lists no source. Enchant powders come from disenchanting (copper-tier = Clouded
+// Crystallized Magic) or mining; Elder Wood is gathered wood. Add higher tiers as found.
+const OBTAINED_MATS = new Set(['Enchanted Powder', 'Magic Powder', 'Arcane Powder', 'Astral Powder', 'Clouded Crystallized Magic', 'Elder Wood']);
 function isGatherableRaw(name) {
   if (OBTAINED_MATS.has(name)) return true;
+  if (/^raw\b.*\bmeat$/i.test(name)) return true; // "Raw X Meat" is looted from creatures
   const it = itemByName[name];
   if (!it) return false;
   const w = it.wiki || {};
