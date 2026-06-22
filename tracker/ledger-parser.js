@@ -130,6 +130,9 @@ function parseLedgers(files, opts) {
           const alt = decodeName((ev.f02 || '').replace(/^name_/, ''));
           if (alt && alt.length <= 40 && !/[,]|corpse|copper|split/i.test(alt)) name = alt;
         }
+        // "party_split" is a party coin-split pseudo-event (d13 decodes to it), not a
+        // real mob — exclude it so it doesn't pollute the mob leaderboards.
+        if (name && /^party[_ ]?split$/i.test(name)) name = null;
         if (name) {
           const M = mob(name);
           M.kills++;

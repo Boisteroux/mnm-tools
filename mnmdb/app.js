@@ -1756,6 +1756,10 @@ fetch('./data.json?v=' + Date.now())
   .then((r) => r.json())
   .then(async (d) => {
     DATA = d;
+    // Drop the "party_split" pseudo-mob — a party coin-split mis-logged as a kill,
+    // not a real mob (also fixed at the source in tracker/ledger-parser.js). Guards
+    // older data.json and any friend-contributed data that still carries it.
+    if (DATA.mobs) Object.keys(DATA.mobs).forEach((k) => { if (/^party[_ ]?split$/i.test(k)) delete DATA.mobs[k]; });
     await loadWikiStats();
     DATA.items.forEach((i) => { nameToId[i.name] = i.id; itemByName[i.name] = i; });
     HARVEST_NODES = DATA.harvestNodes || [];
