@@ -194,6 +194,20 @@ const mobCorpses = (d) => (d.corpses != null ? d.corpses : (d.kills || 0));
 // Mob level from wiki enrichment (parses "5" or a "5-7" range), else NaN.
 const mobLevel = (d) => { const l = d.wiki && parseInt(d.wiki.level, 10); return Number.isFinite(l) ? l : NaN; };
 
+// Fill in mob levels estimated from in-game /con colour (mob-levels.json) where the
+// wiki has none, so the "best value by level" brackets can include them. Wiki wins.
+function applyMobLevels(mobs, ml) {
+  const est = (ml && ml.estimates) || {};
+  for (const [name, d] of Object.entries(mobs || {})) {
+    if (Number.isFinite(mobLevel(d))) continue;
+    const e = est[name];
+    if (!e || !Number.isFinite(+e.level)) continue;
+    d.wiki = d.wiki || {};
+    d.wiki.level = String(e.level);
+    d.levelEst = e; // { level, range, confidence, from } — flags it as a con estimate
+  }
+}
+
 // Expected value of one kill: coin/kill + Σ(per-corpse drop rate × item price).
 function mobValuePerKill(d) {
   const corpses = mobCorpses(d);
@@ -339,7 +353,7 @@ function renderHome() {
     const lvl = mobLevel(d), v = mobValuePerKill(d).total;
     if (!Number.isFinite(lvl) || v <= 0) return;
     const start = Math.floor((lvl - 1) / BRACKET) * BRACKET + 1; // 1-10→1, 11-20→11
-    (byBracket[start] = byBracket[start] || []).push({ m, lvl, v });
+    (byBracket[start] = byBracket[start] || []).push({ m, lvl, v, est: d.levelEst });
   });
   const bracketKeys = Object.keys(byBracket).map(Number).sort((a, b) => a - b);
   const unleveled = mobs.filter(([, d]) => mobValuePerKill(d).total > 0 && !Number.isFinite(mobLevel(d))).length;
@@ -347,12 +361,15 @@ function renderHome() {
     const list = byBracket[start].sort((a, b) => b.v - a.v).slice(0, 8);
     const max = list[0].v;
     return '<div><h3 class="bracket">Lv ' + start + '–' + (start + BRACKET - 1) + '</h3><div class="card"><table><tbody>' +
-      list.map((x) => '<tr><td>' + mobLink(x.m) + ' <span class="sample">L' + x.lvl + '</span></td><td class="num">' +
+      list.map((x) => '<tr><td>' + mobLink(x.m) + ' <span class="sample' + (x.est ? ' est' : '') + '"' +
+        (x.est ? ' title="Estimated from in-game /con — ' + esc(x.est.from || '') + (x.est.confidence ? ', ' + esc(x.est.confidence) + ' confidence' : '') + '">~L' + esc(x.est.range || x.lvl) : '>L' + x.lvl) + '</span></td><td class="num">' +
         barCell(x.v, max, '<span class="coin">' + coin(x.v) + '</span>') + '</td></tr>').join('') +
       '</tbody></table></div></div>';
   }).join('');
+  const hasEstLevel = bracketKeys.some((k) => byBracket[k].some((x) => x.est));
   const bracketSection = bracketKeys.length
     ? '<h2>Best value by level</h2><p class="sub">Top value/kill in each level band (level from the wiki).' +
+      (hasEstLevel ? ' A <span class="est">~</span> level is estimated from in-game /con (rough, may change).' : '') +
       (unleveled ? ' ' + unleveled + ' valuable mob' + (unleveled === 1 ? '' : 's') + ' not shown — no wiki level yet.' : '') + '</p>' +
       '<div class="col2">' + bracketCols + '</div>'
     : '';
@@ -1695,6 +1712,11 @@ async function loadWikiStats() {
   try {
     RECIPE_OBS = await (await fetch('./recipe-observations.json?v=' + Date.now())).json();
     applyTrivialEstimates(RECIPES, RECIPE_OBS);
+  } catch {}
+  // Fill in mob levels estimated from in-game /con colour where the wiki has none.
+  try {
+    const ml = await (await fetch('./mob-levels.json?v=' + Date.now())).json();
+    applyMobLevels(DATA.mobs, ml);
   } catch {}
   try {
     const v = await (await fetch('./vendors.json?v=' + Date.now())).json();

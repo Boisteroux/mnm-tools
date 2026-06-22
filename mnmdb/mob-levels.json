@@ -1,0 +1,22 @@
+{
+  "_note": "Manual mob-level estimates derived from in-game /con (consider) colour relative to the player's level AT THE TIME of the con. The game logs neither character level nor con results, so these are eyeballed and ROUGH — they are clearly flagged as estimates in the UI, will be adjusted as more cons are recorded, and some mobs genuinely span a level range. Used to fill the home 'Best value by level' brackets (and mob pages) where the wiki has no level. The wiki's level always wins when it has one.",
+  "_conModel": {
+    "note": "Estimated mob level = the player's level when they conned it + the offset for that colour. Rough first pass — expect to refine the boundaries as data comes in.",
+    "offsetByColor": {
+      "green":    { "range": "5+ levels below you", "confidence": "low (trivial — could be even lower)" },
+      "darkblue": { "range": "1 to 4 levels below you" },
+      "white":    { "range": "your level" },
+      "yellow":   { "range": "1 to 2 levels above you" },
+      "red":      { "range": "3+ levels above you" }
+    },
+    "caveats": "Light-blue (typically between green and dark blue) isn't calibrated yet — flag it if it appears. Boundaries are estimates and may shift; treat every derived level as approximate."
+  },
+  "observations": [
+    { "mob": "a Fellstone guard",  "playerLevel": 15, "con": "green",    "note": "trivial / low confidence" },
+    { "mob": "a Fellstone sentry", "playerLevel": 15, "con": "darkblue" }
+  ],
+  "estimates": {
+    "a Fellstone guard":  { "level": 10, "range": "≤10",   "confidence": "low", "from": "con green at player level 15" },
+    "a Fellstone sentry": { "level": 13, "range": "11–14",                      "from": "con dark blue at player level 15" }
+  }
+}
