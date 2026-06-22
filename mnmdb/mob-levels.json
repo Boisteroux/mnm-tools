@@ -15,11 +15,12 @@
   "observations": [
     { "mob": "a Fellstone guard",    "playerLevel": 15, "con": "green",    "note": "trivial / low confidence" },
     { "mob": "a Fellstone sentry",   "playerLevel": 15, "con": "darkblue" },
+    { "mob": "a Fellstone sentry",   "playerLevel": 15, "con": "green",    "note": "a different sentry conned green — same mob type spans a level range" },
     { "mob": "a Fellstone sentinel", "playerLevel": 15, "con": "darkblue" }
   ],
   "estimates": {
     "a Fellstone guard":    { "level": 10, "range": "≤10",   "confidence": "low", "from": "con green at player level 15" },
-    "a Fellstone sentry":   { "level": 13, "range": "12–14",                      "from": "con dark blue at player level 15" },
-    "a Fellstone sentinel": { "level": 13, "range": "12–14",                      "from": "con dark blue at player level 15" }
+    "a Fellstone sentry":   { "level": 12, "range": "10–14", "spread": true, "from": "conned BOTH green (≤10) and dark blue (12–14) at player level 15 — spawns across a level range" },
+    "a Fellstone sentinel": { "level": 13, "range": "12–14",                "from": "con dark blue at player level 15" }
   }
 }
