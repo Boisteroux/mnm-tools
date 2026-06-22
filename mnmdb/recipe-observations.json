@@ -2,7 +2,7 @@
   "_note": "Manual in-game crafting difficulty-color observations, used to reverse-engineer recipe trivials the wiki is missing (it shows '?'). Difficulty colors easiest->hardest: green (= trivial, no more skill-ups), lightblue, darkblue, white (~50% success), yellow, orange, red. A recipe seen GREEN at skill S has trivial <= S; any other color means trivial > S. Recording the same recipe at several skill levels pins the exact trivial (it turns green at its trivial) and calibrates each colour's skill-gap. Edit this file as you hit new skill milestones; the site merges it over the wiki recipe data.",
   "_colorOrder": ["green", "lightblue", "darkblue", "white", "yellow", "orange", "red"],
   "_model": {
-    "note": "Trivials land on MULTIPLES OF 5 (in-game breakpoints are every 5 levels), and each colour band is 5 skill points wide. This single model reproduces BOTH the skill-48 and skill-50 readings exactly for every recipe, so trivial estimates below are now confident to the nearest 5 (red items are a lower bound until they shift colour).",
+    "note": "Trivials land on MULTIPLES OF 5 (in-game breakpoints are every 5 levels), and each colour band is 5 skill points wide. This single model reproduces the skill-48, 50 AND 55 readings exactly for every recipe (3 milestones, 0 mismatches), so trivial estimates below are confident to the nearest 5. Red items remain a lower bound until they shift colour.",
     "bandsByGap": {
       "green": "gap <= 0 (skill >= trivial)",
       "lightblue": "gap 1-5",
@@ -29,7 +29,7 @@
       },
       {
         "skill": 50,
-        "note": "+2 skill from the level-48 reading. Confirms the multiples-of-5 / 5-wide-band model: the level-48 lightblue recipes are now exactly green (trivial 50). Enchanted Copper Plate Helm reads green here too (matches its base; the earlier 'lightblue' look was a misread). Enchanted variants match their base item's colour.",
+        "note": "+2 skill from the level-48 reading. Confirms the multiples-of-5 / 5-wide-band model: the level-48 lightblue recipes are now exactly green (trivial 50). Enchanted variants match their base item's colour.",
         "lightblue": ["Copper War Lance"],
         "darkblue": ["Copper Chain Leggings", "Copper Plate Greaves", "Enchanted Copper Chain Leggings", "Enchanted Copper Plate Greaves"],
         "white": ["Copper Plate Barding"],
@@ -37,11 +37,23 @@
         "orange": ["Copper Greatsword", "Copper Maul", "Copper Tower Shield"],
         "red": ["Bronze Bracket", "Bronze Chain Links", "Bronze Fasteners", "Bronze Hinge", "Bronze Plate", "Jagged Sharpening Stone", "Jagged Weightstone", "Silver Chain Links", "Silver Plate", "Bronze Chain Gorget"],
         "greenTrivialAtOrBelow": ["Copper Chain Coif", "Copper Chain Shoulderguards", "Copper Plate Helm", "Copper Plate Pauldrons", "Enchanted Copper Chain Coif", "Enchanted Copper Plate Helm", "(and every other copper recipe not listed above)"]
+      },
+      {
+        "skill": 55,
+        "note": "Third reading, fits the model exactly again. Copper War Lance turned GREEN at exactly 55 (confirms trivial 55). The copper weapons read yellow (= 75, confirming the earlier orange@50). The whole bronze tier + jagged stones read orange (= 80). Silver reads RED, one band HARDER than the orange bronze, so Silver = ~85 — note the wiki lists Silver Chain Links/Plate at 80, which this contradicts. Bronze Chain Gorget wasn't visible in this reading.",
+        "green": ["Copper War Lance"],
+        "lightblue": ["Copper Chain Leggings", "Copper Plate Greaves", "Enchanted Copper Chain Leggings", "Enchanted Copper Plate Greaves"],
+        "darkblue": ["Copper Plate Barding"],
+        "white": ["Copper Chain Tunic", "Copper Plate Breastplate", "Enchanted Copper Chain Tunic", "Enchanted Copper Plate Breastplate"],
+        "yellow": ["Copper Greatsword", "Copper Maul", "Copper Tower Shield"],
+        "orange": ["Bronze Bracket", "Bronze Chain Links", "Bronze Fasteners", "Bronze Hinge", "Bronze Plate", "Jagged Sharpening Stone", "Jagged Weightstone"],
+        "red": ["Silver Chain Links", "Silver Plate"],
+        "greenTrivialAtOrBelow": ["Copper War Lance", "Copper Chain Coif", "Copper Chain Shoulderguards", "Copper Plate Helm", "Copper Plate Pauldrons", "Enchanted Copper Chain Coif", "Enchanted Copper Plate Helm", "(and every other copper recipe not listed above)"]
       }
     ]
   },
   "trivialEstimates": {
-    "_method": "Derived from the colour at skill 48 AND skill 50 via the multiples-of-5 / 5-wide-band model in _model, which reproduces both readings exactly. Values are the nearest multiple of 5; red-at-50 items are a lower bound (>= 80) until a higher-skill reading shifts their colour. Enchanted variants share their base item's trivial. CROSS-CHECK: the wiki independently lists the whole bronze/silver plate tier at trivial 80, which confirms the high end of the model and corrected Bronze Bracket/Chain Links from 75 to 80 (orange vs red is hard to read on the dark crafting UI). The copper weapons (Greatsword/Maul/Tower Shield) read orange = 75 but could be 80 for the same reason; a higher-skill reading will settle it.",
+    "_method": "Derived from the colour at skill 48, 50 AND 55 via the multiples-of-5 / 5-wide-band model in _model, which reproduces all three readings exactly. Values are the nearest multiple of 5. Confirmed by the 55 reading: Copper War Lance = 55 (turned green), the copper weapons = 75 (yellow), the bronze tier + jagged stones = 80 (orange). Silver read RED at 55 (one band above bronze) => Silver ~85, which CONTRADICTS the wiki's listed 80 for Silver Chain Links/Plate; trust this once silver turns green ~85. Bronze Chain Gorget not yet re-observed (still a lower bound). Enchanted variants share their base item's trivial.",
     "Blacksmithing": {
       "Copper Chain Coif": 50,
       "Copper Chain Shoulderguards": 50,
@@ -64,14 +76,14 @@
       "Copper Tower Shield": 75,
       "Bronze Bracket": 80,
       "Bronze Chain Links": 80,
-      "Bronze Fasteners": "80+",
-      "Bronze Hinge": "80+",
-      "Bronze Plate": "80+",
+      "Bronze Fasteners": 80,
+      "Bronze Hinge": 80,
+      "Bronze Plate": 80,
       "Bronze Chain Gorget": "80+",
-      "Jagged Sharpening Stone": "80+",
-      "Jagged Weightstone": "80+",
-      "Silver Chain Links": "80+",
-      "Silver Plate": "80+"
+      "Jagged Sharpening Stone": 80,
+      "Jagged Weightstone": 80,
+      "Silver Chain Links": 85,
+      "Silver Plate": 85
     }
   }
 }
