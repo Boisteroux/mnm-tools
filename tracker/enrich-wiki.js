@@ -291,6 +291,38 @@ function parseRecipes(wikitext, tradeskill) {
   return out;
 }
 
+// Recipes found on item PAGES (the wiki keeps "playercrafted" recipes on each item's
+// own page, not only in the tradeskill Recipes table — so these were being missed).
+const itemRecipes = [];
+
+// Parse an item page's "playercrafted" block into a recipe. The page's trivial is a
+// "##" placeholder, so trivial is left null — our reverse-engineered observations
+// (recipe-observations.json) fill those in. Crafting stations (Anvil/Forge/…) and the
+// yield item itself are skipped; only "xN [[Item]]" ingredients are kept.
+function parsePlayercrafted(wikitext, itemName) {
+  const m = wikitext.match(/\{\{\s*Itempage([\s\S]*?)\n\}\}/i);
+  if (!m) return null;
+  let pc = templateParams(m[1]).playercrafted;
+  if (!pc || !/Yield:/i.test(pc)) return null;
+  pc = pc.split(/\n(?=\*\s*\[\[[^\]]+\]\]\s*\(\s*Trivial)/i)[0]; // first recipe block only
+  if (/\bx\s*\?\s*\[\[/.test(pc)) return null; // an ingredient qty is unknown on the wiki ("x?") — skip rather than publish a partial recipe
+  const tsM = pc.match(/\[\[([^\]|]+?)\]\]\s*\(\s*Trivial/i);
+  const tradeskill = tsM && tsM[1].trim();
+  if (!tradeskill || !TRADESKILLS.has(tradeskill)) return null;
+  const yQty = parseInt((pc.match(/Yield:[\s\S]*?\bx\s*(\d+)/i) || [])[1], 10) || 1;
+  const comps = [];
+  const re = /\bx\s*(\d+)\s*\[\[([^\]|]+?)\]\]/gi;
+  let c;
+  while ((c = re.exec(pc))) {
+    const item = c[2].trim();
+    if (item === itemName) continue; // the yield, not an ingredient
+    if (/^(Anvil|Forge|Oven|Loom|Kiln|Workbench|Stove|Campfire|Brewing Barrel|Spinning Wheel|Tanning Kit|Pottery Wheel)$/i.test(item)) continue;
+    comps.push({ qty: parseInt(c[1], 10), item });
+  }
+  if (!comps.length) return null;
+  return { tradeskill, result: { qty: yQty, item: itemName }, components: comps, trivial: null, fromItemPage: true };
+}
+
 // Fetch + parse ItemBox/sources for a list of item names into `into`
 async function enrichItems(names, into, label, wikiOnly) {
   for (let i = 0; i < names.length; i += 45) {
@@ -304,6 +336,8 @@ async function enrichItems(names, into, label, wikiOnly) {
       // A real item page has an ItemBox. Discovered (wikiOnly) candidates without
       // one are NPCs / spell lists / skills — skip them so they don't pollute Items.
       if (wikiOnly && !box) continue;
+      const pcr = parsePlayercrafted(wt, title);
+      if (pcr) itemRecipes.push(pcr);
       if (box || src.zones.length || src.from.length || cats.length || ts.length || soldBy) {
         into[title] = Object.assign({ hasPage: true }, wikiOnly ? { wikiOnly: true } : {}, box || {},
           src.zones.length ? { wikiZones: src.zones } : {}, src.from.length ? { from: src.from } : {},
@@ -401,6 +435,16 @@ async function run() {
     !SKILLS.has(nm) && !/^(a|an|the)\s/i.test(nm) && !/^File:/i.test(nm)); // skip NPCs/skills/images
   if (toFetch.length) await enrichItems(toFetch, items, 'extra items', true);
 
+  // ---- Merge in recipes found on item pages (not in the tradeskill tables) ----
+  // Tradeskill-table recipes win on conflict (they may carry a real trivial).
+  const haveResult = new Set(recipes.map((r) => r.result.item));
+  let itemPageAdded = 0;
+  for (const r of itemRecipes) {
+    if (haveResult.has(r.result.item)) continue;
+    recipes.push(r); haveResult.add(r.result.item); itemPageAdded++;
+  }
+  console.log(`  + ${itemPageAdded} recipes from item pages.`);
+
   // ---- Resolve icons for ALL items (ledger + discovered) ----
   const iconIds = [...new Set(Object.values(items).map((i) => i.iconId).filter(Boolean))];
   const iconUrls = await fetchImageUrls(iconIds.map((id) => 'File:' + id + '.png'));
@@ -443,4 +487,8 @@ async function run() {
   console.log(`Wrote ${VOUT} (${vendors.length} vendors).`);
 }
 
-run();
+if (require.main === module) run();
+
+// Exported so a targeted update can reuse the wiki fetch + recipe parsing without a
+// full re-scrape (e.g. scripts that pull just the item-page recipes the tables miss).
+module.exports = { parsePlayercrafted, templateParams, fetchWikitext, TRADESKILLS };
