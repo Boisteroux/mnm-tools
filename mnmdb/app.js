@@ -26,6 +26,7 @@ const slugify = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '_').repla
 
 function coin(c) {
   c = Math.round(c);
+  if (c < 0) return '-' + coin(-c); // render a minus so negatives don't rely on colour alone
   // M&M coin is base-100: 100c = 1s, 100s = 1g, 100g = 1p
   const p = Math.floor(c / 1000000); c %= 1000000;
   const g = Math.floor(c / 10000); c %= 10000;

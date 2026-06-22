@@ -6,16 +6,16 @@
   --line:      #c9b288;
   --line-2:    #b89e72;
   --text:      #382a1a; /* dark sepia ink */
-  --muted:     #87704d; /* faded ink */
-  --accent:    #9c3b2e; /* oxblood — interactive */
+  --muted:     #6f5a36; /* faded ink — darkened to clear WCAG AA on parchment */
+  --accent:    #9c3b2e; /* oxblood — interactive (AA: 5.0 on bg) */
   --accent-dk: #f7f0e1; /* text/icon ON the accent (cream, since accent is dark) */
-  --good:      #4f7a2e; /* darkened so it reads on cream */
-  --warn:      #b5402b;
+  --good:      #3f6624; /* green, AA-tuned for cream */
+  --warn:      #9e3422; /* red, AA-tuned for cream */
   /* Stat / data-viz palette — kept distinct from the oxblood --accent (which is for
      interactive elements) so charts read as data, not buttons. */
-  --stat:      #a8512f; /* rust — primary stat colour */
+  --stat:      #974828; /* rust — primary stat colour (AA-tuned) */
   --stat-dk:   #d2a877; /* light tint — gradient start (flipped for light theme) */
-  --stat-2:    #5f7a3f; /* olive — secondary stat colour */
+  --stat-2:    #4d6631; /* olive — secondary stat colour (AA-tuned) */
   --stat-2-dk: #c8b990;
   color-scheme: light;
 }
