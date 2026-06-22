@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-20T17:45:16.947Z",
+  "generatedAt": "2026-06-22T01:26:39.128Z",
   "categories": [
     {
       "id": "ore",
@@ -45,6 +45,11 @@
     }
   ],
   "zones": [
+    {
+      "name": "Blacktide Bay",
+      "image": "blacktide_bay.jpg",
+      "markers": []
+    },
     {
       "name": "Caves of Irem",
       "image": "caves_of_irem.png",
@@ -529,11 +534,6 @@
     },
     {
       "name": "Ancient Crypt",
-      "comingSoon": true,
-      "markers": []
-    },
-    {
-      "name": "Blacktide Bay",
       "comingSoon": true,
       "markers": []
     },
