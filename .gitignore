@@ -13,6 +13,9 @@ out/
 *-mnmmap.json
 crash.log
 
+# Local map-source working files (raw zone images before processing)
+_import-maps/
+
 # OS cruft
 Thumbs.db
 .DS_Store
