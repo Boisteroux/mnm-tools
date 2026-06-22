@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-22T05:08:52.794Z",
+  "generatedAt": "2026-06-22T23:47:35.626Z",
   "source": "mnm-tools",
-  "ledgerFiles": 26,
-  "events": 8302,
+  "ledgerFiles": 28,
+  "events": 8578,
   "contributors": [],
   "mobs": {
     "a desert bat": {
@@ -493,15 +493,16 @@
     "a wasp drone": {
       "kills": 0,
       "drops": {
-        "Wasp Wing": 11,
+        "Wasp Wing": 13,
         "Wasp Venom Sac": 5,
         "Royal Jelly": 4
       },
       "zones": {
-        "Evershade Weald": 33
+        "Evershade Weald": 33,
+        "Keepersbight": 3
       },
       "coin": 0,
-      "corpses": 17
+      "corpses": 19
     },
     "a dryad fawn": {
       "kills": 26,
@@ -837,26 +838,26 @@
       "corpses": 1
     },
     "a Fellstone sentry": {
-      "kills": 315,
+      "kills": 328,
       "drops": {
-        "Rawhide Scraps": 83,
-        "Cloth Scraps": 85,
+        "Rawhide Scraps": 86,
+        "Cloth Scraps": 90,
         "Rusty Shortsword": 3,
-        "Tattered Cloth Cap": 1,
+        "Tattered Cloth Cap": 2,
         "Rusty Long Spear": 2,
-        "Left Orc Ear": 41,
+        "Left Orc Ear": 44,
         "Tattered Cloth Veil": 6,
         "Rusty Mace": 3,
         "Rusty Greatsword": 3,
         "Tattered Rawhide Leggings": 3,
-        "Tattered Rawhide Bracer": 6,
+        "Tattered Rawhide Bracer": 7,
         "Rusty Tower Shield": 2,
         "Rusty Scimitar": 1,
         "Worn Bow": 2,
-        "Raw Orc Meat": 53,
-        "Tattered Cloth Tunic": 8,
-        "Tattered Rawhide Mask": 7,
-        "Tattered Rawhide Gorget": 4,
+        "Raw Orc Meat": 55,
+        "Tattered Cloth Tunic": 9,
+        "Tattered Rawhide Mask": 8,
+        "Tattered Rawhide Gorget": 6,
         "Worn Great Staff": 1,
         "Tattered Cloth Cape": 2,
         "Eth-ur Geological Journal Page": 1,
@@ -864,12 +865,12 @@
         "Tattered Cloth Bracer": 11,
         "Tattered Cloth Gorget": 4,
         "Rusty Longsword": 1,
-        "Tattered Cloth Robe": 4,
+        "Tattered Cloth Robe": 5,
         "Cracked Staff": 4,
         "Tattered Rawhide Cap": 4,
         "Tattered Rawhide Cloak": 3,
         "Rusty Maul": 1,
-        "Tattered Rawhide Tunic": 2,
+        "Tattered Rawhide Tunic": 3,
         "Rusty Great Scythe": 2,
         "Rusty Scythe": 2,
         "Rusty Warhammer": 1,
@@ -890,51 +891,54 @@
         "Rusty Spear": 1
       },
       "zones": {
-        "Blacktidebay": 842
+        "Blacktidebay": 877
       },
-      "coin": 11537,
-      "corpses": 189
+      "coin": 12002,
+      "corpses": 199
     },
     "a Fellstone guard": {
-      "kills": 125,
+      "kills": 141,
       "drops": {
-        "Cloth Scraps": 37,
-        "Tattered Rawhide Cap": 2,
-        "Rawhide Scraps": 29,
-        "Raw Orc Meat": 20,
+        "Cloth Scraps": 42,
+        "Tattered Rawhide Cap": 3,
+        "Rawhide Scraps": 33,
+        "Raw Orc Meat": 21,
         "Rusty Dagger": 1,
         "Tattered Cloth Cape": 1,
-        "Left Orc Ear": 18,
+        "Left Orc Ear": 22,
         "Rusty Spear": 3,
         "Rusty Great Scythe": 2,
         "Tattered Cloth Cap": 1,
         "Tattered Cloth Tunic": 2,
         "Tattered Cloth Belt": 2,
-        "Torch": 2,
+        "Torch": 3,
         "Tattered Cloth Gorget": 3,
         "Worn Buckler": 2,
         "Spirit World Ch. 1": 1,
         "Tattered Cloth Shirt": 5,
-        "Tattered Cloth Mantle": 2,
+        "Tattered Cloth Mantle": 4,
         "Rusty Longsword": 1,
-        "Tattered Rawhide Gorget": 3,
+        "Tattered Rawhide Gorget": 4,
         "Tattered Rawhide Bracer": 1,
         "Worn Bow": 1,
-        "Tattered Cloth Boots": 1,
+        "Tattered Cloth Boots": 2,
         "Tattered Rawhide Belt": 1,
         "Tattered Cloth Veil": 1,
         "Worn Great Staff": 1,
-        "Tattered Rawhide Cloak": 1,
+        "Tattered Rawhide Cloak": 2,
         "Tattered Cloth Pantaloons": 2,
         "Tattered Rawhide Tunic": 2,
         "Rusty Trident": 1,
-        "Tattered Rawhide Mask": 1
+        "Tattered Rawhide Mask": 1,
+        "Tattered Cloth Bracer": 1,
+        "Tattered Rawhide Leggings": 1
       },
       "zones": {
-        "Blacktidebay": 349
+        "Blacktidebay": 387,
+        "Evershade Weald": 1
       },
-      "coin": 4017,
-      "corpses": 80
+      "coin": 4529,
+      "corpses": 95
     },
     "a Fellstone ragecaller": {
       "kills": 38,
@@ -1136,6 +1140,64 @@
       },
       "zones": {
         "Blacktidebay": 4
+      },
+      "coin": 0,
+      "corpses": 1
+    },
+    "a deadwood recluse": {
+      "kills": 0,
+      "drops": {
+        "Spider Silk": 10,
+        "Spider Legs": 2
+      },
+      "zones": {
+        "Keepersbight": 44
+      },
+      "coin": 0,
+      "corpses": 10
+    },
+    "a deadwood matriarch": {
+      "kills": 0,
+      "drops": {
+        "Rugged Spider Silk": 2,
+        "Bundle of Strong Silk": 1
+      },
+      "zones": {
+        "Keepersbight": 6
+      },
+      "coin": 0,
+      "corpses": 2
+    },
+    "a forest drakeling": {
+      "kills": 4,
+      "drops": {
+        "Drake Fang": 1,
+        "Drake Scale": 1
+      },
+      "zones": {
+        "Keepersbight": 6
+      },
+      "coin": 310,
+      "corpses": 1
+    },
+    "a shadow wolf": {
+      "kills": 0,
+      "drops": {
+        "Wolf Tooth": 2
+      },
+      "zones": {
+        "Keepersbight": 3
+      },
+      "coin": 0,
+      "corpses": 2
+    },
+    "a black serpent": {
+      "kills": 0,
+      "drops": {
+        "Snake Fang": 1
+      },
+      "zones": {
+        "Keepersbight": 2
       },
       "coin": 0,
       "corpses": 1
@@ -1660,14 +1722,15 @@
       "prices": [
         {
           "copper": 1,
-          "count": 34
+          "count": 38
         }
       ],
-      "harvested": 772,
+      "harvested": 812,
       "zones": [
         "Evershade Weald",
         "Night Harbor",
-        "Shaded Dunes"
+        "Shaded Dunes",
+        "Keepersbight"
       ]
     },
     {
@@ -1686,6 +1749,24 @@
       "harvested": 0,
       "zones": [
         "Evershade Weald"
+      ]
+    },
+    {
+      "id": "bundle_of_strong_silk",
+      "gameId": "e4ef83c0f407b2add3c950f0",
+      "name": "Bundle of Strong Silk",
+      "droppedBy": [
+        {
+          "mob": "a deadwood matriarch",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
       ]
     },
     {
@@ -1759,7 +1840,7 @@
       "name": "Chipped Black Pearl",
       "droppedBy": [],
       "prices": [],
-      "harvested": 4,
+      "harvested": 5,
       "zones": [
         "Evershade Weald"
       ]
@@ -1798,6 +1879,17 @@
       ]
     },
     {
+      "id": "chipped_carnelian",
+      "gameId": null,
+      "name": "Chipped Carnelian",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
       "id": "chipped_cat_s_eye_agate",
       "gameId": null,
       "name": "Chipped Cat's Eye Agate",
@@ -1825,7 +1917,7 @@
       "name": "Chipped Emerald",
       "droppedBy": [],
       "prices": [],
-      "harvested": 2,
+      "harvested": 3,
       "zones": [
         "Evershade Weald"
       ]
@@ -1858,9 +1950,10 @@
       "name": "Chipped Hematite",
       "droppedBy": [],
       "prices": [],
-      "harvested": 3,
+      "harvested": 4,
       "zones": [
-        "Evershade Weald"
+        "Evershade Weald",
+        "Keepersbight"
       ]
     },
     {
@@ -1878,6 +1971,17 @@
       "id": "chipped_jasper",
       "gameId": null,
       "name": "Chipped Jasper",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
+      "id": "chipped_lapis_lazuli",
+      "gameId": null,
+      "name": "Chipped Lapis Lazuli",
       "droppedBy": [],
       "prices": [],
       "harvested": 1,
@@ -2026,12 +2130,6 @@
           "rate": 0.5
         },
         {
-          "mob": "a Fellstone guard",
-          "drops": 37,
-          "corpses": 80,
-          "rate": 0.4625
-        },
-        {
           "mob": "a Fellstone corrupter",
           "drops": 6,
           "corpses": 13,
@@ -2045,9 +2143,15 @@
         },
         {
           "mob": "a Fellstone sentry",
-          "drops": 85,
-          "corpses": 189,
-          "rate": 0.4497354497354497
+          "drops": 90,
+          "corpses": 199,
+          "rate": 0.45226130653266333
+        },
+        {
+          "mob": "a Fellstone guard",
+          "drops": 42,
+          "corpses": 95,
+          "rate": 0.4421052631578947
         },
         {
           "mob": "a Fellstone warrior",
@@ -2156,7 +2260,7 @@
       "name": "Clouded Crystallized Magic",
       "droppedBy": [],
       "prices": [],
-      "harvested": 11,
+      "harvested": 12,
       "zones": [
         "Evershade Weald",
         "Night Harbor"
@@ -2332,7 +2436,7 @@
       "prices": [
         {
           "copper": 61,
-          "count": 1
+          "count": 4
         }
       ],
       "harvested": 0,
@@ -2344,11 +2448,12 @@
       "name": "Copper Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 742,
+      "harvested": 785,
       "zones": [
         "Evershade Weald",
         "Night Harbor",
-        "Shaded Dunes"
+        "Shaded Dunes",
+        "Keepersbight"
       ]
     },
     {
@@ -2508,8 +2613,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 4,
-          "corpses": 189,
-          "rate": 0.021164021164021163
+          "corpses": 199,
+          "rate": 0.020100502512562814
         },
         {
           "mob": "a Fellstone sentinel",
@@ -2737,6 +2842,12 @@
       "name": "Drake Fang",
       "droppedBy": [
         {
+          "mob": "a forest drakeling",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
+        {
           "mob": "a green drakeling",
           "drops": 10,
           "corpses": 37,
@@ -2755,7 +2866,26 @@
       ],
       "harvested": 0,
       "zones": [
-        "Evershade Weald"
+        "Evershade Weald",
+        "Keepersbight"
+      ]
+    },
+    {
+      "id": "drake_scale",
+      "gameId": "6ee2d0b631f489c15eb6380a",
+      "name": "Drake Scale",
+      "droppedBy": [
+        {
+          "mob": "a forest drakeling",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
       ]
     },
     {
@@ -2916,8 +3046,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 189,
-          "rate": 0.005291005291005291
+          "corpses": 199,
+          "rate": 0.005025125628140704
         }
       ],
       "prices": [],
@@ -3107,7 +3237,7 @@
           "count": 2
         }
       ],
-      "harvested": 33,
+      "harvested": 34,
       "zones": [
         "Evershade Weald"
       ]
@@ -3415,15 +3545,15 @@
         },
         {
           "mob": "a Fellstone guard",
-          "drops": 18,
-          "corpses": 80,
-          "rate": 0.225
+          "drops": 22,
+          "corpses": 95,
+          "rate": 0.23157894736842105
         },
         {
           "mob": "a Fellstone sentry",
-          "drops": 41,
-          "corpses": 189,
-          "rate": 0.21693121693121692
+          "drops": 44,
+          "corpses": 199,
+          "rate": 0.22110552763819097
         },
         {
           "mob": "a Fellstone ragecaller",
@@ -3498,7 +3628,7 @@
           "count": 1
         }
       ],
-      "harvested": 30,
+      "harvested": 31,
       "zones": [
         "Evershade Weald"
       ]
@@ -3634,7 +3764,7 @@
       "prices": [
         {
           "copper": 1,
-          "count": 7
+          "count": 8
         }
       ],
       "harvested": 0,
@@ -3653,7 +3783,7 @@
           "count": 1
         }
       ],
-      "harvested": 6,
+      "harvested": 10,
       "zones": [
         "Evershade Weald"
       ]
@@ -3962,21 +4092,21 @@
         },
         {
           "mob": "a Fellstone sentry",
-          "drops": 53,
-          "corpses": 189,
-          "rate": 0.2804232804232804
-        },
-        {
-          "mob": "a Fellstone guard",
-          "drops": 20,
-          "corpses": 80,
-          "rate": 0.25
+          "drops": 55,
+          "corpses": 199,
+          "rate": 0.27638190954773867
         },
         {
           "mob": "a Fellstone sentinel",
           "drops": 29,
           "corpses": 122,
           "rate": 0.23770491803278687
+        },
+        {
+          "mob": "a Fellstone guard",
+          "drops": 21,
+          "corpses": 95,
+          "rate": 0.22105263157894736
         },
         {
           "mob": "a Fellstone ragecaller",
@@ -4170,16 +4300,16 @@
           "rate": 0.4672131147540984
         },
         {
-          "mob": "a Fellstone sentry",
-          "drops": 83,
-          "corpses": 189,
-          "rate": 0.43915343915343913
-        },
-        {
           "mob": "a Fellstone ragecaller",
           "drops": 14,
           "corpses": 32,
           "rate": 0.4375
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 86,
+          "corpses": 199,
+          "rate": 0.4321608040201005
         },
         {
           "mob": "a Fellstone corrupter",
@@ -4195,9 +4325,9 @@
         },
         {
           "mob": "a Fellstone guard",
-          "drops": 29,
-          "corpses": 80,
-          "rate": 0.3625
+          "drops": 33,
+          "corpses": 95,
+          "rate": 0.3473684210526316
         },
         {
           "mob": "a skeletal warrior",
@@ -4280,10 +4410,11 @@
           "count": 15
         }
       ],
-      "harvested": 355,
+      "harvested": 368,
       "zones": [
         "Evershade Weald",
-        "Night Harbor"
+        "Night Harbor",
+        "Keepersbight"
       ]
     },
     {
@@ -4345,8 +4476,8 @@
         {
           "mob": "a wasp drone",
           "drops": 4,
-          "corpses": 17,
-          "rate": 0.23529411764705882
+          "corpses": 19,
+          "rate": 0.21052631578947367
         }
       ],
       "prices": [
@@ -4358,6 +4489,24 @@
       "harvested": 0,
       "zones": [
         "Evershade Weald"
+      ]
+    },
+    {
+      "id": "rugged_spider_silk",
+      "gameId": "c06e86ecd39d7f2eea7d3ca1",
+      "name": "Rugged Spider Silk",
+      "droppedBy": [
+        {
+          "mob": "a deadwood matriarch",
+          "drops": 2,
+          "corpses": 2,
+          "rate": 1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
       ]
     },
     {
@@ -4436,8 +4585,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 3,
-          "corpses": 189,
-          "rate": 0.015873015873015872
+          "corpses": 199,
+          "rate": 0.01507537688442211
         },
         {
           "mob": "a rotting skeleton",
@@ -4502,20 +4651,20 @@
         {
           "mob": "a Fellstone guard",
           "drops": 1,
-          "corpses": 80,
-          "rate": 0.0125
-        },
-        {
-          "mob": "a Fellstone sentry",
-          "drops": 2,
-          "corpses": 189,
-          "rate": 0.010582010582010581
+          "corpses": 95,
+          "rate": 0.010526315789473684
         },
         {
           "mob": "a rotting skeleton",
           "drops": 1,
           "corpses": 98,
           "rate": 0.01020408163265306
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 2,
+          "corpses": 199,
+          "rate": 0.010050251256281407
         },
         {
           "mob": "a Fellstone sentinel",
@@ -4563,8 +4712,8 @@
         {
           "mob": "a Fellstone guard",
           "drops": 2,
-          "corpses": 80,
-          "rate": 0.025
+          "corpses": 95,
+          "rate": 0.021052631578947368
         },
         {
           "mob": "a rotting skeleton",
@@ -4575,8 +4724,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 2,
-          "corpses": 189,
-          "rate": 0.010582010582010581
+          "corpses": 199,
+          "rate": 0.010050251256281407
         },
         {
           "mob": "a Fellstone sentinel",
@@ -4618,8 +4767,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 3,
-          "corpses": 189,
-          "rate": 0.015873015873015872
+          "corpses": 199,
+          "rate": 0.01507537688442211
         },
         {
           "mob": "a Fellstone sentinel",
@@ -4667,8 +4816,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 189,
-          "rate": 0.005291005291005291
+          "corpses": 199,
+          "rate": 0.005025125628140704
         }
       ],
       "prices": [
@@ -4697,8 +4846,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 2,
-          "corpses": 189,
-          "rate": 0.010582010582010581
+          "corpses": 199,
+          "rate": 0.010050251256281407
         }
       ],
       "prices": [],
@@ -4746,8 +4895,8 @@
         {
           "mob": "a Fellstone guard",
           "drops": 1,
-          "corpses": 80,
-          "rate": 0.0125
+          "corpses": 95,
+          "rate": 0.010526315789473684
         },
         {
           "mob": "a rotting skeleton",
@@ -4758,8 +4907,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 189,
-          "rate": 0.005291005291005291
+          "corpses": 199,
+          "rate": 0.005025125628140704
         }
       ],
       "prices": [
@@ -4801,8 +4950,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 3,
-          "corpses": 189,
-          "rate": 0.015873015873015872
+          "corpses": 199,
+          "rate": 0.01507537688442211
         }
       ],
       "prices": [
@@ -4847,8 +4996,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 189,
-          "rate": 0.005291005291005291
+          "corpses": 199,
+          "rate": 0.005025125628140704
         }
       ],
       "prices": [
@@ -4907,8 +5056,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 189,
-          "rate": 0.005291005291005291
+          "corpses": 199,
+          "rate": 0.005025125628140704
         }
       ],
       "prices": [
@@ -4952,8 +5101,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 2,
-          "corpses": 189,
-          "rate": 0.010582010582010581
+          "corpses": 199,
+          "rate": 0.010050251256281407
         },
         {
           "mob": "a Fellstone sentinel",
@@ -5002,8 +5151,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 3,
-          "corpses": 189,
-          "rate": 0.015873015873015872
+          "corpses": 199,
+          "rate": 0.01507537688442211
         },
         {
           "mob": "a Fellstone sentinel",
@@ -5040,8 +5189,8 @@
         {
           "mob": "a Fellstone guard",
           "drops": 3,
-          "corpses": 80,
-          "rate": 0.0375
+          "corpses": 95,
+          "rate": 0.031578947368421054
         },
         {
           "mob": "a Fellstone ragecaller",
@@ -5070,8 +5219,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 189,
-          "rate": 0.005291005291005291
+          "corpses": 199,
+          "rate": 0.005025125628140704
         }
       ],
       "prices": [
@@ -5118,16 +5267,16 @@
           "rate": 0.01282051282051282
         },
         {
-          "mob": "a Fellstone sentry",
-          "drops": 2,
-          "corpses": 189,
-          "rate": 0.010582010582010581
-        },
-        {
           "mob": "a rotting skeleton",
           "drops": 1,
           "corpses": 98,
           "rate": 0.01020408163265306
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 2,
+          "corpses": 199,
+          "rate": 0.010050251256281407
         }
       ],
       "prices": [
@@ -5175,8 +5324,8 @@
         {
           "mob": "a Fellstone guard",
           "drops": 1,
-          "corpses": 80,
-          "rate": 0.0125
+          "corpses": 95,
+          "rate": 0.010526315789473684
         },
         {
           "mob": "a rotting skeleton",
@@ -5187,8 +5336,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 189,
-          "rate": 0.005291005291005291
+          "corpses": 199,
+          "rate": 0.005025125628140704
         }
       ],
       "prices": [
@@ -5292,8 +5441,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 189,
-          "rate": 0.005291005291005291
+          "corpses": 199,
+          "rate": 0.005025125628140704
         }
       ],
       "prices": [
@@ -5509,6 +5658,12 @@
           "rate": 1
         },
         {
+          "mob": "a black serpent",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
+        {
           "mob": "a rattlesnake",
           "drops": 3,
           "corpses": 4,
@@ -5518,13 +5673,14 @@
       "prices": [
         {
           "copper": 2,
-          "count": 1
+          "count": 2
         }
       ],
       "harvested": 0,
       "zones": [
         "Shaded Dunes",
-        "Night Harbor"
+        "Night Harbor",
+        "Keepersbight"
       ]
     },
     {
@@ -5568,6 +5724,12 @@
           "rate": 0.24074074074074073
         },
         {
+          "mob": "a deadwood recluse",
+          "drops": 2,
+          "corpses": 10,
+          "rate": 0.2
+        },
+        {
           "mob": "a spiderling",
           "drops": 1,
           "corpses": 6,
@@ -5581,12 +5743,13 @@
         },
         {
           "copper": 5,
-          "count": 3
+          "count": 4
         }
       ],
       "harvested": 0,
       "zones": [
         "Evershade Weald",
+        "Keepersbight",
         "Night Harbor"
       ]
     },
@@ -5608,6 +5771,12 @@
           "rate": 1
         },
         {
+          "mob": "a deadwood recluse",
+          "drops": 10,
+          "corpses": 10,
+          "rate": 1
+        },
+        {
           "mob": "a black widow hatchling",
           "drops": 51,
           "corpses": 54,
@@ -5623,7 +5792,7 @@
       "prices": [
         {
           "copper": 2,
-          "count": 6
+          "count": 7
         },
         {
           "copper": 4,
@@ -5637,6 +5806,7 @@
       "harvested": 0,
       "zones": [
         "Evershade Weald",
+        "Keepersbight",
         "Night Harbor",
         "Blacktidebay"
       ]
@@ -5690,8 +5860,8 @@
         {
           "mob": "a Fellstone guard",
           "drops": 1,
-          "corpses": 80,
-          "rate": 0.0125
+          "corpses": 95,
+          "rate": 0.010526315789473684
         }
       ],
       "prices": [],
@@ -5828,8 +5998,8 @@
         {
           "mob": "a Fellstone guard",
           "drops": 2,
-          "corpses": 80,
-          "rate": 0.025
+          "corpses": 95,
+          "rate": 0.021052631578947368
         },
         {
           "mob": "a skeleton",
@@ -5840,8 +6010,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 3,
-          "corpses": 189,
-          "rate": 0.015873015873015872
+          "corpses": 199,
+          "rate": 0.01507537688442211
         },
         {
           "mob": "a skeletal cleric",
@@ -5910,10 +6080,10 @@
           "rate": 0.027777777777777776
         },
         {
-          "mob": "a Fellstone sentry",
-          "drops": 4,
-          "corpses": 189,
-          "rate": 0.021164021164021163
+          "mob": "a Fellstone guard",
+          "drops": 2,
+          "corpses": 95,
+          "rate": 0.021052631578947368
         },
         {
           "mob": "a skeleton",
@@ -5928,16 +6098,16 @@
           "rate": 0.02040816326530612
         },
         {
+          "mob": "a Fellstone sentry",
+          "drops": 4,
+          "corpses": 199,
+          "rate": 0.020100502512562814
+        },
+        {
           "mob": "a skeletal cleric",
           "drops": 1,
           "corpses": 78,
           "rate": 0.01282051282051282
-        },
-        {
-          "mob": "a Fellstone guard",
-          "drops": 1,
-          "corpses": 80,
-          "rate": 0.0125
         },
         {
           "mob": "a skeletal fighter",
@@ -6010,8 +6180,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 11,
-          "corpses": 189,
-          "rate": 0.0582010582010582
+          "corpses": 199,
+          "rate": 0.05527638190954774
         },
         {
           "mob": "a skeletal warrior",
@@ -6036,6 +6206,12 @@
           "drops": 2,
           "corpses": 78,
           "rate": 0.02564102564102564
+        },
+        {
+          "mob": "a Fellstone guard",
+          "drops": 1,
+          "corpses": 95,
+          "rate": 0.010526315789473684
         },
         {
           "mob": "a Fellstone sentinel",
@@ -6112,14 +6288,14 @@
         {
           "mob": "a Fellstone guard",
           "drops": 1,
-          "corpses": 80,
-          "rate": 0.0125
+          "corpses": 95,
+          "rate": 0.010526315789473684
         },
         {
           "mob": "a Fellstone sentry",
-          "drops": 1,
-          "corpses": 189,
-          "rate": 0.005291005291005291
+          "drops": 2,
+          "corpses": 199,
+          "rate": 0.010050251256281407
         }
       ],
       "prices": [],
@@ -6180,14 +6356,14 @@
         {
           "mob": "a Fellstone guard",
           "drops": 1,
-          "corpses": 80,
-          "rate": 0.0125
+          "corpses": 95,
+          "rate": 0.010526315789473684
         },
         {
           "mob": "a Fellstone sentry",
           "drops": 2,
-          "corpses": 189,
-          "rate": 0.010582010582010581
+          "corpses": 199,
+          "rate": 0.010050251256281407
         }
       ],
       "prices": [
@@ -6247,8 +6423,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 2,
-          "corpses": 189,
-          "rate": 0.010582010582010581
+          "corpses": 199,
+          "rate": 0.010050251256281407
         },
         {
           "mob": "a Fellstone sentinel",
@@ -6291,8 +6467,8 @@
         {
           "mob": "a Fellstone guard",
           "drops": 3,
-          "corpses": 80,
-          "rate": 0.0375
+          "corpses": 95,
+          "rate": 0.031578947368421054
         },
         {
           "mob": "a Fellstone ragecaller",
@@ -6315,8 +6491,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 4,
-          "corpses": 189,
-          "rate": 0.021164021164021163
+          "corpses": 199,
+          "rate": 0.020100502512562814
         },
         {
           "mob": "a skeletal fighter",
@@ -6363,6 +6539,12 @@
           "rate": 0.05555555555555555
         },
         {
+          "mob": "a Fellstone guard",
+          "drops": 4,
+          "corpses": 95,
+          "rate": 0.042105263157894736
+        },
+        {
           "mob": "a Fellstone warrior",
           "drops": 1,
           "corpses": 24,
@@ -6373,12 +6555,6 @@
           "drops": 1,
           "corpses": 32,
           "rate": 0.03125
-        },
-        {
-          "mob": "a Fellstone guard",
-          "drops": 2,
-          "corpses": 80,
-          "rate": 0.025
         },
         {
           "mob": "a Fellstone sentinel",
@@ -6407,8 +6583,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 189,
-          "rate": 0.005291005291005291
+          "corpses": 199,
+          "rate": 0.005025125628140704
         }
       ],
       "prices": [
@@ -6466,16 +6642,16 @@
           "rate": 0.030303030303030304
         },
         {
-          "mob": "a Fellstone guard",
-          "drops": 2,
-          "corpses": 80,
-          "rate": 0.025
-        },
-        {
           "mob": "a Fellstone sentinel",
           "drops": 3,
           "corpses": 122,
           "rate": 0.02459016393442623
+        },
+        {
+          "mob": "a Fellstone guard",
+          "drops": 2,
+          "corpses": 95,
+          "rate": 0.021052631578947368
         },
         {
           "mob": "a skeleton",
@@ -6490,16 +6666,16 @@
           "rate": 0.01904761904761905
         },
         {
-          "mob": "a Fellstone sentry",
-          "drops": 2,
-          "corpses": 189,
-          "rate": 0.010582010582010581
-        },
-        {
           "mob": "a rotting skeleton",
           "drops": 1,
           "corpses": 98,
           "rate": 0.01020408163265306
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 2,
+          "corpses": 199,
+          "rate": 0.010050251256281407
         }
       ],
       "prices": [
@@ -6566,9 +6742,9 @@
         },
         {
           "mob": "a Fellstone sentry",
-          "drops": 4,
-          "corpses": 189,
-          "rate": 0.021164021164021163
+          "drops": 5,
+          "corpses": 199,
+          "rate": 0.02512562814070352
         },
         {
           "mob": "a skeletal fighter",
@@ -6620,16 +6796,16 @@
           "rate": 0.1
         },
         {
-          "mob": "a Fellstone guard",
-          "drops": 5,
-          "corpses": 80,
-          "rate": 0.0625
-        },
-        {
           "mob": "a Fellstone tracker",
           "drops": 2,
           "corpses": 33,
           "rate": 0.06060606060606061
+        },
+        {
+          "mob": "a Fellstone guard",
+          "drops": 5,
+          "corpses": 95,
+          "rate": 0.05263157894736842
         },
         {
           "mob": "a Fellstone warrior",
@@ -6670,8 +6846,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 3,
-          "corpses": 189,
-          "rate": 0.015873015873015872
+          "corpses": 199,
+          "rate": 0.01507537688442211
         }
       ],
       "prices": [],
@@ -6708,9 +6884,9 @@
         },
         {
           "mob": "a Fellstone sentry",
-          "drops": 8,
-          "corpses": 189,
-          "rate": 0.042328042328042326
+          "drops": 9,
+          "corpses": 199,
+          "rate": 0.04522613065326633
         },
         {
           "mob": "a Fellstone scout",
@@ -6721,8 +6897,8 @@
         {
           "mob": "a Fellstone guard",
           "drops": 2,
-          "corpses": 80,
-          "rate": 0.025
+          "corpses": 95,
+          "rate": 0.021052631578947368
         },
         {
           "mob": "a skeletal fighter",
@@ -6769,16 +6945,16 @@
           "rate": 0.041666666666666664
         },
         {
-          "mob": "a Fellstone sentry",
-          "drops": 6,
-          "corpses": 189,
-          "rate": 0.031746031746031744
-        },
-        {
           "mob": "a rotting skeleton",
           "drops": 3,
           "corpses": 98,
           "rate": 0.030612244897959183
+        },
+        {
+          "mob": "a Fellstone sentry",
+          "drops": 6,
+          "corpses": 199,
+          "rate": 0.03015075376884422
         },
         {
           "mob": "a skeletal fighter",
@@ -6807,8 +6983,8 @@
         {
           "mob": "a Fellstone guard",
           "drops": 1,
-          "corpses": 80,
-          "rate": 0.0125
+          "corpses": 95,
+          "rate": 0.010526315789473684
         }
       ],
       "prices": [
@@ -6857,8 +7033,8 @@
         {
           "mob": "a Fellstone guard",
           "drops": 1,
-          "corpses": 80,
-          "rate": 0.0125
+          "corpses": 95,
+          "rate": 0.010526315789473684
         },
         {
           "mob": "a Fellstone sentinel",
@@ -6869,8 +7045,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 189,
-          "rate": 0.005291005291005291
+          "corpses": 199,
+          "rate": 0.005025125628140704
         }
       ],
       "prices": [
@@ -6909,8 +7085,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 2,
-          "corpses": 189,
-          "rate": 0.010582010582010581
+          "corpses": 199,
+          "rate": 0.010050251256281407
         },
         {
           "mob": "a Fellstone sentinel",
@@ -6949,9 +7125,9 @@
         },
         {
           "mob": "a Fellstone sentry",
-          "drops": 6,
-          "corpses": 189,
-          "rate": 0.031746031746031744
+          "drops": 7,
+          "corpses": 199,
+          "rate": 0.035175879396984924
         },
         {
           "mob": "a skeletal warrior",
@@ -6968,8 +7144,8 @@
         {
           "mob": "a Fellstone guard",
           "drops": 1,
-          "corpses": 80,
-          "rate": 0.0125
+          "corpses": 95,
+          "rate": 0.010526315789473684
         }
       ],
       "prices": [
@@ -7007,22 +7183,22 @@
           "rate": 0.04918032786885246
         },
         {
+          "mob": "a Fellstone guard",
+          "drops": 3,
+          "corpses": 95,
+          "rate": 0.031578947368421054
+        },
+        {
           "mob": "an old elven skeleton",
           "drops": 1,
           "corpses": 36,
           "rate": 0.027777777777777776
         },
         {
-          "mob": "a Fellstone guard",
-          "drops": 2,
-          "corpses": 80,
-          "rate": 0.025
-        },
-        {
           "mob": "a Fellstone sentry",
           "drops": 4,
-          "corpses": 189,
-          "rate": 0.021164021164021163
+          "corpses": 199,
+          "rate": 0.020100502512562814
         }
       ],
       "prices": [
@@ -7047,16 +7223,16 @@
       "name": "Tattered Rawhide Cloak",
       "droppedBy": [
         {
-          "mob": "a Fellstone sentry",
-          "drops": 3,
-          "corpses": 189,
-          "rate": 0.015873015873015872
+          "mob": "a Fellstone guard",
+          "drops": 2,
+          "corpses": 95,
+          "rate": 0.021052631578947368
         },
         {
-          "mob": "a Fellstone guard",
-          "drops": 1,
-          "corpses": 80,
-          "rate": 0.0125
+          "mob": "a Fellstone sentry",
+          "drops": 3,
+          "corpses": 199,
+          "rate": 0.01507537688442211
         },
         {
           "mob": "a Fellstone sentinel",
@@ -7100,8 +7276,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 3,
-          "corpses": 189,
-          "rate": 0.015873015873015872
+          "corpses": 199,
+          "rate": 0.01507537688442211
         }
       ],
       "prices": [
@@ -7137,22 +7313,22 @@
           "rate": 0.125
         },
         {
+          "mob": "a Fellstone guard",
+          "drops": 4,
+          "corpses": 95,
+          "rate": 0.042105263157894736
+        },
+        {
           "mob": "a Fellstone warrior",
           "drops": 1,
           "corpses": 24,
           "rate": 0.041666666666666664
         },
         {
-          "mob": "a Fellstone guard",
-          "drops": 3,
-          "corpses": 80,
-          "rate": 0.0375
-        },
-        {
           "mob": "a Fellstone sentry",
-          "drops": 4,
-          "corpses": 189,
-          "rate": 0.021164021164021163
+          "drops": 6,
+          "corpses": 199,
+          "rate": 0.03015075376884422
         },
         {
           "mob": "a Fellstone sentinel",
@@ -7203,8 +7379,14 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 3,
-          "corpses": 189,
-          "rate": 0.015873015873015872
+          "corpses": 199,
+          "rate": 0.01507537688442211
+        },
+        {
+          "mob": "a Fellstone guard",
+          "drops": 1,
+          "corpses": 95,
+          "rate": 0.010526315789473684
         },
         {
           "mob": "a Fellstone sentinel",
@@ -7237,9 +7419,9 @@
       "droppedBy": [
         {
           "mob": "a Fellstone sentry",
-          "drops": 7,
-          "corpses": 189,
-          "rate": 0.037037037037037035
+          "drops": 8,
+          "corpses": 199,
+          "rate": 0.04020100502512563
         },
         {
           "mob": "a skeletal warrior",
@@ -7274,8 +7456,8 @@
         {
           "mob": "a Fellstone guard",
           "drops": 1,
-          "corpses": 80,
-          "rate": 0.0125
+          "corpses": 95,
+          "rate": 0.010526315789473684
         }
       ],
       "prices": [
@@ -7344,14 +7526,14 @@
         {
           "mob": "a Fellstone guard",
           "drops": 2,
-          "corpses": 80,
-          "rate": 0.025
+          "corpses": 95,
+          "rate": 0.021052631578947368
         },
         {
           "mob": "a Fellstone sentry",
-          "drops": 2,
-          "corpses": 189,
-          "rate": 0.010582010582010581
+          "drops": 3,
+          "corpses": 199,
+          "rate": 0.01507537688442211
         },
         {
           "mob": "a Fellstone sentinel",
@@ -7415,8 +7597,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 2,
-          "corpses": 189,
-          "rate": 0.010582010582010581
+          "corpses": 199,
+          "rate": 0.010050251256281407
         }
       ],
       "prices": [
@@ -7450,6 +7632,12 @@
           "rate": 0.16666666666666666
         },
         {
+          "mob": "a Fellstone guard",
+          "drops": 3,
+          "corpses": 95,
+          "rate": 0.031578947368421054
+        },
+        {
           "mob": "a Fellstone ragecaller",
           "drops": 1,
           "corpses": 32,
@@ -7466,12 +7654,6 @@
           "drops": 1,
           "corpses": 36,
           "rate": 0.027777777777777776
-        },
-        {
-          "mob": "a Fellstone guard",
-          "drops": 2,
-          "corpses": 80,
-          "rate": 0.025
         },
         {
           "mob": "a Fellstone sentinel",
@@ -7500,8 +7682,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 189,
-          "rate": 0.005291005291005291
+          "corpses": 199,
+          "rate": 0.005025125628140704
         }
       ],
       "prices": [
@@ -7584,8 +7766,8 @@
         {
           "mob": "a wasp drone",
           "drops": 5,
-          "corpses": 17,
-          "rate": 0.29411764705882354
+          "corpses": 19,
+          "rate": 0.2631578947368421
         },
         {
           "mob": "a wasp worker",
@@ -7622,20 +7804,21 @@
         },
         {
           "mob": "a wasp drone",
-          "drops": 11,
-          "corpses": 17,
-          "rate": 0.6470588235294118
+          "drops": 13,
+          "corpses": 19,
+          "rate": 0.6842105263157895
         }
       ],
       "prices": [
         {
           "copper": 1,
-          "count": 5
+          "count": 6
         }
       ],
       "harvested": 0,
       "zones": [
-        "Evershade Weald"
+        "Evershade Weald",
+        "Keepersbight"
       ]
     },
     {
@@ -7745,6 +7928,12 @@
       "name": "Wolf Tooth",
       "droppedBy": [
         {
+          "mob": "a shadow wolf",
+          "drops": 2,
+          "corpses": 2,
+          "rate": 1
+        },
+        {
           "mob": "a beguiled wolf",
           "drops": 1,
           "corpses": 2,
@@ -7772,13 +7961,14 @@
       "prices": [
         {
           "copper": 2,
-          "count": 3
+          "count": 4
         }
       ],
       "harvested": 0,
       "zones": [
         "Evershade Weald",
-        "Blacktidebay"
+        "Blacktidebay",
+        "Keepersbight"
       ]
     },
     {
@@ -7792,10 +7982,11 @@
           "count": 5
         }
       ],
-      "harvested": 293,
+      "harvested": 303,
       "zones": [
         "Evershade Weald",
-        "Night Harbor"
+        "Night Harbor",
+        "Keepersbight"
       ]
     },
     {
@@ -7850,14 +8041,14 @@
         {
           "mob": "a Fellstone guard",
           "drops": 1,
-          "corpses": 80,
-          "rate": 0.0125
+          "corpses": 95,
+          "rate": 0.010526315789473684
         },
         {
           "mob": "a Fellstone sentry",
           "drops": 2,
-          "corpses": 189,
-          "rate": 0.010582010582010581
+          "corpses": 199,
+          "rate": 0.010050251256281407
         },
         {
           "mob": "a Fellstone sentinel",
@@ -7917,8 +8108,8 @@
         {
           "mob": "a Fellstone guard",
           "drops": 2,
-          "corpses": 80,
-          "rate": 0.025
+          "corpses": 95,
+          "rate": 0.021052631578947368
         },
         {
           "mob": "a rotting skeleton",
@@ -7979,14 +8170,14 @@
         {
           "mob": "a Fellstone guard",
           "drops": 1,
-          "corpses": 80,
-          "rate": 0.0125
+          "corpses": 95,
+          "rate": 0.010526315789473684
         },
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 189,
-          "rate": 0.005291005291005291
+          "corpses": 199,
+          "rate": 0.005025125628140704
         }
       ],
       "prices": [
@@ -8027,28 +8218,28 @@
     }
   ],
   "harvest": {
-    "Copper Ore": 742,
-    "Brittle Stone": 772,
-    "Clouded Crystallized Magic": 11,
-    "Wood": 293,
-    "Resin": 355,
+    "Copper Ore": 785,
+    "Brittle Stone": 812,
+    "Clouded Crystallized Magic": 12,
+    "Wood": 303,
+    "Resin": 368,
     "Chipped Turquoise": 3,
-    "Lionleaf": 30,
+    "Lionleaf": 31,
     "Chipped Star Ruby": 3,
     "Alunite Ore": 11,
-    "Ghost Poppy": 33,
-    "Nomad's Grace": 6,
+    "Ghost Poppy": 34,
+    "Nomad's Grace": 10,
     "Chipped Fire Emerald": 4,
     "Chipped Bloodstone": 1,
     "Chipped Malachite": 4,
-    "Chipped Black Pearl": 4,
+    "Chipped Black Pearl": 5,
     "Chipped Amber": 2,
     "Chipped Blue Diamond": 3,
     "Chipped Jacinth": 2,
     "Chipped Onyx": 4,
-    "Chipped Hematite": 3,
+    "Chipped Hematite": 4,
     "Chipped Diamond": 2,
-    "Chipped Emerald": 2,
+    "Chipped Emerald": 3,
     "Chipped Black Sapphire": 2,
     "Magic Frond": 2,
     "Whispering Sage": 9,
@@ -8060,203 +8251,217 @@
     "Chipped Sapphire": 3,
     "Chipped Star Rose Quartz": 1,
     "Chipped Fire Opal": 1,
-    "Chipped Topaz": 1
+    "Chipped Topaz": 1,
+    "Chipped Carnelian": 1,
+    "Chipped Lapis Lazuli": 1
   },
   "harvestNodes": [
     {
       "name": "Copper Ore & Brittle Stone",
-      "pulls": 829,
+      "pulls": 876,
       "yields": [
         {
           "res": "Copper Ore",
-          "count": 741,
-          "rate": 0.893848009650181
+          "count": 784,
+          "rate": 0.8949771689497716
         },
         {
           "res": "Brittle Stone",
-          "count": 624,
-          "rate": 0.752714113389626
+          "count": 658,
+          "rate": 0.7511415525114156
         },
         {
           "res": "Clouded Crystallized Magic",
-          "count": 11,
-          "rate": 0.013268998793727383
+          "count": 12,
+          "rate": 0.0136986301369863
         },
         {
           "res": "Alunite Ore",
           "count": 10,
-          "rate": 0.012062726176115802
+          "rate": 0.01141552511415525
+        },
+        {
+          "res": "Chipped Black Pearl",
+          "count": 5,
+          "rate": 0.005707762557077625
         },
         {
           "res": "Chipped Fire Emerald",
           "count": 4,
-          "rate": 0.0048250904704463205
+          "rate": 0.0045662100456621
         },
         {
           "res": "Chipped Malachite",
           "count": 4,
-          "rate": 0.0048250904704463205
-        },
-        {
-          "res": "Chipped Black Pearl",
-          "count": 4,
-          "rate": 0.0048250904704463205
+          "rate": 0.0045662100456621
         },
         {
           "res": "Chipped Onyx",
           "count": 4,
-          "rate": 0.0048250904704463205
+          "rate": 0.0045662100456621
+        },
+        {
+          "res": "Chipped Hematite",
+          "count": 4,
+          "rate": 0.0045662100456621
         },
         {
           "res": "Chipped Turquoise",
           "count": 3,
-          "rate": 0.0036188178528347406
+          "rate": 0.003424657534246575
         },
         {
           "res": "Chipped Star Ruby",
           "count": 3,
-          "rate": 0.0036188178528347406
+          "rate": 0.003424657534246575
         },
         {
           "res": "Chipped Blue Diamond",
           "count": 3,
-          "rate": 0.0036188178528347406
-        },
-        {
-          "res": "Chipped Hematite",
-          "count": 3,
-          "rate": 0.0036188178528347406
+          "rate": 0.003424657534246575
         },
         {
           "res": "Chipped Sapphire",
           "count": 3,
-          "rate": 0.0036188178528347406
+          "rate": 0.003424657534246575
         },
         {
           "res": "Chipped Amber",
           "count": 2,
-          "rate": 0.0024125452352231603
+          "rate": 0.00228310502283105
         },
         {
           "res": "Chipped Jacinth",
           "count": 2,
-          "rate": 0.0024125452352231603
+          "rate": 0.00228310502283105
         },
         {
           "res": "Chipped Diamond",
           "count": 2,
-          "rate": 0.0024125452352231603
+          "rate": 0.00228310502283105
+        },
+        {
+          "res": "Chipped Emerald",
+          "count": 2,
+          "rate": 0.00228310502283105
         },
         {
           "res": "Chipped Black Sapphire",
           "count": 2,
-          "rate": 0.0024125452352231603
+          "rate": 0.00228310502283105
         },
         {
           "res": "Chipped Cat's Eye Agate",
           "count": 2,
-          "rate": 0.0024125452352231603
+          "rate": 0.00228310502283105
         },
         {
           "res": "Chipped Bloodstone",
           "count": 1,
-          "rate": 0.0012062726176115801
-        },
-        {
-          "res": "Chipped Emerald",
-          "count": 1,
-          "rate": 0.0012062726176115801
+          "rate": 0.001141552511415525
         },
         {
           "res": "Chipped Jasper",
           "count": 1,
-          "rate": 0.0012062726176115801
+          "rate": 0.001141552511415525
         },
         {
           "res": "Chipped Wolf's Eye Agate",
           "count": 1,
-          "rate": 0.0012062726176115801
+          "rate": 0.001141552511415525
         },
         {
           "res": "Chipped Ruby",
           "count": 1,
-          "rate": 0.0012062726176115801
+          "rate": 0.001141552511415525
         },
         {
           "res": "Chipped Star Rose Quartz",
           "count": 1,
-          "rate": 0.0012062726176115801
+          "rate": 0.001141552511415525
         },
         {
           "res": "Chipped Fire Opal",
           "count": 1,
-          "rate": 0.0012062726176115801
+          "rate": 0.001141552511415525
         },
         {
           "res": "Chipped Topaz",
           "count": 1,
-          "rate": 0.0012062726176115801
+          "rate": 0.001141552511415525
+        },
+        {
+          "res": "Chipped Carnelian",
+          "count": 1,
+          "rate": 0.001141552511415525
+        },
+        {
+          "res": "Chipped Lapis Lazuli",
+          "count": 1,
+          "rate": 0.001141552511415525
         }
       ],
       "zones": [
         "Evershade Weald",
         "Night Harbor",
-        "Shaded Dunes"
+        "Shaded Dunes",
+        "Keepersbight"
       ]
     },
     {
       "name": "Wood & Resin",
-      "pulls": 292,
+      "pulls": 302,
       "yields": [
         {
           "res": "Wood",
-          "count": 292,
+          "count": 302,
           "rate": 1
         },
         {
           "res": "Resin",
-          "count": 252,
-          "rate": 0.863013698630137
+          "count": 261,
+          "rate": 0.8642384105960265
         }
       ],
       "zones": [
         "Evershade Weald",
-        "Night Harbor"
+        "Night Harbor",
+        "Keepersbight"
       ]
     },
     {
       "name": "Herbs - Evershade Weald",
-      "pulls": 48,
+      "pulls": 52,
       "yields": [
         {
           "res": "Ghost Poppy",
-          "count": 20,
-          "rate": 0.4166666666666667
+          "count": 21,
+          "rate": 0.40384615384615385
         },
         {
           "res": "Lionleaf",
-          "count": 17,
-          "rate": 0.3541666666666667
+          "count": 18,
+          "rate": 0.34615384615384615
+        },
+        {
+          "res": "Nomad's Grace",
+          "count": 6,
+          "rate": 0.11538461538461539
         },
         {
           "res": "Whispering Sage",
           "count": 6,
-          "rate": 0.125
-        },
-        {
-          "res": "Nomad's Grace",
-          "count": 4,
-          "rate": 0.08333333333333333
+          "rate": 0.11538461538461539
         },
         {
           "res": "Magic Frond",
           "count": 2,
-          "rate": 0.041666666666666664
+          "rate": 0.038461538461538464
         },
         {
           "res": "Selstie Kelp",
           "count": 1,
-          "rate": 0.020833333333333332
+          "rate": 0.019230769230769232
         }
       ],
       "zones": [
