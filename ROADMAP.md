@@ -23,7 +23,7 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
   on Publish). Data lives in `mnmdb/trades.json`.
 - **mnmdb website** — searchable item / mob / resource database, economy-focused
   home (most-valuable & most-fought mobs, priciest items, valuable resources,
-  recent trades). Live at https://boisteroux.github.io/mnm-tools
+  recent trades). Live at https://mnm-db.com
 - **Home charts** — magnitude bars on the home leaderboards and a per-mob "where the
   value comes from" breakdown bar. All dependency-free inline SVG/CSS. (The rarity ×
   value scatter was pulled for a rework — see Next up.)

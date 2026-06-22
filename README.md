@@ -6,10 +6,10 @@ lets you mark resource nodes / NPCs / crafting stations, follows you between
 zones automatically by reading the game's log, and can float as a transparent
 overlay on top of the game.
 
-### 🌐 Website — [MnMdb: the searchable item / mob / resource database](https://boisteroux.github.io/mnm-tools)
+### 🌐 Website — [MnMdb: the searchable item / mob / resource database](https://mnm-db.com)
 
 A companion site with drop rates, vendor prices, crafting recipes, harvest yields,
-maps and more — no install needed: **https://boisteroux.github.io/mnm-tools**
+maps and more — no install needed: **https://mnm-db.com**
 
 > Fan-made and unofficial. Not affiliated with or endorsed by the developers of
 > Monsters & Memories (Niche Worlds Cult). Use at your own discretion.
