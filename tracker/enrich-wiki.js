@@ -220,7 +220,7 @@ function parseCategories(wikitext) {
 // Known tradeskills — filtering against this avoids picking up recipe outputs,
 // crafting stations, etc. that also appear as links in the recipe fields.
 const TRADESKILLS = new Set([
-  'Alchemy', 'Baking', 'Blacksmithing', 'Brewing', 'Cooking', 'Fletching', 'Jewelcrafting',
+  'Alchemy', 'Baking', 'Blacksmithing', 'Brewing', 'Cooking', 'Enchanting', 'Fletching', 'Jewelcrafting',
   'Leatherworking', 'Pottery', 'Smelting', 'Survival', 'Tailoring', 'Tanning', 'Woodworking',
 ]);
 // Gathering skills + crafting skills — used to filter skill/tool links out of
@@ -491,4 +491,4 @@ if (require.main === module) run();
 
 // Exported so a targeted update can reuse the wiki fetch + recipe parsing without a
 // full re-scrape (e.g. scripts that pull just the item-page recipes the tables miss).
-module.exports = { parsePlayercrafted, templateParams, fetchWikitext, TRADESKILLS };
+module.exports = { parsePlayercrafted, parseSources, templateParams, fetchWikitext, TRADESKILLS };

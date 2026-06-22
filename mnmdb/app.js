@@ -895,7 +895,11 @@ function recipeTable(recs, showSkill) {
   return '<div class="card"><table><thead><tr>' + head + '</tr></thead><tbody>' +
     rows.map(({ r, rc, sell, haveSell, margin }) => {
       const rid = nameToId[r.result.item] || r.result.item;
-      const cost = rc.cost > 0 ? coin(rc.cost) + (rc.missing ? ' <span class="sample">+?</span>' : '') : (rc.missing ? '<span class="sample">?</span>' : '—');
+      // "?" only when a cost is genuinely unknown (an unresolved intermediate like an
+      // enchanted bar). All-gathered recipes cost nothing to buy → "free", not "?".
+      const cost = rc.unresolved
+        ? (rc.cost > 0 ? coin(rc.cost) + ' <span class="sample">+?</span>' : '<span class="sample">?</span>')
+        : (rc.cost > 0 ? coin(rc.cost) : '<span class="sample">free</span>');
       const mg = margin == null ? '<span class="sample">—</span>'
         : '<span class="' + (margin >= 0 ? 'pos' : 'neg') + '">' + (margin >= 0 ? '+' : '') + coin(margin) + '</span>';
       return '<tr><td>' + (r.result.qty > 1 ? r.result.qty + '× ' : '') + itemLink(rid, r.result.item) + '</td>' +
@@ -908,7 +912,7 @@ function recipeTable(recs, showSkill) {
 }
 
 const marginNote = '<div class="note">Sorted by trivial. <b>Raw materials</b> = everything broken down to gathered/base mats (reusable tools like hammers &amp; pliers excluded; molds and other consumables counted). ' +
-  '<b>Raw cost</b> values those at the best known price (gathered mats are free). <b>Sell value</b> = the output’s best player-trade/vendor price. <b>Margin</b> = sell − raw cost. “?” = a price isn’t known yet; fills in as data grows. ' +
+  '<b>Raw cost</b> values those at the best known price (gathered mats are free). <b>Sell value</b> = the output’s best player-trade/vendor price. <b>Margin</b> = sell − raw cost. <b>free</b> = made entirely from gathered mats (nothing to buy); <b>?</b> = a cost is genuinely unknown — an unresolved crafted intermediate (e.g. an enchanted bar whose enchanting cost we can’t see). ' +
   'A <b class="est">~</b> trivial (e.g. <span class="est">~55</span>) is our own estimate from in-game crafting colours where the wiki has none — “+” means a lower bound until more data lands.</div>';
 
 // Reusable, one-time crafting tools (a hammer/pliers lasts many crafts), so they
@@ -918,7 +922,7 @@ const isReusableTool = (name) => !/mold/i.test(name) &&
 
 // Leather "scraps" are the real crafting base: pelts (looted) are tanned into
 // scraps, so we stop the raw-material expansion at scraps rather than pelts.
-const isBaseMaterial = (name) => /^(rawhide|hide|leather)\s+scraps$/i.test(name);
+const isBaseMaterial = (name) => /^(rawhide|hide|leather|wool|cloth|silk|linen|cotton)\s+scraps$/i.test(name);
 
 // Is this a base material we can actually get for ~free (gathered / looted / has a
 // known source) — as opposed to an unknown crafted intermediate?
@@ -934,6 +938,7 @@ function isGatherableRaw(name) {
 // Treating it as free makes recipes that use it look falsely cheap, so we flag it
 // and keep those recipes out of the cheapest-path ranking.
 function isUnresolvedRaw(name) {
+  if (isBaseMaterial(name)) return false; // scraps are gathered/looted base mats — free, not unknown
   return !recipesByResult[name.toLowerCase()] && itemMarketValue(name).value <= 0 && !isGatherableRaw(name);
 }
 
@@ -1069,7 +1074,11 @@ function rawCostTable(recs) {
   return '<div class="card"><table><thead><tr><th>Make</th><th>Raw materials</th><th class="num">Raw cost</th><th class="num">Trivials at</th></tr></thead><tbody>' +
     rows.map(({ r, rc }) => {
       const rid = nameToId[r.result.item] || r.result.item;
-      const cost = rc.cost > 0 ? coin(rc.cost) + (rc.missing ? ' <span class="sample">+?</span>' : '') : (rc.missing ? '<span class="sample">?</span>' : '—');
+      // "?" only when a cost is genuinely unknown (an unresolved intermediate like an
+      // enchanted bar). All-gathered recipes cost nothing to buy → "free", not "?".
+      const cost = rc.unresolved
+        ? (rc.cost > 0 ? coin(rc.cost) + ' <span class="sample">+?</span>' : '<span class="sample">?</span>')
+        : (rc.cost > 0 ? coin(rc.cost) : '<span class="sample">free</span>');
       return '<tr><td>' + (r.result.qty > 1 ? r.result.qty + '× ' : '') + itemLink(rid, r.result.item) + '</td>' +
         '<td class="sample">' + matsHtml(rc) + '</td>' +
         '<td class="num coin">' + cost + '</td>' +

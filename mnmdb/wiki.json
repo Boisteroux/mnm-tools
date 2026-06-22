@@ -7794,6 +7794,15 @@
         "Tanning"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/e6/Itemicon0062AB.png/64px-Itemicon0062AB.png"
+    },
+    "Jagged Stone": {
+      "hasPage": true,
+      "from": [
+        "Tin Vein",
+        "Rich Tin Vein",
+        "Silver Vein",
+        "Rich Silver Vein"
+      ]
     }
   },
   "mobs": {
@@ -12268,6 +12277,66 @@
         {
           "qty": 1,
           "item": "Wool Scraps"
+        }
+      ],
+      "trivial": null,
+      "fromItemPage": true
+    },
+    {
+      "tradeskill": "Enchanting",
+      "result": {
+        "qty": 1,
+        "item": "Enchanted Copper Bar"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Copper Bar"
+        }
+      ],
+      "trivial": null,
+      "fromItemPage": true
+    },
+    {
+      "tradeskill": "Enchanting",
+      "result": {
+        "qty": 1,
+        "item": "Enchanted Bronze Bar"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Bronze Bar"
+        }
+      ],
+      "trivial": null,
+      "fromItemPage": true
+    },
+    {
+      "tradeskill": "Enchanting",
+      "result": {
+        "qty": 1,
+        "item": "Enchanted Iron Bar"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Iron Bar"
+        }
+      ],
+      "trivial": null,
+      "fromItemPage": true
+    },
+    {
+      "tradeskill": "Enchanting",
+      "result": {
+        "qty": 1,
+        "item": "Enchanted Steel Bar"
+      },
+      "components": [
+        {
+          "qty": 1,
+          "item": "Steel Bar"
         }
       ],
       "trivial": null,
