@@ -1,22 +1,23 @@
 :root {
-  /* Sunset theme — Monsters & Memories branding (red → orange → gold) */
-  --bg:        #120c08;
-  --panel:     #1f150e;
-  --panel-2:   #2c1e14;
-  --line:      #3a281c;
-  --text:      #ece0d2;
-  --muted:     #ad917c;
-  --accent:    #f0922b;
-  --accent-dk: #2a1404;
-  --good:      #8bbf5a;
-  --warn:      #e0593f;
-  /* Stat / data-viz palette — kept distinct from the gold --accent (which is for
+  /* Parchment Tome theme — ink on aged paper, oxblood + gold-leaf accents */
+  --bg:        #e8ddc2; /* aged paper — page background */
+  --panel:     #f3ebd9; /* raised card — lighter than the page so cards lift */
+  --panel-2:   #dccdac; /* recessed — bar tracks, tooltips, tag fills */
+  --line:      #c9b288;
+  --line-2:    #b89e72;
+  --text:      #382a1a; /* dark sepia ink */
+  --muted:     #87704d; /* faded ink */
+  --accent:    #9c3b2e; /* oxblood — interactive */
+  --accent-dk: #f7f0e1; /* text/icon ON the accent (cream, since accent is dark) */
+  --good:      #4f7a2e; /* darkened so it reads on cream */
+  --warn:      #b5402b;
+  /* Stat / data-viz palette — kept distinct from the oxblood --accent (which is for
      interactive elements) so charts read as data, not buttons. */
-  --stat:      #bd6a3e; /* clay — primary stat colour */
-  --stat-dk:   #4a2a1a;
-  --stat-2:    #5a9a82; /* sage — secondary stat colour */
-  --stat-2-dk: #24382e;
-  color-scheme: dark;
+  --stat:      #a8512f; /* rust — primary stat colour */
+  --stat-dk:   #d2a877; /* light tint — gradient start (flipped for light theme) */
+  --stat-2:    #5f7a3f; /* olive — secondary stat colour */
+  --stat-2-dk: #c8b990;
+  color-scheme: light;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -44,7 +45,7 @@ header {
   align-items: center;
   gap: 20px;
   padding: 12px 20px;
-  background: rgba(12, 13, 16, 0.95);
+  background: rgba(243, 235, 217, 0.96);
   border-bottom: 1px solid var(--line);
   flex-wrap: wrap;
 }
@@ -55,8 +56,8 @@ header {
   font-size: 22px;
   font-weight: 700;
   letter-spacing: 1px;
-  /* Sunset gradient text, matching the M&M logo */
-  background: linear-gradient(180deg, #d23a1f 0%, #ef7a1c 50%, #f8be24 100%);
+  /* Sunset gradient text, darkened to read on parchment */
+  background: linear-gradient(180deg, #9c3b2e 0%, #c2622b 55%, #ad7a1c 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -148,7 +149,7 @@ h3.bracket { font-size: 13px; font-weight: 600; color: var(--text); margin: 4px 
 .beast { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
 .beast-art {
   height: 96px; display: flex; align-items: center; justify-content: center;
-  background: radial-gradient(circle at 50% 38%, #241a10, #14100b);
+  background: radial-gradient(circle at 50% 38%, #f3ebd9, #e2d2b0);
   border-bottom: 1px solid var(--line);
 }
 .beast-emoji { font-size: 48px; line-height: 1; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.5)); }
@@ -388,4 +389,58 @@ footer {
   justify-content: space-between;
   gap: 14px;
   flex-wrap: wrap;
+}
+
+/* ===== Tome styling pass — structural touches so it feels hand-bound, not generated ===== */
+
+/* 1. Keep the original Outfit face; just give the wordmark + headings a touch more weight/spacing */
+.logo { font-weight: 700; letter-spacing: 2px; }
+h1 { font-weight: 600; letter-spacing: 0.5px; }
+
+/* 2. Section headers: serif, with a leaf ornament and a double rule beneath */
+h2 {
+  font-weight: 600;
+  border-bottom: 3px double var(--line-2);
+  padding-bottom: 6px;
+}
+
+/* 3. Cut the soft "app" corners down to a hand-trimmed edge */
+.stat, .card, .beast, .mapcard, .mapthumb, .result, .vbox, .note, .scatter,
+.flow-wrap, #search, .stack, .mapview { border-radius: 5px !important; }
+
+/* 4. Framed-manuscript panels: a darker outer rule plus a faint inset inner rule */
+.stat, .card, .beast, .vbox, .note, .scatter, .flow-wrap, .result {
+  border-color: var(--line-2);
+  box-shadow: inset 0 0 0 1px rgba(120, 90, 50, 0.10);
+}
+
+/* 5. Pills -> squared parchment labels/tabs */
+.flow-pick, .tag, .bchip, .ticker .chip, .btn-link, .soon-tag, .topnav a { border-radius: 3px !important; }
+.btn-link { border-radius: 3px !important; }
+.topnav a { border: 1px solid transparent; }
+.topnav a:hover { border-color: var(--line-2); }
+
+/* 6. Ledger-ruled tables: a ruled header and alternating "account paper" rows */
+th { border-bottom: 3px double var(--line-2); color: var(--text); }
+tbody tr:nth-child(even) td { background: rgba(120, 90, 50, 0.05); }
+tr:hover td { background: rgba(156, 59, 46, 0.07); }
+
+/* 7. Illuminated drop-cap to open the page */
+.home-intro p:first-of-type::first-letter {
+  font-size: 2.6em; line-height: 0.8; font-weight: 700;
+  float: left; margin: 4px 9px 0 0; color: var(--accent);
+}
+
+/* 8. Notched corners + a faint paper grain */
+
+/* Faint fibrous parchment grain (inline SVG noise, no asset, works offline) */
+body {
+  background-color: var(--bg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+/* Cut top-left + bottom-right corners into a plaque/banner shape (keeps the inset frame) */
+.stat, .beast, .mapcard {
+  clip-path: polygon(11px 0, 100% 0, 100% calc(100% - 11px), calc(100% - 11px) 100%, 0 100%, 0 11px);
+  border-color: transparent !important;
 }

@@ -418,7 +418,7 @@ function renderHome() {
 
   $('content').innerHTML =
     '<div class="home-intro">' +
-      '<h1>Monsters &amp; Memories — gathering &amp; economy</h1>' +
+      '<h1>Monsters &amp; Memories Economy Database</h1>' +
       '<p class="sub">Community drop rates, vendor values and player trade prices, gathered by the ' +
         '<a href="https://github.com/Boisteroux/mnm-tools">mnm-tools</a> companion app. ' +
         'Search above, or dig into the numbers below.</p>' +
