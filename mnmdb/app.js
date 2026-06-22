@@ -321,13 +321,6 @@ function renderHome() {
   recent.sort((a, b) => new Date(b.date) - new Date(a.date));
   const recentTop = recent.slice(0, 10);
 
-  // Rarity × value — items we both see drop and can put a price on.
-  const scatterPts = items.map((i) => {
-    const rate = (i.droppedBy || []).reduce((m, d) => Math.max(m, d.rate || 0), 0);
-    const mv = itemMarketValue(i.name);
-    return { i, rate, value: mv.value, source: mv.source };
-  }).filter((p) => p.rate > 0 && p.value > 0);
-
   // Tables get inline magnitude bars (value scaled to the leader in each list).
   const maxVal = valMobs.length ? valMobs[0][1] : 0;
   const maxAct = topMobs.length ? activity(topMobs[0][1]) : 0;
@@ -410,13 +403,6 @@ function renderHome() {
       '</tbody></table></div>'
     : '';
 
-  const scatterSection = scatterPts.length >= 5
-    ? '<h2>Rarity × value</h2><p class="sub">Each dot is an item — up = more valuable, right = rarer. ' +
-      'The top-right is the rare, high-value chase loot. ' +
-      '<span class="tag good">green</span> dots are priced from player trades, orange from vendors. Hover to identify, click to open.</p>' +
-      '<div class="scatter">' + scatterSvg(scatterPts) + '<div class="scatter-tip" hidden></div></div>'
-    : '';
-
   $('content').innerHTML =
     '<div class="home-intro">' +
       '<h1>Monsters &amp; Memories Economy Database</h1>' +
@@ -443,7 +429,6 @@ function renderHome() {
       '<div><h2>Valuable resources</h2><p class="sub">Gatherables by value — player trade price where known, else vendor.</p><div class="card"><table><tbody>' +
         (resRows || '<tr><td class="muted">No resources yet.</td></tr>') + '</tbody></table></div></div>' +
     '</div>' +
-    scatterSection +
     recentBlock +
     '<div class="note">Values are observational — drop rates are per looted corpse and prices come from real play. ' +
       'Small samples are rough; numbers sharpen as more data is collected.</div>';

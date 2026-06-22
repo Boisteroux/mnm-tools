@@ -24,9 +24,9 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
 - **mnmdb website** — searchable item / mob / resource database, economy-focused
   home (most-valuable & most-fought mobs, priciest items, valuable resources,
   recent trades). Live at https://boisteroux.github.io/mnm-tools
-- **Home charts** — magnitude bars on the home leaderboards, a rarity × value
-  scatter (rare + valuable = chase loot), and a per-mob "where the value comes
-  from" breakdown bar. All dependency-free inline SVG/CSS.
+- **Home charts** — magnitude bars on the home leaderboards and a per-mob "where the
+  value comes from" breakdown bar. All dependency-free inline SVG/CSS. (The rarity ×
+  value scatter was pulled for a rework — see Next up.)
 - **Value by level bracket** — home "Best value by level" groups mobs into L1-10,
   L11-20, … by their wiki level and ranks value/kill in each. Lights up further as
   play spans more levels and wiki-level coverage grows.
@@ -87,6 +87,11 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
 
 ## 🔜 Next up
 
+- **Rework the rarity × value scatter** — pulled from the home page for now: it was
+  hard to parse at a glance and the drop-vs-trade colour was unlabeled/confusing.
+  Bring it back once it's clearer — a legend, axis ticks, maybe quadrant labels, and
+  a shape (not just colour) for trade vs drop. Code is left dormant (`scatterSvg` /
+  `wireScatter` + `.scatter` styles) so reinstating is easy.
 - **Improve mob-level coverage** — level ranges (e.g. "3-7") are now kept, lifting
   coverage 36% → 59%. The rest genuinely have no level on the wiki yet (the ashira
   family especially) — fills in as the wiki is updated. Revisit bracket size

@@ -20,6 +20,54 @@
   color-scheme: light;
 }
 
+/* ============================================================================
+   Dark mode (Trading Terminal) — applied when <html data-theme="dark">, set by
+   the header toggle. The Parchment theme above is the light default; these
+   overrides re-tone the variables plus the few hardcoded light-only spots.
+   ============================================================================ */
+[data-theme="dark"] {
+  --bg:        #0d0f12; /* charcoal-black */
+  --panel:     #161a1f;
+  --panel-2:   #080a0c;
+  --line:      #283038;
+  --line-2:    #3a4550;
+  --text:      #ccd3da; /* cool light grey */
+  --muted:     #8893a0;
+  --accent:    #f0922b; /* sunset amber — interactive (warm; the M&M brand orange) */
+  --accent-dk: #241405; /* dark text/icon ON the amber accent */
+  --good:      #3ad17a;
+  --warn:      #e5484d;
+  --stat:      #e0a83a; /* amber gold — warm data colour, pairs with the green */
+  --stat-dk:   #4a3a17; /* dark amber tint — gradient start */
+  --stat-2:    #cf7a3a; /* copper — secondary data colour */
+  --stat-2-dk: #3a2615;
+  color-scheme: dark;
+}
+[data-theme="dark"] header { background: rgba(18, 22, 27, 0.96); }
+[data-theme="dark"] .logo { background: linear-gradient(180deg, #f6c24a 0%, #f0922b 50%, #df6a28 100%); -webkit-background-clip: text; background-clip: text; }
+[data-theme="dark"] .beast-art { background: radial-gradient(circle at 50% 38%, #1b2229, #0d1014); }
+[data-theme="dark"] .stat, [data-theme="dark"] .card, [data-theme="dark"] .beast,
+[data-theme="dark"] .vbox, [data-theme="dark"] .note, [data-theme="dark"] .scatter,
+[data-theme="dark"] .flow-wrap, [data-theme="dark"] .result { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05); }
+[data-theme="dark"] tbody tr:nth-child(even) td { background: rgba(255, 255, 255, 0.03); }
+[data-theme="dark"] tr:hover td { background: rgba(240, 146, 43, 0.10); }
+
+/* Header light/dark toggle */
+.theme-toggle {
+  flex: 0 0 auto; width: 36px; height: 36px;
+  border: 1px solid var(--line); border-radius: 6px;
+  background: var(--panel); color: var(--text);
+  font-size: 16px; line-height: 1; cursor: pointer;
+}
+.theme-toggle:hover { border-color: var(--accent); }
+
+/* Home page title — sunset gradient (matches the logo), phosphor in dark mode */
+.home-intro h1 {
+  background: linear-gradient(180deg, #9c3b2e 0%, #c2622b 55%, #ad7a1c 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+[data-theme="dark"] .home-intro h1 { background: linear-gradient(180deg, #f6c24a 0%, #f0922b 50%, #df6a28 100%); -webkit-background-clip: text; background-clip: text; }
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
