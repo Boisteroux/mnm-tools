@@ -429,6 +429,12 @@ async function run() {
   Object.values(nodes).forEach((n) => (n.yields || []).forEach((y) => y.items.forEach((it) => discovered.add(it))));
   Object.values(mobs).forEach((m) => (m.loot || []).forEach((it) => discovered.add(it)));
   recipes.forEach((r) => { discovered.add(r.result.item); r.components.forEach((c) => discovered.add(c.item)); });
+  // Also every item we have a reverse-engineered trivial for — these are usually crafted
+  // results we never looted, so they're not discovered any other way (e.g. Copper Plate Helm).
+  try {
+    const obs = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'mnmdb', 'recipe-observations.json'), 'utf8'));
+    for (const skill of Object.values(obs.trivialEstimates || {})) for (const n of Object.keys(skill)) if (n !== '_method') discovered.add(n);
+  } catch {}
   const known = new Set(Object.keys(items));
   const toFetch = [...discovered].filter((nm) =>
     !known.has(nm) && !ds.mobs[nm] && !nodes[nm] && !ZONES.has(nm) &&
@@ -444,6 +450,13 @@ async function run() {
     recipes.push(r); haveResult.add(r.result.item); itemPageAdded++;
   }
   console.log(`  + ${itemPageAdded} recipes from item pages.`);
+
+  // Second pass: the item-page recipes may reference components not seen anywhere else
+  // (e.g. Jagged Stone). Fetch those so their price / gather source resolves the cost.
+  const known2 = new Set(Object.keys(items));
+  const toFetch2 = [...new Set(recipes.flatMap((r) => r.components.map((c) => c.item)))].filter((nm) =>
+    !known2.has(nm) && !ds.mobs[nm] && !nodes[nm] && !ZONES.has(nm) && !SKILLS.has(nm) && !/^(a|an|the)\s/i.test(nm) && !/^File:/i.test(nm));
+  if (toFetch2.length) await enrichItems(toFetch2, items, 'recipe components', true);
 
   // ---- Resolve icons for ALL items (ledger + discovered) ----
   const iconIds = [...new Set(Object.values(items).map((i) => i.iconId).filter(Boolean))];

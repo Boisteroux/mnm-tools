@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-19T01:15:38.429Z",
-  "_note": "Auto-generated from the wiki Merchant pages by tracker/enrich-wiki.js — do not hand-edit.",
+  "generatedAt": "2026-06-22T16:26:32.076Z",
+  "_note": "Auto-generated from the wiki's Merchant pages by tracker/enrich-wiki.js — do not hand-edit.",
   "vendors": [
     {
       "name": "A bag merchant",
@@ -736,6 +736,21 @@
       "desc": null
     },
     {
+      "name": "Captain Eilionoir",
+      "sells": [
+        "Black Feather Whiskey",
+        "Langsdorf Pale Ale",
+        "Twilight Bay Rum",
+        "Water Flask",
+        "Weak Beer"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "The Changing of the Guard",
+      "race": "Human",
+      "desc": "Bartender"
+    },
+    {
       "name": "Chef Belle",
       "sells": [
         "Bottle of High-Quality Olive Oil",
@@ -956,6 +971,17 @@
       "desc": "Butcher Merchant for Cooking"
     },
     {
+      "name": "Mason Steinn",
+      "sells": [
+        "Hammer and Chisel"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "The Changing of the Guard",
+      "race": "Dwarf",
+      "desc": "Mason"
+    },
+    {
       "name": "Master Tailor Sansha",
       "sells": [
         "Fine Blue Cloth Robe",
@@ -1009,7 +1035,7 @@
       "zone": "Night Harbor",
       "location": "The Spirit Tap",
       "race": "Human",
-      "desc": "Bartender You say, \"Hail, Nerida Thinblade.\" : Nerida Thinblade says, \"Take a look at our selection. Hope you ain't picky.\""
+      "desc": "Bartender"
     },
     {
       "name": "Quartermaster Obaid",
