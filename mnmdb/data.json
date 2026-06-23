@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-23T18:33:47.636Z",
+  "generatedAt": "2026-06-23T22:29:03.871Z",
   "source": "mnm-tools",
-  "ledgerFiles": 29,
-  "events": 9054,
+  "ledgerFiles": 30,
+  "events": 9242,
   "contributors": [],
   "mobs": {
     "a desert bat": {
@@ -3285,6 +3285,17 @@
       ]
     },
     {
+      "id": "flawed_turquoise",
+      "gameId": null,
+      "name": "Flawed Turquoise",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Scarwood"
+      ]
+    },
+    {
       "id": "foamstalker_s_trinket",
       "gameId": "ip_esw_rabid_wolf_cmn_ranged_int_6",
       "name": "Foamstalker's Trinket",
@@ -3551,6 +3562,17 @@
       ]
     },
     {
+      "id": "jagged_stone",
+      "gameId": null,
+      "name": "Jagged Stone",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 23,
+      "zones": [
+        "Scarwood"
+      ]
+    },
+    {
       "id": "large_bat_fur",
       "gameId": "large_bat_fur",
       "name": "Large Bat Fur",
@@ -3717,7 +3739,7 @@
       "name": "Limestone",
       "droppedBy": [],
       "prices": [],
-      "harvested": 14,
+      "harvested": 141,
       "zones": [
         "Scarwood"
       ]
@@ -7745,6 +7767,17 @@
       ]
     },
     {
+      "id": "tin_ore",
+      "gameId": null,
+      "name": "Tin Ore",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 30,
+      "zones": [
+        "Scarwood"
+      ]
+    },
+    {
       "id": "torch",
       "gameId": "torch",
       "name": "Torch",
@@ -8435,7 +8468,10 @@
     "Chipped Topaz": 1,
     "Chipped Carnelian": 1,
     "Chipped Lapis Lazuli": 1,
-    "Limestone": 14
+    "Limestone": 141,
+    "Tin Ore": 30,
+    "Jagged Stone": 23,
+    "Flawed Turquoise": 1
   },
   "harvestNodes": [
     {
@@ -8612,6 +8648,20 @@
       ]
     },
     {
+      "name": "Limestone",
+      "pulls": 71,
+      "yields": [
+        {
+          "res": "Limestone",
+          "count": 71,
+          "rate": 1
+        }
+      ],
+      "zones": [
+        "Scarwood"
+      ]
+    },
+    {
       "name": "Herbs - Evershade Weald",
       "pulls": 52,
       "yields": [
@@ -8651,13 +8701,23 @@
       ]
     },
     {
-      "name": "Limestone",
-      "pulls": 7,
+      "name": "Tin Ore & Jagged Stone",
+      "pulls": 30,
       "yields": [
         {
-          "res": "Limestone",
-          "count": 7,
+          "res": "Tin Ore",
+          "count": 30,
           "rate": 1
+        },
+        {
+          "res": "Jagged Stone",
+          "count": 22,
+          "rate": 0.7333333333333333
+        },
+        {
+          "res": "Flawed Turquoise",
+          "count": 1,
+          "rate": 0.03333333333333333
         }
       ],
       "zones": [
