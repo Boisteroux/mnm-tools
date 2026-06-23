@@ -1260,7 +1260,7 @@ $('replay-next').addEventListener('click', () => { if (replayIdx > 0) { replayId
   function update() {
     const left = endAt - Date.now();
     $('mt-display').textContent = fmt(left);
-    if (left <= 0) { clearInterval(tick); tick = null; $('mt-display').textContent = '0:00'; $('mob-timer').classList.add('mt-alarm'); if (soundCb.checked) beep(); }
+    if (left <= 0) { clearInterval(tick); tick = null; try { localStorage.removeItem('mt-endat'); } catch {} $('mt-display').textContent = '0:00'; $('mob-timer').classList.add('mt-alarm'); if (soundCb.checked) beep(); }
   }
   function start() {
     const min = Math.max(0, Math.min(99, parseInt($('mt-min').value, 10) || 0));
@@ -1268,6 +1268,7 @@ $('replay-next').addEventListener('click', () => { if (replayIdx > 0) { replayId
     const total = (min * 60 + sec) * 1000;
     if (total <= 0) return;
     endAt = Date.now() + total;
+    try { localStorage.setItem('mt-endat', String(endAt)); } catch {}
     $('mob-timer').classList.remove('mt-alarm');
     $('mt-setup').classList.add('hidden');
     $('mt-running').classList.remove('hidden');
@@ -1276,6 +1277,7 @@ $('replay-next').addEventListener('click', () => { if (replayIdx > 0) { replayId
   }
   function reset() {
     clearInterval(tick); tick = null;
+    try { localStorage.removeItem('mt-endat'); } catch {}
     $('mob-timer').classList.remove('mt-alarm');
     $('mt-running').classList.add('hidden');
     $('mt-setup').classList.remove('hidden');
@@ -1286,6 +1288,17 @@ $('replay-next').addEventListener('click', () => { if (replayIdx > 0) { replayId
   // Tidy the fields on blur: minutes clamped 0-99, seconds clamped 0-59 and padded to 2 digits.
   $('mt-min').addEventListener('blur', () => { $('mt-min').value = String(Math.max(0, Math.min(99, parseInt($('mt-min').value, 10) || 0))); });
   $('mt-sec').addEventListener('blur', () => { $('mt-sec').value = String(Math.max(0, Math.min(59, parseInt($('mt-sec').value, 10) || 0))).padStart(2, '0'); });
+  // Resume a running countdown across a mode switch / reload — toggling the overlay
+  // reloads the page, which would otherwise reset the timer. We persist the absolute
+  // end time, so it keeps counting from where it really is.
+  const savedEnd = parseInt(localStorage.getItem('mt-endat'), 10);
+  if (savedEnd && savedEnd > Date.now()) {
+    endAt = savedEnd;
+    $('mt-setup').classList.add('hidden');
+    $('mt-running').classList.remove('hidden');
+    update();
+    clearInterval(tick); tick = setInterval(update, 250);
+  }
 })();
 
 // Make the respawn timer draggable: grab its body (not the inputs/buttons) to move
