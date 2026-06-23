@@ -18,25 +18,42 @@
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
-/* Tell the browser this is a dark UI so native pieces (dropdown lists,
-   scrollbars, dialogs) render with light text instead of black-on-dark */
-:root { color-scheme: dark; }
-
-/* ---- Sunset theme tokens (Monsters & Memories branding) ----
-   warm near-black surfaces, sunset red→gold accent, compact spacing */
+/* ---- Theme tokens — matches the MnMdb website's light/dark palettes ----
+   Default is the dark "amber terminal" (overlay-friendly); [data-theme="light"]
+   is the "parchment" light mode. Toggle lives in the sidebar header. */
 :root {
-  --bg:        #120c08;
-  --panel:     #18100b;
-  --surface:   #221710;
-  --surface-2: #2d1f15;
-  --line:      #38271b;
-  --line-2:    #4a3320;
-  --text:      #ece0d2;
-  --muted:     #ad917c;
-  --accent:    #f0922b;
-  --accent-dk: #2a1404;
-  --accent-2:  #5b87bf; /* steel blue — secondary accent (checkboxes, sliders, secondary highlights) */
-  --danger:    #e0593f;
+  --bg:        #0d0f12;
+  --panel:     #161a1f;
+  --surface:   #1d242b;
+  --surface-2: #28323b;
+  --line:      #283038;
+  --line-2:    #3a4550;
+  --text:      #ccd3da;
+  --muted:     #8893a0;
+  --accent:    #f0922b; /* sunset amber — the M&M brand accent */
+  --accent-dk: #241405;
+  --accent-2:  #5b87bf; /* steel blue — secondary (checkboxes, sliders) */
+  --danger:    #e5484d;
+  --glass-rgb: 13, 15, 18;  /* base for translucent panels/overlays */
+  --map-bg:    #0a0c0f;      /* behind the map image */
+  color-scheme: dark;
+}
+[data-theme="light"] {
+  --bg:        #e8ddc2;
+  --panel:     #f3ebd9;
+  --surface:   #efe6d2;
+  --surface-2: #e4d6b8;
+  --line:      #c9b288;
+  --line-2:    #b89e72;
+  --text:      #382a1a;
+  --muted:     #6f5a36;
+  --accent:    #9c3b2e; /* oxblood */
+  --accent-dk: #f7f0e1;
+  --accent-2:  #3f6e8c; /* muted steel-teal that fits parchment */
+  --danger:    #9e3422;
+  --glass-rgb: 243, 235, 217;
+  --map-bg:    #ddd0b0;
+  color-scheme: light;
 }
 
 /* Steel-blue secondary on all the native form controls, replacing the OS-default blue. */
@@ -80,6 +97,13 @@ body {
   background-clip: text;
   color: transparent;
 }
+/* Light mode: darken the wordmark gradient so it reads on parchment. */
+[data-theme="light"] #sidebar h1 { background: linear-gradient(180deg, #9c3b2e 0%, #c2622b 55%, #ad7a1c 100%); -webkit-background-clip: text; background-clip: text; }
+
+/* Sidebar header row holds the wordmark + the theme toggle. */
+.sidebar-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.theme-toggle { flex: 0 0 auto; width: 28px; height: 28px; padding: 0; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--text); font-size: 14px; line-height: 1; cursor: pointer; }
+.theme-toggle:hover { border-color: var(--accent); }
 
 .section { display: flex; flex-direction: column; gap: 7px; }
 
@@ -88,7 +112,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 1.6px;
   font-weight: 600;
-  color: #c9b39d;
+  color: var(--muted);
   /* 1px divider above each section header to separate the dense sidebar */
   border-top: 1px solid var(--line);
   padding-top: 9px;
@@ -153,7 +177,7 @@ button {
   cursor: pointer;
   flex: 1;
 }
-button:hover { background: var(--surface-2); border-color: #8a5a2b; }
+button:hover { background: var(--surface-2); border-color: var(--line-2); }
 button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 button:disabled { opacity: 0.38; cursor: not-allowed; }
 button:disabled:hover { background: var(--surface); border-color: var(--line-2); }
@@ -173,6 +197,8 @@ button.primary:hover { background: #ffa94d; }
 /* Tier 3 — soft accent fill for notable secondary actions (gentler than an outline). */
 button.btn-spotlight { background: rgba(240, 146, 43, 0.14); border: 1px solid rgba(240, 146, 43, 0.5); color: #f3b173; font-weight: 600; }
 button.btn-spotlight:hover { background: rgba(240, 146, 43, 0.22); border-color: rgba(240, 146, 43, 0.7); }
+[data-theme="light"] button.btn-spotlight { background: rgba(156, 59, 46, 0.10); border-color: rgba(156, 59, 46, 0.45); color: #9c3b2e; }
+[data-theme="light"] button.btn-spotlight:hover { background: rgba(156, 59, 46, 0.18); border-color: rgba(156, 59, 46, 0.6); }
 
 /* Manual map switcher — a single toggle shown only in multi-map zones. The
    gradient fill leans to the side of the map you're currently viewing. */
@@ -300,7 +326,7 @@ button.active { background: var(--accent); border-color: var(--accent); color: v
 /* Wrapper around sidebar + map so the overlay bar can stack above them */
 #app-body { flex: 1; display: flex; min-width: 0; min-height: 0; }
 
-#map-area { flex: 1; position: relative; background: #0b0805; }
+#map-area { flex: 1; position: relative; background: var(--map-bg); }
 
 #map {
   position: absolute;
@@ -324,7 +350,7 @@ button.active { background: var(--accent); border-color: var(--accent); color: v
   justify-content: center;
   font-size: 14px;
   line-height: 1;
-  background: rgba(22, 14, 8, 0.85);
+  background: rgba(var(--glass-rgb), 0.85);
 }
 
 #btn-fit { position: absolute; top: 10px; right: 10px; z-index: 10; }
@@ -334,7 +360,7 @@ button.active { background: var(--accent); border-color: var(--accent); color: v
 #mob-timer {
   position: absolute; right: 0; bottom: 0; z-index: 10;
   display: flex; align-items: center; gap: 8px;
-  background: rgba(22, 14, 8, 0.88);
+  background: rgba(var(--glass-rgb), 0.88);
   border: 1px solid var(--line-2); border-right: none; border-bottom: none;
   border-radius: 7px 0 0 0; padding: 5px 7px;
 }
@@ -348,7 +374,7 @@ button.active { background: var(--accent); border-color: var(--accent); color: v
 #mt-display { font-size: 18px; font-weight: 600; font-variant-numeric: tabular-nums; min-width: 58px; text-align: center; color: var(--text); }
 #mob-timer.mt-alarm { border-color: #e0593f; animation: mt-flash 0.7s ease-in-out infinite; }
 #mob-timer.mt-alarm #mt-display { color: #ff7a5f; }
-@keyframes mt-flash { 0%, 100% { background: rgba(22, 14, 8, 0.88); } 50% { background: rgba(224, 89, 63, 0.4); } }
+@keyframes mt-flash { 0%, 100% { background: rgba(var(--glass-rgb), 0.88); } 50% { background: rgba(224, 89, 63, 0.4); } }
 /* Draggable: grab the timer body (not its inputs/buttons) to reposition it. */
 #mob-timer { cursor: move; }
 #mob-timer.mt-floating { right: auto; bottom: auto; border: 1px solid var(--line-2); border-radius: 7px; }
@@ -458,7 +484,7 @@ body.sidebar-collapsed #sidebar { display: none; }
 
 #marker-popup {
   position: absolute;
-  background: rgba(22, 14, 8, 0.96);
+  background: rgba(var(--glass-rgb), 0.96);
   border: 1px solid var(--line-2);
   border-radius: 8px;
   padding: 12px;
@@ -485,7 +511,7 @@ body.overlay #overlay-bar {
   align-items: center;
   gap: 6px;
   padding: 2px 6px;
-  background: rgba(18, 12, 8, 0.92);
+  background: rgba(var(--glass-rgb), 0.92);
   border-bottom: 1px solid var(--line-2);
   font-size: 11px;
   -webkit-app-region: drag;
@@ -523,7 +549,7 @@ body.overlay #overlay-bar label { -webkit-app-region: no-drag; }
 body.overlay #sidebar {
   width: auto;
   min-width: 0;
-  background: rgba(22, 14, 8, 0.82);
+  background: rgba(var(--glass-rgb), 0.82);
   border-right: 1px solid var(--line);
   padding: 8px;
   gap: 8px;
@@ -533,7 +559,7 @@ body.overlay [data-overlay-hide] { display: none !important; }
 body.overlay .section-title { display: none; }
 
 /* A faint warm backing so the map reads as a panel, not a floating cut-out */
-body.overlay #map-area { background: rgba(18, 12, 8, 0.10); }
+body.overlay #map-area { background: rgba(var(--glass-rgb), 0.10); }
 
 /* A play-mode hint that shows when clicks are passing through to the game */
 #overlay-passthrough-hint {
@@ -541,7 +567,7 @@ body.overlay #map-area { background: rgba(18, 12, 8, 0.10); }
   top: 8px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(58, 45, 18, 0.9);
+  background: rgba(var(--glass-rgb), 0.92);
   color: var(--accent);
   font-size: 11px;
   padding: 4px 10px;

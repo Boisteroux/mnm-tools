@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>MnM Map</title>
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem('mnm-app-theme')||'dark';}catch(e){document.documentElement.dataset.theme='dark';}</script>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -27,7 +28,7 @@
 
   <div id="app-body">
   <div id="sidebar">
-    <h1>MnM Map</h1>
+    <div class="sidebar-head"><h1>MnM Map</h1><button id="theme-toggle" class="theme-toggle" type="button" title="Toggle light/dark theme" aria-label="Toggle theme">☾</button></div>
 
     <div class="help" data-overlay-hide>
       <b>Drag</b> to pan &nbsp;•&nbsp; <b>Scroll</b> to zoom<br />

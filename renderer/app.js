@@ -1324,6 +1324,20 @@ $('replay-next').addEventListener('click', () => { if (replayIdx > 0) { replayId
   });
 })();
 
+// Light/dark theme toggle (mirrors the website; default dark, remembered).
+(() => {
+  const btn = $('theme-toggle');
+  if (!btn) return;
+  const root = document.documentElement;
+  const paint = () => { const dark = root.dataset.theme !== 'light'; btn.textContent = dark ? '☀' : '☾'; btn.title = dark ? 'Switch to light theme' : 'Switch to dark theme'; };
+  paint();
+  btn.addEventListener('click', () => {
+    root.dataset.theme = root.dataset.theme === 'light' ? 'dark' : 'light';
+    try { localStorage.setItem('mnm-app-theme', root.dataset.theme); } catch {}
+    paint();
+  });
+})();
+
 // The app re-scans itself a few seconds after the game writes new loot/kills
 window.mapAPI.onTrackerUpdated((r) => showTrackerSummary(r, ' · updated just now'));
 
