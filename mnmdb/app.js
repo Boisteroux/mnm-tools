@@ -19,6 +19,7 @@ let TRADES = {};     // item name (lowercased) -> [{price, side, date}] player t
 let RECIPES = [];    // crafting recipes from the wiki tradeskill pages
 let recipesByResult = {}; // item name (lowercased) -> [recipe] that produce it
 let MAPS = { zones: [], categories: [] }; // curated zone maps for the read-only viewer
+let QUESTS = []; // dev quests for the Database Quest Board (quests.json)
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -1669,6 +1670,104 @@ document.addEventListener('click', (e) => {
   if (fb) { e.preventDefault(); openFeedback(); }
 });
 
+// ---- Database Quest Board — gaps in the live data become claimable bounties ----
+
+const APP_DOWNLOAD = 'https://github.com/' + FEEDBACK_REPO + '/releases/latest';
+const WIKI_HOME = 'https://monstersandmemories.miraheze.org';
+// A "go to page" wiki search — resolves to the right page even when our name differs
+// (e.g. "a Fellstone guard" → the wiki's "Fellstone Guard"); strips the leading article.
+const questWikiUrl = (name) => WIKI_HOME + '/w/index.php?title=Special:Search&go=Go&search=' + encodeURIComponent(String(name).replace(/^(a|an|the)\s+/i, ''));
+
+// Each bounty is computed from the current data, so its count shrinks as it's filled.
+function questBounties() {
+  const items = DATA.items;
+  const mobs = Object.entries(DATA.mobs);
+  return {
+    unpriced: {
+      tag: 'data', tagLabel: 'Data · in-game', title: 'Appraise the Unpriced', reward: 'Merchant renown', diff: 1,
+      flav: 'items have no known value yet. Log a player sale or a vendor price so we know what they’re worth.',
+      how: 'Add the vendor “Base Price” to the item’s wiki page (linked by each item below) and it’s pulled in on the next refresh — or log a player sale in the companion app.',
+      list: items.filter((it) => itemMarketValue(it.name).value <= 0)
+        .map((it) => ({ name: it.name, href: '#/item/' + encodeURIComponent(it.id) })),
+    },
+    unleveled: {
+      tag: 'data', tagLabel: 'Data · in-game', title: 'Con the Unknown', reward: "Scout’s eye", diff: 1,
+      flav: 'mobs you’ve fought have no level. /con them and report the colour so they slot into the value-by-level brackets.',
+      how: 'Add the level to the mob’s wiki page (linked by each mob below); the wiki level overrides our estimate on the next refresh. No app needed — just /con it in game first.',
+      list: mobs.filter(([, d]) => !Number.isFinite(mobLevel(d)) && (d.corpses > 0 || d.kills > 0))
+        .map(([name]) => ({ name, href: '#/mob/' + encodeURIComponent(name) })),
+    },
+    sourceless: {
+      tag: 'data', tagLabel: 'Data · in-game', title: 'Trace Lost Sources', reward: 'Pathfinder', diff: 2,
+      flav: 'items have no known origin — no drop, gather, or recipe on record. Help us find where they come from.',
+      how: 'Note where it drops or is gathered on the item’s wiki page (linked below) — or just loot/gather it in the companion app and it records automatically.',
+      list: items.filter((it) => !isGatherableRaw(it.name) && !recipesByResult[it.name.toLowerCase()] && itemMarketValue(it.name).value <= 0)
+        .map((it) => ({ name: it.name, href: '#/item/' + encodeURIComponent(it.id) })),
+    },
+    unmapped: {
+      tag: 'maps', tagLabel: 'Maps', title: 'Chart the Unmapped', reward: 'Cartographer', diff: 2,
+      flav: 'zones still have no map. Track down a top-down map image so others can navigate them.',
+      how: 'Find a top-down map on the zone’s wiki page (linked below) and share it — maps are imported and published from the companion app.',
+      list: (MAPS.zones || []).filter((z) => z.comingSoon || !z.image)
+        .map((z) => ({ name: z.name, href: '#/maps' })),
+    },
+  };
+}
+
+const questStars = (n) => '★'.repeat(Math.max(1, Math.min(3, n))) + '☆'.repeat(Math.max(0, 3 - Math.max(1, Math.min(3, n))));
+
+function renderQuests() {
+  const items = DATA.items, mobs = Object.entries(DATA.mobs);
+  const priced = items.filter((it) => itemMarketValue(it.name).value > 0).length;
+  const leveled = mobs.filter(([, d]) => Number.isFinite(mobLevel(d))).length;
+  const pct = items.length ? Math.round((priced / items.length) * 100) : 0;
+  const B = questBounties();
+  const bountyCards = Object.entries(B).map(([slug, b]) =>
+    '<div class="quest"><span class="qtag ' + b.tag + '">' + esc(b.tagLabel) + '</span>' +
+    '<h3>' + esc(b.title) + '</h3>' +
+    '<p class="qflav"><span class="qcount">' + b.list.length + '</span> ' + esc(b.flav) + '</p>' +
+    '<div class="qmeta"><span class="qdiff">' + questStars(b.diff) + '</span></div>' +
+    (b.list.length
+      ? '<a class="btn-link qgo" href="#/quests/' + slug + '">See the list →</a>'
+      : '<span class="qmeta qgo">All done 🎉</span>') +
+    '</div>').join('');
+  const devCards = (QUESTS || []).map((q) => {
+    const link = 'https://github.com/' + FEEDBACK_REPO + '/issues/new?labels=quest&title=' + encodeURIComponent('[Quest] ' + q.title);
+    return '<div class="quest"><span class="qtag dev">Dev · code</span>' +
+      '<h3>' + esc(q.title) + '</h3>' +
+      '<p class="qflav">' + esc(q.blurb) + '</p>' +
+      '<div class="qmeta"><span class="qdiff">' + questStars(q.difficulty || 1) + '</span></div>' +
+      '<a class="btn-link qgo" href="' + link + '" target="_blank" rel="noopener">Claim on GitHub ↗</a></div>';
+  }).join('');
+  $('content').innerHTML =
+    '<div class="home-intro"><h1>Database Quest Board</h1>' +
+    '<p class="sub">Help complete the Monsters &amp; Memories Economy Database. Most quests just need you to play — the bounties below come straight from the database’s current gaps and shrink as they’re filled.</p>' +
+    '<div class="qb-prog" title="' + priced + ' of ' + items.length + ' items priced"><i style="width:' + pct + '%"></i></div>' +
+    '<p class="sub">' + priced + ' of ' + items.length + ' items priced · ' + leveled + ' of ' + mobs.length + ' mobs leveled</p>' +
+    '<p class="sub"><span class="qdiff">★★★</span> = difficulty — one star is a quick errand, three is a deeper effort.</p></div>' +
+    '<h2>Data bounties</h2><p class="sub">No coding needed — fill these on the wiki or with the companion app.</p>' +
+    '<div class="quests">' + bountyCards + '</div>' +
+    '<div class="note">Two ways to help, no account here required: edit the community <a href="' + WIKI_HOME + '" target="_blank" rel="noopener">wiki</a> — each mob/item in a list links straight to its page, and edits flow in on the next refresh — or <a href="' + APP_DOWNLOAD + '" target="_blank" rel="noopener">download the companion app</a> to record prices, loot and drops automatically as you play.</div>' +
+    '<h2>Dev quests</h2><p class="sub">For the coders — pulled from the roadmap.</p>' +
+    '<div class="quests">' + (devCards || '<p class="muted">No dev quests posted yet.</p>') + '</div>' +
+    '<div class="note">Spot a gap we’re missing, or want to add a coding quest? Edit <b>quests.json</b> or the ROADMAP on GitHub, or hit <b>Give feedback</b> in the footer.</div>';
+}
+
+function renderQuestList(slug) {
+  const b = questBounties()[slug];
+  if (!b) return renderQuests();
+  const rows = b.list.map((x) => '<li><a href="' + x.href + '">' + esc(x.name) + '</a>' +
+    '<a class="wlink" href="' + questWikiUrl(x.name) + '" target="_blank" rel="noopener">edit on wiki ↗</a></li>').join('');
+  $('content').innerHTML =
+    '<div class="crumb"><a href="#/quests">Database Quest Board</a> › ' + esc(b.title) + '</div>' +
+    '<h1>' + esc(b.title) + '</h1>' +
+    '<p class="sub">' + b.list.length + ' ' + esc(b.flav) + '</p>' +
+    '<div class="note"><b>How to help:</b> ' + esc(b.how) + '</div>' +
+    (b.list.length
+      ? '<div class="card"><ul class="plain">' + rows + '</ul></div>'
+      : '<p class="muted">All done — nothing left on this quest. 🎉</p>');
+}
+
 function route() {
   const q = $('search').value.trim();
   if (q) return renderSearch(q);
@@ -1678,6 +1777,8 @@ function route() {
   if (h === 'vendors') return renderVendors();
   if (h === 'bestiary') return renderBestiary();
   if (h === 'maps') return renderMapsList();
+  if (h === 'quests') return renderQuests();
+  if (h.startsWith('quests/')) return renderQuestList(h.slice(7));
   if (h.startsWith('vendor/')) return renderVendor(h.slice(7));
   if (h.startsWith('map/')) return renderMapView(h.slice(4));
   if (h.startsWith('item/')) return renderItem(h.slice(5));
@@ -1749,6 +1850,10 @@ async function loadWikiStats() {
   } catch {}
   try {
     MAPS = await (await fetch('./maps.json?v=' + Date.now())).json();
+  } catch {}
+  try {
+    const qj = await (await fetch('./quests.json?v=' + Date.now())).json();
+    QUESTS = (qj && qj.quests) || [];
   } catch {}
 }
 

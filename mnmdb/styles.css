@@ -68,6 +68,24 @@
 }
 [data-theme="dark"] .home-intro h1 { background: linear-gradient(180deg, #f6c24a 0%, #f0922b 50%, #df6a28 100%); -webkit-background-clip: text; background-clip: text; }
 
+/* ---- Database Quest Board ---- */
+.qb-prog { height: 9px; background: var(--panel-2); border: 1px solid var(--line); border-radius: 5px; overflow: hidden; margin: 12px 0 6px; }
+.qb-prog i { display: block; height: 100%; background: var(--stat); }
+.quests { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+.quest { display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 13px 15px; }
+.quest .qtag { align-self: flex-start; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; padding: 1px 8px; border-radius: 5px; background: var(--panel-2); color: var(--muted); border: 1px solid var(--line); }
+.quest .qtag.data { color: var(--stat); }
+.quest .qtag.dev { color: var(--accent); }
+.quest .qtag.maps { color: var(--good); }
+.quest h3 { font-size: 15px; font-weight: 600; margin: 9px 0 5px; }
+.quest .qflav { font-size: 12.5px; color: var(--muted); line-height: 1.5; flex: 1; }
+.quest .qcount { font-weight: 700; color: var(--accent); }
+.quest .qmeta { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--muted); margin-top: 9px; }
+.quest .qdiff { color: var(--stat-2); letter-spacing: 1px; }
+.quest .qgo { margin-top: 11px; align-self: flex-start; }
+.wlink { font-size: 11px; color: var(--muted); margin-left: 8px; white-space: nowrap; }
+.wlink:hover { color: var(--accent); }
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -91,7 +109,7 @@ header {
   z-index: 10;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 14px;
   padding: 12px 20px;
   background: rgba(243, 235, 217, 0.96);
   border-bottom: 1px solid var(--line);
@@ -115,16 +133,20 @@ header {
 /* Estimated trivial (reverse-engineered from in-game crafting colours, not the wiki) */
 .est { color: var(--accent); border-bottom: 1px dotted var(--accent); cursor: help; }
 
-.topnav { display: flex; gap: 4px; }
+.topnav { display: flex; gap: 2px; flex-wrap: wrap; }
 .topnav a {
   font-size: 13px;
   color: var(--muted);
-  padding: 5px 10px;
+  padding: 5px 8px;
   border-radius: 6px;
+  white-space: nowrap;
 }
 .topnav a:hover { color: var(--text); background: var(--panel); text-decoration: none; }
 
-.search-wrap { flex: 1; min-width: 200px; max-width: 420px; margin-left: auto; }
+/* Search + theme toggle ride together on the right, so the toggle never wraps to
+   its own line — they shrink (and, only if truly cramped, wrap) as one unit. */
+.header-right { display: flex; align-items: center; gap: 10px; flex: 1 1 auto; min-width: 0; margin-left: auto; }
+.search-wrap { flex: 1; min-width: 110px; max-width: 420px; }
 #search {
   width: 100%;
   background: var(--panel);
