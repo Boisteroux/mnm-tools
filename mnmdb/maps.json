@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-23T00:00:43.192Z",
+  "generatedAt": "2026-06-23T00:29:52.567Z",
   "categories": [
     {
       "id": "ore",
@@ -48,7 +48,36 @@
     {
       "name": "Blacktide Bay",
       "image": "blacktide_bay.jpg",
-      "markers": []
+      "markers": [
+        {
+          "x": 1150,
+          "y": 703,
+          "label": "an orcish tactician",
+          "category": "named",
+          "notes": "https://mnm-db.com/#/mob/an%20orcish%20tactician"
+        },
+        {
+          "x": 848,
+          "y": 821,
+          "label": "Commander Rursk",
+          "category": "named",
+          "notes": "https://mnm-db.com/#/mob/Commander%20Rursk\n\nRoom has 6 mobs in it, you probably need to break camp"
+        },
+        {
+          "x": 1386,
+          "y": 615,
+          "label": "Gurowl the Beast",
+          "category": "named",
+          "notes": "https://mnm-db.com/#/mob/Gurowl%20the%20Beast"
+        },
+        {
+          "x": 990,
+          "y": 776,
+          "label": "BEWARE - PET PATHING ON THESE STAIRS CAUSES TRAINS",
+          "category": "misc",
+          "notes": ""
+        }
+      ]
     },
     {
       "name": "Caves of Irem",
@@ -455,6 +484,11 @@
       "markers": []
     },
     {
+      "name": "Glinting Hollow",
+      "image": "glinting_hollow.jpg",
+      "markers": []
+    },
+    {
       "name": "Grain Cellar",
       "image": "grain_cellar.jpg",
       "markers": []
@@ -488,6 +522,11 @@
           "notes": ""
         }
       ]
+    },
+    {
+      "name": "Night Harbor Sewers",
+      "image": "night_harbor_sewers.jpg",
+      "markers": []
     },
     {
       "name": "Scarwood",
@@ -550,17 +589,7 @@
       "markers": []
     },
     {
-      "name": "Glinting Hollow",
-      "comingSoon": true,
-      "markers": []
-    },
-    {
       "name": "Grimtide Sanctum",
-      "comingSoon": true,
-      "markers": []
-    },
-    {
-      "name": "Night Harbor Sewers",
       "comingSoon": true,
       "markers": []
     },
