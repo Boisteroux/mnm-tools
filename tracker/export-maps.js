@@ -58,6 +58,7 @@ const CATEGORIES = [
   { id: 'fishing', name: 'Fish', color: '#4fc3f7', icon: '🎣' },
   { id: 'crafting', name: 'Crafting', color: '#f06292', icon: '🔨' },
   { id: 'quest', name: 'Quest NPCs', color: '#fff176', icon: '❗️' },
+  { id: 'named', name: 'Named Mobs', color: '#d6453c', icon: '💀' },
   { id: 'misc', name: 'Other', color: '#b0bec5', icon: '📍' },
 ];
 

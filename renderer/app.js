@@ -7,6 +7,7 @@ const CATEGORIES = [
   { id: 'herb',     name: 'Herbs',      color: '#3c8f43', icon: '\u{1F33F}' },
   { id: 'wood',     name: 'Wood',       color: '#8a5a2b', icon: '\u{1FAB5}' },
   { id: 'quest',    name: 'Quest NPCs', color: '#fff176', icon: '❗️' },
+  { id: 'named',    name: 'Named Mobs', color: '#d6453c', icon: '\u{1F480}' },
   { id: 'misc',     name: 'Other',      color: '#b0bec5', icon: '\u{1F4CD}' },
 ];
 
@@ -175,9 +176,7 @@ function switchZone(zoneId, fit = true) {
 
 // Enable zone tools only when they're usable, and surface the first-time action.
 const ZONE_BTN_TITLES = {
-  'btn-rename-zone': 'Rename the current zone (also fixes wiki map lookups)',
   'btn-zone-image': "Pick an image file to use as this zone's map",
-  'btn-wiki-zone': "Download this zone's map from the community wiki",
   'btn-zone-review': "See every zone's current map at a glance and set defaults",
 };
 function updateZoneControls() {
@@ -189,9 +188,7 @@ function updateZoneControls() {
     el.disabled = !on;
     el.title = on ? ZONE_BTN_TITLES[id] : offHint;
   };
-  setBtn('btn-rename-zone', hasCurrent, 'Select or create a zone first');
   setBtn('btn-zone-image', hasCurrent, 'Select or create a zone first');
-  setBtn('btn-wiki-zone', hasCurrent, 'Select or create a zone first');
   setBtn('btn-zone-review', hasZones, 'No zones yet — Import All or just play to create them');
   $('zone-select').disabled = !hasZones;
   // First run (no zones): open the tools so Import All isn't buried under Options ▾.
@@ -463,7 +460,7 @@ async function handleGameZone(internalName) {
     wikiStatus(
       got
         ? 'New zone "' + pretty + '" created with its wiki map.'
-        : 'New zone "' + pretty + '" created. If the name looks off, Rename it then use Import Map from Wiki.'
+        : 'New zone "' + pretty + '" created. Use Import Map to set its map.'
     );
   }
 }
@@ -580,27 +577,6 @@ $('popup-edit').addEventListener('click', () => {
 
 // ---- Zone modal ----
 
-$('btn-rename-zone').addEventListener('click', () => {
-  const zone = currentZone();
-  if (!zone) return;
-  $('zone-name').value = zone.name;
-  $('zone-modal').classList.remove('hidden');
-  $('zone-name').focus();
-  $('zone-name').select();
-});
-
-$('zone-cancel').addEventListener('click', () => $('zone-modal').classList.add('hidden'));
-
-$('zone-save').addEventListener('click', () => {
-  const zone = currentZone();
-  const name = $('zone-name').value.trim();
-  if (!zone || !name) return;
-  zone.name = name;
-  save();
-  $('zone-modal').classList.add('hidden');
-  refreshSidebar();
-});
-
 $('zone-select').addEventListener('change', (e) => switchZone(e.target.value));
 
 $('btn-zone-image').addEventListener('click', async () => {
@@ -715,19 +691,6 @@ function changeZoneMap(zone) {
 
 $('btn-zone-review').addEventListener('click', openZoneReview);
 $('zone-review-close').addEventListener('click', () => $('zone-review-modal').classList.add('hidden'));
-
-$('btn-wiki-zone').addEventListener('click', async () => {
-  const zone = currentZone();
-  if (!zone) {
-    wikiStatus('Create or select a zone first.');
-    return;
-  }
-  if (zone.image && !confirm(
-    'This replaces ' + zone.name + "'s current map with the wiki version.\n\n" +
-    'If the new image is framed differently, your existing markers may no longer line up. Continue?'
-  )) return;
-  await chooseWikiMap(zone, false);
-});
 
 $('btn-wiki-all').addEventListener('click', async () => {
   if (!confirm(
@@ -894,16 +857,12 @@ $('import-go').addEventListener('click', async () => {
 window.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     closeMarkerModal();
-    $('zone-modal').classList.add('hidden');
     $('export-modal').classList.add('hidden');
     $('import-modal').classList.add('hidden');
     $('map-picker-modal').classList.add('hidden');
     $('replay-modal').classList.add('hidden');
     hidePopup();
     setQuickPlace(false);
-  }
-  if (e.key === 'Enter' && !$('zone-modal').classList.contains('hidden')) {
-    $('zone-save').click();
   }
 });
 
@@ -1408,10 +1367,10 @@ function updateOverlayZoneLabel() {
 // Which multi-map group does the player's situation belong to? Prefer the zone
 // the character is actually in; fall back to the one being viewed.
 function multiMapGroup() {
-  // Show the switcher whenever the map you're VIEWING is part of a multi-map
-  // group — or the zone your character is in is. (Viewing comes first so you can
-  // browse Evershade Weald's maps even while your character is elsewhere.)
-  const probes = [currentZone(), data.zones.find((z) => z.id === characterZoneId)].filter(Boolean);
+  // Show the switcher only when the map you're VIEWING is itself part of a
+  // multi-map group (Evershade Weald ⇄ Faelindral) — not merely because your
+  // character happens to be in that zone-code while you're viewing somewhere else.
+  const probes = [currentZone()].filter(Boolean);
   for (const [code, grp] of Object.entries(MULTI_MAP)) {
     const names = grp.maps.map((m) => m.name.toLowerCase());
     if (probes.some((z) => z.gameName === code || names.includes(z.name.toLowerCase()))) {
@@ -1466,7 +1425,7 @@ async function switchToMap(name) {
   switchZone(zone.id);
   wikiStatus('Fetching the ' + name + ' map from the wiki…');
   const got = await chooseWikiMap(zone, true);
-  wikiStatus(got ? name + ' map ready.' : name + ' added — use Import Map from Wiki if the map is missing.');
+  wikiStatus(got ? name + ' map ready.' : name + ' added — use Import Map if the map is missing.');
 }
 
 (async function init() {
