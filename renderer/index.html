@@ -29,16 +29,16 @@
   <div id="sidebar">
     <h1>MnM Map</h1>
 
-    <div class="section" data-overlay-hide>
-      <button id="btn-overlay" class="btn-hero" title="Float the map on top of your game (Ctrl+Shift+M)">Enter Game Minimap Mode</button>
-      <button id="btn-session-replay" class="btn-spotlight" title="Recap your recent play sessions from the game's Ledger — zones, kills, loot, harvests and coin">Session Recap</button>
-    </div>
-
     <div class="help" data-overlay-hide>
       <b>Drag</b> to pan &nbsp;•&nbsp; <b>Scroll</b> to zoom<br />
       <b>Double-click</b> to add a marker<br />
       <b>Click</b> a marker to edit or delete<br />
       <b>Click a category button</b> to quick-add that type
+    </div>
+
+    <div class="section" data-overlay-hide>
+      <button id="btn-overlay" class="btn-hero" title="Float the map on top of your game (Ctrl+Shift+M)">Enter Minimap Mode</button>
+      <button id="btn-session-replay" class="btn-spotlight" title="Recap your recent play sessions from the game's Ledger — zones, kills, loot, harvests and coin">Session Recap</button>
     </div>
 
     <div class="section" data-overlay-hide>
@@ -49,6 +49,7 @@
       </label>
       <select id="zone-select"></select>
       <div id="map-switcher" class="map-switcher hidden" title="This place has more than one map — switch the view (e.g. the lift between the weald and the city above)"></div>
+      <button id="btn-wiki-all-hero" class="btn-hero hidden" title="First-time setup — create every zone and download all maps from the wiki">Import All Maps from Wiki</button>
       <button id="btn-zone-options" title="Show zone tools: import map, review maps, export markers">Options ▾</button>
       <div id="zone-options" class="hidden">
         <div class="btn-row">

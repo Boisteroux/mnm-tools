@@ -191,11 +191,9 @@ function updateZoneControls() {
   setBtn('btn-zone-image', hasCurrent, 'Select or create a zone first');
   setBtn('btn-zone-review', hasZones, 'No zones yet — Import All or just play to create them');
   $('zone-select').disabled = !hasZones;
-  // First run (no zones): open the tools so Import All isn't buried under Options ▾.
-  if (!hasZones) {
-    $('zone-options').classList.remove('hidden');
-    $('btn-zone-options').textContent = 'Options ▴';
-  }
+  // First run (no zones): surface a highlighted Import All above Options as the
+  // getting-started action; it disappears once any zone exists.
+  $('btn-wiki-all-hero').classList.toggle('hidden', hasZones);
 }
 
 function refreshSidebar() {
@@ -691,6 +689,8 @@ function changeZoneMap(zone) {
 
 $('btn-zone-review').addEventListener('click', openZoneReview);
 $('zone-review-close').addEventListener('click', () => $('zone-review-modal').classList.add('hidden'));
+
+$('btn-wiki-all-hero').addEventListener('click', () => $('btn-wiki-all').click());
 
 $('btn-wiki-all').addEventListener('click', async () => {
   if (!confirm(
@@ -1286,6 +1286,42 @@ $('replay-next').addEventListener('click', () => { if (replayIdx > 0) { replayId
   // Tidy the fields on blur: minutes clamped 0-99, seconds clamped 0-59 and padded to 2 digits.
   $('mt-min').addEventListener('blur', () => { $('mt-min').value = String(Math.max(0, Math.min(99, parseInt($('mt-min').value, 10) || 0))); });
   $('mt-sec').addEventListener('blur', () => { $('mt-sec').value = String(Math.max(0, Math.min(59, parseInt($('mt-sec').value, 10) || 0))).padStart(2, '0'); });
+})();
+
+// Make the respawn timer draggable: grab its body (not the inputs/buttons) to move
+// it anywhere on the map; the position is remembered across sessions and modes.
+(() => {
+  const t = $('mob-timer');
+  if (!t) return;
+  const KEY = 'mt-pos';
+  const place = (x, y) => {
+    const parent = t.offsetParent || t.parentElement;
+    if (!parent) return;
+    const pr = parent.getBoundingClientRect();
+    x = Math.max(0, Math.min(x, pr.width - t.offsetWidth));
+    y = Math.max(0, Math.min(y, pr.height - t.offsetHeight));
+    t.classList.add('mt-floating');
+    t.style.left = x + 'px';
+    t.style.top = y + 'px';
+  };
+  try { const p = JSON.parse(localStorage.getItem(KEY) || 'null'); if (p) requestAnimationFrame(() => place(p.left, p.top)); } catch {}
+  let drag = null;
+  t.addEventListener('mousedown', (e) => {
+    if (e.target.closest('input, button, label')) return; // leave the controls usable
+    const r = t.getBoundingClientRect();
+    const pr = (t.offsetParent || t.parentElement).getBoundingClientRect();
+    drag = { dx: e.clientX - r.left, dy: e.clientY - r.top, px: pr.left, py: pr.top };
+    e.preventDefault();
+  });
+  window.addEventListener('mousemove', (e) => {
+    if (!drag) return;
+    place(e.clientX - drag.dx - drag.px, e.clientY - drag.dy - drag.py);
+  });
+  window.addEventListener('mouseup', () => {
+    if (!drag) return;
+    drag = null;
+    try { localStorage.setItem(KEY, JSON.stringify({ left: parseFloat(t.style.left) || 0, top: parseFloat(t.style.top) || 0 })); } catch {}
+  });
 })();
 
 // The app re-scans itself a few seconds after the game writes new loot/kills

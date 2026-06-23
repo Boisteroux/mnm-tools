@@ -349,6 +349,9 @@ button.active { background: var(--accent); border-color: var(--accent); color: v
 #mob-timer.mt-alarm { border-color: #e0593f; animation: mt-flash 0.7s ease-in-out infinite; }
 #mob-timer.mt-alarm #mt-display { color: #ff7a5f; }
 @keyframes mt-flash { 0%, 100% { background: rgba(22, 14, 8, 0.88); } 50% { background: rgba(224, 89, 63, 0.4); } }
+/* Draggable: grab the timer body (not its inputs/buttons) to reposition it. */
+#mob-timer { cursor: move; }
+#mob-timer.mt-floating { right: auto; bottom: auto; border: 1px solid var(--line-2); border-radius: 7px; }
 
 /* + / - zoom buttons, stacked under the Fit button (overlay only) */
 #zoom-controls {
