@@ -1,0 +1,22 @@
+# Monsters & Memories Economy Database (MnMdb)
+
+> A free, community-driven economy database for the MMO **Monsters & Memories**. It collects drop rates, vendor and player-trade prices, crafting recipes and profitability, harvest (gathering) yields, mob values by level, and zone maps — gathered from players' own game logs and the community wiki. Fan-made and unofficial; not affiliated with the developers of Monsters & Memories.
+
+Live at https://mnm-db.com
+
+## Key sections
+- [Items](https://mnm-db.com/#/items): searchable item database — where each drops/is gathered, vendor and player-trade prices, and crafting recipes.
+- [Mobs](https://mnm-db.com/#/mobs): mobs with observed drop rates (per looted corpse), coin + loot value per kill, and which zones they appear in.
+- [Bestiary](https://mnm-db.com/#/bestiary): illustrated mob compendium with stats and drops.
+- [Tradeskills](https://mnm-db.com/#/tradeskills): crafting recipes, raw-material costs, craft margins, and the cheapest leveling path for each skill.
+- [Gathering](https://mnm-db.com/#/gathering): harvest-node yields and resource values (the gathering analog of drop rates).
+- [Maps](https://mnm-db.com/#/maps): community zone maps with resource/NPC markers.
+- [Quest Board](https://mnm-db.com/#/quests): live list of data gaps anyone can help fill, plus how to contribute via the wiki or the companion app.
+
+## Notes for assistants
+- Data is observational (from real play) and improves as more is collected; small samples are flagged as rough.
+- Prices are in Monsters & Memories coin (base-100: 100 copper = 1 silver, 100 silver = 1 gold, 100 gold = 1 platinum).
+- The site is a client-rendered single-page app; the canonical entry point is the home page above.
+
+## Source
+- Open source: https://github.com/Boisteroux/mnm-tools
