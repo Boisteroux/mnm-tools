@@ -1502,6 +1502,7 @@ function renderBrowse(view) {
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › ' + view + '</div>' +
     '<h1 style="text-transform:capitalize">' + view + ' <span class="sub" style="font-size:15px">' + rows.length + '</span></h1>' +
+    (view === 'mobs' ? '<p class="sub">Prefer the art? Browse the <a href="#/bestiary"><b>illustrated Bestiary →</b></a></p>' : '') +
     (view === 'gathering' ? harvestNodesSection() : '') +
     '<h2 style="text-transform:capitalize">' + (view === 'gathering' ? 'All resources' : view) + '</h2>' +
     '<p class="sub">Click a column heading to sort. Click a row to open it.</p>' +
