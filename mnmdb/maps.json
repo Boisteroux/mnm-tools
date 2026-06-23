@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-23T00:29:52.567Z",
+  "generatedAt": "2026-06-23T03:40:02.772Z",
   "categories": [
     {
       "id": "ore",
@@ -36,6 +36,12 @@
       "name": "Quest NPCs",
       "color": "#fff176",
       "icon": "❗️"
+    },
+    {
+      "id": "named",
+      "name": "Named Mobs",
+      "color": "#d6453c",
+      "icon": "💀"
     },
     {
       "id": "misc",
@@ -75,6 +81,13 @@
           "y": 776,
           "label": "BEWARE - PET PATHING ON THESE STAIRS CAUSES TRAINS",
           "category": "misc",
+          "notes": ""
+        },
+        {
+          "x": 2146,
+          "y": 497,
+          "label": "an acolyte of Visru",
+          "category": "named",
           "notes": ""
         }
       ]
@@ -531,7 +544,15 @@
     {
       "name": "Scarwood",
       "image": "scarwood.jpg",
-      "markers": []
+      "markers": [
+        {
+          "x": 263,
+          "y": 1354,
+          "label": "Silver",
+          "category": "ore",
+          "notes": ""
+        }
+      ]
     },
     {
       "name": "Shaded Dunes",
