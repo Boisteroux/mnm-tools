@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-24T14:56:43.448Z",
+  "generatedAt": "2026-06-24T17:57:04.634Z",
   "source": "mnm-tools",
   "ledgerFiles": 31,
-  "events": 9836,
+  "events": 9993,
   "contributors": [],
   "mobs": {
     "a desert bat": {
@@ -1230,6 +1230,17 @@
       },
       "coin": 488,
       "corpses": 2
+    },
+    "a hill giant": {
+      "kills": 0,
+      "drops": {
+        "Raw Giant Meat": 1
+      },
+      "zones": {
+        "Scarwood": 1
+      },
+      "coin": 0,
+      "corpses": 1
     },
     "a dark-robed figure": {
       "kills": 1,
@@ -3363,6 +3374,61 @@
       ]
     },
     {
+      "id": "flawed_black_sapphire",
+      "gameId": null,
+      "name": "Flawed Black Sapphire",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Scarwood"
+      ]
+    },
+    {
+      "id": "flawed_cat_s_eye_agate",
+      "gameId": null,
+      "name": "Flawed Cat's Eye Agate",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Scarwood"
+      ]
+    },
+    {
+      "id": "flawed_hematite",
+      "gameId": null,
+      "name": "Flawed Hematite",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Scarwood"
+      ]
+    },
+    {
+      "id": "flawed_opal",
+      "gameId": null,
+      "name": "Flawed Opal",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Scarwood"
+      ]
+    },
+    {
+      "id": "flawed_pearl",
+      "gameId": null,
+      "name": "Flawed Pearl",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Scarwood"
+      ]
+    },
+    {
       "id": "flawed_turquoise",
       "gameId": null,
       "name": "Flawed Turquoise",
@@ -3431,7 +3497,7 @@
       "name": "Glinting Crystallized Magic",
       "droppedBy": [],
       "prices": [],
-      "harvested": 1,
+      "harvested": 4,
       "zones": [
         "Scarwood"
       ]
@@ -3662,7 +3728,7 @@
       "name": "Jagged Stone",
       "droppedBy": [],
       "prices": [],
-      "harvested": 45,
+      "harvested": 107,
       "zones": [
         "Scarwood"
       ]
@@ -3839,7 +3905,7 @@
           "count": 8
         }
       ],
-      "harvested": 143,
+      "harvested": 147,
       "zones": [
         "Scarwood"
       ]
@@ -4256,6 +4322,24 @@
       "harvested": 0,
       "zones": [
         "Night Harbor"
+      ]
+    },
+    {
+      "id": "raw_giant_meat",
+      "gameId": "3cfae3d4e40f6b80e2cd729e",
+      "name": "Raw Giant Meat",
+      "droppedBy": [
+        {
+          "mob": "a hill giant",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Scarwood"
       ]
     },
     {
@@ -5835,7 +5919,7 @@
       "name": "Silver Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 4,
+      "harvested": 7,
       "zones": [
         "Scarwood"
       ]
@@ -7953,7 +8037,7 @@
       "name": "Tin Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 51,
+      "harvested": 127,
       "zones": [
         "Scarwood"
       ]
@@ -8649,12 +8733,17 @@
     "Chipped Topaz": 1,
     "Chipped Carnelian": 1,
     "Chipped Lapis Lazuli": 1,
-    "Limestone": 143,
-    "Tin Ore": 51,
-    "Jagged Stone": 45,
+    "Limestone": 147,
+    "Tin Ore": 127,
+    "Jagged Stone": 107,
     "Flawed Turquoise": 1,
-    "Silver Ore": 4,
-    "Glinting Crystallized Magic": 1
+    "Silver Ore": 7,
+    "Glinting Crystallized Magic": 4,
+    "Flawed Black Sapphire": 1,
+    "Flawed Hematite": 1,
+    "Flawed Opal": 1,
+    "Flawed Pearl": 1,
+    "Flawed Cat's Eye Agate": 1
   },
   "harvestNodes": [
     {
@@ -8831,28 +8920,87 @@
       ]
     },
     {
+      "name": "Tin Ore & Jagged Stone",
+      "pulls": 126,
+      "yields": [
+        {
+          "res": "Tin Ore",
+          "count": 122,
+          "rate": 0.9682539682539683
+        },
+        {
+          "res": "Jagged Stone",
+          "count": 93,
+          "rate": 0.7380952380952381
+        },
+        {
+          "res": "Silver Ore",
+          "count": 4,
+          "rate": 0.031746031746031744
+        },
+        {
+          "res": "Glinting Crystallized Magic",
+          "count": 4,
+          "rate": 0.031746031746031744
+        },
+        {
+          "res": "Flawed Turquoise",
+          "count": 1,
+          "rate": 0.007936507936507936
+        },
+        {
+          "res": "Flawed Black Sapphire",
+          "count": 1,
+          "rate": 0.007936507936507936
+        },
+        {
+          "res": "Flawed Hematite",
+          "count": 1,
+          "rate": 0.007936507936507936
+        },
+        {
+          "res": "Flawed Opal",
+          "count": 1,
+          "rate": 0.007936507936507936
+        },
+        {
+          "res": "Flawed Pearl",
+          "count": 1,
+          "rate": 0.007936507936507936
+        },
+        {
+          "res": "Flawed Cat's Eye Agate",
+          "count": 1,
+          "rate": 0.007936507936507936
+        }
+      ],
+      "zones": [
+        "Scarwood"
+      ]
+    },
+    {
       "name": "Limestone",
-      "pulls": 73,
+      "pulls": 77,
       "yields": [
         {
           "res": "Limestone",
-          "count": 73,
+          "count": 77,
           "rate": 1
+        },
+        {
+          "res": "Tin Ore",
+          "count": 5,
+          "rate": 0.06493506493506493
+        },
+        {
+          "res": "Jagged Stone",
+          "count": 3,
+          "rate": 0.03896103896103896
         },
         {
           "res": "Silver Ore",
           "count": 1,
-          "rate": 0.0136986301369863
-        },
-        {
-          "res": "Jagged Stone",
-          "count": 1,
-          "rate": 0.0136986301369863
-        },
-        {
-          "res": "Tin Ore",
-          "count": 1,
-          "rate": 0.0136986301369863
+          "rate": 0.012987012987012988
         }
       ],
       "zones": [
@@ -8896,54 +9044,6 @@
       ],
       "zones": [
         "Evershade Weald"
-      ]
-    },
-    {
-      "name": "Tin Ore & Jagged Stone",
-      "pulls": 50,
-      "yields": [
-        {
-          "res": "Tin Ore",
-          "count": 50,
-          "rate": 1
-        },
-        {
-          "res": "Jagged Stone",
-          "count": 38,
-          "rate": 0.76
-        },
-        {
-          "res": "Flawed Turquoise",
-          "count": 1,
-          "rate": 0.02
-        },
-        {
-          "res": "Glinting Crystallized Magic",
-          "count": 1,
-          "rate": 0.02
-        }
-      ],
-      "zones": [
-        "Scarwood"
-      ]
-    },
-    {
-      "name": "Silver Ore & Jagged Stone",
-      "pulls": 3,
-      "yields": [
-        {
-          "res": "Silver Ore",
-          "count": 3,
-          "rate": 1
-        },
-        {
-          "res": "Jagged Stone",
-          "count": 3,
-          "rate": 1
-        }
-      ],
-      "zones": [
-        "Scarwood"
       ]
     }
   ]
