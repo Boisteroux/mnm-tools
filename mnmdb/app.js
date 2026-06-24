@@ -708,6 +708,17 @@ function renderMob(name) {
     ? '<p class="sub"><a href="' + wikiUrl(mw.title || (name.charAt(0).toUpperCase() + name.slice(1))) + '" target="_blank" rel="noopener">View on the wiki ↗</a></p>'
     : '';
 
+  // Drops the wiki lists for this mob that we haven't observed dropping yet —
+  // surfaces the rare gear table so it isn't invisible until someone loots it.
+  const wikiLoot = (mw.loot || []).filter((it) => !m.drops[it]);
+  const wikiDropsBlock = wikiLoot.length
+    ? '<h2>Also listed on the wiki</h2>' +
+      '<p class="sub">Drops the community wiki records that we haven’t seen yet — rates fill in as they’re looted.</p>' +
+      '<div class="card"><ul class="plain">' +
+      wikiLoot.map((it) => '<li>' + (nameToId[it] ? itemLink(nameToId[it], it) : esc(it)) + '</li>').join('') +
+      '</ul></div>'
+    : '';
+
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › mob</div>' +
     '<h1>' + esc(name) + '</h1>' +
@@ -719,7 +730,8 @@ function renderMob(name) {
     '<h2>Drops &amp; farming value</h2>' + table +
     '<div class="note">Drop rates are per <em>looted corpse</em> (the game doesn’t log a kill for every mob, so loots are grouped into corpses). ' +
     '“Sell value” is the item’s regular vendor price; “Avg kill value” = drop rate × sell value. ' +
-    'Rates are a floor — corpse items you didn’t loot aren’t recorded.</div>';
+    'Rates are a floor — corpse items you didn’t loot aren’t recorded.</div>' +
+    wikiDropsBlock;
 }
 
 function renderZone(name) {

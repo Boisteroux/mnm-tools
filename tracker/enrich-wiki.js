@@ -375,9 +375,15 @@ async function run() {
   await enrichItems(itemNames, items, 'items', false);
 
   // ---- Mobs ----
+  // Ledger mob name -> wiki page title, where the wiki spells it differently (usually
+  // punctuation, e.g. a comma). The page is fetched under the alias but stored back
+  // under the ledger name so it matches data.json. Add entries as mismatches turn up.
+  const MOB_ALIASES = {
+    'Gurowl the Beast': 'Gurowl, The Beast',
+  };
   const mobs = {};
   const titleToMob = {};
-  mobNames.forEach((n) => { titleToMob[cap(n)] = n; });
+  mobNames.forEach((n) => { titleToMob[MOB_ALIASES[n] || cap(n)] = n; });
   const titles = Object.keys(titleToMob);
   for (let i = 0; i < titles.length; i += 45) {
     const batch = titles.slice(i, i + 45);
