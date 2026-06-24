@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-24T17:57:04.634Z",
+  "generatedAt": "2026-06-24T18:27:28.494Z",
   "source": "mnm-tools",
   "ledgerFiles": 31,
-  "events": 9993,
+  "events": 10024,
   "contributors": [],
   "mobs": {
     "a desert bat": {
@@ -1915,7 +1915,12 @@
       "gameId": null,
       "name": "Chipped Black Sapphire",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 6,
+          "count": 1
+        }
+      ],
       "harvested": 2,
       "zones": [
         "Evershade Weald"
@@ -2014,7 +2019,12 @@
       "gameId": null,
       "name": "Chipped Hematite",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 6,
+          "count": 1
+        }
+      ],
       "harvested": 4,
       "zones": [
         "Evershade Weald",
@@ -2026,7 +2036,12 @@
       "gameId": null,
       "name": "Chipped Jacinth",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 6,
+          "count": 1
+        }
+      ],
       "harvested": 2,
       "zones": [
         "Evershade Weald"
@@ -2059,7 +2074,12 @@
       "gameId": null,
       "name": "Chipped Malachite",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 6,
+          "count": 1
+        }
+      ],
       "harvested": 4,
       "zones": [
         "Evershade Weald"
@@ -2103,7 +2123,12 @@
       "gameId": null,
       "name": "Chipped Star Rose Quartz",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 6,
+          "count": 1
+        }
+      ],
       "harvested": 1,
       "zones": [
         "Evershade Weald"
@@ -2136,7 +2161,12 @@
       "gameId": null,
       "name": "Chipped Turquoise",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 6,
+          "count": 1
+        }
+      ],
       "harvested": 3,
       "zones": [
         "Evershade Weald"
@@ -3433,7 +3463,12 @@
       "gameId": null,
       "name": "Flawed Turquoise",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 20,
+          "count": 1
+        }
+      ],
       "harvested": 1,
       "zones": [
         "Scarwood"
@@ -3902,7 +3937,7 @@
       "prices": [
         {
           "copper": 2,
-          "count": 8
+          "count": 9
         }
       ],
       "harvested": 147,
@@ -8030,6 +8065,20 @@
       "zones": [
         "Blacktidebay"
       ]
+    },
+    {
+      "id": "tin_cauldron",
+      "gameId": null,
+      "name": "Tin Cauldron",
+      "droppedBy": [],
+      "prices": [
+        {
+          "copper": 27,
+          "count": 23
+        }
+      ],
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "tin_ore",
