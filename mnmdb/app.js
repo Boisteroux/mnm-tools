@@ -643,16 +643,29 @@ function renderMob(name) {
     return { item, n, rate, reg, perKill: rate ? rate * reg : 0, hasPrice: reg > 0 };
   }).sort((a, b) => (b.rate || 0) - (a.rate || 0) || b.n - a.n);
 
+  // Drops the wiki lists for this mob that we haven't observed yet — shown as extra
+  // rows with "no drop data" in the rate column (rates fill in once they're looted).
+  const mw = m.wiki || {};
+  const wikiLoot = (mw.loot || []).filter((it) => !m.drops[it]);
+
   let table = '<p class="muted">No drops recorded.</p>';
-  if (drops.length) {
+  if (drops.length || wikiLoot.length) {
+    const obsRows = drops.map((d) => {
+      const id = nameToId[d.item] || d.item;
+      const sell = d.hasPrice ? coin(d.reg) : '<span class="sample">no price yet</span>';
+      const pk = d.hasPrice ? coin(d.perKill) : '<span class="sample">—</span>';
+      return '<tr><td>' + itemLink(id, d.item) + '</td><td class="num">' + rateCell(d.rate, d.n, corpses) +
+        '</td><td class="num coin">' + sell + '</td><td class="num coin">' + pk + '</td></tr>';
+    }).join('');
+    const wikiRows = wikiLoot.map((it) => {
+      const reg = regularPrice(itemByName[it]);
+      const sell = reg > 0 ? coin(reg) : '<span class="sample">no price yet</span>';
+      return '<tr><td>' + itemLink(nameToId[it] || it, it) + '</td>' +
+        '<td class="num"><span class="sample">no drop data</span></td>' +
+        '<td class="num coin">' + sell + '</td><td class="num sample">—</td></tr>';
+    }).join('');
     table = '<div class="card"><table><thead><tr><th>Item</th><th class="num">Drop rate</th><th class="num">Sell value</th><th class="num">Avg kill value</th></tr></thead><tbody>' +
-      drops.map((d) => {
-        const id = nameToId[d.item] || d.item;
-        const sell = d.hasPrice ? coin(d.reg) : '<span class="sample">no price yet</span>';
-        const pk = d.hasPrice ? coin(d.perKill) : '<span class="sample">—</span>';
-        return '<tr><td>' + itemLink(id, d.item) + '</td><td class="num">' + rateCell(d.rate, d.n, corpses) +
-          '</td><td class="num coin">' + sell + '</td><td class="num coin">' + pk + '</td></tr>';
-      }).join('') + '</tbody></table></div>';
+      obsRows + wikiRows + '</tbody></table></div>';
   }
 
   const boxes = ['<div class="vbox"><div class="vlbl">Corpses looted</div><div class="vval">' + corpses + '</div></div>'];
@@ -692,7 +705,6 @@ function renderMob(name) {
   }
 
   // Wiki stats block (level / race / class / special)
-  const mw = m.wiki || {};
   let statsBlock = '';
   const srows = [];
   const sadd = (k, v) => { if (v != null && v !== '') srows.push('<tr><td class="muted" style="width:140px">' + k + '</td><td>' + esc(String(v)) + '</td></tr>'); };
@@ -708,17 +720,6 @@ function renderMob(name) {
     ? '<p class="sub"><a href="' + wikiUrl(mw.title || (name.charAt(0).toUpperCase() + name.slice(1))) + '" target="_blank" rel="noopener">View on the wiki ↗</a></p>'
     : '';
 
-  // Drops the wiki lists for this mob that we haven't observed dropping yet —
-  // surfaces the rare gear table so it isn't invisible until someone loots it.
-  const wikiLoot = (mw.loot || []).filter((it) => !m.drops[it]);
-  const wikiDropsBlock = wikiLoot.length
-    ? '<h2>Also listed on the wiki</h2>' +
-      '<p class="sub">Drops the community wiki records that we haven’t seen yet — rates fill in as they’re looted.</p>' +
-      '<div class="card"><ul class="plain">' +
-      wikiLoot.map((it) => '<li>' + (nameToId[it] ? itemLink(nameToId[it], it) : esc(it)) + '</li>').join('') +
-      '</ul></div>'
-    : '';
-
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › mob</div>' +
     '<h1>' + esc(name) + '</h1>' +
@@ -730,8 +731,7 @@ function renderMob(name) {
     '<h2>Drops &amp; farming value</h2>' + table +
     '<div class="note">Drop rates are per <em>looted corpse</em> (the game doesn’t log a kill for every mob, so loots are grouped into corpses). ' +
     '“Sell value” is the item’s regular vendor price; “Avg kill value” = drop rate × sell value. ' +
-    'Rates are a floor — corpse items you didn’t loot aren’t recorded.</div>' +
-    wikiDropsBlock;
+    'Rates are a floor — corpse items you didn’t loot aren’t recorded.</div>';
 }
 
 function renderZone(name) {
