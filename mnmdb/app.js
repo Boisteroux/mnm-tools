@@ -1044,9 +1044,16 @@ function levelingPath(recs) {
   };
 }
 
+// Skill-specific leveling tips — community know-how the cost model can't infer.
+const SKILL_TIPS = {
+  Blacksmithing: 'Once you can mine tin, <b>Tin Cauldrons</b> (trivial ~90) are the most efficient grind — cheap, endlessly repeatable from tin ore, and they carry you through the 80s.',
+};
 function levelingPathSection(recs) {
   const path = levelingPath(recs);
   if (!path || !path.segments.length) return '';
+  const skillTip = SKILL_TIPS[(recs[0] || {}).tradeskill]
+    ? '<div class="note">💡 <b>Tip:</b> ' + SKILL_TIPS[(recs[0] || {}).tradeskill] + '</div>'
+    : '';
   const segMats = (s) => Object.entries(s.raws || {}).sort((a, b) => b[1] - a[1])
     .map(([n, q]) => fmtQty(q) + '× ' + (nameToId[n] ? itemLink(nameToId[n], n) : esc(n))).join(', ');
   const segs = path.segments.map((s) => '<tr><td>' + s.from + '–' + s.to + '</td><td>' + itemLink(s.id, s.name) +
@@ -1067,6 +1074,7 @@ function levelingPathSection(recs) {
     'Crafts are ~1 per skill point — expect more near a trivial.' +
     (path.anyBelowWhite ? ' <span class="tag warn">below white</span> bands have no white-level recipe yet — you’d grind a harder one (slow, many fails); a recipe-coverage gap.' : '') +
     (path.anyUnknown ? ' <span class="tag warn">cost unknown</span> bands need a material we can’t price yet (e.g. enchanted bars).' : '') + '</p>' +
+    skillTip +
     '<div class="card"><table><thead><tr><th>Skill</th><th>Craft</th><th>Materials / craft</th><th class="num">~Crafts</th><th class="num">Bought-mat coin</th></tr></thead><tbody>' +
     segs + '</tbody></table></div>' +
     '<div class="note"><b>Total to gather / buy' + (path.coinTotal > 0 ? ' (~' + coin(path.coinTotal) + ' in known bought mats)' : '') +
