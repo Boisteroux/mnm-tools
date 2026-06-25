@@ -1,13 +1,13 @@
 :root {
-  /* Parchment Tome theme — ink on aged paper, oxblood + gold-leaf accents */
-  --bg:        #e8ddc2; /* aged paper — page background */
-  --panel:     #f3ebd9; /* raised card — lighter than the page so cards lift */
-  --panel-2:   #dccdac; /* recessed — bar tracks, tooltips, tag fills */
-  --line:      #c9b288;
-  --line-2:    #b89e72;
-  --text:      #382a1a; /* dark sepia ink */
-  --muted:     #6f5a36; /* faded ink — darkened to clear WCAG AA on parchment */
-  --accent:    #9c3b2e; /* oxblood — interactive (AA: 5.0 on bg) */
+  /* Parchment Tome theme — ink on warm cream paper, rust + gold-leaf accents */
+  --bg:        #f1e8d6; /* warm cream — page background */
+  --panel:     #fbf5e8; /* raised card — lighter than the page so cards lift */
+  --panel-2:   #e6dac0; /* recessed — bar tracks, tooltips, tag fills */
+  --line:      #d6c197;
+  --line-2:    #c5ac82;
+  --text:      #3a2c1c; /* dark sepia ink */
+  --muted:     #6f5d45; /* faded ink — darkened to clear WCAG AA on cream */
+  --accent:    #9a4524; /* rust — interactive (AA: 5.3 on bg) */
   --accent-dk: #f7f0e1; /* text/icon ON the accent (cream, since accent is dark) */
   --good:      #3f6624; /* green, AA-tuned for cream */
   --warn:      #9e3422; /* red, AA-tuned for cream */
@@ -63,7 +63,7 @@
 
 /* Home page title — sunset gradient (matches the logo), phosphor in dark mode */
 .home-intro h1 {
-  background: linear-gradient(180deg, #9c3b2e 0%, #c2622b 55%, #ad7a1c 100%);
+  background: linear-gradient(180deg, #9a4524 0%, #c2622b 55%, #ad7a1c 100%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 [data-theme="dark"] .home-intro h1 { background: linear-gradient(180deg, #f6c24a 0%, #f0922b 50%, #df6a28 100%); -webkit-background-clip: text; background-clip: text; }
@@ -123,7 +123,7 @@ header {
   font-weight: 700;
   letter-spacing: 1px;
   /* Sunset gradient text, darkened to read on parchment */
-  background: linear-gradient(180deg, #9c3b2e 0%, #c2622b 55%, #ad7a1c 100%);
+  background: linear-gradient(180deg, #9a4524 0%, #c2622b 55%, #ad7a1c 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -219,7 +219,7 @@ h3.bracket { font-size: 13px; font-weight: 600; color: var(--text); margin: 4px 
 .beast { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
 .beast-art {
   height: 96px; display: flex; align-items: center; justify-content: center;
-  background: radial-gradient(circle at 50% 38%, #f3ebd9, #e2d2b0);
+  background: radial-gradient(circle at 50% 38%, #fbf5e8, #e6dac0);
   border-bottom: 1px solid var(--line);
 }
 .beast-emoji { font-size: 48px; line-height: 1; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.5)); }
