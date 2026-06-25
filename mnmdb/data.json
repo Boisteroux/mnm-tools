@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-24T18:27:28.494Z",
+  "generatedAt": "2026-06-25T00:27:55.016Z",
   "source": "mnm-tools",
   "ledgerFiles": 31,
-  "events": 10024,
+  "events": 10048,
   "contributors": [],
   "mobs": {
     "a desert bat": {
@@ -3763,7 +3763,7 @@
       "name": "Jagged Stone",
       "droppedBy": [],
       "prices": [],
-      "harvested": 107,
+      "harvested": 110,
       "zones": [
         "Scarwood"
       ]
@@ -4768,7 +4768,7 @@
           "count": 17
         }
       ],
-      "harvested": 375,
+      "harvested": 385,
       "zones": [
         "Evershade Weald",
         "Night Harbor",
@@ -8086,7 +8086,7 @@
       "name": "Tin Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 127,
+      "harvested": 130,
       "zones": [
         "Scarwood"
       ]
@@ -8358,7 +8358,7 @@
       "name": "Whispering Sage",
       "droppedBy": [],
       "prices": [],
-      "harvested": 12,
+      "harvested": 13,
       "zones": [
         "Evershade Weald",
         "Keepersbight"
@@ -8496,7 +8496,7 @@
           "count": 5
         }
       ],
-      "harvested": 309,
+      "harvested": 316,
       "zones": [
         "Evershade Weald",
         "Night Harbor",
@@ -8749,8 +8749,8 @@
     "Copper Ore": 804,
     "Brittle Stone": 836,
     "Clouded Crystallized Magic": 13,
-    "Wood": 309,
-    "Resin": 375,
+    "Wood": 316,
+    "Resin": 385,
     "Chipped Turquoise": 3,
     "Lionleaf": 31,
     "Chipped Star Ruby": 3,
@@ -8770,7 +8770,7 @@
     "Chipped Emerald": 3,
     "Chipped Black Sapphire": 2,
     "Magic Frond": 2,
-    "Whispering Sage": 12,
+    "Whispering Sage": 13,
     "Chipped Jasper": 1,
     "Chipped Wolf's Eye Agate": 1,
     "Chipped Cat's Eye Agate": 2,
@@ -8783,8 +8783,8 @@
     "Chipped Carnelian": 1,
     "Chipped Lapis Lazuli": 1,
     "Limestone": 147,
-    "Tin Ore": 127,
-    "Jagged Stone": 107,
+    "Tin Ore": 130,
+    "Jagged Stone": 110,
     "Flawed Turquoise": 1,
     "Silver Ore": 7,
     "Glinting Crystallized Magic": 4,
@@ -8949,17 +8949,17 @@
     },
     {
       "name": "Wood & Resin",
-      "pulls": 308,
+      "pulls": 315,
       "yields": [
         {
           "res": "Wood",
-          "count": 308,
+          "count": 315,
           "rate": 1
         },
         {
           "res": "Resin",
-          "count": 267,
-          "rate": 0.8668831168831169
+          "count": 274,
+          "rate": 0.8698412698412699
         }
       ],
       "zones": [
@@ -8970,57 +8970,57 @@
     },
     {
       "name": "Tin Ore & Jagged Stone",
-      "pulls": 126,
+      "pulls": 129,
       "yields": [
         {
           "res": "Tin Ore",
-          "count": 122,
-          "rate": 0.9682539682539683
+          "count": 125,
+          "rate": 0.9689922480620154
         },
         {
           "res": "Jagged Stone",
-          "count": 93,
-          "rate": 0.7380952380952381
+          "count": 96,
+          "rate": 0.7441860465116279
         },
         {
           "res": "Silver Ore",
           "count": 4,
-          "rate": 0.031746031746031744
+          "rate": 0.031007751937984496
         },
         {
           "res": "Glinting Crystallized Magic",
           "count": 4,
-          "rate": 0.031746031746031744
+          "rate": 0.031007751937984496
         },
         {
           "res": "Flawed Turquoise",
           "count": 1,
-          "rate": 0.007936507936507936
+          "rate": 0.007751937984496124
         },
         {
           "res": "Flawed Black Sapphire",
           "count": 1,
-          "rate": 0.007936507936507936
+          "rate": 0.007751937984496124
         },
         {
           "res": "Flawed Hematite",
           "count": 1,
-          "rate": 0.007936507936507936
+          "rate": 0.007751937984496124
         },
         {
           "res": "Flawed Opal",
           "count": 1,
-          "rate": 0.007936507936507936
+          "rate": 0.007751937984496124
         },
         {
           "res": "Flawed Pearl",
           "count": 1,
-          "rate": 0.007936507936507936
+          "rate": 0.007751937984496124
         },
         {
           "res": "Flawed Cat's Eye Agate",
           "count": 1,
-          "rate": 0.007936507936507936
+          "rate": 0.007751937984496124
         }
       ],
       "zones": [
@@ -9093,6 +9093,20 @@
       ],
       "zones": [
         "Evershade Weald"
+      ]
+    },
+    {
+      "name": "Herbs - Keepersbight",
+      "pulls": 3,
+      "yields": [
+        {
+          "res": "Whispering Sage",
+          "count": 3,
+          "rate": 1
+        }
+      ],
+      "zones": [
+        "Keepersbight"
       ]
     }
   ]
