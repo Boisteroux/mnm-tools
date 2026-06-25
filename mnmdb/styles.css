@@ -1,14 +1,15 @@
 :root {
-  /* Parchment Tome theme — ink on warm cream paper, rust + gold-leaf accents */
-  --bg:        #f1e8d6; /* warm cream — page background */
-  --panel:     #fbf5e8; /* raised card — lighter than the page so cards lift */
-  --panel-2:   #e6dac0; /* recessed — bar tracks, tooltips, tag fills */
-  --line:      #d6c197;
-  --line-2:    #c5ac82;
-  --text:      #3a2c1c; /* dark sepia ink */
-  --muted:     #6f5d45; /* faded ink — darkened to clear WCAG AA on cream */
-  --accent:    #9a4524; /* rust — interactive (AA: 5.3 on bg) */
-  --accent-dk: #f7f0e1; /* text/icon ON the accent (cream, since accent is dark) */
+  /* Sunset theme — ink on sunlit-gold paper, burnt-orange + gold-leaf accents,
+     derived from the Monsters & Memories brand gradient (gold→orange→deep). */
+  --bg:        #f6ecd2; /* sunlit gold — page background */
+  --panel:     #fdf7e7; /* raised card — lighter than the page so cards lift */
+  --panel-2:   #ecdcb8; /* recessed — bar tracks, tooltips, tag fills */
+  --line:      #ddc794;
+  --line-2:    #cbb27e;
+  --text:      #3a2a18; /* dark sepia ink */
+  --muted:     #6e562c; /* faded ink — darkened to clear WCAG AA on gold */
+  --accent:    #9e5010; /* burnt sunset orange — interactive (AA: 5.0 on bg) */
+  --accent-dk: #fdf7e7; /* text/icon ON the accent (cream, since accent is dark) */
   --good:      #3f6624; /* green, AA-tuned for cream */
   --warn:      #9e3422; /* red, AA-tuned for cream */
   /* Stat / data-viz palette — kept distinct from the oxblood --accent (which is for
@@ -63,7 +64,7 @@
 
 /* Home page title — sunset gradient (matches the logo), phosphor in dark mode */
 .home-intro h1 {
-  background: linear-gradient(180deg, #9a4524 0%, #c2622b 55%, #ad7a1c 100%);
+  background: linear-gradient(180deg, #b8531a 0%, #c2622b 55%, #b07d1c 100%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 [data-theme="dark"] .home-intro h1 { background: linear-gradient(180deg, #f6c24a 0%, #f0922b 50%, #df6a28 100%); -webkit-background-clip: text; background-clip: text; }
@@ -123,7 +124,7 @@ header {
   font-weight: 700;
   letter-spacing: 1px;
   /* Sunset gradient text, darkened to read on parchment */
-  background: linear-gradient(180deg, #9a4524 0%, #c2622b 55%, #ad7a1c 100%);
+  background: linear-gradient(180deg, #b8531a 0%, #c2622b 55%, #b07d1c 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -219,7 +220,7 @@ h3.bracket { font-size: 13px; font-weight: 600; color: var(--text); margin: 4px 
 .beast { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
 .beast-art {
   height: 96px; display: flex; align-items: center; justify-content: center;
-  background: radial-gradient(circle at 50% 38%, #fbf5e8, #e6dac0);
+  background: radial-gradient(circle at 50% 38%, #fdf7e7, #ecdcb8);
   border-bottom: 1px solid var(--line);
 }
 .beast-emoji { font-size: 48px; line-height: 1; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.5)); }
