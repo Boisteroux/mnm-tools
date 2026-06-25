@@ -429,7 +429,7 @@ function createWindow(overlay = false, fromOverlay = false) {
   });
 
   win.setMenuBarVisibility(false);
-  win.loadFile('renderer/index.html', { query: { overlay: overlay ? '1' : '0', dev: isDev ? '1' : '0', fromOverlay: fromOverlay ? '1' : '0' } });
+  win.loadFile('renderer/index.html', { query: { overlay: overlay ? '1' : '0', dev: isDev ? '1' : '0', fromOverlay: fromOverlay ? '1' : '0', appVersion: app.getVersion() } });
 }
 
 // Swap between desktop and overlay modes by recreating the window (a window's

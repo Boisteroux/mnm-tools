@@ -1351,6 +1351,20 @@ $('replay-next').addEventListener('click', () => { if (replayIdx > 0) { replayId
   });
 })();
 
+// Give feedback — opens a pre-filled GitHub issue in the browser (the app version and
+// OS are filled in automatically so bug reports have context).
+(() => {
+  const btn = $('btn-feedback');
+  if (!btn) return;
+  const ver = new URLSearchParams(location.search).get('appVersion') || '';
+  btn.addEventListener('click', () => {
+    const body = 'What happened, or what would you change?\n\n\n\n---\nApp version: ' + ver + '\nOS: ' + navigator.platform;
+    const url = 'https://github.com/Boisteroux/mnm-tools/issues/new?labels=feedback,app' +
+      '&title=' + encodeURIComponent('App feedback') + '&body=' + encodeURIComponent(body);
+    window.open(url, '_blank');
+  });
+})();
+
 // The app re-scans itself a few seconds after the game writes new loot/kills
 window.mapAPI.onTrackerUpdated((r) => showTrackerSummary(r, ' · updated just now'));
 
