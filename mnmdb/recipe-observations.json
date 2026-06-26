@@ -72,7 +72,7 @@
       },
       {
         "skill": 85,
-        "note": "Sixth reading. The warm tiers read cleanly and confirm the model exactly: Bronze Axe family = white (100), Chain Mask family = yellow (105), and the weapons + boots = orange (106-110). Since those weapons/boots were red together at 81 (>=107) and are orange at 85 (<=110), they now PIN at exactly 110. The cool end (green vs light-blue) is visually indistinguishable in this warm-tinted capture, so it's interpreted via the model + the 81 reading (Cauldron family stays light-blue = 90, NOT green) - flagged for Zak to confirm. Reveals new top-tier items: Bronze Kite Shield, Bronze Mace, Bronze Tread (all red, >=115). Both Enchanted Bronze Chain Links AND Enchanted Bronze Plate read red here despite their base components being 80 - FLAGGED, breaks the enchanted=base rule.",
+        "note": "Sixth reading. The warm tiers read cleanly and confirm the model exactly: Bronze Axe family = white (100), Chain Mask family = yellow (105), and the weapons + boots = orange (106-110). Since those weapons/boots were red together at 81 (>=107) and are orange at 85 (<=110), they now PIN at exactly 110. The cool end (green vs light-blue) is visually indistinguishable in this warm-tinted capture, so it's interpreted via the model + the 81 reading (Cauldron family stays light-blue = 90, NOT green) - flagged for Zak to confirm. Reveals new top-tier items: Bronze Kite Shield, Bronze Mace, Bronze Tread (all red, >=115). Both Enchanted Bronze Chain Links AND Enchanted Bronze Plate read red here despite their base components being 80 - CONFIRMED by Zak as a real exception: enchanting a bronze COMPONENT makes it much harder (>=115) than its plain base, so the enchanted=base rule holds only for final armour pieces (observed on copper), not components.",
         "green": ["Bronze Chain Gorget", "Bronze Chain Wristguard", "Bronze Plate Bracer", "Bronze Plate Collar", "(and every recipe <= 85)"],
         "lightblue": ["Bronze Cauldron", "Bronze Dagger", "Bronze Shortsword", "Bronze Throwing Dagger", "Tin Cauldron"],
         "darkblue": ["Bronze Chain Cloak", "Bronze Chain Gloves", "Bronze Plate Cloak", "Bronze Plate Gauntlets"],
@@ -84,7 +84,7 @@
     ]
   },
   "trivialEstimates": {
-    "_method": "Derived from the colour at skill 48, 50, 55, 75 AND 81 via the multiples-of-5 / 5-wide-band model, 0 mismatches. Copper line confirmed (50-75). Silver = 80 (Silver Plate green at 81; matches the wiki — the earlier 85 was a 55 orange/red misread). Bronze tier maps cleanly 80 -> 110+. Red items (Bronze Great Scythe / Longsword / Spear / Trident / Chain Boots / Plate Boots) are a lower bound of ~110 until they shift colour. Enchanted variants share their base trivial EXCEPT 'Enchanted Bronze Chain Links', which read red at 81 (conflicts with base 80) and is left out pending a recheck.",
+    "_method": "Derived from the colour at skill 48, 50, 55, 75, 81 AND 85 via the multiples-of-5 / 5-wide-band model, 0 mismatches. Copper line confirmed (50-75). Silver = 80 (Silver Plate green at 81; matches the wiki — the earlier 85 was a 55 orange/red misread). Bronze tier maps cleanly 80 -> 115+. The bronze weapons + boots (Bronze Great Scythe / Longsword / Spear / Trident / Chain Boots / Plate Boots) are now PINNED at exactly 110 (orange at 85). Enchanted final armour pieces share their base trivial (observed on copper), but enchanted bronze COMPONENTS do NOT: 'Enchanted Bronze Chain Links' and 'Enchanted Bronze Plate' both read red at 85 (>=115) despite their plain base components being 80 — CONFIRMED by Zak as a real exception, so they carry their own (much higher) trivial.",
     "Blacksmithing": {
       "Copper Chain Coif": 50,
       "Copper Chain Shoulderguards": 50,
@@ -144,8 +144,8 @@
       "Bronze Kite Shield": "115+",
       "Bronze Mace": "115+",
       "Bronze Tread": "115+",
-      "Enchanted Bronze Plate": "115+ (FLAGGED - base Bronze Plate is 80)",
-      "Enchanted Bronze Chain Links": "115+ (FLAGGED - base Bronze Chain Links is 80)"
+      "Enchanted Bronze Plate": "115+ (CONFIRMED exception - enchanted component, far harder than its base 80)",
+      "Enchanted Bronze Chain Links": "115+ (CONFIRMED exception - enchanted component, far harder than its base 80)"
     }
   }
 }
