@@ -253,17 +253,14 @@ const cellLabel = (c) => {
 const firstItemLink = (s) => { const m = s.match(/(?:(\d+)\s*x?\s*)?\[\[([^\]]+)\]\]/i); return m ? { qty: +(m[1] || 1), item: m[2].split('|')[0].trim() } : null; };
 const allItemLinks = (s) => [...s.matchAll(/(?:(\d+)\s*x?\s*)?\[\[([^\]]+)\]\]/gi)].map((m) => ({ qty: +(m[1] || 1), item: m[2].split('|')[0].trim() }));
 
-// Parse a tradeskill page's "== Recipes ==" table into structured recipes,
-// reading the column HEADERS so it adapts to each skill's layout (Result/Product/
-// Name for the output, Components/Ingredients for the inputs).
-function parseRecipes(wikitext, tradeskill) {
-  const h = wikitext.search(/==\s*Recipes\s*==/i);
-  if (h < 0) return [];
-  const tStart = wikitext.indexOf('{|', h);
-  if (tStart < 0) return [];
-  const table = wikitext.slice(tStart, wikitext.indexOf('|}', tStart));
-  const rows = table.split(/\n\|-/);
+// Reusable tools appear in Components cells but aren't consumed per craft (Smithing
+// Pliers/Hammer, Hammer & Chisel) — excluded so they don't inflate a recipe's cost.
+const TOOLS = new Set(['Smithing Pliers', 'Smithing Hammer', 'Hammer and Chisel', 'Rivet Cutters']);
 
+// Parse ONE wiki table into recipes, reading the column HEADERS so it adapts to each
+// skill's layout (Result/Product/Name for the output, Components/Ingredients for inputs).
+function parseRecipeTable(table, tradeskill) {
+  const rows = table.split(/\n\|-/);
   // Column map from the header — only lines that START with "!" (so the "{|" table
   // line's attributes aren't mistaken for a column).
   let labels = null;
@@ -284,10 +281,29 @@ function parseRecipes(wikitext, tradeskill) {
     let cells = r.split('||').map((c) => c.replace(/^\s*\|\s*/, '').trim());
     if (cells[0] === '') cells = cells.slice(1);
     const res = firstItemLink(cells[resultCol] || '');
-    const components = allItemLinks(cells[compCol] || '');
+    const components = allItemLinks(cells[compCol] || '').filter((c) => !TOOLS.has(c.item));
     if (!res || !components.length || /example/i.test(res.item)) continue;
+    if (/scraps$/i.test(res.item)) continue; // breakdown byproduct (Hammer & Chisel master list), not a craft recipe
     out.push({ tradeskill, result: res, components, trivial: trivCol >= 0 ? (parseInt(cells[trivCol], 10) || null) : null });
   }
+  return out;
+}
+
+// Parse ALL tables under a tradeskill page's "== Recipes ==" section (which runs to the
+// next level-2 heading, or end). Skill pages like Blacksmithing carry many tables
+// (components, sharpening stones, mount gear, shields, and weapons + armor by metal
+// tier); the old code stopped at the first table, dropping everything after "Components".
+function parseRecipes(wikitext, tradeskill) {
+  const h = wikitext.search(/==\s*Recipes\s*==/i);
+  if (h < 0) return [];
+  const bodyStart = wikitext.indexOf('\n', h) + 1;
+  const rest = wikitext.slice(bodyStart);
+  const nextH2 = rest.search(/\n==(?!=)[^\n]*==[ \t]*\r?\n/); // next level-2 heading
+  const section = nextH2 >= 0 ? rest.slice(0, nextH2) : rest;
+  const out = [];
+  const tableRe = /\{\|[\s\S]*?\n\|\}/g;
+  let tm;
+  while ((tm = tableRe.exec(section))) out.push(...parseRecipeTable(tm[0], tradeskill));
   return out;
 }
 
@@ -456,6 +472,29 @@ async function run() {
     recipes.push(r); haveResult.add(r.result.item); itemPageAdded++;
   }
   console.log(`  + ${itemPageAdded} recipes from item pages.`);
+
+  // ---- Conflict check: our VERIFIED screenshot trivials vs the (unverified) wiki ----
+  // recipe-observations.json is ground truth (read in-game); the wiki is a strong lead.
+  // Name any disagreement loudly so it gets double-checked, rather than silently trusting
+  // either source. (The site still overlays the observed trivial; this is just a heads-up.)
+  try {
+    const obs = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'mnmdb', 'recipe-observations.json'), 'utf8'));
+    const leadNum = (v) => { if (typeof v === 'number') return v; const m = String(v).match(/\d+/); return m ? +m[0] : null; };
+    const conflicts = [];
+    for (const r of recipes) {
+      if (r.trivial == null) continue;
+      const skillObs = (obs.trivialEstimates || {})[r.tradeskill];
+      if (!skillObs || skillObs[r.result.item] == null) continue;
+      const ov = leadNum(skillObs[r.result.item]);
+      if (ov != null && ov !== r.trivial) conflicts.push(`${r.tradeskill} / ${r.result.item}: observed=${skillObs[r.result.item]} vs wiki=${r.trivial}`);
+    }
+    if (conflicts.length) {
+      console.log(`  !! ${conflicts.length} TRIVIAL CONFLICT(S) — verified observation vs wiki (double-check in-game):`);
+      conflicts.forEach((c) => console.log('     ' + c));
+    } else {
+      console.log('  Trivial conflict check: clean — every verified observation matches the wiki.');
+    }
+  } catch (e) { console.log('  (conflict check skipped:', e.message + ')'); }
 
   // Second pass: the item-page recipes may reference components not seen anywhere else
   // (e.g. Jagged Stone). Fetch those so their price / gather source resolves the cost.
