@@ -2,7 +2,7 @@
   "_note": "Manual in-game crafting difficulty-color observations, used to reverse-engineer recipe trivials the wiki is missing (it shows '?'). Difficulty colors easiest->hardest: green (= trivial, no more skill-ups), lightblue, darkblue, white (~50% success), yellow, orange, red. A recipe seen GREEN at skill S has trivial <= S; any other color means trivial > S. Recording the same recipe at several skill levels pins the exact trivial (it turns green at its trivial) and calibrates each colour's skill-gap. Edit this file as you hit new skill milestones; the site merges it over the wiki recipe data.",
   "_colorOrder": ["green", "lightblue", "darkblue", "white", "yellow", "orange", "red"],
   "_model": {
-    "note": "Trivials land on MULTIPLES OF 5 (in-game breakpoints are every 5 levels), and each colour band is 5 skill points wide. This single model reproduces the skill-48, 50, 55, 75 AND 81 readings (5 milestones) with 0 mismatches. Two boundary-shade misreads were corrected against Zak's eyes: at 75 the bronze components + silver looked 'green' but are LIGHT-BLUE (76-80); at 55 silver looked 'red' but is ORANGE (= 80). Green/teal and orange/red are easy to confuse in screenshots. Red items remain a lower bound until they shift colour.",
+    "note": "Trivials land on MULTIPLES OF 5 (in-game breakpoints are every 5 levels), and each colour band is 5 skill points wide. This single model reproduces the skill-48, 50, 55, 75, 81 AND 85 readings (6 milestones) with 0 mismatches; the 85 reading pinned the bronze weapons + boots at exactly 110. Two boundary-shade misreads were corrected against Zak's eyes: at 75 the bronze components + silver looked 'green' but are LIGHT-BLUE (76-80); at 55 silver looked 'red' but is ORANGE (= 80). Green/teal and orange/red are easy to confuse in screenshots. Red items remain a lower bound until they shift colour.",
     "bandsByGap": {
       "green": "gap <= 0 (skill >= trivial)",
       "lightblue": "gap 1-5",
@@ -69,6 +69,17 @@
         "yellow": ["Bronze Axe", "Bronze Battle Axe", "Bronze Scimitar", "Bronze Scythe"],
         "orange": ["Bronze Chain Mask", "Bronze Chain Waistguard", "Bronze Plate Girdle", "Bronze Plate Visor"],
         "red": ["Bronze Great Scythe", "Bronze Longsword", "Bronze Spear", "Bronze Trident", "Bronze Chain Boots", "Bronze Plate Boots", "Enchanted Bronze Chain Links (FLAGGED - conflicts with base 80)"]
+      },
+      {
+        "skill": 85,
+        "note": "Sixth reading. The warm tiers read cleanly and confirm the model exactly: Bronze Axe family = white (100), Chain Mask family = yellow (105), and the weapons + boots = orange (106-110). Since those weapons/boots were red together at 81 (>=107) and are orange at 85 (<=110), they now PIN at exactly 110. The cool end (green vs light-blue) is visually indistinguishable in this warm-tinted capture, so it's interpreted via the model + the 81 reading (Cauldron family stays light-blue = 90, NOT green) - flagged for Zak to confirm. Reveals new top-tier items: Bronze Kite Shield, Bronze Mace, Bronze Tread (all red, >=115). Both Enchanted Bronze Chain Links AND Enchanted Bronze Plate read red here despite their base components being 80 - FLAGGED, breaks the enchanted=base rule.",
+        "green": ["Bronze Chain Gorget", "Bronze Chain Wristguard", "Bronze Plate Bracer", "Bronze Plate Collar", "(and every recipe <= 85)"],
+        "lightblue": ["Bronze Cauldron", "Bronze Dagger", "Bronze Shortsword", "Bronze Throwing Dagger", "Tin Cauldron"],
+        "darkblue": ["Bronze Chain Cloak", "Bronze Chain Gloves", "Bronze Plate Cloak", "Bronze Plate Gauntlets"],
+        "white": ["Bronze Axe", "Bronze Battle Axe", "Bronze Scimitar", "Bronze Scythe"],
+        "yellow": ["Bronze Chain Mask", "Bronze Chain Waistguard", "Bronze Plate Girdle", "Bronze Plate Visor"],
+        "orange": ["Bronze Great Scythe", "Bronze Longsword", "Bronze Spear", "Bronze Trident", "Bronze Chain Boots", "Bronze Plate Boots"],
+        "red": ["Bronze Kite Shield", "Bronze Mace", "Bronze Tread", "Enchanted Bronze Chain Links", "Enchanted Bronze Plate"]
       }
     ]
   },
@@ -124,12 +135,17 @@
       "Bronze Chain Waistguard": 105,
       "Bronze Plate Girdle": 105,
       "Bronze Plate Visor": 105,
-      "Bronze Great Scythe": "110+",
-      "Bronze Longsword": "110+",
-      "Bronze Spear": "110+",
-      "Bronze Trident": "110+",
-      "Bronze Chain Boots": "110+",
-      "Bronze Plate Boots": "110+"
+      "Bronze Great Scythe": 110,
+      "Bronze Longsword": 110,
+      "Bronze Spear": 110,
+      "Bronze Trident": 110,
+      "Bronze Chain Boots": 110,
+      "Bronze Plate Boots": 110,
+      "Bronze Kite Shield": "115+",
+      "Bronze Mace": "115+",
+      "Bronze Tread": "115+",
+      "Enchanted Bronze Plate": "115+ (FLAGGED - base Bronze Plate is 80)",
+      "Enchanted Bronze Chain Links": "115+ (FLAGGED - base Bronze Chain Links is 80)"
     }
   }
 }
