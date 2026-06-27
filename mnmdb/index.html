@@ -29,6 +29,8 @@
        synchronously in <head> to avoid a flash of unstyled content). -->
   <script>document.write('<link rel="stylesheet" href="styles.css?v=' + Date.now() + '">');</script>
   <noscript><link rel="stylesheet" href="styles.css" /></noscript>
+  <!-- Cloudflare Turnstile — bot check for community marker submissions -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
   <header>

@@ -550,6 +550,7 @@ body {
   font-family: inherit; font-size: 14px; color: var(--text); background: var(--bg);
   border: 1px solid var(--line); border-radius: 6px; padding: 7px 9px; width: 100%; box-sizing: border-box; }
 .sp-actions { display: flex; gap: 8px; margin-top: 4px; }
+.cf-ts { margin: 4px 0 12px; }
 .modal-card button, .modcard button, .modlogin button, .modbar button {
   font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; border-radius: 7px; padding: 7px 14px;
   border: 1px solid var(--line-2); background: var(--panel); color: var(--text); }

@@ -24,6 +24,9 @@ let MAPS = { zones: [], categories: [] }; // curated zone maps for the read-only
 // Worker + D1). Loaded lazily on the first map view and grouped by zone. The API only
 // ever serves APPROVED markers, so nothing pending leaks onto the map.
 const API_BASE = 'https://mnmdb-api.boisteroux.workers.dev';
+// Cloudflare Turnstile site key (public — it lives in the page HTML, safe to commit).
+// The matching secret is set on the Worker as TURNSTILE_SECRET, which verifies the token.
+const TURNSTILE_SITE_KEY = '0x4AAAAAADsBgp1uszsr9gUW';
 let COMMUNITY = null;
 async function loadCommunity() {
   if (COMMUNITY) return COMMUNITY;
@@ -1666,6 +1669,7 @@ function renderMapView(name) {
         '<div class="sp-row"><label for="sp-cat">Type</label><select id="sp-cat">' + catOptions + '</select></div>' +
         '<div class="sp-row"><label for="sp-label">Label</label><input id="sp-label" maxlength="80" placeholder="e.g. Gnarlroot (named spawn)" /></div>' +
         '<div class="sp-row"><label for="sp-name">Your name <span class="muted">(optional — for credit)</span></label><input id="sp-name" maxlength="40" /></div>' +
+        '<div id="cf-turnstile" class="cf-ts"></div>' +
         '<div class="sp-actions"><button id="sp-submit" class="primary">Submit for review</button><button id="sp-cancel">Cancel</button></div>' +
         '<div id="sp-status" class="sp-status"></div>' +
       '</div>' +
@@ -1700,7 +1704,7 @@ function wireMapView(name, catById, fallback) {
   const modal = document.getElementById('suggest-modal');
   const loc = document.getElementById('sp-loc');
   const status = document.getElementById('sp-status');
-  let suggestMode = false, pin = null;
+  let suggestMode = false, pin = null, tsId = null;
 
   const exitSuggest = () => {
     suggestMode = false;
@@ -1708,6 +1712,7 @@ function wireMapView(name, catById, fallback) {
     btn.textContent = '📍 Add a Marker'; btn.classList.remove('active');
     hint.classList.add('hidden'); modal.classList.add('hidden');
     if (pin) { pin.remove(); pin = null; }
+    if (tsId != null && window.turnstile) { try { turnstile.remove(tsId); } catch {} tsId = null; }
     status.textContent = ''; status.className = 'sp-status';
   };
   modal.addEventListener('click', (e) => { if (e.target === modal) exitSuggest(); });
@@ -1731,6 +1736,7 @@ function wireMapView(name, catById, fallback) {
     hint.classList.add('hidden');
     loc.textContent = name + ' · (' + px + ', ' + py + ')';
     modal.classList.remove('hidden');
+    if (TURNSTILE_SITE_KEY && window.turnstile && tsId == null) { try { tsId = turnstile.render('#cf-turnstile', { sitekey: TURNSTILE_SITE_KEY }); } catch {} }
     document.getElementById('sp-label').focus();
   });
 
@@ -1743,6 +1749,7 @@ function wireMapView(name, catById, fallback) {
       zone: name, x: +pin.dataset.x, y: +pin.dataset.y,
       category: document.getElementById('sp-cat').value, label,
       submitter: document.getElementById('sp-name').value.trim() || undefined,
+      turnstile: (window.turnstile && tsId != null) ? turnstile.getResponse(tsId) : undefined,
     };
     status.textContent = 'Submitting…'; status.className = 'sp-status';
     try {
