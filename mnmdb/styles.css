@@ -515,3 +515,61 @@ body {
   clip-path: polygon(11px 0, 100% 0, 100% calc(100% - 11px), calc(100% - 11px) 100%, 0 100%, 0 11px);
   border-color: transparent !important;
 }
+
+/* ============================================================================
+   Community markers — "suggest a marker" submission UI + the moderation page.
+   ============================================================================ */
+.maptools { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin: 0 0 12px; }
+.maptools .mlegend { margin: 0; }
+.msuggest { font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap;
+  color: var(--accent); background: var(--panel); border: 1px solid var(--accent); border-radius: 7px; padding: 6px 12px; }
+.msuggest:hover, .msuggest.active { background: var(--accent); color: var(--accent-dk); }
+
+.mapview.suggesting { cursor: crosshair; }
+.mapview.suggesting img { pointer-events: none; }
+
+/* Pulsing pin used while suggesting, and for the moderation preview */
+.mk-temp { width: 15px; height: 15px; border-radius: 50%; background: var(--accent); border: 2px solid #fff;
+  box-shadow: 0 0 0 2px var(--accent), 0 1px 4px rgba(0,0,0,.5); animation: mkpulse 1.2s ease-out infinite; pointer-events: none; z-index: 5; }
+@keyframes mkpulse { 0% { box-shadow: 0 0 0 2px var(--accent), 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent); }
+  100% { box-shadow: 0 0 0 2px var(--accent), 0 0 0 11px transparent; } }
+
+/* Community markers get a dotted ring so they read as submitted (not curated) */
+.mk-community .mk-ic { outline: 2px dotted var(--mc); outline-offset: 2px; border-radius: 50%; }
+.mk-tag { font-size: 9px; text-transform: uppercase; letter-spacing: .5px; opacity: .7; margin-left: 4px; }
+
+/* Suggest form */
+.suggest-panel { max-width: 420px; margin: 12px 0; padding: 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; }
+.sp-row { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }
+.sp-row label { font-size: 13px; color: var(--muted); }
+.suggest-panel input, .suggest-panel select, .modlogin input {
+  font-family: inherit; font-size: 14px; color: var(--text); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 6px; padding: 7px 9px; width: 100%; box-sizing: border-box; }
+.sp-actions { display: flex; gap: 8px; margin-top: 4px; }
+.suggest-panel button, .modcard button, .modlogin button, .modbar button {
+  font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; border-radius: 7px; padding: 7px 14px;
+  border: 1px solid var(--line-2); background: var(--panel); color: var(--text); }
+.suggest-panel button:hover, .modcard button:hover, .modlogin button:hover, .modbar button:hover { border-color: var(--accent); }
+button.primary { background: var(--accent); color: var(--accent-dk); border-color: var(--accent); }
+button.primary:hover { filter: brightness(1.08); }
+button.danger { color: var(--warn); border-color: var(--warn); }
+button.danger:hover { background: var(--warn); color: #fff; }
+button:disabled { opacity: .5; cursor: default; }
+.sp-status { font-size: 13px; margin-top: 8px; min-height: 1.1em; }
+.sp-status.ok { color: var(--good); }
+.sp-status.err { color: var(--warn); }
+
+/* Moderation page */
+.modbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.modlogin { display: flex; gap: 8px; max-width: 360px; }
+.modlogin input { flex: 1; }
+.modcard { display: flex; gap: 14px; align-items: flex-start; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px; margin: 0 0 12px; }
+.modcard.done { opacity: .5; }
+.modprev { position: relative; width: 160px; flex: none; border: 1px solid var(--line); border-radius: 7px; overflow: hidden; line-height: 0; background: var(--panel-2); }
+.modprev img { display: block; width: 100%; height: auto; }
+.modprev-none { display: flex; align-items: center; justify-content: center; height: 96px; font-size: 12px; color: var(--muted); }
+.modinfo { flex: 1; min-width: 0; }
+.modlabel { display: flex; align-items: center; gap: 7px; font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+.modmeta { font-size: 13px; color: var(--text); }
+.modmeta.muted { color: var(--muted); margin-top: 2px; }
+.modactions { display: flex; gap: 8px; margin-top: 10px; align-items: center; }

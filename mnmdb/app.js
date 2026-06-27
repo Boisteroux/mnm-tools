@@ -19,6 +19,21 @@ let TRADES = {};     // item name (lowercased) -> [{price, side, date}] player t
 let RECIPES = [];    // crafting recipes from the wiki tradeskill pages
 let recipesByResult = {}; // item name (lowercased) -> [recipe] that produce it
 let MAPS = { zones: [], categories: [] }; // curated zone maps for the read-only viewer
+
+// Community-submitted markers, from the mnmdb submission API (api/ — a Cloudflare
+// Worker + D1). Loaded lazily on the first map view and grouped by zone. The API only
+// ever serves APPROVED markers, so nothing pending leaks onto the map.
+const API_BASE = 'https://mnmdb-api.boisteroux.workers.dev';
+let COMMUNITY = null;
+async function loadCommunity() {
+  if (COMMUNITY) return COMMUNITY;
+  COMMUNITY = {};
+  try {
+    const j = await (await fetch(API_BASE + '/markers')).json();
+    for (const m of (j.markers || [])) (COMMUNITY[m.zone] = COMMUNITY[m.zone] || []).push(m);
+  } catch {}
+  return COMMUNITY;
+}
 let QUESTS = []; // dev quests for the Database Quest Board (quests.json)
 
 const $ = (id) => document.getElementById(id);
@@ -1548,10 +1563,10 @@ let mapLightSrc = '';   // current map image, for the click-to-enlarge lightbox
 // display size — inline map or lightbox).
 function markerLayerHTML(markers, nw, nh) {
   return markers.map((m) =>
-    '<span class="mk" style="left:' + (m.x / nw * 100) + '%;top:' + (m.y / nh * 100) + '%;--mc:' + m.color + '" ' +
-    'title="' + esc(m.label + (m.notes ? ' — ' + m.notes : '')) + '">' +
+    '<span class="mk' + (m.community ? ' mk-community' : '') + '" style="left:' + (m.x / nw * 100) + '%;top:' + (m.y / nh * 100) + '%;--mc:' + m.color + '" ' +
+    'title="' + esc(m.label + (m.community ? ' — community marker' + (m.submitter ? ' (by ' + m.submitter + ')' : '') : '') + (m.notes ? ' — ' + m.notes : '')) + '">' +
     '<span class="mk-ic">' + m.icon + '</span>' +
-    (m.label ? '<span class="mk-lbl">' + esc(m.label) + '</span>' : '') + '</span>'
+    (m.label ? '<span class="mk-lbl">' + esc(m.label) + (m.community ? ' <span class="mk-tag">community</span>' : '') + '</span>' : '') + '</span>'
   ).join('');
 }
 
@@ -1626,29 +1641,186 @@ function renderMapView(name) {
     return { x: m.x, y: m.y, label: m.label, notes: m.notes, color: c.color, icon: c.icon };
   });
 
+  const catOptions = (MAPS.categories || []).map((c) =>
+    '<option value="' + c.id + '">' + c.icon + ' ' + esc(c.name) + '</option>').join('');
+
   mapLightSrc = 'maps/' + encodeURIComponent(z.image);
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › <a href="#/maps">maps</a> › ' + esc(name) + '</div>' +
     '<h1>' + esc(name) + '</h1>' +
-    (legend ? '<div class="mlegend">' + legend + '</div>' : '<p class="sub">No markers on this map yet.</p>') +
+    '<div class="maptools">' +
+      (legend ? '<div class="mlegend">' + legend + '</div>' : '<span class="sub">No markers yet — add the first one.</span>') +
+      '<button id="suggest-btn" class="msuggest">📍 Suggest a marker</button>' +
+    '</div>' +
+    '<p id="suggest-hint" class="sub hidden">Click the spot on the map where the marker belongs.</p>' +
     '<div class="mapview" title="Click to enlarge"><img id="mapimg" src="' + mapLightSrc + '" alt="' + esc(name) + ' map" />' +
     '<div id="maplayer"></div></div>' +
-    '<p class="sub">Click the map to view it full size.</p>';
-  wireMapView();
+    '<div id="suggest-panel" class="suggest-panel hidden">' +
+      '<div class="sp-row"><label for="sp-cat">Type</label><select id="sp-cat">' + catOptions + '</select></div>' +
+      '<div class="sp-row"><label for="sp-label">Label</label><input id="sp-label" maxlength="80" placeholder="e.g. Gnarlroot (named spawn)" /></div>' +
+      '<div class="sp-row"><label for="sp-name">Your name <span class="muted">(optional — for credit)</span></label><input id="sp-name" maxlength="40" /></div>' +
+      '<div class="sp-actions"><button id="sp-submit" class="primary">Submit for review</button><button id="sp-cancel">Cancel</button></div>' +
+      '<div id="sp-status" class="sp-status"></div>' +
+    '</div>' +
+    '<p class="sub">Community-submitted markers are reviewed before they appear. Click the map to view it full size.</p>';
+  wireMapView(name, catById, fallback);
 }
 
 // Markers are stored in image-pixel coords; place them as percentages once the
-// image's natural size is known, so they track the responsive image.
-function wireMapView() {
-  const markers = pendingMap || [];
+// image's natural size is known, so they track the responsive image. Also loads
+// approved community markers and wires the "suggest a marker" submission flow.
+function wireMapView(name, catById, fallback) {
   const img = document.getElementById('mapimg');
   const layer = document.getElementById('maplayer');
   if (!img || !layer) return;
-  const place = () => { layer.innerHTML = markerLayerHTML(markers, img.naturalWidth || 1, img.naturalHeight || 1); };
+  const place = () => { layer.innerHTML = markerLayerHTML(pendingMap || [], img.naturalWidth || 1, img.naturalHeight || 1); };
   if (img.complete && img.naturalWidth) place();
   else img.addEventListener('load', place);
+
+  // Pull in approved community markers for this zone and add them to the layer.
+  loadCommunity().then((c) => {
+    const cms = (c[name] || []).map((m) => {
+      const cat = catById[m.category] || fallback;
+      return { x: m.x, y: m.y, label: m.label, submitter: m.submitter, color: cat.color, icon: cat.icon, community: true };
+    });
+    if (cms.length) { pendingMap = (pendingMap || []).concat(cms); place(); }
+  });
+
+  // ---- Suggest-a-marker mode ----
   const box = img.closest('.mapview');
-  if (box) box.addEventListener('click', openMapLightbox);
+  const btn = document.getElementById('suggest-btn');
+  const hint = document.getElementById('suggest-hint');
+  const panel = document.getElementById('suggest-panel');
+  const status = document.getElementById('sp-status');
+  let suggestMode = false, pin = null;
+
+  const exitSuggest = () => {
+    suggestMode = false;
+    box.classList.remove('suggesting');
+    btn.textContent = '📍 Suggest a marker'; btn.classList.remove('active');
+    hint.classList.add('hidden'); panel.classList.add('hidden');
+    if (pin) { pin.remove(); pin = null; }
+    status.textContent = ''; status.className = 'sp-status';
+  };
+  btn.addEventListener('click', () => {
+    if (suggestMode) return exitSuggest();
+    suggestMode = true;
+    box.classList.add('suggesting');
+    btn.textContent = '✕ Cancel'; btn.classList.add('active');
+    hint.classList.remove('hidden');
+  });
+
+  box.addEventListener('click', (e) => {
+    if (!suggestMode) return openMapLightbox(); // normal behaviour: enlarge
+    const rect = img.getBoundingClientRect();
+    const px = Math.round((e.clientX - rect.left) / rect.width * (img.naturalWidth || 1));
+    const py = Math.round((e.clientY - rect.top) / rect.height * (img.naturalHeight || 1));
+    if (!pin) { pin = document.createElement('span'); pin.className = 'mk mk-temp'; box.appendChild(pin); }
+    pin.style.left = (px / (img.naturalWidth || 1) * 100) + '%';
+    pin.style.top = (py / (img.naturalHeight || 1) * 100) + '%';
+    pin.dataset.x = px; pin.dataset.y = py;
+    hint.classList.add('hidden');
+    panel.classList.remove('hidden');
+  });
+
+  document.getElementById('sp-cancel').addEventListener('click', exitSuggest);
+  document.getElementById('sp-submit').addEventListener('click', async () => {
+    if (!pin) { status.textContent = 'Click the map to place your pin first.'; status.className = 'sp-status err'; return; }
+    const label = document.getElementById('sp-label').value.trim();
+    if (!label) { status.textContent = 'Please add a label.'; status.className = 'sp-status err'; return; }
+    const body = {
+      zone: name, x: +pin.dataset.x, y: +pin.dataset.y,
+      category: document.getElementById('sp-cat').value, label,
+      submitter: document.getElementById('sp-name').value.trim() || undefined,
+    };
+    status.textContent = 'Submitting…'; status.className = 'sp-status';
+    try {
+      const r = await fetch(API_BASE + '/submit', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body),
+      });
+      if (r.ok) {
+        status.textContent = '✓ Thanks! Your marker is pending review.'; status.className = 'sp-status ok';
+        setTimeout(exitSuggest, 2400);
+      } else {
+        const j = await r.json().catch(() => ({}));
+        status.textContent = '✗ ' + (j.error || ('Error ' + r.status)); status.className = 'sp-status err';
+      }
+    } catch { status.textContent = '✗ Network error — please try again.'; status.className = 'sp-status err'; }
+  });
+}
+
+// ---- Moderation — a private page (#/moderate, not linked in the nav). Gated by the
+// ADMIN_TOKEN you set in Cloudflare; the token is kept in localStorage so you stay
+// signed in on your own browser. ----
+function renderModerate() {
+  const creds = localStorage.getItem('mnmdb-admin') || '';
+  if (!creds) {
+    $('content').innerHTML =
+      '<h1>Moderation</h1>' +
+      '<p class="sub">Enter the moderator password to review submissions.</p>' +
+      '<div class="modlogin"><input id="mod-token" type="password" placeholder="Moderator password" autocomplete="current-password" />' +
+      '<button id="mod-signin" class="primary">Sign in</button></div>';
+    const go = () => { const t = $('mod-token').value.trim(); if (t) { localStorage.setItem('mnmdb-admin', t); renderModerate(); } };
+    $('mod-signin').addEventListener('click', go);
+    $('mod-token').addEventListener('keydown', (e) => { if (e.key === 'Enter') go(); });
+    return;
+  }
+  $('content').innerHTML =
+    '<div class="modbar"><h1>Moderation</h1><button id="mod-signout">Sign out</button></div>' +
+    '<div id="mod-list"><p class="sub">Loading…</p></div>';
+  $('mod-signout').addEventListener('click', () => { localStorage.removeItem('mnmdb-admin'); renderModerate(); });
+  loadPending(creds);
+}
+
+async function loadPending(creds) {
+  const list = $('mod-list');
+  let j;
+  try {
+    const r = await fetch(API_BASE + '/admin/pending', { headers: { Authorization: 'Bearer ' + creds } });
+    if (r.status === 401) { localStorage.removeItem('mnmdb-admin'); list.innerHTML = '<p class="sp-status err">Wrong password.</p>'; setTimeout(renderModerate, 1000); return; }
+    j = await r.json();
+  } catch { list.innerHTML = '<p class="sp-status err">Network error — try again.</p>'; return; }
+  const items = j.pending || [];
+  if (!items.length) { list.innerHTML = '<p class="sub">🎉 Queue is clear — nothing pending.</p>'; return; }
+  const catById = {}; (MAPS.categories || []).forEach((c) => { catById[c.id] = c; });
+  list.innerHTML = '<p class="sub">' + items.length + ' pending</p>' + items.map((m) => {
+    const c = catById[m.category] || { name: m.category, color: '#b0bec5', icon: '📍' };
+    const z = (MAPS.zones || []).find((x) => x.name === m.zone);
+    const preview = z && z.image
+      ? '<div class="modprev"><img src="maps/' + encodeURIComponent(z.image) + '" alt="" />' +
+        '<span class="mk mk-temp modpin" data-px="' + m.x + '" data-py="' + m.y + '"></span></div>'
+      : '<div class="modprev modprev-none">no map</div>';
+    return '<div class="modcard" data-id="' + m.id + '">' + preview +
+      '<div class="modinfo">' +
+        '<div class="modlabel"><span class="mdot" style="background:' + c.color + '"></span>' + esc(m.label) + '</div>' +
+        '<div class="modmeta">' + esc(c.name) + ' · ' + esc(m.zone) + ' · (' + m.x + ', ' + m.y + ')' + (m.submitter ? ' · by ' + esc(m.submitter) : '') + '</div>' +
+        '<div class="modmeta muted">' + esc(String(m.created_at || '').replace('T', ' ').replace(/\..*$/, '')) + ' UTC</div>' +
+        '<div class="modactions"><button class="primary" data-act="approve">Approve</button>' +
+        '<button class="danger" data-act="reject">Reject</button></div>' +
+      '</div></div>';
+  }).join('');
+  // position each preview pin once its image knows its natural size
+  list.querySelectorAll('.modpin').forEach((pin) => {
+    const img = pin.previousElementSibling;
+    const pos = () => { pin.style.left = (pin.dataset.px / (img.naturalWidth || 1) * 100) + '%'; pin.style.top = (pin.dataset.py / (img.naturalHeight || 1) * 100) + '%'; };
+    if (img.complete && img.naturalWidth) pos(); else img.addEventListener('load', pos);
+  });
+  list.querySelectorAll('.modcard').forEach((card) => {
+    card.querySelectorAll('[data-act]').forEach((b) => b.addEventListener('click', async () => {
+      const id = +card.dataset.id, act = b.dataset.act;
+      card.querySelectorAll('button').forEach((x) => (x.disabled = true));
+      try {
+        const r = await fetch(API_BASE + '/admin/' + act, {
+          method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + creds }, body: JSON.stringify({ id }),
+        });
+        if (r.ok) {
+          card.classList.add('done');
+          card.querySelector('.modactions').innerHTML = '<span class="sp-status ok">' + (act === 'approve' ? 'Approved ✓ — live on the map' : 'Rejected') + '</span>';
+          COMMUNITY = null; // refresh the map cache so an approved marker shows on next visit
+        } else { card.querySelectorAll('button').forEach((x) => (x.disabled = false)); }
+      } catch { card.querySelectorAll('button').forEach((x) => (x.disabled = false)); }
+    }));
+  });
 }
 
 // ---- Router ----
@@ -1781,6 +1953,7 @@ function route() {
   if (h === 'vendors') return renderVendors();
   if (h === 'bestiary') return renderBestiary();
   if (h === 'maps') return renderMapsList();
+  if (h === 'moderate') return renderModerate();
   if (h === 'quests') return renderQuests();
   if (h.startsWith('quests/')) return renderQuestList(h.slice(7));
   if (h.startsWith('vendor/')) return renderVendor(h.slice(7));
