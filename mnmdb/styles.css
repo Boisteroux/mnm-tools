@@ -573,3 +573,11 @@ button:disabled { opacity: .5; cursor: default; }
 .modmeta { font-size: 13px; color: var(--text); }
 .modmeta.muted { color: var(--muted); margin-top: 2px; }
 .modactions { display: flex; gap: 8px; margin-top: 10px; align-items: center; }
+.modprev.zoomable { cursor: zoom-in; }
+.modprev.zoomable:hover { border-color: var(--accent); }
+
+/* Caption bar shown in the full-size lightbox (used for moderation previews) */
+.lb-caption { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 11px 60px 11px 16px;
+  background: rgba(0,0,0,0.82); color: #fff; font-size: 14px; text-align: center; }
+.lb-caption .lbtag { display: inline-flex; align-items: center; gap: 5px; padding: 1px 8px; border-radius: 5px; background: rgba(255,255,255,0.16); font-size: 12px; }
+.lb-caption .mdot { width: 9px; height: 9px; }

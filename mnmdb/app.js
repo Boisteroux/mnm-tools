@@ -1572,16 +1572,19 @@ function markerLayerHTML(markers, nw, nh) {
 
 // Full-size map overlay with zoom + pan. Scroll or +/− to zoom, drag to pan.
 // Close with ✕, a backdrop click, or Esc.
-function openMapLightbox() {
-  if (!mapLightSrc || document.querySelector('.lightbox')) return;
+function openMapLightbox(src, markers, caption) {
+  src = src || mapLightSrc;
+  markers = markers || pendingMap || [];
+  if (!src || document.querySelector('.lightbox')) return;
   const lb = document.createElement('div');
   lb.className = 'lightbox';
   lb.innerHTML =
     '<button class="lb-close" aria-label="Close">✕</button>' +
+    (caption ? '<div class="lb-caption">' + caption + '</div>' : '') +
     '<div class="lb-zoom"><button data-z="out" aria-label="Zoom out">−</button>' +
     '<button data-z="reset" aria-label="Reset">⤢</button>' +
     '<button data-z="in" aria-label="Zoom in">+</button></div>' +
-    '<div class="lb-inner"><img src="' + mapLightSrc + '" alt="" /><div class="lb-layer"></div></div>';
+    '<div class="lb-inner"><img src="' + src + '" alt="" /><div class="lb-layer"></div></div>';
   document.body.appendChild(lb);
   const inner = lb.querySelector('.lb-inner'), img = lb.querySelector('img'), layer = lb.querySelector('.lb-layer');
 
@@ -1591,7 +1594,7 @@ function openMapLightbox() {
     inner.classList.toggle('zoomed', scale > 1);
   };
   const zoom = (f) => { scale = Math.max(1, Math.min(8, scale * f)); if (scale === 1) { tx = 0; ty = 0; } apply(); };
-  const place = () => { layer.innerHTML = markerLayerHTML(pendingMap || [], img.naturalWidth || 1, img.naturalHeight || 1); };
+  const place = () => { layer.innerHTML = markerLayerHTML(markers, img.naturalWidth || 1, img.naturalHeight || 1); };
   img.complete && img.naturalWidth ? place() : img.addEventListener('load', place);
 
   lb.querySelector('[data-z=in]').onclick = (e) => { e.stopPropagation(); zoom(1.4); };
@@ -1805,7 +1808,19 @@ async function loadPending(creds) {
     const pos = () => { pin.style.left = (pin.dataset.px / (img.naturalWidth || 1) * 100) + '%'; pin.style.top = (pin.dataset.py / (img.naturalHeight || 1) * 100) + '%'; };
     if (img.complete && img.naturalWidth) pos(); else img.addEventListener('load', pos);
   });
+  const byId = {}; items.forEach((m) => (byId[m.id] = m));
   list.querySelectorAll('.modcard').forEach((card) => {
+    const m = byId[+card.dataset.id];
+    const c = catById[m.category] || { name: m.category, color: '#b0bec5', icon: '📍' };
+    const z = (MAPS.zones || []).find((x) => x.name === m.zone);
+    const prev = card.querySelector('.modprev');
+    if (prev && z && z.image) {
+      prev.classList.add('zoomable'); prev.title = 'Click to preview full size';
+      prev.addEventListener('click', () => openMapLightbox(
+        'maps/' + encodeURIComponent(z.image),
+        [{ x: m.x, y: m.y, label: m.label, icon: c.icon, color: c.color, community: true }],
+        '<b>' + esc(m.label) + '</b> &nbsp;<span class="lbtag"><span class="mdot" style="background:' + c.color + '"></span>' + esc(c.name) + '</span>&nbsp; ' + esc(m.zone) + ' · (' + m.x + ', ' + m.y + ')' + (m.submitter ? ' · by ' + esc(m.submitter) : '')));
+    }
     card.querySelectorAll('[data-act]').forEach((b) => b.addEventListener('click', async () => {
       const id = +card.dataset.id, act = b.dataset.act;
       card.querySelectorAll('button').forEach((x) => (x.disabled = true));
