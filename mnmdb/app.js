@@ -1653,19 +1653,23 @@ function renderMapView(name) {
     '<h1>' + esc(name) + '</h1>' +
     '<div class="maptools">' +
       (legend ? '<div class="mlegend">' + legend + '</div>' : '<span class="sub">No markers yet — add the first one.</span>') +
-      '<button id="suggest-btn" class="msuggest">📍 Suggest a marker</button>' +
+      '<button id="suggest-btn" class="msuggest">📍 Add a Marker</button>' +
     '</div>' +
     '<p id="suggest-hint" class="sub hidden">Click the spot on the map where the marker belongs.</p>' +
     '<div class="mapview" title="Click to enlarge"><img id="mapimg" src="' + mapLightSrc + '" alt="' + esc(name) + ' map" />' +
     '<div id="maplayer"></div></div>' +
-    '<div id="suggest-panel" class="suggest-panel hidden">' +
-      '<div class="sp-row"><label for="sp-cat">Type</label><select id="sp-cat">' + catOptions + '</select></div>' +
-      '<div class="sp-row"><label for="sp-label">Label</label><input id="sp-label" maxlength="80" placeholder="e.g. Gnarlroot (named spawn)" /></div>' +
-      '<div class="sp-row"><label for="sp-name">Your name <span class="muted">(optional — for credit)</span></label><input id="sp-name" maxlength="40" /></div>' +
-      '<div class="sp-actions"><button id="sp-submit" class="primary">Submit for review</button><button id="sp-cancel">Cancel</button></div>' +
-      '<div id="sp-status" class="sp-status"></div>' +
-    '</div>' +
-    '<p class="sub">Community-submitted markers are reviewed before they appear. Click the map to view it full size.</p>';
+    '<p class="sub">Community-submitted markers are reviewed before they appear. Click the map to view it full size.</p>' +
+    '<div id="suggest-modal" class="modal-overlay hidden">' +
+      '<div class="modal-card">' +
+        '<h3>Add a marker</h3>' +
+        '<p id="sp-loc" class="sub"></p>' +
+        '<div class="sp-row"><label for="sp-cat">Type</label><select id="sp-cat">' + catOptions + '</select></div>' +
+        '<div class="sp-row"><label for="sp-label">Label</label><input id="sp-label" maxlength="80" placeholder="e.g. Gnarlroot (named spawn)" /></div>' +
+        '<div class="sp-row"><label for="sp-name">Your name <span class="muted">(optional — for credit)</span></label><input id="sp-name" maxlength="40" /></div>' +
+        '<div class="sp-actions"><button id="sp-submit" class="primary">Submit for review</button><button id="sp-cancel">Cancel</button></div>' +
+        '<div id="sp-status" class="sp-status"></div>' +
+      '</div>' +
+    '</div>';
   wireMapView(name, catById, fallback);
 }
 
@@ -1693,18 +1697,20 @@ function wireMapView(name, catById, fallback) {
   const box = img.closest('.mapview');
   const btn = document.getElementById('suggest-btn');
   const hint = document.getElementById('suggest-hint');
-  const panel = document.getElementById('suggest-panel');
+  const modal = document.getElementById('suggest-modal');
+  const loc = document.getElementById('sp-loc');
   const status = document.getElementById('sp-status');
   let suggestMode = false, pin = null;
 
   const exitSuggest = () => {
     suggestMode = false;
     box.classList.remove('suggesting');
-    btn.textContent = '📍 Suggest a marker'; btn.classList.remove('active');
-    hint.classList.add('hidden'); panel.classList.add('hidden');
+    btn.textContent = '📍 Add a Marker'; btn.classList.remove('active');
+    hint.classList.add('hidden'); modal.classList.add('hidden');
     if (pin) { pin.remove(); pin = null; }
     status.textContent = ''; status.className = 'sp-status';
   };
+  modal.addEventListener('click', (e) => { if (e.target === modal) exitSuggest(); });
   btn.addEventListener('click', () => {
     if (suggestMode) return exitSuggest();
     suggestMode = true;
@@ -1723,7 +1729,9 @@ function wireMapView(name, catById, fallback) {
     pin.style.top = (py / (img.naturalHeight || 1) * 100) + '%';
     pin.dataset.x = px; pin.dataset.y = py;
     hint.classList.add('hidden');
-    panel.classList.remove('hidden');
+    loc.textContent = name + ' · (' + px + ', ' + py + ')';
+    modal.classList.remove('hidden');
+    document.getElementById('sp-label').focus();
   });
 
   document.getElementById('sp-cancel').addEventListener('click', exitSuggest);
