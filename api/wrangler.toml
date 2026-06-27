@@ -1,0 +1,13 @@
+name = "mnmdb-api"
+main = "src/index.js"
+compatibility_date = "2026-06-01"
+
+# The only site origin allowed to call this API (CORS). Localhost is added in code for dev.
+[vars]
+ALLOWED_ORIGIN = "https://mnm-db.com"
+
+# D1 (SQLite) database. Fill database_id with the value `npx wrangler d1 create mnmdb` prints.
+[[d1_databases]]
+binding = "DB"
+database_name = "mnmdb"
+database_id = "e07fc0c0-5a89-42ac-a816-029756a6334f"
