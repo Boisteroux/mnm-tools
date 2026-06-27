@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-27T06:55:19.065Z",
+  "generatedAt": "2026-06-27T21:31:16.848Z",
   "source": "mnm-tools",
-  "ledgerFiles": 36,
-  "events": 12254,
+  "ledgerFiles": 39,
+  "events": 12811,
   "contributors": [],
   "mobs": {
     "a desert bat": {
@@ -110,16 +110,16 @@
       "kills": 0,
       "drops": {
         "Fire Beetle Gland": 3,
-        "Fire Beetle Legs": 13,
+        "Fire Beetle Legs": 14,
         "Fire Beetle Carapace": 2,
         "Fire Beetle Eye": 5
       },
       "zones": {
         "Night Harbor": 34,
-        "Shaded Dunes": 6
+        "Shaded Dunes": 8
       },
       "coin": 0,
-      "corpses": 14
+      "corpses": 15
     },
     "a jackal pup": {
       "kills": 0,
@@ -137,16 +137,16 @@
     "a dunes scarab": {
       "kills": 0,
       "drops": {
-        "Scarab Leg": 8,
-        "Scarab Carapace": 1,
+        "Scarab Leg": 10,
+        "Scarab Carapace": 2,
         "Scarab Eye": 3
       },
       "zones": {
         "Night Harbor": 16,
-        "Shaded Dunes": 7
+        "Shaded Dunes": 10
       },
       "coin": 0,
-      "corpses": 11
+      "corpses": 14
     },
     "a large diseased rat": {
       "kills": 0,
@@ -189,7 +189,7 @@
       "corpses": 1
     },
     "an ashira warrior": {
-      "kills": 11,
+      "kills": 12,
       "drops": {
         "Ashira Warrior Bracer": 2,
         "Cloth Scraps": 3,
@@ -197,7 +197,7 @@
         "Ashira Warrior Pelt": 1,
         "Tattered Cloth Pantaloons": 1,
         "Worn Buckler": 1,
-        "Bell Pepper": 1,
+        "Bell Pepper": 2,
         "Tattered Cloth Bracer": 1,
         "Cabbage": 1,
         "Ashira Warrior Necklace": 3,
@@ -209,25 +209,27 @@
       },
       "zones": {
         "Night Harbor": 8,
-        "Shaded Dunes": 42
+        "Shaded Dunes": 44
       },
-      "coin": 131,
-      "corpses": 10
+      "coin": 138,
+      "corpses": 11
     },
     "an ashira shaman": {
-      "kills": 0,
+      "kills": 3,
       "drops": {
-        "Cloth Scraps": 1,
+        "Cloth Scraps": 3,
         "Garlic": 1,
         "Celery": 1,
         "Ashira Tail": 1,
-        "Rawhide Scraps": 1
+        "Rawhide Scraps": 1,
+        "Tattered Rawhide Gorget": 1,
+        "Raw Ashira Meat": 2
       },
       "zones": {
-        "Shaded Dunes": 10
+        "Shaded Dunes": 20
       },
-      "coin": 0,
-      "corpses": 3
+      "coin": 52,
+      "corpses": 6
     },
     "an ashira lookout": {
       "kills": 6,
@@ -250,18 +252,19 @@
     "a rattlesnake": {
       "kills": 0,
       "drops": {
-        "Snake Egg": 1,
-        "Snake Fang": 3
+        "Snake Egg": 3,
+        "Snake Fang": 3,
+        "Rattlesnake Skin": 3
       },
       "zones": {
-        "Shaded Dunes": 4,
+        "Shaded Dunes": 9,
         "Night Harbor": 3
       },
       "coin": 0,
-      "corpses": 4
+      "corpses": 8
     },
     "a skeleton": {
-      "kills": 63,
+      "kills": 65,
       "drops": {
         "Rusty Maul": 2,
         "Torch": 1,
@@ -269,7 +272,7 @@
         "Cloth Scraps": 21,
         "Tattered Cloth Veil": 2,
         "Shattered Skull": 5,
-        "Tattered Cloth Cape": 1,
+        "Tattered Cloth Cape": 2,
         "Rawhide Scraps": 17,
         "Worn Buckler": 2,
         "Rusty Shortsword": 1,
@@ -290,14 +293,16 @@
         "Tattered Cloth Mantle": 1,
         "Tattered Cloth Boots": 1,
         "Tattered Cloth Gloves": 2,
-        "Tattered Cloth Belt": 1
+        "Tattered Cloth Belt": 1,
+        "Tattered Rawhide Shoulderpads": 1,
+        "Tattered Cloth Tunic": 1
       },
       "zones": {
-        "Shaded Dunes": 5,
+        "Shaded Dunes": 10,
         "Evershade Weald": 198
       },
-      "coin": 853,
-      "corpses": 53
+      "coin": 872,
+      "corpses": 55
     },
     "a large dunes bat": {
       "kills": 0,
@@ -408,6 +413,58 @@
       "coin": 693,
       "corpses": 78
     },
+    "an ashira ambusher": {
+      "kills": 4,
+      "drops": {
+        "Rawhide Scraps": 2,
+        "Raw Ashira Meat": 2,
+        "Cloth Scraps": 1,
+        "Tattered Rawhide Belt": 1
+      },
+      "zones": {
+        "Shaded Dunes": 10
+      },
+      "coin": 107,
+      "corpses": 3
+    },
+    "a giant fire beetle": {
+      "kills": 0,
+      "drops": {
+        "Giant Fire Beetle Legs": 4,
+        "Giant Fire Beetle Eye": 2,
+        "Giant Fire Beetle Carapace": 4
+      },
+      "zones": {
+        "Shaded Dunes": 11
+      },
+      "coin": 0,
+      "corpses": 7
+    },
+    "a giant dunes scarab": {
+      "kills": 0,
+      "drops": {
+        "Giant Scarab Carapace": 1,
+        "Giant Scarab Leg": 1,
+        "Giant Scarab Eye": 1
+      },
+      "zones": {
+        "Shaded Dunes": 5
+      },
+      "coin": 0,
+      "corpses": 2
+    },
+    "a giant spider": {
+      "kills": 0,
+      "drops": {
+        "Spider Silk": 2,
+        "Spider Venom Sac": 1
+      },
+      "zones": {
+        "Shaded Dunes": 4
+      },
+      "coin": 0,
+      "corpses": 3
+    },
     "a diseased desert bat": {
       "kills": 0,
       "drops": {
@@ -437,15 +494,40 @@
       "drops": {
         "Cooked Crocodile Meat": 7,
         "Crocodile Tooth": 11,
-        "Crocodile Hide": 4,
-        "Raw Crocodile Meat": 7,
-        "Fish Bones": 3
+        "Crocodile Hide": 5,
+        "Raw Crocodile Meat": 8,
+        "Fish Bones": 5
       },
       "zones": {
-        "Night Harbor": 34
+        "Night Harbor": 34,
+        "Shaded Dunes": 5
       },
       "coin": 0,
-      "corpses": 21
+      "corpses": 23
+    },
+    "an ashira raider": {
+      "kills": 1,
+      "drops": {
+        "Lemon": 1,
+        "Smuggler's Logbook Page 5": 1
+      },
+      "zones": {
+        "Shaded Dunes": 3
+      },
+      "coin": 25,
+      "corpses": 1
+    },
+    "a blister beetle": {
+      "kills": 0,
+      "drops": {
+        "Blister Beetle Gland": 1,
+        "Raw Beetle Meat": 1
+      },
+      "zones": {
+        "Shaded Dunes": 2
+      },
+      "coin": 0,
+      "corpses": 1
     },
     "a black bat": {
       "kills": 0,
@@ -1733,12 +1815,6 @@
       "name": "Ashira Tail",
       "droppedBy": [
         {
-          "mob": "an ashira shaman",
-          "drops": 1,
-          "corpses": 3,
-          "rate": 0.3333333333333333
-        },
-        {
           "mob": "an ashira lookout",
           "drops": 1,
           "corpses": 5,
@@ -1747,8 +1823,14 @@
         {
           "mob": "an ashira warrior",
           "drops": 2,
-          "corpses": 10,
-          "rate": 0.2
+          "corpses": 11,
+          "rate": 0.18181818181818182
+        },
+        {
+          "mob": "an ashira shaman",
+          "drops": 1,
+          "corpses": 6,
+          "rate": 0.16666666666666666
         }
       ],
       "prices": [
@@ -1770,8 +1852,8 @@
         {
           "mob": "an ashira warrior",
           "drops": 2,
-          "corpses": 10,
-          "rate": 0.2
+          "corpses": 11,
+          "rate": 0.18181818181818182
         }
       ],
       "prices": [],
@@ -1789,8 +1871,8 @@
         {
           "mob": "an ashira warrior",
           "drops": 3,
-          "corpses": 10,
-          "rate": 0.3
+          "corpses": 11,
+          "rate": 0.2727272727272727
         }
       ],
       "prices": [],
@@ -1807,8 +1889,8 @@
         {
           "mob": "an ashira warrior",
           "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
+          "corpses": 11,
+          "rate": 0.09090909090909091
         }
       ],
       "prices": [
@@ -2023,9 +2105,9 @@
       "droppedBy": [
         {
           "mob": "an ashira warrior",
-          "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
+          "drops": 2,
+          "corpses": 11,
+          "rate": 0.18181818181818182
         },
         {
           "mob": "a Sangrel entangler",
@@ -2086,6 +2168,24 @@
       "harvested": 0,
       "zones": [
         "Evershade Weald"
+      ]
+    },
+    {
+      "id": "blister_beetle_gland",
+      "gameId": "d0c3ec7d2a3e79244a243374",
+      "name": "Blister Beetle Gland",
+      "droppedBy": [
+        {
+          "mob": "a blister beetle",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes"
       ]
     },
     {
@@ -2198,12 +2298,6 @@
           "rate": 0.5510204081632653
         },
         {
-          "mob": "a skeleton",
-          "drops": 27,
-          "corpses": 53,
-          "rate": 0.5094339622641509
-        },
-        {
           "mob": "a skeletal warrior",
           "drops": 16,
           "corpses": 32,
@@ -2220,6 +2314,12 @@
           "drops": 1,
           "corpses": 2,
           "rate": 0.5
+        },
+        {
+          "mob": "a skeleton",
+          "drops": 27,
+          "corpses": 55,
+          "rate": 0.4909090909090909
         },
         {
           "mob": "a Calafreyan soldier",
@@ -2265,10 +2365,10 @@
       "prices": [
         {
           "copper": 1,
-          "count": 41
+          "count": 44
         }
       ],
-      "harvested": 853,
+      "harvested": 879,
       "zones": [
         "Evershade Weald",
         "Night Harbor",
@@ -2392,8 +2492,8 @@
         {
           "mob": "an ashira warrior",
           "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
+          "corpses": 11,
+          "rate": 0.09090909090909091
         },
         {
           "mob": "a Sangrel grappler",
@@ -2448,8 +2548,8 @@
         {
           "mob": "an ashira shaman",
           "drops": 1,
-          "corpses": 3,
-          "rate": 0.3333333333333333
+          "corpses": 6,
+          "rate": 0.16666666666666666
         },
         {
           "mob": "a Sangrel grappler",
@@ -2532,7 +2632,12 @@
       "gameId": null,
       "name": "Chipped Black Pearl",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 6,
+          "count": 1
+        }
+      ],
       "harvested": 5,
       "zones": [
         "Evershade Weald"
@@ -2570,7 +2675,12 @@
       "gameId": null,
       "name": "Chipped Blue Diamond",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 6,
+          "count": 1
+        }
+      ],
       "harvested": 3,
       "zones": [
         "Evershade Weald"
@@ -2628,11 +2738,16 @@
         {
           "copper": 2,
           "count": 1
+        },
+        {
+          "copper": 6,
+          "count": 1
         }
       ],
-      "harvested": 3,
+      "harvested": 4,
       "zones": [
-        "Evershade Weald"
+        "Evershade Weald",
+        "Shaded Dunes"
       ]
     },
     {
@@ -2781,7 +2896,12 @@
       "gameId": null,
       "name": "Chipped Sapphire",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 6,
+          "count": 1
+        }
+      ],
       "harvested": 3,
       "zones": [
         "Evershade Weald"
@@ -2927,6 +3047,12 @@
           "rate": 0.5454545454545454
         },
         {
+          "mob": "an ashira shaman",
+          "drops": 3,
+          "corpses": 6,
+          "rate": 0.5
+        },
+        {
           "mob": "Gurowl the Beast",
           "drops": 4,
           "corpses": 8,
@@ -2975,12 +3101,6 @@
           "rate": 0.4
         },
         {
-          "mob": "a skeleton",
-          "drops": 21,
-          "corpses": 53,
-          "rate": 0.39622641509433965
-        },
-        {
           "mob": "a Fellstone sentinel",
           "drops": 58,
           "corpses": 148,
@@ -2999,22 +3119,22 @@
           "rate": 0.38461538461538464
         },
         {
+          "mob": "a skeleton",
+          "drops": 21,
+          "corpses": 55,
+          "rate": 0.38181818181818183
+        },
+        {
           "mob": "an ashira scout",
           "drops": 2,
           "corpses": 6,
           "rate": 0.3333333333333333
         },
         {
-          "mob": "an ashira shaman",
+          "mob": "an ashira ambusher",
           "drops": 1,
           "corpses": 3,
           "rate": 0.3333333333333333
-        },
-        {
-          "mob": "an ashira warrior",
-          "drops": 3,
-          "corpses": 10,
-          "rate": 0.3
         },
         {
           "mob": "a Fellstone tracker",
@@ -3027,6 +3147,12 @@
           "drops": 9,
           "corpses": 32,
           "rate": 0.28125
+        },
+        {
+          "mob": "an ashira warrior",
+          "drops": 3,
+          "corpses": 11,
+          "rate": 0.2727272727272727
         },
         {
           "mob": "an orcish tactician",
@@ -3059,8 +3185,8 @@
         "Blacktidebay",
         "Tomb of the Last Wyrmsbane",
         "Evershade Weald",
-        "Night Harbor",
         "Shaded Dunes",
+        "Night Harbor",
         "Keepersbight"
       ]
     },
@@ -3070,9 +3196,10 @@
       "name": "Clouded Crystallized Magic",
       "droppedBy": [],
       "prices": [],
-      "harvested": 14,
+      "harvested": 16,
       "zones": [
         "Evershade Weald",
+        "Shaded Dunes",
         "Night Harbor"
       ]
     },
@@ -3102,8 +3229,8 @@
         {
           "mob": "a crocodile hatchling",
           "drops": 7,
-          "corpses": 21,
-          "rate": 0.3333333333333333
+          "corpses": 23,
+          "rate": 0.30434782608695654
         }
       ],
       "prices": [],
@@ -3309,11 +3436,11 @@
       "name": "Copper Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 823,
+      "harvested": 847,
       "zones": [
         "Evershade Weald",
-        "Night Harbor",
         "Shaded Dunes",
+        "Night Harbor",
         "Keepersbight"
       ]
     },
@@ -4402,15 +4529,16 @@
       "droppedBy": [
         {
           "mob": "a crocodile hatchling",
-          "drops": 4,
-          "corpses": 21,
-          "rate": 0.19047619047619047
+          "drops": 5,
+          "corpses": 23,
+          "rate": 0.21739130434782608
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Night Harbor"
+        "Night Harbor",
+        "Shaded Dunes"
       ]
     },
     {
@@ -4421,8 +4549,8 @@
         {
           "mob": "a crocodile hatchling",
           "drops": 11,
-          "corpses": 21,
-          "rate": 0.5238095238095238
+          "corpses": 23,
+          "rate": 0.4782608695652174
         }
       ],
       "prices": [],
@@ -4877,11 +5005,16 @@
         {
           "mob": "a fire beetle",
           "drops": 2,
-          "corpses": 14,
-          "rate": 0.14285714285714285
+          "corpses": 15,
+          "rate": 0.13333333333333333
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 2,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Shaded Dunes",
@@ -4896,14 +5029,14 @@
         {
           "mob": "a fire beetle",
           "drops": 5,
-          "corpses": 14,
-          "rate": 0.35714285714285715
+          "corpses": 15,
+          "rate": 0.3333333333333333
         }
       ],
       "prices": [
         {
           "copper": 15,
-          "count": 2
+          "count": 3
         }
       ],
       "harvested": 0,
@@ -4920,8 +5053,8 @@
         {
           "mob": "a fire beetle",
           "drops": 3,
-          "corpses": 14,
-          "rate": 0.21428571428571427
+          "corpses": 15,
+          "rate": 0.2
         }
       ],
       "prices": [
@@ -4942,9 +5075,9 @@
       "droppedBy": [
         {
           "mob": "a fire beetle",
-          "drops": 13,
-          "corpses": 14,
-          "rate": 0.9285714285714286
+          "drops": 14,
+          "corpses": 15,
+          "rate": 0.9333333333333333
         }
       ],
       "prices": [
@@ -4974,15 +5107,38 @@
       "droppedBy": [
         {
           "mob": "a crocodile hatchling",
-          "drops": 3,
-          "corpses": 21,
-          "rate": 0.14285714285714285
+          "drops": 5,
+          "corpses": 23,
+          "rate": 0.21739130434782608
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Night Harbor"
+        "Night Harbor",
+        "Shaded Dunes"
+      ]
+    },
+    {
+      "id": "flawed_amber",
+      "gameId": null,
+      "name": "Flawed Amber",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Scarwood"
+      ]
+    },
+    {
+      "id": "flawed_black_pearl",
+      "gameId": null,
+      "name": "Flawed Black Pearl",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Scarwood"
       ]
     },
     {
@@ -4991,7 +5147,7 @@
       "name": "Flawed Black Sapphire",
       "droppedBy": [],
       "prices": [],
-      "harvested": 2,
+      "harvested": 3,
       "zones": [
         "Scarwood"
       ]
@@ -5002,7 +5158,18 @@
       "name": "Flawed Bloodstone",
       "droppedBy": [],
       "prices": [],
-      "harvested": 2,
+      "harvested": 3,
+      "zones": [
+        "Scarwood"
+      ]
+    },
+    {
+      "id": "flawed_blue_diamond",
+      "gameId": null,
+      "name": "Flawed Blue Diamond",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
       "zones": [
         "Scarwood"
       ]
@@ -5108,7 +5275,7 @@
       "name": "Flawed Hematite",
       "droppedBy": [],
       "prices": [],
-      "harvested": 1,
+      "harvested": 2,
       "zones": [
         "Scarwood"
       ]
@@ -5215,6 +5382,28 @@
       ]
     },
     {
+      "id": "flawed_sapphire",
+      "gameId": null,
+      "name": "Flawed Sapphire",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 2,
+      "zones": [
+        "Scarwood"
+      ]
+    },
+    {
+      "id": "flawed_star_rose_quartz",
+      "gameId": null,
+      "name": "Flawed Star Rose Quartz",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Scarwood"
+      ]
+    },
+    {
       "id": "flawed_topaz",
       "gameId": "dc61652e8b2096fafdbcbf4c",
       "name": "Flawed Topaz",
@@ -5254,7 +5443,7 @@
       "name": "Flawed Wolf's Eye Agate",
       "droppedBy": [],
       "prices": [],
-      "harvested": 1,
+      "harvested": 2,
       "zones": [
         "Scarwood"
       ]
@@ -5285,8 +5474,8 @@
         {
           "mob": "an ashira shaman",
           "drops": 1,
-          "corpses": 3,
-          "rate": 0.3333333333333333
+          "corpses": 6,
+          "rate": 0.16666666666666666
         },
         {
           "mob": "a Sangrel striker",
@@ -5310,13 +5499,132 @@
       "prices": [
         {
           "copper": 1,
-          "count": 2
+          "count": 3
         }
       ],
-      "harvested": 35,
+      "harvested": 37,
       "zones": [
         "Evershade Weald",
+        "Shaded Dunes",
         "Keepersbight"
+      ]
+    },
+    {
+      "id": "giant_fire_beetle_carapace",
+      "gameId": "20852765b208d2addae6db3c",
+      "name": "Giant Fire Beetle Carapace",
+      "droppedBy": [
+        {
+          "mob": "a giant fire beetle",
+          "drops": 4,
+          "corpses": 7,
+          "rate": 0.5714285714285714
+        }
+      ],
+      "prices": [
+        {
+          "copper": 75,
+          "count": 3
+        }
+      ],
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes"
+      ]
+    },
+    {
+      "id": "giant_fire_beetle_eye",
+      "gameId": "037f3ff319d7ab331da0102e",
+      "name": "Giant Fire Beetle Eye",
+      "droppedBy": [
+        {
+          "mob": "a giant fire beetle",
+          "drops": 2,
+          "corpses": 7,
+          "rate": 0.2857142857142857
+        }
+      ],
+      "prices": [
+        {
+          "copper": 30,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes"
+      ]
+    },
+    {
+      "id": "giant_fire_beetle_legs",
+      "gameId": "49e74d61657792ad326bb990",
+      "name": "Giant Fire Beetle Legs",
+      "droppedBy": [
+        {
+          "mob": "a giant fire beetle",
+          "drops": 4,
+          "corpses": 7,
+          "rate": 0.5714285714285714
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes"
+      ]
+    },
+    {
+      "id": "giant_scarab_carapace",
+      "gameId": "c0787bf5e6b4ef9fd4e8c934",
+      "name": "Giant Scarab Carapace",
+      "droppedBy": [
+        {
+          "mob": "a giant dunes scarab",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes"
+      ]
+    },
+    {
+      "id": "giant_scarab_eye",
+      "gameId": "bec74c5816880c470039989c",
+      "name": "Giant Scarab Eye",
+      "droppedBy": [
+        {
+          "mob": "a giant dunes scarab",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes"
+      ]
+    },
+    {
+      "id": "giant_scarab_leg",
+      "gameId": "a87204c7a298c1869d828ba1",
+      "name": "Giant Scarab Leg",
+      "droppedBy": [
+        {
+          "mob": "a giant dunes scarab",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes"
       ]
     },
     {
@@ -5325,7 +5633,7 @@
       "name": "Glinting Crystallized Magic",
       "droppedBy": [],
       "prices": [],
-      "harvested": 7,
+      "harvested": 12,
       "zones": [
         "Scarwood"
       ]
@@ -5452,6 +5760,10 @@
       "droppedBy": [],
       "prices": [
         {
+          "copper": 3,
+          "count": 1
+        },
+        {
           "copper": 9,
           "count": 2
         }
@@ -5565,6 +5877,20 @@
       ]
     },
     {
+      "id": "hip_quiver",
+      "gameId": null,
+      "name": "Hip Quiver",
+      "droppedBy": [],
+      "prices": [
+        {
+          "copper": 25,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": []
+    },
+    {
       "id": "incarnal_residue",
       "gameId": "c87406a86ee3c870601a6746",
       "name": "Incarnal Residue",
@@ -5626,7 +5952,7 @@
           "count": 1
         }
       ],
-      "harvested": 249,
+      "harvested": 353,
       "zones": [
         "Scarwood"
       ]
@@ -5798,6 +6124,12 @@
       "name": "Lemon",
       "droppedBy": [
         {
+          "mob": "an ashira raider",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
+        {
           "mob": "a shady farmer",
           "drops": 1,
           "corpses": 7,
@@ -5825,7 +6157,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Shaded Dunes"
       ]
     },
     {
@@ -5857,7 +6190,7 @@
           "count": 9
         }
       ],
-      "harvested": 167,
+      "harvested": 182,
       "zones": [
         "Scarwood"
       ]
@@ -5870,12 +6203,13 @@
       "prices": [
         {
           "copper": 1,
-          "count": 1
+          "count": 2
         }
       ],
-      "harvested": 31,
+      "harvested": 32,
       "zones": [
-        "Evershade Weald"
+        "Evershade Weald",
+        "Shaded Dunes"
       ]
     },
     {
@@ -5940,6 +6274,20 @@
         "Blacktidebay",
         "Evershade Weald"
       ]
+    },
+    {
+      "id": "lumberjack_axe",
+      "gameId": null,
+      "name": "Lumberjack Axe",
+      "droppedBy": [],
+      "prices": [
+        {
+          "copper": 6,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "magic_frond",
@@ -6159,8 +6507,8 @@
         {
           "mob": "an ashira warrior",
           "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
+          "corpses": 11,
+          "rate": 0.09090909090909091
         },
         {
           "mob": "a Sangrel grappler",
@@ -6288,12 +6636,42 @@
       "zones": []
     },
     {
+      "id": "rattlesnake_skin",
+      "gameId": "aefe6f47496b847a6f5fe90c",
+      "name": "Rattlesnake Skin",
+      "droppedBy": [
+        {
+          "mob": "a rattlesnake",
+          "drops": 3,
+          "corpses": 8,
+          "rate": 0.375
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes"
+      ]
+    },
+    {
       "id": "raw_ashira_meat",
       "gameId": "raw_ash_meat",
       "name": "Raw Ashira Meat",
       "droppedBy": [
         {
+          "mob": "an ashira ambusher",
+          "drops": 2,
+          "corpses": 3,
+          "rate": 0.6666666666666666
+        },
+        {
           "mob": "an ashira scout",
+          "drops": 2,
+          "corpses": 6,
+          "rate": 0.3333333333333333
+        },
+        {
+          "mob": "an ashira shaman",
           "drops": 2,
           "corpses": 6,
           "rate": 0.3333333333333333
@@ -6307,8 +6685,8 @@
         {
           "mob": "an ashira warrior",
           "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
+          "corpses": 11,
+          "rate": 0.09090909090909091
         }
       ],
       "prices": [
@@ -6319,8 +6697,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Night Harbor",
-        "Shaded Dunes"
+        "Shaded Dunes",
+        "Night Harbor"
       ]
     },
     {
@@ -6382,21 +6760,40 @@
       ]
     },
     {
+      "id": "raw_beetle_meat",
+      "gameId": "a8c922b5e349c0afa973ec9e",
+      "name": "Raw Beetle Meat",
+      "droppedBy": [
+        {
+          "mob": "a blister beetle",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes"
+      ]
+    },
+    {
       "id": "raw_crocodile_meat",
       "gameId": "gator_meat",
       "name": "Raw Crocodile Meat",
       "droppedBy": [
         {
           "mob": "a crocodile hatchling",
-          "drops": 7,
-          "corpses": 21,
-          "rate": 0.3333333333333333
+          "drops": 8,
+          "corpses": 23,
+          "rate": 0.34782608695652173
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Night Harbor"
+        "Night Harbor",
+        "Shaded Dunes"
       ]
     },
     {
@@ -6752,6 +7149,12 @@
           "rate": 1
         },
         {
+          "mob": "an ashira ambusher",
+          "drops": 2,
+          "corpses": 3,
+          "rate": 0.6666666666666666
+        },
+        {
           "mob": "an old elven skeleton",
           "drops": 22,
           "corpses": 44,
@@ -6824,12 +7227,6 @@
           "rate": 0.34375
         },
         {
-          "mob": "an ashira shaman",
-          "drops": 1,
-          "corpses": 3,
-          "rate": 0.3333333333333333
-        },
-        {
           "mob": "a Fellstone corrupter",
           "drops": 5,
           "corpses": 15,
@@ -6838,8 +7235,8 @@
         {
           "mob": "a skeleton",
           "drops": 17,
-          "corpses": 53,
-          "rate": 0.32075471698113206
+          "corpses": 55,
+          "rate": 0.3090909090909091
         },
         {
           "mob": "a Calafreyan archer",
@@ -6858,6 +7255,12 @@
           "drops": 1,
           "corpses": 5,
           "rate": 0.2
+        },
+        {
+          "mob": "an ashira shaman",
+          "drops": 1,
+          "corpses": 6,
+          "rate": 0.16666666666666666
         }
       ],
       "prices": [],
@@ -6869,6 +7272,20 @@
         "Shaded Dunes",
         "Keepersbight"
       ]
+    },
+    {
+      "id": "rawhide_strap",
+      "gameId": null,
+      "name": "Rawhide Strap",
+      "droppedBy": [],
+      "prices": [
+        {
+          "copper": 2,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "rawhide_yoke",
@@ -6896,14 +7313,15 @@
       "prices": [
         {
           "copper": 1,
-          "count": 18
+          "count": 23
         }
       ],
-      "harvested": 456,
+      "harvested": 517,
       "zones": [
         "Evershade Weald",
+        "Night Harbor",
         "Keepersbight",
-        "Night Harbor"
+        "Shaded Dunes"
       ]
     },
     {
@@ -7382,8 +7800,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 53,
-          "rate": 0.018867924528301886
+          "corpses": 55,
+          "rate": 0.01818181818181818
         },
         {
           "mob": "a skeletal cleric",
@@ -7483,8 +7901,8 @@
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 53,
-          "rate": 0.03773584905660377
+          "corpses": 55,
+          "rate": 0.03636363636363636
         },
         {
           "mob": "a Fellstone tracker",
@@ -7537,8 +7955,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 53,
-          "rate": 0.018867924528301886
+          "corpses": 55,
+          "rate": 0.01818181818181818
         },
         {
           "mob": "a skeletal cleric",
@@ -7582,8 +8000,8 @@
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 53,
-          "rate": 0.03773584905660377
+          "corpses": 55,
+          "rate": 0.03636363636363636
         },
         {
           "mob": "a skeletal fighter",
@@ -7644,8 +8062,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 53,
-          "rate": 0.018867924528301886
+          "corpses": 55,
+          "rate": 0.01818181818181818
         },
         {
           "mob": "a Fellstone sentry",
@@ -7805,8 +8223,8 @@
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 53,
-          "rate": 0.03773584905660377
+          "corpses": 55,
+          "rate": 0.03636363636363636
         },
         {
           "mob": "a Fellstone scout",
@@ -8095,15 +8513,16 @@
       "droppedBy": [
         {
           "mob": "a dunes scarab",
-          "drops": 1,
-          "corpses": 11,
-          "rate": 0.09090909090909091
+          "drops": 2,
+          "corpses": 14,
+          "rate": 0.14285714285714285
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Night Harbor"
+        "Night Harbor",
+        "Shaded Dunes"
       ]
     },
     {
@@ -8114,8 +8533,8 @@
         {
           "mob": "a dunes scarab",
           "drops": 3,
-          "corpses": 11,
-          "rate": 0.2727272727272727
+          "corpses": 14,
+          "rate": 0.21428571428571427
         }
       ],
       "prices": [
@@ -8137,9 +8556,9 @@
       "droppedBy": [
         {
           "mob": "a dunes scarab",
-          "drops": 8,
-          "corpses": 11,
-          "rate": 0.7272727272727273
+          "drops": 10,
+          "corpses": 14,
+          "rate": 0.7142857142857143
         }
       ],
       "prices": [
@@ -8195,8 +8614,8 @@
         {
           "mob": "a skeleton",
           "drops": 5,
-          "corpses": 53,
-          "rate": 0.09433962264150944
+          "corpses": 55,
+          "rate": 0.09090909090909091
         },
         {
           "mob": "a rotting skeleton",
@@ -8217,7 +8636,7 @@
       "name": "Silver Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 33,
+      "harvested": 46,
       "zones": [
         "Scarwood"
       ]
@@ -8283,21 +8702,40 @@
       ]
     },
     {
+      "id": "smuggler_s_logbook_page_5",
+      "gameId": "c58f56a68489627b350982f4",
+      "name": "Smuggler's Logbook Page 5",
+      "droppedBy": [
+        {
+          "mob": "an ashira raider",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes"
+      ]
+    },
+    {
       "id": "snake_egg",
       "gameId": "snake_egg",
       "name": "Snake Egg",
       "droppedBy": [
         {
           "mob": "a rattlesnake",
-          "drops": 1,
-          "corpses": 4,
-          "rate": 0.25
+          "drops": 3,
+          "corpses": 8,
+          "rate": 0.375
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Night Harbor"
+        "Night Harbor",
+        "Shaded Dunes"
       ]
     },
     {
@@ -8320,8 +8758,8 @@
         {
           "mob": "a rattlesnake",
           "drops": 3,
-          "corpses": 4,
-          "rate": 0.75
+          "corpses": 8,
+          "rate": 0.375
         }
       ],
       "prices": [
@@ -8441,6 +8879,12 @@
           "drops": 9,
           "corpses": 12,
           "rate": 0.75
+        },
+        {
+          "mob": "a giant spider",
+          "drops": 2,
+          "corpses": 3,
+          "rate": 0.6666666666666666
         }
       ],
       "prices": [
@@ -8462,14 +8906,21 @@
         "Evershade Weald",
         "Keepersbight",
         "Night Harbor",
-        "Blacktidebay"
+        "Blacktidebay",
+        "Shaded Dunes"
       ]
     },
     {
       "id": "spider_venom_sac",
-      "gameId": "spider_venom",
+      "gameId": "919a1861ef847734ea5f9093",
       "name": "Spider Venom Sac",
       "droppedBy": [
+        {
+          "mob": "a giant spider",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        },
         {
           "mob": "a black widow hatchling",
           "drops": 4,
@@ -8481,11 +8932,16 @@
         {
           "copper": 5,
           "count": 3
+        },
+        {
+          "copper": 12,
+          "count": 1
         }
       ],
       "harvested": 0,
       "zones": [
-        "Evershade Weald"
+        "Evershade Weald",
+        "Shaded Dunes"
       ]
     },
     {
@@ -8676,8 +9132,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 53,
-          "rate": 0.018867924528301886
+          "corpses": 55,
+          "rate": 0.01818181818181818
         },
         {
           "mob": "a Fellstone sentry",
@@ -8766,8 +9222,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 53,
-          "rate": 0.018867924528301886
+          "corpses": 55,
+          "rate": 0.01818181818181818
         },
         {
           "mob": "a Fellstone sentry",
@@ -8797,7 +9253,7 @@
       "prices": [
         {
           "copper": 20,
-          "count": 1
+          "count": 2
         }
       ],
       "harvested": 0,
@@ -8822,8 +9278,8 @@
         {
           "mob": "an ashira warrior",
           "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
+          "corpses": 11,
+          "rate": 0.09090909090909091
         },
         {
           "mob": "an orcish tactician",
@@ -8840,8 +9296,8 @@
         {
           "mob": "a skeleton",
           "drops": 3,
-          "corpses": 53,
-          "rate": 0.05660377358490566
+          "corpses": 55,
+          "rate": 0.05454545454545454
         },
         {
           "mob": "a Fellstone tracker",
@@ -8948,8 +9404,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 53,
-          "rate": 0.018867924528301886
+          "corpses": 55,
+          "rate": 0.01818181818181818
         },
         {
           "mob": "a skeletal cleric",
@@ -8996,6 +9452,12 @@
           "rate": 0.041666666666666664
         },
         {
+          "mob": "a skeleton",
+          "drops": 2,
+          "corpses": 55,
+          "rate": 0.03636363636363636
+        },
+        {
           "mob": "a Fellstone ragecaller",
           "drops": 1,
           "corpses": 34,
@@ -9012,12 +9474,6 @@
           "drops": 2,
           "corpses": 98,
           "rate": 0.02040816326530612
-        },
-        {
-          "mob": "a skeleton",
-          "drops": 1,
-          "corpses": 53,
-          "rate": 0.018867924528301886
         },
         {
           "mob": "a Fellstone sentinel",
@@ -9048,7 +9504,8 @@
       "zones": [
         "Blacktidebay",
         "Tomb of the Last Wyrmsbane",
-        "Evershade Weald"
+        "Evershade Weald",
+        "Shaded Dunes"
       ]
     },
     {
@@ -9065,8 +9522,8 @@
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 53,
-          "rate": 0.03773584905660377
+          "corpses": 55,
+          "rate": 0.03636363636363636
         },
         {
           "mob": "a skeletal warrior",
@@ -9244,8 +9701,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 53,
-          "rate": 0.018867924528301886
+          "corpses": 55,
+          "rate": 0.01818181818181818
         },
         {
           "mob": "a rotting skeleton",
@@ -9293,8 +9750,8 @@
         {
           "mob": "an ashira warrior",
           "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
+          "corpses": 11,
+          "rate": 0.09090909090909091
         },
         {
           "mob": "a Fellstone corrupter",
@@ -9341,8 +9798,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 53,
-          "rate": 0.018867924528301886
+          "corpses": 55,
+          "rate": 0.01818181818181818
         },
         {
           "mob": "a rotting skeleton",
@@ -9380,8 +9837,8 @@
         {
           "mob": "an ashira warrior",
           "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
+          "corpses": 11,
+          "rate": 0.09090909090909091
         },
         {
           "mob": "a Fellstone warrior",
@@ -9404,8 +9861,8 @@
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 53,
-          "rate": 0.03773584905660377
+          "corpses": 55,
+          "rate": 0.03636363636363636
         },
         {
           "mob": "a skeletal warrior",
@@ -9465,8 +9922,8 @@
         {
           "mob": "an ashira warrior",
           "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
+          "corpses": 11,
+          "rate": 0.09090909090909091
         },
         {
           "mob": "an orcish tactician",
@@ -9519,8 +9976,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 53,
-          "rate": 0.018867924528301886
+          "corpses": 55,
+          "rate": 0.01818181818181818
         },
         {
           "mob": "a Fellstone sentry",
@@ -9586,6 +10043,12 @@
           "rate": 0.01904761904761905
         },
         {
+          "mob": "a skeleton",
+          "drops": 1,
+          "corpses": 55,
+          "rate": 0.01818181818181818
+        },
+        {
           "mob": "a Fellstone sentinel",
           "drops": 2,
           "corpses": 148,
@@ -9609,7 +10072,8 @@
       "zones": [
         "Blacktidebay",
         "Evershade Weald",
-        "Tomb of the Last Wyrmsbane"
+        "Tomb of the Last Wyrmsbane",
+        "Shaded Dunes"
       ]
     },
     {
@@ -9620,8 +10084,8 @@
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 53,
-          "rate": 0.03773584905660377
+          "corpses": 55,
+          "rate": 0.03636363636363636
         },
         {
           "mob": "a rotting skeleton",
@@ -9914,7 +10378,7 @@
     },
     {
       "id": "tattered_rawhide_belt",
-      "gameId": "tattered_rawhide_belt",
+      "gameId": "2e72012d918566fe697ca3de",
       "name": "Tattered Rawhide Belt",
       "droppedBy": [
         {
@@ -9922,6 +10386,12 @@
           "drops": 1,
           "corpses": 1,
           "rate": 1
+        },
+        {
+          "mob": "an ashira ambusher",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
         },
         {
           "mob": "a Fellstone warrior",
@@ -9932,8 +10402,8 @@
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 53,
-          "rate": 0.03773584905660377
+          "corpses": 55,
+          "rate": 0.03636363636363636
         },
         {
           "mob": "a Fellstone tracker",
@@ -9973,7 +10443,8 @@
       "harvested": 0,
       "zones": [
         "Blacktidebay",
-        "Evershade Weald"
+        "Evershade Weald",
+        "Shaded Dunes"
       ]
     },
     {
@@ -9990,8 +10461,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 53,
-          "rate": 0.018867924528301886
+          "corpses": 55,
+          "rate": 0.01818181818181818
         },
         {
           "mob": "a Fellstone sentinel",
@@ -10225,6 +10696,12 @@
       "name": "Tattered Rawhide Gorget",
       "droppedBy": [
         {
+          "mob": "an ashira shaman",
+          "drops": 1,
+          "corpses": 6,
+          "rate": 0.16666666666666666
+        },
+        {
           "mob": "a Fellstone defiler",
           "drops": 1,
           "corpses": 6,
@@ -10280,7 +10757,8 @@
       "harvested": 0,
       "zones": [
         "Blacktidebay",
-        "Evershade Weald"
+        "Evershade Weald",
+        "Shaded Dunes"
       ]
     },
     {
@@ -10380,8 +10858,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 53,
-          "rate": 0.018867924528301886
+          "corpses": 55,
+          "rate": 0.01818181818181818
         },
         {
           "mob": "a Fellstone guard",
@@ -10417,6 +10895,12 @@
           "drops": 3,
           "corpses": 148,
           "rate": 0.02027027027027027
+        },
+        {
+          "mob": "a skeleton",
+          "drops": 1,
+          "corpses": 55,
+          "rate": 0.01818181818181818
         }
       ],
       "prices": [
@@ -10427,7 +10911,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Blacktidebay"
+        "Blacktidebay",
+        "Shaded Dunes"
       ]
     },
     {
@@ -10450,8 +10935,8 @@
         {
           "mob": "a skeleton",
           "drops": 3,
-          "corpses": 53,
-          "rate": 0.05660377358490566
+          "corpses": 55,
+          "rate": 0.05454545454545454
         },
         {
           "mob": "a skeletal warrior",
@@ -10503,8 +10988,8 @@
         {
           "mob": "an ashira warrior",
           "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
+          "corpses": 11,
+          "rate": 0.09090909090909091
         },
         {
           "mob": "a Fellstone warrior",
@@ -10903,7 +11388,7 @@
       "name": "Tin Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 272,
+      "harvested": 385,
       "zones": [
         "Scarwood"
       ]
@@ -11000,8 +11485,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 53,
-          "rate": 0.018867924528301886
+          "corpses": 55,
+          "rate": 0.01818181818181818
         },
         {
           "mob": "a rotting skeleton",
@@ -11390,11 +11875,12 @@
           "count": 5
         }
       ],
-      "harvested": 379,
+      "harvested": 431,
       "zones": [
         "Evershade Weald",
+        "Night Harbor",
         "Keepersbight",
-        "Night Harbor"
+        "Shaded Dunes"
       ]
     },
     {
@@ -11535,7 +12021,7 @@
       "prices": [
         {
           "copper": 25,
-          "count": 2
+          "count": 3
         }
       ],
       "harvested": 0,
@@ -11553,8 +12039,8 @@
         {
           "mob": "an ashira warrior",
           "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
+          "corpses": 11,
+          "rate": 0.09090909090909091
         },
         {
           "mob": "an old elven skeleton",
@@ -11565,8 +12051,8 @@
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 53,
-          "rate": 0.03773584905660377
+          "corpses": 55,
+          "rate": 0.03636363636363636
         },
         {
           "mob": "a Fellstone tracker",
@@ -11722,8 +12208,8 @@
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 53,
-          "rate": 0.03773584905660377
+          "corpses": 55,
+          "rate": 0.03636363636363636
         },
         {
           "mob": "a skeletal warrior",
@@ -11794,16 +12280,17 @@
     }
   ],
   "harvest": {
-    "Copper Ore": 823,
-    "Brittle Stone": 853,
-    "Clouded Crystallized Magic": 14,
-    "Wood": 379,
-    "Resin": 456,
+    "Copper Ore": 847,
+    "Brittle Stone": 879,
+    "Clouded Crystallized Magic": 16,
+    "Wood": 431,
+    "Resin": 517,
+    "Lionleaf": 32,
+    "Ghost Poppy": 37,
+    "Chipped Emerald": 4,
     "Chipped Turquoise": 3,
-    "Lionleaf": 31,
     "Chipped Star Ruby": 3,
     "Alunite Ore": 11,
-    "Ghost Poppy": 35,
     "Nomad's Grace": 10,
     "Chipped Fire Emerald": 5,
     "Chipped Bloodstone": 1,
@@ -11815,7 +12302,6 @@
     "Chipped Onyx": 4,
     "Chipped Hematite": 4,
     "Chipped Diamond": 2,
-    "Chipped Emerald": 3,
     "Chipped Black Sapphire": 2,
     "Magic Frond": 2,
     "Whispering Sage": 13,
@@ -11830,320 +12316,327 @@
     "Chipped Topaz": 1,
     "Chipped Carnelian": 1,
     "Chipped Lapis Lazuli": 1,
-    "Limestone": 167,
-    "Tin Ore": 272,
-    "Jagged Stone": 249,
+    "Limestone": 182,
+    "Tin Ore": 385,
+    "Jagged Stone": 353,
     "Flawed Turquoise": 2,
-    "Silver Ore": 33,
-    "Glinting Crystallized Magic": 7,
-    "Flawed Black Sapphire": 2,
-    "Flawed Hematite": 1,
+    "Silver Ore": 46,
+    "Glinting Crystallized Magic": 12,
+    "Flawed Black Sapphire": 3,
+    "Flawed Hematite": 2,
     "Flawed Opal": 1,
     "Flawed Pearl": 3,
     "Flawed Cat's Eye Agate": 1,
     "Flawed Malachite": 1,
     "Flawed Diamond": 1,
     "Flawed Ruby": 1,
-    "Flawed Bloodstone": 2,
+    "Flawed Bloodstone": 3,
     "Flawed Emerald": 2,
-    "Flawed Wolf's Eye Agate": 1,
-    "Chipped Peridot": 1
+    "Flawed Wolf's Eye Agate": 2,
+    "Chipped Peridot": 1,
+    "Flawed Blue Diamond": 1,
+    "Flawed Sapphire": 2,
+    "Flawed Black Pearl": 1,
+    "Flawed Amber": 1,
+    "Flawed Star Rose Quartz": 1
   },
   "harvestNodes": [
     {
       "name": "Copper Ore & Brittle Stone",
-      "pulls": 917,
+      "pulls": 944,
       "yields": [
         {
           "res": "Copper Ore",
-          "count": 822,
-          "rate": 0.8964013086150491
+          "count": 846,
+          "rate": 0.8961864406779662
         },
         {
           "res": "Brittle Stone",
-          "count": 689,
-          "rate": 0.7513631406761178
+          "count": 709,
+          "rate": 0.7510593220338984
         },
         {
           "res": "Clouded Crystallized Magic",
-          "count": 14,
-          "rate": 0.015267175572519083
+          "count": 15,
+          "rate": 0.015889830508474576
         },
         {
           "res": "Alunite Ore",
           "count": 10,
-          "rate": 0.010905125408942203
+          "rate": 0.01059322033898305
         },
         {
           "res": "Chipped Fire Emerald",
           "count": 5,
-          "rate": 0.0054525627044711015
+          "rate": 0.005296610169491525
         },
         {
           "res": "Chipped Black Pearl",
           "count": 5,
-          "rate": 0.0054525627044711015
+          "rate": 0.005296610169491525
         },
         {
           "res": "Chipped Malachite",
           "count": 4,
-          "rate": 0.004362050163576881
+          "rate": 0.00423728813559322
         },
         {
           "res": "Chipped Onyx",
           "count": 4,
-          "rate": 0.004362050163576881
+          "rate": 0.00423728813559322
         },
         {
           "res": "Chipped Hematite",
           "count": 4,
-          "rate": 0.004362050163576881
+          "rate": 0.00423728813559322
         },
         {
           "res": "Chipped Turquoise",
           "count": 3,
-          "rate": 0.003271537622682661
+          "rate": 0.0031779661016949155
         },
         {
           "res": "Chipped Star Ruby",
           "count": 3,
-          "rate": 0.003271537622682661
+          "rate": 0.0031779661016949155
         },
         {
           "res": "Chipped Blue Diamond",
           "count": 3,
-          "rate": 0.003271537622682661
+          "rate": 0.0031779661016949155
+        },
+        {
+          "res": "Chipped Emerald",
+          "count": 3,
+          "rate": 0.0031779661016949155
         },
         {
           "res": "Chipped Sapphire",
           "count": 3,
-          "rate": 0.003271537622682661
+          "rate": 0.0031779661016949155
         },
         {
           "res": "Chipped Amber",
           "count": 2,
-          "rate": 0.0021810250817884407
+          "rate": 0.00211864406779661
         },
         {
           "res": "Chipped Jacinth",
           "count": 2,
-          "rate": 0.0021810250817884407
+          "rate": 0.00211864406779661
         },
         {
           "res": "Chipped Diamond",
           "count": 2,
-          "rate": 0.0021810250817884407
-        },
-        {
-          "res": "Chipped Emerald",
-          "count": 2,
-          "rate": 0.0021810250817884407
+          "rate": 0.00211864406779661
         },
         {
           "res": "Chipped Black Sapphire",
           "count": 2,
-          "rate": 0.0021810250817884407
+          "rate": 0.00211864406779661
         },
         {
           "res": "Chipped Cat's Eye Agate",
           "count": 2,
-          "rate": 0.0021810250817884407
+          "rate": 0.00211864406779661
         },
         {
           "res": "Chipped Bloodstone",
           "count": 1,
-          "rate": 0.0010905125408942203
+          "rate": 0.001059322033898305
         },
         {
           "res": "Chipped Jasper",
           "count": 1,
-          "rate": 0.0010905125408942203
+          "rate": 0.001059322033898305
         },
         {
           "res": "Chipped Wolf's Eye Agate",
           "count": 1,
-          "rate": 0.0010905125408942203
+          "rate": 0.001059322033898305
         },
         {
           "res": "Chipped Ruby",
           "count": 1,
-          "rate": 0.0010905125408942203
+          "rate": 0.001059322033898305
         },
         {
           "res": "Chipped Star Rose Quartz",
           "count": 1,
-          "rate": 0.0010905125408942203
+          "rate": 0.001059322033898305
         },
         {
           "res": "Chipped Fire Opal",
           "count": 1,
-          "rate": 0.0010905125408942203
+          "rate": 0.001059322033898305
         },
         {
           "res": "Chipped Topaz",
           "count": 1,
-          "rate": 0.0010905125408942203
+          "rate": 0.001059322033898305
         },
         {
           "res": "Chipped Carnelian",
           "count": 1,
-          "rate": 0.0010905125408942203
+          "rate": 0.001059322033898305
         },
         {
           "res": "Chipped Lapis Lazuli",
           "count": 1,
-          "rate": 0.0010905125408942203
+          "rate": 0.001059322033898305
         },
         {
           "res": "Chipped Peridot",
           "count": 1,
-          "rate": 0.0010905125408942203
+          "rate": 0.001059322033898305
+        }
+      ],
+      "zones": [
+        "Evershade Weald",
+        "Shaded Dunes",
+        "Night Harbor",
+        "Keepersbight"
+      ]
+    },
+    {
+      "name": "Tin Ore & Jagged Stone",
+      "pulls": 501,
+      "yields": [
+        {
+          "res": "Tin Ore",
+          "count": 385,
+          "rate": 0.7684630738522954
+        },
+        {
+          "res": "Jagged Stone",
+          "count": 307,
+          "rate": 0.6127744510978044
+        },
+        {
+          "res": "Limestone",
+          "count": 104,
+          "rate": 0.20758483033932135
+        },
+        {
+          "res": "Silver Ore",
+          "count": 33,
+          "rate": 0.0658682634730539
+        },
+        {
+          "res": "Glinting Crystallized Magic",
+          "count": 12,
+          "rate": 0.023952095808383235
+        },
+        {
+          "res": "Flawed Pearl",
+          "count": 3,
+          "rate": 0.005988023952095809
+        },
+        {
+          "res": "Flawed Bloodstone",
+          "count": 3,
+          "rate": 0.005988023952095809
+        },
+        {
+          "res": "Flawed Turquoise",
+          "count": 2,
+          "rate": 0.003992015968063872
+        },
+        {
+          "res": "Flawed Black Sapphire",
+          "count": 2,
+          "rate": 0.003992015968063872
+        },
+        {
+          "res": "Flawed Hematite",
+          "count": 2,
+          "rate": 0.003992015968063872
+        },
+        {
+          "res": "Flawed Emerald",
+          "count": 2,
+          "rate": 0.003992015968063872
+        },
+        {
+          "res": "Flawed Wolf's Eye Agate",
+          "count": 2,
+          "rate": 0.003992015968063872
+        },
+        {
+          "res": "Flawed Sapphire",
+          "count": 2,
+          "rate": 0.003992015968063872
+        },
+        {
+          "res": "Flawed Opal",
+          "count": 1,
+          "rate": 0.001996007984031936
+        },
+        {
+          "res": "Flawed Cat's Eye Agate",
+          "count": 1,
+          "rate": 0.001996007984031936
+        },
+        {
+          "res": "Flawed Malachite",
+          "count": 1,
+          "rate": 0.001996007984031936
+        },
+        {
+          "res": "Flawed Diamond",
+          "count": 1,
+          "rate": 0.001996007984031936
+        },
+        {
+          "res": "Flawed Ruby",
+          "count": 1,
+          "rate": 0.001996007984031936
+        },
+        {
+          "res": "Flawed Blue Diamond",
+          "count": 1,
+          "rate": 0.001996007984031936
+        },
+        {
+          "res": "Flawed Black Pearl",
+          "count": 1,
+          "rate": 0.001996007984031936
+        },
+        {
+          "res": "Flawed Amber",
+          "count": 1,
+          "rate": 0.001996007984031936
+        },
+        {
+          "res": "Flawed Star Rose Quartz",
+          "count": 1,
+          "rate": 0.001996007984031936
+        }
+      ],
+      "zones": [
+        "Scarwood"
+      ]
+    },
+    {
+      "name": "Wood & Resin",
+      "pulls": 430,
+      "yields": [
+        {
+          "res": "Wood",
+          "count": 430,
+          "rate": 1
+        },
+        {
+          "res": "Resin",
+          "count": 367,
+          "rate": 0.8534883720930233
         }
       ],
       "zones": [
         "Evershade Weald",
         "Night Harbor",
-        "Shaded Dunes",
-        "Keepersbight"
-      ]
-    },
-    {
-      "name": "Wood & Resin",
-      "pulls": 378,
-      "yields": [
-        {
-          "res": "Wood",
-          "count": 378,
-          "rate": 1
-        },
-        {
-          "res": "Resin",
-          "count": 323,
-          "rate": 0.8544973544973545
-        }
-      ],
-      "zones": [
-        "Evershade Weald",
         "Keepersbight",
-        "Night Harbor"
-      ]
-    },
-    {
-      "name": "Tin Ore & Jagged Stone",
-      "pulls": 282,
-      "yields": [
-        {
-          "res": "Tin Ore",
-          "count": 261,
-          "rate": 0.925531914893617
-        },
-        {
-          "res": "Jagged Stone",
-          "count": 214,
-          "rate": 0.7588652482269503
-        },
-        {
-          "res": "Silver Ore",
-          "count": 21,
-          "rate": 0.07446808510638298
-        },
-        {
-          "res": "Glinting Crystallized Magic",
-          "count": 7,
-          "rate": 0.024822695035460994
-        },
-        {
-          "res": "Flawed Pearl",
-          "count": 3,
-          "rate": 0.010638297872340425
-        },
-        {
-          "res": "Flawed Turquoise",
-          "count": 2,
-          "rate": 0.0070921985815602835
-        },
-        {
-          "res": "Flawed Bloodstone",
-          "count": 2,
-          "rate": 0.0070921985815602835
-        },
-        {
-          "res": "Flawed Emerald",
-          "count": 2,
-          "rate": 0.0070921985815602835
-        },
-        {
-          "res": "Flawed Black Sapphire",
-          "count": 1,
-          "rate": 0.0035460992907801418
-        },
-        {
-          "res": "Flawed Hematite",
-          "count": 1,
-          "rate": 0.0035460992907801418
-        },
-        {
-          "res": "Flawed Opal",
-          "count": 1,
-          "rate": 0.0035460992907801418
-        },
-        {
-          "res": "Flawed Cat's Eye Agate",
-          "count": 1,
-          "rate": 0.0035460992907801418
-        },
-        {
-          "res": "Flawed Malachite",
-          "count": 1,
-          "rate": 0.0035460992907801418
-        },
-        {
-          "res": "Flawed Diamond",
-          "count": 1,
-          "rate": 0.0035460992907801418
-        },
-        {
-          "res": "Flawed Wolf's Eye Agate",
-          "count": 1,
-          "rate": 0.0035460992907801418
-        }
-      ],
-      "zones": [
-        "Scarwood"
-      ]
-    },
-    {
-      "name": "Limestone",
-      "pulls": 92,
-      "yields": [
-        {
-          "res": "Limestone",
-          "count": 92,
-          "rate": 1
-        },
-        {
-          "res": "Tin Ore",
-          "count": 11,
-          "rate": 0.11956521739130435
-        },
-        {
-          "res": "Jagged Stone",
-          "count": 6,
-          "rate": 0.06521739130434782
-        },
-        {
-          "res": "Silver Ore",
-          "count": 2,
-          "rate": 0.021739130434782608
-        },
-        {
-          "res": "Flawed Ruby",
-          "count": 1,
-          "rate": 0.010869565217391304
-        }
-      ],
-      "zones": [
-        "Scarwood"
+        "Shaded Dunes"
       ]
     },
     {
@@ -12187,17 +12680,17 @@
     },
     {
       "name": "Silver Ore",
-      "pulls": 10,
+      "pulls": 13,
       "yields": [
         {
           "res": "Silver Ore",
-          "count": 10,
+          "count": 13,
           "rate": 1
         },
         {
           "res": "Flawed Black Sapphire",
           "count": 1,
-          "rate": 0.1
+          "rate": 0.07692307692307693
         }
       ],
       "zones": [
