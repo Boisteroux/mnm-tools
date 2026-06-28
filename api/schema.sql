@@ -11,7 +11,9 @@ CREATE TABLE IF NOT EXISTS submissions (
   status      TEXT NOT NULL DEFAULT 'pending',        -- pending | approved | rejected
   created_at  TEXT NOT NULL DEFAULT (datetime('now')),
   reviewed_at TEXT,
-  ip_hash     TEXT                                    -- hashed, for rate-limiting only (never the raw IP)
+  ip_hash     TEXT,                                   -- hashed, for rate-limiting only (never the raw IP)
+  verified    INTEGER NOT NULL DEFAULT 0,             -- 1 = submitted by a signed-in Discord user
+  discord_id  TEXT                                    -- the verified Discord user id
 );
 CREATE INDEX IF NOT EXISTS idx_status ON submissions(status);
 CREATE INDEX IF NOT EXISTS idx_ip_recent ON submissions(ip_hash, created_at);

@@ -5,6 +5,10 @@ compatibility_date = "2026-06-01"
 # The only site origin allowed to call this API (CORS). Localhost is added in code for dev.
 [vars]
 ALLOWED_ORIGIN = "https://mnm-db.com"
+# Discord OAuth client id (public). Fill from the Discord Developer Portal.
+DISCORD_CLIENT_ID = "1520590890656202952"
+# Optional: comma-separated Discord user ids whose submissions auto-approve (skip the queue).
+TRUSTED_DISCORD_IDS = ""
 
 # D1 (SQLite) database. Fill database_id with the value `npx wrangler d1 create mnmdb` prints.
 [[d1_databases]]

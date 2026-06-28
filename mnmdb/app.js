@@ -27,6 +27,37 @@ const API_BASE = 'https://mnmdb-api.boisteroux.workers.dev';
 // Cloudflare Turnstile site key (public — it lives in the page HTML, safe to commit).
 // The matching secret is set on the Worker as TURNSTILE_SECRET, which verifies the token.
 const TURNSTILE_SITE_KEY = '0x4AAAAAADsBgp1uszsr9gUW';
+
+// ---- Login session (the Discord OAuth callback redirects to mnm-db.com/?login=<token>) ----
+let SESSION = null;
+(function initSession() {
+  try {
+    const q = new URLSearchParams(location.search);
+    const incoming = q.get('login');
+    if (incoming) localStorage.setItem('mnmdb-session', incoming);
+    if (incoming || q.get('login_error')) history.replaceState({}, '', location.pathname + location.hash);
+  } catch {}
+  let saved; try { saved = localStorage.getItem('mnmdb-session'); } catch {}
+  if (!saved) return;
+  try {
+    const bin = atob(saved.split('.')[0].replace(/-/g, '+').replace(/_/g, '/'));
+    const p = JSON.parse(new TextDecoder().decode(Uint8Array.from(bin, (c) => c.charCodeAt(0))));
+    if (p.exp && p.exp > Date.now()) SESSION = { token: saved, id: String(p.id), name: String(p.name || '') };
+    else localStorage.removeItem('mnmdb-session');
+  } catch { try { localStorage.removeItem('mnmdb-session'); } catch {} }
+})();
+function signOut() { try { localStorage.removeItem('mnmdb-session'); } catch {} SESSION = null; }
+// The identity block in the Add-a-Marker modal: signed-in users see their verified name
+// (no free-text name, no bot check); everyone else gets the optional name + a sign-in button.
+function identityBlock() {
+  if (SESSION) {
+    return '<div class="sp-row sp-identity"><span>Signed in as <b>' + esc(SESSION.name) + '</b></span>' +
+      '<button type="button" id="sp-signout" class="linklike">sign out</button></div>';
+  }
+  return '<div class="sp-row"><label for="sp-name">Your name <span class="muted">(optional — for credit)</span></label><input id="sp-name" maxlength="40" /></div>' +
+    '<div class="sp-signin"><button type="button" id="sp-discord" class="btn-discord">Sign in with Discord</button>' +
+    '<span class="muted">verifies your name · skips the bot check</span></div>';
+}
 let COMMUNITY = null;
 async function loadCommunity() {
   if (COMMUNITY) return COMMUNITY;
@@ -1567,9 +1598,9 @@ let mapLightSrc = '';   // current map image, for the click-to-enlarge lightbox
 function markerLayerHTML(markers, nw, nh) {
   return markers.map((m) =>
     '<span class="mk' + (m.community ? ' mk-community' : '') + '" style="left:' + (m.x / nw * 100) + '%;top:' + (m.y / nh * 100) + '%;--mc:' + m.color + '" ' +
-    'title="' + esc(m.label + (m.community ? ' — community marker' + (m.submitter ? ' (by ' + m.submitter + ')' : '') : '') + (m.notes ? ' — ' + m.notes : '')) + '">' +
+    'title="' + esc(m.label + (m.community ? ' — ' + (m.verified ? 'verified' : 'community') + ' marker' + (m.submitter ? ' by ' + m.submitter : '') : '') + (m.notes ? ' — ' + m.notes : '')) + '">' +
     '<span class="mk-ic">' + m.icon + '</span>' +
-    (m.label ? '<span class="mk-lbl">' + esc(m.label) + (m.community ? ' <span class="mk-tag">community</span>' : '') + '</span>' : '') + '</span>'
+    (m.label ? '<span class="mk-lbl">' + esc(m.label) + (m.community ? ' <span class="mk-tag' + (m.verified ? ' mk-tag-v' : '') + '">' + (m.verified ? 'verified ✓' : 'community') + '</span>' : '') + '</span>' : '') + '</span>'
   ).join('');
 }
 
@@ -1668,8 +1699,8 @@ function renderMapView(name) {
         '<p id="sp-loc" class="sub"></p>' +
         '<div class="sp-row"><label for="sp-cat">Type</label><select id="sp-cat">' + catOptions + '</select></div>' +
         '<div class="sp-row"><label for="sp-label">Label</label><input id="sp-label" maxlength="80" placeholder="e.g. Gnarlroot (named spawn)" /></div>' +
-        '<div class="sp-row"><label for="sp-name">Your name <span class="muted">(optional — for credit)</span></label><input id="sp-name" maxlength="40" /></div>' +
-        '<div id="cf-turnstile" class="cf-ts"></div>' +
+        identityBlock() +
+        (SESSION ? '' : '<div id="cf-turnstile" class="cf-ts"></div>') +
         '<div class="sp-actions"><button id="sp-submit" class="primary">Submit for review</button><button id="sp-cancel">Cancel</button></div>' +
         '<div id="sp-status" class="sp-status"></div>' +
       '</div>' +
@@ -1692,7 +1723,7 @@ function wireMapView(name, catById, fallback) {
   loadCommunity().then((c) => {
     const cms = (c[name] || []).map((m) => {
       const cat = catById[m.category] || fallback;
-      return { x: m.x, y: m.y, label: m.label, submitter: m.submitter, color: cat.color, icon: cat.icon, community: true };
+      return { x: m.x, y: m.y, label: m.label, submitter: m.submitter, verified: m.verified, color: cat.color, icon: cat.icon, community: true };
     });
     if (cms.length) { pendingMap = (pendingMap || []).concat(cms); place(); }
   });
@@ -1736,19 +1767,25 @@ function wireMapView(name, catById, fallback) {
     hint.classList.add('hidden');
     loc.textContent = name + ' · (' + px + ', ' + py + ')';
     modal.classList.remove('hidden');
-    if (TURNSTILE_SITE_KEY && window.turnstile && tsId == null) { try { tsId = turnstile.render('#cf-turnstile', { sitekey: TURNSTILE_SITE_KEY }); } catch {} }
+    if (!SESSION && TURNSTILE_SITE_KEY && window.turnstile && tsId == null) { try { tsId = turnstile.render('#cf-turnstile', { sitekey: TURNSTILE_SITE_KEY }); } catch {} }
     document.getElementById('sp-label').focus();
   });
 
   document.getElementById('sp-cancel').addEventListener('click', exitSuggest);
+  const discordBtn = document.getElementById('sp-discord');
+  if (discordBtn) discordBtn.addEventListener('click', () => { location.href = API_BASE + '/auth/discord/start'; });
+  const signoutBtn = document.getElementById('sp-signout');
+  if (signoutBtn) signoutBtn.addEventListener('click', () => { exitSuggest(); signOut(); route(); });
   document.getElementById('sp-submit').addEventListener('click', async () => {
     if (!pin) { status.textContent = 'Click the map to place your pin first.'; status.className = 'sp-status err'; return; }
     const label = document.getElementById('sp-label').value.trim();
     if (!label) { status.textContent = 'Please add a label.'; status.className = 'sp-status err'; return; }
+    const nameEl = document.getElementById('sp-name');
     const body = {
       zone: name, x: +pin.dataset.x, y: +pin.dataset.y,
       category: document.getElementById('sp-cat').value, label,
-      submitter: document.getElementById('sp-name').value.trim() || undefined,
+      submitter: (!SESSION && nameEl) ? (nameEl.value.trim() || undefined) : undefined,
+      session: SESSION ? SESSION.token : undefined,
       turnstile: (window.turnstile && tsId != null) ? turnstile.getResponse(tsId) : undefined,
     };
     status.textContent = 'Submitting…'; status.className = 'sp-status';
@@ -1810,7 +1847,7 @@ async function loadPending(creds) {
       : '<div class="modprev modprev-none">no map</div>';
     return '<div class="modcard" data-id="' + m.id + '">' + preview +
       '<div class="modinfo">' +
-        '<div class="modlabel"><span class="mdot" style="background:' + c.color + '"></span>' + esc(m.label) + '</div>' +
+        '<div class="modlabel"><span class="mdot" style="background:' + c.color + '"></span>' + esc(m.label) + (m.verified ? ' <span class="vbadge">✓ verified</span>' : '') + '</div>' +
         '<div class="modmeta">' + esc(c.name) + ' · ' + esc(m.zone) + ' · (' + m.x + ', ' + m.y + ')' + (m.submitter ? ' · by ' + esc(m.submitter) : '') + '</div>' +
         '<div class="modmeta muted">' + esc(String(m.created_at || '').replace('T', ' ').replace(/\..*$/, '')) + ' UTC</div>' +
         '<div class="modactions"><button class="primary" data-act="approve">Approve</button>' +
