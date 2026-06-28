@@ -1822,8 +1822,10 @@ function renderModerate() {
   }
   $('content').innerHTML =
     '<div class="modbar"><h1>Moderation</h1><button id="mod-signout">Sign out</button></div>' +
+    '<div id="mod-trusted" class="modtrusted"></div>' +
     '<div id="mod-list"><p class="sub">Loading…</p></div>';
   $('mod-signout').addEventListener('click', () => { localStorage.removeItem('mnmdb-admin'); renderModerate(); });
+  loadTrusted(creds);
   loadPending(creds);
 }
 
@@ -1851,7 +1853,9 @@ async function loadPending(creds) {
         '<div class="modmeta">' + esc(c.name) + ' · ' + esc(m.zone) + ' · (' + m.x + ', ' + m.y + ')' + (m.submitter ? ' · by ' + esc(m.submitter) : '') + '</div>' +
         '<div class="modmeta muted">' + esc(String(m.created_at || '').replace('T', ' ').replace(/\..*$/, '')) + ' UTC</div>' +
         '<div class="modactions"><button class="primary" data-act="approve">Approve</button>' +
-        '<button class="danger" data-act="reject">Reject</button></div>' +
+        '<button class="danger" data-act="reject">Reject</button>' +
+        (m.verified && m.discord_id ? '<button class="trustbtn" data-trust="' + esc(String(m.discord_id)) + '" data-name="' + esc(m.submitter || '') + '">★ Trust ' + esc(m.submitter || 'this user') + '</button>' : '') +
+        '</div>' +
       '</div></div>';
   }).join('');
   // position each preview pin once its image knows its natural size
@@ -1887,7 +1891,35 @@ async function loadPending(creds) {
         } else { card.querySelectorAll('button').forEach((x) => (x.disabled = false)); }
       } catch { card.querySelectorAll('button').forEach((x) => (x.disabled = false)); }
     }));
+    const tb = card.querySelector('[data-trust]');
+    if (tb) tb.addEventListener('click', async () => {
+      card.querySelectorAll('button').forEach((x) => (x.disabled = true));
+      try {
+        const r = await fetch(API_BASE + '/admin/trust', {
+          method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + creds }, body: JSON.stringify({ discord_id: tb.dataset.trust, name: tb.dataset.name }),
+        });
+        if (r.ok) { COMMUNITY = null; loadTrusted(creds); loadPending(creds); }
+        else card.querySelectorAll('button').forEach((x) => (x.disabled = false));
+      } catch { card.querySelectorAll('button').forEach((x) => (x.disabled = false)); }
+    });
   });
+}
+
+// The trusted-contributor chips at the top of the moderation page (each removable).
+async function loadTrusted(creds) {
+  const el = $('mod-trusted');
+  if (!el) return;
+  let j; try { j = await (await fetch(API_BASE + '/admin/trusted', { headers: { Authorization: 'Bearer ' + creds } })).json(); } catch { return; }
+  const list = j.trusted || [];
+  el.innerHTML = '<span class="modtrusted-lbl">Trusted contributors</span> ' +
+    (list.length
+      ? list.map((t) => '<span class="trustchip">' + esc(t.name || t.discord_id) + '<button data-untrust="' + esc(String(t.discord_id)) + '" title="Remove trust" aria-label="Remove">✕</button></span>').join('')
+      : '<span class="muted">none yet — use ★ Trust on a verified submission below.</span>');
+  el.querySelectorAll('[data-untrust]').forEach((b) => b.addEventListener('click', async () => {
+    b.disabled = true;
+    try { await fetch(API_BASE + '/admin/untrust', { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + creds }, body: JSON.stringify({ discord_id: b.dataset.untrust }) }); } catch {}
+    loadTrusted(creds);
+  }));
 }
 
 // ---- Router ----

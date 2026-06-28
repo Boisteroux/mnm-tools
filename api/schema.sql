@@ -17,3 +17,10 @@ CREATE TABLE IF NOT EXISTS submissions (
 );
 CREATE INDEX IF NOT EXISTS idx_status ON submissions(status);
 CREATE INDEX IF NOT EXISTS idx_ip_recent ON submissions(ip_hash, created_at);
+
+-- Self-service trusted contributors (their submissions auto-approve).
+CREATE TABLE IF NOT EXISTS trusted (
+  discord_id TEXT PRIMARY KEY,
+  name       TEXT,
+  added_at   TEXT NOT NULL DEFAULT (datetime('now'))
+);

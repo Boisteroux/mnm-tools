@@ -178,9 +178,13 @@ export default {
         if (results[0].n >= RATE_MAX) return json({ error: 'slow down — try again in a bit' }, 429, origin);
       }
 
-      // Trusted Discord ids skip the queue entirely.
-      const trusted = (env.TRUSTED_DISCORD_IDS || '').split(',').map((s) => s.trim()).filter(Boolean);
-      const status = (sess && trusted.includes(sess.id)) ? 'approved' : 'pending';
+      // Trusted users skip the queue entirely — either from the env seed list or the
+      // self-service `trusted` table managed from the moderation page.
+      let status = 'pending';
+      if (sess) {
+        const envTrusted = (env.TRUSTED_DISCORD_IDS || '').split(',').map((s) => s.trim()).filter(Boolean);
+        if (envTrusted.includes(sess.id) || (await env.DB.prepare('SELECT 1 FROM trusted WHERE discord_id=?').bind(sess.id).first())) status = 'approved';
+      }
 
       await env.DB.prepare(
         'INSERT INTO submissions (type, zone, x, y, category, label, submitter, ip_hash, verified, discord_id, status) VALUES (?,?,?,?,?,?,?,?,?,?,?)'
@@ -206,6 +210,27 @@ export default {
         const status = url.pathname.endsWith('approve') ? 'approved' : 'rejected';
         await env.DB.prepare("UPDATE submissions SET status=?, reviewed_at=datetime('now') WHERE id=?").bind(status, id).run();
         return json({ ok: true, id, status }, 200, origin);
+      }
+
+      // Self-service trusted-contributor list (managed from the moderation page).
+      if (request.method === 'GET' && url.pathname === '/admin/trusted') {
+        const { results } = await env.DB.prepare('SELECT discord_id, name, added_at FROM trusted ORDER BY added_at DESC').all();
+        return json({ trusted: results }, 200, origin);
+      }
+      if (request.method === 'POST' && url.pathname === '/admin/trust') {
+        let b; try { b = await request.json(); } catch { return json({ error: 'bad json' }, 400, origin); }
+        const did = String(b.discord_id || '').trim();
+        if (!did) return json({ error: 'discord_id required' }, 400, origin);
+        await env.DB.prepare("INSERT OR REPLACE INTO trusted (discord_id, name, added_at) VALUES (?,?,datetime('now'))").bind(did, String(b.name || '').slice(0, 60)).run();
+        // trusting someone clears their existing pending backlog too
+        await env.DB.prepare("UPDATE submissions SET status='approved', reviewed_at=datetime('now') WHERE discord_id=? AND status='pending'").bind(did).run();
+        return json({ ok: true }, 200, origin);
+      }
+      if (request.method === 'POST' && url.pathname === '/admin/untrust') {
+        let b; try { b = await request.json(); } catch { return json({ error: 'bad json' }, 400, origin); }
+        const did = String(b.discord_id || '').trim();
+        if (did) await env.DB.prepare('DELETE FROM trusted WHERE discord_id=?').bind(did).run();
+        return json({ ok: true }, 200, origin);
       }
     }
 

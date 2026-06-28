@@ -562,6 +562,15 @@ body {
 .modal-card button.linklike:hover { border: none; }
 .vbadge { display: inline-block; background: #5865F2; color: #fff; font-size: 11px; padding: 1px 7px; border-radius: 5px; font-weight: 600; vertical-align: 1px; }
 .mk-tag-v { color: #c7ccf7; }
+
+/* Trusted-contributor chips + the "★ Trust" button */
+.modtrusted { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; font-size: 13px; }
+.modtrusted-lbl { color: var(--muted); }
+.trustchip { display: inline-flex; align-items: center; gap: 5px; background: var(--panel-2); border: 1px solid var(--line); border-radius: 999px; padding: 3px 5px 3px 11px; }
+.trustchip button { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 13px; line-height: 1; padding: 2px 5px; border-radius: 50%; }
+.trustchip button:hover { color: #fff; background: var(--warn); }
+.modcard .trustbtn { border-color: #caa53b; color: var(--text); }
+.modcard .trustbtn:hover { border-color: #caa53b; background: color-mix(in srgb, #caa53b 18%, transparent); }
 .modal-card button, .modcard button, .modlogin button, .modbar button {
   font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; border-radius: 7px; padding: 7px 14px;
   border: 1px solid var(--line-2); background: var(--panel); color: var(--text); }
