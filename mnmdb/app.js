@@ -63,7 +63,7 @@ async function loadCommunity() {
   if (COMMUNITY) return COMMUNITY;
   COMMUNITY = {};
   try {
-    const j = await (await fetch(API_BASE + '/markers')).json();
+    const j = await (await fetch(API_BASE + '/markers?t=' + Date.now())).json();
     for (const m of (j.markers || [])) (COMMUNITY[m.zone] = COMMUNITY[m.zone] || []).push(m);
   } catch {}
   return COMMUNITY;
@@ -1687,7 +1687,7 @@ function renderMapView(name) {
     '<h1>' + esc(name) + '</h1>' +
     '<div class="maptools">' +
       (legend ? '<div class="mlegend">' + legend + '</div>' : '<span class="sub">No markers yet — add the first one.</span>') +
-      '<div class="maptool-btns"><button id="suggest-btn" class="msuggest">📍 Add a Marker</button>' +
+      '<div class="maptool-btns"><button id="suggest-btn" class="msuggest msuggest-fill">📍 Add a Marker</button>' +
       (SESSION ? '<button id="mymarkers-btn" class="msuggest">📋 My Markers</button>' : '') + '</div>' +
     '</div>' +
     '<p id="suggest-hint" class="sub hidden">Click the spot on the map where the marker belongs.</p>' +
@@ -1800,8 +1800,15 @@ function wireMapView(name, catById, fallback) {
         method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body),
       });
       if (r.ok) {
-        status.textContent = '✓ Thanks! Your marker is pending review.'; status.className = 'sp-status ok';
-        setTimeout(exitSuggest, 2400);
+        const res = await r.json().catch(() => ({}));
+        if (res.status === 'approved') {
+          status.textContent = '✓ Added — it’s live on the map! Refreshing…'; status.className = 'sp-status ok';
+          COMMUNITY = null;
+          setTimeout(() => { exitSuggest(); route(); }, 1500);
+        } else {
+          status.textContent = '✓ Thanks! Your marker is pending review.'; status.className = 'sp-status ok';
+          setTimeout(exitSuggest, 2400);
+        }
       } else {
         const j = await r.json().catch(() => ({}));
         status.textContent = '✗ ' + (j.error || ('Error ' + r.status)); status.className = 'sp-status err';

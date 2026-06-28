@@ -525,6 +525,8 @@ body {
 .msuggest { font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap;
   color: var(--accent); background: var(--panel); border: 1px solid var(--accent); border-radius: 7px; padding: 6px 12px; }
 .msuggest:hover, .msuggest.active { background: var(--accent); color: var(--accent-dk); }
+.msuggest.msuggest-fill { background: var(--accent); color: var(--accent-dk); font-weight: 700; }
+.msuggest.msuggest-fill:hover { background: var(--accent); color: var(--accent-dk); filter: brightness(1.08); }
 
 .mapview.suggesting { cursor: crosshair; }
 .mapview.suggesting img { pointer-events: none; }
