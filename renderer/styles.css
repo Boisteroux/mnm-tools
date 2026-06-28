@@ -378,14 +378,17 @@ button.active { background: var(--accent); border-color: var(--accent); color: v
 .mt-row.running .mt-disp, .mt-row.mt-alarm .mt-disp { display: inline-block; }
 .mt-row.running .mt-time-edit, .mt-row.mt-alarm .mt-time-edit { display: none; }
 .mt-act, .mt-del { flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; padding: 0; width: 26px; height: 24px; line-height: 1; }
-.mt-del { font-size: 13px; color: var(--muted); }
-.mt-del:hover { color: #ff7a5f; }
+.mt-del { width: 18px; height: 20px; border: none; background: none; font-size: 12px; color: var(--muted); opacity: 0.55; }
+.mt-del:hover { opacity: 1; color: #ff7a5f; }
 #mt-foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 #mt-add { font-size: 11px; padding: 3px 10px; }
 #mt-sound { display: inline-flex; align-items: center; gap: 4px; color: var(--muted); cursor: pointer; }
 #mt-sound input { width: auto; margin: 0; flex: 0 0 auto; cursor: pointer; }
 #mt-sound-cb:checked ~ svg { color: var(--accent); }
-.mt-row.mt-alarm { animation: mt-flash 0.7s ease-in-out infinite; }
+/* On expiry the whole row flashes — including the name field, so the flash isn't
+   hidden behind the input's own background. */
+.mt-row.mt-alarm, .mt-row.mt-alarm .mt-name { animation: mt-flash 0.7s ease-in-out infinite; }
+.mt-row.mt-alarm .mt-name { border-color: transparent; }
 .mt-row.mt-alarm .mt-disp { color: #ff7a5f; }
 @keyframes mt-flash { 0%, 100% { background: transparent; } 50% { background: rgba(224, 89, 63, 0.4); } }
 /* Draggable: grab the header (or any gap) to reposition; clicks on controls still work. */

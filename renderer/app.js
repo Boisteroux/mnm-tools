@@ -1263,6 +1263,7 @@ $('replay-next').addEventListener('click', () => { if (replayIdx > 0) { replayId
       }
     } catch {}
   };
+  const ICON_PLAY = '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>';
   const ICON_STOP = '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="2"/></svg>';
   const ICON_RESET = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 2.7-6.4"/><path d="M3 3v5h5"/></svg>';
   const uid = () => Math.random().toString(36).slice(2, 9);
@@ -1276,7 +1277,7 @@ $('replay-next').addEventListener('click', () => { if (replayIdx > 0) { replayId
     TIMERS = [{ id: uid(), name: '', durMs: 600000, endAt: (oldEnd && oldEnd > Date.now()) ? oldEnd : 0 }];
   }
   try { localStorage.removeItem('mt-endat'); } catch {}
-  TIMERS.forEach((t) => { if (t.endAt && t.endAt <= Date.now()) t.endAt = 0; }); // expired while closed -> idle
+  TIMERS.forEach((t) => { if (t.endAt && t.endAt <= Date.now()) t.endAt = 0; t.started = !!t.started || t.endAt > Date.now(); }); // expired while closed -> idle; a running one counts as started
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(TIMERS)); } catch {} };
   const rowOf = (id) => list.querySelector('.mt-row[data-id="' + id + '"]');
 
@@ -1290,17 +1291,19 @@ $('replay-next').addEventListener('click', () => { if (replayIdx > 0) { replayId
       else if (t.endAt) { // just hit zero
         t.endAt = 0; save();
         row.querySelector('.mt-disp').textContent = '0:00';
-        setRunning(row, false); row.classList.add('mt-alarm');
+        paintAct(row, t); row.classList.add('mt-alarm');
         if (soundCb.checked) beep();
       }
     }
     if (!any) { clearInterval(tickH); tickH = null; }
   }
-  function setRunning(row, running) {
+  // Action button: ▶ play (never started) → ⏹ stop (running) → ↻ reset (ran, now stopped).
+  function paintAct(row, t) {
+    const running = t.endAt > Date.now();
     row.classList.toggle('running', running);
     const b = row.querySelector('.mt-act');
-    b.innerHTML = running ? ICON_STOP : ICON_RESET;
-    b.title = running ? 'Stop' : 'Start / reset';
+    b.innerHTML = running ? ICON_STOP : (t.started ? ICON_RESET : ICON_PLAY);
+    b.title = running ? 'Stop' : (t.started ? 'Reset' : 'Start');
   }
   function syncInputs(t, row) {
     row.querySelector('.mt-min').value = String(Math.floor(t.durMs / 60000));
@@ -1310,15 +1313,16 @@ $('replay-next').addEventListener('click', () => { if (replayIdx > 0) { replayId
     t.durMs = (clampM(row.querySelector('.mt-min').value) * 60 + clampS(row.querySelector('.mt-sec').value)) * 1000;
     if (t.durMs <= 0) return;
     t.endAt = Date.now() + t.durMs;
+    t.started = true;
     row.classList.remove('mt-alarm');
-    setRunning(row, true);
+    paintAct(row, t);
     row.querySelector('.mt-disp').textContent = fmt(t.durMs);
     save(); ensureTick();
   }
   function stopRow(t, row) {
     t.endAt = 0;
     row.classList.remove('mt-alarm');
-    setRunning(row, false); syncInputs(t, row);
+    paintAct(row, t); syncInputs(t, row);
     save();
   }
   function removeTimer(t) {
@@ -1328,7 +1332,7 @@ $('replay-next').addEventListener('click', () => { if (replayIdx > 0) { replayId
     save();
   }
   function addTimer() {
-    const t = { id: uid(), name: '', durMs: 600000, endAt: 0 };
+    const t = { id: uid(), name: '', durMs: 600000, endAt: 0, started: false };
     TIMERS.push(t); list.appendChild(makeRow(t)); save();
   }
   function makeRow(t) {
@@ -1350,7 +1354,7 @@ $('replay-next').addEventListener('click', () => { if (replayIdx > 0) { replayId
     row.querySelector('.mt-act').addEventListener('click', () => { (t.endAt > Date.now()) ? stopRow(t, row) : startRow(t, row); });
     row.querySelector('.mt-del').addEventListener('click', () => removeTimer(t));
     const running = t.endAt > Date.now();
-    setRunning(row, running);
+    paintAct(row, t);
     if (running) row.querySelector('.mt-disp').textContent = fmt(t.endAt - Date.now());
     return row;
   }
