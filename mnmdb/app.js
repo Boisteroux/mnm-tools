@@ -52,7 +52,7 @@ function signOut() { try { localStorage.removeItem('mnmdb-session'); } catch {} 
 function identityBlock() {
   if (SESSION) {
     return '<div class="sp-row sp-identity"><span>Signed in as <b>' + esc(SESSION.name) + '</b></span>' +
-      '<button type="button" id="sp-signout" class="linklike">sign out</button></div>';
+      '<span class="sp-idlinks"><a href="#/mine">my markers</a> · <button type="button" id="sp-signout" class="linklike">sign out</button></span></div>';
   }
   return '<div class="sp-row"><label for="sp-name">Your name <span class="muted">(optional — for credit)</span></label><input id="sp-name" maxlength="40" /></div>' +
     '<div class="sp-signin"><button type="button" id="sp-discord" class="btn-discord">Sign in with Discord</button>' +
@@ -1823,8 +1823,17 @@ function renderModerate() {
   $('content').innerHTML =
     '<div class="modbar"><h1>Moderation</h1><button id="mod-signout">Sign out</button></div>' +
     '<div id="mod-trusted" class="modtrusted"></div>' +
-    '<div id="mod-list"><p class="sub">Loading…</p></div>';
+    '<div id="mod-list"><p class="sub">Loading…</p></div>' +
+    '<div class="modmanage"><button id="mod-manage-btn">⚙ Manage approved markers</button><div id="mod-manage"></div></div>';
   $('mod-signout').addEventListener('click', () => { localStorage.removeItem('mnmdb-admin'); renderModerate(); });
+  $('mod-manage-btn').addEventListener('click', async () => {
+    const box = $('mod-manage'), btn = $('mod-manage-btn');
+    if (box.dataset.open === '1') { box.innerHTML = ''; box.dataset.open = '0'; btn.textContent = '⚙ Manage approved markers'; return; }
+    box.dataset.open = '1'; btn.textContent = '▾ Hide approved markers'; box.innerHTML = '<p class="sub">Loading…</p>';
+    let j; try { j = await (await fetch(API_BASE + '/admin/markers', { headers: { Authorization: 'Bearer ' + creds } })).json(); }
+    catch { box.innerHTML = '<p class="sp-status err">Network error.</p>'; return; }
+    renderMarkerList(box, j.markers || [], { bearer: creds });
+  });
   loadTrusted(creds);
   loadPending(creds);
 }
@@ -1920,6 +1929,77 @@ async function loadTrusted(creds) {
     try { await fetch(API_BASE + '/admin/untrust', { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + creds }, body: JSON.stringify({ discord_id: b.dataset.untrust }) }); } catch {}
     loadTrusted(creds);
   }));
+}
+
+// Shared marker manager (relabel/recategorize + delete), used by the admin "manage
+// approved markers" view and a contributor's "my markers" page. `auth` is { bearer } for
+// the admin or { session } for a signed-in owner; the Worker enforces who may touch what.
+function markerAuthReq(auth, extra) {
+  const headers = { 'Content-Type': 'application/json' };
+  const body = Object.assign({}, extra);
+  if (auth.bearer) headers.Authorization = 'Bearer ' + auth.bearer;
+  if (auth.session) body.session = auth.session;
+  return { headers, body: JSON.stringify(body) };
+}
+function renderMarkerList(el, markers, auth) {
+  const catById = {}; (MAPS.categories || []).forEach((c) => (catById[c.id] = c));
+  if (!markers.length) { el.innerHTML = '<p class="sub">No markers.</p>'; return; }
+  el.innerHTML = markers.map((m) => {
+    const c = catById[m.category] || { name: m.category, color: '#b0bec5' };
+    return '<div class="mmrow" data-id="' + m.id + '">' +
+      '<span class="mdot" style="background:' + c.color + '"></span>' +
+      '<span class="mmlabel">' + esc(m.label) + '</span>' +
+      '<span class="mmmeta muted">' + esc(c.name) + ' · ' + esc(m.zone) + (m.status && m.status !== 'approved' ? ' · ' + esc(m.status) : '') + '</span>' +
+      '<span class="mmbtns"><button data-mm="edit">Edit</button><button class="danger" data-mm="del">Delete</button></span></div>';
+  }).join('');
+  const byId = {}; markers.forEach((m) => (byId[m.id] = m));
+  el.querySelectorAll('.mmrow').forEach((row) => {
+    const m = byId[+row.dataset.id];
+    const dis = (v) => row.querySelectorAll('button').forEach((b) => (b.disabled = v));
+    row.querySelector('[data-mm=del]').addEventListener('click', async () => {
+      if (!confirm('Delete “' + m.label + '”? This removes it from the map.')) return;
+      dis(true);
+      try { const r = await fetch(API_BASE + '/marker/delete', Object.assign({ method: 'POST' }, markerAuthReq(auth, { id: m.id })));
+        if (r.ok) { COMMUNITY = null; row.remove(); } else dis(false); } catch { dis(false); }
+    });
+    row.querySelector('[data-mm=edit]').addEventListener('click', () => {
+      const opts = (MAPS.categories || []).map((c) => '<option value="' + c.id + '"' + (c.id === m.category ? ' selected' : '') + '>' + c.icon + ' ' + esc(c.name) + '</option>').join('');
+      row.classList.add('editing');
+      row.innerHTML = '<input class="mm-elabel" maxlength="80" value="' + esc(m.label) + '" />' +
+        '<select class="mm-ecat">' + opts + '</select>' +
+        '<span class="mmbtns"><button class="primary" data-mm="save">Save</button><button data-mm="cancel">Cancel</button></span>';
+      row.querySelector('[data-mm=cancel]').addEventListener('click', () => renderMarkerList(el, markers, auth));
+      row.querySelector('[data-mm=save]').addEventListener('click', async () => {
+        const label = row.querySelector('.mm-elabel').value.trim();
+        const category = row.querySelector('.mm-ecat').value;
+        if (!label) return;
+        row.querySelectorAll('button').forEach((b) => (b.disabled = true));
+        try { const r = await fetch(API_BASE + '/marker/edit', Object.assign({ method: 'POST' }, markerAuthReq(auth, { id: m.id, label, category })));
+          if (r.ok) { m.label = label; m.category = category; COMMUNITY = null; renderMarkerList(el, markers, auth); }
+          else row.querySelectorAll('button').forEach((b) => (b.disabled = false)); } catch { row.querySelectorAll('button').forEach((b) => (b.disabled = false)); }
+      });
+    });
+  });
+}
+
+// Contributor "my markers" page (#/mine) — manage the markers you submitted while signed in.
+function renderMine() {
+  if (!SESSION) {
+    $('content').innerHTML = '<h1>My markers</h1><p class="sub">Sign in with Discord to manage the markers you’ve added.</p>' +
+      '<div class="sp-signin"><button id="mine-signin" class="btn-discord">Sign in with Discord</button></div>';
+    $('mine-signin').addEventListener('click', () => { location.href = API_BASE + '/auth/discord/start'; });
+    return;
+  }
+  $('content').innerHTML = '<h1>My markers</h1>' +
+    '<p class="sub">Markers you added as <b>' + esc(SESSION.name) + '</b> — edit or delete any of them.</p>' +
+    '<div id="mine-list"><p class="sub">Loading…</p></div>';
+  (async () => {
+    let j; try { j = await (await fetch(API_BASE + '/my-markers', Object.assign({ method: 'POST' }, markerAuthReq({ session: SESSION.token }, {})))).json(); }
+    catch { $('mine-list').innerHTML = '<p class="sp-status err">Network error.</p>'; return; }
+    const markers = j.markers || [];
+    if (!markers.length) { $('mine-list').innerHTML = '<p class="sub">You haven’t added any markers yet.</p>'; return; }
+    renderMarkerList($('mine-list'), markers, { session: SESSION.token });
+  })();
 }
 
 // ---- Router ----
@@ -2053,6 +2133,7 @@ function route() {
   if (h === 'bestiary') return renderBestiary();
   if (h === 'maps') return renderMapsList();
   if (h === 'moderate') return renderModerate();
+  if (h === 'mine') return renderMine();
   if (h === 'quests') return renderQuests();
   if (h.startsWith('quests/')) return renderQuestList(h.slice(7));
   if (h.startsWith('vendor/')) return renderVendor(h.slice(7));

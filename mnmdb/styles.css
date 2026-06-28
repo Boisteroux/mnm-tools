@@ -571,6 +571,26 @@ body {
 .trustchip button:hover { color: #fff; background: var(--warn); }
 .modcard .trustbtn { border-color: #caa53b; color: var(--text); }
 .modcard .trustbtn:hover { border-color: #caa53b; background: color-mix(in srgb, #caa53b 18%, transparent); }
+
+/* Marker manager (admin "manage approved markers" + contributor "my markers") */
+.modmanage { margin-top: 24px; }
+#mod-manage-btn { font-size: 13px; }
+#mod-manage { margin-top: 12px; }
+.mmrow { display: flex; align-items: center; gap: 10px; padding: 9px 11px; border: 1px solid var(--line); border-radius: 8px; margin-bottom: 8px; background: var(--panel); }
+.mmrow .mdot { flex: none; }
+.mmlabel { font-weight: 600; }
+.mmmeta { font-size: 13px; }
+.mmbtns { margin-left: auto; display: flex; gap: 6px; flex: none; }
+.mmrow input, .mmrow select { font-family: inherit; font-size: 14px; color: var(--text); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; }
+.mmrow input.mm-elabel { flex: 1; min-width: 120px; }
+.mmrow button { font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; border-radius: 7px; padding: 6px 12px; border: 1px solid var(--line-2); background: var(--panel); color: var(--text); }
+.mmrow button:hover { border-color: var(--accent); }
+.mmrow button.primary { background: var(--accent); color: var(--accent-dk); border-color: var(--accent); }
+.mmrow button.danger { color: var(--warn); border-color: var(--warn); background: var(--panel); }
+.mmrow button.danger:hover { background: var(--warn); color: #fff; }
+.sp-idlinks { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; }
+.sp-idlinks a { color: var(--accent); text-decoration: none; }
+.sp-idlinks a:hover { text-decoration: underline; }
 .modal-card button, .modcard button, .modlogin button, .modbar button {
   font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; border-radius: 7px; padding: 7px 14px;
   border: 1px solid var(--line-2); background: var(--panel); color: var(--text); }

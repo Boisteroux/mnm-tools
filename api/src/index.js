@@ -76,6 +76,18 @@ const getCookie = (request, name) => {
   return m ? m[1] : null;
 };
 
+// Who may edit/delete a marker: the admin (ADMIN_TOKEN bearer), or the signed-in user
+// who submitted it (their Discord id matches the row's). Returns { allowed, admin }.
+async function authorizeMarker(request, env, body, markerId) {
+  const adminTok = (request.headers.get('Authorization') || '').replace(/^Bearer\s+/i, '');
+  if (env.ADMIN_TOKEN && adminTok === env.ADMIN_TOKEN) return { allowed: true, admin: true };
+  const sess = await readSession(body.session, env.SESSION_SECRET);
+  if (!sess) return { allowed: false };
+  const row = await env.DB.prepare('SELECT discord_id FROM submissions WHERE id=?').bind(markerId).first();
+  if (row && row.discord_id && row.discord_id === sess.id) return { allowed: true, admin: false };
+  return { allowed: false };
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -192,6 +204,36 @@ export default {
       return json({ ok: true, status }, 201, origin);
     }
 
+    // Edit / delete a single marker — admin, or the signed-in user who submitted it.
+    if (request.method === 'POST' && (url.pathname === '/marker/edit' || url.pathname === '/marker/delete')) {
+      let b; try { b = await request.json(); } catch { return json({ error: 'bad json' }, 400, origin); }
+      const id = parseInt(b.id, 10);
+      if (!id) return json({ error: 'id required' }, 400, origin);
+      const auth = await authorizeMarker(request, env, b, id);
+      if (!auth.allowed) return json({ error: 'not allowed' }, 403, origin);
+      if (url.pathname === '/marker/delete') {
+        await env.DB.prepare('DELETE FROM submissions WHERE id=?').bind(id).run();
+        return json({ ok: true }, 200, origin);
+      }
+      const label = String(b.label || '').trim();
+      const category = String(b.category || '').trim();
+      if (!label || label.length > MAX_LABEL) return json({ error: `label must be 1-${MAX_LABEL} chars` }, 400, origin);
+      if (!category || category.length > 30) return json({ error: 'category required' }, 400, origin);
+      await env.DB.prepare('UPDATE submissions SET label=?, category=? WHERE id=?').bind(label, category, id).run();
+      return json({ ok: true }, 200, origin);
+    }
+
+    // A signed-in user's own markers (any status), so they can manage them.
+    if (request.method === 'POST' && url.pathname === '/my-markers') {
+      let b; try { b = await request.json(); } catch { return json({ error: 'bad json' }, 400, origin); }
+      const sess = await readSession(b.session, env.SESSION_SECRET);
+      if (!sess) return json({ error: 'unauthorized' }, 401, origin);
+      const { results } = await env.DB.prepare(
+        'SELECT id, zone, x, y, category, label, status, created_at FROM submissions WHERE discord_id=? ORDER BY created_at DESC'
+      ).bind(sess.id).all();
+      return json({ markers: results }, 200, origin);
+    }
+
     // Admin (moderation) — everything below requires the ADMIN_TOKEN bearer.
     if (url.pathname.startsWith('/admin/')) {
       const token = (request.headers.get('Authorization') || '').replace(/^Bearer\s+/i, '');
@@ -202,6 +244,12 @@ export default {
           "SELECT id, zone, x, y, category, label, submitter, verified, discord_id, created_at FROM submissions WHERE status='pending' ORDER BY created_at ASC"
         ).all();
         return json({ pending: results }, 200, origin);
+      }
+      if (request.method === 'GET' && url.pathname === '/admin/markers') {
+        const { results } = await env.DB.prepare(
+          "SELECT id, zone, x, y, category, label, submitter, verified, discord_id, status, created_at FROM submissions WHERE status='approved' ORDER BY created_at DESC"
+        ).all();
+        return json({ markers: results }, 200, origin);
       }
       if (request.method === 'POST' && (url.pathname === '/admin/approve' || url.pathname === '/admin/reject')) {
         let b; try { b = await request.json(); } catch { return json({ error: 'bad json' }, 400, origin); }
