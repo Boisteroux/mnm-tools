@@ -1236,12 +1236,18 @@ $('replay-end').addEventListener('click', async () => {
 $('replay-prev').addEventListener('click', () => { if (replayIdx < replaySessions.length - 1) { replayIdx++; renderReplay(); } });
 $('replay-next').addEventListener('click', () => { if (replayIdx > 0) { replayIdx--; renderReplay(); } });
 
-// ---- Mob respawn timer (countdown pinned to the map) ----
+// ---- Mob respawn timers (multiple, named, pinned to the map) ----
+// Each timer is { id, name, durMs, endAt }; endAt>now means it's running. The whole
+// list persists (mt-timers) so it survives a reload / overlay-mode switch. One running
+// timer shows a STOP icon; stopped/expired shows a RESET icon that restarts it.
 (() => {
-  let tick = null, endAt = 0;
+  const KEY = 'mt-timers';
+  const list = $('mt-list');
+  if (!list) return;
   const soundCb = $('mt-sound-cb');
   soundCb.checked = localStorage.getItem('mt-sound') !== '0'; // remembered; default on
   soundCb.addEventListener('change', () => localStorage.setItem('mt-sound', soundCb.checked ? '1' : '0'));
+
   const fmt = (ms) => { const s = Math.max(0, Math.ceil(ms / 1000)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
   const beep = (n = 3) => {
     try {
@@ -1257,48 +1263,100 @@ $('replay-next').addEventListener('click', () => { if (replayIdx > 0) { replayId
       }
     } catch {}
   };
-  function update() {
-    const left = endAt - Date.now();
-    $('mt-display').textContent = fmt(left);
-    if (left <= 0) { clearInterval(tick); tick = null; try { localStorage.removeItem('mt-endat'); } catch {} $('mt-display').textContent = '0:00'; $('mob-timer').classList.add('mt-alarm'); if (soundCb.checked) beep(); }
+  const ICON_STOP = '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="2"/></svg>';
+  const ICON_RESET = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 2.7-6.4"/><path d="M3 3v5h5"/></svg>';
+  const uid = () => Math.random().toString(36).slice(2, 9);
+  const clampM = (v) => Math.max(0, Math.min(99, parseInt(v, 10) || 0));
+  const clampS = (v) => Math.max(0, Math.min(59, parseInt(v, 10) || 0));
+
+  let TIMERS = [];
+  try { TIMERS = JSON.parse(localStorage.getItem(KEY) || 'null') || []; } catch {}
+  if (!TIMERS.length) {
+    const oldEnd = parseInt(localStorage.getItem('mt-endat'), 10); // migrate the old single timer
+    TIMERS = [{ id: uid(), name: '', durMs: 600000, endAt: (oldEnd && oldEnd > Date.now()) ? oldEnd : 0 }];
   }
-  function start() {
-    const min = Math.max(0, Math.min(99, parseInt($('mt-min').value, 10) || 0));
-    const sec = Math.max(0, Math.min(59, parseInt($('mt-sec').value, 10) || 0));
-    const total = (min * 60 + sec) * 1000;
-    if (total <= 0) return;
-    endAt = Date.now() + total;
-    try { localStorage.setItem('mt-endat', String(endAt)); } catch {}
-    $('mob-timer').classList.remove('mt-alarm');
-    $('mt-setup').classList.add('hidden');
-    $('mt-running').classList.remove('hidden');
-    $('mt-display').textContent = fmt(total);
-    clearInterval(tick); tick = setInterval(update, 250);
+  try { localStorage.removeItem('mt-endat'); } catch {}
+  TIMERS.forEach((t) => { if (t.endAt && t.endAt <= Date.now()) t.endAt = 0; }); // expired while closed -> idle
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(TIMERS)); } catch {} };
+  const rowOf = (id) => list.querySelector('.mt-row[data-id="' + id + '"]');
+
+  let tickH = null;
+  const ensureTick = () => { if (!tickH) tickH = setInterval(tick, 250); };
+  function tick() {
+    let any = false;
+    for (const t of TIMERS) {
+      const row = rowOf(t.id); if (!row) continue;
+      if (t.endAt > Date.now()) { any = true; row.querySelector('.mt-disp').textContent = fmt(t.endAt - Date.now()); }
+      else if (t.endAt) { // just hit zero
+        t.endAt = 0; save();
+        row.querySelector('.mt-disp').textContent = '0:00';
+        setRunning(row, false); row.classList.add('mt-alarm');
+        if (soundCb.checked) beep();
+      }
+    }
+    if (!any) { clearInterval(tickH); tickH = null; }
   }
-  function reset() {
-    clearInterval(tick); tick = null;
-    try { localStorage.removeItem('mt-endat'); } catch {}
-    $('mob-timer').classList.remove('mt-alarm');
-    $('mt-running').classList.add('hidden');
-    $('mt-setup').classList.remove('hidden');
+  function setRunning(row, running) {
+    row.classList.toggle('running', running);
+    const b = row.querySelector('.mt-act');
+    b.innerHTML = running ? ICON_STOP : ICON_RESET;
+    b.title = running ? 'Stop' : 'Start / reset';
   }
-  $('mt-start').addEventListener('click', start);
-  $('mt-reset').addEventListener('click', reset);
-  [$('mt-min'), $('mt-sec')].forEach((el) => el.addEventListener('keydown', (e) => { if (e.key === 'Enter') start(); }));
-  // Tidy the fields on blur: minutes clamped 0-99, seconds clamped 0-59 and padded to 2 digits.
-  $('mt-min').addEventListener('blur', () => { $('mt-min').value = String(Math.max(0, Math.min(99, parseInt($('mt-min').value, 10) || 0))); });
-  $('mt-sec').addEventListener('blur', () => { $('mt-sec').value = String(Math.max(0, Math.min(59, parseInt($('mt-sec').value, 10) || 0))).padStart(2, '0'); });
-  // Resume a running countdown across a mode switch / reload — toggling the overlay
-  // reloads the page, which would otherwise reset the timer. We persist the absolute
-  // end time, so it keeps counting from where it really is.
-  const savedEnd = parseInt(localStorage.getItem('mt-endat'), 10);
-  if (savedEnd && savedEnd > Date.now()) {
-    endAt = savedEnd;
-    $('mt-setup').classList.add('hidden');
-    $('mt-running').classList.remove('hidden');
-    update();
-    clearInterval(tick); tick = setInterval(update, 250);
+  function syncInputs(t, row) {
+    row.querySelector('.mt-min').value = String(Math.floor(t.durMs / 60000));
+    row.querySelector('.mt-sec').value = String(Math.floor((t.durMs % 60000) / 1000)).padStart(2, '0');
   }
+  function startRow(t, row) {
+    t.durMs = (clampM(row.querySelector('.mt-min').value) * 60 + clampS(row.querySelector('.mt-sec').value)) * 1000;
+    if (t.durMs <= 0) return;
+    t.endAt = Date.now() + t.durMs;
+    row.classList.remove('mt-alarm');
+    setRunning(row, true);
+    row.querySelector('.mt-disp').textContent = fmt(t.durMs);
+    save(); ensureTick();
+  }
+  function stopRow(t, row) {
+    t.endAt = 0;
+    row.classList.remove('mt-alarm');
+    setRunning(row, false); syncInputs(t, row);
+    save();
+  }
+  function removeTimer(t) {
+    const i = TIMERS.indexOf(t); if (i >= 0) TIMERS.splice(i, 1);
+    const row = rowOf(t.id); if (row) row.remove();
+    if (!TIMERS.length) addTimer(); // keep at least one
+    save();
+  }
+  function addTimer() {
+    const t = { id: uid(), name: '', durMs: 600000, endAt: 0 };
+    TIMERS.push(t); list.appendChild(makeRow(t)); save();
+  }
+  function makeRow(t) {
+    const row = document.createElement('div');
+    row.className = 'mt-row'; row.dataset.id = t.id;
+    row.innerHTML =
+      '<input class="mt-name" maxlength="18" placeholder="Timer" />' +
+      '<span class="mt-time-edit"><input class="mt-min" type="text" inputmode="numeric" maxlength="2" aria-label="Minutes" /><span class="mt-colon">:</span><input class="mt-sec" type="text" inputmode="numeric" maxlength="2" aria-label="Seconds" /></span>' +
+      '<span class="mt-disp"></span>' +
+      '<button class="mt-act"></button>' +
+      '<button class="mt-del" title="Remove timer" aria-label="Remove timer">✕</button>';
+    const nameEl = row.querySelector('.mt-name'), minEl = row.querySelector('.mt-min'), secEl = row.querySelector('.mt-sec');
+    nameEl.value = t.name || '';
+    syncInputs(t, row);
+    nameEl.addEventListener('input', () => { t.name = nameEl.value; save(); });
+    minEl.addEventListener('blur', () => { minEl.value = String(clampM(minEl.value)); t.durMs = (clampM(minEl.value) * 60 + clampS(secEl.value)) * 1000; save(); });
+    secEl.addEventListener('blur', () => { secEl.value = String(clampS(secEl.value)).padStart(2, '0'); t.durMs = (clampM(minEl.value) * 60 + clampS(secEl.value)) * 1000; save(); });
+    [minEl, secEl].forEach((el) => el.addEventListener('keydown', (e) => { if (e.key === 'Enter') startRow(t, row); }));
+    row.querySelector('.mt-act').addEventListener('click', () => { (t.endAt > Date.now()) ? stopRow(t, row) : startRow(t, row); });
+    row.querySelector('.mt-del').addEventListener('click', () => removeTimer(t));
+    const running = t.endAt > Date.now();
+    setRunning(row, running);
+    if (running) row.querySelector('.mt-disp').textContent = fmt(t.endAt - Date.now());
+    return row;
+  }
+  $('mt-add').addEventListener('click', addTimer);
+  TIMERS.forEach((t) => list.appendChild(makeRow(t)));
+  if (TIMERS.some((t) => t.endAt > Date.now())) ensureTick();
 })();
 
 // Make the respawn timer draggable: grab its body (not the inputs/buttons) to move

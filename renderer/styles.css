@@ -361,24 +361,34 @@ button.active { background: var(--accent); border-color: var(--accent); color: v
 /* Mob respawn timer — a small countdown pinned bottom-left of the map (both modes). */
 #mob-timer {
   position: absolute; right: 0; bottom: 0; z-index: 10;
-  display: flex; align-items: center; gap: 8px;
-  background: rgba(var(--glass-rgb), 0.88);
+  display: flex; flex-direction: column; gap: 5px;
+  background: rgba(var(--glass-rgb), 0.9);
   border: 1px solid var(--line-2); border-right: none; border-bottom: none;
-  border-radius: 7px 0 0 0; padding: 5px 7px;
+  border-radius: 7px 0 0 0; padding: 6px 8px; min-width: 220px;
 }
-#mt-setup, #mt-running { display: flex; align-items: center; gap: 6px; }
-#mob-timer input[type="text"] { width: 40px; text-align: center; padding: 3px 4px; font-size: 12px; }
+#mt-head { font-size: 11px; font-weight: 600; color: var(--muted); cursor: move; user-select: none; letter-spacing: 0.3px; }
+#mt-list { display: flex; flex-direction: column; gap: 5px; }
+.mt-row { display: flex; align-items: center; gap: 5px; border-radius: 5px; }
+#mob-timer input[type="text"] { font-size: 12px; padding: 3px 4px; text-align: center; }
+.mt-name { flex: 1 1 auto; min-width: 0; text-align: left !important; }
+.mt-time-edit { display: inline-flex; align-items: center; gap: 2px; flex: 0 0 auto; }
+.mt-min, .mt-sec { width: 28px; }
+#mob-timer .mt-colon { color: var(--muted); font-weight: 600; }
+.mt-disp { display: none; font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; min-width: 46px; text-align: center; color: var(--text); flex: 0 0 auto; }
+.mt-row.running .mt-disp, .mt-row.mt-alarm .mt-disp { display: inline-block; }
+.mt-row.running .mt-time-edit, .mt-row.mt-alarm .mt-time-edit { display: none; }
+.mt-act, .mt-del { flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; padding: 0; width: 26px; height: 24px; line-height: 1; }
+.mt-del { font-size: 13px; color: var(--muted); }
+.mt-del:hover { color: #ff7a5f; }
+#mt-foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+#mt-add { font-size: 11px; padding: 3px 10px; }
 #mt-sound { display: inline-flex; align-items: center; gap: 4px; color: var(--muted); cursor: pointer; }
 #mt-sound input { width: auto; margin: 0; flex: 0 0 auto; cursor: pointer; }
 #mt-sound-cb:checked ~ svg { color: var(--accent); }
-#mob-timer .mt-colon { color: var(--muted); font-weight: 600; }
-#mob-timer button { flex: 0 0 auto; padding: 3px 11px; font-size: 11px; }
-#mt-display { font-size: 18px; font-weight: 600; font-variant-numeric: tabular-nums; min-width: 58px; text-align: center; color: var(--text); }
-#mob-timer.mt-alarm { border-color: #e0593f; animation: mt-flash 0.7s ease-in-out infinite; }
-#mob-timer.mt-alarm #mt-display { color: #ff7a5f; }
-@keyframes mt-flash { 0%, 100% { background: rgba(var(--glass-rgb), 0.88); } 50% { background: rgba(224, 89, 63, 0.4); } }
-/* Draggable: grab the timer body (not its inputs/buttons) to reposition it. */
-#mob-timer { cursor: move; }
+.mt-row.mt-alarm { animation: mt-flash 0.7s ease-in-out infinite; }
+.mt-row.mt-alarm .mt-disp { color: #ff7a5f; }
+@keyframes mt-flash { 0%, 100% { background: transparent; } 50% { background: rgba(224, 89, 63, 0.4); } }
+/* Draggable: grab the header (or any gap) to reposition; clicks on controls still work. */
 #mob-timer.mt-floating { right: auto; bottom: auto; border: 1px solid var(--line-2); border-radius: 7px; }
 
 /* + / - zoom buttons, stacked under the Fit button (overlay only) */

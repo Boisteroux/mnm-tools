@@ -120,21 +120,16 @@
       <button id="btn-zoom-in" title="Zoom in">+</button>
       <button id="btn-zoom-out" title="Zoom out">−</button>
     </div>
-    <div id="mob-timer" title="Countdown timer for mob respawns">
-      <div id="mt-setup">
-        <input id="mt-min" type="text" inputmode="numeric" maxlength="2" value="10" aria-label="Minutes" />
-        <span class="mt-colon">:</span>
-        <input id="mt-sec" type="text" inputmode="numeric" maxlength="2" value="00" aria-label="Seconds" />
-        <button id="mt-start" class="primary">Start</button>
+    <div id="mob-timer" title="Mob respawn timers">
+      <div id="mt-head">⏱ Respawn timers</div>
+      <div id="mt-list"></div>
+      <div id="mt-foot">
+        <button id="mt-add" title="Add another timer">+ Timer</button>
+        <label id="mt-sound" title="Beep when a timer reaches zero">
+          <input type="checkbox" id="mt-sound-cb" />
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+        </label>
       </div>
-      <div id="mt-running" class="hidden">
-        <span id="mt-display">10:00</span>
-        <button id="mt-reset">Reset</button>
-      </div>
-      <label id="mt-sound" title="Beep when the timer reaches zero">
-        <input type="checkbox" id="mt-sound-cb" />
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
-      </label>
     </div>
     <div id="overlay-passthrough-hint" class="hidden">Locked — clicks go to the game. Click <b>Edit</b> (top bar) or press Ctrl+Shift+X to edit the map.</div>
     <div id="empty-state" class="hidden">
