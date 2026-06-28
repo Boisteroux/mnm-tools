@@ -52,7 +52,7 @@ function signOut() { try { localStorage.removeItem('mnmdb-session'); } catch {} 
 function identityBlock() {
   if (SESSION) {
     return '<div class="sp-row sp-identity"><span>Signed in as <b>' + esc(SESSION.name) + '</b></span>' +
-      '<span class="sp-idlinks"><a href="#/mine">my markers</a> · <button type="button" id="sp-signout" class="linklike">sign out</button></span></div>';
+      '<button type="button" id="sp-signout" class="linklike">sign out</button></div>';
   }
   return '<div class="sp-row"><label for="sp-name">Your name <span class="muted">(optional — for credit)</span></label><input id="sp-name" maxlength="40" /></div>' +
     '<div class="sp-signin"><button type="button" id="sp-discord" class="btn-discord">Sign in with Discord</button>' +
@@ -1687,7 +1687,8 @@ function renderMapView(name) {
     '<h1>' + esc(name) + '</h1>' +
     '<div class="maptools">' +
       (legend ? '<div class="mlegend">' + legend + '</div>' : '<span class="sub">No markers yet — add the first one.</span>') +
-      '<button id="suggest-btn" class="msuggest">📍 Add a Marker</button>' +
+      '<div class="maptool-btns"><button id="suggest-btn" class="msuggest">📍 Add a Marker</button>' +
+      (SESSION ? '<button id="mymarkers-btn" class="msuggest">📋 My Markers</button>' : '') + '</div>' +
     '</div>' +
     '<p id="suggest-hint" class="sub hidden">Click the spot on the map where the marker belongs.</p>' +
     '<div class="mapview" title="Click to enlarge"><img id="mapimg" src="' + mapLightSrc + '" alt="' + esc(name) + ' map" />' +
@@ -1704,7 +1705,12 @@ function renderMapView(name) {
         '<div class="sp-actions"><button id="sp-submit" class="primary">Submit for review</button><button id="sp-cancel">Cancel</button></div>' +
         '<div id="sp-status" class="sp-status"></div>' +
       '</div>' +
-    '</div>';
+    '</div>' +
+    '<div id="mine-modal" class="modal-overlay hidden"><div class="modal-card">' +
+      '<h3>Your markers in ' + esc(name) + '</h3>' +
+      '<div id="mine-modal-list"><p class="sub">Loading…</p></div>' +
+      '<div class="sp-actions"><button id="mine-close">Close</button></div>' +
+    '</div></div>';
   wireMapView(name, catById, fallback);
 }
 
@@ -1802,6 +1808,26 @@ function wireMapView(name, catById, fallback) {
       }
     } catch { status.textContent = '✗ Network error — please try again.'; status.className = 'sp-status err'; }
   });
+
+  // My Markers — a per-zone modal for signed-in users to edit/delete their own pins here.
+  const myBtn = document.getElementById('mymarkers-btn');
+  const mineModal = document.getElementById('mine-modal');
+  if (myBtn && mineModal) {
+    const closeMine = () => { mineModal.classList.add('hidden'); if (COMMUNITY === null) route(); };
+    myBtn.addEventListener('click', async () => {
+      mineModal.classList.remove('hidden');
+      const listEl = document.getElementById('mine-modal-list');
+      listEl.innerHTML = '<p class="sub">Loading…</p>';
+      let j;
+      try { j = await (await fetch(API_BASE + '/my-markers', Object.assign({ method: 'POST' }, markerAuthReq({ session: SESSION.token }, {})))).json(); }
+      catch { listEl.innerHTML = '<p class="sp-status err">Network error — try again.</p>'; return; }
+      const mine = (j.markers || []).filter((m) => m.zone === name);
+      if (!mine.length) { listEl.innerHTML = '<p class="sub">You haven’t added any markers in ' + esc(name) + ' yet.</p>'; return; }
+      renderMarkerList(listEl, mine, { session: SESSION.token });
+    });
+    document.getElementById('mine-close').addEventListener('click', closeMine);
+    mineModal.addEventListener('click', (e) => { if (e.target === mineModal) closeMine(); });
+  }
 }
 
 // ---- Moderation — a private page (#/moderate, not linked in the nav). Gated by the
@@ -1982,26 +2008,6 @@ function renderMarkerList(el, markers, auth) {
   });
 }
 
-// Contributor "my markers" page (#/mine) — manage the markers you submitted while signed in.
-function renderMine() {
-  if (!SESSION) {
-    $('content').innerHTML = '<h1>My markers</h1><p class="sub">Sign in with Discord to manage the markers you’ve added.</p>' +
-      '<div class="sp-signin"><button id="mine-signin" class="btn-discord">Sign in with Discord</button></div>';
-    $('mine-signin').addEventListener('click', () => { location.href = API_BASE + '/auth/discord/start'; });
-    return;
-  }
-  $('content').innerHTML = '<h1>My markers</h1>' +
-    '<p class="sub">Markers you added as <b>' + esc(SESSION.name) + '</b> — edit or delete any of them.</p>' +
-    '<div id="mine-list"><p class="sub">Loading…</p></div>';
-  (async () => {
-    let j; try { j = await (await fetch(API_BASE + '/my-markers', Object.assign({ method: 'POST' }, markerAuthReq({ session: SESSION.token }, {})))).json(); }
-    catch { $('mine-list').innerHTML = '<p class="sp-status err">Network error.</p>'; return; }
-    const markers = j.markers || [];
-    if (!markers.length) { $('mine-list').innerHTML = '<p class="sub">You haven’t added any markers yet.</p>'; return; }
-    renderMarkerList($('mine-list'), markers, { session: SESSION.token });
-  })();
-}
-
 // ---- Router ----
 
 // ---- Feedback — opens a pre-filled GitHub issue for the page you're on ----
@@ -2133,7 +2139,6 @@ function route() {
   if (h === 'bestiary') return renderBestiary();
   if (h === 'maps') return renderMapsList();
   if (h === 'moderate') return renderModerate();
-  if (h === 'mine') return renderMine();
   if (h === 'quests') return renderQuests();
   if (h.startsWith('quests/')) return renderQuestList(h.slice(7));
   if (h.startsWith('vendor/')) return renderVendor(h.slice(7));

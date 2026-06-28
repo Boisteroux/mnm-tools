@@ -521,6 +521,7 @@ body {
    ============================================================================ */
 .maptools { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin: 0 0 12px; }
 .maptools .mlegend { margin: 0; }
+.maptool-btns { display: flex; gap: 8px; flex-wrap: wrap; }
 .msuggest { font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap;
   color: var(--accent); background: var(--panel); border: 1px solid var(--accent); border-radius: 7px; padding: 6px 12px; }
 .msuggest:hover, .msuggest.active { background: var(--accent); color: var(--accent-dk); }
