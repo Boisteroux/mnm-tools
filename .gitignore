@@ -5,8 +5,8 @@ node_modules/
 dist/
 out/
 
-# Local machine settings
-.claude/settings.local.json
+# Local machine settings + dev tooling (launch configs, preview, session data)
+.claude/
 
 # Personal map exports / data
 *-markers.json
