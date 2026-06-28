@@ -12,7 +12,7 @@ const crypto = require('crypto');
 let sharp = null, Jimp = null;
 try { sharp = require('sharp'); } catch {}
 try { Jimp = require('jimp'); } catch {}
-const MAX_WEB = 3200; // longest side, px — high enough to read detail when zoomed
+const MAX_WEB = 4800; // longest side, px — high enough to read fine map detail when zoomed
 const JPEG_Q = 84;
 
 // Web-optimise one image buffer: shrink to MAX_WEB and recompress as JPEG. Returns
