@@ -1597,7 +1597,7 @@ let mapLightSrc = '';   // current map image, for the click-to-enlarge lightbox
 // display size — inline map or lightbox).
 function markerLayerHTML(markers, nw, nh) {
   return markers.map((m) =>
-    '<span class="mk' + (m.community ? ' mk-community' : '') + '" style="left:' + (m.x / nw * 100) + '%;top:' + (m.y / nh * 100) + '%;--mc:' + m.color + '" ' +
+    '<span class="mk' + (m.community ? ' mk-community' : '') + '"' + (m.community && m.id ? ' data-id="' + m.id + '" data-label="' + esc(m.label || '') + '"' : '') + ' style="left:' + (m.x / nw * 100) + '%;top:' + (m.y / nh * 100) + '%;--mc:' + m.color + '" ' +
     'title="' + esc(m.label + (m.community ? ' — ' + (m.verified ? 'verified' : 'community') + ' marker' + (m.submitter ? ' by ' + m.submitter : '') : '') + (m.notes ? ' — ' + m.notes : '')) + '">' +
     '<span class="mk-ic">' + m.icon + '</span>' +
     (m.label ? '<span class="mk-lbl">' + esc(m.label) + (m.community ? ' <span class="mk-tag' + (m.verified ? ' mk-tag-v' : '') + '">' + (m.verified ? 'verified ✓' : 'community') + '</span>' : '') + '</span>' : '') + '</span>'
@@ -1691,6 +1691,7 @@ function renderMapView(name) {
       (SESSION ? '<button id="mymarkers-btn" class="msuggest">📋 My Markers</button>' : '') + '</div>' +
     '</div>' +
     '<p id="suggest-hint" class="sub hidden">Click the spot on the map where the marker belongs.</p>' +
+    '<p id="move-hint" class="sub hidden"></p>' +
     '<div class="mapview" title="Click to enlarge"><img id="mapimg" src="' + mapLightSrc + '" alt="' + esc(name) + ' map" />' +
     '<div id="maplayer"></div></div>' +
     '<p class="sub">Community-submitted markers are reviewed before they appear. Click the map to view it full size.</p>' +
@@ -1721,21 +1722,66 @@ function wireMapView(name, catById, fallback) {
   const img = document.getElementById('mapimg');
   const layer = document.getElementById('maplayer');
   if (!img || !layer) return;
+  const box = img.closest('.mapview');
   const place = () => { layer.innerHTML = markerLayerHTML(pendingMap || [], img.naturalWidth || 1, img.naturalHeight || 1); };
   if (img.complete && img.naturalWidth) place();
   else img.addEventListener('load', place);
+
+  // Convert a click on the responsively-sized image into its native pixel coords.
+  const clickToImg = (e) => {
+    const rect = img.getBoundingClientRect();
+    return {
+      px: Math.round((e.clientX - rect.left) / rect.width * (img.naturalWidth || 1)),
+      py: Math.round((e.clientY - rect.top) / rect.height * (img.naturalHeight || 1)),
+    };
+  };
+
+  // ---- Admin: reposition a community marker (click the pin, then click its true spot) ----
+  const moveHint = document.getElementById('move-hint');
+  const isAdmin = () => !!localStorage.getItem('mnmdb-admin');
+  let moveId = null;
+  if (isAdmin()) box.classList.add('admin');
+  const idleAdminHint = () => {
+    if (moveId != null) return;
+    if (isAdmin() && (pendingMap || []).some((m) => m.community)) {
+      moveHint.textContent = '🛠 Admin: click a community marker, then click its correct spot to move it.';
+      moveHint.classList.remove('hidden');
+    }
+  };
+  const startMove = (id, el) => {
+    moveId = id; box.classList.add('moving');
+    moveHint.textContent = 'Click the correct spot for “' + (el.dataset.label || 'this marker') + '” · Esc to cancel';
+    moveHint.classList.remove('hidden');
+  };
+  const cancelMove = () => { moveId = null; box.classList.remove('moving'); idleAdminHint(); };
+  const reposition = async (id, x, y) => {
+    const creds = localStorage.getItem('mnmdb-admin'); if (!creds) return cancelMove();
+    moveHint.textContent = 'Saving…';
+    try {
+      const r = await fetch(API_BASE + '/marker/edit', {
+        method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + creds },
+        body: JSON.stringify({ id: +id, x, y }),
+      });
+      if (r.ok) { COMMUNITY = null; moveId = null; box.classList.remove('moving'); route(); }
+      else { const j = await r.json().catch(() => ({})); moveHint.textContent = '✗ ' + (j.error || ('Error ' + r.status)); }
+    } catch { moveHint.textContent = '✗ Network error — try again.'; }
+  };
+  document.addEventListener('keydown', function onKey(e) {
+    if (!document.body.contains(box)) return document.removeEventListener('keydown', onKey);
+    if (e.key === 'Escape' && moveId != null) cancelMove();
+  });
 
   // Pull in approved community markers for this zone and add them to the layer.
   loadCommunity().then((c) => {
     const cms = (c[name] || []).map((m) => {
       const cat = catById[m.category] || fallback;
-      return { x: m.x, y: m.y, label: m.label, submitter: m.submitter, verified: m.verified, color: cat.color, icon: cat.icon, community: true };
+      return { id: m.id, x: m.x, y: m.y, label: m.label, submitter: m.submitter, verified: m.verified, color: cat.color, icon: cat.icon, community: true };
     });
     if (cms.length) { pendingMap = (pendingMap || []).concat(cms); place(); }
+    idleAdminHint();
   });
 
   // ---- Suggest-a-marker mode ----
-  const box = img.closest('.mapview');
   const btn = document.getElementById('suggest-btn');
   const hint = document.getElementById('suggest-hint');
   const modal = document.getElementById('suggest-modal');
@@ -1755,6 +1801,7 @@ function wireMapView(name, catById, fallback) {
   modal.addEventListener('click', (e) => { if (e.target === modal) exitSuggest(); });
   btn.addEventListener('click', () => {
     if (suggestMode) return exitSuggest();
+    cancelMove();                         // leave move-mode before adding a new marker
     suggestMode = true;
     box.classList.add('suggesting');
     btn.textContent = '✕ Cancel'; btn.classList.add('active');
@@ -1762,10 +1809,15 @@ function wireMapView(name, catById, fallback) {
   });
 
   box.addEventListener('click', (e) => {
+    // Admin reposition: a click while moving drops the marker at the new spot…
+    if (moveId != null) { const { px, py } = clickToImg(e); reposition(moveId, px, py); return; }
+    // …and an admin click on a community pin selects it to move.
+    if (isAdmin() && !suggestMode) {
+      const hitc = e.target.closest('.mk-community');
+      if (hitc && hitc.dataset.id) { startMove(hitc.dataset.id, hitc); return; }
+    }
     if (!suggestMode) return openMapLightbox(); // normal behaviour: enlarge
-    const rect = img.getBoundingClientRect();
-    const px = Math.round((e.clientX - rect.left) / rect.width * (img.naturalWidth || 1));
-    const py = Math.round((e.clientY - rect.top) / rect.height * (img.naturalHeight || 1));
+    const { px, py } = clickToImg(e);
     if (!pin) { pin = document.createElement('span'); pin.className = 'mk mk-temp'; box.appendChild(pin); }
     pin.style.left = (px / (img.naturalWidth || 1) * 100) + '%';
     pin.style.top = (py / (img.naturalHeight || 1) * 100) + '%';

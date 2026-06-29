@@ -531,6 +531,13 @@ body {
 .mapview.suggesting { cursor: crosshair; }
 .mapview.suggesting img { pointer-events: none; }
 
+/* Admin reposition: community pins become clickable; the map turns crosshair while moving */
+.mapview.admin .mk-community { cursor: pointer; }
+.mapview.admin .mk-community:hover .mk-ic { outline-style: solid; outline-color: var(--accent); }
+.mapview.moving { cursor: crosshair; }
+.mapview.moving img { pointer-events: none; }
+#move-hint { color: var(--accent); font-weight: 600; }
+
 /* Pulsing pin used while suggesting, and for the moderation preview */
 .mk-temp { width: 15px; height: 15px; border-radius: 50%; background: var(--accent); border: 2px solid #fff;
   box-shadow: 0 0 0 2px var(--accent), 0 1px 4px rgba(0,0,0,.5); animation: mkpulse 1.2s ease-out infinite; pointer-events: none; z-index: 5; }
@@ -594,10 +601,10 @@ body {
 .sp-idlinks { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; }
 .sp-idlinks a { color: var(--accent); text-decoration: none; }
 .sp-idlinks a:hover { text-decoration: underline; }
-.modal-card button, .modcard button, .modlogin button, .modbar button {
+.modal-card button, .modcard button, .modlogin button, .modbar button, #mod-manage-btn {
   font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; border-radius: 7px; padding: 7px 14px;
   border: 1px solid var(--line-2); background: var(--panel); color: var(--text); }
-.modal-card button:hover, .modcard button:hover, .modlogin button:hover, .modbar button:hover { border-color: var(--accent); }
+.modal-card button:hover, .modcard button:hover, .modlogin button:hover, .modbar button:hover, #mod-manage-btn:hover { border-color: var(--accent); }
 button.primary { background: var(--accent); color: var(--accent-dk); border-color: var(--accent); }
 button.primary:hover { filter: brightness(1.08); }
 button.danger { color: var(--warn); border-color: var(--warn); }

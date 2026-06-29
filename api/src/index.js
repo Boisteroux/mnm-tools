@@ -215,11 +215,27 @@ export default {
         await env.DB.prepare('DELETE FROM submissions WHERE id=?').bind(id).run();
         return json({ ok: true }, 200, origin);
       }
-      const label = String(b.label || '').trim();
-      const category = String(b.category || '').trim();
-      if (!label || label.length > MAX_LABEL) return json({ error: `label must be 1-${MAX_LABEL} chars` }, 400, origin);
-      if (!category || category.length > 30) return json({ error: 'category required' }, 400, origin);
-      await env.DB.prepare('UPDATE submissions SET label=?, category=? WHERE id=?').bind(label, category, id).run();
+      // Update any of: label, category, position (x,y). Each is optional so the map's
+      // "drag to reposition" can send just {id, x, y} without touching label/category.
+      const sets = [], binds = [];
+      if (b.label !== undefined) {
+        const label = String(b.label || '').trim();
+        if (!label || label.length > MAX_LABEL) return json({ error: `label must be 1-${MAX_LABEL} chars` }, 400, origin);
+        sets.push('label=?'); binds.push(label);
+      }
+      if (b.category !== undefined) {
+        const category = String(b.category || '').trim();
+        if (!category || category.length > 30) return json({ error: 'category required' }, 400, origin);
+        sets.push('category=?'); binds.push(category);
+      }
+      if (b.x !== undefined && b.y !== undefined) {
+        const x = Math.round(Number(b.x)), y = Math.round(Number(b.y));
+        if (!Number.isFinite(x) || !Number.isFinite(y) || x < 0 || y < 0 || x > 100000 || y > 100000) return json({ error: 'bad coordinates' }, 400, origin);
+        sets.push('x=?', 'y=?'); binds.push(x, y);
+      }
+      if (!sets.length) return json({ error: 'nothing to update' }, 400, origin);
+      binds.push(id);
+      await env.DB.prepare('UPDATE submissions SET ' + sets.join(', ') + ' WHERE id=?').bind(...binds).run();
       return json({ ok: true }, 200, origin);
     }
 
