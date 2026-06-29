@@ -32,3 +32,20 @@ CREATE TABLE IF NOT EXISTS admins (
   name       TEXT,
   added_at   TEXT NOT NULL DEFAULT (datetime('now'))
 );
+
+-- Community-submitted zone maps (image bytes in R2 bucket mnmdb-maps, keyed by r2_key).
+CREATE TABLE IF NOT EXISTS maps (
+  id          INTEGER PRIMARY KEY AUTOINCREMENT,
+  zone        TEXT NOT NULL,
+  r2_key      TEXT NOT NULL,
+  label       TEXT,
+  mime        TEXT NOT NULL,
+  width       INTEGER,
+  height      INTEGER,
+  submitter   TEXT,
+  discord_id  TEXT,
+  status      TEXT NOT NULL DEFAULT 'pending',
+  created_at  TEXT NOT NULL DEFAULT (datetime('now')),
+  reviewed_at TEXT
+);
+CREATE INDEX IF NOT EXISTS idx_maps_zone_status ON maps(zone, status);

@@ -15,3 +15,9 @@ TRUSTED_DISCORD_IDS = ""
 binding = "DB"
 database_name = "mnmdb"
 database_id = "e07fc0c0-5a89-42ac-a816-029756a6334f"
+
+# R2 bucket for community-submitted map images. Create it once with:
+#   npx wrangler r2 bucket create mnmdb-maps
+[[r2_buckets]]
+binding = "MAPS_BUCKET"
+bucket_name = "mnmdb-maps"

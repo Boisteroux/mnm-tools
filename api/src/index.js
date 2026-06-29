@@ -14,11 +14,28 @@
 //   TRUSTED_DISCORD_IDS  (var, opt.)     comma-separated Discord user ids whose markers auto-approve
 //   ADMIN_DISCORD_IDS    (var, opt.)     comma-separated Discord user ids who are full admins (seed;
 //                                        the self-service `admins` table is the usual way to manage them)
+//
+// Bindings: DB (D1 database), MAPS_BUCKET (R2 bucket "mnmdb-maps" for community map images).
 
 const DEFAULT_ORIGIN = 'https://mnm-db.com';
 const MAX_LABEL = 80;
 const RATE_WINDOW_MIN = 10; // per-IP sliding window
 const RATE_MAX = 8;         // max submissions allowed in that window
+const MAX_MAP_BYTES = 10 * 1024 * 1024;      // 10 MB cap on a submitted map image
+const MAP_TYPES = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp' };
+const MAX_PENDING_MAPS = 8;                  // per user, so the queue can't be flooded
+
+const mapSlug = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 40) || 'zone';
+
+// Magic-byte sniff so a renamed/disguised non-image can't be stored. Returns the real mime or null.
+function sniffImage(b) {
+  if (!b || b.length < 12) return null;
+  if (b[0] === 0xFF && b[1] === 0xD8 && b[2] === 0xFF) return 'image/jpeg';
+  if (b[0] === 0x89 && b[1] === 0x50 && b[2] === 0x4E && b[3] === 0x47) return 'image/png';
+  if (b[0] === 0x52 && b[1] === 0x49 && b[2] === 0x46 && b[3] === 0x46 &&
+      b[8] === 0x57 && b[9] === 0x45 && b[10] === 0x42 && b[11] === 0x50) return 'image/webp';
+  return null;
+}
 
 const corsHeaders = (origin) => ({
   'Access-Control-Allow-Origin': origin,
@@ -168,6 +185,69 @@ export default {
         "SELECT id, zone, x, y, category, label, submitter, verified, created_at FROM submissions WHERE status='approved' ORDER BY created_at DESC"
       ).all();
       return json({ markers: results }, 200, origin, { 'Cache-Control': 'public, max-age=60' });
+    }
+
+    // Public: approved maps (optionally for one zone). Each gets a /map/img/<id> url.
+    if (request.method === 'GET' && url.pathname === '/maps') {
+      const zone = url.searchParams.get('zone');
+      const stmt = zone
+        ? env.DB.prepare("SELECT id, zone, label, width, height, submitter, created_at FROM maps WHERE status='approved' AND zone=? ORDER BY created_at ASC").bind(zone)
+        : env.DB.prepare("SELECT id, zone, label, width, height, submitter, created_at FROM maps WHERE status='approved' ORDER BY zone, created_at ASC");
+      const { results } = await stmt.all();
+      const maps = (results || []).map((m) => ({ ...m, url: '/map/img/' + m.id }));
+      return json({ maps }, 200, origin, { 'Cache-Control': 'public, max-age=60' });
+    }
+
+    // Public: serve a map image from R2 by id (bytes are immutable per id, so cache hard).
+    const imgMatch = url.pathname.match(/^\/map\/img\/(\d+)$/);
+    if (request.method === 'GET' && imgMatch) {
+      const row = await env.DB.prepare('SELECT r2_key, mime FROM maps WHERE id=?').bind(parseInt(imgMatch[1], 10)).first();
+      if (!row) return new Response('not found', { status: 404 });
+      const obj = await env.MAPS_BUCKET.get(row.r2_key);
+      if (!obj) return new Response('gone', { status: 404 });
+      return new Response(obj.body, { headers: {
+        'Content-Type': row.mime || 'application/octet-stream',
+        'Cache-Control': 'public, max-age=31536000, immutable',
+        'Access-Control-Allow-Origin': '*',
+      } });
+    }
+
+    // Submit a map image -> R2 + a pending row. Signed-in (Discord) only — no anonymous
+    // uploads. Trusted/admin auto-approve, like markers.
+    if (request.method === 'POST' && url.pathname === '/map/submit') {
+      if (!(request.headers.get('Content-Type') || '').includes('multipart/form-data')) return json({ error: 'expected multipart/form-data' }, 400, origin);
+      const clen = parseInt(request.headers.get('Content-Length') || '0', 10);
+      if (clen && clen > MAX_MAP_BYTES + 65536) return json({ error: 'file too large (max 10 MB)' }, 413, origin);
+      let form; try { form = await request.formData(); } catch { return json({ error: 'bad form data' }, 400, origin); }
+      const sess = await readSession(form.get('session'), env.SESSION_SECRET);
+      if (!sess) return json({ error: 'sign in with Discord to submit a map' }, 401, origin);
+      const zone = String(form.get('zone') || '').trim();
+      if (!zone || zone.length > 60) return json({ error: 'zone required' }, 400, origin);
+      const label = String(form.get('label') || '').trim().slice(0, 60);
+      const width = parseInt(form.get('width'), 10) || null;
+      const height = parseInt(form.get('height'), 10) || null;
+      const file = form.get('image');
+      if (!file || typeof file === 'string' || typeof file.arrayBuffer !== 'function') return json({ error: 'image required' }, 400, origin);
+      if (file.size > MAX_MAP_BYTES) return json({ error: 'file too large (max 10 MB)' }, 413, origin);
+      const buf = new Uint8Array(await file.arrayBuffer());
+      const mime = sniffImage(buf);
+      if (!mime) return json({ error: 'image must be JPG, PNG or WEBP' }, 400, origin);
+      const pend = await env.DB.prepare("SELECT COUNT(*) AS n FROM maps WHERE discord_id=? AND status='pending'").bind(sess.id).first();
+      if (pend && pend.n >= MAX_PENDING_MAPS) return json({ error: 'you already have several maps awaiting review' }, 429, origin);
+
+      const key = 'maps/' + mapSlug(zone) + '/' + crypto.randomUUID() + '.' + MAP_TYPES[mime];
+      await env.MAPS_BUCKET.put(key, buf, { httpMetadata: { contentType: mime } });
+
+      let status = 'pending';
+      if (await isAdminId(sess.id, env)) status = 'approved';
+      else {
+        const envTrusted = (env.TRUSTED_DISCORD_IDS || '').split(',').map((s) => s.trim()).filter(Boolean);
+        if (envTrusted.includes(sess.id) || (await env.DB.prepare('SELECT 1 FROM trusted WHERE discord_id=?').bind(sess.id).first())) status = 'approved';
+      }
+      const r = await env.DB.prepare(
+        'INSERT INTO maps (zone, r2_key, label, mime, width, height, submitter, discord_id, status) VALUES (?,?,?,?,?,?,?,?,?)'
+      ).bind(zone, key, label || null, mime, width, height, sess.name.slice(0, 40), sess.id, status).run();
+      return json({ ok: true, status, id: r.meta && r.meta.last_row_id }, 201, origin);
     }
 
     // Public: submit a marker -> lands in the pending queue.
@@ -341,6 +421,30 @@ export default {
         } else {
           await env.DB.prepare('DELETE FROM admins WHERE discord_id=?').bind(did).run();
         }
+        return json({ ok: true }, 200, origin);
+      }
+
+      // Map moderation (any admin). reject/delete both remove the row + the R2 object.
+      if (request.method === 'GET' && url.pathname === '/admin/maps/pending') {
+        const { results } = await env.DB.prepare("SELECT id, zone, label, width, height, submitter, discord_id, created_at FROM maps WHERE status='pending' ORDER BY created_at ASC").all();
+        return json({ pending: (results || []).map((m) => ({ ...m, url: '/map/img/' + m.id })) }, 200, origin);
+      }
+      if (request.method === 'GET' && url.pathname === '/admin/maps') {
+        const { results } = await env.DB.prepare("SELECT id, zone, label, width, height, submitter, discord_id, status, created_at FROM maps WHERE status='approved' ORDER BY zone, created_at ASC").all();
+        return json({ maps: (results || []).map((m) => ({ ...m, url: '/map/img/' + m.id })) }, 200, origin);
+      }
+      if (request.method === 'POST' && url.pathname === '/admin/maps/approve') {
+        let b; try { b = await request.json(); } catch { return json({ error: 'bad json' }, 400, origin); }
+        const id = parseInt(b.id, 10); if (!id) return json({ error: 'id required' }, 400, origin);
+        await env.DB.prepare("UPDATE maps SET status='approved', reviewed_at=datetime('now') WHERE id=?").bind(id).run();
+        return json({ ok: true }, 200, origin);
+      }
+      if (request.method === 'POST' && (url.pathname === '/admin/maps/reject' || url.pathname === '/admin/maps/delete')) {
+        let b; try { b = await request.json(); } catch { return json({ error: 'bad json' }, 400, origin); }
+        const id = parseInt(b.id, 10); if (!id) return json({ error: 'id required' }, 400, origin);
+        const row = await env.DB.prepare('SELECT r2_key FROM maps WHERE id=?').bind(id).first();
+        if (row) { try { await env.MAPS_BUCKET.delete(row.r2_key); } catch {} }
+        await env.DB.prepare('DELETE FROM maps WHERE id=?').bind(id).run();
         return json({ ok: true }, 200, origin);
       }
     }
