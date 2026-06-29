@@ -1729,7 +1729,7 @@ function renderMapView(name) {
       '<div class="maptool-btns"><span id="add-target" class="add-target hidden"></span>' +
       '<button id="suggest-btn" class="msuggest msuggest-fill">📍 Add a Marker</button>' +
       (SESSION ? '<button id="mymarkers-btn" class="msuggest">📋 My Markers</button>' : '') +
-      '<button id="mapsuggest-btn" class="msuggest msuggest-quiet">🗺 Submit Map</button></div>' +
+      '<button id="mapsuggest-btn" class="msuggest msuggest-quiet">Submit Map</button></div>' +
     '</div>' +
     '<p id="move-hint" class="sub hidden"></p>' +
     '<div class="mapview" title="Click to enlarge"><img id="mapimg" src="' + mapLightSrc + '" alt="' + esc(name) + ' map" />' +

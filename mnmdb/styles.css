@@ -542,8 +542,8 @@ body {
 /* While placing a marker the button reads "✕ Cancel" — a quiet outline so it doesn't look "selected". */
 .msuggest.active { color: var(--text); background: var(--panel); border-color: var(--line-2); filter: none; }
 .msuggest.active:hover { border-color: var(--accent); }
-.msuggest.msuggest-quiet { background: transparent; border-color: transparent; color: var(--muted); font-weight: 500; }
-.msuggest.msuggest-quiet:hover { color: var(--text); background: var(--panel); border-color: var(--line-2); }
+.msuggest.msuggest-quiet { background: var(--panel); border-color: transparent; color: var(--muted); font-weight: 500; }
+.msuggest.msuggest-quiet:hover { background: var(--panel-2); color: var(--text); border-color: transparent; }
 
 .mapview.suggesting { cursor: crosshair; }
 .mapview.suggesting img { pointer-events: none; }
