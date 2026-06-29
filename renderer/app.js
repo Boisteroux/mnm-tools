@@ -33,9 +33,14 @@ let mapImage = null;                           // loaded Image for current zone
 let editingMarkerId = null;                    // marker being edited in the modal
 let pendingWorldPos = null;                    // where a new marker will be placed
 let popupMarkerId = null;
+let communityMarkers = [];                     // approved community submissions from mnm-db.com (read-only)
+let showCommunity = false;                     // overlay them on the map?
 
 const GRID_SIZE = 2000;                        // blank-map play area in world units
 const MARKER_RADIUS = 11;                      // screen pixels, constant at any zoom
+const COMMUNITY_MARKERS_URL = 'https://mnmdb-api.boisteroux.workers.dev/markers';
+const COMMUNITY_KEY = 'community-markers';
+const WEB_MAX = 4800;                          // must match tracker/export-maps.js MAX_WEB (how the web image was scaled)
 
 // ---- Elements ----
 
@@ -54,6 +59,28 @@ function toScreen(wx, wy) {
 }
 function toWorld(sx, sy) {
   return { x: (sx - view.x) / view.scale, y: (sy - view.y) / view.scale };
+}
+
+// Community markers are stored in WEB-image pixels (the downscaled map the site shows).
+// The app draws on the full-res source image, so divide by the same scale export-maps
+// applied to convert a web-pixel coord back into this image's pixel space.
+function webScale() {
+  if (!mapImage) return 1;
+  const long = Math.max(mapImage.width, mapImage.height);
+  return long > WEB_MAX ? WEB_MAX / long : 1;
+}
+
+// Pull approved community markers from the API (read-only). Best-effort: a failure
+// (offline, etc.) just leaves the overlay empty without disturbing the user's own map.
+async function loadCommunityMarkers() {
+  try {
+    const r = await fetch(COMMUNITY_MARKERS_URL + '?t=' + Date.now());
+    if (!r.ok) return;
+    const j = await r.json();
+    communityMarkers = Array.isArray(j.markers) ? j.markers : [];
+  } catch { return; }
+  refreshSidebar();
+  draw();
 }
 
 // ---- Rendering ----
@@ -111,6 +138,46 @@ function draw() {
       ctx.strokeText(m.label, p.x, p.y + MARKER_RADIUS + 10);
       ctx.fillText(m.label, p.x, p.y + MARKER_RADIUS + 10);
     }
+  }
+
+  // Community markers (read-only overlay from mnm-db.com) — a dashed white ring and a
+  // faint-blue label set them apart from your own. Web-pixel coords ÷ scale → image px.
+  if (showCommunity && mapImage && zone.name) {
+    const sc = webScale();
+    ctx.save();
+    for (const m of communityMarkers) {
+      if (m.zone !== zone.name || hiddenCategories.has(m.category)) continue;
+      const cat = catById(m.category);
+      const p = toScreen(m.x / sc, m.y / sc);
+
+      ctx.globalAlpha = 0.9;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, MARKER_RADIUS, 0, Math.PI * 2);
+      ctx.fillStyle = cat.color;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+      ctx.lineWidth = 2;
+      ctx.setLineDash([3, 2]);
+      ctx.strokeStyle = '#ffffff';
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      ctx.font = '12px "Segoe UI Emoji", sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillStyle = contrastColor(cat.color);
+      ctx.fillText(cat.icon, p.x, p.y + 1);
+
+      if (view.scale > 0.6 && m.label) {
+        ctx.font = '11px "Segoe UI", sans-serif';
+        ctx.fillStyle = '#bcd6ff';
+        ctx.strokeStyle = 'rgba(0,0,0,0.85)';
+        ctx.lineWidth = 3;
+        ctx.strokeText(m.label, p.x, p.y + MARKER_RADIUS + 10);
+        ctx.fillText(m.label, p.x, p.y + MARKER_RADIUS + 10);
+      }
+    }
+    ctx.restore();
   }
 }
 
@@ -264,6 +331,14 @@ function refreshSidebar() {
     btn.append(name, count);
     row.append(cb, btn);
     list.appendChild(row);
+  }
+
+  // How many community markers exist in this zone (shown next to the toggle, even when off)
+  const cc = $('community-count');
+  if (cc) {
+    const zn = currentZone() && currentZone().name;
+    const n = zn ? communityMarkers.filter((m) => m.zone === zn).length : 0;
+    cc.textContent = n ? ' ' + n : '';
   }
 }
 
@@ -1632,6 +1707,18 @@ async function switchToMap(name) {
   if (isOverlay) {
     setTimeout(() => { resizeCanvas(); if (!userMovedView) { fitView(); draw(); } }, 200);
   }
+
+  // Community markers overlay (read-only, from mnm-db.com). Restore the toggle, wire it,
+  // and load now if it was left on.
+  try { $('community-enabled').checked = localStorage.getItem(COMMUNITY_KEY) === '1'; } catch {}
+  showCommunity = $('community-enabled').checked;
+  $('community-enabled').addEventListener('change', () => {
+    showCommunity = $('community-enabled').checked;
+    try { localStorage.setItem(COMMUNITY_KEY, showCommunity ? '1' : '0'); } catch {}
+    if (showCommunity && !communityMarkers.length) loadCommunityMarkers();
+    else { refreshSidebar(); draw(); }
+  });
+  if (showCommunity) loadCommunityMarkers();
 
   // Open on whatever zone the player was last in, according to the game log
   appReady = true;
