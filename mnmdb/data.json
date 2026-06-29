@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-28T14:49:55.370Z",
+  "generatedAt": "2026-06-29T14:24:58.640Z",
   "source": "mnm-tools",
-  "ledgerFiles": 39,
-  "events": 13388,
+  "ledgerFiles": 40,
+  "events": 13506,
   "contributors": [],
   "mobs": {
     "a desert bat": {
@@ -5288,7 +5288,7 @@
         }
       ],
       "prices": [],
-      "harvested": 2,
+      "harvested": 3,
       "zones": [
         "Scarwood",
         "Keepersbight"
@@ -5438,7 +5438,7 @@
       "name": "Flawed Ruby",
       "droppedBy": [],
       "prices": [],
-      "harvested": 1,
+      "harvested": 2,
       "zones": [
         "Scarwood"
       ]
@@ -6015,7 +6015,7 @@
           "count": 1
         }
       ],
-      "harvested": 399,
+      "harvested": 450,
       "zones": [
         "Scarwood"
       ]
@@ -6253,7 +6253,7 @@
           "count": 9
         }
       ],
-      "harvested": 183,
+      "harvested": 187,
       "zones": [
         "Scarwood"
       ]
@@ -11521,7 +11521,7 @@
       "name": "Tin Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 429,
+      "harvested": 485,
       "zones": [
         "Scarwood"
       ]
@@ -12462,9 +12462,9 @@
     "Chipped Topaz": 1,
     "Chipped Carnelian": 1,
     "Chipped Lapis Lazuli": 1,
-    "Limestone": 183,
-    "Tin Ore": 429,
-    "Jagged Stone": 399,
+    "Limestone": 187,
+    "Tin Ore": 485,
+    "Jagged Stone": 450,
     "Flawed Turquoise": 2,
     "Silver Ore": 54,
     "Glinting Crystallized Magic": 12,
@@ -12475,9 +12475,9 @@
     "Flawed Cat's Eye Agate": 1,
     "Flawed Malachite": 1,
     "Flawed Diamond": 2,
-    "Flawed Ruby": 1,
+    "Flawed Ruby": 2,
     "Flawed Bloodstone": 3,
-    "Flawed Emerald": 2,
+    "Flawed Emerald": 3,
     "Flawed Wolf's Eye Agate": 3,
     "Chipped Peridot": 1,
     "Flawed Blue Diamond": 1,
@@ -12647,122 +12647,122 @@
     },
     {
       "name": "Tin Ore & Jagged Stone",
-      "pulls": 550,
+      "pulls": 606,
       "yields": [
         {
           "res": "Tin Ore",
-          "count": 429,
-          "rate": 0.78
+          "count": 485,
+          "rate": 0.8003300330033003
         },
         {
           "res": "Jagged Stone",
-          "count": 345,
-          "rate": 0.6272727272727273
+          "count": 384,
+          "rate": 0.6336633663366337
         },
         {
           "res": "Limestone",
-          "count": 105,
-          "rate": 0.19090909090909092
+          "count": 109,
+          "rate": 0.17986798679867988
         },
         {
           "res": "Silver Ore",
           "count": 38,
-          "rate": 0.06909090909090909
+          "rate": 0.0627062706270627
         },
         {
           "res": "Glinting Crystallized Magic",
           "count": 12,
-          "rate": 0.02181818181818182
+          "rate": 0.019801980198019802
         },
         {
           "res": "Flawed Pearl",
           "count": 3,
-          "rate": 0.005454545454545455
+          "rate": 0.0049504950495049506
         },
         {
           "res": "Flawed Bloodstone",
           "count": 3,
-          "rate": 0.005454545454545455
+          "rate": 0.0049504950495049506
+        },
+        {
+          "res": "Flawed Emerald",
+          "count": 3,
+          "rate": 0.0049504950495049506
         },
         {
           "res": "Flawed Wolf's Eye Agate",
           "count": 3,
-          "rate": 0.005454545454545455
+          "rate": 0.0049504950495049506
         },
         {
           "res": "Flawed Turquoise",
           "count": 2,
-          "rate": 0.0036363636363636364
+          "rate": 0.0033003300330033004
         },
         {
           "res": "Flawed Black Sapphire",
           "count": 2,
-          "rate": 0.0036363636363636364
+          "rate": 0.0033003300330033004
         },
         {
           "res": "Flawed Hematite",
           "count": 2,
-          "rate": 0.0036363636363636364
+          "rate": 0.0033003300330033004
         },
         {
           "res": "Flawed Diamond",
           "count": 2,
-          "rate": 0.0036363636363636364
+          "rate": 0.0033003300330033004
         },
         {
-          "res": "Flawed Emerald",
+          "res": "Flawed Ruby",
           "count": 2,
-          "rate": 0.0036363636363636364
+          "rate": 0.0033003300330033004
         },
         {
           "res": "Flawed Sapphire",
           "count": 2,
-          "rate": 0.0036363636363636364
+          "rate": 0.0033003300330033004
         },
         {
           "res": "Flawed Amber",
           "count": 2,
-          "rate": 0.0036363636363636364
+          "rate": 0.0033003300330033004
         },
         {
           "res": "Flawed Jade",
           "count": 2,
-          "rate": 0.0036363636363636364
+          "rate": 0.0033003300330033004
         },
         {
           "res": "Flawed Opal",
           "count": 1,
-          "rate": 0.0018181818181818182
+          "rate": 0.0016501650165016502
         },
         {
           "res": "Flawed Cat's Eye Agate",
           "count": 1,
-          "rate": 0.0018181818181818182
+          "rate": 0.0016501650165016502
         },
         {
           "res": "Flawed Malachite",
           "count": 1,
-          "rate": 0.0018181818181818182
-        },
-        {
-          "res": "Flawed Ruby",
-          "count": 1,
-          "rate": 0.0018181818181818182
+          "rate": 0.0016501650165016502
         },
         {
           "res": "Flawed Blue Diamond",
           "count": 1,
-          "rate": 0.0018181818181818182
+          "rate": 0.0016501650165016502
         },
         {
           "res": "Flawed Black Pearl",
           "count": 1,
-          "rate": 0.0018181818181818182
+          "rate": 0.0016501650165016502
         },
         {
           "res": "Flawed Star Rose Quartz",
           "count": 1,
-          "rate": 0.0018181818181818182
+          "rate": 0.0016501650165016502
         }
       ],
       "zones": [
