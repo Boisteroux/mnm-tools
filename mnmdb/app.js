@@ -1598,9 +1598,9 @@ let mapLightSrc = '';   // current map image, for the click-to-enlarge lightbox
 function markerLayerHTML(markers, nw, nh) {
   return markers.map((m) =>
     '<span class="mk' + (m.community ? ' mk-community' : '') + '"' + (m.community && m.id ? ' data-id="' + m.id + '" data-label="' + esc(m.label || '') + '"' : '') + ' style="left:' + (m.x / nw * 100) + '%;top:' + (m.y / nh * 100) + '%;--mc:' + m.color + '" ' +
-    'title="' + esc(m.label + (m.community ? ' — ' + (m.verified ? 'verified' : 'community') + ' marker' + (m.submitter ? ' by ' + m.submitter : '') : '') + (m.notes ? ' — ' + m.notes : '')) + '">' +
+    'title="' + esc(m.label + (m.notes ? ' — ' + m.notes : '')) + '">' +
     '<span class="mk-ic">' + m.icon + '</span>' +
-    (m.label ? '<span class="mk-lbl">' + esc(m.label) + (m.community ? ' <span class="mk-tag' + (m.verified ? ' mk-tag-v' : '') + '">' + (m.verified ? 'verified ✓' : 'community') + '</span>' : '') + '</span>' : '') + '</span>'
+    (m.label ? '<span class="mk-lbl">' + esc(m.label) + '</span>' : '') + '</span>'
   ).join('');
 }
 
@@ -1711,6 +1711,12 @@ function renderMapView(name) {
       '<h3>Your markers in ' + esc(name) + '</h3>' +
       '<div id="mine-modal-list"><p class="sub">Loading…</p></div>' +
       '<div class="sp-actions"><button id="mine-close">Close</button></div>' +
+    '</div></div>' +
+    '<div id="marker-modal" class="modal-overlay hidden"><div class="modal-card">' +
+      '<h3>Community marker</h3>' +
+      '<p id="mk-modal-info" class="sub"></p>' +
+      '<div id="mk-modal-list"></div>' +
+      '<div class="sp-actions"><button id="mk-modal-move" class="primary">Move on map</button><button id="mk-modal-close">Close</button></div>' +
     '</div></div>';
   wireMapView(name, catById, fallback);
 }
@@ -1736,33 +1742,37 @@ function wireMapView(name, catById, fallback) {
     };
   };
 
-  // ---- Admin: reposition a community marker (click the pin, then click its true spot) ----
+  // ---- Admin: click a community marker to edit / delete / move it (all via a modal) ----
   const moveHint = document.getElementById('move-hint');
+  const markerModal = document.getElementById('marker-modal');
   const isAdmin = () => !!localStorage.getItem('mnmdb-admin');
-  let moveId = null;
+  let moveId = null, moveAuth = null;
   if (isAdmin()) box.classList.add('admin');
-  const idleAdminHint = () => {
-    if (moveId != null) return;
-    if (isAdmin() && (pendingMap || []).some((m) => m.community)) {
-      moveHint.textContent = '🛠 Admin: click a community marker, then click its correct spot to move it.';
-      moveHint.classList.remove('hidden');
-    }
+
+  const closeMarkerModal = () => { markerModal.classList.add('hidden'); if (COMMUNITY === null) route(); };
+  const openMarkerModal = (m, auth) => {
+    document.getElementById('mk-modal-info').innerHTML =
+      (m.submitter ? 'By ' + esc(m.submitter) + ' · ' : '') + (m.verified ? 'verified ✓' : 'community') + ' · (' + m.x + ', ' + m.y + ')';
+    renderMarkerList(document.getElementById('mk-modal-list'), [m], auth, { onDelete: closeMarkerModal });
+    document.getElementById('mk-modal-move').onclick = () => { markerModal.classList.add('hidden'); startMove(m, auth); };
+    markerModal.classList.remove('hidden');
   };
-  const startMove = (id, el) => {
-    moveId = id; box.classList.add('moving');
-    moveHint.textContent = 'Click the correct spot for “' + (el.dataset.label || 'this marker') + '” · Esc to cancel';
+  if (markerModal) {
+    document.getElementById('mk-modal-close').addEventListener('click', closeMarkerModal);
+    markerModal.addEventListener('click', (e) => { if (e.target === markerModal) closeMarkerModal(); });
+  }
+
+  const startMove = (m, auth) => {
+    moveId = m.id; moveAuth = auth; box.classList.add('moving');
+    moveHint.textContent = 'Click the correct spot for “' + (m.label || 'this marker') + '” · Esc to cancel';
     moveHint.classList.remove('hidden');
   };
-  const cancelMove = () => { moveId = null; box.classList.remove('moving'); idleAdminHint(); };
+  const cancelMove = () => { moveId = null; moveAuth = null; box.classList.remove('moving'); moveHint.classList.add('hidden'); };
   const reposition = async (id, x, y) => {
-    const creds = localStorage.getItem('mnmdb-admin'); if (!creds) return cancelMove();
     moveHint.textContent = 'Saving…';
     try {
-      const r = await fetch(API_BASE + '/marker/edit', {
-        method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + creds },
-        body: JSON.stringify({ id: +id, x, y }),
-      });
-      if (r.ok) { COMMUNITY = null; moveId = null; box.classList.remove('moving'); route(); }
+      const r = await fetch(API_BASE + '/marker/edit', Object.assign({ method: 'POST' }, markerAuthReq(moveAuth || {}, { id: +id, x, y })));
+      if (r.ok) { COMMUNITY = null; moveId = null; moveAuth = null; box.classList.remove('moving'); route(); }
       else { const j = await r.json().catch(() => ({})); moveHint.textContent = '✗ ' + (j.error || ('Error ' + r.status)); }
     } catch { moveHint.textContent = '✗ Network error — try again.'; }
   };
@@ -1775,10 +1785,9 @@ function wireMapView(name, catById, fallback) {
   loadCommunity().then((c) => {
     const cms = (c[name] || []).map((m) => {
       const cat = catById[m.category] || fallback;
-      return { id: m.id, x: m.x, y: m.y, label: m.label, submitter: m.submitter, verified: m.verified, color: cat.color, icon: cat.icon, community: true };
+      return { id: m.id, x: m.x, y: m.y, label: m.label, category: m.category, zone: name, submitter: m.submitter, verified: m.verified, color: cat.color, icon: cat.icon, community: true };
     });
     if (cms.length) { pendingMap = (pendingMap || []).concat(cms); place(); }
-    idleAdminHint();
   });
 
   // ---- Suggest-a-marker mode ----
@@ -1811,10 +1820,13 @@ function wireMapView(name, catById, fallback) {
   box.addEventListener('click', (e) => {
     // Admin reposition: a click while moving drops the marker at the new spot…
     if (moveId != null) { const { px, py } = clickToImg(e); reposition(moveId, px, py); return; }
-    // …and an admin click on a community pin selects it to move.
+    // …and an admin click on a community pin opens its edit/delete/move modal.
     if (isAdmin() && !suggestMode) {
       const hitc = e.target.closest('.mk-community');
-      if (hitc && hitc.dataset.id) { startMove(hitc.dataset.id, hitc); return; }
+      if (hitc && hitc.dataset.id) {
+        const mk = (pendingMap || []).find((m) => m.community && String(m.id) === hitc.dataset.id);
+        if (mk) { openMarkerModal(mk, { bearer: localStorage.getItem('mnmdb-admin') }); return; }
+      }
     }
     if (!suggestMode) return openMapLightbox(); // normal behaviour: enlarge
     const { px, py } = clickToImg(e);
@@ -2026,7 +2038,8 @@ function markerAuthReq(auth, extra) {
   if (auth.session) body.session = auth.session;
   return { headers, body: JSON.stringify(body) };
 }
-function renderMarkerList(el, markers, auth) {
+function renderMarkerList(el, markers, auth, opts) {
+  opts = opts || {};
   const catById = {}; (MAPS.categories || []).forEach((c) => (catById[c.id] = c));
   if (!markers.length) { el.innerHTML = '<p class="sub">No markers.</p>'; return; }
   el.innerHTML = markers.map((m) => {
@@ -2045,7 +2058,7 @@ function renderMarkerList(el, markers, auth) {
       if (!confirm('Delete “' + m.label + '”? This removes it from the map.')) return;
       dis(true);
       try { const r = await fetch(API_BASE + '/marker/delete', Object.assign({ method: 'POST' }, markerAuthReq(auth, { id: m.id })));
-        if (r.ok) { COMMUNITY = null; row.remove(); } else dis(false); } catch { dis(false); }
+        if (r.ok) { COMMUNITY = null; row.remove(); if (opts.onDelete) opts.onDelete(); } else dis(false); } catch { dis(false); }
     });
     row.querySelector('[data-mm=edit]').addEventListener('click', () => {
       const opts = (MAPS.categories || []).map((c) => '<option value="' + c.id + '"' + (c.id === m.category ? ' selected' : '') + '>' + c.icon + ' ' + esc(c.name) + '</option>').join('');
