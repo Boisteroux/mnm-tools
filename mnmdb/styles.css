@@ -627,10 +627,10 @@ body {
 .sp-idlinks { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; }
 .sp-idlinks a { color: var(--accent); text-decoration: none; }
 .sp-idlinks a:hover { text-decoration: underline; }
-.modal-card button, .modcard button, .modlogin button, .modbar button, #mod-manage-btn {
+.modal-card button, .modcard button, .modlogin button, .modbar button, #mod-manage-btn, #mod-maps-btn {
   font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; border-radius: 7px; padding: 7px 14px;
   border: 1px solid var(--line-2); background: var(--panel); color: var(--text); }
-.modal-card button:hover, .modcard button:hover, .modlogin button:hover, .modbar button:hover, #mod-manage-btn:hover { border-color: var(--accent); }
+.modal-card button:hover, .modcard button:hover, .modlogin button:hover, .modbar button:hover, #mod-manage-btn:hover, #mod-maps-btn:hover { border-color: var(--accent); }
 button.primary { background: var(--accent); color: var(--accent-dk); border-color: var(--accent); }
 button.primary:hover { filter: brightness(1.08); }
 button.danger { color: var(--warn); border-color: var(--warn); }
