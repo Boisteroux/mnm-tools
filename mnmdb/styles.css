@@ -644,6 +644,17 @@ button:disabled { opacity: .5; cursor: default; }
 .modinfo { flex: 1; min-width: 0; }
 .modlabel { display: flex; align-items: center; gap: 7px; font-weight: 600; font-size: 15px; margin-bottom: 4px; }
 .modmeta { font-size: 13px; color: var(--text); }
+
+/* Suggest-a-map upload preview + map submissions in moderation */
+.mapf-preview { margin: 8px 0; }
+.mapf-preview img { max-width: 100%; max-height: 220px; border: 1px solid var(--line); border-radius: 8px; display: block; }
+.modsub { font-size: 16px; margin: 18px 0 10px; }
+.modsub .pill { font-size: 12px; background: var(--accent); color: var(--accent-dk); border-radius: 20px; padding: 1px 8px; margin-left: 4px; vertical-align: 2px; }
+.modmapcard { display: flex; gap: 12px; align-items: flex-start; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px; margin: 0 0 10px; }
+.modmapcard.done { opacity: .55; }
+.modmapthumb { flex: none; width: 130px; height: 96px; border-radius: 7px; overflow: hidden; background: var(--panel-2); display: block; }
+.modmapthumb img { width: 100%; height: 100%; object-fit: cover; }
+.modmapthumb.sm { width: 60px; height: 44px; }
 .modmeta.muted { color: var(--muted); margin-top: 2px; }
 .modactions { display: flex; gap: 8px; margin-top: 10px; align-items: center; }
 .modprev.zoomable { cursor: zoom-in; }

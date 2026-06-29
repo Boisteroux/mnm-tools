@@ -1728,7 +1728,8 @@ function renderMapView(name) {
       (legend ? '<div class="mlegend">' + legend + '</div>' : '<span class="sub">No markers yet — add the first one.</span>') +
       '<div class="maptool-btns"><span id="add-target" class="add-target hidden"></span>' +
       '<button id="suggest-btn" class="msuggest msuggest-fill">📍 Add a Marker</button>' +
-      (SESSION ? '<button id="mymarkers-btn" class="msuggest">📋 My Markers</button>' : '') + '</div>' +
+      (SESSION ? '<button id="mymarkers-btn" class="msuggest">📋 My Markers</button>' : '') +
+      '<button id="mapsuggest-btn" class="msuggest">🗺 Suggest a map</button></div>' +
     '</div>' +
     '<p id="suggest-hint" class="sub hidden">Click the spot on the map where the marker belongs.</p>' +
     '<p id="move-hint" class="sub hidden"></p>' +
@@ -1757,6 +1758,19 @@ function renderMapView(name) {
       '<p id="mk-modal-info" class="sub"></p>' +
       '<div id="mk-modal-list"></div>' +
       '<div class="sp-actions"><button id="mk-modal-move" class="primary">Move on map</button><button id="mk-modal-close">Close</button></div>' +
+    '</div></div>' +
+    '<div id="map-modal" class="modal-overlay hidden"><div class="modal-card">' +
+      '<h3>Suggest a map for ' + esc(name) + '</h3>' +
+      (SESSION
+        ? '<p class="sub">Upload an image of this zone (JPG, PNG or WEBP · max 10 MB). It goes to review before appearing as another map option.</p>' +
+          '<div class="sp-row"><label for="mapf-label">Name <span class="muted">(optional)</span></label><input id="mapf-label" maxlength="60" placeholder="e.g. Sewers, or Labeled" /></div>' +
+          '<div class="sp-row"><label for="mapf-file">Image</label><input id="mapf-file" type="file" accept="image/png,image/jpeg,image/webp" /></div>' +
+          '<div id="mapf-preview" class="mapf-preview hidden"><img id="mapf-img" alt="preview" /></div>' +
+          '<div class="sp-actions"><button id="mapf-submit" class="primary">Submit for review</button><button id="mapf-cancel">Cancel</button></div>' +
+          '<div id="mapf-status" class="sp-status"></div>'
+        : '<p class="sub">Sign in with Discord to suggest a map — uploads need a verified account.</p>' +
+          '<div class="sp-signin"><button id="mapf-discord" class="btn-discord">Sign in with Discord</button></div>' +
+          '<div class="sp-actions"><button id="mapf-cancel">Close</button></div>') +
     '</div></div>';
   wireMapView(name, catById, fallback);
 }
@@ -1977,6 +1991,60 @@ function wireMapView(name, catById, fallback) {
     document.getElementById('mine-close').addEventListener('click', closeMine);
     mineModal.addEventListener('click', (e) => { if (e.target === mineModal) closeMine(); });
   }
+
+  // ---- Suggest a map: upload an image of this zone for review (signed-in only) ----
+  const mapBtn = document.getElementById('mapsuggest-btn');
+  const mapModal = document.getElementById('map-modal');
+  if (mapBtn && mapModal) {
+    const closeMap = () => mapModal.classList.add('hidden');
+    mapBtn.addEventListener('click', () => mapModal.classList.remove('hidden'));
+    document.getElementById('mapf-cancel').addEventListener('click', closeMap);
+    mapModal.addEventListener('click', (e) => { if (e.target === mapModal) closeMap(); });
+    const dc = document.getElementById('mapf-discord');
+    if (dc) dc.addEventListener('click', () => { location.href = API_BASE + '/auth/discord/start'; });
+    const fileEl = document.getElementById('mapf-file');
+    if (fileEl) {
+      const mstatus = document.getElementById('mapf-status');
+      const preview = document.getElementById('mapf-preview');
+      const pimg = document.getElementById('mapf-img');
+      let dims = null;
+      fileEl.addEventListener('change', () => {
+        const f = fileEl.files[0]; mstatus.textContent = ''; mstatus.className = 'sp-status'; dims = null;
+        if (!f) { preview.classList.add('hidden'); return; }
+        const url = URL.createObjectURL(f);
+        pimg.onload = () => { dims = { w: pimg.naturalWidth, h: pimg.naturalHeight }; URL.revokeObjectURL(url); };
+        pimg.src = url; preview.classList.remove('hidden');
+      });
+      document.getElementById('mapf-submit').addEventListener('click', async () => {
+        const f = fileEl.files[0];
+        if (!f) { mstatus.textContent = 'Choose an image first.'; mstatus.className = 'sp-status err'; return; }
+        if (f.size > 10 * 1024 * 1024) { mstatus.textContent = 'That image is over 10 MB.'; mstatus.className = 'sp-status err'; return; }
+        const fd = new FormData();
+        fd.set('zone', name);
+        fd.set('label', document.getElementById('mapf-label').value.trim());
+        fd.set('session', SESSION.token);
+        if (dims) { fd.set('width', dims.w); fd.set('height', dims.h); }
+        fd.set('image', f, f.name);
+        mstatus.textContent = 'Uploading…'; mstatus.className = 'sp-status';
+        try {
+          const r = await fetch(API_BASE + '/map/submit', { method: 'POST', body: fd });
+          if (r.ok) {
+            const res = await r.json().catch(() => ({}));
+            if (res.status === 'approved') {
+              mstatus.textContent = '✓ Added — it’s live! Refreshing…'; mstatus.className = 'sp-status ok';
+              ZONEMAPS = null; setTimeout(() => { closeMap(); route(); }, 1500);
+            } else {
+              mstatus.textContent = '✓ Thanks! Your map is pending review.'; mstatus.className = 'sp-status ok';
+              setTimeout(closeMap, 2400);
+            }
+          } else {
+            const j = await r.json().catch(() => ({}));
+            mstatus.textContent = '✗ ' + (j.error || ('Error ' + r.status)); mstatus.className = 'sp-status err';
+          }
+        } catch { mstatus.textContent = '✗ Network error — please try again.'; mstatus.className = 'sp-status err'; }
+      });
+    }
+  }
 }
 
 // ---- Moderation — a private page (#/moderate, not linked in the nav). Reachable two
@@ -2007,8 +2075,10 @@ function renderModerate() {
     '<div class="modbar"><h1>Moderation</h1>' + (isSuper ? '' : '<span class="modwho">admin · ' + esc(SESSION.name) + '</span>') + '<button id="mod-signout">Sign out</button></div>' +
     '<div id="mod-trusted" class="modtrusted"></div>' +
     (isSuper ? '<div id="mod-admins" class="modtrusted"></div>' : '') +
+    '<div id="mod-maps"></div>' +
     '<div id="mod-list"><p class="sub">Loading…</p></div>' +
-    '<div class="modmanage"><button id="mod-manage-btn">⚙ Manage approved markers</button><div id="mod-manage"></div></div>';
+    '<div class="modmanage"><button id="mod-manage-btn">⚙ Manage approved markers</button><div id="mod-manage"></div></div>' +
+    '<div class="modmanage"><button id="mod-maps-btn">⚙ Manage approved maps</button><div id="mod-maps-manage"></div></div>';
   $('mod-signout').addEventListener('click', () => { if (mod) localStorage.removeItem('mnmdb-admin'); else signOut(); renderModerate(); });
   $('mod-manage-btn').addEventListener('click', async () => {
     const box = $('mod-manage'), btn = $('mod-manage-btn');
@@ -2018,9 +2088,67 @@ function renderModerate() {
     catch { box.innerHTML = '<p class="sp-status err">Network error.</p>'; return; }
     renderMarkerList(box, j.markers || [], adminAuth, { showView: true });
   });
+  $('mod-maps-btn').addEventListener('click', () => {
+    const box = $('mod-maps-manage'), btn = $('mod-maps-btn');
+    if (box.dataset.open === '1') { box.innerHTML = ''; box.dataset.open = '0'; btn.textContent = '⚙ Manage approved maps'; return; }
+    box.dataset.open = '1'; btn.textContent = '▾ Hide approved maps'; box.innerHTML = '<p class="sub">Loading…</p>';
+    loadApprovedMaps(creds, box);
+  });
   if (isSuper) loadAdmins(creds);
   loadTrusted(creds, isSuper);
   loadPending(creds, isSuper);
+  loadPendingMaps(creds);
+}
+
+// Pending map submissions — image preview + Approve / Reject. Shows nothing when empty.
+async function loadPendingMaps(creds) {
+  const el = $('mod-maps'); if (!el) return;
+  let j; try { j = await (await fetch(API_BASE + '/admin/maps/pending', { headers: { Authorization: 'Bearer ' + creds } })).json(); } catch { return; }
+  const items = j.pending || [];
+  if (!items.length) { el.innerHTML = ''; return; }
+  el.innerHTML = '<h2 class="modsub">Map submissions <span class="pill">' + items.length + '</span></h2>' + items.map((m) =>
+    '<div class="modmapcard" data-id="' + m.id + '">' +
+      '<a class="modmapthumb" href="' + API_BASE + m.url + '" target="_blank" rel="noopener"><img src="' + API_BASE + m.url + '" alt="" loading="lazy" /></a>' +
+      '<div class="modinfo">' +
+        '<div class="modlabel">' + esc(m.zone) + (m.label ? ' · ' + esc(m.label) : '') + '</div>' +
+        '<div class="modmeta">' + (m.width && m.height ? m.width + '×' + m.height + ' · ' : '') + (m.submitter ? 'by ' + esc(m.submitter) : '') + '</div>' +
+        '<div class="modactions"><button class="primary" data-mact="approve">Approve</button><button class="danger" data-mact="reject">Reject</button></div>' +
+      '</div></div>'
+  ).join('');
+  el.querySelectorAll('.modmapcard').forEach((card) => {
+    card.querySelectorAll('[data-mact]').forEach((b) => b.addEventListener('click', async () => {
+      const id = +card.dataset.id, act = b.dataset.mact;
+      card.querySelectorAll('button').forEach((x) => (x.disabled = true));
+      try {
+        const r = await fetch(API_BASE + '/admin/maps/' + act, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + creds }, body: JSON.stringify({ id }) });
+        if (r.ok) { ZONEMAPS = null; card.classList.add('done'); card.querySelector('.modactions').innerHTML = '<span class="sp-status ok">' + (act === 'approve' ? 'Approved ✓ — now a map option' : 'Rejected') + '</span>'; }
+        else card.querySelectorAll('button').forEach((x) => (x.disabled = false));
+      } catch { card.querySelectorAll('button').forEach((x) => (x.disabled = false)); }
+    }));
+  });
+}
+
+// Approved community maps — delete (also purges the R2 image).
+async function loadApprovedMaps(creds, box) {
+  let j; try { j = await (await fetch(API_BASE + '/admin/maps', { headers: { Authorization: 'Bearer ' + creds } })).json(); }
+  catch { box.innerHTML = '<p class="sp-status err">Network error.</p>'; return; }
+  const items = j.maps || [];
+  if (!items.length) { box.innerHTML = '<p class="sub">No approved community maps yet.</p>'; return; }
+  box.innerHTML = items.map((m) =>
+    '<div class="mmrow" data-id="' + m.id + '">' +
+      '<a class="modmapthumb sm" href="' + API_BASE + m.url + '" target="_blank" rel="noopener"><img src="' + API_BASE + m.url + '" alt="" /></a>' +
+      '<span class="mmlabel">' + esc(m.zone) + (m.label ? ' · ' + esc(m.label) : '') + '</span>' +
+      '<span class="mmmeta muted">' + (m.submitter ? 'by ' + esc(m.submitter) : '') + '</span>' +
+      '<span class="mmbtns"><button class="danger" data-mdel>Delete</button></span></div>'
+  ).join('');
+  box.querySelectorAll('.mmrow').forEach((row) => {
+    row.querySelector('[data-mdel]').addEventListener('click', async () => {
+      if (!confirm('Delete this map? Any markers placed on it will be orphaned.')) return;
+      row.querySelector('button').disabled = true;
+      try { const r = await fetch(API_BASE + '/admin/maps/delete', { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + creds }, body: JSON.stringify({ id: +row.dataset.id }) });
+        if (r.ok) { ZONEMAPS = null; row.remove(); } else row.querySelector('button').disabled = false; } catch { row.querySelector('button').disabled = false; }
+    });
+  });
 }
 
 // The per-user admin chips (super-admin only): promote by trusting first, demote with ✕.
