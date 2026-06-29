@@ -147,7 +147,7 @@ function draw() {
     const sc = webScale();
     ctx.save();
     for (const m of communityMarkers) {
-      if (m.zone !== zone.name || hiddenCategories.has(m.category)) continue;
+      if (m.zone !== zone.name || (m.map_id || 'official') !== 'official' || hiddenCategories.has(m.category)) continue;
       const cat = catById(m.category);
       const p = toScreen(m.x / sc, m.y / sc);
 
@@ -338,7 +338,7 @@ function refreshSidebar() {
   const cc = $('community-count');
   if (cc) {
     const zn = currentZone() && currentZone().name;
-    const n = zn ? communityMarkers.filter((m) => m.zone === zn).length : 0;
+    const n = zn ? communityMarkers.filter((m) => m.zone === zn && (m.map_id || 'official') === 'official').length : 0;
     cc.textContent = n ? ' ' + n : '';
   }
 }
@@ -410,7 +410,7 @@ function markerAt(sx, sy) {
     const sc = webScale();
     for (let i = communityMarkers.length - 1; i >= 0; i--) {
       const m = communityMarkers[i];
-      if (m.zone !== zone.name || hiddenCategories.has(m.category)) continue;
+      if (m.zone !== zone.name || (m.map_id || 'official') !== 'official' || hiddenCategories.has(m.category)) continue;
       const p = toScreen(m.x / sc, m.y / sc);
       if (Math.hypot(p.x - sx, p.y - sy) <= MARKER_RADIUS + 3) return { ...m, _community: true };
     }
@@ -1464,22 +1464,31 @@ $('replay-next').addEventListener('click', () => { if (replayIdx > 0) { replayId
   const t = $('mob-timer');
   if (!t) return;
   const KEY = 'mt-pos';
-  const place = (x, y) => {
-    const parent = t.offsetParent || t.parentElement;
-    if (!parent) return;
-    const pr = parent.getBoundingClientRect();
-    x = Math.max(0, Math.min(x, pr.width - t.offsetWidth));
-    y = Math.max(0, Math.min(y, pr.height - t.offsetHeight));
+  const parentRect = () => { const p = t.offsetParent || t.parentElement; return p ? p.getBoundingClientRect() : null; };
+  // Anchor by the bottom-right corner so adding a timer grows the panel UPWARD,
+  // keeping its bottom edge pinned (it never spills below the map).
+  const applyRB = (right, bottom) => {
+    const pr = parentRect(); if (!pr) return;
+    right = Math.max(0, Math.min(right, pr.width - t.offsetWidth));
+    bottom = Math.max(0, Math.min(bottom, pr.height - t.offsetHeight));
     t.classList.add('mt-floating');
-    t.style.left = x + 'px';
-    t.style.top = y + 'px';
+    t.style.left = 'auto'; t.style.top = 'auto';
+    t.style.right = right + 'px'; t.style.bottom = bottom + 'px';
   };
-  try { const p = JSON.parse(localStorage.getItem(KEY) || 'null'); if (p) requestAnimationFrame(() => place(p.left, p.top)); } catch {}
+  // x,y = desired top-left in parent coords (from the drag) → convert to a bottom-right anchor
+  const place = (x, y) => { const pr = parentRect(); if (pr) applyRB(pr.width - x - t.offsetWidth, pr.height - y - t.offsetHeight); };
+  try {
+    const p = JSON.parse(localStorage.getItem(KEY) || 'null');
+    if (p) requestAnimationFrame(() => {
+      if (typeof p.right === 'number') applyRB(p.right, p.bottom);
+      else if (typeof p.left === 'number') place(p.left, p.top); // migrate old top-left saves
+    });
+  } catch {}
   let drag = null;
   t.addEventListener('mousedown', (e) => {
     if (e.target.closest('input, button, label')) return; // leave the controls usable
     const r = t.getBoundingClientRect();
-    const pr = (t.offsetParent || t.parentElement).getBoundingClientRect();
+    const pr = parentRect();
     drag = { dx: e.clientX - r.left, dy: e.clientY - r.top, px: pr.left, py: pr.top };
     e.preventDefault();
   });
@@ -1490,7 +1499,7 @@ $('replay-next').addEventListener('click', () => { if (replayIdx > 0) { replayId
   window.addEventListener('mouseup', () => {
     if (!drag) return;
     drag = null;
-    try { localStorage.setItem(KEY, JSON.stringify({ left: parseFloat(t.style.left) || 0, top: parseFloat(t.style.top) || 0 })); } catch {}
+    try { localStorage.setItem(KEY, JSON.stringify({ right: parseFloat(t.style.right) || 0, bottom: parseFloat(t.style.bottom) || 0 })); } catch {}
   });
 })();
 

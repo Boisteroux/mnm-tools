@@ -393,7 +393,7 @@ button.active { background: var(--accent); border-color: var(--accent); color: v
 .mt-row.mt-alarm .mt-disp { color: #ff7a5f; }
 @keyframes mt-flash { 0%, 100% { background: transparent; } 50% { background: rgba(224, 89, 63, 0.4); } }
 /* Draggable: grab the header (or any gap) to reposition; clicks on controls still work. */
-#mob-timer.mt-floating { right: auto; bottom: auto; border: 1px solid var(--line-2); border-radius: 7px; }
+#mob-timer.mt-floating { border: 1px solid var(--line-2); border-radius: 7px; }
 
 /* + / - zoom buttons, stacked under the Fit button (overlay only) */
 #zoom-controls {
