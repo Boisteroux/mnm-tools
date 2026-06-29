@@ -86,6 +86,19 @@ async function loadCommunity() {
   } catch {}
   return COMMUNITY;
 }
+// Approved community maps, grouped by zone. Each: { id (string), label, submitter, src }.
+let ZONEMAPS = null;
+async function loadMaps() {
+  if (ZONEMAPS) return ZONEMAPS;
+  ZONEMAPS = {};
+  try {
+    const j = await (await fetch(API_BASE + '/maps?t=' + Date.now())).json();
+    for (const m of (j.maps || [])) {
+      (ZONEMAPS[m.zone] = ZONEMAPS[m.zone] || []).push({ id: String(m.id), label: m.label || 'Community map', submitter: m.submitter, src: API_BASE + m.url });
+    }
+  } catch {}
+  return ZONEMAPS;
+}
 let QUESTS = []; // dev quests for the Database Quest Board (quests.json)
 
 const $ = (id) => document.getElementById(id);
@@ -1602,10 +1615,17 @@ function renderMapsList() {
         '<span class="mapthumb"><span class="soon-tag">Map coming soon</span></span>' +
         '<span class="mapname">' + esc(z.name) + '</span></a>'
       : '<a class="mapcard" href="#/map/' + encodeURIComponent(z.name) + '">' +
-        '<span class="mapthumb"><img src="maps/' + encodeURIComponent(z.image) + '" alt="" loading="lazy" /></span>' +
+        '<span class="mapthumb"><img src="maps/' + encodeURIComponent(z.image) + '" alt="" loading="lazy" /><span class="mapcount hidden" data-zone="' + esc(z.name) + '"></span></span>' +
         '<span class="mapname">' + esc(z.name) +
         (z.markers.length ? ' <span class="sample">' + z.markers.length + ' marks</span>' : '') + '</span></a>'
     ).join('') + '</div>';
+  // Badge zones that have extra community maps (total = official + community).
+  loadMaps().then((byZone) => {
+    document.querySelectorAll('.mapcount[data-zone]').forEach((el) => {
+      const extra = (byZone[el.dataset.zone] || []).length;
+      if (extra) { el.textContent = (extra + 1) + ' maps'; el.classList.remove('hidden'); }
+    });
+  });
 }
 
 let pendingMap = null;
@@ -1693,7 +1713,7 @@ function renderMapView(name) {
 
   pendingMap = z.markers.map((m) => {
     const c = catById[m.category] || fallback;
-    return { x: m.x, y: m.y, label: m.label, notes: m.notes, color: c.color, icon: c.icon };
+    return { x: m.x, y: m.y, label: m.label, notes: m.notes, category: m.category, color: c.color, icon: c.icon };
   });
 
   const catOptions = (MAPS.categories || []).map((c) =>
@@ -1703,16 +1723,18 @@ function renderMapView(name) {
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › <a href="#/maps">maps</a> › ' + esc(name) + '</div>' +
     '<h1>' + esc(name) + '</h1>' +
+    '<div id="map-tabs" class="map-tabs hidden"></div>' +
     '<div class="maptools">' +
       (legend ? '<div class="mlegend">' + legend + '</div>' : '<span class="sub">No markers yet — add the first one.</span>') +
-      '<div class="maptool-btns"><button id="suggest-btn" class="msuggest msuggest-fill">📍 Add a Marker</button>' +
+      '<div class="maptool-btns"><span id="add-target" class="add-target hidden"></span>' +
+      '<button id="suggest-btn" class="msuggest msuggest-fill">📍 Add a Marker</button>' +
       (SESSION ? '<button id="mymarkers-btn" class="msuggest">📋 My Markers</button>' : '') + '</div>' +
     '</div>' +
     '<p id="suggest-hint" class="sub hidden">Click the spot on the map where the marker belongs.</p>' +
     '<p id="move-hint" class="sub hidden"></p>' +
     '<div class="mapview" title="Click to enlarge"><img id="mapimg" src="' + mapLightSrc + '" alt="' + esc(name) + ' map" />' +
     '<div id="maplayer"></div></div>' +
-    '<p class="sub">Community-submitted markers are reviewed before they appear. Click the map to view it full size.</p>' +
+    '<p class="sub">Community-submitted markers are reviewed before they appear. Click the map to view it full size.<span id="map-count"></span></p>' +
     '<div id="suggest-modal" class="modal-overlay hidden">' +
       '<div class="modal-card">' +
         '<h3>Add a marker</h3>' +
@@ -1750,6 +1772,36 @@ function wireMapView(name, catById, fallback) {
   const place = () => { layer.innerHTML = markerLayerHTML(pendingMap || [], img.naturalWidth || 1, img.naturalHeight || 1); };
   if (img.complete && img.naturalWidth) place();
   else img.addEventListener('load', place);
+
+  // ---- Multiple maps per zone: official (maps.json) + approved community maps ----
+  const zrec = (MAPS.zones || []).find((x) => x.name === name) || {};
+  const curated = (pendingMap || []).slice();              // the official map's curated markers
+  let zoneCms = [], activeId = 'official';                  // community markers (with mapId) + active map
+  const MAPLIST = [{ id: 'official', label: 'Official', src: 'maps/' + encodeURIComponent(zrec.image || '') }];
+  const markersFor = (id) => id === 'official'
+    ? curated.concat(zoneCms.filter((m) => m.mapId === 'official'))
+    : zoneCms.filter((m) => m.mapId === id);
+  const updateLegend = () => {
+    const el = document.querySelector('.mlegend'); if (!el) return;
+    const cats = [...new Set((pendingMap || []).map((m) => m.category).filter(Boolean))];
+    el.innerHTML = cats.map((id) => { const c = catById[id] || fallback; return '<span class="mlg"><span class="mdot" style="background:' + c.color + '"></span>' + esc(c.name) + '</span>'; }).join('');
+  };
+  const setAddTarget = () => { const at = document.getElementById('add-target'); const am = MAPLIST.find((x) => x.id === activeId); if (at && am && MAPLIST.length > 1) { at.textContent = 'Adding to: ' + am.label; at.classList.remove('hidden'); } };
+  const showMap = (m) => {
+    activeId = m.id; mapLightSrc = m.src; pendingMap = markersFor(m.id);
+    document.querySelectorAll('#map-tabs .mtab').forEach((t) => t.classList.toggle('active', t.dataset.id === m.id));
+    setAddTarget();
+    if (img.getAttribute('src') === m.src) { place(); updateLegend(); }
+    else { layer.innerHTML = ''; img.addEventListener('load', updateLegend, { once: true }); img.src = m.src; }
+  };
+  const buildTabs = () => {
+    const tabs = document.getElementById('map-tabs'); if (!tabs) return;
+    if (MAPLIST.length < 2) { tabs.classList.add('hidden'); return; }
+    tabs.classList.remove('hidden');
+    tabs.innerHTML = MAPLIST.map((m) => '<button class="mtab' + (m.id === activeId ? ' active' : '') + '" data-id="' + esc(m.id) + '">' + esc(m.label) + (m.submitter ? ' <span class="mtab-by">· ' + esc(m.submitter) + '</span>' : '') + '</button>').join('');
+    tabs.querySelectorAll('.mtab').forEach((t) => t.addEventListener('click', () => { const m = MAPLIST.find((x) => x.id === t.dataset.id); if (m && m.id !== activeId) { cancelMove(); exitSuggest(); showMap(m); } }));
+    setAddTarget();
+  };
 
   // Convert a click on the responsively-sized image into its native pixel coords.
   const clickToImg = (e) => {
@@ -1801,13 +1853,19 @@ function wireMapView(name, catById, fallback) {
     if (e.key === 'Escape' && moveId != null) cancelMove();
   });
 
-  // Pull in approved community markers for this zone and add them to the layer.
+  // This zone's community markers (each tagged with its map), then its community maps.
   loadCommunity().then((c) => {
-    const cms = (c[name] || []).map((m) => {
+    zoneCms = (c[name] || []).map((m) => {
       const cat = catById[m.category] || fallback;
-      return { id: m.id, x: m.x, y: m.y, label: m.label, category: m.category, zone: name, submitter: m.submitter, verified: m.verified, color: cat.color, icon: cat.icon, community: true };
+      return { id: m.id, mapId: m.map_id || 'official', x: m.x, y: m.y, label: m.label, category: m.category, zone: name, submitter: m.submitter, verified: m.verified, color: cat.color, icon: cat.icon, community: true };
     });
-    if (cms.length) { pendingMap = (pendingMap || []).concat(cms); place(); }
+    pendingMap = markersFor(activeId); place(); updateLegend();
+  });
+  loadMaps().then((byZone) => {
+    (byZone[name] || []).forEach((m) => MAPLIST.push(m));
+    buildTabs();
+    const cnt = document.getElementById('map-count');
+    if (cnt && MAPLIST.length > 1) cnt.textContent = ' · ' + MAPLIST.length + ' maps for this zone.';
   });
 
   // ---- Suggest-a-marker mode ----
@@ -1872,7 +1930,7 @@ function wireMapView(name, catById, fallback) {
     if (!label) { status.textContent = 'Please add a label.'; status.className = 'sp-status err'; return; }
     const nameEl = document.getElementById('sp-name');
     const body = {
-      zone: name, x: +pin.dataset.x, y: +pin.dataset.y,
+      zone: name, map_id: activeId, x: +pin.dataset.x, y: +pin.dataset.y,
       category: document.getElementById('sp-cat').value, label,
       submitter: (!SESSION && nameEl) ? (nameEl.value.trim() || undefined) : undefined,
       session: SESSION ? SESSION.token : undefined,

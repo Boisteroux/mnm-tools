@@ -240,7 +240,8 @@ h3.bracket { font-size: 13px; font-weight: 600; color: var(--text); margin: 4px 
 .mapgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
 .mapcard { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--panel); }
 .mapcard:hover { border-color: var(--accent); text-decoration: none; }
-.mapthumb { height: 130px; background: var(--bg); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.mapthumb { position: relative; height: 130px; background: var(--bg); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.mapcount { position: absolute; top: 7px; right: 7px; font-size: 11px; font-weight: 600; background: rgba(0,0,0,0.62); color: #fff; padding: 2px 7px; border-radius: 20px; }
 .mapthumb img { width: 100%; height: 100%; object-fit: cover; }
 .mapname { padding: 9px 12px; font-size: 14px; color: var(--text); }
 .mapcard.soon { opacity: 0.8; }
@@ -255,6 +256,15 @@ h3.bracket { font-size: 13px; font-weight: 600; color: var(--text); margin: 4px 
 .mlegend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 0 0 12px; font-size: 13px; color: var(--muted); }
 .mlg { display: inline-flex; align-items: center; gap: 6px; }
 .mdot { width: 10px; height: 10px; border-radius: 50%; }
+
+/* Per-zone map switcher — only rendered when a zone has more than one map */
+.map-tabs { display: flex; flex-wrap: wrap; gap: 2px; border-bottom: 1px solid var(--line); margin: 0 0 14px; }
+.mtab { font: inherit; font-size: 14px; cursor: pointer; background: none; border: none; border-bottom: 2px solid transparent; color: var(--muted); padding: 8px 14px; margin-bottom: -1px; }
+.mtab:hover { color: var(--text); }
+.mtab.active { color: var(--text); font-weight: 600; border-bottom-color: var(--accent); }
+.mtab-by { color: var(--muted); font-weight: 400; }
+.add-target { font-size: 12px; color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent); padding: 3px 9px; border-radius: 5px; align-self: center; white-space: nowrap; }
+.map-count { color: var(--muted); }
 
 .mapview { position: relative; display: inline-block; max-width: 100%; line-height: 0; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; cursor: zoom-in; }
 
