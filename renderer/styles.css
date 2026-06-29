@@ -365,10 +365,13 @@ button.active { background: var(--accent); border-color: var(--accent); color: v
   background: rgba(var(--glass-rgb), 0.9);
   border: 1px solid var(--line-2); border-right: none; border-bottom: none;
   border-radius: 7px 0 0 0; padding: 6px 8px; min-width: 220px;
+  /* Size to content so a left/edge drag can't shrink-to-fit the panel (which would
+     wrap the header controls). max-content keeps its natural width at any position. */
+  width: max-content;
 }
-#mt-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 11px; font-weight: 600; color: var(--muted); cursor: move; user-select: none; letter-spacing: 0.3px; }
-.mt-head-label { white-space: nowrap; }
-.mt-head-tools { display: inline-flex; align-items: center; gap: 8px; cursor: auto; }
+#mt-head { display: flex; flex-wrap: nowrap; align-items: center; justify-content: space-between; gap: 10px; font-size: 11px; font-weight: 600; color: var(--muted); cursor: move; user-select: none; letter-spacing: 0.3px; }
+.mt-head-label { white-space: nowrap; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.mt-head-tools { display: inline-flex; align-items: center; gap: 8px; cursor: auto; flex: 0 0 auto; }
 #mt-list { display: flex; flex-direction: column; gap: 5px; }
 .mt-row { display: flex; align-items: center; gap: 5px; border-radius: 5px; }
 #mob-timer input[type="text"] { font-size: 12px; padding: 3px 4px; text-align: center; }
@@ -382,7 +385,7 @@ button.active { background: var(--accent); border-color: var(--accent); color: v
 .mt-act, .mt-del { flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; padding: 0; width: 26px; height: 24px; line-height: 1; }
 .mt-del { width: 18px; height: 20px; border: none; background: none; font-size: 12px; color: var(--muted); opacity: 0.55; }
 .mt-del:hover { opacity: 1; color: #ff7a5f; }
-#mt-add { font-size: 11px; padding: 2px 8px; cursor: pointer; }
+#mt-add { font-size: 11px; padding: 2px 8px; cursor: pointer; white-space: nowrap; }
 #mt-sound { display: inline-flex; align-items: center; gap: 4px; color: var(--muted); cursor: pointer; }
 #mt-sound input { width: auto; margin: 0; flex: 0 0 auto; cursor: pointer; }
 #mt-sound-cb:checked ~ svg { color: var(--accent); }
