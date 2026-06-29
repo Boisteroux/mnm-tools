@@ -12,6 +12,8 @@
 //   ALLOWED_ORIGIN       (var)           the site origin allowed to call this API
 //   DISCORD_CLIENT_ID    (var, opt.)     Discord OAuth client id (public)
 //   TRUSTED_DISCORD_IDS  (var, opt.)     comma-separated Discord user ids whose markers auto-approve
+//   ADMIN_DISCORD_IDS    (var, opt.)     comma-separated Discord user ids who are full admins (seed;
+//                                        the self-service `admins` table is the usual way to manage them)
 
 const DEFAULT_ORIGIN = 'https://mnm-db.com';
 const MAX_LABEL = 80;
@@ -76,13 +78,22 @@ const getCookie = (request, name) => {
   return m ? m[1] : null;
 };
 
-// Who may edit/delete a marker: the admin (ADMIN_TOKEN bearer), or the signed-in user
-// who submitted it (their Discord id matches the row's). Returns { allowed, admin }.
+// Is this Discord id a full admin? (env seed list OR the self-service `admins` table.)
+async function isAdminId(id, env) {
+  if (!id) return false;
+  const seed = (env.ADMIN_DISCORD_IDS || '').split(',').map((s) => s.trim()).filter(Boolean);
+  if (seed.includes(String(id))) return true;
+  return !!(await env.DB.prepare('SELECT 1 FROM admins WHERE discord_id=?').bind(String(id)).first());
+}
+
+// Who may edit/delete/move a marker: the super-admin (ADMIN_TOKEN bearer), a signed-in
+// admin, or the signed-in user who submitted it. Returns { allowed, admin }.
 async function authorizeMarker(request, env, body, markerId) {
   const adminTok = (request.headers.get('Authorization') || '').replace(/^Bearer\s+/i, '');
   if (env.ADMIN_TOKEN && adminTok === env.ADMIN_TOKEN) return { allowed: true, admin: true };
   const sess = await readSession(body.session, env.SESSION_SECRET);
   if (!sess) return { allowed: false };
+  if (await isAdminId(sess.id, env)) return { allowed: true, admin: true };
   const row = await env.DB.prepare('SELECT discord_id FROM submissions WHERE id=?').bind(markerId).first();
   if (row && row.discord_id && row.discord_id === sess.id) return { allowed: true, admin: false };
   return { allowed: false };
@@ -195,7 +206,7 @@ export default {
       let status = 'pending';
       if (sess) {
         const envTrusted = (env.TRUSTED_DISCORD_IDS || '').split(',').map((s) => s.trim()).filter(Boolean);
-        if (envTrusted.includes(sess.id) || (await env.DB.prepare('SELECT 1 FROM trusted WHERE discord_id=?').bind(sess.id).first())) status = 'approved';
+        if (await isAdminId(sess.id, env) || envTrusted.includes(sess.id) || (await env.DB.prepare('SELECT 1 FROM trusted WHERE discord_id=?').bind(sess.id).first())) status = 'approved';
       }
 
       await env.DB.prepare(
@@ -250,10 +261,25 @@ export default {
       return json({ markers: results }, 200, origin);
     }
 
-    // Admin (moderation) — everything below requires the ADMIN_TOKEN bearer.
+    // A signed-in user's own powers, so the site can reveal admin tools to admins.
+    if (request.method === 'POST' && url.pathname === '/me') {
+      let b; try { b = await request.json(); } catch { return json({ error: 'bad json' }, 400, origin); }
+      const sess = await readSession(b.session, env.SESSION_SECRET);
+      if (!sess) return json({ error: 'unauthorized' }, 401, origin);
+      const admin = await isAdminId(sess.id, env);
+      const seedT = (env.TRUSTED_DISCORD_IDS || '').split(',').map((s) => s.trim()).filter(Boolean);
+      const trusted = admin || seedT.includes(sess.id) || !!(await env.DB.prepare('SELECT 1 FROM trusted WHERE discord_id=?').bind(sess.id).first());
+      return json({ id: sess.id, name: sess.name, admin, trusted }, 200, origin);
+    }
+
+    // Admin (moderation) — the ADMIN_TOKEN bearer (super-admin) OR a signed-in admin
+    // (their session token sent as the bearer). Promote/demote below is super-only.
     if (url.pathname.startsWith('/admin/')) {
-      const token = (request.headers.get('Authorization') || '').replace(/^Bearer\s+/i, '');
-      if (!env.ADMIN_TOKEN || token !== env.ADMIN_TOKEN) return json({ error: 'unauthorized' }, 401, origin);
+      const bearer = (request.headers.get('Authorization') || '').replace(/^Bearer\s+/i, '');
+      const isSuper = !!env.ADMIN_TOKEN && bearer === env.ADMIN_TOKEN;
+      let allowed = isSuper;
+      if (!isSuper) { const s = await readSession(bearer, env.SESSION_SECRET); if (s && (await isAdminId(s.id, env))) allowed = true; }
+      if (!allowed) return json({ error: 'unauthorized' }, 401, origin);
 
       if (request.method === 'GET' && url.pathname === '/admin/pending') {
         const { results } = await env.DB.prepare(
@@ -294,6 +320,27 @@ export default {
         let b; try { b = await request.json(); } catch { return json({ error: 'bad json' }, 400, origin); }
         const did = String(b.discord_id || '').trim();
         if (did) await env.DB.prepare('DELETE FROM trusted WHERE discord_id=?').bind(did).run();
+        return json({ ok: true }, 200, origin);
+      }
+
+      // Per-user admin list. Anyone with admin access can SEE it; only the super-admin
+      // (ADMIN_TOKEN) may promote/demote, so an admin can't entrench or remove peers.
+      if (request.method === 'GET' && url.pathname === '/admin/admins') {
+        const { results } = await env.DB.prepare('SELECT discord_id, name, added_at FROM admins ORDER BY added_at DESC').all();
+        return json({ admins: results, super: isSuper }, 200, origin);
+      }
+      if (request.method === 'POST' && (url.pathname === '/admin/promote' || url.pathname === '/admin/demote')) {
+        if (!isSuper) return json({ error: 'super-admin only' }, 403, origin);
+        let b; try { b = await request.json(); } catch { return json({ error: 'bad json' }, 400, origin); }
+        const did = String(b.discord_id || '').trim();
+        if (!did) return json({ error: 'discord_id required' }, 400, origin);
+        if (url.pathname.endsWith('promote')) {
+          await env.DB.prepare("INSERT OR REPLACE INTO admins (discord_id, name, added_at) VALUES (?,?,datetime('now'))").bind(did, String(b.name || '').slice(0, 60)).run();
+          // a fresh admin's pending backlog (if any) clears too
+          await env.DB.prepare("UPDATE submissions SET status='approved', reviewed_at=datetime('now') WHERE discord_id=? AND status='pending'").bind(did).run();
+        } else {
+          await env.DB.prepare('DELETE FROM admins WHERE discord_id=?').bind(did).run();
+        }
         return json({ ok: true }, 200, origin);
       }
     }

@@ -579,6 +579,14 @@ body {
 .trustchip button:hover { color: #fff; background: var(--warn); }
 .modcard .trustbtn { border-color: #caa53b; color: var(--text); }
 .modcard .trustbtn:hover { border-color: #caa53b; background: color-mix(in srgb, #caa53b 18%, transparent); }
+/* Admin promote/demote + the "admin · name" label for a signed-in (non-super) admin */
+.modcard .adminbtn { border-color: #7c5cff; color: var(--text); }
+.modcard .adminbtn:hover { border-color: #7c5cff; background: color-mix(in srgb, #7c5cff 20%, transparent); }
+.trustchip-admin { border-color: #7c5cff; }
+.trustchip .chip-up { color: #7c5cff; }
+.trustchip .chip-up:hover { color: #fff; background: #7c5cff; }
+.modwho { color: var(--muted); font-size: 13px; margin-left: auto; }
+.modbar .modwho + button { margin-left: 12px; }
 
 /* Marker manager (admin "manage approved markers" + contributor "my markers") */
 .modmanage { margin-top: 24px; }

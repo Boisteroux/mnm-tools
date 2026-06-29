@@ -24,3 +24,11 @@ CREATE TABLE IF NOT EXISTS trusted (
   name       TEXT,
   added_at   TEXT NOT NULL DEFAULT (datetime('now'))
 );
+
+-- Per-user admins (moderate + edit/delete/move ANY marker). The ADMIN_TOKEN holder
+-- is the "super-admin" and the only one who can promote/demote these.
+CREATE TABLE IF NOT EXISTS admins (
+  discord_id TEXT PRIMARY KEY,
+  name       TEXT,
+  added_at   TEXT NOT NULL DEFAULT (datetime('now'))
+);
