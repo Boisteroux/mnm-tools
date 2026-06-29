@@ -33,6 +33,7 @@ let mapImage = null;                           // loaded Image for current zone
 let editingMarkerId = null;                    // marker being edited in the modal
 let pendingWorldPos = null;                    // where a new marker will be placed
 let popupMarkerId = null;
+let popupIsCommunity = false;                  // the open popup is a read-only community marker
 let communityMarkers = [];                     // approved community submissions from mnm-db.com (read-only)
 let showCommunity = false;                     // overlay them on the map?
 
@@ -404,6 +405,16 @@ function markerAt(sx, sy) {
     const p = toScreen(m.x, m.y);
     if (Math.hypot(p.x - sx, p.y - sy) <= MARKER_RADIUS + 3) return m;
   }
+  // Then the community overlay (read-only) — converting web-pixel coords to this image's
+  if (showCommunity && mapImage && zone.name) {
+    const sc = webScale();
+    for (let i = communityMarkers.length - 1; i >= 0; i--) {
+      const m = communityMarkers[i];
+      if (m.zone !== zone.name || hiddenCategories.has(m.category)) continue;
+      const p = toScreen(m.x / sc, m.y / sc);
+      if (Math.hypot(p.x - sx, p.y - sy) <= MARKER_RADIUS + 3) return { ...m, _community: true };
+    }
+  }
   return null;
 }
 
@@ -610,10 +621,16 @@ $('marker-cancel').addEventListener('click', closeMarkerModal);
 
 function showPopup(marker, pageX, pageY) {
   popupMarkerId = marker.id;
+  popupIsCommunity = !!marker._community;
   const cat = catById(marker.category);
   $('popup-title').textContent = marker.label;
   $('popup-category').textContent = cat.icon + ' ' + cat.name;
-  $('popup-notes').textContent = marker.notes || '';
+  $('popup-notes').textContent = popupIsCommunity
+    ? ('Community marker' + (marker.verified ? ' (verified)' : '') + (marker.submitter ? ' · by ' + marker.submitter : ''))
+    : (marker.notes || '');
+  // Community markers are read-only — only your own get Edit / Delete.
+  $('popup-edit').classList.toggle('hidden', popupIsCommunity);
+  $('popup-delete').classList.toggle('hidden', popupIsCommunity);
 
   const popup = $('marker-popup');
   popup.classList.remove('hidden');
@@ -626,11 +643,13 @@ function showPopup(marker, pageX, pageY) {
 function hidePopup() {
   $('marker-popup').classList.add('hidden');
   popupMarkerId = null;
+  popupIsCommunity = false;
 }
 
 $('popup-close').addEventListener('click', hidePopup);
 
 $('popup-delete').addEventListener('click', () => {
+  if (popupIsCommunity) return; // read-only
   const zone = currentZone();
   if (zone) {
     zone.markers = zone.markers.filter((m) => m.id !== popupMarkerId);
@@ -642,6 +661,7 @@ $('popup-delete').addEventListener('click', () => {
 });
 
 $('popup-edit').addEventListener('click', () => {
+  if (popupIsCommunity) return; // read-only
   const zone = currentZone();
   const m = zone && zone.markers.find((x) => x.id === popupMarkerId);
   hidePopup();
