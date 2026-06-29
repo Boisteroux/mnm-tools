@@ -1958,7 +1958,7 @@ function renderModerate() {
     box.dataset.open = '1'; btn.textContent = '▾ Hide approved markers'; box.innerHTML = '<p class="sub">Loading…</p>';
     let j; try { j = await (await fetch(API_BASE + '/admin/markers', { headers: { Authorization: 'Bearer ' + creds } })).json(); }
     catch { box.innerHTML = '<p class="sp-status err">Network error.</p>'; return; }
-    renderMarkerList(box, j.markers || [], adminAuth);
+    renderMarkerList(box, j.markers || [], adminAuth, { showView: true });
   });
   if (isSuper) loadAdmins(creds);
   loadTrusted(creds, isSuper);
@@ -2115,7 +2115,7 @@ function renderMarkerList(el, markers, auth, opts) {
       '<span class="mdot" style="background:' + c.color + '"></span>' +
       '<span class="mmlabel">' + esc(m.label) + '</span>' +
       '<span class="mmmeta muted">' + esc(c.name) + ' · ' + esc(m.zone) + (m.status && m.status !== 'approved' ? ' · ' + esc(m.status) : '') + '</span>' +
-      '<span class="mmbtns"><button data-mm="edit">Edit</button><button class="danger" data-mm="del">Delete</button></span></div>';
+      '<span class="mmbtns">' + (opts.showView ? '<a class="mmview" href="#/map/' + encodeURIComponent(m.zone) + '">View marker</a>' : '') + '<button data-mm="edit">Edit</button><button class="danger" data-mm="del">Delete</button></span></div>';
   }).join('');
   const byId = {}; markers.forEach((m) => (byId[m.id] = m));
   el.querySelectorAll('.mmrow').forEach((row) => {

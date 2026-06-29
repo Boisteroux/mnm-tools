@@ -601,6 +601,8 @@ body {
 .mmrow input.mm-elabel { flex: 1; min-width: 120px; }
 .mmrow button { font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; border-radius: 7px; padding: 6px 12px; border: 1px solid var(--line-2); background: var(--panel); color: var(--text); }
 .mmrow button:hover { border-color: var(--accent); }
+.mmrow .mmview { display: inline-flex; align-items: center; font-size: 13px; font-weight: 600; color: var(--accent); text-decoration: none; padding: 6px 4px; white-space: nowrap; }
+.mmrow .mmview:hover { text-decoration: underline; }
 .mmrow button.primary { background: var(--accent); color: var(--accent-dk); border-color: var(--accent); }
 .mmrow button.danger { color: var(--warn); border-color: var(--warn); background: var(--panel); }
 .mmrow button.danger:hover { background: var(--warn); color: #fff; }
