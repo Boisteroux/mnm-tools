@@ -1463,7 +1463,9 @@ $('replay-next').addEventListener('click', () => { if (replayIdx > 0) { replayId
 (() => {
   const t = $('mob-timer');
   if (!t) return;
-  const KEY = 'mt-pos';
+  // Position is remembered per mode — full-screen and the minimap overlay keep their
+  // own spots (they share localStorage but use separate keys).
+  const KEY = isOverlay ? 'mt-pos-overlay' : 'mt-pos';
   const parentRect = () => { const p = t.offsetParent || t.parentElement; return p ? p.getBoundingClientRect() : null; };
   // Anchor by the bottom-right corner so adding a timer grows the panel UPWARD,
   // keeping its bottom edge pinned (it never spills below the map).
