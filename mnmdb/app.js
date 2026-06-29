@@ -1729,9 +1729,8 @@ function renderMapView(name) {
       '<div class="maptool-btns"><span id="add-target" class="add-target hidden"></span>' +
       '<button id="suggest-btn" class="msuggest msuggest-fill">📍 Add a Marker</button>' +
       (SESSION ? '<button id="mymarkers-btn" class="msuggest">📋 My Markers</button>' : '') +
-      '<button id="mapsuggest-btn" class="msuggest">🗺 Suggest a map</button></div>' +
+      '<button id="mapsuggest-btn" class="msuggest msuggest-quiet">🗺 Submit Map</button></div>' +
     '</div>' +
-    '<p id="suggest-hint" class="sub hidden">Click the spot on the map where the marker belongs.</p>' +
     '<p id="move-hint" class="sub hidden"></p>' +
     '<div class="mapview" title="Click to enlarge"><img id="mapimg" src="' + mapLightSrc + '" alt="' + esc(name) + ' map" />' +
     '<div id="maplayer"></div></div>' +
@@ -1760,7 +1759,7 @@ function renderMapView(name) {
       '<div class="sp-actions"><button id="mk-modal-move" class="primary">Move on map</button><button id="mk-modal-close">Close</button></div>' +
     '</div></div>' +
     '<div id="map-modal" class="modal-overlay hidden"><div class="modal-card">' +
-      '<h3>Suggest a map for ' + esc(name) + '</h3>' +
+      '<h3>Submit a map for ' + esc(name) + '</h3>' +
       (SESSION
         ? '<p class="sub">Upload an image of this zone (JPG, PNG or WEBP · max 10 MB). It goes to review before appearing as another map option.</p>' +
           '<div class="sp-row"><label for="mapf-label">Name <span class="muted">(optional)</span></label><input id="mapf-label" maxlength="60" placeholder="e.g. Sewers, or Labeled" /></div>' +
@@ -1791,7 +1790,7 @@ function wireMapView(name, catById, fallback) {
   const zrec = (MAPS.zones || []).find((x) => x.name === name) || {};
   const curated = (pendingMap || []).slice();              // the official map's curated markers
   let zoneCms = [], activeId = 'official';                  // community markers (with mapId) + active map
-  const MAPLIST = [{ id: 'official', label: 'Official', src: 'maps/' + encodeURIComponent(zrec.image || '') }];
+  const MAPLIST = [{ id: 'official', label: 'Recommended', src: 'maps/' + encodeURIComponent(zrec.image || '') }];
   const markersFor = (id) => id === 'official'
     ? curated.concat(zoneCms.filter((m) => m.mapId === 'official'))
     : zoneCms.filter((m) => m.mapId === id);
@@ -1884,7 +1883,6 @@ function wireMapView(name, catById, fallback) {
 
   // ---- Suggest-a-marker mode ----
   const btn = document.getElementById('suggest-btn');
-  const hint = document.getElementById('suggest-hint');
   const modal = document.getElementById('suggest-modal');
   const loc = document.getElementById('sp-loc');
   const status = document.getElementById('sp-status');
@@ -1894,7 +1892,7 @@ function wireMapView(name, catById, fallback) {
     suggestMode = false;
     box.classList.remove('suggesting');
     btn.textContent = '📍 Add a Marker'; btn.classList.remove('active');
-    hint.classList.add('hidden'); modal.classList.add('hidden');
+    modal.classList.add('hidden');
     if (pin) { pin.remove(); pin = null; }
     if (tsId != null && window.turnstile) { try { turnstile.remove(tsId); } catch {} tsId = null; }
     status.textContent = ''; status.className = 'sp-status';
@@ -1906,7 +1904,6 @@ function wireMapView(name, catById, fallback) {
     suggestMode = true;
     box.classList.add('suggesting');
     btn.textContent = '✕ Cancel'; btn.classList.add('active');
-    hint.classList.remove('hidden');
   });
 
   box.addEventListener('click', (e) => {
@@ -1926,7 +1923,6 @@ function wireMapView(name, catById, fallback) {
     pin.style.left = (px / (img.naturalWidth || 1) * 100) + '%';
     pin.style.top = (py / (img.naturalHeight || 1) * 100) + '%';
     pin.dataset.x = px; pin.dataset.y = py;
-    hint.classList.add('hidden');
     loc.textContent = name + ' · (' + px + ', ' + py + ')';
     modal.classList.remove('hidden');
     if (!SESSION && TURNSTILE_SITE_KEY && window.turnstile && tsId == null) { try { tsId = turnstile.render('#cf-turnstile', { sitekey: TURNSTILE_SITE_KEY }); } catch {} }
