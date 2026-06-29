@@ -1365,12 +1365,13 @@ $('replay-next').addEventListener('click', () => { if (replayIdx > 0) { replayId
   const clampM = (v) => Math.max(0, Math.min(99, parseInt(v, 10) || 0));
   const clampS = (v) => Math.max(0, Math.min(59, parseInt(v, 10) || 0));
 
-  let TIMERS = [];
-  try { TIMERS = JSON.parse(localStorage.getItem(KEY) || 'null') || []; } catch {}
-  if (!TIMERS.length) {
-    const oldEnd = parseInt(localStorage.getItem('mt-endat'), 10); // migrate the old single timer
+  let TIMERS = null;
+  try { TIMERS = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch {}
+  if (TIMERS === null) { // first run only — seed one timer (migrating the old single timer if present)
+    const oldEnd = parseInt(localStorage.getItem('mt-endat'), 10);
     TIMERS = [{ id: uid(), name: '', durMs: 600000, endAt: (oldEnd && oldEnd > Date.now()) ? oldEnd : 0 }];
   }
+  if (!Array.isArray(TIMERS)) TIMERS = []; // a saved empty list stays empty (max-space mode)
   try { localStorage.removeItem('mt-endat'); } catch {}
   TIMERS.forEach((t) => { if (t.endAt && t.endAt <= Date.now()) t.endAt = 0; t.started = !!t.started || t.endAt > Date.now(); }); // expired while closed -> idle; a running one counts as started
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(TIMERS)); } catch {} };
@@ -1423,8 +1424,7 @@ $('replay-next').addEventListener('click', () => { if (replayIdx > 0) { replayId
   function removeTimer(t) {
     const i = TIMERS.indexOf(t); if (i >= 0) TIMERS.splice(i, 1);
     const row = rowOf(t.id); if (row) row.remove();
-    if (!TIMERS.length) addTimer(); // keep at least one
-    save();
+    save(); // removing the last one is allowed — leaves just the header bar (+ Timer to add one back)
   }
   function addTimer() {
     const t = { id: uid(), name: '', durMs: 600000, endAt: 0, started: false };
