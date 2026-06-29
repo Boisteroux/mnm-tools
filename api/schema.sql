@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS submissions (
   y           REAL NOT NULL,
   category    TEXT NOT NULL,
   label       TEXT NOT NULL,
+  map_id      TEXT NOT NULL DEFAULT 'official',        -- which map this marker is on ('official' = maps.json, else a maps.id)
   submitter   TEXT,                                   -- optional "name for credit"
   status      TEXT NOT NULL DEFAULT 'pending',        -- pending | approved | rejected
   created_at  TEXT NOT NULL DEFAULT (datetime('now')),

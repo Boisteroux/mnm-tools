@@ -182,7 +182,7 @@ export default {
     // Public: approved markers for the site to draw (edge-cached for 60s).
     if (request.method === 'GET' && url.pathname === '/markers') {
       const { results } = await env.DB.prepare(
-        "SELECT id, zone, x, y, category, label, submitter, verified, created_at FROM submissions WHERE status='approved' ORDER BY created_at DESC"
+        "SELECT id, zone, map_id, x, y, category, label, submitter, verified, created_at FROM submissions WHERE status='approved' ORDER BY created_at DESC"
       ).all();
       return json({ markers: results }, 200, origin, { 'Cache-Control': 'public, max-age=60' });
     }
@@ -257,6 +257,7 @@ export default {
       const zone = String(b.zone || '').trim();
       const category = String(b.category || '').trim();
       const label = String(b.label || '').trim();
+      const mapId = (String(b.map_id || 'official').trim().slice(0, 40)) || 'official';
       const x = Number(b.x), y = Number(b.y);
       if (!zone || zone.length > 60) return json({ error: 'zone required' }, 400, origin);
       if (!category || category.length > 30) return json({ error: 'category required' }, 400, origin);
@@ -290,8 +291,8 @@ export default {
       }
 
       await env.DB.prepare(
-        'INSERT INTO submissions (type, zone, x, y, category, label, submitter, ip_hash, verified, discord_id, status) VALUES (?,?,?,?,?,?,?,?,?,?,?)'
-      ).bind('marker', zone, x, y, category, label, submitter, ipHash, verified, discordId, status).run();
+        'INSERT INTO submissions (type, zone, map_id, x, y, category, label, submitter, ip_hash, verified, discord_id, status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)'
+      ).bind('marker', zone, mapId, x, y, category, label, submitter, ipHash, verified, discordId, status).run();
       return json({ ok: true, status }, 201, origin);
     }
 
@@ -336,7 +337,7 @@ export default {
       const sess = await readSession(b.session, env.SESSION_SECRET);
       if (!sess) return json({ error: 'unauthorized' }, 401, origin);
       const { results } = await env.DB.prepare(
-        'SELECT id, zone, x, y, category, label, status, created_at FROM submissions WHERE discord_id=? ORDER BY created_at DESC'
+        'SELECT id, zone, map_id, x, y, category, label, status, created_at FROM submissions WHERE discord_id=? ORDER BY created_at DESC'
       ).bind(sess.id).all();
       return json({ markers: results }, 200, origin);
     }
@@ -363,13 +364,13 @@ export default {
 
       if (request.method === 'GET' && url.pathname === '/admin/pending') {
         const { results } = await env.DB.prepare(
-          "SELECT id, zone, x, y, category, label, submitter, verified, discord_id, created_at FROM submissions WHERE status='pending' ORDER BY created_at ASC"
+          "SELECT id, zone, map_id, x, y, category, label, submitter, verified, discord_id, created_at FROM submissions WHERE status='pending' ORDER BY created_at ASC"
         ).all();
         return json({ pending: results }, 200, origin);
       }
       if (request.method === 'GET' && url.pathname === '/admin/markers') {
         const { results } = await env.DB.prepare(
-          "SELECT id, zone, x, y, category, label, submitter, verified, discord_id, status, created_at FROM submissions WHERE status='approved' ORDER BY created_at DESC"
+          "SELECT id, zone, map_id, x, y, category, label, submitter, verified, discord_id, status, created_at FROM submissions WHERE status='approved' ORDER BY created_at DESC"
         ).all();
         return json({ markers: results }, 200, origin);
       }
