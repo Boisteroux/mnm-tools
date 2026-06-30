@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-30T18:44:59.291Z",
+  "generatedAt": "2026-06-30T23:31:01.949Z",
   "source": "mnm-tools",
-  "ledgerFiles": 43,
-  "events": 14700,
+  "ledgerFiles": 44,
+  "events": 15142,
   "contributors": [],
   "mobs": {
     "a desert bat": {
@@ -21,12 +21,12 @@
       "corpses": 17
     },
     "a rotting skeleton": {
-      "kills": 151,
+      "kills": 154,
       "drops": {
-        "Bone Chips": 62,
+        "Bone Chips": 65,
         "Rusty Mace": 3,
         "Worn Great Staff": 2,
-        "Cloth Scraps": 47,
+        "Cloth Scraps": 48,
         "Tattered Cloth Veil": 3,
         "Shattered Skull": 3,
         "Rusty Scimitar": 5,
@@ -39,13 +39,13 @@
         "Torch": 1,
         "Rusty Great Scythe": 2,
         "Tattered Cloth Gloves": 2,
-        "Rusty Spear": 2,
+        "Rusty Spear": 3,
         "Rusty Tower Shield": 1,
         "Rusty Longsword": 1,
         "Rusty Shortsword": 3,
         "Rusty Axe": 3,
         "Tattered Cloth Shirt": 2,
-        "Tattered Cloth Cape": 2,
+        "Tattered Cloth Cape": 3,
         "Rusty Dagger": 1,
         "Tattered Cloth Belt": 1,
         "Tattered Cloth Boots": 2,
@@ -58,12 +58,12 @@
         "Worn Bow": 1
       },
       "zones": {
-        "Night Harbor": 138,
+        "Night Harbor": 147,
         "Shaded Dunes": 13,
         "Evershade Weald": 276
       },
-      "coin": 217,
-      "corpses": 110
+      "coin": 221,
+      "corpses": 113
     },
     "a snake": {
       "kills": 0,
@@ -91,7 +91,7 @@
       "corpses": 6
     },
     "an ashira scout": {
-      "kills": 16,
+      "kills": 17,
       "drops": {
         "Ashira Scout Necklace": 5,
         "Cloth Scraps": 3,
@@ -99,13 +99,14 @@
         "Multhele Root": 1,
         "Tattered Cloth Belt": 1,
         "Torch": 1,
-        "Carrot": 1
+        "Carrot": 1,
+        "Tattered Cloth Robe": 1
       },
       "zones": {
-        "Night Harbor": 40
+        "Night Harbor": 42
       },
-      "coin": 66,
-      "corpses": 7
+      "coin": 69,
+      "corpses": 8
     },
     "a fire beetle": {
       "kills": 0,
@@ -127,13 +128,13 @@
       "drops": {
         "Raw Jackal Meat": 1,
         "Jackal Tooth": 2,
-        "Low-Quality Jackal Pelt": 2
+        "Low-Quality Jackal Pelt": 3
       },
       "zones": {
-        "Night Harbor": 9
+        "Night Harbor": 10
       },
       "coin": 0,
-      "corpses": 3
+      "corpses": 4
     },
     "a dunes scarab": {
       "kills": 0,
@@ -1966,8 +1967,8 @@
         {
           "mob": "an ashira scout",
           "drops": 5,
-          "corpses": 7,
-          "rate": 0.7142857142857143
+          "corpses": 8,
+          "rate": 0.625
         },
         {
           "mob": "an ashira lookout",
@@ -2490,9 +2491,9 @@
         },
         {
           "mob": "a rotting skeleton",
-          "drops": 62,
-          "corpses": 110,
-          "rate": 0.5636363636363636
+          "drops": 65,
+          "corpses": 113,
+          "rate": 0.5752212389380531
         },
         {
           "mob": "a skeleton",
@@ -2764,8 +2765,8 @@
         {
           "mob": "an ashira scout",
           "drops": 1,
-          "corpses": 7,
-          "rate": 0.14285714285714285
+          "corpses": 8,
+          "rate": 0.125
         },
         {
           "mob": "a captured dockhand",
@@ -3352,16 +3353,10 @@
           "rate": 0.4444444444444444
         },
         {
-          "mob": "an ashira scout",
-          "drops": 3,
-          "corpses": 7,
-          "rate": 0.42857142857142855
-        },
-        {
           "mob": "a rotting skeleton",
-          "drops": 47,
-          "corpses": 110,
-          "rate": 0.42727272727272725
+          "drops": 48,
+          "corpses": 113,
+          "rate": 0.4247787610619469
         },
         {
           "mob": "a Fellstone guard",
@@ -3404,6 +3399,12 @@
           "drops": 30,
           "corpses": 78,
           "rate": 0.38461538461538464
+        },
+        {
+          "mob": "an ashira scout",
+          "drops": 3,
+          "corpses": 8,
+          "rate": 0.375
         },
         {
           "mob": "an ashira shaman",
@@ -6172,9 +6173,10 @@
       "name": "Glinting Crystallized Magic",
       "droppedBy": [],
       "prices": [],
-      "harvested": 13,
+      "harvested": 14,
       "zones": [
-        "Scarwood"
+        "Scarwood",
+        "Glassflats"
       ]
     },
     {
@@ -6183,7 +6185,7 @@
       "name": "Gold Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 13,
+      "harvested": 36,
       "zones": [
         "Glassflats"
       ]
@@ -6470,6 +6472,17 @@
       ]
     },
     {
+      "id": "imperfect_blue_diamond",
+      "gameId": null,
+      "name": "Imperfect Blue Diamond",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Glassflats"
+      ]
+    },
+    {
       "id": "imperfect_carnelian",
       "gameId": null,
       "name": "Imperfect Carnelian",
@@ -6486,7 +6499,18 @@
       "name": "Imperfect Cat's Eye Agate",
       "droppedBy": [],
       "prices": [],
-      "harvested": 2,
+      "harvested": 3,
+      "zones": [
+        "Glassflats"
+      ]
+    },
+    {
+      "id": "imperfect_diamond",
+      "gameId": null,
+      "name": "Imperfect Diamond",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
       "zones": [
         "Glassflats"
       ]
@@ -6495,6 +6519,17 @@
       "id": "imperfect_jacinth",
       "gameId": null,
       "name": "Imperfect Jacinth",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Glassflats"
+      ]
+    },
+    {
+      "id": "imperfect_jade",
+      "gameId": null,
+      "name": "Imperfect Jade",
       "droppedBy": [],
       "prices": [],
       "harvested": 1,
@@ -6517,6 +6552,50 @@
       "id": "imperfect_onyx",
       "gameId": null,
       "name": "Imperfect Onyx",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 2,
+      "zones": [
+        "Glassflats"
+      ]
+    },
+    {
+      "id": "imperfect_pearl",
+      "gameId": null,
+      "name": "Imperfect Pearl",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Glassflats"
+      ]
+    },
+    {
+      "id": "imperfect_peridot",
+      "gameId": null,
+      "name": "Imperfect Peridot",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 2,
+      "zones": [
+        "Glassflats"
+      ]
+    },
+    {
+      "id": "imperfect_star_ruby",
+      "gameId": null,
+      "name": "Imperfect Star Ruby",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Glassflats"
+      ]
+    },
+    {
+      "id": "imperfect_topaz",
+      "gameId": null,
+      "name": "Imperfect Topaz",
       "droppedBy": [],
       "prices": [],
       "harvested": 1,
@@ -6554,7 +6633,7 @@
       "name": "Iron Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 127,
+      "harvested": 315,
       "zones": [
         "Glassflats"
       ]
@@ -6567,8 +6646,8 @@
         {
           "mob": "a jackal pup",
           "drops": 2,
-          "corpses": 3,
-          "rate": 0.6666666666666666
+          "corpses": 4,
+          "rate": 0.5
         }
       ],
       "prices": [
@@ -6597,10 +6676,11 @@
           "count": 1
         }
       ],
-      "harvested": 540,
+      "harvested": 543,
       "zones": [
         "Scarwood",
-        "Valeofzintar"
+        "Valeofzintar",
+        "Glassflats"
       ]
     },
     {
@@ -6874,9 +6954,9 @@
       "droppedBy": [
         {
           "mob": "a jackal pup",
-          "drops": 2,
-          "corpses": 3,
-          "rate": 0.6666666666666666
+          "drops": 3,
+          "corpses": 4,
+          "rate": 0.75
         }
       ],
       "prices": [
@@ -7023,8 +7103,8 @@
         {
           "mob": "an ashira scout",
           "drops": 1,
-          "corpses": 7,
-          "rate": 0.14285714285714285
+          "corpses": 8,
+          "rate": 0.125
         }
       ],
       "prices": [
@@ -7335,8 +7415,8 @@
         {
           "mob": "an ashira scout",
           "drops": 3,
-          "corpses": 7,
-          "rate": 0.42857142857142855
+          "corpses": 8,
+          "rate": 0.375
         },
         {
           "mob": "an ashira shaman",
@@ -7598,8 +7678,8 @@
         {
           "mob": "a jackal pup",
           "drops": 1,
-          "corpses": 3,
-          "rate": 0.3333333333333333
+          "corpses": 4,
+          "rate": 0.25
         }
       ],
       "prices": [
@@ -8234,8 +8314,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 3,
-          "corpses": 110,
-          "rate": 0.02727272727272727
+          "corpses": 113,
+          "rate": 0.02654867256637168
         },
         {
           "mob": "an old elven skeleton",
@@ -8278,8 +8358,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 110,
-          "rate": 0.00909090909090909
+          "corpses": 113,
+          "rate": 0.008849557522123894
         }
       ],
       "prices": [
@@ -8344,8 +8424,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 110,
-          "rate": 0.00909090909090909
+          "corpses": 113,
+          "rate": 0.008849557522123894
         },
         {
           "mob": "a Fellstone sentry",
@@ -8409,8 +8489,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 2,
-          "corpses": 110,
-          "rate": 0.01818181818181818
+          "corpses": 113,
+          "rate": 0.017699115044247787
         },
         {
           "mob": "a Fellstone sentry",
@@ -8501,8 +8581,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 2,
-          "corpses": 110,
-          "rate": 0.01818181818181818
+          "corpses": 113,
+          "rate": 0.017699115044247787
         },
         {
           "mob": "a Fellstone sentry",
@@ -8599,8 +8679,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 110,
-          "rate": 0.00909090909090909
+          "corpses": 113,
+          "rate": 0.008849557522123894
         },
         {
           "mob": "a Fellstone sentry",
@@ -8642,8 +8722,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 3,
-          "corpses": 110,
-          "rate": 0.02727272727272727
+          "corpses": 113,
+          "rate": 0.02654867256637168
         },
         {
           "mob": "a Fellstone sentry",
@@ -8724,8 +8804,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 5,
-          "corpses": 110,
-          "rate": 0.045454545454545456
+          "corpses": 113,
+          "rate": 0.04424778761061947
         },
         {
           "mob": "a Fellstone tracker",
@@ -8831,8 +8911,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 3,
-          "corpses": 110,
-          "rate": 0.02727272727272727
+          "corpses": 113,
+          "rate": 0.02654867256637168
         },
         {
           "mob": "an old elven skeleton",
@@ -8898,9 +8978,9 @@
         },
         {
           "mob": "a rotting skeleton",
-          "drops": 2,
-          "corpses": 110,
-          "rate": 0.01818181818181818
+          "drops": 3,
+          "corpses": 113,
+          "rate": 0.02654867256637168
         },
         {
           "mob": "a skeletal cleric",
@@ -8932,7 +9012,8 @@
         "Blacktidebay",
         "Shaded Dunes",
         "Tomb of the Last Wyrmsbane",
-        "Evershade Weald"
+        "Evershade Weald",
+        "Night Harbor"
       ]
     },
     {
@@ -8967,8 +9048,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 110,
-          "rate": 0.00909090909090909
+          "corpses": 113,
+          "rate": 0.008849557522123894
         },
         {
           "mob": "a Fellstone sentry",
@@ -9028,8 +9109,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 110,
-          "rate": 0.00909090909090909
+          "corpses": 113,
+          "rate": 0.008849557522123894
         },
         {
           "mob": "a Fellstone sentry",
@@ -9078,8 +9159,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 110,
-          "rate": 0.00909090909090909
+          "corpses": 113,
+          "rate": 0.008849557522123894
         },
         {
           "mob": "a Fellstone sentinel",
@@ -9127,8 +9208,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 110,
-          "rate": 0.00909090909090909
+          "corpses": 113,
+          "rate": 0.008849557522123894
         },
         {
           "mob": "a Fellstone sentinel",
@@ -9401,8 +9482,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 3,
-          "corpses": 110,
-          "rate": 0.02727272727272727
+          "corpses": 113,
+          "rate": 0.02654867256637168
         }
       ],
       "prices": [],
@@ -9417,7 +9498,7 @@
       "name": "Shining Crystallized Magic",
       "droppedBy": [],
       "prices": [],
-      "harvested": 1,
+      "harvested": 9,
       "zones": [
         "Glassflats"
       ]
@@ -9442,8 +9523,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 10,
-          "corpses": 110,
-          "rate": 0.09090909090909091
+          "corpses": 113,
+          "rate": 0.08849557522123894
         }
       ],
       "prices": [
@@ -9898,8 +9979,8 @@
         {
           "mob": "an ashira scout",
           "drops": 1,
-          "corpses": 7,
-          "rate": 0.14285714285714285
+          "corpses": 8,
+          "rate": 0.125
         },
         {
           "mob": "a Calafreyan soldier",
@@ -9964,8 +10045,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 110,
-          "rate": 0.00909090909090909
+          "corpses": 113,
+          "rate": 0.008849557522123894
         },
         {
           "mob": "a Fellstone sentinel",
@@ -10028,16 +10109,16 @@
           "rate": 0.01904761904761905
         },
         {
-          "mob": "a rotting skeleton",
-          "drops": 2,
-          "corpses": 110,
-          "rate": 0.01818181818181818
-        },
-        {
           "mob": "a skeleton",
           "drops": 1,
           "corpses": 56,
           "rate": 0.017857142857142856
+        },
+        {
+          "mob": "a rotting skeleton",
+          "drops": 2,
+          "corpses": 113,
+          "rate": 0.017699115044247787
         },
         {
           "mob": "a Fellstone sentry",
@@ -10278,16 +10359,16 @@
           "rate": 0.029411764705882353
         },
         {
+          "mob": "a rotting skeleton",
+          "drops": 3,
+          "corpses": 113,
+          "rate": 0.02654867256637168
+        },
+        {
           "mob": "a skeletal cleric",
           "drops": 2,
           "corpses": 78,
           "rate": 0.02564102564102564
-        },
-        {
-          "mob": "a rotting skeleton",
-          "drops": 2,
-          "corpses": 110,
-          "rate": 0.01818181818181818
         },
         {
           "mob": "a Fellstone sentinel",
@@ -10319,7 +10400,8 @@
         "Blacktidebay",
         "Tomb of the Last Wyrmsbane",
         "Evershade Weald",
-        "Shaded Dunes"
+        "Shaded Dunes",
+        "Night Harbor"
       ]
     },
     {
@@ -10360,8 +10442,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 2,
-          "corpses": 110,
-          "rate": 0.01818181818181818
+          "corpses": 113,
+          "rate": 0.017699115044247787
         },
         {
           "mob": "a Fellstone sentinel",
@@ -10434,8 +10516,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 3,
-          "corpses": 110,
-          "rate": 0.02727272727272727
+          "corpses": 113,
+          "rate": 0.02654867256637168
         },
         {
           "mob": "a Fellstone sentinel",
@@ -10527,8 +10609,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 110,
-          "rate": 0.00909090909090909
+          "corpses": 113,
+          "rate": 0.008849557522123894
         },
         {
           "mob": "a Fellstone sentry",
@@ -10624,8 +10706,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 110,
-          "rate": 0.00909090909090909
+          "corpses": 113,
+          "rate": 0.008849557522123894
         },
         {
           "mob": "a Fellstone sentry",
@@ -10655,6 +10737,12 @@
       "name": "Tattered Cloth Robe",
       "droppedBy": [
         {
+          "mob": "an ashira scout",
+          "drops": 1,
+          "corpses": 8,
+          "rate": 0.125
+        },
+        {
           "mob": "an ashira warrior",
           "drops": 1,
           "corpses": 13,
@@ -10673,16 +10761,16 @@
           "rate": 0.04
         },
         {
-          "mob": "a rotting skeleton",
-          "drops": 4,
-          "corpses": 110,
-          "rate": 0.03636363636363636
-        },
-        {
           "mob": "a skeleton",
           "drops": 2,
           "corpses": 56,
           "rate": 0.03571428571428571
+        },
+        {
+          "mob": "a rotting skeleton",
+          "drops": 4,
+          "corpses": 113,
+          "rate": 0.035398230088495575
         },
         {
           "mob": "a skeletal warrior",
@@ -10729,8 +10817,8 @@
       "zones": [
         "Blacktidebay",
         "Evershade Weald",
-        "Tomb of the Last Wyrmsbane",
         "Night Harbor",
+        "Tomb of the Last Wyrmsbane",
         "Shaded Dunes"
       ]
     },
@@ -10788,16 +10876,16 @@
           "rate": 0.02666666666666667
         },
         {
-          "mob": "a rotting skeleton",
-          "drops": 2,
-          "corpses": 110,
-          "rate": 0.01818181818181818
-        },
-        {
           "mob": "a skeleton",
           "drops": 1,
           "corpses": 56,
           "rate": 0.017857142857142856
+        },
+        {
+          "mob": "a rotting skeleton",
+          "drops": 2,
+          "corpses": 113,
+          "rate": 0.017699115044247787
         },
         {
           "mob": "a Fellstone sentry",
@@ -10883,8 +10971,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 110,
-          "rate": 0.00909090909090909
+          "corpses": 113,
+          "rate": 0.008849557522123894
         }
       ],
       "prices": [],
@@ -10922,8 +11010,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 3,
-          "corpses": 110,
-          "rate": 0.02727272727272727
+          "corpses": 113,
+          "rate": 0.02654867256637168
         },
         {
           "mob": "a Fellstone sentry",
@@ -12289,10 +12377,11 @@
       "name": "Tin Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 590,
+      "harvested": 592,
       "zones": [
         "Scarwood",
-        "Valeofzintar"
+        "Valeofzintar",
+        "Glassflats"
       ]
     },
     {
@@ -12339,8 +12428,8 @@
         {
           "mob": "an ashira scout",
           "drops": 1,
-          "corpses": 7,
-          "rate": 0.14285714285714285
+          "corpses": 8,
+          "rate": 0.125
         },
         {
           "mob": "a Bloodchain taskmaster",
@@ -12405,8 +12494,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 110,
-          "rate": 0.00909090909090909
+          "corpses": 113,
+          "rate": 0.008849557522123894
         },
         {
           "mob": "a Sangrel striker",
@@ -12657,7 +12746,7 @@
       "name": "Weighty Stone",
       "droppedBy": [],
       "prices": [],
-      "harvested": 105,
+      "harvested": 277,
       "zones": [
         "Glassflats"
       ]
@@ -12963,8 +13052,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 110,
-          "rate": 0.00909090909090909
+          "corpses": 113,
+          "rate": 0.008849557522123894
         },
         {
           "mob": "a Fellstone sentry",
@@ -13043,8 +13132,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 110,
-          "rate": 0.00909090909090909
+          "corpses": 113,
+          "rate": 0.008849557522123894
         }
       ],
       "prices": [
@@ -13201,8 +13290,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 2,
-          "corpses": 110,
-          "rate": 0.01818181818181818
+          "corpses": 113,
+          "rate": 0.017699115044247787
         },
         {
           "mob": "a skeletal cleric",
@@ -13298,11 +13387,11 @@
     "Chipped Carnelian": 1,
     "Chipped Lapis Lazuli": 1,
     "Limestone": 204,
-    "Tin Ore": 590,
-    "Jagged Stone": 540,
+    "Tin Ore": 592,
+    "Jagged Stone": 543,
     "Flawed Turquoise": 2,
     "Silver Ore": 69,
-    "Glinting Crystallized Magic": 13,
+    "Glinting Crystallized Magic": 14,
     "Flawed Black Sapphire": 3,
     "Flawed Hematite": 2,
     "Flawed Opal": 1,
@@ -13324,16 +13413,23 @@
     "Flawed Peridot": 1,
     "Flawed Jacinth": 1,
     "Flawed Onyx": 1,
-    "Iron Ore": 127,
-    "Weighty Stone": 105,
-    "Imperfect Onyx": 1,
+    "Iron Ore": 315,
+    "Weighty Stone": 277,
+    "Imperfect Onyx": 2,
     "Imperfect Black Pearl": 1,
     "Imperfect Jacinth": 1,
-    "Gold Ore": 13,
-    "Imperfect Cat's Eye Agate": 2,
-    "Shining Crystallized Magic": 1,
+    "Gold Ore": 36,
+    "Imperfect Cat's Eye Agate": 3,
+    "Shining Crystallized Magic": 9,
     "Imperfect Lapis Lazuli": 1,
-    "Imperfect Carnelian": 1
+    "Imperfect Carnelian": 1,
+    "Imperfect Peridot": 2,
+    "Imperfect Jade": 1,
+    "Imperfect Blue Diamond": 1,
+    "Imperfect Diamond": 1,
+    "Imperfect Topaz": 1,
+    "Imperfect Star Ruby": 1,
+    "Imperfect Pearl": 1
   },
   "harvestNodes": [
     {
@@ -13495,142 +13591,143 @@
     },
     {
       "name": "Tin Ore & Jagged Stone",
-      "pulls": 636,
+      "pulls": 638,
       "yields": [
         {
           "res": "Tin Ore",
-          "count": 590,
-          "rate": 0.9276729559748428
+          "count": 592,
+          "rate": 0.9278996865203761
         },
         {
           "res": "Jagged Stone",
-          "count": 460,
-          "rate": 0.7232704402515723
+          "count": 462,
+          "rate": 0.7241379310344828
         },
         {
           "res": "Silver Ore",
           "count": 46,
-          "rate": 0.07232704402515723
+          "rate": 0.07210031347962383
         },
         {
           "res": "Limestone",
           "count": 35,
-          "rate": 0.055031446540880505
+          "rate": 0.054858934169279
         },
         {
           "res": "Glinting Crystallized Magic",
-          "count": 13,
-          "rate": 0.020440251572327043
+          "count": 14,
+          "rate": 0.0219435736677116
         },
         {
           "res": "Flawed Pearl",
           "count": 4,
-          "rate": 0.006289308176100629
+          "rate": 0.006269592476489028
         },
         {
           "res": "Flawed Bloodstone",
           "count": 3,
-          "rate": 0.0047169811320754715
+          "rate": 0.004702194357366771
         },
         {
           "res": "Flawed Emerald",
           "count": 3,
-          "rate": 0.0047169811320754715
+          "rate": 0.004702194357366771
         },
         {
           "res": "Flawed Wolf's Eye Agate",
           "count": 3,
-          "rate": 0.0047169811320754715
+          "rate": 0.004702194357366771
         },
         {
           "res": "Flawed Turquoise",
           "count": 2,
-          "rate": 0.0031446540880503146
+          "rate": 0.003134796238244514
         },
         {
           "res": "Flawed Black Sapphire",
           "count": 2,
-          "rate": 0.0031446540880503146
+          "rate": 0.003134796238244514
         },
         {
           "res": "Flawed Hematite",
           "count": 2,
-          "rate": 0.0031446540880503146
+          "rate": 0.003134796238244514
         },
         {
           "res": "Flawed Diamond",
           "count": 2,
-          "rate": 0.0031446540880503146
+          "rate": 0.003134796238244514
         },
         {
           "res": "Flawed Ruby",
           "count": 2,
-          "rate": 0.0031446540880503146
+          "rate": 0.003134796238244514
         },
         {
           "res": "Flawed Sapphire",
           "count": 2,
-          "rate": 0.0031446540880503146
+          "rate": 0.003134796238244514
         },
         {
           "res": "Flawed Black Pearl",
           "count": 2,
-          "rate": 0.0031446540880503146
+          "rate": 0.003134796238244514
         },
         {
           "res": "Flawed Amber",
           "count": 2,
-          "rate": 0.0031446540880503146
+          "rate": 0.003134796238244514
         },
         {
           "res": "Flawed Jade",
           "count": 2,
-          "rate": 0.0031446540880503146
+          "rate": 0.003134796238244514
         },
         {
           "res": "Flawed Opal",
           "count": 1,
-          "rate": 0.0015723270440251573
+          "rate": 0.001567398119122257
         },
         {
           "res": "Flawed Cat's Eye Agate",
           "count": 1,
-          "rate": 0.0015723270440251573
+          "rate": 0.001567398119122257
         },
         {
           "res": "Flawed Malachite",
           "count": 1,
-          "rate": 0.0015723270440251573
+          "rate": 0.001567398119122257
         },
         {
           "res": "Flawed Blue Diamond",
           "count": 1,
-          "rate": 0.0015723270440251573
+          "rate": 0.001567398119122257
         },
         {
           "res": "Flawed Star Rose Quartz",
           "count": 1,
-          "rate": 0.0015723270440251573
+          "rate": 0.001567398119122257
         },
         {
           "res": "Flawed Peridot",
           "count": 1,
-          "rate": 0.0015723270440251573
+          "rate": 0.001567398119122257
         },
         {
           "res": "Flawed Jacinth",
           "count": 1,
-          "rate": 0.0015723270440251573
+          "rate": 0.001567398119122257
         },
         {
           "res": "Flawed Onyx",
           "count": 1,
-          "rate": 0.0015723270440251573
+          "rate": 0.001567398119122257
         }
       ],
       "zones": [
         "Scarwood",
-        "Valeofzintar"
+        "Valeofzintar",
+        "Glassflats"
       ]
     },
     {
@@ -13657,47 +13754,92 @@
     },
     {
       "name": "Iron Ore & Weighty Stone",
-      "pulls": 127,
+      "pulls": 343,
       "yields": [
         {
           "res": "Iron Ore",
-          "count": 127,
-          "rate": 1
+          "count": 315,
+          "rate": 0.9183673469387755
         },
         {
           "res": "Weighty Stone",
-          "count": 79,
-          "rate": 0.6220472440944882
+          "count": 232,
+          "rate": 0.6763848396501457
+        },
+        {
+          "res": "Gold Ore",
+          "count": 28,
+          "rate": 0.08163265306122448
+        },
+        {
+          "res": "Shining Crystallized Magic",
+          "count": 9,
+          "rate": 0.026239067055393587
         },
         {
           "res": "Imperfect Cat's Eye Agate",
-          "count": 2,
-          "rate": 0.015748031496062992
+          "count": 3,
+          "rate": 0.008746355685131196
         },
         {
           "res": "Imperfect Onyx",
-          "count": 1,
-          "rate": 0.007874015748031496
+          "count": 2,
+          "rate": 0.0058309037900874635
+        },
+        {
+          "res": "Imperfect Peridot",
+          "count": 2,
+          "rate": 0.0058309037900874635
         },
         {
           "res": "Imperfect Black Pearl",
           "count": 1,
-          "rate": 0.007874015748031496
+          "rate": 0.0029154518950437317
         },
         {
           "res": "Imperfect Jacinth",
           "count": 1,
-          "rate": 0.007874015748031496
+          "rate": 0.0029154518950437317
         },
         {
           "res": "Imperfect Lapis Lazuli",
           "count": 1,
-          "rate": 0.007874015748031496
+          "rate": 0.0029154518950437317
         },
         {
           "res": "Imperfect Carnelian",
           "count": 1,
-          "rate": 0.007874015748031496
+          "rate": 0.0029154518950437317
+        },
+        {
+          "res": "Imperfect Jade",
+          "count": 1,
+          "rate": 0.0029154518950437317
+        },
+        {
+          "res": "Imperfect Blue Diamond",
+          "count": 1,
+          "rate": 0.0029154518950437317
+        },
+        {
+          "res": "Imperfect Diamond",
+          "count": 1,
+          "rate": 0.0029154518950437317
+        },
+        {
+          "res": "Imperfect Topaz",
+          "count": 1,
+          "rate": 0.0029154518950437317
+        },
+        {
+          "res": "Imperfect Star Ruby",
+          "count": 1,
+          "rate": 0.0029154518950437317
+        },
+        {
+          "res": "Imperfect Pearl",
+          "count": 1,
+          "rate": 0.0029154518950437317
         }
       ],
       "zones": [
@@ -13778,23 +13920,13 @@
       ]
     },
     {
-      "name": "Gold Ore & Weighty Stone",
-      "pulls": 10,
+      "name": "Gold Ore",
+      "pulls": 7,
       "yields": [
         {
           "res": "Gold Ore",
-          "count": 10,
+          "count": 7,
           "rate": 1
-        },
-        {
-          "res": "Weighty Stone",
-          "count": 10,
-          "rate": 1
-        },
-        {
-          "res": "Shining Crystallized Magic",
-          "count": 1,
-          "rate": 0.1
         }
       ],
       "zones": [
@@ -13818,20 +13950,6 @@
       ],
       "zones": [
         "Keepersbight"
-      ]
-    },
-    {
-      "name": "Gold Ore",
-      "pulls": 3,
-      "yields": [
-        {
-          "res": "Gold Ore",
-          "count": 3,
-          "rate": 1
-        }
-      ],
-      "zones": [
-        "Glassflats"
       ]
     }
   ]
