@@ -13,10 +13,12 @@ let sharp = null, Jimp = null;
 try { sharp = require('sharp'); } catch {}
 try { Jimp = require('jimp'); } catch {}
 const MAX_WEB = 4800; // longest side, px — high enough to read fine map detail when zoomed
-const JPEG_Q = 84;
+const AVIF_Q = 50;    // AVIF quality — ~1/3 the size of JPEG q84 at the same detail on map-style art
+const JPEG_Q = 84;    // fallback quality when sharp (AVIF) isn't available and jimp is used
 
-// Web-optimise one image buffer: shrink to MAX_WEB and recompress as JPEG. Returns
-// the scale factor applied so marker coordinates can be scaled to match.
+// Web-optimise one image buffer: shrink to MAX_WEB and recompress. AVIF via sharp is
+// far smaller than JPEG on flat map art (lines/text), so we use it when available;
+// jimp falls back to JPEG. Returns the scale factor so marker coords can be matched.
 async function webImage(buf, ext) {
   if (buf.length < 300 * 1024) return { buf, ext, scale: 1 }; // small / line-art — leave it
   if (sharp) {
@@ -26,8 +28,8 @@ async function webImage(buf, ext) {
       const scale = long > MAX_WEB ? MAX_WEB / long : 1;
       let p = sharp(buf);
       if (scale < 1) p = p.resize(Math.round(meta.width * scale), Math.round(meta.height * scale));
-      const out = await p.jpeg({ quality: JPEG_Q, mozjpeg: true }).toBuffer();
-      return { buf: out, ext: '.jpg', scale };
+      const out = await p.avif({ quality: AVIF_Q }).toBuffer();
+      return { buf: out, ext: '.avif', scale };
     } catch {}
   }
   if (Jimp) {
