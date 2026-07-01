@@ -99,6 +99,24 @@ async function loadMaps() {
   } catch {}
   return ZONEMAPS;
 }
+// Downscale (to maxSide) + re-encode a submitted map to WebP in the browser, so every
+// community map is compressed BEFORE it's stored (the Cloudflare edge can't run an image
+// library). Returns { blob, width, height, ext } or null if the browser can't do it.
+async function compressMapImage(file, maxSide, quality) {
+  try {
+    const url = URL.createObjectURL(file);
+    const img = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = () => rej(new Error('decode')); i.src = url; });
+    const long = Math.max(img.naturalWidth, img.naturalHeight) || 1;
+    const scale = long > maxSide ? maxSide / long : 1;
+    const w = Math.max(1, Math.round(img.naturalWidth * scale)), h = Math.max(1, Math.round(img.naturalHeight * scale));
+    const canvas = document.createElement('canvas'); canvas.width = w; canvas.height = h;
+    canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+    URL.revokeObjectURL(url);
+    const blob = await new Promise((res) => canvas.toBlob(res, 'image/webp', quality));
+    if (!blob) return null;
+    return { blob, width: w, height: h, ext: blob.type === 'image/webp' ? 'webp' : 'png' };
+  } catch { return null; }
+}
 let QUESTS = []; // dev quests for the Database Quest Board (quests.json)
 
 const $ = (id) => document.getElementById(id);
@@ -2014,13 +2032,21 @@ function wireMapView(name, catById, fallback) {
       document.getElementById('mapf-submit').addEventListener('click', async () => {
         const f = fileEl.files[0];
         if (!f) { mstatus.textContent = 'Choose an image first.'; mstatus.className = 'sp-status err'; return; }
-        if (f.size > 10 * 1024 * 1024) { mstatus.textContent = 'That image is over 10 MB.'; mstatus.className = 'sp-status err'; return; }
+        // Always compress in the browser first, so a map is never stored (or made markable) huge.
+        mstatus.textContent = 'Compressing…'; mstatus.className = 'sp-status';
+        const comp = await compressMapImage(f, 4800, 0.82);
         const fd = new FormData();
         fd.set('zone', name);
         fd.set('label', document.getElementById('mapf-label').value.trim());
         fd.set('session', SESSION.token);
-        if (dims) { fd.set('width', dims.w); fd.set('height', dims.h); }
-        fd.set('image', f, f.name);
+        if (comp) {
+          fd.set('width', comp.width); fd.set('height', comp.height);
+          fd.set('image', comp.blob, (f.name.replace(/\.[^.]+$/, '') || 'map') + '.' + comp.ext);
+        } else {
+          if (f.size > 10 * 1024 * 1024) { mstatus.textContent = 'That image is over 10 MB and couldn’t be compressed here — please shrink it and retry.'; mstatus.className = 'sp-status err'; return; }
+          if (dims) { fd.set('width', dims.w); fd.set('height', dims.h); }
+          fd.set('image', f, f.name);
+        }
         mstatus.textContent = 'Uploading…'; mstatus.className = 'sp-status';
         try {
           const r = await fetch(API_BASE + '/map/submit', { method: 'POST', body: fd });
