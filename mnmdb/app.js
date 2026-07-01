@@ -122,6 +122,9 @@ let QUESTS = []; // dev quests for the Database Quest Board (quests.json)
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const slugify = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
+// Cache-buster for curated map images: keyed to the maps' publish time, so browsers
+// re-fetch a map only when it's actually republished (same filename, changed contents).
+const mapVer = () => (typeof MAPS !== 'undefined' && MAPS && MAPS.generatedAt ? '?v=' + String(MAPS.generatedAt).replace(/\D/g, '').slice(0, 14) : '');
 
 function coin(c) {
   c = Math.round(c);
@@ -1633,7 +1636,7 @@ function renderMapsList() {
         '<span class="mapthumb"><span class="soon-tag">Map coming soon</span></span>' +
         '<span class="mapname">' + esc(z.name) + '</span></a>'
       : '<a class="mapcard" href="#/map/' + encodeURIComponent(z.name) + '">' +
-        '<span class="mapthumb"><img src="maps/' + encodeURIComponent(z.image) + '" alt="" loading="lazy" /><span class="mapcount hidden" data-zone="' + esc(z.name) + '"></span></span>' +
+        '<span class="mapthumb"><img src="maps/' + encodeURIComponent(z.image) + mapVer() + '" alt="" loading="lazy" /><span class="mapcount hidden" data-zone="' + esc(z.name) + '"></span></span>' +
         '<span class="mapname">' + esc(z.name) +
         (z.markers.length ? ' <span class="sample">' + z.markers.length + ' marks</span>' : '') + '</span></a>'
     ).join('') + '</div>';
@@ -1737,7 +1740,7 @@ function renderMapView(name) {
   const catOptions = (MAPS.categories || []).map((c) =>
     '<option value="' + c.id + '">' + c.icon + ' ' + esc(c.name) + '</option>').join('');
 
-  mapLightSrc = 'maps/' + encodeURIComponent(z.image);
+  mapLightSrc = 'maps/' + encodeURIComponent(z.image) + mapVer();
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › <a href="#/maps">maps</a> › ' + esc(name) + '</div>' +
     '<h1>' + esc(name) + '</h1>' +
@@ -1808,7 +1811,7 @@ function wireMapView(name, catById, fallback) {
   const zrec = (MAPS.zones || []).find((x) => x.name === name) || {};
   const curated = (pendingMap || []).slice();              // the official map's curated markers
   let zoneCms = [], activeId = 'official';                  // community markers (with mapId) + active map
-  const MAPLIST = [{ id: 'official', label: 'Recommended', src: 'maps/' + encodeURIComponent(zrec.image || '') }];
+  const MAPLIST = [{ id: 'official', label: 'Recommended', src: 'maps/' + encodeURIComponent(zrec.image || '') + mapVer() }];
   const markersFor = (id) => id === 'official'
     ? curated.concat(zoneCms.filter((m) => m.mapId === 'official'))
     : zoneCms.filter((m) => m.mapId === id);
@@ -2205,7 +2208,7 @@ async function loadPending(creds, isSuper) {
     const c = catById[m.category] || { name: m.category, color: '#b0bec5', icon: '📍' };
     const z = (MAPS.zones || []).find((x) => x.name === m.zone);
     const preview = z && z.image
-      ? '<div class="modprev"><img src="maps/' + encodeURIComponent(z.image) + '" alt="" />' +
+      ? '<div class="modprev"><img src="maps/' + encodeURIComponent(z.image) + mapVer() + '" alt="" />' +
         '<span class="mk mk-temp modpin" data-px="' + m.x + '" data-py="' + m.y + '"></span></div>'
       : '<div class="modprev modprev-none">no map</div>';
     return '<div class="modcard" data-id="' + m.id + '">' + preview +
@@ -2235,7 +2238,7 @@ async function loadPending(creds, isSuper) {
     if (prev && z && z.image) {
       prev.classList.add('zoomable'); prev.title = 'Click to preview full size';
       prev.addEventListener('click', () => openMapLightbox(
-        'maps/' + encodeURIComponent(z.image),
+        'maps/' + encodeURIComponent(z.image) + mapVer(),
         [{ x: m.x, y: m.y, label: m.label, icon: c.icon, color: c.color, community: true }],
         '<b>' + esc(m.label) + '</b> &nbsp;<span class="lbtag"><span class="mdot" style="background:' + c.color + '"></span>' + esc(c.name) + '</span>&nbsp; ' + esc(m.zone) + ' · (' + m.x + ', ' + m.y + ')' + (m.submitter ? ' · by ' + esc(m.submitter) : '')));
     }
