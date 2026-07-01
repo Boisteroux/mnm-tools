@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-30T23:31:01.949Z",
+  "generatedAt": "2026-07-01T01:45:06.654Z",
   "source": "mnm-tools",
   "ledgerFiles": 44,
-  "events": 15142,
+  "events": 15385,
   "contributors": [],
   "mobs": {
     "a desert bat": {
@@ -6185,7 +6185,7 @@
       "name": "Gold Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 36,
+      "harvested": 53,
       "zones": [
         "Glassflats"
       ]
@@ -6499,7 +6499,7 @@
       "name": "Imperfect Cat's Eye Agate",
       "droppedBy": [],
       "prices": [],
-      "harvested": 3,
+      "harvested": 4,
       "zones": [
         "Glassflats"
       ]
@@ -6508,6 +6508,17 @@
       "id": "imperfect_diamond",
       "gameId": null,
       "name": "Imperfect Diamond",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Glassflats"
+      ]
+    },
+    {
+      "id": "imperfect_hematite",
+      "gameId": null,
+      "name": "Imperfect Hematite",
       "droppedBy": [],
       "prices": [],
       "harvested": 1,
@@ -6549,12 +6560,23 @@
       ]
     },
     {
+      "id": "imperfect_malachite",
+      "gameId": null,
+      "name": "Imperfect Malachite",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Glassflats"
+      ]
+    },
+    {
       "id": "imperfect_onyx",
       "gameId": null,
       "name": "Imperfect Onyx",
       "droppedBy": [],
       "prices": [],
-      "harvested": 2,
+      "harvested": 3,
       "zones": [
         "Glassflats"
       ]
@@ -6582,6 +6604,28 @@
       ]
     },
     {
+      "id": "imperfect_ruby",
+      "gameId": null,
+      "name": "Imperfect Ruby",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Glassflats"
+      ]
+    },
+    {
+      "id": "imperfect_star_rose_quartz",
+      "gameId": null,
+      "name": "Imperfect Star Rose Quartz",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Glassflats"
+      ]
+    },
+    {
       "id": "imperfect_star_ruby",
       "gameId": null,
       "name": "Imperfect Star Ruby",
@@ -6598,7 +6642,7 @@
       "name": "Imperfect Topaz",
       "droppedBy": [],
       "prices": [],
-      "harvested": 1,
+      "harvested": 3,
       "zones": [
         "Glassflats"
       ]
@@ -6633,7 +6677,7 @@
       "name": "Iron Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 315,
+      "harvested": 423,
       "zones": [
         "Glassflats"
       ]
@@ -9498,7 +9542,7 @@
       "name": "Shining Crystallized Magic",
       "droppedBy": [],
       "prices": [],
-      "harvested": 9,
+      "harvested": 12,
       "zones": [
         "Glassflats"
       ]
@@ -12746,7 +12790,7 @@
       "name": "Weighty Stone",
       "droppedBy": [],
       "prices": [],
-      "harvested": 277,
+      "harvested": 371,
       "zones": [
         "Glassflats"
       ]
@@ -13413,23 +13457,27 @@
     "Flawed Peridot": 1,
     "Flawed Jacinth": 1,
     "Flawed Onyx": 1,
-    "Iron Ore": 315,
-    "Weighty Stone": 277,
-    "Imperfect Onyx": 2,
+    "Iron Ore": 423,
+    "Weighty Stone": 371,
+    "Imperfect Onyx": 3,
     "Imperfect Black Pearl": 1,
     "Imperfect Jacinth": 1,
-    "Gold Ore": 36,
-    "Imperfect Cat's Eye Agate": 3,
-    "Shining Crystallized Magic": 9,
+    "Gold Ore": 53,
+    "Imperfect Cat's Eye Agate": 4,
+    "Shining Crystallized Magic": 12,
     "Imperfect Lapis Lazuli": 1,
     "Imperfect Carnelian": 1,
     "Imperfect Peridot": 2,
     "Imperfect Jade": 1,
     "Imperfect Blue Diamond": 1,
     "Imperfect Diamond": 1,
-    "Imperfect Topaz": 1,
+    "Imperfect Topaz": 3,
     "Imperfect Star Ruby": 1,
-    "Imperfect Pearl": 1
+    "Imperfect Pearl": 1,
+    "Imperfect Star Rose Quartz": 1,
+    "Imperfect Hematite": 1,
+    "Imperfect Ruby": 1,
+    "Imperfect Malachite": 1
   },
   "harvestNodes": [
     {
@@ -13754,92 +13802,107 @@
     },
     {
       "name": "Iron Ore & Weighty Stone",
-      "pulls": 343,
+      "pulls": 464,
       "yields": [
         {
           "res": "Iron Ore",
-          "count": 315,
-          "rate": 0.9183673469387755
+          "count": 423,
+          "rate": 0.9116379310344828
         },
         {
           "res": "Weighty Stone",
-          "count": 232,
-          "rate": 0.6763848396501457
+          "count": 313,
+          "rate": 0.6745689655172413
         },
         {
           "res": "Gold Ore",
-          "count": 28,
-          "rate": 0.08163265306122448
+          "count": 41,
+          "rate": 0.08836206896551724
         },
         {
           "res": "Shining Crystallized Magic",
-          "count": 9,
-          "rate": 0.026239067055393587
+          "count": 11,
+          "rate": 0.023706896551724137
         },
         {
           "res": "Imperfect Cat's Eye Agate",
-          "count": 3,
-          "rate": 0.008746355685131196
+          "count": 4,
+          "rate": 0.008620689655172414
         },
         {
           "res": "Imperfect Onyx",
-          "count": 2,
-          "rate": 0.0058309037900874635
+          "count": 3,
+          "rate": 0.00646551724137931
+        },
+        {
+          "res": "Imperfect Topaz",
+          "count": 3,
+          "rate": 0.00646551724137931
         },
         {
           "res": "Imperfect Peridot",
           "count": 2,
-          "rate": 0.0058309037900874635
+          "rate": 0.004310344827586207
         },
         {
           "res": "Imperfect Black Pearl",
           "count": 1,
-          "rate": 0.0029154518950437317
+          "rate": 0.0021551724137931034
         },
         {
           "res": "Imperfect Jacinth",
           "count": 1,
-          "rate": 0.0029154518950437317
+          "rate": 0.0021551724137931034
         },
         {
           "res": "Imperfect Lapis Lazuli",
           "count": 1,
-          "rate": 0.0029154518950437317
+          "rate": 0.0021551724137931034
         },
         {
           "res": "Imperfect Carnelian",
           "count": 1,
-          "rate": 0.0029154518950437317
+          "rate": 0.0021551724137931034
         },
         {
           "res": "Imperfect Jade",
           "count": 1,
-          "rate": 0.0029154518950437317
+          "rate": 0.0021551724137931034
         },
         {
           "res": "Imperfect Blue Diamond",
           "count": 1,
-          "rate": 0.0029154518950437317
+          "rate": 0.0021551724137931034
         },
         {
           "res": "Imperfect Diamond",
           "count": 1,
-          "rate": 0.0029154518950437317
-        },
-        {
-          "res": "Imperfect Topaz",
-          "count": 1,
-          "rate": 0.0029154518950437317
+          "rate": 0.0021551724137931034
         },
         {
           "res": "Imperfect Star Ruby",
           "count": 1,
-          "rate": 0.0029154518950437317
+          "rate": 0.0021551724137931034
         },
         {
           "res": "Imperfect Pearl",
           "count": 1,
-          "rate": 0.0029154518950437317
+          "rate": 0.0021551724137931034
+        },
+        {
+          "res": "Imperfect Hematite",
+          "count": 1,
+          "rate": 0.0021551724137931034
+        },
+        {
+          "res": "Imperfect Ruby",
+          "count": 1,
+          "rate": 0.0021551724137931034
+        },
+        {
+          "res": "Imperfect Malachite",
+          "count": 1,
+          "rate": 0.0021551724137931034
         }
       ],
       "zones": [
@@ -13921,12 +13984,22 @@
     },
     {
       "name": "Gold Ore",
-      "pulls": 7,
+      "pulls": 11,
       "yields": [
         {
           "res": "Gold Ore",
-          "count": 7,
+          "count": 11,
           "rate": 1
+        },
+        {
+          "res": "Imperfect Star Rose Quartz",
+          "count": 1,
+          "rate": 0.09090909090909091
+        },
+        {
+          "res": "Shining Crystallized Magic",
+          "count": 1,
+          "rate": 0.09090909090909091
         }
       ],
       "zones": [
