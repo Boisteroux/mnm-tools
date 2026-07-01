@@ -12,7 +12,7 @@ const crypto = require('crypto');
 let sharp = null, Jimp = null;
 try { sharp = require('sharp'); } catch {}
 try { Jimp = require('jimp'); } catch {}
-const MAX_WEB = 4800; // longest side, px — high enough to read fine map detail when zoomed
+const MAX_WEB = 8000; // longest side, px — keeps full source detail (AVIF makes it cheap); caps only truly enormous maps
 const AVIF_Q = 50;    // AVIF quality — ~1/3 the size of JPEG q84 at the same detail on map-style art
 const JPEG_Q = 84;    // fallback quality when sharp (AVIF) isn't available and jimp is used
 

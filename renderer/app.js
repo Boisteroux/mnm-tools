@@ -41,7 +41,7 @@ const GRID_SIZE = 2000;                        // blank-map play area in world u
 const MARKER_RADIUS = 11;                      // screen pixels, constant at any zoom
 const COMMUNITY_MARKERS_URL = 'https://mnmdb-api.boisteroux.workers.dev/markers';
 const COMMUNITY_KEY = 'community-markers';
-const WEB_MAX = 4800;                          // must match tracker/export-maps.js MAX_WEB (how the web image was scaled)
+const WEB_MAX = 8000;                          // must match tracker/export-maps.js MAX_WEB (how the web image was scaled)
 
 // ---- Elements ----
 
