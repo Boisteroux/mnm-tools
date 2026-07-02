@@ -20,6 +20,9 @@ const toNum = (s) => (s == null || s === '' ? null : (isNaN(+s) ? null : +s));
 const clean = (s) =>
   s == null ? null : s.replace(/<[^>]+>/g, ' ').replace(/&[a-z]+;/gi, ' ').replace(/\s+/g, ' ').trim() || null;
 const cap = (s) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : s);
+// Title-case each word so a casually-typed trade name ("brilliant crystallized
+// magic") resolves to its real wiki page ("Brilliant Crystallized Magic").
+const titleCaseName = (s) => String(s || '').replace(/\w\S*/g, (w) => w.charAt(0).toUpperCase() + w.slice(1));
 
 const ZONES = new Set([
   'Ancient Crypt', 'Blacktide Bay', 'Caves of Irem', 'Evershade Weald', 'Faelindral',
@@ -383,7 +386,15 @@ function parseNodePage(wikitext) {
 async function run() {
   const test = process.argv.includes('--test');
   const ds = JSON.parse(fs.readFileSync(DATA, 'utf8'));
-  const itemNames = test ? ['Rusty Scimitar', 'Bronze Dagger', 'Copper Ore'] : ds.items.map((i) => i.name);
+  // Seed the item list from looted/vendored/harvested items PLUS items you've only
+  // ever traded (bought/sold) — otherwise a trade-only item never gets a wiki page.
+  let tradeNames = [];
+  try {
+    const tj = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'mnmdb', 'trades.json'), 'utf8'));
+    tradeNames = [...new Set((tj.trades || []).map((t) => titleCaseName(t.item)))];
+  } catch {}
+  const itemNames = test ? ['Rusty Scimitar', 'Bronze Dagger', 'Copper Ore']
+    : [...new Set([...ds.items.map((i) => i.name), ...tradeNames])];
   const mobNames = test ? ['a green drakeling', 'a rotting skeleton'] : Object.keys(ds.mobs);
 
   // ---- Items (from your ledger) ----
@@ -549,4 +560,9 @@ if (require.main === module) run();
 
 // Exported so a targeted update can reuse the wiki fetch + recipe parsing without a
 // full re-scrape (e.g. scripts that pull just the item-page recipes the tables miss).
-module.exports = { parsePlayercrafted, parseSources, templateParams, fetchWikitext, TRADESKILLS };
+module.exports = {
+  parsePlayercrafted, parseSources, templateParams, fetchWikitext, TRADESKILLS,
+  // Also used by enrich-trades.js to enrich trade-only items without a full re-scrape.
+  parseItemBox, parseSoldBy, parseCategories, parseTradeskills, parseHarvestedBy,
+  fetchImageUrls, titleCaseName,
+};

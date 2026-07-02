@@ -1,0 +1,123 @@
+// ---------------------------------------------------------------
+// Trade-item enrichment — makes sure every item you've logged a buy/sell for
+// (mnmdb/trades.json) has an entry in mnmdb/wiki.json, pulling its stats/icon
+// from the M&M wiki. Trade-only items (never looted) are otherwise invisible to
+// the wiki scraper, which seeds from data.json (looted/vendored) items only.
+//
+// This is the INCREMENTAL path: it only fetches the handful of traded items not
+// already in wiki.json, so it's cheap enough to run on a schedule or after every
+// publish. A full `node tracker/enrich-wiki.js` also picks trades up now (it
+// seeds from trades.json too), but re-scrapes everything.
+//
+// Run:  node tracker/enrich-trades.js          (enrich + write wiki.json)
+//       node tracker/enrich-trades.js --dry     (report only, no write)
+// ---------------------------------------------------------------
+
+const fs = require('fs');
+const path = require('path');
+const W = require('./enrich-wiki.js');
+
+const WIKI = path.join(__dirname, '..', 'mnmdb', 'wiki.json');
+const TRADES = path.join(__dirname, '..', 'mnmdb', 'trades.json');
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// Build the same wiki.json entry shape enrich-wiki.js writes, from one page's wikitext.
+function entryFromWikitext(wt) {
+  const box = W.parseItemBox(wt);
+  if (!box) return null; // no ItemBox = not a real item page (NPC / list / redirect target)
+  const src = W.parseSources(wt);
+  const cats = W.parseCategories(wt);
+  const ts = W.parseTradeskills(wt);
+  const soldBy = W.parseSoldBy(wt);
+  const harvestedBy = W.parseHarvestedBy(wt);
+  return Object.assign(
+    { hasPage: true, wikiOnly: true, fromTrade: true }, box,
+    src.zones.length ? { wikiZones: src.zones } : {},
+    src.from.length ? { from: src.from } : {},
+    cats.length ? { categories: cats } : {},
+    ts.length ? { tradeskills: ts } : {},
+    soldBy ? { soldBy } : {},
+    harvestedBy ? { harvestedBy } : {}
+  );
+}
+
+async function enrichTrades({ write = true } = {}) {
+  const wiki = JSON.parse(fs.readFileSync(WIKI, 'utf8'));
+  wiki.items = wiki.items || {};
+  const trades = (JSON.parse(fs.readFileSync(TRADES, 'utf8')).trades) || [];
+
+  const haveLower = new Set(Object.keys(wiki.items).map((n) => n.toLowerCase()));
+  const missing = [...new Set(trades.map((t) => t.item))]
+    .filter((n) => n && !haveLower.has(n.toLowerCase()));
+
+  if (!missing.length) {
+    console.log('All traded items already have wiki entries — nothing to do.');
+    return { added: [], stubs: [], noPage: [] };
+  }
+  console.log(`Traded items missing a wiki entry: ${missing.length}`);
+
+  // For each missing item try both the raw name and a title-cased variant, so a
+  // casually-typed trade ("brilliant crystallized magic") still finds its page.
+  const candByItem = new Map(missing.map((n) => [n, [...new Set([n, W.titleCaseName(n)])]]));
+  const allCands = [...new Set([].concat(...candByItem.values()))];
+
+  // Fetch wikitext for every candidate (batched — fetchWikitext handles ~45/call).
+  const texts = {};
+  for (let i = 0; i < allCands.length; i += 45) {
+    const batch = allCands.slice(i, i + 45);
+    try { Object.assign(texts, await W.fetchWikitext(batch)); } catch (e) { console.error('fetch batch failed:', e.message); }
+    await sleep(350);
+  }
+  // Case-insensitive lookup of a resolved page for a given asked-name.
+  const textKeyLower = new Map(Object.keys(texts).map((k) => [k.toLowerCase(), k]));
+
+  const added = {}, addedNames = [], stubs = [], noPage = [];
+  for (const item of missing) {
+    let hitKey = null;
+    for (const cand of candByItem.get(item)) {
+      const k = textKeyLower.get(cand.toLowerCase());
+      if (k) { hitKey = k; break; }
+    }
+    const entry = hitKey ? entryFromWikitext(texts[hitKey]) : null;
+    if (entry) {
+      added[hitKey] = entry;          // key under the real wiki title casing
+      addedNames.push(`${item}${hitKey !== item ? ` → ${hitKey}` : ''}`);
+    } else {
+      // No usable wiki page — create a minimal stub so the item still gets a page
+      // (its trade price shows), flagged so it's easy to find + fix later.
+      const title = hitKey || W.titleCaseName(item);
+      added[title] = { hasPage: false, wikiOnly: true, fromTrade: true };
+      stubs.push(title);
+      if (!hitKey) noPage.push(title);
+    }
+  }
+
+  // Resolve icons for the ones that have an iconId.
+  const iconIds = [...new Set(Object.values(added).map((e) => e.iconId).filter(Boolean))];
+  if (iconIds.length) {
+    try {
+      const urls = await W.fetchImageUrls(iconIds.map((id) => 'File:' + id + '.png'));
+      for (const e of Object.values(added)) if (e.iconId) e.icon = urls['File:' + e.iconId + '.png'] || null;
+    } catch (e) { console.error('icon fetch failed:', e.message); }
+  }
+
+  console.log(`\n  ✓ enriched from wiki (${addedNames.length}): ${addedNames.join(', ') || '—'}`);
+  if (stubs.length) console.log(`  • stub entries, no wiki page (${stubs.length}): ${stubs.join(', ')}`);
+
+  if (write) {
+    Object.assign(wiki.items, added);
+    wiki.generatedAt = new Date().toISOString();
+    fs.writeFileSync(WIKI, JSON.stringify(wiki, null, 2));
+    console.log(`\nWrote ${Object.keys(added).length} new entries to ${path.relative(process.cwd(), WIKI)}.`);
+  } else {
+    console.log('\n(dry run — wiki.json not written)');
+  }
+  return { added: addedNames, stubs, noPage };
+}
+
+module.exports = { enrichTrades };
+
+if (require.main === module) {
+  enrichTrades({ write: !process.argv.includes('--dry') })
+    .catch((e) => { console.error(e); process.exit(1); });
+}
