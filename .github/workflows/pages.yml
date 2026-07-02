@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write   # write: so the auto-enrich step can commit wiki.json back
   pages: write
   id-token: write
 
@@ -25,6 +25,32 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Give every item you've logged a buy/sell for a wiki entry (stats + icon),
+      # so trade-only items get a page. Only fetches items missing from wiki.json,
+      # so it's a no-op on most deploys. Non-fatal: a wiki hiccup never blocks the
+      # site deploy.
+      - name: Enrich traded items from the wiki
+        run: node tracker/enrich-trades.js || echo "enrich-trades skipped (non-fatal)"
+
+      # Keep the repo's wiki.json in sync when new entries were added. This push
+      # uses GITHUB_TOKEN so it does NOT re-trigger this workflow (no loop); the
+      # freshly-enriched wiki.json is already deployed by the steps below.
+      - name: Commit enriched wiki.json (if changed)
+        run: |
+          if ! git diff --quiet -- mnmdb/wiki.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add mnmdb/wiki.json
+            git commit -m "Auto-enrich traded items from the wiki [skip ci]"
+            git push
+          else
+            echo "No new traded items — wiki.json unchanged."
+          fi
+
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
