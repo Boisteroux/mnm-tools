@@ -2,7 +2,6 @@ const { app, BrowserWindow, ipcMain, dialog, globalShortcut, screen, crashReport
 const fs = require('fs');
 const path = require('path');
 const ledgerParser = require('./tracker/ledger-parser');
-const { exportMaps } = require('./tracker/export-maps');
 const { execFile } = require('child_process');
 
 let win;
@@ -292,12 +291,13 @@ ipcMain.handle('publish-mnmdb', async () => {
     siteTrades.trades = existing;
     fs.writeFileSync(siteTradesPath, JSON.stringify(siteTrades, null, 2));
 
-    // 2b. Export curated zone maps (images + markers) for the read-only viewer.
-    let mapStats = { zones: 0 };
-    try { mapStats = await exportMaps(dataFile(), path.join(REPO_ROOT, 'mnmdb')); } catch {}
+    // NB: maps are intentionally NOT exported here. The packaged app has no
+    // sharp/jimp, so exporting would recompress every map back to raw/JPEG and
+    // wipe the full-res AVIF versions. Maps change rarely and are published
+    // separately via `node tracker/export-maps.js` in the dev environment.
 
     // 3. Commit + push.
-    await gitRun(['add', 'mnmdb/data.json', 'mnmdb/trades.json', 'mnmdb/maps.json', 'mnmdb/maps', 'contributions']);
+    await gitRun(['add', 'mnmdb/data.json', 'mnmdb/trades.json', 'contributions']);
     const tradeNote = added ? ` + ${added} trade${added === 1 ? '' : 's'}` : '';
     const contribNote = contributors.length ? ` + ${contributors.length} contributor${contributors.length === 1 ? '' : 's'}` : '';
     const commit = await gitRun(['commit', '-m', `Publish play data (${agg.events} events, ${items.length} items${tradeNote}${contribNote})`]);
@@ -309,7 +309,7 @@ ipcMain.handle('publish-mnmdb', async () => {
     }
     const push = await gitRun(['push']);
     if (push.code !== 0) return { error: 'Push failed: ' + push.out.trim().slice(0, 200) };
-    return { ok: true, message: `Published ${items.length} items · ${agg.events} events${contributors.length ? ' · ' + contributors.length + ' contributor' + (contributors.length === 1 ? '' : 's') : ''}${added ? ' · ' + added + ' new trade' + (added === 1 ? '' : 's') : ''}${mapStats.zones ? ' · ' + mapStats.zones + ' maps' : ''}. Live on MnMdb in ~30s.` };
+    return { ok: true, message: `Published ${items.length} items · ${agg.events} events${contributors.length ? ' · ' + contributors.length + ' contributor' + (contributors.length === 1 ? '' : 's') : ''}${added ? ' · ' + added + ' new trade' + (added === 1 ? '' : 's') : ''}. Live on MnMdb in ~30s.` };
   } catch (e) {
     return { error: e.message };
   }
