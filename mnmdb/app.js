@@ -1681,14 +1681,24 @@ function openMapLightbox(src, markers, caption) {
   document.body.appendChild(lb);
   const inner = lb.querySelector('.lb-inner'), img = lb.querySelector('img'), layer = lb.querySelector('.lb-layer');
 
-  let scale = 1, tx = 0, ty = 0;
+  // Zoom by resizing the IMG itself (the browser re-renders from the full-res
+  // source = crisp) and pan with translate only. Transform-scaling instead would
+  // just upscale a cached fit-size raster — blurry at any real zoom.
+  let scale = 1, tx = 0, ty = 0, fitW = 0;
+  const maxScale = () => (fitW && img.naturalWidth) ? Math.max(1, img.naturalWidth / fitW) : 8;
   const apply = () => {
-    inner.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + scale + ')';
+    if (fitW) img.style.width = Math.round(fitW * scale) + 'px';
+    inner.style.transform = 'translate(' + tx + 'px,' + ty + 'px)';
     inner.classList.toggle('zoomed', scale > 1);
   };
-  const zoom = (f) => { scale = Math.max(1, Math.min(8, scale * f)); if (scale === 1) { tx = 0; ty = 0; } apply(); };
+  const zoom = (f) => { scale = Math.max(1, Math.min(maxScale(), scale * f)); if (scale === 1) { tx = 0; ty = 0; } apply(); };
   const place = () => { layer.innerHTML = markerLayerHTML(markers, img.naturalWidth || 1, img.naturalHeight || 1); };
-  img.complete && img.naturalWidth ? place() : img.addEventListener('load', place);
+  const ready = () => {
+    fitW = img.clientWidth || Math.min(img.naturalWidth || 1, Math.round(window.innerWidth * 0.98));
+    img.style.maxWidth = 'none'; img.style.maxHeight = 'none'; img.style.width = fitW + 'px';
+    place();
+  };
+  img.complete && img.naturalWidth ? requestAnimationFrame(ready) : img.addEventListener('load', ready);
 
   lb.querySelector('[data-z=in]').onclick = (e) => { e.stopPropagation(); zoom(1.4); };
   lb.querySelector('[data-z=out]').onclick = (e) => { e.stopPropagation(); zoom(1 / 1.4); };

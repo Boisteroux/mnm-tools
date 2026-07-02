@@ -273,7 +273,7 @@ h3.bracket { font-size: 13px; font-weight: 600; color: var(--text); margin: 4px 
   position: fixed; inset: 0; z-index: 100; background: rgba(0, 0, 0, 0.9);
   display: flex; align-items: center; justify-content: center; overflow: hidden;
 }
-.lb-inner { position: relative; display: inline-block; line-height: 0; transform-origin: center center; will-change: transform; }
+.lb-inner { position: relative; display: inline-block; line-height: 0; }
 .lb-inner.zoomed { cursor: grab; }
 .lb-inner.zoomed:active { cursor: grabbing; }
 .lb-inner img { display: block; max-width: 98vw; max-height: 96vh; width: auto; height: auto; border-radius: 4px; }
