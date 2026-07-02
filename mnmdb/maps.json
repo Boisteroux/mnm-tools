@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-02T06:59:19.493Z",
+  "generatedAt": "2026-07-02T07:06:33.675Z",
   "categories": [
     {
       "id": "ore",
@@ -53,81 +53,81 @@
   "zones": [
     {
       "name": "Blacktide Bay",
-      "image": "blacktide_bay.jpg",
+      "image": "blacktide_bay.avif",
       "markers": [
         {
-          "x": 1725,
-          "y": 1055,
+          "x": 2588,
+          "y": 1582,
           "label": "an orcish tactician",
           "category": "named",
           "notes": "https://mnm-db.com/#/mob/an%20orcish%20tactician"
         },
         {
-          "x": 1273,
-          "y": 1232,
+          "x": 1909,
+          "y": 1848,
           "label": "Commander Rursk",
           "category": "named",
           "notes": "https://mnm-db.com/#/mob/Commander%20Rursk\n\nRoom has 6 mobs in it, you probably need to break camp"
         },
         {
-          "x": 2080,
-          "y": 922,
+          "x": 3120,
+          "y": 1384,
           "label": "Gurowl the Beast",
           "category": "named",
           "notes": "https://mnm-db.com/#/mob/Gurowl%20the%20Beast"
         },
         {
-          "x": 1486,
-          "y": 1164,
+          "x": 2229,
+          "y": 1745,
           "label": "BEWARE - PET PATHING ON THESE STAIRS CAUSES TRAINS",
           "category": "misc",
           "notes": ""
         },
         {
-          "x": 3219,
-          "y": 745,
+          "x": 4829,
+          "y": 1117,
           "label": "an acolyte of Visru",
           "category": "named",
           "notes": ""
         },
         {
-          "x": 1941,
-          "y": 1166,
+          "x": 2912,
+          "y": 1748,
           "label": "a Fellstone ritualist",
           "category": "named",
           "notes": "PH is Fellstone corruptor"
         },
         {
-          "x": 451,
-          "y": 2481,
+          "x": 677,
+          "y": 3721,
           "label": "a gloom widow matron",
           "category": "named",
           "notes": ""
         },
         {
-          "x": 2380,
-          "y": 908,
+          "x": 3569,
+          "y": 1362,
           "label": "a frenzied ratman",
           "category": "named",
           "notes": ""
         },
         {
-          "x": 2838,
-          "y": 832,
+          "x": 4258,
+          "y": 1247,
           "label": "a swarm leader",
           "category": "named",
           "notes": ""
         },
         {
-          "x": 2473,
-          "y": 1133,
+          "x": 3709,
+          "y": 1699,
           "label": "a bloodchain champion",
           "category": "named",
           "notes": "22-24ish"
         },
         {
-          "x": 2761,
-          "y": 539,
+          "x": 4142,
+          "y": 808,
           "label": "Prince Mali'Tik",
           "category": "named",
           "notes": ""
@@ -141,7 +141,7 @@
     },
     {
       "name": "Evershade Weald",
-      "image": "evershade_weald.jpg",
+      "image": "evershade_weald.avif",
       "markers": [
         {
           "x": 2374,
@@ -525,17 +525,88 @@
     },
     {
       "name": "Faelindral",
-      "image": "faelindral.jpg",
+      "image": "faelindral.avif",
       "markers": []
     },
     {
       "name": "Fallen Pass",
-      "image": "fallen_pass.jpg",
-      "markers": []
+      "image": "fallen_pass.avif",
+      "markers": [
+        {
+          "x": 2634,
+          "y": 1379,
+          "label": "Ore 1",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 2139,
+          "y": 1083,
+          "label": "Ore 2",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 3118,
+          "y": 642,
+          "label": "Ore 3",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 2250,
+          "y": 567,
+          "label": "Ore 4",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 1816,
+          "y": 736,
+          "label": "Ore 5",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 1559,
+          "y": 1122,
+          "label": "Ore 6",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 2835,
+          "y": 1146,
+          "label": "Ore 7",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 2786,
+          "y": 1009,
+          "label": "Ore 8",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 1930,
+          "y": 1045,
+          "label": "Ore 9",
+          "category": "ore",
+          "notes": ""
+        },
+        {
+          "x": 2779,
+          "y": 675,
+          "label": "Ore 10",
+          "category": "ore",
+          "notes": ""
+        }
+      ]
     },
     {
       "name": "Glass Flats",
-      "image": "glass_flats.jpg",
+      "image": "glass_flats.avif",
       "markers": [
         {
           "x": 3133,
@@ -583,38 +654,38 @@
     },
     {
       "name": "Glinting Hollow",
-      "image": "glinting_hollow.jpg",
+      "image": "glinting_hollow.avif",
       "markers": []
     },
     {
       "name": "Grain Cellar",
-      "image": "grain_cellar.jpg",
+      "image": "grain_cellar.avif",
       "markers": []
     },
     {
       "name": "Infested Crypt",
-      "image": "infested_crypt.jpg",
+      "image": "infested_crypt.avif",
       "markers": []
     },
     {
       "name": "Keeper's Bight",
-      "image": "keeper_s_bight.jpg",
+      "image": "keeper_s_bight.avif",
       "markers": []
     },
     {
       "name": "Night Harbor",
-      "image": "night_harbor.jpg",
+      "image": "night_harbor.avif",
       "markers": [
         {
-          "x": 404,
-          "y": 1426,
+          "x": 485,
+          "y": 1711,
           "label": "Ore 1",
           "category": "ore",
           "notes": ""
         },
         {
-          "x": 971,
-          "y": 2442,
+          "x": 1165,
+          "y": 2930,
           "label": "Ore 2",
           "category": "ore",
           "notes": ""
@@ -623,12 +694,12 @@
     },
     {
       "name": "Night Harbor Sewers",
-      "image": "night_harbor_sewers.jpg",
+      "image": "night_harbor_sewers.avif",
       "markers": []
     },
     {
       "name": "Scarwood",
-      "image": "scarwood.jpg",
+      "image": "scarwood.avif",
       "markers": [
         {
           "x": 337,
@@ -669,7 +740,7 @@
     },
     {
       "name": "Shaded Dunes",
-      "image": "shaded_dunes.jpg",
+      "image": "shaded_dunes.avif",
       "markers": [
         {
           "x": 3513,
@@ -694,22 +765,22 @@
     },
     {
       "name": "Sungreet Strand",
-      "image": "sungreet_strand.jpg",
+      "image": "sungreet_strand.avif",
       "markers": []
     },
     {
       "name": "Tel Ekir",
-      "image": "tel_ekir.jpg",
+      "image": "tel_ekir.avif",
       "markers": []
     },
     {
       "name": "Tomb of the Last Wyrmsbane",
-      "image": "tomb_of_the_last_wyrmsbane.jpg",
+      "image": "tomb_of_the_last_wyrmsbane.avif",
       "markers": []
     },
     {
       "name": "Vale of Zintar",
-      "image": "vale_of_zintar.jpg",
+      "image": "vale_of_zintar.avif",
       "markers": []
     },
     {
