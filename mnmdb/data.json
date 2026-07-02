@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-07-01T01:45:06.654Z",
+  "generatedAt": "2026-07-02T06:59:01.094Z",
   "source": "mnm-tools",
-  "ledgerFiles": 44,
-  "events": 15385,
+  "ledgerFiles": 46,
+  "events": 16126,
   "contributors": [],
   "mobs": {
     "a desert bat": {
@@ -21,9 +21,9 @@
       "corpses": 17
     },
     "a rotting skeleton": {
-      "kills": 154,
+      "kills": 153,
       "drops": {
-        "Bone Chips": 65,
+        "Bone Chips": 64,
         "Rusty Mace": 3,
         "Worn Great Staff": 2,
         "Cloth Scraps": 48,
@@ -60,10 +60,10 @@
       "zones": {
         "Night Harbor": 147,
         "Shaded Dunes": 13,
-        "Evershade Weald": 276
+        "Evershade Weald": 273
       },
-      "coin": 221,
-      "corpses": 113
+      "coin": 220,
+      "corpses": 112
     },
     "a snake": {
       "kills": 0,
@@ -1856,6 +1856,108 @@
       "coin": 0,
       "corpses": 4
     },
+    "a restless ghoul": {
+      "kills": 44,
+      "drops": {
+        "Hide Scraps": 10,
+        "Bronze Scraps": 8,
+        "Worn Fine Wood Buckler": 4,
+        "Wool Scraps": 3,
+        "Cracked Fine Wood Staff": 1,
+        "Corroded Bronze Plate Breastplate": 1,
+        "Tattered Hide Shoulderpads": 1,
+        "Corroded Bronze Scimitar": 1,
+        "Ghoul Bile": 2,
+        "Corroded Bronze Plate Helm": 1,
+        "Ghoul Skin": 7,
+        "Worn Fine Wood Great Staff": 1,
+        "Burned Parchment Scrap": 2,
+        "Corroded Bronze Trident": 1,
+        "Corroded Bronze Chain Shoulderguards": 1,
+        "Tattered Wool Gorget": 1,
+        "Corroded Bronze Mace": 1,
+        "Tattered Wool Robe": 1,
+        "Corroded Bronze Longsword": 1,
+        "Corroded Bronze Great Scythe": 1,
+        "Tattered Hide Tunic": 1,
+        "Corroded Bronze Scythe": 2,
+        "Tattered Wool Cape": 1,
+        "Corroded Bronze Spear": 1,
+        "Tattered Hide Mask": 2,
+        "Corroded Bronze Shortsword": 1,
+        "Corroded Bronze Long Spear": 1,
+        "Corroded Bronze Plate Arming Doublet": 1
+      },
+      "zones": {
+        "Fallenpass": 126
+      },
+      "coin": 6330,
+      "corpses": 35
+    },
+    "a restless skeleton": {
+      "kills": 125,
+      "drops": {
+        "Corroded Bronze Long Spear": 3,
+        "Bone Chips": 31,
+        "Tattered Hide Gorget": 1,
+        "Bronze Scraps": 19,
+        "Corroded Bronze Battle Axe": 2,
+        "Wool Scraps": 12,
+        "Corroded Bronze Mace": 3,
+        "Cracked Fine Wood Staff": 2,
+        "Tattered Wool Shirt": 1,
+        "Corroded Bronze Plate Bracer": 1,
+        "Hide Scraps": 16,
+        "Corroded Bronze Chain Gambeson": 1,
+        "Corroded Bronze Scimitar": 1,
+        "Corroded Bronze Plate Greaves": 2,
+        "Tattered Hide Cloak": 1,
+        "Corroded Bronze Trident": 1,
+        "Torch": 1,
+        "Corroded Bronze Greatsword": 2,
+        "Tattered Hide Bracer": 1,
+        "Corroded Bronze Chain Leggings": 1,
+        "Tattered Hide Vest": 3,
+        "Tattered Wool Mantle": 2,
+        "Corroded Bronze Plate Arming Doublet": 1,
+        "Burned Parchment Scrap": 3,
+        "Worn Fine Wood Buckler": 1,
+        "Corroded Bronze Dagger": 1,
+        "Corroded Bronze Scythe": 2,
+        "Corroded Bronze Shortsword": 1,
+        "Tattered Wool Cap": 1,
+        "Corroded Bronze Chain Gorget": 3,
+        "Corroded Bronze War Lance": 1,
+        "Corroded Bronze Plate Gauntlets": 3,
+        "Corroded Bronze Spear": 3,
+        "Corroded Bronze Plate Helm": 1,
+        "Tattered Hide Gloves": 1,
+        "Corroded Bronze Kite Shield": 3,
+        "Corroded Bronze Axe": 1,
+        "Corroded Bronze Plate Girdle": 1,
+        "Corroded Bronze Chain Coif": 1,
+        "Tattered Hide Leggings": 1,
+        "Tattered Wool Gloves": 1,
+        "Worn Fine Wood Great Staff": 1
+      },
+      "zones": {
+        "Fallenpass": 378
+      },
+      "coin": 14872,
+      "corpses": 92
+    },
+    "a dusty skeleton": {
+      "kills": 1,
+      "drops": {
+        "Cracked Fine Wood Staff": 1,
+        "Bronze Scraps": 1
+      },
+      "zones": {
+        "Fallenpass": 3
+      },
+      "coin": 69,
+      "corpses": 1
+    },
     "a dark-robed figure": {
       "kills": 1,
       "drops": {
@@ -1927,6 +2029,19 @@
       },
       "coin": 0,
       "corpses": 1
+    },
+    "a restless adept": {
+      "kills": 3,
+      "drops": {
+        "Wool Scraps": 2,
+        "Ghoul Skin": 1,
+        "Corroded Bronze Trident": 1
+      },
+      "zones": {
+        "Fallenpass": 7
+      },
+      "coin": 632,
+      "corpses": 3
     }
   },
   "items": [
@@ -1935,7 +2050,12 @@
       "gameId": null,
       "name": "Alunite Ore",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 1,
+          "count": 1
+        }
+      ],
       "harvested": 12,
       "zones": [
         "Evershade Weald"
@@ -2423,6 +2543,17 @@
       ]
     },
     {
+      "id": "bloodstone",
+      "gameId": null,
+      "name": "Bloodstone",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
       "id": "bloodsworn_buckler",
       "gameId": "af1ef0fedb381310a949092a",
       "name": "Bloodsworn Buckler",
@@ -2491,9 +2622,9 @@
         },
         {
           "mob": "a rotting skeleton",
-          "drops": 65,
-          "corpses": 113,
-          "rate": 0.5752212389380531
+          "drops": 64,
+          "corpses": 112,
+          "rate": 0.5714285714285714
         },
         {
           "mob": "a skeleton",
@@ -2520,6 +2651,12 @@
           "rate": 0.5
         },
         {
+          "mob": "a restless skeleton",
+          "drops": 31,
+          "corpses": 92,
+          "rate": 0.33695652173913043
+        },
+        {
           "mob": "a Calafreyan soldier",
           "drops": 2,
           "corpses": 8,
@@ -2536,6 +2673,7 @@
       "zones": [
         "Tomb of the Last Wyrmsbane",
         "Evershade Weald",
+        "Fallenpass",
         "Night Harbor",
         "Shaded Dunes",
         "Keepersbight"
@@ -2593,6 +2731,20 @@
       ]
     },
     {
+      "id": "bronze_chain_mask",
+      "gameId": null,
+      "name": "Bronze Chain Mask",
+      "droppedBy": [],
+      "prices": [
+        {
+          "copper": 109,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": []
+    },
+    {
       "id": "bronze_longsword",
       "gameId": null,
       "name": "Bronze Longsword",
@@ -2611,6 +2763,12 @@
       "gameId": "4bd63c9adfb5348a4e0832e7",
       "name": "Bronze Scraps",
       "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
         {
           "mob": "a beguiled builder",
           "drops": 3,
@@ -2672,6 +2830,18 @@
           "rate": 0.2857142857142857
         },
         {
+          "mob": "a restless ghoul",
+          "drops": 8,
+          "corpses": 35,
+          "rate": 0.22857142857142856
+        },
+        {
+          "mob": "a restless skeleton",
+          "drops": 19,
+          "corpses": 92,
+          "rate": 0.20652173913043478
+        },
+        {
           "mob": "a Bloodchain champion",
           "drops": 1,
           "corpses": 5,
@@ -2699,8 +2869,23 @@
       "harvested": 0,
       "zones": [
         "Blacktidebay",
-        "Keepersbight"
+        "Keepersbight",
+        "Fallenpass"
       ]
+    },
+    {
+      "id": "bronze_tread",
+      "gameId": null,
+      "name": "Bronze Tread",
+      "droppedBy": [],
+      "prices": [
+        {
+          "copper": 2,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "bundle_of_strong_silk",
@@ -2718,6 +2903,30 @@
       "harvested": 0,
       "zones": [
         "Keepersbight"
+      ]
+    },
+    {
+      "id": "burned_parchment_scrap",
+      "gameId": "66561e33b58f09ca2145cbb0",
+      "name": "Burned Parchment Scrap",
+      "droppedBy": [
+        {
+          "mob": "a restless ghoul",
+          "drops": 2,
+          "corpses": 35,
+          "rate": 0.05714285714285714
+        },
+        {
+          "mob": "a restless skeleton",
+          "drops": 3,
+          "corpses": 92,
+          "rate": 0.03260869565217391
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
       ]
     },
     {
@@ -3204,7 +3413,12 @@
       "gameId": null,
       "name": "Chipped Star Ruby",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 6,
+          "count": 1
+        }
+      ],
       "harvested": 3,
       "zones": [
         "Evershade Weald"
@@ -3355,8 +3569,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 48,
-          "corpses": 113,
-          "rate": 0.4247787610619469
+          "corpses": 112,
+          "rate": 0.42857142857142855
         },
         {
           "mob": "a Fellstone guard",
@@ -3472,11 +3686,28 @@
       "name": "Clouded Crystallized Magic",
       "droppedBy": [],
       "prices": [],
-      "harvested": 17,
+      "harvested": 20,
       "zones": [
         "Evershade Weald",
+        "Fallenpass",
         "Shaded Dunes",
         "Night Harbor"
+      ]
+    },
+    {
+      "id": "coal",
+      "gameId": null,
+      "name": "Coal",
+      "droppedBy": [],
+      "prices": [
+        {
+          "copper": 6,
+          "count": 3
+        }
+      ],
+      "harvested": 133,
+      "zones": [
+        "Fallenpass"
       ]
     },
     {
@@ -3626,6 +3857,20 @@
       "prices": [
         {
           "copper": 25,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": []
+    },
+    {
+      "id": "copper_chain_mask",
+      "gameId": null,
+      "name": "Copper Chain Mask",
+      "droppedBy": [],
+      "prices": [
+        {
+          "copper": 54,
           "count": 1
         }
       ],
@@ -3868,13 +4113,20 @@
           "drops": 1,
           "corpses": 84,
           "rate": 0.011904761904761904
+        },
+        {
+          "mob": "a restless skeleton",
+          "drops": 1,
+          "corpses": 92,
+          "rate": 0.010869565217391304
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
         "Blacktidebay",
-        "Keepersbight"
+        "Keepersbight",
+        "Fallenpass"
       ]
     },
     {
@@ -3882,6 +4134,12 @@
       "gameId": "2c7787a70e07c9eb17415908",
       "name": "Corroded Bronze Battle Axe",
       "droppedBy": [
+        {
+          "mob": "a restless skeleton",
+          "drops": 2,
+          "corpses": 92,
+          "rate": 0.021739130434782608
+        },
         {
           "mob": "a Bloodchain guard",
           "drops": 1,
@@ -3892,7 +4150,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Blacktidebay"
+        "Blacktidebay",
+        "Fallenpass"
       ]
     },
     {
@@ -3940,7 +4199,7 @@
       "prices": [
         {
           "copper": 136,
-          "count": 3
+          "count": 2
         }
       ],
       "harvested": 0,
@@ -3971,6 +4230,12 @@
           "drops": 1,
           "corpses": 55,
           "rate": 0.01818181818181818
+        },
+        {
+          "mob": "a restless skeleton",
+          "drops": 1,
+          "corpses": 92,
+          "rate": 0.010869565217391304
         }
       ],
       "prices": [
@@ -3981,14 +4246,22 @@
       ],
       "harvested": 0,
       "zones": [
-        "Blacktidebay"
+        "Blacktidebay",
+        "Fallenpass"
       ]
     },
     {
       "id": "corroded_bronze_chain_gambeson",
-      "gameId": null,
+      "gameId": "1f34a9d325689320ef16fca7",
       "name": "Corroded Bronze Chain Gambeson",
-      "droppedBy": [],
+      "droppedBy": [
+        {
+          "mob": "a restless skeleton",
+          "drops": 1,
+          "corpses": 92,
+          "rate": 0.010869565217391304
+        }
+      ],
       "prices": [
         {
           "copper": 136,
@@ -3996,7 +4269,9 @@
         }
       ],
       "harvested": 0,
-      "zones": []
+      "zones": [
+        "Fallenpass"
+      ]
     },
     {
       "id": "corroded_bronze_chain_gloves",
@@ -4031,7 +4306,7 @@
       "prices": [
         {
           "copper": 136,
-          "count": 3
+          "count": 2
         }
       ],
       "harvested": 0,
@@ -4046,6 +4321,12 @@
       "name": "Corroded Bronze Chain Gorget",
       "droppedBy": [
         {
+          "mob": "a restless skeleton",
+          "drops": 3,
+          "corpses": 92,
+          "rate": 0.03260869565217391
+        },
+        {
           "mob": "a Sangrel striker",
           "drops": 1,
           "corpses": 114,
@@ -4055,6 +4336,7 @@
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Fallenpass",
         "Keepersbight"
       ]
     },
@@ -4068,6 +4350,12 @@
           "drops": 2,
           "corpses": 84,
           "rate": 0.023809523809523808
+        },
+        {
+          "mob": "a restless skeleton",
+          "drops": 1,
+          "corpses": 92,
+          "rate": 0.010869565217391304
         },
         {
           "mob": "a Sangrel striker",
@@ -4085,7 +4373,8 @@
       "harvested": 0,
       "zones": [
         "Keepersbight",
-        "Blacktidebay"
+        "Blacktidebay",
+        "Fallenpass"
       ]
     },
     {
@@ -4125,6 +4414,12 @@
           "rate": 0.05405405405405406
         },
         {
+          "mob": "a restless ghoul",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
+        },
+        {
           "mob": "a Bloodchain guard",
           "drops": 1,
           "corpses": 84,
@@ -4140,7 +4435,8 @@
       "harvested": 0,
       "zones": [
         "Keepersbight",
-        "Blacktidebay"
+        "Blacktidebay",
+        "Fallenpass"
       ]
     },
     {
@@ -4226,7 +4522,7 @@
       "prices": [
         {
           "copper": 136,
-          "count": 3
+          "count": 2
         }
       ],
       "harvested": 0,
@@ -4257,6 +4553,12 @@
           "drops": 1,
           "corpses": 84,
           "rate": 0.011904761904761904
+        },
+        {
+          "mob": "a restless skeleton",
+          "drops": 1,
+          "corpses": 92,
+          "rate": 0.010869565217391304
         }
       ],
       "prices": [
@@ -4268,7 +4570,8 @@
       "harvested": 0,
       "zones": [
         "Keepersbight",
-        "Blacktidebay"
+        "Blacktidebay",
+        "Fallenpass"
       ]
     },
     {
@@ -4283,6 +4586,12 @@
           "rate": 0.04
         },
         {
+          "mob": "a restless ghoul",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
+        },
+        {
           "mob": "a Sangrel shadowblade",
           "drops": 1,
           "corpses": 37,
@@ -4293,7 +4602,8 @@
       "harvested": 0,
       "zones": [
         "Blacktidebay",
-        "Keepersbight"
+        "Keepersbight",
+        "Fallenpass"
       ]
     },
     {
@@ -4306,12 +4616,19 @@
           "drops": 1,
           "corpses": 25,
           "rate": 0.04
+        },
+        {
+          "mob": "a restless skeleton",
+          "drops": 2,
+          "corpses": 92,
+          "rate": 0.021739130434782608
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Blacktidebay"
+        "Blacktidebay",
+        "Fallenpass"
       ]
     },
     {
@@ -4332,6 +4649,12 @@
           "rate": 0.043478260869565216
         },
         {
+          "mob": "a restless skeleton",
+          "drops": 3,
+          "corpses": 92,
+          "rate": 0.03260869565217391
+        },
+        {
           "mob": "a Bloodchain guard",
           "drops": 1,
           "corpses": 84,
@@ -4341,7 +4664,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Blacktidebay"
+        "Blacktidebay",
+        "Fallenpass"
       ]
     },
     {
@@ -4356,6 +4680,18 @@
           "rate": 0.08333333333333333
         },
         {
+          "mob": "a restless skeleton",
+          "drops": 3,
+          "corpses": 92,
+          "rate": 0.03260869565217391
+        },
+        {
+          "mob": "a restless ghoul",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
+        },
+        {
           "mob": "a Sangrel striker",
           "drops": 2,
           "corpses": 114,
@@ -4365,6 +4701,7 @@
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Fallenpass",
         "Keepersbight"
       ]
     },
@@ -4384,12 +4721,19 @@
           "drops": 1,
           "corpses": 25,
           "rate": 0.04
+        },
+        {
+          "mob": "a restless ghoul",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Blacktidebay"
+        "Blacktidebay",
+        "Fallenpass"
       ]
     },
     {
@@ -4397,6 +4741,18 @@
       "gameId": "27c2915249c51af934c40ea9",
       "name": "Corroded Bronze Mace",
       "droppedBy": [
+        {
+          "mob": "a restless skeleton",
+          "drops": 3,
+          "corpses": 92,
+          "rate": 0.03260869565217391
+        },
+        {
+          "mob": "a restless ghoul",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
+        },
         {
           "mob": "a Bloodchain sentry",
           "drops": 1,
@@ -4407,6 +4763,7 @@
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Fallenpass",
         "Blacktidebay"
       ]
     },
@@ -4453,6 +4810,30 @@
       ]
     },
     {
+      "id": "corroded_bronze_plate_arming_doublet",
+      "gameId": "9e81d455f3841b5616ecd6d4",
+      "name": "Corroded Bronze Plate Arming Doublet",
+      "droppedBy": [
+        {
+          "mob": "a restless ghoul",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
+        },
+        {
+          "mob": "a restless skeleton",
+          "drops": 1,
+          "corpses": 92,
+          "rate": 0.010869565217391304
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
       "id": "corroded_bronze_plate_bracer",
       "gameId": "df305f2da5fb608e69602af3",
       "name": "Corroded Bronze Plate Bracer",
@@ -4468,6 +4849,12 @@
           "drops": 1,
           "corpses": 55,
           "rate": 0.01818181818181818
+        },
+        {
+          "mob": "a restless skeleton",
+          "drops": 1,
+          "corpses": 92,
+          "rate": 0.010869565217391304
         }
       ],
       "prices": [
@@ -4478,7 +4865,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Blacktidebay"
+        "Blacktidebay",
+        "Fallenpass"
       ]
     },
     {
@@ -4486,6 +4874,12 @@
       "gameId": "64c31c059e6e7254e7b74ecf",
       "name": "Corroded Bronze Plate Breastplate",
       "droppedBy": [
+        {
+          "mob": "a restless ghoul",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
+        },
         {
           "mob": "a Sangrel striker",
           "drops": 1,
@@ -4496,7 +4890,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Fallenpass"
       ]
     },
     {
@@ -4549,6 +4944,12 @@
       "name": "Corroded Bronze Plate Gauntlets",
       "droppedBy": [
         {
+          "mob": "a restless skeleton",
+          "drops": 3,
+          "corpses": 92,
+          "rate": 0.03260869565217391
+        },
+        {
           "mob": "a Bloodchain sentry",
           "drops": 1,
           "corpses": 55,
@@ -4558,6 +4959,7 @@
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Fallenpass",
         "Blacktidebay"
       ]
     },
@@ -4566,6 +4968,12 @@
       "gameId": "7cfa651762783aebad8da690",
       "name": "Corroded Bronze Plate Girdle",
       "droppedBy": [
+        {
+          "mob": "a restless skeleton",
+          "drops": 1,
+          "corpses": 92,
+          "rate": 0.010869565217391304
+        },
         {
           "mob": "a Sangrel striker",
           "drops": 1,
@@ -4581,7 +4989,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Fallenpass"
       ]
     },
     {
@@ -4589,6 +4998,12 @@
       "gameId": "851553c1bc2e3e6c9731e7af",
       "name": "Corroded Bronze Plate Greaves",
       "droppedBy": [
+        {
+          "mob": "a restless skeleton",
+          "drops": 2,
+          "corpses": 92,
+          "rate": 0.021739130434782608
+        },
         {
           "mob": "a Bloodchain sentry",
           "drops": 1,
@@ -4610,7 +5025,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Blacktidebay"
+        "Blacktidebay",
+        "Fallenpass"
       ]
     },
     {
@@ -4619,10 +5035,22 @@
       "name": "Corroded Bronze Plate Helm",
       "droppedBy": [
         {
+          "mob": "a restless ghoul",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
+        },
+        {
           "mob": "a Bloodchain guard",
           "drops": 1,
           "corpses": 84,
           "rate": 0.011904761904761904
+        },
+        {
+          "mob": "a restless skeleton",
+          "drops": 1,
+          "corpses": 92,
+          "rate": 0.010869565217391304
         },
         {
           "mob": "a Sangrel striker",
@@ -4634,6 +5062,7 @@
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Fallenpass",
         "Keepersbight",
         "Blacktidebay"
       ]
@@ -4695,7 +5124,7 @@
       "prices": [
         {
           "copper": 164,
-          "count": 2
+          "count": 1
         }
       ],
       "harvested": 0,
@@ -4715,6 +5144,12 @@
           "rate": 0.09090909090909091
         },
         {
+          "mob": "a restless ghoul",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
+        },
+        {
           "mob": "a Bloodchain sentry",
           "drops": 1,
           "corpses": 55,
@@ -4727,6 +5162,12 @@
           "rate": 0.011904761904761904
         },
         {
+          "mob": "a restless skeleton",
+          "drops": 1,
+          "corpses": 92,
+          "rate": 0.010869565217391304
+        },
+        {
           "mob": "a Sangrel striker",
           "drops": 1,
           "corpses": 114,
@@ -4737,7 +5178,32 @@
       "harvested": 0,
       "zones": [
         "Blacktidebay",
+        "Fallenpass",
         "Keepersbight"
+      ]
+    },
+    {
+      "id": "corroded_bronze_scythe",
+      "gameId": "d1acb9a6576b35349f82f3f3",
+      "name": "Corroded Bronze Scythe",
+      "droppedBy": [
+        {
+          "mob": "a restless ghoul",
+          "drops": 2,
+          "corpses": 35,
+          "rate": 0.05714285714285714
+        },
+        {
+          "mob": "a restless skeleton",
+          "drops": 2,
+          "corpses": 92,
+          "rate": 0.021739130434782608
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
       ]
     },
     {
@@ -4752,6 +5218,12 @@
           "rate": 0.14285714285714285
         },
         {
+          "mob": "a restless ghoul",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
+        },
+        {
           "mob": "a Sangrel striker",
           "drops": 2,
           "corpses": 114,
@@ -4762,12 +5234,19 @@
           "drops": 1,
           "corpses": 84,
           "rate": 0.011904761904761904
+        },
+        {
+          "mob": "a restless skeleton",
+          "drops": 1,
+          "corpses": 92,
+          "rate": 0.010869565217391304
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
         "Keepersbight",
+        "Fallenpass",
         "Blacktidebay"
       ]
     },
@@ -4781,6 +5260,18 @@
           "drops": 1,
           "corpses": 3,
           "rate": 0.3333333333333333
+        },
+        {
+          "mob": "a restless skeleton",
+          "drops": 3,
+          "corpses": 92,
+          "rate": 0.03260869565217391
+        },
+        {
+          "mob": "a restless ghoul",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -4810,6 +5301,7 @@
       "harvested": 0,
       "zones": [
         "Blacktidebay",
+        "Fallenpass",
         "Keepersbight"
       ]
     },
@@ -4849,6 +5341,18 @@
       "name": "Corroded Bronze Trident",
       "droppedBy": [
         {
+          "mob": "a restless adept",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        },
+        {
+          "mob": "a restless ghoul",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
+        },
+        {
           "mob": "a Sangrel striker",
           "drops": 3,
           "corpses": 114,
@@ -4865,12 +5369,19 @@
           "drops": 1,
           "corpses": 84,
           "rate": 0.011904761904761904
+        },
+        {
+          "mob": "a restless skeleton",
+          "drops": 1,
+          "corpses": 92,
+          "rate": 0.010869565217391304
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
         "Keepersbight",
+        "Fallenpass",
         "Blacktidebay"
       ]
     },
@@ -4890,12 +5401,19 @@
           "drops": 1,
           "corpses": 23,
           "rate": 0.043478260869565216
+        },
+        {
+          "mob": "a restless skeleton",
+          "drops": 1,
+          "corpses": 92,
+          "rate": 0.010869565217391304
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Blacktidebay"
+        "Blacktidebay",
+        "Fallenpass"
       ]
     },
     {
@@ -4928,6 +5446,12 @@
       "name": "Cracked Fine Wood Staff",
       "droppedBy": [
         {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
+        {
           "mob": "a Blacktide tracker",
           "drops": 1,
           "corpses": 1,
@@ -4940,10 +5464,22 @@
           "rate": 0.14285714285714285
         },
         {
+          "mob": "a restless ghoul",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
+        },
+        {
           "mob": "a Sangrel shadowblade",
           "drops": 1,
           "corpses": 37,
           "rate": 0.02702702702702703
+        },
+        {
+          "mob": "a restless skeleton",
+          "drops": 2,
+          "corpses": 92,
+          "rate": 0.021739130434782608
         },
         {
           "mob": "a Sangrel striker",
@@ -4960,6 +5496,7 @@
       ],
       "harvested": 0,
       "zones": [
+        "Fallenpass",
         "Blacktidebay",
         "Keepersbight"
       ]
@@ -5147,6 +5684,17 @@
       "harvested": 0,
       "zones": [
         "Evershade Weald"
+      ]
+    },
+    {
+      "id": "diamond",
+      "gameId": null,
+      "name": "Diamond",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Fallenpass"
       ]
     },
     {
@@ -5344,6 +5892,17 @@
       "harvested": 0,
       "zones": [
         "Keepersbight"
+      ]
+    },
+    {
+      "id": "emerald",
+      "gameId": null,
+      "name": "Emerald",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Fallenpass"
       ]
     },
     {
@@ -5627,7 +6186,12 @@
       "gameId": null,
       "name": "Flawed Amber",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 20,
+          "count": 1
+        }
+      ],
       "harvested": 2,
       "zones": [
         "Scarwood"
@@ -5638,7 +6202,12 @@
       "gameId": null,
       "name": "Flawed Black Pearl",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 20,
+          "count": 1
+        }
+      ],
       "harvested": 2,
       "zones": [
         "Scarwood"
@@ -5671,7 +6240,12 @@
       "gameId": null,
       "name": "Flawed Blue Diamond",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 20,
+          "count": 1
+        }
+      ],
       "harvested": 1,
       "zones": [
         "Scarwood"
@@ -5700,7 +6274,12 @@
       "gameId": null,
       "name": "Flawed Cat's Eye Agate",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 20,
+          "count": 1
+        }
+      ],
       "harvested": 1,
       "zones": [
         "Scarwood"
@@ -5711,7 +6290,12 @@
       "gameId": null,
       "name": "Flawed Diamond",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 20,
+          "count": 1
+        }
+      ],
       "harvested": 2,
       "zones": [
         "Scarwood"
@@ -5777,7 +6361,12 @@
       "gameId": null,
       "name": "Flawed Hematite",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 20,
+          "count": 1
+        }
+      ],
       "harvested": 2,
       "zones": [
         "Scarwood"
@@ -5788,7 +6377,12 @@
       "gameId": null,
       "name": "Flawed Jacinth",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 20,
+          "count": 1
+        }
+      ],
       "harvested": 1,
       "zones": [
         "Scarwood"
@@ -5806,7 +6400,12 @@
           "rate": 0.008771929824561403
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 20,
+          "count": 1
+        }
+      ],
       "harvested": 2,
       "zones": [
         "Scarwood",
@@ -5825,7 +6424,12 @@
           "rate": 0.08333333333333333
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 20,
+          "count": 1
+        }
+      ],
       "harvested": 1,
       "zones": [
         "Keepersbight",
@@ -5837,7 +6441,12 @@
       "gameId": null,
       "name": "Flawed Onyx",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 20,
+          "count": 1
+        }
+      ],
       "harvested": 1,
       "zones": [
         "Scarwood"
@@ -5871,7 +6480,12 @@
           "rate": 0.02702702702702703
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 20,
+          "count": 1
+        }
+      ],
       "harvested": 4,
       "zones": [
         "Scarwood",
@@ -5890,7 +6504,12 @@
           "rate": 0.008771929824561403
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 20,
+          "count": 1
+        }
+      ],
       "harvested": 1,
       "zones": [
         "Keepersbight",
@@ -5902,7 +6521,12 @@
       "gameId": null,
       "name": "Flawed Ruby",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 20,
+          "count": 1
+        }
+      ],
       "harvested": 2,
       "zones": [
         "Scarwood"
@@ -5924,7 +6548,12 @@
       "gameId": null,
       "name": "Flawed Star Rose Quartz",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 20,
+          "count": 1
+        }
+      ],
       "harvested": 1,
       "zones": [
         "Scarwood"
@@ -5942,7 +6571,12 @@
           "rate": 0.14285714285714285
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 20,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Keepersbight"
@@ -6017,12 +6651,7 @@
           "rate": 0.008771929824561403
         }
       ],
-      "prices": [
-        {
-          "copper": 4,
-          "count": 1
-        }
-      ],
+      "prices": [],
       "harvested": 0,
       "zones": [
         "Shaded Dunes",
@@ -6047,6 +6676,48 @@
         "Shaded Dunes",
         "Night Harbor",
         "Keepersbight"
+      ]
+    },
+    {
+      "id": "ghoul_bile",
+      "gameId": "4c44fa4e4fa65603f766932c",
+      "name": "Ghoul Bile",
+      "droppedBy": [
+        {
+          "mob": "a restless ghoul",
+          "drops": 2,
+          "corpses": 35,
+          "rate": 0.05714285714285714
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "ghoul_skin",
+      "gameId": "30858ae93883d493d48c6ad8",
+      "name": "Ghoul Skin",
+      "droppedBy": [
+        {
+          "mob": "a restless adept",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        },
+        {
+          "mob": "a restless ghoul",
+          "drops": 7,
+          "corpses": 35,
+          "rate": 0.2
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
       ]
     },
     {
@@ -6173,10 +6844,9 @@
       "name": "Glinting Crystallized Magic",
       "droppedBy": [],
       "prices": [],
-      "harvested": 14,
+      "harvested": 13,
       "zones": [
-        "Scarwood",
-        "Glassflats"
+        "Scarwood"
       ]
     },
     {
@@ -6338,6 +7008,17 @@
       "zones": []
     },
     {
+      "id": "hematite",
+      "gameId": null,
+      "name": "Hematite",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
       "id": "hide_scraps",
       "gameId": "11af0fdfc6e868be0eec690f",
       "name": "Hide Scraps",
@@ -6365,6 +7046,12 @@
           "drops": 1,
           "corpses": 3,
           "rate": 0.3333333333333333
+        },
+        {
+          "mob": "a restless ghoul",
+          "drops": 10,
+          "corpses": 35,
+          "rate": 0.2857142857142857
         },
         {
           "mob": "a Bloodchain mender",
@@ -6395,6 +7082,12 @@
           "drops": 2,
           "corpses": 10,
           "rate": 0.2
+        },
+        {
+          "mob": "a restless skeleton",
+          "drops": 16,
+          "corpses": 92,
+          "rate": 0.17391304347826086
         },
         {
           "mob": "Commander Rursk",
@@ -6443,7 +7136,8 @@
       "harvested": 0,
       "zones": [
         "Blacktidebay",
-        "Keepersbight"
+        "Keepersbight",
+        "Fallenpass"
       ]
     },
     {
@@ -6461,23 +7155,12 @@
       "zones": []
     },
     {
-      "id": "imperfect_black_pearl",
+      "id": "imperfect_amber",
       "gameId": null,
-      "name": "Imperfect Black Pearl",
+      "name": "Imperfect Amber",
       "droppedBy": [],
       "prices": [],
-      "harvested": 1,
-      "zones": [
-        "Glassflats"
-      ]
-    },
-    {
-      "id": "imperfect_blue_diamond",
-      "gameId": null,
-      "name": "Imperfect Blue Diamond",
-      "droppedBy": [],
-      "prices": [],
-      "harvested": 1,
+      "harvested": 2,
       "zones": [
         "Glassflats"
       ]
@@ -6487,11 +7170,14 @@
       "gameId": null,
       "name": "Imperfect Carnelian",
       "droppedBy": [],
-      "prices": [],
-      "harvested": 1,
-      "zones": [
-        "Glassflats"
-      ]
+      "prices": [
+        {
+          "copper": 67,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "imperfect_cat_s_eye_agate",
@@ -6499,18 +7185,7 @@
       "name": "Imperfect Cat's Eye Agate",
       "droppedBy": [],
       "prices": [],
-      "harvested": 4,
-      "zones": [
-        "Glassflats"
-      ]
-    },
-    {
-      "id": "imperfect_diamond",
-      "gameId": null,
-      "name": "Imperfect Diamond",
-      "droppedBy": [],
-      "prices": [],
-      "harvested": 1,
+      "harvested": 2,
       "zones": [
         "Glassflats"
       ]
@@ -6519,17 +7194,6 @@
       "id": "imperfect_hematite",
       "gameId": null,
       "name": "Imperfect Hematite",
-      "droppedBy": [],
-      "prices": [],
-      "harvested": 1,
-      "zones": [
-        "Glassflats"
-      ]
-    },
-    {
-      "id": "imperfect_jacinth",
-      "gameId": null,
-      "name": "Imperfect Jacinth",
       "droppedBy": [],
       "prices": [],
       "harvested": 1,
@@ -6553,11 +7217,14 @@
       "gameId": null,
       "name": "Imperfect Lapis Lazuli",
       "droppedBy": [],
-      "prices": [],
-      "harvested": 1,
-      "zones": [
-        "Glassflats"
-      ]
+      "prices": [
+        {
+          "copper": 67,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "imperfect_malachite",
@@ -6576,7 +7243,7 @@
       "name": "Imperfect Onyx",
       "droppedBy": [],
       "prices": [],
-      "harvested": 3,
+      "harvested": 2,
       "zones": [
         "Glassflats"
       ]
@@ -6598,7 +7265,7 @@
       "name": "Imperfect Peridot",
       "droppedBy": [],
       "prices": [],
-      "harvested": 2,
+      "harvested": 1,
       "zones": [
         "Glassflats"
       ]
@@ -6631,7 +7298,7 @@
       "name": "Imperfect Star Ruby",
       "droppedBy": [],
       "prices": [],
-      "harvested": 1,
+      "harvested": 2,
       "zones": [
         "Glassflats"
       ]
@@ -6642,7 +7309,7 @@
       "name": "Imperfect Topaz",
       "droppedBy": [],
       "prices": [],
-      "harvested": 3,
+      "harvested": 2,
       "zones": [
         "Glassflats"
       ]
@@ -6677,9 +7344,20 @@
       "name": "Iron Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 423,
+      "harvested": 318,
       "zones": [
         "Glassflats"
+      ]
+    },
+    {
+      "id": "jacinth",
+      "gameId": null,
+      "name": "Jacinth",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Fallenpass"
       ]
     },
     {
@@ -6723,8 +7401,7 @@
       "harvested": 543,
       "zones": [
         "Scarwood",
-        "Valeofzintar",
-        "Glassflats"
+        "Valeofzintar"
       ]
     },
     {
@@ -6967,10 +7644,10 @@
           "count": 9
         }
       ],
-      "harvested": 204,
+      "harvested": 242,
       "zones": [
         "Scarwood",
-        "Valeofzintar"
+        "Fallenpass"
       ]
     },
     {
@@ -7097,6 +7774,17 @@
       ],
       "harvested": 0,
       "zones": []
+    },
+    {
+      "id": "malachite",
+      "gameId": null,
+      "name": "Malachite",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Fallenpass"
+      ]
     },
     {
       "id": "medium_quality_bear_pelt",
@@ -7239,6 +7927,17 @@
       ]
     },
     {
+      "id": "onyx",
+      "gameId": null,
+      "name": "Onyx",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
       "id": "orcish_ritual_staff",
       "gameId": "834c0abbe5d087c6bd14cf21",
       "name": "Orcish Ritual Staff",
@@ -7254,6 +7953,17 @@
       "harvested": 0,
       "zones": [
         "Blacktidebay"
+      ]
+    },
+    {
+      "id": "platinum_ore",
+      "gameId": null,
+      "name": "Platinum Ore",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 15,
+      "zones": [
+        "Fallenpass"
       ]
     },
     {
@@ -8214,12 +8924,28 @@
           "count": 27
         }
       ],
-      "harvested": 674,
+      "harvested": 679,
       "zones": [
         "Evershade Weald",
         "Night Harbor",
         "Keepersbight",
         "Shaded Dunes"
+      ]
+    },
+    {
+      "id": "rigid_stone",
+      "gameId": null,
+      "name": "Rigid Stone",
+      "droppedBy": [],
+      "prices": [
+        {
+          "copper": 7,
+          "count": 4
+        }
+      ],
+      "harvested": 124,
+      "zones": [
+        "Fallenpass"
       ]
     },
     {
@@ -8358,8 +9084,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 3,
-          "corpses": 113,
-          "rate": 0.02654867256637168
+          "corpses": 112,
+          "rate": 0.026785714285714284
         },
         {
           "mob": "an old elven skeleton",
@@ -8402,8 +9128,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 113,
-          "rate": 0.008849557522123894
+          "corpses": 112,
+          "rate": 0.008928571428571428
         }
       ],
       "prices": [
@@ -8468,8 +9194,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 113,
-          "rate": 0.008849557522123894
+          "corpses": 112,
+          "rate": 0.008928571428571428
         },
         {
           "mob": "a Fellstone sentry",
@@ -8533,8 +9259,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 2,
-          "corpses": 113,
-          "rate": 0.017699115044247787
+          "corpses": 112,
+          "rate": 0.017857142857142856
         },
         {
           "mob": "a Fellstone sentry",
@@ -8625,8 +9351,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 2,
-          "corpses": 113,
-          "rate": 0.017699115044247787
+          "corpses": 112,
+          "rate": 0.017857142857142856
         },
         {
           "mob": "a Fellstone sentry",
@@ -8723,8 +9449,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 113,
-          "rate": 0.008849557522123894
+          "corpses": 112,
+          "rate": 0.008928571428571428
         },
         {
           "mob": "a Fellstone sentry",
@@ -8766,8 +9492,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 3,
-          "corpses": 113,
-          "rate": 0.02654867256637168
+          "corpses": 112,
+          "rate": 0.026785714285714284
         },
         {
           "mob": "a Fellstone sentry",
@@ -8848,8 +9574,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 5,
-          "corpses": 113,
-          "rate": 0.04424778761061947
+          "corpses": 112,
+          "rate": 0.044642857142857144
         },
         {
           "mob": "a Fellstone tracker",
@@ -8955,8 +9681,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 3,
-          "corpses": 113,
-          "rate": 0.02654867256637168
+          "corpses": 112,
+          "rate": 0.026785714285714284
         },
         {
           "mob": "an old elven skeleton",
@@ -9023,8 +9749,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 3,
-          "corpses": 113,
-          "rate": 0.02654867256637168
+          "corpses": 112,
+          "rate": 0.026785714285714284
         },
         {
           "mob": "a skeletal cleric",
@@ -9092,8 +9818,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 113,
-          "rate": 0.008849557522123894
+          "corpses": 112,
+          "rate": 0.008928571428571428
         },
         {
           "mob": "a Fellstone sentry",
@@ -9153,8 +9879,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 113,
-          "rate": 0.008849557522123894
+          "corpses": 112,
+          "rate": 0.008928571428571428
         },
         {
           "mob": "a Fellstone sentry",
@@ -9203,8 +9929,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 113,
-          "rate": 0.008849557522123894
+          "corpses": 112,
+          "rate": 0.008928571428571428
         },
         {
           "mob": "a Fellstone sentinel",
@@ -9252,8 +9978,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 113,
-          "rate": 0.008849557522123894
+          "corpses": 112,
+          "rate": 0.008928571428571428
         },
         {
           "mob": "a Fellstone sentinel",
@@ -9526,8 +10252,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 3,
-          "corpses": 113,
-          "rate": 0.02654867256637168
+          "corpses": 112,
+          "rate": 0.026785714285714284
         }
       ],
       "prices": [],
@@ -9567,8 +10293,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 10,
-          "corpses": 113,
-          "rate": 0.08849557522123894
+          "corpses": 112,
+          "rate": 0.08928571428571429
         }
       ],
       "prices": [
@@ -9924,6 +10650,17 @@
       ]
     },
     {
+      "id": "star_ruby",
+      "gameId": null,
+      "name": "Star Ruby",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
       "id": "sturdy_ingot_mold",
       "gameId": null,
       "name": "Sturdy Ingot Mold",
@@ -10089,8 +10826,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 113,
-          "rate": 0.008849557522123894
+          "corpses": 112,
+          "rate": 0.008928571428571428
         },
         {
           "mob": "a Fellstone sentinel",
@@ -10153,16 +10890,16 @@
           "rate": 0.01904761904761905
         },
         {
+          "mob": "a rotting skeleton",
+          "drops": 2,
+          "corpses": 112,
+          "rate": 0.017857142857142856
+        },
+        {
           "mob": "a skeleton",
           "drops": 1,
           "corpses": 56,
           "rate": 0.017857142857142856
-        },
-        {
-          "mob": "a rotting skeleton",
-          "drops": 2,
-          "corpses": 113,
-          "rate": 0.017699115044247787
         },
         {
           "mob": "a Fellstone sentry",
@@ -10405,8 +11142,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 3,
-          "corpses": 113,
-          "rate": 0.02654867256637168
+          "corpses": 112,
+          "rate": 0.026785714285714284
         },
         {
           "mob": "a skeletal cleric",
@@ -10486,8 +11223,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 2,
-          "corpses": 113,
-          "rate": 0.017699115044247787
+          "corpses": 112,
+          "rate": 0.017857142857142856
         },
         {
           "mob": "a Fellstone sentinel",
@@ -10560,8 +11297,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 3,
-          "corpses": 113,
-          "rate": 0.02654867256637168
+          "corpses": 112,
+          "rate": 0.026785714285714284
         },
         {
           "mob": "a Fellstone sentinel",
@@ -10653,8 +11390,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 113,
-          "rate": 0.008849557522123894
+          "corpses": 112,
+          "rate": 0.008928571428571428
         },
         {
           "mob": "a Fellstone sentry",
@@ -10750,8 +11487,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 113,
-          "rate": 0.008849557522123894
+          "corpses": 112,
+          "rate": 0.008928571428571428
         },
         {
           "mob": "a Fellstone sentry",
@@ -10805,16 +11542,16 @@
           "rate": 0.04
         },
         {
+          "mob": "a rotting skeleton",
+          "drops": 4,
+          "corpses": 112,
+          "rate": 0.03571428571428571
+        },
+        {
           "mob": "a skeleton",
           "drops": 2,
           "corpses": 56,
           "rate": 0.03571428571428571
-        },
-        {
-          "mob": "a rotting skeleton",
-          "drops": 4,
-          "corpses": 113,
-          "rate": 0.035398230088495575
         },
         {
           "mob": "a skeletal warrior",
@@ -10920,16 +11657,16 @@
           "rate": 0.02666666666666667
         },
         {
+          "mob": "a rotting skeleton",
+          "drops": 2,
+          "corpses": 112,
+          "rate": 0.017857142857142856
+        },
+        {
           "mob": "a skeleton",
           "drops": 1,
           "corpses": 56,
           "rate": 0.017857142857142856
-        },
-        {
-          "mob": "a rotting skeleton",
-          "drops": 2,
-          "corpses": 113,
-          "rate": 0.017699115044247787
         },
         {
           "mob": "a Fellstone sentry",
@@ -11015,8 +11752,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 113,
-          "rate": 0.008849557522123894
+          "corpses": 112,
+          "rate": 0.008928571428571428
         }
       ],
       "prices": [],
@@ -11054,8 +11791,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 3,
-          "corpses": 113,
-          "rate": 0.02654867256637168
+          "corpses": 112,
+          "rate": 0.026785714285714284
         },
         {
           "mob": "a Fellstone sentry",
@@ -11140,6 +11877,24 @@
       ]
     },
     {
+      "id": "tattered_hide_bracer",
+      "gameId": "1d378d2be1c2961a3a249a65",
+      "name": "Tattered Hide Bracer",
+      "droppedBy": [
+        {
+          "mob": "a restless skeleton",
+          "drops": 1,
+          "corpses": 92,
+          "rate": 0.010869565217391304
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
       "id": "tattered_hide_cap",
       "gameId": "c0b27c433e9526db1c199a7f",
       "name": "Tattered Hide Cap",
@@ -11182,6 +11937,12 @@
           "rate": 0.011904761904761904
         },
         {
+          "mob": "a restless skeleton",
+          "drops": 1,
+          "corpses": 92,
+          "rate": 0.010869565217391304
+        },
+        {
           "mob": "a Sangrel striker",
           "drops": 1,
           "corpses": 114,
@@ -11192,7 +11953,8 @@
       "harvested": 0,
       "zones": [
         "Blacktidebay",
-        "Keepersbight"
+        "Keepersbight",
+        "Fallenpass"
       ]
     },
     {
@@ -11211,12 +11973,19 @@
           "drops": 2,
           "corpses": 55,
           "rate": 0.03636363636363636
+        },
+        {
+          "mob": "a restless skeleton",
+          "drops": 1,
+          "corpses": 92,
+          "rate": 0.010869565217391304
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Blacktidebay"
+        "Blacktidebay",
+        "Fallenpass"
       ]
     },
     {
@@ -11235,13 +12004,20 @@
           "drops": 1,
           "corpses": 84,
           "rate": 0.011904761904761904
+        },
+        {
+          "mob": "a restless skeleton",
+          "drops": 1,
+          "corpses": 92,
+          "rate": 0.010869565217391304
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
         "Keepersbight",
-        "Blacktidebay"
+        "Blacktidebay",
+        "Fallenpass"
       ]
     },
     {
@@ -11254,12 +12030,37 @@
           "drops": 1,
           "corpses": 11,
           "rate": 0.09090909090909091
+        },
+        {
+          "mob": "a restless skeleton",
+          "drops": 1,
+          "corpses": 92,
+          "rate": 0.010869565217391304
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Fallenpass",
         "Blacktidebay"
+      ]
+    },
+    {
+      "id": "tattered_hide_mask",
+      "gameId": "7e32ab4ce05324f1979d043c",
+      "name": "Tattered Hide Mask",
+      "droppedBy": [
+        {
+          "mob": "a restless ghoul",
+          "drops": 2,
+          "corpses": 35,
+          "rate": 0.05714285714285714
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
       ]
     },
     {
@@ -11272,12 +12073,19 @@
           "drops": 1,
           "corpses": 20,
           "rate": 0.05
+        },
+        {
+          "mob": "a restless ghoul",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Fallenpass"
       ]
     },
     {
@@ -11304,6 +12112,12 @@
           "rate": 0.05
         },
         {
+          "mob": "a restless ghoul",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
+        },
+        {
           "mob": "a Bloodchain sentry",
           "drops": 1,
           "corpses": 55,
@@ -11326,7 +12140,8 @@
       "harvested": 0,
       "zones": [
         "Blacktidebay",
-        "Keepersbight"
+        "Keepersbight",
+        "Fallenpass"
       ]
     },
     {
@@ -11334,6 +12149,12 @@
       "gameId": "6caed6ca66cde82c52e3cd4b",
       "name": "Tattered Hide Vest",
       "droppedBy": [
+        {
+          "mob": "a restless skeleton",
+          "drops": 3,
+          "corpses": 92,
+          "rate": 0.03260869565217391
+        },
         {
           "mob": "a Sangrel striker",
           "drops": 1,
@@ -11344,6 +12165,7 @@
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Fallenpass",
         "Keepersbight"
       ]
     },
@@ -12130,24 +12952,11 @@
           "rate": 0.011904761904761904
         },
         {
-          "mob": "a Sangrel striker",
+          "mob": "a restless skeleton",
           "drops": 1,
-          "corpses": 114,
-          "rate": 0.008771929824561403
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Keepersbight",
-        "Blacktidebay"
-      ]
-    },
-    {
-      "id": "tattered_wool_cape",
-      "gameId": "3fdae3b5ecfb2b842415842a",
-      "name": "Tattered Wool Cape",
-      "droppedBy": [
+          "corpses": 92,
+          "rate": 0.010869565217391304
+        },
         {
           "mob": "a Sangrel striker",
           "drops": 1,
@@ -12158,7 +12967,34 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Blacktidebay",
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "tattered_wool_cape",
+      "gameId": "3fdae3b5ecfb2b842415842a",
+      "name": "Tattered Wool Cape",
+      "droppedBy": [
+        {
+          "mob": "a restless ghoul",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
+        },
+        {
+          "mob": "a Sangrel striker",
+          "drops": 1,
+          "corpses": 114,
+          "rate": 0.008771929824561403
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight",
+        "Fallenpass"
       ]
     },
     {
@@ -12183,13 +13019,20 @@
           "drops": 2,
           "corpses": 55,
           "rate": 0.03636363636363636
+        },
+        {
+          "mob": "a restless skeleton",
+          "drops": 1,
+          "corpses": 92,
+          "rate": 0.010869565217391304
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
         "Blacktidebay",
-        "Keepersbight"
+        "Keepersbight",
+        "Fallenpass"
       ]
     },
     {
@@ -12197,6 +13040,12 @@
       "gameId": "4145234441d5b70631d76695",
       "name": "Tattered Wool Gorget",
       "droppedBy": [
+        {
+          "mob": "a restless ghoul",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
+        },
         {
           "mob": "a Sangrel shadowblade",
           "drops": 1,
@@ -12226,7 +13075,8 @@
       "harvested": 0,
       "zones": [
         "Keepersbight",
-        "Blacktidebay"
+        "Blacktidebay",
+        "Fallenpass"
       ]
     },
     {
@@ -12239,12 +13089,19 @@
           "drops": 2,
           "corpses": 23,
           "rate": 0.08695652173913043
+        },
+        {
+          "mob": "a restless skeleton",
+          "drops": 2,
+          "corpses": 92,
+          "rate": 0.021739130434782608
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Blacktidebay"
+        "Blacktidebay",
+        "Fallenpass"
       ]
     },
     {
@@ -12296,6 +13153,12 @@
           "rate": 0.09090909090909091
         },
         {
+          "mob": "a restless ghoul",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
+        },
+        {
           "mob": "a Sangrel striker",
           "drops": 1,
           "corpses": 114,
@@ -12306,7 +13169,8 @@
       "harvested": 0,
       "zones": [
         "Keepersbight",
-        "Blacktidebay"
+        "Blacktidebay",
+        "Fallenpass"
       ]
     },
     {
@@ -12321,6 +13185,12 @@
           "rate": 0.023809523809523808
         },
         {
+          "mob": "a restless skeleton",
+          "drops": 1,
+          "corpses": 92,
+          "rate": 0.010869565217391304
+        },
+        {
           "mob": "a Sangrel striker",
           "drops": 1,
           "corpses": 114,
@@ -12331,7 +13201,8 @@
       "harvested": 0,
       "zones": [
         "Blacktidebay",
-        "Keepersbight"
+        "Keepersbight",
+        "Fallenpass"
       ]
     },
     {
@@ -12409,7 +13280,7 @@
       "prices": [
         {
           "copper": 27,
-          "count": 34
+          "count": 40
         }
       ],
       "harvested": 0,
@@ -12421,11 +13292,9 @@
       "name": "Tin Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 592,
+      "harvested": 598,
       "zones": [
-        "Scarwood",
-        "Valeofzintar",
-        "Glassflats"
+        "Scarwood"
       ]
     },
     {
@@ -12530,6 +13399,12 @@
           "rate": 0.017857142857142856
         },
         {
+          "mob": "a restless skeleton",
+          "drops": 1,
+          "corpses": 92,
+          "rate": 0.010869565217391304
+        },
+        {
           "mob": "a skeletal fighter",
           "drops": 1,
           "corpses": 105,
@@ -12538,8 +13413,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 113,
-          "rate": 0.008849557522123894
+          "corpses": 112,
+          "rate": 0.008928571428571428
         },
         {
           "mob": "a Sangrel striker",
@@ -12574,7 +13449,8 @@
         "Evershade Weald",
         "Keepersbight",
         "Night Harbor",
-        "Tomb of the Last Wyrmsbane"
+        "Tomb of the Last Wyrmsbane",
+        "Fallenpass"
       ]
     },
     {
@@ -12789,8 +13665,13 @@
       "gameId": null,
       "name": "Weighty Stone",
       "droppedBy": [],
-      "prices": [],
-      "harvested": 371,
+      "prices": [
+        {
+          "copper": 9,
+          "count": 1
+        }
+      ],
+      "harvested": 290,
       "zones": [
         "Glassflats"
       ]
@@ -12945,7 +13826,7 @@
           "count": 5
         }
       ],
-      "harvested": 556,
+      "harvested": 560,
       "zones": [
         "Evershade Weald",
         "Night Harbor",
@@ -12972,6 +13853,12 @@
       "gameId": "09a5d2baf931db48aee9cf9a",
       "name": "Wool Scraps",
       "droppedBy": [
+        {
+          "mob": "a restless adept",
+          "drops": 2,
+          "corpses": 3,
+          "rate": 0.6666666666666666
+        },
         {
           "mob": "a Sangrel arcanist",
           "drops": 9,
@@ -13027,6 +13914,12 @@
           "rate": 0.14035087719298245
         },
         {
+          "mob": "a restless skeleton",
+          "drops": 12,
+          "corpses": 92,
+          "rate": 0.13043478260869565
+        },
+        {
           "mob": "a Bloodchain taskmaster",
           "drops": 3,
           "corpses": 25,
@@ -13043,13 +13936,20 @@
           "drops": 1,
           "corpses": 10,
           "rate": 0.1
+        },
+        {
+          "mob": "a restless ghoul",
+          "drops": 3,
+          "corpses": 35,
+          "rate": 0.08571428571428572
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
         "Blacktidebay",
-        "Keepersbight"
+        "Keepersbight",
+        "Fallenpass"
       ]
     },
     {
@@ -13096,8 +13996,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 113,
-          "rate": 0.008849557522123894
+          "corpses": 112,
+          "rate": 0.008928571428571428
         },
         {
           "mob": "a Fellstone sentry",
@@ -13176,8 +14076,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 113,
-          "rate": 0.008849557522123894
+          "corpses": 112,
+          "rate": 0.008928571428571428
         }
       ],
       "prices": [
@@ -13237,6 +14137,12 @@
       "name": "Worn Fine Wood Buckler",
       "droppedBy": [
         {
+          "mob": "a restless ghoul",
+          "drops": 4,
+          "corpses": 35,
+          "rate": 0.11428571428571428
+        },
+        {
           "mob": "a Sangrel grappler",
           "drops": 1,
           "corpses": 20,
@@ -13247,6 +14153,12 @@
           "drops": 2,
           "corpses": 84,
           "rate": 0.023809523809523808
+        },
+        {
+          "mob": "a restless skeleton",
+          "drops": 1,
+          "corpses": 92,
+          "rate": 0.010869565217391304
         },
         {
           "mob": "a Sangrel striker",
@@ -13267,6 +14179,7 @@
       ],
       "harvested": 0,
       "zones": [
+        "Fallenpass",
         "Keepersbight",
         "Blacktidebay"
       ]
@@ -13295,6 +14208,18 @@
           "rate": 0.043478260869565216
         },
         {
+          "mob": "a restless ghoul",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
+        },
+        {
+          "mob": "a restless skeleton",
+          "drops": 1,
+          "corpses": 92,
+          "rate": 0.010869565217391304
+        },
+        {
           "mob": "a Sangrel striker",
           "drops": 1,
           "corpses": 114,
@@ -13305,6 +14230,7 @@
       "harvested": 0,
       "zones": [
         "Keepersbight",
+        "Fallenpass",
         "Blacktidebay"
       ]
     },
@@ -13334,8 +14260,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 2,
-          "corpses": 113,
-          "rate": 0.017699115044247787
+          "corpses": 112,
+          "rate": 0.017857142857142856
         },
         {
           "mob": "a skeletal cleric",
@@ -13396,9 +14322,9 @@
   "harvest": {
     "Copper Ore": 920,
     "Brittle Stone": 950,
-    "Clouded Crystallized Magic": 17,
-    "Wood": 556,
-    "Resin": 674,
+    "Clouded Crystallized Magic": 20,
+    "Wood": 560,
+    "Resin": 679,
     "Lionleaf": 33,
     "Ghost Poppy": 38,
     "Chipped Emerald": 4,
@@ -13430,12 +14356,12 @@
     "Chipped Topaz": 1,
     "Chipped Carnelian": 1,
     "Chipped Lapis Lazuli": 1,
-    "Limestone": 204,
-    "Tin Ore": 592,
+    "Limestone": 242,
+    "Tin Ore": 598,
     "Jagged Stone": 543,
     "Flawed Turquoise": 2,
     "Silver Ore": 69,
-    "Glinting Crystallized Magic": 14,
+    "Glinting Crystallized Magic": 13,
     "Flawed Black Sapphire": 3,
     "Flawed Hematite": 2,
     "Flawed Opal": 1,
@@ -13457,27 +14383,33 @@
     "Flawed Peridot": 1,
     "Flawed Jacinth": 1,
     "Flawed Onyx": 1,
-    "Iron Ore": 423,
-    "Weighty Stone": 371,
-    "Imperfect Onyx": 3,
-    "Imperfect Black Pearl": 1,
-    "Imperfect Jacinth": 1,
+    "Iron Ore": 318,
+    "Weighty Stone": 290,
+    "Imperfect Onyx": 2,
     "Gold Ore": 53,
-    "Imperfect Cat's Eye Agate": 4,
     "Shining Crystallized Magic": 12,
-    "Imperfect Lapis Lazuli": 1,
-    "Imperfect Carnelian": 1,
-    "Imperfect Peridot": 2,
-    "Imperfect Jade": 1,
-    "Imperfect Blue Diamond": 1,
-    "Imperfect Diamond": 1,
-    "Imperfect Topaz": 3,
-    "Imperfect Star Ruby": 1,
+    "Imperfect Star Ruby": 2,
     "Imperfect Pearl": 1,
+    "Imperfect Cat's Eye Agate": 2,
+    "Imperfect Peridot": 1,
     "Imperfect Star Rose Quartz": 1,
     "Imperfect Hematite": 1,
     "Imperfect Ruby": 1,
-    "Imperfect Malachite": 1
+    "Imperfect Topaz": 2,
+    "Imperfect Malachite": 1,
+    "Imperfect Jade": 1,
+    "Imperfect Amber": 2,
+    "Coal": 133,
+    "Rigid Stone": 124,
+    "Bloodstone": 1,
+    "Emerald": 1,
+    "Platinum Ore": 15,
+    "Hematite": 1,
+    "Malachite": 1,
+    "Diamond": 1,
+    "Jacinth": 1,
+    "Onyx": 1,
+    "Star Ruby": 1
   },
   "harvestNodes": [
     {
@@ -13639,158 +14571,157 @@
     },
     {
       "name": "Tin Ore & Jagged Stone",
-      "pulls": 638,
+      "pulls": 644,
       "yields": [
         {
           "res": "Tin Ore",
-          "count": 592,
-          "rate": 0.9278996865203761
+          "count": 598,
+          "rate": 0.9285714285714286
         },
         {
           "res": "Jagged Stone",
-          "count": 462,
-          "rate": 0.7241379310344828
+          "count": 464,
+          "rate": 0.7204968944099379
         },
         {
           "res": "Silver Ore",
           "count": 46,
-          "rate": 0.07210031347962383
+          "rate": 0.07142857142857142
         },
         {
           "res": "Limestone",
-          "count": 35,
-          "rate": 0.054858934169279
+          "count": 34,
+          "rate": 0.052795031055900624
         },
         {
           "res": "Glinting Crystallized Magic",
-          "count": 14,
-          "rate": 0.0219435736677116
+          "count": 13,
+          "rate": 0.020186335403726708
         },
         {
           "res": "Flawed Pearl",
           "count": 4,
-          "rate": 0.006269592476489028
+          "rate": 0.006211180124223602
         },
         {
           "res": "Flawed Bloodstone",
           "count": 3,
-          "rate": 0.004702194357366771
+          "rate": 0.004658385093167702
         },
         {
           "res": "Flawed Emerald",
           "count": 3,
-          "rate": 0.004702194357366771
+          "rate": 0.004658385093167702
         },
         {
           "res": "Flawed Wolf's Eye Agate",
           "count": 3,
-          "rate": 0.004702194357366771
+          "rate": 0.004658385093167702
         },
         {
           "res": "Flawed Turquoise",
           "count": 2,
-          "rate": 0.003134796238244514
+          "rate": 0.003105590062111801
         },
         {
           "res": "Flawed Black Sapphire",
           "count": 2,
-          "rate": 0.003134796238244514
+          "rate": 0.003105590062111801
         },
         {
           "res": "Flawed Hematite",
           "count": 2,
-          "rate": 0.003134796238244514
+          "rate": 0.003105590062111801
         },
         {
           "res": "Flawed Diamond",
           "count": 2,
-          "rate": 0.003134796238244514
+          "rate": 0.003105590062111801
         },
         {
           "res": "Flawed Ruby",
           "count": 2,
-          "rate": 0.003134796238244514
+          "rate": 0.003105590062111801
         },
         {
           "res": "Flawed Sapphire",
           "count": 2,
-          "rate": 0.003134796238244514
+          "rate": 0.003105590062111801
         },
         {
           "res": "Flawed Black Pearl",
           "count": 2,
-          "rate": 0.003134796238244514
+          "rate": 0.003105590062111801
         },
         {
           "res": "Flawed Amber",
           "count": 2,
-          "rate": 0.003134796238244514
+          "rate": 0.003105590062111801
         },
         {
           "res": "Flawed Jade",
           "count": 2,
-          "rate": 0.003134796238244514
+          "rate": 0.003105590062111801
         },
         {
           "res": "Flawed Opal",
           "count": 1,
-          "rate": 0.001567398119122257
+          "rate": 0.0015527950310559005
         },
         {
           "res": "Flawed Cat's Eye Agate",
           "count": 1,
-          "rate": 0.001567398119122257
+          "rate": 0.0015527950310559005
         },
         {
           "res": "Flawed Malachite",
           "count": 1,
-          "rate": 0.001567398119122257
+          "rate": 0.0015527950310559005
         },
         {
           "res": "Flawed Blue Diamond",
           "count": 1,
-          "rate": 0.001567398119122257
+          "rate": 0.0015527950310559005
         },
         {
           "res": "Flawed Star Rose Quartz",
           "count": 1,
-          "rate": 0.001567398119122257
+          "rate": 0.0015527950310559005
         },
         {
           "res": "Flawed Peridot",
           "count": 1,
-          "rate": 0.001567398119122257
+          "rate": 0.0015527950310559005
         },
         {
           "res": "Flawed Jacinth",
           "count": 1,
-          "rate": 0.001567398119122257
+          "rate": 0.0015527950310559005
         },
         {
           "res": "Flawed Onyx",
           "count": 1,
-          "rate": 0.001567398119122257
+          "rate": 0.0015527950310559005
         }
       ],
       "zones": [
         "Scarwood",
-        "Valeofzintar",
-        "Glassflats"
+        "Valeofzintar"
       ]
     },
     {
       "name": "Wood & Resin",
-      "pulls": 553,
+      "pulls": 557,
       "yields": [
         {
           "res": "Wood",
-          "count": 553,
+          "count": 557,
           "rate": 1
         },
         {
           "res": "Resin",
-          "count": 478,
-          "rate": 0.864376130198915
+          "count": 482,
+          "rate": 0.8653500897666068
         }
       ],
       "zones": [
@@ -13802,107 +14733,82 @@
     },
     {
       "name": "Iron Ore & Weighty Stone",
-      "pulls": 464,
+      "pulls": 359,
       "yields": [
         {
           "res": "Iron Ore",
-          "count": 423,
-          "rate": 0.9116379310344828
+          "count": 318,
+          "rate": 0.8857938718662952
         },
         {
           "res": "Weighty Stone",
-          "count": 313,
-          "rate": 0.6745689655172413
+          "count": 247,
+          "rate": 0.6880222841225627
         },
         {
           "res": "Gold Ore",
           "count": 41,
-          "rate": 0.08836206896551724
+          "rate": 0.11420612813370473
         },
         {
           "res": "Shining Crystallized Magic",
           "count": 11,
-          "rate": 0.023706896551724137
-        },
-        {
-          "res": "Imperfect Cat's Eye Agate",
-          "count": 4,
-          "rate": 0.008620689655172414
+          "rate": 0.03064066852367688
         },
         {
           "res": "Imperfect Onyx",
-          "count": 3,
-          "rate": 0.00646551724137931
-        },
-        {
-          "res": "Imperfect Topaz",
-          "count": 3,
-          "rate": 0.00646551724137931
-        },
-        {
-          "res": "Imperfect Peridot",
           "count": 2,
-          "rate": 0.004310344827586207
-        },
-        {
-          "res": "Imperfect Black Pearl",
-          "count": 1,
-          "rate": 0.0021551724137931034
-        },
-        {
-          "res": "Imperfect Jacinth",
-          "count": 1,
-          "rate": 0.0021551724137931034
-        },
-        {
-          "res": "Imperfect Lapis Lazuli",
-          "count": 1,
-          "rate": 0.0021551724137931034
-        },
-        {
-          "res": "Imperfect Carnelian",
-          "count": 1,
-          "rate": 0.0021551724137931034
-        },
-        {
-          "res": "Imperfect Jade",
-          "count": 1,
-          "rate": 0.0021551724137931034
-        },
-        {
-          "res": "Imperfect Blue Diamond",
-          "count": 1,
-          "rate": 0.0021551724137931034
-        },
-        {
-          "res": "Imperfect Diamond",
-          "count": 1,
-          "rate": 0.0021551724137931034
+          "rate": 0.005571030640668524
         },
         {
           "res": "Imperfect Star Ruby",
-          "count": 1,
-          "rate": 0.0021551724137931034
+          "count": 2,
+          "rate": 0.005571030640668524
+        },
+        {
+          "res": "Imperfect Cat's Eye Agate",
+          "count": 2,
+          "rate": 0.005571030640668524
+        },
+        {
+          "res": "Imperfect Topaz",
+          "count": 2,
+          "rate": 0.005571030640668524
+        },
+        {
+          "res": "Imperfect Amber",
+          "count": 2,
+          "rate": 0.005571030640668524
         },
         {
           "res": "Imperfect Pearl",
           "count": 1,
-          "rate": 0.0021551724137931034
+          "rate": 0.002785515320334262
+        },
+        {
+          "res": "Imperfect Peridot",
+          "count": 1,
+          "rate": 0.002785515320334262
         },
         {
           "res": "Imperfect Hematite",
           "count": 1,
-          "rate": 0.0021551724137931034
+          "rate": 0.002785515320334262
         },
         {
           "res": "Imperfect Ruby",
           "count": 1,
-          "rate": 0.0021551724137931034
+          "rate": 0.002785515320334262
         },
         {
           "res": "Imperfect Malachite",
           "count": 1,
-          "rate": 0.0021551724137931034
+          "rate": 0.002785515320334262
+        },
+        {
+          "res": "Imperfect Jade",
+          "count": 1,
+          "rate": 0.002785515320334262
         }
       ],
       "zones": [
@@ -13910,17 +14816,82 @@
       ]
     },
     {
-      "name": "Limestone",
-      "pulls": 87,
+      "name": "Coal & Rigid Stone",
+      "pulls": 133,
       "yields": [
         {
-          "res": "Limestone",
-          "count": 87,
+          "res": "Coal",
+          "count": 133,
           "rate": 1
+        },
+        {
+          "res": "Rigid Stone",
+          "count": 97,
+          "rate": 0.7293233082706767
+        },
+        {
+          "res": "Bloodstone",
+          "count": 1,
+          "rate": 0.007518796992481203
+        },
+        {
+          "res": "Emerald",
+          "count": 1,
+          "rate": 0.007518796992481203
+        },
+        {
+          "res": "Hematite",
+          "count": 1,
+          "rate": 0.007518796992481203
+        },
+        {
+          "res": "Malachite",
+          "count": 1,
+          "rate": 0.007518796992481203
+        },
+        {
+          "res": "Diamond",
+          "count": 1,
+          "rate": 0.007518796992481203
+        },
+        {
+          "res": "Jacinth",
+          "count": 1,
+          "rate": 0.007518796992481203
+        },
+        {
+          "res": "Onyx",
+          "count": 1,
+          "rate": 0.007518796992481203
+        },
+        {
+          "res": "Star Ruby",
+          "count": 1,
+          "rate": 0.007518796992481203
         }
       ],
       "zones": [
-        "Scarwood"
+        "Fallenpass"
+      ]
+    },
+    {
+      "name": "Limestone",
+      "pulls": 107,
+      "yields": [
+        {
+          "res": "Limestone",
+          "count": 107,
+          "rate": 1
+        },
+        {
+          "res": "Clouded Crystallized Magic",
+          "count": 3,
+          "rate": 0.028037383177570093
+        }
+      ],
+      "zones": [
+        "Scarwood",
+        "Fallenpass"
       ]
     },
     {
@@ -13984,26 +14955,59 @@
     },
     {
       "name": "Gold Ore",
-      "pulls": 11,
+      "pulls": 12,
       "yields": [
         {
           "res": "Gold Ore",
-          "count": 11,
+          "count": 12,
           "rate": 1
         },
         {
           "res": "Imperfect Star Rose Quartz",
           "count": 1,
-          "rate": 0.09090909090909091
+          "rate": 0.08333333333333333
         },
         {
           "res": "Shining Crystallized Magic",
           "count": 1,
-          "rate": 0.09090909090909091
+          "rate": 0.08333333333333333
         }
       ],
       "zones": [
         "Glassflats"
+      ]
+    },
+    {
+      "name": "Platinum Ore & Rigid Stone",
+      "pulls": 11,
+      "yields": [
+        {
+          "res": "Platinum Ore",
+          "count": 11,
+          "rate": 1
+        },
+        {
+          "res": "Rigid Stone",
+          "count": 11,
+          "rate": 1
+        }
+      ],
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "name": "Platinum Ore",
+      "pulls": 4,
+      "yields": [
+        {
+          "res": "Platinum Ore",
+          "count": 4,
+          "rate": 1
+        }
+      ],
+      "zones": [
+        "Fallenpass"
       ]
     },
     {
