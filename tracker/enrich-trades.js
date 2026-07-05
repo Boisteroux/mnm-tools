@@ -47,18 +47,27 @@ async function enrichTrades({ write = true } = {}) {
   const trades = (JSON.parse(fs.readFileSync(TRADES, 'utf8')).trades) || [];
 
   const haveLower = new Set(Object.keys(wiki.items).map((n) => n.toLowerCase()));
+  // Two kinds of work:
+  //  1. traded items with NO wiki entry yet          → fetch + add (full entry or stub)
+  //  2. existing trade STUBS (fromTrade, no page yet) → re-check the wiki and upgrade
+  //     to a full entry if a page has since been created (self-healing).
   const missing = [...new Set(trades.map((t) => t.item))]
     .filter((n) => n && !haveLower.has(n.toLowerCase()));
+  const stubKeys = Object.keys(wiki.items)
+    .filter((k) => wiki.items[k] && wiki.items[k].fromTrade && wiki.items[k].hasPage === false);
 
-  if (!missing.length) {
-    console.log('All traded items already have wiki entries — nothing to do.');
-    return { added: [], stubs: [], noPage: [] };
+  if (!missing.length && !stubKeys.length) {
+    console.log('All traded items already have full wiki entries — nothing to do.');
+    return { added: [], upgraded: [], stubs: [], noPage: [] };
   }
-  console.log(`Traded items missing a wiki entry: ${missing.length}`);
+  if (missing.length) console.log(`Traded items missing a wiki entry: ${missing.length}`);
+  if (stubKeys.length) console.log(`Existing stubs to re-check for a new wiki page: ${stubKeys.length}`);
 
-  // For each missing item try both the raw name and a title-cased variant, so a
-  // casually-typed trade ("brilliant crystallized magic") still finds its page.
-  const candByItem = new Map(missing.map((n) => [n, [...new Set([n, W.titleCaseName(n)])]]));
+  // Fetch candidates. New items try raw + title-cased (fixes casual casing);
+  // stubs are already keyed under a proper title, so just re-fetch that.
+  const candByItem = new Map();
+  for (const n of missing) candByItem.set(n, [...new Set([n, W.titleCaseName(n)])]);
+  for (const k of stubKeys) candByItem.set(k, [k]);
   const allCands = [...new Set([].concat(...candByItem.values()))];
 
   // Fetch wikitext for every candidate (batched — fetchWikitext handles ~45/call).
@@ -70,14 +79,13 @@ async function enrichTrades({ write = true } = {}) {
   }
   // Case-insensitive lookup of a resolved page for a given asked-name.
   const textKeyLower = new Map(Object.keys(texts).map((k) => [k.toLowerCase(), k]));
+  const resolve = (item) => { for (const c of candByItem.get(item)) { const k = textKeyLower.get(c.toLowerCase()); if (k) return k; } return null; };
 
-  const added = {}, addedNames = [], stubs = [], noPage = [];
+  const added = {}, addedNames = [], upgraded = [], stubs = [], noPage = [];
+
+  // 1. New traded items — full entry if the wiki has a page, else a stub.
   for (const item of missing) {
-    let hitKey = null;
-    for (const cand of candByItem.get(item)) {
-      const k = textKeyLower.get(cand.toLowerCase());
-      if (k) { hitKey = k; break; }
-    }
+    const hitKey = resolve(item);
     const entry = hitKey ? entryFromWikitext(texts[hitKey]) : null;
     if (entry) {
       added[hitKey] = entry;          // key under the real wiki title casing
@@ -92,6 +100,16 @@ async function enrichTrades({ write = true } = {}) {
     }
   }
 
+  // 2. Re-check existing stubs; upgrade any whose wiki page now exists.
+  for (const key of stubKeys) {
+    const hitKey = resolve(key);
+    const entry = hitKey ? entryFromWikitext(texts[hitKey]) : null;
+    if (!entry) continue;             // still no page — leave the stub as-is
+    added[hitKey] = entry;
+    if (hitKey !== key) delete wiki.items[key]; // page has different casing — drop the old stub
+    upgraded.push(`${key}${hitKey !== key ? ` → ${hitKey}` : ''}`);
+  }
+
   // Resolve icons for the ones that have an iconId.
   const iconIds = [...new Set(Object.values(added).map((e) => e.iconId).filter(Boolean))];
   if (iconIds.length) {
@@ -101,18 +119,21 @@ async function enrichTrades({ write = true } = {}) {
     } catch (e) { console.error('icon fetch failed:', e.message); }
   }
 
-  console.log(`\n  ✓ enriched from wiki (${addedNames.length}): ${addedNames.join(', ') || '—'}`);
-  if (stubs.length) console.log(`  • stub entries, no wiki page (${stubs.length}): ${stubs.join(', ')}`);
+  const changed = Object.keys(added).length > 0;
+  if (addedNames.length) console.log(`\n  ✓ enriched from wiki (${addedNames.length}): ${addedNames.join(', ')}`);
+  if (upgraded.length) console.log(`  ⬆ stubs upgraded — wiki page now exists (${upgraded.length}): ${upgraded.join(', ')}`);
+  if (stubs.length) console.log(`  • new stub entries, no wiki page (${stubs.length}): ${stubs.join(', ')}`);
+  if (!changed) console.log('  Re-checked stubs — still no wiki pages. Nothing to write.');
 
-  if (write) {
+  if (write && changed) {
     Object.assign(wiki.items, added);
     wiki.generatedAt = new Date().toISOString();
     fs.writeFileSync(WIKI, JSON.stringify(wiki, null, 2));
-    console.log(`\nWrote ${Object.keys(added).length} new entries to ${path.relative(process.cwd(), WIKI)}.`);
-  } else {
+    console.log(`\nWrote ${Object.keys(added).length} entr${Object.keys(added).length === 1 ? 'y' : 'ies'} to ${path.relative(process.cwd(), WIKI)}.`);
+  } else if (!write) {
     console.log('\n(dry run — wiki.json not written)');
   }
-  return { added: addedNames, stubs, noPage };
+  return { added: addedNames, upgraded, stubs, noPage };
 }
 
 module.exports = { enrichTrades };
