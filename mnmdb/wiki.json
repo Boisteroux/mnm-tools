@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-06T21:10:47.602Z",
+  "generatedAt": "2026-07-06T21:40:53.573Z",
   "items": {
     "Bone Chips": {
       "hasPage": true,
@@ -47025,6 +47025,401 @@
       "hasPage": false,
       "wikiOnly": true,
       "fromTrade": true
+    },
+    "Shattershriek Spike": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0162AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 2,
+      "size": "SMALL",
+      "class": "ARC BRD BST ELE ENC FTR INQ NEC RNG ROG SHD SHM SPB WIZ",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "STR": 3,
+        "STA": 1,
+        "AGI": 2,
+        "DEX": 5
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "MR": 3
+      },
+      "instr": {
+        "Wind": 24
+      },
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Glass Flats"
+      ],
+      "from": [
+        "Shattershriek"
+      ],
+      "categories": [
+        "Weapon",
+        "Primary",
+        "Secondary",
+        "1H Piercing"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/68/Itemicon0162AA.png/64px-Itemicon0162AA.png"
+    },
+    "Enchant Legs: Stamina": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Fang-Backed Boots": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0035AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 2,
+      "size": "MEDIUM",
+      "class": "BRD CLR FTR INQ POAL RNG ROG SHD SHM",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 17,
+      "stats": {
+        "WIS": 5
+      },
+      "hp": 15,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Vale of Zintar"
+      ],
+      "from": [
+        "Onis the Elder"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/ea/Itemicon0035AA.png/64px-Itemicon0035AA.png"
+    },
+    "Cloak of the Chiropteran": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0012AF",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "MEDIUM",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 7,
+      "stats": {
+        "STR": 4
+      },
+      "hp": 20,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "ER": 1
+      },
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Glass Flats"
+      ],
+      "from": [
+        "Shattershriek"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/c/c8/Itemicon0012AF.png"
+    },
+    "wisdom": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Tust's Copper Earring": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0103AA",
+      "slot": "EAR",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [
+        "MAGIC",
+        "UNIQUE"
+      ],
+      "handed": null,
+      "ac": 1,
+      "stats": {
+        "WIS": 2
+      },
+      "hp": 5,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/5/5a/Itemicon0103AA.png/64px-Itemicon0103AA.png"
+    },
+    "Inlaid Black Sapphire Gold Ring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Drakeling Skewer": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0181AA",
+      "slot": "PRIMARY SECONDARY",
+      "dmg": 5,
+      "delay": 27,
+      "skill": "STA",
+      "weight": 7,
+      "size": "LARGE",
+      "class": "ARC BRD BST FTR INQ RNG ROG SHD SHM",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "STR": 2,
+        "DEX": 2
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Tomb of the Last Wyrmsbane"
+      ],
+      "from": [
+        "Gerhardt Graves"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/9/98/Itemicon0181AA.png/64px-Itemicon0181AA.png"
+    },
+    "Ragged Leather Helm": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0031AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "SMALL",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 10,
+      "stats": {
+        "STA": 1,
+        "DEX": 4
+      },
+      "hp": 5,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Night Harbor"
+      ],
+      "from": [
+        "Mila Dastan"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/fd/Itemicon0031AA.png/64px-Itemicon0031AA.png"
+    },
+    "Shield of the Protector": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0173AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": null,
+      "size": null,
+      "class": "BRD BST CLR DRU FTR INQ PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 16,
+      "stats": {
+        "STR": 2,
+        "STA": 2,
+        "DEX": 1
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": {
+        "name": "Woodskin",
+        "trigger": "Click",
+        "castTime": "10s",
+        "level": 1,
+        "detail": "On Click. Any Slot. Cast Time: 10s. Level: 1"
+      },
+      "wikiZones": [
+        "Tel Ekir"
+      ],
+      "from": [
+        "Ashir the Protector"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/9/9e/Itemicon0173AA.png/64px-Itemicon0173AA.png"
+    },
+    "Hexwoven Handwraps": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0015AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 7,
+      "stats": {
+        "INT": 3
+      },
+      "hp": null,
+      "mana": 15,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Sungreet Strand"
+      ],
+      "from": [
+        "Seeric of Maelsin Thrys"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/66/Itemicon0015AA.png/64px-Itemicon0015AA.png"
+    },
+    "Imperfect Peridot": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Imperfect Turquoise": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Imperfect Blue Diamond": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0130AB",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "from": [
+        "Iron Vein",
+        "Rich Iron Vein",
+        "Gold Vein",
+        "Rich Gold Vein"
+      ],
+      "tradeskills": [
+        "Jewelcrafting"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/2/21/Itemicon0130AB.png/64px-Itemicon0130AB.png"
     }
   },
   "mobs": {
