@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-06T20:10:45.515Z",
+  "generatedAt": "2026-07-06T20:40:45.459Z",
   "items": {
     "Bone Chips": {
       "hasPage": true,
@@ -46606,6 +46606,322 @@
         "Alchemy"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/b/bc/Itemicon0201AH.png"
+    },
+    "Infernal Helm": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0015AA",
+      "slot": "HEAD",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "SMALL",
+      "class": "ARC BRD BST DRU MNK SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 26,
+      "stats": {
+        "STR": 5,
+        "STA": 5
+      },
+      "hp": 30,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "from": [
+        "Witchguard Hellblade"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/66/Itemicon0015AA.png/64px-Itemicon0015AA.png"
+    },
+    "Putrid Carpenter's Vest": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0026AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 3,
+      "size": "MEDIUM",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC",
+        "UNIQUE"
+      ],
+      "handed": null,
+      "ac": 24,
+      "stats": {
+        "STA": 1,
+        "DEX": 3,
+        "WIS": 3
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "CR": 2,
+        "DR": -4
+      },
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Pass"
+      ],
+      "from": [
+        "Kallen Oison"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/c/cd/Itemicon0026AA.png/64px-Itemicon0026AA.png"
+    },
+    "WTB Stalker's Leather Birtches": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Ornate Cultist Lamp": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0004AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.8,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": {
+        "name": "Lamp",
+        "trigger": "Worn",
+        "castTime": null,
+        "level": 1,
+        "detail": "Passive. Must Equip. Level: 1"
+      },
+      "wikiZones": [
+        "Shaded Dunes"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/ee/Itemicon0004AA.png/64px-Itemicon0004AA.png"
+    },
+    "Fine Elven Drum": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 1.3,
+      "size": "SMALL",
+      "class": "BRD",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "CHA": 6
+      },
+      "hp": 20,
+      "mana": 20,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {
+        "Perc": 28
+      },
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Shallow Shoals"
+      ],
+      "from": [
+        "Sylvaine"
+      ]
+    },
+    "Hide Saddle": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Filthstriders": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0037AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "MEDIUM",
+      "class": "ARC BRD BST CLR DRU FTR MNK INQ PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 24,
+      "stats": {
+        "STR": 6,
+        "STA": 7
+      },
+      "hp": 15,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Pass"
+      ],
+      "from": [
+        "Blightcaller Zirat"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/bd/Itemicon0037AA.png/64px-Itemicon0037AA.png"
+    },
+    "Robe of the Undying Scholar": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0021AA",
+      "slot": "CHEST",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.8,
+      "size": "MEDIUM",
+      "class": "ELE ENC NEC WIZ",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": 7,
+      "stats": {
+        "STA": 2,
+        "DEX": 2,
+        "INT": 2,
+        "CHA": -2
+      },
+      "hp": 5,
+      "mana": 5,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": {
+        "name": "[[Minor Intelligence]]",
+        "trigger": "Click",
+        "castTime": "5s",
+        "level": 1,
+        "detail": "On Click. Any Slot. Cast Time: 5s, Level: 1"
+      },
+      "wikiZones": [
+        "Ancient Crypt"
+      ],
+      "from": [
+        "Librarian Gallier"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/1/12/Itemicon0021AA.png/64px-Itemicon0021AA.png"
+    },
+    "Ornate Chitin Shield": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0175AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 2,
+      "size": "MEDIUM",
+      "class": "BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "all",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 10,
+      "stats": {
+        "STR": 1,
+        "STA": 2
+      },
+      "hp": 10,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "MR": 1
+      },
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Night Harbor"
+      ],
+      "from": [
+        "an ornate beetle"
+      ],
+      "categories": [
+        "Shield",
+        "Secondary",
+        "Resist Gear",
+        "SV:Magic"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/4/48/Itemicon0175AA.png/64px-Itemicon0175AA.png"
+    },
+    "Steel Plate Greaves": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Padded Leather Saddlebag": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
     }
   },
   "mobs": {
