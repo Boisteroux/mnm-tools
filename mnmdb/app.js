@@ -2489,6 +2489,95 @@ function renderQuestList(slug) {
       : '<p class="muted">All done — nothing left on this quest. 🎉</p>');
 }
 
+// ---- Auction House (player market from the LiveMMCam OCR feed) ----
+let AUCTIONS = null;
+const aucCoin = (c) => { if (c == null) return null; let x = c; const p = Math.floor(x / 1e6); x %= 1e6; const g = Math.floor(x / 1e4); x %= 1e4; const s = Math.floor(x / 100); x %= 100; return [p ? p + 'p' : '', g ? g + 'g' : '', s ? s + 's' : '', x ? x + 'c' : ''].filter(Boolean).join(' ') || '0c'; };
+const aucTag = (i) => i === 'sell' ? '<span class="atag sell">WTS</span>' : i === 'buy' ? '<span class="atag buy">WTB</span>' : i === 'trade' ? '<span class="atag trade">WTT</span>' : i === 'inquiry' ? '<span class="atag pc">PC</span>' : '<span class="atag">?</span>';
+
+async function renderAuctions() {
+  if (!AUCTIONS) {
+    $('content').innerHTML = '<div class="crumb"><a href="#/">MnMdb</a> › auctions</div><h1>Auction House</h1><p class="sub">Loading live market…</p>';
+    try { AUCTIONS = await (await fetch('./auctions.json?v=' + Date.now())).json(); } catch { AUCTIONS = { listings: [], requests: [], stats: {}, generatedAt: null }; }
+  }
+  const A = AUCTIONS;
+  const priced = A.listings.filter((l) => l.price != null).length;
+  const when = A.generatedAt ? new Date(A.generatedAt).toLocaleString() : '—';
+  $('content').innerHTML =
+    '<div class="crumb"><a href="#/">MnMdb</a> › auctions</div><h1>Auction House</h1>' +
+    '<p class="sub">Player buy/sell auctions from the LiveMMCam stream — PvP and PvE are separate markets. ' +
+    A.listings.length + ' listings · ' + priced + ' priced · ' + A.requests.length + ' requests · updated ' + esc(when) + '. Hover an item for its stats.</p>' +
+    '<div class="auc-controls"><input id="auc-q" placeholder="Search item or seller…">' +
+    '<select id="auc-sort"><option value="new">Newest</option><option value="item">Item name</option><option value="price">Price (high→low)</option></select>' +
+    '<select id="auc-filter"><option value="all">All</option><option value="priced">Priced only</option><option value="sell">Selling</option><option value="buy">Buying</option></select></div>' +
+    '<div class="auc-cols"><div class="auc-panel"><div class="auc-head">PvP <span id="auc-pvp-n" class="muted"></span></div><div id="auc-pvp"></div></div>' +
+    '<div class="auc-panel"><div class="auc-head">PvE <span id="auc-pve-n" class="muted"></span></div><div id="auc-pve"></div></div></div>' +
+    '<div class="auc-panel" style="margin-top:16px"><div class="auc-head">🛠 Crafting / gear requests <span class="muted">' + A.requests.length + '</span></div><div id="auc-reqs"></div></div>';
+  ['auc-q', 'auc-sort', 'auc-filter'].forEach((id) => { const el = $(id); if (el) el.addEventListener('input', paintAuctions); });
+  paintAuctions(); aucReqs(); aucHoverInit();
+}
+function aucRows(server) {
+  const A = AUCTIONS, q = ($('auc-q').value || '').trim().toLowerCase(), sort = $('auc-sort').value, filt = $('auc-filter').value;
+  let rs = A.listings.filter((l) => l.server === server);
+  if (q) rs = rs.filter((l) => (l.item + ' ' + l.player).toLowerCase().includes(q));
+  if (filt === 'priced') rs = rs.filter((l) => l.price != null);
+  else if (filt === 'sell') rs = rs.filter((l) => l.intent === 'sell');
+  else if (filt === 'buy') rs = rs.filter((l) => l.intent === 'buy');
+  rs.sort((a, b) => sort === 'item' ? a.item.localeCompare(b.item) : sort === 'price' ? (b.price || 0) - (a.price || 0) : (b.seen || '').localeCompare(a.seen || ''));
+  return rs;
+}
+function paintAuctions() {
+  for (const [srv, id] of [['PvP', 'auc-pvp'], ['PvE', 'auc-pve']]) {
+    const rs = aucRows(srv);
+    $(id + '-n').textContent = rs.length;
+    $(id).innerHTML = !rs.length ? '<div class="auc-empty">No listings.</div>' : '<table class="auc"><tbody>' + rs.map((l) =>
+      '<tr data-item="' + esc(l.item) + '"><td class="at">' + aucTag(l.intent) + (l.assumed ? '<span class="amute" title="intent inferred">?</span>' : '') + '</td>' +
+      '<td class="ai">' + (l.matched ? itemLink(l.item, l.item) : esc(l.item)) + (l.qty ? ' <span class="muted">×' + l.qty + '</span>' : '') + '</td>' +
+      '<td class="ap">' + (l.price != null ? esc(l.priceStr || aucCoin(l.price)) : '<span class="muted">—</span>') + '</td>' +
+      '<td class="muted">' + esc(l.player) + '</td></tr>').join('') + '</tbody></table>';
+  }
+}
+function aucReqs() {
+  const rq = AUCTIONS.requests;
+  $('auc-reqs').innerHTML = !rq.length ? '<div class="auc-empty">None.</div>' : '<table class="auc"><tbody>' + rq.map((r) => {
+    const w = [r.plus && r.plus.length ? '+' + r.plus.join('/') : '', (r.stats || []).join('/'), r.category].filter(Boolean).join(' ') || esc(r.text);
+    return '<tr><td class="at">' + aucTag(r.intent || 'buy') + '</td><td class="ai">' + esc(w) + '</td><td class="muted">' + esc(r.server) + '</td><td class="muted">' + esc(r.player) + '</td></tr>';
+  }).join('') + '</tbody></table>';
+}
+function aucPopEl() { let el = $('auc-pop'); if (!el) { el = document.createElement('div'); el.id = 'auc-pop'; document.body.appendChild(el); } return el; }
+function aucPopHTML(item) {
+  const s = AUCTIONS.stats[String(item).toLowerCase()];
+  const icon = (s && s.icon) ? '<img src="' + esc(s.icon) + '" alt="">' : '';
+  const head = '<div class="aph">' + icon + '<span class="apn">' + esc(item) + '</span></div>';
+  if (!s) return head + '<div class="anone">No wiki info yet.</div>';
+  const sign = (n) => (n > 0 ? '+' : '') + n;
+  const chips = (ps) => '<div class="achips">' + ps.map(([k, v]) => '<span class="achip ' + (v < 0 ? 'neg' : 'pos') + '">' + esc(k) + ' ' + sign(v) + '</span>').join('') + '</div>';
+  const row = (a) => a.length ? '<div class="arow">' + a.join(' · ') + '</div>' : '';
+  const P = [];
+  if (s.flags && s.flags.length) P.push('<div class="aflags">' + s.flags.map((f) => '<span class="aflag">' + esc(f) + '</span>').join('') + '</div>');
+  P.push(row([s.slot ? 'Slot ' + esc(s.slot) : '', s.ac != null ? 'AC ' + s.ac : ''].filter(Boolean)));
+  if (s.dmg != null || s.delay != null || s.skill) P.push(row([s.dmg != null ? 'DMG ' + s.dmg : '', s.delay != null ? 'Delay ' + s.delay : '', s.skill ? esc(s.skill) : ''].filter(Boolean)));
+  const st = Object.entries(s.stats || {}); if (st.length) P.push(chips(st));
+  const vit = []; if (s.hp != null) vit.push(['HP', s.hp]); if (s.mana != null) vit.push(['Mana', s.mana]); if (s.haste != null) vit.push(['Haste', s.haste]);
+  if (vit.length) P.push(chips(vit));
+  const rz = Object.entries(s.resists || {}); if (rz.length) P.push(chips(rz));
+  P.push(row([s.weight != null ? 'Weight ' + s.weight : '', s.size ? 'Size ' + esc(s.size) : '', s.vendor != null ? 'Vendor ' + esc(aucCoin(s.vendor)) : ''].filter(Boolean)));
+  if (s.class) P.push('<div class="arow"><span class="muted">Class</span> ' + esc(s.class) + '</div>');
+  if (s.race) P.push('<div class="arow"><span class="muted">Race</span> ' + esc(s.race) + '</div>');
+  if (s.tradeskills && s.tradeskills.length) P.push('<div class="arow"><span class="muted">Used in</span> <span class="ats">' + esc(s.tradeskills.join(', ')) + '</span></div>');
+  const src = [];
+  if (s.zones && s.zones.length) src.push('Zones: ' + esc(s.zones.join(', ')));
+  if (s.from && s.from.length) src.push('Drops: ' + esc(s.from.join(', ')));
+  const body = P.filter(Boolean).join('') + (src.length ? '<div class="asrc">' + src.join('<br>') + '</div>' : '');
+  return head + (body.trim() ? body : '<div class="anone">No wiki info yet.</div>');
+}
+let aucHoverWired = false;
+function aucHoverInit() {
+  if (aucHoverWired) return; aucHoverWired = true;
+  const pop = aucPopEl();
+  document.addEventListener('mouseover', (e) => { const tr = e.target.closest && e.target.closest('#content tr[data-item]'); if (tr) { pop.innerHTML = aucPopHTML(tr.dataset.item); pop.classList.add('show'); } else pop.classList.remove('show'); });
+  document.addEventListener('mousemove', (e) => { if (!pop.classList.contains('show')) return; const w = pop.offsetWidth || 280, h = pop.offsetHeight || 160; pop.style.left = Math.min(e.clientX + 14, window.innerWidth - w - 10) + 'px'; pop.style.top = Math.min(e.clientY + 14, window.innerHeight - h - 10) + 'px'; });
+}
+
 function route() {
   const q = $('search').value.trim();
   if (q) return renderSearch(q);
@@ -2498,6 +2587,7 @@ function route() {
   if (h === 'vendors') return renderVendors();
   if (h === 'bestiary') return renderBestiary();
   if (h === 'maps') return renderMapsList();
+  if (h === 'auctions') return renderAuctions();
   if (h === 'moderate') return renderModerate();
   if (h === 'quests') return renderQuests();
   if (h.startsWith('quests/')) return renderQuestList(h.slice(7));
