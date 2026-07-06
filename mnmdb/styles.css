@@ -713,3 +713,13 @@ table.auc tr[data-item]:hover td { background: var(--panel-2); }
 .map-chip { display: inline-block; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--panel); color: var(--text); text-decoration: none; font-size: 14px; }
 .map-chip:hover { border-color: var(--accent); color: var(--accent); }
 h2 .h2-link { font-size: 13px; font-weight: 400; margin-left: 10px; }
+
+/* ---- Advanced search ---- */
+.adv-controls { display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0; }
+.adv-controls input, .adv-controls select { padding: 7px 10px; border: 1px solid var(--line); border-radius: 7px; background: var(--panel); color: var(--text); font: inherit; }
+.adv-controls input#adv-name { flex: 1; min-width: 180px; }
+.adv-controls input#adv-class { width: 130px; }
+.adv-check { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); }
+.adv-stats { display: flex; flex-wrap: wrap; gap: 8px 14px; margin: 4px 0 16px; padding: 10px 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; }
+.adv-stat { display: inline-flex; align-items: center; gap: 4px; color: var(--muted); font-size: 13px; }
+.adv-stat input { width: 52px; padding: 4px 6px; border: 1px solid var(--line); border-radius: 5px; background: var(--bg); color: var(--text); font: inherit; }

@@ -16,6 +16,7 @@
 const fs = require('fs');
 const path = require('path');
 const W = require('./enrich-wiki.js');
+const { parseFullStats } = require('./enrich-auction-stats.js'); // full ItemBox (AC, stat bonuses, resists…)
 
 const WIKI = path.join(__dirname, '..', 'mnmdb', 'wiki.json');
 const TRADES = path.join(__dirname, '..', 'mnmdb', 'trades.json');
@@ -31,8 +32,10 @@ function entryFromWikitext(wt) {
   const ts = W.parseTradeskills(wt);
   const soldBy = W.parseSoldBy(wt);
   const harvestedBy = W.parseHarvestedBy(wt);
+  const full = parseFullStats(wt) || {}; // AC / stat bonuses / HP / resists / flags — full card
   return Object.assign(
-    { hasPage: true, wikiOnly: true, fromTrade: true }, box,
+    { hasPage: true, wikiOnly: true, fromTrade: true, statsV: 1 }, box,
+    { flags: full.flags, handed: full.handed, ac: full.ac, stats: full.stats, hp: full.hp, mana: full.mana, hpRegen: full.hpRegen, manaRegen: full.manaRegen, haste: full.haste, resists: full.resists, instr: full.instr },
     src.zones.length ? { wikiZones: src.zones } : {},
     src.from.length ? { from: src.from } : {},
     cats.length ? { categories: cats } : {},

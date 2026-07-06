@@ -2620,6 +2620,56 @@ function aucHoverInit() {
   document.addEventListener('mousemove', (e) => { if (!pop.classList.contains('show')) return; const w = pop.offsetWidth || 280, h = pop.offsetHeight || 160; pop.style.left = Math.min(e.clientX + 14, window.innerWidth - w - 10) + 'px'; pop.style.top = Math.min(e.clientY + 14, window.innerHeight - h - 10) + 'px'; });
 }
 
+// ---- Advanced (stat) search ----
+const ADV_STATS = ['STR', 'STA', 'AGI', 'DEX', 'INT', 'WIS', 'CHA', 'AC', 'HP'];
+const advStatOf = (w, s) => s === 'AC' ? (w.ac || 0) : s === 'HP' ? (w.hp || 0) : ((w.stats && w.stats[s]) || 0);
+function renderAdvanced() {
+  const slots = [...new Set(DATA.items.map((i) => i.wiki && i.wiki.slot).filter(Boolean).map((s) => s.toUpperCase()))].sort();
+  const statInputs = ADV_STATS.map((s) => '<label class="adv-stat">' + s + ' ≥ <input type="number" id="adv-' + s + '" min="0" inputmode="numeric"></label>').join('');
+  $('content').innerHTML =
+    '<div class="crumb"><a href="#/">MnMdb</a> › advanced search</div><h1>Advanced item search</h1>' +
+    '<p class="sub">Filter items by their stats. Leave a field blank to ignore it.</p>' +
+    '<div class="adv-controls">' +
+      '<input id="adv-name" placeholder="Item name contains…">' +
+      '<select id="adv-slot"><option value="">Any slot</option>' + slots.map((s) => '<option>' + esc(s) + '</option>').join('') + '</select>' +
+      '<input id="adv-class" placeholder="Class (e.g. FTR)">' +
+      '<label class="adv-check"><input type="checkbox" id="adv-magic"> MAGIC only</label>' +
+    '</div>' +
+    '<div class="adv-stats">' + statInputs + '</div>' +
+    '<div id="adv-results"></div>';
+  ['adv-name', 'adv-slot', 'adv-class', 'adv-magic'].concat(ADV_STATS.map((s) => 'adv-' + s))
+    .forEach((id) => { const el = $(id); if (el) el.addEventListener('input', paintAdvanced); });
+  paintAdvanced();
+}
+function paintAdvanced() {
+  const name = ($('adv-name').value || '').trim().toLowerCase();
+  const slot = ($('adv-slot').value || '').toUpperCase();
+  const cls = ($('adv-class').value || '').trim().toUpperCase();
+  const magic = $('adv-magic').checked;
+  const mins = {};
+  for (const s of ADV_STATS) { const v = $('adv-' + s).value; if (v !== '') mins[s] = +v; }
+  const anyFilter = name || slot || cls || magic || Object.keys(mins).length;
+  const box = $('adv-results');
+  if (!anyFilter) { box.innerHTML = '<p class="sub">Enter a filter above to search.</p>'; return; }
+  const results = DATA.items.filter((i) => {
+    const w = i.wiki; if (!w) return false;
+    if (name && !i.name.toLowerCase().includes(name)) return false;
+    if (slot && (w.slot || '').toUpperCase() !== slot) return false;
+    if (cls && !(w.class || '').toUpperCase().includes(cls)) return false;
+    if (magic && !(w.flags && w.flags.includes('MAGIC'))) return false;
+    for (const s in mins) if (advStatOf(w, s) < mins[s]) return false;
+    return true;
+  }).sort((a, b) => a.name.localeCompare(b.name));
+  const cols = Object.keys(mins);
+  const shown = results.slice(0, 200);
+  box.innerHTML = '<p class="sub">' + results.length + ' match' + (results.length === 1 ? '' : 'es') + (results.length > 200 ? ' — showing 200' : '') + '</p>' +
+    (shown.length ? '<div class="card"><table><thead><tr><th>Item</th><th>Slot</th><th>Class</th>' + cols.map((c) => '<th class="num">' + c + '</th>').join('') + '</tr></thead><tbody>' +
+      shown.map((i) => { const w = i.wiki; return '<tr><td>' + itemLink(i.id, i.name) + (w.flags && w.flags.includes('MAGIC') ? ' <span class="tag good">MAGIC</span>' : '') + '</td>' +
+        '<td class="sample">' + esc(w.slot || '—') + '</td><td class="sample">' + esc(w.class || '—') + '</td>' +
+        cols.map((c) => '<td class="num">' + advStatOf(w, c) + '</td>').join('') + '</tr>'; }).join('') +
+      '</tbody></table></div>' : '');
+}
+
 function route() {
   const q = $('search').value.trim();
   if (q) return renderSearch(q);
@@ -2630,6 +2680,7 @@ function route() {
   if (h === 'bestiary') return renderBestiary();
   if (h === 'maps') return renderMapsList();
   if (h === 'auctions') return renderAuctions();
+  if (h === 'advanced') return renderAdvanced();
   if (h === 'moderate') return renderModerate();
   if (h === 'quests') return renderQuests();
   if (h.startsWith('quests/')) return renderQuestList(h.slice(7));
