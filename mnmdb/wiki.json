@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-06T21:40:53.573Z",
+  "generatedAt": "2026-07-06T22:10:52.662Z",
   "items": {
     "Bone Chips": {
       "hasPage": true,
@@ -47420,6 +47420,187 @@
         "Jewelcrafting"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/2/21/Itemicon0130AB.png/64px-Itemicon0130AB.png"
+    },
+    "Fell Trident": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0150AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 6.2,
+      "size": "LARGE",
+      "class": "ARC BRD BST FTR INQ RNG ROG SHD SHM",
+      "race": "ALL",
+      "flags": [
+        "MAGIC",
+        "UNIQUE"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "STR": 10
+      },
+      "hp": 5,
+      "mana": 5,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": {
+        "name": "Infirmity",
+        "trigger": null,
+        "castTime": null,
+        "level": 50,
+        "detail": "Chance on Hit. Level: 50"
+      },
+      "wikiZones": [
+        "Glass Flats"
+      ],
+      "from": [
+        "Hovarth Ezzadel"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/7/72/Itemicon0150AA.png/64px-Itemicon0150AA.png"
+    },
+    "Vestments of Vakraar": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0023AG",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 6,
+      "size": "LARGE",
+      "class": "CLR FTR INQ PAL SHD",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 40,
+      "stats": {
+        "STR": 5,
+        "STA": 1
+      },
+      "hp": 5,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "MR": 2
+      },
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Vale of Zintar"
+      ],
+      "from": [
+        "Servarator Vakraar"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/bd/Itemicon0023AG.png/64px-Itemicon0023AG.png"
+    },
+    "Suresight War Wraps": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "The Final Word": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 17,
+      "size": "LARGE",
+      "class": "ARC BRD BST FTR INQ PAL RNG SHD SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC",
+        "UNIQUE"
+      ],
+      "handed": "Two Handed",
+      "ac": null,
+      "stats": {
+        "STR": 7,
+        "STA": 3,
+        "AGI": 2,
+        "DEX": 3
+      },
+      "hp": 10,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": {
+        "name": "Mana Burn II",
+        "trigger": null,
+        "castTime": null,
+        "level": null,
+        "detail": "Chance On Hit. Level 1"
+      },
+      "wikiZones": [
+        "Vale of Zintar"
+      ],
+      "from": [
+        "Servarator Vakraar"
+      ]
+    },
+    "Grinholdt's Showpiece": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0185AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 8,
+      "size": "LARGE",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": "Two Handed",
+      "ac": null,
+      "stats": {
+        "STA": 2,
+        "CHA": 9
+      },
+      "hp": null,
+      "mana": 15,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Scarwood"
+      ],
+      "from": [
+        "Garran Grinholdt"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/32/Itemicon0185AA.png/64px-Itemicon0185AA.png"
     }
   },
   "mobs": {
