@@ -19,6 +19,7 @@ const W = require('./enrich-wiki.js');
 
 const WIKI = path.join(__dirname, '..', 'mnmdb', 'wiki.json');
 const TRADES = path.join(__dirname, '..', 'mnmdb', 'trades.json');
+const AUCTIONS = path.join(__dirname, '..', 'mnmdb', 'auctions.json');
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // Build the same wiki.json entry shape enrich-wiki.js writes, from one page's wikitext.
@@ -45,14 +46,18 @@ async function enrichTrades({ write = true } = {}) {
   const wiki = JSON.parse(fs.readFileSync(WIKI, 'utf8'));
   wiki.items = wiki.items || {};
   const trades = (JSON.parse(fs.readFileSync(TRADES, 'utf8')).trades) || [];
+  // Also enrich items seen in the auction feed (mnmdb/auctions.json), so market
+  // items that were never looted/traded still get wiki pages + stats.
+  let auctionItems = [];
+  try { auctionItems = ((JSON.parse(fs.readFileSync(AUCTIONS, 'utf8')).listings) || []).map((l) => l.item); } catch {}
+  const wanted = [...new Set([...trades.map((t) => t.item), ...auctionItems])];
 
   const haveLower = new Set(Object.keys(wiki.items).map((n) => n.toLowerCase()));
   // Two kinds of work:
   //  1. traded items with NO wiki entry yet          → fetch + add (full entry or stub)
   //  2. existing trade STUBS (fromTrade, no page yet) → re-check the wiki and upgrade
   //     to a full entry if a page has since been created (self-healing).
-  const missing = [...new Set(trades.map((t) => t.item))]
-    .filter((n) => n && !haveLower.has(n.toLowerCase()));
+  const missing = wanted.filter((n) => n && !haveLower.has(n.toLowerCase()));
   const stubKeys = Object.keys(wiki.items)
     .filter((k) => wiki.items[k] && wiki.items[k].fromTrade && wiki.items[k].hasPage === false);
 

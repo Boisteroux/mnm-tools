@@ -12,22 +12,34 @@ const DATA = process.env.MNM_DATA || 'C:\\Users\\zacha\\Desktop\\mnm-auction-poc
 const OUT = path.join(__dirname, '..', 'mnmdb', 'auctions.json');
 const read = (f, d) => { try { return JSON.parse(fs.readFileSync(path.join(DATA, f), 'utf8')); } catch { return d; } };
 
+// Which items exist in the site DB (wiki.json) right now — decides which listings
+// link to an item page. Re-checked here so newly-enriched items link up.
+let wikiNames = new Set();
+try { wikiNames = new Set(Object.keys(JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'mnmdb', 'wiki.json'), 'utf8')).items || {}).map((n) => n.toLowerCase())); } catch {}
+
 const L = read('listings.json', []);
 const Q = read('requests.json', []);
 const S = read('stats.json', {});
 
+// Sanitize item names at publish time so OCR junk from older captures never reaches
+// the site (the live parser already cleans, but the collected data predates it).
+const cleanName = (s) => String(s || '').replace(/^[^A-Za-z0-9]+|[^A-Za-z0-9)]+$/g, '').replace(/\s+/g, ' ').trim();
+const isJunk = (n) => !n || n.length < 2 || /\\/.test(n) || /^w\s*t\s*[sbt]$/i.test(n) || /^(wtb|wts|wtt)$/i.test(n);
+
 // Lean listings — drop internal fields (sig, raw, count, lastSeen); keep what the page shows.
-const listings = L.map((l) => ({
-  server: l.server, intent: l.intent || null, item: l.item,
-  price: l.priceCopper != null ? l.priceCopper : null, priceStr: l.price || null,
-  player: l.player, seen: l.firstSeen, qty: l.qty || undefined,
-  assumed: l.assumed || undefined, matched: l.matched !== false,
-}));
+const listings = L.map((l) => Object.assign({}, l, { item: cleanName(l.item) }))
+  .filter((l) => !isJunk(l.item))
+  .map((l) => ({
+    server: l.server, intent: l.intent || null, item: l.item,
+    price: l.priceCopper != null ? l.priceCopper : null, priceStr: l.price || null,
+    player: l.player, seen: l.firstSeen, qty: l.qty || undefined,
+    assumed: l.assumed || undefined, matched: wikiNames.has(l.item.toLowerCase()),
+  }));
 
 const requests = Q.map((q) => ({ server: q.server, player: q.player, plus: q.plus || [], stats: q.stats || [], category: q.category || null, text: q.text || '', seen: q.firstSeen }));
 
 // Full item stats, but only for items that appear in auctions (keeps the file lean).
-const names = new Set(L.map((l) => l.item.toLowerCase()));
+const names = new Set(listings.map((l) => l.item.toLowerCase()));
 const stats = {};
 for (const [k, v] of Object.entries(S)) {
   if (!names.has(k)) continue;
