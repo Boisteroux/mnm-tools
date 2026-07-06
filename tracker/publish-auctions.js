@@ -71,6 +71,7 @@ for (const [k, v] of Object.entries(S)) {
     ac: v.ac ?? null, stats: v.stats || {}, hp: v.hp ?? null, mana: v.mana ?? null, hpRegen: v.hpRegen ?? null, manaRegen: v.manaRegen ?? null, haste: v.haste ?? null,
     resists: v.resists || {}, instr: v.instr || {}, weight: v.weight ?? null, size: v.size || null,
     container: v.container || (wikiByLc[k] && wikiByLc[k].container) || null,
+    effect: v.effect || (wikiByLc[k] && wikiByLc[k].effect) || null,
     class: v.class || null, race: v.race || null, tradeskills: v.tradeskills || [], zones: v.zones || [], from: (v.from || []).slice(0, 4), vendor: v.vendor ?? null,
   };
 }

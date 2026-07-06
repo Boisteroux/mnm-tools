@@ -52,9 +52,30 @@ function parseFullStats(wt) {
     capacity = num(parts[0]); maxSize = (parts[1] || '').toUpperCase() || null; wtRed = num(parts[2]);
   }
   const container = (capacity != null || maxSize) ? { capacity, maxSize, weightReduction: wtRed || null } : null;
+  // Item effect / click-ability (clicky, weapon proc, or worn buff). Format:
+  //   "Place Copper Cauldron (On Click. Any Slot. Cast Time: 6s. Level: 1)"
+  //   "Torch (Passive. Must Equip. Level: 1)"
+  let effect = null;
+  // Real effects are single-line, not empty, and not the "[?]" placeholder. Many armor
+  // items ship empty effect/effect1..3 template stubs — ignore those.
+  const isRealEff = (s) => !!(s && s.trim() && !/^\[?\?+\]?$/.test(s.trim()) && !/[|\n{}]/.test(s));
+  const effRaw = [p.effect, p.effect1, p.effect2, p.effect3].map((x) => (x || '').trim()).find(isRealEff)
+    || (isRealEff(grab(/Effect:\s*([^\n<]+)/i)) ? grab(/Effect:\s*([^\n<]+)/i) : null);
+  if (isRealEff(effRaw)) {
+    const em = effRaw.match(/^(.*?)\s*\(([^)]*)\)\s*$/);
+    const nm = (em ? em[1] : effRaw).trim();
+    const detail = em ? em[2].trim() : '';
+    let trigger = null;
+    if (/on\s*click/i.test(detail)) trigger = 'Click';
+    else if (/\bproc\b|on\s*combat|combat/i.test(detail)) trigger = 'Proc';
+    else if (/passive|must\s*equip|worn/i.test(detail)) trigger = 'Worn';
+    const ct = detail.match(/Cast\s*Time:\s*([\d.]+\s*s?)/i);
+    const lv = detail.match(/Level:\s*(\d+)/i);
+    if (nm) effect = { name: nm, trigger, castTime: ct ? ct[1].replace(/\s+/g, '') : null, level: lv ? +lv[1] : null, detail: detail || null };
+  }
   return {
     iconId: p.icon_id || null,
-    container,
+    container, effect,
     flags,
     slot: strF(p.slot, /Slot:\s*([^\n<]+)/i), handed: p.handed || null,
     dmg: numF(p.dmg, /(?:Weapon\s*)?DMG:\s*([\d.]+)/i), delay: numF(p.delay, /(?:ATK\s*)?Delay:\s*([\d.]+)/i), skill: strF(p.skill, /Skill:\s*([A-Za-z ]{2,})/i),

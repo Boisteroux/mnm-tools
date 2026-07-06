@@ -619,6 +619,11 @@ function renderItem(id) {
     add('Type', [...(w.categories || []).map(esc), ...(w.tradeskills || []).map(tradeskillLink),
       ...(w.harvestedBy ? [esc(w.harvestedBy)] : [])].join(', '));
     if (w.flags && w.flags.length) add('Flags', w.flags.map((f) => '<span class="tag good">' + esc(f) + '</span>').join(' '));
+    if (w.effect) {
+      const e = w.effect, tag = e.trigger ? ' <span class="tag good">' + esc(e.trigger) + '</span>' : '';
+      const extra = [e.castTime ? 'Cast ' + esc(e.castTime) : '', e.level ? 'Lvl ' + e.level : ''].filter(Boolean).join(' · ');
+      add('Effect', '<strong>' + esc(e.name) + '</strong>' + tag + (extra ? ' <span class="muted">(' + extra + ')</span>' : ''));
+    }
     add('Slot', esc(w.slot || '') + (w.handed ? ' (' + esc(w.handed) + ')' : ''));
     add('Weapon DMG', w.dmg);
     add('Attack delay', w.delay);
@@ -2608,6 +2613,10 @@ function aucPopHTML(item) {
   const row = (a) => a.length ? '<div class="arow">' + a.join(' · ') + '</div>' : '';
   const P = [];
   if (s.flags && s.flags.length) P.push('<div class="aflags">' + s.flags.map((f) => '<span class="aflag">' + esc(f) + '</span>').join('') + '</div>');
+  if (s.effect) {
+    const e = s.effect, extra = [e.trigger || '', e.castTime ? 'Cast ' + esc(e.castTime) : '', e.level ? 'Lvl ' + e.level : ''].filter(Boolean).join(' · ');
+    P.push('<div class="arow aeff"><span class="muted">Effect</span> <strong>' + esc(e.name) + '</strong>' + (extra ? ' <span class="muted">(' + esc(extra) + ')</span>' : '') + '</div>');
+  }
   P.push(row([s.slot ? 'Slot ' + esc(s.slot) : '', s.ac != null ? 'AC ' + s.ac : ''].filter(Boolean)));
   if (s.dmg != null || s.delay != null || s.skill) P.push(row([s.dmg != null ? 'DMG ' + s.dmg : '', s.delay != null ? 'Delay ' + s.delay : '', s.skill ? esc(s.skill) : ''].filter(Boolean)));
   const st = Object.entries(s.stats || {}); if (st.length) P.push(chips(st));

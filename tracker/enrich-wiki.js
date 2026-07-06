@@ -93,7 +93,7 @@ async function fetchImageUrls(fileTitles) {
 function templateParams(body) {
   const params = {};
   // NB: `=[ \t]*` (not `\s*`) so an empty field doesn't swallow the next line
-  const re = /\|\s*([a-z_]+)\s*=[ \t]*([\s\S]*?)(?=\n\s*\|\s*[a-z_]+\s*=|\n\}\}|$)/gi;
+  const re = /\|\s*([a-z0-9_]+)\s*=[ \t]*([\s\S]*?)(?=\n\s*\|\s*[a-z0-9_]+\s*=|\n\}\}|$)/gi;
   let pm;
   while ((pm = re.exec(body))) params[pm[1].toLowerCase()] = pm[2].trim();
   return params;

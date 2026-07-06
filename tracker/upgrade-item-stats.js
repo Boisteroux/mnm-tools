@@ -12,7 +12,7 @@ const W = require('./enrich-wiki.js');
 const { parseFullStats } = require('./enrich-auction-stats.js');
 
 const WIKI = path.join(__dirname, '..', 'mnmdb', 'wiki.json');
-const STATS_V = 2; // v2: added container (bag capacity + max item size)
+const STATS_V = 4; // v4: effect parsing fixed (ignore empty effect1..3 template stubs)
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 (async () => {
@@ -33,7 +33,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
       Object.assign(it, {
         flags: full.flags, handed: full.handed, ac: full.ac, stats: full.stats,
         hp: full.hp, mana: full.mana, hpRegen: full.hpRegen, manaRegen: full.manaRegen, haste: full.haste,
-        resists: full.resists, instr: full.instr, container: full.container, statsV: STATS_V,
+        resists: full.resists, instr: full.instr, container: full.container, effect: full.effect, statsV: STATS_V,
       });
       // Refresh the core fields from the full parser (it reads both legacy + modern ItemBox).
       if (full.slot) it.slot = full.slot;
