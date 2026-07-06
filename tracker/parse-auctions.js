@@ -1,0 +1,207 @@
+// ---------------------------------------------------------------
+// Auction parser — turns raw in-game /auction lines (OCR'd from the LiveMMCam
+// Twitch stream) into structured listings, one per item, tagged by server
+// (PvE vs PvP — separate markets, separate prices).
+//
+//   • Clear price          → a priced listing (item + copper price + intent).
+//   • No price             → an availability listing (item is on the market,
+//                            price TBD/negotiate) — still valuable to track.
+//   • Ambiguous / unknown  → nothing guessed; the line goes to a REVIEW queue
+//                            (unknown slang, unmappable multi-item prices, etc.)
+//                            for Zak to define, which then grows the glossary.
+//
+// Coin math + slang come from tracker/auction-glossary.json (the "formula DB").
+//
+// Run:  node tracker/parse-auctions.js <sample.json>   (prints a report)
+//       (sample.json = [{ "server": "PvP"|"PvE", "line": "..." }, ...])
+// ---------------------------------------------------------------
+
+const fs = require('fs');
+const path = require('path');
+
+const GLOSSARY_PATH = path.join(__dirname, 'auction-glossary.json');
+const WIKI_PATH = path.join(__dirname, '..', 'mnmdb', 'wiki.json');
+
+const loadGlossary = () => JSON.parse(fs.readFileSync(GLOSSARY_PATH, 'utf8'));
+
+// Canonical item names (lowercased key -> display name) from wiki.json, so we can
+// recognise both bracketed links and un-bracketed / slang item mentions.
+function loadItemIndex() {
+  const idx = new Map();
+  try {
+    const w = JSON.parse(fs.readFileSync(WIKI_PATH, 'utf8'));
+    for (const name of Object.keys(w.items || {})) idx.set(name.toLowerCase(), name);
+  } catch { /* fine — matching just degrades to "unmatched" */ }
+  return idx;
+}
+
+const norm = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+
+// Sum every coin amount in a string -> copper. "1.5g" -> 15000, "35 s" -> 3500,
+// "1g 5s" -> 10500. Returns null if no coin token is present.
+function parseCoins(text, coins) {
+  const re = /(\d+(?:\.\d+)?)\s*(platinum|plat|pp|p|gold|gp|g|silver|sp|s|copper|cp|c)\b/gi;
+  let total = 0, found = false, m;
+  while ((m = re.exec(text))) {
+    const mult = coins[m[2].toLowerCase()];
+    if (mult == null) continue;
+    total += parseFloat(m[1]) * mult;
+    found = true;
+  }
+  return found ? Math.round(total) : null;
+}
+
+// Quantity: "x2", "2x", "x1stack", "5s stacks". Returns { qty, perStack }.
+function parseQty(text) {
+  let qty = null, perStack = false;
+  const q = text.match(/(?:x\s*(\d+))|(?:(\d+)\s*x\b)/i);
+  if (q) qty = parseInt(q[1] || q[2], 10);
+  if (/\bstacks?\b|\dstack/i.test(text)) perStack = true;
+  return { qty, perStack };
+}
+
+const copperToStr = (c) => {
+  if (c == null) return '—';
+  const parts = [];
+  const p = Math.floor(c / 1000000); c %= 1000000;
+  const g = Math.floor(c / 10000); c %= 10000;
+  const s = Math.floor(c / 100); c %= 100;
+  if (p) parts.push(p + 'p'); if (g) parts.push(g + 'g'); if (s) parts.push(s + 's'); if (c) parts.push(c + 'c');
+  return parts.join(' ') || '0c';
+};
+
+// Parse one raw line for one server. Returns { listings:[], review:[], enrich:[] }.
+//   review  = things only a human can resolve (slang, ambiguous prices, freeform).
+//   enrich  = exact in-game item names not yet in our DB → auto-fetch from the wiki
+//             (NOT a question for Zak — the same path the trade-orphan system uses).
+function parseLine(raw, server, gloss, itemIndex) {
+  const listings = [], review = [], enrich = [];
+  const push = (r) => review.push(Object.assign({ server, raw }, r));
+
+  const line = String(raw).trim();
+  const m = line.match(/^(\S+)\s+auctions,?\s*["“](.*?)["”]?\s*$/i);
+  if (!m) { push({ reason: 'unparsed-line', detail: 'no "Name auctions, \\"...\\"" shape' }); return { listings, review, enrich }; }
+  const player = m[1];
+  let msg = m[2].trim();
+
+  // Intent (WTS/WTB/…) off the front.
+  let intent = null;
+  const im = msg.match(/^\s*(wts|wtb|wtt|selling|buying|iso)\b[:,]?\s*/i);
+  if (im) { intent = gloss.intents[im[1].toLowerCase()] || null; msg = msg.slice(im[0].length).trim(); }
+
+  const bracket = [...msg.matchAll(/\[([^\]]+)\]/g)].map((x) => x[1].trim());
+  const coinsAnywhere = parseCoins(msg, gloss.coins);
+  const { perStack } = parseQty(msg);
+
+  // Resolve a raw item name to a canonical wiki name (exact / case-insensitive / normalized).
+  const resolve = (name) => {
+    const exact = itemIndex.get(name.toLowerCase());
+    if (exact) return { name: exact, matched: true };
+    const n = norm(name);
+    for (const [k, v] of itemIndex) if (norm(k) === n) return { name: v, matched: true };
+    return { name, matched: false };
+  };
+
+  const addItem = (rawName, priceCopper, note) => {
+    const r = resolve(rawName);
+    listings.push({ server, player, intent, item: r.name, matched: r.matched,
+      priceCopper: priceCopper ?? null, qty: parseQty(msg).qty, perStack: perStack || undefined, note });
+    if (!r.matched) enrich.push(r.name); // exact name, just missing from our DB → auto-enrich
+  };
+
+  // --- Case A: exactly one bracketed item — the clean case. ---
+  if (bracket.length === 1) {
+    addItem(bracket[0], coinsAnywhere, perStack ? 'price may be per-stack' : undefined);
+    if (perStack && coinsAnywhere != null) push({ reason: 'stack-price', detail: `${copperToStr(coinsAnywhere)} — per stack or per item?` });
+    return { listings, review, enrich };
+  }
+
+  // --- Case C: multiple bracketed items. ---
+  if (bracket.length > 1) {
+    if (coinsAnywhere == null) {
+      bracket.forEach((b) => addItem(b, null)); // all availability, no price — clean
+    } else {
+      // Try "[item] price / [item] price" slash form; else it's ambiguous.
+      const segs = msg.split('/').map((s) => s.trim());
+      const oneItemEach = segs.length === bracket.length && segs.every((s) => (s.match(/\[[^\]]+\]/g) || []).length === 1);
+      if (oneItemEach) {
+        segs.forEach((s) => addItem(s.match(/\[([^\]]+)\]/)[1].trim(), parseCoins(s, gloss.coins)));
+      } else {
+        bracket.forEach((b) => addItem(b, null)); // keep availability…
+        push({ reason: 'ambiguous-price', detail: `${bracket.length} items but prices can't be mapped 1:1 (${copperToStr(coinsAnywhere)} seen)` }); // …and ask
+      }
+    }
+    return { listings, review, enrich };
+  }
+
+  // --- Case B: no brackets — freeform / slang. ---
+  // Strip prices, quantities and known qualifiers; whatever's left is a candidate item/abbrev.
+  let leftover = msg
+    .replace(/(\d+(?:\.\d+)?)\s*(platinum|plat|pp|p|gold|gp|g|silver|sp|s|copper|cp|c)\b/gi, ' ')
+    .replace(/(?:x\s*\d+)|(?:\d+\s*x\b)|\dstack/gi, ' ');
+  const words = leftover.split(/\s+/).filter(Boolean);
+  const kept = words.filter((w) => {
+    const lw = w.toLowerCase().replace(/[^a-z]/g, '');
+    return lw && !gloss.qualifiers[lw];
+  });
+  const candidate = kept.join(' ').trim();
+
+  if (!candidate) { push({ reason: 'no-item', detail: 'message had a price/qualifier but no item' }); return { listings, review, enrich }; }
+
+  // Known slang → item?
+  const abbrevKey = candidate.toLowerCase();
+  if (gloss.abbreviations[abbrevKey]) { addItem(gloss.abbreviations[abbrevKey], coinsAnywhere); return { listings, review, enrich }; }
+
+  // A recognised (un-bracketed) item name?
+  const r = resolve(candidate);
+  if (r.matched) { addItem(candidate, coinsAnywhere); return { listings, review, enrich }; }
+
+  // Otherwise: don't guess. Route to review — is this slang, or a fuzzy/freeform request?
+  const isAbbrev = /^[a-z0-9]{2,6}$/i.test(candidate.replace(/\s/g, '')) && candidate.length <= 6;
+  push({ reason: isAbbrev ? 'unknown-abbreviation' : 'freeform-request',
+    detail: candidate + (coinsAnywhere != null ? `  (price seen: ${copperToStr(coinsAnywhere)})` : ''),
+    intent });
+  return { listings, review, enrich };
+}
+
+function parseAuctions(rows, opts = {}) {
+  const gloss = opts.glossary || loadGlossary();
+  const itemIndex = opts.itemIndex || loadItemIndex();
+  const listings = [], review = [], enrichSet = new Set();
+  for (const row of rows) {
+    const r = parseLine(row.line, row.server, gloss, itemIndex);
+    listings.push(...r.listings); review.push(...r.review);
+    r.enrich.forEach((n) => enrichSet.add(n));
+  }
+  return { listings, review, enrich: [...enrichSet] };
+}
+
+module.exports = { parseAuctions, parseLine, parseCoins, copperToStr, loadGlossary, loadItemIndex };
+
+// ---- CLI report ----
+if (require.main === module) {
+  const file = process.argv[2];
+  if (!file) { console.error('usage: node tracker/parse-auctions.js <sample.json>'); process.exit(1); }
+  const rows = JSON.parse(fs.readFileSync(file, 'utf8'));
+  const { listings, review, enrich } = parseAuctions(rows);
+
+  for (const server of ['PvP', 'PvE']) {
+    const rows = listings.filter((l) => l.server === server);
+    console.log(`\n=== ${server}  (${rows.length} listings) ===`);
+    for (const l of rows) {
+      const price = l.priceCopper != null ? copperToStr(l.priceCopper) : 'available (no price)';
+      console.log(`  ${(l.intent || '?').toUpperCase().padEnd(4)} ${l.item}${l.matched ? '' : ' «unmatched»'}` +
+        `${l.qty ? ' x' + l.qty : ''}  — ${price}${l.perStack ? ' /stack' : ''}  (${l.player})`);
+    }
+  }
+
+  if (enrich.length) console.log(`\n=== 🔎 AUTO-ENRICH from wiki (${enrich.length} new items, no action needed) ===\n  ${enrich.join(', ')}`);
+
+  console.log(`\n=== ⚠ NEEDS YOUR INPUT  (${review.length}) ===`);
+  const byReason = {};
+  for (const r of review) (byReason[r.reason] = byReason[r.reason] || []).push(r);
+  for (const [reason, items] of Object.entries(byReason)) {
+    console.log(`\n  [${reason}]`);
+    for (const r of items) console.log(`    ${r.server}: ${r.detail}   ← "${r.raw}"`);
+  }
+}

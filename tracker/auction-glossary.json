@@ -1,0 +1,31 @@
+{
+  "_note": "The 'formula database' for reading in-game auction slang. Grown over time: the parser flags anything it doesn't understand into a review list, Zak defines the rule, and it gets added here. Coin ratios follow the wiki's base-100 system (1 plat = 100 gold = 10,000 silver = 1,000,000 copper). CONFIRM these ratios.",
+  "intents": {
+    "wts": "sell",
+    "wtb": "buy",
+    "wtt": "trade",
+    "selling": "sell",
+    "buying": "buy",
+    "iso": "buy"
+  },
+  "coins": {
+    "p": 1000000, "pp": 1000000, "plat": 1000000, "platinum": 1000000,
+    "g": 10000, "gp": 10000, "gold": 10000,
+    "s": 100, "sp": 100, "silver": 100,
+    "c": 1, "cp": 1, "copper": 1
+  },
+  "qualifiers": {
+    "pst": "contact",
+    "pm": "contact",
+    "tell": "contact",
+    "obo": "negotiable",
+    "ono": "negotiable",
+    "ea": "each",
+    "each": "each",
+    "stack": "per-stack",
+    "stacks": "per-stack"
+  },
+  "abbreviations": {
+  },
+  "_abbreviations_help": "Map an in-game shorthand to its full item name, e.g. \"bcm\": \"Brilliant Crystallized Magic\". Left empty on purpose so unknowns surface in the review list for Zak to define."
+}
