@@ -219,10 +219,12 @@ const mean = (a) => (a.length ? Math.round(a.reduce((s, x) => s + x, 0) / a.leng
 
 // Player trade value — 30-day high/low + 7-day average of SELL-side prices,
 // with wild outliers trimmed so the displayed range stays trustworthy.
-function tradeStats(name) {
+// Pass a server ('PvP'/'PvE') to restrict to that market (PvP and PvE price
+// separately); omit it for the combined view.
+function tradeStats(name, server) {
   const list = TRADES[String(name).toLowerCase()];
   if (!list || !list.length) return null;
-  const sells = list.filter((t) => t.side === 'sell');
+  const sells = list.filter((t) => t.side === 'sell' && (!server || t.server === server));
   if (!sells.length) return null;
   const now = Date.now();
   const rawIn = (days) => sells.filter((t) => new Date(t.date).getTime() >= now - days * 864e5).map((t) => t.price);
@@ -611,27 +613,32 @@ function renderItem(id) {
       (anyRate ? '<div class="note">Node drop rates are observed <b>per harvest</b> and combined across a node’s tiers (regular + rich) — the game log records what dropped, not which node. Click a node for its full table.</div>' : ''));
   }
 
-  // Player trade value — 30-day high/low + 7-day average of player sell prices
+  // Player trade value — PvP and PvE are separate markets, so price each one on
+  // its own: 30-day high/low + 7-day average of player sell prices.
   {
-    const tv = tradeStats(it.name);
-    const logged = 'Read from live player auctions on the <a href="https://www.twitch.tv/livemmcam" target="_blank" rel="noopener">LiveMMCam stream</a> (PvP + PvE).';
+    const logged = 'Read from live player auctions on the <a href="https://www.twitch.tv/livemmcam" target="_blank" rel="noopener">LiveMMCam stream</a>.';
+    // One market's summary card (or a muted line when there's no data for it).
+    const marketBox = (label, tv) => {
+      if (tv && tv.n30) {
+        return '<div class="mkt"><div class="mkt-h">' + label + '</div><div class="vendor-summary">' +
+          '<div class="vbox"><div class="vlbl">30-day high</div><div class="vval">' + coin(tv.high) + '</div></div>' +
+          '<div class="vbox"><div class="vlbl">30-day low</div><div class="vval">' + coin(tv.low) + '</div></div>' +
+          '<div class="vbox"><div class="vlbl">7-day avg</div><div class="vval">' + (tv.avg7 != null ? coin(tv.avg7) : '<span class="sample">no recent</span>') + '</div></div>' +
+          '</div><div class="note">' + tv.n30 + ' sale' + (tv.n30 === 1 ? '' : 's') + ' in 30d' + (tv.n7 ? ' (' + tv.n7 + ' in 7d)' : '') +
+          (tv.trimmed ? ' · ' + tv.trimmed + ' outlier' + (tv.trimmed === 1 ? '' : 's') + ' excluded' : '') + '</div></div>';
+      }
+      const older = tv ? 'Last seen ' + coin(tv.allLow) + (tv.allHigh !== tv.allLow ? '–' + coin(tv.allHigh) : '') + ' (older than 30d)' : 'No sales seen yet';
+      return '<div class="mkt"><div class="mkt-h">' + label + '</div><div class="note sample">' + older + '</div></div>';
+    };
+    const pvp = tradeStats(it.name, 'PvP'), pve = tradeStats(it.name, 'PvE');
     let body;
-    if (tv && tv.n30) {
-      const avg = tv.avg7 != null
-        ? '<div class="vbox"><div class="vlbl">7-day average</div><div class="vval">' + coin(tv.avg7) + '</div></div>'
-        : '<div class="vbox"><div class="vlbl">7-day average</div><div class="vval sample">no recent</div></div>';
-      body = '<div class="vendor-summary">' +
-        '<div class="vbox"><div class="vlbl">30-day high</div><div class="vval">' + coin(tv.high) + '</div></div>' +
-        '<div class="vbox"><div class="vlbl">30-day low</div><div class="vval">' + coin(tv.low) + '</div></div>' +
-        avg +
-        '</div><div class="note">From ' + tv.n30 + ' sale' + (tv.n30 === 1 ? '' : 's') + ' in the last 30 days' +
-        (tv.n7 ? ' (' + tv.n7 + ' in the last 7)' : '') +
-        (tv.trimmed ? ' · ' + tv.trimmed + ' outlier' + (tv.trimmed === 1 ? '' : 's') + ' excluded' : '') + '. ' + logged + '</div>';
-    } else if (tv) {
-      body = '<div class="note">No sales in the last 30 days. Last seen ' + coin(tv.allLow) +
-        (tv.allHigh !== tv.allLow ? '–' + coin(tv.allHigh) : '') + ' (older data). ' + logged + '</div>';
+    if (pvp || pve) {
+      body = '<div class="mkt-cols">' + marketBox('PvP', pvp) + marketBox('PvE', pve) + '</div><div class="note">' + logged + '</div>';
     } else {
-      body = '<div class="note">No player auctions seen for this item yet. ' + logged + '</div>';
+      // No server-tagged data — fall back to any legacy (untagged) trades.
+      const tv = tradeStats(it.name);
+      if (tv) body = marketBox('Player market', tv) + '<div class="note">' + logged + '</div>';
+      else body = '<div class="note">No player auctions seen for this item yet. ' + logged + '</div>';
     }
     sections.push('<h2>Player trade value</h2>' + body);
   }
