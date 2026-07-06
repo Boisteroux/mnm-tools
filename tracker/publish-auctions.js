@@ -21,20 +21,37 @@ const L = read('listings.json', []);
 const Q = read('requests.json', []);
 const S = read('stats.json', {});
 
-// Sanitize item names at publish time so OCR junk from older captures never reaches
-// the site (the live parser already cleans, but the collected data predates it).
 const cleanName = (s) => String(s || '').replace(/^[^A-Za-z0-9]+|[^A-Za-z0-9)]+$/g, '').replace(/\s+/g, ' ').trim();
 const isJunk = (n) => !n || n.length < 2 || /\\/.test(n) || /^w\s*t\s*[sbt]$/i.test(n) || /^(wtb|wts|wtt)$/i.test(n);
+const RECENT_MS = (+process.env.MNM_RECENT_HOURS || 48) * 3600 * 1000; // only publish still-active listings
+const MAX_PER_SERVER = +process.env.MNM_MAX_PER_SERVER || 500;
+const key = (l) => (l.server + '|' + l.player + '|' + l.item).toLowerCase();
 
-// Lean listings — drop internal fields (sig, raw, count, lastSeen); keep what the page shows.
-const listings = L.map((l) => Object.assign({}, l, { item: cleanName(l.item) }))
-  .filter((l) => !isJunk(l.item))
-  .map((l) => ({
-    server: l.server, intent: l.intent || null, item: l.item,
-    price: l.priceCopper != null ? l.priceCopper : null, priceStr: l.price || null,
-    player: l.player, seen: l.firstSeen, qty: l.qty || undefined,
-    assumed: l.assumed || undefined, matched: wikiNames.has(l.item.toLowerCase()),
-  }));
+// Everything trashed or flagged is recorded to discarded.json for review + rule-building.
+const discarded = [];
+let rows = L.map((l) => Object.assign({}, l, { item: cleanName(l.item) }));
+// 1. trash junk item names (OCR'd "WTB"/"\WTB" — usually service requests, not items)
+rows = rows.filter((l) => { if (!isJunk(l.item)) return true; discarded.push({ status: 'trashed', reason: 'junk item name', server: l.server, player: l.player, item: l.item, raw: l.raw || '' }); return false; });
+// 2. drop a "?" listing when the same player+item also has a resolved-intent listing (OCR dupe)
+const realKeys = new Set(rows.filter((l) => l.intent).map(key));
+rows = rows.filter((l) => { if (l.intent || !realKeys.has(key(l))) return true; discarded.push({ status: 'trashed', reason: 'duplicate of a resolved listing', server: l.server, player: l.player, item: l.item, raw: l.raw || '' }); return false; });
+// flag the still-unresolved "?" (kept, but needs a human — intent could not be read)
+for (const l of rows) if (!l.intent) discarded.push({ status: 'review', reason: 'intent not read', server: l.server, player: l.player, item: l.item, raw: l.raw || '' });
+// 3. keep only recent (still on the market), newest first, capped per server — so the page never balloons
+const cutoff = Date.now() - RECENT_MS;
+rows = rows.filter((l) => !l.lastSeen || new Date(l.lastSeen).getTime() >= cutoff)
+  .sort((a, b) => String(b.lastSeen || '').localeCompare(String(a.lastSeen || '')));
+const perServer = {};
+rows = rows.filter((l) => (perServer[l.server] = (perServer[l.server] || 0) + 1) <= MAX_PER_SERVER);
+
+const listings = rows.map((l) => ({
+  server: l.server, intent: l.intent || null, item: l.item,
+  price: l.priceCopper != null ? l.priceCopper : null, priceStr: l.price || null,
+  player: l.player, seen: l.firstSeen, qty: l.qty || undefined,
+  assumed: l.assumed || undefined, matched: wikiNames.has(l.item.toLowerCase()),
+}));
+
+try { fs.writeFileSync(path.join(DATA, 'discarded.json'), JSON.stringify(discarded, null, 2)); } catch {}
 
 const requests = Q.map((q) => ({ server: q.server, player: q.player, plus: q.plus || [], stats: q.stats || [], category: q.category || null, text: q.text || '', seen: q.firstSeen }));
 
@@ -54,4 +71,5 @@ for (const [k, v] of Object.entries(S)) {
 
 fs.writeFileSync(OUT, JSON.stringify({ generatedAt: new Date().toISOString(), listings, requests, stats }));
 const kb = Math.round(fs.statSync(OUT).size / 1024);
-console.log(`wrote mnmdb/auctions.json — ${listings.length} listings, ${requests.length} requests, ${Object.keys(stats).length} item stats (${kb} KB)`);
+const trashed = discarded.filter((d) => d.status === 'trashed').length, review = discarded.filter((d) => d.status === 'review').length;
+console.log(`wrote mnmdb/auctions.json — ${listings.length} listings (recent, capped ${MAX_PER_SERVER}/server), ${requests.length} requests, ${Object.keys(stats).length} stats (${kb} KB); discarded.json: ${trashed} trashed + ${review} to review`);
