@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-06T16:29:40.375Z",
+  "generatedAt": "2026-07-06T16:40:17.183Z",
   "items": {
     "Bone Chips": {
       "hasPage": true,
@@ -43298,6 +43298,186 @@
         "Timmon Bell"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/c/c9/Itemicon0167AA.png/64px-Itemicon0167AA.png"
+    },
+    "Deathcharmer's Masquerade": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Bloodmark Token": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0239AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 3,
+      "size": "MEDIUM",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "CHA": 3
+      },
+      "hp": null,
+      "mana": 15,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "from": [
+        "Bloodchain Champion"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/7/7e/Itemicon0239AA.png/64px-Itemicon0239AA.png"
+    },
+    "Ancient Idol": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0237AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 2.5,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": 5,
+      "stats": {
+        "STR": 2,
+        "STA": 1
+      },
+      "hp": 15,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Tomb of the Last Wyrmsbane"
+      ],
+      "from": [
+        "Grandmaster Obadiah"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/d/d2/Itemicon0237AA.png/64px-Itemicon0237AA.png"
+    },
+    "Lysandra's Crook": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 8,
+      "size": "LARGE",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": "Two Handed",
+      "ac": null,
+      "stats": {
+        "STA": 1,
+        "INT": 15
+      },
+      "hp": null,
+      "mana": 10,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "CORR": 3,
+        "ER": 5
+      },
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Pass"
+      ],
+      "from": [
+        "Dame Lysandra Thrym"
+      ]
+    },
+    "Crystalline Belt": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Amber Iron Earring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Black Sapphire Silver Earring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Enchant Helm: Minor Wisdom": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Tidewalker Slippers": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "MEDIUM",
+      "class": "All",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 8,
+      "stats": {
+        "STA": 3,
+        "INT": 4
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Blacktide Bay"
+      ],
+      "from": [
+        "Admiral Blacktide"
+      ]
     }
   },
   "mobs": {
