@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-06T16:15:15.006Z",
+  "generatedAt": "2026-07-06T16:29:40.375Z",
   "items": {
     "Bone Chips": {
       "hasPage": true,
@@ -43054,6 +43054,250 @@
       "hasPage": false,
       "wikiOnly": true,
       "fromTrade": true
+    },
+    "Imperfect Bloodstone": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0134AC",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Glass Flats"
+      ],
+      "from": [
+        "a cultist lookout",
+        "Iron Vein",
+        "Rich Iron Vein",
+        "Gold Vein",
+        "Rich Gold Vein"
+      ],
+      "tradeskills": [
+        "Jewelcrafting"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/5/56/Itemicon0134AC.png/64px-Itemicon0134AC.png"
+    },
+    "Imperfect Malachite": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0137AB",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ELE",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/c/c5/Itemicon0137AB.png/64px-Itemicon0137AB.png"
+    },
+    "Imperfect Jasper": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Ivor's Blood Bracer": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 5,
+      "size": "SMALL",
+      "class": "NEC SHD SHM SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC",
+        "LORE",
+        "UNIQUE"
+      ],
+      "handed": null,
+      "ac": 6,
+      "stats": {
+        "STA": 7,
+        "INT": 3
+      },
+      "hp": null,
+      "mana": 20,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Pass"
+      ],
+      "from": [
+        "Ivor Thrym"
+      ]
+    },
+    "Thrymguard Pauldrons": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 3,
+      "size": "SMALL",
+      "class": "CLR FTR INQ PAL SHD",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 46,
+      "stats": {
+        "WIS": 7
+      },
+      "hp": 30,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Pass"
+      ],
+      "from": [
+        "Dame Lysandra Thrym"
+      ]
+    },
+    "Ring of the Deacon": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0098AA",
+      "slot": "FINGER",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "BRD BST CLR DRU ELE ENC INQ NEC PAL RNG SHD SHM SPB WIZ",
+      "race": "ALL",
+      "flags": [
+        "MAGIC",
+        "LORE"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "INT": 1,
+        "WIS": 1,
+        "CHA": 1
+      },
+      "hp": null,
+      "mana": 5,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Tomb of the Last Wyrmsbane"
+      ],
+      "from": [
+        "Jakob Geffrey"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/5/55/Itemicon0098AA.png/64px-Itemicon0098AA.png"
+    },
+    "Inlaid Sapphire Bronze Earring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Enchanted Battleworn Mace": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0167AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 4,
+      "size": "MEDIUM",
+      "class": "BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "INT": 1,
+        "WIS": 2
+      },
+      "hp": null,
+      "mana": 5,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "MR": 1
+      },
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Tomb of the Last Wyrmsbane"
+      ],
+      "from": [
+        "Timmon Bell"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/c/c9/Itemicon0167AA.png/64px-Itemicon0167AA.png"
     }
   },
   "mobs": {
