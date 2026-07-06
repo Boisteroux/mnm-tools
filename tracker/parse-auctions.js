@@ -60,6 +60,19 @@ function parseQty(text) {
   return { qty, perStack };
 }
 
+// A stat/gear "request" (jewelcrafting demand), e.g. "+4 or +5 str/agi or str/dex gear".
+// Not an item sale — someone wants a crafter to make gear/jewelry with these stats.
+const STAT_WORDS = ['str', 'sta', 'agi', 'dex', 'int', 'wis', 'cha', 'hp', 'mana', 'ac', 'atk', 'dmg', 'regen', 'resist', 'resists', 'haste', 'heal', 'healing'];
+const GEAR_WORDS = ['gear', 'jewelry', 'jewellery', 'ring', 'earring', 'necklace', 'amulet', 'bracelet', 'armor', 'armour', 'weapon', 'shield'];
+function extractStats(text) {
+  const t = text.toLowerCase();
+  const plus = [...new Set([...t.matchAll(/\+\s*(\d+)/g)].map((m) => +m[1]))];
+  const stats = STAT_WORDS.filter((s) => new RegExp('\\b' + s + '\\b').test(t));
+  const category = GEAR_WORDS.find((g) => t.includes(g)) || null;
+  return { plus, stats, category };
+}
+const isStatRequest = (text) => { const s = extractStats(text); return s.stats.length > 0 || s.category != null; };
+
 const copperToStr = (c) => {
   if (c == null) return '—';
   const parts = [];
@@ -75,12 +88,12 @@ const copperToStr = (c) => {
 //   enrich  = exact in-game item names not yet in our DB → auto-fetch from the wiki
 //             (NOT a question for Zak — the same path the trade-orphan system uses).
 function parseLine(raw, server, gloss, itemIndex) {
-  const listings = [], review = [], enrich = [];
+  const listings = [], review = [], enrich = [], requests = [];
   const push = (r) => review.push(Object.assign({ server, raw }, r));
 
   const line = String(raw).trim();
   const m = line.match(/^(\S+)\s+auctions,?\s*["“](.*?)["”]?\s*$/i);
-  if (!m) { push({ reason: 'unparsed-line', detail: 'no "Name auctions, \\"...\\"" shape' }); return { listings, review, enrich }; }
+  if (!m) { push({ reason: 'unparsed-line', detail: 'no "Name auctions, \\"...\\"" shape' }); return { listings, review, enrich, requests }; }
   const player = m[1];
   let msg = m[2].trim();
 
@@ -111,9 +124,8 @@ function parseLine(raw, server, gloss, itemIndex) {
 
   // --- Case A: exactly one bracketed item — the clean case. ---
   if (bracket.length === 1) {
-    addItem(bracket[0], coinsAnywhere, perStack ? 'price may be per-stack' : undefined);
-    if (perStack && coinsAnywhere != null) push({ reason: 'stack-price', detail: `${copperToStr(coinsAnywhere)} — per stack or per item?` });
-    return { listings, review, enrich };
+    addItem(bracket[0], coinsAnywhere, perStack ? 'per-stack price' : undefined); // stack price = whole stack (confirmed)
+    return { listings, review, enrich, requests };
   }
 
   // --- Case C: multiple bracketed items. ---
@@ -131,7 +143,7 @@ function parseLine(raw, server, gloss, itemIndex) {
         push({ reason: 'ambiguous-price', detail: `${bracket.length} items but prices can't be mapped 1:1 (${copperToStr(coinsAnywhere)} seen)` }); // …and ask
       }
     }
-    return { listings, review, enrich };
+    return { listings, review, enrich, requests };
   }
 
   // --- Case B: no brackets — freeform / slang. ---
@@ -146,34 +158,39 @@ function parseLine(raw, server, gloss, itemIndex) {
   });
   const candidate = kept.join(' ').trim();
 
-  if (!candidate) { push({ reason: 'no-item', detail: 'message had a price/qualifier but no item' }); return { listings, review, enrich }; }
+  if (!candidate) { push({ reason: 'no-item', detail: 'message had a price/qualifier but no item' }); return { listings, review, enrich, requests }; }
 
   // Known slang → item?
   const abbrevKey = candidate.toLowerCase();
-  if (gloss.abbreviations[abbrevKey]) { addItem(gloss.abbreviations[abbrevKey], coinsAnywhere); return { listings, review, enrich }; }
+  if (gloss.abbreviations[abbrevKey]) { addItem(gloss.abbreviations[abbrevKey], coinsAnywhere); return { listings, review, enrich, requests }; }
 
   // A recognised (un-bracketed) item name?
   const r = resolve(candidate);
-  if (r.matched) { addItem(candidate, coinsAnywhere); return { listings, review, enrich }; }
+  if (r.matched) { addItem(candidate, coinsAnywhere); return { listings, review, enrich, requests }; }
 
   // Otherwise: don't guess. Route to review — is this slang, or a fuzzy/freeform request?
+  // Stat/gear request (jewelcrafting demand) — capture in its own bucket, don't flag.
+  if (isStatRequest(msg)) {
+    requests.push(Object.assign({ server, player, intent, text: msg.trim(), raw }, extractStats(msg)));
+    return { listings, review, enrich, requests };
+  }
   const isAbbrev = /^[a-z0-9]{2,6}$/i.test(candidate.replace(/\s/g, '')) && candidate.length <= 6;
   push({ reason: isAbbrev ? 'unknown-abbreviation' : 'freeform-request',
     detail: candidate + (coinsAnywhere != null ? `  (price seen: ${copperToStr(coinsAnywhere)})` : ''),
     intent });
-  return { listings, review, enrich };
+  return { listings, review, enrich, requests };
 }
 
 function parseAuctions(rows, opts = {}) {
   const gloss = opts.glossary || loadGlossary();
   const itemIndex = opts.itemIndex || loadItemIndex();
-  const listings = [], review = [], enrichSet = new Set();
+  const listings = [], review = [], requests = [], enrichSet = new Set();
   for (const row of rows) {
     const r = parseLine(row.line, row.server, gloss, itemIndex);
-    listings.push(...r.listings); review.push(...r.review);
+    listings.push(...r.listings); review.push(...r.review); requests.push(...r.requests);
     r.enrich.forEach((n) => enrichSet.add(n));
   }
-  return { listings, review, enrich: [...enrichSet] };
+  return { listings, review, requests, enrich: [...enrichSet] };
 }
 
 module.exports = { parseAuctions, parseLine, parseCoins, copperToStr, loadGlossary, loadItemIndex };
@@ -183,7 +200,7 @@ if (require.main === module) {
   const file = process.argv[2];
   if (!file) { console.error('usage: node tracker/parse-auctions.js <sample.json>'); process.exit(1); }
   const rows = JSON.parse(fs.readFileSync(file, 'utf8'));
-  const { listings, review, enrich } = parseAuctions(rows);
+  const { listings, review, requests, enrich } = parseAuctions(rows);
 
   for (const server of ['PvP', 'PvE']) {
     const rows = listings.filter((l) => l.server === server);
@@ -192,6 +209,14 @@ if (require.main === module) {
       const price = l.priceCopper != null ? copperToStr(l.priceCopper) : 'available (no price)';
       console.log(`  ${(l.intent || '?').toUpperCase().padEnd(4)} ${l.item}${l.matched ? '' : ' «unmatched»'}` +
         `${l.qty ? ' x' + l.qty : ''}  — ${price}${l.perStack ? ' /stack' : ''}  (${l.player})`);
+    }
+  }
+
+  if (requests.length) {
+    console.log(`\n=== 🛠 CRAFTING / GEAR REQUESTS  (${requests.length}) ===`);
+    for (const r of requests) {
+      const stats = [r.plus.length ? '+' + r.plus.join('/') : '', r.stats.join('/'), r.category].filter(Boolean).join(' ');
+      console.log(`  ${(r.intent || '?').toUpperCase()} ${stats || r.text}  (${r.player}, ${r.server})`);
     }
   }
 

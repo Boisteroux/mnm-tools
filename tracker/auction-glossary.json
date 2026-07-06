@@ -26,6 +26,8 @@
     "stacks": "per-stack"
   },
   "abbreviations": {
+    "bcm": "Brilliant Crystallized Magic"
   },
-  "_abbreviations_help": "Map an in-game shorthand to its full item name, e.g. \"bcm\": \"Brilliant Crystallized Magic\". Left empty on purpose so unknowns surface in the review list for Zak to define."
+  "_stacks": "Confirmed 2026-07-02: a price attached to a stack is for the WHOLE stack (e.g. '[Wood] 5s stacks' = 5 silver per stack). Stack size (items per stack) is not yet known per item — capture per-stack price now; add per-item once stack sizes are known.",
+  "_abbreviations_help": "Map an in-game shorthand to its full item name, e.g. \"bcm\": \"Brilliant Crystallized Magic\". Unknowns surface in the review list for Zak to define, then get added here."
 }
