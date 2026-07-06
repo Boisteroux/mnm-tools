@@ -685,6 +685,7 @@ button:disabled { opacity: .5; cursor: default; }
 table.auc { width: 100%; border-collapse: collapse; }
 table.auc td { padding: 6px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
 table.auc tr[data-item]:hover td { background: var(--panel-2); }
+table.auc tr.noprice td { opacity: 0.5; }
 .auc .at { white-space: nowrap; width: 1%; }
 .auc .ai { font-weight: 500; }
 .auc .ap { color: var(--accent); white-space: nowrap; font-variant-numeric: tabular-nums; }
