@@ -34,8 +34,8 @@ function entryFromWikitext(wt) {
   const harvestedBy = W.parseHarvestedBy(wt);
   const full = parseFullStats(wt) || {}; // AC / stat bonuses / HP / resists / flags — full card
   return Object.assign(
-    { hasPage: true, wikiOnly: true, fromTrade: true, statsV: 1 }, box,
-    { flags: full.flags, handed: full.handed, ac: full.ac, stats: full.stats, hp: full.hp, mana: full.mana, hpRegen: full.hpRegen, manaRegen: full.manaRegen, haste: full.haste, resists: full.resists, instr: full.instr },
+    { hasPage: true, wikiOnly: true, fromTrade: true, statsV: 2 }, box,
+    { flags: full.flags, handed: full.handed, ac: full.ac, stats: full.stats, hp: full.hp, mana: full.mana, hpRegen: full.hpRegen, manaRegen: full.manaRegen, haste: full.haste, resists: full.resists, instr: full.instr, container: full.container },
     src.zones.length ? { wikiZones: src.zones } : {},
     src.from.length ? { from: src.from } : {},
     cats.length ? { categories: cats } : {},

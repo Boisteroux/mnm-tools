@@ -618,11 +618,23 @@ function renderItem(id) {
     };
     add('Type', [...(w.categories || []).map(esc), ...(w.tradeskills || []).map(tradeskillLink),
       ...(w.harvestedBy ? [esc(w.harvestedBy)] : [])].join(', '));
-    add('Slot', esc(w.slot || ''));
-    add('Weapon DMG', w.dmg, true);
-    add('Attack delay', w.delay, true);
+    if (w.flags && w.flags.length) add('Flags', w.flags.map((f) => '<span class="tag good">' + esc(f) + '</span>').join(' '));
+    add('Slot', esc(w.slot || '') + (w.handed ? ' (' + esc(w.handed) + ')' : ''));
+    add('Weapon DMG', w.dmg);
+    add('Attack delay', w.delay);
     add('Skill', esc(w.skill || ''));
-    add('Weight', w.weight, true);
+    add('AC', w.ac);
+    const sb = Object.entries(w.stats || {}).map(([k, v]) => k + ' ' + (v > 0 ? '+' : '') + v);
+    if (sb.length) add('Attributes', sb.join('  ·  '));
+    if (w.hp != null) add('HP', (w.hp > 0 ? '+' : '') + w.hp);
+    if (w.mana != null) add('Mana', (w.mana > 0 ? '+' : '') + w.mana);
+    if (w.hpRegen != null) add('HP regen', (w.hpRegen > 0 ? '+' : '') + w.hpRegen);
+    if (w.manaRegen != null) add('Mana regen', (w.manaRegen > 0 ? '+' : '') + w.manaRegen);
+    if (w.haste != null) add('Haste', (w.haste > 0 ? '+' : '') + w.haste);
+    const rs = Object.entries(w.resists || {}).map(([k, v]) => k + ' ' + (v > 0 ? '+' : '') + v);
+    if (rs.length) add('Resistances', rs.join('  ·  '));
+    if (w.container) add('Holds', w.container.capacity + ' slots' + (w.container.maxSize ? '  ·  ' + esc(w.container.maxSize) + ' max item size' : '') + (w.container.weightReduction ? '  ·  ' + w.container.weightReduction + '% weight reduction' : ''));
+    add('Weight', w.weight);
     add('Size', esc(w.size || ''));
     add('Class', esc(w.class || ''));
     add('Race', esc(w.race || ''));
@@ -2603,6 +2615,7 @@ function aucPopHTML(item) {
   if (vit.length) P.push(chips(vit));
   const rz = Object.entries(s.resists || {}); if (rz.length) P.push(chips(rz));
   P.push(row([s.weight != null ? 'Weight ' + s.weight : '', s.size ? 'Size ' + esc(s.size) : '', s.vendor != null ? 'Vendor ' + esc(aucCoin(s.vendor)) : ''].filter(Boolean)));
+  if (s.container) P.push('<div class="arow"><span class="muted">Holds</span> ' + s.container.capacity + ' slots' + (s.container.maxSize ? ' · ' + esc(s.container.maxSize) + ' max' : '') + '</div>');
   if (s.class) P.push('<div class="arow"><span class="muted">Class</span> ' + esc(s.class) + '</div>');
   if (s.race) P.push('<div class="arow"><span class="muted">Race</span> ' + esc(s.race) + '</div>');
   if (s.tradeskills && s.tradeskills.length) P.push('<div class="arow"><span class="muted">Used in</span> <span class="ats">' + esc(s.tradeskills.join(', ')) + '</span></div>');

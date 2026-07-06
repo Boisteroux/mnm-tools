@@ -42,8 +42,19 @@ function parseFullStats(wt) {
   if (flag('UNIQUE', 'unique')) flags.push('UNIQUE');
   if (flag('NO DROP', 'nodrop')) flags.push('NO DROP');
   if (flag('NO RENT', 'norent')) flags.push('NO RENT');
+  // Containers (bags): capacity (slots) + max item size held. Two ItemBox formats:
+  // "container = 8, MEDIUM, 0," (combined) OR cont_capacity + cont_max_size (split).
+  let capacity = null, maxSize = null, wtRed = null;
+  if (p.cont_capacity || p.cont_max_size) {
+    capacity = num(p.cont_capacity); maxSize = (p.cont_max_size || '').toUpperCase().trim() || null; wtRed = num(p.cont_weight_reduction);
+  } else if (p.container && p.container.trim()) {
+    const parts = p.container.split(',').map((x) => x.trim());
+    capacity = num(parts[0]); maxSize = (parts[1] || '').toUpperCase() || null; wtRed = num(parts[2]);
+  }
+  const container = (capacity != null || maxSize) ? { capacity, maxSize, weightReduction: wtRed || null } : null;
   return {
     iconId: p.icon_id || null,
+    container,
     flags,
     slot: strF(p.slot, /Slot:\s*([^\n<]+)/i), handed: p.handed || null,
     dmg: numF(p.dmg, /(?:Weapon\s*)?DMG:\s*([\d.]+)/i), delay: numF(p.delay, /(?:ATK\s*)?Delay:\s*([\d.]+)/i), skill: strF(p.skill, /Skill:\s*([A-Za-z ]{2,})/i),

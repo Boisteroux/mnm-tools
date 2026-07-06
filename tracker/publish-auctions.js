@@ -15,7 +15,12 @@ const read = (f, d) => { try { return JSON.parse(fs.readFileSync(path.join(DATA,
 // Which items exist in the site DB (wiki.json) right now — decides which listings
 // link to an item page. Re-checked here so newly-enriched items link up.
 let wikiNames = new Set();
-try { wikiNames = new Set(Object.keys(JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'mnmdb', 'wiki.json'), 'utf8')).items || {}).map((n) => n.toLowerCase())); } catch {}
+let wikiByLc = {}; // lowercase name → full wiki entry (for container/stats overlay)
+try {
+  const wi = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'mnmdb', 'wiki.json'), 'utf8')).items || {};
+  for (const [n, e] of Object.entries(wi)) wikiByLc[n.toLowerCase()] = e;
+  wikiNames = new Set(Object.keys(wikiByLc));
+} catch {}
 
 const L = read('listings.json', []);
 const Q = read('requests.json', []);
@@ -65,6 +70,7 @@ for (const [k, v] of Object.entries(S)) {
     slot: v.slot || null, handed: v.handed || null, dmg: v.dmg ?? null, delay: v.delay ?? null, skill: v.skill || null,
     ac: v.ac ?? null, stats: v.stats || {}, hp: v.hp ?? null, mana: v.mana ?? null, hpRegen: v.hpRegen ?? null, manaRegen: v.manaRegen ?? null, haste: v.haste ?? null,
     resists: v.resists || {}, instr: v.instr || {}, weight: v.weight ?? null, size: v.size || null,
+    container: v.container || (wikiByLc[k] && wikiByLc[k].container) || null,
     class: v.class || null, race: v.race || null, tradeskills: v.tradeskills || [], zones: v.zones || [], from: (v.from || []).slice(0, 4), vendor: v.vendor ?? null,
   };
 }
