@@ -130,6 +130,9 @@ function parseLine(raw, server, gloss, itemIndex) {
   };
 
   const addItem = (rawName, priceCopper, note) => {
+    // A price-check (PC) is a question, not a listing. Only keep it if a price is
+    // attached (the useful part is the priced answer); a bare "PC [Item]" is ignored.
+    if (intent === 'inquiry' && priceCopper == null) return;
     const r = resolve(rawName);
     listings.push({ server, player, intent, item: r.name, matched: r.matched,
       priceCopper: priceCopper ?? null, qty: parseQty(msg).qty, perStack: perStack || undefined, note, raw });
