@@ -707,3 +707,9 @@ table.auc tr[data-item]:hover td { background: var(--panel-2); }
 #auc-pop .ats { color: #2f74c0; }
 #auc-pop .asrc { margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; }
 #auc-pop .anone { color: var(--muted); font-style: italic; }
+
+/* ---- Home: maps grid + section links ---- */
+.map-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 20px; }
+.map-chip { display: inline-block; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--panel); color: var(--text); text-decoration: none; font-size: 14px; }
+.map-chip:hover { border-color: var(--accent); color: var(--accent); }
+h2 .h2-link { font-size: 13px; font-weight: 400; margin-left: 10px; }

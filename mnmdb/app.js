@@ -505,36 +505,42 @@ function renderHome() {
       '</tbody></table></div>'
     : '';
 
+  // Zone maps — quick-jump grid (the flagship). Non-"coming soon" zones link to their map.
+  const zones = ((MAPS && MAPS.zones) || []).filter((z) => !z.comingSoon);
+  const mapGrid = zones.length
+    ? '<div class="map-grid">' + zones.map((z) => '<a class="map-chip" href="#/map/' + encodeURIComponent(z.name) + '">' + esc(z.name) + '</a>').join('') + '</div>'
+    : '<p class="sub">No maps yet.</p>';
+
   $('content').innerHTML =
     '<div class="home-intro">' +
-      '<h1>Monsters &amp; Memories Economy Database</h1>' +
-      '<p class="sub">Community drop rates, vendor values and player trade prices, gathered by the ' +
-        '<a href="https://github.com/Boisteroux/mnm-tools">mnm-tools</a> companion app. ' +
-        'Search above, or dig into the numbers below.</p>' +
+      '<h1>MnMdb — Monsters &amp; Memories maps, market &amp; database</h1>' +
+      '<p class="sub">Zone maps, live auction prices, drop rates and item stats — from the community and the ' +
+        '<a href="https://github.com/Boisteroux/mnm-tools">companion app</a>. Search above to find any item, mob or zone.</p>' +
       '<div class="stat-row">' +
         stat(items.length, 'items') + stat(mobs.length, 'mobs') +
-        stat(withVendor, 'with vendor prices') + stat(Object.keys(DATA.harvest).length, 'resources') +
+        stat(zones.length, 'zone maps') + stat('…', 'live listings', 'home-stat-live') +
       '</div>' +
     '</div>' +
-    moversSection +
-    flipSection +
+    '<h2>🗺 Zone maps <a class="h2-link" href="#/maps">see all maps →</a></h2>' + mapGrid +
+    '<h2>💰 Live market <a class="h2-link" href="#/auctions">open the Auction House →</a></h2>' +
+    '<div id="home-market"><p class="sub">Loading the live market…</p></div>' +
+    bracketSection +
     '<div class="col2">' +
       '<div><h2>Most-valuable mobs</h2><p class="sub">Estimated coin + loot per kill.</p><div class="card"><table><tbody>' +
         (mobValRows || '<tr><td class="muted">No data yet.</td></tr>') + '</tbody></table></div></div>' +
-      '<div><h2>Most-fought mobs</h2><p class="sub">Where the grind has gone.</p><div class="card"><table><tbody>' +
-        killRows + '</tbody></table></div></div>' +
-    '</div>' +
-    bracketSection +
-    '<div class="col2">' +
       '<div><h2>Priciest items</h2><p class="sub">Top regular-vendor sell value.</p><div class="card"><table><tbody>' +
         (priceRows || '<tr><td class="muted">No vendor prices yet.</td></tr>') + '</tbody></table></div></div>' +
-      '<div><h2>Valuable resources</h2><p class="sub">Gatherables by value — player trade price where known, else vendor.</p><div class="card"><table><tbody>' +
+    '</div>' +
+    '<div class="col2">' +
+      '<div><h2>Most-fought mobs</h2><p class="sub">Where the grind has gone.</p><div class="card"><table><tbody>' +
+        killRows + '</tbody></table></div></div>' +
+      '<div><h2>Valuable resources</h2><p class="sub">Gatherables by value.</p><div class="card"><table><tbody>' +
         (resRows || '<tr><td class="muted">No resources yet.</td></tr>') + '</tbody></table></div></div>' +
     '</div>' +
-    recentBlock +
-    '<div class="note">Values are observational — drop rates are per looted corpse and prices come from real play. ' +
-      'Small samples are rough; numbers sharpen as more data is collected.</div>';
+    '<div class="note">Drop rates and mob values are observational — from real play, and sharpen as more data is collected. ' +
+      'Auction prices are OCR-read from the community LiveMMCam stream.</div>';
 
+  fillHomeMarket();
   wireScatter();
 }
 
@@ -558,7 +564,43 @@ function wireScatter() {
   box.addEventListener('mouseleave', () => { tip.hidden = true; });
 }
 
-const stat = (n, l) => '<div class="stat"><div class="num">' + n + '</div><div class="lbl">' + l + '</div></div>';
+const stat = (n, l, id) => '<div class="stat"><div class="num"' + (id ? ' id="' + id + '"' : '') + '>' + n + '</div><div class="lbl">' + l + '</div></div>';
+
+// Load the auction feed once (shared with the Auction House page's AUCTIONS cache).
+async function loadAuctionsData() {
+  if (!AUCTIONS) { try { AUCTIONS = await (await fetch('./auctions.json?v=' + Date.now())).json(); } catch { AUCTIONS = { listings: [], requests: [], stats: {}, generatedAt: null }; } }
+  return AUCTIONS;
+}
+// Home "Live market" section — biggest cross-server price gaps + crafting demand, filled async.
+async function fillHomeMarket() {
+  const box = $('home-market'); if (!box) return;
+  const A = await loadAuctionsData();
+  const live = $('home-stat-live'); if (live) live.textContent = A.listings.length;
+  const bySrv = { PvP: 0, PvE: 0 };
+  for (const l of A.listings) if (bySrv[l.server] != null) bySrv[l.server]++;
+  const pm = {};
+  for (const l of A.listings) { if (l.price == null) continue; const m = pm[l.item] = pm[l.item] || {}; m[l.server] = Math.min(m[l.server] == null ? Infinity : m[l.server], l.price); }
+  const gaps = Object.entries(pm).filter(([, m]) => m.PvP && m.PvE)
+    .map(([item, m]) => ({ item, pvp: m.PvP, pve: m.PvE, ratio: Math.max(m.PvP, m.PvE) / Math.min(m.PvP, m.PvE) }))
+    .sort((a, b) => b.ratio - a.ratio).slice(0, 6);
+  const gapRows = gaps.length
+    ? '<div class="card"><table><thead><tr><th>Item</th><th class="num">PvP</th><th class="num">PvE</th></tr></thead><tbody>' +
+      gaps.map((g) => '<tr><td>' + itemLink(g.item, g.item) + '</td><td class="num coin">' + coin(g.pvp) + '</td><td class="num coin">' + coin(g.pve) + '</td></tr>').join('') +
+      '</tbody></table></div>'
+    : '<p class="sub">Not enough cross-server prices yet.</p>';
+  const reqs = (A.requests || []).slice(-10).reverse();
+  const reqHtml = reqs.length
+    ? '<div class="ticker">' + reqs.map((r) => {
+        const w = [r.plus && r.plus.length ? '+' + r.plus.join('/') : '', (r.stats || []).join('/'), r.category].filter(Boolean).join(' ') || r.text;
+        return '<span class="chip">' + esc(w) + ' <span class="sample">' + esc(r.server) + '</span></span>';
+      }).join('') + '</div>'
+    : '<p class="sub">No open requests right now.</p>';
+  box.innerHTML =
+    '<p class="sub">' + A.listings.length + ' listings live · ' + bySrv.PvP + ' PvP · ' + bySrv.PvE + ' PvE' +
+      (A.generatedAt ? ' · updated ' + esc(new Date(A.generatedAt).toLocaleString()) : '') + '</p>' +
+    '<div class="col2"><div><h3 class="bracket">Biggest PvP ↔ PvE price gaps</h3>' + gapRows + '</div>' +
+    '<div><h3 class="bracket">🛠 Crafting demand</h3>' + reqHtml + '</div></div>';
+}
 
 function renderItem(id) {
   const it = DATA.items.find((i) => i.id === id) || DATA.items.find((i) => i.name === id)
