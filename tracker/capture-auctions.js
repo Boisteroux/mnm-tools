@@ -83,6 +83,11 @@ function ocrConfidence(server) {
     const c = rowline.split('\t');
     if (c.length < 12 || c[0] !== '5') continue; // TSV level 5 = a single word
     const conf = +c[10], text = (c[11] || '').trim();
+    // Skip bracketed tokens: item names live in [brackets] and are captured
+    // structurally by the parser, so their low confidence is just a bracket-glyph
+    // artifact, not a genuine mis-read. This keeps lowconf focused on standalone
+    // words (player names, prices) where low confidence actually signals ambiguity.
+    if (/[[\]]/.test(text)) continue;
     const alnum = text.replace(/[^A-Za-z0-9']/g, '');
     if (text && conf >= 0 && conf < CONF_THRESHOLD && /[A-Za-z]/.test(text) && alnum.length >= 3) words.push({ text, conf });
   }
