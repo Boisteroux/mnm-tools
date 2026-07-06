@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-06T22:10:52.662Z",
+  "generatedAt": "2026-07-06T22:40:56.605Z",
   "items": {
     "Bone Chips": {
       "hasPage": true,
@@ -47601,6 +47601,293 @@
         "Garran Grinholdt"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/32/Itemicon0185AA.png/64px-Itemicon0185AA.png"
+    },
+    "Tattered Leather Shoulderpads": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0053AA",
+      "slot": "SHOULDERS",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "SMALL",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": 11,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Pass",
+        "Shallow Shoals",
+        "Vale of Zintar"
+      ],
+      "from": [
+        "Seamas Growt",
+        "a Witchguard venator",
+        "a sand giant raider"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/fa/Itemicon0053AA.png/64px-Itemicon0053AA.png"
+    },
+    "Heartplate Scout Cap": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0031AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "SMALL",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 13,
+      "stats": {
+        "STR": 5,
+        "STA": 1,
+        "DEX": 2
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Night Harbor"
+      ],
+      "from": [
+        "Eamon Kassir"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/fd/Itemicon0031AA.png/64px-Itemicon0031AA.png"
+    },
+    "Inlaid Pearl Silver Earring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Lantern Fuel": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0063AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.2,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": {
+        "name": "Fuel Lantern",
+        "trigger": "Click",
+        "castTime": "5s",
+        "level": 1,
+        "detail": "On Click. Any Slot. Cast Time: 5s. Level: 1"
+      },
+      "soldBy": {
+        "base": null,
+        "shady": 1000,
+        "vendors": [
+          "Faelindral",
+          "Adventure Gear",
+          "Night Harbor",
+          "a goods merchant",
+          "a greedy halfling",
+          "a shifty gnome",
+          "a suspicious salesman",
+          "Clint the Innocent",
+          "Sproggets Bedsprings"
+        ]
+      },
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/ba/Itemicon0063AA.png/64px-Itemicon0063AA.png"
+    },
+    "Inlaid Opal Platinum Earring": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0103AJ",
+      "slot": "EAR",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": 7,
+      "stats": {
+        "CHA": 7
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "tradeskills": [
+        "Jewelcrafting"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/c/c3/Itemicon0103AJ.png/64px-Itemicon0103AJ.png"
+    },
+    "Cowl of the Arch Lich": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0000AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "SMALL",
+      "class": "ELE ENC NEC WIZ",
+      "race": "ALL",
+      "flags": [
+        "MAGIC",
+        "UNIQUE"
+      ],
+      "handed": null,
+      "ac": 16,
+      "stats": {
+        "STA": 4,
+        "INT": 6
+      },
+      "hp": 10,
+      "mana": 10,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Pass"
+      ],
+      "from": [
+        "Allistaire the Black"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/1/17/Itemicon0000AA.png/64px-Itemicon0000AA.png"
+    },
+    "Sanguine Wildsteps": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "MEDIUM",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 6,
+      "stats": {
+        "STR": 1,
+        "STA": 3
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Night Harbor"
+      ],
+      "from": [
+        "a sanguine bat"
+      ]
+    },
+    "Pocket Knife": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "STA": 1,
+        "AGI": 3,
+        "DEX": 5
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Scarwood"
+      ],
+      "from": [
+        "Krev Thistlehook"
+      ]
     }
   },
   "mobs": {
