@@ -2510,15 +2510,19 @@ async function renderAuctions() {
     '<p class="sub">Player buy/sell auctions read from the <a href="https://www.twitch.tv/livemmcam" target="_blank" rel="noopener">LiveMMCam stream ↗</a> — PvP and PvE are separate markets. ' +
     A.listings.length + ' listings · ' + priced + ' priced · ' + A.requests.length + ' requests · updated ' + esc(when) + '. Hover an item for its stats.</p>' +
     '<div class="auc-controls"><input id="auc-q" placeholder="Search item or seller…">' +
-    '<select id="auc-view"><option value="item">By item</option><option value="recent">Recent activity</option></select>' +
-    '<label class="adv-check"><input type="checkbox" id="auc-priced" checked> Priced only</label>' +
+    '<select id="auc-view"><option value="recent">Recent activity</option><option value="item">By item</option></select>' +
+    '<button id="auc-priced" class="toggle-btn is-on" type="button" aria-pressed="true">Priced Listings Only</button>' +
     '<select id="auc-sort"><option value="new">Newest</option><option value="price">Price (high→low)</option><option value="item">Item name</option></select></div>' +
     '<div class="auc-cols"><div class="auc-panel"><div class="auc-head">PvP <span id="auc-pvp-n" class="muted"></span></div><div id="auc-pvp"></div></div>' +
     '<div class="auc-panel"><div class="auc-head">PvE <span id="auc-pve-n" class="muted"></span></div><div id="auc-pve"></div></div></div>' +
     '<div class="auc-panel" style="margin-top:16px"><div class="auc-head">🛠 Crafting / gear requests <span class="muted">' + A.requests.length + '</span></div><div id="auc-reqs"></div></div>';
-  ['auc-q', 'auc-view', 'auc-priced', 'auc-sort'].forEach((id) => { const el = $(id); if (el) { el.addEventListener('input', paintAuctions); el.addEventListener('change', paintAuctions); } });
+  ['auc-q', 'auc-view', 'auc-sort'].forEach((id) => { const el = $(id); if (el) { el.addEventListener('input', paintAuctions); el.addEventListener('change', paintAuctions); } });
+  const pb = $('auc-priced');
+  if (pb) pb.addEventListener('click', () => { const on = pb.getAttribute('aria-pressed') !== 'true'; pb.setAttribute('aria-pressed', String(on)); pb.classList.toggle('is-on', on); paintAuctions(); });
   paintAuctions(); aucReqs(); aucHoverInit();
 }
+const AUC_RECENT_N = 50; // recent feed shows this many live rows before compressing older ones
+const aucPricedOnly = () => { const b = $('auc-priced'); return !b || b.getAttribute('aria-pressed') === 'true'; };
 // Base filter for one server: search + priced-only toggle.
 function aucBase(server) {
   const q = ($('auc-q').value || '').trim().toLowerCase();
@@ -2526,67 +2530,79 @@ function aucBase(server) {
   if (q) rs = rs.filter((l) => (l.item + ' ' + l.player).toLowerCase().includes(q));
   return rs;
 }
-// "Recent activity" — raw per-post feed. Priced rows always sort ahead of
-// no-price ones; no-price rows are shown greyed only when "Priced only" is off.
+// "Recent activity" — raw per-post feed, most recent first (a live scrolling
+// feed). No-price rows sit in their chronological place, greyed, and only when
+// "Priced Listings Only" is off.
 function aucRecentRows(server) {
-  const pricedOnly = $('auc-priced').checked, sort = $('auc-sort').value;
+  const pricedOnly = aucPricedOnly(), sort = $('auc-sort').value;
   let rs = aucBase(server);
   if (pricedOnly) rs = rs.filter((l) => l.price != null);
-  return rs.sort((a, b) => {
-    const pa = a.price != null, pb = b.price != null;
-    if (pa !== pb) return pa ? -1 : 1;
-    if (sort === 'item') return a.item.localeCompare(b.item);
-    if (sort === 'price') return (b.price || 0) - (a.price || 0);
-    return (b.seen || '').localeCompare(a.seen || '');
-  });
+  return rs.sort((a, b) =>
+    sort === 'item' ? a.item.localeCompare(b.item) :
+    sort === 'price' ? (b.price || 0) - (a.price || 0) :
+    (b.seen || '').localeCompare(a.seen || '')); // default: newest first
 }
-// "By item" — one row per item: sell-price range + how many are selling/buying.
-// Items with no priced sell are greyed and sorted last (hidden when priced-only).
-function aucItemRows(server) {
-  const pricedOnly = $('auc-priced').checked;
+// Collapse a set of listings to one entry per item: sell-price range + how many
+// are selling / buying it. Shared by the "By item" view and the compressed tail
+// of the Recent feed.
+function aggregateItems(list) {
   const map = new Map();
-  for (const l of aucBase(server)) {
+  for (const l of list) {
     const k = l.item.toLowerCase();
     let g = map.get(k);
     if (!g) { g = { item: l.item, matched: l.matched, sellers: new Set(), buyers: new Set(), prices: [] }; map.set(k, g); }
     if (l.intent === 'buy') g.buyers.add(l.player);
     else { g.sellers.add(l.player); if (l.price != null) g.prices.push(l.price); }
   }
-  let arr = [...map.values()].map((g) => ({
+  return [...map.values()].map((g) => ({
     item: g.item, matched: g.matched, sellers: g.sellers.size, buyers: g.buyers.size,
     low: g.prices.length ? Math.min.apply(null, g.prices) : null,
     high: g.prices.length ? Math.max.apply(null, g.prices) : null,
     priced: g.prices.length > 0,
   }));
-  if (pricedOnly) arr = arr.filter((g) => g.priced);
+}
+// "By item" — one row per item across the whole market. No-price items are greyed
+// and sorted last (hidden entirely when "Priced Listings Only" is on).
+function aucItemRows(server) {
+  let arr = aggregateItems(aucBase(server));
+  if (aucPricedOnly()) arr = arr.filter((g) => g.priced);
   return arr.sort((a, b) => {
     if (a.priced !== b.priced) return a.priced ? -1 : 1;
     if (a.priced) return (b.high || 0) - (a.high || 0);
     return b.sellers - a.sellers || a.item.localeCompare(b.item);
   });
 }
+const aucPriceCell = (priced, low, high) => priced ? (low === high ? esc(aucCoin(low)) : esc(aucCoin(low)) + '–' + esc(aucCoin(high))) : '<span class="muted">—</span>';
+const aucRecentRowHtml = (l) =>
+  '<tr data-item="' + esc(l.item) + '"' + (l.price == null ? ' class="noprice"' : '') + '><td class="at">' + aucTag(l.intent) + (l.assumed ? '<span class="amute" title="intent inferred">?</span>' : '') + '</td>' +
+  '<td class="ai">' + (l.matched ? itemLink(l.item, l.item) : esc(l.item)) + (l.qty ? ' <span class="muted">×' + l.qty + '</span>' : '') + '</td>' +
+  '<td class="ap">' + (l.price != null ? esc(l.priceStr || aucCoin(l.price)) : '<span class="muted">—</span>') + '</td>' +
+  '<td class="muted">' + esc(l.player) + '</td></tr>';
+const aucItemRowHtml = (g) =>
+  '<tr data-item="' + esc(g.item) + '"' + (g.priced ? '' : ' class="noprice"') + '>' +
+  '<td class="ai">' + (g.matched ? itemLink(g.item, g.item) : esc(g.item)) + '</td>' +
+  '<td class="ap">' + aucPriceCell(g.priced, g.low, g.high) + '</td>' +
+  '<td class="muted">' + g.sellers + ' selling' + (g.buyers ? ' · ' + g.buyers + ' buying' : '') + '</td></tr>';
+const aucTable = (rowsHtml) => '<table class="auc"><tbody>' + rowsHtml + '</tbody></table>';
 function paintAuctions() {
   const view = $('auc-view').value;
   for (const [srv, id] of [['PvP', 'auc-pvp'], ['PvE', 'auc-pve']]) {
-    let rows;
+    let html;
     if (view === 'item') {
       const gs = aucItemRows(srv);
       $(id + '-n').textContent = gs.length;
-      rows = gs.map((g) =>
-        '<tr data-item="' + esc(g.item) + '"' + (g.priced ? '' : ' class="noprice"') + '>' +
-        '<td class="ai">' + (g.matched ? itemLink(g.item, g.item) : esc(g.item)) + '</td>' +
-        '<td class="ap">' + (g.priced ? (g.low === g.high ? esc(aucCoin(g.low)) : esc(aucCoin(g.low)) + '–' + esc(aucCoin(g.high))) : '<span class="muted">—</span>') + '</td>' +
-        '<td class="muted">' + g.sellers + ' selling' + (g.buyers ? ' · ' + g.buyers + ' buying' : '') + '</td></tr>');
+      html = gs.length ? aucTable(gs.map(aucItemRowHtml).join('')) : '<div class="auc-empty">No listings.</div>';
     } else {
       const rs = aucRecentRows(srv);
       $(id + '-n').textContent = rs.length;
-      rows = rs.map((l) =>
-        '<tr data-item="' + esc(l.item) + '"' + (l.price == null ? ' class="noprice"' : '') + '><td class="at">' + aucTag(l.intent) + (l.assumed ? '<span class="amute" title="intent inferred">?</span>' : '') + '</td>' +
-        '<td class="ai">' + (l.matched ? itemLink(l.item, l.item) : esc(l.item)) + (l.qty ? ' <span class="muted">×' + l.qty + '</span>' : '') + '</td>' +
-        '<td class="ap">' + (l.price != null ? esc(l.priceStr || aucCoin(l.price)) : '<span class="muted">—</span>') + '</td>' +
-        '<td class="muted">' + esc(l.player) + '</td></tr>');
+      const recent = rs.slice(0, AUC_RECENT_N), older = rs.slice(AUC_RECENT_N);
+      html = recent.length ? aucTable(recent.map(aucRecentRowHtml).join('')) : '<div class="auc-empty">No listings.</div>';
+      if (older.length) {
+        const agg = aggregateItems(older).sort((a, b) => (b.high || 0) - (a.high || 0) || b.sellers - a.sellers || a.item.localeCompare(b.item));
+        html += '<div class="auc-subhead">' + older.length + ' earlier listing' + (older.length === 1 ? '' : 's') + ' — grouped by item</div>' + aucTable(agg.map(aucItemRowHtml).join(''));
+      }
     }
-    $(id).innerHTML = !rows.length ? '<div class="auc-empty">No listings.</div>' : '<table class="auc"><tbody>' + rows.join('') + '</tbody></table>';
+    $(id).innerHTML = html;
   }
 }
 function aucReqs() {
