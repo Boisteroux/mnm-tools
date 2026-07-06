@@ -396,46 +396,15 @@ function renderHome() {
   const mobs = Object.entries(DATA.mobs);
   const withVendor = items.filter((i) => i.prices.length).length;
 
-  // Most-valuable mobs — by estimated value per kill (coin + loot)
-  const valMobs = mobs.filter(([, d]) => mobCorpses(d) || d.kills)
-    .map(([m, d]) => [m, mobValuePerKill(d).total])
-    .filter(([, v]) => v > 0)
-    .sort((a, b) => b[1] - a[1]).slice(0, 12);
-
-  // Most-fought mobs — kills where the game logs them, else corpses looted
-  const activity = (d) => Math.max(d.kills || 0, mobCorpses(d));
-  const topMobs = mobs.slice().sort((a, b) => activity(b[1]) - activity(a[1])).slice(0, 12);
-
-  // Priciest items — by regular vendor sell price
-  const priciest = items.filter((i) => i.prices.length)
-    .map((i) => [i, regularPrice(i)])
-    .sort((a, b) => b[1] - a[1]).slice(0, 12);
-
-  // Valuable resources — harvestable things ranked by sell value, then by how
-  // much you've gathered (ties gathering to economy)
+  // Valuable crafting materials — harvestable things ranked by sell value, then
+  // by how much you've gathered (ties gathering to economy)
   const resources = Object.keys(DATA.harvest)
     .map((r) => { const mv = itemMarketValue(r); return { name: r, value: mv.value, source: mv.source, n: DATA.harvest[r] }; })
     .sort((a, b) => b.value - a.value || b.n - a.n).slice(0, 12);
 
-  // Recent player trades — newest first
-  const recent = [];
-  Object.values(TRADES).forEach((arr) => arr.forEach((t) => recent.push(t)));
-  recent.sort((a, b) => new Date(b.date) - new Date(a.date));
-  const recentTop = recent.slice(0, 10);
-
-  // Tables get inline magnitude bars (value scaled to the leader in each list).
-  const maxVal = valMobs.length ? valMobs[0][1] : 0;
-  const maxAct = topMobs.length ? activity(topMobs[0][1]) : 0;
-  const maxPrice = priciest.length ? priciest[0][1] : 0;
+  // Table gets inline magnitude bars (value scaled to the leader in the list).
   const maxRes = resources.reduce((m, r) => Math.max(m, r.value || 0), 0);
 
-  const mobValRows = valMobs.map(([m, v]) => '<tr><td>' + mobLink(m) + '</td><td class="num">' +
-    barCell(v, maxVal, '<span class="coin">' + coin(v) + '</span>') + '</td></tr>').join('');
-  const killRows = topMobs.map(([m, d]) => '<tr><td>' + mobLink(m) + '</td><td class="num">' +
-    barCell(activity(d), maxAct, '<span class="sample">' + (d.kills ? d.kills + ' kills' : mobCorpses(d) + ' looted') + '</span>') +
-    '</td></tr>').join('');
-  const priceRows = priciest.map(([i, v]) => '<tr><td>' + itemLink(i.id, i.name) + '</td><td class="num">' +
-    barCell(v, maxPrice, '<span class="coin">' + coin(v) + '</span>') + '</td></tr>').join('');
   const resRows = resources.map((r) => '<tr><td>' + (nameToId[r.name] ? itemLink(nameToId[r.name], r.name) : esc(r.name)) +
     (r.source === 'trade' ? ' <span class="tag good">trade</span>' : '') +
     '</td><td class="num">' + (r.value
@@ -470,41 +439,6 @@ function renderHome() {
       '<div class="col2">' + bracketCols + '</div>'
     : '';
 
-  const movers = tradeMovers();
-  const moversSection = movers.length
-    ? '<h2>Biggest movers</h2><p class="sub">7-day average sell price vs the previous week.</p>' +
-      '<div class="ticker">' + movers.map((m) => {
-        const up = m.pct >= 0;
-        return '<a class="chip ' + (up ? 'up' : 'down') + '" href="#/item/' + encodeURIComponent(nameToId[m.name] || m.name) + '">' +
-          esc(m.name) + ' <span class="mv">' + (up ? '▲' : '▼') + ' ' + Math.abs(Math.round(m.pct * 100)) + '%</span> ' +
-          '<span class="sample">' + coin(m.recent) + '</span></a>';
-      }).join('') + '</div>'
-    : '';
-
-  const flips = flipFinder();
-  const hasVendorBuys = items.some((i) => i.wiki && i.wiki.soldBy && i.wiki.soldBy.base != null);
-  const flipSection = flips.length
-    ? '<h2>Flip finder</h2><p class="sub">Buy from a vendor, resell to players for profit. Margin = player sell price − vendor price.</p>' +
-      '<div class="card"><table><thead><tr><th>Item</th><th class="num">Buy (vendor)</th><th class="num">Sell (players)</th><th class="num">Margin</th></tr></thead><tbody>' +
-      flips.map((f) => '<tr><td>' + itemLink(f.it.id, f.it.name) + '</td>' +
-        '<td class="num coin">' + coin(f.buy) + '</td>' +
-        '<td class="num coin">' + coin(f.sell) + '</td>' +
-        '<td class="num"><span class="pos">+' + coin(f.margin) + ' (' + Math.round(f.pct * 100) + '%)</span></td></tr>').join('') +
-      '</tbody></table></div>'
-    : hasVendorBuys
-      ? '<h2>Flip finder</h2><p class="sub">Buy cheap from a vendor, resell to players for profit. ' +
-        'No flips yet — this lights up once player <b>sell</b> prices are logged for items that vendors stock ' +
-        '(we already have vendor buy prices). Log trades in the app to power it.</p>'
-      : '';
-
-  const recentBlock = recentTop.length
-    ? '<h2>Recent player trades</h2><div class="card"><table><tbody>' +
-      recentTop.map((t) => '<tr><td>' + (nameToId[t.item] ? itemLink(nameToId[t.item], t.item) : esc(t.item)) +
-        ' <span class="tag ' + (t.side === 'buy' ? 'warn' : 'good') + '">' + (t.side === 'buy' ? 'WTB' : 'WTS') + '</span></td>' +
-        '<td class="num coin">' + coin(t.price) + '</td><td class="num sample">' + esc(t.date) + '</td></tr>').join('') +
-      '</tbody></table></div>'
-    : '';
-
   // Zone maps — quick-jump grid (the flagship). Non-"coming soon" zones link to their map.
   const zones = ((MAPS && MAPS.zones) || []).filter((z) => !z.comingSoon);
   const mapGrid = zones.length
@@ -525,18 +459,8 @@ function renderHome() {
     '<h2>💰 Live market <a class="h2-link" href="#/auctions">open the Auction House →</a></h2>' +
     '<div id="home-market"><p class="sub">Loading the live market…</p></div>' +
     bracketSection +
-    '<div class="col2">' +
-      '<div><h2>Most-valuable mobs</h2><p class="sub">Estimated coin + loot per kill.</p><div class="card"><table><tbody>' +
-        (mobValRows || '<tr><td class="muted">No data yet.</td></tr>') + '</tbody></table></div></div>' +
-      '<div><h2>Priciest items</h2><p class="sub">Top regular-vendor sell value.</p><div class="card"><table><tbody>' +
-        (priceRows || '<tr><td class="muted">No vendor prices yet.</td></tr>') + '</tbody></table></div></div>' +
-    '</div>' +
-    '<div class="col2">' +
-      '<div><h2>Most-fought mobs</h2><p class="sub">Where the grind has gone.</p><div class="card"><table><tbody>' +
-        killRows + '</tbody></table></div></div>' +
-      '<div><h2>Valuable resources</h2><p class="sub">Gatherables by value.</p><div class="card"><table><tbody>' +
-        (resRows || '<tr><td class="muted">No resources yet.</td></tr>') + '</tbody></table></div></div>' +
-    '</div>' +
+    '<h2>🧪 Valuable Crafting Materials</h2><p class="sub">Gathered &amp; crafting materials ranked by market value.</p><div class="card"><table><tbody>' +
+      (resRows || '<tr><td class="muted">No resources yet.</td></tr>') + '</tbody></table></div>' +
     '<div class="note">Drop rates and mob values are observational — from real play, and sharpen as more data is collected. ' +
       'Auction prices are OCR-read from the community LiveMMCam stream.</div>';
 
@@ -690,7 +614,7 @@ function renderItem(id) {
   // Player trade value — 30-day high/low + 7-day average of player sell prices
   {
     const tv = tradeStats(it.name);
-    const logged = 'Logged in the companion app as people play.';
+    const logged = 'Read from live player auctions on the <a href="https://www.twitch.tv/livemmcam" target="_blank" rel="noopener">LiveMMCam stream</a> (PvP + PvE).';
     let body;
     if (tv && tv.n30) {
       const avg = tv.avg7 != null
@@ -707,7 +631,7 @@ function renderItem(id) {
       body = '<div class="note">No sales in the last 30 days. Last seen ' + coin(tv.allLow) +
         (tv.allHigh !== tv.allLow ? '–' + coin(tv.allHigh) : '') + ' (older data). ' + logged + '</div>';
     } else {
-      body = '<div class="note">No player trades logged yet. ' + logged + '</div>';
+      body = '<div class="note">No player auctions seen for this item yet. ' + logged + '</div>';
     }
     sections.push('<h2>Player trade value</h2>' + body);
   }
@@ -1548,7 +1472,7 @@ function renderSearch(q) {
 
 // ---- Browse tables (sortable) ----
 
-const browse = { view: null, key: 'name', dir: 1 };
+const browse = { view: null, key: 'name', dir: 1, effect: '' };
 
 const browseCols = {
   items: [
@@ -1598,6 +1522,7 @@ function browseRows(view) {
       shady: min != null && min < max ? min : null, // only if a genuinely lower price was seen
       harvested: i.harvested || 0,
       zones: (i.zones || []).join(', '),
+      effect: (i.wiki && i.wiki.effect) || null,
     };
   });
 }
@@ -1642,8 +1567,13 @@ function renderBrowse(view) {
     browse.key = view === 'mobs' ? 'valuekill' : 'name';
     browse.dir = view === 'mobs' ? -1 : 1;
   }
-  const cols = browseCols[view];
-  const rows = browseRows(view);
+  // Items can be filtered by their click/proc/worn effect; when a filter is active
+  // we insert an Effect column so the matching ability is visible.
+  const effOn = view === 'items' && browse.effect;
+  const effCol = { key: 'effect', label: 'Effect', noSort: true, render: (v) => v ? esc(v.name) + (v.trigger ? ' <span class="tag good">' + esc(v.trigger) + '</span>' : '') : '—' };
+  const cols = effOn ? [browseCols[view][0], effCol, ...browseCols[view].slice(1)] : browseCols[view];
+  let rows = browseRows(view);
+  if (effOn) rows = rows.filter((r) => r.effect && (browse.effect === 'any' || r.effect.trigger === browse.effect));
   rows.sort((a, b) => {
     let x = a[browse.key], y = b[browse.key];
     if (typeof x === 'string') return browse.dir * x.localeCompare(y);
@@ -1651,6 +1581,7 @@ function renderBrowse(view) {
     return browse.dir * (x - y);
   });
   const head = cols.map((c) => {
+    if (c.noSort) return '<th class="' + (c.num ? 'num' : '') + '">' + c.label + '</th>';
     const arrow = browse.key === c.key ? (browse.dir > 0 ? ' ▲' : ' ▼') : '';
     return '<th class="' + (c.num ? 'num ' : '') + 'sortable" onclick="setSort(\'' + c.key + '\')">' + c.label + arrow + '</th>';
   }).join('');
@@ -1668,7 +1599,11 @@ function renderBrowse(view) {
     (view === 'mobs' ? '<p class="sub">Prefer the art? Browse the <a href="#/bestiary"><b>illustrated Bestiary →</b></a></p>' : '') +
     (view === 'gathering' ? harvestNodesSection() : '') +
     '<h2 style="text-transform:capitalize">' + (view === 'gathering' ? 'All resources' : view) + '</h2>' +
-    '<p class="sub">Click a column heading to sort. Click a row to open it.</p>' +
+    '<p class="sub">Click a column heading to sort. Click a row to open it.' +
+      (view === 'items' ? ' Filter by item effect: <select class="inline-select" onchange="setBrowseEffect(this.value)">' +
+        ['', 'any', 'Click', 'Proc', 'Worn'].map((v) => '<option value="' + v + '"' + (browse.effect === v ? ' selected' : '') + '>' +
+          (v === '' ? 'Any' : v === 'any' ? 'Has an effect' : v === 'Click' ? 'Clicky' : v === 'Proc' ? 'Proc / combat' : 'Worn') + '</option>').join('') +
+        '</select>' + (effOn ? ' · <span class="sample">' + rows.length + ' with an effect</span>' : '') : '') + '</p>' +
     '<div class="card"><table><thead><tr>' + head + '</tr></thead><tbody>' + body + '</tbody></table></div>';
 }
 
@@ -1677,6 +1612,8 @@ window.setSort = (key) => {
   else { browse.key = key; browse.dir = key === 'name' ? 1 : -1; }
   renderBrowse(browse.view);
 };
+
+window.setBrowseEffect = (v) => { browse.effect = v; renderBrowse('items'); };
 
 // ---- Read-only map viewer ----
 
@@ -2778,6 +2715,18 @@ async function loadWikiStats() {
     for (const e of (t && t.trades) || []) {
       const k = String(e.item).toLowerCase();
       (TRADES[k] = TRADES[k] || []).push({ item: e.item, price: e.price, side: e.side === 'buy' ? 'buy' : 'sell', date: e.date });
+    }
+  } catch {}
+  // Live player prices now come from the LiveMMCam auction feed (auctions.json),
+  // not the retired manual trade log. Merge priced listings into TRADES so item
+  // pages, crafting economics and movers all reflect current market prices.
+  // (Prices are base-100 copper, same unit as trades.json — safe to combine.)
+  try {
+    AUCTIONS = AUCTIONS || await (await fetch('./auctions.json?v=' + Date.now())).json();
+    for (const l of (AUCTIONS && AUCTIONS.listings) || []) {
+      if (l.price == null) continue; // only priced listings inform value
+      const k = String(l.item).toLowerCase();
+      (TRADES[k] = TRADES[k] || []).push({ item: l.item, price: l.price, side: l.intent === 'buy' ? 'buy' : 'sell', date: l.seen, server: l.server });
     }
   } catch {}
   try {
