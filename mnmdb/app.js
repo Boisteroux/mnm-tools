@@ -2563,7 +2563,7 @@ async function renderAuctions() {
   const when = A.generatedAt ? new Date(A.generatedAt).toLocaleString() : '—';
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › auctions</div><h1>Auction House</h1>' +
-    '<p class="sub">Player buy/sell auctions from the LiveMMCam stream — PvP and PvE are separate markets. ' +
+    '<p class="sub">Player buy/sell auctions read from the <a href="https://www.twitch.tv/livemmcam" target="_blank" rel="noopener">LiveMMCam stream ↗</a> — PvP and PvE are separate markets. ' +
     A.listings.length + ' listings · ' + priced + ' priced · ' + A.requests.length + ' requests · updated ' + esc(when) + '. Hover an item for its stats.</p>' +
     '<div class="auc-controls"><input id="auc-q" placeholder="Search item or seller…">' +
     '<select id="auc-sort"><option value="new">Newest</option><option value="item">Item name</option><option value="price">Price (high→low)</option></select>' +
@@ -2617,9 +2617,9 @@ function aucPopHTML(item) {
     const e = s.effect, extra = [e.trigger || '', e.castTime ? 'Cast ' + esc(e.castTime) : '', e.level ? 'Lvl ' + e.level : ''].filter(Boolean).join(' · ');
     P.push('<div class="arow aeff"><span class="muted">Effect</span> <strong>' + esc(e.name) + '</strong>' + (extra ? ' <span class="muted">(' + esc(extra) + ')</span>' : '') + '</div>');
   }
-  P.push(row([s.slot ? 'Slot ' + esc(s.slot) : '', s.ac != null ? 'AC ' + s.ac : ''].filter(Boolean)));
+  P.push(row([s.slot ? 'Slot ' + esc(s.slot) : ''].filter(Boolean)));
   if (s.dmg != null || s.delay != null || s.skill) P.push(row([s.dmg != null ? 'DMG ' + s.dmg : '', s.delay != null ? 'Delay ' + s.delay : '', s.skill ? esc(s.skill) : ''].filter(Boolean)));
-  const st = Object.entries(s.stats || {}); if (st.length) P.push(chips(st));
+  const st = Object.entries(s.stats || {}); if (s.ac != null) st.unshift(['AC', s.ac]); if (st.length) P.push(chips(st));
   const vit = []; if (s.hp != null) vit.push(['HP', s.hp]); if (s.mana != null) vit.push(['Mana', s.mana]); if (s.haste != null) vit.push(['Haste', s.haste]);
   if (vit.length) P.push(chips(vit));
   const rz = Object.entries(s.resists || {}); if (rz.length) P.push(chips(rz));
@@ -2655,11 +2655,12 @@ function renderAdvanced() {
       '<input id="adv-name" placeholder="Item name contains…">' +
       '<select id="adv-slot"><option value="">Any slot</option>' + slots.map((s) => '<option>' + esc(s) + '</option>').join('') + '</select>' +
       '<input id="adv-class" placeholder="Class (e.g. FTR)">' +
+      '<select id="adv-effect"><option value="">Any effect</option><option value="any">Has an effect</option><option value="Click">Clicky</option><option value="Proc">Proc / combat</option><option value="Worn">Worn</option></select>' +
       '<label class="adv-check"><input type="checkbox" id="adv-magic"> MAGIC only</label>' +
     '</div>' +
     '<div class="adv-stats">' + statInputs + '</div>' +
     '<div id="adv-results"></div>';
-  ['adv-name', 'adv-slot', 'adv-class', 'adv-magic'].concat(ADV_STATS.map((s) => 'adv-' + s))
+  ['adv-name', 'adv-slot', 'adv-class', 'adv-effect', 'adv-magic'].concat(ADV_STATS.map((s) => 'adv-' + s))
     .forEach((id) => { const el = $(id); if (el) el.addEventListener('input', paintAdvanced); });
   paintAdvanced();
 }
@@ -2667,10 +2668,11 @@ function paintAdvanced() {
   const name = ($('adv-name').value || '').trim().toLowerCase();
   const slot = ($('adv-slot').value || '').toUpperCase();
   const cls = ($('adv-class').value || '').trim().toUpperCase();
+  const eff = $('adv-effect').value;
   const magic = $('adv-magic').checked;
   const mins = {};
   for (const s of ADV_STATS) { const v = $('adv-' + s).value; if (v !== '') mins[s] = +v; }
-  const anyFilter = name || slot || cls || magic || Object.keys(mins).length;
+  const anyFilter = name || slot || cls || eff || magic || Object.keys(mins).length;
   const box = $('adv-results');
   if (!anyFilter) { box.innerHTML = '<p class="sub">Enter a filter above to search.</p>'; return; }
   const results = DATA.items.filter((i) => {
@@ -2678,16 +2680,19 @@ function paintAdvanced() {
     if (name && !i.name.toLowerCase().includes(name)) return false;
     if (slot && (w.slot || '').toUpperCase() !== slot) return false;
     if (cls && !(w.class || '').toUpperCase().includes(cls)) return false;
+    if (eff) { if (!w.effect) return false; if (eff !== 'any' && (w.effect.trigger || '') !== eff) return false; }
     if (magic && !(w.flags && w.flags.includes('MAGIC'))) return false;
     for (const s in mins) if (advStatOf(w, s) < mins[s]) return false;
     return true;
   }).sort((a, b) => a.name.localeCompare(b.name));
   const cols = Object.keys(mins);
+  const showEff = !!eff;
   const shown = results.slice(0, 200);
   box.innerHTML = '<p class="sub">' + results.length + ' match' + (results.length === 1 ? '' : 'es') + (results.length > 200 ? ' — showing 200' : '') + '</p>' +
-    (shown.length ? '<div class="card"><table><thead><tr><th>Item</th><th>Slot</th><th>Class</th>' + cols.map((c) => '<th class="num">' + c + '</th>').join('') + '</tr></thead><tbody>' +
+    (shown.length ? '<div class="card"><table><thead><tr><th>Item</th><th>Slot</th><th>Class</th>' + (showEff ? '<th>Effect</th>' : '') + cols.map((c) => '<th class="num">' + c + '</th>').join('') + '</tr></thead><tbody>' +
       shown.map((i) => { const w = i.wiki; return '<tr><td>' + itemLink(i.id, i.name) + (w.flags && w.flags.includes('MAGIC') ? ' <span class="tag good">MAGIC</span>' : '') + '</td>' +
         '<td class="sample">' + esc(w.slot || '—') + '</td><td class="sample">' + esc(w.class || '—') + '</td>' +
+        (showEff ? '<td class="sample">' + (w.effect ? esc(w.effect.name) + (w.effect.trigger ? ' <span class="tag good">' + esc(w.effect.trigger) + '</span>' : '') : '—') + '</td>' : '') +
         cols.map((c) => '<td class="num">' + advStatOf(w, c) + '</td>').join('') + '</tr>'; }).join('') +
       '</tbody></table></div>' : '');
 }
