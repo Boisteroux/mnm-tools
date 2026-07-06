@@ -97,6 +97,10 @@ const copperToStr = (c) => {
   return parts.join(' ') || '0c';
 };
 
+// Strip OCR junk off the front/back of an item name ("/Swift…" → "Swift…",
+// "(Charred…" → "Charred…") without touching internal punctuation (apostrophes).
+const cleanItemName = (s) => String(s).replace(/^[^A-Za-z0-9]+|[^A-Za-z0-9)]+$/g, '').replace(/\s+/g, ' ').trim();
+
 // Parse one raw line for one server. Returns { listings:[], review:[], enrich:[] }.
 //   review  = things only a human can resolve (slang, ambiguous prices, freeform).
 //   enrich  = exact in-game item names not yet in our DB → auto-fetch from the wiki
@@ -111,14 +115,28 @@ function parseLine(raw, server, gloss, itemIndex) {
   const player = m[1];
   let msg = m[2].trim();
 
-  // Intent (WTS/WTB/…) off the front.
+  // Intent (WTS/WTB/…) off the front. Tolerant of OCR splits/garbage: "W TS",
+  // "W.T.B", "\WTT" all read correctly.
   let intent = null;
-  const im = msg.match(/^\s*(wts|wtb|wtt|selling|buying|iso|pc|price\s*check)\b[:,]?\s*/i);
-  if (im) { intent = gloss.intents[im[1].toLowerCase().replace(/\s+/g, ' ')] || null; msg = msg.slice(im[0].length).trim(); }
+  const im = msg.match(/^[\s\\/.]*(w[\s.]*t[\s.]*[sbt]\b|selling\b|buying\b|iso\b|pc\b|price\s*check\b)[:,]?\s*/i);
+  if (im) {
+    const t = im[1].toLowerCase();
+    const key = /^w/.test(t) ? t.replace(/[\s.]+/g, '') : t.replace(/\s+/g, ' ');
+    intent = gloss.intents[key] || null;
+    msg = msg.slice(im[0].length).trim();
+  }
 
   const bracket = [...msg.matchAll(/\[([^\]]+)\]/g)].map((x) => x[1].trim());
   const coinsAnywhere = parseCoins(msg, gloss.coins);
   const { perStack } = parseQty(msg);
+
+  // No verb but bracketed items present: a question ("worth?" / ends with ?) is a
+  // price-check; otherwise a bare item post in /auction is overwhelmingly a sell.
+  let assumedIntent = false;
+  if (!intent && bracket.length) {
+    if (/\bworth\b/i.test(msg) || /\?\s*$/.test(msg)) intent = 'inquiry';
+    else { intent = 'sell'; assumedIntent = true; }
+  }
 
   // Resolve a raw item name to a canonical wiki name (exact / case-insensitive / normalized).
   const resolve = (name) => {
@@ -133,9 +151,12 @@ function parseLine(raw, server, gloss, itemIndex) {
     // A price-check (PC) is a question, not a listing. Only keep it if a price is
     // attached (the useful part is the priced answer); a bare "PC [Item]" is ignored.
     if (intent === 'inquiry' && priceCopper == null) return;
-    const r = resolve(rawName);
+    const name = cleanItemName(rawName);
+    if (!name) return;
+    const r = resolve(name);
     listings.push({ server, player, intent, item: r.name, matched: r.matched,
-      priceCopper: priceCopper ?? null, qty: parseQty(msg).qty, perStack: perStack || undefined, note, raw });
+      priceCopper: priceCopper ?? null, qty: parseQty(msg).qty, perStack: perStack || undefined,
+      assumed: assumedIntent || undefined, note, raw });
     if (!r.matched) enrich.push(r.name); // exact name, just missing from our DB → auto-enrich
   };
 
@@ -180,9 +201,13 @@ function parseLine(raw, server, gloss, itemIndex) {
   const abbrevKey = candidate.toLowerCase();
   if (gloss.abbreviations[abbrevKey]) { addItem(gloss.abbreviations[abbrevKey], coinsAnywhere); return { listings, review, enrich, requests }; }
 
-  // A recognised (un-bracketed) item name?
-  const r = resolve(candidate);
-  if (r.matched) { addItem(candidate, coinsAnywhere); return { listings, review, enrich, requests }; }
+  // A recognised (un-bracketed) item name — try the candidate, then drop trailing
+  // words so "wood a stack" resolves to "Wood".
+  const cwords = candidate.split(/\s+/);
+  for (let end = cwords.length; end >= 1; end--) {
+    const sub = cwords.slice(0, end).join(' ');
+    if (resolve(sub).matched) { addItem(sub, coinsAnywhere); return { listings, review, enrich, requests }; }
+  }
 
   // Otherwise: don't guess. Route to review — is this slang, or a fuzzy/freeform request?
   // Stat/gear request (jewelcrafting demand) — capture in its own bucket, don't flag.
