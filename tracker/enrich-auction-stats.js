@@ -28,25 +28,32 @@ function parseFullStats(wt) {
   const m = wt.match(/\{\{\s*ItemBox([\s\S]*?)\n\}\}/i);
   if (!m) return null;
   const p = W.templateParams(m[1]);
-  const pick = (map) => { const o = {}; for (const [label, key] of Object.entries(map)) { const n = num(p[key]); if (n != null && n !== 0) o[label] = n; } return o; };
+  // Legacy items (esp. crafting materials) pack their stats into an item_stats blob
+  // ("Weight: 0.1<br>Size: Small") instead of per-field params — read both.
+  const blob = (p.item_stats || '').replace(/<br\s*\/?>/gi, '\n');
+  const grab = (rx) => { const x = blob.match(rx); return x ? x[1].trim() : null; };
+  const numF = (modern, rx) => { let v = num(modern); if (v == null) v = num(grab(rx)); return v; };
+  const strF = (modern, rx) => (modern && String(modern).trim()) ? String(modern).trim() : grab(rx);
+  const pick = (map) => { const o = {}; for (const [label, key] of Object.entries(map)) { let n = num(p[key]); if (n == null) n = num(grab(new RegExp('\\b' + label + ':?\\s*([+-]?[0-9.]+)', 'i'))); if (n != null && n !== 0) o[label] = n; } return o; };
+  const flag = (name, param) => on(p[param]) || new RegExp('\\b' + name.replace(/ /g, '\\s*') + '\\b', 'i').test(blob);
   const flags = [];
-  if (on(p.magic)) flags.push('MAGIC');
-  if (on(p.lore)) flags.push('LORE');
-  if (on(p.unique)) flags.push('UNIQUE');
-  if (on(p.nodrop)) flags.push('NO DROP');
-  if (on(p.norent)) flags.push('NO RENT');
+  if (flag('MAGIC', 'magic')) flags.push('MAGIC');
+  if (flag('LORE', 'lore')) flags.push('LORE');
+  if (flag('UNIQUE', 'unique')) flags.push('UNIQUE');
+  if (flag('NO DROP', 'nodrop')) flags.push('NO DROP');
+  if (flag('NO RENT', 'norent')) flags.push('NO RENT');
   return {
     iconId: p.icon_id || null,
     flags,
-    slot: p.slot || null, handed: p.handed || null,
-    dmg: num(p.dmg), delay: num(p.delay), skill: p.skill || null,
-    ac: num(p.ac),
+    slot: strF(p.slot, /Slot:\s*([^\n<]+)/i), handed: p.handed || null,
+    dmg: numF(p.dmg, /(?:Weapon\s*)?DMG:\s*([\d.]+)/i), delay: numF(p.delay, /(?:ATK\s*)?Delay:\s*([\d.]+)/i), skill: strF(p.skill, /Skill:\s*([A-Za-z ]{2,})/i),
+    ac: numF(p.ac, /\bAC:\s*([\d.]+)/i),
     stats: pick(STAT_KEYS),
-    hp: num(p.hp), mana: num(p.mana), hpRegen: num(p.hp_regen), manaRegen: num(p.mana_regen), haste: num(p.haste),
+    hp: numF(p.hp, /\bHP:\s*([+-]?[\d.]+)/i), mana: numF(p.mana, /\bMana:\s*([+-]?[\d.]+)/i), hpRegen: num(p.hp_regen), manaRegen: num(p.mana_regen), haste: num(p.haste),
     resists: pick(RESIST_KEYS),
     instr: pick(INSTR_KEYS),
-    weight: num(p.weight), size: (p.size || '').toUpperCase() || null,
-    class: p.class || null, race: p.race || null,
+    weight: numF(p.weight, /Weight:\s*([\d.]+)/i), size: (strF(p.size, /Size:\s*([A-Za-z ]+)/i) || '').toUpperCase().trim() || null,
+    class: strF(p.class, /Class:\s*([^\n<]+)/i), race: strF(p.race, /Race:\s*([^\n<]+)/i),
   };
 }
 
@@ -58,8 +65,9 @@ async function buildStats() {
   const statsPath = path.join(DATA, 'stats.json');
   let stats = {}; try { stats = JSON.parse(fs.readFileSync(statsPath, 'utf8')); } catch {}
 
-  // Fetch anything we haven't fully parsed yet (upgrades old partial entries too).
-  const toFetch = names.filter((n) => !(stats[n.toLowerCase()] && stats[n.toLowerCase()].full));
+  // Fetch anything not yet parsed at the current schema version (v bump re-fetches all).
+  const V = 3;
+  const toFetch = names.filter((n) => ((stats[n.toLowerCase()] || {}).v || 0) < V);
   if (!toFetch.length) { console.log(`[${new Date().toISOString()}] stats up to date (${Object.keys(stats).length} items)`); return { total: Object.keys(stats).length, fetched: 0 }; }
 
   const cand = new Map(toFetch.map((n) => [n, [...new Set([n, W.titleCaseName(n)])]]));
@@ -76,11 +84,12 @@ async function buildStats() {
     let hit = null;
     for (const c of cand.get(n)) { const k = lc.get(c.toLowerCase()); if (k) { hit = k; break; } }
     const full = hit ? parseFullStats(texts[hit]) : null;
-    if (!full) { stats[n.toLowerCase()] = { name: hit || n, full: true, hasPage: false }; continue; }
+    if (!full) { stats[n.toLowerCase()] = { name: hit || n, full: true, v: V, hasPage: false }; continue; }
     const src = W.parseSources(texts[hit]);
     const soldBy = W.parseSoldBy(texts[hit]);
-    fetched[n.toLowerCase()] = Object.assign({ name: hit, full: true, hasPage: true }, full,
-      { zones: src.zones, from: (src.from || []).slice(0, 6), vendor: (soldBy && soldBy.base != null) ? soldBy.base : null });
+    const tradeskills = W.parseTradeskills(texts[hit]);
+    fetched[n.toLowerCase()] = Object.assign({ name: hit, full: true, v: V, hasPage: true }, full,
+      { tradeskills, zones: src.zones, from: (src.from || []).slice(0, 6), vendor: (soldBy && soldBy.base != null) ? soldBy.base : null });
   }
 
   // Resolve icons for the freshly fetched, then drop the internal iconId.
