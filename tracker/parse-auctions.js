@@ -37,6 +37,20 @@ function loadItemIndex() {
 
 const norm = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 
+// OCR wraps long auctions across several visual lines. Re-join them into one logical
+// line each: a new auction always begins with "<Name> auctions"; anything else is a
+// continuation of the line above.
+function foldOcrLines(text) {
+  const out = [];
+  for (const raw of String(text).split(/\r?\n/)) {
+    const line = raw.trim();
+    if (!line) continue;
+    if (/^\S+\s+auctions\b/i.test(line) || out.length === 0) out.push(line);
+    else out[out.length - 1] += ' ' + line;
+  }
+  return out.filter((l) => /\bauctions\b/i.test(l));
+}
+
 // Sum every coin amount in a string -> copper. "1.5g" -> 15000, "35 s" -> 3500,
 // "1g 5s" -> 10500. Returns null if no coin token is present.
 function parseCoins(text, coins) {
@@ -63,7 +77,7 @@ function parseQty(text) {
 // A stat/gear "request" (jewelcrafting demand), e.g. "+4 or +5 str/agi or str/dex gear".
 // Not an item sale — someone wants a crafter to make gear/jewelry with these stats.
 const STAT_WORDS = ['str', 'sta', 'agi', 'dex', 'int', 'wis', 'cha', 'hp', 'mana', 'ac', 'atk', 'dmg', 'regen', 'resist', 'resists', 'haste', 'heal', 'healing'];
-const GEAR_WORDS = ['gear', 'jewelry', 'jewellery', 'ring', 'earring', 'necklace', 'amulet', 'bracelet', 'armor', 'armour', 'weapon', 'shield'];
+const GEAR_WORDS = ['gear', 'jewelry', 'jewellery', 'jewelery', 'jeweler', 'jewelcraft', 'ring', 'earring', 'necklace', 'amulet', 'bracelet', 'armor', 'armour', 'weapon', 'shield'];
 function extractStats(text) {
   const t = text.toLowerCase();
   const plus = [...new Set([...t.matchAll(/\+\s*(\d+)/g)].map((m) => +m[1]))];
@@ -99,8 +113,8 @@ function parseLine(raw, server, gloss, itemIndex) {
 
   // Intent (WTS/WTB/…) off the front.
   let intent = null;
-  const im = msg.match(/^\s*(wts|wtb|wtt|selling|buying|iso)\b[:,]?\s*/i);
-  if (im) { intent = gloss.intents[im[1].toLowerCase()] || null; msg = msg.slice(im[0].length).trim(); }
+  const im = msg.match(/^\s*(wts|wtb|wtt|selling|buying|iso|pc|price\s*check)\b[:,]?\s*/i);
+  if (im) { intent = gloss.intents[im[1].toLowerCase().replace(/\s+/g, ' ')] || null; msg = msg.slice(im[0].length).trim(); }
 
   const bracket = [...msg.matchAll(/\[([^\]]+)\]/g)].map((x) => x[1].trim());
   const coinsAnywhere = parseCoins(msg, gloss.coins);
@@ -129,19 +143,18 @@ function parseLine(raw, server, gloss, itemIndex) {
   }
 
   // --- Case C: multiple bracketed items. ---
+  // Give each item the price that appears AFTER it and before the next item — this
+  // reads the common "[Item] 8g [Item] 20s" / "[Item] 35s / [Item] 35s" forms.
   if (bracket.length > 1) {
-    if (coinsAnywhere == null) {
-      bracket.forEach((b) => addItem(b, null)); // all availability, no price — clean
+    const its = [...msg.matchAll(/\[([^\]]+)\]/g)].map((x) => ({ name: x[1].trim(), start: x.index, end: x.index + x[0].length }));
+    const priced = its.map((it, i) => ({ name: it.name, price: parseCoins(msg.slice(it.end, i + 1 < its.length ? its[i + 1].start : msg.length), gloss.coins) }));
+    if (priced.some((p) => p.price != null)) {
+      priced.forEach((p) => addItem(p.name, p.price)); // at least one item→price mapped; use per-item windows
+    } else if (coinsAnywhere != null) {
+      bracket.forEach((b) => addItem(b, null)); // prices exist but as prose ("1 for 50s, 2 for 80s") — keep availability…
+      push({ reason: 'complex-pricing', detail: `bundle/quantity pricing (${copperToStr(coinsAnywhere)} seen), items listed as available` }); // …and flag once
     } else {
-      // Try "[item] price / [item] price" slash form; else it's ambiguous.
-      const segs = msg.split('/').map((s) => s.trim());
-      const oneItemEach = segs.length === bracket.length && segs.every((s) => (s.match(/\[[^\]]+\]/g) || []).length === 1);
-      if (oneItemEach) {
-        segs.forEach((s) => addItem(s.match(/\[([^\]]+)\]/)[1].trim(), parseCoins(s, gloss.coins)));
-      } else {
-        bracket.forEach((b) => addItem(b, null)); // keep availability…
-        push({ reason: 'ambiguous-price', detail: `${bracket.length} items but prices can't be mapped 1:1 (${copperToStr(coinsAnywhere)} seen)` }); // …and ask
-      }
+      bracket.forEach((b) => addItem(b, null)); // no prices at all — clean availability
     }
     return { listings, review, enrich, requests };
   }
@@ -193,7 +206,7 @@ function parseAuctions(rows, opts = {}) {
   return { listings, review, requests, enrich: [...enrichSet] };
 }
 
-module.exports = { parseAuctions, parseLine, parseCoins, copperToStr, loadGlossary, loadItemIndex };
+module.exports = { parseAuctions, parseLine, parseCoins, copperToStr, loadGlossary, loadItemIndex, foldOcrLines };
 
 // ---- CLI report ----
 if (require.main === module) {
