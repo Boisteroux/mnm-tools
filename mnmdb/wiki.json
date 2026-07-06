@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-06T18:10:29.985Z",
+  "generatedAt": "2026-07-06T18:40:31.295Z",
   "items": {
     "Bone Chips": {
       "hasPage": true,
@@ -44445,6 +44445,360 @@
       "hasPage": false,
       "wikiOnly": true,
       "fromTrade": true
+    },
+    "Ghoul Skin": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0199AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Ancient Crypt",
+        "Fallen Pass"
+      ],
+      "from": [
+        "a ghastly cook",
+        "a ghoulish scholar",
+        "Brahson the Butcher",
+        "a Plagueborn knight",
+        "a Plagueborn watchman",
+        "a Plagueborn veteran"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/39/Itemicon0199AA.png/64px-Itemicon0199AA.png"
+    },
+    "Noble Bone Earring": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "TINY",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [
+        "MAGIC",
+        "LORE"
+      ],
+      "handed": null,
+      "ac": 1,
+      "stats": {
+        "INT": 2
+      },
+      "hp": null,
+      "mana": 10,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Night Harbor"
+      ],
+      "from": [
+        "a noble skeleton"
+      ]
+    },
+    "Inlaid Jasper Bronze Necklace": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Sapphire Silver Earring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Jasper Silver Earring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Cat's Eye Agate Silver Earring": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0000AA",
+      "slot": "EAR",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": 1,
+      "stats": {
+        "INT": 3,
+        "CHA": 3
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/1/17/Itemicon0000AA.png/64px-Itemicon0000AA.png"
+    },
+    "Patina Mask": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "SMALL",
+      "class": "BST CRT DRU PAL RNG SHM",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 7,
+      "stats": {
+        "STR": 1,
+        "WIS": 4
+      },
+      "hp": null,
+      "mana": 5,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "CORR": 3
+      },
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Pass"
+      ],
+      "from": [
+        "Kallen Oison"
+      ]
+    },
+    "Inlaid Cat's Eye Agate Copper Ring": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0098AW",
+      "slot": "FINGER",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": 1,
+      "stats": {
+        "INT": 1,
+        "CHA": 1
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "tradeskills": [
+        "Jewelcrafting"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/1/18/Itemicon0098AW.png/64px-Itemicon0098AW.png"
+    },
+    "Inlaid Sapphire Copper Earring": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0103AE",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "INT": 1
+      },
+      "hp": null,
+      "mana": 5,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "tradeskills": [
+        "Jewelcrafting"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/8/8e/Itemicon0103AE.png/64px-Itemicon0103AE.png"
+    },
+    "Inlaid Sapphire Copper Ring": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0098AE",
+      "slot": "FINGER",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": 1,
+      "stats": {
+        "INT": 1
+      },
+      "hp": null,
+      "mana": 5,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "tradeskills": [
+        "Jewelcrafting"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/1/1f/Itemicon0098AE.png/64px-Itemicon0098AE.png"
+    },
+    "Enchant Necklace: Wisdom": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Foul Chitin Bracer": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0042AC",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "MEDIUM",
+      "class": "All",
+      "race": "ALL",
+      "flags": [
+        "MAGIC",
+        "UNIQUE"
+      ],
+      "handed": null,
+      "ac": 7,
+      "stats": {
+        "STR": 5,
+        "STA": 3
+      },
+      "hp": 5,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Pass"
+      ],
+      "from": [
+        "Necroferius"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/fe/Itemicon0042AC.png/64px-Itemicon0042AC.png"
+    },
+    "Antique Ceramic Fragment": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0132AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "TINY",
+      "class": null,
+      "race": null,
+      "flags": [
+        "UNIQUE"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Shaded Dunes"
+      ],
+      "from": [
+        "A bandit"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/d/d0/Itemicon0132AA.png/64px-Itemicon0132AA.png"
     }
   },
   "mobs": {
