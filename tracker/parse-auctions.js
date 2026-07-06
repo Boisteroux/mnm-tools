@@ -132,7 +132,7 @@ function parseLine(raw, server, gloss, itemIndex) {
   const addItem = (rawName, priceCopper, note) => {
     const r = resolve(rawName);
     listings.push({ server, player, intent, item: r.name, matched: r.matched,
-      priceCopper: priceCopper ?? null, qty: parseQty(msg).qty, perStack: perStack || undefined, note });
+      priceCopper: priceCopper ?? null, qty: parseQty(msg).qty, perStack: perStack || undefined, note, raw });
     if (!r.matched) enrich.push(r.name); // exact name, just missing from our DB → auto-enrich
   };
 

@@ -89,7 +89,7 @@ function runCycle() {
   for (const l of listings) {
     const s = sig(l);
     if (agg[s]) { agg[s].count++; agg[s].lastSeen = now; }
-    else { agg[s] = { sig: s, server: l.server, intent: l.intent, item: l.item, matched: l.matched, priceCopper: l.priceCopper, price: l.priceCopper == null ? null : P.copperToStr(l.priceCopper), qty: l.qty || null, player: l.player, firstSeen: now, lastSeen: now, count: 1 }; added++; }
+    else { agg[s] = { sig: s, server: l.server, intent: l.intent, item: l.item, matched: l.matched, priceCopper: l.priceCopper, price: l.priceCopper == null ? null : P.copperToStr(l.priceCopper), qty: l.qty || null, player: l.player, raw: l.raw, firstSeen: now, lastSeen: now, count: 1 }; added++; }
   }
   for (const r of reqs) { const s = ['req', r.server, r.player, r.text].join('|').toLowerCase(); if (requests[s]) { requests[s].count++; requests[s].lastSeen = now; } else { requests[s] = Object.assign({ sig: s, firstSeen: now, lastSeen: now, count: 1 }, r); } }
   for (const r of review) { const k = [r.reason, r.detail].join('|'); if (!reviewMap[k]) reviewMap[k] = Object.assign({ key: k, firstSeen: now }, r); }
