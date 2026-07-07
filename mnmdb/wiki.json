@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-07T03:41:31.046Z",
+  "generatedAt": "2026-07-07T04:41:35.618Z",
   "items": {
     "Bone Chips": {
       "hasPage": true,
@@ -50997,6 +50997,131 @@
         "High Marshal Fionna"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/0/0a/Itemicon0175AC.png/64px-Itemicon0175AC.png"
+    },
+    "Fine Black Robe": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "itemicon0021AE",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 1.1,
+      "size": "MEDIUM",
+      "class": "ELE ENC NEC WIZ",
+      "race": "ALL",
+      "flags": [
+        "MAGIC",
+        "UNIQUE"
+      ],
+      "handed": null,
+      "ac": 21,
+      "stats": {
+        "STA": 4,
+        "INT": 5,
+        "CHA": 4
+      },
+      "hp": null,
+      "mana": 15,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Night Harbor"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/b/b7/Itemicon0021AE.png"
+    },
+    "Mirebloom Choker": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Wayfarer's Vambrace": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 14,
+      "stats": {
+        "DEX": 5
+      },
+      "hp": 40,
+      "mana": 10,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Vale of Zintar"
+      ],
+      "from": [
+        "Zubair Goldtongue"
+      ]
+    },
+    "Lunar Festival Wrappings": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0021AD",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 1.1,
+      "size": "MEDIUM",
+      "class": "All",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 19,
+      "stats": {
+        "STR": 5,
+        "STA": 3
+      },
+      "hp": 10,
+      "mana": 15,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "MR": 6
+      },
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Shallow Shoals"
+      ],
+      "from": [
+        "Brother Luka",
+        "Pelts for the Festival"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/33/Itemicon0021AD.png/64px-Itemicon0021AD.png"
     }
   },
   "mobs": {
