@@ -63,26 +63,39 @@ rows = rows.filter((l) => (perServer[l.server] = (perServer[l.server] || 0) + 1)
 // fairly. "each"/"ea" in the raw means the price is already per-unit; otherwise a
 // qty ("x4") or "stack" (20 units) means the price is the whole-lot total.
 const STACK = 20; // a stack = 20 units for tradeable materials (confirmed with Zak)
+const COIN = { p: 1e6, pp: 1e6, plat: 1e6, platinum: 1e6, g: 1e4, gp: 1e4, gold: 1e4, s: 1e2, sp: 1e2, silver: 1e2, c: 1, cp: 1, copper: 1 };
+// The price stated right before "each" (e.g. "1.5g each") — read straight from the
+// raw so compound posts like "1.5g each or 90g for all" don't get the two prices
+// summed together (a quirk of the coin parser).
+function eachPrice(raw) {
+  const m = raw.match(/([\d.]+)\s*(pp|platinum|plat|gp|gold|sp|silver|cp|copper|p|g|s|c)\s*(?:ea|each)\b/);
+  return m && COIN[m[2]] != null ? Math.round(parseFloat(m[1]) * COIN[m[2]]) : null;
+}
 function normalize(l) {
   const price = l.priceCopper;
-  if (price == null) return { unit: null, total: null };
-  const n = l.perStack ? STACK : (l.qty && l.qty > 1 ? l.qty : 1);
-  if (n <= 1) return { unit: price, total: price };
-  const raw = (l.raw || '').toLowerCase();
-  // Decide whether the stated price is already per-unit or a whole-lot total.
-  const takeAll = /\btake all\b|\ball for\b|\bfor all\b|\bthe lot\b/.test(raw);          // explicit total
+  if (price == null) return { unit: null, total: null, perStack: false };
+  const qty = l.qty && l.qty > 1 ? l.qty : 1;
+  const raw = (l.raw || '').toLowerCase().replace(/\[[^\]]*\]/g, ' '); // ignore item names in [brackets]
   const each = /\b(?:ea|each)\b|\/\s*ea\b/.test(raw);                                     // explicit per-unit
+  const stack = l.perStack || /\bstacks?\b/.test(raw);                                    // "a stack" = a 20-unit lot
+  const takeAll = /\btake all\b|\ball for\b|\bfor all\b|\bthe lot\b/.test(raw);           // explicit whole-lot total
   const priceThenQty = /\d+(?:\.\d+)?\s*(?:pp|p|plat|platinum|gp|g|gold|sp|s|silver|cp|c|copper)\s*x\s*\d+/.test(raw); // "1.1g x28" = per-unit
-  const perUnit = (each || priceThenQty) && !takeAll;
-  return perUnit ? { unit: price, total: price * n } : { unit: Math.round(price / n), total: price };
+  // A stack price ("30g a stack") is per 20 units — unless it also says "each"
+  // (then the price is already per-unit). This is the confirmed "stack = 20" rule.
+  if (stack && !each) return { unit: Math.round(price / STACK), total: price, perStack: true };
+  if (each || priceThenQty) {
+    const u = (each && eachPrice(raw)) || price; // prefer the price read right before "each"
+    return { unit: u, total: qty > 1 ? u * qty : u, perStack: false };
+  }
+  return { unit: Math.round(price / qty), total: price, perStack: false };                // default: price is the whole lot
 }
 
 const listings = rows.map((l) => {
-  const { unit, total } = normalize(l);
+  const { unit, total, perStack } = normalize(l);
   return {
     server: l.server, intent: l.intent || null, item: l.item,
     price: total, unit, priceStr: total != null ? copperToStr(total) : null,
-    player: l.player, seen: l.firstSeen, qty: l.qty || undefined, perStack: l.perStack || undefined,
+    player: l.player, seen: l.firstSeen, qty: l.qty || undefined, perStack: perStack || l.perStack || undefined,
     assumed: l.assumed || undefined, matched: wikiNames.has(l.item.toLowerCase()),
   };
 });
