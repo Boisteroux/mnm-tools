@@ -2659,6 +2659,27 @@ function aucHoverInit() {
 // ---- Advanced (stat) search ----
 const ADV_STATS = ['STR', 'STA', 'AGI', 'DEX', 'INT', 'WIS', 'CHA', 'AC', 'HP'];
 const advStatOf = (w, s) => s === 'AC' ? (w.ac || 0) : s === 'HP' ? (w.hp || 0) : ((w.stats && w.stats[s]) || 0);
+
+// Lowercased mob name → level (only mobs whose level we know). Built once.
+let _mobLevels = null;
+function mobLevelByName() {
+  if (_mobLevels) return _mobLevels;
+  _mobLevels = {};
+  for (const [n, d] of Object.entries(DATA.mobs || {})) { const l = mobLevel(d); if (Number.isFinite(l)) _mobLevels[n.toLowerCase()] = l; }
+  return _mobLevels;
+}
+// The lowest-level mob known to drop this item (observed drops + the wiki's "from"
+// list). null when no dropper's level is known. Powers the "max mob level" filter —
+// a level-20 player can find gear farmable from mobs at or below their level.
+function itemMinDropperLevel(i) {
+  const ml = mobLevelByName();
+  const names = new Set();
+  (i.droppedBy || []).forEach((d) => d.mob && names.add(d.mob.toLowerCase()));
+  ((i.wiki && i.wiki.from) || []).forEach((n) => names.add(String(n).toLowerCase()));
+  let min = Infinity;
+  for (const n of names) { const l = ml[n]; if (l != null && l < min) min = l; }
+  return min === Infinity ? null : min;
+}
 function renderAdvanced() {
   const slots = [...new Set(DATA.items.map((i) => i.wiki && i.wiki.slot).filter(Boolean).map((s) => s.toUpperCase()))].sort();
   const statInputs = ADV_STATS.map((s) => '<label class="adv-stat">' + s + ' ≥ <input type="number" id="adv-' + s + '" min="0" inputmode="numeric"></label>').join('');
@@ -2670,11 +2691,12 @@ function renderAdvanced() {
       '<select id="adv-slot"><option value="">Any slot</option>' + slots.map((s) => '<option>' + esc(s) + '</option>').join('') + '</select>' +
       '<input id="adv-class" placeholder="Class (e.g. FTR)">' +
       '<select id="adv-effect"><option value="">Any effect</option><option value="any">Has an effect</option><option value="Click">Clicky</option><option value="Proc">Proc / combat</option><option value="Worn">Worn</option></select>' +
+      '<input id="adv-maxlvl" type="number" min="1" inputmode="numeric" placeholder="Max mob level">' +
       '<label class="adv-check"><input type="checkbox" id="adv-magic"> MAGIC only</label>' +
     '</div>' +
     '<div class="adv-stats">' + statInputs + '</div>' +
     '<div id="adv-results"></div>';
-  ['adv-name', 'adv-slot', 'adv-class', 'adv-effect', 'adv-magic'].concat(ADV_STATS.map((s) => 'adv-' + s))
+  ['adv-name', 'adv-slot', 'adv-class', 'adv-effect', 'adv-maxlvl', 'adv-magic'].concat(ADV_STATS.map((s) => 'adv-' + s))
     .forEach((id) => { const el = $(id); if (el) el.addEventListener('input', paintAdvanced); });
   paintAdvanced();
 }
@@ -2683,32 +2705,164 @@ function paintAdvanced() {
   const slot = ($('adv-slot').value || '').toUpperCase();
   const cls = ($('adv-class').value || '').trim().toUpperCase();
   const eff = $('adv-effect').value;
+  const maxlvlRaw = $('adv-maxlvl').value;
+  const maxlvl = maxlvlRaw !== '' ? +maxlvlRaw : null;
   const magic = $('adv-magic').checked;
   const mins = {};
   for (const s of ADV_STATS) { const v = $('adv-' + s).value; if (v !== '') mins[s] = +v; }
-  const anyFilter = name || slot || cls || eff || magic || Object.keys(mins).length;
+  const anyFilter = name || slot || cls || eff || maxlvl != null || magic || Object.keys(mins).length;
   const box = $('adv-results');
   if (!anyFilter) { box.innerHTML = '<p class="sub">Enter a filter above to search.</p>'; return; }
-  const results = DATA.items.filter((i) => {
+  const results = DATA.items.map((i) => ({ i, dropLvl: maxlvl != null ? itemMinDropperLevel(i) : null })).filter(({ i, dropLvl }) => {
     const w = i.wiki; if (!w) return false;
     if (name && !i.name.toLowerCase().includes(name)) return false;
     if (slot && (w.slot || '').toUpperCase() !== slot) return false;
     if (cls && !(w.class || '').toUpperCase().includes(cls)) return false;
     if (eff) { if (!w.effect) return false; if (eff !== 'any' && (w.effect.trigger || '') !== eff) return false; }
+    if (maxlvl != null && (dropLvl == null || dropLvl > maxlvl)) return false; // farmable from a mob at/below this level
     if (magic && !(w.flags && w.flags.includes('MAGIC'))) return false;
     for (const s in mins) if (advStatOf(w, s) < mins[s]) return false;
     return true;
-  }).sort((a, b) => a.name.localeCompare(b.name));
+  }).sort((a, b) => maxlvl != null ? (a.dropLvl - b.dropLvl) || a.i.name.localeCompare(b.i.name) : a.i.name.localeCompare(b.i.name));
   const cols = Object.keys(mins);
-  const showEff = !!eff;
+  const showEff = !!eff, showLvl = maxlvl != null;
   const shown = results.slice(0, 200);
-  box.innerHTML = '<p class="sub">' + results.length + ' match' + (results.length === 1 ? '' : 'es') + (results.length > 200 ? ' — showing 200' : '') + '</p>' +
-    (shown.length ? '<div class="card"><table><thead><tr><th>Item</th><th>Slot</th><th>Class</th>' + (showEff ? '<th>Effect</th>' : '') + cols.map((c) => '<th class="num">' + c + '</th>').join('') + '</tr></thead><tbody>' +
-      shown.map((i) => { const w = i.wiki; return '<tr><td>' + itemLink(i.id, i.name) + (w.flags && w.flags.includes('MAGIC') ? ' <span class="tag good">MAGIC</span>' : '') + '</td>' +
+  box.innerHTML = '<p class="sub">' + results.length + ' match' + (results.length === 1 ? '' : 'es') + (results.length > 200 ? ' — showing 200' : '') +
+      (showLvl ? ' · dropped by mobs ≤ L' + maxlvl + ' (whose level we know)' : '') + '</p>' +
+    (shown.length ? '<div class="card"><table><thead><tr><th>Item</th><th>Slot</th><th>Class</th>' + (showEff ? '<th>Effect</th>' : '') + (showLvl ? '<th class="num">Drop lvl</th>' : '') + cols.map((c) => '<th class="num">' + c + '</th>').join('') + '</tr></thead><tbody>' +
+      shown.map(({ i, dropLvl }) => { const w = i.wiki; return '<tr><td>' + itemLink(i.id, i.name) + (w.flags && w.flags.includes('MAGIC') ? ' <span class="tag good">MAGIC</span>' : '') + '</td>' +
         '<td class="sample">' + esc(w.slot || '—') + '</td><td class="sample">' + esc(w.class || '—') + '</td>' +
         (showEff ? '<td class="sample">' + (w.effect ? esc(w.effect.name) + (w.effect.trigger ? ' <span class="tag good">' + esc(w.effect.trigger) + '</span>' : '') : '—') + '</td>' : '') +
+        (showLvl ? '<td class="num">' + (dropLvl != null ? 'L' + dropLvl : '—') + '</td>' : '') +
         cols.map((c) => '<td class="num">' + advStatOf(w, c) + '</td>').join('') + '</tr>'; }).join('') +
       '</tbody></table></div>' : '');
+}
+
+// ---- Best in Slot (subjective, weighted by your stat priorities) ----
+// Equipment slots and how many of each you can wear. Weapons are handled apart
+// (2-hander vs main-hand + off-hand). Order = how they render, head → feet.
+const BIS_SLOTS = [
+  { key: 'HEAD', label: 'Head', n: 1 }, { key: 'FACE', label: 'Face', n: 1 }, { key: 'EAR', label: 'Ears', n: 2 },
+  { key: 'NECK', label: 'Neck', n: 1 }, { key: 'SHOULDERS', label: 'Shoulders', n: 1 }, { key: 'BACK', label: 'Back', n: 1 },
+  { key: 'CHEST', label: 'Chest', n: 1 }, { key: 'SHIRT', label: 'Shirt', n: 1 }, { key: 'WRIST', label: 'Wrists', n: 2 },
+  { key: 'HANDS', label: 'Hands', n: 1 }, { key: 'FINGER', label: 'Rings', n: 2 }, { key: 'WAIST', label: 'Waist', n: 1 },
+  { key: 'LEGS', label: 'Legs', n: 1 }, { key: 'FEET', label: 'Feet', n: 1 }, { key: 'RANGE', label: 'Range', n: 1 },
+];
+// Wiki slot text is messy (multi-slot, typos, stray HTML entities). Map tokens to
+// canonical slots. TWO/HANDED marks a 2-hander (blocks the off-hand).
+const SLOT_NORM = {
+  HEAD: 'HEAD', FACE: 'FACE', EAR: 'EAR', EARRING: 'EAR', NECK: 'NECK', SHOULDER: 'SHOULDERS', SHOULDERS: 'SHOULDERS',
+  BACK: 'BACK', CLOAK: 'BACK', CHEST: 'CHEST', CHES: 'CHEST', CEHST: 'CHEST', SHIRT: 'SHIRT', WRIST: 'WRIST', WRISTS: 'WRIST',
+  HAND: 'HANDS', HANDS: 'HANDS', FINGER: 'FINGER', RING: 'FINGER', WAIST: 'WAIST', WAISTE: 'WAIST', BELT: 'WAIST',
+  LEGS: 'LEGS', LEG: 'LEGS', FEET: 'FEET', BOOTS: 'FEET', PRIMARY: 'PRIMARY', SECONDARY: 'SECONDARY', RANGE: 'RANGE', AMMO: 'AMMO',
+};
+function itemSlots(str) {
+  const s = String(str || '');
+  const twoH = /two\s*hand|2\s*h(and)?\b/i.test(s);
+  const toks = s.replace(/&[a-z]+;/gi, ' ').toUpperCase().split(/[^A-Z]+/).filter(Boolean);
+  const slots = new Set();
+  for (const t of toks) if (SLOT_NORM[t]) slots.add(SLOT_NORM[t]);
+  return { slots, twoH };
+}
+// Priority stats offered (attributes, defenses, resists).
+const BIS_STATS = ['STR', 'STA', 'AGI', 'DEX', 'INT', 'WIS', 'CHA', 'AC', 'HP', 'MANA', 'MR', 'FR', 'CR', 'PR', 'DR'];
+const BIS_RESISTS = new Set(['MR', 'FR', 'CR', 'PR', 'DR', 'COR', 'ER', 'HR']);
+function bisStatVal(w, s) {
+  if (!w) return 0;
+  if (s === 'AC') return w.ac || 0;
+  if (s === 'HP') return w.hp || 0;
+  if (s === 'MANA') return w.mana || 0;
+  if (BIS_RESISTS.has(s)) return (w.resists && w.resists[s]) || 0;
+  return (w.stats && w.stats[s]) || 0;
+}
+const BIS_WEIGHTS = [1, 0.7, 0.5]; // 1st priority = 1.0/pt, 2nd = 0.7, 3rd = 0.5
+function bisClassFits(w, cls) {
+  const c = (w.class || '').toUpperCase();
+  if (!cls) return true;
+  if (!c || c.includes('ALL')) return true;
+  return new RegExp('\\b' + cls + '\\b').test(c);
+}
+// Pick the highest-scoring wearable item for every slot, given a class + ordered
+// priorities. Returns [{ slotLabel, item, score }]. Weapons: compares the best
+// 2-hander against the best main-hand + off-hand and keeps whichever scores more.
+function computeBis(cls, priorities) {
+  const score = (w) => priorities.reduce((s, p, idx) => s + (BIS_WEIGHTS[idx] || 0) * bisStatVal(w, p), 0);
+  const armor = {}; // slotKey -> [{ item, sc }]
+  const wpn = { primary: [], secondary: [], twoH: [] };
+  for (const i of DATA.items) {
+    const w = i.wiki; if (!w || !w.slot || !bisClassFits(w, cls)) continue;
+    const { slots, twoH } = itemSlots(w.slot);
+    if (!slots.size) continue;
+    const sc = score(w);
+    for (const s of slots) {
+      if (s === 'PRIMARY') (twoH ? wpn.twoH : wpn.primary).push({ item: i, sc });
+      else if (s === 'SECONDARY') { if (!twoH) wpn.secondary.push({ item: i, sc }); }
+      else (armor[s] = armor[s] || []).push({ item: i, sc });
+    }
+  }
+  const chosen = [];
+  for (const def of BIS_SLOTS) {
+    const arr = (armor[def.key] || []).sort((a, b) => b.sc - a.sc);
+    const seen = new Set();
+    let placed = 0;
+    for (const c of arr) {
+      if (seen.has(c.item.name)) continue; seen.add(c.item.name); // don't equip the same item twice
+      chosen.push({ slotLabel: def.label + (def.n > 1 ? ' ' + (placed + 1) : ''), item: c.item, score: c.sc });
+      if (++placed >= def.n) break;
+    }
+    for (; placed < def.n; placed++) chosen.push({ slotLabel: def.label + (def.n > 1 ? ' ' + (placed + 1) : ''), item: null, score: 0 });
+  }
+  const top = (a) => a.sort((x, y) => y.sc - x.sc)[0] || null;
+  const t2 = top(wpn.twoH), tp = top(wpn.primary), ts = top(wpn.secondary);
+  const dualScore = (tp ? tp.sc : 0) + (ts ? ts.sc : 0);
+  if (t2 && (t2.sc >= dualScore)) {
+    chosen.push({ slotLabel: 'Primary (2H)', item: t2.item, score: t2.sc });
+    chosen.push({ slotLabel: 'Secondary', item: null, score: 0 });
+  } else {
+    chosen.push({ slotLabel: 'Primary', item: tp ? tp.item : null, score: tp ? tp.sc : 0 });
+    chosen.push({ slotLabel: 'Secondary', item: ts ? ts.item : null, score: ts ? ts.sc : 0 });
+  }
+  return chosen;
+}
+function renderBis() {
+  const classes = [...new Set(DATA.items.flatMap((i) => ((i.wiki && i.wiki.class) || '').toUpperCase().split(/[^A-Z]+/)))]
+    .filter((c) => c && c !== 'ALL' && c.length >= 2 && c.length <= 4).sort();
+  const statOpt = (id, blank) => '<select id="' + id + '"><option value="">' + blank + '</option>' +
+    BIS_STATS.map((s) => '<option>' + s + '</option>').join('') + '</select>';
+  $('content').innerHTML =
+    '<div class="crumb"><a href="#/">MnMdb</a> › best in slot</div><h1>Best in Slot</h1>' +
+    '<p class="sub">Pick a class and your top stat priorities — we score every wearable item and assemble the highest-scoring gear set. ' +
+    'Weights: 1st priority ×1.0 per point, 2nd ×0.7, 3rd ×0.5. Subjective by design; tweak the priorities to taste.</p>' +
+    '<div class="adv-controls">' +
+      '<select id="bis-class"><option value="">Any class</option>' + classes.map((c) => '<option>' + c + '</option>').join('') + '</select>' +
+      statOpt('bis-p1', 'Priority 1…') + statOpt('bis-p2', 'Priority 2…') + statOpt('bis-p3', 'Priority 3…') +
+    '</div>' +
+    '<div id="bis-results"></div>';
+  ['bis-class', 'bis-p1', 'bis-p2', 'bis-p3'].forEach((id) => { const el = $(id); if (el) el.addEventListener('change', paintBis); });
+  paintBis();
+}
+function paintBis() {
+  const cls = ($('bis-class').value || '').toUpperCase();
+  const priorities = ['bis-p1', 'bis-p2', 'bis-p3'].map((id) => $(id).value).filter(Boolean);
+  const box = $('bis-results');
+  if (!priorities.length) { box.innerHTML = '<p class="sub">Choose at least one stat priority to build a set.</p>'; return; }
+  const set = computeBis(cls, priorities);
+  const filled = set.filter((r) => r.item);
+  // Totals: summed priority-stat points + total weighted score across the set.
+  const totalScore = filled.reduce((s, r) => s + r.score, 0);
+  const totalStat = {}; priorities.forEach((p) => { totalStat[p] = filled.reduce((s, r) => s + bisStatVal(r.item.wiki, p), 0); });
+  const head = '<tr><th>Slot</th><th>Item</th>' + priorities.map((p) => '<th class="num">' + p + '</th>').join('') + '<th class="num">Score</th></tr>';
+  const rows = set.map((r) => '<tr' + (r.item ? '' : ' class="noprice"') + '><td class="sample">' + esc(r.slotLabel) + '</td>' +
+    '<td>' + (r.item ? itemLink(r.item.id, r.item.name) + (r.item.wiki.flags && r.item.wiki.flags.includes('MAGIC') ? ' <span class="tag good">MAGIC</span>' : '') : '<span class="muted">— none —</span>') + '</td>' +
+    priorities.map((p) => '<td class="num">' + (r.item ? (bisStatVal(r.item.wiki, p) || '') : '') + '</td>').join('') +
+    '<td class="num">' + (r.item ? Math.round(r.score * 10) / 10 : '') + '</td></tr>').join('');
+  const totalRow = '<tr class="bis-total"><td></td><td><b>Set total</b></td>' +
+    priorities.map((p) => '<td class="num"><b>' + (totalStat[p] || 0) + '</b></td>').join('') +
+    '<td class="num"><b>' + Math.round(totalScore * 10) / 10 + '</b></td></tr>';
+  box.innerHTML = '<p class="sub">' + filled.length + ' slots filled' + (cls ? ' for <b>' + esc(cls) + '</b>' : '') +
+      ' · priorities: ' + priorities.map((p, idx) => esc(p) + ' ×' + BIS_WEIGHTS[idx]).join(', ') + '</p>' +
+    '<div class="card"><table>' + head + '<tbody>' + rows + totalRow + '</tbody></table></div>' +
+    '<p class="note">Scored purely on your chosen stats — it ignores AC/effects you didn’t prioritise, resist trade-offs, and whether you can actually get the item. A starting point, not gospel.</p>';
 }
 
 function route() {
@@ -2722,6 +2876,7 @@ function route() {
   if (h === 'maps') return renderMapsList();
   if (h === 'auctions') return renderAuctions();
   if (h === 'advanced') return renderAdvanced();
+  if (h === 'bis') return renderBis();
   if (h === 'moderate') return renderModerate();
   if (h === 'quests') return renderQuests();
   if (h.startsWith('quests/')) return renderQuestList(h.slice(7));
