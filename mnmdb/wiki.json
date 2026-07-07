@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-07T05:41:44.660Z",
+  "generatedAt": "2026-07-07T06:11:45.136Z",
   "items": {
     "Bone Chips": {
       "hasPage": true,
@@ -51449,6 +51449,206 @@
       "hasPage": false,
       "wikiOnly": true,
       "fromTrade": true
+    },
+    "Mantle of the Sharkmother": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0000AA",
+      "slot": "SHOULDERS",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "SMALL",
+      "class": "ARC BRD BST DRU MNK RNG SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC",
+        "UNIQUE"
+      ],
+      "handed": null,
+      "ac": 29,
+      "stats": {
+        "AGI": 4,
+        "DEX": 6
+      },
+      "hp": 25,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Grimtide Sanctum"
+      ],
+      "from": [
+        "Braggla the Spawnkeeper"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/1/17/Itemicon0000AA.png/64px-Itemicon0000AA.png"
+    },
+    "Rawhide Saddle": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0053AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 4,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "HRS DNK",
+      "flags": [],
+      "handed": null,
+      "ac": 1,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "tradeskills": [
+        "Leatherworking"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/fa/Itemicon0053AA.png/64px-Itemicon0053AA.png"
+    },
+    "Stonegrip Gauntlets": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0051AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 3,
+      "size": "SMALL",
+      "class": "CLR FTR INQ PAL SHD",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 33,
+      "stats": {
+        "WIS": 5
+      },
+      "hp": null,
+      "mana": 30,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Keeper's Bight"
+      ],
+      "from": [
+        "Brukk Goldgut"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/33/Itemicon0051AA.png/64px-Itemicon0051AA.png"
+    },
+    "Sneed's Cunning Gauntlets": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Corrupted Leathe: Gorget": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Ridgeline Sash": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0010AE",
+      "slot": "WAIST",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "SMALL",
+      "class": "ELE ENC INQ NEC SHD SPB WIZ",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 5,
+      "stats": {
+        "INT": 2
+      },
+      "hp": null,
+      "mana": 20,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Sungreet Strand"
+      ],
+      "from": [
+        "an ashira packleader"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/4/4b/Itemicon0010AE.png/64px-Itemicon0010AE.png"
+    },
+    "Silent Outlaw Leggings": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0019AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 1.5,
+      "size": "MEDIUM",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 14,
+      "stats": {
+        "WIS": 3
+      },
+      "hp": null,
+      "mana": 15,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Sungreet Strand"
+      ],
+      "from": [
+        "Nerguk"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/e9/Itemicon0019AA.png/64px-Itemicon0019AA.png"
     }
   },
   "mobs": {
