@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-07T00:41:09.154Z",
+  "generatedAt": "2026-07-07T01:11:12.953Z",
   "items": {
     "Bone Chips": {
       "hasPage": true,
@@ -49401,6 +49401,619 @@
         "an old scarab"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/8/8e/Itemicon0042AB.png/64px-Itemicon0042AB.png"
+    },
+    "Noxious Toxin Extract": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Guardsman's Ceremonial Cloak": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "MEDIUM",
+      "class": "ARC BRD BST FTR INQ MNK PAL RNG ROG SHD SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 10,
+      "stats": {
+        "STR": 4,
+        "STA": 2,
+        "DEX": 4
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "MR": 2
+      },
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Glass Flats"
+      ],
+      "from": [
+        "Bishop Aybram"
+      ]
+    },
+    "Imperfect Onyx": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0137AG",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "from": [
+        "Iron Vein",
+        "Rich Iron Vein",
+        "Gold Vein",
+        "Rich Gold Vein"
+      ],
+      "tradeskills": [
+        "Jewelcrafting"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/c/cb/Itemicon0137AG.png/64px-Itemicon0137AG.png"
+    },
+    "Imperfect Star Ruby": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0137AE",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Night Harbor"
+      ],
+      "from": [
+        "a Claw steward",
+        "Iron Vein",
+        "Rich Iron Vein",
+        "Gold Vein",
+        "Rich Gold Vein"
+      ],
+      "tradeskills": [
+        "Jewelcrafting"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/a/a2/Itemicon0137AE.png/64px-Itemicon0137AE.png"
+    },
+    "Bandit's Wristplate": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0042AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 2,
+      "size": "SMALL",
+      "class": "CLR FTR INQ PAL SHD",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 17,
+      "stats": {
+        "STA": 3,
+        "INT": 4
+      },
+      "hp": 5,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Sungreet Strand"
+      ],
+      "from": [
+        "Nerguk"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/a/ab/Itemicon0042AA.png/64px-Itemicon0042AA.png"
+    },
+    "Bangled Bracer of Importance": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0043AC",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 1.4,
+      "size": "SMALL",
+      "class": "CLR FTR INQ PAL RNG ROG SHD SHM",
+      "race": "ALL",
+      "flags": [
+        "MAGIC",
+        "UNIQUE"
+      ],
+      "handed": null,
+      "ac": 13,
+      "stats": {
+        "STR": 4,
+        "STA": 2
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Sungreet Strand"
+      ],
+      "from": [
+        "Warlord Muggrah"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/a/aa/Itemicon0043AC.png"
+    },
+    "Cinderhide Gloves": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0015AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "SMALL",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "WIS": 5
+      },
+      "hp": 25,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Sungreet Strand"
+      ],
+      "from": [
+        "Ember"
+      ],
+      "categories": [
+        "Armor",
+        "Hands"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/66/Itemicon0015AA.png/64px-Itemicon0015AA.png"
+    },
+    "Worn Elderwood Bow": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0190AA",
+      "slot": "RANGE",
+      "dmg": 17,
+      "delay": 40,
+      "skill": "ARC",
+      "weight": 4,
+      "size": "MEDIUM",
+      "class": "ARC BST FTR INQ PAL RNG ROG SHD SPB",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Glass Flats",
+        "Fallen Pass"
+      ],
+      "from": [
+        "a haunted messenger",
+        "a Plagueborn watchman"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/c/c3/Itemicon0190AA.png/64px-Itemicon0190AA.png"
+    },
+    "Imperfect Fire Opal": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0137AD",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "from": [
+        "Iron Vein",
+        "Rich Iron Vein",
+        "Gold Vein",
+        "Rich Gold Vein"
+      ],
+      "tradeskills": [
+        "Jewelcrafting"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/a/aa/Itemicon0137AD.png/64px-Itemicon0137AD.png"
+    },
+    "Imperfect Star Rose Quartz": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0133AC",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/7/7e/Itemicon0133AC.png/64px-Itemicon0133AC.png"
+    },
+    "Inlaid Pearl Gold Necklace": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Bloodynose Goblin Ear": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0018AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Sungreet Strand",
+        "Tel Ekir"
+      ],
+      "from": [
+        "a Bloodynose fumer",
+        "a Bloodynose scarer",
+        "a Bloodynose quarreler",
+        "Rizik Goresnout",
+        "a Bloodynose sergeant",
+        "a Bloodynose witch doctor",
+        "a Bloodynose frightener",
+        "a Bloodynose spooker",
+        "a Bloodynose stabber"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/1/12/Itemicon0018AA.png/64px-Itemicon0018AA.png"
+    },
+    "Handmaiden's Robe": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0021AF",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 1.1,
+      "size": "SMALL",
+      "class": "CLR DRU ELE ENC SHM WIZ",
+      "race": "ALL",
+      "flags": [
+        "MAGIC",
+        "UNIQUE"
+      ],
+      "handed": null,
+      "ac": 24,
+      "stats": {
+        "INT": 7,
+        "WIS": 6
+      },
+      "hp": null,
+      "mana": 10,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Pass"
+      ],
+      "from": [
+        "Handmaiden Mira"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/e/e7/Itemicon0021AF.png"
+    },
+    "Snar's Pinch": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0000AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "CHA": 1
+      },
+      "hp": null,
+      "mana": 10,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "from": [
+        "Snar the Egg Collector"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/1/17/Itemicon0000AA.png/64px-Itemicon0000AA.png"
+    },
+    "Threadbare Cape": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0012AB",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "MEDIUM",
+      "class": "BST CLR DRU PAL RNG SHM",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 10,
+      "stats": {
+        "WIS": 4
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "FR": 3,
+        "CR": 4,
+        "CORR": 1
+      },
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Glass Flats"
+      ],
+      "from": [
+        "Master Tracker Lark"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/d/d3/Itemicon0012AB.png/64px-Itemicon0012AB.png"
+    },
+    "Wyrmsbane Signal Torch": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0006AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.3,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "STR": 6,
+        "STA": 1
+      },
+      "hp": 10,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "FR": 3
+      },
+      "instr": {},
+      "container": null,
+      "effect": {
+        "name": "Torch",
+        "trigger": "Worn",
+        "castTime": null,
+        "level": null,
+        "detail": "Passive. Must Eqiup. Level 1"
+      },
+      "wikiZones": [
+        "Glass Flats"
+      ],
+      "from": [
+        "Runner Murtazam"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/61/Itemicon0006AA.png/64px-Itemicon0006AA.png"
+    },
+    "Maiden's Brooch": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "CHA": 4
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "CR": 4,
+        "CORR": 5
+      },
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Glass Flats"
+      ],
+      "from": [
+        "Master Tracker Lark"
+      ]
     }
   },
   "mobs": {
