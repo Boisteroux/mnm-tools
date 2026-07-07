@@ -22,7 +22,7 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
   (IQR fence) so one bad value can't skew the range. Prices now come from the live
   **Auction House** feed (below); the old in-app "Log a Trade" panel was retired.
 - **Auction House** — a live player market at `#/auctions`, read by **OCR of the
-  community LiveMMCam Twitch stream** (both the PvP and PvE `/auction` panels).
+  community LiveMNM Twitch stream** (both the PvP and PvE `/auction` panels).
   A chronological ticker (newest first, ~250 shown, search spans all) with
   per-server prices, **per-unit normalization** ("x4 for 48s" / "30g a stack" →
   a comparable each-price), listing times, a crafting/gear-requests board, and a
@@ -149,7 +149,7 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
 - **More wiki enrichment** — wider item-stat / icon / mob-level coverage.
   (Note: vendor *buy* prices come from the wiki's Merchant "Base Price". Live
   **auction** prices — once thought unobtainable since the game doesn't save chat
-  to disk — are now read by OCR of the community LiveMMCam stream; see the
+  to disk — are now read by OCR of the community LiveMNM stream; see the
   **Auction House** entry under Shipped.)
 - **Crowdsourcing server** — the *trusted-friends* version shipped (see "Pooled
   data from trusted friends" above: export a file → owner merges on Publish). The

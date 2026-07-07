@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------
-// Auction parser — turns raw in-game /auction lines (OCR'd from the LiveMMCam
+// Auction parser — turns raw in-game /auction lines (OCR'd from the LiveMNM
 // Twitch stream) into structured listings, one per item, tagged by server
 // (PvE vs PvP — separate markets, separate prices).
 //

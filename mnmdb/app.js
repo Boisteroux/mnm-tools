@@ -464,7 +464,7 @@ function renderHome() {
     '<h2>🧪 Valuable Crafting Materials</h2><p class="sub">Gathered &amp; crafting materials ranked by market value.</p><div class="card"><table><tbody>' +
       (resRows || '<tr><td class="muted">No resources yet.</td></tr>') + '</tbody></table></div>' +
     '<div class="note">Drop rates and mob values are observational — from real play, and sharpen as more data is collected. ' +
-      'Auction prices are OCR-read from the community LiveMMCam stream.</div>';
+      'Auction prices are OCR-read from the community LiveMNM stream.</div>';
 
   fillHomeMarket();
   wireScatter();
@@ -616,7 +616,7 @@ function renderItem(id) {
   // Player trade value — PvP and PvE are separate markets, so price each one on
   // its own: 30-day high/low + 7-day average of player sell prices.
   {
-    const logged = 'Read from live player auctions on the <a href="https://www.twitch.tv/livemmcam" target="_blank" rel="noopener">LiveMMCam stream</a>.';
+    const logged = 'Read from live player auctions on the <a href="https://www.twitch.tv/livemnm" target="_blank" rel="noopener">LiveMNM stream</a>.';
     // One market's summary card (or a muted line when there's no data for it).
     const marketBox = (label, tv) => {
       if (tv && tv.n30) {
@@ -2410,7 +2410,7 @@ function questBounties() {
     unpriced: {
       tag: 'data', tagLabel: 'Data · in-game', title: 'Appraise the Unpriced', reward: 'Merchant renown', diff: 1,
       flav: 'items have no known value yet. Player sale prices come in automatically from the live auction feed — add a vendor price to fill in the rest.',
-      how: 'Add the vendor “Base Price” to the item’s wiki page (linked by each item below) and it’s pulled in on the next refresh. Player sale prices are read automatically from the LiveMMCam auction stream, so an unpriced item just hasn’t been auctioned yet.',
+      how: 'Add the vendor “Base Price” to the item’s wiki page (linked by each item below) and it’s pulled in on the next refresh. Player sale prices are read automatically from the LiveMNM auction stream, so an unpriced item just hasn’t been auctioned yet.',
       list: items.filter((it) => itemMarketValue(it.name).value <= 0)
         .map((it) => ({ name: it.name, href: '#/item/' + encodeURIComponent(it.id) })),
     },
@@ -2492,7 +2492,7 @@ function renderQuestList(slug) {
       : '<p class="muted">All done — nothing left on this quest. 🎉</p>');
 }
 
-// ---- Auction House (player market from the LiveMMCam OCR feed) ----
+// ---- Auction House (player market from the LiveMNM OCR feed) ----
 let AUCTIONS = null;
 const aucCoin = (c) => { if (c == null) return null; let x = c; const p = Math.floor(x / 1e6); x %= 1e6; const g = Math.floor(x / 1e4); x %= 1e4; const s = Math.floor(x / 100); x %= 100; return [p ? p + 'p' : '', g ? g + 'g' : '', s ? s + 's' : '', x ? x + 'c' : ''].filter(Boolean).join(' ') || '0c'; };
 const aucTag = (i) => i === 'sell' ? '<span class="atag sell">WTS</span>' : i === 'buy' ? '<span class="atag buy">WTB</span>' : i === 'trade' ? '<span class="atag trade">WTT</span>' : i === 'inquiry' ? '<span class="atag pc">PC</span>' : '<span class="atag">?</span>';
@@ -2507,7 +2507,7 @@ async function renderAuctions() {
   const when = A.generatedAt ? new Date(A.generatedAt).toLocaleString() : '—';
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › auctions</div><h1>Auction House</h1>' +
-    '<p class="sub">Player buy/sell auctions read from the <a href="https://www.twitch.tv/livemmcam" target="_blank" rel="noopener">LiveMMCam stream ↗</a> — PvP and PvE are separate markets. ' +
+    '<p class="sub">Player buy/sell auctions read from the <a href="https://www.twitch.tv/livemnm" target="_blank" rel="noopener">LiveMNM stream ↗</a> — PvP and PvE are separate markets. ' +
     A.listings.length + ' listings · ' + priced + ' priced · ' + A.requests.length + ' requests · updated ' + esc(when) + '. Hover an item for its stats.</p>' +
     '<div class="auc-controls"><input id="auc-q" placeholder="Search item or seller…">' +
     '<select id="auc-sort"><option value="new">Newest</option><option value="price">Price (high→low)</option><option value="item">Item name</option></select>' +
@@ -2992,7 +2992,7 @@ async function loadWikiStats() {
       (TRADES[k] = TRADES[k] || []).push({ item: e.item, price: e.price, side: e.side === 'buy' ? 'buy' : 'sell', date: e.date });
     }
   } catch {}
-  // Live player prices now come from the LiveMMCam auction feed (auctions.json),
+  // Live player prices now come from the LiveMNM auction feed (auctions.json),
   // not the retired manual trade log. Merge priced listings into TRADES so item
   // pages, crafting economics and movers all reflect current market prices.
   // (Prices are base-100 copper, same unit as trades.json — safe to combine.)

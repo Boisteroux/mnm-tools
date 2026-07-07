@@ -1,7 +1,7 @@
 // ---------------------------------------------------------------
 // Auction capture loop — PROOF OF CONCEPT, safe to leave unattended.
 //
-// Every INTERVAL it grabs one frame from the LiveMMCam Twitch stream, OCRs the two
+// Every INTERVAL it grabs one frame from the LiveMNM Twitch stream, OCRs the two
 // auction panels (Tesseract), parses them, and accumulates DEDUPED listings into a
 // local data folder. Runs until a hard deadline, then exits by itself.
 //
@@ -18,7 +18,7 @@ const fs = require('fs');
 const path = require('path');
 const P = require('./parse-auctions.js');
 
-const STREAM = 'https://www.twitch.tv/livemmcam';
+const STREAM = 'https://www.twitch.tv/livemnm';
 const INTERVAL_MS = (+process.env.MNM_INTERVAL || 120) * 1000; // 2 min
 const HOURS = +process.env.MNM_HOURS || 12;
 const ONCE = !!process.env.MNM_ONCE;
