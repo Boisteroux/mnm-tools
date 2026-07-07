@@ -2617,11 +2617,9 @@ function aucReqs() {
   }).join('') + '</tbody></table>';
 }
 function aucPopEl() { let el = $('auc-pop'); if (!el) { el = document.createElement('div'); el.id = 'auc-pop'; document.body.appendChild(el); } return el; }
-function aucPopHTML(item) {
-  const s = AUCTIONS.stats[String(item).toLowerCase()];
-  const icon = (s && s.icon) ? '<img src="' + esc(s.icon) + '" alt="">' : '';
-  const head = '<div class="aph">' + icon + '<span class="apn">' + esc(item) + '</span></div>';
-  if (!s) return head + '<div class="anone">No wiki info yet.</div>';
+// Full item stat-card body from a stats-like object — works for auction stats and
+// for a plain wiki entry (item.wiki), so the same hover card serves every table.
+function statCardInner(s) {
   const sign = (n) => (n > 0 ? '+' : '') + n;
   const chips = (ps) => '<div class="achips">' + ps.map(([k, v]) => '<span class="achip ' + (v < 0 ? 'neg' : 'pos') + '">' + esc(k) + ' ' + sign(v) + '</span>').join('') + '</div>';
   const row = (a) => a.length ? '<div class="arow">' + a.join(' · ') + '</div>' : '';
@@ -2643,18 +2641,30 @@ function aucPopHTML(item) {
   if (s.race) P.push('<div class="arow"><span class="muted">Race</span> ' + esc(s.race) + '</div>');
   if (s.tradeskills && s.tradeskills.length) P.push('<div class="arow"><span class="muted">Used in</span> <span class="ats">' + esc(s.tradeskills.join(', ')) + '</span></div>');
   const src = [];
-  if (s.zones && s.zones.length) src.push('Zones: ' + esc(s.zones.join(', ')));
+  const zones = s.zones || s.wikiZones;
+  if (zones && zones.length) src.push('Zones: ' + esc(zones.join(', ')));
   if (s.from && s.from.length) src.push('Drops: ' + esc(s.from.join(', ')));
-  const body = P.filter(Boolean).join('') + (src.length ? '<div class="asrc">' + src.join('<br>') + '</div>' : '');
+  return P.filter(Boolean).join('') + (src.length ? '<div class="asrc">' + src.join('<br>') + '</div>' : '');
+}
+// Card for a hovered item name — prefers live auction stats (has a vendor price),
+// falls back to the item's wiki entry so it works on every page.
+function itemCardHTML(name) {
+  const s = (AUCTIONS && AUCTIONS.stats && AUCTIONS.stats[String(name).toLowerCase()]) || (itemByName[name] && itemByName[name].wiki) || null;
+  const icon = (s && s.icon) ? '<img src="' + esc(s.icon) + '" alt="">' : '';
+  const head = '<div class="aph">' + icon + '<span class="apn">' + esc(name) + '</span></div>';
+  if (!s) return head + '<div class="anone">No wiki info yet.</div>';
+  const body = statCardInner(s);
   return head + (body.trim() ? body : '<div class="anone">No wiki info yet.</div>');
 }
-let aucHoverWired = false;
-function aucHoverInit() {
-  if (aucHoverWired) return; aucHoverWired = true;
+let hoverWired = false;
+function cardHoverInit() {
+  if (hoverWired) return; hoverWired = true;
   const pop = aucPopEl();
-  document.addEventListener('mouseover', (e) => { const tr = e.target.closest && e.target.closest('#content tr[data-item]'); if (tr) { pop.innerHTML = aucPopHTML(tr.dataset.item); pop.classList.add('show'); } else pop.classList.remove('show'); });
+  document.addEventListener('mouseover', (e) => { const tr = e.target.closest && e.target.closest('#content tr[data-item]'); if (tr) { pop.innerHTML = itemCardHTML(tr.dataset.item); pop.classList.add('show'); } else pop.classList.remove('show'); });
   document.addEventListener('mousemove', (e) => { if (!pop.classList.contains('show')) return; const w = pop.offsetWidth || 280, h = pop.offsetHeight || 160; pop.style.left = Math.min(e.clientX + 14, window.innerWidth - w - 10) + 'px'; pop.style.top = Math.min(e.clientY + 14, window.innerHeight - h - 10) + 'px'; });
 }
+const aucHoverInit = cardHoverInit;   // auctions page
+const itemHoverInit = cardHoverInit;  // advanced search + best in slot
 
 // ---- Advanced (stat) search ----
 const ADV_STATS = ['STR', 'STA', 'AGI', 'DEX', 'INT', 'WIS', 'CHA', 'AC', 'HP'];
@@ -2692,8 +2702,6 @@ function renderAdvanced() {
   const tab = decodeURIComponent(location.hash.replace(/^#\/?/, '')).toLowerCase() === 'bis' ? 'bis' : 'search';
   const slots = [...new Set(DATA.items.map((i) => i.wiki && i.wiki.slot).filter(Boolean).map((s) => s.toUpperCase()))].sort();
   const statInputs = ADV_STATS.map((s) => '<label class="adv-stat">' + s + ' ≥ <input type="number" id="adv-' + s + '" min="0" inputmode="numeric"></label>').join('');
-  const classes = [...new Set(DATA.items.flatMap((i) => ((i.wiki && i.wiki.class) || '').toUpperCase().split(/[^A-Z]+/)))]
-    .filter((c) => c && c !== 'ALL' && c.length >= 2 && c.length <= 4).sort();
   const statOpt = (id, blank) => '<select id="' + id + '"><option value="">' + blank + '</option>' + BIS_STATS.map((s) => '<option>' + s + '</option>').join('') + '</select>';
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › advanced search</div><h1>Advanced Search</h1>' +
@@ -2715,17 +2723,18 @@ function renderAdvanced() {
       '<div id="adv-results"></div>' +
     '</div>' +
     '<div id="adv-bis-panel">' +
-      '<p class="sub">Pick a class and your top stat priorities — we score every wearable item and assemble the highest-scoring gear set. ' +
-      'Weights: 1st priority ×1.0 per point, 2nd ×0.7, 3rd ×0.5. Subjective by design; tweak the priorities to taste.</p>' +
+      '<p class="sub">Pick a class and your top stat priorities (in order) — we score every wearable item and assemble the highest-scoring gear set. ' +
+      'The weighting sets how much the 2nd and 3rd priorities count vs the 1st.</p>' +
       '<div class="adv-controls">' +
-        '<select id="bis-class"><option value="">Any class</option>' + classes.map((c) => '<option>' + c + '</option>').join('') + '</select>' +
+        '<select id="bis-class"><option value="">Any class</option>' + MNM_CLASSES.map((c) => '<option>' + c + '</option>').join('') + '</select>' +
         statOpt('bis-p1', 'Priority 1…') + statOpt('bis-p2', 'Priority 2…') + statOpt('bis-p3', 'Priority 3…') +
+        '<select id="bis-weight">' + Object.keys(BIS_WEIGHT_PRESETS).map((k) => '<option value="' + k + '"' + (k === 'focused' ? ' selected' : '') + '>' + BIS_WEIGHT_LABEL[k] + '</option>').join('') + '</select>' +
       '</div>' +
       '<div id="bis-results"></div>' +
     '</div>';
   ['adv-name', 'adv-slot', 'adv-class', 'adv-effect', 'adv-maxlvl', 'adv-magic'].concat(ADV_STATS.map((s) => 'adv-' + s))
     .forEach((id) => { const el = $(id); if (el) el.addEventListener('input', paintAdvanced); });
-  ['bis-class', 'bis-p1', 'bis-p2', 'bis-p3'].forEach((id) => { const el = $(id); if (el) el.addEventListener('change', paintBis); });
+  ['bis-class', 'bis-p1', 'bis-p2', 'bis-p3', 'bis-weight'].forEach((id) => { const el = $(id); if (el) el.addEventListener('change', paintBis); });
   document.querySelectorAll('.adv-tab').forEach((b) => b.addEventListener('click', () => advShowTab(b.dataset.tab)));
   advShowTab(tab);
   paintAdvanced(); paintBis();
@@ -2760,12 +2769,13 @@ function paintAdvanced() {
   box.innerHTML = '<p class="sub">' + results.length + ' match' + (results.length === 1 ? '' : 'es') + (results.length > 200 ? ' — showing 200' : '') +
       (showLvl ? ' · dropped by mobs ≤ L' + maxlvl + ' (whose level we know)' : '') + '</p>' +
     (shown.length ? '<div class="card"><table><thead><tr><th>Item</th><th>Slot</th><th>Class</th>' + (showEff ? '<th>Effect</th>' : '') + (showLvl ? '<th class="num">Drop lvl</th>' : '') + cols.map((c) => '<th class="num">' + c + '</th>').join('') + '</tr></thead><tbody>' +
-      shown.map(({ i, dropLvl }) => { const w = i.wiki; return '<tr><td>' + itemLink(i.id, i.name) + (w.flags && w.flags.includes('MAGIC') ? ' <span class="tag good">MAGIC</span>' : '') + '</td>' +
+      shown.map(({ i, dropLvl }) => { const w = i.wiki; return '<tr data-item="' + esc(i.name) + '"><td>' + itemLink(i.id, i.name) + (w.flags && w.flags.includes('MAGIC') ? ' <span class="tag good">MAGIC</span>' : '') + '</td>' +
         '<td class="sample">' + esc(w.slot || '—') + '</td><td class="sample">' + esc(w.class || '—') + '</td>' +
         (showEff ? '<td class="sample">' + (w.effect ? esc(w.effect.name) + (w.effect.trigger ? ' <span class="tag good">' + esc(w.effect.trigger) + '</span>' : '') : '—') + '</td>' : '') +
         (showLvl ? '<td class="num">' + (dropLvl != null ? 'L' + dropLvl : '—') + '</td>' : '') +
         cols.map((c) => '<td class="num">' + advStatOf(w, c) + '</td>').join('') + '</tr>'; }).join('') +
       '</tbody></table></div>' : '');
+  itemHoverInit();
 }
 
 // ---- Best in Slot (subjective, weighted by your stat priorities) ----
@@ -2805,7 +2815,12 @@ function bisStatVal(w, s) {
   if (BIS_RESISTS.has(s)) return (w.resists && w.resists[s]) || 0;
   return (w.stats && w.stats[s]) || 0;
 }
-const BIS_WEIGHTS = [1, 0.7, 0.5]; // 1st priority = 1.0/pt, 2nd = 0.7, 3rd = 0.5
+// The 18 real classes (the class field also carries OCR/parse junk — these are the
+// tokens that appear on hundreds of items; everything else is noise).
+const MNM_CLASSES = ['ARC', 'BRD', 'BST', 'CLR', 'DRU', 'ELE', 'ENC', 'FTR', 'INQ', 'MNK', 'NEC', 'PAL', 'RNG', 'ROG', 'SHD', 'SHM', 'SPB', 'WIZ'];
+// Weighting presets for how much the 2nd/3rd priorities count vs the 1st (always 1).
+const BIS_WEIGHT_PRESETS = { focused: [1, 0.5, 0.25], balanced: [1, 0.7, 0.5], strict: [1, 0.34, 0.12] };
+const BIS_WEIGHT_LABEL = { focused: 'Focused — 1 · ½ · ¼ (recommended)', balanced: 'Balanced — 1 · 0.7 · 0.5', strict: 'Primary-heavy — 1 · ⅓ · ⅛' };
 function bisClassFits(w, cls) {
   const c = (w.class || '').toUpperCase();
   if (!cls) return true;
@@ -2815,8 +2830,8 @@ function bisClassFits(w, cls) {
 // Pick the highest-scoring wearable item for every slot, given a class + ordered
 // priorities. Returns [{ slotLabel, item, score }]. Weapons: compares the best
 // 2-hander against the best main-hand + off-hand and keeps whichever scores more.
-function computeBis(cls, priorities) {
-  const score = (w) => priorities.reduce((s, p, idx) => s + (BIS_WEIGHTS[idx] || 0) * bisStatVal(w, p), 0);
+function computeBis(cls, priorities, weights) {
+  const score = (w) => priorities.reduce((s, p, idx) => s + (weights[idx] || 0) * bisStatVal(w, p), 0);
   const armor = {}; // slotKey -> [{ item, sc }]
   const wpn = { primary: [], secondary: [], twoH: [] };
   for (const i of DATA.items) {
@@ -2857,15 +2872,16 @@ function computeBis(cls, priorities) {
 function paintBis() {
   const cls = ($('bis-class').value || '').toUpperCase();
   const priorities = ['bis-p1', 'bis-p2', 'bis-p3'].map((id) => $(id).value).filter(Boolean);
+  const weights = BIS_WEIGHT_PRESETS[$('bis-weight').value] || BIS_WEIGHT_PRESETS.focused;
   const box = $('bis-results');
   if (!priorities.length) { box.innerHTML = '<p class="sub">Choose at least one stat priority to build a set.</p>'; return; }
-  const set = computeBis(cls, priorities);
+  const set = computeBis(cls, priorities, weights);
   const filled = set.filter((r) => r.item);
   // Totals: summed priority-stat points + total weighted score across the set.
   const totalScore = filled.reduce((s, r) => s + r.score, 0);
   const totalStat = {}; priorities.forEach((p) => { totalStat[p] = filled.reduce((s, r) => s + bisStatVal(r.item.wiki, p), 0); });
   const head = '<tr><th>Slot</th><th>Item</th>' + priorities.map((p) => '<th class="num">' + p + '</th>').join('') + '<th class="num">Score</th></tr>';
-  const rows = set.map((r) => '<tr' + (r.item ? '' : ' class="noprice"') + '><td class="sample">' + esc(r.slotLabel) + '</td>' +
+  const rows = set.map((r) => '<tr' + (r.item ? ' data-item="' + esc(r.item.name) + '"' : ' class="noprice"') + '><td class="sample">' + esc(r.slotLabel) + '</td>' +
     '<td>' + (r.item ? itemLink(r.item.id, r.item.name) + (r.item.wiki.flags && r.item.wiki.flags.includes('MAGIC') ? ' <span class="tag good">MAGIC</span>' : '') : '<span class="muted">— none —</span>') + '</td>' +
     priorities.map((p) => '<td class="num">' + (r.item ? (bisStatVal(r.item.wiki, p) || '') : '') + '</td>').join('') +
     '<td class="num">' + (r.item ? Math.round(r.score * 10) / 10 : '') + '</td></tr>').join('');
@@ -2873,9 +2889,10 @@ function paintBis() {
     priorities.map((p) => '<td class="num"><b>' + (totalStat[p] || 0) + '</b></td>').join('') +
     '<td class="num"><b>' + Math.round(totalScore * 10) / 10 + '</b></td></tr>';
   box.innerHTML = '<p class="sub">' + filled.length + ' slots filled' + (cls ? ' for <b>' + esc(cls) + '</b>' : '') +
-      ' · priorities: ' + priorities.map((p, idx) => esc(p) + ' ×' + BIS_WEIGHTS[idx]).join(', ') + '</p>' +
+      ' · weights: ' + priorities.map((p, idx) => esc(p) + ' ×' + weights[idx]).join(', ') + '</p>' +
     '<div class="card"><table>' + head + '<tbody>' + rows + totalRow + '</tbody></table></div>' +
-    '<p class="note">Scored purely on your chosen stats — it ignores AC/effects you didn’t prioritise, resist trade-offs, and whether you can actually get the item. A starting point, not gospel.</p>';
+    '<p class="note">Highest-scoring <b>mix</b> of your chosen stats per slot — an item wins if its weighted total beats the rest, so a high 2nd-priority item can outrank a slightly better 1st. Ignores stats/effects you didn’t prioritise and whether you can actually get the item. Hover any item for its full stats.</p>';
+  itemHoverInit();
 }
 
 function route() {
