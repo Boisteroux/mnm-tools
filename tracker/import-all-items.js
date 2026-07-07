@@ -94,14 +94,17 @@ function entryFromWikitext(wt) {
   if (!missing.length) { console.log('Nothing to import.'); return; }
 
   const added = {};
+  const seenLc = new Set(haveLower); // guard: never add a case/whitespace variant of an existing or already-added item
   for (let i = 0; i < missing.length; i += 45) {
     const batch = missing.slice(i, i + 45);
     process.stdout.write(`  fetching ${Math.min(i + 45, missing.length)}/${missing.length}\r`);
     let texts; try { texts = await W.fetchWikitext(batch); } catch (e) { console.error('\n  batch failed:', e.message); continue; }
     for (const title of batch) {
+      const lc = title.toLowerCase();
+      if (seenLc.has(lc)) continue;
       const wt = texts[title]; if (!wt) continue;
       const entry = entryFromWikitext(wt);
-      if (entry) added[title] = entry;
+      if (entry) { added[title] = entry; seenLc.add(lc); }
     }
     await sleep(300);
   }

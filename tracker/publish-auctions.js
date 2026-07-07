@@ -51,11 +51,22 @@ for (const l of rows) if (!l.intent) discarded.push({ status: 'review', reason: 
 //    listing within the window is published (and therefore searchable).
 const cutoff = Date.now() - RECENT_MS;
 const isPriced = (l) => l.priceCopper != null;
-rows = rows.filter((l) => !l.lastSeen || new Date(l.lastSeen).getTime() >= cutoff)
-  .sort((a, b) => {
-    if (isPriced(a) !== isPriced(b)) return isPriced(a) ? -1 : 1;             // priced first
-    return String(b.lastSeen || '').localeCompare(String(a.lastSeen || ''));  // then newest
-  });
+rows = rows.filter((l) => !l.lastSeen || new Date(l.lastSeen).getTime() >= cutoff);
+// Collapse re-listings: a seller re-posting the same item at different prices
+// created several rows (looked like duplicates). Keep ONE per (server, player,
+// item) — the priced one seen most recently, i.e. their current ask.
+const best = new Map();
+for (const l of rows) {
+  const k = key(l), cur = best.get(k);
+  if (!cur) { best.set(k, l); continue; }
+  const pick = isPriced(l) !== isPriced(cur) ? (isPriced(l) ? l : cur)
+    : (String(l.lastSeen || '') >= String(cur.lastSeen || '') ? l : cur);
+  best.set(k, pick);
+}
+rows = [...best.values()].sort((a, b) => {
+  if (isPriced(a) !== isPriced(b)) return isPriced(a) ? -1 : 1;             // priced first
+  return String(b.lastSeen || '').localeCompare(String(a.lastSeen || ''));  // then newest
+});
 const perServer = {};
 rows = rows.filter((l) => (perServer[l.server] = (perServer[l.server] || 0) + 1) <= MAX_PER_SERVER);
 

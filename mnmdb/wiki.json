@@ -10899,7 +10899,20 @@
         ]
       },
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/9/91/Itemicon0017AA.png/64px-Itemicon0017AA.png",
-      "statsV": 4
+      "statsV": 4,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null
     },
     "Spiced Snake Cutlet": {
       "hasPage": true,
@@ -11859,43 +11872,6 @@
       "container": null,
       "effect": null
     },
-    "butter": {
-      "hasPage": true,
-      "wikiOnly": true,
-      "iconId": "Itemicon0017AA",
-      "slot": null,
-      "dmg": null,
-      "delay": null,
-      "skill": null,
-      "weight": 0.2,
-      "size": "SMALL",
-      "class": null,
-      "race": null,
-      "soldBy": {
-        "base": 10,
-        "shady": null,
-        "vendors": [
-          "Faelindral",
-          "Night Harbor",
-          "a cook"
-        ]
-      },
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/9/91/Itemicon0017AA.png/64px-Itemicon0017AA.png",
-      "flags": [],
-      "handed": null,
-      "ac": null,
-      "stats": {},
-      "hp": null,
-      "mana": null,
-      "hpRegen": null,
-      "manaRegen": null,
-      "haste": null,
-      "resists": {},
-      "instr": {},
-      "statsV": 4,
-      "container": null,
-      "effect": null
-    },
     "Deep Sea Devourer": {
       "hasPage": true,
       "wikiOnly": true,
@@ -12219,34 +12195,6 @@
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/5/53/Itemicon0147AC.png/64px-Itemicon0147AC.png",
       "flags": [],
       "handed": "One Handed",
-      "ac": null,
-      "stats": {},
-      "hp": null,
-      "mana": null,
-      "hpRegen": null,
-      "manaRegen": null,
-      "haste": null,
-      "resists": {},
-      "instr": {},
-      "statsV": 4,
-      "container": null,
-      "effect": null
-    },
-    "sickle": {
-      "hasPage": true,
-      "wikiOnly": true,
-      "iconId": "Itemicon0156AA",
-      "slot": "PRIMARY",
-      "dmg": 1,
-      "delay": 30,
-      "skill": "SLA",
-      "weight": 2,
-      "size": "MEDIUM",
-      "class": "ALL",
-      "race": "ALL",
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/30/Itemicon0156AA.png/64px-Itemicon0156AA.png",
-      "flags": [],
-      "handed": null,
       "ac": null,
       "stats": {},
       "hp": null,
@@ -36303,11 +36251,6 @@
       "statsV": 4,
       "container": null,
       "effect": null
-    },
-    "Banished Seamstress‘ Blade": {
-      "hasPage": false,
-      "wikiOnly": true,
-      "fromTrade": true
     },
     "Dawnglow Luminthread Greaves": {
       "hasPage": true,
@@ -64575,33 +64518,6 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/9/91/Itemicon0017AA.png/64px-Itemicon0017AA.png"
     },
-    "Savage heartplate": {
-      "hasPage": true,
-      "wikiOnly": true,
-      "fromImport": true,
-      "statsV": 4,
-      "iconId": "Itemicon0023AE",
-      "slot": "CHEST",
-      "weight": 4,
-      "size": "MEDIUM",
-      "class": "BRD CLR FTR INQ PAL RNG ROG SHD SHM",
-      "race": "ALL",
-      "ac": 27,
-      "stats": {
-        "STR": 3,
-        "AGI": 2,
-        "DEX": 2,
-        "CHA": -5
-      },
-      "hp": -15,
-      "wikiZones": [
-        "Night Harbor"
-      ],
-      "from": [
-        "Eamon Kassir"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/8/86/Itemicon0023AE.png/64px-Itemicon0023AE.png"
-    },
     "Antique Billon Coin": {
       "hasPage": true,
       "wikiOnly": true,
@@ -67596,34 +67512,6 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/9/91/Itemicon0017AA.png/64px-Itemicon0017AA.png"
     },
-    "Ring of introduction": {
-      "hasPage": true,
-      "wikiOnly": true,
-      "fromImport": true,
-      "statsV": 4,
-      "iconId": "Itemicon0098AA",
-      "slot": "FINGER",
-      "weight": 0.1,
-      "size": "TINY",
-      "class": "BRD",
-      "race": "ALL",
-      "flags": [
-        "MAGIC",
-        "UNIQUE",
-        "NO DROP"
-      ],
-      "ac": 1,
-      "stats": {
-        "DEX": 1,
-        "CHA": 1
-      },
-      "hp": 6,
-      "categories": [
-        "Finger",
-        "Jewelry"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/5/55/Itemicon0098AA.png/64px-Itemicon0098AA.png"
-    },
     "Lambent Lute": {
       "hasPage": true,
       "wikiOnly": true,
@@ -69060,32 +68948,6 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/fd/Itemicon0031AA.png/64px-Itemicon0031AA.png"
     },
-    "Silvery robe": {
-      "hasPage": true,
-      "wikiOnly": true,
-      "fromImport": true,
-      "statsV": 4,
-      "iconId": "Itemicon0055AB",
-      "slot": "CHEST",
-      "weight": 0.8,
-      "size": "MEDIUM",
-      "class": "ELE ENC NEC WIZ",
-      "race": "ALL",
-      "flags": [
-        "MAGIC",
-        "UNIQUE"
-      ],
-      "ac": 18,
-      "stats": {
-        "AGI": 1,
-        "INT": 5
-      },
-      "hp": 10,
-      "from": [
-        "Unknown"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/6/64/Itemicon0055AB.png"
-    },
     "Fur-Lined Gloves": {
       "hasPage": true,
       "wikiOnly": true,
@@ -69959,36 +69821,6 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/e9/Itemicon0019AA.png/64px-Itemicon0019AA.png"
     },
-    "Favor of the queen": {
-      "hasPage": true,
-      "wikiOnly": true,
-      "fromImport": true,
-      "statsV": 4,
-      "iconId": "Itemicon0000AA",
-      "slot": "BACK",
-      "weight": 0.3,
-      "size": "MEDIUM",
-      "class": "ALL",
-      "race": "ALL",
-      "ac": 6,
-      "stats": {
-        "STR": 4
-      },
-      "effect": {
-        "name": "Cinder Queen's Favor (On Click. Any Slot. Cast Time: 10s. Level: 25",
-        "trigger": null,
-        "castTime": null,
-        "level": null,
-        "detail": null
-      },
-      "wikiZones": [
-        "Sungreet Strand"
-      ],
-      "from": [
-        "a cinder herald"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/1/17/Itemicon0000AA.png/64px-Itemicon0000AA.png"
-    },
     "Shadowy Chain Gloves": {
       "hasPage": true,
       "wikiOnly": true,
@@ -70141,7 +69973,9 @@
       ],
       "from": [
         "a cinder herald"
-      ]
+      ],
+      "iconId": "Itemicon0000AA",
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/1/17/Itemicon0000AA.png/64px-Itemicon0000AA.png"
     },
     "Dented Black Iron Girdle": {
       "hasPage": true,
@@ -84463,36 +84297,6 @@
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/9/9e/Itemicon0173AA.png/64px-Itemicon0173AA.png"
     },
-    "Widow's weave": {
-      "hasPage": true,
-      "wikiOnly": true,
-      "fromImport": true,
-      "statsV": 4,
-      "iconId": "Itemicon0015AA",
-      "slot": "HANDS",
-      "weight": 0.25,
-      "size": "SMALL",
-      "class": "ALL",
-      "race": "ALL",
-      "flags": [
-        "MAGIC"
-      ],
-      "ac": 3,
-      "stats": {
-        "INT": 2,
-        "CHA": 1
-      },
-      "wikiZones": [
-        "Evershade Weald"
-      ],
-      "from": [
-        "Mezzatrian Boneweaver"
-      ],
-      "categories": [
-        "Pages_to_Delete"
-      ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/66/Itemicon0015AA.png/64px-Itemicon0015AA.png"
-    },
     "Widow's Weave": {
       "hasPage": true,
       "wikiOnly": true,
@@ -84518,7 +84322,10 @@
       "from": [
         "Mezzatrian Boneweaver"
       ],
-      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/66/Itemicon0015AA.png/64px-Itemicon0015AA.png"
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/66/Itemicon0015AA.png/64px-Itemicon0015AA.png",
+      "categories": [
+        "Pages_to_Delete"
+      ]
     },
     "Blood Sage Gloves": {
       "hasPage": true,
