@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-07T03:11:27.235Z",
+  "generatedAt": "2026-07-07T03:41:31.046Z",
   "items": {
     "Bone Chips": {
       "hasPage": true,
@@ -50729,6 +50729,274 @@
         "Grubbfist"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/6d/Itemicon0161AA.png/64px-Itemicon0161AA.png"
+    },
+    "Fine Eclipse Cleaver": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0064AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 6,
+      "size": "MEDIUM",
+      "class": "ARC BRD BST FTR INQ PAL RNG ROG SHD SPB WIZ",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "STR": 5,
+        "STA": 7
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/8/8c/Itemicon0064AA.png/64px-Itemicon0064AA.png"
+    },
+    "Shatterwing Clasp": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "SMALL",
+      "class": "ELE ENC INQ NEC SHD SPB WIZ",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "STA": 3,
+        "INT": 2
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "DR": 4
+      },
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Glass Flats"
+      ],
+      "from": [
+        "Shattershriek"
+      ]
+    },
+    "Imperfect Cat's Eye Agate": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0134AD",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "from": [
+        "Iron Vein",
+        "Rich Iron Vein",
+        "Gold Vein",
+        "Rich Gold Vein"
+      ],
+      "tradeskills": [
+        "Jewelcrafting"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/5/58/Itemicon0134AD.png/64px-Itemicon0134AD.png"
+    },
+    "Wise Crown": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": null,
+      "size": null,
+      "class": "ARC BRD BST DRU MNK SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 21,
+      "stats": {
+        "WIS": 6
+      },
+      "hp": null,
+      "mana": 25,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Glinting Hollow"
+      ],
+      "from": [
+        "Sylvara Winterveil"
+      ]
+    },
+    "Heartwood Root": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0058AB",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 5,
+      "size": "SMALL",
+      "class": "BST CLR DRU PAL RNG SHM",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "STR": 6,
+        "STA": 4,
+        "WIS": 6
+      },
+      "hp": 5,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Sungreet Strand"
+      ],
+      "from": [
+        "Bree Weatherstoll"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/c/c5/Itemicon0058AB.png/64px-Itemicon0058AB.png"
+    },
+    "Raw Ogre Meat": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0079AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.8,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Shaded Dunes"
+      ],
+      "from": [
+        "A bandit"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/d/db/Itemicon0079AA.png/64px-Itemicon0079AA.png"
+    },
+    "Shield of the Dragon Crusader": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0175AC",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 2,
+      "size": "LARGE",
+      "class": "BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 11,
+      "stats": {
+        "STA": 1,
+        "INT": 2,
+        "WIS": 2
+      },
+      "hp": 5,
+      "mana": 5,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Tomb of the Last Wyrmsbane"
+      ],
+      "from": [
+        "High Marshal Fionna"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/0/0a/Itemicon0175AC.png/64px-Itemicon0175AC.png"
     }
   },
   "mobs": {
