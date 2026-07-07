@@ -24,9 +24,8 @@ const HOURS = +process.env.MNM_HOURS || 12;
 const ONCE = !!process.env.MNM_ONCE;
 const DEADLINE = Date.now() + HOURS * 3600 * 1000;
 const DATA = process.env.MNM_DATA || 'C:\\Users\\zacha\\Desktop\\mnm-auction-poc';
-// Keep each cycle's cropped panels this long so any name (e.g. Glock vs Clock) can be
-// re-verified against the actual frame; and flag OCR words read below this confidence.
-const FRAME_HOURS = +process.env.MNM_FRAME_HOURS || 24;
+// Flag OCR words read below this confidence into lowconf.json — a lightweight,
+// no-image list of shaky reads to glance at if anything odd shows up in the data.
 const CONF_THRESHOLD = +process.env.MNM_CONF || 70;
 
 // Tool paths discovered on this machine (env-overridable).
@@ -38,8 +37,6 @@ const PANELS = { PvP: 'crop=930:410:25:650', PvE: 'crop=930:410:975:650' };
 const PRE = 'scale=iw*2:ih*2:flags=lanczos,format=gray,negate,eq=contrast=1.3';
 
 fs.mkdirSync(DATA, { recursive: true });
-const FRAMES = path.join(DATA, 'frames');
-fs.mkdirSync(FRAMES, { recursive: true });
 const framePng = path.join(DATA, 'frame.png');
 const p = (f) => path.join(DATA, f);
 const log = (m) => { try { fs.appendFileSync(p('log.txt'), `[${new Date().toISOString()}] ${m}\n`); } catch {} };
@@ -53,7 +50,7 @@ const loadMap = (f, key) => { const m = {}; try { for (const r of JSON.parse(fs.
 const agg = loadMap('listings.json', 'sig');
 const requests = loadMap('requests.json', 'sig');
 const reviewMap = loadMap('review.json', 'key');
-const lowconf = loadMap('lowconf.json', 'key'); // shaky OCR reads to verify against frames
+const lowconf = loadMap('lowconf.json', 'key'); // shaky OCR reads to glance at if data looks off
 const enrichSet = new Set(); try { for (const n of JSON.parse(fs.readFileSync(p('enrich.json'), 'utf8'))) enrichSet.add(n); } catch {}
 
 const sig = (l) => [l.server, l.player, l.intent || '', l.item, l.priceCopper == null ? 'na' : l.priceCopper].join('|').toLowerCase();
@@ -93,20 +90,12 @@ function ocrConfidence(server) {
   }
   return words;
 }
-// Aggregate one flagged word (keep the lowest-confidence sighting + its frame).
-function recordLowConf(server, w, frame, now) {
+// Aggregate one flagged word (keep the lowest-confidence sighting).
+function recordLowConf(server, w, now) {
   const key = (server + '|' + w.text).toLowerCase();
   const e = lowconf[key];
-  if (e) { e.count++; e.lastSeen = now; if (w.conf < e.minConf) { e.minConf = w.conf; e.frame = frame; } }
-  else lowconf[key] = { key, server, text: w.text, minConf: w.conf, frame, firstSeen: now, lastSeen: now, count: 1 };
-}
-// Drop cropped frames older than the retention window so disk use stays bounded.
-function pruneFrames() {
-  const cutoff = Date.now() - FRAME_HOURS * 3600 * 1000;
-  let files; try { files = fs.readdirSync(FRAMES); } catch { return 0; }
-  let removed = 0;
-  for (const f of files) { try { const fp = path.join(FRAMES, f); if (fs.statSync(fp).mtimeMs < cutoff) { fs.unlinkSync(fp); removed++; } } catch {} }
-  return removed;
+  if (e) { e.count++; e.lastSeen = now; if (w.conf < e.minConf) e.minConf = w.conf; }
+  else lowconf[key] = { key, server, text: w.text, minConf: w.conf, firstSeen: now, lastSeen: now, count: 1 };
 }
 
 function persist() {
@@ -120,16 +109,14 @@ function persist() {
 let cycles = 0, errors = 0;
 function runCycle() {
   const now = new Date().toISOString();
-  const safeTs = now.replace(/[:.]/g, '-'); // filesystem-safe timestamp for this cycle's frames
   const url = streamUrl();
   sh(FF, ['-y', '-loglevel', 'error', '-i', url, '-frames:v', '1', '-q:v', '2', framePng], false);
   const rows = [];
   for (const server of ['PvP', 'PvE']) {
     let txt = '';
     try { txt = ocrPanel(server); } catch (e) { log(`  ocr ${server} skipped: ${e.message}`); continue; }
-    // Keep this panel for later name verification, and flag any shaky reads.
-    try { fs.copyFileSync(p(server.toLowerCase() + '.png'), path.join(FRAMES, `${safeTs}_${server}.png`)); } catch {}
-    try { for (const w of ocrConfidence(server)) recordLowConf(server, w, safeTs, now); } catch {}
+    // Flag any shaky reads (no image stored — just a heads-up list).
+    try { for (const w of ocrConfidence(server)) recordLowConf(server, w, now); } catch {}
     for (const line of P.foldOcrLines(txt)) rows.push({ server, line });
   }
   const { listings, requests: reqs, review, enrich } = P.parseAuctions(rows, { glossary, itemIndex });
@@ -137,14 +124,13 @@ function runCycle() {
   for (const l of listings) {
     const s = sig(l);
     if (agg[s]) { agg[s].count++; agg[s].lastSeen = now; }
-    else { agg[s] = { sig: s, server: l.server, intent: l.intent, item: l.item, matched: l.matched, priceCopper: l.priceCopper, price: l.priceCopper == null ? null : P.copperToStr(l.priceCopper), qty: l.qty || null, player: l.player, raw: l.raw, frame: safeTs, firstSeen: now, lastSeen: now, count: 1 }; added++; }
+    else { agg[s] = { sig: s, server: l.server, intent: l.intent, item: l.item, matched: l.matched, priceCopper: l.priceCopper, price: l.priceCopper == null ? null : P.copperToStr(l.priceCopper), qty: l.qty || null, player: l.player, raw: l.raw, firstSeen: now, lastSeen: now, count: 1 }; added++; }
   }
   for (const r of reqs) { const s = ['req', r.server, r.player, r.text].join('|').toLowerCase(); if (requests[s]) { requests[s].count++; requests[s].lastSeen = now; } else { requests[s] = Object.assign({ sig: s, firstSeen: now, lastSeen: now, count: 1 }, r); } }
   for (const r of review) { const k = [r.reason, r.detail].join('|'); if (!reviewMap[k]) reviewMap[k] = Object.assign({ key: k, firstSeen: now }, r); }
   for (const n of enrich) enrichSet.add(n);
-  const pruned = pruneFrames();
   persist();
-  log(`cycle ${cycles}: ${rows.length} lines · +${added} new (total ${Object.keys(agg).length} listings, ${Object.keys(requests).length} requests) · review ${Object.keys(reviewMap).length} · enrich ${enrichSet.size} · lowconf ${Object.keys(lowconf).length}${pruned ? ` · pruned ${pruned} frames` : ''}`);
+  log(`cycle ${cycles}: ${rows.length} lines · +${added} new (total ${Object.keys(agg).length} listings, ${Object.keys(requests).length} requests) · review ${Object.keys(reviewMap).length} · enrich ${enrichSet.size} · lowconf ${Object.keys(lowconf).length}`);
 }
 
 function loop() {
