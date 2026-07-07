@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-07T05:05:49.886Z",
+  "generatedAt": "2026-07-07T05:41:44.660Z",
   "items": {
     "Bone Chips": {
       "hasPage": true,
@@ -51232,6 +51232,223 @@
         "Tanning"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/ef/Itemicon0062AA.png/64px-Itemicon0062AA.png"
+    },
+    "Hip Quiver": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0017AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.3,
+      "size": "MEDIUM",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": {
+        "capacity": 8,
+        "maxSize": "MEDIUM",
+        "weightReduction": null
+      },
+      "effect": null,
+      "wikiZones": [
+        "Tel Ekir"
+      ],
+      "from": [
+        "Rami Suresight"
+      ],
+      "soldBy": {
+        "base": 115,
+        "shady": null,
+        "vendors": [
+          "Faelindral",
+          "Night Harbor",
+          "a bowyer"
+        ]
+      },
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/9/91/Itemicon0017AA.png/64px-Itemicon0017AA.png"
+    },
+    "Duneseer Soft Wraps": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": null,
+      "size": null,
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 8,
+      "stats": {
+        "WIS": 3
+      },
+      "hp": 10,
+      "mana": 5,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Tel Ekir"
+      ],
+      "from": [
+        "Duneseer Hadi"
+      ]
+    },
+    "Rat Bone Earring": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0057AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "TINY",
+      "class": "All",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": 3,
+      "stats": {
+        "STA": 1,
+        "AGI": 3
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Tel Ekir"
+      ],
+      "from": [
+        "Ayip"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/f1/Itemicon0057AA.png/64px-Itemicon0057AA.png"
+    },
+    "Inlaid Wolf's Eye Agate Bronze Ring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Corrupted Leathe Gorget": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Cinder Beetle Carapace": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0107AB",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 3,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Sungreet Strand"
+      ],
+      "from": [
+        "A cinder harvester",
+        "a cinder drone",
+        "a cinder worker",
+        "A cinder drone",
+        "Sungreet Strand\nCinder Drone, Cinder Worker, Cinder Herald, Cinder Harvester, Cinder Sentinel"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/2/26/Itemicon0107AB.png/64px-Itemicon0107AB.png"
+    },
+    "Cinder Beetle Legs": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0106AB",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 2.5,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Sungreet Strand"
+      ],
+      "from": [
+        "a cinder harvester",
+        "a cinder worker",
+        "a cinder drone"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/1/15/Itemicon0106AB.png/64px-Itemicon0106AB.png"
+    },
+    "Inlaid Star Rose Quartz Iron Earring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
     }
   },
   "mobs": {
