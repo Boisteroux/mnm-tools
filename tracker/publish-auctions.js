@@ -7,6 +7,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { copperToStr } = require('./parse-auctions.js');
 
 const DATA = process.env.MNM_DATA || 'C:\\Users\\zacha\\Desktop\\mnm-auction-poc';
 const OUT = path.join(__dirname, '..', 'mnmdb', 'auctions.json');
@@ -58,12 +59,33 @@ rows = rows.filter((l) => !l.lastSeen || new Date(l.lastSeen).getTime() >= cutof
 const perServer = {};
 rows = rows.filter((l) => (perServer[l.server] = (perServer[l.server] || 0) + 1) <= MAX_PER_SERVER);
 
-const listings = rows.map((l) => ({
-  server: l.server, intent: l.intent || null, item: l.item,
-  price: l.priceCopper != null ? l.priceCopper : null, priceStr: l.price || null,
-  player: l.player, seen: l.firstSeen, qty: l.qty || undefined,
-  assumed: l.assumed || undefined, matched: wikiNames.has(l.item.toLowerCase()),
-}));
+// Normalize a priced listing to a per-unit price so different quantities compare
+// fairly. "each"/"ea" in the raw means the price is already per-unit; otherwise a
+// qty ("x4") or "stack" (20 units) means the price is the whole-lot total.
+const STACK = 20; // a stack = 20 units for tradeable materials (confirmed with Zak)
+function normalize(l) {
+  const price = l.priceCopper;
+  if (price == null) return { unit: null, total: null };
+  const n = l.perStack ? STACK : (l.qty && l.qty > 1 ? l.qty : 1);
+  if (n <= 1) return { unit: price, total: price };
+  const raw = (l.raw || '').toLowerCase();
+  // Decide whether the stated price is already per-unit or a whole-lot total.
+  const takeAll = /\btake all\b|\ball for\b|\bfor all\b|\bthe lot\b/.test(raw);          // explicit total
+  const each = /\b(?:ea|each)\b|\/\s*ea\b/.test(raw);                                     // explicit per-unit
+  const priceThenQty = /\d+(?:\.\d+)?\s*(?:pp|p|plat|platinum|gp|g|gold|sp|s|silver|cp|c|copper)\s*x\s*\d+/.test(raw); // "1.1g x28" = per-unit
+  const perUnit = (each || priceThenQty) && !takeAll;
+  return perUnit ? { unit: price, total: price * n } : { unit: Math.round(price / n), total: price };
+}
+
+const listings = rows.map((l) => {
+  const { unit, total } = normalize(l);
+  return {
+    server: l.server, intent: l.intent || null, item: l.item,
+    price: total, unit, priceStr: total != null ? copperToStr(total) : null,
+    player: l.player, seen: l.firstSeen, qty: l.qty || undefined, perStack: l.perStack || undefined,
+    assumed: l.assumed || undefined, matched: wikiNames.has(l.item.toLowerCase()),
+  };
+});
 
 try { fs.writeFileSync(path.join(DATA, 'discarded.json'), JSON.stringify(discarded, null, 2)); } catch {}
 

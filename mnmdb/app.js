@@ -2538,9 +2538,11 @@ function aucRecentRows(server) {
   if (pricedOnly) rs = rs.filter((l) => l.price != null);
   return rs.sort((a, b) =>
     sort === 'item' ? a.item.localeCompare(b.item) :
-    sort === 'price' ? (b.price || 0) - (a.price || 0) :
+    sort === 'price' ? aucUnit(b) - aucUnit(a) : // compare on per-unit price
     (b.seen || '').localeCompare(a.seen || '')); // default: newest first
 }
+// Per-unit price for a listing (normalized at publish time); 0 if unpriced.
+const aucUnit = (l) => l.unit != null ? l.unit : (l.price || 0);
 // Collapse a set of listings to one entry per item: sell-price range + how many
 // are selling / buying it. Used for the compressed tail of the ticker feed.
 function aggregateItems(list) {
@@ -2550,7 +2552,7 @@ function aggregateItems(list) {
     let g = map.get(k);
     if (!g) { g = { item: l.item, matched: l.matched, sellers: new Set(), buyers: new Set(), prices: [] }; map.set(k, g); }
     if (l.intent === 'buy') g.buyers.add(l.player);
-    else { g.sellers.add(l.player); if (l.price != null) g.prices.push(l.price); }
+    else { g.sellers.add(l.player); if (l.price != null) g.prices.push(aucUnit(l)); } // per-unit, so ranges compare fairly
   }
   return [...map.values()].map((g) => ({
     item: g.item, matched: g.matched, sellers: g.sellers.size, buyers: g.buyers.size,
@@ -2563,10 +2565,21 @@ const aucPriceCell = (priced, low, high) => priced ? (low === high ? esc(aucCoin
 // Listing time, in the viewer's local timezone (e.g. "Jul 6, 5:03 PM"), with the
 // full timestamp on hover — so you can track when something was posted.
 const aucTime = (iso) => { if (!iso) return ''; const d = new Date(iso); return isNaN(d) ? '' : d.toLocaleString([], { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }); };
+// Price cell — shows the per-unit price with an "ea" tag when a quantity/stack was
+// listed (the whole-lot total is on hover); otherwise the plain price.
+function aucPriceDisplay(l) {
+  if (l.price == null) return '<span class="muted">—</span>';
+  const multi = l.perStack || (l.qty && l.qty > 1);
+  if (multi && l.unit != null) {
+    const q = l.perStack ? 'stack (20)' : '×' + l.qty;
+    return esc(aucCoin(l.unit)) + ' <span class="muted" title="' + q + ' = ' + esc(aucCoin(l.price)) + '">ea</span>';
+  }
+  return esc(l.priceStr || aucCoin(l.price));
+}
 const aucRecentRowHtml = (l) =>
   '<tr data-item="' + esc(l.item) + '"' + (l.price == null ? ' class="noprice"' : '') + '><td class="at">' + aucTag(l.intent) + (l.assumed ? '<span class="amute" title="intent inferred">?</span>' : '') + '</td>' +
   '<td class="ai">' + (l.matched ? itemLink(l.item, l.item) : esc(l.item)) + (l.qty ? ' <span class="muted">×' + l.qty + '</span>' : '') + '</td>' +
-  '<td class="ap">' + (l.price != null ? esc(l.priceStr || aucCoin(l.price)) : '<span class="muted">—</span>') + '</td>' +
+  '<td class="ap">' + aucPriceDisplay(l) + '</td>' +
   '<td class="muted">' + esc(l.player) + '</td>' +
   '<td class="aw muted" title="' + esc(l.seen || '') + '">' + esc(aucTime(l.seen)) + '</td></tr>';
 const aucItemRowHtml = (g) =>
@@ -2790,7 +2803,8 @@ async function loadWikiStats() {
     for (const l of (AUCTIONS && AUCTIONS.listings) || []) {
       if (l.price == null) continue; // only priced listings inform value
       const k = String(l.item).toLowerCase();
-      (TRADES[k] = TRADES[k] || []).push({ item: l.item, price: l.price, side: l.intent === 'buy' ? 'buy' : 'sell', date: l.seen, server: l.server });
+      // Use the per-unit price so a "x4 for 48s" listing values the item at 12s, not 48s.
+      (TRADES[k] = TRADES[k] || []).push({ item: l.item, price: l.unit != null ? l.unit : l.price, side: l.intent === 'buy' ? 'buy' : 'sell', date: l.seen, server: l.server });
     }
   } catch {}
   try {
