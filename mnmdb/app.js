@@ -2565,6 +2565,17 @@ const aucPriceCell = (priced, low, high) => priced ? (low === high ? esc(aucCoin
 // Listing time, in the viewer's local timezone (e.g. "Jul 6, 5:03 PM"), with the
 // full timestamp on hover — so you can track when something was posted.
 const aucTime = (iso) => { if (!iso) return ''; const d = new Date(iso); return isNaN(d) ? '' : d.toLocaleString([], { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }); };
+// Relative "how long ago" — easier to gauge if the seller might still be around.
+// The exact timestamp is preserved in the data (seen) and shown on hover.
+const aucAgo = (iso) => {
+  if (!iso) return '';
+  const d = new Date(iso); if (isNaN(d)) return '';
+  const s = Math.max(0, Math.round((Date.now() - d.getTime()) / 1000));
+  if (s < 60) return 'just now';
+  const m = Math.round(s / 60); if (m < 60) return m + ' min ago';
+  const h = Math.round(m / 60); if (h < 24) return h + ' hr' + (h === 1 ? '' : 's') + ' ago';
+  const dy = Math.round(h / 24); return dy + ' day' + (dy === 1 ? '' : 's') + ' ago';
+};
 // Price cell — shows the per-unit price with an "ea" tag when a quantity/stack was
 // listed (the whole-lot total is on hover); otherwise the plain price.
 function aucPriceDisplay(l) {
@@ -2581,7 +2592,7 @@ const aucRecentRowHtml = (l) =>
   '<td class="ai">' + (l.matched ? itemLink(l.item, l.item) : esc(l.item)) + (l.qty ? ' <span class="muted">×' + l.qty + '</span>' : '') + '</td>' +
   '<td class="ap">' + aucPriceDisplay(l) + '</td>' +
   '<td class="muted">' + esc(l.player) + '</td>' +
-  '<td class="aw muted" title="' + esc(l.seen || '') + '">' + esc(aucTime(l.seen)) + '</td></tr>';
+  '<td class="aw muted" title="' + esc(aucTime(l.seen)) + '">' + esc(aucAgo(l.seen)) + '</td></tr>';
 const aucItemRowHtml = (g) =>
   '<tr data-item="' + esc(g.item) + '"' + (g.priced ? '' : ' class="noprice"') + '>' +
   '<td class="ai">' + (g.matched ? itemLink(g.item, g.item) : esc(g.item)) + '</td>' +
@@ -2728,13 +2739,15 @@ function renderAdvanced() {
       '<div class="adv-controls">' +
         '<select id="bis-class"><option value="">Any class</option>' + MNM_CLASSES.map((c) => '<option>' + c + '</option>').join('') + '</select>' +
         statOpt('bis-p1', 'Priority 1…') + statOpt('bis-p2', 'Priority 2…') + statOpt('bis-p3', 'Priority 3…') +
-        '<select id="bis-weight">' + Object.keys(BIS_WEIGHT_PRESETS).map((k) => '<option value="' + k + '"' + (k === 'focused' ? ' selected' : '') + '>' + BIS_WEIGHT_LABEL[k] + '</option>').join('') + '</select>' +
+        '<select id="bis-weight">' + Object.keys(BIS_WEIGHT_PRESETS).map((k) => '<option value="' + k + '"' + (k === 'balanced' ? ' selected' : '') + '>' + BIS_WEIGHT_LABEL[k] + '</option>').join('') + '</select>' +
+        '<input id="bis-maxlvl" type="number" min="1" inputmode="numeric" placeholder="Max drop level">' +
       '</div>' +
       '<div id="bis-results"></div>' +
     '</div>';
   ['adv-name', 'adv-slot', 'adv-class', 'adv-effect', 'adv-maxlvl', 'adv-magic'].concat(ADV_STATS.map((s) => 'adv-' + s))
     .forEach((id) => { const el = $(id); if (el) el.addEventListener('input', paintAdvanced); });
   ['bis-p1', 'bis-p2', 'bis-p3', 'bis-weight'].forEach((id) => { const el = $(id); if (el) el.addEventListener('change', paintBis); });
+  { const el = $('bis-maxlvl'); if (el) el.addEventListener('input', paintBis); }
   // Picking a class auto-fills its suggested primary/secondary stats (not locked —
   // change them after). Runs before the repaint so the new priorities take effect.
   const bc = $('bis-class');
@@ -2833,30 +2846,48 @@ const CLASS_STATS = {
   SHM: ['WIS', 'STA', 'DEX'], SPB: ['DEX', 'INT', 'STR'], WIZ: ['INT', 'STR', 'DEX'],
 };
 // Weighting presets for how much the 2nd/3rd priorities count vs the 1st (always 1).
-const BIS_WEIGHT_PRESETS = { focused: [1, 0.5, 0.25], balanced: [1, 0.7, 0.5], strict: [1, 0.34, 0.12] };
-const BIS_WEIGHT_LABEL = { focused: 'Focused — 1 · ½ · ¼ (recommended)', balanced: 'Balanced — 1 · 0.7 · 0.5', strict: 'Primary-heavy — 1 · ⅓ · ⅛' };
+const BIS_WEIGHT_PRESETS = { balanced: [1, 0.7, 0.5], focused: [1, 0.5, 0.25], strict: [1, 0.34, 0.12] };
+const BIS_WEIGHT_LABEL = { balanced: 'Balanced — 1 · 0.7 · 0.5 (recommended)', focused: 'Focused — 1 · ½ · ¼', strict: 'Primary-heavy — 1 · ⅓ · ⅛' };
+// Classes that can dual-wield (equip a weapon in the off-hand). Everyone else can
+// only put a shield / off-hand item there. Best guess from archetypes — tell me to
+// adjust. Non-listed casters/priests/knights (WIZ/CLR/PAL/SHD/…) do NOT dual-wield.
+const DUAL_WIELD = new Set(['FTR', 'RNG', 'ROG', 'MNK', 'BRD', 'BST']);
+// Strict class check: an item is usable only if its class list names this class or
+// is ALL. Items with NO class listed are treated as not-usable when a class is
+// chosen (so e.g. plate with no class data can't land on a wizard).
 function bisClassFits(w, cls) {
-  const c = (w.class || '').toUpperCase();
   if (!cls) return true;
-  if (!c || c.includes('ALL')) return true;
+  const c = (w.class || '').toUpperCase();
+  if (!c) return false;
+  if (c.includes('ALL')) return true;
   return new RegExp('\\b' + cls + '\\b').test(c);
 }
 // Pick the highest-scoring wearable item for every slot, given a class + ordered
 // priorities. Returns [{ slotLabel, item, score }]. Weapons: compares the best
 // 2-hander against the best main-hand + off-hand and keeps whichever scores more.
-function computeBis(cls, priorities, weights) {
+function computeBis(cls, priorities, weights, maxlvl) {
   const score = (w) => priorities.reduce((s, p, idx) => s + (weights[idx] || 0) * bisStatVal(w, p), 0);
+  const canDualWield = !cls || DUAL_WIELD.has(cls);
   const armor = {}; // slotKey -> [{ item, sc }]
   const wpn = { primary: [], secondary: [], twoH: [] };
   for (const i of DATA.items) {
     const w = i.wiki; if (!w || !w.slot || !bisClassFits(w, cls)) continue;
-    const { slots, twoH } = itemSlots(w.slot);
+    // Drop-level filter: exclude items we KNOW drop only from mobs above the cap
+    // (unknown-level items are kept — we can't rule them out yet).
+    if (maxlvl != null) { const dl = itemMinDropperLevel(i); if (dl != null && dl > maxlvl) continue; }
+    const parsed = itemSlots(w.slot);
+    const slots = parsed.slots;
+    // Two-handed can live in the slot text ("PRIMARY TWO HANDED") OR the separate
+    // `handed` field ("Two Handed") — check both, or a 2H lands in the 1H pile.
+    const twoH = parsed.twoH || /two\s*hand|2\s*h(?:and)?\b/i.test(w.handed || '');
     if (!slots.size) continue;
     const sc = score(w);
     for (const s of slots) {
       if (s === 'PRIMARY') (twoH ? wpn.twoH : wpn.primary).push({ item: i, sc });
-      else if (s === 'SECONDARY') { if (!twoH) wpn.secondary.push({ item: i, sc }); }
-      else (armor[s] = armor[s] || []).push({ item: i, sc });
+      else if (s === 'SECONDARY') {
+        if (twoH) continue;                                   // a 2-hander can't go in the off-hand
+        if (canDualWield || w.dmg == null) wpn.secondary.push({ item: i, sc }); // non-dual-wielders: shields/off-hand only (no weapon)
+      } else (armor[s] = armor[s] || []).push({ item: i, sc });
     }
   }
   const chosen = [];
@@ -2886,10 +2917,12 @@ function computeBis(cls, priorities, weights) {
 function paintBis() {
   const cls = ($('bis-class').value || '').toUpperCase();
   const priorities = ['bis-p1', 'bis-p2', 'bis-p3'].map((id) => $(id).value).filter(Boolean);
-  const weights = BIS_WEIGHT_PRESETS[$('bis-weight').value] || BIS_WEIGHT_PRESETS.focused;
+  const weights = BIS_WEIGHT_PRESETS[$('bis-weight').value] || BIS_WEIGHT_PRESETS.balanced;
+  const maxlvlRaw = $('bis-maxlvl').value;
+  const maxlvl = maxlvlRaw !== '' ? +maxlvlRaw : null;
   const box = $('bis-results');
   if (!priorities.length) { box.innerHTML = '<p class="sub">Choose at least one stat priority to build a set.</p>'; return; }
-  const set = computeBis(cls, priorities, weights);
+  const set = computeBis(cls, priorities, weights, maxlvl);
   const filled = set.filter((r) => r.item);
   // Totals: summed priority-stat points + total weighted score across the set.
   const totalScore = filled.reduce((s, r) => s + r.score, 0);
@@ -2903,7 +2936,8 @@ function paintBis() {
     priorities.map((p) => '<td class="num"><b>' + (totalStat[p] || 0) + '</b></td>').join('') +
     '<td class="num"><b>' + Math.round(totalScore * 10) / 10 + '</b></td></tr>';
   box.innerHTML = '<p class="sub">' + filled.length + ' slots filled' + (cls ? ' for <b>' + esc(cls) + '</b>' : '') +
-      ' · weights: ' + priorities.map((p, idx) => esc(p) + ' ×' + weights[idx]).join(', ') + '</p>' +
+      ' · weights: ' + priorities.map((p, idx) => esc(p) + ' ×' + weights[idx]).join(', ') +
+      (maxlvl != null ? ' · excluding items known to drop above L' + maxlvl : '') + '</p>' +
     '<div class="card"><table>' + head + '<tbody>' + rows + totalRow + '</tbody></table></div>' +
     '<p class="note">Highest-scoring <b>mix</b> of your chosen stats per slot — an item wins if its weighted total beats the rest, so a high 2nd-priority item can outrank a slightly better 1st. Ignores stats/effects you didn’t prioritise and whether you can actually get the item. Hover any item for its full stats.</p>';
   itemHoverInit();
