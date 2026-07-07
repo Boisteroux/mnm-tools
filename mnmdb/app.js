@@ -2723,7 +2723,7 @@ function renderAdvanced() {
       '<div id="adv-results"></div>' +
     '</div>' +
     '<div id="adv-bis-panel">' +
-      '<p class="sub">Pick a class — its usual primary/secondary stats are filled in automatically (change them freely, and add a 3rd) — and we score every wearable item to assemble the highest-scoring gear set. ' +
+      '<p class="sub">Pick a class — its wiki stat priorities fill in automatically (change them freely) — and we score every wearable item to assemble the highest-scoring gear set. ' +
       'The weighting sets how much the 2nd and 3rd priorities count vs the 1st.</p>' +
       '<div class="adv-controls">' +
         '<select id="bis-class"><option value="">Any class</option>' + MNM_CLASSES.map((c) => '<option>' + c + '</option>').join('') + '</select>' +
@@ -2738,7 +2738,7 @@ function renderAdvanced() {
   // Picking a class auto-fills its suggested primary/secondary stats (not locked —
   // change them after). Runs before the repaint so the new priorities take effect.
   const bc = $('bis-class');
-  if (bc) bc.addEventListener('change', () => { const d = CLASS_STATS[bc.value]; if (d) { $('bis-p1').value = d[0] || ''; $('bis-p2').value = d[1] || ''; } paintBis(); });
+  if (bc) bc.addEventListener('change', () => { const d = CLASS_STATS[bc.value]; if (d) { $('bis-p1').value = d[0] || ''; $('bis-p2').value = d[1] || ''; $('bis-p3').value = d[2] || ''; } paintBis(); });
   document.querySelectorAll('.adv-tab').forEach((b) => b.addEventListener('click', () => advShowTab(b.dataset.tab)));
   advShowTab(tab);
   paintAdvanced(); paintBis();
@@ -2822,16 +2822,15 @@ function bisStatVal(w, s) {
 // The 18 real classes (the class field also carries OCR/parse junk — these are the
 // tokens that appear on hundreds of items; everything else is noise).
 const MNM_CLASSES = ['ARC', 'BRD', 'BST', 'CLR', 'DRU', 'ELE', 'ENC', 'FTR', 'INQ', 'MNK', 'NEC', 'PAL', 'RNG', 'ROG', 'SHD', 'SHM', 'SPB', 'WIZ'];
-// Suggested [primary, secondary] stats per class — auto-filled when you pick a
-// class (you can still change them). Derived from which stats each class's gear
-// most distinctively carries (INT/WIS + MANA for casters, STR + a finesse/defence
-// stat for melee); a sensible starting point, not a rule.
+// Each class's [primary, secondary, tertiary] stats per the M&M wiki — auto-filled
+// when you pick a class (you can still change them; not locked).
 const CLASS_STATS = {
-  ARC: ['STR', 'DEX'], BRD: ['DEX', 'STR'], BST: ['STR', 'WIS'], CLR: ['WIS', 'MANA'],
-  DRU: ['WIS', 'MANA'], ELE: ['INT', 'MANA'], ENC: ['INT', 'MANA'], FTR: ['STR', 'STA'],
-  INQ: ['STR', 'STA'], MNK: ['STR', 'AGI'], NEC: ['INT', 'MANA'], PAL: ['STR', 'STA'],
-  RNG: ['STR', 'DEX'], ROG: ['DEX', 'STR'], SHD: ['STR', 'STA'], SHM: ['WIS', 'MANA'],
-  SPB: ['STR', 'DEX'], WIZ: ['INT', 'MANA'],
+  ARC: ['DEX', 'STR', 'AGI'], BRD: ['CHA', 'DEX', 'STR'], BST: ['STR', 'AGI', 'WIS'],
+  CLR: ['WIS', 'STR', 'STA'], DRU: ['WIS', 'CHA', 'AGI'], ELE: ['INT', 'STA'],
+  ENC: ['INT', 'CHA'], FTR: ['STR', 'STA', 'AGI'], INQ: ['STA', 'INT', 'CHA'],
+  MNK: ['AGI', 'DEX', 'STR'], NEC: ['INT', 'DEX'], PAL: ['STA', 'WIS', 'STR'],
+  RNG: ['DEX', 'WIS', 'AGI'], ROG: ['DEX', 'AGI'], SHD: ['STR', 'INT', 'STA'],
+  SHM: ['WIS', 'STA', 'DEX'], SPB: ['DEX', 'INT', 'STR'], WIZ: ['INT', 'STR', 'DEX'],
 };
 // Weighting presets for how much the 2nd/3rd priorities count vs the 1st (always 1).
 const BIS_WEIGHT_PRESETS = { focused: [1, 0.5, 0.25], balanced: [1, 0.7, 0.5], strict: [1, 0.34, 0.12] };
