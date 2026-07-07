@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-07T00:11:05.030Z",
+  "generatedAt": "2026-07-07T00:41:09.154Z",
   "items": {
     "Bone Chips": {
       "hasPage": true,
@@ -49058,6 +49058,349 @@
       "from": [
         "a shimmering shadow"
       ]
+    },
+    "Eclipse Cleaver": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0064AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 6,
+      "size": "MEDIUM",
+      "class": "ARC BRD BST FTR INQ PAL RNG ROG SHD SPB WIZ",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "STR": 2,
+        "STA": 2
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Night Harbor"
+      ],
+      "from": [
+        "a pale cook"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/8/8c/Itemicon0064AA.png/64px-Itemicon0064AA.png"
+    },
+    "Ironhide Girdle": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0010AA",
+      "slot": "WAIST",
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "SMALL",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 8,
+      "stats": {
+        "STA": 6
+      },
+      "hp": 10,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "from": [
+        "a pale lieutenant"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/bd/Itemicon0010AA.png/64px-Itemicon0010AA.png"
+    },
+    "Blackened Girdle": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [
+        "MAGIC",
+        "UNIQUE"
+      ],
+      "handed": null,
+      "ac": 10,
+      "stats": {
+        "STR": 7
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": 20,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Glass Flats"
+      ],
+      "from": [
+        "Hovarth Ezzadel"
+      ]
+    },
+    "Corroded Mithril Scimitar": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 7,
+      "size": "MEDIUM",
+      "class": "ARC BRD BST DRU FTR INQ PAL RNG ROG SHD SPB WIZ",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null
+    },
+    "Graverobber's Hood": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0046AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "SMALL",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 6,
+      "stats": {
+        "AGI": 1,
+        "DEX": 1
+      },
+      "hp": 10,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Tomb of the Last Wyrmsbane"
+      ],
+      "from": [
+        "Ariblast the Wicked"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/5/51/Itemicon0046AA.png/64px-Itemicon0046AA.png"
+    },
+    "Tanned Sinew Bracer": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "SMALL",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNL PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 11,
+      "stats": {
+        "WIS": 4
+      },
+      "hp": 15,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Scarwood"
+      ],
+      "from": [
+        "Thorne Grinholdt"
+      ]
+    },
+    "Torvald Signet Ring": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "BRD",
+      "race": "ALL",
+      "flags": [
+        "MAGIC",
+        "UNIQUE"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "STA": 3,
+        "INT": 5,
+        "CHA": 1
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": {
+        "name": "Sonnet of the Unseen",
+        "trigger": "Click",
+        "castTime": "6s",
+        "level": 50,
+        "detail": "On Click. Must Equip. Cast Time: 6s. Level: 50"
+      },
+      "wikiZones": [
+        "Fallen Pass"
+      ]
+    },
+    "Feastfire Wrapper": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 1.1,
+      "size": "MEDIUM",
+      "class": "ELE ENC NEC WIZ",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 10,
+      "stats": {
+        "INT": 4
+      },
+      "hp": null,
+      "mana": 10,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Tel Ekir"
+      ],
+      "from": [
+        "Luhum the Plump"
+      ]
+    },
+    "Dusty Chitin Bracer": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0042AB",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 1.4,
+      "size": "MEDIUM",
+      "class": "CLR FTR INQ PAL SHD",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 10,
+      "stats": {
+        "STR": 2,
+        "STA": 1
+      },
+      "hp": 10,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Night Harbor"
+      ],
+      "from": [
+        "an old scarab"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/8/8e/Itemicon0042AB.png/64px-Itemicon0042AB.png"
     }
   },
   "mobs": {
