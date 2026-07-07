@@ -18,6 +18,12 @@ const API = 'https://monstersandmemories.miraheze.org/w/api.php';
 const STATS_V = 4;
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+// Never import these wiki pages — they're misspelled duplicates of a correctly
+// named item that already exists (the wiki has both pages). Lowercased.
+const SKIP_ITEMS = new Set([
+  "thyrm's fury", // typo dup of "Thrym's Fury" (Thrym = the correct spelling)
+]);
+
 const apiGet = (params) => new Promise((res, rej) => {
   const url = API + '?' + new URLSearchParams(Object.assign({ format: 'json' }, params));
   https.get(url, { headers: { 'User-Agent': 'mnm-tools-import/1.0' } }, (r) => {
@@ -88,7 +94,7 @@ function entryFromWikitext(wt) {
 
   console.log('Listing every ItemBox page on the wiki…');
   const titles = await allItemTitles();
-  const missing = titles.filter((t) => !haveLower.has(t.toLowerCase()));
+  const missing = titles.filter((t) => !haveLower.has(t.toLowerCase()) && !SKIP_ITEMS.has(t.toLowerCase()));
   console.log(`Wiki item pages: ${titles.length} · already have: ${titles.length - missing.length} · missing: ${missing.length}`);
   if (dry) { console.log('(dry run — nothing written)'); return; }
   if (!missing.length) { console.log('Nothing to import.'); return; }
