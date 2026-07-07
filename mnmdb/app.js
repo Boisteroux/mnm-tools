@@ -548,7 +548,7 @@ function renderItem(id) {
     if (w.effect) {
       const e = w.effect, tag = e.trigger ? ' <span class="tag good">' + esc(e.trigger) + '</span>' : '';
       const extra = [e.castTime ? 'Cast ' + esc(e.castTime) : '', e.level ? 'Lvl ' + e.level : ''].filter(Boolean).join(' · ');
-      add('Effect', '<strong>' + esc(e.name) + '</strong>' + tag + (extra ? ' <span class="muted">(' + extra + ')</span>' : ''));
+      add('Effect', '<strong>' + esc(e.name) + '</strong>' + tag + (extra ? ' <span class="muted">(' + extra + ')</span>' : '') + effectDescHTML(e));
     }
     add('Slot', esc(w.slot || '') + (w.handed ? ' (' + esc(w.handed) + ')' : ''));
     add('Weapon DMG', w.dmg);
@@ -2638,7 +2638,7 @@ function statCardInner(s) {
   if (s.flags && s.flags.length) P.push('<div class="aflags">' + s.flags.map((f) => '<span class="aflag">' + esc(f) + '</span>').join('') + '</div>');
   if (s.effect) {
     const e = s.effect, extra = [e.trigger || '', e.castTime ? 'Cast ' + esc(e.castTime) : '', e.level ? 'Lvl ' + e.level : ''].filter(Boolean).join(' · ');
-    P.push('<div class="arow aeff"><span class="muted">Effect</span> <strong>' + esc(e.name) + '</strong>' + (extra ? ' <span class="muted">(' + esc(extra) + ')</span>' : '') + '</div>');
+    P.push('<div class="arow aeff"><span class="muted">Effect</span> <strong>' + esc(e.name) + '</strong>' + (extra ? ' <span class="muted">(' + esc(extra) + ')</span>' : '') + effectDescHTML(e) + '</div>');
   }
   P.push(row([s.slot ? 'Slot ' + esc(s.slot) : ''].filter(Boolean)));
   if (s.dmg != null || s.delay != null || s.skill) P.push(row([s.dmg != null ? 'DMG ' + s.dmg : '', s.delay != null ? 'Delay ' + s.delay : '', s.skill ? esc(s.skill) : ''].filter(Boolean)));
@@ -3046,6 +3046,19 @@ async function loadWikiStats() {
     const qj = await (await fetch('./quests.json')).json();
     QUESTS = (qj && qj.quests) || [];
   } catch {}
+  try {
+    SPELLS = (await (await fetch('./spells.json')).json()).spells || {};
+  } catch {}
+}
+// Spell/ability details (from the wiki) an item's proc/effect refers to, by name.
+let SPELLS = {};
+const spellFor = (effect) => (effect && effect.name && SPELLS[effect.name.toLowerCase()]) || null;
+// A one-line "what it does" for an item's effect, from the matched wiki spell page.
+function effectDescHTML(effect) {
+  const sp = spellFor(effect);
+  if (!sp || !sp.description) return '';
+  const bits = [sp.mana && sp.mana !== '0' ? 'Mana ' + esc(sp.mana) : '', sp.castTime ? 'Cast ' + esc(sp.castTime) : '', sp.range ? esc(sp.range) : '', sp.duration && !/instant/i.test(sp.duration) ? esc(sp.duration) : ''].filter(Boolean);
+  return '<div class="eff-desc"><em>' + esc(sp.description) + '</em>' + (bits.length ? ' <span class="muted">(' + bits.join(' · ') + ')</span>' : '') + '</div>';
 }
 
 fetch('./data.json')
