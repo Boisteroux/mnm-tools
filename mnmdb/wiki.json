@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-07T06:11:45.136Z",
+  "generatedAt": "2026-07-07T06:41:47.669Z",
   "items": {
     "Bone Chips": {
       "hasPage": true,
@@ -51649,6 +51649,51 @@
         "Nerguk"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/e9/Itemicon0019AA.png/64px-Itemicon0019AA.png"
+    },
+    "Thorn Sturgeon": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Hood of the Iron Lash": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0046AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "SMALL",
+      "class": "ARC BRD BST DRU RNG ROG SHM SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC",
+        "UNIQUE"
+      ],
+      "handed": null,
+      "ac": 20,
+      "stats": {
+        "DEX": 5
+      },
+      "hp": 25,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Pass"
+      ],
+      "from": [
+        "Taskmaster Fek'Ney"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/5/51/Itemicon0046AA.png/64px-Itemicon0046AA.png"
     }
   },
   "mobs": {
