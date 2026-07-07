@@ -66,11 +66,12 @@ function parseCoins(text, coins) {
 }
 
 // Quantity: "x2", "2x", "x1stack", "5s stacks". Returns { qty, perStack }.
+// Stack detection also covers the "st"/"stk" abbreviation ("40s/st" = per stack).
 function parseQty(text) {
   let qty = null, perStack = false;
   const q = text.match(/(?:x\s*(\d+))|(?:(\d+)\s*x\b)/i);
   if (q) qty = parseInt(q[1] || q[2], 10);
-  if (/\bstacks?\b|\dstack/i.test(text)) perStack = true;
+  if (/\bstacks?\b|\bstk\b|[/\s]st\b|\dstack/i.test(text)) perStack = true;
   return { qty, perStack };
 }
 

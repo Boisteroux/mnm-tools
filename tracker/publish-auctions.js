@@ -82,13 +82,25 @@ function eachPrice(raw) {
   const m = raw.match(/([\d.]+)\s*(pp|platinum|plat|gp|gold|sp|silver|cp|copper|p|g|s|c)\s*(?:ea|each)\b/);
   return m && COIN[m[2]] != null ? Math.round(parseFloat(m[1]) * COIN[m[2]]) : null;
 }
+// Scope qualifier detection to THIS item's segment of a multi-item post: in
+// "[A] 15s a stack [B] 5g" the "a stack" belongs to A, not B. Single-item posts
+// (or when the item can't be located in the raw) use the whole message.
+function itemScope(rawStr, item) {
+  const lc = String(rawStr || '').toLowerCase();
+  if ((lc.match(/\[/g) || []).length <= 1) return lc.replace(/\[[^\]]*\]/g, ' ');
+  const key = '[' + String(item).toLowerCase() + ']';
+  const i = lc.indexOf(key);
+  if (i < 0) return lc.replace(/\[[^\]]*\]/g, ' ');
+  const start = i + key.length, next = lc.indexOf('[', start);
+  return lc.slice(start, next < 0 ? lc.length : next); // after this item's bracket, up to the next item
+}
 function normalize(l) {
   const price = l.priceCopper;
   if (price == null) return { unit: null, total: null, perStack: false };
   const qty = l.qty && l.qty > 1 ? l.qty : 1;
-  const raw = (l.raw || '').toLowerCase().replace(/\[[^\]]*\]/g, ' '); // ignore item names in [brackets]
+  const raw = itemScope(l.raw, l.item);
   const each = /\b(?:ea|each)\b|\/\s*ea\b/.test(raw);                                     // explicit per-unit
-  const stack = l.perStack || /\bstacks?\b/.test(raw);                                    // "a stack" = a 20-unit lot
+  const stack = /\bstacks?\b|\bstk\b|[/\s]st\b/.test(raw);                                // "a stack" / "stk" / "40s/st" = a 20-unit lot
   const takeAll = /\btake all\b|\ball for\b|\bfor all\b|\bthe lot\b/.test(raw);           // explicit whole-lot total
   const priceThenQty = /\d+(?:\.\d+)?\s*(?:pp|p|plat|platinum|gp|g|gold|sp|s|silver|cp|c|copper)\s*x\s*\d+/.test(raw); // "1.1g x28" = per-unit
   // A stack price ("30g a stack") is per 20 units — unless it also says "each"
@@ -106,7 +118,7 @@ const listings = rows.map((l) => {
   return {
     server: l.server, intent: l.intent || null, item: l.item,
     price: total, unit, priceStr: total != null ? copperToStr(total) : null,
-    player: l.player, seen: l.firstSeen, qty: l.qty || undefined, perStack: perStack || l.perStack || undefined,
+    player: l.player, seen: l.firstSeen, qty: l.qty || undefined, perStack: perStack || undefined,
     assumed: l.assumed || undefined, matched: wikiNames.has(l.item.toLowerCase()),
   };
 });
