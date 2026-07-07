@@ -2851,7 +2851,7 @@ const BIS_WEIGHT_LABEL = { balanced: 'Balanced — 1 · 0.7 · 0.5 (recommended)
 // Classes that can dual-wield (equip a weapon in the off-hand). Everyone else can
 // only put a shield / off-hand item there. Best guess from archetypes — tell me to
 // adjust. Non-listed casters/priests/knights (WIZ/CLR/PAL/SHD/…) do NOT dual-wield.
-const DUAL_WIELD = new Set(['FTR', 'RNG', 'ROG', 'MNK', 'BRD', 'BST']);
+const DUAL_WIELD = new Set(['FTR', 'RNG', 'ROG', 'MNK', 'BRD', 'BST', 'SPB', 'ARC']);
 // Strict class check: an item is usable only if its class list names this class or
 // is ALL. Items with NO class listed are treated as not-usable when a class is
 // chosen (so e.g. plate with no class data can't land on a wizard).
