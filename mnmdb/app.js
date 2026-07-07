@@ -2409,8 +2409,8 @@ function questBounties() {
   return {
     unpriced: {
       tag: 'data', tagLabel: 'Data · in-game', title: 'Appraise the Unpriced', reward: 'Merchant renown', diff: 1,
-      flav: 'items have no known value yet. Log a player sale or a vendor price so we know what they’re worth.',
-      how: 'Add the vendor “Base Price” to the item’s wiki page (linked by each item below) and it’s pulled in on the next refresh — or log a player sale in the companion app.',
+      flav: 'items have no known value yet. Player sale prices come in automatically from the live auction feed — add a vendor price to fill in the rest.',
+      how: 'Add the vendor “Base Price” to the item’s wiki page (linked by each item below) and it’s pulled in on the next refresh. Player sale prices are read automatically from the LiveMMCam auction stream, so an unpriced item just hasn’t been auctioned yet.',
       list: items.filter((it) => itemMarketValue(it.name).value <= 0)
         .map((it) => ({ name: it.name, href: '#/item/' + encodeURIComponent(it.id) })),
     },

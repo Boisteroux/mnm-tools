@@ -2,16 +2,22 @@
   "_note": "Dev quests for the Database Quest Board — coding tasks (mostly from ROADMAP.md) that others could pick up. Edit on github.com to add/remove. The 'data bounties' (unpriced items, unleveled mobs, unmapped zones, lost sources) are generated automatically from the live database and are NOT listed here. difficulty: 1 (easy) to 3 (hard).",
   "quests": [
     {
+      "title": "Auction price history & trends",
+      "blurb": "Chart an item's per-unit price over time from the live auction feed (auctions.json already carries per-listing timestamps and normalized per-unit prices). Show a sparkline on item pages and a 'biggest movers' board — now that real market data is flowing, this is the flagship analytics build.",
+      "difficulty": 3,
+      "reward": "Economist"
+    },
+    {
+      "title": "PvP ↔ PvE arbitrage board",
+      "blurb": "Surface the biggest cross-server price gaps — items far cheaper on one server than the other. The Auction House already prices PvP and PvE separately per item; this ranks the spreads.",
+      "difficulty": 2,
+      "reward": "Arbitrageur"
+    },
+    {
       "title": "Rework the rarity × value scatter",
       "blurb": "Rebuild the home rarity×value chart so it reads at a glance — add a legend, axis ticks, quadrant labels, and a shape (not just colour) for trade vs drop. The old code is left dormant in app.js (scatterSvg / wireScatter).",
       "difficulty": 3,
       "reward": "Artificer"
-    },
-    {
-      "title": "Build the M&M Market Index",
-      "blurb": "A commodity-basket price index charted over time from logged trades — a stock-ticker for the in-game economy. Fits the new dark mode perfectly.",
-      "difficulty": 3,
-      "reward": "Economist"
     },
     {
       "title": "Coin/hour & kills/hour analytics",

@@ -17,13 +17,24 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
 - **Accurate drop rates** — rates are per *looted corpse* (loots clustered by
   time), not per kill, because the game only logs kills for some mobs. Thin-sample
   rates (<10 corpses) are faded as "rough".
-- **Trade value v1** — item pages show a 30-day high/low + 7-day average of player
-  sale prices, with wild outliers auto-trimmed (IQR fence) so one bad value can't
-  skew the range. Logged frictionlessly via the in-app "Log a Trade" panel (merged
-  on Publish). Data lives in `mnmdb/trades.json`.
-- **mnmdb website** — searchable item / mob / resource database, economy-focused
-  home (most-valuable & most-fought mobs, priciest items, valuable resources,
-  recent trades). Live at https://mnm-db.com
+- **Trade value** — item pages show a 30-day high/low + 7-day average of player
+  sale prices (PvP and PvE priced separately), with wild outliers auto-trimmed
+  (IQR fence) so one bad value can't skew the range. Prices now come from the live
+  **Auction House** feed (below); the old in-app "Log a Trade" panel was retired.
+- **Auction House** — a live player market at `#/auctions`, read by **OCR of the
+  community LiveMMCam Twitch stream** (both the PvP and PvE `/auction` panels).
+  A chronological ticker (newest first, ~250 shown, search spans all) with
+  per-server prices, **per-unit normalization** ("x4 for 48s" / "30g a stack" →
+  a comparable each-price), listing times, a crafting/gear-requests board, and a
+  full item-stat card on hover. Pipeline: streamlink → ffmpeg frame grab →
+  Tesseract → parser (`tracker/parse-auctions.js`) → `mnmdb/auctions.json`,
+  auto-published every 30 min. Free/local — no paid API.
+- **Advanced search** — filter items by name/slot/class/effect and any stat
+  minimum (`#/advanced`); full ItemBox stats (AC, attributes, resists, HP/mana,
+  container capacity, click/proc/worn effects) backfilled onto every item.
+- **mnmdb website** — searchable item / mob / resource database with a live-market
+  home (zone-map grid, biggest PvP↔PvE price gaps, valuable crafting materials,
+  best value by level). Live at https://mnm-db.com
 - **Home charts** — magnitude bars on the home leaderboards and a per-mob "where the
   value comes from" breakdown bar. All dependency-free inline SVG/CSS. (The rarity ×
   value scatter was pulled for a rework — see Next up.)
@@ -136,8 +147,10 @@ your phone: edit this file on github.com (pencil icon → commit), or open an Is
 - ✅ **Harvest zones** — resources now show "Gathered in: [zones]" (item pages,
   Gathering table, zone pages), from the zone logged on each harvest.
 - **More wiki enrichment** — wider item-stat / icon / mob-level coverage.
-  (Note: vendor *buy* prices and live auction prices are NOT obtainable — no
-  merchant data in the wiki or logs, and the game doesn't save chat to disk.)
+  (Note: vendor *buy* prices come from the wiki's Merchant "Base Price". Live
+  **auction** prices — once thought unobtainable since the game doesn't save chat
+  to disk — are now read by OCR of the community LiveMMCam stream; see the
+  **Auction House** entry under Shipped.)
 - **Crowdsourcing server** — the *trusted-friends* version shipped (see "Pooled
   data from trusted friends" above: export a file → owner merges on Publish). The
   remaining big lift is the **automatic, open** version: a backend that receives
