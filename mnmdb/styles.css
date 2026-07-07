@@ -687,6 +687,7 @@ table.auc td { padding: 6px 12px; border-bottom: 1px solid var(--line); vertical
 table.auc tr[data-item]:hover td { background: var(--panel-2); }
 table.auc tr.noprice td { opacity: 0.5; }
 .auc .at { white-space: nowrap; width: 1%; }
+.auc .aw { white-space: nowrap; width: 1%; font-size: 12px; text-align: right; }
 .auc .ai { font-weight: 500; }
 .auc .ap { color: var(--accent); white-space: nowrap; font-variant-numeric: tabular-nums; }
 .muted { color: var(--muted); }
@@ -720,7 +721,6 @@ h2 .h2-link { font-size: 13px; font-weight: 400; margin-left: 10px; }
 .toggle-btn { padding: 7px 12px; border: 1px solid var(--line); border-radius: 7px; background: var(--panel); color: var(--muted); font: inherit; cursor: pointer; white-space: nowrap; transition: background .12s, color .12s, border-color .12s; }
 .toggle-btn:hover { border-color: var(--line-2); }
 .toggle-btn.is-on { background: var(--accent); border-color: var(--accent); color: #fff; }
-.toggle-btn.is-on::before { content: '✓ '; }
 .auc-subhead { margin: 16px 0 6px; font-size: 13px; font-weight: 600; color: var(--muted); }
 .mkt-cols { display: flex; gap: 16px; flex-wrap: wrap; }
 .mkt { flex: 1; min-width: 240px; }

@@ -29,7 +29,10 @@ const S = read('stats.json', {});
 const cleanName = (s) => String(s || '').replace(/^[^A-Za-z0-9]+|[^A-Za-z0-9)]+$/g, '').replace(/\s+/g, ' ').trim();
 const isJunk = (n) => !n || n.length < 2 || /\\/.test(n) || /^w\s*t\s*[sbt]$/i.test(n) || /^(wtb|wts|wtt)$/i.test(n);
 const RECENT_MS = (+process.env.MNM_RECENT_HOURS || 48) * 3600 * 1000; // only publish still-active listings
-const MAX_PER_SERVER = +process.env.MNM_MAX_PER_SERVER || 500;
+// Per-server safety cap on the published file. Priced listings are never cut (see
+// the priced-first sort below), so this only trims the oldest no-price availability
+// posts. The page itself shows ~250; the rest are here so search can reach them.
+const MAX_PER_SERVER = +process.env.MNM_MAX_PER_SERVER || 800;
 const key = (l) => (l.server + '|' + l.player + '|' + l.item).toLowerCase();
 
 // Everything trashed or flagged is recorded to discarded.json for review + rule-building.
@@ -42,10 +45,16 @@ const realKeys = new Set(rows.filter((l) => l.intent).map(key));
 rows = rows.filter((l) => { if (l.intent || !realKeys.has(key(l))) return true; discarded.push({ status: 'trashed', reason: 'duplicate of a resolved listing', server: l.server, player: l.player, item: l.item, raw: l.raw || '' }); return false; });
 // flag the still-unresolved "?" (kept, but needs a human — intent could not be read)
 for (const l of rows) if (!l.intent) discarded.push({ status: 'review', reason: 'intent not read', server: l.server, player: l.player, item: l.item, raw: l.raw || '' });
-// 3. keep only recent (still on the market), newest first, capped per server — so the page never balloons
+// 3. keep only recent (still on the market). Priced listings sort first so the
+//    per-server cap only ever trims the oldest no-price posts — every priced
+//    listing within the window is published (and therefore searchable).
 const cutoff = Date.now() - RECENT_MS;
+const isPriced = (l) => l.priceCopper != null;
 rows = rows.filter((l) => !l.lastSeen || new Date(l.lastSeen).getTime() >= cutoff)
-  .sort((a, b) => String(b.lastSeen || '').localeCompare(String(a.lastSeen || '')));
+  .sort((a, b) => {
+    if (isPriced(a) !== isPriced(b)) return isPriced(a) ? -1 : 1;             // priced first
+    return String(b.lastSeen || '').localeCompare(String(a.lastSeen || ''));  // then newest
+  });
 const perServer = {};
 rows = rows.filter((l) => (perServer[l.server] = (perServer[l.server] || 0) + 1) <= MAX_PER_SERVER);
 

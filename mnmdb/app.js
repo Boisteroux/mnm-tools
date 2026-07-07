@@ -2511,7 +2511,7 @@ async function renderAuctions() {
     A.listings.length + ' listings · ' + priced + ' priced · ' + A.requests.length + ' requests · updated ' + esc(when) + '. Hover an item for its stats.</p>' +
     '<div class="auc-controls"><input id="auc-q" placeholder="Search item or seller…">' +
     '<select id="auc-sort"><option value="new">Newest</option><option value="price">Price (high→low)</option><option value="item">Item name</option></select>' +
-    '<button id="auc-priced" class="toggle-btn" type="button" aria-pressed="false">Priced Listings Only</button></div>' +
+    '<button id="auc-priced" class="toggle-btn" type="button" aria-pressed="false">Prices Only</button></div>' +
     '<div class="auc-cols"><div class="auc-panel"><div class="auc-head">PvP <span id="auc-pvp-n" class="muted"></span></div><div id="auc-pvp"></div></div>' +
     '<div class="auc-panel"><div class="auc-head">PvE <span id="auc-pve-n" class="muted"></span></div><div id="auc-pve"></div></div></div>' +
     '<div class="auc-panel" style="margin-top:16px"><div class="auc-head">🛠 Crafting / gear requests <span class="muted">' + A.requests.length + '</span></div><div id="auc-reqs"></div></div>';
@@ -2560,18 +2560,24 @@ function aggregateItems(list) {
   }));
 }
 const aucPriceCell = (priced, low, high) => priced ? (low === high ? esc(aucCoin(low)) : esc(aucCoin(low)) + '–' + esc(aucCoin(high))) : '<span class="muted">—</span>';
+// Listing time, in the viewer's local timezone (e.g. "Jul 6, 5:03 PM"), with the
+// full timestamp on hover — so you can track when something was posted.
+const aucTime = (iso) => { if (!iso) return ''; const d = new Date(iso); return isNaN(d) ? '' : d.toLocaleString([], { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }); };
 const aucRecentRowHtml = (l) =>
   '<tr data-item="' + esc(l.item) + '"' + (l.price == null ? ' class="noprice"' : '') + '><td class="at">' + aucTag(l.intent) + (l.assumed ? '<span class="amute" title="intent inferred">?</span>' : '') + '</td>' +
   '<td class="ai">' + (l.matched ? itemLink(l.item, l.item) : esc(l.item)) + (l.qty ? ' <span class="muted">×' + l.qty + '</span>' : '') + '</td>' +
   '<td class="ap">' + (l.price != null ? esc(l.priceStr || aucCoin(l.price)) : '<span class="muted">—</span>') + '</td>' +
-  '<td class="muted">' + esc(l.player) + '</td></tr>';
+  '<td class="muted">' + esc(l.player) + '</td>' +
+  '<td class="aw muted" title="' + esc(l.seen || '') + '">' + esc(aucTime(l.seen)) + '</td></tr>';
 const aucItemRowHtml = (g) =>
   '<tr data-item="' + esc(g.item) + '"' + (g.priced ? '' : ' class="noprice"') + '>' +
   '<td class="ai">' + (g.matched ? itemLink(g.item, g.item) : esc(g.item)) + '</td>' +
   '<td class="ap">' + aucPriceCell(g.priced, g.low, g.high) + '</td>' +
   '<td class="muted">' + g.sellers + ' selling' + (g.buyers ? ' · ' + g.buyers + ' buying' : '') + '</td></tr>';
 const aucTable = (rowsHtml) => '<table class="auc"><tbody>' + rowsHtml + '</tbody></table>';
+const AUC_MAX_ITEMS = 250; // cap what the page shows; search still spans the whole published set
 function paintAuctions() {
+  const searching = ($('auc-q').value || '').trim().length > 0;
   for (const [srv, id] of [['PvP', 'auc-pvp'], ['PvE', 'auc-pve']]) {
     const rs = aucRecentRows(srv);
     $(id + '-n').textContent = rs.length;
@@ -2580,7 +2586,12 @@ function paintAuctions() {
     if (older.length) {
       let agg = aggregateItems(older).sort((a, b) => (b.high || 0) - (a.high || 0) || b.sellers - a.sellers || a.item.localeCompare(b.item));
       if (aucPricedOnly()) agg = agg.filter((g) => g.priced); // keep the grouped tail consistent with the filter
-      if (agg.length) html += '<div class="auc-subhead">' + agg.length + ' earlier item' + (agg.length === 1 ? '' : 's') + ' — grouped</div>' + aucTable(agg.map(aucItemRowHtml).join(''));
+      // Cap the page at ~250 items (recent rows + grouped older). Never cap while
+      // searching, so a search always reaches the whole published set.
+      const total = agg.length;
+      if (!searching) agg = agg.slice(0, Math.max(0, AUC_MAX_ITEMS - recent.length));
+      if (agg.length) html += '<div class="auc-subhead">' + agg.length + ' earlier item' + (agg.length === 1 ? '' : 's') + ' — grouped' +
+        (total > agg.length ? ' <span class="muted">(' + (total - agg.length) + ' more — search to find them)</span>' : '') + '</div>' + aucTable(agg.map(aucItemRowHtml).join(''));
     }
     $(id).innerHTML = html;
   }
