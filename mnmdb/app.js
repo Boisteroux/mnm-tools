@@ -2680,25 +2680,55 @@ function itemMinDropperLevel(i) {
   for (const n of names) { const l = ml[n]; if (l != null && l < min) min = l; }
   return min === Infinity ? null : min;
 }
+// Advanced Search hosts two tools under one page: a stat filter and the
+// Best-in-Slot builder. #/bis deep-links straight to the Best-in-slot tab.
+function advShowTab(t) {
+  const s = $('adv-search-panel'), b = $('adv-bis-panel');
+  if (s) s.style.display = t === 'bis' ? 'none' : '';
+  if (b) b.style.display = t === 'bis' ? '' : 'none';
+  document.querySelectorAll('.adv-tab').forEach((x) => x.classList.toggle('is-on', x.dataset.tab === t));
+}
 function renderAdvanced() {
+  const tab = decodeURIComponent(location.hash.replace(/^#\/?/, '')).toLowerCase() === 'bis' ? 'bis' : 'search';
   const slots = [...new Set(DATA.items.map((i) => i.wiki && i.wiki.slot).filter(Boolean).map((s) => s.toUpperCase()))].sort();
   const statInputs = ADV_STATS.map((s) => '<label class="adv-stat">' + s + ' ≥ <input type="number" id="adv-' + s + '" min="0" inputmode="numeric"></label>').join('');
+  const classes = [...new Set(DATA.items.flatMap((i) => ((i.wiki && i.wiki.class) || '').toUpperCase().split(/[^A-Z]+/)))]
+    .filter((c) => c && c !== 'ALL' && c.length >= 2 && c.length <= 4).sort();
+  const statOpt = (id, blank) => '<select id="' + id + '"><option value="">' + blank + '</option>' + BIS_STATS.map((s) => '<option>' + s + '</option>').join('') + '</select>';
   $('content').innerHTML =
-    '<div class="crumb"><a href="#/">MnMdb</a> › advanced search</div><h1>Advanced item search</h1>' +
-    '<p class="sub">Filter items by their stats. Leave a field blank to ignore it.</p>' +
-    '<div class="adv-controls">' +
-      '<input id="adv-name" placeholder="Item name contains…">' +
-      '<select id="adv-slot"><option value="">Any slot</option>' + slots.map((s) => '<option>' + esc(s) + '</option>').join('') + '</select>' +
-      '<input id="adv-class" placeholder="Class (e.g. FTR)">' +
-      '<select id="adv-effect"><option value="">Any effect</option><option value="any">Has an effect</option><option value="Click">Clicky</option><option value="Proc">Proc / combat</option><option value="Worn">Worn</option></select>' +
-      '<input id="adv-maxlvl" type="number" min="1" inputmode="numeric" placeholder="Max mob level">' +
-      '<label class="adv-check"><input type="checkbox" id="adv-magic"> MAGIC only</label>' +
+    '<div class="crumb"><a href="#/">MnMdb</a> › advanced search</div><h1>Advanced Search</h1>' +
+    '<div class="adv-tabs">' +
+      '<button class="adv-tab" type="button" data-tab="search">Stat search</button>' +
+      '<button class="adv-tab" type="button" data-tab="bis">Best in slot</button>' +
     '</div>' +
-    '<div class="adv-stats">' + statInputs + '</div>' +
-    '<div id="adv-results"></div>';
+    '<div id="adv-search-panel">' +
+      '<p class="sub">Filter items by their stats. Leave a field blank to ignore it.</p>' +
+      '<div class="adv-controls">' +
+        '<input id="adv-name" placeholder="Item name contains…">' +
+        '<select id="adv-slot"><option value="">Any slot</option>' + slots.map((s) => '<option>' + esc(s) + '</option>').join('') + '</select>' +
+        '<input id="adv-class" placeholder="Class (e.g. FTR)">' +
+        '<select id="adv-effect"><option value="">Any effect</option><option value="any">Has an effect</option><option value="Click">Clicky</option><option value="Proc">Proc / combat</option><option value="Worn">Worn</option></select>' +
+        '<input id="adv-maxlvl" type="number" min="1" inputmode="numeric" placeholder="Max mob level">' +
+        '<label class="adv-check"><input type="checkbox" id="adv-magic"> MAGIC only</label>' +
+      '</div>' +
+      '<div class="adv-stats">' + statInputs + '</div>' +
+      '<div id="adv-results"></div>' +
+    '</div>' +
+    '<div id="adv-bis-panel">' +
+      '<p class="sub">Pick a class and your top stat priorities — we score every wearable item and assemble the highest-scoring gear set. ' +
+      'Weights: 1st priority ×1.0 per point, 2nd ×0.7, 3rd ×0.5. Subjective by design; tweak the priorities to taste.</p>' +
+      '<div class="adv-controls">' +
+        '<select id="bis-class"><option value="">Any class</option>' + classes.map((c) => '<option>' + c + '</option>').join('') + '</select>' +
+        statOpt('bis-p1', 'Priority 1…') + statOpt('bis-p2', 'Priority 2…') + statOpt('bis-p3', 'Priority 3…') +
+      '</div>' +
+      '<div id="bis-results"></div>' +
+    '</div>';
   ['adv-name', 'adv-slot', 'adv-class', 'adv-effect', 'adv-maxlvl', 'adv-magic'].concat(ADV_STATS.map((s) => 'adv-' + s))
     .forEach((id) => { const el = $(id); if (el) el.addEventListener('input', paintAdvanced); });
-  paintAdvanced();
+  ['bis-class', 'bis-p1', 'bis-p2', 'bis-p3'].forEach((id) => { const el = $(id); if (el) el.addEventListener('change', paintBis); });
+  document.querySelectorAll('.adv-tab').forEach((b) => b.addEventListener('click', () => advShowTab(b.dataset.tab)));
+  advShowTab(tab);
+  paintAdvanced(); paintBis();
 }
 function paintAdvanced() {
   const name = ($('adv-name').value || '').trim().toLowerCase();
@@ -2824,23 +2854,6 @@ function computeBis(cls, priorities) {
   }
   return chosen;
 }
-function renderBis() {
-  const classes = [...new Set(DATA.items.flatMap((i) => ((i.wiki && i.wiki.class) || '').toUpperCase().split(/[^A-Z]+/)))]
-    .filter((c) => c && c !== 'ALL' && c.length >= 2 && c.length <= 4).sort();
-  const statOpt = (id, blank) => '<select id="' + id + '"><option value="">' + blank + '</option>' +
-    BIS_STATS.map((s) => '<option>' + s + '</option>').join('') + '</select>';
-  $('content').innerHTML =
-    '<div class="crumb"><a href="#/">MnMdb</a> › best in slot</div><h1>Best in Slot</h1>' +
-    '<p class="sub">Pick a class and your top stat priorities — we score every wearable item and assemble the highest-scoring gear set. ' +
-    'Weights: 1st priority ×1.0 per point, 2nd ×0.7, 3rd ×0.5. Subjective by design; tweak the priorities to taste.</p>' +
-    '<div class="adv-controls">' +
-      '<select id="bis-class"><option value="">Any class</option>' + classes.map((c) => '<option>' + c + '</option>').join('') + '</select>' +
-      statOpt('bis-p1', 'Priority 1…') + statOpt('bis-p2', 'Priority 2…') + statOpt('bis-p3', 'Priority 3…') +
-    '</div>' +
-    '<div id="bis-results"></div>';
-  ['bis-class', 'bis-p1', 'bis-p2', 'bis-p3'].forEach((id) => { const el = $(id); if (el) el.addEventListener('change', paintBis); });
-  paintBis();
-}
 function paintBis() {
   const cls = ($('bis-class').value || '').toUpperCase();
   const priorities = ['bis-p1', 'bis-p2', 'bis-p3'].map((id) => $(id).value).filter(Boolean);
@@ -2875,8 +2888,7 @@ function route() {
   if (h === 'bestiary') return renderBestiary();
   if (h === 'maps') return renderMapsList();
   if (h === 'auctions') return renderAuctions();
-  if (h === 'advanced') return renderAdvanced();
-  if (h === 'bis') return renderBis();
+  if (h === 'advanced' || h === 'bis') return renderAdvanced();
   if (h === 'moderate') return renderModerate();
   if (h === 'quests') return renderQuests();
   if (h.startsWith('quests/')) return renderQuestList(h.slice(7));
@@ -2895,7 +2907,7 @@ function route() {
 async function loadWikiStats() {
   // Optional — merged in if present; never fatal if missing
   try {
-    const w = await (await fetch('./wiki.json?v=' + Date.now())).json();
+    const w = await (await fetch('./wiki.json')).json();
     if (w && w.items) {
       DATA.items.forEach((i) => { if (w.items[i.name]) i.wiki = w.items[i.name]; });
       // Add wiki-only items (e.g. gems you've never looted) so they get pages too
@@ -2917,7 +2929,7 @@ async function loadWikiStats() {
   // wrong, leaves empty, or has no page for — read off the in-game anvil. An override
   // replaces any wiki recipe for the same result, so our data wins and survives a re-scrape.
   try {
-    const ov = await (await fetch('./recipe-overrides.json?v=' + Date.now())).json();
+    const ov = await (await fetch('./recipe-overrides.json')).json();
     const overrides = (ov && ov.recipes) || [];
     const overridden = new Set(overrides.map((r) => r.result.item.toLowerCase()));
     RECIPES = RECIPES.filter((r) => !overridden.has(r.result.item.toLowerCase())).concat(overrides);
@@ -2927,22 +2939,22 @@ async function loadWikiStats() {
   // Fill in recipe trivials we've reverse-engineered from in-game crafting colours
   // where the wiki has none — our own observations beat the wiki's "?".
   try {
-    RECIPE_OBS = await (await fetch('./recipe-observations.json?v=' + Date.now())).json();
+    RECIPE_OBS = await (await fetch('./recipe-observations.json')).json();
     applyTrivialEstimates(RECIPES, RECIPE_OBS);
   } catch {}
   // Fill in mob levels estimated from in-game /con colour where the wiki has none.
   try {
-    const ml = await (await fetch('./mob-levels.json?v=' + Date.now())).json();
+    const ml = await (await fetch('./mob-levels.json')).json();
     applyMobLevels(DATA.mobs, ml);
   } catch {}
   try {
-    const v = await (await fetch('./vendors.json?v=' + Date.now())).json();
+    const v = await (await fetch('./vendors.json')).json();
     VENDORS = (v && v.vendors) || [];
     vendorsSelling = {};
     VENDORS.forEach((vn) => (vn.sells || []).forEach((n) => { (vendorsSelling[n] = vendorsSelling[n] || []).push(vn); }));
   } catch {}
   try {
-    const t = await (await fetch('./trades.json?v=' + Date.now())).json();
+    const t = await (await fetch('./trades.json')).json();
     TRADES = {};
     for (const e of (t && t.trades) || []) {
       const k = String(e.item).toLowerCase();
@@ -2963,15 +2975,15 @@ async function loadWikiStats() {
     }
   } catch {}
   try {
-    MAPS = await (await fetch('./maps.json?v=' + Date.now())).json();
+    MAPS = await (await fetch('./maps.json')).json();
   } catch {}
   try {
-    const qj = await (await fetch('./quests.json?v=' + Date.now())).json();
+    const qj = await (await fetch('./quests.json')).json();
     QUESTS = (qj && qj.quests) || [];
   } catch {}
 }
 
-fetch('./data.json?v=' + Date.now())
+fetch('./data.json')
   .then((r) => r.json())
   .then(async (d) => {
     DATA = d;

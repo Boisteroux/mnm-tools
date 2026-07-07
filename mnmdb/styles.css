@@ -723,6 +723,10 @@ h2 .h2-link { font-size: 13px; font-weight: 400; margin-left: 10px; }
 .toggle-btn.is-on { background: var(--accent); border-color: var(--accent); color: #fff; }
 .auc-subhead { margin: 16px 0 6px; font-size: 13px; font-weight: 600; color: var(--muted); }
 tr.bis-total td { border-top: 2px solid var(--line-2); background: var(--panel-2); }
+.adv-tabs { display: flex; gap: 6px; margin: 4px 0 14px; border-bottom: 1px solid var(--line); }
+.adv-tab { padding: 8px 16px; border: 1px solid transparent; border-bottom: none; border-radius: 8px 8px 0 0; background: none; color: var(--muted); font: inherit; font-weight: 600; cursor: pointer; margin-bottom: -1px; }
+.adv-tab:hover { color: var(--text); }
+.adv-tab.is-on { color: var(--accent); border-color: var(--line); background: var(--panel); border-bottom: 1px solid var(--panel); }
 .mkt-cols { display: flex; gap: 16px; flex-wrap: wrap; }
 .mkt { flex: 1; min-width: 240px; }
 .mkt-h { font-weight: 600; margin-bottom: 6px; color: var(--accent); }
