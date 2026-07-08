@@ -24,6 +24,9 @@ const HOURS = +process.env.MNM_HOURS || 12;
 const ONCE = !!process.env.MNM_ONCE;
 const DEADLINE = Date.now() + HOURS * 3600 * 1000;
 const DATA = process.env.MNM_DATA || 'C:\\Users\\zacha\\Desktop\\mnm-auction-poc';
+// Drop aggregate entries older than this before saving (keeps the state file
+// bounded — used by the cloud/CI runner so its cached state doesn't grow forever).
+const PRUNE_HOURS = +process.env.MNM_PRUNE_HOURS || 0;
 // Flag OCR words read below this confidence into lowconf.json — a lightweight,
 // no-image list of shaky reads to glance at if anything odd shows up in the data.
 const CONF_THRESHOLD = +process.env.MNM_CONF || 70;
@@ -99,6 +102,11 @@ function recordLowConf(server, w, now) {
 }
 
 function persist() {
+  if (PRUNE_HOURS) { // drop stale entries so the saved state stays small (cloud runner)
+    const cut = Date.now() - PRUNE_HOURS * 3600 * 1000;
+    const old = (m) => { for (const k of Object.keys(m)) { const t = m[k].lastSeen || m[k].firstSeen; if (t && new Date(t).getTime() < cut) delete m[k]; } };
+    old(agg); old(requests);
+  }
   fs.writeFileSync(p('listings.json'), JSON.stringify(Object.values(agg), null, 2));
   fs.writeFileSync(p('requests.json'), JSON.stringify(Object.values(requests), null, 2));
   fs.writeFileSync(p('review.json'), JSON.stringify(Object.values(reviewMap), null, 2));

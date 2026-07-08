@@ -25,7 +25,6 @@ try {
 
 const L = read('listings.json', []);
 const Q = read('requests.json', []);
-const S = read('stats.json', {});
 
 const cleanName = (s) => String(s || '').replace(/^[^A-Za-z0-9]+|[^A-Za-z0-9)]+$/g, '').replace(/\s+/g, ' ').trim();
 const isJunk = (n) => !n || n.length < 2 || /\\/.test(n) || /^w\s*t\s*[sbt]$/i.test(n) || /^(wtb|wts|wtt)$/i.test(n);
@@ -127,19 +126,22 @@ try { fs.writeFileSync(path.join(DATA, 'discarded.json'), JSON.stringify(discard
 
 const requests = Q.map((q) => ({ server: q.server, player: q.player, plus: q.plus || [], stats: q.stats || [], category: q.category || null, text: q.text || '', seen: q.firstSeen }));
 
-// Full item stats, but only for items that appear in auctions (keeps the file lean).
+// Full item stats for items that appear in auctions, built straight from wiki.json
+// (the single source of truth) so auctions.json is self-contained — no separate
+// stats scrape needed. Only the auctioned items, to keep the file lean.
 const names = new Set(listings.map((l) => l.item.toLowerCase()));
+const displayName = {}; for (const l of listings) displayName[l.item.toLowerCase()] = l.item;
 const stats = {};
-for (const [k, v] of Object.entries(S)) {
-  if (!names.has(k)) continue;
-  stats[k] = {
-    name: v.name, hasPage: v.hasPage, icon: v.icon || null, flags: v.flags || [],
+for (const name of names) {
+  const v = wikiByLc[name]; if (!v) continue;
+  stats[name] = {
+    name: displayName[name], hasPage: v.hasPage !== false, icon: v.icon || null, flags: v.flags || [],
     slot: v.slot || null, handed: v.handed || null, dmg: v.dmg ?? null, delay: v.delay ?? null, skill: v.skill || null,
     ac: v.ac ?? null, stats: v.stats || {}, hp: v.hp ?? null, mana: v.mana ?? null, hpRegen: v.hpRegen ?? null, manaRegen: v.manaRegen ?? null, haste: v.haste ?? null,
     resists: v.resists || {}, instr: v.instr || {}, weight: v.weight ?? null, size: v.size || null,
-    container: v.container || (wikiByLc[k] && wikiByLc[k].container) || null,
-    effect: v.effect || (wikiByLc[k] && wikiByLc[k].effect) || null,
-    class: v.class || null, race: v.race || null, tradeskills: v.tradeskills || [], zones: v.zones || [], from: (v.from || []).slice(0, 4), vendor: v.vendor ?? null,
+    container: v.container || null, effect: v.effect || null,
+    class: v.class || null, race: v.race || null, tradeskills: v.tradeskills || [],
+    zones: v.wikiZones || v.zones || [], from: (v.from || []).slice(0, 4), vendor: (v.soldBy && v.soldBy.base) ?? null,
   };
 }
 

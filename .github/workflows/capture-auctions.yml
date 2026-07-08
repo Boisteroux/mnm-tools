@@ -1,0 +1,89 @@
+name: Capture auctions (cloud)
+
+# Runs the auction capture on GitHub's servers so it keeps going with your PC off.
+# Every ~15 min: grab one frame from the stream, OCR both /auction panels, merge
+# into the running state (kept in the Actions cache), publish mnmdb/auctions.json,
+# and commit it (which deploys the site). No local machine involved.
+on:
+  schedule:
+    - cron: '*/15 * * * *'   # every 15 min (GitHub may delay/skip under load)
+  workflow_dispatch:
+
+concurrency:
+  group: auction-capture
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # The running aggregate (dedup state) lives in the Actions cache between runs.
+      - name: Restore capture state
+        uses: actions/cache/restore@v4
+        with:
+          path: state
+          key: auction-state-${{ github.run_id }}
+          restore-keys: |
+            auction-state-
+
+      - name: Seed state on first run (cache miss)
+        run: |
+          mkdir -p state
+          if [ ! -f state/listings.json ]; then
+            echo "no cached state — seeding from tracker/auction-seed"
+            cp tracker/auction-seed/*.json state/ 2>/dev/null || true
+          fi
+
+      - name: Install streamlink, ffmpeg, tesseract
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg tesseract-ocr
+          pipx install streamlink || pip install --user streamlink
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - name: Capture one cycle
+        env:
+          MNM_ONCE: '1'
+          MNM_FFMPEG: ffmpeg
+          MNM_STREAMLINK: streamlink
+          MNM_TESSERACT: tesseract
+          MNM_DATA: state
+          MNM_PRUNE_HOURS: '72'
+        run: node tracker/capture-auctions.js
+
+      - name: Publish auctions.json
+        env:
+          MNM_DATA: state
+        run: node tracker/publish-auctions.js
+
+      - name: Commit + push if the prices changed
+        run: |
+          if git diff --quiet -- mnmdb/auctions.json; then
+            echo "auctions.json unchanged — nothing to publish"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mnmdb/auctions.json
+          git commit -m "Auto-publish auction prices (cloud)"
+          for i in 1 2 3; do
+            git fetch origin main && git rebase origin/main && git push && exit 0
+            git rebase --abort 2>/dev/null || true
+            echo "push race, retrying ($i)…"; sleep 4
+          done
+          echo "could not push after retries"; exit 1
+
+      - name: Save capture state
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: state
+          key: auction-state-${{ github.run_id }}
