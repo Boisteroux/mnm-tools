@@ -1,0 +1,47 @@
+name: Auction stream test (Twitch from GitHub?)
+
+# Manual smoke test: does Twitch serve the real /auction panels to a GitHub
+# runner (datacenter IP)? Run from the Actions tab → "Run workflow". No commits.
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install streamlink, ffmpeg, tesseract
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg tesseract-ocr
+          pipx install streamlink || pip install --user streamlink
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - name: Versions
+        run: |
+          streamlink --version
+          ffmpeg -version | head -1
+          tesseract --version | head -1
+
+      - name: Capture one frame + OCR + parse
+        env:
+          MNM_FFMPEG: ffmpeg
+          MNM_STREAMLINK: streamlink
+          MNM_TESSERACT: tesseract
+          MNM_DATA: ${{ runner.temp }}
+        run: node tracker/ci-stream-test.js
+
+      - name: Upload captured frames (for inspection)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: capture-frames
+          path: |
+            ${{ runner.temp }}/frame.png
+            ${{ runner.temp }}/pvp.png
+            ${{ runner.temp }}/pve.png
+          if-no-files-found: ignore
