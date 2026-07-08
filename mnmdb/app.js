@@ -2508,7 +2508,7 @@ async function renderAuctions() {
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › auctions</div><h1>Auction House</h1>' +
     '<p class="sub">Player buy/sell auctions read from the <a href="https://www.twitch.tv/livemnm" target="_blank" rel="noopener">LiveMNM stream ↗</a> — PvP and PvE are separate markets. ' +
-    A.listings.length + ' listings · ' + priced + ' priced · ' + A.requests.length + ' requests · updated ' + esc(when) + '. Hover an item for its stats.</p>' +
+    '<span id="auc-meta"></span> Hover an item for its stats.</p>' +
     '<div class="auc-controls"><input id="auc-q" placeholder="Search item or seller…">' +
     '<select id="auc-sort"><option value="new">Newest</option><option value="price">Price (high→low)</option><option value="item">Item name</option></select>' +
     '<button id="auc-priced" class="toggle-btn" type="button" aria-pressed="false">Prices Only</button></div>' +
@@ -2518,7 +2518,50 @@ async function renderAuctions() {
   ['auc-q', 'auc-sort'].forEach((id) => { const el = $(id); if (el) { el.addEventListener('input', paintAuctions); el.addEventListener('change', paintAuctions); } });
   const pb = $('auc-priced');
   if (pb) pb.addEventListener('click', () => { const on = pb.getAttribute('aria-pressed') !== 'true'; pb.setAttribute('aria-pressed', String(on)); pb.classList.toggle('is-on', on); paintAuctions(); });
-  paintAuctions(); aucReqs(); aucHoverInit();
+  paintAuctions(); aucReqs(); aucHoverInit(); aucUpdateMeta(); aucAutoRefreshInit();
+}
+const onAuctionsPage = () => decodeURIComponent(location.hash.replace(/^#\/?/, '')) === 'auctions';
+// Header line: counts + how long ago the data was published (kept fresh by the tick).
+function aucUpdateMeta() {
+  const el = $('auc-meta'); if (!el || !AUCTIONS) return;
+  const priced = AUCTIONS.listings.filter((l) => l.price != null).length;
+  el.innerHTML = '<b>' + AUCTIONS.listings.length + '</b> listings · ' + priced + ' priced · ' + AUCTIONS.requests.length +
+    ' requests · updated ' + esc(aucAgo(AUCTIONS.generatedAt) || '—');
+}
+// Poll for a newer auctions.json; if the data changed, swap it in and repaint —
+// but not while the user is mid-hover or typing a search (don't yank the DOM).
+async function aucCheckForUpdate() {
+  if (!onAuctionsPage()) return;
+  const pop = $('auc-pop'), q = $('auc-q');
+  if ((pop && pop.classList.contains('show')) || (q && document.activeElement === q)) return;
+  try {
+    const fresh = await (await fetch('./auctions.json?v=' + Date.now())).json();
+    if (fresh && fresh.generatedAt && (!AUCTIONS || fresh.generatedAt !== AUCTIONS.generatedAt)) {
+      AUCTIONS = fresh;
+      paintAuctions(); aucReqs(); aucUpdateMeta();
+      const m = $('auc-meta'); if (m) { m.classList.remove('auc-flash'); void m.offsetWidth; m.classList.add('auc-flash'); }
+    }
+  } catch {}
+}
+// Keep the page feeling live: every minute refresh the "x ago" times in place
+// (no repaint, so hovers aren't disturbed) and every ~3 min check for new data.
+// Also checks whenever the tab regains focus. Stops when you leave the page.
+let aucRefreshTimer = null, aucRefreshWired = false;
+function aucAutoRefreshInit() {
+  clearInterval(aucRefreshTimer);
+  let ticks = 0;
+  aucRefreshTimer = setInterval(() => {
+    if (!onAuctionsPage()) { clearInterval(aucRefreshTimer); aucRefreshTimer = null; return; }
+    document.querySelectorAll('#content .aw[data-seen]').forEach((c) => { c.textContent = aucAgo(c.getAttribute('data-seen')); });
+    aucUpdateMeta();
+    if (++ticks % 3 === 0) aucCheckForUpdate();
+  }, 60000);
+  if (!aucRefreshWired) {
+    aucRefreshWired = true;
+    const onShow = () => { if (!document.hidden) aucCheckForUpdate(); };
+    window.addEventListener('focus', onShow);
+    document.addEventListener('visibilitychange', onShow);
+  }
 }
 const AUC_RECENT_N = 50; // recent feed shows this many live rows before compressing older ones
 const aucPricedOnly = () => { const b = $('auc-priced'); return !b || b.getAttribute('aria-pressed') === 'true'; };
@@ -2592,7 +2635,7 @@ const aucRecentRowHtml = (l) =>
   '<td class="ai">' + (l.matched ? itemLink(l.item, l.item) : esc(l.item)) + (l.qty ? ' <span class="muted">×' + l.qty + '</span>' : '') + '</td>' +
   '<td class="ap">' + aucPriceDisplay(l) + '</td>' +
   '<td class="muted">' + esc(l.player) + '</td>' +
-  '<td class="aw muted" title="' + esc(aucTime(l.seen)) + '">' + esc(aucAgo(l.seen)) + '</td></tr>';
+  '<td class="aw muted" data-seen="' + esc(l.seen || '') + '" title="' + esc(aucTime(l.seen)) + '">' + esc(aucAgo(l.seen)) + '</td></tr>';
 const aucItemRowHtml = (g) =>
   '<tr data-item="' + esc(g.item) + '"' + (g.priced ? '' : ' class="noprice"') + '>' +
   '<td class="ai">' + (g.matched ? itemLink(g.item, g.item) : esc(g.item)) + '</td>' +
