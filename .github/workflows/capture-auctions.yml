@@ -6,7 +6,7 @@ name: Capture auctions (cloud)
 # and commit it (which deploys the site). No local machine involved.
 on:
   schedule:
-    - cron: '*/15 * * * *'   # every 15 min (GitHub may delay/skip under load)
+    - cron: '*/8 * * * *'    # every 8 min (~7-8 deploys/hr, under Pages' build limit)
   workflow_dispatch:
 
 concurrency:
