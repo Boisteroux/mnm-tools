@@ -122,6 +122,8 @@ let QUESTS = []; // dev quests for the Database Quest Board (quests.json)
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+// Escape text, then turn any bare http(s) URLs in it into clickable links.
+const linkify = (s) => esc(s).replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
 const slugify = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
 // Cache-buster for curated map images: keyed to the maps' publish time, so browsers
 // re-fetch a map only when it's actually republished (same filename, changed contents).
@@ -170,6 +172,22 @@ const sourceLink = (s) =>
     : NODES[s] ? nodeLink(s)
     : nameToId[s] ? itemLink(nameToId[s], s)
     : '<a href="' + wikiUrl(s) + '" target="_blank" rel="noopener">' + esc(s) + ' ↗</a>';
+
+// If a map-marker label names a mob we can point at, return a link to "more info":
+// our own mob page when we have one (it lists drops/level and links to the wiki),
+// otherwise the wiki's search-and-jump (case-insensitive) when the wiki is known to
+// list that mob (it drops an item). Returns null when the label isn't a known mob.
+let _mobByLc = null;
+function mobInfoLink(label) {
+  const lc = String(label || '').trim().toLowerCase();
+  if (!lc) return null;
+  if (!_mobByLc) { _mobByLc = {}; for (const k of Object.keys(DATA.mobs || {})) _mobByLc[k.toLowerCase()] = k; }
+  const own = _mobByLc[lc];
+  if (own) return { href: '#/mob/' + encodeURIComponent(own), wiki: false };
+  if ((DROP_LEVELS || {})[lc] != null)
+    return { href: 'https://monstersandmemories.miraheze.org/w/index.php?title=Special:Search&go=Go&search=' + encodeURIComponent(label.trim()), wiki: true };
+  return null;
+}
 
 // Regular-vendor sell price = the BEST (highest) you'd get selling — regular
 // vendors pay more than shady ones. Used as the realistic value of an item.
@@ -1659,8 +1677,8 @@ let mapLightSrc = '';   // current map image, for the click-to-enlarge lightbox
 // Marker HTML positioned by percentage of the image's natural size (works at any
 // display size — inline map or lightbox).
 function markerLayerHTML(markers, nw, nh) {
-  return markers.map((m) =>
-    '<span class="mk' + (m.community ? ' mk-community' : '') + '"' + (m.community && m.id ? ' data-id="' + m.id + '" data-label="' + esc(m.label || '') + '"' : '') + ' style="left:' + (m.x / nw * 100) + '%;top:' + (m.y / nh * 100) + '%;--mc:' + m.color + '" ' +
+  return markers.map((m, i) =>
+    '<span class="mk' + (m.community ? ' mk-community' : '') + '" data-idx="' + i + '"' + (m.community && m.id ? ' data-id="' + m.id + '" data-label="' + esc(m.label || '') + '"' : '') + ' style="left:' + (m.x / nw * 100) + '%;top:' + (m.y / nh * 100) + '%;--mc:' + m.color + '" ' +
     'title="' + esc(m.label + (m.notes ? ' — ' + m.notes : '')) + '">' +
     '<span class="mk-ic">' + m.icon + '</span>' +
     (m.label ? '<span class="mk-lbl">' + esc(m.label) + '</span>' : '') + '</span>'
@@ -1793,6 +1811,13 @@ function renderMapView(name) {
       '<div id="mk-modal-list"></div>' +
       '<div class="sp-actions"><button id="mk-modal-move" class="primary">Move on map</button><button id="mk-modal-close">Close</button></div>' +
     '</div></div>' +
+    // Read-only marker info (any visitor clicking a pin) — shows its details plus a
+    // link to the mob's page/wiki when the label names a mob we recognise.
+    '<div id="mk-info" class="modal-overlay hidden"><div class="modal-card">' +
+      '<h3 id="mk-info-title">Marker</h3>' +
+      '<div id="mk-info-body"></div>' +
+      '<div class="sp-actions"><button id="mk-info-close">Close</button></div>' +
+    '</div></div>' +
     '<div id="map-modal" class="modal-overlay hidden"><div class="modal-card">' +
       '<h3>Submit a map for ' + esc(name) + '</h3>' +
       (SESSION
@@ -1871,8 +1896,10 @@ function wireMapView(name, catById, fallback) {
 
   const closeMarkerModal = () => { markerModal.classList.add('hidden'); if (COMMUNITY === null) route(); };
   const openMarkerModal = (m, auth) => {
+    const link = mobInfoLink(m.label);
     document.getElementById('mk-modal-info').innerHTML =
-      (m.submitter ? 'By ' + esc(m.submitter) + ' · ' : '') + (m.verified ? 'verified ✓' : 'community') + ' · (' + m.x + ', ' + m.y + ')';
+      (m.submitter ? 'By ' + esc(m.submitter) + ' · ' : '') + (m.verified ? 'verified ✓' : 'community') + ' · (' + m.x + ', ' + m.y + ')' +
+      (link ? ' · <a href="' + link.href + '"' + (link.wiki ? ' target="_blank" rel="noopener"' : '') + '>' + (link.wiki ? 'wiki ↗' : 'mob info →') + '</a>' : '');
     renderMarkerList(document.getElementById('mk-modal-list'), [m], auth, { onDelete: closeMarkerModal });
     document.getElementById('mk-modal-move').onclick = () => { markerModal.classList.add('hidden'); startMove(m, auth); };
     markerModal.classList.remove('hidden');
@@ -1880,6 +1907,32 @@ function wireMapView(name, catById, fallback) {
   if (markerModal) {
     document.getElementById('mk-modal-close').addEventListener('click', closeMarkerModal);
     markerModal.addEventListener('click', (e) => { if (e.target === markerModal) closeMarkerModal(); });
+  }
+
+  // Read-only marker detail popup shown when any visitor clicks a pin — includes a
+  // "more info" link to the mob's page/wiki when the label names a mob we recognise.
+  const infoModal = document.getElementById('mk-info');
+  const closeInfo = () => infoModal && infoModal.classList.add('hidden');
+  const openMarkerInfo = (m) => {
+    if (!m || !infoModal) return;
+    const cat = (MAPS.categories || []).find((c) => c.id === m.category);
+    const link = mobInfoLink(m.label);
+    document.getElementById('mk-info-title').textContent = m.label || 'Marker';
+    document.getElementById('mk-info-body').innerHTML =
+      (cat ? '<div class="mk-inforow"><span class="mdot" style="background:' + cat.color + '"></span>' + esc(cat.name) + '</div>' : '') +
+      // Skip a note that's just a bare URL when we already show a proper mob link (some
+      // curated markers stored the mob-page URL here); otherwise show it, linkified.
+      (m.notes && !(link && /^https?:\/\/\S+$/.test(m.notes.trim())) ? '<div class="mk-inforow">' + linkify(m.notes) + '</div>' : '') +
+      (m.submitter ? '<div class="mk-inforow muted">Added by ' + esc(m.submitter) + (m.verified ? ' · verified ✓' : '') + '</div>' : '') +
+      (link
+        ? '<div class="mk-inforow"><a class="mk-infolink" href="' + link.href + '"' + (link.wiki ? ' target="_blank" rel="noopener"' : '') + '>' +
+          (link.wiki ? '📖 Look up “' + esc(m.label) + '” on the wiki ↗' : '→ View “' + esc(m.label) + '” — drops, level &amp; more') + '</a></div>'
+        : '');
+    infoModal.classList.remove('hidden');
+  };
+  if (infoModal) {
+    document.getElementById('mk-info-close').addEventListener('click', closeInfo);
+    infoModal.addEventListener('click', (e) => { if (e.target === infoModal) closeInfo(); });
   }
 
   const startMove = (m, auth) => {
@@ -1952,7 +2005,12 @@ function wireMapView(name, catById, fallback) {
         if (mk) { openMarkerModal(mk, adminAuth()); return; }
       }
     }
-    if (!suggestMode) return openMapLightbox(); // normal behaviour: enlarge
+    if (!suggestMode) {
+      // Clicking a pin shows its details (+ a mob link); clicking the map enlarges it.
+      const hit = e.target.closest('.mk');
+      if (hit && hit.dataset.idx != null) { openMarkerInfo((pendingMap || [])[+hit.dataset.idx]); return; }
+      return openMapLightbox();
+    }
     const { px, py } = clickToImg(e);
     if (!pin) { pin = document.createElement('span'); pin.className = 'mk mk-temp'; box.appendChild(pin); }
     pin.style.left = (px / (img.naturalWidth || 1) * 100) + '%';
