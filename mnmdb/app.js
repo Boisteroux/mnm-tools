@@ -3074,6 +3074,9 @@ function paintBis() {
 
 function route() {
   const q = $('search').value.trim();
+  // The auctions page shows two side-by-side markets — give it a wider content
+  // column so PvP/PvE don't get squeezed (they stack on narrow screens via CSS).
+  document.body.classList.toggle('page-wide', !q && decodeURIComponent(location.hash.replace(/^#\/?/, '')) === 'auctions');
   if (q) return renderSearch(q);
   const h = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
   if (h === 'items' || h === 'mobs' || h === 'gathering') return renderBrowse(h);

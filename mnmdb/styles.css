@@ -678,12 +678,18 @@ button:disabled { opacity: .5; cursor: default; }
 .auc-controls { display: flex; gap: 10px; flex-wrap: wrap; margin: 14px 0; }
 .auc-controls input, .auc-controls select { padding: 7px 10px; border: 1px solid var(--line); border-radius: 7px; background: var(--panel); color: var(--text); font: inherit; }
 .auc-controls input { flex: 1; min-width: 200px; }
+/* Auctions page runs wider than the default 880px column so the two markets have
+   room side by side; they stack to one full-width column once that gets tight. */
+body.page-wide #content { max-width: 1180px; }
 .auc-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-@media (max-width: 820px) { .auc-cols { grid-template-columns: 1fr; } }
+@media (max-width: 1024px) { .auc-cols { grid-template-columns: 1fr; } }
 .auc-panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+/* Below the stack breakpoint each market is full-width and roomy; on very narrow
+   phones where the row still can't fit, scroll it sideways rather than clip. */
+#auc-pvp, #auc-pve { overflow-x: auto; }
 .auc-head { padding: 9px 12px; font-weight: 700; border-bottom: 1px solid var(--line); }
 table.auc { width: 100%; border-collapse: collapse; }
-table.auc td { padding: 6px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+table.auc td { padding: 6px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
 table.auc tr[data-item]:hover td { background: var(--panel-2); }
 table.auc tr.noprice td { opacity: 0.5; }
 .auc .at { white-space: nowrap; width: 1%; }
