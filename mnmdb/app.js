@@ -2844,7 +2844,7 @@ function renderAdvanced() {
       '<p class="sub">Pick a class — its wiki stat priorities fill in with balanced weights. Change any stat or type your own weight next to it (how much that stat counts toward an item’s score), and we assemble the highest-scoring wearable set. Blank a stat to ignore it.</p>' +
       '<div class="adv-controls bis-row1">' +
         '<select id="bis-class"><option value="">Any class</option>' + MNM_CLASSES.map((c) => '<option>' + c + '</option>').join('') + '</select>' +
-        '<input id="bis-maxlvl" type="number" min="1" inputmode="numeric" placeholder="Mob level">' +
+        '<input id="bis-maxlvl" type="number" min="1" inputmode="numeric" placeholder="Max Mob Level">' +
       '</div>' +
       '<div class="adv-controls bis-row2">' +
         [1, 2, 3].map((n) => '<span class="bis-prow">' + statOpt('bis-p' + n, 'Priority ' + n + '…') +
@@ -3027,6 +3027,16 @@ function computeBis(cls, priorities, weights, maxlvl) {
   }
   return chosen;
 }
+// Drop-level tag shown on each BiS row when a Max Mob Level is set. Colour tracks
+// how the item's lowest known dropper level sits against the cap: green = well
+// within, amber = right near the cap, muted "L?" = dropper level unknown (kept in
+// the set but unconfirmed). All shown known items are already ≤ the cap.
+function bisDropTag(item, maxlvl) {
+  const dl = itemMinDropperLevel(item);
+  if (dl == null) return ' <span class="tag" title="Dropper level unknown — kept in the set but not confirmed at or below your Max Mob Level (' + maxlvl + ')">L?</span>';
+  const near = dl > maxlvl - 5;
+  return ' <span class="tag ' + (near ? 'warn' : 'good') + '" title="Lowest known dropper is level ' + dl + ' — ' + (near ? 'near' : 'well within') + ' your Max Mob Level (' + maxlvl + ')">≤' + maxlvl + ' · L' + dl + '</span>';
+}
 function paintBis() {
   const cls = ($('bis-class').value || '').toUpperCase();
   // Each priority row carries its own editable weight; skip rows with no stat so
@@ -3048,7 +3058,7 @@ function paintBis() {
   const totalStat = {}; priorities.forEach((p) => { totalStat[p] = filled.reduce((s, r) => s + bisStatVal(r.item.wiki, p), 0); });
   const head = '<tr><th>Slot</th><th>Item</th>' + priorities.map((p) => '<th class="num">' + p + '</th>').join('') + '<th class="num">Score</th></tr>';
   const rows = set.map((r) => '<tr' + (r.item ? ' data-item="' + esc(r.item.name) + '"' : ' class="noprice"') + '><td class="sample">' + esc(r.slotLabel) + '</td>' +
-    '<td>' + (r.item ? itemLink(r.item.id, r.item.name) + (r.item.wiki.flags && r.item.wiki.flags.includes('MAGIC') ? ' <span class="tag good">MAGIC</span>' : '') : '<span class="muted">— none —</span>') + '</td>' +
+    '<td>' + (r.item ? itemLink(r.item.id, r.item.name) + (r.item.wiki.flags && r.item.wiki.flags.includes('MAGIC') ? ' <span class="tag good">MAGIC</span>' : '') + (maxlvl != null ? bisDropTag(r.item, maxlvl) : '') : '<span class="muted">— none —</span>') + '</td>' +
     priorities.map((p) => '<td class="num">' + (r.item ? (bisStatVal(r.item.wiki, p) || '') : '') + '</td>').join('') +
     '<td class="num">' + (r.item ? Math.round(r.score * 10) / 10 : '') + '</td></tr>').join('');
   const totalRow = '<tr class="bis-total"><td></td><td><b>Set total</b></td>' +
