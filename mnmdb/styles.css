@@ -744,15 +744,16 @@ tr.bis-total td { border-top: 2px solid var(--line-2); background: var(--panel-2
 .adv-controls input#adv-name { flex: 1; min-width: 180px; }
 .adv-controls input#adv-class { width: 130px; }
 .adv-check { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); }
-/* Keep the BiS controls (class + 3 stat/weight pills + max drop level) on one row:
-   tighter pills, narrower weight boxes, a smaller gap, and a slightly wider class. */
-#adv-bis-panel .adv-controls { gap: 7px; }
-#adv-bis-panel #bis-class { min-width: 104px; }
-#adv-bis-panel #bis-maxlvl { width: 116px; }
-.bis-prow { display: inline-flex; align-items: center; gap: 2px; padding: 2px 4px 2px 6px; border: 1px solid var(--line); border-radius: 7px; background: var(--panel); }
-.bis-prow select { border: none; padding: 4px 2px; background: transparent; }
-.bis-wlab { display: inline-flex; align-items: center; gap: 2px; color: var(--muted); font-size: 13px; }
-.adv-controls input.bis-w { width: 42px; padding: 4px 4px; border: 1px solid var(--line); border-radius: 5px; background: var(--bg); }
+/* BiS controls in two comfortable rows: class + mob level on top, the three
+   stat/weight pills below with room to breathe. */
+#adv-bis-panel .bis-row1 { margin-bottom: 4px; }
+#adv-bis-panel .bis-row2 { gap: 14px; margin-top: 4px; }
+#adv-bis-panel #bis-class { min-width: 130px; }
+#adv-bis-panel #bis-maxlvl { width: 150px; }
+.bis-prow { display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px 3px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+.bis-prow select { border: none; padding: 5px 4px; background: transparent; min-width: 82px; }
+.bis-wlab { display: inline-flex; align-items: center; gap: 4px; color: var(--muted); font-size: 13px; }
+.adv-controls input.bis-w { width: 50px; padding: 5px 6px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); }
 .adv-stats { display: flex; flex-wrap: wrap; gap: 8px 14px; margin: 4px 0 16px; padding: 10px 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; }
 .adv-stat { display: inline-flex; align-items: center; gap: 4px; color: var(--muted); font-size: 13px; }
 .adv-stat input { width: 52px; padding: 4px 6px; border: 1px solid var(--line); border-radius: 5px; background: var(--bg); color: var(--text); font: inherit; }

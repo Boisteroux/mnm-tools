@@ -2842,11 +2842,13 @@ function renderAdvanced() {
     '</div>' +
     '<div id="adv-bis-panel">' +
       '<p class="sub">Pick a class — its wiki stat priorities fill in with balanced weights. Change any stat or type your own weight next to it (how much that stat counts toward an item’s score), and we assemble the highest-scoring wearable set. Blank a stat to ignore it.</p>' +
-      '<div class="adv-controls">' +
+      '<div class="adv-controls bis-row1">' +
         '<select id="bis-class"><option value="">Any class</option>' + MNM_CLASSES.map((c) => '<option>' + c + '</option>').join('') + '</select>' +
+        '<input id="bis-maxlvl" type="number" min="1" inputmode="numeric" placeholder="Mob level">' +
+      '</div>' +
+      '<div class="adv-controls bis-row2">' +
         [1, 2, 3].map((n) => '<span class="bis-prow">' + statOpt('bis-p' + n, 'Priority ' + n + '…') +
           '<label class="bis-wlab">× <input type="number" id="bis-w' + n + '" class="bis-w" min="0" step="0.1" inputmode="decimal" value="' + BIS_WEIGHT_PRESETS.balanced[n - 1] + '"></label></span>').join('') +
-        '<input id="bis-maxlvl" type="number" min="1" inputmode="numeric" placeholder="Max drop level">' +
       '</div>' +
       '<div id="bis-results"></div>' +
     '</div>';
