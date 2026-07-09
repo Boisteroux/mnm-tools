@@ -58,8 +58,12 @@ const best = new Map();
 for (const l of rows) {
   const k = key(l), cur = best.get(k);
   if (!cur) { best.set(k, l); continue; }
+  // Keep the priced/most-recent post, but carry the combined sighting count so
+  // "most seen" reflects every time this seller's item was read, not just the kept row.
+  const total = (cur.count || 1) + (l.count || 1);
   const pick = isPriced(l) !== isPriced(cur) ? (isPriced(l) ? l : cur)
     : (String(l.lastSeen || '') >= String(cur.lastSeen || '') ? l : cur);
+  pick.count = total;
   best.set(k, pick);
 }
 rows = [...best.values()].sort((a, b) => {
@@ -118,13 +122,14 @@ const listings = rows.map((l) => {
     server: l.server, intent: l.intent || null, item: l.item,
     price: total, unit, priceStr: total != null ? copperToStr(total) : null,
     player: l.player, seen: l.firstSeen, qty: l.qty || undefined, perStack: perStack || undefined,
+    count: l.count || 1, // times this listing was read — powers the "most seen" ranking
     assumed: l.assumed || undefined, matched: wikiNames.has(l.item.toLowerCase()),
   };
 });
 
 try { fs.writeFileSync(path.join(DATA, 'discarded.json'), JSON.stringify(discarded, null, 2)); } catch {}
 
-const requests = Q.map((q) => ({ server: q.server, player: q.player, plus: q.plus || [], stats: q.stats || [], category: q.category || null, text: q.text || '', seen: q.firstSeen }));
+const requests = Q.map((q) => ({ server: q.server, player: q.player, plus: q.plus || [], stats: q.stats || [], category: q.category || null, text: q.text || '', seen: q.firstSeen, lastSeen: q.lastSeen || q.firstSeen, count: q.count || 1 }));
 
 // Full item stats for items that appear in auctions, built straight from wiki.json
 // (the single source of truth) so auctions.json is self-contained — no separate

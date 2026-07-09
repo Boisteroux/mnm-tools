@@ -2514,7 +2514,7 @@ async function renderAuctions() {
     '<button id="auc-priced" class="toggle-btn" type="button" aria-pressed="false">Prices Only</button></div>' +
     '<div class="auc-cols"><div class="auc-panel"><div class="auc-head">PvP <span id="auc-pvp-n" class="muted"></span></div><div id="auc-pvp"></div></div>' +
     '<div class="auc-panel"><div class="auc-head">PvE <span id="auc-pve-n" class="muted"></span></div><div id="auc-pve"></div></div></div>' +
-    '<div class="auc-panel" style="margin-top:16px"><div class="auc-head">🛠 Crafting / gear requests <span class="muted">' + A.requests.length + '</span></div><div id="auc-reqs"></div></div>';
+    '<div class="auc-panel" style="margin-top:16px"><div class="auc-head">🛠 Crafting / gear requests <span class="muted" id="auc-reqn"></span></div><div id="auc-reqs"></div></div>';
   ['auc-q', 'auc-sort'].forEach((id) => { const el = $(id); if (el) { el.addEventListener('input', paintAuctions); el.addEventListener('change', paintAuctions); } });
   const pb = $('auc-priced');
   if (pb) pb.addEventListener('click', () => { const on = pb.getAttribute('aria-pressed') !== 'true'; pb.setAttribute('aria-pressed', String(on)); pb.classList.toggle('is-on', on); paintAuctions(); });
@@ -2525,8 +2525,8 @@ const onAuctionsPage = () => decodeURIComponent(location.hash.replace(/^#\/?/, '
 function aucUpdateMeta() {
   const el = $('auc-meta'); if (!el || !AUCTIONS) return;
   const priced = AUCTIONS.listings.filter((l) => l.price != null).length;
-  el.innerHTML = '<b>' + AUCTIONS.listings.length + '</b> listings · ' + priced + ' priced · ' + AUCTIONS.requests.length +
-    ' requests · updated ' + esc(aucAgo(AUCTIONS.generatedAt) || '—');
+  el.innerHTML = '<b>' + AUCTIONS.listings.length + '</b> listings · ' + priced + ' priced · ' + aucReqRecentCount() +
+    ' requests (24h) · updated ' + esc(aucAgo(AUCTIONS.generatedAt) || '—');
 }
 // Poll for a newer auctions.json; if the data changed, swap it in and repaint —
 // but not while the user is mid-hover or typing a search (don't yank the DOM).
@@ -2593,12 +2593,13 @@ function aggregateItems(list) {
   for (const l of list) {
     const k = l.item.toLowerCase();
     let g = map.get(k);
-    if (!g) { g = { item: l.item, matched: l.matched, sellers: new Set(), buyers: new Set(), prices: [] }; map.set(k, g); }
+    if (!g) { g = { item: l.item, matched: l.matched, sellers: new Set(), buyers: new Set(), prices: [], sightings: 0 }; map.set(k, g); }
+    g.sightings += (l.count || 1); // total times this item was read — the "most seen" measure
     if (l.intent === 'buy') g.buyers.add(l.player);
     else { g.sellers.add(l.player); if (l.price != null) g.prices.push(aucUnit(l)); } // per-unit, so ranges compare fairly
   }
   return [...map.values()].map((g) => ({
-    item: g.item, matched: g.matched, sellers: g.sellers.size, buyers: g.buyers.size,
+    item: g.item, matched: g.matched, sellers: g.sellers.size, buyers: g.buyers.size, sightings: g.sightings,
     low: g.prices.length ? Math.min.apply(null, g.prices) : null,
     high: g.prices.length ? Math.max.apply(null, g.prices) : null,
     priced: g.prices.length > 0,
@@ -2640,9 +2641,11 @@ const aucItemRowHtml = (g) =>
   '<tr data-item="' + esc(g.item) + '"' + (g.priced ? '' : ' class="noprice"') + '>' +
   '<td class="ai">' + (g.matched ? itemLink(g.item, g.item) : esc(g.item)) + '</td>' +
   '<td class="ap">' + aucPriceCell(g.priced, g.low, g.high) + '</td>' +
-  '<td class="muted">' + g.sellers + ' selling' + (g.buyers ? ' · ' + g.buyers + ' buying' : '') + '</td></tr>';
+  '<td class="muted">' + g.sellers + ' selling' + (g.buyers ? ' · ' + g.buyers + ' buying' : '') +
+  (g.sightings ? ' · <span title="times seen in the feed">seen ' + g.sightings + '×</span>' : '') + '</td></tr>';
 const aucTable = (rowsHtml) => '<table class="auc"><tbody>' + rowsHtml + '</tbody></table>';
 const AUC_MAX_ITEMS = 250; // cap what the page shows; search still spans the whole published set
+const AUC_TOP_ITEMS = 50;  // grouped tail shows only the 50 most-seen items per server
 function paintAuctions() {
   const searching = ($('auc-q').value || '').trim().length > 0;
   for (const [srv, id] of [['PvP', 'auc-pvp'], ['PvE', 'auc-pve']]) {
@@ -2651,24 +2654,59 @@ function paintAuctions() {
     const recent = rs.slice(0, AUC_RECENT_N), older = rs.slice(AUC_RECENT_N);
     let html = recent.length ? aucTable(recent.map(aucRecentRowHtml).join('')) : '<div class="auc-empty">No listings.</div>';
     if (older.length) {
-      let agg = aggregateItems(older).sort((a, b) => (b.high || 0) - (a.high || 0) || b.sellers - a.sellers || a.item.localeCompare(b.item));
+      // Rank the grouped tail by how often each item was seen and show only the top
+      // 50 — the long low-activity tail past that isn't useful (search still reaches it).
+      let agg = aggregateItems(older).sort((a, b) => b.sightings - a.sightings || b.sellers - a.sellers || a.item.localeCompare(b.item));
       if (aucPricedOnly()) agg = agg.filter((g) => g.priced); // keep the grouped tail consistent with the filter
-      // Cap the page at ~250 items (recent rows + grouped older). Never cap while
-      // searching, so a search always reaches the whole published set.
       const total = agg.length;
-      if (!searching) agg = agg.slice(0, Math.max(0, AUC_MAX_ITEMS - recent.length));
-      if (agg.length) html += '<div class="auc-subhead">' + agg.length + ' earlier item' + (agg.length === 1 ? '' : 's') + ' — grouped' +
+      if (!searching) agg = agg.slice(0, AUC_TOP_ITEMS);
+      if (agg.length) html += '<div class="auc-subhead">Top ' + agg.length + ' most-seen item' + (agg.length === 1 ? '' : 's') +
         (total > agg.length ? ' <span class="muted">(' + (total - agg.length) + ' more — search to find them)</span>' : '') + '</div>' + aucTable(agg.map(aucItemRowHtml).join(''));
     }
     $(id).innerHTML = html;
   }
 }
+// When a request was last seen (falls back to first-seen for older data).
+const aucReqWhen = (r) => new Date(r.lastSeen || r.seen || 0).getTime();
+// A short label for a request — its stat/category ask, or the raw text.
+const aucReqLabel = (r) => [r.plus && r.plus.length ? '+' + r.plus.join('/') : '', (r.stats || []).join('/'), r.category].filter(Boolean).join(' ') || (r.text || '').trim();
+const aucReqRecentCount = () => (AUCTIONS && AUCTIONS.requests || []).filter((r) => aucReqWhen(r) >= Date.now() - 24 * 3600 * 1000).length;
+// Requests: a "most requested (last 7 days)" demand summary + the raw feed limited
+// to the last 24h. Anything older than a day isn't useful, so it's dropped from the
+// live list but still counts toward the weekly demand picture.
 function aucReqs() {
-  const rq = AUCTIONS.requests;
-  $('auc-reqs').innerHTML = !rq.length ? '<div class="auc-empty">None.</div>' : '<table class="auc"><tbody>' + rq.map((r) => {
-    const w = [r.plus && r.plus.length ? '+' + r.plus.join('/') : '', (r.stats || []).join('/'), r.category].filter(Boolean).join(' ') || esc(r.text);
-    return '<tr><td class="at">' + aucTag(r.intent || 'buy') + '</td><td class="ai">' + esc(w) + '</td><td class="muted">' + esc(r.server) + '</td><td class="muted">' + esc(r.player) + '</td></tr>';
-  }).join('') + '</tbody></table>';
+  const rq = (AUCTIONS.requests || []);
+  const now = Date.now(), day = 24 * 3600 * 1000, week = 7 * day;
+
+  // Most-requested asks over the last 7 days, grouped by their stat/category label
+  // and ranked by how many distinct players asked.
+  const demand = new Map();
+  for (const r of rq) {
+    if (aucReqWhen(r) < now - week) continue;
+    const key = aucReqLabel(r).toLowerCase(); if (!key) continue;
+    let g = demand.get(key);
+    if (!g) { g = { label: aucReqLabel(r), players: new Set(), n: 0 }; demand.set(key, g); }
+    g.players.add(r.player); g.n++;
+  }
+  const top = [...demand.values()].sort((a, b) => b.players.size - a.players.size || b.n - a.n).slice(0, 12);
+  const topHtml = top.length
+    ? '<div class="auc-demand">' + top.map((g) => '<span class="auc-dchip">' + esc(g.label) + ' <b>' + g.players.size + '</b></span>').join('') + '</div>'
+    : '<div class="auc-empty">No requests in the last 7 days.</div>';
+
+  // The live feed — last 24h only, newest first.
+  const recent = rq.filter((r) => aucReqWhen(r) >= now - day).sort((a, b) => aucReqWhen(b) - aucReqWhen(a));
+  const recentHtml = recent.length
+    ? '<table class="auc"><tbody>' + recent.map((r) => {
+        const t = r.lastSeen || r.seen || '';
+        return '<tr><td class="at">' + aucTag(r.intent || 'buy') + '</td><td class="ai">' + esc(aucReqLabel(r)) + '</td><td class="muted">' + esc(r.server) + '</td><td class="muted">' + esc(r.player) +
+          '</td><td class="aw muted" data-seen="' + esc(t) + '" title="' + esc(aucTime(t)) + '">' + esc(aucAgo(t)) + '</td></tr>';
+      }).join('') + '</tbody></table>'
+    : '<div class="auc-empty">No requests in the last 24 hours.</div>';
+
+  $('auc-reqs').innerHTML =
+    '<div class="auc-reqsub">Most requested · last 7 days <span class="muted">(number = players asking)</span></div>' + topHtml +
+    '<div class="auc-reqsub">Recent · last 24 hours</div>' + recentHtml;
+  const rn = $('auc-reqn'); if (rn) rn.textContent = recent.length;
 }
 function aucPopEl() { let el = $('auc-pop'); if (!el) { el = document.createElement('div'); el.id = 'auc-pop'; document.body.appendChild(el); } return el; }
 // Full item stat-card body from a stats-like object — works for auction stats and
