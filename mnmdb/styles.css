@@ -744,6 +744,10 @@ tr.bis-total td { border-top: 2px solid var(--line-2); background: var(--panel-2
 .adv-controls input#adv-name { flex: 1; min-width: 180px; }
 .adv-controls input#adv-class { width: 130px; }
 .adv-check { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); }
+.bis-prow { display: inline-flex; align-items: center; gap: 6px; padding: 3px 3px 3px 8px; border: 1px solid var(--line); border-radius: 7px; background: var(--panel); }
+.bis-prow select { border: none; padding: 4px 4px; background: transparent; }
+.bis-wlab { display: inline-flex; align-items: center; gap: 3px; color: var(--muted); font-size: 13px; }
+.adv-controls input.bis-w { width: 54px; padding: 4px 6px; border: 1px solid var(--line); border-radius: 5px; background: var(--bg); }
 .adv-stats { display: flex; flex-wrap: wrap; gap: 8px 14px; margin: 4px 0 16px; padding: 10px 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; }
 .adv-stat { display: inline-flex; align-items: center; gap: 4px; color: var(--muted); font-size: 13px; }
 .adv-stat input { width: 52px; padding: 4px 6px; border: 1px solid var(--line); border-radius: 5px; background: var(--bg); color: var(--text); font: inherit; }

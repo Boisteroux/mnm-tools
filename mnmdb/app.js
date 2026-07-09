@@ -2841,24 +2841,27 @@ function renderAdvanced() {
       '<div id="adv-results"></div>' +
     '</div>' +
     '<div id="adv-bis-panel">' +
-      '<p class="sub">Pick a class — its wiki stat priorities fill in automatically (change them freely) — and we score every wearable item to assemble the highest-scoring gear set. ' +
-      'The weighting sets how much the 2nd and 3rd priorities count vs the 1st.</p>' +
+      '<p class="sub">Pick a class — its wiki stat priorities fill in with balanced weights. Change any stat or type your own weight next to it (how much that stat counts toward an item’s score), and we assemble the highest-scoring wearable set. Blank a stat to ignore it.</p>' +
       '<div class="adv-controls">' +
         '<select id="bis-class"><option value="">Any class</option>' + MNM_CLASSES.map((c) => '<option>' + c + '</option>').join('') + '</select>' +
-        statOpt('bis-p1', 'Priority 1…') + statOpt('bis-p2', 'Priority 2…') + statOpt('bis-p3', 'Priority 3…') +
-        '<select id="bis-weight">' + Object.keys(BIS_WEIGHT_PRESETS).map((k) => '<option value="' + k + '"' + (k === 'balanced' ? ' selected' : '') + '>' + BIS_WEIGHT_LABEL[k] + '</option>').join('') + '</select>' +
+        [1, 2, 3].map((n) => '<span class="bis-prow">' + statOpt('bis-p' + n, 'Priority ' + n + '…') +
+          '<label class="bis-wlab">× <input type="number" id="bis-w' + n + '" class="bis-w" min="0" step="0.1" inputmode="decimal" value="' + BIS_WEIGHT_PRESETS.balanced[n - 1] + '"></label></span>').join('') +
         '<input id="bis-maxlvl" type="number" min="1" inputmode="numeric" placeholder="Max drop level">' +
       '</div>' +
       '<div id="bis-results"></div>' +
     '</div>';
   ['adv-name', 'adv-slot', 'adv-class', 'adv-effect', 'adv-maxlvl', 'adv-magic'].concat(ADV_STATS.map((s) => 'adv-' + s))
     .forEach((id) => { const el = $(id); if (el) el.addEventListener('input', paintAdvanced); });
-  ['bis-p1', 'bis-p2', 'bis-p3', 'bis-weight'].forEach((id) => { const el = $(id); if (el) el.addEventListener('change', paintBis); });
-  { const el = $('bis-maxlvl'); if (el) el.addEventListener('input', paintBis); }
-  // Picking a class auto-fills its suggested primary/secondary stats (not locked —
-  // change them after). Runs before the repaint so the new priorities take effect.
+  ['bis-p1', 'bis-p2', 'bis-p3'].forEach((id) => { const el = $(id); if (el) el.addEventListener('change', paintBis); });
+  ['bis-w1', 'bis-w2', 'bis-w3', 'bis-maxlvl'].forEach((id) => { const el = $(id); if (el) el.addEventListener('input', paintBis); });
+  // Picking a class auto-fills its suggested stats AND resets their weights to the
+  // balanced default (not locked — change either after). Runs before the repaint.
   const bc = $('bis-class');
-  if (bc) bc.addEventListener('change', () => { const d = CLASS_STATS[bc.value]; if (d) { $('bis-p1').value = d[0] || ''; $('bis-p2').value = d[1] || ''; $('bis-p3').value = d[2] || ''; } paintBis(); });
+  if (bc) bc.addEventListener('change', () => {
+    const d = CLASS_STATS[bc.value], bal = BIS_WEIGHT_PRESETS.balanced;
+    if (d) for (const n of [1, 2, 3]) { $('bis-p' + n).value = d[n - 1] || ''; $('bis-w' + n).value = bal[n - 1]; }
+    paintBis();
+  });
   document.querySelectorAll('.adv-tab').forEach((b) => b.addEventListener('click', () => advShowTab(b.dataset.tab)));
   advShowTab(tab);
   paintAdvanced(); paintBis();
@@ -2953,8 +2956,9 @@ const CLASS_STATS = {
   SHM: ['WIS', 'STA', 'DEX'], SPB: ['DEX', 'INT', 'STR'], WIZ: ['INT', 'STR', 'DEX'],
 };
 // Weighting presets for how much the 2nd/3rd priorities count vs the 1st (always 1).
-const BIS_WEIGHT_PRESETS = { balanced: [1, 0.7, 0.5], focused: [1, 0.5, 0.25], strict: [1, 0.34, 0.12] };
-const BIS_WEIGHT_LABEL = { balanced: 'Balanced — 1 · 0.7 · 0.5 (recommended)', focused: 'Focused — 1 · ½ · ¼', strict: 'Primary-heavy — 1 · ⅓ · ⅛' };
+// Default per-stat weights (balanced) auto-filled when a class is chosen; each is
+// editable per priority row, so the old preset picker is gone.
+const BIS_WEIGHT_PRESETS = { balanced: [1, 0.7, 0.5] };
 // Classes that can dual-wield (equip a weapon in the off-hand). Everyone else can
 // only put a shield / off-hand item there. Best guess from archetypes — tell me to
 // adjust. Non-listed casters/priests/knights (WIZ/CLR/PAL/SHD/…) do NOT dual-wield.
@@ -3023,8 +3027,14 @@ function computeBis(cls, priorities, weights, maxlvl) {
 }
 function paintBis() {
   const cls = ($('bis-class').value || '').toUpperCase();
-  const priorities = ['bis-p1', 'bis-p2', 'bis-p3'].map((id) => $(id).value).filter(Boolean);
-  const weights = BIS_WEIGHT_PRESETS[$('bis-weight').value] || BIS_WEIGHT_PRESETS.balanced;
+  // Each priority row carries its own editable weight; skip rows with no stat so
+  // priorities and weights stay index-aligned for computeBis.
+  const priorities = [], weights = [];
+  for (const n of [1, 2, 3]) {
+    const stat = $('bis-p' + n).value; if (!stat) continue;
+    const wv = $('bis-w' + n).value;
+    priorities.push(stat); weights.push(wv !== '' ? +wv : 0);
+  }
   const maxlvlRaw = $('bis-maxlvl').value;
   const maxlvl = maxlvlRaw !== '' ? +maxlvlRaw : null;
   const box = $('bis-results');
