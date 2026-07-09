@@ -7,6 +7,7 @@ let DATA = null;
 let nameToId = {};   // item name -> item id (for linking mob drops to item pages)
 let itemByName = {}; // item name -> full item record (for vendor-price lookups)
 let NODES = {};      // gathering nodes (Copper Vein, …) from the wiki
+let DROP_LEVELS = {}; // lowercase mob name -> wiki level, for every item dropper (mob-levels-wiki.json)
 let VENDORS = [];    // wiki Merchant pages: { name, zone, sells[], buys[] } (vendors.json)
 let vendorsSelling = {}; // item name -> [vendor] that stock it (inverted from sells)
 let HARVEST_NODES = []; // node-type yield rates from clustered harvests (data.json)
@@ -550,7 +551,7 @@ function renderItem(id) {
       const extra = [e.castTime ? 'Cast ' + esc(e.castTime) : '', e.level ? 'Lvl ' + e.level : ''].filter(Boolean).join(' · ');
       add('Effect', '<strong>' + esc(e.name) + '</strong>' + tag + (extra ? ' <span class="muted">(' + extra + ')</span>' : '') + effectDescHTML(e));
     }
-    add('Slot', esc(w.slot || '') + (w.handed ? ' (' + esc(w.handed) + ')' : ''));
+    add('Slot', esc(slotLabel(w)) + (w.handed ? ' (' + esc(w.handed) + ')' : ''));
     add('Weapon DMG', w.dmg);
     add('Attack delay', w.delay);
     add('Skill', esc(w.skill || ''));
@@ -2767,7 +2768,10 @@ let _mobLevels = null;
 function mobLevelByName() {
   if (_mobLevels) return _mobLevels;
   _mobLevels = {};
-  for (const [n, d] of Object.entries(DATA.mobs || {})) { const l = mobLevel(d); if (Number.isFinite(l)) _mobLevels[n.toLowerCase()] = l; }
+  // Primary source: wiki levels scraped for every item dropper (keys already lowercase).
+  for (const [n, l] of Object.entries(DROP_LEVELS)) if (Number.isFinite(l)) _mobLevels[n] = l;
+  // Fall back to the ledger mobs (wiki level or /con estimate) where the scrape had nothing.
+  for (const [n, d] of Object.entries(DATA.mobs || {})) { const l = mobLevel(d); if (Number.isFinite(l) && _mobLevels[n.toLowerCase()] == null) _mobLevels[n.toLowerCase()] = l; }
   return _mobLevels;
 }
 // The lowest-level mob known to drop this item (observed drops + the wiki's "from"
@@ -2790,9 +2794,31 @@ function advShowTab(t) {
   if (b) b.style.display = t === 'bis' ? '' : 'none';
   document.querySelectorAll('.adv-tab').forEach((x) => x.classList.toggle('is-on', x.dataset.tab === t));
 }
+// Wiki slot text is messy — stray HTML entities ("PRIMARY &emsp; Two Handed"),
+// typos ("CEHST"), and multi-slot items ("PRIMARY SECONDARY"). Decode + drop the
+// handedness words for a plain display fallback; itemSlots() does the canonical
+// tokenising (typo-fixing + multi-slot splitting) used for the dropdown + filter.
+const cleanSlot = (s) => String(s || '')
+  .replace(/&(?:emsp|ensp|nbsp|thinsp|#8195|#8194|#8201|#160);/gi, ' ')
+  .replace(/\b(?:one|two)[\s-]*handed\b/gi, ' ')
+  .replace(/\s+/g, ' ').trim().toUpperCase();
+// Readable canonical slot(s) for an item, e.g. "PRIMARY (2H)" or "CHEST" — falls
+// back to the cleaned raw text for odd slots itemSlots doesn't recognise (BAG, etc.).
+function slotLabel(w) {
+  const { slots, twoH } = itemSlots(w && w.slot);
+  const base = [...slots].join(' / ');
+  return base ? base + (twoH ? ' (2H)' : '') : cleanSlot(w && w.slot);
+}
 function renderAdvanced() {
   const tab = decodeURIComponent(location.hash.replace(/^#\/?/, '')).toLowerCase() === 'bis' ? 'bis' : 'search';
-  const slots = [...new Set(DATA.items.map((i) => i.wiki && i.wiki.slot).filter(Boolean).map((s) => s.toUpperCase()))].sort();
+  // Canonical single slots for the dropdown; odd slots itemSlots can't map keep their cleaned name.
+  const slotSet = new Set();
+  for (const i of DATA.items) {
+    const w = i.wiki; if (!w || !w.slot) continue;
+    const { slots: ss } = itemSlots(w.slot);
+    if (ss.size) ss.forEach((s) => slotSet.add(s)); else { const c = cleanSlot(w.slot); if (c) slotSet.add(c); }
+  }
+  const slots = [...slotSet].sort();
   const statInputs = ADV_STATS.map((s) => '<label class="adv-stat">' + s + ' ≥ <input type="number" id="adv-' + s + '" min="0" inputmode="numeric"></label>').join('');
   const statOpt = (id, blank) => '<select id="' + id + '"><option value="">' + blank + '</option>' + BIS_STATS.map((s) => '<option>' + s + '</option>').join('') + '</select>';
   $('content').innerHTML =
@@ -2853,7 +2879,7 @@ function paintAdvanced() {
   const results = DATA.items.map((i) => ({ i, dropLvl: maxlvl != null ? itemMinDropperLevel(i) : null })).filter(({ i, dropLvl }) => {
     const w = i.wiki; if (!w) return false;
     if (name && !i.name.toLowerCase().includes(name)) return false;
-    if (slot && (w.slot || '').toUpperCase() !== slot) return false;
+    if (slot) { const ss = itemSlots(w.slot); if (!ss.slots.has(slot) && cleanSlot(w.slot) !== slot) return false; }
     if (cls && !(w.class || '').toUpperCase().includes(cls)) return false;
     if (eff) { if (!w.effect) return false; if (eff !== 'any' && (w.effect.trigger || '') !== eff) return false; }
     if (maxlvl != null && (dropLvl == null || dropLvl > maxlvl)) return false; // farmable from a mob at/below this level
@@ -2868,7 +2894,7 @@ function paintAdvanced() {
       (showLvl ? ' · dropped by mobs ≤ L' + maxlvl + ' (whose level we know)' : '') + '</p>' +
     (shown.length ? '<div class="card"><table><thead><tr><th>Item</th><th>Slot</th><th>Class</th>' + (showEff ? '<th>Effect</th>' : '') + (showLvl ? '<th class="num">Drop lvl</th>' : '') + cols.map((c) => '<th class="num">' + c + '</th>').join('') + '</tr></thead><tbody>' +
       shown.map(({ i, dropLvl }) => { const w = i.wiki; return '<tr data-item="' + esc(i.name) + '"><td>' + itemLink(i.id, i.name) + (w.flags && w.flags.includes('MAGIC') ? ' <span class="tag good">MAGIC</span>' : '') + '</td>' +
-        '<td class="sample">' + esc(w.slot || '—') + '</td><td class="sample">' + esc(w.class || '—') + '</td>' +
+        '<td class="sample">' + esc(slotLabel(w) || '—') + '</td><td class="sample">' + esc(w.class || '—') + '</td>' +
         (showEff ? '<td class="sample">' + (w.effect ? esc(w.effect.name) + (w.effect.trigger ? ' <span class="tag good">' + esc(w.effect.trigger) + '</span>' : '') : '—') + '</td>' : '') +
         (showLvl ? '<td class="num">' + (dropLvl != null ? 'L' + dropLvl : '—') + '</td>' : '') +
         cols.map((c) => '<td class="num">' + advStatOf(w, c) + '</td>').join('') + '</tr>'; }).join('') +
@@ -3093,6 +3119,9 @@ async function loadWikiStats() {
     const ml = await (await fetch('./mob-levels.json')).json();
     applyMobLevels(DATA.mobs, ml);
   } catch {}
+  // Wiki levels for every item dropper — powers the "max mob level" drop filter
+  // (Advanced Search + Best-in-Slot). Far more mobs than the ledger alone knows.
+  try { DROP_LEVELS = (await (await fetch('./mob-levels-wiki.json')).json()) || {}; _mobLevels = null; } catch {}
   try {
     const v = await (await fetch('./vendors.json')).json();
     VENDORS = (v && v.vendors) || [];
