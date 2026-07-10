@@ -685,6 +685,7 @@ button:disabled { opacity: .5; cursor: default; }
 /* Auctions page runs wider than the default 880px column so the two markets have
    room side by side; they stack to one full-width column once that gets tight. */
 body.page-wide #content { max-width: 1180px; }
+.auc-paused { margin: 6px 0 16px; padding: 11px 14px; border: 1px solid var(--warn); border-left: 3px solid var(--warn); border-radius: 8px; background: var(--panel-2); font-size: 14px; }
 .auc-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 /* Stay side-by-side down to a half-of-1920 (~960px) snapped window; stack below. */
 @media (max-width: 880px) { .auc-cols { grid-template-columns: 1fr; } }

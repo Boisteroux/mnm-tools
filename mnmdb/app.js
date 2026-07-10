@@ -2566,6 +2566,7 @@ async function renderAuctions() {
   const when = A.generatedAt ? new Date(A.generatedAt).toLocaleString() : '—';
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › auctions</div><h1>Auction House</h1>' +
+    '<div class="auc-paused">⏸ Auction data collection is paused — please visit the <a href="https://www.twitch.tv/livemnm" target="_blank" rel="noopener">LiveMNM stream ↗</a> for live data.</div>' +
     '<p class="sub">Player buy/sell auctions read from the <a href="https://www.twitch.tv/livemnm" target="_blank" rel="noopener">LiveMNM stream ↗</a> — PvP and PvE are separate markets. ' +
     '<span id="auc-meta"></span> Hover an item for its stats.</p>' +
     '<div class="auc-controls"><input id="auc-q" placeholder="Search item or seller…">' +
