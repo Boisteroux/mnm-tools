@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-10T03:21:46.332Z",
+  "generatedAt": "2026-07-10T03:36:53.766Z",
   "items": {
     "Bone Chips": {
       "hasPage": true,
@@ -46036,9 +46036,43 @@
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/2/27/Itemicon0012AA.png/64px-Itemicon0012AA.png"
     },
     "Goresnout Mask": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 2,
+      "stats": {
+        "STA": 2,
+        "CHA": 1
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Sungreet Strand"
+      ],
+      "from": [
+        "Rizik Goresnout"
+      ]
     },
     "Inlaid Emerald Platinum Earring": {
       "hasPage": true,
@@ -89576,6 +89610,26 @@
       "fromTrade": true
     },
     "Clear Wood Finish": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Fire Opal Steel Earring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Staff Of The ***** Priest": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Elderwood Longbow": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Huntleader's Visage": {
       "hasPage": false,
       "wikiOnly": true,
       "fromTrade": true
