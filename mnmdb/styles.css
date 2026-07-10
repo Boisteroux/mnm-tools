@@ -290,8 +290,10 @@ h3.bracket { font-size: 13px; font-weight: 600; color: var(--text); margin: 4px 
 .lb-close:hover, .lb-zoom button:hover { background: var(--panel-2); border-color: var(--accent); }
 .mapview img { display: block; max-width: 100%; height: auto; }
 #maplayer { position: absolute; inset: 0; }
-.mk { position: absolute; transform: translate(-50%, -50%); display: flex; align-items: center; gap: 5px; line-height: 1; }
-.mk-ic { font-size: 16px; filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.9)); cursor: default; }
+.mk { position: absolute; transform: translate(-50%, -50%); display: flex; align-items: center; gap: 5px; line-height: 1; cursor: pointer; }
+/* Padding + negative margin enlarges the click/tap target around the icon without
+   shifting where the pin sits, so markers are easy to click (not just the tiny glyph). */
+.mk-ic { font-size: 17px; filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.9)); cursor: pointer; padding: 6px; margin: -6px; }
 .mk-lbl {
   display: none; background: var(--panel-2); border: 1px solid var(--mc, var(--accent));
   color: var(--text); font-size: 11px; padding: 1px 7px; border-radius: 10px; white-space: nowrap;

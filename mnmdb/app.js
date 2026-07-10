@@ -1787,7 +1787,7 @@ function renderMapView(name) {
     '<p id="move-hint" class="sub hidden"></p>' +
     '<div class="mapview" title="Click to enlarge"><img id="mapimg" src="' + mapLightSrc + '" alt="' + esc(name) + ' map" />' +
     '<div id="maplayer"></div></div>' +
-    '<p class="sub">Community-submitted markers are reviewed before they appear. Click the map to view it full size.<span id="map-count"></span></p>' +
+    '<p class="sub">Community-submitted markers are reviewed before they appear. <b>Click a marker</b> for its details; click the map itself to view it full size.<span id="map-count"></span></p>' +
     '<div id="suggest-modal" class="modal-overlay hidden">' +
       '<div class="modal-card">' +
         '<h3>Add a marker</h3>' +
