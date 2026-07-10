@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-07-09T22:40:58.950Z",
+  "generatedAt": "2026-07-10T06:44:46.568Z",
   "source": "mnm-tools",
   "ledgerFiles": 61,
-  "events": 19429,
+  "events": 19449,
   "contributors": [],
   "mobs": {
     "a desert bat": {
@@ -2688,6 +2688,42 @@
       "coin": 70,
       "corpses": 1
     },
+    "a drunken dockworker": {
+      "kills": 2,
+      "drops": {
+        "Bronze Scraps": 1,
+        "Corroded Bronze Plate Greaves": 1,
+        "Corroded Bronze Mace": 1
+      },
+      "zones": {
+        "Night Harbor": 5
+      },
+      "coin": 103,
+      "corpses": 2
+    },
+    "a goon": {
+      "kills": 0,
+      "drops": {
+        "Corroded Bronze Axe": 1,
+        "Corroded Bronze Plate Bracer": 1
+      },
+      "zones": {
+        "Night Harbor": 2
+      },
+      "coin": 0,
+      "corpses": 1
+    },
+    "an enforcer": {
+      "kills": 0,
+      "drops": {
+        "Corroded Bronze Battle Axe": 1
+      },
+      "zones": {
+        "Night Harbor": 1
+      },
+      "coin": 0,
+      "corpses": 1
+    },
     "a dark-robed figure": {
       "kills": 1,
       "drops": {
@@ -3682,6 +3718,12 @@
           "rate": 0.5
         },
         {
+          "mob": "a drunken dockworker",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
           "mob": "a Bloodynose stabber",
           "drops": 1,
           "corpses": 2,
@@ -3850,7 +3892,8 @@
         "Keepersbight",
         "Fallenpass",
         "Sungreetstrand",
-        "Telekir"
+        "Telekir",
+        "Night Harbor"
       ]
     },
     {
@@ -5357,6 +5400,12 @@
       "name": "Corroded Bronze Axe",
       "droppedBy": [
         {
+          "mob": "a goon",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
+        {
           "mob": "a Bloodchain taskmaster",
           "drops": 2,
           "corpses": 25,
@@ -5387,11 +5436,17 @@
           "rate": 0.008620689655172414
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 126,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Blacktidebay",
         "Keepersbight",
+        "Night Harbor",
         "Fallenpass"
       ]
     },
@@ -5400,6 +5455,12 @@
       "gameId": "2c7787a70e07c9eb17415908",
       "name": "Corroded Bronze Battle Axe",
       "droppedBy": [
+        {
+          "mob": "an enforcer",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
         {
           "mob": "a restless skeleton",
           "drops": 2,
@@ -5413,11 +5474,17 @@
           "rate": 0.011904761904761904
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 151,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Blacktidebay",
-        "Fallenpass"
+        "Fallenpass",
+        "Night Harbor"
       ]
     },
     {
@@ -6228,6 +6295,12 @@
       "name": "Corroded Bronze Mace",
       "droppedBy": [
         {
+          "mob": "a drunken dockworker",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
           "mob": "a restless skeleton",
           "drops": 4,
           "corpses": 116,
@@ -6246,10 +6319,16 @@
           "rate": 0.017857142857142856
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 126,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Fallenpass",
+        "Night Harbor",
         "Blacktidebay"
       ]
     },
@@ -6375,6 +6454,12 @@
       "name": "Corroded Bronze Plate Bracer",
       "droppedBy": [
         {
+          "mob": "a goon",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
+        {
           "mob": "a Bloodchain taskmaster",
           "drops": 1,
           "corpses": 25,
@@ -6395,6 +6480,10 @@
       ],
       "prices": [
         {
+          "copper": 151,
+          "count": 1
+        },
+        {
           "copper": 164,
           "count": 1
         }
@@ -6402,6 +6491,7 @@
       "harvested": 0,
       "zones": [
         "Blacktidebay",
+        "Night Harbor",
         "Fallenpass"
       ]
     },
@@ -6559,6 +6649,12 @@
       "name": "Corroded Bronze Plate Greaves",
       "droppedBy": [
         {
+          "mob": "a drunken dockworker",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
           "mob": "a bodyguard",
           "drops": 1,
           "corpses": 37,
@@ -6586,7 +6682,7 @@
       "prices": [
         {
           "copper": 163,
-          "count": 1
+          "count": 2
         },
         {
           "copper": 177,
@@ -6597,7 +6693,8 @@
       "zones": [
         "Blacktidebay",
         "Fallenpass",
-        "Sungreetstrand"
+        "Sungreetstrand",
+        "Night Harbor"
       ]
     },
     {
@@ -10712,7 +10809,7 @@
       "prices": [
         {
           "copper": 5,
-          "count": 4
+          "count": 5
         }
       ],
       "harvested": 0,
