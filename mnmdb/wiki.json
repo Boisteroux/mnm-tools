@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-10T11:53:01.571Z",
+  "generatedAt": "2026-07-10T17:10:15.752Z",
   "items": {
     "Bone Chips": {
       "hasPage": true,
@@ -89490,9 +89490,43 @@
       "fromTrade": true
     },
     "Widow's Carapace Mantle": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0052AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "SMALL",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 6,
+      "stats": {
+        "STR": 2
+      },
+      "hp": 5,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Evershade Weald"
+      ],
+      "from": [
+        "Mezzatrian Boneweaver"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/a/a7/Itemicon0052AA.png/64px-Itemicon0052AA.png"
     },
     "Steel Tower Shield": {
       "hasPage": false,
