@@ -184,16 +184,42 @@ const ZONE_ORE_DEFAULT = {
   'Evershade Weald': 'copper',
   'Night Harbor': 'copper',
 };
+// Herbs get the same ring treatment as ore tiers, with a thematic color per
+// plant. (The wiki has no per-herb art — most herbs share two generic sprites —
+// so color is the at-a-glance identifier; the hover label gives the name.)
+const HERB_TYPES = [
+  { name: 'Duneleaf',        color: '#c9a266' },
+  { name: 'Ethtongue',       color: '#8a5fc0' },
+  { name: 'Gadolvine',       color: '#3e7a45' },
+  { name: 'Ghost Poppy',     color: '#cf9fb4' },
+  { name: 'Ironroot',        color: '#8b4a2e' },
+  { name: 'Lionleaf',        color: '#d4a017' },
+  { name: 'Magebloom',       color: '#4a7fd4' },
+  { name: 'Moonveil',        color: '#a8a4d0' },
+  { name: "Nomad's Grace",   color: '#3f9088' },
+  { name: 'Phoenix Flower',  color: '#e0562a' },
+  { name: 'Selstie Kelp',    color: '#2e8b6e' },
+  { name: 'Shadeshroom',     color: '#6b5b73' },
+  { name: 'Stranglevine',    color: '#5a6b2f' },
+  { name: 'Stygian Moss',    color: '#2f4a38' },
+  { name: 'Sylvine',         color: '#6fae3f' },
+  { name: 'Whispering Sage', color: '#8fa88a' },
+  { name: 'Witherweed',      color: '#7d6e55' },
+];
+const herbType = (m) => (m && m.category === 'herb' && m.label)
+  ? (HERB_TYPES.find((h) => m.label.toLowerCase().includes(h.name.toLowerCase())) || null) : null;
+// Any classified gatherable (ore tier or herb type) — drives the ring + legend.
+const gatherType = (m) => oreTier(m) || herbType(m);
 // Gathering markers take a fixed subtype instead of a free-text name — the
 // chosen subtype becomes the label, which is where tier/type data lives (see
-// oreTier). Subtype lists come from the wiki's profession pages.
+// gatherType). Subtype lists come from the wiki's profession pages.
 const GATHERING = {
   ore:  { prompt: 'Ore type',  options: ORE_TIERS.map((t) => t.name) },
-  herb: { prompt: 'Herb', options: ['Duneleaf', 'Ethtongue', 'Gadolvine', 'Ghost Poppy', 'Ironroot', 'Lionleaf', 'Magebloom', 'Moonveil', "Nomad's Grace", 'Phoenix Flower', 'Selstie Kelp', 'Shadeshroom', 'Stranglevine', 'Stygian Moss', 'Sylvine', 'Whispering Sage', 'Witherweed'] },
+  herb: { prompt: 'Herb', options: HERB_TYPES.map((h) => h.name) },
   wood: { prompt: 'Wood type', options: ['Wood', 'Fine Wood', 'Ironbark Wood', 'Golden Palm Wood', 'Whisperpine Wood'] },
 };
-// Zones with no gathering nodes at all — the marker form doesn't offer
-// gathering types there.
+// Zones with no gatherables at all (nodes or fishing) — the marker form
+// doesn't offer those types there.
 const NO_GATHERING_ZONES = { 'Faelindral': true };
 const oreTier = (m) => {
   if (!m || m.category !== 'ore') return null;
@@ -1712,14 +1738,15 @@ function renderMapsList() {
 let pendingMap = null;
 let mapLightSrc = '';   // current map image, for the click-to-enlarge lightbox
 
-// Map legend: tiered ore becomes one ring-chip per tier present; the plain "Ore"
-// entry stays only while the zone still has unclassified nodes.
+// Map legend: classified gatherables (ore tiers, herb types) become one
+// ring-chip per kind present; the plain "Ore" / "Herbs" entry stays only while
+// the zone still has unclassified nodes of that category.
 function legendHTML(markers, catById, fallback) {
-  const tiers = ORE_TIERS.filter((t) => markers.some((m) => oreTier(m) === t));
+  const kinds = ORE_TIERS.concat(HERB_TYPES).filter((k) => markers.some((m) => gatherType(m) === k));
   const cats = [...new Set(markers.map((m) => m.category).filter(Boolean))]
-    .filter((id) => id !== 'ore' || markers.some((m) => m.category === 'ore' && !oreTier(m)));
-  return tiers.map((t) =>
-    '<span class="mlg"><span class="mdot mdot-tier" style="--tc:' + t.color + '"></span>' + t.name + '</span>'
+    .filter((id) => (id !== 'ore' && id !== 'herb') || markers.some((m) => m.category === id && !gatherType(m)));
+  return kinds.map((k) =>
+    '<span class="mlg"><span class="mdot mdot-tier" style="--tc:' + k.color + '"></span>' + esc(k.name) + '</span>'
   ).concat(cats.map((id) => {
     const c = catById[id] || fallback;
     return '<span class="mlg"><span class="mdot" style="background:' + c.color + '"></span>' + esc(c.name) + '</span>';
@@ -1730,7 +1757,7 @@ function legendHTML(markers, catById, fallback) {
 // display size — inline map or lightbox).
 function markerLayerHTML(markers, nw, nh) {
   return markers.map((m, i) => {
-    const tier = oreTier(m); // tiered ore gets a colored ring around the pickaxe
+    const tier = gatherType(m); // classified gatherables get a colored ring
     return '<span class="mk' + (m.community ? ' mk-community' : '') + (tier ? ' mk-tier' : '') + '" data-idx="' + i + '"' + (m.community && m.id ? ' data-id="' + m.id + '" data-label="' + esc(m.label || '') + '"' : '') + ' style="left:' + (m.x / nw * 100) + '%;top:' + (m.y / nh * 100) + '%;--mc:' + m.color + (tier ? ';--tc:' + tier.color : '') + '" ' +
     'title="' + esc(m.label + (m.notes ? ' — ' + m.notes : '')) + '">' +
     '<span class="mk-ic">' + m.icon + '</span>' +
@@ -1818,7 +1845,7 @@ function renderMapView(name) {
   const legend = legendHTML(pendingMap, catById, fallback);
 
   const catOptions = (MAPS.categories || [])
-    .filter((c) => !(NO_GATHERING_ZONES[name] && GATHERING[c.id]))
+    .filter((c) => !(NO_GATHERING_ZONES[name] && (GATHERING[c.id] || c.id === 'fishing')))
     .map((c) => '<option value="' + c.id + '">' + c.icon + ' ' + esc(c.name) + '</option>').join('');
 
   mapLightSrc = 'maps/' + encodeURIComponent(z.image) + mapVer();
