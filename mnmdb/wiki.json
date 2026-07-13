@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-10T17:10:15.752Z",
+  "generatedAt": "2026-07-13T23:53:09.855Z",
   "items": {
     "Bone Chips": {
       "hasPage": true,
@@ -37102,9 +37102,34 @@
       "effect": null
     },
     "Inlaid Sapphire Steel Ring": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": 3,
+      "stats": {
+        "INT": 6
+      },
+      "hp": null,
+      "mana": 30,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null
     },
     "Inlaid Sapphire Gold Necklace": {
       "hasPage": false,
@@ -38315,9 +38340,41 @@
       "fromTrade": true
     },
     "Enchanted Wool Cap": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0044AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 9,
+      "stats": {
+        "STA": 3,
+        "INT": 3
+      },
+      "hp": null,
+      "mana": 10,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "tradeskills": [
+        "Tailoring"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/bb/Itemicon0044AA.png/64px-Itemicon0044AA.png"
     },
     "Wanderer's Leggings": {
       "hasPage": true,
@@ -41103,9 +41160,35 @@
       "fromTrade": true
     },
     "Inlaid Cat's Eye Agate Gold Ring": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": 2,
+      "stats": {
+        "INT": 5,
+        "CHA": 5
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null
     },
     "Inlaid Cat's Eye Agate Gold Earring": {
       "hasPage": true,
@@ -41832,9 +41915,36 @@
       "effect": null
     },
     "Iron Plate Barding": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0016AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 1,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "HRS DNK",
+      "flags": [],
+      "handed": null,
+      "ac": 1,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "tradeskills": [
+        "Blacksmithing"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/f6/Itemicon0016AA.png/64px-Itemicon0016AA.png"
     },
     "Steel Plate Barding": {
       "hasPage": false,
@@ -50540,9 +50650,44 @@
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/e9/Itemicon0019AA.png/64px-Itemicon0019AA.png"
     },
     "Boulderbreaker Axe": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 12,
+      "size": "LARGE",
+      "class": "ARC BRD BST FTR INQ PAL RNG SHD SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": "Two Handed",
+      "ac": null,
+      "stats": {
+        "STR": 14,
+        "STA": 2,
+        "DEX": 6
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Keeper's Bight"
+      ],
+      "from": [
+        "Brukk Goldgut"
+      ]
     },
     "Boots of Certainty": {
       "hasPage": true,
@@ -89076,9 +89221,34 @@
       "fromTrade": true
     },
     "Inlaid Jasper Gold Earring": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": 2,
+      "stats": {
+        "WIS": 5
+      },
+      "hp": null,
+      "mana": 25,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null
     },
     "Inlaid Jasper Gold Necklace": {
       "hasPage": false,
@@ -89216,9 +89386,41 @@
       "fromTrade": true
     },
     "Enchanted Wool Pants": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0019AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.85,
+      "size": "MEDIUM",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 10,
+      "stats": {
+        "INT": 3,
+        "CHA": 3
+      },
+      "hp": 7,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "tradeskills": [
+        "Tailoring"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/e9/Itemicon0019AA.png/64px-Itemicon0019AA.png"
     },
     "War Captain's Cuirass": {
       "hasPage": false,
@@ -89579,9 +89781,35 @@
       "fromTrade": true
     },
     "Inlaid Black Pearl Bronze Earring": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": 1,
+      "stats": {
+        "AGI": 2,
+        "DEX": 2
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null
     },
     "Pear": {
       "hasPage": false,
