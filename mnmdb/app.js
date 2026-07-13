@@ -176,8 +176,19 @@ const ORE_TIERS = [
   { id: 'iron',      name: 'Iron',      color: '#4e5d6c', re: /\biron\b/i },
   { id: 'coal',      name: 'Coal',      color: '#29261f', re: /\bcoal\b/i },
 ];
-const oreTier = (m) => (m && m.category === 'ore' && m.label)
-  ? (ORE_TIERS.find((t) => t.re.test(m.label)) || null) : null;
+// Zones whose ore spawns are all one tier — unlabeled ore inherits the zone's
+// default, so classifying a whole zone is one line here; a tier named in a
+// marker's label still wins, for the odd exception.
+const ZONE_ORE_DEFAULT = {
+  'Evershade Weald': 'copper',
+};
+const oreTier = (m) => {
+  if (!m || m.category !== 'ore') return null;
+  const byLabel = m.label ? ORE_TIERS.find((t) => t.re.test(m.label)) : null;
+  if (byLabel) return byLabel;
+  const def = ZONE_ORE_DEFAULT[m.zone];
+  return def ? (ORE_TIERS.find((t) => t.id === def) || null) : null;
+};
 const tradeskillLink = (name) => '<a href="#/tradeskill/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
 const vendorLink = (name) => '<a href="#/vendor/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
 // A wiki "source" (node/creature/item) — link internally where we can, else to the wiki
@@ -1787,12 +1798,11 @@ function renderMapView(name) {
   (MAPS.categories || []).forEach((c) => { catById[c.id] = c; });
   const fallback = { name: 'Other', color: '#b0bec5', icon: '📍' };
 
-  const legend = legendHTML(z.markers, catById, fallback);
-
   pendingMap = z.markers.map((m) => {
     const c = catById[m.category] || fallback;
-    return { x: m.x, y: m.y, label: m.label, notes: m.notes, category: m.category, color: c.color, icon: c.icon };
+    return { x: m.x, y: m.y, label: m.label, notes: m.notes, category: m.category, zone: name, color: c.color, icon: c.icon };
   });
+  const legend = legendHTML(pendingMap, catById, fallback);
 
   const catOptions = (MAPS.categories || []).map((c) =>
     '<option value="' + c.id + '">' + c.icon + ' ' + esc(c.name) + '</option>').join('');
