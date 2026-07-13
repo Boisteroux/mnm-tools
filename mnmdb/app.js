@@ -164,6 +164,82 @@ const isNodeName = (s) => /\b(vein|pile|deposit|node|outcrop|bush|patch)\b/i.tes
 // Rich and regular tiers are indistinguishable in the log and share a loot table,
 // so we collapse "Rich Copper Vein" -> "Copper Vein" everywhere.
 const collapseNode = (name) => name.replace(/^Rich\s+/i, '');
+// Ore-node tiers, derived from the marker's label ("Copper", "Rich Copper Vein",
+// "Copper Ore 3" …) — the label IS the tier data, so classifying a node is just
+// naming it, and nothing changes in the app, the export, or the API. Rares
+// (Silver / Gold / Platinum) spawn at regular-tier spots, so they stay in the
+// neutral ore style until the spot itself is named for its main tier.
+const ORE_TIERS = [
+  { id: 'copper',    name: 'Copper',    color: '#b25f2e', re: /\bcopper\b/i },
+  { id: 'limestone', name: 'Limestone', color: '#cbb05f', re: /\blimestone\b/i },
+  { id: 'tin',       name: 'Tin',       color: '#97a1ad', re: /\btin\b/i },
+  { id: 'iron',      name: 'Iron',      color: '#4e5d6c', re: /\biron\b/i },
+  { id: 'coal',      name: 'Coal',      color: '#29261f', re: /\bcoal\b/i },
+];
+// Zones whose ore spawns are all one tier — unlabeled ore inherits the zone's
+// default, so classifying a whole zone is one line here; a tier named in a
+// marker's label still wins, for the odd exception. Multi-ore zones (Scarwood,
+// Sungreet Strand, …) don't get a default: their nodes are labeled per-marker.
+const ZONE_ORE_DEFAULT = {
+  'Evershade Weald': 'copper',
+  'Night Harbor': 'copper',
+};
+// Herbs get the same ring treatment as ore tiers, with a thematic color per
+// plant. (The wiki has no per-herb art — most herbs share two generic sprites —
+// so color is the at-a-glance identifier; the hover label gives the name.)
+const HERB_TYPES = [
+  { name: 'Duneleaf',        color: '#c9a266' },
+  { name: 'Ethtongue',       color: '#8a5fc0' },
+  { name: 'Gadolvine',       color: '#3e7a45' },
+  { name: 'Ghost Poppy',     color: '#cf9fb4' },
+  { name: 'Ironroot',        color: '#8b4a2e' },
+  { name: 'Lionleaf',        color: '#d4a017' },
+  { name: 'Magebloom',       color: '#4a7fd4' },
+  { name: 'Moonveil',        color: '#a8a4d0' },
+  { name: "Nomad's Grace",   color: '#3f9088' },
+  { name: 'Phoenix Flower',  color: '#e0562a' },
+  { name: 'Selstie Kelp',    color: '#2e8b6e' },
+  { name: 'Shadeshroom',     color: '#6b5b73' },
+  { name: 'Stranglevine',    color: '#5a6b2f' },
+  { name: 'Stygian Moss',    color: '#2f4a38' },
+  { name: 'Sylvine',         color: '#6fae3f' },
+  { name: 'Whispering Sage', color: '#8fa88a' },
+  { name: 'Witherweed',      color: '#7d6e55' },
+];
+const herbType = (m) => (m && m.category === 'herb' && m.label)
+  ? (HERB_TYPES.find((h) => m.label.toLowerCase().includes(h.name.toLowerCase())) || null) : null;
+// Wood types, most specific first — plain "Wood" is a substring of all the
+// others, so it matches last, and only exactly ("Wood", "Wood Pile"): a generic
+// label like "Wood 1" doesn't say which pile it is, so it stays unclassified.
+const WOOD_TYPES = [
+  { name: 'Fine Wood',        color: '#c08a3e' },
+  { name: 'Ironbark Wood',    color: '#55524c' },
+  { name: 'Golden Palm Wood', color: '#d4b02a' },
+  { name: 'Whisperpine Wood', color: '#5e7d5a' },
+  { name: 'Wood',             color: '#8a5f38', re: /^(rich\s+)?wood(\s+pile)?$/i },
+];
+const woodType = (m) => (m && m.category === 'wood' && m.label)
+  ? (WOOD_TYPES.find((w) => w.re ? w.re.test(m.label.trim()) : m.label.toLowerCase().includes(w.name.toLowerCase())) || null) : null;
+// Any classified gatherable (ore tier, herb, wood type) — drives ring + legend.
+const gatherType = (m) => oreTier(m) || herbType(m) || woodType(m);
+// Gathering markers take a fixed subtype instead of a free-text name — the
+// chosen subtype becomes the label, which is where tier/type data lives (see
+// gatherType). Subtype lists come from the wiki's profession pages.
+const GATHERING = {
+  ore:  { prompt: 'Ore type',  options: ORE_TIERS.map((t) => t.name) },
+  herb: { prompt: 'Herb', options: HERB_TYPES.map((h) => h.name) },
+  wood: { prompt: 'Wood type', options: ['Wood', 'Fine Wood', 'Ironbark Wood', 'Golden Palm Wood', 'Whisperpine Wood'] }, // display order: plain first (WOOD_TYPES is match order)
+};
+// Zones with no gatherables at all (nodes or fishing) — the marker form
+// doesn't offer those types there.
+const NO_GATHERING_ZONES = { 'Faelindral': true };
+const oreTier = (m) => {
+  if (!m || m.category !== 'ore') return null;
+  const byLabel = m.label ? ORE_TIERS.find((t) => t.re.test(m.label)) : null;
+  if (byLabel) return byLabel;
+  const def = ZONE_ORE_DEFAULT[m.zone];
+  return def ? (ORE_TIERS.find((t) => t.id === def) || null) : null;
+};
 const tradeskillLink = (name) => '<a href="#/tradeskill/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
 const vendorLink = (name) => '<a href="#/vendor/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
 // A wiki "source" (node/creature/item) — link internally where we can, else to the wiki
@@ -1674,15 +1750,31 @@ function renderMapsList() {
 let pendingMap = null;
 let mapLightSrc = '';   // current map image, for the click-to-enlarge lightbox
 
+// Map legend: classified gatherables (ore tiers, herb types) become one
+// ring-chip per kind present; the plain "Ore" / "Herbs" entry stays only while
+// the zone still has unclassified nodes of that category.
+function legendHTML(markers, catById, fallback) {
+  const kinds = ORE_TIERS.concat(HERB_TYPES, WOOD_TYPES).filter((k) => markers.some((m) => gatherType(m) === k));
+  const cats = [...new Set(markers.map((m) => m.category).filter(Boolean))]
+    .filter((id) => !GATHERING[id] || markers.some((m) => m.category === id && !gatherType(m)));
+  return kinds.map((k) =>
+    '<span class="mlg"><span class="mdot mdot-tier" style="--tc:' + k.color + '"></span>' + esc(k.name) + '</span>'
+  ).concat(cats.map((id) => {
+    const c = catById[id] || fallback;
+    return '<span class="mlg"><span class="mdot" style="background:' + c.color + '"></span>' + esc(c.name) + '</span>';
+  })).join('');
+}
+
 // Marker HTML positioned by percentage of the image's natural size (works at any
 // display size — inline map or lightbox).
 function markerLayerHTML(markers, nw, nh) {
-  return markers.map((m, i) =>
-    '<span class="mk' + (m.community ? ' mk-community' : '') + '" data-idx="' + i + '"' + (m.community && m.id ? ' data-id="' + m.id + '" data-label="' + esc(m.label || '') + '"' : '') + ' style="left:' + (m.x / nw * 100) + '%;top:' + (m.y / nh * 100) + '%;--mc:' + m.color + '" ' +
+  return markers.map((m, i) => {
+    const tier = gatherType(m); // classified gatherables get a colored ring
+    return '<span class="mk' + (m.community ? ' mk-community' : '') + (tier ? ' mk-tier' : '') + '" data-idx="' + i + '"' + (m.community && m.id ? ' data-id="' + m.id + '" data-label="' + esc(m.label || '') + '"' : '') + ' style="left:' + (m.x / nw * 100) + '%;top:' + (m.y / nh * 100) + '%;--mc:' + m.color + (tier ? ';--tc:' + tier.color : '') + '" ' +
     'title="' + esc(m.label + (m.notes ? ' — ' + m.notes : '')) + '">' +
     '<span class="mk-ic">' + m.icon + '</span>' +
-    (m.label ? '<span class="mk-lbl">' + esc(m.label) + '</span>' : '') + '</span>'
-  ).join('');
+    (m.label ? '<span class="mk-lbl">' + esc(m.label) + '</span>' : '') + '</span>';
+  }).join('');
 }
 
 // Full-size map overlay with zoom + pan. Scroll or +/− to zoom, drag to pan.
@@ -1758,19 +1850,15 @@ function renderMapView(name) {
   (MAPS.categories || []).forEach((c) => { catById[c.id] = c; });
   const fallback = { name: 'Other', color: '#b0bec5', icon: '📍' };
 
-  const usedCats = [...new Set(z.markers.map((m) => m.category))];
-  const legend = usedCats.map((id) => {
-    const c = catById[id] || fallback;
-    return '<span class="mlg"><span class="mdot" style="background:' + c.color + '"></span>' + esc(c.name) + '</span>';
-  }).join('');
-
   pendingMap = z.markers.map((m) => {
     const c = catById[m.category] || fallback;
-    return { x: m.x, y: m.y, label: m.label, notes: m.notes, category: m.category, color: c.color, icon: c.icon };
+    return { x: m.x, y: m.y, label: m.label, notes: m.notes, category: m.category, zone: name, color: c.color, icon: c.icon };
   });
+  const legend = legendHTML(pendingMap, catById, fallback);
 
-  const catOptions = (MAPS.categories || []).map((c) =>
-    '<option value="' + c.id + '">' + c.icon + ' ' + esc(c.name) + '</option>').join('');
+  const catOptions = (MAPS.categories || [])
+    .filter((c) => !(NO_GATHERING_ZONES[name] && (GATHERING[c.id] || c.id === 'fishing')))
+    .map((c) => '<option value="' + c.id + '">' + c.icon + ' ' + esc(c.name) + '</option>').join('');
 
   mapLightSrc = 'maps/' + encodeURIComponent(z.image) + mapVer();
   $('content').innerHTML =
@@ -1793,7 +1881,8 @@ function renderMapView(name) {
         '<h3>Add a marker</h3>' +
         '<p id="sp-loc" class="sub"></p>' +
         '<div class="sp-row"><label for="sp-cat">Type</label><select id="sp-cat">' + catOptions + '</select></div>' +
-        '<div class="sp-row"><label for="sp-label">Label</label><input id="sp-label" maxlength="80" placeholder="e.g. Gnarlroot (named spawn)" /></div>' +
+        '<div class="sp-row hidden" id="sp-sub-row"><label for="sp-sub" id="sp-sub-label">Subtype</label><select id="sp-sub"></select></div>' +
+        '<div class="sp-row" id="sp-label-row"><label for="sp-label">Label</label><input id="sp-label" maxlength="80" placeholder="e.g. Gnarlroot (named spawn)" /></div>' +
         identityBlock() +
         (SESSION ? '' : '<div id="cf-turnstile" class="cf-ts"></div>') +
         '<div class="sp-actions"><button id="sp-submit" class="primary">Submit for review</button><button id="sp-cancel">Cancel</button></div>' +
@@ -1856,8 +1945,7 @@ function wireMapView(name, catById, fallback) {
     : zoneCms.filter((m) => m.mapId === id);
   const updateLegend = () => {
     const el = document.querySelector('.mlegend'); if (!el) return;
-    const cats = [...new Set((pendingMap || []).map((m) => m.category).filter(Boolean))];
-    el.innerHTML = cats.map((id) => { const c = catById[id] || fallback; return '<span class="mlg"><span class="mdot" style="background:' + c.color + '"></span>' + esc(c.name) + '</span>'; }).join('');
+    el.innerHTML = legendHTML(pendingMap || [], catById, fallback);
   };
   const setAddTarget = () => { const at = document.getElementById('add-target'); const am = MAPLIST.find((x) => x.id === activeId); if (at && am && MAPLIST.length > 1) { at.textContent = 'Adding to: ' + am.label; at.classList.remove('hidden'); } };
   const showMap = (m) => {
@@ -2022,6 +2110,24 @@ function wireMapView(name, catById, fallback) {
     document.getElementById('sp-label').focus();
   });
 
+  // Gathering types pick a fixed subtype instead of typing a name — the subtype
+  // select replaces the label field (see GATHERING); other types keep the label.
+  const spCat = document.getElementById('sp-cat');
+  const spSub = document.getElementById('sp-sub');
+  const spSubRow = document.getElementById('sp-sub-row');
+  const spLabelRow = document.getElementById('sp-label-row');
+  const syncSubtype = () => {
+    const g = GATHERING[spCat.value];
+    spSubRow.classList.toggle('hidden', !g);
+    spLabelRow.classList.toggle('hidden', !!g);
+    if (g) {
+      document.getElementById('sp-sub-label').textContent = g.prompt;
+      spSub.innerHTML = '<option value="">Not sure</option>' +
+        g.options.map((o) => '<option>' + esc(o) + '</option>').join('');
+    }
+  };
+  spCat.addEventListener('change', syncSubtype); syncSubtype();
+
   document.getElementById('sp-cancel').addEventListener('click', exitSuggest);
   const discordBtn = document.getElementById('sp-discord');
   if (discordBtn) discordBtn.addEventListener('click', () => { location.href = API_BASE + '/auth/discord/start'; });
@@ -2029,7 +2135,12 @@ function wireMapView(name, catById, fallback) {
   if (signoutBtn) signoutBtn.addEventListener('click', () => { exitSuggest(); signOut(); route(); });
   document.getElementById('sp-submit').addEventListener('click', async () => {
     if (!pin) { status.textContent = 'Click the map to place your pin first.'; status.className = 'sp-status err'; return; }
-    const label = document.getElementById('sp-label').value.trim();
+    const g = GATHERING[spCat.value];
+    // Gathering: the subtype is the label ("Copper", "Lionleaf", …); an unsure
+    // pick falls back to the category name so the marker lands in neutral style.
+    const label = g
+      ? (spSub.value || (catById[spCat.value] || fallback).name)
+      : document.getElementById('sp-label').value.trim();
     if (!label) { status.textContent = 'Please add a label.'; status.className = 'sp-status err'; return; }
     const nameEl = document.getElementById('sp-name');
     const body = {
