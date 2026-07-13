@@ -300,6 +300,15 @@ h3.bracket { font-size: 13px; font-weight: 600; color: var(--text); margin: 4px 
 }
 .mk:hover { z-index: 4; }
 .mk:hover .mk-lbl { display: inline-block; }
+/* Ore-tier ring — the tier color circles the pickaxe. Same padding/margin trick as
+   .mk-ic so the pin stays centered; the translucent fill lifts the ring (coal
+   especially) off the hand-drawn linework without hiding it. */
+.mk-tier .mk-ic {
+  border: 2.5px solid var(--tc); border-radius: 50%; background: rgba(253, 247, 231, 0.62);
+  padding: 3px; margin: -3px; font-size: 14px;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.mdot-tier { width: 13px; height: 13px; box-sizing: border-box; background: rgba(253, 247, 231, 0.9); border: 2.5px solid var(--tc); }
 
 /* ---- Biggest-movers ticker ---- */
 .ticker { display: flex; flex-wrap: wrap; gap: 8px; }

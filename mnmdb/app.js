@@ -164,6 +164,20 @@ const isNodeName = (s) => /\b(vein|pile|deposit|node|outcrop|bush|patch)\b/i.tes
 // Rich and regular tiers are indistinguishable in the log and share a loot table,
 // so we collapse "Rich Copper Vein" -> "Copper Vein" everywhere.
 const collapseNode = (name) => name.replace(/^Rich\s+/i, '');
+// Ore-node tiers, derived from the marker's label ("Copper", "Rich Copper Vein",
+// "Copper Ore 3" …) — the label IS the tier data, so classifying a node is just
+// naming it, and nothing changes in the app, the export, or the API. Rares
+// (Silver / Gold / Platinum) spawn at regular-tier spots, so they stay in the
+// neutral ore style until the spot itself is named for its main tier.
+const ORE_TIERS = [
+  { id: 'copper',    name: 'Copper',    color: '#b25f2e', re: /\bcopper\b/i },
+  { id: 'limestone', name: 'Limestone', color: '#cbb05f', re: /\blimestone\b/i },
+  { id: 'tin',       name: 'Tin',       color: '#97a1ad', re: /\btin\b/i },
+  { id: 'iron',      name: 'Iron',      color: '#4e5d6c', re: /\biron\b/i },
+  { id: 'coal',      name: 'Coal',      color: '#29261f', re: /\bcoal\b/i },
+];
+const oreTier = (m) => (m && m.category === 'ore' && m.label)
+  ? (ORE_TIERS.find((t) => t.re.test(m.label)) || null) : null;
 const tradeskillLink = (name) => '<a href="#/tradeskill/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
 const vendorLink = (name) => '<a href="#/vendor/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
 // A wiki "source" (node/creature/item) — link internally where we can, else to the wiki
@@ -1674,15 +1688,30 @@ function renderMapsList() {
 let pendingMap = null;
 let mapLightSrc = '';   // current map image, for the click-to-enlarge lightbox
 
+// Map legend: tiered ore becomes one ring-chip per tier present; the plain "Ore"
+// entry stays only while the zone still has unclassified nodes.
+function legendHTML(markers, catById, fallback) {
+  const tiers = ORE_TIERS.filter((t) => markers.some((m) => oreTier(m) === t));
+  const cats = [...new Set(markers.map((m) => m.category).filter(Boolean))]
+    .filter((id) => id !== 'ore' || markers.some((m) => m.category === 'ore' && !oreTier(m)));
+  return tiers.map((t) =>
+    '<span class="mlg"><span class="mdot mdot-tier" style="--tc:' + t.color + '"></span>' + t.name + '</span>'
+  ).concat(cats.map((id) => {
+    const c = catById[id] || fallback;
+    return '<span class="mlg"><span class="mdot" style="background:' + c.color + '"></span>' + esc(c.name) + '</span>';
+  })).join('');
+}
+
 // Marker HTML positioned by percentage of the image's natural size (works at any
 // display size — inline map or lightbox).
 function markerLayerHTML(markers, nw, nh) {
-  return markers.map((m, i) =>
-    '<span class="mk' + (m.community ? ' mk-community' : '') + '" data-idx="' + i + '"' + (m.community && m.id ? ' data-id="' + m.id + '" data-label="' + esc(m.label || '') + '"' : '') + ' style="left:' + (m.x / nw * 100) + '%;top:' + (m.y / nh * 100) + '%;--mc:' + m.color + '" ' +
+  return markers.map((m, i) => {
+    const tier = oreTier(m); // tiered ore gets a colored ring around the pickaxe
+    return '<span class="mk' + (m.community ? ' mk-community' : '') + (tier ? ' mk-tier' : '') + '" data-idx="' + i + '"' + (m.community && m.id ? ' data-id="' + m.id + '" data-label="' + esc(m.label || '') + '"' : '') + ' style="left:' + (m.x / nw * 100) + '%;top:' + (m.y / nh * 100) + '%;--mc:' + m.color + (tier ? ';--tc:' + tier.color : '') + '" ' +
     'title="' + esc(m.label + (m.notes ? ' — ' + m.notes : '')) + '">' +
     '<span class="mk-ic">' + m.icon + '</span>' +
-    (m.label ? '<span class="mk-lbl">' + esc(m.label) + '</span>' : '') + '</span>'
-  ).join('');
+    (m.label ? '<span class="mk-lbl">' + esc(m.label) + '</span>' : '') + '</span>';
+  }).join('');
 }
 
 // Full-size map overlay with zoom + pan. Scroll or +/− to zoom, drag to pan.
@@ -1758,11 +1787,7 @@ function renderMapView(name) {
   (MAPS.categories || []).forEach((c) => { catById[c.id] = c; });
   const fallback = { name: 'Other', color: '#b0bec5', icon: '📍' };
 
-  const usedCats = [...new Set(z.markers.map((m) => m.category))];
-  const legend = usedCats.map((id) => {
-    const c = catById[id] || fallback;
-    return '<span class="mlg"><span class="mdot" style="background:' + c.color + '"></span>' + esc(c.name) + '</span>';
-  }).join('');
+  const legend = legendHTML(z.markers, catById, fallback);
 
   pendingMap = z.markers.map((m) => {
     const c = catById[m.category] || fallback;
@@ -1771,6 +1796,8 @@ function renderMapView(name) {
 
   const catOptions = (MAPS.categories || []).map((c) =>
     '<option value="' + c.id + '">' + c.icon + ' ' + esc(c.name) + '</option>').join('');
+  const tierOptions = '<option value="">Not sure yet</option>' + ORE_TIERS.map((t) =>
+    '<option value="' + t.id + '">' + t.name + '</option>').join('');
 
   mapLightSrc = 'maps/' + encodeURIComponent(z.image) + mapVer();
   $('content').innerHTML =
@@ -1793,6 +1820,7 @@ function renderMapView(name) {
         '<h3>Add a marker</h3>' +
         '<p id="sp-loc" class="sub"></p>' +
         '<div class="sp-row"><label for="sp-cat">Type</label><select id="sp-cat">' + catOptions + '</select></div>' +
+        '<div class="sp-row" id="sp-tier-row"><label for="sp-tier">Ore tier</label><select id="sp-tier">' + tierOptions + '</select></div>' +
         '<div class="sp-row"><label for="sp-label">Label</label><input id="sp-label" maxlength="80" placeholder="e.g. Gnarlroot (named spawn)" /></div>' +
         identityBlock() +
         (SESSION ? '' : '<div id="cf-turnstile" class="cf-ts"></div>') +
@@ -1856,8 +1884,7 @@ function wireMapView(name, catById, fallback) {
     : zoneCms.filter((m) => m.mapId === id);
   const updateLegend = () => {
     const el = document.querySelector('.mlegend'); if (!el) return;
-    const cats = [...new Set((pendingMap || []).map((m) => m.category).filter(Boolean))];
-    el.innerHTML = cats.map((id) => { const c = catById[id] || fallback; return '<span class="mlg"><span class="mdot" style="background:' + c.color + '"></span>' + esc(c.name) + '</span>'; }).join('');
+    el.innerHTML = legendHTML(pendingMap || [], catById, fallback);
   };
   const setAddTarget = () => { const at = document.getElementById('add-target'); const am = MAPLIST.find((x) => x.id === activeId); if (at && am && MAPLIST.length > 1) { at.textContent = 'Adding to: ' + am.label; at.classList.remove('hidden'); } };
   const showMap = (m) => {
@@ -2022,6 +2049,13 @@ function wireMapView(name, catById, fallback) {
     document.getElementById('sp-label').focus();
   });
 
+  // The ore-tier picker only applies to ore markers; the chosen tier is written
+  // into the label (the label is the tier data — see ORE_TIERS).
+  const spCat = document.getElementById('sp-cat');
+  const spTierRow = document.getElementById('sp-tier-row');
+  const syncTierRow = () => { if (spTierRow) spTierRow.classList.toggle('hidden', spCat.value !== 'ore'); };
+  spCat.addEventListener('change', syncTierRow); syncTierRow();
+
   document.getElementById('sp-cancel').addEventListener('click', exitSuggest);
   const discordBtn = document.getElementById('sp-discord');
   if (discordBtn) discordBtn.addEventListener('click', () => { location.href = API_BASE + '/auth/discord/start'; });
@@ -2029,7 +2063,10 @@ function wireMapView(name, catById, fallback) {
   if (signoutBtn) signoutBtn.addEventListener('click', () => { exitSuggest(); signOut(); route(); });
   document.getElementById('sp-submit').addEventListener('click', async () => {
     if (!pin) { status.textContent = 'Click the map to place your pin first.'; status.className = 'sp-status err'; return; }
-    const label = document.getElementById('sp-label').value.trim();
+    let label = document.getElementById('sp-label').value.trim();
+    const spTier = document.getElementById('sp-tier');
+    const tier = (spCat.value === 'ore' && spTier) ? ORE_TIERS.find((t) => t.id === spTier.value) : null;
+    if (tier && !oreTier({ category: 'ore', label })) label = label ? tier.name + ' ' + label : tier.name;
     if (!label) { status.textContent = 'Please add a label.'; status.className = 'sp-status err'; return; }
     const nameEl = document.getElementById('sp-name');
     const body = {
