@@ -208,15 +208,27 @@ const HERB_TYPES = [
 ];
 const herbType = (m) => (m && m.category === 'herb' && m.label)
   ? (HERB_TYPES.find((h) => m.label.toLowerCase().includes(h.name.toLowerCase())) || null) : null;
-// Any classified gatherable (ore tier or herb type) — drives the ring + legend.
-const gatherType = (m) => oreTier(m) || herbType(m);
+// Wood types, most specific first — plain "Wood" is a substring of all the
+// others, so it matches last, and only exactly ("Wood", "Wood Pile"): a generic
+// label like "Wood 1" doesn't say which pile it is, so it stays unclassified.
+const WOOD_TYPES = [
+  { name: 'Fine Wood',        color: '#c08a3e' },
+  { name: 'Ironbark Wood',    color: '#55524c' },
+  { name: 'Golden Palm Wood', color: '#d4b02a' },
+  { name: 'Whisperpine Wood', color: '#5e7d5a' },
+  { name: 'Wood',             color: '#8a5f38', re: /^(rich\s+)?wood(\s+pile)?$/i },
+];
+const woodType = (m) => (m && m.category === 'wood' && m.label)
+  ? (WOOD_TYPES.find((w) => w.re ? w.re.test(m.label.trim()) : m.label.toLowerCase().includes(w.name.toLowerCase())) || null) : null;
+// Any classified gatherable (ore tier, herb, wood type) — drives ring + legend.
+const gatherType = (m) => oreTier(m) || herbType(m) || woodType(m);
 // Gathering markers take a fixed subtype instead of a free-text name — the
 // chosen subtype becomes the label, which is where tier/type data lives (see
 // gatherType). Subtype lists come from the wiki's profession pages.
 const GATHERING = {
   ore:  { prompt: 'Ore type',  options: ORE_TIERS.map((t) => t.name) },
   herb: { prompt: 'Herb', options: HERB_TYPES.map((h) => h.name) },
-  wood: { prompt: 'Wood type', options: ['Wood', 'Fine Wood', 'Ironbark Wood', 'Golden Palm Wood', 'Whisperpine Wood'] },
+  wood: { prompt: 'Wood type', options: ['Wood', 'Fine Wood', 'Ironbark Wood', 'Golden Palm Wood', 'Whisperpine Wood'] }, // display order: plain first (WOOD_TYPES is match order)
 };
 // Zones with no gatherables at all (nodes or fishing) — the marker form
 // doesn't offer those types there.
@@ -1742,9 +1754,9 @@ let mapLightSrc = '';   // current map image, for the click-to-enlarge lightbox
 // ring-chip per kind present; the plain "Ore" / "Herbs" entry stays only while
 // the zone still has unclassified nodes of that category.
 function legendHTML(markers, catById, fallback) {
-  const kinds = ORE_TIERS.concat(HERB_TYPES).filter((k) => markers.some((m) => gatherType(m) === k));
+  const kinds = ORE_TIERS.concat(HERB_TYPES, WOOD_TYPES).filter((k) => markers.some((m) => gatherType(m) === k));
   const cats = [...new Set(markers.map((m) => m.category).filter(Boolean))]
-    .filter((id) => (id !== 'ore' && id !== 'herb') || markers.some((m) => m.category === id && !gatherType(m)));
+    .filter((id) => !GATHERING[id] || markers.some((m) => m.category === id && !gatherType(m)));
   return kinds.map((k) =>
     '<span class="mlg"><span class="mdot mdot-tier" style="--tc:' + k.color + '"></span>' + esc(k.name) + '</span>'
   ).concat(cats.map((id) => {
