@@ -178,10 +178,23 @@ const ORE_TIERS = [
 ];
 // Zones whose ore spawns are all one tier — unlabeled ore inherits the zone's
 // default, so classifying a whole zone is one line here; a tier named in a
-// marker's label still wins, for the odd exception.
+// marker's label still wins, for the odd exception. Multi-ore zones (Scarwood,
+// Sungreet Strand, …) don't get a default: their nodes are labeled per-marker.
 const ZONE_ORE_DEFAULT = {
   'Evershade Weald': 'copper',
+  'Night Harbor': 'copper',
 };
+// Gathering markers take a fixed subtype instead of a free-text name — the
+// chosen subtype becomes the label, which is where tier/type data lives (see
+// oreTier). Subtype lists come from the wiki's profession pages.
+const GATHERING = {
+  ore:  { prompt: 'Ore type',  options: ORE_TIERS.map((t) => t.name) },
+  herb: { prompt: 'Herb', options: ['Duneleaf', 'Ethtongue', 'Gadolvine', 'Ghost Poppy', 'Ironroot', 'Lionleaf', 'Magebloom', 'Moonveil', "Nomad's Grace", 'Phoenix Flower', 'Selstie Kelp', 'Shadeshroom', 'Stranglevine', 'Stygian Moss', 'Sylvine', 'Whispering Sage', 'Witherweed'] },
+  wood: { prompt: 'Wood type', options: ['Wood', 'Fine Wood', 'Ironbark Wood', 'Golden Palm Wood', 'Whisperpine Wood'] },
+};
+// Zones with no gathering nodes at all — the marker form doesn't offer
+// gathering types there.
+const NO_GATHERING_ZONES = { 'Faelindral': true };
 const oreTier = (m) => {
   if (!m || m.category !== 'ore') return null;
   const byLabel = m.label ? ORE_TIERS.find((t) => t.re.test(m.label)) : null;
@@ -1804,10 +1817,9 @@ function renderMapView(name) {
   });
   const legend = legendHTML(pendingMap, catById, fallback);
 
-  const catOptions = (MAPS.categories || []).map((c) =>
-    '<option value="' + c.id + '">' + c.icon + ' ' + esc(c.name) + '</option>').join('');
-  const tierOptions = '<option value="">Not sure yet</option>' + ORE_TIERS.map((t) =>
-    '<option value="' + t.id + '">' + t.name + '</option>').join('');
+  const catOptions = (MAPS.categories || [])
+    .filter((c) => !(NO_GATHERING_ZONES[name] && GATHERING[c.id]))
+    .map((c) => '<option value="' + c.id + '">' + c.icon + ' ' + esc(c.name) + '</option>').join('');
 
   mapLightSrc = 'maps/' + encodeURIComponent(z.image) + mapVer();
   $('content').innerHTML =
@@ -1830,8 +1842,8 @@ function renderMapView(name) {
         '<h3>Add a marker</h3>' +
         '<p id="sp-loc" class="sub"></p>' +
         '<div class="sp-row"><label for="sp-cat">Type</label><select id="sp-cat">' + catOptions + '</select></div>' +
-        '<div class="sp-row" id="sp-tier-row"><label for="sp-tier">Ore tier</label><select id="sp-tier">' + tierOptions + '</select></div>' +
-        '<div class="sp-row"><label for="sp-label">Label</label><input id="sp-label" maxlength="80" placeholder="e.g. Gnarlroot (named spawn)" /></div>' +
+        '<div class="sp-row hidden" id="sp-sub-row"><label for="sp-sub" id="sp-sub-label">Subtype</label><select id="sp-sub"></select></div>' +
+        '<div class="sp-row" id="sp-label-row"><label for="sp-label">Label</label><input id="sp-label" maxlength="80" placeholder="e.g. Gnarlroot (named spawn)" /></div>' +
         identityBlock() +
         (SESSION ? '' : '<div id="cf-turnstile" class="cf-ts"></div>') +
         '<div class="sp-actions"><button id="sp-submit" class="primary">Submit for review</button><button id="sp-cancel">Cancel</button></div>' +
@@ -2059,12 +2071,23 @@ function wireMapView(name, catById, fallback) {
     document.getElementById('sp-label').focus();
   });
 
-  // The ore-tier picker only applies to ore markers; the chosen tier is written
-  // into the label (the label is the tier data — see ORE_TIERS).
+  // Gathering types pick a fixed subtype instead of typing a name — the subtype
+  // select replaces the label field (see GATHERING); other types keep the label.
   const spCat = document.getElementById('sp-cat');
-  const spTierRow = document.getElementById('sp-tier-row');
-  const syncTierRow = () => { if (spTierRow) spTierRow.classList.toggle('hidden', spCat.value !== 'ore'); };
-  spCat.addEventListener('change', syncTierRow); syncTierRow();
+  const spSub = document.getElementById('sp-sub');
+  const spSubRow = document.getElementById('sp-sub-row');
+  const spLabelRow = document.getElementById('sp-label-row');
+  const syncSubtype = () => {
+    const g = GATHERING[spCat.value];
+    spSubRow.classList.toggle('hidden', !g);
+    spLabelRow.classList.toggle('hidden', !!g);
+    if (g) {
+      document.getElementById('sp-sub-label').textContent = g.prompt;
+      spSub.innerHTML = '<option value="">Not sure</option>' +
+        g.options.map((o) => '<option>' + esc(o) + '</option>').join('');
+    }
+  };
+  spCat.addEventListener('change', syncSubtype); syncSubtype();
 
   document.getElementById('sp-cancel').addEventListener('click', exitSuggest);
   const discordBtn = document.getElementById('sp-discord');
@@ -2073,10 +2096,12 @@ function wireMapView(name, catById, fallback) {
   if (signoutBtn) signoutBtn.addEventListener('click', () => { exitSuggest(); signOut(); route(); });
   document.getElementById('sp-submit').addEventListener('click', async () => {
     if (!pin) { status.textContent = 'Click the map to place your pin first.'; status.className = 'sp-status err'; return; }
-    let label = document.getElementById('sp-label').value.trim();
-    const spTier = document.getElementById('sp-tier');
-    const tier = (spCat.value === 'ore' && spTier) ? ORE_TIERS.find((t) => t.id === spTier.value) : null;
-    if (tier && !oreTier({ category: 'ore', label })) label = label ? tier.name + ' ' + label : tier.name;
+    const g = GATHERING[spCat.value];
+    // Gathering: the subtype is the label ("Copper", "Lionleaf", …); an unsure
+    // pick falls back to the category name so the marker lands in neutral style.
+    const label = g
+      ? (spSub.value || (catById[spCat.value] || fallback).name)
+      : document.getElementById('sp-label').value.trim();
     if (!label) { status.textContent = 'Please add a label.'; status.className = 'sp-status err'; return; }
     const nameEl = document.getElementById('sp-name');
     const body = {
