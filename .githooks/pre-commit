@@ -14,6 +14,17 @@ generic='(SECRET|TOKEN|PASSWORD|PASSWD|API[_-]?KEY|ACCESS[_-]?KEY|PRIVATE[_-]?KE
 
 # Only look at lines being ADDED in this commit.
 added=$(git diff --cached --no-color -U0 -- . ':(exclude)package-lock.json' | grep '^+' | grep -v '^+++')
+
+# Skip lines that contain a known-safe PUBLIC value — things that ship in client-side
+# HTML/JS by design (e.g. a Cloudflare Web Analytics beacon token, a Turnstile site
+# key) are not leaks. List them (one substring per line, # comments ok) in
+# .githooks/allowed-secrets so this stays auditable instead of a blanket --no-verify.
+allow="$(dirname "$0")/allowed-secrets"
+if [ -f "$allow" ]; then
+  safe=$(grep -vE '^[[:space:]]*(#|$)' "$allow")
+  [ -n "$safe" ] && added=$(printf '%s\n' "$added" | grep -vF "$safe")
+fi
+
 hits=$(printf '%s\n' "$added" | grep -nE "$strong"; printf '%s\n' "$added" | grep -nEi "$generic")
 
 if [ -n "$hits" ]; then
