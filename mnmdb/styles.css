@@ -290,25 +290,30 @@ h3.bracket { font-size: 13px; font-weight: 600; color: var(--text); margin: 4px 
 .lb-close:hover, .lb-zoom button:hover { background: var(--panel-2); border-color: var(--accent); }
 .mapview img { display: block; max-width: 100%; height: auto; }
 #maplayer { position: absolute; inset: 0; }
-.mk { position: absolute; transform: translate(-50%, -50%); display: flex; align-items: center; gap: 5px; line-height: 1; cursor: pointer; }
-/* Padding + negative margin enlarges the click/tap target around the icon without
-   shifting where the pin sits, so markers are easy to click (not just the tiny glyph). */
-.mk-ic { font-size: 17px; filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.9)); cursor: pointer; padding: 6px; margin: -6px; }
+/* Symmetric padding grows the tap target while keeping the icon centered on the pin. */
+.mk { position: absolute; transform: translate(-50%, -50%); display: inline-flex; align-items: center; justify-content: center; line-height: 1; cursor: pointer; padding: 4px; }
+.mk-ic { font-size: 17px; filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.9)); }
+/* Label sits to the RIGHT of the icon, absolutely positioned, so revealing it on
+   hover never shifts the marker (it used to grow the flex box and re-center the icon). */
 .mk-lbl {
+  position: absolute; left: 100%; top: 50%; transform: translateY(-50%); margin-left: 3px;
   display: none; background: var(--panel-2); border: 1px solid var(--mc, var(--accent));
   color: var(--text); font-size: 11px; padding: 1px 7px; border-radius: 10px; white-space: nowrap;
 }
 .mk:hover { z-index: 4; }
-.mk:hover .mk-lbl { display: inline-block; }
-/* Ore-tier ring — the tier color circles the pickaxe. Same padding/margin trick as
-   .mk-ic so the pin stays centered; the translucent fill lifts the ring (coal
-   especially) off the hand-drawn linework without hiding it. */
+.mk:hover .mk-lbl { display: block; }
+/* Gathering-tier marker (ore / herb / wood): a solid tier-color disc with a flat
+   white-or-dark icon. A fixed square box makes it a TRUE circle — sizing to the glyph
+   skewed it into an ellipse. --tif recolors the emoji to a silhouette, light or dark
+   picked per ring luminance so it reads on any color. */
 .mk-tier .mk-ic {
-  border: 2.5px solid var(--tc); border-radius: 50%; background: rgba(253, 247, 231, 0.62);
-  padding: 3px; margin: -3px; font-size: 14px;
+  width: 22px; height: 22px; box-sizing: border-box; font-size: 13px;
+  border-radius: 50%; background: var(--tc); border: 1.5px solid rgba(0, 0, 0, 0.45);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
   display: inline-flex; align-items: center; justify-content: center;
+  filter: var(--tif, brightness(0) invert(1));
 }
-.mdot-tier { width: 13px; height: 13px; box-sizing: border-box; background: rgba(253, 247, 231, 0.9); border: 2.5px solid var(--tc); }
+.mdot-tier { width: 13px; height: 13px; box-sizing: border-box; background: var(--tc); border: 1px solid rgba(0, 0, 0, 0.4); }
 
 /* ---- Biggest-movers ticker ---- */
 .ticker { display: flex; flex-wrap: wrap; gap: 8px; }

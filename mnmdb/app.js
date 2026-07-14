@@ -222,6 +222,13 @@ const woodType = (m) => (m && m.category === 'wood' && m.label)
   ? (WOOD_TYPES.find((w) => w.re ? w.re.test(m.label.trim()) : m.label.toLowerCase().includes(w.name.toLowerCase())) || null) : null;
 // Any classified gatherable (ore tier, herb, wood type) — drives ring + legend.
 const gatherType = (m) => oreTier(m) || herbType(m) || woodType(m);
+// The disc icon is a flat silhouette; pick a white or near-black recolor by the
+// disc's luminance so the pickaxe/leaf/log stays legible on any tier/type color.
+const tierIconFilter = (hex) => {
+  const h = String(hex).replace('#', '');
+  const r = parseInt(h.slice(0, 2), 16), g = parseInt(h.slice(2, 4), 16), b = parseInt(h.slice(4, 6), 16);
+  return (0.299 * r + 0.587 * g + 0.114 * b) > 150 ? 'brightness(0)' : 'brightness(0) invert(1)';
+};
 // Gathering markers take a fixed subtype instead of a free-text name — the
 // chosen subtype becomes the label, which is where tier/type data lives (see
 // gatherType). Subtype lists come from the wiki's profession pages.
@@ -1770,7 +1777,7 @@ function legendHTML(markers, catById, fallback) {
 function markerLayerHTML(markers, nw, nh) {
   return markers.map((m, i) => {
     const tier = gatherType(m); // classified gatherables get a colored ring
-    return '<span class="mk' + (m.community ? ' mk-community' : '') + (tier ? ' mk-tier' : '') + '" data-idx="' + i + '"' + (m.community && m.id ? ' data-id="' + m.id + '" data-label="' + esc(m.label || '') + '"' : '') + ' style="left:' + (m.x / nw * 100) + '%;top:' + (m.y / nh * 100) + '%;--mc:' + m.color + (tier ? ';--tc:' + tier.color : '') + '" ' +
+    return '<span class="mk' + (m.community ? ' mk-community' : '') + (tier ? ' mk-tier' : '') + '" data-idx="' + i + '"' + (m.community && m.id ? ' data-id="' + m.id + '" data-label="' + esc(m.label || '') + '"' : '') + ' style="left:' + (m.x / nw * 100) + '%;top:' + (m.y / nh * 100) + '%;--mc:' + m.color + (tier ? ';--tc:' + tier.color + ';--tif:' + tierIconFilter(tier.color) : '') + '" ' +
     'title="' + esc(m.label + (m.notes ? ' — ' + m.notes : '')) + '">' +
     '<span class="mk-ic">' + m.icon + '</span>' +
     (m.label ? '<span class="mk-lbl">' + esc(m.label) + '</span>' : '') + '</span>';
