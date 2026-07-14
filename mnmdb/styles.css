@@ -315,7 +315,7 @@ h3.bracket { font-size: 13px; font-weight: 600; color: var(--text); margin: 4px 
 }
 /* --tif = "brightness(0) invert(1)" for a white glyph, "brightness(0)" for a dark
    one, chosen by disc luminance (tierIconFilter). Applied to the glyph ONLY. */
-.mk-tier .mk-glyph { filter: var(--tif, brightness(0) invert(1)); line-height: 1; }
+.mk-tier .mk-glyph { filter: var(--tif, grayscale(1) brightness(1.75)); line-height: 1; }
 .mdot-tier { width: 13px; height: 13px; box-sizing: border-box; background: var(--tc); border: 1px solid rgba(0, 0, 0, 0.4); }
 
 /* ---- Biggest-movers ticker ---- */

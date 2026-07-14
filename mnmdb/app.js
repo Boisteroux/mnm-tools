@@ -222,12 +222,15 @@ const woodType = (m) => (m && m.category === 'wood' && m.label)
   ? (WOOD_TYPES.find((w) => w.re ? w.re.test(m.label.trim()) : m.label.toLowerCase().includes(w.name.toLowerCase())) || null) : null;
 // Any classified gatherable (ore tier, herb, wood type) — drives ring + legend.
 const gatherType = (m) => oreTier(m) || herbType(m) || woodType(m);
-// The disc icon is a flat silhouette; pick a white or near-black recolor by the
-// disc's luminance so the pickaxe/leaf/log stays legible on any tier/type color.
+// Recolor the disc icon to greyscale (keeps the emoji's own shading so a pickaxe
+// still reads as a pickaxe) then shift it light on dark discs / dark on light ones
+// so it stays legible on any tier/type color.
 const tierIconFilter = (hex) => {
   const h = String(hex).replace('#', '');
   const r = parseInt(h.slice(0, 2), 16), g = parseInt(h.slice(2, 4), 16), b = parseInt(h.slice(4, 6), 16);
-  return (0.299 * r + 0.587 * g + 0.114 * b) > 150 ? 'brightness(0)' : 'brightness(0) invert(1)';
+  return (0.299 * r + 0.587 * g + 0.114 * b) > 150
+    ? 'grayscale(1) brightness(0.5) contrast(1.1)'   // dark, shaded icon for light discs
+    : 'grayscale(1) brightness(1.75) contrast(1.05)'; // light, shaded icon for dark discs
 };
 // Gathering markers take a fixed subtype instead of a free-text name — the
 // chosen subtype becomes the label, which is where tier/type data lives (see
