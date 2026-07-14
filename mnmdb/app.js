@@ -2019,7 +2019,6 @@ function wireMapView(name, catById, fallback) {
   let myMarkerIds = new Set();
   const isMine = (m) => !!(m && m.community && m.id != null && SESSION && myMarkerIds.has(String(m.id)));
   const deleteMyMarker = async (m, delBtn) => {
-    if (!confirm('Delete your marker “' + (m.label || 'this marker') + '”? This removes it from the map for everyone.')) return;
     delBtn.disabled = true; delBtn.textContent = 'Deleting…';
     try {
       const r = await fetch(API_BASE + '/marker/delete', Object.assign({ method: 'POST' }, markerAuthReq({ session: SESSION.token }, { id: +m.id })));
