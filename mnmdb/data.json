@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-07-14T05:47:06.514Z",
+  "generatedAt": "2026-07-14T20:20:09.723Z",
   "source": "mnm-tools",
-  "ledgerFiles": 60,
-  "events": 18321,
+  "ledgerFiles": 62,
+  "events": 18524,
   "contributors": [],
   "mobs": {
     "a desert bat": {
@@ -2658,6 +2658,29 @@
       "coin": 0,
       "corpses": 2
     },
+    "a tomb burrower": {
+      "kills": 0,
+      "drops": {
+        "Raw Beetle Fillet": 7,
+        "Raw Beetle Meat": 5
+      },
+      "zones": {
+        "Valeofzintar": 18
+      },
+      "coin": 0,
+      "corpses": 9
+    },
+    "a gold devourer": {
+      "kills": 0,
+      "drops": {
+        "Dense Gold Carapace": 2
+      },
+      "zones": {
+        "Valeofzintar": 3
+      },
+      "coin": 0,
+      "corpses": 2
+    },
     "a dark-robed figure": {
       "kills": 1,
       "drops": {
@@ -2753,6 +2776,17 @@
       },
       "coin": 104,
       "corpses": 2
+    },
+    "a giant tomb burrower": {
+      "kills": 0,
+      "drops": {
+        "Raw Beetle Fillet": 3
+      },
+      "zones": {
+        "Valeofzintar": 3
+      },
+      "coin": 0,
+      "corpses": 3
     }
   },
   "items": [
@@ -3463,7 +3497,7 @@
       "name": "Brilliant Crystallized Magic",
       "droppedBy": [],
       "prices": [],
-      "harvested": 9,
+      "harvested": 13,
       "zones": [
         "Sungreetstrand",
         "Scarwood",
@@ -4918,7 +4952,7 @@
           "count": 11
         }
       ],
-      "harvested": 456,
+      "harvested": 486,
       "zones": [
         "Fallenpass",
         "Sungreetstrand",
@@ -7411,6 +7445,24 @@
       ]
     },
     {
+      "id": "dense_gold_carapace",
+      "gameId": "79371fbd5b075196c75778da",
+      "name": "Dense Gold Carapace",
+      "droppedBy": [
+        {
+          "mob": "a gold devourer",
+          "drops": 2,
+          "corpses": 2,
+          "rate": 1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Valeofzintar"
+      ]
+    },
+    {
       "id": "diamond",
       "gameId": null,
       "name": "Diamond",
@@ -9339,6 +9391,17 @@
       ]
     },
     {
+      "id": "ironroot",
+      "gameId": null,
+      "name": "Ironroot",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 5,
+      "zones": [
+        "Sungreetstrand"
+      ]
+    },
+    {
       "id": "jacinth",
       "gameId": null,
       "name": "Jacinth",
@@ -9664,7 +9727,7 @@
           "count": 2
         }
       ],
-      "harvested": 36,
+      "harvested": 40,
       "zones": [
         "Evershade Weald",
         "Sungreetstrand",
@@ -9762,10 +9825,10 @@
           "count": 1
         }
       ],
-      "harvested": 3,
+      "harvested": 5,
       "zones": [
-        "Evershade Weald",
-        "Sungreetstrand"
+        "Sungreetstrand",
+        "Evershade Weald"
       ]
     },
     {
@@ -9955,9 +10018,10 @@
       "name": "Nomad's Grace",
       "droppedBy": [],
       "prices": [],
-      "harvested": 7,
+      "harvested": 13,
       "zones": [
-        "Evershade Weald"
+        "Evershade Weald",
+        "Sungreetstrand"
       ]
     },
     {
@@ -10094,7 +10158,7 @@
       "name": "Platinum Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 67,
+      "harvested": 72,
       "zones": [
         "Sungreetstrand",
         "Fallenpass",
@@ -10417,6 +10481,30 @@
       ]
     },
     {
+      "id": "raw_beetle_fillet",
+      "gameId": "eeaceea959527a265a2f77f8",
+      "name": "Raw Beetle Fillet",
+      "droppedBy": [
+        {
+          "mob": "a giant tomb burrower",
+          "drops": 3,
+          "corpses": 3,
+          "rate": 1
+        },
+        {
+          "mob": "a tomb burrower",
+          "drops": 7,
+          "corpses": 9,
+          "rate": 0.7777777777777778
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Valeofzintar"
+      ]
+    },
+    {
       "id": "raw_beetle_meat",
       "gameId": "a8c922b5e349c0afa973ec9e",
       "name": "Raw Beetle Meat",
@@ -10426,11 +10514,18 @@
           "drops": 2,
           "corpses": 2,
           "rate": 1
+        },
+        {
+          "mob": "a tomb burrower",
+          "drops": 5,
+          "corpses": 9,
+          "rate": 0.5555555555555556
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Valeofzintar",
         "Shaded Dunes"
       ]
     },
@@ -11281,7 +11376,7 @@
           "count": 2
         }
       ],
-      "harvested": 412,
+      "harvested": 442,
       "zones": [
         "Fallenpass",
         "Sungreetstrand",
@@ -16190,7 +16285,7 @@
           "count": 1
         }
       ],
-      "harvested": 2,
+      "harvested": 3,
       "zones": [
         "Sungreetstrand"
       ]
@@ -16517,7 +16612,7 @@
       "name": "Whispering Sage",
       "droppedBy": [],
       "prices": [],
-      "harvested": 36,
+      "harvested": 110,
       "zones": [
         "Sungreetstrand",
         "Evershade Weald",
@@ -17293,7 +17388,7 @@
     "Clouded Crystallized Magic": 20,
     "Wood": 478,
     "Resin": 574,
-    "Lionleaf": 36,
+    "Lionleaf": 40,
     "Ghost Poppy": 28,
     "Chipped Emerald": 4,
     "Chipped Diamond": 3,
@@ -17305,10 +17400,10 @@
     "Chipped Fire Emerald": 4,
     "Chipped Malachite": 3,
     "Chipped Black Sapphire": 2,
-    "Magic Frond": 3,
-    "Whispering Sage": 36,
+    "Magic Frond": 5,
+    "Whispering Sage": 110,
     "Chipped Star Ruby": 2,
-    "Nomad's Grace": 7,
+    "Nomad's Grace": 13,
     "Chipped Jasper": 1,
     "Chipped Wolf's Eye Agate": 1,
     "Chipped Blue Diamond": 3,
@@ -17366,11 +17461,11 @@
     "Imperfect Malachite": 1,
     "Imperfect Jade": 1,
     "Imperfect Amber": 2,
-    "Coal": 456,
-    "Rigid Stone": 412,
+    "Coal": 486,
+    "Rigid Stone": 442,
     "Bloodstone": 5,
     "Emerald": 3,
-    "Platinum Ore": 67,
+    "Platinum Ore": 72,
     "Hematite": 3,
     "Malachite": 1,
     "Diamond": 1,
@@ -17378,7 +17473,7 @@
     "Onyx": 2,
     "Star Ruby": 1,
     "Ruby": 2,
-    "Brilliant Crystallized Magic": 9,
+    "Brilliant Crystallized Magic": 13,
     "Sapphire": 2,
     "Carnelian": 2,
     "Fire Emerald": 1,
@@ -17388,8 +17483,9 @@
     "Black Pearl": 2,
     "Lapis Lazuli": 1,
     "Pearl": 1,
-    "Topaz": 2,
-    "Star Rose Quartz": 1
+    "Topaz": 3,
+    "Star Rose Quartz": 1,
+    "Ironroot": 5
   },
   "harvestNodes": [
     {
@@ -17694,122 +17790,122 @@
     },
     {
       "name": "Coal & Rigid Stone",
-      "pulls": 503,
+      "pulls": 538,
       "yields": [
         {
           "res": "Coal",
-          "count": 456,
-          "rate": 0.9065606361829026
+          "count": 486,
+          "rate": 0.9033457249070632
         },
         {
           "res": "Rigid Stone",
-          "count": 354,
-          "rate": 0.7037773359840954
+          "count": 381,
+          "rate": 0.70817843866171
         },
         {
           "res": "Platinum Ore",
-          "count": 47,
-          "rate": 0.09343936381709742
+          "count": 52,
+          "rate": 0.09665427509293681
         },
         {
           "res": "Brilliant Crystallized Magic",
-          "count": 8,
-          "rate": 0.015904572564612324
+          "count": 12,
+          "rate": 0.022304832713754646
         },
         {
           "res": "Bloodstone",
           "count": 5,
-          "rate": 0.009940357852882704
+          "rate": 0.00929368029739777
         },
         {
           "res": "Emerald",
           "count": 3,
-          "rate": 0.005964214711729622
+          "rate": 0.0055762081784386614
         },
         {
           "res": "Hematite",
           "count": 3,
-          "rate": 0.005964214711729622
+          "rate": 0.0055762081784386614
+        },
+        {
+          "res": "Topaz",
+          "count": 3,
+          "rate": 0.0055762081784386614
         },
         {
           "res": "Jacinth",
           "count": 2,
-          "rate": 0.003976143141153081
+          "rate": 0.0037174721189591076
         },
         {
           "res": "Onyx",
           "count": 2,
-          "rate": 0.003976143141153081
+          "rate": 0.0037174721189591076
         },
         {
           "res": "Ruby",
           "count": 2,
-          "rate": 0.003976143141153081
+          "rate": 0.0037174721189591076
         },
         {
           "res": "Sapphire",
           "count": 2,
-          "rate": 0.003976143141153081
+          "rate": 0.0037174721189591076
         },
         {
           "res": "Carnelian",
           "count": 2,
-          "rate": 0.003976143141153081
+          "rate": 0.0037174721189591076
         },
         {
           "res": "Black Pearl",
           "count": 2,
-          "rate": 0.003976143141153081
-        },
-        {
-          "res": "Topaz",
-          "count": 2,
-          "rate": 0.003976143141153081
+          "rate": 0.0037174721189591076
         },
         {
           "res": "Malachite",
           "count": 1,
-          "rate": 0.0019880715705765406
+          "rate": 0.0018587360594795538
         },
         {
           "res": "Diamond",
           "count": 1,
-          "rate": 0.0019880715705765406
+          "rate": 0.0018587360594795538
         },
         {
           "res": "Star Ruby",
           "count": 1,
-          "rate": 0.0019880715705765406
+          "rate": 0.0018587360594795538
         },
         {
           "res": "Fire Emerald",
           "count": 1,
-          "rate": 0.0019880715705765406
+          "rate": 0.0018587360594795538
         },
         {
           "res": "Amber",
           "count": 1,
-          "rate": 0.0019880715705765406
+          "rate": 0.0018587360594795538
         },
         {
           "res": "Cat's Eye Agate",
           "count": 1,
-          "rate": 0.0019880715705765406
+          "rate": 0.0018587360594795538
         },
         {
           "res": "Lapis Lazuli",
           "count": 1,
-          "rate": 0.0019880715705765406
+          "rate": 0.0018587360594795538
         },
         {
           "res": "Pearl",
           "count": 1,
-          "rate": 0.0019880715705765406
+          "rate": 0.0018587360594795538
         },
         {
           "res": "Star Rose Quartz",
           "count": 1,
-          "rate": 0.0019880715705765406
+          "rate": 0.0018587360594795538
         }
       ],
       "zones": [
@@ -17926,6 +18022,40 @@
       ]
     },
     {
+      "name": "Herbs - Sungreetstrand",
+      "pulls": 66,
+      "yields": [
+        {
+          "res": "Whispering Sage",
+          "count": 54,
+          "rate": 0.8181818181818182
+        },
+        {
+          "res": "Lionleaf",
+          "count": 5,
+          "rate": 0.07575757575757576
+        },
+        {
+          "res": "Nomad's Grace",
+          "count": 4,
+          "rate": 0.06060606060606061
+        },
+        {
+          "res": "Magic Frond",
+          "count": 3,
+          "rate": 0.045454545454545456
+        },
+        {
+          "res": "Ironroot",
+          "count": 3,
+          "rate": 0.045454545454545456
+        }
+      ],
+      "zones": [
+        "Sungreetstrand"
+      ]
+    },
+    {
       "name": "Herbs - Evershade Weald",
       "pulls": 44,
       "yields": [
@@ -18004,30 +18134,6 @@
         "Sungreetstrand",
         "Fallenpass",
         "Scarwood"
-      ]
-    },
-    {
-      "name": "Herbs - Sungreetstrand",
-      "pulls": 17,
-      "yields": [
-        {
-          "res": "Whispering Sage",
-          "count": 14,
-          "rate": 0.8235294117647058
-        },
-        {
-          "res": "Lionleaf",
-          "count": 3,
-          "rate": 0.17647058823529413
-        },
-        {
-          "res": "Magic Frond",
-          "count": 1,
-          "rate": 0.058823529411764705
-        }
-      ],
-      "zones": [
-        "Sungreetstrand"
       ]
     },
     {
