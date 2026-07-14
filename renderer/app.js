@@ -91,6 +91,15 @@ const herbType = (m) => (m && m.category === 'herb' && m.label)
 const woodType = (m) => (m && m.category === 'wood' && m.label)
   ? (WOOD_TYPES.find((w) => w.re ? w.re.test(m.label.trim()) : m.label.toLowerCase().includes(w.name.toLowerCase())) || null) : null;
 const gatherType = (m, zoneName) => oreTier(m, zoneName) || herbType(m) || woodType(m);
+// Add-a-marker subtype picker: gathering markers choose a fixed subtype (which
+// becomes the label / tier data) instead of typing a free-text name. Mirrors the
+// website form. Ore pairs each rare with its base node group.
+const GATHERING = {
+  ore:  { prompt: 'Ore type',  options: ['Copper', 'Limestone', 'Tin/Silver', 'Iron/Gold', 'Coal/Platinum'] },
+  herb: { prompt: 'Herb',      options: HERB_TYPES.map((h) => h.name) },
+  wood: { prompt: 'Wood type', options: ['Wood', 'Fine Wood', 'Ironbark Wood', 'Golden Palm Wood', 'Whisperpine Wood'] },
+};
+let lastSubtype = {}; // remember the last subtype per category so repeat quick-adds are fast
 // Greyscale + light/dark shift so the icon reads on any disc color.
 const tierIconFilter = (hex) => {
   const r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
@@ -474,8 +483,9 @@ canvas.addEventListener('click', (e) => {
     const cat = catById(quickAddCategory);
     const pos = toWorld(e.clientX - rect.left, e.clientY - rect.top);
 
-    // "Other" and "Quest NPCs" can't be auto-named, so they get the dialog even in quick-add
-    if (cat.id === 'misc' || cat.id === 'quest') {
+    // Gathering (pick a tier), "Other" and "Quest NPCs" (need a name) get the dialog
+    // even in quick-add; the tier picker pre-selects your last pick so repeats are quick.
+    if (GATHERING[cat.id] || cat.id === 'misc' || cat.id === 'quest') {
       pendingWorldPos = pos;
       openMarkerModal(null, cat.id);
       return;
@@ -614,8 +624,30 @@ function openMarkerModal(marker, presetCategory) {
   $('marker-notes').value = marker ? (marker.notes || '') : '';
   $('marker-error').classList.add('hidden');
 
+  syncMarkerSubtype(marker); // show the tier picker (gathering) or the name field (else)
+  catSel.onchange = () => syncMarkerSubtype(null);
+
   $('marker-modal').classList.remove('hidden');
-  $('marker-label').focus();
+  const g = GATHERING[catSel.value];
+  (g ? $('marker-subtype') : $('marker-label')).focus();
+}
+
+// Gathering categories (ore/herb/wood) get a fixed subtype dropdown (the tier) in
+// place of the free-text Name field; everything else keeps Name. The chosen subtype
+// becomes the marker label — that's the tier data the renderer colors by.
+function syncMarkerSubtype(marker) {
+  const cat = $('marker-category').value;
+  const g = GATHERING[cat];
+  $('marker-subtype-row').classList.toggle('hidden', !g);
+  $('marker-name-row').classList.toggle('hidden', !!g);
+  if (!g) return;
+  $('marker-subtype-label').textContent = g.prompt;
+  const sub = $('marker-subtype');
+  sub.innerHTML = '<option value="">Not sure</option>' +
+    g.options.map((o) => '<option>' + o + '</option>').join('');
+  // Pre-select: the edited marker's own subtype, else the last one used for this category.
+  const want = (marker && g.options.includes(marker.label)) ? marker.label : (lastSubtype[cat] || '');
+  sub.value = want;
 }
 
 function closeMarkerModal() {
@@ -628,17 +660,27 @@ $('marker-save').addEventListener('click', () => {
   const zone = currentZone();
   if (!zone) return closeMarkerModal();
 
-  const label = $('marker-label').value.trim();
   const category = $('marker-category').value;
   const notes = $('marker-notes').value.trim();
-
-  // "Other" and "Quest / NPC" markers must say what they are
-  if ((category === 'misc' || category === 'quest') && !label && !notes) {
-    $('marker-error').textContent =
-      'Give "' + catById(category).name + '" markers a name or a note — future you will thank you.';
-    $('marker-error').classList.remove('hidden');
-    $('marker-label').focus();
-    return;
+  const g = GATHERING[category];
+  // Gathering: the chosen subtype IS the label (the tier data); "Not sure" falls back
+  // to the category name (stays neutral). Others use the typed Name.
+  let label;
+  if (g) {
+    const sub = $('marker-subtype').value;
+    if (sub) lastSubtype[category] = sub;               // remember for the next quick-add
+    label = sub || catById(category).name;
+  } else {
+    label = $('marker-label').value.trim();
+    // "Other" and "Quest / NPC" markers must say what they are
+    if ((category === 'misc' || category === 'quest') && !label && !notes) {
+      $('marker-error').textContent =
+        'Give "' + catById(category).name + '" markers a name or a note — future you will thank you.';
+      $('marker-error').classList.remove('hidden');
+      $('marker-label').focus();
+      return;
+    }
+    label = label || catById(category).name;
   }
 
   if (editingMarkerId) {
@@ -649,7 +691,7 @@ $('marker-save').addEventListener('click', () => {
       id: uid(),
       x: pendingWorldPos.x,
       y: pendingWorldPos.y,
-      label: label || catById(category).name,
+      label,
       category,
       notes,
     });

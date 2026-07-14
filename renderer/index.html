@@ -129,10 +129,16 @@
   <div id="marker-modal" class="modal-backdrop hidden">
     <div class="modal">
       <h2 id="marker-modal-title">Add Marker</h2>
-      <label>Name</label>
-      <input id="marker-label" type="text" placeholder="e.g. Copper vein" />
       <label>Category</label>
       <select id="marker-category"></select>
+      <div id="marker-subtype-row" class="hidden">
+        <label id="marker-subtype-label">Type</label>
+        <select id="marker-subtype"></select>
+      </div>
+      <div id="marker-name-row">
+        <label>Name</label>
+        <input id="marker-label" type="text" placeholder="e.g. Copper vein" />
+      </div>
       <label>Notes (optional)</label>
       <textarea id="marker-notes" rows="3" placeholder="e.g. respawns fast, watch for skeletons"></textarea>
       <div id="marker-error" class="modal-error hidden"></div>
