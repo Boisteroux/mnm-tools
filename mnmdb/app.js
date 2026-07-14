@@ -2023,8 +2023,8 @@ function wireMapView(name, catById, fallback) {
     try {
       const r = await fetch(API_BASE + '/marker/delete', Object.assign({ method: 'POST' }, markerAuthReq({ session: SESSION.token }, { id: +m.id })));
       if (r.ok) { COMMUNITY = null; closeInfo(); route(); }
-      else { const j = await r.json().catch(() => ({})); delBtn.disabled = false; delBtn.textContent = 'Delete my marker'; alert('Couldn’t delete: ' + (j.error || ('error ' + r.status))); }
-    } catch { delBtn.disabled = false; delBtn.textContent = 'Delete my marker'; alert('Network error — try again.'); }
+      else { delBtn.disabled = false; delBtn.textContent = 'Couldn’t delete — try again'; }
+    } catch { delBtn.disabled = false; delBtn.textContent = 'Couldn’t delete — try again'; }
   };
   const openMarkerInfo = (m) => {
     if (!m || !infoModal) return;
@@ -2127,12 +2127,13 @@ function wireMapView(name, catById, fallback) {
   box.addEventListener('click', (e) => {
     // Admin reposition: a click while moving drops the marker at the new spot…
     if (moveId != null) { const { px, py } = clickToImg(e); reposition(moveId, px, py); return; }
-    // …and an admin click on a community pin opens its edit/delete/move modal.
+    // An admin click on SOMEONE ELSE'S community pin opens the edit/delete/move
+    // moderation modal; your own markers fall through to the quick delete popup below.
     if (isAdmin() && !suggestMode) {
       const hitc = e.target.closest('.mk-community');
       if (hitc && hitc.dataset.id) {
         const mk = (pendingMap || []).find((m) => m.community && String(m.id) === hitc.dataset.id);
-        if (mk) { openMarkerModal(mk, adminAuth()); return; }
+        if (mk && !isMine(mk)) { openMarkerModal(mk, adminAuth()); return; }
       }
     }
     if (!suggestMode) {
