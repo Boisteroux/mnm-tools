@@ -590,6 +590,9 @@ body {
 .modal-card h3 { margin: 0 0 3px; font-size: 18px; }
 .modal-card #sp-loc { margin: 0 0 14px; }
 .sp-row { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }
+/* Beats .sp-row's display:flex — plain .hidden (defined earlier, same specificity)
+   was being overridden, so hidden rows (e.g. the Label field for gathering) still showed. */
+.sp-row.hidden { display: none; }
 .sp-row label { font-size: 13px; color: var(--muted); }
 .modal-card input, .modal-card select, .modlogin input {
   font-family: inherit; font-size: 14px; color: var(--text); background: var(--bg);
