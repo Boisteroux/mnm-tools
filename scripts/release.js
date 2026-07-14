@@ -47,7 +47,11 @@ try { prevTag = out('git describe --tags --abbrev=0'); } catch {}
 const range = prevTag ? `${prevTag}..HEAD` : '';
 let changes = '';
 try { changes = out(`git log ${range} --pretty=format:"- %s" --no-merges`); } catch {}
-changes = changes.split('\n').filter((l) => l && !/^- Release v/.test(l)).join('\n') || '- Maintenance and fixes.';
+// Drop the release-bump line and the automated data-publish commits (auction prices,
+// wiki enrich, play-data snapshots) that repeat hundreds of times and bury the real
+// changes; de-dupe whatever's left so the notes are easy to read.
+const NOISE = /^-\s+(Release v|Auto-publish auction prices|Auto-enrich traded items|Publish play data)/;
+changes = [...new Set(changes.split('\n').filter((l) => l && !NOISE.test(l)))].join('\n') || '- Maintenance and fixes.';
 
 // ── 3. Build the installer (stop the app first so files aren't locked) ───────
 step('Building the Windows installer…');
