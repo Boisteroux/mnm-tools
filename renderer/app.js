@@ -49,6 +49,83 @@ const canvas = document.getElementById('map');
 const ctx = canvas.getContext('2d');
 const $ = (id) => document.getElementById(id);
 
+// ---- Gathering-node tiers (kept in sync with mnmdb/app.js) ----
+// A classified ore/herb/wood marker renders as a tier-colored disc with a greyscale
+// icon, matching the website. The marker LABEL is the tier data; rares pair with the
+// base node group they spawn on (Tin/Silver, Iron/Gold, Coal/Platinum), and a lone
+// rare label resolves to that base too. Own markers pass the current zone name (for
+// the zone default); community markers carry their own zone.
+const ORE_TIERS = [
+  { id: 'copper',    name: 'Copper',    color: '#b25f2e', re: /\bcopper\b/i },
+  { id: 'limestone', name: 'Limestone', color: '#cbb05f', re: /\blimestone\b/i },
+  { id: 'tin',       name: 'Tin',       color: '#97a1ad', re: /\b(?:tin|silver)\b/i },
+  { id: 'iron',      name: 'Iron',      color: '#4e5d6c', re: /\b(?:iron|gold)\b/i },
+  { id: 'coal',      name: 'Coal',      color: '#29261f', re: /\b(?:coal|platinum)\b/i },
+];
+const ZONE_ORE_DEFAULT = { 'Evershade Weald': 'copper', 'Night Harbor': 'copper' };
+const HERB_TYPES = [
+  { name: 'Duneleaf', color: '#c9a266' }, { name: 'Ethtongue', color: '#8a5fc0' },
+  { name: 'Gadolvine', color: '#3e7a45' }, { name: 'Ghost Poppy', color: '#cf9fb4' },
+  { name: 'Ironroot', color: '#8b4a2e' }, { name: 'Lionleaf', color: '#d4a017' },
+  { name: 'Magebloom', color: '#4a7fd4' }, { name: 'Moonveil', color: '#a8a4d0' },
+  { name: "Nomad's Grace", color: '#3f9088' }, { name: 'Phoenix Flower', color: '#e0562a' },
+  { name: 'Selstie Kelp', color: '#2e8b6e' }, { name: 'Shadeshroom', color: '#6b5b73' },
+  { name: 'Stranglevine', color: '#5a6b2f' }, { name: 'Stygian Moss', color: '#2f4a38' },
+  { name: 'Sylvine', color: '#6fae3f' }, { name: 'Whispering Sage', color: '#8fa88a' },
+  { name: 'Witherweed', color: '#7d6e55' },
+];
+const WOOD_TYPES = [
+  { name: 'Fine Wood', color: '#c08a3e' }, { name: 'Ironbark Wood', color: '#55524c' },
+  { name: 'Golden Palm Wood', color: '#d4b02a' }, { name: 'Whisperpine Wood', color: '#5e7d5a' },
+  { name: 'Wood', color: '#8a5f38', re: /^(rich\s+)?wood(\s+pile)?$/i },
+];
+function oreTier(m, zoneName) {
+  if (!m || m.category !== 'ore') return null;
+  const byLabel = m.label ? ORE_TIERS.find((t) => t.re.test(m.label)) : null;
+  if (byLabel) return byLabel;
+  const def = ZONE_ORE_DEFAULT[zoneName];
+  return def ? (ORE_TIERS.find((t) => t.id === def) || null) : null;
+}
+const herbType = (m) => (m && m.category === 'herb' && m.label)
+  ? (HERB_TYPES.find((h) => m.label.toLowerCase().includes(h.name.toLowerCase())) || null) : null;
+const woodType = (m) => (m && m.category === 'wood' && m.label)
+  ? (WOOD_TYPES.find((w) => w.re ? w.re.test(m.label.trim()) : m.label.toLowerCase().includes(w.name.toLowerCase())) || null) : null;
+const gatherType = (m, zoneName) => oreTier(m, zoneName) || herbType(m) || woodType(m);
+// Greyscale + light/dark shift so the icon reads on any disc color.
+const tierIconFilter = (hex) => {
+  const r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
+  return (0.299 * r + 0.587 * g + 0.114 * b) > 150
+    ? 'grayscale(1) brightness(0.5) contrast(1.1)'
+    : 'grayscale(1) brightness(1.75) contrast(1.05)';
+};
+// Draw a marker's disc + icon at screen point p. Classified gatherables get their
+// tier color + greyscale icon; everything else keeps the category color. `border`
+// is 'own' (solid dark) or 'community' (dashed white, slightly faded fill).
+function drawMarkerBody(p, m, zoneName, border) {
+  const cat = catById(m.category);
+  const tier = gatherType(m, zoneName);
+  const disc = tier ? tier.color : cat.color;
+  ctx.beginPath();
+  ctx.arc(p.x, p.y, MARKER_RADIUS, 0, Math.PI * 2);
+  if (border === 'community') ctx.globalAlpha = 0.9;
+  ctx.fillStyle = disc;
+  ctx.fill();
+  ctx.globalAlpha = 1;
+  ctx.lineWidth = 2;
+  if (border === 'community') { ctx.setLineDash([3, 2]); ctx.strokeStyle = '#ffffff'; }
+  else ctx.strokeStyle = '#08090b';
+  ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.save();
+  if (tier) ctx.filter = tierIconFilter(tier.color);
+  ctx.font = '12px "Segoe UI Emoji", sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillStyle = contrastColor(disc);
+  ctx.fillText(cat.icon, p.x, p.y + 1);
+  ctx.restore();
+}
+
 // ---- Helpers ----
 
 const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
@@ -114,22 +191,8 @@ function draw() {
   // Markers (drawn in screen space so they stay the same size at any zoom)
   for (const m of zone.markers) {
     if (hiddenCategories.has(m.category)) continue;
-    const cat = catById(m.category);
     const p = toScreen(m.x, m.y);
-
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, MARKER_RADIUS, 0, Math.PI * 2);
-    ctx.fillStyle = cat.color;
-    ctx.fill();
-    ctx.lineWidth = 2;
-    ctx.strokeStyle = '#08090b';
-    ctx.stroke();
-
-    ctx.font = '12px "Segoe UI Emoji", sans-serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillStyle = contrastColor(cat.color);
-    ctx.fillText(cat.icon, p.x, p.y + 1);
+    drawMarkerBody(p, m, zone.name, 'own');
 
     if (view.scale > 0.6 && m.label) {
       ctx.font = '11px "Segoe UI", sans-serif';
@@ -148,26 +211,8 @@ function draw() {
     ctx.save();
     for (const m of communityMarkers) {
       if (m.zone !== zone.name || (m.map_id || 'official') !== 'official' || hiddenCategories.has(m.category)) continue;
-      const cat = catById(m.category);
       const p = toScreen(m.x / sc, m.y / sc);
-
-      ctx.globalAlpha = 0.9;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, MARKER_RADIUS, 0, Math.PI * 2);
-      ctx.fillStyle = cat.color;
-      ctx.fill();
-      ctx.globalAlpha = 1;
-      ctx.lineWidth = 2;
-      ctx.setLineDash([3, 2]);
-      ctx.strokeStyle = '#ffffff';
-      ctx.stroke();
-      ctx.setLineDash([]);
-
-      ctx.font = '12px "Segoe UI Emoji", sans-serif';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillStyle = contrastColor(cat.color);
-      ctx.fillText(cat.icon, p.x, p.y + 1);
+      drawMarkerBody(p, m, m.zone, 'community');
 
       if (view.scale > 0.6 && m.label) {
         ctx.font = '11px "Segoe UI", sans-serif';
