@@ -164,17 +164,18 @@ const isNodeName = (s) => /\b(vein|pile|deposit|node|outcrop|bush|patch)\b/i.tes
 // Rich and regular tiers are indistinguishable in the log and share a loot table,
 // so we collapse "Rich Copper Vein" -> "Copper Vein" everywhere.
 const collapseNode = (name) => name.replace(/^Rich\s+/i, '');
-// Ore-node tiers, derived from the marker's label ("Copper", "Rich Copper Vein",
-// "Copper Ore 3" …) — the label IS the tier data, so classifying a node is just
-// naming it, and nothing changes in the app, the export, or the API. Rares
-// (Silver / Gold / Platinum) spawn at regular-tier spots, so they stay in the
-// neutral ore style until the spot itself is named for its main tier.
+// Ore-node tiers, derived from the marker's label ("Copper", "Iron/Gold",
+// "Rich Copper Vein" …) — the label IS the tier data, so classifying a node is just
+// naming it, and nothing changes in the app, the export, or the API. Rares don't get
+// their own color: they spawn on a base tier's node group, so the label pairs them
+// (Tin/Silver, Iron/Gold, Coal/Platinum) and the ring takes the BASE tier's color —
+// a lone "Gold"/"Silver"/"Platinum" label resolves to its base tier too.
 const ORE_TIERS = [
   { id: 'copper',    name: 'Copper',    color: '#b25f2e', re: /\bcopper\b/i },
   { id: 'limestone', name: 'Limestone', color: '#cbb05f', re: /\blimestone\b/i },
-  { id: 'tin',       name: 'Tin',       color: '#97a1ad', re: /\btin\b/i },
-  { id: 'iron',      name: 'Iron',      color: '#4e5d6c', re: /\biron\b/i },
-  { id: 'coal',      name: 'Coal',      color: '#29261f', re: /\bcoal\b/i },
+  { id: 'tin',       name: 'Tin',       color: '#97a1ad', re: /\b(?:tin|silver)\b/i },
+  { id: 'iron',      name: 'Iron',      color: '#4e5d6c', re: /\b(?:iron|gold)\b/i },
+  { id: 'coal',      name: 'Coal',      color: '#29261f', re: /\b(?:coal|platinum)\b/i },
 ];
 // Zones whose ore spawns are all one tier — unlabeled ore inherits the zone's
 // default, so classifying a whole zone is one line here; a tier named in a
@@ -236,7 +237,9 @@ const tierIconFilter = (hex) => {
 // chosen subtype becomes the label, which is where tier/type data lives (see
 // gatherType). Subtype lists come from the wiki's profession pages.
 const GATHERING = {
-  ore:  { prompt: 'Ore type',  options: ORE_TIERS.map((t) => t.name) },
+  // Ore options pair each rare with the base node group it spawns on, so the label
+  // both names the group and (via ORE_TIERS) picks the base tier's ring color.
+  ore:  { prompt: 'Ore type',  options: ['Copper', 'Limestone', 'Tin/Silver', 'Iron/Gold', 'Coal/Platinum'] },
   herb: { prompt: 'Herb', options: HERB_TYPES.map((h) => h.name) },
   wood: { prompt: 'Wood type', options: ['Wood', 'Fine Wood', 'Ironbark Wood', 'Golden Palm Wood', 'Whisperpine Wood'] }, // display order: plain first (WOOD_TYPES is match order)
 };
