@@ -1779,7 +1779,7 @@ function markerLayerHTML(markers, nw, nh) {
     const tier = gatherType(m); // classified gatherables get a colored ring
     return '<span class="mk' + (m.community ? ' mk-community' : '') + (tier ? ' mk-tier' : '') + '" data-idx="' + i + '"' + (m.community && m.id ? ' data-id="' + m.id + '" data-label="' + esc(m.label || '') + '"' : '') + ' style="left:' + (m.x / nw * 100) + '%;top:' + (m.y / nh * 100) + '%;--mc:' + m.color + (tier ? ';--tc:' + tier.color + ';--tif:' + tierIconFilter(tier.color) : '') + '" ' +
     'title="' + esc(m.label + (m.notes ? ' — ' + m.notes : '')) + '">' +
-    '<span class="mk-ic">' + m.icon + '</span>' +
+    '<span class="mk-ic"><span class="mk-glyph">' + m.icon + '</span></span>' +
     (m.label ? '<span class="mk-lbl">' + esc(m.label) + '</span>' : '') + '</span>';
   }).join('');
 }

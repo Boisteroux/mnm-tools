@@ -304,15 +304,18 @@ h3.bracket { font-size: 13px; font-weight: 600; color: var(--text); margin: 4px 
 .mk:hover .mk-lbl { display: block; }
 /* Gathering-tier marker (ore / herb / wood): a solid tier-color disc with a flat
    white-or-dark icon. A fixed square box makes it a TRUE circle — sizing to the glyph
-   skewed it into an ellipse. --tif recolors the emoji to a silhouette, light or dark
-   picked per ring luminance so it reads on any color. */
+   skewed it into an ellipse. The disc keeps its real color; only the GLYPH is recolored
+   (a filter on .mk-ic would invert the whole disc — colour, border and all). */
 .mk-tier .mk-ic {
   width: 22px; height: 22px; box-sizing: border-box; font-size: 13px;
   border-radius: 50%; background: var(--tc); border: 1.5px solid rgba(0, 0, 0, 0.45);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
   display: inline-flex; align-items: center; justify-content: center;
-  filter: var(--tif, brightness(0) invert(1));
+  filter: none;
 }
+/* --tif = "brightness(0) invert(1)" for a white glyph, "brightness(0)" for a dark
+   one, chosen by disc luminance (tierIconFilter). Applied to the glyph ONLY. */
+.mk-tier .mk-glyph { filter: var(--tif, brightness(0) invert(1)); line-height: 1; }
 .mdot-tier { width: 13px; height: 13px; box-sizing: border-box; background: var(--tc); border: 1px solid rgba(0, 0, 0, 0.4); }
 
 /* ---- Biggest-movers ticker ---- */
