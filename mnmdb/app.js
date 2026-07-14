@@ -1783,7 +1783,7 @@ function legendHTML(markers, catById, fallback) {
 function markerLayerHTML(markers, nw, nh) {
   return markers.map((m, i) => {
     const tier = gatherType(m); // classified gatherables get a colored ring
-    return '<span class="mk' + (m.community ? ' mk-community' : '') + (tier ? ' mk-tier' : '') + '" data-idx="' + i + '"' + (m.community && m.id ? ' data-id="' + m.id + '" data-label="' + esc(m.label || '') + '"' : '') + ' style="left:' + (m.x / nw * 100) + '%;top:' + (m.y / nh * 100) + '%;--mc:' + m.color + (tier ? ';--tc:' + tier.color + ';--tif:' + tierIconFilter(tier.color) : '') + '" ' +
+    return '<span class="mk' + (m.community ? ' mk-community' : '') + (tier ? ' mk-tier' : '') + (m.mine ? ' mk-mine' : '') + '" data-idx="' + i + '"' + (m.community && m.id ? ' data-id="' + m.id + '" data-label="' + esc(m.label || '') + '"' : '') + ' style="left:' + (m.x / nw * 100) + '%;top:' + (m.y / nh * 100) + '%;--mc:' + m.color + (tier ? ';--tc:' + tier.color + ';--tif:' + tierIconFilter(tier.color) : '') + '" ' +
     'title="' + esc(m.label + (m.notes ? ' — ' + m.notes : '')) + '">' +
     '<span class="mk-ic"><span class="mk-glyph">' + m.icon + '</span></span>' +
     (m.label ? '<span class="mk-lbl">' + esc(m.label) + '</span>' : '') + '</span>';
@@ -1918,7 +1918,7 @@ function renderMapView(name) {
     '<div id="mk-info" class="modal-overlay hidden"><div class="modal-card">' +
       '<h3 id="mk-info-title">Marker</h3>' +
       '<div id="mk-info-body"></div>' +
-      '<div class="sp-actions"><button id="mk-info-close">Close</button></div>' +
+      '<div class="sp-actions"><button id="mk-info-delete" class="danger hidden">Delete my marker</button><button id="mk-info-close">Close</button></div>' +
     '</div></div>' +
     '<div id="map-modal" class="modal-overlay hidden"><div class="modal-card">' +
       '<h3>Submit a map for ' + esc(name) + '</h3>' +
@@ -2014,12 +2014,27 @@ function wireMapView(name, catById, fallback) {
   // "more info" link to the mob's page/wiki when the label names a mob we recognise.
   const infoModal = document.getElementById('mk-info');
   const closeInfo = () => infoModal && infoModal.classList.add('hidden');
+  // Ids of the signed-in user's own community markers, so they can click one and
+  // delete it (the API also enforces ownership — this just gates the UI).
+  let myMarkerIds = new Set();
+  const isMine = (m) => !!(m && m.community && m.id != null && SESSION && myMarkerIds.has(String(m.id)));
+  const deleteMyMarker = async (m, delBtn) => {
+    if (!confirm('Delete your marker “' + (m.label || 'this marker') + '”? This removes it from the map for everyone.')) return;
+    delBtn.disabled = true; delBtn.textContent = 'Deleting…';
+    try {
+      const r = await fetch(API_BASE + '/marker/delete', Object.assign({ method: 'POST' }, markerAuthReq({ session: SESSION.token }, { id: +m.id })));
+      if (r.ok) { COMMUNITY = null; closeInfo(); route(); }
+      else { const j = await r.json().catch(() => ({})); delBtn.disabled = false; delBtn.textContent = 'Delete my marker'; alert('Couldn’t delete: ' + (j.error || ('error ' + r.status))); }
+    } catch { delBtn.disabled = false; delBtn.textContent = 'Delete my marker'; alert('Network error — try again.'); }
+  };
   const openMarkerInfo = (m) => {
     if (!m || !infoModal) return;
     const cat = (MAPS.categories || []).find((c) => c.id === m.category);
     const link = mobInfoLink(m.label);
+    const mine = isMine(m);
     document.getElementById('mk-info-title').textContent = m.label || 'Marker';
     document.getElementById('mk-info-body').innerHTML =
+      (mine ? '<div class="mk-inforow"><b>Your marker</b></div>' : '') +
       (cat ? '<div class="mk-inforow"><span class="mdot" style="background:' + cat.color + '"></span>' + esc(cat.name) + '</div>' : '') +
       // Skip a note that's just a bare URL when we already show a proper mob link (some
       // curated markers stored the mob-page URL here); otherwise show it, linkified.
@@ -2029,11 +2044,26 @@ function wireMapView(name, catById, fallback) {
         ? '<div class="mk-inforow"><a class="mk-infolink" href="' + link.href + '"' + (link.wiki ? ' target="_blank" rel="noopener"' : '') + '>' +
           (link.wiki ? '📖 Look up “' + esc(m.label) + '” on the wiki ↗' : '→ View “' + esc(m.label) + '” — drops, level &amp; more') + '</a></div>'
         : '');
+    const delBtn = document.getElementById('mk-info-delete');
+    if (delBtn) {
+      delBtn.classList.toggle('hidden', !mine);
+      delBtn.disabled = false; delBtn.textContent = 'Delete my marker';
+      delBtn.onclick = mine ? () => deleteMyMarker(m, delBtn) : null;
+    }
     infoModal.classList.remove('hidden');
   };
   if (infoModal) {
     document.getElementById('mk-info-close').addEventListener('click', closeInfo);
     infoModal.addEventListener('click', (e) => { if (e.target === infoModal) closeInfo(); });
+  }
+  // Load which community markers belong to the signed-in user, then tag them so their
+  // pins get a "yours" highlight and the click popup offers Delete.
+  const tagMine = () => { (zoneCms || []).forEach((m) => { m.mine = myMarkerIds.has(String(m.id)); }); place(); };
+  if (SESSION) {
+    fetch(API_BASE + '/my-markers', Object.assign({ method: 'POST' }, markerAuthReq({ session: SESSION.token }, {})))
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => { if (j && j.markers) { myMarkerIds = new Set(j.markers.map((x) => String(x.id))); tagMine(); } })
+      .catch(() => {});
   }
 
   const startMove = (m, auth) => {
@@ -2061,7 +2091,7 @@ function wireMapView(name, catById, fallback) {
       const cat = catById[m.category] || fallback;
       return { id: m.id, mapId: m.map_id || 'official', x: m.x, y: m.y, label: m.label, category: m.category, zone: name, submitter: m.submitter, verified: m.verified, color: cat.color, icon: cat.icon, community: true };
     });
-    pendingMap = markersFor(activeId); place(); updateLegend();
+    pendingMap = markersFor(activeId); tagMine(); updateLegend(); // tagMine() re-renders (place) with any "yours" highlights
   });
   loadMaps().then((byZone) => {
     (byZone[name] || []).forEach((m) => MAPLIST.push(m));

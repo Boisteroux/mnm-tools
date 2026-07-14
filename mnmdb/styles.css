@@ -317,6 +317,9 @@ h3.bracket { font-size: 13px; font-weight: 600; color: var(--text); margin: 4px 
    one, chosen by disc luminance (tierIconFilter). Applied to the glyph ONLY. */
 .mk-tier .mk-glyph { filter: var(--tif, grayscale(1) brightness(1.75)); line-height: 1; }
 .mdot-tier { width: 13px; height: 13px; box-sizing: border-box; background: var(--tc); border: 1px solid rgba(0, 0, 0, 0.4); }
+/* The signed-in user's own markers get an accent ring so they can spot the ones they
+   added and click to delete them. */
+.mk-mine .mk-ic { box-shadow: 0 0 0 2px #fff, 0 0 0 3.5px var(--accent); border-radius: 50%; }
 
 /* ---- Biggest-movers ticker ---- */
 .ticker { display: flex; flex-wrap: wrap; gap: 8px; }
