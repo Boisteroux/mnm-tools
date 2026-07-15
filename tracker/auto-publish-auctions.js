@@ -47,5 +47,7 @@ function loop() {
   setTimeout(loop, INTERVAL);
 }
 
-log(`START: publish every ${INTERVAL / 1000}s for ${HOURS}h (repo ${ROOT})`);
+// MNM_PUBLISH_ONCE=1 publishes a single snapshot and exits — that's how the VPS runs it
+// (a systemd timer fires it once a day), so don't log a polling interval it won't use.
+log(ONCE ? `START: one-shot publish (repo ${ROOT})` : `START: publish every ${INTERVAL / 1000}s for ${HOURS}h (repo ${ROOT})`);
 loop();
