@@ -566,7 +566,7 @@ function renderHome() {
       '</div>' +
     '</div>' +
     '<h2>🗺 Zone maps <a class="h2-link" href="#/maps">see all maps →</a></h2>' + mapGrid +
-    '<h2>💰 Live market <a class="h2-link" href="#/auctions">open the Auction House →</a></h2>' +
+    '<h2>💰 Live market</h2>' +
     '<div id="home-market"><p class="sub">Loading the live market…</p></div>' +
     bracketSection +
     '<h2>🧪 Valuable Crafting Materials</h2><p class="sub">Gathered &amp; crafting materials ranked by market value.</p><div class="card"><table><tbody>' +
@@ -3297,7 +3297,8 @@ function route() {
   if (h === 'vendors') return renderVendors();
   if (h === 'bestiary') return renderBestiary();
   if (h === 'maps') return renderMapsList();
-  if (h === 'auctions') return renderAuctions();
+  // The Auction House ticker page is retired — auction prices now live on each item's
+  // page (see tradeStats). renderAuctions() is kept dormant in case we bring it back.
   if (h === 'advanced' || h === 'bis') return renderAdvanced();
   if (h === 'moderate') return renderModerate();
   if (h === 'quests') return renderQuests();
