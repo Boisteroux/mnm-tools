@@ -427,6 +427,17 @@ tr.rowlink { cursor: pointer; }
 .vbox .vval.mkt-seller { color: var(--good); font-size: 16px; }
 .vbox .vval.mkt-bal    { color: var(--muted); font-size: 16px; }
 .mkt-sub { font-size: 11px; color: var(--muted); margin-top: 3px; }
+/* The market read is a link to the full buyer's/seller's board. */
+a.vval.mkt-link { display: block; text-decoration: none; }
+a.vval.mkt-link:hover { text-decoration: underline; }
+/* Market board page: two ranked lists with color-coded headers. */
+.mkt-h.mkt-buyer  { color: var(--warn); }
+.mkt-h.mkt-seller { color: var(--good); }
+.mkt-board { width: 100%; border-collapse: collapse; margin-top: 8px; }
+.mkt-board th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); padding: 4px 8px; border-bottom: 1px solid var(--line); }
+.mkt-board th.num, .mkt-board td.num { text-align: right; }
+.mkt-board td { padding: 5px 8px; border-bottom: 1px solid var(--line); }
+.mkt-board tbody tr:last-child td { border-bottom: none; }
 .vbuys { margin: 0; padding: 4px 4px 4px 22px; }
 .vbuys li { padding: 2px 0; color: var(--text); }
 .tag {

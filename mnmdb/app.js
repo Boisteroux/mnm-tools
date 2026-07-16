@@ -382,6 +382,31 @@ function marketPressure(name, server, days) {
   return { wts, wtb, verdict, arrow, cls, strong };
 }
 
+// Rank every auctioned item on one server by how lopsided its market is over the last
+// `days` — one pass over all listings (cheaper than calling marketPressure per item).
+// buyers = the biggest buyer's markets (oversupply → good time to BUY, prices soft);
+// sellers = the biggest seller's markets (demand → good time to SELL, prices firm).
+// Requires ≥2 on the dominant side so a single stray listing can't top the board.
+function marketBoard(server, days) {
+  days = days || 10;
+  const cut = Date.now() - days * 864e5;
+  const agg = {}; // itemLc -> { name, sellers:Set, buyers:Set }
+  for (const l of ((AUCTIONS && AUCTIONS.listings) || [])) {
+    if (!l.item) continue;
+    if (server && l.server !== server) continue;
+    if (!l.seen || new Date(l.seen).getTime() < cut) continue;
+    const lc = l.item.toLowerCase();
+    const e = agg[lc] || (agg[lc] = { name: l.item, sellers: new Set(), buyers: new Set() });
+    (l.intent === 'buy' ? e.buyers : e.sellers).add((l.player || '') + '|' + l.server);
+  }
+  const rows = Object.values(agg).map((e) => ({ name: e.name, wts: e.sellers.size, wtb: e.buyers.size }));
+  const buyers = rows.filter((r) => r.wts > r.wtb && r.wts >= 2)
+    .sort((a, b) => (b.wts - b.wtb) - (a.wts - a.wtb) || b.wts - a.wts).slice(0, 20);
+  const sellers = rows.filter((r) => r.wtb > r.wts && r.wtb >= 2)
+    .sort((a, b) => (b.wtb - b.wts) - (a.wtb - a.wts) || b.wtb - a.wtb).slice(0, 20);
+  return { buyers, sellers };
+}
+
 // Best known market value for an item: player trade price when we have it,
 // otherwise the regular vendor sell price. { value, source: 'trade'|'vendor'|null }
 function itemMarketValue(name) {
@@ -762,7 +787,7 @@ function renderItem(id) {
       const mp = marketPressure(it.name, server, 10);
       return '<div class="vbox"><div class="vlbl">Market (10d)</div>' +
         (mp
-          ? '<div class="vval ' + mp.cls + '" title="' + mp.wts + ' selling vs ' + mp.wtb + ' buying — last 10 days">' + mp.arrow + ' ' + esc(mp.verdict) + (mp.strong ? '*' : '') + '</div>' +
+          ? '<a class="vval mkt-link ' + mp.cls + '" href="#/market/' + (server || 'PvP') + '" title="' + mp.wts + ' selling vs ' + mp.wtb + ' buying — last 10 days · see the full board">' + mp.arrow + ' ' + esc(mp.verdict) + (mp.strong ? '*' : '') + '</a>' +
             '<div class="mkt-sub">' + mp.wts + ' selling · ' + mp.wtb + ' buying</div>'
           : '<div class="vval sample">—</div>') + '</div>';
     };
@@ -850,6 +875,44 @@ function renderItem(id) {
     '<h1>' + icon + esc(it.name) + '</h1>' +
     wikiLine +
     sections.join('');
+}
+
+// Market overview: the most lopsided buyer's / seller's markets right now, per server.
+// Reached by clicking the "Buyer’s ↓ / Seller’s ↑" read on any item page.
+function renderMarket(arg) {
+  const server = /pve/i.test(arg || '') ? 'PvE' : 'PvP';
+  const { buyers, sellers } = marketBoard(server, 10);
+  const linkFor = (name) => { const it = itemByName[name]; return itemLink(it ? it.id : slugify(name), name); };
+  const priceOf = (name) => {
+    const tv = tradeStats(name, server);
+    if (tv && tv.avg10 != null) return coin(tv.avg10);
+    if (tv && tv.high != null) return coin(Math.round((tv.high + tv.low) / 2));
+    return '<span class="sample">—</span>';
+  };
+  const rowHtml = (r) => '<tr><td>' + linkFor(r.name) + '</td>' +
+    '<td class="num"><b>' + r.wts + '</b> <span class="sample">sell</span> · <b>' + r.wtb + '</b> <span class="sample">buy</span></td>' +
+    '<td class="num">' + priceOf(r.name) + '</td></tr>';
+  const board = (title, cls, sub, list, activityHdr) =>
+    '<div class="mkt"><div class="mkt-h ' + cls + '">' + title + '</div>' +
+    '<div class="note">' + sub + '</div>' +
+    (list.length
+      ? '<table class="mkt-board"><thead><tr><th>Item</th><th class="num">' + activityHdr + '</th><th class="num">~Price</th></tr></thead><tbody>' +
+        list.map(rowHtml).join('') + '</tbody></table>'
+      : '<div class="note sample">Nothing clearly one-sided on ' + server + ' right now.</div>') + '</div>';
+  const toggle = ['PvP', 'PvE'].map((s) =>
+    '<a class="adv-tab' + (s === server ? ' is-on' : '') + '" href="#/market/' + s + '">' + s + '</a>').join('');
+  $('content').innerHTML =
+    '<div class="crumb"><a href="#/">MnMdb</a> › market</div>' +
+    '<h1>Buyer’s &amp; Seller’s Markets</h1>' +
+    '<p class="sub">Which items are most oversupplied or most in demand on the auction market over the last 10 days. ' +
+    'A <b>buyer’s market</b> (more selling than buying) means prices are soft — a good time to buy; a <b>seller’s market</b> (more buying than selling) means prices are firm — a good time to sell.</p>' +
+    '<div class="adv-tabs">' + toggle + '</div>' +
+    '<div class="mkt-cols">' +
+      board('↓ Best for buyers', 'mkt-buyer', 'Most oversupplied — lots of sellers, few buyers, so prices are likely soft or negotiable down.', buyers, 'Activity (10d)') +
+      board('↑ Best for sellers', 'mkt-seller', 'Most in demand — lots of buyers, few sellers, so prices are firm or rising.', sellers, 'Activity (10d)') +
+    '</div>' +
+    '<div class="note">Read from live player auctions on the <a href="https://www.twitch.tv/livemnm" target="_blank" rel="noopener">LiveMNM stream</a>. ' +
+    'Counts are distinct players posting WTS vs WTB; an item needs at least two on the busier side to appear. ~Price is the 10-day average where known.</div>';
 }
 
 function renderMob(name) {
@@ -3312,7 +3375,8 @@ function route() {
   const q = $('search').value.trim();
   // The auctions page shows two side-by-side markets — give it a wider content
   // column so PvP/PvE don't get squeezed (they stack on narrow screens via CSS).
-  document.body.classList.toggle('page-wide', !q && decodeURIComponent(location.hash.replace(/^#\/?/, '')) === 'auctions');
+  const hashPath = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
+  document.body.classList.toggle('page-wide', !q && (hashPath === 'auctions' || hashPath === 'market' || hashPath.startsWith('market/')));
   if (q) return renderSearch(q);
   const h = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
   if (h === 'items' || h === 'mobs' || h === 'gathering') return renderBrowse(h);
@@ -3328,6 +3392,8 @@ function route() {
   if (h.startsWith('quests/')) return renderQuestList(h.slice(7));
   if (h.startsWith('vendor/')) return renderVendor(h.slice(7));
   if (h.startsWith('map/')) return renderMapView(h.slice(4));
+  if (h === 'market') return renderMarket('');
+  if (h.startsWith('market/')) return renderMarket(h.slice(7));
   if (h.startsWith('item/')) return renderItem(h.slice(5));
   if (h.startsWith('mob/')) return renderMob(h.slice(4));
   if (h.startsWith('zone/')) return renderZone(h.slice(5));
