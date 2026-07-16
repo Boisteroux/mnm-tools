@@ -1,308 +1,39 @@
 {
-  "generatedAt": "2026-07-16T15:37:32.408Z",
+  "generatedAt": "2026-07-16T21:47:06.432Z",
   "source": "mnm-tools",
-  "ledgerFiles": 62,
-  "events": 18386,
+  "ledgerFiles": 61,
+  "events": 18298,
   "contributors": [],
   "mobs": {
-    "a desert bat": {
-      "kills": 0,
-      "drops": {
-        "Bat Eye": 5,
-        "Bat Wing": 11,
-        "Bat Tooth": 6,
-        "Raw Bat Meat": 4,
-        "Bat Fur": 3
-      },
-      "zones": {
-        "Night Harbor": 41
-      },
-      "coin": 0,
-      "corpses": 17
-    },
     "a rotting skeleton": {
-      "kills": 65,
+      "kills": 34,
       "drops": {
-        "Rusty Shortsword": 2,
-        "Tattered Cloth Robe": 2,
-        "Bone Chips": 23,
-        "Rusty Mace": 1,
-        "Cloth Scraps": 20,
-        "Worn Great Staff": 1,
-        "Rusty Scimitar": 1,
-        "Rusty Great Scythe": 1,
-        "Rusty Axe": 1,
-        "Tattered Cloth Pantaloons": 1,
-        "Skeleton Jawbone": 3,
-        "Tattered Cloth Boots": 1,
-        "Rusty Warhammer": 1,
-        "Tattered Cloth Gorget": 1,
-        "Rusty Trident": 1,
         "Tattered Cloth Veil": 1,
+        "Bone Chips": 15,
+        "Tattered Cloth Robe": 1,
+        "Cloth Scraps": 14,
         "Worn Bow": 1,
         "Tattered Cloth Cape": 1,
         "Rusty Spear": 1,
+        "Skeleton Jawbone": 2,
         "Rusty War Lance": 1
       },
       "zones": {
-        "Night Harbor": 166,
-        "Shaded Dunes": 13
+        "Night Harbor": 93
       },
-      "coin": 94,
-      "corpses": 36
-    },
-    "a snake": {
-      "kills": 0,
-      "drops": {
-        "Snake Fang": 1,
-        "Snake Skin": 1
-      },
-      "zones": {
-        "Night Harbor": 4
-      },
-      "coin": 0,
-      "corpses": 1
-    },
-    "a spiderling": {
-      "kills": 0,
-      "drops": {
-        "Spider Silk": 7,
-        "Spiderling Eye": 1,
-        "Spider Legs": 1
-      },
-      "zones": {
-        "Night Harbor": 13
-      },
-      "coin": 0,
-      "corpses": 7
-    },
-    "an ashira scout": {
-      "kills": 17,
-      "drops": {
-        "Ashira Scout Necklace": 5,
-        "Cloth Scraps": 3,
-        "Raw Ashira Meat": 3,
-        "Multhele Root": 1,
-        "Tattered Cloth Belt": 1,
-        "Torch": 1,
-        "Carrot": 1,
-        "Tattered Cloth Robe": 1
-      },
-      "zones": {
-        "Night Harbor": 42
-      },
-      "coin": 69,
-      "corpses": 8
-    },
-    "a fire beetle": {
-      "kills": 0,
-      "drops": {
-        "Fire Beetle Gland": 4,
-        "Fire Beetle Legs": 21,
-        "Fire Beetle Carapace": 2,
-        "Fire Beetle Eye": 7
-      },
-      "zones": {
-        "Night Harbor": 54,
-        "Shaded Dunes": 8
-      },
-      "coin": 0,
+      "coin": 49,
       "corpses": 22
     },
     "a jackal pup": {
       "kills": 0,
       "drops": {
-        "Raw Jackal Meat": 1,
-        "Jackal Tooth": 2,
-        "Low-Quality Jackal Pelt": 3
-      },
-      "zones": {
-        "Night Harbor": 10
-      },
-      "coin": 0,
-      "corpses": 4
-    },
-    "a dunes scarab": {
-      "kills": 0,
-      "drops": {
-        "Scarab Leg": 15,
-        "Scarab Carapace": 4,
-        "Scarab Eye": 5
-      },
-      "zones": {
-        "Night Harbor": 30,
-        "Shaded Dunes": 10
-      },
-      "coin": 0,
-      "corpses": 19
-    },
-    "a large diseased rat": {
-      "kills": 0,
-      "drops": {
-        "Diseased Rat Blood": 3,
-        "Rat Tooth": 1,
-        "Rat Ear": 2,
-        "Cooked Rat Meat": 1,
-        "Raw Rat Meat": 2
-      },
-      "zones": {
-        "Night Harbor": 21
-      },
-      "coin": 0,
-      "corpses": 3
-    },
-    "a large rat": {
-      "kills": 0,
-      "drops": {
-        "Raw Rat Meat": 10,
-        "Rat Ear": 8,
-        "Rat Tooth": 4,
-        "Rat Foot": 3
-      },
-      "zones": {
-        "Night Harbor": 48
-      },
-      "coin": 0,
-      "corpses": 13
-    },
-    "a diseased snake": {
-      "kills": 0,
-      "drops": {
-        "Diseased Snake Blood": 1
+        "Low-Quality Jackal Pelt": 2
       },
       "zones": {
         "Night Harbor": 2
       },
       "coin": 0,
-      "corpses": 1
-    },
-    "an ashira warrior": {
-      "kills": 14,
-      "drops": {
-        "Ashira Warrior Bracer": 4,
-        "Cloth Scraps": 4,
-        "Raw Ashira Meat": 1,
-        "Ashira Warrior Pelt": 1,
-        "Tattered Cloth Pantaloons": 1,
-        "Worn Buckler": 1,
-        "Bell Pepper": 3,
-        "Tattered Cloth Bracer": 1,
-        "Cabbage": 1,
-        "Ashira Warrior Necklace": 5,
-        "Tattered Cloth Shirt": 1,
-        "Tattered Cloth Robe": 1,
-        "Ashira Tail": 2,
-        "Tattered Rawhide Vest": 1,
-        "Potato": 1,
-        "Tattered Rawhide Bracer": 1
-      },
-      "zones": {
-        "Night Harbor": 8,
-        "Shaded Dunes": 53
-      },
-      "coin": 162,
-      "corpses": 13
-    },
-    "an ashira shaman": {
-      "kills": 5,
-      "drops": {
-        "Cloth Scraps": 3,
-        "Garlic": 1,
-        "Celery": 1,
-        "Ashira Tail": 1,
-        "Rawhide Scraps": 2,
-        "Tattered Rawhide Gorget": 1,
-        "Raw Ashira Meat": 3,
-        "Tattered Cloth Pantaloons": 1
-      },
-      "zones": {
-        "Shaded Dunes": 25
-      },
-      "coin": 87,
-      "corpses": 8
-    },
-    "an ashira lookout": {
-      "kills": 6,
-      "drops": {
-        "Ashira Scout Necklace": 2,
-        "Cloth Scraps": 2,
-        "Rawhide Scraps": 1,
-        "Raw Ashira Meat": 1,
-        "Ashira Tail": 1,
-        "Tattered Cloth Pantaloons": 1,
-        "Rusty Scimitar": 1,
-        "Rusty Spear": 1
-      },
-      "zones": {
-        "Shaded Dunes": 26
-      },
-      "coin": 74,
-      "corpses": 5
-    },
-    "a rattlesnake": {
-      "kills": 0,
-      "drops": {
-        "Snake Egg": 8,
-        "Snake Fang": 14,
-        "Rattlesnake Skin": 6,
-        "Raw Snake Meat": 6,
-        "Apoptosis Journal Page": 1
-      },
-      "zones": {
-        "Shaded Dunes": 36,
-        "Night Harbor": 3
-      },
-      "coin": 0,
-      "corpses": 22
-    },
-    "a skeleton": {
-      "kills": 57,
-      "drops": {
-        "Bone Chips": 22,
-        "Cloth Scraps": 17,
-        "Rawhide Scraps": 15,
-        "Tattered Cloth Pantaloons": 1,
-        "Tattered Rawhide Belt": 2,
-        "Rusty Trident": 2,
-        "Shattered Skull": 4,
-        "Tattered Cloth Bracer": 3,
-        "Tattered Rawhide Boots": 1,
-        "Tattered Rawhide Tunic": 3,
-        "Rusty Longsword": 1,
-        "Rusty Maul": 1,
-        "Tattered Cloth Veil": 1,
-        "Worn Great Staff": 1,
-        "Tattered Cloth Shirt": 1,
-        "Rusty Scimitar": 1,
-        "Tattered Rawhide Mask": 2,
-        "Tattered Cloth Robe": 2,
-        "Rusty Scythe": 2,
-        "Worn Buckler": 1,
-        "Tattered Cloth Mantle": 1,
-        "Tattered Cloth Boots": 1,
-        "Tattered Cloth Gloves": 2,
-        "Tattered Cloth Belt": 1,
-        "Tattered Cloth Cape": 1,
-        "Tattered Rawhide Shoulderpads": 1,
-        "Tattered Cloth Tunic": 1
-      },
-      "zones": {
-        "Shaded Dunes": 10,
-        "Evershade Weald": 168
-      },
-      "coin": 804,
-      "corpses": 40
-    },
-    "a large dunes bat": {
-      "kills": 0,
-      "drops": {
-        "Large Bat Wing": 1
-      },
-      "zones": {
-        "Shaded Dunes": 4
-      },
-      "coin": 0,
-      "corpses": 1
+      "corpses": 2
     },
     "a skeletal fighter": {
       "kills": 197,
@@ -409,6 +140,20 @@
       "coin": 693,
       "corpses": 78
     },
+    "a fire beetle": {
+      "kills": 0,
+      "drops": {
+        "Fire Beetle Legs": 8,
+        "Fire Beetle Gland": 1,
+        "Fire Beetle Eye": 2
+      },
+      "zones": {
+        "Shaded Dunes": 2,
+        "Night Harbor": 20
+      },
+      "coin": 0,
+      "corpses": 8
+    },
     "an ashira ambusher": {
       "kills": 11,
       "drops": {
@@ -441,6 +186,21 @@
       "coin": 0,
       "corpses": 11
     },
+    "an ashira shaman": {
+      "kills": 5,
+      "drops": {
+        "Tattered Rawhide Gorget": 1,
+        "Raw Ashira Meat": 3,
+        "Cloth Scraps": 2,
+        "Tattered Cloth Pantaloons": 1,
+        "Rawhide Scraps": 1
+      },
+      "zones": {
+        "Shaded Dunes": 15
+      },
+      "coin": 87,
+      "corpses": 5
+    },
     "a giant dunes scarab": {
       "kills": 0,
       "drops": {
@@ -466,6 +226,60 @@
       },
       "coin": 0,
       "corpses": 9
+    },
+    "a dunes scarab": {
+      "kills": 0,
+      "drops": {
+        "Scarab Leg": 7,
+        "Scarab Carapace": 3,
+        "Scarab Eye": 2
+      },
+      "zones": {
+        "Night Harbor": 14,
+        "Shaded Dunes": 3
+      },
+      "coin": 0,
+      "corpses": 8
+    },
+    "an ashira scout": {
+      "kills": 4,
+      "drops": {
+        "Ashira Scout Necklace": 1,
+        "Raw Ashira Meat": 1,
+        "Cloth Scraps": 1,
+        "Tattered Cloth Robe": 1
+      },
+      "zones": {
+        "Night Harbor": 8
+      },
+      "coin": 18,
+      "corpses": 2
+    },
+    "a desert bat": {
+      "kills": 0,
+      "drops": {
+        "Bat Wing": 1,
+        "Bat Fur": 1,
+        "Bat Tooth": 1,
+        "Bat Eye": 1
+      },
+      "zones": {
+        "Night Harbor": 8
+      },
+      "coin": 0,
+      "corpses": 3
+    },
+    "a large rat": {
+      "kills": 0,
+      "drops": {
+        "Rat Ear": 2,
+        "Raw Rat Meat": 2
+      },
+      "zones": {
+        "Night Harbor": 9
+      },
+      "coin": 0,
+      "corpses": 3
     },
     "a skeletal cavalier": {
       "kills": 16,
@@ -628,45 +442,71 @@
       "coin": 395,
       "corpses": 7
     },
-    "a diseased desert bat": {
-      "kills": 0,
+    "a skeleton": {
+      "kills": 56,
       "drops": {
-        "Diseased Bat Blood": 1,
-        "Bat Eye": 1,
-        "Bat Wing": 1
+        "Rawhide Scraps": 15,
+        "Bone Chips": 21,
+        "Tattered Cloth Pantaloons": 1,
+        "Tattered Rawhide Belt": 2,
+        "Rusty Trident": 2,
+        "Cloth Scraps": 16,
+        "Shattered Skull": 4,
+        "Tattered Cloth Bracer": 3,
+        "Tattered Rawhide Boots": 1,
+        "Tattered Rawhide Tunic": 3,
+        "Rusty Longsword": 1,
+        "Rusty Maul": 1,
+        "Tattered Cloth Veil": 1,
+        "Worn Great Staff": 1,
+        "Tattered Cloth Shirt": 1,
+        "Rusty Scimitar": 1,
+        "Tattered Rawhide Mask": 2,
+        "Tattered Cloth Robe": 2,
+        "Rusty Scythe": 2,
+        "Worn Buckler": 1,
+        "Tattered Cloth Mantle": 1,
+        "Tattered Cloth Boots": 1,
+        "Tattered Cloth Gloves": 2,
+        "Tattered Cloth Belt": 1,
+        "Tattered Cloth Cape": 1,
+        "Tattered Rawhide Shoulderpads": 1,
+        "Tattered Cloth Tunic": 1
       },
       "zones": {
-        "Night Harbor": 3
+        "Shaded Dunes": 5,
+        "Evershade Weald": 168
       },
-      "coin": 0,
-      "corpses": 1
+      "coin": 793,
+      "corpses": 39
     },
-    "a large desert bat": {
-      "kills": 0,
+    "an ashira warrior": {
+      "kills": 3,
       "drops": {
-        "Large Bat Wing": 1
+        "Bell Pepper": 2,
+        "Ashira Warrior Necklace": 2,
+        "Ashira Warrior Bracer": 2,
+        "Tattered Rawhide Bracer": 1,
+        "Cloth Scraps": 1
       },
       "zones": {
-        "Night Harbor": 1
+        "Shaded Dunes": 11
       },
-      "coin": 0,
-      "corpses": 1
+      "coin": 31,
+      "corpses": 3
     },
     "a crocodile hatchling": {
       "kills": 0,
       "drops": {
-        "Cooked Crocodile Meat": 7,
-        "Crocodile Tooth": 11,
-        "Crocodile Hide": 5,
-        "Raw Crocodile Meat": 8,
-        "Fish Bones": 5
+        "Crocodile Hide": 1,
+        "Fish Bones": 2,
+        "Raw Crocodile Meat": 1
       },
       "zones": {
-        "Night Harbor": 34,
         "Shaded Dunes": 5
       },
       "coin": 0,
-      "corpses": 23
+      "corpses": 2
     },
     "an ashira raider": {
       "kills": 1,
@@ -691,6 +531,21 @@
       },
       "coin": 0,
       "corpses": 2
+    },
+    "a rattlesnake": {
+      "kills": 0,
+      "drops": {
+        "Snake Egg": 7,
+        "Rattlesnake Skin": 6,
+        "Snake Fang": 11,
+        "Raw Snake Meat": 6,
+        "Apoptosis Journal Page": 1
+      },
+      "zones": {
+        "Shaded Dunes": 32
+      },
+      "coin": 0,
+      "corpses": 18
     },
     "an ashira spearfisher": {
       "kills": 1,
@@ -2053,17 +1908,17 @@
       "corpses": 4
     },
     "a bodyguard": {
-      "kills": 69,
+      "kills": 96,
       "drops": {
-        "Raw Human Meat": 11,
+        "Raw Human Meat": 15,
         "Corroded Bronze Dagger": 2,
         "Tattered Wool Cape": 1,
-        "Bronze Scraps": 12,
+        "Bronze Scraps": 14,
         "Celery": 2,
         "Corroded Bronze Chain Gorget": 1,
-        "Cheese": 2,
+        "Cheese": 3,
         "Corroded Bronze Greatsword": 1,
-        "Wool Scraps": 3,
+        "Wool Scraps": 5,
         "Lemon": 4,
         "Corroded Bronze Plate Greaves": 1,
         "Carrot": 2,
@@ -2074,114 +1929,138 @@
         "Tattered Wool Tunic": 1,
         "Corroded Bronze Chain Waistguard": 2,
         "Flawed Emerald": 1,
-        "Potato": 2,
+        "Potato": 3,
         "Tattered Hide Leggings": 1,
         "Corroded Bronze Plate Pauldrons": 1,
-        "Corroded Bronze Chain Mask": 1,
+        "Corroded Bronze Chain Mask": 2,
         "Corroded Bronze Kite Shield": 1,
         "Tattered Hide Cloak": 1,
         "Corroded Bronze Trident": 1,
         "Corroded Bronze Scimitar": 1,
         "Tattered Hide Gorget": 1,
         "Corroded Bronze Plate Visor": 1,
-        "Corroded Bronze Mace": 1
+        "Corroded Bronze Mace": 1,
+        "Worn Fine Wood Buckler": 1,
+        "Cooked Human Meat": 1,
+        "Garlic": 1,
+        "Tattered Wool Cap": 1,
+        "Corroded Bronze Chain Wristguard": 1,
+        "Cabbage": 1,
+        "Corroded Bronze Plate Helm": 2,
+        "Flawed Star Ruby": 1,
+        "Tattered Wool Gloves": 1,
+        "Corroded Bronze Battle Axe": 1
       },
       "zones": {
-        "Sungreetstrand": 148
+        "Sungreetstrand": 197
       },
-      "coin": 14669,
-      "corpses": 49
+      "coin": 20417,
+      "corpses": 67
     },
     "a gruff farmhand": {
-      "kills": 65,
+      "kills": 94,
       "drops": {
         "Tattered Wool Veil": 1,
-        "Hide Scraps": 5,
-        "Tattered Hide Gloves": 2,
-        "Raw Human Meat": 7,
-        "Bronze Scraps": 9,
-        "Celery": 2,
-        "Corroded Bronze Plate Boots": 1,
-        "Corroded Bronze Plate Visor": 1,
+        "Hide Scraps": 7,
+        "Tattered Hide Gloves": 3,
+        "Raw Human Meat": 13,
+        "Bronze Scraps": 12,
+        "Celery": 4,
+        "Corroded Bronze Plate Boots": 2,
+        "Corroded Bronze Plate Visor": 2,
         "Cheese": 1,
         "Corroded Bronze Long Spear": 1,
         "Onion": 1,
         "Tattered Hide Mask": 1,
         "Tattered Wool Gloves": 2,
-        "Wool Scraps": 2,
+        "Wool Scraps": 6,
         "Worn Fine Wood Great Staff": 1,
-        "Cabbage": 1,
-        "Tattered Wool Boots": 1,
-        "Carrot": 3,
+        "Cabbage": 3,
+        "Tattered Wool Boots": 2,
+        "Carrot": 4,
         "Corroded Bronze Chain Gambeson": 1,
-        "Tattered Hide Shoulderpads": 1,
-        "Lemon": 1,
+        "Tattered Hide Shoulderpads": 2,
+        "Lemon": 2,
         "Tomato": 1,
         "Corroded Bronze Warhammer": 1,
         "Corroded Bronze Great Scythe": 1,
         "Corroded Bronze Axe": 1,
         "Worn Fine Wood Buckler": 1,
         "Tattered Hide Gorget": 1,
-        "Corroded Bronze Trident": 1
+        "Corroded Bronze Trident": 1,
+        "Torch": 1,
+        "Corroded Bronze Chain Gloves": 1,
+        "Corroded Bronze Chain Cloak": 1,
+        "Corroded Bronze Plate Arming Doublet": 1,
+        "Flawed Malachite": 1,
+        "Corroded Bronze Longsword": 1,
+        "Corroded Bronze Plate Bracer": 1,
+        "Tattered Wool Gorget": 1
       },
       "zones": {
-        "Sungreetstrand": 128
+        "Sungreetstrand": 199
       },
-      "coin": 11976,
-      "corpses": 44
+      "coin": 17257,
+      "corpses": 70
     },
     "a dismal cur": {
       "kills": 0,
       "drops": {
-        "Medium-Quality Wolf Pelt": 9,
-        "Raw Wolf Meat": 6,
-        "Wolf Tooth": 8,
-        "Wolf Blood": 7
+        "Medium-Quality Wolf Pelt": 17,
+        "Raw Wolf Meat": 16,
+        "Wolf Tooth": 22,
+        "Wolf Blood": 10,
+        "Cooked Wolf Meat": 1
       },
       "zones": {
-        "Sungreetstrand": 37
+        "Sungreetstrand": 87
       },
       "coin": 0,
-      "corpses": 26
+      "corpses": 51
     },
     "a sly farmhand": {
-      "kills": 64,
+      "kills": 87,
       "drops": {
-        "Bronze Scraps": 6,
-        "Wool Scraps": 7,
-        "Hide Scraps": 5,
+        "Bronze Scraps": 7,
+        "Wool Scraps": 12,
+        "Hide Scraps": 6,
         "Tomato": 1,
         "Potato": 1,
         "Tattered Wool Tunic": 1,
         "Corroded Bronze Chain Gorget": 1,
-        "Raw Human Meat": 6,
+        "Raw Human Meat": 11,
         "Tattered Hide Mask": 2,
         "Corroded Bronze Chain Gloves": 1,
         "Corroded Bronze Warhammer": 2,
         "Corroded Bronze Chain Boots": 1,
         "Flawed Fire Emerald": 1,
-        "Cooked Human Meat": 1,
-        "Tattered Hide Gorget": 1
+        "Cooked Human Meat": 2,
+        "Tattered Hide Gorget": 1,
+        "Tattered Hide Tunic": 1,
+        "Tattered Hide Cloak": 1,
+        "Tattered Hide Leggings": 1,
+        "Corroded Bronze Great Scythe": 1,
+        "Carrot": 1
       },
       "zones": {
-        "Sungreetstrand": 111
+        "Sungreetstrand": 152
       },
-      "coin": 12229,
-      "corpses": 33
+      "coin": 16637,
+      "corpses": 45
     },
     "a henchman": {
-      "kills": 81,
+      "kills": 97,
       "drops": {
         "Tattered Wool Cape": 1,
-        "Raw Human Meat": 9,
+        "Raw Human Meat": 12,
         "Tattered Wool Pantaloons": 1,
         "Wool Scraps": 6,
-        "Bronze Scraps": 8,
+        "Bronze Scraps": 9,
         "Hide Scraps": 10,
         "Carrot": 4,
         "Tattered Wool Tunic": 2,
         "Corroded Bronze Chain Gloves": 1,
-        "Flawed Black Pearl": 1,
+        "Flawed Black Pearl": 2,
         "Bell Pepper": 1,
         "Cooked Human Meat": 1,
         "Tattered Hide Cloak": 1,
@@ -2190,65 +2069,79 @@
         "Onion": 1,
         "Tattered Wool Belt": 1,
         "Tattered Hide Gorget": 1,
-        "Tattered Hide Mask": 1,
+        "Tattered Hide Mask": 2,
         "Tattered Wool Robe": 1,
         "Corroded Bronze Plate Arming Doublet": 1,
         "Cabbage": 1,
         "Corroded Bronze Plate Helm": 1,
         "Cracked Fine Wood Staff": 1,
-        "Tattered Hide Boots": 1,
+        "Tattered Hide Boots": 2,
         "Corroded Bronze Kite Shield": 1,
         "Torch": 1,
         "Worn Fine Wood Buckler": 1,
-        "Corroded Bronze Plate Boots": 1
+        "Corroded Bronze Plate Boots": 1,
+        "Corroded Bronze Dagger": 1,
+        "Garlic": 1,
+        "Flawed Lapis Lazuli": 1,
+        "Potato": 1
       },
       "zones": {
-        "Sungreetstrand": 170
+        "Sungreetstrand": 197
       },
-      "coin": 18225,
-      "corpses": 49
+      "coin": 21999,
+      "corpses": 56
     },
     "a hired tracker": {
-      "kills": 65,
+      "kills": 115,
       "drops": {
         "Flawed Emerald": 1,
-        "Raw Human Meat": 10,
-        "Wool Scraps": 6,
-        "Worn Fine Wood Great Staff": 2,
-        "Lemon": 1,
-        "Hide Scraps": 2,
+        "Raw Human Meat": 20,
+        "Wool Scraps": 9,
+        "Worn Fine Wood Great Staff": 3,
+        "Lemon": 4,
+        "Hide Scraps": 6,
         "Corroded Bronze Warhammer": 1,
-        "Celery": 2,
+        "Celery": 4,
         "Corroded Bronze Chain Coif": 1,
-        "Corroded Bronze Chain Gloves": 1,
-        "Bronze Scraps": 8,
-        "Cabbage": 2,
+        "Corroded Bronze Chain Gloves": 2,
+        "Bronze Scraps": 15,
+        "Cabbage": 4,
         "Tattered Hide Shoulderpads": 1,
-        "Mushroom": 1,
-        "Corroded Bronze Chain Mask": 3,
+        "Mushroom": 2,
+        "Corroded Bronze Chain Mask": 4,
         "Onion": 2,
         "Corroded Bronze Chain Cloak": 1,
-        "Corroded Bronze Chain Boots": 1,
+        "Corroded Bronze Chain Boots": 2,
         "Corroded Bronze Shortsword": 1,
         "Tattered Hide Belt": 1,
         "Tattered Wool Mantle": 1,
-        "Tattered Hide Bracer": 1
+        "Tattered Hide Bracer": 1,
+        "Corroded Bronze Scimitar": 1,
+        "Cooked Human Meat": 1,
+        "Worn Fine Wood Bow": 1,
+        "Tomato": 2,
+        "Worn Fine Wood Buckler": 2,
+        "Corroded Bronze Battle Axe": 1,
+        "Corroded Bronze Chain Gorget": 1,
+        "Corroded Bronze Greatsword": 1,
+        "Potato": 1,
+        "Corroded Bronze Great Scythe": 1
       },
       "zones": {
-        "Sungreetstrand": 128
+        "Sungreetstrand": 227
       },
-      "coin": 13435,
-      "corpses": 41
+      "coin": 24043,
+      "corpses": 71
     },
     "a corrupt clergyman": {
-      "kills": 28,
+      "kills": 34,
       "drops": {
         "Hide Scraps": 3,
         "Tomato": 1,
         "Worn Fine Wood Bow": 1,
         "Tattered Wool Robe": 1,
-        "Bronze Scraps": 3,
-        "Raw Human Meat": 4,
+        "Bronze Scraps": 5,
+        "Raw Human Meat": 5,
         "Wool Scraps": 2,
         "Garlic": 2,
         "Carrot": 1,
@@ -2257,19 +2150,22 @@
         "Tattered Wool Shirt": 1,
         "Corroded Bronze Scimitar": 1,
         "Tattered Wool Veil": 1,
-        "Corroded Bronze Chain Gloves": 1
+        "Corroded Bronze Chain Gloves": 1,
+        "Cooked Human Meat": 1,
+        "Tattered Hide Vest": 1,
+        "Potato": 1
       },
       "zones": {
-        "Sungreetstrand": 56
+        "Sungreetstrand": 70
       },
-      "coin": 5534,
-      "corpses": 20
+      "coin": 6824,
+      "corpses": 25
     },
     "a burly henchman": {
-      "kills": 12,
+      "kills": 15,
       "drops": {
         "Garlic": 1,
-        "Bronze Scraps": 1,
+        "Bronze Scraps": 2,
         "Wool Scraps": 1,
         "Corroded Bronze Chain Gloves": 1,
         "Bell Pepper": 1,
@@ -2278,30 +2174,43 @@
         "Cheese": 1,
         "Cooked Human Meat": 1,
         "Tomato": 1,
-        "Corroded Bronze Great Scythe": 1
+        "Corroded Bronze Great Scythe": 1,
+        "Flawed Black Sapphire": 1
       },
       "zones": {
-        "Sungreetstrand": 25
+        "Sungreetstrand": 30
       },
-      "coin": 3221,
-      "corpses": 7
+      "coin": 3918,
+      "corpses": 8
     },
     "a river pirate": {
-      "kills": 24,
+      "kills": 63,
       "drops": {
-        "Bronze Scraps": 2,
-        "Wool Scraps": 4,
+        "Bronze Scraps": 8,
+        "Wool Scraps": 9,
         "Flawed Bloodstone": 1,
-        "Raw Human Meat": 3,
+        "Raw Human Meat": 12,
         "Flawed Peridot": 1,
         "Celery": 1,
-        "Flawed Black Pearl": 1
+        "Flawed Black Pearl": 1,
+        "Cooked Human Meat": 1,
+        "Corroded Bronze Trident": 1,
+        "Tattered Wool Boots": 1,
+        "Tattered Wool Bracer": 1,
+        "Corroded Bronze Chain Shoulderguards": 1,
+        "Lemon": 2,
+        "Corroded Bronze Plate Arming Doublet": 1,
+        "Cabbage": 1,
+        "Carrot": 4,
+        "Hide Scraps": 2,
+        "Corroded Bronze Axe": 1,
+        "Corroded Bronze Mace": 2
       },
       "zones": {
-        "Sungreetstrand": 38
+        "Sungreetstrand": 121
       },
-      "coin": 3267,
-      "corpses": 10
+      "coin": 9261,
+      "corpses": 38
     },
     "a Bloodynose spooker": {
       "kills": 4,
@@ -2849,6 +2758,28 @@
       },
       "coin": 0,
       "corpses": 2
+    },
+    "an ashira spearthrower": {
+      "kills": 1,
+      "drops": {
+        "Tattered Hide Bracer": 1
+      },
+      "zones": {
+        "Sungreetstrand": 2
+      },
+      "coin": 125,
+      "corpses": 1
+    },
+    "a spiderling": {
+      "kills": 0,
+      "drops": {
+        "Spider Silk": 1
+      },
+      "zones": {
+        "Night Harbor": 2
+      },
+      "coin": 0,
+      "corpses": 1
     }
   },
   "items": [
@@ -2888,8 +2819,8 @@
         {
           "mob": "a rattlesnake",
           "drops": 1,
-          "corpses": 22,
-          "rate": 0.045454545454545456
+          "corpses": 18,
+          "rate": 0.05555555555555555
         }
       ],
       "prices": [],
@@ -2900,32 +2831,25 @@
     },
     {
       "id": "ashira_scout_necklace",
-      "gameId": "ashira_necklace_sct",
+      "gameId": "e832201760ef47d89bc78125",
       "name": "Ashira Scout Necklace",
       "droppedBy": [
         {
           "mob": "an ashira scout",
-          "drops": 5,
-          "corpses": 8,
-          "rate": 0.625
-        },
-        {
-          "mob": "an ashira lookout",
-          "drops": 2,
-          "corpses": 5,
-          "rate": 0.4
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Night Harbor",
-        "Shaded Dunes"
+        "Night Harbor"
       ]
     },
     {
       "id": "ashira_tail",
-      "gameId": "ashira_tail",
+      "gameId": "2a9050dd2b3e8b4b864bebc1",
       "name": "Ashira Tail",
       "droppedBy": [
         {
@@ -2933,32 +2857,9 @@
           "drops": 4,
           "corpses": 8,
           "rate": 0.5
-        },
-        {
-          "mob": "an ashira lookout",
-          "drops": 1,
-          "corpses": 5,
-          "rate": 0.2
-        },
-        {
-          "mob": "an ashira warrior",
-          "drops": 2,
-          "corpses": 13,
-          "rate": 0.15384615384615385
-        },
-        {
-          "mob": "an ashira shaman",
-          "drops": 1,
-          "corpses": 8,
-          "rate": 0.125
         }
       ],
-      "prices": [
-        {
-          "copper": 5,
-          "count": 1
-        }
-      ],
+      "prices": [],
       "harvested": 0,
       "zones": [
         "Shaded Dunes"
@@ -2966,7 +2867,7 @@
     },
     {
       "id": "ashira_warrior_bracer",
-      "gameId": "ashira_war_fore",
+      "gameId": "f43c2d3aa8defa456701fd65",
       "name": "Ashira Warrior Bracer",
       "droppedBy": [
         {
@@ -2977,28 +2878,9 @@
         },
         {
           "mob": "an ashira warrior",
-          "drops": 4,
-          "corpses": 13,
-          "rate": 0.3076923076923077
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Shaded Dunes",
-        "Night Harbor"
-      ]
-    },
-    {
-      "id": "ashira_warrior_necklace",
-      "gameId": "ashira_necklace_war",
-      "name": "Ashira Warrior Necklace",
-      "droppedBy": [
-        {
-          "mob": "an ashira warrior",
-          "drops": 5,
-          "corpses": 13,
-          "rate": 0.38461538461538464
+          "drops": 2,
+          "corpses": 3,
+          "rate": 0.6666666666666666
         }
       ],
       "prices": [],
@@ -3008,51 +2890,36 @@
       ]
     },
     {
-      "id": "ashira_warrior_pelt",
-      "gameId": "ashira_warrior_pelt",
-      "name": "Ashira Warrior Pelt",
+      "id": "ashira_warrior_necklace",
+      "gameId": "2e1dd9a677f9a26d3e47f81d",
+      "name": "Ashira Warrior Necklace",
       "droppedBy": [
         {
           "mob": "an ashira warrior",
-          "drops": 1,
-          "corpses": 13,
-          "rate": 0.07692307692307693
+          "drops": 2,
+          "corpses": 3,
+          "rate": 0.6666666666666666
         }
       ],
-      "prices": [
-        {
-          "copper": 2,
-          "count": 1
-        }
-      ],
+      "prices": [],
       "harvested": 0,
       "zones": [
-        "Night Harbor"
+        "Shaded Dunes"
       ]
     },
     {
       "id": "bat_eye",
-      "gameId": "bat_eye",
+      "gameId": "a8f4fb29849a35c7a5b1a8d9",
       "name": "Bat Eye",
       "droppedBy": [
         {
-          "mob": "a diseased desert bat",
-          "drops": 1,
-          "corpses": 1,
-          "rate": 1
-        },
-        {
           "mob": "a desert bat",
-          "drops": 5,
-          "corpses": 17,
-          "rate": 0.29411764705882354
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
         }
       ],
       "prices": [
-        {
-          "copper": 4,
-          "count": 1
-        },
         {
           "copper": 5,
           "count": 1
@@ -3070,9 +2937,32 @@
       "droppedBy": [
         {
           "mob": "a desert bat",
-          "drops": 3,
-          "corpses": 17,
-          "rate": 0.17647058823529413
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        }
+      ],
+      "prices": [
+        {
+          "copper": 5,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
+    },
+    {
+      "id": "bat_tooth",
+      "gameId": "ecfab4f31a58122a9c917a93",
+      "name": "Bat Tooth",
+      "droppedBy": [
+        {
+          "mob": "a desert bat",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
         }
       ],
       "prices": [],
@@ -3082,51 +2972,18 @@
       ]
     },
     {
-      "id": "bat_tooth",
-      "gameId": "bat_tooth",
-      "name": "Bat Tooth",
-      "droppedBy": [
-        {
-          "mob": "a desert bat",
-          "drops": 6,
-          "corpses": 17,
-          "rate": 0.35294117647058826
-        }
-      ],
-      "prices": [
-        {
-          "copper": 2,
-          "count": 1
-        }
-      ],
-      "harvested": 0,
-      "zones": [
-        "Night Harbor"
-      ]
-    },
-    {
       "id": "bat_wing",
-      "gameId": "bat_wing",
+      "gameId": "3b9eae4b79a3090957aed13e",
       "name": "Bat Wing",
       "droppedBy": [
         {
-          "mob": "a diseased desert bat",
-          "drops": 1,
-          "corpses": 1,
-          "rate": 1
-        },
-        {
           "mob": "a desert bat",
-          "drops": 11,
-          "corpses": 17,
-          "rate": 0.6470588235294118
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
         }
       ],
       "prices": [
-        {
-          "copper": 4,
-          "count": 1
-        },
         {
           "copper": 5,
           "count": 1
@@ -3193,20 +3050,20 @@
     },
     {
       "id": "bell_pepper",
-      "gameId": "bell_pepper",
+      "gameId": "0f46da79dcec1962cf8551e8",
       "name": "Bell Pepper",
       "droppedBy": [
+        {
+          "mob": "an ashira warrior",
+          "drops": 2,
+          "corpses": 3,
+          "rate": 0.6666666666666666
+        },
         {
           "mob": "an enslaved elf",
           "drops": 1,
           "corpses": 3,
           "rate": 0.3333333333333333
-        },
-        {
-          "mob": "an ashira warrior",
-          "drops": 3,
-          "corpses": 13,
-          "rate": 0.23076923076923078
         },
         {
           "mob": "a goblin claim jumper",
@@ -3223,8 +3080,8 @@
         {
           "mob": "a burly henchman",
           "drops": 1,
-          "corpses": 7,
-          "rate": 0.14285714285714285
+          "corpses": 8,
+          "rate": 0.125
         },
         {
           "mob": "a Sangrel entangler",
@@ -3259,8 +3116,8 @@
         {
           "mob": "a henchman",
           "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
+          "corpses": 56,
+          "rate": 0.017857142857142856
         }
       ],
       "prices": [
@@ -3272,8 +3129,8 @@
       "harvested": 0,
       "zones": [
         "Keepersbight",
-        "Shaded Dunes",
         "Sungreetstrand",
+        "Shaded Dunes",
         "Blacktidebay",
         "Telekir"
       ]
@@ -3407,7 +3264,7 @@
     },
     {
       "id": "bone_chips",
-      "gameId": "bone_chips",
+      "gameId": "9fae14dfbd2ef030e0993461",
       "name": "Bone Chips",
       "droppedBy": [
         {
@@ -3430,9 +3287,9 @@
         },
         {
           "mob": "a rotting skeleton",
-          "drops": 23,
-          "corpses": 36,
-          "rate": 0.6388888888888888
+          "drops": 15,
+          "corpses": 22,
+          "rate": 0.6818181818181818
         },
         {
           "mob": "a skeletal cleric",
@@ -3454,9 +3311,9 @@
         },
         {
           "mob": "a skeleton",
-          "drops": 22,
-          "corpses": 40,
-          "rate": 0.55
+          "drops": 21,
+          "corpses": 39,
+          "rate": 0.5384615384615384
         },
         {
           "mob": "a skeletal vicar",
@@ -3522,7 +3379,7 @@
       "prices": [
         {
           "copper": 1,
-          "count": 3
+          "count": 1
         }
       ],
       "harvested": 0,
@@ -3531,7 +3388,6 @@
         "Fallenpass",
         "Evershade Weald",
         "Night Harbor",
-        "Shaded Dunes",
         "Keepersbight"
       ]
     },
@@ -3559,7 +3415,7 @@
           "count": 40
         }
       ],
-      "harvested": 756,
+      "harvested": 733,
       "zones": [
         "Evershade Weald",
         "Night Harbor",
@@ -3626,6 +3482,20 @@
         {
           "copper": 273,
           "count": 5
+        }
+      ],
+      "harvested": 0,
+      "zones": []
+    },
+    {
+      "id": "bronze_mace",
+      "gameId": null,
+      "name": "Bronze Mace",
+      "droppedBy": [],
+      "prices": [
+        {
+          "copper": 255,
+          "count": 2
         }
       ],
       "harvested": 0,
@@ -3763,10 +3633,10 @@
           "rate": 0.2857142857142857
         },
         {
-          "mob": "a bodyguard",
-          "drops": 12,
-          "corpses": 49,
-          "rate": 0.24489795918367346
+          "mob": "a burly henchman",
+          "drops": 2,
+          "corpses": 8,
+          "rate": 0.25
         },
         {
           "mob": "a restless skeleton",
@@ -3781,10 +3651,22 @@
           "rate": 0.23529411764705882
         },
         {
-          "mob": "a gruff farmhand",
-          "drops": 9,
-          "corpses": 44,
-          "rate": 0.20454545454545456
+          "mob": "a hired tracker",
+          "drops": 15,
+          "corpses": 71,
+          "rate": 0.2112676056338028
+        },
+        {
+          "mob": "a river pirate",
+          "drops": 8,
+          "corpses": 38,
+          "rate": 0.21052631578947367
+        },
+        {
+          "mob": "a bodyguard",
+          "drops": 14,
+          "corpses": 67,
+          "rate": 0.208955223880597
         },
         {
           "mob": "a Bloodchain champion",
@@ -3793,16 +3675,10 @@
           "rate": 0.2
         },
         {
-          "mob": "a river pirate",
-          "drops": 2,
-          "corpses": 10,
+          "mob": "a corrupt clergyman",
+          "drops": 5,
+          "corpses": 25,
           "rate": 0.2
-        },
-        {
-          "mob": "a hired tracker",
-          "drops": 8,
-          "corpses": 41,
-          "rate": 0.1951219512195122
         },
         {
           "mob": "a Bloodchain mender",
@@ -3811,33 +3687,27 @@
           "rate": 0.18181818181818182
         },
         {
-          "mob": "a sly farmhand",
-          "drops": 6,
-          "corpses": 33,
-          "rate": 0.18181818181818182
+          "mob": "a gruff farmhand",
+          "drops": 12,
+          "corpses": 70,
+          "rate": 0.17142857142857143
         },
         {
           "mob": "a henchman",
-          "drops": 8,
-          "corpses": 49,
-          "rate": 0.16326530612244897
+          "drops": 9,
+          "corpses": 56,
+          "rate": 0.16071428571428573
         },
         {
-          "mob": "a corrupt clergyman",
-          "drops": 3,
-          "corpses": 20,
-          "rate": 0.15
+          "mob": "a sly farmhand",
+          "drops": 7,
+          "corpses": 45,
+          "rate": 0.15555555555555556
         },
         {
           "mob": "a Bloodchain soulherder",
           "drops": 2,
           "corpses": 14,
-          "rate": 0.14285714285714285
-        },
-        {
-          "mob": "a burly henchman",
-          "drops": 1,
-          "corpses": 7,
           "rate": 0.14285714285714285
         }
       ],
@@ -3850,8 +3720,8 @@
       "harvested": 0,
       "zones": [
         "Blacktidebay",
-        "Keepersbight",
         "Sungreetstrand",
+        "Keepersbight",
         "Fallenpass",
         "Telekir",
         "Night Harbor"
@@ -3915,14 +3785,14 @@
     },
     {
       "id": "cabbage",
-      "gameId": "cabbage",
+      "gameId": "7464484d69831c9587f6b80e",
       "name": "Cabbage",
       "droppedBy": [
         {
-          "mob": "an ashira warrior",
-          "drops": 1,
-          "corpses": 13,
-          "rate": 0.07692307692307693
+          "mob": "a hired tracker",
+          "drops": 4,
+          "corpses": 71,
+          "rate": 0.056338028169014086
         },
         {
           "mob": "a Sangrel grappler",
@@ -3931,10 +3801,16 @@
           "rate": 0.05
         },
         {
-          "mob": "a hired tracker",
-          "drops": 2,
-          "corpses": 41,
-          "rate": 0.04878048780487805
+          "mob": "a gruff farmhand",
+          "drops": 3,
+          "corpses": 70,
+          "rate": 0.04285714285714286
+        },
+        {
+          "mob": "a river pirate",
+          "drops": 1,
+          "corpses": 38,
+          "rate": 0.02631578947368421
         },
         {
           "mob": "a Sangrel striker",
@@ -3943,24 +3819,28 @@
           "rate": 0.02608695652173913
         },
         {
-          "mob": "a gruff farmhand",
-          "drops": 1,
-          "corpses": 44,
-          "rate": 0.022727272727272728
-        },
-        {
           "mob": "a henchman",
           "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
+          "corpses": 56,
+          "rate": 0.017857142857142856
+        },
+        {
+          "mob": "a bodyguard",
+          "drops": 1,
+          "corpses": 67,
+          "rate": 0.014925373134328358
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 3,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
-        "Keepersbight",
         "Sungreetstrand",
-        "Shaded Dunes"
+        "Keepersbight"
       ]
     },
     {
@@ -3977,7 +3857,7 @@
     },
     {
       "id": "carrot",
-      "gameId": "carrot",
+      "gameId": "b8cc2f790204be7fa5445ccb",
       "name": "Carrot",
       "droppedBy": [
         {
@@ -4005,28 +3885,22 @@
           "rate": 0.16666666666666666
         },
         {
-          "mob": "an ashira scout",
-          "drops": 1,
-          "corpses": 8,
-          "rate": 0.125
+          "mob": "a river pirate",
+          "drops": 4,
+          "corpses": 38,
+          "rate": 0.10526315789473684
         },
         {
           "mob": "a henchman",
           "drops": 4,
-          "corpses": 49,
-          "rate": 0.08163265306122448
+          "corpses": 56,
+          "rate": 0.07142857142857142
         },
         {
           "mob": "a gruff farmhand",
-          "drops": 3,
-          "corpses": 44,
-          "rate": 0.06818181818181818
-        },
-        {
-          "mob": "a corrupt clergyman",
-          "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
+          "drops": 4,
+          "corpses": 70,
+          "rate": 0.05714285714285714
         },
         {
           "mob": "a captured dockhand",
@@ -4035,16 +3909,28 @@
           "rate": 0.043478260869565216
         },
         {
+          "mob": "a corrupt clergyman",
+          "drops": 1,
+          "corpses": 25,
+          "rate": 0.04
+        },
+        {
           "mob": "a bodyguard",
           "drops": 2,
-          "corpses": 49,
-          "rate": 0.04081632653061224
+          "corpses": 67,
+          "rate": 0.029850746268656716
         },
         {
           "mob": "a Sangrel shadowblade",
           "drops": 1,
           "corpses": 37,
           "rate": 0.02702702702702703
+        },
+        {
+          "mob": "a sly farmhand",
+          "drops": 1,
+          "corpses": 45,
+          "rate": 0.022222222222222223
         }
       ],
       "prices": [],
@@ -4052,7 +3938,6 @@
       "zones": [
         "Sungreetstrand",
         "Telekir",
-        "Night Harbor",
         "Keepersbight",
         "Blacktidebay"
       ]
@@ -4070,44 +3955,32 @@
     },
     {
       "id": "celery",
-      "gameId": "celery",
+      "gameId": "746a584511ccfadc80f71d00",
       "name": "Celery",
       "droppedBy": [
         {
-          "mob": "an ashira shaman",
-          "drops": 1,
-          "corpses": 8,
-          "rate": 0.125
+          "mob": "a gruff farmhand",
+          "drops": 4,
+          "corpses": 70,
+          "rate": 0.05714285714285714
         },
         {
-          "mob": "a river pirate",
-          "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
+          "mob": "a hired tracker",
+          "drops": 4,
+          "corpses": 71,
+          "rate": 0.056338028169014086
         },
         {
           "mob": "a henchman",
           "drops": 3,
-          "corpses": 49,
-          "rate": 0.061224489795918366
+          "corpses": 56,
+          "rate": 0.05357142857142857
         },
         {
           "mob": "a Sangrel grappler",
           "drops": 1,
           "corpses": 20,
           "rate": 0.05
-        },
-        {
-          "mob": "a hired tracker",
-          "drops": 2,
-          "corpses": 41,
-          "rate": 0.04878048780487805
-        },
-        {
-          "mob": "a gruff farmhand",
-          "drops": 2,
-          "corpses": 44,
-          "rate": 0.045454545454545456
         },
         {
           "mob": "a captured dockhand",
@@ -4118,8 +3991,14 @@
         {
           "mob": "a bodyguard",
           "drops": 2,
-          "corpses": 49,
-          "rate": 0.04081632653061224
+          "corpses": 67,
+          "rate": 0.029850746268656716
+        },
+        {
+          "mob": "a river pirate",
+          "drops": 1,
+          "corpses": 38,
+          "rate": 0.02631578947368421
         },
         {
           "mob": "a Sangrel striker",
@@ -4138,7 +4017,6 @@
       "zones": [
         "Sungreetstrand",
         "Keepersbight",
-        "Shaded Dunes",
         "Blacktidebay"
       ]
     },
@@ -4168,8 +4046,8 @@
         {
           "mob": "a burly henchman",
           "drops": 1,
-          "corpses": 7,
-          "rate": 0.14285714285714285
+          "corpses": 8,
+          "rate": 0.125
         },
         {
           "mob": "a Sangrel hunter",
@@ -4185,21 +4063,21 @@
         },
         {
           "mob": "a bodyguard",
-          "drops": 2,
-          "corpses": 49,
-          "rate": 0.04081632653061224
-        },
-        {
-          "mob": "a gruff farmhand",
-          "drops": 1,
-          "corpses": 44,
-          "rate": 0.022727272727272728
+          "drops": 3,
+          "corpses": 67,
+          "rate": 0.04477611940298507
         },
         {
           "mob": "a Sangrel striker",
           "drops": 2,
           "corpses": 115,
           "rate": 0.017391304347826087
+        },
+        {
+          "mob": "a gruff farmhand",
+          "drops": 1,
+          "corpses": 70,
+          "rate": 0.014285714285714285
         }
       ],
       "prices": [
@@ -4687,7 +4565,7 @@
     },
     {
       "id": "cloth_scraps",
-      "gameId": "cloth_scraps",
+      "gameId": "b688897ebe26c20e25e8b0b8",
       "name": "Cloth Scraps",
       "droppedBy": [
         {
@@ -4745,16 +4623,16 @@
           "rate": 0.6666666666666666
         },
         {
+          "mob": "a rotting skeleton",
+          "drops": 14,
+          "corpses": 22,
+          "rate": 0.6363636363636364
+        },
+        {
           "mob": "a Fellstone warrior",
           "drops": 7,
           "corpses": 12,
           "rate": 0.5833333333333334
-        },
-        {
-          "mob": "a rotting skeleton",
-          "drops": 20,
-          "corpses": 36,
-          "rate": 0.5555555555555556
         },
         {
           "mob": "a skeletal fighter",
@@ -4767,6 +4645,12 @@
           "drops": 24,
           "corpses": 45,
           "rate": 0.5333333333333333
+        },
+        {
+          "mob": "an ashira scout",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
         },
         {
           "mob": "an ashira ambusher",
@@ -4805,12 +4689,6 @@
           "rate": 0.42857142857142855
         },
         {
-          "mob": "a skeleton",
-          "drops": 17,
-          "corpses": 40,
-          "rate": 0.425
-        },
-        {
           "mob": "a Fellstone guard",
           "drops": 44,
           "corpses": 105,
@@ -4823,7 +4701,13 @@
           "rate": 0.4117647058823529
         },
         {
-          "mob": "an ashira lookout",
+          "mob": "a skeleton",
+          "drops": 16,
+          "corpses": 39,
+          "rate": 0.41025641025641024
+        },
+        {
+          "mob": "an ashira shaman",
           "drops": 2,
           "corpses": 5,
           "rate": 0.4
@@ -4859,18 +4743,6 @@
           "rate": 0.38461538461538464
         },
         {
-          "mob": "an ashira scout",
-          "drops": 3,
-          "corpses": 8,
-          "rate": 0.375
-        },
-        {
-          "mob": "an ashira shaman",
-          "drops": 3,
-          "corpses": 8,
-          "rate": 0.375
-        },
-        {
           "mob": "a skeletal warrior",
           "drops": 24,
           "corpses": 67,
@@ -4878,9 +4750,9 @@
         },
         {
           "mob": "an ashira warrior",
-          "drops": 4,
-          "corpses": 13,
-          "rate": 0.3076923076923077
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
         },
         {
           "mob": "a skeletal cavalier",
@@ -4944,8 +4816,8 @@
         "Tomb of the Last Wyrmsbane",
         "Evershade Weald",
         "Night Harbor",
-        "Shaded Dunes",
         "Telekir",
+        "Shaded Dunes",
         "Sungreetstrand",
         "Keepersbight"
       ]
@@ -4956,12 +4828,11 @@
       "name": "Clouded Crystallized Magic",
       "droppedBy": [],
       "prices": [],
-      "harvested": 16,
+      "harvested": 15,
       "zones": [
         "Evershade Weald",
         "Fallenpass",
         "Shaded Dunes",
-        "Night Harbor",
         "Keepersbight"
       ]
     },
@@ -4976,7 +4847,7 @@
           "count": 11
         }
       ],
-      "harvested": 522,
+      "harvested": 524,
       "zones": [
         "Sungreetstrand",
         "Fallenpass",
@@ -4984,22 +4855,18 @@
       ]
     },
     {
-      "id": "cooked_crocodile_meat",
-      "gameId": "cooked_gator_meat",
-      "name": "Cooked Crocodile Meat",
-      "droppedBy": [
+      "id": "cooked_beetle_meat",
+      "gameId": null,
+      "name": "Cooked Beetle Meat",
+      "droppedBy": [],
+      "prices": [
         {
-          "mob": "a crocodile hatchling",
-          "drops": 7,
-          "corpses": 23,
-          "rate": 0.30434782608695654
+          "copper": 5,
+          "count": 1
         }
       ],
-      "prices": [],
       "harvested": 0,
-      "zones": [
-        "Night Harbor"
-      ]
+      "zones": []
     },
     {
       "id": "cooked_human_meat",
@@ -5009,26 +4876,50 @@
         {
           "mob": "a burly henchman",
           "drops": 1,
-          "corpses": 7,
-          "rate": 0.14285714285714285
+          "corpses": 8,
+          "rate": 0.125
         },
         {
           "mob": "a sly farmhand",
+          "drops": 2,
+          "corpses": 45,
+          "rate": 0.044444444444444446
+        },
+        {
+          "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 33,
-          "rate": 0.030303030303030304
+          "corpses": 25,
+          "rate": 0.04
+        },
+        {
+          "mob": "a river pirate",
+          "drops": 1,
+          "corpses": 38,
+          "rate": 0.02631578947368421
         },
         {
           "mob": "a henchman",
           "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
+          "corpses": 56,
+          "rate": 0.017857142857142856
         },
         {
           "mob": "a Sangrel striker",
           "drops": 2,
           "corpses": 115,
           "rate": 0.017391304347826087
+        },
+        {
+          "mob": "a bodyguard",
+          "drops": 1,
+          "corpses": 67,
+          "rate": 0.014925373134328358
+        },
+        {
+          "mob": "a hired tracker",
+          "drops": 1,
+          "corpses": 71,
+          "rate": 0.014084507042253521
         }
       ],
       "prices": [
@@ -5099,21 +4990,21 @@
       ]
     },
     {
-      "id": "cooked_rat_meat",
-      "gameId": "cooked_rat_meat",
-      "name": "Cooked Rat Meat",
+      "id": "cooked_wolf_meat",
+      "gameId": "f6ef9fd5204d871a2d113175",
+      "name": "Cooked Wolf Meat",
       "droppedBy": [
         {
-          "mob": "a large diseased rat",
+          "mob": "a dismal cur",
           "drops": 1,
-          "corpses": 3,
-          "rate": 0.3333333333333333
+          "corpses": 51,
+          "rate": 0.0196078431372549
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Night Harbor"
+        "Sungreetstrand"
       ]
     },
     {
@@ -5210,7 +5101,7 @@
       "name": "Copper Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 718,
+      "harvested": 693,
       "zones": [
         "Evershade Weald",
         "Night Harbor",
@@ -5296,10 +5187,10 @@
           "rate": 0.08
         },
         {
-          "mob": "a gruff farmhand",
+          "mob": "a river pirate",
           "drops": 1,
-          "corpses": 44,
-          "rate": 0.022727272727272728
+          "corpses": 38,
+          "rate": 0.02631578947368421
         },
         {
           "mob": "a Bloodchain sentry",
@@ -5312,6 +5203,12 @@
           "drops": 2,
           "corpses": 115,
           "rate": 0.017391304347826087
+        },
+        {
+          "mob": "a gruff farmhand",
+          "drops": 1,
+          "corpses": 70,
+          "rate": 0.014285714285714285
         },
         {
           "mob": "a Bloodchain guard",
@@ -5336,9 +5233,9 @@
       "zones": [
         "Blacktidebay",
         "Keepersbight",
+        "Sungreetstrand",
         "Night Harbor",
-        "Fallenpass",
-        "Sungreetstrand"
+        "Fallenpass"
       ]
     },
     {
@@ -5359,6 +5256,18 @@
           "rate": 0.017241379310344827
         },
         {
+          "mob": "a bodyguard",
+          "drops": 1,
+          "corpses": 67,
+          "rate": 0.014925373134328358
+        },
+        {
+          "mob": "a hired tracker",
+          "drops": 1,
+          "corpses": 71,
+          "rate": 0.014084507042253521
+        },
+        {
           "mob": "a Bloodchain guard",
           "drops": 1,
           "corpses": 84,
@@ -5375,6 +5284,7 @@
       "zones": [
         "Blacktidebay",
         "Fallenpass",
+        "Sungreetstrand",
         "Night Harbor"
       ]
     },
@@ -5390,16 +5300,16 @@
           "rate": 0.16666666666666666
         },
         {
-          "mob": "a sly farmhand",
-          "drops": 1,
-          "corpses": 33,
-          "rate": 0.030303030303030304
+          "mob": "a hired tracker",
+          "drops": 2,
+          "corpses": 71,
+          "rate": 0.028169014084507043
         },
         {
-          "mob": "a hired tracker",
+          "mob": "a sly farmhand",
           "drops": 1,
-          "corpses": 41,
-          "rate": 0.024390243902439025
+          "corpses": 45,
+          "rate": 0.022222222222222223
         },
         {
           "mob": "a Sangrel striker",
@@ -5416,9 +5326,9 @@
       ],
       "harvested": 0,
       "zones": [
+        "Sungreetstrand",
         "Telekir",
-        "Keepersbight",
-        "Sungreetstrand"
+        "Keepersbight"
       ]
     },
     {
@@ -5439,10 +5349,16 @@
           "rate": 0.02702702702702703
         },
         {
+          "mob": "a gruff farmhand",
+          "drops": 1,
+          "corpses": 70,
+          "rate": 0.014285714285714285
+        },
+        {
           "mob": "a hired tracker",
           "drops": 1,
-          "corpses": 41,
-          "rate": 0.024390243902439025
+          "corpses": 71,
+          "rate": 0.014084507042253521
         },
         {
           "mob": "a Sangrel striker",
@@ -5489,16 +5405,16 @@
           "rate": 0.03571428571428571
         },
         {
-          "mob": "a hired tracker",
-          "drops": 1,
-          "corpses": 41,
-          "rate": 0.024390243902439025
-        },
-        {
           "mob": "a Bloodchain sentry",
           "drops": 1,
           "corpses": 56,
           "rate": 0.017857142857142856
+        },
+        {
+          "mob": "a hired tracker",
+          "drops": 1,
+          "corpses": 71,
+          "rate": 0.014084507042253521
         },
         {
           "mob": "a restless skeleton",
@@ -5532,8 +5448,8 @@
         {
           "mob": "a gruff farmhand",
           "drops": 1,
-          "corpses": 44,
-          "rate": 0.022727272727272728
+          "corpses": 70,
+          "rate": 0.014285714285714285
         },
         {
           "mob": "a restless skeleton",
@@ -5562,8 +5478,8 @@
         {
           "mob": "a burly henchman",
           "drops": 1,
-          "corpses": 7,
-          "rate": 0.14285714285714285
+          "corpses": 8,
+          "rate": 0.125
         },
         {
           "mob": "a Bloodchain soulherder",
@@ -5572,40 +5488,46 @@
           "rate": 0.07142857142857142
         },
         {
-          "mob": "a corrupt clergyman",
-          "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
-        },
-        {
           "mob": "a captured dockhand",
           "drops": 1,
           "corpses": 23,
           "rate": 0.043478260869565216
         },
         {
-          "mob": "a sly farmhand",
+          "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 33,
-          "rate": 0.030303030303030304
+          "corpses": 25,
+          "rate": 0.04
         },
         {
           "mob": "a hired tracker",
-          "drops": 1,
-          "corpses": 41,
-          "rate": 0.024390243902439025
+          "drops": 2,
+          "corpses": 71,
+          "rate": 0.028169014084507043
         },
         {
-          "mob": "a henchman",
+          "mob": "a sly farmhand",
           "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
+          "corpses": 45,
+          "rate": 0.022222222222222223
         },
         {
           "mob": "a Bloodchain sentry",
           "drops": 1,
           "corpses": 56,
           "rate": 0.017857142857142856
+        },
+        {
+          "mob": "a henchman",
+          "drops": 1,
+          "corpses": 56,
+          "rate": 0.017857142857142856
+        },
+        {
+          "mob": "a gruff farmhand",
+          "drops": 1,
+          "corpses": 70,
+          "rate": 0.014285714285714285
         },
         {
           "mob": "a Sangrel striker",
@@ -5620,14 +5542,18 @@
           "count": 1
         },
         {
+          "copper": 127,
+          "count": 1
+        },
+        {
           "copper": 136,
           "count": 2
         }
       ],
       "harvested": 0,
       "zones": [
-        "Blacktidebay",
         "Sungreetstrand",
+        "Blacktidebay",
         "Keepersbight"
       ]
     },
@@ -5637,28 +5563,34 @@
       "name": "Corroded Bronze Chain Gorget",
       "droppedBy": [
         {
-          "mob": "a sly farmhand",
-          "drops": 1,
-          "corpses": 33,
-          "rate": 0.030303030303030304
-        },
-        {
           "mob": "a restless skeleton",
           "drops": 3,
           "corpses": 116,
           "rate": 0.02586206896551724
         },
         {
-          "mob": "a bodyguard",
+          "mob": "a sly farmhand",
           "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
+          "corpses": 45,
+          "rate": 0.022222222222222223
         },
         {
           "mob": "a restless ghoul",
           "drops": 1,
           "corpses": 51,
           "rate": 0.0196078431372549
+        },
+        {
+          "mob": "a bodyguard",
+          "drops": 1,
+          "corpses": 67,
+          "rate": 0.014925373134328358
+        },
+        {
+          "mob": "a hired tracker",
+          "drops": 1,
+          "corpses": 71,
+          "rate": 0.014084507042253521
         },
         {
           "mob": "a Sangrel striker",
@@ -5725,15 +5657,15 @@
         },
         {
           "mob": "a hired tracker",
-          "drops": 3,
-          "corpses": 41,
-          "rate": 0.07317073170731707
+          "drops": 4,
+          "corpses": 71,
+          "rate": 0.056338028169014086
         },
         {
           "mob": "a bodyguard",
-          "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
+          "drops": 2,
+          "corpses": 67,
+          "rate": 0.029850746268656716
         },
         {
           "mob": "a Sangrel striker",
@@ -5767,6 +5699,12 @@
           "rate": 0.05405405405405406
         },
         {
+          "mob": "a river pirate",
+          "drops": 1,
+          "corpses": 38,
+          "rate": 0.02631578947368421
+        },
+        {
           "mob": "a restless ghoul",
           "drops": 1,
           "corpses": 51,
@@ -5783,11 +5721,16 @@
         {
           "copper": 45,
           "count": 1
+        },
+        {
+          "copper": 127,
+          "count": 1
         }
       ],
       "harvested": 0,
       "zones": [
         "Keepersbight",
+        "Sungreetstrand",
         "Blacktidebay",
         "Fallenpass"
       ]
@@ -5839,8 +5782,8 @@
         {
           "mob": "a bodyguard",
           "drops": 2,
-          "corpses": 49,
-          "rate": 0.04081632653061224
+          "corpses": 67,
+          "rate": 0.029850746268656716
         },
         {
           "mob": "a Bloodchain guard",
@@ -5895,6 +5838,12 @@
           "rate": 0.017391304347826087
         },
         {
+          "mob": "a bodyguard",
+          "drops": 1,
+          "corpses": 67,
+          "rate": 0.014925373134328358
+        },
+        {
           "mob": "a Bloodchain guard",
           "drops": 1,
           "corpses": 84,
@@ -5921,7 +5870,8 @@
       "zones": [
         "Blacktidebay",
         "Keepersbight",
-        "Fallenpass"
+        "Fallenpass",
+        "Sungreetstrand"
       ]
     },
     {
@@ -5938,8 +5888,8 @@
         {
           "mob": "a burly henchman",
           "drops": 1,
-          "corpses": 7,
-          "rate": 0.14285714285714285
+          "corpses": 8,
+          "rate": 0.125
         },
         {
           "mob": "a Bloodchain soulherder",
@@ -5956,14 +5906,20 @@
         {
           "mob": "a bodyguard",
           "drops": 2,
-          "corpses": 49,
-          "rate": 0.04081632653061224
+          "corpses": 67,
+          "rate": 0.029850746268656716
         },
         {
           "mob": "a restless ghoul",
           "drops": 1,
           "corpses": 51,
           "rate": 0.0196078431372549
+        },
+        {
+          "mob": "a henchman",
+          "drops": 1,
+          "corpses": 56,
+          "rate": 0.017857142857142856
         },
         {
           "mob": "a restless skeleton",
@@ -6000,8 +5956,8 @@
         {
           "mob": "a burly henchman",
           "drops": 1,
-          "corpses": 7,
-          "rate": 0.14285714285714285
+          "corpses": 8,
+          "rate": 0.125
         },
         {
           "mob": "a Bloodchain taskmaster",
@@ -6016,16 +5972,28 @@
           "rate": 0.02702702702702703
         },
         {
-          "mob": "a gruff farmhand",
+          "mob": "a sly farmhand",
           "drops": 1,
-          "corpses": 44,
-          "rate": 0.022727272727272728
+          "corpses": 45,
+          "rate": 0.022222222222222223
         },
         {
           "mob": "a restless ghoul",
           "drops": 1,
           "corpses": 51,
           "rate": 0.0196078431372549
+        },
+        {
+          "mob": "a gruff farmhand",
+          "drops": 1,
+          "corpses": 70,
+          "rate": 0.014285714285714285
+        },
+        {
+          "mob": "a hired tracker",
+          "drops": 1,
+          "corpses": 71,
+          "rate": 0.014084507042253521
         },
         {
           "mob": "a restless skeleton",
@@ -6037,9 +6005,9 @@
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Sungreetstrand",
         "Blacktidebay",
         "Fallenpass",
-        "Sungreetstrand",
         "Keepersbight"
       ]
     },
@@ -6063,8 +6031,14 @@
         {
           "mob": "a bodyguard",
           "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
+          "corpses": 67,
+          "rate": 0.014925373134328358
+        },
+        {
+          "mob": "a hired tracker",
+          "drops": 1,
+          "corpses": 71,
+          "rate": 0.014084507042253521
         }
       ],
       "prices": [],
@@ -6105,22 +6079,22 @@
           "rate": 0.02586206896551724
         },
         {
-          "mob": "a bodyguard",
-          "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
-        },
-        {
-          "mob": "a henchman",
-          "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
-        },
-        {
           "mob": "a restless ghoul",
           "drops": 1,
           "corpses": 51,
           "rate": 0.0196078431372549
+        },
+        {
+          "mob": "a henchman",
+          "drops": 1,
+          "corpses": 56,
+          "rate": 0.017857142857142856
+        },
+        {
+          "mob": "a bodyguard",
+          "drops": 1,
+          "corpses": 67,
+          "rate": 0.014925373134328358
         },
         {
           "mob": "a Bloodchain guard",
@@ -6161,12 +6135,6 @@
           "rate": 0.034482758620689655
         },
         {
-          "mob": "a gruff farmhand",
-          "drops": 1,
-          "corpses": 44,
-          "rate": 0.022727272727272728
-        },
-        {
           "mob": "a restless ghoul",
           "drops": 1,
           "corpses": 51,
@@ -6177,6 +6145,12 @@
           "drops": 2,
           "corpses": 115,
           "rate": 0.017391304347826087
+        },
+        {
+          "mob": "a gruff farmhand",
+          "drops": 1,
+          "corpses": 70,
+          "rate": 0.014285714285714285
         }
       ],
       "prices": [],
@@ -6209,11 +6183,23 @@
           "drops": 1,
           "corpses": 51,
           "rate": 0.0196078431372549
+        },
+        {
+          "mob": "a gruff farmhand",
+          "drops": 1,
+          "corpses": 70,
+          "rate": 0.014285714285714285
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 127,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
+        "Sungreetstrand",
         "Blacktidebay",
         "Fallenpass"
       ]
@@ -6230,16 +6216,16 @@
           "rate": 0.5
         },
         {
+          "mob": "a river pirate",
+          "drops": 2,
+          "corpses": 38,
+          "rate": 0.05263157894736842
+        },
+        {
           "mob": "a restless skeleton",
           "drops": 4,
           "corpses": 116,
           "rate": 0.034482758620689655
-        },
-        {
-          "mob": "a bodyguard",
-          "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
         },
         {
           "mob": "a restless ghoul",
@@ -6252,6 +6238,12 @@
           "drops": 1,
           "corpses": 56,
           "rate": 0.017857142857142856
+        },
+        {
+          "mob": "a bodyguard",
+          "drops": 1,
+          "corpses": 67,
+          "rate": 0.014925373134328358
         }
       ],
       "prices": [
@@ -6263,9 +6255,9 @@
       "harvested": 0,
       "zones": [
         "Fallenpass",
+        "Sungreetstrand",
         "Night Harbor",
-        "Blacktidebay",
-        "Sungreetstrand"
+        "Blacktidebay"
       ]
     },
     {
@@ -6329,22 +6321,34 @@
           "rate": 0.14285714285714285
         },
         {
-          "mob": "a bodyguard",
+          "mob": "a river pirate",
           "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
-        },
-        {
-          "mob": "a henchman",
-          "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
+          "corpses": 38,
+          "rate": 0.02631578947368421
         },
         {
           "mob": "a restless ghoul",
           "drops": 1,
           "corpses": 51,
           "rate": 0.0196078431372549
+        },
+        {
+          "mob": "a henchman",
+          "drops": 1,
+          "corpses": 56,
+          "rate": 0.017857142857142856
+        },
+        {
+          "mob": "a bodyguard",
+          "drops": 1,
+          "corpses": 67,
+          "rate": 0.014925373134328358
+        },
+        {
+          "mob": "a gruff farmhand",
+          "drops": 1,
+          "corpses": 70,
+          "rate": 0.014285714285714285
         },
         {
           "mob": "a restless skeleton",
@@ -6357,6 +6361,10 @@
         {
           "copper": 151,
           "count": 2
+        },
+        {
+          "copper": 153,
+          "count": 1
         }
       ],
       "harvested": 0,
@@ -6373,18 +6381,23 @@
       "droppedBy": [
         {
           "mob": "a gruff farmhand",
-          "drops": 1,
-          "corpses": 44,
-          "rate": 0.022727272727272728
+          "drops": 2,
+          "corpses": 70,
+          "rate": 0.02857142857142857
         },
         {
           "mob": "a henchman",
           "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
+          "corpses": 56,
+          "rate": 0.017857142857142856
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 153,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Sungreetstrand"
@@ -6414,6 +6427,12 @@
           "rate": 0.017857142857142856
         },
         {
+          "mob": "a gruff farmhand",
+          "drops": 1,
+          "corpses": 70,
+          "rate": 0.014285714285714285
+        },
+        {
           "mob": "a restless skeleton",
           "drops": 1,
           "corpses": 116,
@@ -6434,7 +6453,8 @@
       "zones": [
         "Blacktidebay",
         "Night Harbor",
-        "Fallenpass"
+        "Fallenpass",
+        "Sungreetstrand"
       ]
     },
     {
@@ -6603,16 +6623,16 @@
           "rate": 0.02586206896551724
         },
         {
-          "mob": "a bodyguard",
-          "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
-        },
-        {
           "mob": "a Bloodchain sentry",
           "drops": 1,
           "corpses": 56,
           "rate": 0.017857142857142856
+        },
+        {
+          "mob": "a bodyguard",
+          "drops": 1,
+          "corpses": 67,
+          "rate": 0.014925373134328358
         },
         {
           "mob": "a Bloodchain guard",
@@ -6645,16 +6665,22 @@
       "name": "Corroded Bronze Plate Helm",
       "droppedBy": [
         {
-          "mob": "a henchman",
-          "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
+          "mob": "a bodyguard",
+          "drops": 2,
+          "corpses": 67,
+          "rate": 0.029850746268656716
         },
         {
           "mob": "a restless ghoul",
           "drops": 1,
           "corpses": 51,
           "rate": 0.0196078431372549
+        },
+        {
+          "mob": "a henchman",
+          "drops": 1,
+          "corpses": 56,
+          "rate": 0.017857142857142856
         },
         {
           "mob": "a Bloodchain guard",
@@ -6707,16 +6733,16 @@
           "rate": 0.03571428571428571
         },
         {
-          "mob": "a bodyguard",
-          "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
-        },
-        {
           "mob": "a Sangrel striker",
           "drops": 2,
           "corpses": 115,
           "rate": 0.017391304347826087
+        },
+        {
+          "mob": "a bodyguard",
+          "drops": 1,
+          "corpses": 67,
+          "rate": 0.014925373134328358
         },
         {
           "mob": "a restless skeleton",
@@ -6763,21 +6789,21 @@
         },
         {
           "mob": "a gruff farmhand",
-          "drops": 1,
-          "corpses": 44,
-          "rate": 0.022727272727272728
-        },
-        {
-          "mob": "a bodyguard",
-          "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
+          "drops": 2,
+          "corpses": 70,
+          "rate": 0.02857142857142857
         },
         {
           "mob": "a restless skeleton",
           "drops": 2,
           "corpses": 116,
           "rate": 0.017241379310344827
+        },
+        {
+          "mob": "a bodyguard",
+          "drops": 1,
+          "corpses": 67,
+          "rate": 0.014925373134328358
         },
         {
           "mob": "a Bloodchain guard",
@@ -6795,8 +6821,8 @@
       "harvested": 0,
       "zones": [
         "Blacktidebay",
-        "Fallenpass",
-        "Sungreetstrand"
+        "Sungreetstrand",
+        "Fallenpass"
       ]
     },
     {
@@ -6813,14 +6839,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
-        },
-        {
-          "mob": "a bodyguard",
-          "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
+          "corpses": 25,
+          "rate": 0.04
         },
         {
           "mob": "a restless ghoul",
@@ -6839,6 +6859,18 @@
           "drops": 2,
           "corpses": 116,
           "rate": 0.017241379310344827
+        },
+        {
+          "mob": "a bodyguard",
+          "drops": 1,
+          "corpses": 67,
+          "rate": 0.014925373134328358
+        },
+        {
+          "mob": "a hired tracker",
+          "drops": 1,
+          "corpses": 71,
+          "rate": 0.014084507042253521
         },
         {
           "mob": "a Bloodchain guard",
@@ -6905,12 +6937,6 @@
           "rate": 0.14285714285714285
         },
         {
-          "mob": "a hired tracker",
-          "drops": 1,
-          "corpses": 41,
-          "rate": 0.024390243902439025
-        },
-        {
           "mob": "a restless ghoul",
           "drops": 1,
           "corpses": 51,
@@ -6921,6 +6947,12 @@
           "drops": 2,
           "corpses": 115,
           "rate": 0.017391304347826087
+        },
+        {
+          "mob": "a hired tracker",
+          "drops": 1,
+          "corpses": 71,
+          "rate": 0.014084507042253521
         },
         {
           "mob": "a Bloodchain guard",
@@ -6968,12 +7000,6 @@
           "rate": 0.02586206896551724
         },
         {
-          "mob": "a bodyguard",
-          "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
-        },
-        {
           "mob": "a restless ghoul",
           "drops": 1,
           "corpses": 51,
@@ -6984,6 +7010,12 @@
           "drops": 1,
           "corpses": 56,
           "rate": 0.017857142857142856
+        },
+        {
+          "mob": "a bodyguard",
+          "drops": 1,
+          "corpses": 67,
+          "rate": 0.014925373134328358
         },
         {
           "mob": "a Bloodchain guard",
@@ -7054,22 +7086,16 @@
           "rate": 0.2
         },
         {
+          "mob": "a river pirate",
+          "drops": 1,
+          "corpses": 38,
+          "rate": 0.02631578947368421
+        },
+        {
           "mob": "a Sangrel striker",
           "drops": 3,
           "corpses": 115,
           "rate": 0.02608695652173913
-        },
-        {
-          "mob": "a gruff farmhand",
-          "drops": 1,
-          "corpses": 44,
-          "rate": 0.022727272727272728
-        },
-        {
-          "mob": "a bodyguard",
-          "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
         },
         {
           "mob": "a restless ghoul",
@@ -7082,6 +7108,18 @@
           "drops": 1,
           "corpses": 56,
           "rate": 0.017857142857142856
+        },
+        {
+          "mob": "a bodyguard",
+          "drops": 1,
+          "corpses": 67,
+          "rate": 0.014925373134328358
+        },
+        {
+          "mob": "a gruff farmhand",
+          "drops": 1,
+          "corpses": 70,
+          "rate": 0.014285714285714285
         },
         {
           "mob": "a Bloodchain guard",
@@ -7162,14 +7200,8 @@
         {
           "mob": "a sly farmhand",
           "drops": 2,
-          "corpses": 33,
-          "rate": 0.06060606060606061
-        },
-        {
-          "mob": "a hired tracker",
-          "drops": 1,
-          "corpses": 41,
-          "rate": 0.024390243902439025
+          "corpses": 45,
+          "rate": 0.044444444444444446
         },
         {
           "mob": "a Bloodchain guard",
@@ -7180,8 +7212,14 @@
         {
           "mob": "a gruff farmhand",
           "drops": 1,
-          "corpses": 44,
-          "rate": 0.022727272727272728
+          "corpses": 70,
+          "rate": 0.014285714285714285
+        },
+        {
+          "mob": "a hired tracker",
+          "drops": 1,
+          "corpses": 71,
+          "rate": 0.014084507042253521
         }
       ],
       "prices": [],
@@ -7246,12 +7284,6 @@
           "rate": 0.02586206896551724
         },
         {
-          "mob": "a henchman",
-          "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
-        },
-        {
           "mob": "a restless ghoul",
           "drops": 1,
           "corpses": 51,
@@ -7259,6 +7291,12 @@
         },
         {
           "mob": "a Bloodchain sentry",
+          "drops": 1,
+          "corpses": 56,
+          "rate": 0.017857142857142856
+        },
+        {
+          "mob": "a henchman",
           "drops": 1,
           "corpses": 56,
           "rate": 0.017857142857142856
@@ -7343,39 +7381,20 @@
     },
     {
       "id": "crocodile_hide",
-      "gameId": "gator_scale",
+      "gameId": "0a578a2ecad78e75873a173a",
       "name": "Crocodile Hide",
       "droppedBy": [
         {
           "mob": "a crocodile hatchling",
-          "drops": 5,
-          "corpses": 23,
-          "rate": 0.21739130434782608
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Night Harbor",
         "Shaded Dunes"
-      ]
-    },
-    {
-      "id": "crocodile_tooth",
-      "gameId": "gator_tooth",
-      "name": "Crocodile Tooth",
-      "droppedBy": [
-        {
-          "mob": "a crocodile hatchling",
-          "drops": 11,
-          "corpses": 23,
-          "rate": 0.4782608695652174
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Night Harbor"
       ]
     },
     {
@@ -7483,70 +7502,6 @@
       "harvested": 1,
       "zones": [
         "Fallenpass"
-      ]
-    },
-    {
-      "id": "diseased_bat_blood",
-      "gameId": "dis_bat_blood",
-      "name": "Diseased Bat Blood",
-      "droppedBy": [
-        {
-          "mob": "a diseased desert bat",
-          "drops": 1,
-          "corpses": 1,
-          "rate": 1
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Night Harbor"
-      ]
-    },
-    {
-      "id": "diseased_rat_blood",
-      "gameId": "dis_rat_blood",
-      "name": "Diseased Rat Blood",
-      "droppedBy": [
-        {
-          "mob": "a large diseased rat",
-          "drops": 3,
-          "corpses": 3,
-          "rate": 1
-        }
-      ],
-      "prices": [
-        {
-          "copper": 2,
-          "count": 3
-        }
-      ],
-      "harvested": 0,
-      "zones": [
-        "Night Harbor"
-      ]
-    },
-    {
-      "id": "diseased_snake_blood",
-      "gameId": "dis_snake_blood",
-      "name": "Diseased Snake Blood",
-      "droppedBy": [
-        {
-          "mob": "a diseased snake",
-          "drops": 1,
-          "corpses": 1,
-          "rate": 1
-        }
-      ],
-      "prices": [
-        {
-          "copper": 2,
-          "count": 1
-        }
-      ],
-      "harvested": 0,
-      "zones": [
-        "Night Harbor"
       ]
     },
     {
@@ -7844,16 +7799,9 @@
     },
     {
       "id": "fire_beetle_carapace",
-      "gameId": "fbeetle_shell",
+      "gameId": null,
       "name": "Fire Beetle Carapace",
-      "droppedBy": [
-        {
-          "mob": "a fire beetle",
-          "drops": 2,
-          "corpses": 22,
-          "rate": 0.09090909090909091
-        }
-      ],
+      "droppedBy": [],
       "prices": [
         {
           "copper": 2,
@@ -7861,52 +7809,44 @@
         }
       ],
       "harvested": 0,
-      "zones": [
-        "Shaded Dunes",
-        "Night Harbor"
-      ]
+      "zones": []
     },
     {
       "id": "fire_beetle_eye",
-      "gameId": "fbeetle_eye",
+      "gameId": "c1037c7d481bf81e37259cf6",
       "name": "Fire Beetle Eye",
       "droppedBy": [
         {
           "mob": "a fire beetle",
-          "drops": 7,
-          "corpses": 22,
-          "rate": 0.3181818181818182
+          "drops": 2,
+          "corpses": 8,
+          "rate": 0.25
         }
       ],
       "prices": [
         {
           "copper": 15,
-          "count": 4
+          "count": 2
         }
       ],
       "harvested": 0,
       "zones": [
-        "Night Harbor",
-        "Shaded Dunes"
+        "Night Harbor"
       ]
     },
     {
       "id": "fire_beetle_gland",
-      "gameId": "fbeetle_gland",
+      "gameId": "23be4a97c4cecb88dc0f18f3",
       "name": "Fire Beetle Gland",
       "droppedBy": [
         {
           "mob": "a fire beetle",
-          "drops": 4,
-          "corpses": 22,
-          "rate": 0.18181818181818182
+          "drops": 1,
+          "corpses": 8,
+          "rate": 0.125
         }
       ],
       "prices": [
-        {
-          "copper": 4,
-          "count": 1
-        },
         {
           "copper": 5,
           "count": 1
@@ -7919,28 +7859,20 @@
     },
     {
       "id": "fire_beetle_legs",
-      "gameId": "fbeetle_leg",
+      "gameId": "bfa195f6fbe4fc378ff93832",
       "name": "Fire Beetle Legs",
       "droppedBy": [
         {
           "mob": "a fire beetle",
-          "drops": 21,
-          "corpses": 22,
-          "rate": 0.9545454545454546
+          "drops": 8,
+          "corpses": 8,
+          "rate": 1
         }
       ],
       "prices": [
         {
-          "copper": 2,
-          "count": 1
-        },
-        {
-          "copper": 4,
-          "count": 1
-        },
-        {
           "copper": 5,
-          "count": 5
+          "count": 2
         }
       ],
       "harvested": 0,
@@ -7962,20 +7894,19 @@
     },
     {
       "id": "fish_bones",
-      "gameId": "fish_bones",
+      "gameId": "ce655955748a502705ce0654",
       "name": "Fish Bones",
       "droppedBy": [
         {
           "mob": "a crocodile hatchling",
-          "drops": 5,
-          "corpses": 23,
-          "rate": 0.21739130434782608
+          "drops": 2,
+          "corpses": 2,
+          "rate": 1
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Night Harbor",
         "Shaded Dunes"
       ]
     },
@@ -8001,16 +7932,16 @@
       "name": "Flawed Black Pearl",
       "droppedBy": [
         {
-          "mob": "a river pirate",
-          "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
+          "mob": "a henchman",
+          "drops": 2,
+          "corpses": 56,
+          "rate": 0.03571428571428571
         },
         {
-          "mob": "a henchman",
+          "mob": "a river pirate",
           "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
+          "corpses": 38,
+          "rate": 0.02631578947368421
         }
       ],
       "prices": [
@@ -8027,9 +7958,16 @@
     },
     {
       "id": "flawed_black_sapphire",
-      "gameId": null,
+      "gameId": "3be1dc6368f30e43d66d2a36",
       "name": "Flawed Black Sapphire",
-      "droppedBy": [],
+      "droppedBy": [
+        {
+          "mob": "a burly henchman",
+          "drops": 1,
+          "corpses": 8,
+          "rate": 0.125
+        }
+      ],
       "prices": [
         {
           "copper": 20,
@@ -8038,7 +7976,8 @@
       ],
       "harvested": 3,
       "zones": [
-        "Scarwood"
+        "Scarwood",
+        "Sungreetstrand"
       ]
     },
     {
@@ -8049,8 +7988,8 @@
         {
           "mob": "a river pirate",
           "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
+          "corpses": 38,
+          "rate": 0.02631578947368421
         }
       ],
       "prices": [
@@ -8137,16 +8076,16 @@
       "name": "Flawed Emerald",
       "droppedBy": [
         {
-          "mob": "a hired tracker",
-          "drops": 1,
-          "corpses": 41,
-          "rate": 0.024390243902439025
-        },
-        {
           "mob": "a bodyguard",
           "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
+          "corpses": 67,
+          "rate": 0.014925373134328358
+        },
+        {
+          "mob": "a hired tracker",
+          "drops": 1,
+          "corpses": 71,
+          "rate": 0.014084507042253521
         },
         {
           "mob": "a Sangrel striker",
@@ -8188,8 +8127,8 @@
         {
           "mob": "a sly farmhand",
           "drops": 1,
-          "corpses": 33,
-          "rate": 0.030303030303030304
+          "corpses": 45,
+          "rate": 0.022222222222222223
         }
       ],
       "prices": [
@@ -8283,6 +8222,24 @@
       ]
     },
     {
+      "id": "flawed_lapis_lazuli",
+      "gameId": "7a5907940dea80ca1a0cb68c",
+      "name": "Flawed Lapis Lazuli",
+      "droppedBy": [
+        {
+          "mob": "a henchman",
+          "drops": 1,
+          "corpses": 56,
+          "rate": 0.017857142857142856
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Sungreetstrand"
+      ]
+    },
+    {
       "id": "flawed_malachite",
       "gameId": "9159101c9f3c31e5ad89d984",
       "name": "Flawed Malachite",
@@ -8292,9 +8249,19 @@
           "drops": 1,
           "corpses": 12,
           "rate": 0.08333333333333333
+        },
+        {
+          "mob": "a gruff farmhand",
+          "drops": 1,
+          "corpses": 70,
+          "rate": 0.014285714285714285
         }
       ],
       "prices": [
+        {
+          "copper": 18,
+          "count": 1
+        },
         {
           "copper": 20,
           "count": 1
@@ -8302,6 +8269,7 @@
       ],
       "harvested": 1,
       "zones": [
+        "Sungreetstrand",
         "Keepersbight",
         "Scarwood"
       ]
@@ -8370,8 +8338,8 @@
         {
           "mob": "a river pirate",
           "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
+          "corpses": 38,
+          "rate": 0.02631578947368421
         },
         {
           "mob": "a Sangrel striker",
@@ -8439,6 +8407,24 @@
       "harvested": 1,
       "zones": [
         "Scarwood"
+      ]
+    },
+    {
+      "id": "flawed_star_ruby",
+      "gameId": "2c6aba769e38d966182de35e",
+      "name": "Flawed Star Ruby",
+      "droppedBy": [
+        {
+          "mob": "a bodyguard",
+          "drops": 1,
+          "corpses": 67,
+          "rate": 0.014925373134328358
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Sungreetstrand"
       ]
     },
     {
@@ -8516,7 +8502,7 @@
     },
     {
       "id": "garlic",
-      "gameId": "garlic",
+      "gameId": "f008f734277f98228e6b5d62",
       "name": "Garlic",
       "droppedBy": [
         {
@@ -8528,26 +8514,32 @@
         {
           "mob": "a burly henchman",
           "drops": 1,
-          "corpses": 7,
-          "rate": 0.14285714285714285
-        },
-        {
-          "mob": "an ashira shaman",
-          "drops": 1,
           "corpses": 8,
           "rate": 0.125
         },
         {
           "mob": "a corrupt clergyman",
           "drops": 2,
-          "corpses": 20,
-          "rate": 0.1
+          "corpses": 25,
+          "rate": 0.08
         },
         {
           "mob": "a captured dockhand",
           "drops": 1,
           "corpses": 23,
           "rate": 0.043478260869565216
+        },
+        {
+          "mob": "a henchman",
+          "drops": 1,
+          "corpses": 56,
+          "rate": 0.017857142857142856
+        },
+        {
+          "mob": "a bodyguard",
+          "drops": 1,
+          "corpses": 67,
+          "rate": 0.014925373134328358
         },
         {
           "mob": "a Sangrel striker",
@@ -8565,7 +8557,6 @@
       "harvested": 0,
       "zones": [
         "Sungreetstrand",
-        "Shaded Dunes",
         "Keepersbight",
         "Blacktidebay"
       ]
@@ -9029,12 +9020,6 @@
           "rate": 0.24
         },
         {
-          "mob": "a henchman",
-          "drops": 10,
-          "corpses": 49,
-          "rate": 0.20408163265306123
-        },
-        {
           "mob": "a Sangrel grappler",
           "drops": 4,
           "corpses": 20,
@@ -9057,6 +9042,12 @@
           "drops": 22,
           "corpses": 116,
           "rate": 0.1896551724137931
+        },
+        {
+          "mob": "a henchman",
+          "drops": 10,
+          "corpses": 56,
+          "rate": 0.17857142857142858
         },
         {
           "mob": "Commander Rursk",
@@ -9083,18 +9074,6 @@
           "rate": 0.15476190476190477
         },
         {
-          "mob": "a sly farmhand",
-          "drops": 5,
-          "corpses": 33,
-          "rate": 0.15151515151515152
-        },
-        {
-          "mob": "a corrupt clergyman",
-          "drops": 3,
-          "corpses": 20,
-          "rate": 0.15
-        },
-        {
           "mob": "a Sangrel striker",
           "drops": 17,
           "corpses": 115,
@@ -9113,28 +9092,46 @@
           "rate": 0.13513513513513514
         },
         {
+          "mob": "a sly farmhand",
+          "drops": 6,
+          "corpses": 45,
+          "rate": 0.13333333333333333
+        },
+        {
           "mob": "a captured dockhand",
           "drops": 3,
           "corpses": 23,
           "rate": 0.13043478260869565
         },
         {
+          "mob": "a corrupt clergyman",
+          "drops": 3,
+          "corpses": 25,
+          "rate": 0.12
+        },
+        {
           "mob": "a gruff farmhand",
-          "drops": 5,
-          "corpses": 44,
-          "rate": 0.11363636363636363
+          "drops": 7,
+          "corpses": 70,
+          "rate": 0.1
+        },
+        {
+          "mob": "a hired tracker",
+          "drops": 6,
+          "corpses": 71,
+          "rate": 0.08450704225352113
+        },
+        {
+          "mob": "a river pirate",
+          "drops": 2,
+          "corpses": 38,
+          "rate": 0.05263157894736842
         },
         {
           "mob": "a bodyguard",
           "drops": 3,
-          "corpses": 49,
-          "rate": 0.061224489795918366
-        },
-        {
-          "mob": "a hired tracker",
-          "drops": 2,
-          "corpses": 41,
-          "rate": 0.04878048780487805
+          "corpses": 67,
+          "rate": 0.04477611940298507
         }
       ],
       "prices": [],
@@ -9142,8 +9139,8 @@
       "zones": [
         "Blacktidebay",
         "Fallenpass",
-        "Keepersbight",
         "Sungreetstrand",
+        "Keepersbight",
         "Telekir",
         "Valeofzintar"
       ]
@@ -9193,6 +9190,20 @@
       "zones": []
     },
     {
+      "id": "imperfect_blue_diamond",
+      "gameId": null,
+      "name": "Imperfect Blue Diamond",
+      "droppedBy": [],
+      "prices": [
+        {
+          "copper": 63,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": []
+    },
+    {
       "id": "imperfect_carnelian",
       "gameId": null,
       "name": "Imperfect Carnelian",
@@ -9223,22 +9234,60 @@
       ]
     },
     {
+      "id": "imperfect_diamond",
+      "gameId": null,
+      "name": "Imperfect Diamond",
+      "droppedBy": [],
+      "prices": [
+        {
+          "copper": 63,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": []
+    },
+    {
       "id": "imperfect_hematite",
       "gameId": null,
       "name": "Imperfect Hematite",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 63,
+          "count": 1
+        }
+      ],
       "harvested": 1,
       "zones": [
         "Glassflats"
       ]
     },
     {
+      "id": "imperfect_jacinth",
+      "gameId": null,
+      "name": "Imperfect Jacinth",
+      "droppedBy": [],
+      "prices": [
+        {
+          "copper": 63,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": []
+    },
+    {
       "id": "imperfect_jade",
       "gameId": null,
       "name": "Imperfect Jade",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 63,
+          "count": 1
+        }
+      ],
       "harvested": 1,
       "zones": [
         "Glassflats"
@@ -9263,7 +9312,12 @@
       "gameId": null,
       "name": "Imperfect Malachite",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 63,
+          "count": 1
+        }
+      ],
       "harvested": 1,
       "zones": [
         "Glassflats"
@@ -9274,7 +9328,12 @@
       "gameId": null,
       "name": "Imperfect Onyx",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 63,
+          "count": 1
+        }
+      ],
       "harvested": 2,
       "zones": [
         "Glassflats"
@@ -9285,7 +9344,12 @@
       "gameId": null,
       "name": "Imperfect Pearl",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 63,
+          "count": 1
+        }
+      ],
       "harvested": 1,
       "zones": [
         "Glassflats"
@@ -9296,7 +9360,12 @@
       "gameId": null,
       "name": "Imperfect Peridot",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 63,
+          "count": 1
+        }
+      ],
       "harvested": 1,
       "zones": [
         "Glassflats"
@@ -9355,7 +9424,12 @@
       "gameId": null,
       "name": "Imperfect Topaz",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 63,
+          "count": 1
+        }
+      ],
       "harvested": 2,
       "zones": [
         "Glassflats"
@@ -9453,29 +9527,6 @@
       ]
     },
     {
-      "id": "jackal_tooth",
-      "gameId": "jackal_tooth",
-      "name": "Jackal Tooth",
-      "droppedBy": [
-        {
-          "mob": "a jackal pup",
-          "drops": 2,
-          "corpses": 4,
-          "rate": 0.5
-        }
-      ],
-      "prices": [
-        {
-          "copper": 2,
-          "count": 1
-        }
-      ],
-      "harvested": 0,
-      "zones": [
-        "Night Harbor"
-      ]
-    },
-    {
       "id": "jagged_stone",
       "gameId": null,
       "name": "Jagged Stone",
@@ -9529,36 +9580,6 @@
       "harvested": 1,
       "zones": [
         "Sungreetstrand"
-      ]
-    },
-    {
-      "id": "large_bat_wing",
-      "gameId": "large_bat_wing",
-      "name": "Large Bat Wing",
-      "droppedBy": [
-        {
-          "mob": "a large dunes bat",
-          "drops": 1,
-          "corpses": 1,
-          "rate": 1
-        },
-        {
-          "mob": "a large desert bat",
-          "drops": 1,
-          "corpses": 1,
-          "rate": 1
-        }
-      ],
-      "prices": [
-        {
-          "copper": 7,
-          "count": 2
-        }
-      ],
-      "harvested": 0,
-      "zones": [
-        "Shaded Dunes",
-        "Night Harbor"
       ]
     },
     {
@@ -9702,8 +9723,20 @@
         {
           "mob": "a bodyguard",
           "drops": 4,
-          "corpses": 49,
-          "rate": 0.08163265306122448
+          "corpses": 67,
+          "rate": 0.05970149253731343
+        },
+        {
+          "mob": "a hired tracker",
+          "drops": 4,
+          "corpses": 71,
+          "rate": 0.056338028169014086
+        },
+        {
+          "mob": "a river pirate",
+          "drops": 2,
+          "corpses": 38,
+          "rate": 0.05263157894736842
         },
         {
           "mob": "a captured dockhand",
@@ -9712,22 +9745,16 @@
           "rate": 0.043478260869565216
         },
         {
+          "mob": "a gruff farmhand",
+          "drops": 2,
+          "corpses": 70,
+          "rate": 0.02857142857142857
+        },
+        {
           "mob": "a Sangrel shadowblade",
           "drops": 1,
           "corpses": 37,
           "rate": 0.02702702702702703
-        },
-        {
-          "mob": "a hired tracker",
-          "drops": 1,
-          "corpses": 41,
-          "rate": 0.024390243902439025
-        },
-        {
-          "mob": "a gruff farmhand",
-          "drops": 1,
-          "corpses": 44,
-          "rate": 0.022727272727272728
         }
       ],
       "prices": [],
@@ -9797,22 +9824,17 @@
     },
     {
       "id": "low_quality_jackal_pelt",
-      "gameId": "lowquality_jackal_pelt",
+      "gameId": "cda9457403240020a3621d2e",
       "name": "Low-Quality Jackal Pelt",
       "droppedBy": [
         {
           "mob": "a jackal pup",
-          "drops": 3,
-          "corpses": 4,
-          "rate": 0.75
+          "drops": 2,
+          "corpses": 2,
+          "rate": 1
         }
       ],
-      "prices": [
-        {
-          "copper": 1,
-          "count": 1
-        }
-      ],
+      "prices": [],
       "harvested": 0,
       "zones": [
         "Night Harbor"
@@ -9946,9 +9968,9 @@
       "droppedBy": [
         {
           "mob": "a dismal cur",
-          "drops": 9,
-          "corpses": 26,
-          "rate": 0.34615384615384615
+          "drops": 17,
+          "corpses": 51,
+          "rate": 0.3333333333333333
         },
         {
           "mob": "a dire wolf patroller",
@@ -10007,26 +10029,17 @@
     },
     {
       "id": "multhele_root",
-      "gameId": "multhele_root",
+      "gameId": null,
       "name": "Multhele Root",
-      "droppedBy": [
-        {
-          "mob": "an ashira scout",
-          "drops": 1,
-          "corpses": 8,
-          "rate": 0.125
-        }
-      ],
+      "droppedBy": [],
       "prices": [
         {
           "copper": 1,
-          "count": 5
+          "count": 4
         }
       ],
       "harvested": 0,
-      "zones": [
-        "Night Harbor"
-      ]
+      "zones": []
     },
     {
       "id": "mushroom",
@@ -10054,14 +10067,14 @@
         {
           "mob": "a henchman",
           "drops": 2,
-          "corpses": 49,
-          "rate": 0.04081632653061224
+          "corpses": 56,
+          "rate": 0.03571428571428571
         },
         {
           "mob": "a hired tracker",
-          "drops": 1,
-          "corpses": 41,
-          "rate": 0.024390243902439025
+          "drops": 2,
+          "corpses": 71,
+          "rate": 0.028169014084507043
         },
         {
           "mob": "a Sangrel striker",
@@ -10109,28 +10122,28 @@
           "rate": 0.08333333333333333
         },
         {
-          "mob": "a hired tracker",
-          "drops": 2,
-          "corpses": 41,
-          "rate": 0.04878048780487805
-        },
-        {
           "mob": "a Sangrel arcanist",
           "drops": 1,
           "corpses": 23,
           "rate": 0.043478260869565216
         },
         {
-          "mob": "a gruff farmhand",
-          "drops": 1,
-          "corpses": 44,
-          "rate": 0.022727272727272728
+          "mob": "a hired tracker",
+          "drops": 2,
+          "corpses": 71,
+          "rate": 0.028169014084507043
         },
         {
           "mob": "a henchman",
           "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
+          "corpses": 56,
+          "rate": 0.017857142857142856
+        },
+        {
+          "mob": "a gruff farmhand",
+          "drops": 1,
+          "corpses": 70,
+          "rate": 0.014285714285714285
         }
       ],
       "prices": [
@@ -10257,7 +10270,7 @@
     },
     {
       "id": "potato",
-      "gameId": "potato",
+      "gameId": "7344328837f0e260ae91ef77",
       "name": "Potato",
       "droppedBy": [
         {
@@ -10285,12 +10298,6 @@
           "rate": 0.125
         },
         {
-          "mob": "an ashira warrior",
-          "drops": 1,
-          "corpses": 13,
-          "rate": 0.07692307692307693
-        },
-        {
           "mob": "a Sangrel grappler",
           "drops": 1,
           "corpses": 20,
@@ -10298,15 +10305,15 @@
         },
         {
           "mob": "a bodyguard",
-          "drops": 2,
-          "corpses": 49,
-          "rate": 0.04081632653061224
+          "drops": 3,
+          "corpses": 67,
+          "rate": 0.04477611940298507
         },
         {
-          "mob": "a sly farmhand",
+          "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 33,
-          "rate": 0.030303030303030304
+          "corpses": 25,
+          "rate": 0.04
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -10319,13 +10326,31 @@
           "drops": 3,
           "corpses": 115,
           "rate": 0.02608695652173913
+        },
+        {
+          "mob": "a sly farmhand",
+          "drops": 1,
+          "corpses": 45,
+          "rate": 0.022222222222222223
+        },
+        {
+          "mob": "a henchman",
+          "drops": 1,
+          "corpses": 56,
+          "rate": 0.017857142857142856
+        },
+        {
+          "mob": "a hired tracker",
+          "drops": 1,
+          "corpses": 71,
+          "rate": 0.014084507042253521
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight",
         "Sungreetstrand",
+        "Keepersbight",
         "Telekir",
         "Shaded Dunes"
       ]
@@ -10343,82 +10368,20 @@
     },
     {
       "id": "rat_ear",
-      "gameId": "rat_ear",
+      "gameId": "b57628c324c0c571c04c152a",
       "name": "Rat Ear",
       "droppedBy": [
         {
-          "mob": "a large diseased rat",
+          "mob": "a large rat",
           "drops": 2,
           "corpses": 3,
           "rate": 0.6666666666666666
-        },
-        {
-          "mob": "a large rat",
-          "drops": 8,
-          "corpses": 13,
-          "rate": 0.6153846153846154
-        }
-      ],
-      "prices": [
-        {
-          "copper": 2,
-          "count": 1
-        },
-        {
-          "copper": 5,
-          "count": 3
-        }
-      ],
-      "harvested": 0,
-      "zones": [
-        "Night Harbor"
-      ]
-    },
-    {
-      "id": "rat_foot",
-      "gameId": "rat_foot",
-      "name": "Rat Foot",
-      "droppedBy": [
-        {
-          "mob": "a large rat",
-          "drops": 3,
-          "corpses": 13,
-          "rate": 0.23076923076923078
         }
       ],
       "prices": [
         {
           "copper": 5,
           "count": 1
-        }
-      ],
-      "harvested": 0,
-      "zones": [
-        "Night Harbor"
-      ]
-    },
-    {
-      "id": "rat_tooth",
-      "gameId": "rat_tooth",
-      "name": "Rat Tooth",
-      "droppedBy": [
-        {
-          "mob": "a large diseased rat",
-          "drops": 1,
-          "corpses": 3,
-          "rate": 0.3333333333333333
-        },
-        {
-          "mob": "a large rat",
-          "drops": 4,
-          "corpses": 13,
-          "rate": 0.3076923076923077
-        }
-      ],
-      "prices": [
-        {
-          "copper": 2,
-          "count": 2
         }
       ],
       "harvested": 0,
@@ -10448,8 +10411,8 @@
         {
           "mob": "a rattlesnake",
           "drops": 6,
-          "corpses": 22,
-          "rate": 0.2727272727272727
+          "corpses": 18,
+          "rate": 0.3333333333333333
         }
       ],
       "prices": [],
@@ -10460,7 +10423,7 @@
     },
     {
       "id": "raw_ashira_meat",
-      "gameId": "raw_ash_meat",
+      "gameId": "828599659af012394b753209",
       "name": "Raw Ashira Meat",
       "droppedBy": [
         {
@@ -10470,62 +10433,22 @@
           "rate": 0.625
         },
         {
-          "mob": "an ashira scout",
-          "drops": 3,
-          "corpses": 8,
-          "rate": 0.375
-        },
-        {
           "mob": "an ashira shaman",
           "drops": 3,
-          "corpses": 8,
-          "rate": 0.375
-        },
-        {
-          "mob": "an ashira lookout",
-          "drops": 1,
           "corpses": 5,
-          "rate": 0.2
+          "rate": 0.6
         },
         {
-          "mob": "an ashira warrior",
+          "mob": "an ashira scout",
           "drops": 1,
-          "corpses": 13,
-          "rate": 0.07692307692307693
+          "corpses": 2,
+          "rate": 0.5
         }
       ],
-      "prices": [
-        {
-          "copper": 5,
-          "count": 1
-        }
-      ],
+      "prices": [],
       "harvested": 0,
       "zones": [
         "Shaded Dunes",
-        "Night Harbor"
-      ]
-    },
-    {
-      "id": "raw_bat_meat",
-      "gameId": "bat_meat",
-      "name": "Raw Bat Meat",
-      "droppedBy": [
-        {
-          "mob": "a desert bat",
-          "drops": 4,
-          "corpses": 17,
-          "rate": 0.23529411764705882
-        }
-      ],
-      "prices": [
-        {
-          "copper": 2,
-          "count": 1
-        }
-      ],
-      "harvested": 0,
-      "zones": [
         "Night Harbor"
       ]
     },
@@ -10580,7 +10503,7 @@
       "prices": [
         {
           "copper": 5,
-          "count": 1
+          "count": 2
         }
       ],
       "harvested": 0,
@@ -10615,20 +10538,19 @@
     },
     {
       "id": "raw_crocodile_meat",
-      "gameId": "gator_meat",
+      "gameId": "4c117d3ed590ed8a5382792d",
       "name": "Raw Crocodile Meat",
       "droppedBy": [
         {
           "mob": "a crocodile hatchling",
-          "drops": 8,
-          "corpses": 23,
-          "rate": 0.34782608695652173
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Night Harbor",
         "Shaded Dunes"
       ]
     },
@@ -10752,6 +10674,12 @@
           "rate": 1
         },
         {
+          "mob": "a river pirate",
+          "drops": 12,
+          "corpses": 38,
+          "rate": 0.3157894736842105
+        },
+        {
           "mob": "a Sangrel arcanist",
           "drops": 7,
           "corpses": 23,
@@ -10764,10 +10692,10 @@
           "rate": 0.3
         },
         {
-          "mob": "a river pirate",
-          "drops": 3,
-          "corpses": 10,
-          "rate": 0.3
+          "mob": "a hired tracker",
+          "drops": 20,
+          "corpses": 71,
+          "rate": 0.28169014084507044
         },
         {
           "mob": "a captured dockhand",
@@ -10776,21 +10704,27 @@
           "rate": 0.2608695652173913
         },
         {
-          "mob": "a hired tracker",
-          "drops": 10,
-          "corpses": 41,
-          "rate": 0.24390243902439024
+          "mob": "a sly farmhand",
+          "drops": 11,
+          "corpses": 45,
+          "rate": 0.24444444444444444
         },
         {
           "mob": "a bodyguard",
-          "drops": 11,
-          "corpses": 49,
-          "rate": 0.22448979591836735
+          "drops": 15,
+          "corpses": 67,
+          "rate": 0.22388059701492538
+        },
+        {
+          "mob": "a henchman",
+          "drops": 12,
+          "corpses": 56,
+          "rate": 0.21428571428571427
         },
         {
           "mob": "a corrupt clergyman",
-          "drops": 4,
-          "corpses": 20,
+          "drops": 5,
+          "corpses": 25,
           "rate": 0.2
         },
         {
@@ -10800,16 +10734,10 @@
           "rate": 0.1891891891891892
         },
         {
-          "mob": "a henchman",
-          "drops": 9,
-          "corpses": 49,
-          "rate": 0.1836734693877551
-        },
-        {
-          "mob": "a sly farmhand",
-          "drops": 6,
-          "corpses": 33,
-          "rate": 0.18181818181818182
+          "mob": "a gruff farmhand",
+          "drops": 13,
+          "corpses": 70,
+          "rate": 0.18571428571428572
         },
         {
           "mob": "a Sangrel striker",
@@ -10824,12 +10752,6 @@
           "rate": 0.16666666666666666
         },
         {
-          "mob": "a gruff farmhand",
-          "drops": 7,
-          "corpses": 44,
-          "rate": 0.1590909090909091
-        },
-        {
           "mob": "a shady farmer",
           "drops": 1,
           "corpses": 7,
@@ -10838,8 +10760,8 @@
         {
           "mob": "a burly henchman",
           "drops": 1,
-          "corpses": 7,
-          "rate": 0.14285714285714285
+          "corpses": 8,
+          "rate": 0.125
         },
         {
           "mob": "a Sangrel grappler",
@@ -10856,23 +10778,16 @@
       ],
       "harvested": 0,
       "zones": [
-        "Keepersbight",
         "Sungreetstrand",
+        "Keepersbight",
         "Blacktidebay"
       ]
     },
     {
       "id": "raw_jackal_meat",
-      "gameId": "jackal_meat",
+      "gameId": null,
       "name": "Raw Jackal Meat",
-      "droppedBy": [
-        {
-          "mob": "a jackal pup",
-          "drops": 1,
-          "corpses": 4,
-          "rate": 0.25
-        }
-      ],
+      "droppedBy": [],
       "prices": [
         {
           "copper": 5,
@@ -10880,9 +10795,7 @@
         }
       ],
       "harvested": 0,
-      "zones": [
-        "Night Harbor"
-      ]
+      "zones": []
     },
     {
       "id": "raw_orc_meat",
@@ -11017,7 +10930,7 @@
         },
         {
           "copper": 5,
-          "count": 4
+          "count": 5
         }
       ],
       "harvested": 0,
@@ -11029,17 +10942,11 @@
     },
     {
       "id": "raw_rat_meat",
-      "gameId": "rat_meat",
+      "gameId": "2f3ba51a6de62a7cd6fbab04",
       "name": "Raw Rat Meat",
       "droppedBy": [
         {
           "mob": "a large rat",
-          "drops": 10,
-          "corpses": 13,
-          "rate": 0.7692307692307693
-        },
-        {
-          "mob": "a large diseased rat",
           "drops": 2,
           "corpses": 3,
           "rate": 0.6666666666666666
@@ -11048,7 +10955,7 @@
       "prices": [
         {
           "copper": 5,
-          "count": 2
+          "count": 1
         }
       ],
       "harvested": 0,
@@ -11064,8 +10971,8 @@
         {
           "mob": "a rattlesnake",
           "drops": 6,
-          "corpses": 22,
-          "rate": 0.2727272727272727
+          "corpses": 18,
+          "rate": 0.3333333333333333
         }
       ],
       "prices": [],
@@ -11099,9 +11006,9 @@
         },
         {
           "mob": "a dismal cur",
-          "drops": 6,
-          "corpses": 26,
-          "rate": 0.23076923076923078
+          "drops": 16,
+          "corpses": 51,
+          "rate": 0.3137254901960784
         },
         {
           "mob": "a rabid wolf",
@@ -11129,7 +11036,7 @@
         },
         {
           "copper": 3,
-          "count": 2
+          "count": 4
         },
         {
           "copper": 4,
@@ -11138,8 +11045,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Blacktidebay",
         "Sungreetstrand",
+        "Blacktidebay",
         "Evershade Weald",
         "Valeofzintar",
         "Keepersbight"
@@ -11193,7 +11100,7 @@
     },
     {
       "id": "rawhide_scraps",
-      "gameId": "rawhide_scraps",
+      "gameId": "6a2f49f8c5733b91b9fa1bd9",
       "name": "Rawhide Scraps",
       "droppedBy": [
         {
@@ -11305,6 +11212,12 @@
           "rate": 0.38461538461538464
         },
         {
+          "mob": "a skeleton",
+          "drops": 15,
+          "corpses": 39,
+          "rate": 0.38461538461538464
+        },
+        {
           "mob": "Gurowl the Beast",
           "drops": 5,
           "corpses": 13,
@@ -11314,12 +11227,6 @@
           "mob": "an ashira ambusher",
           "drops": 3,
           "corpses": 8,
-          "rate": 0.375
-        },
-        {
-          "mob": "a skeleton",
-          "drops": 15,
-          "corpses": 40,
           "rate": 0.375
         },
         {
@@ -11359,12 +11266,6 @@
           "rate": 0.3333333333333333
         },
         {
-          "mob": "an ashira shaman",
-          "drops": 2,
-          "corpses": 8,
-          "rate": 0.25
-        },
-        {
           "mob": "a Fellstone warrior",
           "drops": 3,
           "corpses": 12,
@@ -11377,7 +11278,7 @@
           "rate": 0.25
         },
         {
-          "mob": "an ashira lookout",
+          "mob": "an ashira shaman",
           "drops": 1,
           "corpses": 5,
           "rate": 0.2
@@ -11456,7 +11357,7 @@
           "count": 20
         }
       ],
-      "harvested": 560,
+      "harvested": 543,
       "zones": [
         "Evershade Weald",
         "Night Harbor",
@@ -11588,7 +11489,7 @@
     },
     {
       "id": "rusty_axe",
-      "gameId": "rusty_axe",
+      "gameId": "dd5ad5592b7f09e0cac4d7dd",
       "name": "Rusty Axe",
       "droppedBy": [
         {
@@ -11596,12 +11497,6 @@
           "drops": 1,
           "corpses": 13,
           "rate": 0.07692307692307693
-        },
-        {
-          "mob": "a rotting skeleton",
-          "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
         },
         {
           "mob": "an old elven skeleton",
@@ -11626,7 +11521,6 @@
       "zones": [
         "Tomb of the Last Wyrmsbane",
         "Blacktidebay",
-        "Night Harbor",
         "Evershade Weald"
       ]
     },
@@ -11648,7 +11542,12 @@
           "rate": 0.012875536480686695
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 25,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Blacktidebay",
@@ -11729,6 +11628,10 @@
       ],
       "prices": [
         {
+          "copper": 12,
+          "count": 1
+        },
+        {
           "copper": 13,
           "count": 1
         }
@@ -11758,12 +11661,6 @@
           "rate": 0.02857142857142857
         },
         {
-          "mob": "a rotting skeleton",
-          "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
-        },
-        {
           "mob": "a Fellstone tracker",
           "drops": 1,
           "corpses": 39,
@@ -11791,13 +11688,12 @@
       "prices": [
         {
           "copper": 25,
-          "count": 2
+          "count": 1
         }
       ],
       "harvested": 0,
       "zones": [
         "Blacktidebay",
-        "Night Harbor",
         "Evershade Weald"
       ]
     },
@@ -11844,7 +11740,12 @@
           "rate": 0.3333333333333333
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 153,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Valeofzintar"
@@ -11880,7 +11781,12 @@
           "rate": 0.05
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 270,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Valeofzintar"
@@ -11956,8 +11862,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 40,
-          "rate": 0.025
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "an old elven skeleton",
@@ -12005,7 +11911,7 @@
     },
     {
       "id": "rusty_mace",
-      "gameId": "rusty_mace",
+      "gameId": "930700c00296cdd5385faed6",
       "name": "Rusty Mace",
       "droppedBy": [
         {
@@ -12021,12 +11927,6 @@
           "rate": 0.029850746268656716
         },
         {
-          "mob": "a rotting skeleton",
-          "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
-        },
-        {
           "mob": "a Fellstone sentry",
           "drops": 3,
           "corpses": 233,
@@ -12034,10 +11934,6 @@
         }
       ],
       "prices": [
-        {
-          "copper": 11,
-          "count": 1
-        },
         {
           "copper": 12,
           "count": 1
@@ -12047,7 +11943,6 @@
       "zones": [
         "Blacktidebay",
         "Tomb of the Last Wyrmsbane",
-        "Night Harbor",
         "Evershade Weald"
       ]
     },
@@ -12063,16 +11958,16 @@
           "rate": 0.07692307692307693
         },
         {
-          "mob": "a Fellstone tracker",
+          "mob": "a skeleton",
           "drops": 1,
           "corpses": 39,
           "rate": 0.02564102564102564
         },
         {
-          "mob": "a skeleton",
+          "mob": "a Fellstone tracker",
           "drops": 1,
-          "corpses": 40,
-          "rate": 0.025
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a Fellstone sentry",
@@ -12096,32 +11991,20 @@
     },
     {
       "id": "rusty_scimitar",
-      "gameId": "rusty_scimitar",
+      "gameId": "b34b508568ce4b4ba0a1e171",
       "name": "Rusty Scimitar",
       "droppedBy": [
         {
-          "mob": "an ashira lookout",
+          "mob": "a skeleton",
           "drops": 1,
-          "corpses": 5,
-          "rate": 0.2
-        },
-        {
-          "mob": "a rotting skeleton",
-          "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a Fellstone tracker",
           "drops": 1,
           "corpses": 39,
           "rate": 0.02564102564102564
-        },
-        {
-          "mob": "a skeleton",
-          "drops": 1,
-          "corpses": 40,
-          "rate": 0.025
         },
         {
           "mob": "a skeletal defender",
@@ -12151,14 +12034,12 @@
       "prices": [
         {
           "copper": 12,
-          "count": 3
+          "count": 1
         }
       ],
       "harvested": 0,
       "zones": [
         "Blacktidebay",
-        "Night Harbor",
-        "Shaded Dunes",
         "Tomb of the Last Wyrmsbane",
         "Evershade Weald"
       ]
@@ -12177,8 +12058,8 @@
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 40,
-          "rate": 0.05
+          "corpses": 39,
+          "rate": 0.05128205128205128
         },
         {
           "mob": "a skeletal fighter",
@@ -12211,7 +12092,12 @@
           "rate": 0.006329113924050633
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 12,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Tomb of the Last Wyrmsbane",
@@ -12221,15 +12107,9 @@
     },
     {
       "id": "rusty_shortsword",
-      "gameId": "rusty_ssword",
+      "gameId": "25e58bf88115aba5b2625a24",
       "name": "Rusty Shortsword",
       "droppedBy": [
-        {
-          "mob": "a rotting skeleton",
-          "drops": 2,
-          "corpses": 36,
-          "rate": 0.05555555555555555
-        },
         {
           "mob": "an old elven skeleton",
           "drops": 1,
@@ -12252,33 +12132,31 @@
       "prices": [
         {
           "copper": 12,
-          "count": 3
+          "count": 2
         }
       ],
       "harvested": 0,
       "zones": [
         "Blacktidebay",
-        "Shaded Dunes",
-        "Night Harbor",
         "Evershade Weald"
       ]
     },
     {
       "id": "rusty_spear",
-      "gameId": "rusty_spear",
+      "gameId": "d4d1dcfca6bc71934ec72eab",
       "name": "Rusty Spear",
       "droppedBy": [
-        {
-          "mob": "an ashira lookout",
-          "drops": 1,
-          "corpses": 5,
-          "rate": 0.2
-        },
         {
           "mob": "a skeletal priest",
           "drops": 1,
           "corpses": 5,
           "rate": 0.2
+        },
+        {
+          "mob": "a rotting skeleton",
+          "drops": 1,
+          "corpses": 22,
+          "rate": 0.045454545454545456
         },
         {
           "mob": "a Fellstone guard",
@@ -12291,12 +12169,6 @@
           "drops": 1,
           "corpses": 35,
           "rate": 0.02857142857142857
-        },
-        {
-          "mob": "a rotting skeleton",
-          "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
         },
         {
           "mob": "a skeletal cleric",
@@ -12320,14 +12192,13 @@
       "prices": [
         {
           "copper": 12,
-          "count": 2
+          "count": 1
         }
       ],
       "harvested": 0,
       "zones": [
         "Blacktidebay",
         "Tomb of the Last Wyrmsbane",
-        "Shaded Dunes",
         "Night Harbor"
       ]
     },
@@ -12377,7 +12248,7 @@
     },
     {
       "id": "rusty_trident",
-      "gameId": "rusty_trident",
+      "gameId": "63cff43bb35497ebf7cb7634",
       "name": "Rusty Trident",
       "droppedBy": [
         {
@@ -12389,14 +12260,8 @@
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 40,
-          "rate": 0.05
-        },
-        {
-          "mob": "a rotting skeleton",
-          "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
+          "corpses": 39,
+          "rate": 0.05128205128205128
         },
         {
           "mob": "a skeletal cleric",
@@ -12427,7 +12292,6 @@
       "zones": [
         "Blacktidebay",
         "Evershade Weald",
-        "Shaded Dunes",
         "Tomb of the Last Wyrmsbane"
       ]
     },
@@ -12445,8 +12309,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
+          "corpses": 22,
+          "rate": 0.045454545454545456
         },
         {
           "mob": "an old elven skeleton",
@@ -12483,15 +12347,9 @@
     },
     {
       "id": "rusty_warhammer",
-      "gameId": "rusty_whammer",
+      "gameId": "905facd6c67662f57f3b8fc7",
       "name": "Rusty Warhammer",
       "droppedBy": [
-        {
-          "mob": "a rotting skeleton",
-          "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
-        },
         {
           "mob": "an old elven skeleton",
           "drops": 1,
@@ -12517,15 +12375,9 @@
           "rate": 0.004291845493562232
         }
       ],
-      "prices": [
-        {
-          "copper": 5,
-          "count": 1
-        }
-      ],
+      "prices": [],
       "harvested": 0,
       "zones": [
-        "Night Harbor",
         "Blacktidebay",
         "Tomb of the Last Wyrmsbane",
         "Evershade Weald"
@@ -12676,9 +12528,9 @@
       "droppedBy": [
         {
           "mob": "a dunes scarab",
-          "drops": 4,
-          "corpses": 19,
-          "rate": 0.21052631578947367
+          "drops": 3,
+          "corpses": 8,
+          "rate": 0.375
         }
       ],
       "prices": [],
@@ -12690,48 +12542,43 @@
     },
     {
       "id": "scarab_eye",
-      "gameId": "scarab_eye",
+      "gameId": "629d6201a59bb8da84ac21c5",
       "name": "Scarab Eye",
       "droppedBy": [
         {
           "mob": "a dunes scarab",
-          "drops": 5,
-          "corpses": 19,
-          "rate": 0.2631578947368421
+          "drops": 2,
+          "corpses": 8,
+          "rate": 0.25
         }
       ],
       "prices": [
         {
           "copper": 5,
-          "count": 2
+          "count": 1
         }
       ],
       "harvested": 0,
       "zones": [
-        "Shaded Dunes",
         "Night Harbor"
       ]
     },
     {
       "id": "scarab_leg",
-      "gameId": "scarab_leg",
+      "gameId": "9e29dfe257d538f5d6145cfc",
       "name": "Scarab Leg",
       "droppedBy": [
         {
           "mob": "a dunes scarab",
-          "drops": 15,
-          "corpses": 19,
-          "rate": 0.7894736842105263
+          "drops": 7,
+          "corpses": 8,
+          "rate": 0.875
         }
       ],
       "prices": [
         {
-          "copper": 2,
-          "count": 1
-        },
-        {
           "copper": 5,
-          "count": 2
+          "count": 1
         }
       ],
       "harvested": 0,
@@ -12797,8 +12644,8 @@
         {
           "mob": "a skeleton",
           "drops": 4,
-          "corpses": 40,
-          "rate": 0.1
+          "corpses": 39,
+          "rate": 0.10256410256410256
         }
       ],
       "prices": [],
@@ -12838,9 +12685,9 @@
       "droppedBy": [
         {
           "mob": "a rotting skeleton",
-          "drops": 3,
-          "corpses": 36,
-          "rate": 0.08333333333333333
+          "drops": 2,
+          "corpses": 22,
+          "rate": 0.09090909090909091
         }
       ],
       "prices": [
@@ -12910,34 +12757,27 @@
     },
     {
       "id": "snake_egg",
-      "gameId": "snake_egg",
+      "gameId": "a79c8a98387e49ff35a12fab",
       "name": "Snake Egg",
       "droppedBy": [
         {
           "mob": "a rattlesnake",
-          "drops": 8,
-          "corpses": 22,
-          "rate": 0.36363636363636365
+          "drops": 7,
+          "corpses": 18,
+          "rate": 0.3888888888888889
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Shaded Dunes",
-        "Night Harbor"
+        "Shaded Dunes"
       ]
     },
     {
       "id": "snake_fang",
-      "gameId": "snake_fang",
+      "gameId": "4712575773482e89e0c14969",
       "name": "Snake Fang",
       "droppedBy": [
-        {
-          "mob": "a snake",
-          "drops": 1,
-          "corpses": 1,
-          "rate": 1
-        },
         {
           "mob": "a black serpent",
           "drops": 1,
@@ -12946,34 +12786,9 @@
         },
         {
           "mob": "a rattlesnake",
-          "drops": 14,
-          "corpses": 22,
-          "rate": 0.6363636363636364
-        }
-      ],
-      "prices": [
-        {
-          "copper": 2,
-          "count": 2
-        }
-      ],
-      "harvested": 0,
-      "zones": [
-        "Shaded Dunes",
-        "Night Harbor",
-        "Keepersbight"
-      ]
-    },
-    {
-      "id": "snake_skin",
-      "gameId": "snake_skin",
-      "name": "Snake Skin",
-      "droppedBy": [
-        {
-          "mob": "a snake",
-          "drops": 1,
-          "corpses": 1,
-          "rate": 1
+          "drops": 11,
+          "corpses": 18,
+          "rate": 0.6111111111111112
         }
       ],
       "prices": [
@@ -12984,12 +12799,13 @@
       ],
       "harvested": 0,
       "zones": [
-        "Night Harbor"
+        "Shaded Dunes",
+        "Keepersbight"
       ]
     },
     {
       "id": "spider_legs",
-      "gameId": "spider_leg",
+      "gameId": "4257c9ae8bccbcda1f9ed856",
       "name": "Spider Legs",
       "droppedBy": [
         {
@@ -13003,12 +12819,6 @@
           "drops": 2,
           "corpses": 10,
           "rate": 0.2
-        },
-        {
-          "mob": "a spiderling",
-          "drops": 1,
-          "corpses": 7,
-          "rate": 0.14285714285714285
         }
       ],
       "prices": [
@@ -13020,21 +12830,14 @@
       "harvested": 0,
       "zones": [
         "Keepersbight",
-        "Shaded Dunes",
-        "Night Harbor"
+        "Shaded Dunes"
       ]
     },
     {
       "id": "spider_silk",
-      "gameId": "spider_silk",
+      "gameId": "5583a7751aeac27084d53c98",
       "name": "Spider Silk",
       "droppedBy": [
-        {
-          "mob": "a spiderling",
-          "drops": 7,
-          "corpses": 7,
-          "rate": 1
-        },
         {
           "mob": "a black widow hatchling",
           "drops": 3,
@@ -13054,6 +12857,12 @@
           "rate": 1
         },
         {
+          "mob": "a spiderling",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
+        {
           "mob": "a giant spider",
           "drops": 7,
           "corpses": 9,
@@ -13064,23 +12873,15 @@
         {
           "copper": 2,
           "count": 3
-        },
-        {
-          "copper": 4,
-          "count": 1
-        },
-        {
-          "copper": 5,
-          "count": 1
         }
       ],
       "harvested": 0,
       "zones": [
         "Keepersbight",
-        "Night Harbor",
         "Shaded Dunes",
         "Evershade Weald",
-        "Blacktidebay"
+        "Blacktidebay",
+        "Night Harbor"
       ]
     },
     {
@@ -13104,24 +12905,6 @@
       "harvested": 0,
       "zones": [
         "Shaded Dunes"
-      ]
-    },
-    {
-      "id": "spiderling_eye",
-      "gameId": "spiderling_eye",
-      "name": "Spiderling Eye",
-      "droppedBy": [
-        {
-          "mob": "a spiderling",
-          "drops": 1,
-          "corpses": 7,
-          "rate": 0.14285714285714285
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Night Harbor"
       ]
     },
     {
@@ -13293,12 +13076,6 @@
           "rate": 0.16666666666666666
         },
         {
-          "mob": "an ashira scout",
-          "drops": 1,
-          "corpses": 8,
-          "rate": 0.125
-        },
-        {
           "mob": "a Calafreyan soldier",
           "drops": 1,
           "corpses": 8,
@@ -13331,8 +13108,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 40,
-          "rate": 0.025
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "an old elven skeleton",
@@ -13379,13 +13156,12 @@
       "zones": [
         "Blacktidebay",
         "Tomb of the Last Wyrmsbane",
-        "Evershade Weald",
-        "Night Harbor"
+        "Evershade Weald"
       ]
     },
     {
       "id": "tattered_cloth_boots",
-      "gameId": "tattered_cloth_feet",
+      "gameId": "96e9fc153f16f407f6c514aa",
       "name": "Tattered Cloth Boots",
       "droppedBy": [
         {
@@ -13401,16 +13177,10 @@
           "rate": 0.02857142857142857
         },
         {
-          "mob": "a rotting skeleton",
-          "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
-        },
-        {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 40,
-          "rate": 0.025
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "an old elven skeleton",
@@ -13465,13 +13235,12 @@
       "zones": [
         "Blacktidebay",
         "Tomb of the Last Wyrmsbane",
-        "Night Harbor",
         "Evershade Weald"
       ]
     },
     {
       "id": "tattered_cloth_bracer",
-      "gameId": "tattered_cloth_fore",
+      "gameId": "e0e8cf04c99554e536986a36",
       "name": "Tattered Cloth Bracer",
       "droppedBy": [
         {
@@ -13487,9 +13256,9 @@
           "rate": 0.09090909090909091
         },
         {
-          "mob": "an ashira warrior",
-          "drops": 1,
-          "corpses": 13,
+          "mob": "a skeleton",
+          "drops": 3,
+          "corpses": 39,
           "rate": 0.07692307692307693
         },
         {
@@ -13497,12 +13266,6 @@
           "drops": 1,
           "corpses": 13,
           "rate": 0.07692307692307693
-        },
-        {
-          "mob": "a skeleton",
-          "drops": 3,
-          "corpses": 40,
-          "rate": 0.075
         },
         {
           "mob": "a skeletal monk",
@@ -13579,8 +13342,7 @@
       "zones": [
         "Blacktidebay",
         "Tomb of the Last Wyrmsbane",
-        "Evershade Weald",
-        "Shaded Dunes"
+        "Evershade Weald"
       ]
     },
     {
@@ -13681,6 +13443,12 @@
           "rate": 0.058823529411764705
         },
         {
+          "mob": "a rotting skeleton",
+          "drops": 1,
+          "corpses": 22,
+          "rate": 0.045454545454545456
+        },
+        {
           "mob": "a skeletal vicar",
           "drops": 1,
           "corpses": 25,
@@ -13693,12 +13461,6 @@
           "rate": 0.02857142857142857
         },
         {
-          "mob": "a rotting skeleton",
-          "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
-        },
-        {
           "mob": "a skeletal cleric",
           "drops": 2,
           "corpses": 78,
@@ -13707,8 +13469,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 40,
-          "rate": 0.025
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a Fellstone sentinel",
@@ -13752,8 +13514,8 @@
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 40,
-          "rate": 0.05
+          "corpses": 39,
+          "rate": 0.05128205128205128
         },
         {
           "mob": "an old elven skeleton",
@@ -13802,7 +13564,7 @@
     },
     {
       "id": "tattered_cloth_gorget",
-      "gameId": "tattered_cloth_neck",
+      "gameId": "12331f1850ee94625029bc27",
       "name": "Tattered Cloth Gorget",
       "droppedBy": [
         {
@@ -13854,12 +13616,6 @@
           "rate": 0.02857142857142857
         },
         {
-          "mob": "a rotting skeleton",
-          "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
-        },
-        {
           "mob": "a skeletal fighter",
           "drops": 3,
           "corpses": 108,
@@ -13890,7 +13646,6 @@
         "Tomb of the Last Wyrmsbane",
         "Evershade Weald",
         "Telekir",
-        "Shaded Dunes",
         "Keepersbight"
       ]
     },
@@ -13936,16 +13691,16 @@
           "rate": 0.02857142857142857
         },
         {
+          "mob": "a skeleton",
+          "drops": 1,
+          "corpses": 39,
+          "rate": 0.02564102564102564
+        },
+        {
           "mob": "a Fellstone sentinel",
           "drops": 4,
           "corpses": 158,
           "rate": 0.02531645569620253
-        },
-        {
-          "mob": "a skeleton",
-          "drops": 1,
-          "corpses": 40,
-          "rate": 0.025
         },
         {
           "mob": "a skeletal fighter",
@@ -13975,26 +13730,14 @@
     },
     {
       "id": "tattered_cloth_pantaloons",
-      "gameId": "tattered_cloth_legs",
+      "gameId": "68d1d9c415aa4d0255b410f5",
       "name": "Tattered Cloth Pantaloons",
       "droppedBy": [
         {
-          "mob": "an ashira lookout",
+          "mob": "an ashira shaman",
           "drops": 1,
           "corpses": 5,
           "rate": 0.2
-        },
-        {
-          "mob": "an ashira shaman",
-          "drops": 1,
-          "corpses": 8,
-          "rate": 0.125
-        },
-        {
-          "mob": "an ashira warrior",
-          "drops": 1,
-          "corpses": 13,
-          "rate": 0.07692307692307693
         },
         {
           "mob": "a skeletal cavalier",
@@ -14033,22 +13776,16 @@
           "rate": 0.029850746268656716
         },
         {
-          "mob": "a rotting skeleton",
+          "mob": "a skeleton",
           "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a Fellstone tracker",
           "drops": 1,
           "corpses": 39,
           "rate": 0.02564102564102564
-        },
-        {
-          "mob": "a skeleton",
-          "drops": 1,
-          "corpses": 40,
-          "rate": 0.025
         },
         {
           "mob": "a Fellstone guard",
@@ -14086,20 +13823,19 @@
         "Blacktidebay",
         "Tomb of the Last Wyrmsbane",
         "Shaded Dunes",
-        "Night Harbor",
         "Evershade Weald"
       ]
     },
     {
       "id": "tattered_cloth_robe",
-      "gameId": "tattered_cloth_robe",
+      "gameId": "eaf4513f72004256d4fccf0a",
       "name": "Tattered Cloth Robe",
       "droppedBy": [
         {
           "mob": "an ashira scout",
           "drops": 1,
-          "corpses": 8,
-          "rate": 0.125
+          "corpses": 2,
+          "rate": 0.5
         },
         {
           "mob": "a Fellstone warrior",
@@ -14108,22 +13844,16 @@
           "rate": 0.08333333333333333
         },
         {
-          "mob": "an ashira warrior",
-          "drops": 1,
-          "corpses": 13,
-          "rate": 0.07692307692307693
+          "mob": "a skeleton",
+          "drops": 2,
+          "corpses": 39,
+          "rate": 0.05128205128205128
         },
         {
           "mob": "a rotting skeleton",
-          "drops": 2,
-          "corpses": 36,
-          "rate": 0.05555555555555555
-        },
-        {
-          "mob": "a skeleton",
-          "drops": 2,
-          "corpses": 40,
-          "rate": 0.05
+          "drops": 1,
+          "corpses": 22,
+          "rate": 0.045454545454545456
         },
         {
           "mob": "a Fellstone sentinel",
@@ -14172,14 +13902,13 @@
       "zones": [
         "Blacktidebay",
         "Tomb of the Last Wyrmsbane",
-        "Night Harbor",
         "Evershade Weald",
-        "Shaded Dunes"
+        "Night Harbor"
       ]
     },
     {
       "id": "tattered_cloth_shirt",
-      "gameId": "tattered_cloth_arms",
+      "gameId": "209efe9c21be006bfeb3619e",
       "name": "Tattered Cloth Shirt",
       "droppedBy": [
         {
@@ -14199,12 +13928,6 @@
           "drops": 1,
           "corpses": 12,
           "rate": 0.08333333333333333
-        },
-        {
-          "mob": "an ashira warrior",
-          "drops": 1,
-          "corpses": 13,
-          "rate": 0.07692307692307693
         },
         {
           "mob": "a Fellstone tracker",
@@ -14237,16 +13960,16 @@
           "rate": 0.031746031746031744
         },
         {
+          "mob": "a skeleton",
+          "drops": 1,
+          "corpses": 39,
+          "rate": 0.02564102564102564
+        },
+        {
           "mob": "a Fellstone sentinel",
           "drops": 4,
           "corpses": 158,
           "rate": 0.02531645569620253
-        },
-        {
-          "mob": "a skeleton",
-          "drops": 1,
-          "corpses": 40,
-          "rate": 0.025
         },
         {
           "mob": "a skeletal warrior",
@@ -14266,7 +13989,6 @@
       "zones": [
         "Blacktidebay",
         "Tomb of the Last Wyrmsbane",
-        "Shaded Dunes",
         "Evershade Weald"
       ]
     },
@@ -14302,8 +14024,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 40,
-          "rate": 0.025
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a Fellstone guard",
@@ -14359,8 +14081,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
+          "corpses": 22,
+          "rate": 0.045454545454545456
         },
         {
           "mob": "a skeletal fighter",
@@ -14383,8 +14105,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 40,
-          "rate": 0.025
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a skeletal defender",
@@ -14480,16 +14202,16 @@
       "name": "Tattered Hide Belt",
       "droppedBy": [
         {
-          "mob": "a hired tracker",
-          "drops": 1,
-          "corpses": 41,
-          "rate": 0.024390243902439025
-        },
-        {
           "mob": "a Sangrel striker",
           "drops": 2,
           "corpses": 115,
           "rate": 0.017391304347826087
+        },
+        {
+          "mob": "a hired tracker",
+          "drops": 1,
+          "corpses": 71,
+          "rate": 0.014084507042253521
         },
         {
           "mob": "a Bloodchain guard",
@@ -14520,9 +14242,9 @@
       "droppedBy": [
         {
           "mob": "a henchman",
-          "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
+          "drops": 2,
+          "corpses": 56,
+          "rate": 0.03571428571428571
         },
         {
           "mob": "a Sangrel striker",
@@ -14544,16 +14266,22 @@
       "name": "Tattered Hide Bracer",
       "droppedBy": [
         {
+          "mob": "an ashira spearthrower",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
+        {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
+          "corpses": 25,
+          "rate": 0.04
         },
         {
           "mob": "a hired tracker",
           "drops": 1,
-          "corpses": 41,
-          "rate": 0.024390243902439025
+          "corpses": 71,
+          "rate": 0.014084507042253521
         },
         {
           "mob": "a restless skeleton",
@@ -14613,16 +14341,22 @@
       "name": "Tattered Hide Cloak",
       "droppedBy": [
         {
+          "mob": "a sly farmhand",
+          "drops": 1,
+          "corpses": 45,
+          "rate": 0.022222222222222223
+        },
+        {
           "mob": "a henchman",
           "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
+          "corpses": 56,
+          "rate": 0.017857142857142856
         },
         {
           "mob": "a bodyguard",
           "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
+          "corpses": 67,
+          "rate": 0.014925373134328358
         },
         {
           "mob": "a Bloodchain guard",
@@ -14665,9 +14399,9 @@
         },
         {
           "mob": "a gruff farmhand",
-          "drops": 2,
-          "corpses": 44,
-          "rate": 0.045454545454545456
+          "drops": 3,
+          "corpses": 70,
+          "rate": 0.04285714285714286
         },
         {
           "mob": "a Bloodchain sentry",
@@ -14685,8 +14419,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Blacktidebay",
         "Sungreetstrand",
+        "Blacktidebay",
         "Fallenpass"
       ]
     },
@@ -14702,34 +14436,34 @@
           "rate": 0.2
         },
         {
-          "mob": "a sly farmhand",
-          "drops": 1,
-          "corpses": 33,
-          "rate": 0.030303030303030304
-        },
-        {
           "mob": "a Sangrel striker",
           "drops": 3,
           "corpses": 115,
           "rate": 0.02608695652173913
         },
         {
-          "mob": "a gruff farmhand",
+          "mob": "a sly farmhand",
           "drops": 1,
-          "corpses": 44,
-          "rate": 0.022727272727272728
+          "corpses": 45,
+          "rate": 0.022222222222222223
         },
         {
           "mob": "a henchman",
           "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
+          "corpses": 56,
+          "rate": 0.017857142857142856
         },
         {
           "mob": "a bodyguard",
           "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
+          "corpses": 67,
+          "rate": 0.014925373134328358
+        },
+        {
+          "mob": "a gruff farmhand",
+          "drops": 1,
+          "corpses": 70,
+          "rate": 0.014285714285714285
         },
         {
           "mob": "a Bloodchain guard",
@@ -14766,10 +14500,16 @@
           "rate": 0.09090909090909091
         },
         {
+          "mob": "a sly farmhand",
+          "drops": 1,
+          "corpses": 45,
+          "rate": 0.022222222222222223
+        },
+        {
           "mob": "a bodyguard",
           "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
+          "corpses": 67,
+          "rate": 0.014925373134328358
         },
         {
           "mob": "a restless skeleton",
@@ -14782,8 +14522,8 @@
       "harvested": 0,
       "zones": [
         "Fallenpass",
-        "Blacktidebay",
-        "Sungreetstrand"
+        "Sungreetstrand",
+        "Blacktidebay"
       ]
     },
     {
@@ -14800,8 +14540,8 @@
         {
           "mob": "a sly farmhand",
           "drops": 2,
-          "corpses": 33,
-          "rate": 0.06060606060606061
+          "corpses": 45,
+          "rate": 0.044444444444444446
         },
         {
           "mob": "a restless ghoul",
@@ -14810,16 +14550,16 @@
           "rate": 0.0392156862745098
         },
         {
-          "mob": "a gruff farmhand",
-          "drops": 1,
-          "corpses": 44,
-          "rate": 0.022727272727272728
+          "mob": "a henchman",
+          "drops": 2,
+          "corpses": 56,
+          "rate": 0.03571428571428571
         },
         {
-          "mob": "a henchman",
+          "mob": "a gruff farmhand",
           "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
+          "corpses": 70,
+          "rate": 0.014285714285714285
         }
       ],
       "prices": [],
@@ -14842,22 +14582,22 @@
           "rate": 0.05
         },
         {
-          "mob": "a hired tracker",
-          "drops": 1,
-          "corpses": 41,
-          "rate": 0.024390243902439025
-        },
-        {
           "mob": "a gruff farmhand",
-          "drops": 1,
-          "corpses": 44,
-          "rate": 0.022727272727272728
+          "drops": 2,
+          "corpses": 70,
+          "rate": 0.02857142857142857
         },
         {
           "mob": "a restless ghoul",
           "drops": 1,
           "corpses": 51,
           "rate": 0.0196078431372549
+        },
+        {
+          "mob": "a hired tracker",
+          "drops": 1,
+          "corpses": 71,
+          "rate": 0.014084507042253521
         }
       ],
       "prices": [],
@@ -14892,6 +14632,12 @@
           "rate": 0.05
         },
         {
+          "mob": "a sly farmhand",
+          "drops": 1,
+          "corpses": 45,
+          "rate": 0.022222222222222223
+        },
+        {
           "mob": "a restless ghoul",
           "drops": 1,
           "corpses": 51,
@@ -14921,7 +14667,8 @@
       "zones": [
         "Blacktidebay",
         "Keepersbight",
-        "Fallenpass"
+        "Fallenpass",
+        "Sungreetstrand"
       ]
     },
     {
@@ -14929,6 +14676,12 @@
       "gameId": "6caed6ca66cde82c52e3cd4b",
       "name": "Tattered Hide Vest",
       "droppedBy": [
+        {
+          "mob": "a corrupt clergyman",
+          "drops": 1,
+          "corpses": 25,
+          "rate": 0.04
+        },
         {
           "mob": "a restless skeleton",
           "drops": 3,
@@ -14946,7 +14699,8 @@
       "harvested": 0,
       "zones": [
         "Fallenpass",
-        "Keepersbight"
+        "Keepersbight",
+        "Sungreetstrand"
       ]
     },
     {
@@ -15011,8 +14765,8 @@
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 40,
-          "rate": 0.05
+          "corpses": 39,
+          "rate": 0.05128205128205128
         },
         {
           "mob": "a Fellstone tracker",
@@ -15095,8 +14849,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 40,
-          "rate": 0.025
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a Fellstone sentinel",
@@ -15134,6 +14888,12 @@
       "name": "Tattered Rawhide Bracer",
       "droppedBy": [
         {
+          "mob": "an ashira warrior",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        },
+        {
           "mob": "a Bloodynose sergeant",
           "drops": 1,
           "corpses": 7,
@@ -15141,12 +14901,6 @@
         },
         {
           "mob": "a skeletal cavalier",
-          "drops": 1,
-          "corpses": 13,
-          "rate": 0.07692307692307693
-        },
-        {
-          "mob": "an ashira warrior",
           "drops": 1,
           "corpses": 13,
           "rate": 0.07692307692307693
@@ -15414,16 +15168,16 @@
           "rate": 0.5
         },
         {
+          "mob": "an ashira shaman",
+          "drops": 1,
+          "corpses": 5,
+          "rate": 0.2
+        },
+        {
           "mob": "a Fellstone defiler",
           "drops": 1,
           "corpses": 6,
           "rate": 0.16666666666666666
-        },
-        {
-          "mob": "an ashira shaman",
-          "drops": 1,
-          "corpses": 8,
-          "rate": 0.125
         },
         {
           "mob": "a Calafreyan soldier",
@@ -15562,8 +15316,8 @@
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 40,
-          "rate": 0.05
+          "corpses": 39,
+          "rate": 0.05128205128205128
         },
         {
           "mob": "an old elven skeleton",
@@ -15633,8 +15387,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 40,
-          "rate": 0.025
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a Fellstone sentinel",
@@ -15670,8 +15424,8 @@
         {
           "mob": "a skeleton",
           "drops": 3,
-          "corpses": 40,
-          "rate": 0.075
+          "corpses": 39,
+          "rate": 0.07692307692307693
         },
         {
           "mob": "a Fellstone corrupter",
@@ -15735,7 +15489,7 @@
     },
     {
       "id": "tattered_rawhide_vest",
-      "gameId": "tattered_rawhide_arms",
+      "gameId": "f1291783335a7dd5ae364935",
       "name": "Tattered Rawhide Vest",
       "droppedBy": [
         {
@@ -15743,12 +15497,6 @@
           "drops": 1,
           "corpses": 12,
           "rate": 0.08333333333333333
-        },
-        {
-          "mob": "an ashira warrior",
-          "drops": 1,
-          "corpses": 13,
-          "rate": 0.07692307692307693
         },
         {
           "mob": "a skeletal monk",
@@ -15790,7 +15538,6 @@
       "harvested": 0,
       "zones": [
         "Blacktidebay",
-        "Shaded Dunes",
         "Evershade Weald",
         "Tomb of the Last Wyrmsbane"
       ]
@@ -15807,16 +15554,16 @@
           "rate": 0.2
         },
         {
-          "mob": "a henchman",
-          "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
-        },
-        {
           "mob": "a restless ghoul",
           "drops": 1,
           "corpses": 51,
           "rate": 0.0196078431372549
+        },
+        {
+          "mob": "a henchman",
+          "drops": 1,
+          "corpses": 56,
+          "rate": 0.017857142857142856
         },
         {
           "mob": "a Sangrel striker",
@@ -15853,9 +15600,15 @@
         },
         {
           "mob": "a gruff farmhand",
+          "drops": 2,
+          "corpses": 70,
+          "rate": 0.02857142857142857
+        },
+        {
+          "mob": "a river pirate",
           "drops": 1,
-          "corpses": 44,
-          "rate": 0.022727272727272728
+          "corpses": 38,
+          "rate": 0.02631578947368421
         },
         {
           "mob": "a Bloodchain sentry",
@@ -15874,8 +15627,8 @@
       "harvested": 0,
       "zones": [
         "Blacktidebay",
-        "Keepersbight",
-        "Sungreetstrand"
+        "Sungreetstrand",
+        "Keepersbight"
       ]
     },
     {
@@ -15896,6 +15649,12 @@
           "rate": 0.043478260869565216
         },
         {
+          "mob": "a river pirate",
+          "drops": 1,
+          "corpses": 38,
+          "rate": 0.02631578947368421
+        },
+        {
           "mob": "a Bloodchain guard",
           "drops": 1,
           "corpses": 84,
@@ -15913,7 +15672,8 @@
       "zones": [
         "Blacktidebay",
         "Keepersbight",
-        "Fallenpass"
+        "Fallenpass",
+        "Sungreetstrand"
       ]
     },
     {
@@ -15922,22 +15682,28 @@
       "name": "Tattered Wool Cap",
       "droppedBy": [
         {
-          "mob": "a corrupt clergyman",
-          "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
-        },
-        {
           "mob": "a Sangrel arcanist",
           "drops": 1,
           "corpses": 23,
           "rate": 0.043478260869565216
         },
         {
+          "mob": "a corrupt clergyman",
+          "drops": 1,
+          "corpses": 25,
+          "rate": 0.04
+        },
+        {
           "mob": "a Bloodchain sentry",
           "drops": 1,
           "corpses": 56,
           "rate": 0.017857142857142856
+        },
+        {
+          "mob": "a bodyguard",
+          "drops": 1,
+          "corpses": 67,
+          "rate": 0.014925373134328358
         },
         {
           "mob": "a Bloodchain guard",
@@ -15973,22 +15739,22 @@
       "name": "Tattered Wool Cape",
       "droppedBy": [
         {
-          "mob": "a henchman",
-          "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
-        },
-        {
-          "mob": "a bodyguard",
-          "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
-        },
-        {
           "mob": "a restless ghoul",
           "drops": 1,
           "corpses": 51,
           "rate": 0.0196078431372549
+        },
+        {
+          "mob": "a henchman",
+          "drops": 1,
+          "corpses": 56,
+          "rate": 0.017857142857142856
+        },
+        {
+          "mob": "a bodyguard",
+          "drops": 1,
+          "corpses": 67,
+          "rate": 0.014925373134328358
         },
         {
           "mob": "a Sangrel striker",
@@ -16017,12 +15783,6 @@
           "rate": 0.08333333333333333
         },
         {
-          "mob": "a gruff farmhand",
-          "drops": 2,
-          "corpses": 44,
-          "rate": 0.045454545454545456
-        },
-        {
           "mob": "a Sangrel arcanist",
           "drops": 1,
           "corpses": 23,
@@ -16035,6 +15795,18 @@
           "rate": 0.03571428571428571
         },
         {
+          "mob": "a gruff farmhand",
+          "drops": 2,
+          "corpses": 70,
+          "rate": 0.02857142857142857
+        },
+        {
+          "mob": "a bodyguard",
+          "drops": 1,
+          "corpses": 67,
+          "rate": 0.014925373134328358
+        },
+        {
           "mob": "a restless skeleton",
           "drops": 1,
           "corpses": 116,
@@ -16045,8 +15817,8 @@
       "harvested": 0,
       "zones": [
         "Blacktidebay",
-        "Keepersbight",
         "Sungreetstrand",
+        "Keepersbight",
         "Fallenpass"
       ]
     },
@@ -16074,6 +15846,12 @@
           "rate": 0.017857142857142856
         },
         {
+          "mob": "a gruff farmhand",
+          "drops": 1,
+          "corpses": 70,
+          "rate": 0.014285714285714285
+        },
+        {
           "mob": "a Bloodchain guard",
           "drops": 1,
           "corpses": 84,
@@ -16091,7 +15869,8 @@
       "zones": [
         "Keepersbight",
         "Blacktidebay",
-        "Fallenpass"
+        "Fallenpass",
+        "Sungreetstrand"
       ]
     },
     {
@@ -16106,16 +15885,16 @@
           "rate": 0.08695652173913043
         },
         {
-          "mob": "a hired tracker",
-          "drops": 1,
-          "corpses": 41,
-          "rate": 0.024390243902439025
-        },
-        {
           "mob": "a restless skeleton",
           "drops": 2,
           "corpses": 116,
           "rate": 0.017241379310344827
+        },
+        {
+          "mob": "a hired tracker",
+          "drops": 1,
+          "corpses": 71,
+          "rate": 0.014084507042253521
         }
       ],
       "prices": [],
@@ -16140,8 +15919,8 @@
         {
           "mob": "a henchman",
           "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
+          "corpses": 56,
+          "rate": 0.017857142857142856
         },
         {
           "mob": "a Bloodchain guard",
@@ -16184,20 +15963,20 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
-        },
-        {
-          "mob": "a henchman",
-          "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
+          "corpses": 25,
+          "rate": 0.04
         },
         {
           "mob": "a restless ghoul",
           "drops": 1,
           "corpses": 51,
           "rate": 0.0196078431372549
+        },
+        {
+          "mob": "a henchman",
+          "drops": 1,
+          "corpses": 56,
+          "rate": 0.017857142857142856
         },
         {
           "mob": "a Sangrel striker",
@@ -16223,8 +16002,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
+          "corpses": 25,
+          "rate": 0.04
         },
         {
           "mob": "a Bloodchain guard",
@@ -16268,20 +16047,14 @@
         {
           "mob": "a henchman",
           "drops": 2,
-          "corpses": 49,
-          "rate": 0.04081632653061224
+          "corpses": 56,
+          "rate": 0.03571428571428571
         },
         {
           "mob": "a sly farmhand",
           "drops": 1,
-          "corpses": 33,
-          "rate": 0.030303030303030304
-        },
-        {
-          "mob": "a bodyguard",
-          "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
+          "corpses": 45,
+          "rate": 0.022222222222222223
         },
         {
           "mob": "a Bloodchain sentry",
@@ -16294,6 +16067,12 @@
           "drops": 2,
           "corpses": 115,
           "rate": 0.017391304347826087
+        },
+        {
+          "mob": "a bodyguard",
+          "drops": 1,
+          "corpses": 67,
+          "rate": 0.014925373134328358
         }
       ],
       "prices": [],
@@ -16330,14 +16109,14 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
+          "corpses": 25,
+          "rate": 0.04
         },
         {
           "mob": "a gruff farmhand",
           "drops": 1,
-          "corpses": 44,
-          "rate": 0.022727272727272728
+          "corpses": 70,
+          "rate": 0.014285714285714285
         },
         {
           "mob": "a Bloodchain guard",
@@ -16393,8 +16172,8 @@
         {
           "mob": "a burly henchman",
           "drops": 1,
-          "corpses": 7,
-          "rate": 0.14285714285714285
+          "corpses": 8,
+          "rate": 0.125
         },
         {
           "mob": "a Sangrel entangler",
@@ -16411,8 +16190,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
+          "corpses": 25,
+          "rate": 0.04
         },
         {
           "mob": "a Sangrel striker",
@@ -16421,29 +16200,35 @@
           "rate": 0.034782608695652174
         },
         {
-          "mob": "a sly farmhand",
-          "drops": 1,
-          "corpses": 33,
-          "rate": 0.030303030303030304
+          "mob": "a hired tracker",
+          "drops": 2,
+          "corpses": 71,
+          "rate": 0.028169014084507043
         },
         {
-          "mob": "a gruff farmhand",
+          "mob": "a sly farmhand",
           "drops": 1,
-          "corpses": 44,
-          "rate": 0.022727272727272728
+          "corpses": 45,
+          "rate": 0.022222222222222223
         },
         {
           "mob": "a bodyguard",
           "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
+          "corpses": 67,
+          "rate": 0.014925373134328358
+        },
+        {
+          "mob": "a gruff farmhand",
+          "drops": 1,
+          "corpses": 70,
+          "rate": 0.014285714285714285
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight",
         "Sungreetstrand",
+        "Keepersbight",
         "Telekir"
       ]
     },
@@ -16465,7 +16250,7 @@
     },
     {
       "id": "torch",
-      "gameId": "torch",
+      "gameId": "d0a1669e39e2c90767d128b3",
       "name": "Torch",
       "droppedBy": [
         {
@@ -16479,12 +16264,6 @@
           "drops": 1,
           "corpses": 7,
           "rate": 0.14285714285714285
-        },
-        {
-          "mob": "an ashira scout",
-          "drops": 1,
-          "corpses": 8,
-          "rate": 0.125
         },
         {
           "mob": "a skeletal vicar",
@@ -16535,16 +16314,22 @@
           "rate": 0.022222222222222223
         },
         {
-          "mob": "a henchman",
-          "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
-        },
-        {
           "mob": "a Fellstone sentinel",
           "drops": 3,
           "corpses": 158,
           "rate": 0.0189873417721519
+        },
+        {
+          "mob": "a henchman",
+          "drops": 1,
+          "corpses": 56,
+          "rate": 0.017857142857142856
+        },
+        {
+          "mob": "a gruff farmhand",
+          "drops": 1,
+          "corpses": 70,
+          "rate": 0.014285714285714285
         },
         {
           "mob": "a skeletal fighter",
@@ -16590,10 +16375,9 @@
         "Blacktidebay",
         "Tomb of the Last Wyrmsbane",
         "Keepersbight",
-        "Night Harbor",
+        "Sungreetstrand",
         "Evershade Weald",
-        "Fallenpass",
-        "Sungreetstrand"
+        "Fallenpass"
       ]
     },
     {
@@ -16843,14 +16627,18 @@
         },
         {
           "mob": "a dismal cur",
-          "drops": 7,
-          "corpses": 26,
-          "rate": 0.2692307692307692
+          "drops": 10,
+          "corpses": 51,
+          "rate": 0.19607843137254902
         }
       ],
       "prices": [
         {
           "copper": 80,
+          "count": 8
+        },
+        {
+          "copper": 81,
           "count": 8
         },
         {
@@ -16890,16 +16678,16 @@
           "rate": 0.5
         },
         {
+          "mob": "a dismal cur",
+          "drops": 22,
+          "corpses": 51,
+          "rate": 0.43137254901960786
+        },
+        {
           "mob": "a trained wolf",
           "drops": 16,
           "corpses": 49,
           "rate": 0.32653061224489793
-        },
-        {
-          "mob": "a dismal cur",
-          "drops": 8,
-          "corpses": 26,
-          "rate": 0.3076923076923077
         },
         {
           "mob": "a rabid wolf",
@@ -16916,8 +16704,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Blacktidebay",
         "Sungreetstrand",
+        "Blacktidebay",
         "Evershade Weald",
         "Keepersbight"
       ]
@@ -16944,7 +16732,7 @@
           "count": 1
         }
       ],
-      "harvested": 459,
+      "harvested": 447,
       "zones": [
         "Evershade Weald",
         "Night Harbor",
@@ -17003,12 +16791,6 @@
           "rate": 0.5
         },
         {
-          "mob": "a river pirate",
-          "drops": 4,
-          "corpses": 10,
-          "rate": 0.4
-        },
-        {
           "mob": "a Sangrel arcanist",
           "drops": 9,
           "corpses": 23,
@@ -17027,6 +16809,18 @@
           "rate": 0.2857142857142857
         },
         {
+          "mob": "a sly farmhand",
+          "drops": 12,
+          "corpses": 45,
+          "rate": 0.26666666666666666
+        },
+        {
+          "mob": "a river pirate",
+          "drops": 9,
+          "corpses": 38,
+          "rate": 0.23684210526315788
+        },
+        {
           "mob": "a captured dockhand",
           "drops": 5,
           "corpses": 23,
@@ -17037,12 +16831,6 @@
           "drops": 8,
           "corpses": 37,
           "rate": 0.21621621621621623
-        },
-        {
-          "mob": "a sly farmhand",
-          "drops": 7,
-          "corpses": 33,
-          "rate": 0.21212121212121213
         },
         {
           "mob": "a Bloodchain guard",
@@ -17081,18 +16869,6 @@
           "rate": 0.15
         },
         {
-          "mob": "a hired tracker",
-          "drops": 6,
-          "corpses": 41,
-          "rate": 0.14634146341463414
-        },
-        {
-          "mob": "a burly henchman",
-          "drops": 1,
-          "corpses": 7,
-          "rate": 0.14285714285714285
-        },
-        {
           "mob": "a Bloodynose sergeant",
           "drops": 1,
           "corpses": 7,
@@ -17105,10 +16881,16 @@
           "rate": 0.1391304347826087
         },
         {
-          "mob": "a henchman",
-          "drops": 6,
-          "corpses": 49,
-          "rate": 0.12244897959183673
+          "mob": "a hired tracker",
+          "drops": 9,
+          "corpses": 71,
+          "rate": 0.1267605633802817
+        },
+        {
+          "mob": "a burly henchman",
+          "drops": 1,
+          "corpses": 8,
+          "rate": 0.125
         },
         {
           "mob": "a Bloodchain taskmaster",
@@ -17129,36 +16911,42 @@
           "rate": 0.10714285714285714
         },
         {
+          "mob": "a henchman",
+          "drops": 6,
+          "corpses": 56,
+          "rate": 0.10714285714285714
+        },
+        {
           "mob": "a Sangrel hunter",
           "drops": 1,
           "corpses": 10,
           "rate": 0.1
         },
         {
+          "mob": "a gruff farmhand",
+          "drops": 6,
+          "corpses": 70,
+          "rate": 0.08571428571428572
+        },
+        {
           "mob": "a corrupt clergyman",
           "drops": 2,
-          "corpses": 20,
-          "rate": 0.1
+          "corpses": 25,
+          "rate": 0.08
         },
         {
           "mob": "a bodyguard",
-          "drops": 3,
-          "corpses": 49,
-          "rate": 0.061224489795918366
-        },
-        {
-          "mob": "a gruff farmhand",
-          "drops": 2,
-          "corpses": 44,
-          "rate": 0.045454545454545456
+          "drops": 5,
+          "corpses": 67,
+          "rate": 0.07462686567164178
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Sungreetstrand",
         "Blacktidebay",
         "Keepersbight",
-        "Sungreetstrand",
         "Fallenpass",
         "Telekir"
       ]
@@ -17181,16 +16969,16 @@
           "rate": 0.16666666666666666
         },
         {
+          "mob": "a rotting skeleton",
+          "drops": 1,
+          "corpses": 22,
+          "rate": 0.045454545454545456
+        },
+        {
           "mob": "a skeletal vicar",
           "drops": 1,
           "corpses": 25,
           "rate": 0.04
-        },
-        {
-          "mob": "a rotting skeleton",
-          "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
         },
         {
           "mob": "an old elven skeleton",
@@ -17245,7 +17033,7 @@
     },
     {
       "id": "worn_buckler",
-      "gameId": "worn_buckler_t1",
+      "gameId": "31c102652f7af12bafd3a71f",
       "name": "Worn Buckler",
       "droppedBy": [
         {
@@ -17253,12 +17041,6 @@
           "drops": 1,
           "corpses": 8,
           "rate": 0.125
-        },
-        {
-          "mob": "an ashira warrior",
-          "drops": 1,
-          "corpses": 13,
-          "rate": 0.07692307692307693
         },
         {
           "mob": "an old elven skeleton",
@@ -17273,16 +17055,16 @@
           "rate": 0.02564102564102564
         },
         {
-          "mob": "a Fellstone tracker",
+          "mob": "a skeleton",
           "drops": 1,
           "corpses": 39,
           "rate": 0.02564102564102564
         },
         {
-          "mob": "a skeleton",
+          "mob": "a Fellstone tracker",
           "drops": 1,
-          "corpses": 40,
-          "rate": 0.025
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a Fellstone guard",
@@ -17294,15 +17076,15 @@
       "prices": [
         {
           "copper": 12,
-          "count": 3
+          "count": 2
         }
       ],
       "harvested": 0,
       "zones": [
-        "Shaded Dunes",
         "Evershade Weald",
         "Blacktidebay",
-        "Tomb of the Last Wyrmsbane"
+        "Tomb of the Last Wyrmsbane",
+        "Shaded Dunes"
       ]
     },
     {
@@ -17311,12 +17093,6 @@
       "name": "Worn Fine Wood Bow",
       "droppedBy": [
         {
-          "mob": "a corrupt clergyman",
-          "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
-        },
-        {
           "mob": "a Sangrel arcanist",
           "drops": 1,
           "corpses": 23,
@@ -17324,6 +17100,12 @@
         },
         {
           "mob": "a Bloodchain taskmaster",
+          "drops": 1,
+          "corpses": 25,
+          "rate": 0.04
+        },
+        {
+          "mob": "a corrupt clergyman",
           "drops": 1,
           "corpses": 25,
           "rate": 0.04
@@ -17341,6 +17123,12 @@
           "rate": 0.017391304347826087
         },
         {
+          "mob": "a hired tracker",
+          "drops": 1,
+          "corpses": 71,
+          "rate": 0.014084507042253521
+        },
+        {
           "mob": "a Bloodchain guard",
           "drops": 1,
           "corpses": 84,
@@ -17352,8 +17140,8 @@
       "zones": [
         "Keepersbight",
         "Blacktidebay",
-        "Fallenpass",
-        "Sungreetstrand"
+        "Sungreetstrand",
+        "Fallenpass"
       ]
     },
     {
@@ -17374,22 +17162,34 @@
           "rate": 0.05
         },
         {
+          "mob": "a hired tracker",
+          "drops": 2,
+          "corpses": 71,
+          "rate": 0.028169014084507043
+        },
+        {
           "mob": "a Bloodchain guard",
           "drops": 2,
           "corpses": 84,
           "rate": 0.023809523809523808
         },
         {
-          "mob": "a gruff farmhand",
-          "drops": 1,
-          "corpses": 44,
-          "rate": 0.022727272727272728
-        },
-        {
           "mob": "a henchman",
           "drops": 1,
-          "corpses": 49,
-          "rate": 0.02040816326530612
+          "corpses": 56,
+          "rate": 0.017857142857142856
+        },
+        {
+          "mob": "a bodyguard",
+          "drops": 1,
+          "corpses": 67,
+          "rate": 0.014925373134328358
+        },
+        {
+          "mob": "a gruff farmhand",
+          "drops": 1,
+          "corpses": 70,
+          "rate": 0.014285714285714285
         },
         {
           "mob": "a Sangrel striker",
@@ -17417,9 +17217,9 @@
       "harvested": 0,
       "zones": [
         "Fallenpass",
+        "Sungreetstrand",
         "Keepersbight",
-        "Blacktidebay",
-        "Sungreetstrand"
+        "Blacktidebay"
       ]
     },
     {
@@ -17440,12 +17240,6 @@
           "rate": 0.08333333333333333
         },
         {
-          "mob": "a hired tracker",
-          "drops": 2,
-          "corpses": 41,
-          "rate": 0.04878048780487805
-        },
-        {
           "mob": "a Sangrel arcanist",
           "drops": 1,
           "corpses": 23,
@@ -17458,16 +17252,22 @@
           "rate": 0.043478260869565216
         },
         {
-          "mob": "a gruff farmhand",
-          "drops": 1,
-          "corpses": 44,
-          "rate": 0.022727272727272728
+          "mob": "a hired tracker",
+          "drops": 3,
+          "corpses": 71,
+          "rate": 0.04225352112676056
         },
         {
           "mob": "a restless ghoul",
           "drops": 1,
           "corpses": 51,
           "rate": 0.0196078431372549
+        },
+        {
+          "mob": "a gruff farmhand",
+          "drops": 1,
+          "corpses": 70,
+          "rate": 0.014285714285714285
         },
         {
           "mob": "a Sangrel striker",
@@ -17494,7 +17294,7 @@
     },
     {
       "id": "worn_great_staff",
-      "gameId": "worn_great_staff",
+      "gameId": "09b82af058595df5df6c9af9",
       "name": "Worn Great Staff",
       "droppedBy": [
         {
@@ -17504,16 +17304,10 @@
           "rate": 0.08333333333333333
         },
         {
-          "mob": "a rotting skeleton",
-          "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
-        },
-        {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 40,
-          "rate": 0.025
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a skeletal warrior",
@@ -17548,7 +17342,6 @@
       ],
       "harvested": 0,
       "zones": [
-        "Night Harbor",
         "Tomb of the Last Wyrmsbane",
         "Evershade Weald",
         "Blacktidebay"
@@ -17574,14 +17367,14 @@
     }
   ],
   "harvest": {
-    "Copper Ore": 718,
-    "Brittle Stone": 756,
-    "Clouded Crystallized Magic": 16,
-    "Wood": 459,
-    "Resin": 560,
+    "Copper Ore": 693,
+    "Brittle Stone": 733,
+    "Wood": 447,
+    "Resin": 543,
     "Lionleaf": 37,
     "Ghost Poppy": 12,
     "Chipped Emerald": 3,
+    "Clouded Crystallized Magic": 15,
     "Chipped Diamond": 2,
     "Alunite Ore": 8,
     "Chipped Onyx": 2,
@@ -17652,7 +17445,7 @@
     "Imperfect Malachite": 1,
     "Imperfect Jade": 1,
     "Imperfect Amber": 2,
-    "Coal": 522,
+    "Coal": 524,
     "Rigid Stone": 468,
     "Bloodstone": 5,
     "Emerald": 4,
@@ -17830,147 +17623,147 @@
     },
     {
       "name": "Copper Ore & Brittle Stone",
-      "pulls": 802,
+      "pulls": 777,
       "yields": [
         {
           "res": "Copper Ore",
-          "count": 715,
-          "rate": 0.8915211970074813
+          "count": 690,
+          "rate": 0.888030888030888
         },
         {
           "res": "Brittle Stone",
-          "count": 608,
-          "rate": 0.7581047381546134
+          "count": 588,
+          "rate": 0.7567567567567568
         },
         {
           "res": "Clouded Crystallized Magic",
-          "count": 12,
-          "rate": 0.014962593516209476
+          "count": 11,
+          "rate": 0.014157014157014158
         },
         {
           "res": "Alunite Ore",
           "count": 8,
-          "rate": 0.00997506234413965
+          "rate": 0.010296010296010296
         },
         {
           "res": "Chipped Blue Diamond",
           "count": 3,
-          "rate": 0.003740648379052369
+          "rate": 0.003861003861003861
         },
         {
           "res": "Chipped Hematite",
           "count": 3,
-          "rate": 0.003740648379052369
+          "rate": 0.003861003861003861
         },
         {
           "res": "Chipped Fire Emerald",
           "count": 3,
-          "rate": 0.003740648379052369
+          "rate": 0.003861003861003861
         },
         {
           "res": "Chipped Sapphire",
           "count": 3,
-          "rate": 0.003740648379052369
+          "rate": 0.003861003861003861
         },
         {
           "res": "Chipped Onyx",
           "count": 2,
-          "rate": 0.0024937655860349127
+          "rate": 0.002574002574002574
         },
         {
           "res": "Chipped Black Pearl",
           "count": 2,
-          "rate": 0.0024937655860349127
+          "rate": 0.002574002574002574
         },
         {
           "res": "Chipped Cat's Eye Agate",
           "count": 2,
-          "rate": 0.0024937655860349127
+          "rate": 0.002574002574002574
         },
         {
           "res": "Chipped Ruby",
           "count": 2,
-          "rate": 0.0024937655860349127
+          "rate": 0.002574002574002574
         },
         {
           "res": "Chipped Malachite",
           "count": 2,
-          "rate": 0.0024937655860349127
+          "rate": 0.002574002574002574
         },
         {
           "res": "Chipped Fire Opal",
           "count": 2,
-          "rate": 0.0024937655860349127
+          "rate": 0.002574002574002574
         },
         {
           "res": "Chipped Diamond",
           "count": 2,
-          "rate": 0.0024937655860349127
+          "rate": 0.002574002574002574
         },
         {
           "res": "Chipped Emerald",
           "count": 2,
-          "rate": 0.0024937655860349127
+          "rate": 0.002574002574002574
         },
         {
           "res": "Chipped Jasper",
           "count": 1,
-          "rate": 0.0012468827930174563
+          "rate": 0.001287001287001287
         },
         {
           "res": "Chipped Wolf's Eye Agate",
           "count": 1,
-          "rate": 0.0012468827930174563
+          "rate": 0.001287001287001287
         },
         {
           "res": "Chipped Black Sapphire",
           "count": 1,
-          "rate": 0.0012468827930174563
+          "rate": 0.001287001287001287
         },
         {
           "res": "Chipped Turquoise",
           "count": 1,
-          "rate": 0.0012468827930174563
+          "rate": 0.001287001287001287
         },
         {
           "res": "Chipped Amber",
           "count": 1,
-          "rate": 0.0012468827930174563
+          "rate": 0.001287001287001287
         },
         {
           "res": "Chipped Star Rose Quartz",
           "count": 1,
-          "rate": 0.0012468827930174563
+          "rate": 0.001287001287001287
         },
         {
           "res": "Chipped Topaz",
           "count": 1,
-          "rate": 0.0012468827930174563
+          "rate": 0.001287001287001287
         },
         {
           "res": "Chipped Jacinth",
           "count": 1,
-          "rate": 0.0012468827930174563
+          "rate": 0.001287001287001287
         },
         {
           "res": "Chipped Star Ruby",
           "count": 1,
-          "rate": 0.0012468827930174563
+          "rate": 0.001287001287001287
         },
         {
           "res": "Chipped Carnelian",
           "count": 1,
-          "rate": 0.0012468827930174563
+          "rate": 0.001287001287001287
         },
         {
           "res": "Chipped Lapis Lazuli",
           "count": 1,
-          "rate": 0.0012468827930174563
+          "rate": 0.001287001287001287
         },
         {
           "res": "Chipped Peridot",
           "count": 1,
-          "rate": 0.0012468827930174563
+          "rate": 0.001287001287001287
         }
       ],
       "zones": [
@@ -17982,127 +17775,127 @@
     },
     {
       "name": "Coal & Rigid Stone",
-      "pulls": 574,
+      "pulls": 576,
       "yields": [
         {
           "res": "Coal",
-          "count": 522,
-          "rate": 0.9094076655052264
+          "count": 524,
+          "rate": 0.9097222222222222
         },
         {
           "res": "Rigid Stone",
           "count": 405,
-          "rate": 0.705574912891986
+          "rate": 0.703125
         },
         {
           "res": "Platinum Ore",
           "count": 52,
-          "rate": 0.09059233449477352
+          "rate": 0.09027777777777778
         },
         {
           "res": "Brilliant Crystallized Magic",
           "count": 12,
-          "rate": 0.020905923344947737
+          "rate": 0.020833333333333332
         },
         {
           "res": "Bloodstone",
           "count": 5,
-          "rate": 0.008710801393728223
+          "rate": 0.008680555555555556
         },
         {
           "res": "Emerald",
           "count": 4,
-          "rate": 0.006968641114982578
+          "rate": 0.006944444444444444
         },
         {
           "res": "Hematite",
           "count": 3,
-          "rate": 0.005226480836236934
+          "rate": 0.005208333333333333
         },
         {
           "res": "Topaz",
           "count": 3,
-          "rate": 0.005226480836236934
+          "rate": 0.005208333333333333
         },
         {
           "res": "Jacinth",
           "count": 2,
-          "rate": 0.003484320557491289
+          "rate": 0.003472222222222222
         },
         {
           "res": "Onyx",
           "count": 2,
-          "rate": 0.003484320557491289
+          "rate": 0.003472222222222222
         },
         {
           "res": "Ruby",
           "count": 2,
-          "rate": 0.003484320557491289
+          "rate": 0.003472222222222222
         },
         {
           "res": "Sapphire",
           "count": 2,
-          "rate": 0.003484320557491289
+          "rate": 0.003472222222222222
         },
         {
           "res": "Carnelian",
           "count": 2,
-          "rate": 0.003484320557491289
+          "rate": 0.003472222222222222
         },
         {
           "res": "Black Pearl",
           "count": 2,
-          "rate": 0.003484320557491289
+          "rate": 0.003472222222222222
         },
         {
           "res": "Malachite",
           "count": 1,
-          "rate": 0.0017421602787456446
+          "rate": 0.001736111111111111
         },
         {
           "res": "Diamond",
           "count": 1,
-          "rate": 0.0017421602787456446
+          "rate": 0.001736111111111111
         },
         {
           "res": "Star Ruby",
           "count": 1,
-          "rate": 0.0017421602787456446
+          "rate": 0.001736111111111111
         },
         {
           "res": "Fire Emerald",
           "count": 1,
-          "rate": 0.0017421602787456446
+          "rate": 0.001736111111111111
         },
         {
           "res": "Amber",
           "count": 1,
-          "rate": 0.0017421602787456446
+          "rate": 0.001736111111111111
         },
         {
           "res": "Cat's Eye Agate",
           "count": 1,
-          "rate": 0.0017421602787456446
+          "rate": 0.001736111111111111
         },
         {
           "res": "Lapis Lazuli",
           "count": 1,
-          "rate": 0.0017421602787456446
+          "rate": 0.001736111111111111
         },
         {
           "res": "Pearl",
           "count": 1,
-          "rate": 0.0017421602787456446
+          "rate": 0.001736111111111111
         },
         {
           "res": "Star Rose Quartz",
           "count": 1,
-          "rate": 0.0017421602787456446
+          "rate": 0.001736111111111111
         },
         {
           "res": "Wolf's Eye Agate",
           "count": 1,
-          "rate": 0.0017421602787456446
+          "rate": 0.001736111111111111
         }
       ],
       "zones": [
@@ -18113,17 +17906,17 @@
     },
     {
       "name": "Wood & Resin",
-      "pulls": 456,
+      "pulls": 444,
       "yields": [
         {
           "res": "Wood",
-          "count": 456,
+          "count": 444,
           "rate": 1
         },
         {
           "res": "Resin",
-          "count": 393,
-          "rate": 0.8618421052631579
+          "count": 382,
+          "rate": 0.8603603603603603
         }
       ],
       "zones": [
