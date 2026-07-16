@@ -104,8 +104,11 @@ function recordLowConf(server, w, now) {
 function persist() {
   if (PRUNE_HOURS) { // drop stale entries so the saved state stays small (cloud runner)
     const cut = Date.now() - PRUNE_HOURS * 3600 * 1000;
-    const old = (m) => { for (const k of Object.keys(m)) { const t = m[k].lastSeen || m[k].firstSeen; if (t && new Date(t).getTime() < cut) delete m[k]; } };
-    old(agg); old(requests);
+    // Priced listings are the price history, so keep them far longer than the
+    // ephemeral no-price availability posts (which get pruned at PRUNE_HOURS).
+    const pricedCut = Date.now() - (+process.env.MNM_PRICED_PRUNE_HOURS || 1080) * 3600 * 1000; // 45 days
+    const old = (m, keepPriced) => { for (const k of Object.keys(m)) { const e = m[k]; const t = e.lastSeen || e.firstSeen; if (!t) continue; const lim = (keepPriced && e.priceCopper != null) ? pricedCut : cut; if (new Date(t).getTime() < lim) delete m[k]; } };
+    old(agg, true); old(requests, false);
   }
   fs.writeFileSync(p('listings.json'), JSON.stringify(Object.values(agg), null, 2));
   fs.writeFileSync(p('requests.json'), JSON.stringify(Object.values(requests), null, 2));

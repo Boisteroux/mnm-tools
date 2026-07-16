@@ -48,9 +48,13 @@ for (const l of rows) if (!l.intent) discarded.push({ status: 'review', reason: 
 // 3. keep only recent (still on the market). Priced listings sort first so the
 //    per-server cap only ever trims the oldest no-price posts — every priced
 //    listing within the window is published (and therefore searchable).
-const cutoff = Date.now() - RECENT_MS;
 const isPriced = (l) => l.priceCopper != null;
-rows = rows.filter((l) => !l.lastSeen || new Date(l.lastSeen).getTime() >= cutoff);
+// Priced listings ARE the price history item pages read (30-day high/low/avg), so keep
+// a long window of them; no-price "availability" posts are ephemeral (the live ticker
+// that used them is retired) so keep only a brief window.
+const PRICED_MS = (+process.env.MNM_PRICED_HOURS || 720) * 3600 * 1000; // 30 days
+const avCut = Date.now() - RECENT_MS, prCut = Date.now() - PRICED_MS;
+rows = rows.filter((l) => { if (!l.lastSeen) return true; const t = new Date(l.lastSeen).getTime(); return t >= (isPriced(l) ? prCut : avCut); });
 // Collapse re-listings: a seller re-posting the same item at different prices
 // created several rows (looked like duplicates). Keep ONE per (server, player,
 // item) — the priced one seen most recently, i.e. their current ask.
@@ -71,7 +75,7 @@ rows = [...best.values()].sort((a, b) => {
   return String(b.lastSeen || '').localeCompare(String(a.lastSeen || ''));  // then newest
 });
 const perServer = {};
-rows = rows.filter((l) => (perServer[l.server] = (perServer[l.server] || 0) + 1) <= MAX_PER_SERVER);
+rows = rows.filter((l) => isPriced(l) || (perServer[l.server] = (perServer[l.server] || 0) + 1) <= MAX_PER_SERVER);
 
 // Normalize a priced listing to a per-unit price so different quantities compare
 // fairly. "each"/"ea" in the raw means the price is already per-unit; otherwise a
