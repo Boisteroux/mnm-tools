@@ -124,6 +124,10 @@ const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 // Escape text, then turn any bare http(s) URLs in it into clickable links.
 const linkify = (s) => esc(s).replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
+// auctions.json now publishes once a day (midnight Pacific), so cache-bust by the
+// Pacific date instead of Date.now() — the URL is stable all day (browser caches it)
+// and only changes when a fresh snapshot lands.
+const aucCacheV = () => { try { return new Date().toLocaleDateString('en-CA', { timeZone: 'America/Los_Angeles' }); } catch { return new Date().toISOString().slice(0, 10); } };
 const slugify = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
 // Cache-buster for curated map images: keyed to the maps' publish time, so browsers
 // re-fetch a map only when it's actually republished (same filename, changed contents).
@@ -337,17 +341,45 @@ function tradeStats(name, server) {
   const now = Date.now();
   const rawIn = (days) => sells.filter((t) => new Date(t.date).getTime() >= now - days * 864e5).map((t) => t.price);
   const raw30 = rawIn(30);
-  const p30 = trimOutliers(raw30), p7 = trimOutliers(rawIn(7)), allP = trimOutliers(sells.map((t) => t.price));
+  const p30 = trimOutliers(raw30), p10 = trimOutliers(rawIn(10)), p7 = trimOutliers(rawIn(7)), allP = trimOutliers(sells.map((t) => t.price));
   return {
     n30: p30.length,
     trimmed: raw30.length - p30.length,
     high: p30.length ? Math.max.apply(null, p30) : null,
     low: p30.length ? Math.min.apply(null, p30) : null,
+    n10: p10.length,
+    avg10: mean(p10),
     n7: p7.length,
     avg7: mean(p7),
     allHigh: allP.length ? Math.max.apply(null, allP) : null,
     allLow: allP.length ? Math.min.apply(null, allP) : null,
   };
+}
+
+// Buyer's vs seller's market for an item over the last `days` (default 10): count the
+// distinct people SELLING (WTS / bare posts) against those BUYING (WTB). More sellers
+// than buyers = oversupply → price is soft / likely negotiable DOWN; more buyers =
+// demand → price firm / may rise. Reads all listings (not just priced) so no-price
+// WTBs still count as demand. Returns null when there's no activity in the window.
+function marketPressure(name, server, days) {
+  days = days || 10;
+  const lc = String(name).toLowerCase();
+  const cut = Date.now() - days * 864e5;
+  const sellers = new Set(), buyers = new Set();
+  for (const l of ((AUCTIONS && AUCTIONS.listings) || [])) {
+    if (!l.item || l.item.toLowerCase() !== lc) continue;
+    if (server && l.server !== server) continue;
+    if (!l.seen || new Date(l.seen).getTime() < cut) continue;
+    (l.intent === 'buy' ? buyers : sellers).add((l.player || '') + '|' + l.server); // bare/assumed = sell
+  }
+  const wts = sellers.size, wtb = buyers.size;
+  if (wts + wtb === 0) return null;
+  let verdict, arrow, cls;
+  if (wts === wtb) { verdict = 'Balanced'; arrow = '→'; cls = 'mkt-bal'; }
+  else if (wts > wtb) { verdict = 'Buyer’s'; arrow = '↓'; cls = 'mkt-buyer'; }       // oversupply → soft
+  else { verdict = 'Seller’s'; arrow = '↑'; cls = 'mkt-seller'; }                     // demand → firm
+  const strong = Math.max(wts, wtb) >= Math.min(wts, wtb) * 2 + 1;                              // lopsided ≥ ~2:1
+  return { wts, wtb, verdict, arrow, cls, strong };
 }
 
 // Best known market value for an item: player trade price when we have it,
@@ -602,7 +634,7 @@ const stat = (n, l, id) => '<div class="stat"><div class="num"' + (id ? ' id="' 
 
 // Load the auction feed once (shared with the Auction House page's AUCTIONS cache).
 async function loadAuctionsData() {
-  if (!AUCTIONS) { try { AUCTIONS = await (await fetch('./auctions.json?v=' + Date.now())).json(); } catch { AUCTIONS = { listings: [], requests: [], stats: {}, generatedAt: null }; } }
+  if (!AUCTIONS) { try { AUCTIONS = await (await fetch('./auctions.json?v=' + aucCacheV())).json(); } catch { AUCTIONS = { listings: [], requests: [], stats: {}, generatedAt: null }; } }
   return AUCTIONS;
 }
 // Home "Live market" section — biggest cross-server price gaps + crafting demand, filled async.
@@ -678,11 +710,11 @@ function renderItem(id) {
     add('Class', esc(w.class || ''));
     add('Race', esc(w.race || ''));
     if (it.harvested > 0) add('Harvested', it.harvested + '×');
-    if (it.prices.length) add('Sells for', coin(regularPrice(it)));
+    // Vendor Value = the regular (best) vendor sell price; this replaces the old
+    // separate "Vendor value" section (and we no longer surface a shady-vendor price).
+    if (it.prices.length) add('Vendor Value', coin(regularPrice(it)));
     if (rows.length) {
-      const fromWiki = ['slot', 'dmg', 'delay', 'skill', 'weight', 'size', 'class', 'race'].some((k) => w[k] != null && w[k] !== '');
-      sections.push('<h2>Stats</h2><div class="card"><table><tbody>' + rows.join('') + '</tbody></table></div>' +
-        (fromWiki ? '<div class="note">Item stats are pulled from the community wiki.</div>' : ''));
+      sections.push('<h2>Stats</h2><div class="card"><table><tbody>' + rows.join('') + '</tbody></table></div>');
     }
   }
 
@@ -721,57 +753,49 @@ function renderItem(id) {
       (anyRate ? '<div class="note">Node drop rates are observed <b>per harvest</b> and combined across a node’s tiers (regular + rich) — the game log records what dropped, not which node. Click a node for its full table.</div>' : ''));
   }
 
-  // Player trade value — PvP and PvE are separate markets, so price each one on
-  // its own: 30-day high/low + 7-day average of player sell prices.
+  // Player trade value — PvP and PvE are separate markets, so price each one on its
+  // own: 30-day high/low, 10-day average, and a buyer's/seller's market read.
   {
     const logged = 'Read from live player auctions on the <a href="https://www.twitch.tv/livemnm" target="_blank" rel="noopener">LiveMNM stream</a>.';
-    // One market's summary card (or a muted line when there's no data for it).
-    const marketBox = (label, tv) => {
+    // The 4th block: buyer's vs seller's market (WTB vs WTS in the last 10 days).
+    const pressureBox = (server) => {
+      const mp = marketPressure(it.name, server, 10);
+      return '<div class="vbox"><div class="vlbl">Market (10d)</div>' +
+        (mp
+          ? '<div class="vval ' + mp.cls + '" title="' + mp.wts + ' selling vs ' + mp.wtb + ' buying — last 10 days">' + mp.arrow + ' ' + esc(mp.verdict) + (mp.strong ? '*' : '') + '</div>' +
+            '<div class="mkt-sub">' + mp.wts + ' selling · ' + mp.wtb + ' buying</div>'
+          : '<div class="vval sample">—</div>') + '</div>';
+    };
+    // One market's summary card (or a muted line when there's no priced data for it).
+    const marketBox = (label, tv, server) => {
       if (tv && tv.n30) {
         return '<div class="mkt"><div class="mkt-h">' + label + '</div><div class="vendor-summary">' +
           '<div class="vbox"><div class="vlbl">30-day high</div><div class="vval">' + coin(tv.high) + '</div></div>' +
           '<div class="vbox"><div class="vlbl">30-day low</div><div class="vval">' + coin(tv.low) + '</div></div>' +
-          '<div class="vbox"><div class="vlbl">7-day avg</div><div class="vval">' + (tv.avg7 != null ? coin(tv.avg7) : '<span class="sample">no recent</span>') + '</div></div>' +
-          '</div><div class="note">' + tv.n30 + ' sale' + (tv.n30 === 1 ? '' : 's') + ' in 30d' + (tv.n7 ? ' (' + tv.n7 + ' in 7d)' : '') +
+          '<div class="vbox"><div class="vlbl">10-day avg</div><div class="vval">' + (tv.avg10 != null ? coin(tv.avg10) : '<span class="sample">no recent</span>') + '</div></div>' +
+          pressureBox(server) +
+          '</div><div class="note">' + tv.n30 + ' sale' + (tv.n30 === 1 ? '' : 's') + ' in 30d' + (tv.n10 ? ' (' + tv.n10 + ' in 10d)' : '') +
           (tv.trimmed ? ' · ' + tv.trimmed + ' outlier' + (tv.trimmed === 1 ? '' : 's') + ' excluded' : '') + '</div></div>';
       }
-      const older = tv ? 'Last seen ' + coin(tv.allLow) + (tv.allHigh !== tv.allLow ? '–' + coin(tv.allHigh) : '') + ' (older than 30d)' : 'No sales seen yet';
-      return '<div class="mkt"><div class="mkt-h">' + label + '</div><div class="note sample">' + older + '</div></div>';
+      // No priced sales in the 30-day window — still show the market read if there's activity.
+      const mp = marketPressure(it.name, server, 10);
+      const older = tv ? 'Last sold ' + coin(tv.allLow) + (tv.allHigh !== tv.allLow ? '–' + coin(tv.allHigh) : '') + ' (older than 30d)' : 'No sales seen yet';
+      return '<div class="mkt"><div class="mkt-h">' + label + '</div>' +
+        (mp ? '<div class="vendor-summary">' + pressureBox(server) + '</div>' : '') +
+        '<div class="note sample">' + older + '</div></div>';
     };
     const pvp = tradeStats(it.name, 'PvP'), pve = tradeStats(it.name, 'PvE');
+    const anyActivity = pvp || pve || marketPressure(it.name, 'PvP', 10) || marketPressure(it.name, 'PvE', 10);
     let body;
-    if (pvp || pve) {
-      body = '<div class="mkt-cols">' + marketBox('PvP', pvp) + marketBox('PvE', pve) + '</div><div class="note">' + logged + '</div>';
+    if (anyActivity) {
+      body = '<div class="mkt-cols">' + marketBox('PvP', pvp, 'PvP') + marketBox('PvE', pve, 'PvE') + '</div>' +
+        '<div class="note">' + logged + ' <b>Market</b> compares people selling (WTS) vs buying (WTB) over 10 days — “Buyer’s ↓” means oversupply (price may be soft), “Seller’s ↑” means demand (price firm); * = strongly one-sided.</div>';
     } else {
-      // No server-tagged data — fall back to any legacy (untagged) trades.
       const tv = tradeStats(it.name);
-      if (tv) body = marketBox('Player market', tv) + '<div class="note">' + logged + '</div>';
+      if (tv) body = marketBox('Player market', tv, null) + '<div class="note">' + logged + '</div>';
       else body = '<div class="note">No player auctions seen for this item yet. ' + logged + '</div>';
     }
     sections.push('<h2>Player trade value</h2>' + body);
-  }
-
-  // Vendor value
-  if (it.prices.length) {
-    const sorted = it.prices.slice().sort((a, b) => b.copper - a.copper); // best sell first
-    const high = sorted[0], low = sorted[sorted.length - 1];
-    const summary = '<div class="vendor-summary">' +
-      '<div class="vbox"><div class="vlbl">Regular vendor (best price)</div><div class="vval">' + coin(high.copper) + '</div></div>' +
-      (sorted.length > 1
-        ? '<div class="vbox warnbox"><div class="vlbl">Shady vendor (worst price)</div><div class="vval">' + coin(low.copper) + '</div></div>'
-        : '') +
-      '</div>';
-    const rows = sorted.map((p) => {
-      let tag = '';
-      if (sorted.length > 1 && p === high) tag = '<span class="tag good">regular</span>';
-      else if (sorted.length > 1 && p === low) tag = '<span class="tag warn">shady</span>';
-      return '<tr><td class="coin">' + coin(p.copper) + ' ' + tag + '</td><td class="num sample">seen ' + p.count + '×</td></tr>';
-    }).join('');
-    sections.push('<h2>Vendor value (selling)</h2>' + summary +
-      '<div class="card"><table><thead><tr><th>Sell prices seen</th><th class="num">Times</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
-      (sorted.length > 1
-        ? '<div class="note">Regular vendors pay more when you sell (highest); shady vendors pay less (lowest).</div>'
-        : ''));
   }
 
   // Sold by — where you can BUY this item: wiki base/shady price + the vendors who stock it
@@ -818,7 +842,7 @@ function renderItem(id) {
 
   const icon = w.icon ? '<img class="entity-icon" src="' + w.icon + '" alt="" /> ' : '';
   const wikiLine = (it.wiki && it.wiki.hasPage)
-    ? '<p class="sub"><a href="' + wikiUrl(it.name) + '" target="_blank" rel="noopener">View on the wiki ↗</a></p>'
+    ? '<p class="sub"><a href="' + wikiUrl(it.name) + '" target="_blank" rel="noopener">View &amp; Update on the Wiki ↗</a></p>'
     : '';
 
   $('content').innerHTML =
@@ -916,7 +940,7 @@ function renderMob(name) {
   if (srows.length) statsBlock = '<h2>Stats</h2><div class="card"><table><tbody>' + srows.join('') + '</tbody></table></div>';
 
   const wikiLine = mw.hasPage
-    ? '<p class="sub"><a href="' + wikiUrl(mw.title || (name.charAt(0).toUpperCase() + name.slice(1))) + '" target="_blank" rel="noopener">View on the wiki ↗</a></p>'
+    ? '<p class="sub"><a href="' + wikiUrl(mw.title || (name.charAt(0).toUpperCase() + name.slice(1))) + '" target="_blank" rel="noopener">View &amp; Update on the Wiki ↗</a></p>'
     : '';
 
   $('content').innerHTML =
@@ -956,7 +980,7 @@ function renderZone(name) {
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › zone</div>' +
     '<h1>' + esc(name) + '</h1>' +
-    '<p class="sub"><a href="' + wikiUrl(name) + '" target="_blank" rel="noopener">View on the wiki ↗</a></p>' +
+    '<p class="sub"><a href="' + wikiUrl(name) + '" target="_blank" rel="noopener">View &amp; Update on the Wiki ↗</a></p>' +
     mobTable + itemTable;
 }
 
@@ -1539,7 +1563,7 @@ function renderTradeskill(name) {
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › tradeskill</div>' +
     '<h1>' + esc(name) + '</h1>' +
-    '<p class="sub"><a href="' + wikiUrl(name) + '" target="_blank" rel="noopener">View on the wiki ↗</a></p>' +
+    '<p class="sub"><a href="' + wikiUrl(name) + '" target="_blank" rel="noopener">View &amp; Update on the Wiki ↗</a></p>' +
     (recs.length ? levelingPathSection(recs) : '') +
     (recs.length ? '<h2>Recipes</h2>' + recipeTable(recs, false) + marginNote : '') +
     observedTrivialsSection(name) +
@@ -1594,7 +1618,6 @@ const browseCols = {
     { key: 'name', label: 'Item' },
     { key: 'best', label: 'Drop Rate', num: true, render: (v) => (v ? Math.round(v * 100) + '%' : '—') },
     { key: 'vendor', label: 'Vendor Value', num: true, render: (v) => (v == null ? '—' : coin(v)) },
-    { key: 'shady', label: 'Shady Value', num: true, render: (v) => (v == null ? '—' : coin(v)) },
     { key: 'sources', label: 'Sources', num: true },
     { key: 'harvested', label: 'Harvested', num: true, render: (v) => v || '—' },
   ],
@@ -2713,7 +2736,7 @@ const aucTag = (i) => i === 'sell' ? '<span class="atag sell">WTS</span>' : i ==
 async function renderAuctions() {
   if (!AUCTIONS) {
     $('content').innerHTML = '<div class="crumb"><a href="#/">MnMdb</a> › auctions</div><h1>Auction House</h1><p class="sub">Loading live market…</p>';
-    try { AUCTIONS = await (await fetch('./auctions.json?v=' + Date.now())).json(); } catch { AUCTIONS = { listings: [], requests: [], stats: {}, generatedAt: null }; }
+    try { AUCTIONS = await (await fetch('./auctions.json?v=' + aucCacheV())).json(); } catch { AUCTIONS = { listings: [], requests: [], stats: {}, generatedAt: null }; }
   }
   const A = AUCTIONS;
   const priced = A.listings.filter((l) => l.price != null).length;
@@ -2749,7 +2772,7 @@ async function aucCheckForUpdate() {
   const pop = $('auc-pop'), q = $('auc-q');
   if ((pop && pop.classList.contains('show')) || (q && document.activeElement === q)) return;
   try {
-    const fresh = await (await fetch('./auctions.json?v=' + Date.now())).json();
+    const fresh = await (await fetch('./auctions.json?v=' + aucCacheV())).json();
     if (fresh && fresh.generatedAt && (!AUCTIONS || fresh.generatedAt !== AUCTIONS.generatedAt)) {
       AUCTIONS = fresh;
       paintAuctions(); aucReqs(); aucUpdateMeta();
@@ -3380,7 +3403,7 @@ async function loadWikiStats() {
   // pages, crafting economics and movers all reflect current market prices.
   // (Prices are base-100 copper, same unit as trades.json — safe to combine.)
   try {
-    AUCTIONS = AUCTIONS || await (await fetch('./auctions.json?v=' + Date.now())).json();
+    AUCTIONS = AUCTIONS || await (await fetch('./auctions.json?v=' + aucCacheV())).json();
     for (const l of (AUCTIONS && AUCTIONS.listings) || []) {
       if (l.price == null) continue; // only priced listings inform value
       const k = String(l.item).toLowerCase();

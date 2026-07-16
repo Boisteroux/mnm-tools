@@ -421,6 +421,12 @@ tr.rowlink { cursor: pointer; }
 .vbox.warnbox { border-left-color: var(--warn); }
 .vbox .vlbl { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
 .vbox .vval { font-size: 20px; font-weight: 600; color: var(--text); font-variant-numeric: tabular-nums; }
+/* Buyer's vs seller's market read: oversupply (buyer's) is a caution the listed price
+   may be soft/overvalued; demand (seller's) means the price is firm. */
+.vbox .vval.mkt-buyer  { color: var(--warn); font-size: 16px; }
+.vbox .vval.mkt-seller { color: var(--good); font-size: 16px; }
+.vbox .vval.mkt-bal    { color: var(--muted); font-size: 16px; }
+.mkt-sub { font-size: 11px; color: var(--muted); margin-top: 3px; }
 .vbuys { margin: 0; padding: 4px 4px 4px 22px; }
 .vbuys li { padding: 2px 0; color: var(--text); }
 .tag {
