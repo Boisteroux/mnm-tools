@@ -721,7 +721,8 @@ function renderItem(id) {
     add('Slot', esc(slotLabel(w)) + (w.handed ? ' (' + esc(w.handed) + ')' : ''));
     add('Weapon DMG', w.dmg);
     add('Attack delay', w.delay);
-    add('Skill', esc(w.skill || ''));
+    add('DMG/Delay ratio', weaponRatio(w) != null ? ratioStr(weaponRatio(w)) : null);
+    add('Skill', esc(w.skill || '') + (weaponType(w) ? ' <span class="muted">(' + esc(weaponType(w)) + ')</span>' : ''));
     add('AC', w.ac);
     const sb = Object.entries(w.stats || {}).map(([k, v]) => k + ' ' + (v > 0 ? '+' : '') + v);
     if (sb.length) add('Attributes', sb.join('  ·  '));
@@ -875,7 +876,7 @@ function renderItem(id) {
 
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › item</div>' +
-    '<h1>' + icon + esc(it.name) + '</h1>' +
+    '<h1>' + icon + esc(it.name) + unreleasedTag(it.name) + '</h1>' +
     wikiLine +
     sections.join('');
 }
@@ -1670,7 +1671,7 @@ function renderSearch(q) {
         : '#/item/' + encodeURIComponent(r.id);
       const label = r.kind === 'harvest' ? 'resource' : r.kind;
       const inner = '<span class="kind ' + r.kind + '">' + label + '</span><span class="name">' + esc(r.name) +
-        '</span><span class="meta">' + esc(r.meta) + '</span>';
+        (r.kind !== 'mob' ? unreleasedTag(r.name) : '') + '</span><span class="meta">' + esc(r.meta) + '</span>';
       return '<a class="result" href="' + href + '">' + inner + '</a>';
     }).join('') + '</div>';
 }
@@ -3025,7 +3026,7 @@ function statCardInner(s) {
     P.push('<div class="arow aeff"><span class="muted">Effect</span> <strong>' + esc(e.name) + '</strong>' + (extra ? ' <span class="muted">(' + esc(extra) + ')</span>' : '') + effectDescHTML(e) + '</div>');
   }
   P.push(row([s.slot ? 'Slot ' + esc(s.slot) : ''].filter(Boolean)));
-  if (s.dmg != null || s.delay != null || s.skill) P.push(row([s.dmg != null ? 'DMG ' + s.dmg : '', s.delay != null ? 'Delay ' + s.delay : '', s.skill ? esc(s.skill) : ''].filter(Boolean)));
+  if (s.dmg != null || s.delay != null || s.skill) P.push(row([s.dmg != null ? 'DMG ' + s.dmg : '', s.delay != null ? 'Delay ' + s.delay : '', (s.dmg != null && s.delay) ? 'Ratio ' + ratioStr(s.dmg / s.delay) : '', s.skill ? esc(s.skill) : ''].filter(Boolean)));
   const st = Object.entries(s.stats || {}); if (s.ac != null) st.unshift(['AC', s.ac]); if (st.length) P.push(chips(st));
   const vit = []; if (s.hp != null) vit.push(['HP', s.hp]); if (s.mana != null) vit.push(['Mana', s.mana]); if (s.haste != null) vit.push(['Haste', s.haste]);
   if (vit.length) P.push(chips(vit));
@@ -3064,6 +3065,24 @@ const itemHoverInit = cardHoverInit;  // advanced search + best in slot
 // ---- Advanced (stat) search ----
 const ADV_STATS = ['STR', 'STA', 'AGI', 'DEX', 'INT', 'WIS', 'CHA', 'AC', 'HP'];
 const advStatOf = (w, s) => s === 'AC' ? (w.ac || 0) : s === 'HP' ? (w.hp || 0) : ((w.stats && w.stats[s]) || 0);
+// Weapon type = the ItemBox `skill` code, shown/filtered by a readable name.
+const WEAPON_TYPES = { SLA: 'Slashing', BLG: 'Blunt', STA: 'Piercing', ARC: 'Archery', H2H: 'Hand to Hand', THR: 'Throwing' };
+const weaponType = (w) => (w && w.skill && WEAPON_TYPES[w.skill]) || '';
+// Damage-to-delay ratio — a DPS proxy the wiki doesn't list; computed live for every
+// weapon that has both a damage and a delay value (higher = more damage per tick).
+const weaponRatio = (w) => (w && w.dmg != null && w.delay) ? w.dmg / w.delay : null;
+const ratioStr = (r) => r == null ? '' : (Math.round(r * 100) / 100).toFixed(2);
+// Items that exist on the wiki but aren't obtainable in-game yet (e.g. mithril
+// crafted gear). Flagged by name for now — extend the pattern when more are known.
+const UNRELEASED_RE = /mithril/i;
+const isUnreleased = (name) => UNRELEASED_RE.test(name || '');
+const unreleasedTag = (name) => isUnreleased(name)
+  ? ' <span class="tag warn" title="Not in the game yet — exists on the wiki but isn’t obtainable in-game">Not in game</span>' : '';
+// A crafted item = the result of a tradeskill recipe. "Not droppable" excludes
+// anything a mob drops (observed drops or the wiki's dropper list) — so the CRAFTED
+// filter shows only gear you make, not gear that also drops.
+const isCraftedResult = (i) => !!recipesByResult[(i.name || '').toLowerCase()];
+const isDroppable = (i) => !!((i.droppedBy && i.droppedBy.length) || (i.wiki && i.wiki.from && i.wiki.from.length));
 
 // Lowercased mob name → level (only mobs whose level we know). Built once.
 let _mobLevels = null;
@@ -3120,8 +3139,10 @@ function renderAdvanced() {
     const { slots: ss } = itemSlots(w.slot);
     if (ss.size) ss.forEach((s) => slotSet.add(s)); else { const c = cleanSlot(w.slot); if (c) slotSet.add(c); }
   }
-  const slots = [...slotSet].sort();
-  const statInputs = ADV_STATS.map((s) => '<label class="adv-stat">' + s + ' ≥ <input type="number" id="adv-' + s + '" min="0" inputmode="numeric"></label>').join('');
+  const slots = [...slotSet].filter((s) => s !== 'BARDING').sort(); // BARDING is a stray wiki-only item, not a real gear slot
+  const statInputs = ADV_STATS.map((s) => '<label class="adv-stat">' + s + ' ≥ <input type="number" id="adv-' + s + '" min="0" inputmode="numeric"></label>').join('') +
+    '<label class="adv-stat" title="Weapon max damage">DMG ≥ <input type="number" id="adv-dmg" min="0" inputmode="numeric"></label>' +
+    '<label class="adv-stat" title="Damage-to-delay ratio (weapons)">Ratio ≥ <input type="number" id="adv-ratio" min="0" step="0.05" inputmode="decimal"></label>';
   const statOpt = (id, blank) => '<select id="' + id + '"><option value="">' + blank + '</option>' + BIS_STATS.map((s) => '<option>' + s + '</option>').join('') + '</select>';
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › advanced search</div><h1>Advanced Search</h1>' +
@@ -3134,10 +3155,12 @@ function renderAdvanced() {
       '<div class="adv-controls">' +
         '<input id="adv-name" placeholder="Item name contains…">' +
         '<select id="adv-slot"><option value="">Any slot</option>' + slots.map((s) => '<option>' + esc(s) + '</option>').join('') + '</select>' +
-        '<input id="adv-class" placeholder="Class (e.g. FTR)">' +
+        '<select id="adv-class"><option value="">Any class</option>' + MNM_CLASSES.map((c) => '<option>' + c + '</option>').join('') + '</select>' +
+        '<select id="adv-wpntype"><option value="">Any weapon type</option>' + Object.keys(WEAPON_TYPES).map((k) => '<option value="' + k + '">' + esc(WEAPON_TYPES[k]) + '</option>').join('') + '</select>' +
         '<select id="adv-effect"><option value="">Any effect</option><option value="any">Has an effect</option><option value="Click">Clicky</option><option value="Proc">Proc / combat</option><option value="Worn">Worn</option></select>' +
         '<input id="adv-maxlvl" type="number" min="1" inputmode="numeric" placeholder="Max mob level">' +
-        '<label class="adv-check"><input type="checkbox" id="adv-magic"> MAGIC only</label>' +
+        '<label class="adv-check"><input type="checkbox" id="adv-magic"> MAGIC</label>' +
+        '<label class="adv-check" title="Only tradeskill-crafted items (a recipe result, not dropped by mobs)"><input type="checkbox" id="adv-crafted"> CRAFTED</label>' +
       '</div>' +
       '<div class="adv-stats">' + statInputs + '</div>' +
       '<div id="adv-results"></div>' +
@@ -3156,7 +3179,7 @@ function renderAdvanced() {
       '</div>' +
       '<div id="bis-results"></div>' +
     '</div>';
-  ['adv-name', 'adv-slot', 'adv-class', 'adv-effect', 'adv-maxlvl', 'adv-magic'].concat(ADV_STATS.map((s) => 'adv-' + s))
+  ['adv-name', 'adv-slot', 'adv-class', 'adv-wpntype', 'adv-effect', 'adv-maxlvl', 'adv-magic', 'adv-crafted', 'adv-dmg', 'adv-ratio'].concat(ADV_STATS.map((s) => 'adv-' + s))
     .forEach((id) => { const el = $(id); if (el) el.addEventListener('input', paintAdvanced); });
   ['bis-p1', 'bis-p2', 'bis-p3', 'bis-depth', 'bis-wpn-method'].forEach((id) => { const el = $(id); if (el) el.addEventListener('change', paintBis); });
   ['bis-w1', 'bis-w2', 'bis-w3', 'bis-maxlvl'].forEach((id) => { const el = $(id); if (el) el.addEventListener('input', paintBis); });
@@ -3176,36 +3199,54 @@ function paintAdvanced() {
   const name = ($('adv-name').value || '').trim().toLowerCase();
   const slot = ($('adv-slot').value || '').toUpperCase();
   const cls = ($('adv-class').value || '').trim().toUpperCase();
+  const wpnType = $('adv-wpntype').value; // ItemBox skill code, e.g. 'SLA'
   const eff = $('adv-effect').value;
   const maxlvlRaw = $('adv-maxlvl').value;
   const maxlvl = maxlvlRaw !== '' ? +maxlvlRaw : null;
+  const ratioRaw = $('adv-ratio').value;
+  const ratioMin = ratioRaw !== '' ? +ratioRaw : null;
+  const dmgRaw = $('adv-dmg').value;
+  const dmgMin = dmgRaw !== '' ? +dmgRaw : null;
   const magic = $('adv-magic').checked;
+  const crafted = $('adv-crafted').checked;
   const mins = {};
   for (const s of ADV_STATS) { const v = $('adv-' + s).value; if (v !== '') mins[s] = +v; }
-  const anyFilter = name || slot || cls || eff || maxlvl != null || magic || Object.keys(mins).length;
+  const anyFilter = name || slot || cls || wpnType || eff || maxlvl != null || ratioMin != null || dmgMin != null || magic || crafted || Object.keys(mins).length;
   const box = $('adv-results');
   if (!anyFilter) { box.innerHTML = '<p class="sub">Enter a filter above to search.</p>'; return; }
   const results = DATA.items.map((i) => ({ i, dropLvl: maxlvl != null ? itemMinDropperLevel(i) : null })).filter(({ i, dropLvl }) => {
     const w = i.wiki; if (!w) return false;
     if (name && !i.name.toLowerCase().includes(name)) return false;
     if (slot) { const ss = itemSlots(w.slot); if (!ss.slots.has(slot) && cleanSlot(w.slot) !== slot) return false; }
-    if (cls && !(w.class || '').toUpperCase().includes(cls)) return false;
+    if (cls && !bisClassFits(w, cls)) return false; // the class or ALL — matches the BiS rule
+    if (wpnType && (w.skill || '') !== wpnType) return false;
+    if (ratioMin != null) { const r = weaponRatio(w); if (r == null || r < ratioMin) return false; }
+    if (dmgMin != null) { if (w.dmg == null || w.dmg < dmgMin) return false; }
     if (eff) { if (!w.effect) return false; if (eff !== 'any' && (w.effect.trigger || '') !== eff) return false; }
     if (maxlvl != null && (dropLvl == null || dropLvl > maxlvl)) return false; // farmable from a mob at/below this level
     if (magic && !(w.flags && w.flags.includes('MAGIC'))) return false;
+    if (crafted && (!isCraftedResult(i) || isDroppable(i))) return false; // a recipe result that no mob drops
     for (const s in mins) if (advStatOf(w, s) < mins[s]) return false;
     return true;
-  }).sort((a, b) => maxlvl != null ? (a.dropLvl - b.dropLvl) || a.i.name.localeCompare(b.i.name) : a.i.name.localeCompare(b.i.name));
+  }).sort((a, b) => {
+    if (ratioMin != null) { const ra = weaponRatio(a.i.wiki) || 0, rb = weaponRatio(b.i.wiki) || 0; if (ra !== rb) return rb - ra; } // best ratio first when filtering by it
+    if (dmgMin != null) { const da = a.i.wiki.dmg || 0, db = b.i.wiki.dmg || 0; if (da !== db) return db - da; } // then highest DMG when filtering by it
+    return maxlvl != null ? (a.dropLvl - b.dropLvl) || a.i.name.localeCompare(b.i.name) : a.i.name.localeCompare(b.i.name);
+  });
   const cols = Object.keys(mins);
-  const showEff = !!eff, showLvl = maxlvl != null;
+  const showEff = !!eff, showLvl = maxlvl != null, showWpn = ratioMin != null || dmgMin != null || !!wpnType;
   const shown = results.slice(0, 200);
   box.innerHTML = '<p class="sub">' + results.length + ' match' + (results.length === 1 ? '' : 'es') + (results.length > 200 ? ' — showing 200' : '') +
-      (showLvl ? ' · dropped by mobs ≤ L' + maxlvl + ' (whose level we know)' : '') + '</p>' +
-    (shown.length ? '<div class="card"><table><thead><tr><th>Item</th><th>Slot</th><th>Class</th>' + (showEff ? '<th>Effect</th>' : '') + (showLvl ? '<th class="num">Drop lvl</th>' : '') + cols.map((c) => '<th class="num">' + c + '</th>').join('') + '</tr></thead><tbody>' +
-      shown.map(({ i, dropLvl }) => { const w = i.wiki; return '<tr data-item="' + esc(i.name) + '"><td>' + itemLink(i.id, i.name) + (w.flags && w.flags.includes('MAGIC') ? ' <span class="tag good">MAGIC</span>' : '') + '</td>' +
+      (showLvl ? ' · dropped by mobs ≤ L' + maxlvl + ' (whose level we know)' : '') +
+      (dmgMin != null ? ' · DMG ≥ ' + dmgMin : '') +
+      (ratioMin != null ? ' · DMG/Delay ratio ≥ ' + ratioStr(ratioMin) : '') +
+      (crafted ? ' · crafted (tradeskill) items only' : '') + '</p>' +
+    (shown.length ? '<div class="card"><table><thead><tr><th>Item</th><th>Slot</th><th>Class</th>' + (showEff ? '<th>Effect</th>' : '') + (showLvl ? '<th class="num">Drop lvl</th>' : '') + (showWpn ? '<th>Weapon</th><th class="num">DMG</th><th class="num">Ratio</th>' : '') + cols.map((c) => '<th class="num">' + c + '</th>').join('') + '</tr></thead><tbody>' +
+      shown.map(({ i, dropLvl }) => { const w = i.wiki; const r = weaponRatio(w); return '<tr data-item="' + esc(i.name) + '"><td>' + itemLink(i.id, i.name) + (w.flags && w.flags.includes('MAGIC') ? ' <span class="tag good">MAGIC</span>' : '') + unreleasedTag(i.name) + '</td>' +
         '<td class="sample">' + esc(slotLabel(w) || '—') + '</td><td class="sample">' + esc(w.class || '—') + '</td>' +
         (showEff ? '<td class="sample">' + (w.effect ? esc(w.effect.name) + (w.effect.trigger ? ' <span class="tag good">' + esc(w.effect.trigger) + '</span>' : '') : '—') + '</td>' : '') +
         (showLvl ? '<td class="num">' + (dropLvl != null ? 'L' + dropLvl : '—') + '</td>' : '') +
+        (showWpn ? '<td class="sample">' + (weaponType(w) || '—') + '</td><td class="num">' + (w.dmg != null ? w.dmg : '—') + '</td><td class="num">' + (r != null ? ratioStr(r) : '—') + '</td>' : '') +
         cols.map((c) => '<td class="num">' + advStatOf(w, c) + '</td>').join('') + '</tr>'; }).join('') +
       '</tbody></table></div>' : '');
   itemHoverInit();
@@ -3415,6 +3456,7 @@ function paintBis() {
     '<td>' + (item ? itemLink(item.id, item.name) +
         (item.wiki.flags && item.wiki.flags.includes('MAGIC') ? ' <span class="tag good">MAGIC</span>' : '') +
         (bisNoDup(item.wiki) ? ' <span class="tag" title="Only one can be equipped">UNIQUE</span>' : '') +
+        unreleasedTag(item.name) +
         (info || '') +
         (maxlvl != null ? bisDropTag(item, maxlvl) : '') : '<span class="muted">— none —</span>') + '</td>' +
     priorities.map((p) => '<td class="num">' + (item ? (bisStatVal(item.wiki, p) || '') : '') + '</td>').join('') +
