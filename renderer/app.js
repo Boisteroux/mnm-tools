@@ -64,15 +64,16 @@ const ORE_TIERS = [
 ];
 const ZONE_ORE_DEFAULT = { 'Evershade Weald': 'copper', 'Night Harbor': 'copper' };
 const HERB_TYPES = [
-  { name: 'Duneleaf', color: '#c9a266' }, { name: 'Ethtongue', color: '#8a5fc0' },
+  { name: "Dragon's Vigil", color: '#9c4a5e' }, { name: 'Duneleaf', color: '#c9a266' },
+  { name: 'Ethtongue', color: '#8a5fc0' }, { name: 'Flamestalk', color: '#d13a1e' },
   { name: 'Gadolvine', color: '#3e7a45' }, { name: 'Ghost Poppy', color: '#cf9fb4' },
-  { name: 'Ironroot', color: '#8b4a2e' }, { name: 'Lionleaf', color: '#d4a017' },
-  { name: 'Magebloom', color: '#4a7fd4' }, { name: 'Moonveil', color: '#a8a4d0' },
-  { name: "Nomad's Grace", color: '#3f9088' }, { name: 'Phoenix Flower', color: '#e0562a' },
-  { name: 'Selstie Kelp', color: '#2e8b6e' }, { name: 'Shadeshroom', color: '#6b5b73' },
-  { name: 'Stranglevine', color: '#5a6b2f' }, { name: 'Stygian Moss', color: '#2f4a38' },
-  { name: 'Sylvine', color: '#6fae3f' }, { name: 'Whispering Sage', color: '#8fa88a' },
-  { name: 'Witherweed', color: '#7d6e55' },
+  { name: 'Ironroot', color: '#8b4a2e' }, { name: 'Last Breath', color: '#9fb6c2' },
+  { name: 'Lionleaf', color: '#d4a017' }, { name: 'Magebloom', color: '#4a7fd4' },
+  { name: 'Moonveil', color: '#a8a4d0' }, { name: "Nomad's Grace", color: '#3f9088' },
+  { name: 'Phoenix Flower', color: '#e0562a' }, { name: 'Selstie Kelp', color: '#2e8b6e' },
+  { name: 'Shadeshroom', color: '#6b5b73' }, { name: 'Stranglevine', color: '#5a6b2f' },
+  { name: 'Stygian Moss', color: '#2f4a38' }, { name: 'Sylvine', color: '#6fae3f' },
+  { name: 'Whispering Sage', color: '#8fa88a' }, { name: 'Witherweed', color: '#7d6e55' },
 ];
 const WOOD_TYPES = [
   { name: 'Fine Wood', color: '#c08a3e' }, { name: 'Ironbark Wood', color: '#55524c' },

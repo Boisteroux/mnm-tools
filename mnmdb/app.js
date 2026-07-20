@@ -193,11 +193,14 @@ const ZONE_ORE_DEFAULT = {
 // plant. (The wiki has no per-herb art — most herbs share two generic sprites —
 // so color is the at-a-glance identifier; the hover label gives the name.)
 const HERB_TYPES = [
+  { name: "Dragon's Vigil",  color: '#9c4a5e' },
   { name: 'Duneleaf',        color: '#c9a266' },
   { name: 'Ethtongue',       color: '#8a5fc0' },
+  { name: 'Flamestalk',      color: '#d13a1e' },
   { name: 'Gadolvine',       color: '#3e7a45' },
   { name: 'Ghost Poppy',     color: '#cf9fb4' },
   { name: 'Ironroot',        color: '#8b4a2e' },
+  { name: 'Last Breath',     color: '#9fb6c2' },
   { name: 'Lionleaf',        color: '#d4a017' },
   { name: 'Magebloom',       color: '#4a7fd4' },
   { name: 'Moonveil',        color: '#a8a4d0' },
