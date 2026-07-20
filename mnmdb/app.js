@@ -3147,6 +3147,8 @@ function renderAdvanced() {
       '<div class="adv-controls bis-row1">' +
         '<select id="bis-class"><option value="">Any class</option>' + MNM_CLASSES.map((c) => '<option>' + c + '</option>').join('') + '</select>' +
         '<input id="bis-maxlvl" type="number" min="1" inputmode="numeric" placeholder="Max Mob Level">' +
+        '<select id="bis-depth" title="Build one best set, or list the top few items per slot"><option value="1">Best set</option><option value="3">Top 3 per slot</option><option value="5">Top 5 per slot</option></select>' +
+        '<select id="bis-wpn-method" title="How to rank weapons: by your stat priorities, by damage-to-delay ratio (a DPS proxy), or by raw max damage"><option value="stats">Weapon: stats</option><option value="ratio">Weapon: best ratio</option><option value="maxdmg">Weapon: max damage</option></select>' +
       '</div>' +
       '<div class="adv-controls bis-row2">' +
         [1, 2, 3].map((n) => '<span class="bis-prow">' + statOpt('bis-p' + n, 'Priority ' + n + '…') +
@@ -3156,7 +3158,7 @@ function renderAdvanced() {
     '</div>';
   ['adv-name', 'adv-slot', 'adv-class', 'adv-effect', 'adv-maxlvl', 'adv-magic'].concat(ADV_STATS.map((s) => 'adv-' + s))
     .forEach((id) => { const el = $(id); if (el) el.addEventListener('input', paintAdvanced); });
-  ['bis-p1', 'bis-p2', 'bis-p3'].forEach((id) => { const el = $(id); if (el) el.addEventListener('change', paintBis); });
+  ['bis-p1', 'bis-p2', 'bis-p3', 'bis-depth', 'bis-wpn-method'].forEach((id) => { const el = $(id); if (el) el.addEventListener('change', paintBis); });
   ['bis-w1', 'bis-w2', 'bis-w3', 'bis-maxlvl'].forEach((id) => { const el = $(id); if (el) el.addEventListener('input', paintBis); });
   // Picking a class auto-fills its suggested stats AND resets their weights to the
   // balanced default (not locked — change either after). Runs before the repaint.
@@ -3277,10 +3279,34 @@ function bisClassFits(w, cls) {
   if (c.includes('ALL')) return true;
   return new RegExp('\\b' + cls + '\\b').test(c);
 }
-// Pick the highest-scoring wearable item for every slot, given a class + ordered
-// priorities. Returns [{ slotLabel, item, score }]. Weapons: compares the best
-// 2-hander against the best main-hand + off-hand and keeps whichever scores more.
-function computeBis(cls, priorities, weights, maxlvl) {
+// An item that can only be equipped once — M&M's UNIQUE flag, or the classic LORE
+// "only one" flag. Such an item may fill at most one slot in a built set (so it
+// can't sit on both wrists, or be dual-wielded in main + off hand).
+function bisNoDup(w) {
+  const f = (w && w.flags) || [];
+  return f.includes('UNIQUE') || f.includes('LORE');
+}
+// Weapons can be ranked three ways (the "Weapon priority" picker): 'stats' = the
+// same weighted stat score as armor; 'ratio' = damage-to-delay (a DPS proxy — for
+// dual-wield the two hands' ratios sum, matching combined DPS); 'maxdmg' = raw max
+// damage on the item. Candidates carry dmg/delay so the metric is cheap to read.
+function bisWpnMetric(cand, method) {
+  if (!cand) return 0;
+  if (method === 'ratio') return cand.delay ? (cand.dmg || 0) / cand.delay : 0;
+  if (method === 'maxdmg') return cand.dmg || 0;
+  return cand.sc; // 'stats'
+}
+// Pick the best-scoring wearable items for every slot, given a class + ordered
+// priorities. `depth` = how many candidates to keep per slot (1 = build one
+// equippable set; >1 = a top-N browse list). `wpnMethod` ranks weapons (see
+// bisWpnMetric). Returns { mode, groups, weapon }: `groups` is one entry per armor
+// slot with a ranked `picks` array; `weapon` carries the best two-hander AND the
+// best main-hand + off-hand so the caller can show a 2H-vs-dual-wield comparison.
+// In set mode a non-unique item may repeat across a slot's copies (two rings, two
+// kukris) but a UNIQUE/LORE item is used at most once across the whole set.
+function computeBis(cls, priorities, weights, maxlvl, depth, wpnMethod) {
+  depth = Math.max(1, depth || 1);
+  wpnMethod = wpnMethod || 'stats';
   const score = (w) => priorities.reduce((s, p, idx) => s + (weights[idx] || 0) * bisStatVal(w, p), 0);
   const canDualWield = !cls || DUAL_WIELD.has(cls);
   const armor = {}; // slotKey -> [{ item, sc }]
@@ -3297,37 +3323,61 @@ function computeBis(cls, priorities, weights, maxlvl) {
     const twoH = parsed.twoH || /two\s*hand|2\s*h(?:and)?\b/i.test(w.handed || '');
     if (!slots.size) continue;
     const sc = score(w);
+    const wc = { item: i, sc, dmg: w.dmg, delay: w.delay }; // weapon candidate: carries dmg/delay for ratio/maxdmg
     for (const s of slots) {
-      if (s === 'PRIMARY') (twoH ? wpn.twoH : wpn.primary).push({ item: i, sc });
+      if (s === 'PRIMARY') (twoH ? wpn.twoH : wpn.primary).push(wc);
       else if (s === 'SECONDARY') {
         if (twoH) continue;                                   // a 2-hander can't go in the off-hand
-        if (canDualWield || w.dmg == null) wpn.secondary.push({ item: i, sc }); // non-dual-wielders: shields/off-hand only (no weapon)
+        if (canDualWield || w.dmg == null) wpn.secondary.push(wc); // non-dual-wielders: shields/off-hand only (no weapon)
       } else (armor[s] = armor[s] || []).push({ item: i, sc });
     }
   }
-  const chosen = [];
+  const bySc = (a, b) => b.sc - a.sc;
+  const byMetric = (a, b) => bisWpnMetric(b, wpnMethod) - bisWpnMetric(a, wpnMethod);
+
+  if (depth > 1) {
+    // Browse: the top `depth` candidates per slot (each pile already holds one entry
+    // per item, so a plain sort + slice is already distinct).
+    const groups = BIS_SLOTS.map((def) => ({ label: def.label, n: def.n, picks: (armor[def.key] || []).slice().sort(bySc).slice(0, depth) }));
+    const wsort = (a) => a.slice().sort(byMetric).slice(0, depth);
+    const weapon = { canDualWield, method: wpnMethod, twoH: wsort(wpn.twoH), primary: wsort(wpn.primary), secondary: wsort(wpn.secondary) };
+    weapon.twoHMetric = bisWpnMetric(weapon.twoH[0], wpnMethod);
+    weapon.dualMetric = bisWpnMetric(weapon.primary[0], wpnMethod) + bisWpnMetric(weapon.secondary[0], wpnMethod);
+    weapon.recommend = (weapon.twoHMetric === 0 && weapon.dualMetric === 0) ? null : (weapon.twoHMetric >= weapon.dualMetric ? '2h' : 'dual');
+    return { mode: 'browse', groups, weapon };
+  }
+
+  // Best set (depth === 1): fill each slot allowing a non-unique item to repeat
+  // across its copies, but a UNIQUE/LORE item only once across the whole set.
+  const usedUnique = new Set();
+  const pickAllowed = (list, used) => {
+    for (const cand of list) { if (bisNoDup(cand.item.wiki) && used.has(cand.item.name)) continue; return cand; }
+    return null;
+  };
+  const groups = [];
   for (const def of BIS_SLOTS) {
-    const arr = (armor[def.key] || []).sort((a, b) => b.sc - a.sc);
-    const seen = new Set();
-    let placed = 0;
-    for (const c of arr) {
-      if (seen.has(c.item.name)) continue; seen.add(c.item.name); // don't equip the same item twice
-      chosen.push({ slotLabel: def.label + (def.n > 1 ? ' ' + (placed + 1) : ''), item: c.item, score: c.sc });
-      if (++placed >= def.n) break;
+    const list = (armor[def.key] || []).slice().sort(bySc);
+    const picks = [];
+    for (let c = 0; c < def.n; c++) {
+      const chosen = pickAllowed(list, usedUnique);
+      if (chosen && bisNoDup(chosen.item.wiki)) usedUnique.add(chosen.item.name);
+      picks.push(chosen || null);
     }
-    for (; placed < def.n; placed++) chosen.push({ slotLabel: def.label + (def.n > 1 ? ' ' + (placed + 1) : ''), item: null, score: 0 });
+    groups.push({ label: def.label, n: def.n, picks });
   }
-  const top = (a) => a.sort((x, y) => y.sc - x.sc)[0] || null;
-  const t2 = top(wpn.twoH), tp = top(wpn.primary), ts = top(wpn.secondary);
-  const dualScore = (tp ? tp.sc : 0) + (ts ? ts.sc : 0);
-  if (t2 && (t2.sc >= dualScore)) {
-    chosen.push({ slotLabel: 'Primary (2H)', item: t2.item, score: t2.sc });
-    chosen.push({ slotLabel: 'Secondary', item: null, score: 0 });
-  } else {
-    chosen.push({ slotLabel: 'Primary', item: tp ? tp.item : null, score: tp ? tp.sc : 0 });
-    chosen.push({ slotLabel: 'Secondary', item: ts ? ts.item : null, score: ts ? ts.sc : 0 });
-  }
-  return chosen;
+  // Weapons: the 2-hander and the main + off-hand pair are alternatives (only one is
+  // worn), so evaluate each against the armor uniques independently (dual on a copy
+  // of the set). A unique main-hand can't also be the off-hand; a non-unique one can.
+  const best2H = pickAllowed(wpn.twoH.slice().sort(byMetric), usedUnique);
+  const dualUsed = new Set(usedUnique);
+  const bestMain = pickAllowed(wpn.primary.slice().sort(byMetric), dualUsed);
+  if (bestMain && bisNoDup(bestMain.item.wiki)) dualUsed.add(bestMain.item.name);
+  const bestOff = pickAllowed(wpn.secondary.slice().sort(byMetric), dualUsed);
+  const weapon = { canDualWield, method: wpnMethod, twoH: best2H ? [best2H] : [], primary: bestMain ? [bestMain] : [], secondary: bestOff ? [bestOff] : [] };
+  weapon.twoHMetric = bisWpnMetric(best2H, wpnMethod);
+  weapon.dualMetric = bisWpnMetric(bestMain, wpnMethod) + bisWpnMetric(bestOff, wpnMethod);
+  weapon.recommend = (weapon.twoHMetric === 0 && weapon.dualMetric === 0) ? null : (weapon.twoHMetric >= weapon.dualMetric ? '2h' : 'dual');
+  return { mode: 'set', groups, weapon };
 }
 // Drop-level tag shown on each BiS row when a Max Mob Level is set. Colour tracks
 // how the item's lowest known dropper level sits against the cap: green = well
@@ -3351,26 +3401,86 @@ function paintBis() {
   }
   const maxlvlRaw = $('bis-maxlvl').value;
   const maxlvl = maxlvlRaw !== '' ? +maxlvlRaw : null;
+  const depth = Math.max(1, +(($('bis-depth') || {}).value) || 1);
+  const wpnMethod = (($('bis-wpn-method') || {}).value) || 'stats';
   const box = $('bis-results');
   if (!priorities.length) { box.innerHTML = '<p class="sub">Choose at least one stat priority to build a set.</p>'; return; }
-  const set = computeBis(cls, priorities, weights, maxlvl);
-  const filled = set.filter((r) => r.item);
-  // Totals: summed priority-stat points + total weighted score across the set.
-  const totalScore = filled.reduce((s, r) => s + r.score, 0);
-  const totalStat = {}; priorities.forEach((p) => { totalStat[p] = filled.reduce((s, r) => s + bisStatVal(r.item.wiki, p), 0); });
+  const { groups, weapon } = computeBis(cls, priorities, weights, maxlvl, depth, wpnMethod);
+
+  // One table row; `item` may be null (empty slot). `badge` trails the slot label;
+  // `info` trails the item cell (used for the weapon damage/delay/ratio tag).
+  const row = (slotLabel, item, sc, badge, info) =>
+    '<tr' + (item ? ' data-item="' + esc(item.name) + '"' : ' class="noprice"') + '>' +
+    '<td class="sample">' + esc(slotLabel) + (badge || '') + '</td>' +
+    '<td>' + (item ? itemLink(item.id, item.name) +
+        (item.wiki.flags && item.wiki.flags.includes('MAGIC') ? ' <span class="tag good">MAGIC</span>' : '') +
+        (bisNoDup(item.wiki) ? ' <span class="tag" title="Only one can be equipped">UNIQUE</span>' : '') +
+        (info || '') +
+        (maxlvl != null ? bisDropTag(item, maxlvl) : '') : '<span class="muted">— none —</span>') + '</td>' +
+    priorities.map((p) => '<td class="num">' + (item ? (bisStatVal(item.wiki, p) || '') : '') + '</td>').join('') +
+    '<td class="num">' + (item ? Math.round(sc * 10) / 10 : '') + '</td></tr>';
+  // Weapon damage tag: dmg · delay · ratio, so the damage numbers are visible whatever
+  // the ranking method is.
+  const wpnTag = (cand) => {
+    if (!cand) return '';
+    const w = cand.item.wiki, bits = [];
+    if (w.dmg != null) bits.push(w.dmg + ' dmg');
+    if (w.delay != null) bits.push(w.delay + ' dly');
+    if (w.dmg != null && w.delay) bits.push('r' + (w.dmg / w.delay).toFixed(2));
+    return bits.length ? ' <span class="tag" title="Damage · delay · damage-to-delay ratio">' + bits.join(' · ') + '</span>' : '';
+  };
   const head = '<tr><th>Slot</th><th>Item</th>' + priorities.map((p) => '<th class="num">' + p + '</th>').join('') + '<th class="num">Score</th></tr>';
-  const rows = set.map((r) => '<tr' + (r.item ? ' data-item="' + esc(r.item.name) + '"' : ' class="noprice"') + '><td class="sample">' + esc(r.slotLabel) + '</td>' +
-    '<td>' + (r.item ? itemLink(r.item.id, r.item.name) + (r.item.wiki.flags && r.item.wiki.flags.includes('MAGIC') ? ' <span class="tag good">MAGIC</span>' : '') + (maxlvl != null ? bisDropTag(r.item, maxlvl) : '') : '<span class="muted">— none —</span>') + '</td>' +
-    priorities.map((p) => '<td class="num">' + (r.item ? (bisStatVal(r.item.wiki, p) || '') : '') + '</td>').join('') +
-    '<td class="num">' + (r.item ? Math.round(r.score * 10) / 10 : '') + '</td></tr>').join('');
-  const totalRow = '<tr class="bis-total"><td></td><td><b>Set total</b></td>' +
-    priorities.map((p) => '<td class="num"><b>' + (totalStat[p] || 0) + '</b></td>').join('') +
-    '<td class="num"><b>' + Math.round(totalScore * 10) / 10 + '</b></td></tr>';
-  box.innerHTML = '<p class="sub">' + filled.length + ' slots filled' + (cls ? ' for <b>' + esc(cls) + '</b>' : '') +
-      ' · weights: ' + priorities.map((p, idx) => esc(p) + ' ×' + weights[idx]).join(', ') +
-      (maxlvl != null ? ' · excluding items known to drop above L' + maxlvl : '') + '</p>' +
-    '<div class="card"><table>' + head + '<tbody>' + rows + totalRow + '</tbody></table></div>' +
-    '<p class="note">Highest-scoring <b>mix</b> of your chosen stats per slot — an item wins if its weighted total beats the rest, so a high 2nd-priority item can outrank a slightly better 1st. Ignores stats/effects you didn’t prioritise and whether you can actually get the item. Hover any item for its full stats.</p>';
+  const bestBadge = ' <span class="tag good" title="Higher combined weapon score than the alternative setup">✓ best</span>';
+  const mLabel = wpnMethod === 'ratio' ? 'ratio' : wpnMethod === 'maxdmg' ? 'max dmg' : 'stats';
+  const mFmt = (v) => wpnMethod === 'ratio' ? v.toFixed(2) : wpnMethod === 'maxdmg' ? Math.round(v) : Math.round(v * 10) / 10;
+  const weaponCmp = ' · weapon by ' + mLabel + ': 2H ' + mFmt(weapon.twoHMetric) + ' vs 1H ' + mFmt(weapon.dualMetric);
+  const weightNote = ' · weights: ' + priorities.map((p, idx) => esc(p) + ' ×' + weights[idx]).join(', ') +
+    (maxlvl != null ? ' · excluding items known to drop above L' + maxlvl : '');
+
+  let rowsHtml = '', subHtml = '', noteHtml = '';
+  if (depth === 1) {
+    // ---- Best set: one equippable set, with a total. ----
+    const setPicks = []; // only the items that count toward the total (recommended weapon)
+    for (const g of groups) {
+      for (let i = 0; i < g.n; i++) {
+        const pick = g.picks[i];
+        rowsHtml += row(g.label + (g.n > 1 ? ' ' + (i + 1) : ''), pick ? pick.item : null, pick ? pick.sc : 0);
+        if (pick) setPicks.push(pick);
+      }
+    }
+    // Weapons: always show BOTH the 2H option and the 1H (main + off) option, and
+    // badge whichever combined score is higher — only the winner feeds the total.
+    const rec2h = weapon.recommend === '2h', recDual = weapon.recommend === 'dual';
+    const w2 = weapon.twoH[0], wp = weapon.primary[0], ws = weapon.secondary[0];
+    rowsHtml += row('Primary (2H)', w2 ? w2.item : null, w2 ? w2.sc : 0, rec2h ? bestBadge : '', wpnTag(w2));
+    rowsHtml += row('Primary (1H)', wp ? wp.item : null, wp ? wp.sc : 0, recDual ? bestBadge : '', wpnTag(wp));
+    rowsHtml += row(weapon.canDualWield ? 'Off-hand (1H)' : 'Off-hand', ws ? ws.item : null, ws ? ws.sc : 0, '', wpnTag(ws));
+    if (rec2h) { if (w2) setPicks.push(w2); } else { if (wp) setPicks.push(wp); if (ws) setPicks.push(ws); }
+
+    const totalScore = setPicks.reduce((s, r) => s + r.sc, 0);
+    const totalStat = {}; priorities.forEach((p) => { totalStat[p] = setPicks.reduce((s, r) => s + bisStatVal(r.item.wiki, p), 0); });
+    rowsHtml += '<tr class="bis-total"><td></td><td><b>Set total</b></td>' +
+      priorities.map((p) => '<td class="num"><b>' + (totalStat[p] || 0) + '</b></td>').join('') +
+      '<td class="num"><b>' + Math.round(totalScore * 10) / 10 + '</b></td></tr>';
+    subHtml = setPicks.length + ' slots filled' + (cls ? ' for <b>' + esc(cls) + '</b>' : '') + weightNote + weaponCmp;
+    noteHtml = 'Highest-scoring <b>mix</b> of your chosen stats per slot — an item wins if its weighted total beats the rest, so a high 2nd-priority item can outrank a slightly better 1st. A <span class="tag">UNIQUE</span> item fills only one slot (never both wrists / hands); non-unique items may repeat. The weapon row marked <b>✓ best</b> feeds the set total; the other is shown so you can weigh a two-hander against dual-wielding. The <b>Score</b> column is always the stat score, even when weapons are ranked by ratio or max damage. Hover any item for its full stats.';
+  } else {
+    // ---- Top-N browse: the top `depth` candidates per slot (not one equippable set). ----
+    const block = (label, picks, infoFn) => {
+      let h = '';
+      for (let i = 0; i < depth; i++) { const p = picks[i]; h += row(label + ' #' + (i + 1), p ? p.item : null, p ? p.sc : 0, '', infoFn && p ? infoFn(p) : ''); }
+      return h;
+    };
+    for (const g of groups) rowsHtml += block(g.label, g.picks);
+    rowsHtml += block('Two-hand', weapon.twoH, wpnTag);
+    rowsHtml += block('Main-hand', weapon.primary, wpnTag);
+    rowsHtml += block(weapon.canDualWield ? 'Off-hand' : 'Off-hand / shield', weapon.secondary, wpnTag);
+    subHtml = 'Top ' + depth + ' per slot' + (cls ? ' for <b>' + esc(cls) + '</b>' : '') + weightNote + ' · weapons ranked by ' + mLabel;
+    noteHtml = 'The top ' + depth + ' items for each slot — armor by your weighted stat mix, weapons by <b>' + mLabel + '</b>. A browse view, not one equippable set (rings and ears list their own top ' + depth + ', and weapons list two-hand, main-hand and off-hand options separately). Hover any item for its full stats.';
+  }
+  box.innerHTML = '<p class="sub">' + subHtml + '</p>' +
+    '<div class="card"><table>' + head + '<tbody>' + rowsHtml + '</tbody></table></div>' +
+    '<p class="note">' + noteHtml + '</p>';
   itemHoverInit();
 }
 
