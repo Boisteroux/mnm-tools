@@ -3225,7 +3225,7 @@ function paintAdvanced() {
     if (eff) { if (!w.effect) return false; if (eff !== 'any' && (w.effect.trigger || '') !== eff) return false; }
     if (maxlvl != null && (dropLvl == null || dropLvl > maxlvl)) return false; // farmable from a mob at/below this level
     if (magic && !(w.flags && w.flags.includes('MAGIC'))) return false;
-    if (crafted && (!isCraftedResult(i) || isDroppable(i))) return false; // a recipe result that no mob drops
+    if (crafted && !(isUnreleased(i.name) || (isCraftedResult(i) && !isDroppable(i)))) return false; // a recipe result that no mob drops — plus not-yet-in-game crafted gear like mithril
     for (const s in mins) if (advStatOf(w, s) < mins[s]) return false;
     return true;
   }).sort((a, b) => {
