@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-07-20T16:43:30.852Z",
+  "generatedAt": "2026-07-21T21:36:52.540Z",
   "source": "mnm-tools",
-  "ledgerFiles": 13,
-  "events": 2490,
+  "ledgerFiles": 20,
+  "events": 4876,
   "contributors": [],
   "mobs": {
     "a large rat": {
@@ -169,66 +169,79 @@
       "corpses": 2
     },
     "a skeletal cleric": {
-      "kills": 36,
+      "kills": 45,
       "drops": {
-        "Bone Chips": 16,
-        "Scorched Skeletal Remains": 5,
-        "Cloth Scraps": 11,
+        "Bone Chips": 22,
+        "Scorched Skeletal Remains": 6,
+        "Cloth Scraps": 14,
         "Tattered Cloth Veil": 3,
         "Tattered Cloth Belt": 1,
         "Tattered Cloth Gorget": 2,
         "Rusty Spear": 1,
         "Tattered Cloth Mantle": 1,
         "Tattered Cloth Gloves": 1,
-        "Tattered Cloth Cape": 1
+        "Tattered Cloth Cape": 1,
+        "Rawhide Scraps": 2,
+        "Tattered Cloth Robe": 1,
+        "Tattered Rawhide Belt": 1
       },
       "zones": {
-        "Tomb of the Last Wyrmsbane": 88
+        "Tomb of the Last Wyrmsbane": 119
       },
-      "coin": 214,
-      "corpses": 25
+      "coin": 317,
+      "corpses": 33
     },
     "a skeletal warrior": {
-      "kills": 98,
+      "kills": 297,
       "drops": {
-        "Cloth Scraps": 45,
-        "Bone Chips": 48,
-        "Rawhide Scraps": 35,
-        "Scorched Skeletal Remains": 3,
-        "Tattered Cloth Veil": 1,
-        "Tattered Rawhide Cap": 1,
+        "Cloth Scraps": 115,
+        "Bone Chips": 119,
+        "Rawhide Scraps": 94,
+        "Scorched Skeletal Remains": 12,
+        "Tattered Cloth Veil": 5,
+        "Tattered Rawhide Cap": 3,
         "Tattered Cloth Boots": 1,
-        "Tattered Rawhide Belt": 1,
-        "Tattered Rawhide Cloak": 4,
-        "Tattered Cloth Cap": 3,
-        "Tattered Rawhide Boots": 1,
-        "Tattered Rawhide Mask": 3,
+        "Tattered Rawhide Belt": 3,
+        "Tattered Rawhide Cloak": 6,
+        "Tattered Cloth Cap": 5,
+        "Tattered Rawhide Boots": 2,
+        "Tattered Rawhide Mask": 6,
         "Spirit World Ch. 5": 1,
-        "Tattered Cloth Robe": 3,
+        "Tattered Cloth Robe": 5,
         "Tattered Rawhide Shoulderpads": 2,
-        "Tattered Cloth Belt": 1,
-        "Tattered Rawhide Tunic": 1,
-        "Tattered Cloth Gorget": 1,
-        "Tattered Cloth Gloves": 1,
-        "Tattered Rawhide Bracer": 1,
-        "Tattered Cloth Bracer": 1,
-        "Tattered Cloth Shirt": 1
+        "Tattered Cloth Belt": 2,
+        "Tattered Rawhide Tunic": 2,
+        "Tattered Cloth Gorget": 4,
+        "Tattered Cloth Gloves": 2,
+        "Tattered Rawhide Bracer": 2,
+        "Tattered Cloth Bracer": 7,
+        "Tattered Cloth Shirt": 6,
+        "Tattered Cloth Pantaloons": 1,
+        "Tattered Rawhide Gloves": 6,
+        "Tattered Cloth Tunic": 3,
+        "Tattered Cloth Cape": 1,
+        "Tattered Cloth Mantle": 4,
+        "Tattered Rawhide Vest": 3,
+        "Tattered Rawhide Leggings": 5,
+        "Rusty Longsword": 1,
+        "Rusty Battle Axe": 1,
+        "Tattered Rawhide Gorget": 1
       },
       "zones": {
-        "Tomb of the Last Wyrmsbane": 286
+        "Tomb of the Last Wyrmsbane": 886
       },
-      "coin": 1662,
-      "corpses": 82
+      "coin": 6014,
+      "corpses": 197
     },
     "a skeletal fighter": {
-      "kills": 112,
+      "kills": 133,
       "drops": {
-        "Cloth Scraps": 40,
-        "Bone Chips": 44,
-        "Scorched Skeletal Remains": 12,
+        "Cloth Scraps": 44,
+        "Bone Chips": 50,
+        "Scorched Skeletal Remains": 13,
         "Rusty Scimitar": 2,
         "Rusty Great Scythe": 2,
-        "Tattered Cloth Bracer": 2,
+        "Tattered Cloth Bracer": 3,
         "Scorched Academy Folio": 1,
         "Tattered Cloth Mantle": 3,
         "Rusty Maul": 1,
@@ -241,15 +254,16 @@
         "Tattered Cloth Robe": 1,
         "Rusty Warhammer": 1,
         "Rusty Shortsword": 1,
-        "Tattered Cloth Belt": 1,
+        "Tattered Cloth Belt": 2,
         "Rusty Trident": 1,
-        "Tattered Cloth Cape": 1
+        "Tattered Cloth Cape": 1,
+        "Rusty War Lance": 1
       },
       "zones": {
-        "Tomb of the Last Wyrmsbane": 289
+        "Tomb of the Last Wyrmsbane": 337
       },
-      "coin": 719,
-      "corpses": 60
+      "coin": 861,
+      "corpses": 70
     },
     "a lawbreaker": {
       "kills": 3,
@@ -683,64 +697,102 @@
       "corpses": 1
     },
     "a skeletal priest": {
-      "kills": 3,
+      "kills": 25,
       "drops": {
-        "Bone Chips": 1,
-        "Cloth Scraps": 1,
-        "Tattered Cloth Mantle": 1,
-        "Tattered Rawhide Mask": 1
-      },
-      "zones": {
-        "Tomb of the Last Wyrmsbane": 8
-      },
-      "coin": 56,
-      "corpses": 3
-    },
-    "a skeletal cavalier": {
-      "kills": 2,
-      "drops": {
-        "Cloth Scraps": 2,
-        "Tattered Rawhide Leggings": 1,
-        "Bone Chips": 1,
-        "Rawhide Scraps": 1
-      },
-      "zones": {
-        "Tomb of the Last Wyrmsbane": 8
-      },
-      "coin": 36,
-      "corpses": 2
-    },
-    "a skeletal marksman": {
-      "kills": 10,
-      "drops": {
-        "Tattered Rawhide Bracer": 1,
-        "Tattered Rawhide Boots": 1,
-        "Rawhide Scraps": 4,
-        "Cloth Scraps": 3,
+        "Bone Chips": 9,
+        "Cloth Scraps": 8,
+        "Tattered Cloth Mantle": 2,
         "Tattered Rawhide Mask": 1,
-        "Tattered Cloth Cape": 1,
-        "Tattered Rawhide Shoulderpads": 1,
+        "Tattered Rawhide Cloak": 1,
+        "Rawhide Scraps": 5,
+        "Tattered Rawhide Gloves": 2,
+        "Tattered Rawhide Leggings": 1,
+        "Tattered Rawhide Vest": 1,
+        "Tattered Cloth Boots": 1,
+        "Tattered Cloth Gloves": 1,
         "Scorched Skeletal Remains": 1
       },
       "zones": {
-        "Tomb of the Last Wyrmsbane": 23
+        "Tomb of the Last Wyrmsbane": 74
       },
-      "coin": 206,
-      "corpses": 10
+      "coin": 460,
+      "corpses": 16
+    },
+    "a skeletal cavalier": {
+      "kills": 84,
+      "drops": {
+        "Cloth Scraps": 23,
+        "Tattered Rawhide Leggings": 1,
+        "Bone Chips": 30,
+        "Rawhide Scraps": 35,
+        "Tattered Rawhide Shoulderpads": 1,
+        "Tattered Cloth Tunic": 2,
+        "Tattered Cloth Gorget": 1,
+        "Tattered Rawhide Mask": 3,
+        "Tattered Rawhide Gorget": 2,
+        "Tattered Rawhide Tunic": 1,
+        "Tattered Cloth Boots": 2,
+        "Cracked Staff": 1,
+        "Tattered Cloth Pantaloons": 2,
+        "Tattered Cloth Shirt": 2,
+        "Tattered Rawhide Cloak": 1,
+        "Scorched Skeletal Remains": 2,
+        "Tattered Rawhide Vest": 1,
+        "Tattered Cloth Belt": 1,
+        "Tattered Cloth Cap": 2,
+        "Tattered Cloth Mantle": 2,
+        "Tattered Rawhide Gloves": 1,
+        "Tattered Cloth Bracer": 1
+      },
+      "zones": {
+        "Tomb of the Last Wyrmsbane": 256
+      },
+      "coin": 1916,
+      "corpses": 59
+    },
+    "a skeletal marksman": {
+      "kills": 30,
+      "drops": {
+        "Tattered Rawhide Bracer": 2,
+        "Tattered Rawhide Boots": 1,
+        "Rawhide Scraps": 11,
+        "Cloth Scraps": 10,
+        "Tattered Rawhide Mask": 1,
+        "Tattered Cloth Cape": 1,
+        "Tattered Rawhide Shoulderpads": 2,
+        "Scorched Skeletal Remains": 2,
+        "Tattered Cloth Shirt": 2,
+        "Tattered Cloth Belt": 1,
+        "Bone Chips": 7,
+        "Worn Buckler": 1,
+        "Tattered Cloth Cap": 1,
+        "Tattered Cloth Gorget": 1,
+        "Worn Bow": 1,
+        "Tattered Cloth Gloves": 1
+      },
+      "zones": {
+        "Tomb of the Last Wyrmsbane": 87
+      },
+      "coin": 589,
+      "corpses": 21
     },
     "Ariblast the Wicked": {
-      "kills": 2,
+      "kills": 3,
       "drops": {
         "Moldering Robes": 1,
         "Rawhide Scraps": 1,
-        "Ancient Painted Urn": 1,
-        "Skeletal Sight": 1
+        "Ancient Painted Urn": 2,
+        "Skeletal Sight": 2,
+        "Bone Chips": 1,
+        "Cloth Scraps": 1,
+        "Tattered Rawhide Leggings": 1,
+        "Worn Bow": 1
       },
       "zones": {
-        "Tomb of the Last Wyrmsbane": 6
+        "Tomb of the Last Wyrmsbane": 13
       },
-      "coin": 58,
-      "corpses": 2
+      "coin": 81,
+      "corpses": 3
     },
     "an ashira warrior": {
       "kills": 16,
@@ -793,6 +845,241 @@
       },
       "coin": 227,
       "corpses": 12
+    },
+    "a skeletal archer": {
+      "kills": 15,
+      "drops": {
+        "Tattered Cloth Bracer": 1,
+        "Rawhide Scraps": 1,
+        "Bone Chips": 5,
+        "Tattered Cloth Pantaloons": 2,
+        "Tattered Rawhide Tunic": 1,
+        "Cloth Scraps": 5,
+        "Worn Bow": 2,
+        "Tattered Cloth Robe": 1,
+        "Tattered Rawhide Bracer": 1
+      },
+      "zones": {
+        "Tomb of the Last Wyrmsbane": 48
+      },
+      "coin": 172,
+      "corpses": 7
+    },
+    "a skeletal defender": {
+      "kills": 102,
+      "drops": {
+        "Cloth Scraps": 35,
+        "Bone Chips": 48,
+        "Rawhide Scraps": 19,
+        "Tattered Rawhide Boots": 3,
+        "Tattered Cloth Gorget": 1,
+        "Tattered Cloth Tunic": 2,
+        "Tattered Cloth Bracer": 2,
+        "Tattered Rawhide Tunic": 1,
+        "Tattered Cloth Cap": 1,
+        "Tattered Rawhide Cap": 2,
+        "Tattered Cloth Gloves": 3,
+        "Tattered Cloth Boots": 1,
+        "Tattered Rawhide Gloves": 1,
+        "Rusty Scimitar": 1,
+        "Tattered Cloth Shirt": 1,
+        "Tattered Cloth Robe": 1,
+        "Tattered Rawhide Cloak": 1,
+        "Tattered Rawhide Gorget": 1,
+        "Tattered Rawhide Mask": 1,
+        "Tattered Cloth Belt": 1,
+        "Tattered Rawhide Bracer": 1
+      },
+      "zones": {
+        "Tomb of the Last Wyrmsbane": 324
+      },
+      "coin": 3499,
+      "corpses": 66
+    },
+    "a skeletal vicar": {
+      "kills": 32,
+      "drops": {
+        "Tattered Rawhide Boots": 2,
+        "Bone Chips": 15,
+        "Cloth Scraps": 9,
+        "Rawhide Scraps": 11,
+        "Tattered Cloth Gorget": 3,
+        "Tattered Rawhide Cap": 1,
+        "Tattered Cloth Mantle": 1,
+        "Tattered Rawhide Gorget": 2,
+        "Tattered Cloth Cap": 1,
+        "Tattered Cloth Cape": 1,
+        "Tattered Rawhide Gloves": 1,
+        "Scorched Skeletal Remains": 1,
+        "Tattered Rawhide Mask": 1,
+        "Tattered Cloth Shirt": 1
+      },
+      "zones": {
+        "Tomb of the Last Wyrmsbane": 107
+      },
+      "coin": 1085,
+      "corpses": 24
+    },
+    "a skeletal knight": {
+      "kills": 65,
+      "drops": {
+        "Cloth Scraps": 20,
+        "Bone Chips": 27,
+        "Rawhide Scraps": 20,
+        "Tattered Rawhide Gloves": 2,
+        "Tattered Cloth Gloves": 2,
+        "Cracked Staff": 1,
+        "Tattered Rawhide Shoulderpads": 1,
+        "Tattered Cloth Bracer": 1,
+        "Tattered Rawhide Boots": 1,
+        "Tattered Cloth Boots": 2,
+        "Tattered Rawhide Cap": 1,
+        "Tattered Rawhide Leggings": 2,
+        "Rusty Spear": 2,
+        "Tattered Rawhide Tunic": 2,
+        "Tattered Cloth Belt": 1,
+        "Tattered Rawhide Belt": 1,
+        "Tattered Cloth Gorget": 1,
+        "Tattered Cloth Robe": 1,
+        "Tattered Cloth Tunic": 1
+      },
+      "zones": {
+        "Tomb of the Last Wyrmsbane": 181
+      },
+      "coin": 2379,
+      "corpses": 47
+    },
+    "a Wyrmsbane crusader": {
+      "kills": 54,
+      "drops": {
+        "Tattered Cloth Cap": 1,
+        "Tattered Rawhide Gloves": 2,
+        "Tattered Cloth Boots": 3,
+        "Spectral Dust": 17,
+        "Cloth Scraps": 15,
+        "Tattered Cloth Tunic": 1,
+        "Tattered Cloth Robe": 1,
+        "Rawhide Scraps": 15,
+        "Tattered Cloth Belt": 2,
+        "Tattered Rawhide Cap": 1,
+        "Tattered Rawhide Tunic": 1,
+        "Worn Bow": 1,
+        "Tattered Rawhide Belt": 1,
+        "Tattered Cloth Gloves": 1,
+        "Tattered Rawhide Bracer": 1,
+        "Tattered Cloth Pantaloons": 1
+      },
+      "zones": {
+        "Tomb of the Last Wyrmsbane": 164
+      },
+      "coin": 2351,
+      "corpses": 29
+    },
+    "a skeletal champion": {
+      "kills": 16,
+      "drops": {
+        "Tattered Rawhide Bracer": 2,
+        "Cloth Scraps": 6,
+        "Tattered Rawhide Mask": 1,
+        "Rawhide Scraps": 4,
+        "Tattered Cloth Boots": 1,
+        "Tattered Cloth Belt": 1,
+        "Tattered Cloth Mantle": 1,
+        "Tattered Rawhide Belt": 1
+      },
+      "zones": {
+        "Tomb of the Last Wyrmsbane": 36
+      },
+      "coin": 610,
+      "corpses": 12
+    },
+    "a skeletal monk": {
+      "kills": 101,
+      "drops": {
+        "Rawhide Scraps": 14,
+        "Bone Chips": 16,
+        "Tattered Cloth Cap": 1,
+        "Tattered Rawhide Tunic": 2,
+        "Rusty Warhammer": 1,
+        "Tattered Rawhide Shoulderpads": 2,
+        "Cloth Scraps": 22,
+        "Tattered Rawhide Gorget": 3,
+        "Tattered Rawhide Cap": 3,
+        "Tattered Cloth Shirt": 2,
+        "Tattered Cloth Belt": 1,
+        "Tattered Cloth Gloves": 1,
+        "Tattered Cloth Veil": 1,
+        "Scorched Skeletal Remains": 6,
+        "Tattered Cloth Pantaloons": 1,
+        "Tattered Cloth Mantle": 2,
+        "Tattered Rawhide Bracer": 1,
+        "Tattered Cloth Tunic": 2,
+        "Cracked Staff": 1,
+        "Tattered Rawhide Cloak": 1,
+        "Tattered Cloth Bracer": 2,
+        "Tattered Cloth Boots": 1,
+        "Tattered Rawhide Leggings": 1,
+        "Tattered Rawhide Gloves": 1,
+        "Tattered Cloth Cape": 1
+      },
+      "zones": {
+        "Tomb of the Last Wyrmsbane": 263
+      },
+      "coin": 1966,
+      "corpses": 36
+    },
+    "High Marshal Fionna Bromm": {
+      "kills": 2,
+      "drops": {
+        "Crystallized Shard": 1,
+        "Marshal's Insignia Bracer": 1,
+        "Spectral Dust": 1,
+        "Hide Scraps": 1
+      },
+      "zones": {
+        "Tomb of the Last Wyrmsbane": 7
+      },
+      "coin": 96,
+      "corpses": 2
+    },
+    "Grandmaster Gildas": {
+      "kills": 1,
+      "drops": {
+        "Cloth Scraps": 1,
+        "Grandmaster's Dark Leather Hood": 1
+      },
+      "zones": {
+        "Tomb of the Last Wyrmsbane": 4
+      },
+      "coin": 28,
+      "corpses": 2
+    },
+    "Grandmaster Obadiah": {
+      "kills": 1,
+      "drops": {
+        "Ghostly Cloth Scraps": 1,
+        "Shawl of Piety": 1,
+        "Spectral Dust": 1
+      },
+      "zones": {
+        "Tomb of the Last Wyrmsbane": 6
+      },
+      "coin": 28,
+      "corpses": 2
+    },
+    "Lieutenant Gregan Snyde": {
+      "kills": 1,
+      "drops": {
+        "Crystallized Shard": 1,
+        "Tattered Cloth Cape": 1,
+        "Spectral Dust": 1,
+        "Lieutenant's Hunting Pants": 1
+      },
+      "zones": {
+        "Tomb of the Last Wyrmsbane": 5
+      },
+      "coin": 26,
+      "corpses": 2
     }
   },
   "items": [
@@ -821,9 +1108,9 @@
       "droppedBy": [
         {
           "mob": "Ariblast the Wicked",
-          "drops": 1,
-          "corpses": 2,
-          "rate": 0.5
+          "drops": 2,
+          "corpses": 3,
+          "rate": 0.6666666666666666
         }
       ],
       "prices": [],
@@ -1116,10 +1403,22 @@
       "name": "Bone Chips",
       "droppedBy": [
         {
+          "mob": "a skeletal defender",
+          "drops": 48,
+          "corpses": 66,
+          "rate": 0.7272727272727273
+        },
+        {
           "mob": "a skeletal fighter",
-          "drops": 44,
-          "corpses": 60,
-          "rate": 0.7333333333333333
+          "drops": 50,
+          "corpses": 70,
+          "rate": 0.7142857142857143
+        },
+        {
+          "mob": "a skeletal archer",
+          "drops": 5,
+          "corpses": 7,
+          "rate": 0.7142857142857143
         },
         {
           "mob": "a rotting skeleton",
@@ -1129,24 +1428,54 @@
         },
         {
           "mob": "a skeletal cleric",
-          "drops": 16,
-          "corpses": 25,
-          "rate": 0.64
+          "drops": 22,
+          "corpses": 33,
+          "rate": 0.6666666666666666
+        },
+        {
+          "mob": "a skeletal vicar",
+          "drops": 15,
+          "corpses": 24,
+          "rate": 0.625
         },
         {
           "mob": "a skeletal warrior",
-          "drops": 48,
-          "corpses": 82,
-          "rate": 0.5853658536585366
+          "drops": 119,
+          "corpses": 197,
+          "rate": 0.6040609137055838
         },
         {
-          "mob": "a skeletal cavalier",
-          "drops": 1,
-          "corpses": 2,
-          "rate": 0.5
+          "mob": "a skeletal knight",
+          "drops": 27,
+          "corpses": 47,
+          "rate": 0.574468085106383
         },
         {
           "mob": "a skeletal priest",
+          "drops": 9,
+          "corpses": 16,
+          "rate": 0.5625
+        },
+        {
+          "mob": "a skeletal cavalier",
+          "drops": 30,
+          "corpses": 59,
+          "rate": 0.5084745762711864
+        },
+        {
+          "mob": "a skeletal monk",
+          "drops": 16,
+          "corpses": 36,
+          "rate": 0.4444444444444444
+        },
+        {
+          "mob": "a skeletal marksman",
+          "drops": 7,
+          "corpses": 21,
+          "rate": 0.3333333333333333
+        },
+        {
+          "mob": "Ariblast the Wicked",
           "drops": 1,
           "corpses": 3,
           "rate": 0.3333333333333333
@@ -1536,16 +1865,28 @@
           "rate": 1
         },
         {
-          "mob": "a skeletal cavalier",
-          "drops": 2,
-          "corpses": 2,
-          "rate": 1
+          "mob": "a skeletal archer",
+          "drops": 5,
+          "corpses": 7,
+          "rate": 0.7142857142857143
         },
         {
           "mob": "a skeletal fighter",
-          "drops": 40,
-          "corpses": 60,
-          "rate": 0.6666666666666666
+          "drops": 44,
+          "corpses": 70,
+          "rate": 0.6285714285714286
+        },
+        {
+          "mob": "a skeletal monk",
+          "drops": 22,
+          "corpses": 36,
+          "rate": 0.6111111111111112
+        },
+        {
+          "mob": "a skeletal warrior",
+          "drops": 115,
+          "corpses": 197,
+          "rate": 0.583756345177665
         },
         {
           "mob": "an ashira warrior",
@@ -1560,10 +1901,16 @@
           "rate": 0.5555555555555556
         },
         {
-          "mob": "a skeletal warrior",
-          "drops": 45,
-          "corpses": 82,
-          "rate": 0.5487804878048781
+          "mob": "a skeletal defender",
+          "drops": 35,
+          "corpses": 66,
+          "rate": 0.5303030303030303
+        },
+        {
+          "mob": "a Wyrmsbane crusader",
+          "drops": 15,
+          "corpses": 29,
+          "rate": 0.5172413793103449
         },
         {
           "mob": "an ashira spearfisher",
@@ -1572,22 +1919,58 @@
           "rate": 0.5
         },
         {
+          "mob": "a skeletal priest",
+          "drops": 8,
+          "corpses": 16,
+          "rate": 0.5
+        },
+        {
+          "mob": "a skeletal champion",
+          "drops": 6,
+          "corpses": 12,
+          "rate": 0.5
+        },
+        {
+          "mob": "Grandmaster Gildas",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
+          "mob": "a skeletal marksman",
+          "drops": 10,
+          "corpses": 21,
+          "rate": 0.47619047619047616
+        },
+        {
           "mob": "a rotting skeleton",
           "drops": 7,
           "corpses": 15,
           "rate": 0.4666666666666667
         },
         {
-          "mob": "a skeletal cleric",
-          "drops": 11,
-          "corpses": 25,
-          "rate": 0.44
+          "mob": "a skeletal knight",
+          "drops": 20,
+          "corpses": 47,
+          "rate": 0.425531914893617
         },
         {
-          "mob": "a skeletal priest",
-          "drops": 1,
-          "corpses": 3,
-          "rate": 0.3333333333333333
+          "mob": "a skeletal cleric",
+          "drops": 14,
+          "corpses": 33,
+          "rate": 0.42424242424242425
+        },
+        {
+          "mob": "a skeletal cavalier",
+          "drops": 23,
+          "corpses": 59,
+          "rate": 0.3898305084745763
+        },
+        {
+          "mob": "a skeletal vicar",
+          "drops": 9,
+          "corpses": 24,
+          "rate": 0.375
         },
         {
           "mob": "an ashira shaman",
@@ -1596,10 +1979,10 @@
           "rate": 0.3333333333333333
         },
         {
-          "mob": "a skeletal marksman",
-          "drops": 3,
-          "corpses": 10,
-          "rate": 0.3
+          "mob": "Ariblast the Wicked",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
         },
         {
           "mob": "a wererat",
@@ -1853,16 +2236,38 @@
       "name": "Cracked Staff",
       "droppedBy": [
         {
+          "mob": "a skeletal monk",
+          "drops": 1,
+          "corpses": 36,
+          "rate": 0.027777777777777776
+        },
+        {
+          "mob": "a skeletal knight",
+          "drops": 1,
+          "corpses": 47,
+          "rate": 0.02127659574468085
+        },
+        {
+          "mob": "a skeletal cavalier",
+          "drops": 1,
+          "corpses": 59,
+          "rate": 0.01694915254237288
+        },
+        {
           "mob": "a skeletal fighter",
           "drops": 1,
-          "corpses": 60,
-          "rate": 0.016666666666666666
+          "corpses": 70,
+          "rate": 0.014285714285714285
         }
       ],
       "prices": [
         {
           "copper": 454,
           "count": 1
+        },
+        {
+          "copper": 500,
+          "count": 2
         }
       ],
       "harvested": 0,
@@ -1914,6 +2319,30 @@
       "harvested": 0,
       "zones": [
         "Night Harbor"
+      ]
+    },
+    {
+      "id": "crystallized_shard",
+      "gameId": "355bfe733463a13bab030c76",
+      "name": "Crystallized Shard",
+      "droppedBy": [
+        {
+          "mob": "High Marshal Fionna Bromm",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
+          "mob": "Lieutenant Gregan Snyde",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Tomb of the Last Wyrmsbane"
       ]
     },
     {
@@ -2086,6 +2515,24 @@
       ]
     },
     {
+      "id": "ghostly_cloth_scraps",
+      "gameId": "593418e6423eebaf90e921f3",
+      "name": "Ghostly Cloth Scraps",
+      "droppedBy": [
+        {
+          "mob": "Grandmaster Obadiah",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Tomb of the Last Wyrmsbane"
+      ]
+    },
+    {
       "id": "gold_ore",
       "gameId": null,
       "name": "Gold Ore",
@@ -2094,6 +2541,24 @@
       "harvested": 2,
       "zones": [
         "Glassflats"
+      ]
+    },
+    {
+      "id": "grandmaster_s_dark_leather_hood",
+      "gameId": "65e09d340238802c80c4898e",
+      "name": "Grandmaster's Dark Leather Hood",
+      "droppedBy": [
+        {
+          "mob": "Grandmaster Gildas",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Tomb of the Last Wyrmsbane"
       ]
     },
     {
@@ -2138,6 +2603,12 @@
       "name": "Hide Scraps",
       "droppedBy": [
         {
+          "mob": "High Marshal Fionna Bromm",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
           "mob": "a goon",
           "drops": 1,
           "corpses": 3,
@@ -2154,7 +2625,8 @@
       "harvested": 0,
       "zones": [
         "Night Harbor",
-        "Keepersbight"
+        "Keepersbight",
+        "Tomb of the Last Wyrmsbane"
       ]
     },
     {
@@ -2433,6 +2905,24 @@
       ]
     },
     {
+      "id": "lieutenant_s_hunting_pants",
+      "gameId": "adb3e1a82e5a0d5cbd3ea97d",
+      "name": "Lieutenant's Hunting Pants",
+      "droppedBy": [
+        {
+          "mob": "Lieutenant Gregan Snyde",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Tomb of the Last Wyrmsbane"
+      ]
+    },
+    {
       "id": "limestone",
       "gameId": null,
       "name": "Limestone",
@@ -2484,6 +2974,24 @@
       ]
     },
     {
+      "id": "marshal_s_insignia_bracer",
+      "gameId": "9d52cad44343a8334502bc6a",
+      "name": "Marshal's Insignia Bracer",
+      "droppedBy": [
+        {
+          "mob": "High Marshal Fionna Bromm",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Tomb of the Last Wyrmsbane"
+      ]
+    },
+    {
       "id": "moldering_robes",
       "gameId": "e3a5c00e334d4312b6c8c6b7",
       "name": "Moldering Robes",
@@ -2491,8 +2999,8 @@
         {
           "mob": "Ariblast the Wicked",
           "drops": 1,
-          "corpses": 2,
-          "rate": 0.5
+          "corpses": 3,
+          "rate": 0.3333333333333333
         }
       ],
       "prices": [],
@@ -2993,10 +3501,28 @@
           "rate": 1
         },
         {
+          "mob": "a skeletal cavalier",
+          "drops": 35,
+          "corpses": 59,
+          "rate": 0.5932203389830508
+        },
+        {
           "mob": "an ashira warrior",
           "drops": 7,
           "corpses": 12,
           "rate": 0.5833333333333334
+        },
+        {
+          "mob": "a skeletal marksman",
+          "drops": 11,
+          "corpses": 21,
+          "rate": 0.5238095238095238
+        },
+        {
+          "mob": "a Wyrmsbane crusader",
+          "drops": 15,
+          "corpses": 29,
+          "rate": 0.5172413793103449
         },
         {
           "mob": "an ashira spearfisher",
@@ -3005,34 +3531,64 @@
           "rate": 0.5
         },
         {
+          "mob": "a skeletal warrior",
+          "drops": 94,
+          "corpses": 197,
+          "rate": 0.47715736040609136
+        },
+        {
+          "mob": "a skeletal vicar",
+          "drops": 11,
+          "corpses": 24,
+          "rate": 0.4583333333333333
+        },
+        {
+          "mob": "a skeletal knight",
+          "drops": 20,
+          "corpses": 47,
+          "rate": 0.425531914893617
+        },
+        {
+          "mob": "a skeletal monk",
+          "drops": 14,
+          "corpses": 36,
+          "rate": 0.3888888888888889
+        },
+        {
           "mob": "Ariblast the Wicked",
           "drops": 1,
-          "corpses": 2,
-          "rate": 0.5
+          "corpses": 3,
+          "rate": 0.3333333333333333
         },
         {
-          "mob": "a skeletal cavalier",
-          "drops": 1,
-          "corpses": 2,
-          "rate": 0.5
-        },
-        {
-          "mob": "a skeletal warrior",
-          "drops": 35,
-          "corpses": 82,
-          "rate": 0.4268292682926829
-        },
-        {
-          "mob": "a skeletal marksman",
+          "mob": "a skeletal champion",
           "drops": 4,
-          "corpses": 10,
-          "rate": 0.4
+          "corpses": 12,
+          "rate": 0.3333333333333333
+        },
+        {
+          "mob": "a skeletal priest",
+          "drops": 5,
+          "corpses": 16,
+          "rate": 0.3125
+        },
+        {
+          "mob": "a skeletal defender",
+          "drops": 19,
+          "corpses": 66,
+          "rate": 0.2878787878787879
         },
         {
           "mob": "an ashira shaman",
           "drops": 2,
           "corpses": 12,
           "rate": 0.16666666666666666
+        },
+        {
+          "mob": "a skeletal archer",
+          "drops": 1,
+          "corpses": 7,
+          "rate": 0.14285714285714285
         },
         {
           "mob": "an ashira raider",
@@ -3045,6 +3601,12 @@
           "drops": 1,
           "corpses": 16,
           "rate": 0.0625
+        },
+        {
+          "mob": "a skeletal cleric",
+          "drops": 2,
+          "corpses": 33,
+          "rate": 0.06060606060606061
         }
       ],
       "prices": [],
@@ -3059,13 +3621,18 @@
       "gameId": null,
       "name": "Resin",
       "droppedBy": [],
-      "prices": [],
-      "harvested": 67,
+      "prices": [
+        {
+          "copper": 1,
+          "count": 1
+        }
+      ],
+      "harvested": 123,
       "zones": [
+        "Night Harbor",
         "Keepersbight",
         "Evershade Weald",
-        "Shaded Dunes",
-        "Night Harbor"
+        "Shaded Dunes"
       ]
     },
     {
@@ -3113,12 +3680,19 @@
           "drops": 1,
           "corpses": 15,
           "rate": 0.06666666666666667
+        },
+        {
+          "mob": "a skeletal warrior",
+          "drops": 1,
+          "corpses": 197,
+          "rate": 0.005076142131979695
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Night Harbor"
+        "Night Harbor",
+        "Tomb of the Last Wyrmsbane"
       ]
     },
     {
@@ -3129,8 +3703,8 @@
         {
           "mob": "a skeletal fighter",
           "drops": 2,
-          "corpses": 60,
-          "rate": 0.03333333333333333
+          "corpses": 70,
+          "rate": 0.02857142857142857
         }
       ],
       "prices": [],
@@ -3637,6 +4211,24 @@
       ]
     },
     {
+      "id": "rusty_longsword",
+      "gameId": "3f5cd6f4894a79ea05badfa2",
+      "name": "Rusty Longsword",
+      "droppedBy": [
+        {
+          "mob": "a skeletal warrior",
+          "drops": 1,
+          "corpses": 197,
+          "rate": 0.005076142131979695
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Tomb of the Last Wyrmsbane"
+      ]
+    },
+    {
       "id": "rusty_mace",
       "gameId": "930700c00296cdd5385faed6",
       "name": "Rusty Mace",
@@ -3668,8 +4260,8 @@
         {
           "mob": "a skeletal fighter",
           "drops": 1,
-          "corpses": 60,
-          "rate": 0.016666666666666666
+          "corpses": 70,
+          "rate": 0.014285714285714285
         }
       ],
       "prices": [],
@@ -3687,8 +4279,14 @@
         {
           "mob": "a skeletal fighter",
           "drops": 2,
-          "corpses": 60,
-          "rate": 0.03333333333333333
+          "corpses": 70,
+          "rate": 0.02857142857142857
+        },
+        {
+          "mob": "a skeletal defender",
+          "drops": 1,
+          "corpses": 66,
+          "rate": 0.015151515151515152
         }
       ],
       "prices": [],
@@ -3723,8 +4321,8 @@
         {
           "mob": "a skeletal fighter",
           "drops": 1,
-          "corpses": 60,
-          "rate": 0.016666666666666666
+          "corpses": 70,
+          "rate": 0.014285714285714285
         }
       ],
       "prices": [],
@@ -3739,10 +4337,16 @@
       "name": "Rusty Spear",
       "droppedBy": [
         {
+          "mob": "a skeletal knight",
+          "drops": 2,
+          "corpses": 47,
+          "rate": 0.0425531914893617
+        },
+        {
           "mob": "a skeletal cleric",
           "drops": 1,
-          "corpses": 25,
-          "rate": 0.04
+          "corpses": 33,
+          "rate": 0.030303030303030304
         }
       ],
       "prices": [],
@@ -3759,8 +4363,26 @@
         {
           "mob": "a skeletal fighter",
           "drops": 1,
-          "corpses": 60,
-          "rate": 0.016666666666666666
+          "corpses": 70,
+          "rate": 0.014285714285714285
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Tomb of the Last Wyrmsbane"
+      ]
+    },
+    {
+      "id": "rusty_war_lance",
+      "gameId": "5b820d054de0d21a061071c4",
+      "name": "Rusty War Lance",
+      "droppedBy": [
+        {
+          "mob": "a skeletal fighter",
+          "drops": 1,
+          "corpses": 70,
+          "rate": 0.014285714285714285
         }
       ],
       "prices": [],
@@ -3775,10 +4397,16 @@
       "name": "Rusty Warhammer",
       "droppedBy": [
         {
+          "mob": "a skeletal monk",
+          "drops": 1,
+          "corpses": 36,
+          "rate": 0.027777777777777776
+        },
+        {
           "mob": "a skeletal fighter",
           "drops": 1,
-          "corpses": 60,
-          "rate": 0.016666666666666666
+          "corpses": 70,
+          "rate": 0.014285714285714285
         }
       ],
       "prices": [],
@@ -3864,8 +4492,8 @@
         {
           "mob": "a skeletal fighter",
           "drops": 1,
-          "corpses": 60,
-          "rate": 0.016666666666666666
+          "corpses": 70,
+          "rate": 0.014285714285714285
         }
       ],
       "prices": [],
@@ -3886,28 +4514,52 @@
           "rate": 0.4
         },
         {
-          "mob": "a skeletal cleric",
-          "drops": 5,
-          "corpses": 25,
-          "rate": 0.2
+          "mob": "a skeletal fighter",
+          "drops": 13,
+          "corpses": 70,
+          "rate": 0.18571428571428572
         },
         {
-          "mob": "a skeletal fighter",
-          "drops": 12,
-          "corpses": 60,
-          "rate": 0.2
+          "mob": "a skeletal cleric",
+          "drops": 6,
+          "corpses": 33,
+          "rate": 0.18181818181818182
+        },
+        {
+          "mob": "a skeletal monk",
+          "drops": 6,
+          "corpses": 36,
+          "rate": 0.16666666666666666
         },
         {
           "mob": "a skeletal marksman",
+          "drops": 2,
+          "corpses": 21,
+          "rate": 0.09523809523809523
+        },
+        {
+          "mob": "a skeletal priest",
           "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
+          "corpses": 16,
+          "rate": 0.0625
         },
         {
           "mob": "a skeletal warrior",
-          "drops": 3,
-          "corpses": 82,
-          "rate": 0.036585365853658534
+          "drops": 12,
+          "corpses": 197,
+          "rate": 0.06091370558375635
+        },
+        {
+          "mob": "a skeletal vicar",
+          "drops": 1,
+          "corpses": 24,
+          "rate": 0.041666666666666664
+        },
+        {
+          "mob": "a skeletal cavalier",
+          "drops": 2,
+          "corpses": 59,
+          "rate": 0.03389830508474576
         }
       ],
       "prices": [],
@@ -3960,6 +4612,24 @@
       "zones": []
     },
     {
+      "id": "shawl_of_piety",
+      "gameId": "22bdf0fc619901633573d156",
+      "name": "Shawl of Piety",
+      "droppedBy": [
+        {
+          "mob": "Grandmaster Obadiah",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Tomb of the Last Wyrmsbane"
+      ]
+    },
+    {
       "id": "shining_crystallized_magic",
       "gameId": null,
       "name": "Shining Crystallized Magic",
@@ -3977,9 +4647,9 @@
       "droppedBy": [
         {
           "mob": "Ariblast the Wicked",
-          "drops": 1,
-          "corpses": 2,
-          "rate": 0.5
+          "drops": 2,
+          "corpses": 3,
+          "rate": 0.6666666666666666
         }
       ],
       "prices": [],
@@ -4197,6 +4867,42 @@
       ]
     },
     {
+      "id": "spectral_dust",
+      "gameId": "adff38a86b75de10f2a7b2d3",
+      "name": "Spectral Dust",
+      "droppedBy": [
+        {
+          "mob": "a Wyrmsbane crusader",
+          "drops": 17,
+          "corpses": 29,
+          "rate": 0.5862068965517241
+        },
+        {
+          "mob": "Grandmaster Obadiah",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
+          "mob": "Lieutenant Gregan Snyde",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
+          "mob": "High Marshal Fionna Bromm",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Tomb of the Last Wyrmsbane"
+      ]
+    },
+    {
       "id": "spider_silk",
       "gameId": "5583a7751aeac27084d53c98",
       "name": "Spider Silk",
@@ -4281,8 +4987,8 @@
         {
           "mob": "a skeletal warrior",
           "drops": 1,
-          "corpses": 82,
-          "rate": 0.012195121951219513
+          "corpses": 197,
+          "rate": 0.005076142131979695
         }
       ],
       "prices": [],
@@ -4297,28 +5003,70 @@
       "name": "Tattered Cloth Belt",
       "droppedBy": [
         {
+          "mob": "a skeletal champion",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
+        },
+        {
+          "mob": "a Wyrmsbane crusader",
+          "drops": 2,
+          "corpses": 29,
+          "rate": 0.06896551724137931
+        },
+        {
           "mob": "a rotting skeleton",
           "drops": 1,
           "corpses": 15,
           "rate": 0.06666666666666667
         },
         {
+          "mob": "a skeletal marksman",
+          "drops": 1,
+          "corpses": 21,
+          "rate": 0.047619047619047616
+        },
+        {
           "mob": "a skeletal cleric",
           "drops": 1,
-          "corpses": 25,
-          "rate": 0.04
+          "corpses": 33,
+          "rate": 0.030303030303030304
         },
         {
           "mob": "a skeletal fighter",
+          "drops": 2,
+          "corpses": 70,
+          "rate": 0.02857142857142857
+        },
+        {
+          "mob": "a skeletal monk",
           "drops": 1,
-          "corpses": 60,
-          "rate": 0.016666666666666666
+          "corpses": 36,
+          "rate": 0.027777777777777776
+        },
+        {
+          "mob": "a skeletal knight",
+          "drops": 1,
+          "corpses": 47,
+          "rate": 0.02127659574468085
+        },
+        {
+          "mob": "a skeletal cavalier",
+          "drops": 1,
+          "corpses": 59,
+          "rate": 0.01694915254237288
+        },
+        {
+          "mob": "a skeletal defender",
+          "drops": 1,
+          "corpses": 66,
+          "rate": 0.015151515151515152
         },
         {
           "mob": "a skeletal warrior",
-          "drops": 1,
-          "corpses": 82,
-          "rate": 0.012195121951219513
+          "drops": 2,
+          "corpses": 197,
+          "rate": 0.01015228426395939
         }
       ],
       "prices": [],
@@ -4340,16 +5088,58 @@
           "rate": 1
         },
         {
+          "mob": "a Wyrmsbane crusader",
+          "drops": 3,
+          "corpses": 29,
+          "rate": 0.10344827586206896
+        },
+        {
+          "mob": "a skeletal champion",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
+        },
+        {
+          "mob": "a skeletal priest",
+          "drops": 1,
+          "corpses": 16,
+          "rate": 0.0625
+        },
+        {
+          "mob": "a skeletal knight",
+          "drops": 2,
+          "corpses": 47,
+          "rate": 0.0425531914893617
+        },
+        {
+          "mob": "a skeletal cavalier",
+          "drops": 2,
+          "corpses": 59,
+          "rate": 0.03389830508474576
+        },
+        {
           "mob": "a skeletal fighter",
           "drops": 2,
-          "corpses": 60,
-          "rate": 0.03333333333333333
+          "corpses": 70,
+          "rate": 0.02857142857142857
+        },
+        {
+          "mob": "a skeletal monk",
+          "drops": 1,
+          "corpses": 36,
+          "rate": 0.027777777777777776
+        },
+        {
+          "mob": "a skeletal defender",
+          "drops": 1,
+          "corpses": 66,
+          "rate": 0.015151515151515152
         },
         {
           "mob": "a skeletal warrior",
           "drops": 1,
-          "corpses": 82,
-          "rate": 0.012195121951219513
+          "corpses": 197,
+          "rate": 0.005076142131979695
         }
       ],
       "prices": [],
@@ -4364,6 +5154,12 @@
       "name": "Tattered Cloth Bracer",
       "droppedBy": [
         {
+          "mob": "a skeletal archer",
+          "drops": 1,
+          "corpses": 7,
+          "rate": 0.14285714285714285
+        },
+        {
           "mob": "an ashira warrior",
           "drops": 1,
           "corpses": 12,
@@ -4376,16 +5172,40 @@
           "rate": 0.06666666666666667
         },
         {
-          "mob": "a skeletal fighter",
+          "mob": "a skeletal monk",
           "drops": 2,
-          "corpses": 60,
-          "rate": 0.03333333333333333
+          "corpses": 36,
+          "rate": 0.05555555555555555
+        },
+        {
+          "mob": "a skeletal fighter",
+          "drops": 3,
+          "corpses": 70,
+          "rate": 0.04285714285714286
         },
         {
           "mob": "a skeletal warrior",
+          "drops": 7,
+          "corpses": 197,
+          "rate": 0.03553299492385787
+        },
+        {
+          "mob": "a skeletal defender",
+          "drops": 2,
+          "corpses": 66,
+          "rate": 0.030303030303030304
+        },
+        {
+          "mob": "a skeletal knight",
           "drops": 1,
-          "corpses": 82,
-          "rate": 0.012195121951219513
+          "corpses": 47,
+          "rate": 0.02127659574468085
+        },
+        {
+          "mob": "a skeletal cavalier",
+          "drops": 1,
+          "corpses": 59,
+          "rate": 0.01694915254237288
         }
       ],
       "prices": [],
@@ -4408,10 +5228,46 @@
           "rate": 0.08333333333333333
         },
         {
+          "mob": "a skeletal marksman",
+          "drops": 1,
+          "corpses": 21,
+          "rate": 0.047619047619047616
+        },
+        {
+          "mob": "a skeletal vicar",
+          "drops": 1,
+          "corpses": 24,
+          "rate": 0.041666666666666664
+        },
+        {
+          "mob": "a Wyrmsbane crusader",
+          "drops": 1,
+          "corpses": 29,
+          "rate": 0.034482758620689655
+        },
+        {
+          "mob": "a skeletal cavalier",
+          "drops": 2,
+          "corpses": 59,
+          "rate": 0.03389830508474576
+        },
+        {
+          "mob": "a skeletal monk",
+          "drops": 1,
+          "corpses": 36,
+          "rate": 0.027777777777777776
+        },
+        {
           "mob": "a skeletal warrior",
-          "drops": 3,
-          "corpses": 82,
-          "rate": 0.036585365853658534
+          "drops": 5,
+          "corpses": 197,
+          "rate": 0.025380710659898477
+        },
+        {
+          "mob": "a skeletal defender",
+          "drops": 1,
+          "corpses": 66,
+          "rate": 0.015151515151515152
         }
       ],
       "prices": [],
@@ -4433,10 +5289,10 @@
           "rate": 0.5
         },
         {
-          "mob": "a skeletal marksman",
+          "mob": "Lieutenant Gregan Snyde",
           "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
+          "corpses": 2,
+          "rate": 0.5
         },
         {
           "mob": "an ashira shaman",
@@ -4445,16 +5301,40 @@
           "rate": 0.08333333333333333
         },
         {
+          "mob": "a skeletal marksman",
+          "drops": 1,
+          "corpses": 21,
+          "rate": 0.047619047619047616
+        },
+        {
+          "mob": "a skeletal vicar",
+          "drops": 1,
+          "corpses": 24,
+          "rate": 0.041666666666666664
+        },
+        {
           "mob": "a skeletal cleric",
           "drops": 1,
-          "corpses": 25,
-          "rate": 0.04
+          "corpses": 33,
+          "rate": 0.030303030303030304
+        },
+        {
+          "mob": "a skeletal monk",
+          "drops": 1,
+          "corpses": 36,
+          "rate": 0.027777777777777776
         },
         {
           "mob": "a skeletal fighter",
           "drops": 1,
-          "corpses": 60,
-          "rate": 0.016666666666666666
+          "corpses": 70,
+          "rate": 0.014285714285714285
+        },
+        {
+          "mob": "a skeletal warrior",
+          "drops": 1,
+          "corpses": 197,
+          "rate": 0.005076142131979695
         }
       ],
       "prices": [],
@@ -4470,22 +5350,58 @@
       "name": "Tattered Cloth Gloves",
       "droppedBy": [
         {
+          "mob": "a skeletal priest",
+          "drops": 1,
+          "corpses": 16,
+          "rate": 0.0625
+        },
+        {
           "mob": "a skeletal fighter",
           "drops": 4,
-          "corpses": 60,
-          "rate": 0.06666666666666667
+          "corpses": 70,
+          "rate": 0.05714285714285714
+        },
+        {
+          "mob": "a skeletal marksman",
+          "drops": 1,
+          "corpses": 21,
+          "rate": 0.047619047619047616
+        },
+        {
+          "mob": "a skeletal defender",
+          "drops": 3,
+          "corpses": 66,
+          "rate": 0.045454545454545456
+        },
+        {
+          "mob": "a skeletal knight",
+          "drops": 2,
+          "corpses": 47,
+          "rate": 0.0425531914893617
+        },
+        {
+          "mob": "a Wyrmsbane crusader",
+          "drops": 1,
+          "corpses": 29,
+          "rate": 0.034482758620689655
         },
         {
           "mob": "a skeletal cleric",
           "drops": 1,
-          "corpses": 25,
-          "rate": 0.04
+          "corpses": 33,
+          "rate": 0.030303030303030304
+        },
+        {
+          "mob": "a skeletal monk",
+          "drops": 1,
+          "corpses": 36,
+          "rate": 0.027777777777777776
         },
         {
           "mob": "a skeletal warrior",
-          "drops": 1,
-          "corpses": 82,
-          "rate": 0.012195121951219513
+          "drops": 2,
+          "corpses": 197,
+          "rate": 0.01015228426395939
         }
       ],
       "prices": [],
@@ -4500,6 +5416,12 @@
       "name": "Tattered Cloth Gorget",
       "droppedBy": [
         {
+          "mob": "a skeletal vicar",
+          "drops": 3,
+          "corpses": 24,
+          "rate": 0.125
+        },
+        {
           "mob": "an ashira raider",
           "drops": 1,
           "corpses": 9,
@@ -4508,14 +5430,38 @@
         {
           "mob": "a skeletal cleric",
           "drops": 2,
-          "corpses": 25,
-          "rate": 0.08
+          "corpses": 33,
+          "rate": 0.06060606060606061
+        },
+        {
+          "mob": "a skeletal marksman",
+          "drops": 1,
+          "corpses": 21,
+          "rate": 0.047619047619047616
+        },
+        {
+          "mob": "a skeletal knight",
+          "drops": 1,
+          "corpses": 47,
+          "rate": 0.02127659574468085
         },
         {
           "mob": "a skeletal warrior",
+          "drops": 4,
+          "corpses": 197,
+          "rate": 0.02030456852791878
+        },
+        {
+          "mob": "a skeletal cavalier",
           "drops": 1,
-          "corpses": 82,
-          "rate": 0.012195121951219513
+          "corpses": 59,
+          "rate": 0.01694915254237288
+        },
+        {
+          "mob": "a skeletal defender",
+          "drops": 1,
+          "corpses": 66,
+          "rate": 0.015151515151515152
         }
       ],
       "prices": [],
@@ -4532,9 +5478,9 @@
       "droppedBy": [
         {
           "mob": "a skeletal priest",
-          "drops": 1,
-          "corpses": 3,
-          "rate": 0.3333333333333333
+          "drops": 2,
+          "corpses": 16,
+          "rate": 0.125
         },
         {
           "mob": "an ashira shaman",
@@ -4543,16 +5489,46 @@
           "rate": 0.08333333333333333
         },
         {
+          "mob": "a skeletal champion",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
+        },
+        {
+          "mob": "a skeletal monk",
+          "drops": 2,
+          "corpses": 36,
+          "rate": 0.05555555555555555
+        },
+        {
           "mob": "a skeletal fighter",
           "drops": 3,
-          "corpses": 60,
-          "rate": 0.05
+          "corpses": 70,
+          "rate": 0.04285714285714286
+        },
+        {
+          "mob": "a skeletal vicar",
+          "drops": 1,
+          "corpses": 24,
+          "rate": 0.041666666666666664
+        },
+        {
+          "mob": "a skeletal cavalier",
+          "drops": 2,
+          "corpses": 59,
+          "rate": 0.03389830508474576
         },
         {
           "mob": "a skeletal cleric",
           "drops": 1,
-          "corpses": 25,
-          "rate": 0.04
+          "corpses": 33,
+          "rate": 0.030303030303030304
+        },
+        {
+          "mob": "a skeletal warrior",
+          "drops": 4,
+          "corpses": 197,
+          "rate": 0.02030456852791878
         }
       ],
       "prices": [],
@@ -4563,10 +5539,58 @@
       ]
     },
     {
+      "id": "tattered_cloth_pantaloons",
+      "gameId": "68d1d9c415aa4d0255b410f5",
+      "name": "Tattered Cloth Pantaloons",
+      "droppedBy": [
+        {
+          "mob": "a skeletal archer",
+          "drops": 2,
+          "corpses": 7,
+          "rate": 0.2857142857142857
+        },
+        {
+          "mob": "a Wyrmsbane crusader",
+          "drops": 1,
+          "corpses": 29,
+          "rate": 0.034482758620689655
+        },
+        {
+          "mob": "a skeletal cavalier",
+          "drops": 2,
+          "corpses": 59,
+          "rate": 0.03389830508474576
+        },
+        {
+          "mob": "a skeletal monk",
+          "drops": 1,
+          "corpses": 36,
+          "rate": 0.027777777777777776
+        },
+        {
+          "mob": "a skeletal warrior",
+          "drops": 1,
+          "corpses": 197,
+          "rate": 0.005076142131979695
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Tomb of the Last Wyrmsbane"
+      ]
+    },
+    {
       "id": "tattered_cloth_robe",
       "gameId": "eaf4513f72004256d4fccf0a",
       "name": "Tattered Cloth Robe",
       "droppedBy": [
+        {
+          "mob": "a skeletal archer",
+          "drops": 1,
+          "corpses": 7,
+          "rate": 0.14285714285714285
+        },
         {
           "mob": "an ashira warrior",
           "drops": 1,
@@ -4574,16 +5598,40 @@
           "rate": 0.08333333333333333
         },
         {
+          "mob": "a Wyrmsbane crusader",
+          "drops": 1,
+          "corpses": 29,
+          "rate": 0.034482758620689655
+        },
+        {
+          "mob": "a skeletal cleric",
+          "drops": 1,
+          "corpses": 33,
+          "rate": 0.030303030303030304
+        },
+        {
           "mob": "a skeletal warrior",
-          "drops": 3,
-          "corpses": 82,
-          "rate": 0.036585365853658534
+          "drops": 5,
+          "corpses": 197,
+          "rate": 0.025380710659898477
+        },
+        {
+          "mob": "a skeletal knight",
+          "drops": 1,
+          "corpses": 47,
+          "rate": 0.02127659574468085
+        },
+        {
+          "mob": "a skeletal defender",
+          "drops": 1,
+          "corpses": 66,
+          "rate": 0.015151515151515152
         },
         {
           "mob": "a skeletal fighter",
           "drops": 1,
-          "corpses": 60,
-          "rate": 0.016666666666666666
+          "corpses": 70,
+          "rate": 0.014285714285714285
         }
       ],
       "prices": [],
@@ -4599,16 +5647,46 @@
       "name": "Tattered Cloth Shirt",
       "droppedBy": [
         {
+          "mob": "a skeletal marksman",
+          "drops": 2,
+          "corpses": 21,
+          "rate": 0.09523809523809523
+        },
+        {
           "mob": "an ashira shaman",
           "drops": 1,
           "corpses": 12,
           "rate": 0.08333333333333333
         },
         {
-          "mob": "a skeletal warrior",
+          "mob": "a skeletal monk",
+          "drops": 2,
+          "corpses": 36,
+          "rate": 0.05555555555555555
+        },
+        {
+          "mob": "a skeletal vicar",
           "drops": 1,
-          "corpses": 82,
-          "rate": 0.012195121951219513
+          "corpses": 24,
+          "rate": 0.041666666666666664
+        },
+        {
+          "mob": "a skeletal cavalier",
+          "drops": 2,
+          "corpses": 59,
+          "rate": 0.03389830508474576
+        },
+        {
+          "mob": "a skeletal warrior",
+          "drops": 6,
+          "corpses": 197,
+          "rate": 0.030456852791878174
+        },
+        {
+          "mob": "a skeletal defender",
+          "drops": 1,
+          "corpses": 66,
+          "rate": 0.015151515151515152
         }
       ],
       "prices": [],
@@ -4634,11 +5712,48 @@
           "drops": 1,
           "corpses": 15,
           "rate": 0.06666666666666667
+        },
+        {
+          "mob": "a skeletal monk",
+          "drops": 2,
+          "corpses": 36,
+          "rate": 0.05555555555555555
+        },
+        {
+          "mob": "a Wyrmsbane crusader",
+          "drops": 1,
+          "corpses": 29,
+          "rate": 0.034482758620689655
+        },
+        {
+          "mob": "a skeletal cavalier",
+          "drops": 2,
+          "corpses": 59,
+          "rate": 0.03389830508474576
+        },
+        {
+          "mob": "a skeletal defender",
+          "drops": 2,
+          "corpses": 66,
+          "rate": 0.030303030303030304
+        },
+        {
+          "mob": "a skeletal knight",
+          "drops": 1,
+          "corpses": 47,
+          "rate": 0.02127659574468085
+        },
+        {
+          "mob": "a skeletal warrior",
+          "drops": 3,
+          "corpses": 197,
+          "rate": 0.015228426395939087
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Tomb of the Last Wyrmsbane",
         "Night Harbor",
         "Shaded Dunes"
       ]
@@ -4651,20 +5766,26 @@
         {
           "mob": "a skeletal cleric",
           "drops": 3,
-          "corpses": 25,
-          "rate": 0.12
+          "corpses": 33,
+          "rate": 0.09090909090909091
+        },
+        {
+          "mob": "a skeletal monk",
+          "drops": 1,
+          "corpses": 36,
+          "rate": 0.027777777777777776
+        },
+        {
+          "mob": "a skeletal warrior",
+          "drops": 5,
+          "corpses": 197,
+          "rate": 0.025380710659898477
         },
         {
           "mob": "a skeletal fighter",
           "drops": 1,
-          "corpses": 60,
-          "rate": 0.016666666666666666
-        },
-        {
-          "mob": "a skeletal warrior",
-          "drops": 1,
-          "corpses": 82,
-          "rate": 0.012195121951219513
+          "corpses": 70,
+          "rate": 0.014285714285714285
         }
       ],
       "prices": [],
@@ -5033,10 +6154,34 @@
       "name": "Tattered Rawhide Belt",
       "droppedBy": [
         {
-          "mob": "a skeletal warrior",
+          "mob": "a skeletal champion",
           "drops": 1,
-          "corpses": 82,
-          "rate": 0.012195121951219513
+          "corpses": 12,
+          "rate": 0.08333333333333333
+        },
+        {
+          "mob": "a Wyrmsbane crusader",
+          "drops": 1,
+          "corpses": 29,
+          "rate": 0.034482758620689655
+        },
+        {
+          "mob": "a skeletal cleric",
+          "drops": 1,
+          "corpses": 33,
+          "rate": 0.030303030303030304
+        },
+        {
+          "mob": "a skeletal knight",
+          "drops": 1,
+          "corpses": 47,
+          "rate": 0.02127659574468085
+        },
+        {
+          "mob": "a skeletal warrior",
+          "drops": 3,
+          "corpses": 197,
+          "rate": 0.015228426395939087
         }
       ],
       "prices": [],
@@ -5057,16 +6202,34 @@
           "rate": 0.16666666666666666
         },
         {
+          "mob": "a skeletal vicar",
+          "drops": 2,
+          "corpses": 24,
+          "rate": 0.08333333333333333
+        },
+        {
           "mob": "a skeletal marksman",
           "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
+          "corpses": 21,
+          "rate": 0.047619047619047616
+        },
+        {
+          "mob": "a skeletal defender",
+          "drops": 3,
+          "corpses": 66,
+          "rate": 0.045454545454545456
+        },
+        {
+          "mob": "a skeletal knight",
+          "drops": 1,
+          "corpses": 47,
+          "rate": 0.02127659574468085
         },
         {
           "mob": "a skeletal warrior",
-          "drops": 1,
-          "corpses": 82,
-          "rate": 0.012195121951219513
+          "drops": 2,
+          "corpses": 197,
+          "rate": 0.01015228426395939
         }
       ],
       "prices": [],
@@ -5082,16 +6245,46 @@
       "name": "Tattered Rawhide Bracer",
       "droppedBy": [
         {
-          "mob": "a skeletal marksman",
+          "mob": "a skeletal champion",
+          "drops": 2,
+          "corpses": 12,
+          "rate": 0.16666666666666666
+        },
+        {
+          "mob": "a skeletal archer",
           "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
+          "corpses": 7,
+          "rate": 0.14285714285714285
+        },
+        {
+          "mob": "a skeletal marksman",
+          "drops": 2,
+          "corpses": 21,
+          "rate": 0.09523809523809523
+        },
+        {
+          "mob": "a Wyrmsbane crusader",
+          "drops": 1,
+          "corpses": 29,
+          "rate": 0.034482758620689655
+        },
+        {
+          "mob": "a skeletal monk",
+          "drops": 1,
+          "corpses": 36,
+          "rate": 0.027777777777777776
+        },
+        {
+          "mob": "a skeletal defender",
+          "drops": 1,
+          "corpses": 66,
+          "rate": 0.015151515151515152
         },
         {
           "mob": "a skeletal warrior",
-          "drops": 1,
-          "corpses": 82,
-          "rate": 0.012195121951219513
+          "drops": 2,
+          "corpses": 197,
+          "rate": 0.01015228426395939
         }
       ],
       "prices": [],
@@ -5106,10 +6299,40 @@
       "name": "Tattered Rawhide Cap",
       "droppedBy": [
         {
-          "mob": "a skeletal warrior",
+          "mob": "a skeletal monk",
+          "drops": 3,
+          "corpses": 36,
+          "rate": 0.08333333333333333
+        },
+        {
+          "mob": "a skeletal vicar",
           "drops": 1,
-          "corpses": 82,
-          "rate": 0.012195121951219513
+          "corpses": 24,
+          "rate": 0.041666666666666664
+        },
+        {
+          "mob": "a Wyrmsbane crusader",
+          "drops": 1,
+          "corpses": 29,
+          "rate": 0.034482758620689655
+        },
+        {
+          "mob": "a skeletal defender",
+          "drops": 2,
+          "corpses": 66,
+          "rate": 0.030303030303030304
+        },
+        {
+          "mob": "a skeletal knight",
+          "drops": 1,
+          "corpses": 47,
+          "rate": 0.02127659574468085
+        },
+        {
+          "mob": "a skeletal warrior",
+          "drops": 3,
+          "corpses": 197,
+          "rate": 0.015228426395939087
         }
       ],
       "prices": [],
@@ -5124,10 +6347,34 @@
       "name": "Tattered Rawhide Cloak",
       "droppedBy": [
         {
+          "mob": "a skeletal priest",
+          "drops": 1,
+          "corpses": 16,
+          "rate": 0.0625
+        },
+        {
           "mob": "a skeletal warrior",
-          "drops": 4,
-          "corpses": 82,
-          "rate": 0.04878048780487805
+          "drops": 6,
+          "corpses": 197,
+          "rate": 0.030456852791878174
+        },
+        {
+          "mob": "a skeletal monk",
+          "drops": 1,
+          "corpses": 36,
+          "rate": 0.027777777777777776
+        },
+        {
+          "mob": "a skeletal cavalier",
+          "drops": 1,
+          "corpses": 59,
+          "rate": 0.01694915254237288
+        },
+        {
+          "mob": "a skeletal defender",
+          "drops": 1,
+          "corpses": 66,
+          "rate": 0.015151515151515152
         }
       ],
       "prices": [],
@@ -5142,15 +6389,64 @@
       "name": "Tattered Rawhide Gloves",
       "droppedBy": [
         {
+          "mob": "a skeletal priest",
+          "drops": 2,
+          "corpses": 16,
+          "rate": 0.125
+        },
+        {
           "mob": "an ashira shaman",
           "drops": 1,
           "corpses": 12,
           "rate": 0.08333333333333333
+        },
+        {
+          "mob": "a Wyrmsbane crusader",
+          "drops": 2,
+          "corpses": 29,
+          "rate": 0.06896551724137931
+        },
+        {
+          "mob": "a skeletal knight",
+          "drops": 2,
+          "corpses": 47,
+          "rate": 0.0425531914893617
+        },
+        {
+          "mob": "a skeletal vicar",
+          "drops": 1,
+          "corpses": 24,
+          "rate": 0.041666666666666664
+        },
+        {
+          "mob": "a skeletal warrior",
+          "drops": 6,
+          "corpses": 197,
+          "rate": 0.030456852791878174
+        },
+        {
+          "mob": "a skeletal monk",
+          "drops": 1,
+          "corpses": 36,
+          "rate": 0.027777777777777776
+        },
+        {
+          "mob": "a skeletal cavalier",
+          "drops": 1,
+          "corpses": 59,
+          "rate": 0.01694915254237288
+        },
+        {
+          "mob": "a skeletal defender",
+          "drops": 1,
+          "corpses": 66,
+          "rate": 0.015151515151515152
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Tomb of the Last Wyrmsbane",
         "Shaded Dunes"
       ]
     },
@@ -5164,11 +6460,42 @@
           "drops": 1,
           "corpses": 12,
           "rate": 0.08333333333333333
+        },
+        {
+          "mob": "a skeletal monk",
+          "drops": 3,
+          "corpses": 36,
+          "rate": 0.08333333333333333
+        },
+        {
+          "mob": "a skeletal vicar",
+          "drops": 2,
+          "corpses": 24,
+          "rate": 0.08333333333333333
+        },
+        {
+          "mob": "a skeletal cavalier",
+          "drops": 2,
+          "corpses": 59,
+          "rate": 0.03389830508474576
+        },
+        {
+          "mob": "a skeletal defender",
+          "drops": 1,
+          "corpses": 66,
+          "rate": 0.015151515151515152
+        },
+        {
+          "mob": "a skeletal warrior",
+          "drops": 1,
+          "corpses": 197,
+          "rate": 0.005076142131979695
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Tomb of the Last Wyrmsbane",
         "Shaded Dunes"
       ]
     },
@@ -5178,16 +6505,46 @@
       "name": "Tattered Rawhide Leggings",
       "droppedBy": [
         {
-          "mob": "a skeletal cavalier",
+          "mob": "Ariblast the Wicked",
           "drops": 1,
-          "corpses": 2,
-          "rate": 0.5
+          "corpses": 3,
+          "rate": 0.3333333333333333
         },
         {
           "mob": "an ashira raider",
           "drops": 1,
           "corpses": 9,
           "rate": 0.1111111111111111
+        },
+        {
+          "mob": "a skeletal priest",
+          "drops": 1,
+          "corpses": 16,
+          "rate": 0.0625
+        },
+        {
+          "mob": "a skeletal knight",
+          "drops": 2,
+          "corpses": 47,
+          "rate": 0.0425531914893617
+        },
+        {
+          "mob": "a skeletal monk",
+          "drops": 1,
+          "corpses": 36,
+          "rate": 0.027777777777777776
+        },
+        {
+          "mob": "a skeletal warrior",
+          "drops": 5,
+          "corpses": 197,
+          "rate": 0.025380710659898477
+        },
+        {
+          "mob": "a skeletal cavalier",
+          "drops": 1,
+          "corpses": 59,
+          "rate": 0.01694915254237288
         }
       ],
       "prices": [],
@@ -5203,34 +6560,58 @@
       "name": "Tattered Rawhide Mask",
       "droppedBy": [
         {
-          "mob": "a skeletal priest",
-          "drops": 1,
-          "corpses": 3,
-          "rate": 0.3333333333333333
-        },
-        {
           "mob": "an ashira raider",
           "drops": 1,
           "corpses": 9,
           "rate": 0.1111111111111111
         },
         {
+          "mob": "a skeletal champion",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
+        },
+        {
+          "mob": "a skeletal priest",
+          "drops": 1,
+          "corpses": 16,
+          "rate": 0.0625
+        },
+        {
+          "mob": "a skeletal cavalier",
+          "drops": 3,
+          "corpses": 59,
+          "rate": 0.05084745762711865
+        },
+        {
           "mob": "a skeletal marksman",
           "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
+          "corpses": 21,
+          "rate": 0.047619047619047616
+        },
+        {
+          "mob": "a skeletal vicar",
+          "drops": 1,
+          "corpses": 24,
+          "rate": 0.041666666666666664
         },
         {
           "mob": "a skeletal warrior",
-          "drops": 3,
-          "corpses": 82,
-          "rate": 0.036585365853658534
+          "drops": 6,
+          "corpses": 197,
+          "rate": 0.030456852791878174
         },
         {
           "mob": "a smuggler",
           "drops": 1,
           "corpses": 50,
           "rate": 0.02
+        },
+        {
+          "mob": "a skeletal defender",
+          "drops": 1,
+          "corpses": 66,
+          "rate": 0.015151515151515152
         }
       ],
       "prices": [],
@@ -5247,15 +6628,33 @@
       "droppedBy": [
         {
           "mob": "a skeletal marksman",
+          "drops": 2,
+          "corpses": 21,
+          "rate": 0.09523809523809523
+        },
+        {
+          "mob": "a skeletal monk",
+          "drops": 2,
+          "corpses": 36,
+          "rate": 0.05555555555555555
+        },
+        {
+          "mob": "a skeletal knight",
           "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
+          "corpses": 47,
+          "rate": 0.02127659574468085
+        },
+        {
+          "mob": "a skeletal cavalier",
+          "drops": 1,
+          "corpses": 59,
+          "rate": 0.01694915254237288
         },
         {
           "mob": "a skeletal warrior",
           "drops": 2,
-          "corpses": 82,
-          "rate": 0.024390243902439025
+          "corpses": 197,
+          "rate": 0.01015228426395939
         }
       ],
       "prices": [],
@@ -5270,10 +6669,46 @@
       "name": "Tattered Rawhide Tunic",
       "droppedBy": [
         {
-          "mob": "a skeletal warrior",
+          "mob": "a skeletal archer",
           "drops": 1,
-          "corpses": 82,
-          "rate": 0.012195121951219513
+          "corpses": 7,
+          "rate": 0.14285714285714285
+        },
+        {
+          "mob": "a skeletal monk",
+          "drops": 2,
+          "corpses": 36,
+          "rate": 0.05555555555555555
+        },
+        {
+          "mob": "a skeletal knight",
+          "drops": 2,
+          "corpses": 47,
+          "rate": 0.0425531914893617
+        },
+        {
+          "mob": "a Wyrmsbane crusader",
+          "drops": 1,
+          "corpses": 29,
+          "rate": 0.034482758620689655
+        },
+        {
+          "mob": "a skeletal cavalier",
+          "drops": 1,
+          "corpses": 59,
+          "rate": 0.01694915254237288
+        },
+        {
+          "mob": "a skeletal defender",
+          "drops": 1,
+          "corpses": 66,
+          "rate": 0.015151515151515152
+        },
+        {
+          "mob": "a skeletal warrior",
+          "drops": 2,
+          "corpses": 197,
+          "rate": 0.01015228426395939
         }
       ],
       "prices": [],
@@ -5298,11 +6733,30 @@
           "drops": 1,
           "corpses": 12,
           "rate": 0.08333333333333333
+        },
+        {
+          "mob": "a skeletal priest",
+          "drops": 1,
+          "corpses": 16,
+          "rate": 0.0625
+        },
+        {
+          "mob": "a skeletal cavalier",
+          "drops": 1,
+          "corpses": 59,
+          "rate": 0.01694915254237288
+        },
+        {
+          "mob": "a skeletal warrior",
+          "drops": 3,
+          "corpses": 197,
+          "rate": 0.015228426395939087
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Tomb of the Last Wyrmsbane",
         "Shaded Dunes"
       ]
     },
@@ -5389,8 +6843,8 @@
         {
           "mob": "a skeletal fighter",
           "drops": 1,
-          "corpses": 60,
-          "rate": 0.016666666666666666
+          "corpses": 70,
+          "rate": 0.014285714285714285
         }
       ],
       "prices": [],
@@ -5469,10 +6923,10 @@
       "name": "Wood",
       "droppedBy": [],
       "prices": [],
-      "harvested": 36,
+      "harvested": 80,
       "zones": [
-        "Evershade Weald",
         "Night Harbor",
+        "Evershade Weald",
         "Shaded Dunes",
         "Keepersbight"
       ]
@@ -5510,6 +6964,60 @@
       ]
     },
     {
+      "id": "worn_bow",
+      "gameId": "4a3a4919e69d4dfb1cb47dd7",
+      "name": "Worn Bow",
+      "droppedBy": [
+        {
+          "mob": "Ariblast the Wicked",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        },
+        {
+          "mob": "a skeletal archer",
+          "drops": 2,
+          "corpses": 7,
+          "rate": 0.2857142857142857
+        },
+        {
+          "mob": "a skeletal marksman",
+          "drops": 1,
+          "corpses": 21,
+          "rate": 0.047619047619047616
+        },
+        {
+          "mob": "a Wyrmsbane crusader",
+          "drops": 1,
+          "corpses": 29,
+          "rate": 0.034482758620689655
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Tomb of the Last Wyrmsbane"
+      ]
+    },
+    {
+      "id": "worn_buckler",
+      "gameId": "31c102652f7af12bafd3a71f",
+      "name": "Worn Buckler",
+      "droppedBy": [
+        {
+          "mob": "a skeletal marksman",
+          "drops": 1,
+          "corpses": 21,
+          "rate": 0.047619047619047616
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Tomb of the Last Wyrmsbane"
+      ]
+    },
+    {
       "id": "worn_great_staff",
       "gameId": "09b82af058595df5df6c9af9",
       "name": "Worn Great Staff",
@@ -5517,8 +7025,8 @@
         {
           "mob": "a skeletal fighter",
           "drops": 1,
-          "corpses": 60,
-          "rate": 0.016666666666666666
+          "corpses": 70,
+          "rate": 0.014285714285714285
         }
       ],
       "prices": [],
@@ -5616,8 +7124,8 @@
   "harvest": {
     "Copper Ore": 136,
     "Brittle Stone": 149,
-    "Wood": 36,
-    "Resin": 67,
+    "Wood": 80,
+    "Resin": 123,
     "Clouded Crystallized Magic": 3,
     "Chipped Sapphire": 1,
     "Chipped Fire Emerald": 1,
@@ -5705,33 +7213,33 @@
     },
     {
       "name": "Resin & Wood",
-      "pulls": 49,
+      "pulls": 94,
       "yields": [
         {
           "res": "Resin",
-          "count": 45,
-          "rate": 0.9183673469387755
+          "count": 85,
+          "rate": 0.9042553191489362
         },
         {
           "res": "Wood",
-          "count": 36,
-          "rate": 0.7346938775510204
+          "count": 80,
+          "rate": 0.851063829787234
         },
         {
           "res": "Fine Wood",
           "count": 10,
-          "rate": 0.20408163265306123
+          "rate": 0.10638297872340426
         },
         {
           "res": "Whisperpine Wood",
           "count": 3,
-          "rate": 0.061224489795918366
+          "rate": 0.031914893617021274
         }
       ],
       "zones": [
+        "Night Harbor",
         "Keepersbight",
         "Evershade Weald",
-        "Night Harbor",
         "Shaded Dunes"
       ]
     },
