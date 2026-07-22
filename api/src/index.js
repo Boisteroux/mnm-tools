@@ -133,7 +133,10 @@ export default {
     // --- Discord OAuth: step 1, send the user to Discord's consent screen ---
     if (url.pathname === '/auth/discord/start') {
       if (!env.DISCORD_CLIENT_ID) return json({ error: 'discord login not configured' }, 503, origin);
-      const state = crypto.randomUUID().replace(/-/g, '');
+      // The desktop app passes ?client=app; carry that through the OAuth `state` so the
+      // callback knows to hand the session back over the mnmmap:// deep link.
+      const client = url.searchParams.get('client') === 'app' ? 'app' : 'web';
+      const state = client + '.' + crypto.randomUUID().replace(/-/g, '');
       const authorize = 'https://discord.com/api/oauth2/authorize?' + new URLSearchParams({
         client_id: env.DISCORD_CLIENT_ID, redirect_uri: url.origin + '/auth/discord/callback',
         response_type: 'code', scope: 'identify', state,
@@ -147,9 +150,31 @@ export default {
     // --- Discord OAuth: step 2, Discord returns here with a code; we verify + mint a session ---
     if (url.pathname === '/auth/discord/callback') {
       const site = env.ALLOWED_ORIGIN || DEFAULT_ORIGIN;
-      const fail = (why) => new Response(null, { status: 302, headers: { Location: site + '/?login_error=' + encodeURIComponent(why) } });
-      const code = url.searchParams.get('code');
       const state = url.searchParams.get('state');
+      // App logins (state prefixed "app.") return the session via the mnmmap:// deep link
+      // so the desktop app catches it; web logins bounce back to the site.
+      const isApp = String(state || '').split('.')[0] === 'app';
+      const clearCookie = 'oauth_state=; Path=/; Max-Age=0';
+      const done = (qs) => {
+        if (!isApp) return new Response(null, { status: 302, headers: { Location: site + '/?' + qs, 'Set-Cookie': clearCookie } });
+        // Desktop app: browsers refuse to launch a custom-scheme (mnmmap://) handler from
+        // a bare 302, so serve a tiny page that auto-opens the deep link AND offers a
+        // click fallback (a real user click always launches the handler).
+        const link = 'mnmmap://auth/?' + qs;
+        const ok = qs.startsWith('login=');
+        const html = '<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
+          + '<title>MnM Map sign-in</title>'
+          + '<style>body{font-family:system-ui,Segoe UI,sans-serif;background:#14110d;color:#e9e2d6;display:grid;place-items:center;min-height:100vh;margin:0;text-align:center}'
+          + '.c{max-width:420px;padding:24px}a.b{display:inline-block;margin-top:14px;padding:11px 20px;background:#3f9088;color:#fff;text-decoration:none;border-radius:8px;font-weight:600}p{opacity:.8}</style>'
+          + '<div class="c"><h2>' + (ok ? 'Signed in ✓' : 'Sign-in problem') + '</h2>'
+          + '<p>Returning you to MnM Map…</p>'
+          + '<p><a class="b" href="' + link + '">Open MnM Map</a></p>'
+          + '<p style="font-size:.85em;opacity:.55">If the app doesn’t come forward, click the button. You can close this tab afterwards.</p></div>'
+          + '<script>location.href=' + JSON.stringify(link) + ';</script>';
+        return new Response(html, { status: 200, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Set-Cookie': clearCookie } });
+      };
+      const fail = (why) => done('login_error=' + encodeURIComponent(why));
+      const code = url.searchParams.get('code');
       if (!code || !state || state !== getCookie(request, 'oauth_state')) return fail('state');
       let tok;
       try {
@@ -173,10 +198,7 @@ export default {
       if (!me || !me.id) return fail('identity');
       const name = me.global_name || me.username || ('user' + String(me.id).slice(-4));
       const session = await makeSession({ id: me.id, name }, env.SESSION_SECRET);
-      return new Response(null, { status: 302, headers: {
-        Location: site + '/?login=' + encodeURIComponent(session),
-        'Set-Cookie': 'oauth_state=; Path=/; Max-Age=0',
-      } });
+      return done('login=' + encodeURIComponent(session));
     }
 
     // Public: approved markers for the site to draw (edge-cached for 60s).

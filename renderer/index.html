@@ -64,6 +64,14 @@
           <button id="btn-export" title="Save your markers (and maps) to a file to share with friends">Export Markers</button>
           <button id="btn-import" title="Load markers (and maps) from a shared file">Import Markers</button>
         </div>
+        <div id="discord-signedout">
+          <div class="btn-row"><button id="btn-discord-login" class="secondary" title="Sign in with Discord to verify who you are — for submitting and moderating community markers">Sign in with Discord</button></div>
+        </div>
+        <div id="discord-signedin" class="hidden">
+          <div class="follow-row">Signed in as <b id="discord-name"></b></div>
+          <div class="btn-row"><button id="btn-discord-logout" class="secondary" title="Sign out of your Discord session">Sign out</button></div>
+        </div>
+        <div id="discord-status" class="mini-status"></div>
       </div>
       <div id="wiki-status"></div>
     </div>

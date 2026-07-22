@@ -40,6 +40,37 @@ app.on('before-quit', () => logCrash('app-before-quit'));
 app.on('will-quit', () => logCrash('app-will-quit'));
 app.on('quit', (e, code) => logCrash('app-quit', { code }));
 
+// ---- Discord sign-in via the mnmmap:// deep link ----
+// The renderer opens the system browser to the Worker's OAuth start (?client=app);
+// when Discord login finishes the Worker 302s to mnmmap://auth/?login=<session>, which
+// the OS routes back to this running instance. Single-instance so the link lands on the
+// app that opened it, not a second copy.
+const DISCORD_AUTH_START = 'https://mnmdb-api.boisteroux.workers.dev/auth/discord/start?client=app';
+
+function handleAuthDeepLink(url) {
+  if (!url || !url.startsWith('mnmmap://')) return;
+  let session = null, error = null;
+  try { const u = new URL(url); session = u.searchParams.get('login'); error = u.searchParams.get('login_error'); } catch {}
+  const send = () => { if (win && !win.isDestroyed()) win.webContents.send('discord-auth', { session, error }); };
+  if (win && !win.isDestroyed()) { win.webContents.isLoading() ? win.webContents.once('did-finish-load', send) : send(); }
+}
+
+// Register mnmmap:// as our protocol (in dev, Electron needs the exec path + script).
+if (process.defaultApp) {
+  if (process.argv.length >= 2) app.setAsDefaultProtocolClient('mnmmap', process.execPath, [path.resolve(process.argv[1])]);
+} else {
+  app.setAsDefaultProtocolClient('mnmmap');
+}
+const gotSingleLock = app.requestSingleInstanceLock();
+app.on('second-instance', (event, argv) => {
+  const link = argv.find((a) => typeof a === 'string' && a.startsWith('mnmmap://'));
+  if (link) handleAuthDeepLink(link);
+  if (win && !win.isDestroyed()) { if (win.isMinimized()) win.restore(); win.focus(); }
+});
+app.on('open-url', (event, url) => { event.preventDefault(); handleAuthDeepLink(url); }); // macOS
+
+ipcMain.handle('discord-login', () => { shell.openExternal(DISCORD_AUTH_START); return true; });
+
 let overlayMode = false;
 let clickThrough = false;
 let overlayFull = false;
@@ -497,10 +528,14 @@ ipcMain.handle('overlay-set-ignore', (event, ignore) => {
 ipcMain.handle('window-minimize', () => { if (win && !win.isDestroyed()) win.minimize(); return true; });
 
 app.whenReady().then(() => {
+  if (!gotSingleLock) { app.quit(); return; } // another copy is already running; it got the deep link
   logCrash('app-start', { version: app.getVersion(), pid: process.pid });
   createWindow();
   registerShortcuts();
   startGameLogWatch();
+  // Cold start via the deep link (Windows passes the URL in argv on first launch).
+  const coldLink = process.argv.find((a) => typeof a === 'string' && a.startsWith('mnmmap://'));
+  if (coldLink) handleAuthDeepLink(coldLink);
 });
 
 app.on('will-quit', () => globalShortcut.unregisterAll());

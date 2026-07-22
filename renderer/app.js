@@ -171,6 +171,44 @@ async function loadCommunityMarkers() {
   draw();
 }
 
+// ---- Discord sign-in (verifies who you are, for community submissions) ----
+// The app opens the system browser to the Worker's OAuth start; when it finishes the
+// Worker hands the signed session back via the mnmmap:// deep link, which main.js
+// forwards here through onDiscordAuth. We only store the token + show the name; the
+// Worker re-verifies the signature whenever the session is actually used.
+const DISCORD_SESSION_KEY = 'mnmdb-session';
+function decodeSessionName(sess) {
+  try {
+    const bin = atob(String(sess).split('.')[0].replace(/-/g, '+').replace(/_/g, '/'));
+    // Match the Worker's UTF-8 base64url so unicode Discord names decode correctly.
+    const json = new TextDecoder().decode(Uint8Array.from(bin, (c) => c.charCodeAt(0)));
+    return JSON.parse(json).name || '';
+  } catch { return ''; }
+}
+function paintDiscordAuth() {
+  const saved = localStorage.getItem(DISCORD_SESSION_KEY) || '';
+  const name = saved ? decodeSessionName(saved) : '';
+  const inEl = $('discord-signedin'), outEl = $('discord-signedout');
+  if (!inEl || !outEl) return;
+  if (saved && name) { $('discord-name').textContent = name; inEl.classList.remove('hidden'); outEl.classList.add('hidden'); }
+  else { inEl.classList.add('hidden'); outEl.classList.remove('hidden'); }
+}
+function initDiscordAuth() {
+  paintDiscordAuth();
+  const status = (msg) => { const el = $('discord-status'); if (el) el.textContent = msg || ''; };
+  const loginBtn = $('btn-discord-login');
+  if (loginBtn) loginBtn.addEventListener('click', () => { status('Opening Discord in your browser…'); window.mapAPI.discordLogin(); });
+  const logoutBtn = $('btn-discord-logout');
+  if (logoutBtn) logoutBtn.addEventListener('click', () => { localStorage.removeItem(DISCORD_SESSION_KEY); paintDiscordAuth(); status('Signed out.'); });
+  if (window.mapAPI.onDiscordAuth) window.mapAPI.onDiscordAuth(({ session, error }) => {
+    if (error) { status('Sign-in failed: ' + error); return; }
+    if (!session) return;
+    localStorage.setItem(DISCORD_SESSION_KEY, session);
+    paintDiscordAuth();
+    status(''); // the panel's "Signed in as X" line already shows this — no duplicate
+  });
+}
+
 // ---- Rendering ----
 
 function resizeCanvas() {
@@ -546,6 +584,24 @@ let MULTI_MAP = {};
 
 const normName = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
 
+// The game's zone code is the display name's words run together, often REORDERED and
+// dropping the filler words: "wyrmsbanetomb" = "Tomb of the Last Wyrmsbane". Match by
+// consuming the code with the zone's own words (each usable once, any order). Stricter
+// than a substring test, so "infestedcrypt" can't grab "Ancient Crypt".
+function codeMatchesZoneName(code, zoneName) {
+  const words = (zoneName || '').toLowerCase().match(/[a-z0-9]+/g) || [];
+  if (!words.length) return false;
+  const eat = (rest, pool) => {
+    if (!rest) return true;
+    for (let i = 0; i < pool.length; i++) {
+      const w = pool[i];
+      if (w && rest.startsWith(w) && eat(rest.slice(w.length), pool.map((x, j) => (j === i ? null : x)))) return true;
+    }
+    return false;
+  };
+  return eat(normName(code), words);
+}
+
 let appReady = false;        // don't react to zone events until saved data is loaded
 let pendingGameZone = null;  // a zone event that arrived during startup
 
@@ -563,9 +619,15 @@ async function handleGameZone(internalName) {
   // 2. Match by alias or name similarity, then remember the link
   if (!zone) {
     const aliased = ZONE_ALIASES[key];
+    // Of the zones whose words can spell the code, prefer the tightest fit — fewest
+    // leftover words — so "nightharbor" picks Night Harbor over Night Harbor Sewers.
+    const wordMatches = data.zones
+      .filter((z) => codeMatchesZoneName(key, z.name))
+      .sort((a, b) => ((a.name.match(/[a-z0-9]+/gi) || []).length - (b.name.match(/[a-z0-9]+/gi) || []).length));
     zone =
       (aliased && data.zones.find((z) => z.name.toLowerCase() === aliased.toLowerCase())) ||
       data.zones.find((z) => normName(z.name) === normName(key)) ||
+      wordMatches[0] ||
       data.zones.find(
         (z) => normName(z.name).includes(normName(key)) || normName(key).includes(normName(z.name))
       );
@@ -1783,6 +1845,23 @@ async function switchToMap(name) {
   }
   if (migrated) save();
 
+  // Older builds couldn't match a reordered zone code ("wyrmsbanetomb" → Tomb of the
+  // Last Wyrmsbane) and auto-created a stub zone for it. Drop those stubs and hand the
+  // game-code link to the real zone — but only when the stub holds NOTHING (no markers,
+  // no map) and the zone replacing it is a configured one, so no user data can be lost.
+  let pruned = false;
+  for (let i = data.zones.length - 1; i >= 0; i--) {
+    const stub = data.zones[i];
+    if (!stub.gameName || stub.image || (stub.markers && stub.markers.length)) continue;
+    const real = data.zones.find((z) => z !== stub && (z.image || (z.markers && z.markers.length)) &&
+      (normName(z.name) === normName(stub.gameName) || codeMatchesZoneName(stub.gameName, z.name)));
+    if (!real) continue;
+    if (!real.gameName) real.gameName = stub.gameName;
+    data.zones.splice(i, 1);
+    pruned = true;
+  }
+  if (pruned) save();
+
   resizeCanvas();
   if (data.zones.length > 0) {
     switchZone(data.zones[0].id);
@@ -1814,6 +1893,9 @@ async function switchToMap(name) {
     else { refreshSidebar(); draw(); }
   });
   if (showCommunity) loadCommunityMarkers();
+
+  // Discord sign-in (lives under Zone ▸ Options)
+  initDiscordAuth();
 
   // Open on whatever zone the player was last in, according to the game log
   appReady = true;
