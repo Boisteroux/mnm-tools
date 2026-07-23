@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-07-21T21:36:52.540Z",
+  "generatedAt": "2026-07-23T23:28:41.537Z",
   "source": "mnm-tools",
-  "ledgerFiles": 20,
-  "events": 4876,
+  "ledgerFiles": 24,
+  "events": 5300,
   "contributors": [],
   "mobs": {
     "a large rat": {
@@ -266,30 +266,35 @@
       "corpses": 70
     },
     "a lawbreaker": {
-      "kills": 3,
+      "kills": 7,
       "drops": {
-        "Raw Human Meat": 1
+        "Raw Human Meat": 1,
+        "Corroded Bronze Dagger": 1,
+        "Hide Scraps": 2,
+        "Flawed Black Sapphire": 1
       },
       "zones": {
-        "Night Harbor": 6
+        "Night Harbor": 18
       },
-      "coin": 196,
-      "corpses": 1
+      "coin": 468,
+      "corpses": 3
     },
     "a goon": {
-      "kills": 4,
+      "kills": 5,
       "drops": {
         "Hide Scraps": 1,
         "Mushroom": 1,
         "Flawed Blue Diamond": 1,
         "Tattered Hide Shoulderpads": 1,
-        "Onion": 1
+        "Onion": 1,
+        "Wool Scraps": 1,
+        "Corroded Bronze Long Spear": 1
       },
       "zones": {
-        "Night Harbor": 11
+        "Night Harbor": 14
       },
-      "coin": 320,
-      "corpses": 3
+      "coin": 400,
+      "corpses": 4
     },
     "a loyal protector": {
       "kills": 2,
@@ -1067,6 +1072,151 @@
       "coin": 28,
       "corpses": 2
     },
+    "a wench": {
+      "kills": 3,
+      "drops": {
+        "Rawhide Scraps": 1,
+        "Raw Human Meat": 2,
+        "Cloth Scraps": 1,
+        "Tattered Rawhide Bracer": 1
+      },
+      "zones": {
+        "Night Harbor": 11
+      },
+      "coin": 116,
+      "corpses": 2
+    },
+    "a corrupt priest": {
+      "kills": 6,
+      "drops": {
+        "Raw Human Meat": 1,
+        "Bronze Scraps": 1,
+        "Wool Scraps": 1,
+        "Corroded Bronze Spear": 1,
+        "Hide Scraps": 1
+      },
+      "zones": {
+        "Night Harbor": 13
+      },
+      "coin": 299,
+      "corpses": 3
+    },
+    "a market peddler": {
+      "kills": 11,
+      "drops": {
+        "Rawhide Scraps": 4,
+        "Cloth Scraps": 3,
+        "Tattered Rawhide Cloak": 1,
+        "Tattered Rawhide Boots": 1,
+        "Tattered Rawhide Leggings": 1,
+        "Celery": 1,
+        "Raw Human Meat": 2,
+        "Chipped Star Rose Quartz": 1,
+        "Tattered Cloth Robe": 1
+      },
+      "zones": {
+        "Night Harbor": 36
+      },
+      "coin": 435,
+      "corpses": 7
+    },
+    "a feisty fishwife": {
+      "kills": 2,
+      "drops": {},
+      "zones": {
+        "Night Harbor": 2
+      },
+      "coin": 76,
+      "corpses": 0
+    },
+    "a drunken cleric": {
+      "kills": 4,
+      "drops": {
+        "Tattered Wool Boots": 1,
+        "Wool Scraps": 1,
+        "Bronze Scraps": 1,
+        "Raw Dwarf Meat": 1
+      },
+      "zones": {
+        "Night Harbor": 11
+      },
+      "coin": 216,
+      "corpses": 3
+    },
+    "a drunken dockworker": {
+      "kills": 9,
+      "drops": {
+        "Wool Scraps": 1,
+        "Raw Human Meat": 2,
+        "Hide Scraps": 1,
+        "Tattered Hide Mask": 1
+      },
+      "zones": {
+        "Night Harbor": 19
+      },
+      "coin": 474,
+      "corpses": 3
+    },
+    "a swarthy sorcerer": {
+      "kills": 2,
+      "drops": {
+        "Wool Scraps": 1
+      },
+      "zones": {
+        "Night Harbor": 4
+      },
+      "coin": 120,
+      "corpses": 1
+    },
+    "a dusty skeleton": {
+      "kills": 62,
+      "drops": {
+        "Hide Scraps": 7,
+        "Bone Chips": 20,
+        "Wool Scraps": 5,
+        "Corroded Bronze Warhammer": 1,
+        "Corroded Bronze Chain Tunic": 1,
+        "Corroded Bronze Scythe": 2,
+        "Bronze Scraps": 12,
+        "Tattered Wool Gorget": 1,
+        "Tattered Hide Gorget": 1,
+        "Corroded Bronze Maul": 1,
+        "Corroded Bronze Chain Mask": 1,
+        "Corroded Bronze Chain Cloak": 1,
+        "Cracked Fine Wood Staff": 1,
+        "Tattered Hide Mask": 1,
+        "Corroded Bronze Tower Shield": 1,
+        "Corroded Bronze Great Scythe": 2,
+        "Corroded Bronze Scimitar": 1,
+        "Tattered Wool Veil": 1,
+        "Burned Parchment Scrap": 2,
+        "Tattered Wool Cape": 1,
+        "Corroded Bronze Chain Boots": 1,
+        "Tattered Hide Cap": 1,
+        "Tattered Wool Pantaloons": 1,
+        "Tattered Wool Tunic": 1,
+        "Tattered Wool Gloves": 1,
+        "Corroded Bronze Trident": 1,
+        "Corroded Bronze Plate Cloak": 1,
+        "Tattered Wool Boots": 1
+      },
+      "zones": {
+        "Fallenpass": 185
+      },
+      "coin": 5001,
+      "corpses": 30
+    },
+    "a bone carver": {
+      "kills": 0,
+      "drops": {
+        "Raw Beetle Meat": 5
+      },
+      "zones": {
+        "Fallenpass": 10
+      },
+      "coin": 0,
+      "corpses": 5
+    },
     "Lieutenant Gregan Snyde": {
       "kills": 1,
       "drops": {
@@ -1079,6 +1229,55 @@
         "Tomb of the Last Wyrmsbane": 5
       },
       "coin": 26,
+      "corpses": 2
+    },
+    "a harbor guard": {
+      "kills": 0,
+      "drops": {
+        "Dented Ba'Haara Guard Helm": 1
+      },
+      "zones": {
+        "Night Harbor": 1
+      },
+      "coin": 0,
+      "corpses": 1
+    },
+    "a stumbling skeleton": {
+      "kills": 0,
+      "drops": {
+        "Rawhide Scraps": 1,
+        "Tattered Cloth Gorget": 1,
+        "Bone Chips": 1,
+        "Rusty Warhammer": 1,
+        "Tattered Cloth Cap": 1
+      },
+      "zones": {
+        "Night Harbor": 6
+      },
+      "coin": 0,
+      "corpses": 1
+    },
+    "a mercenary magus": {
+      "kills": 1,
+      "drops": {
+        "Wool Scraps": 1
+      },
+      "zones": {
+        "Night Harbor": 2
+      },
+      "coin": 51,
+      "corpses": 1
+    },
+    "Necroferius": {
+      "kills": 0,
+      "drops": {
+        "Raw Beetle Meat": 1,
+        "Carrioncaller": 1
+      },
+      "zones": {
+        "Fallenpass": 2
+      },
+      "coin": 0,
       "corpses": 2
     }
   },
@@ -1403,6 +1602,12 @@
       "name": "Bone Chips",
       "droppedBy": [
         {
+          "mob": "a stumbling skeleton",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
+        {
           "mob": "a skeletal defender",
           "drops": 48,
           "corpses": 66,
@@ -1430,6 +1635,12 @@
           "mob": "a skeletal cleric",
           "drops": 22,
           "corpses": 33,
+          "rate": 0.6666666666666666
+        },
+        {
+          "mob": "a dusty skeleton",
+          "drops": 20,
+          "corpses": 30,
           "rate": 0.6666666666666666
         },
         {
@@ -1485,6 +1696,7 @@
       "harvested": 0,
       "zones": [
         "Tomb of the Last Wyrmsbane",
+        "Fallenpass",
         "Night Harbor"
       ]
     },
@@ -1541,6 +1753,24 @@
           "rate": 1
         },
         {
+          "mob": "a dusty skeleton",
+          "drops": 12,
+          "corpses": 30,
+          "rate": 0.4
+        },
+        {
+          "mob": "a corrupt priest",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        },
+        {
+          "mob": "a drunken cleric",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        },
+        {
           "mob": "a poacher pathfinder",
           "drops": 2,
           "corpses": 11,
@@ -1555,8 +1785,9 @@
       ],
       "harvested": 0,
       "zones": [
-        "Keepersbight",
-        "Night Harbor"
+        "Fallenpass",
+        "Night Harbor",
+        "Keepersbight"
       ]
     },
     {
@@ -1602,6 +1833,24 @@
       "zones": []
     },
     {
+      "id": "burned_parchment_scrap",
+      "gameId": "66561e33b58f09ca2145cbb0",
+      "name": "Burned Parchment Scrap",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 2,
+          "corpses": 30,
+          "rate": 0.06666666666666667
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
       "id": "cabbage",
       "gameId": "7464484d69831c9587f6b80e",
       "name": "Cabbage",
@@ -1637,6 +1886,24 @@
         "Fallenpass",
         "Night Harbor",
         "Keepersbight"
+      ]
+    },
+    {
+      "id": "carrioncaller",
+      "gameId": "9032d85aad00d3bb3895a892",
+      "name": "Carrioncaller",
+      "droppedBy": [
+        {
+          "mob": "Necroferius",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
       ]
     },
     {
@@ -1683,16 +1950,28 @@
       "name": "Celery",
       "droppedBy": [
         {
+          "mob": "a market peddler",
+          "drops": 1,
+          "corpses": 7,
+          "rate": 0.14285714285714285
+        },
+        {
           "mob": "a smuggler",
           "drops": 2,
           "corpses": 50,
           "rate": 0.04
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 1,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
-        "Fallenpass"
+        "Fallenpass",
+        "Night Harbor"
       ]
     },
     {
@@ -1795,6 +2074,29 @@
       "harvested": 1,
       "zones": [
         "Evershade Weald"
+      ]
+    },
+    {
+      "id": "chipped_star_rose_quartz",
+      "gameId": "3ae4638530b3b0c964acb3ab",
+      "name": "Chipped Star Rose Quartz",
+      "droppedBy": [
+        {
+          "mob": "a market peddler",
+          "drops": 1,
+          "corpses": 7,
+          "rate": 0.14285714285714285
+        }
+      ],
+      "prices": [
+        {
+          "copper": 2,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
       ]
     },
     {
@@ -1931,6 +2233,12 @@
           "rate": 0.5
         },
         {
+          "mob": "a wench",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
           "mob": "Grandmaster Gildas",
           "drops": 1,
           "corpses": 2,
@@ -1947,6 +2255,12 @@
           "drops": 7,
           "corpses": 15,
           "rate": 0.4666666666666667
+        },
+        {
+          "mob": "a market peddler",
+          "drops": 3,
+          "corpses": 7,
+          "rate": 0.42857142857142855
         },
         {
           "mob": "a skeletal knight",
@@ -2112,6 +2426,42 @@
       ]
     },
     {
+      "id": "corroded_bronze_chain_boots",
+      "gameId": "c088982bfe6a4f309e35e4e6",
+      "name": "Corroded Bronze Chain Boots",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 30,
+          "rate": 0.03333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "corroded_bronze_chain_cloak",
+      "gameId": "0d888319485b49cdd4a58075",
+      "name": "Corroded Bronze Chain Cloak",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 30,
+          "rate": 0.03333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
       "id": "corroded_bronze_chain_gloves",
       "gameId": "74e8624cff2233a539422d11",
       "name": "Corroded Bronze Chain Gloves",
@@ -2135,6 +2485,191 @@
       ]
     },
     {
+      "id": "corroded_bronze_chain_mask",
+      "gameId": "55d1a8395651f2c1080a93f5",
+      "name": "Corroded Bronze Chain Mask",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 30,
+          "rate": 0.03333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "corroded_bronze_chain_tunic",
+      "gameId": "c00036993a5447f8dceff24d",
+      "name": "Corroded Bronze Chain Tunic",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 30,
+          "rate": 0.03333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "corroded_bronze_dagger",
+      "gameId": "cd9311d6c710dc07776ad430",
+      "name": "Corroded Bronze Dagger",
+      "droppedBy": [
+        {
+          "mob": "a lawbreaker",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        }
+      ],
+      "prices": [
+        {
+          "copper": 125,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
+    },
+    {
+      "id": "corroded_bronze_great_scythe",
+      "gameId": "2ba6862990047a14099402fe",
+      "name": "Corroded Bronze Great Scythe",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 2,
+          "corpses": 30,
+          "rate": 0.06666666666666667
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "corroded_bronze_long_spear",
+      "gameId": "59e3ceecc85569abc004fe55",
+      "name": "Corroded Bronze Long Spear",
+      "droppedBy": [
+        {
+          "mob": "a goon",
+          "drops": 1,
+          "corpses": 4,
+          "rate": 0.25
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
+    },
+    {
+      "id": "corroded_bronze_maul",
+      "gameId": "f56eeb59d2d04886adb56685",
+      "name": "Corroded Bronze Maul",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 30,
+          "rate": 0.03333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "corroded_bronze_plate_cloak",
+      "gameId": "7bffa078a20da488fb527d1e",
+      "name": "Corroded Bronze Plate Cloak",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 30,
+          "rate": 0.03333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "corroded_bronze_scimitar",
+      "gameId": "46a378140a8663a91dc685e1",
+      "name": "Corroded Bronze Scimitar",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 30,
+          "rate": 0.03333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "corroded_bronze_scythe",
+      "gameId": "d1acb9a6576b35349f82f3f3",
+      "name": "Corroded Bronze Scythe",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 2,
+          "corpses": 30,
+          "rate": 0.06666666666666667
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "corroded_bronze_spear",
+      "gameId": "ebf427192a41765c98516ba5",
+      "name": "Corroded Bronze Spear",
+      "droppedBy": [
+        {
+          "mob": "a corrupt priest",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
+    },
+    {
       "id": "corroded_bronze_tower_shield",
       "gameId": "3d97bf3d72cd0f8a42d2af7b",
       "name": "Corroded Bronze Tower Shield",
@@ -2144,12 +2679,55 @@
           "drops": 1,
           "corpses": 1,
           "rate": 1
+        },
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 30,
+          "rate": 0.03333333333333333
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Night Harbor"
+        "Night Harbor",
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "corroded_bronze_trident",
+      "gameId": "30315e00e65ca1e4ae4a815a",
+      "name": "Corroded Bronze Trident",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 30,
+          "rate": 0.03333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "corroded_bronze_warhammer",
+      "gameId": "3835584b4d01268674afe6de",
+      "name": "Corroded Bronze Warhammer",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 30,
+          "rate": 0.03333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
       ]
     },
     {
@@ -2204,6 +2782,24 @@
           "drops": 1,
           "corpses": 16,
           "rate": 0.0625
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "cracked_fine_wood_staff",
+      "gameId": "c8945854c8b1a0659e5fd748",
+      "name": "Cracked Fine Wood Staff",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 30,
+          "rate": 0.03333333333333333
         }
       ],
       "prices": [],
@@ -2346,6 +2942,24 @@
       ]
     },
     {
+      "id": "dented_ba_haara_guard_helm",
+      "gameId": "1418d3bf4a83259622e3d072",
+      "name": "Dented Ba'Haara Guard Helm",
+      "droppedBy": [
+        {
+          "mob": "a harbor guard",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
+    },
+    {
       "id": "fine_wood",
       "gameId": null,
       "name": "Fine Wood",
@@ -2449,6 +3063,29 @@
       ]
     },
     {
+      "id": "flawed_black_sapphire",
+      "gameId": "3be1dc6368f30e43d66d2a36",
+      "name": "Flawed Black Sapphire",
+      "droppedBy": [
+        {
+          "mob": "a lawbreaker",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        }
+      ],
+      "prices": [
+        {
+          "copper": 7,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": [
+        "Night Harbor"
+      ]
+    },
+    {
       "id": "flawed_blue_diamond",
       "gameId": "23a74434af58a39b3015ae00",
       "name": "Flawed Blue Diamond",
@@ -2456,8 +3093,8 @@
         {
           "mob": "a goon",
           "drops": 1,
-          "corpses": 3,
-          "rate": 0.3333333333333333
+          "corpses": 4,
+          "rate": 0.25
         }
       ],
       "prices": [
@@ -2603,16 +3240,40 @@
       "name": "Hide Scraps",
       "droppedBy": [
         {
+          "mob": "a lawbreaker",
+          "drops": 2,
+          "corpses": 3,
+          "rate": 0.6666666666666666
+        },
+        {
           "mob": "High Marshal Fionna Bromm",
           "drops": 1,
           "corpses": 2,
           "rate": 0.5
         },
         {
-          "mob": "a goon",
+          "mob": "a drunken dockworker",
           "drops": 1,
           "corpses": 3,
           "rate": 0.3333333333333333
+        },
+        {
+          "mob": "a corrupt priest",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        },
+        {
+          "mob": "a goon",
+          "drops": 1,
+          "corpses": 4,
+          "rate": 0.25
+        },
+        {
+          "mob": "a dusty skeleton",
+          "drops": 7,
+          "corpses": 30,
+          "rate": 0.23333333333333334
         },
         {
           "mob": "a poacher pathfinder",
@@ -2624,6 +3285,7 @@
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Fallenpass",
         "Night Harbor",
         "Keepersbight",
         "Tomb of the Last Wyrmsbane"
@@ -3035,8 +3697,8 @@
         {
           "mob": "a goon",
           "drops": 1,
-          "corpses": 3,
-          "rate": 0.3333333333333333
+          "corpses": 4,
+          "rate": 0.25
         },
         {
           "mob": "a cultist adept",
@@ -3084,8 +3746,8 @@
         {
           "mob": "a goon",
           "drops": 1,
-          "corpses": 3,
-          "rate": 0.3333333333333333
+          "corpses": 4,
+          "rate": 0.25
         },
         {
           "mob": "a poacher pathfinder",
@@ -3305,6 +3967,12 @@
       "name": "Raw Beetle Meat",
       "droppedBy": [
         {
+          "mob": "a bone carver",
+          "drops": 5,
+          "corpses": 5,
+          "rate": 1
+        },
+        {
           "mob": "a tomb burrower",
           "drops": 3,
           "corpses": 4,
@@ -3312,6 +3980,12 @@
         },
         {
           "mob": "a young crypt scarab",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
+          "mob": "Necroferius",
           "drops": 1,
           "corpses": 2,
           "rate": 0.5
@@ -3325,7 +3999,26 @@
       ],
       "harvested": 0,
       "zones": [
+        "Fallenpass",
         "Valeofzintar",
+        "Night Harbor"
+      ]
+    },
+    {
+      "id": "raw_dwarf_meat",
+      "gameId": "ae8f6843dc9f93e94a53a750",
+      "name": "Raw Dwarf Meat",
+      "droppedBy": [
+        {
+          "mob": "a drunken cleric",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
         "Night Harbor"
       ]
     },
@@ -3335,22 +4028,46 @@
       "name": "Raw Human Meat",
       "droppedBy": [
         {
-          "mob": "a lawbreaker",
-          "drops": 1,
-          "corpses": 1,
-          "rate": 1
-        },
-        {
           "mob": "a loyal protector",
           "drops": 1,
           "corpses": 1,
           "rate": 1
         },
         {
+          "mob": "a wench",
+          "drops": 2,
+          "corpses": 2,
+          "rate": 1
+        },
+        {
+          "mob": "a drunken dockworker",
+          "drops": 2,
+          "corpses": 3,
+          "rate": 0.6666666666666666
+        },
+        {
+          "mob": "a lawbreaker",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        },
+        {
           "mob": "a hired tracker",
           "drops": 1,
           "corpses": 3,
           "rate": 0.3333333333333333
+        },
+        {
+          "mob": "a corrupt priest",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        },
+        {
+          "mob": "a market peddler",
+          "drops": 2,
+          "corpses": 7,
+          "rate": 0.2857142857142857
         },
         {
           "mob": "a poacher bruiser",
@@ -3404,8 +4121,8 @@
       "harvested": 0,
       "zones": [
         "Fallenpass",
-        "Keepersbight",
-        "Night Harbor"
+        "Night Harbor",
+        "Keepersbight"
       ]
     },
     {
@@ -3501,6 +4218,12 @@
           "rate": 1
         },
         {
+          "mob": "a stumbling skeleton",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
+        {
           "mob": "a skeletal cavalier",
           "drops": 35,
           "corpses": 59,
@@ -3511,6 +4234,12 @@
           "drops": 7,
           "corpses": 12,
           "rate": 0.5833333333333334
+        },
+        {
+          "mob": "a market peddler",
+          "drops": 4,
+          "corpses": 7,
+          "rate": 0.5714285714285714
         },
         {
           "mob": "a skeletal marksman",
@@ -3526,6 +4255,12 @@
         },
         {
           "mob": "an ashira spearfisher",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
+          "mob": "a wench",
           "drops": 1,
           "corpses": 2,
           "rate": 0.5
@@ -3613,7 +4348,8 @@
       "harvested": 0,
       "zones": [
         "Tomb of the Last Wyrmsbane",
-        "Shaded Dunes"
+        "Shaded Dunes",
+        "Night Harbor"
       ]
     },
     {
@@ -3627,7 +4363,7 @@
           "count": 1
         }
       ],
-      "harvested": 123,
+      "harvested": 156,
       "zones": [
         "Night Harbor",
         "Keepersbight",
@@ -4397,6 +5133,12 @@
       "name": "Rusty Warhammer",
       "droppedBy": [
         {
+          "mob": "a stumbling skeleton",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
+        {
           "mob": "a skeletal monk",
           "drops": 1,
           "corpses": 36,
@@ -4412,7 +5154,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Tomb of the Last Wyrmsbane"
+        "Tomb of the Last Wyrmsbane",
+        "Night Harbor"
       ]
     },
     {
@@ -5222,6 +5965,12 @@
       "name": "Tattered Cloth Cap",
       "droppedBy": [
         {
+          "mob": "a stumbling skeleton",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
+        {
           "mob": "an ashira shaman",
           "drops": 1,
           "corpses": 12,
@@ -5274,7 +6023,8 @@
       "harvested": 0,
       "zones": [
         "Tomb of the Last Wyrmsbane",
-        "Shaded Dunes"
+        "Shaded Dunes",
+        "Night Harbor"
       ]
     },
     {
@@ -5416,6 +6166,12 @@
       "name": "Tattered Cloth Gorget",
       "droppedBy": [
         {
+          "mob": "a stumbling skeleton",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
+        {
           "mob": "a skeletal vicar",
           "drops": 3,
           "corpses": 24,
@@ -5468,7 +6224,8 @@
       "harvested": 0,
       "zones": [
         "Tomb of the Last Wyrmsbane",
-        "Shaded Dunes"
+        "Shaded Dunes",
+        "Night Harbor"
       ]
     },
     {
@@ -5592,6 +6349,12 @@
           "rate": 0.14285714285714285
         },
         {
+          "mob": "a market peddler",
+          "drops": 1,
+          "corpses": 7,
+          "rate": 0.14285714285714285
+        },
+        {
           "mob": "an ashira warrior",
           "drops": 1,
           "corpses": 12,
@@ -5638,6 +6401,7 @@
       "harvested": 0,
       "zones": [
         "Tomb of the Last Wyrmsbane",
+        "Night Harbor",
         "Shaded Dunes"
       ]
     },
@@ -5981,6 +6745,67 @@
       ]
     },
     {
+      "id": "tattered_hide_cap",
+      "gameId": "c0b27c433e9526db1c199a7f",
+      "name": "Tattered Hide Cap",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 30,
+          "rate": 0.03333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "tattered_hide_gorget",
+      "gameId": "a439e01f612f78594fb4a8f3",
+      "name": "Tattered Hide Gorget",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 30,
+          "rate": 0.03333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "tattered_hide_mask",
+      "gameId": "7e32ab4ce05324f1979d043c",
+      "name": "Tattered Hide Mask",
+      "droppedBy": [
+        {
+          "mob": "a drunken dockworker",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        },
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 30,
+          "rate": 0.03333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Night Harbor",
+        "Fallenpass"
+      ]
+    },
+    {
       "id": "tattered_hide_shoulderpads",
       "gameId": "f3095c2c19fd14bee8f94004",
       "name": "Tattered Hide Shoulderpads",
@@ -5988,8 +6813,8 @@
         {
           "mob": "a goon",
           "drops": 1,
-          "corpses": 3,
-          "rate": 0.3333333333333333
+          "corpses": 4,
+          "rate": 0.25
         }
       ],
       "prices": [],
@@ -6202,6 +7027,12 @@
           "rate": 0.16666666666666666
         },
         {
+          "mob": "a market peddler",
+          "drops": 1,
+          "corpses": 7,
+          "rate": 0.14285714285714285
+        },
+        {
           "mob": "a skeletal vicar",
           "drops": 2,
           "corpses": 24,
@@ -6236,7 +7067,8 @@
       "harvested": 0,
       "zones": [
         "Tomb of the Last Wyrmsbane",
-        "Shaded Dunes"
+        "Shaded Dunes",
+        "Night Harbor"
       ]
     },
     {
@@ -6244,6 +7076,12 @@
       "gameId": "ae5224e7e3ff338e04d7733b",
       "name": "Tattered Rawhide Bracer",
       "droppedBy": [
+        {
+          "mob": "a wench",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
         {
           "mob": "a skeletal champion",
           "drops": 2,
@@ -6290,7 +7128,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Tomb of the Last Wyrmsbane"
+        "Tomb of the Last Wyrmsbane",
+        "Night Harbor"
       ]
     },
     {
@@ -6347,6 +7186,12 @@
       "name": "Tattered Rawhide Cloak",
       "droppedBy": [
         {
+          "mob": "a market peddler",
+          "drops": 1,
+          "corpses": 7,
+          "rate": 0.14285714285714285
+        },
+        {
           "mob": "a skeletal priest",
           "drops": 1,
           "corpses": 16,
@@ -6380,7 +7225,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Tomb of the Last Wyrmsbane"
+        "Tomb of the Last Wyrmsbane",
+        "Night Harbor"
       ]
     },
     {
@@ -6511,6 +7357,12 @@
           "rate": 0.3333333333333333
         },
         {
+          "mob": "a market peddler",
+          "drops": 1,
+          "corpses": 7,
+          "rate": 0.14285714285714285
+        },
+        {
           "mob": "an ashira raider",
           "drops": 1,
           "corpses": 9,
@@ -6551,7 +7403,8 @@
       "harvested": 0,
       "zones": [
         "Tomb of the Last Wyrmsbane",
-        "Shaded Dunes"
+        "Shaded Dunes",
+        "Night Harbor"
       ]
     },
     {
@@ -6761,6 +7614,139 @@
       ]
     },
     {
+      "id": "tattered_wool_boots",
+      "gameId": "dca7bf26db93772648f0f992",
+      "name": "Tattered Wool Boots",
+      "droppedBy": [
+        {
+          "mob": "a drunken cleric",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        },
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 30,
+          "rate": 0.03333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass",
+        "Night Harbor"
+      ]
+    },
+    {
+      "id": "tattered_wool_cape",
+      "gameId": "3fdae3b5ecfb2b842415842a",
+      "name": "Tattered Wool Cape",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 30,
+          "rate": 0.03333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "tattered_wool_gloves",
+      "gameId": "46d0d15c9239d5771f8adb5b",
+      "name": "Tattered Wool Gloves",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 30,
+          "rate": 0.03333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "tattered_wool_gorget",
+      "gameId": "4145234441d5b70631d76695",
+      "name": "Tattered Wool Gorget",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 30,
+          "rate": 0.03333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "tattered_wool_pantaloons",
+      "gameId": "66f30a93097c0fc5e3cd012e",
+      "name": "Tattered Wool Pantaloons",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 30,
+          "rate": 0.03333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "tattered_wool_tunic",
+      "gameId": "7045637f1a31e8b52ea2c5e2",
+      "name": "Tattered Wool Tunic",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 30,
+          "rate": 0.03333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "tattered_wool_veil",
+      "gameId": "72544cee18fbdacc8a267d2d",
+      "name": "Tattered Wool Veil",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 30,
+          "rate": 0.03333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
       "id": "toma_s_signet_ring",
       "gameId": "bf0e8c5e08b7a42ab9a422cf",
       "name": "Toma's Signet Ring",
@@ -6923,7 +7909,7 @@
       "name": "Wood",
       "droppedBy": [],
       "prices": [],
-      "harvested": 80,
+      "harvested": 112,
       "zones": [
         "Night Harbor",
         "Evershade Weald",
@@ -6951,6 +7937,48 @@
       "name": "Wool Scraps",
       "droppedBy": [
         {
+          "mob": "a swarthy sorcerer",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
+        {
+          "mob": "a mercenary magus",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
+        {
+          "mob": "a corrupt priest",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        },
+        {
+          "mob": "a drunken cleric",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        },
+        {
+          "mob": "a drunken dockworker",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        },
+        {
+          "mob": "a goon",
+          "drops": 1,
+          "corpses": 4,
+          "rate": 0.25
+        },
+        {
+          "mob": "a dusty skeleton",
+          "drops": 5,
+          "corpses": 30,
+          "rate": 0.16666666666666666
+        },
+        {
           "mob": "a poacher pathfinder",
           "drops": 1,
           "corpses": 11,
@@ -6960,6 +7988,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Night Harbor",
+        "Fallenpass",
         "Keepersbight"
       ]
     },
@@ -7124,8 +8154,8 @@
   "harvest": {
     "Copper Ore": 136,
     "Brittle Stone": 149,
-    "Wood": 80,
-    "Resin": 123,
+    "Wood": 112,
+    "Resin": 156,
     "Clouded Crystallized Magic": 3,
     "Chipped Sapphire": 1,
     "Chipped Fire Emerald": 1,
@@ -7212,28 +8242,28 @@
       ]
     },
     {
-      "name": "Resin & Wood",
-      "pulls": 94,
+      "name": "Wood & Resin",
+      "pulls": 126,
       "yields": [
         {
-          "res": "Resin",
-          "count": 85,
-          "rate": 0.9042553191489362
+          "res": "Wood",
+          "count": 112,
+          "rate": 0.8888888888888888
         },
         {
-          "res": "Wood",
-          "count": 80,
-          "rate": 0.851063829787234
+          "res": "Resin",
+          "count": 110,
+          "rate": 0.873015873015873
         },
         {
           "res": "Fine Wood",
           "count": 10,
-          "rate": 0.10638297872340426
+          "rate": 0.07936507936507936
         },
         {
           "res": "Whisperpine Wood",
           "count": 3,
-          "rate": 0.031914893617021274
+          "rate": 0.023809523809523808
         }
       ],
       "zones": [
