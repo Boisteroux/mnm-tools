@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-07-23T23:28:41.537Z",
+  "generatedAt": "2026-07-25T00:14:00.094Z",
   "source": "mnm-tools",
-  "ledgerFiles": 24,
-  "events": 5300,
+  "ledgerFiles": 26,
+  "events": 5770,
   "contributors": [],
   "mobs": {
     "a large rat": {
@@ -1169,53 +1169,72 @@
       "corpses": 1
     },
     "a dusty skeleton": {
-      "kills": 62,
+      "kills": 221,
       "drops": {
-        "Hide Scraps": 7,
-        "Bone Chips": 20,
-        "Wool Scraps": 5,
+        "Hide Scraps": 21,
+        "Bone Chips": 63,
+        "Wool Scraps": 20,
         "Corroded Bronze Warhammer": 1,
         "Corroded Bronze Chain Tunic": 1,
-        "Corroded Bronze Scythe": 2,
-        "Bronze Scraps": 12,
-        "Tattered Wool Gorget": 1,
+        "Corroded Bronze Scythe": 3,
+        "Bronze Scraps": 38,
+        "Tattered Wool Gorget": 3,
         "Tattered Hide Gorget": 1,
-        "Corroded Bronze Maul": 1,
-        "Corroded Bronze Chain Mask": 1,
-        "Corroded Bronze Chain Cloak": 1,
+        "Corroded Bronze Maul": 3,
+        "Corroded Bronze Chain Mask": 2,
+        "Corroded Bronze Chain Cloak": 2,
         "Cracked Fine Wood Staff": 1,
-        "Tattered Hide Mask": 1,
+        "Tattered Hide Mask": 4,
         "Corroded Bronze Tower Shield": 1,
         "Corroded Bronze Great Scythe": 2,
         "Corroded Bronze Scimitar": 1,
         "Tattered Wool Veil": 1,
-        "Burned Parchment Scrap": 2,
-        "Tattered Wool Cape": 1,
-        "Corroded Bronze Chain Boots": 1,
+        "Burned Parchment Scrap": 3,
+        "Tattered Wool Cape": 3,
+        "Corroded Bronze Chain Boots": 2,
         "Tattered Hide Cap": 1,
-        "Tattered Wool Pantaloons": 1,
-        "Tattered Wool Tunic": 1,
+        "Tattered Wool Pantaloons": 2,
+        "Tattered Wool Tunic": 3,
         "Tattered Wool Gloves": 1,
-        "Corroded Bronze Trident": 1,
+        "Corroded Bronze Trident": 3,
         "Corroded Bronze Plate Cloak": 1,
-        "Tattered Wool Boots": 1
+        "Tattered Wool Boots": 1,
+        "Corroded Bronze Chain Gambeson": 2,
+        "Corroded Bronze Shortsword": 1,
+        "Corroded Bronze Longsword": 4,
+        "Corroded Bronze Mace": 2,
+        "Corroded Bronze Plate Arming Doublet": 1,
+        "Corroded Bronze Greatsword": 1,
+        "Corroded Bronze Chain Gorget": 1,
+        "Corroded Bronze Chain Wristguard": 1,
+        "Tattered Hide Bracer": 1,
+        "Tattered Wool Shirt": 1,
+        "Corroded Bronze War Lance": 1,
+        "Tattered Hide Belt": 1,
+        "Corroded Bronze Battle Axe": 1,
+        "Worn Fine Wood Bow": 1,
+        "Tattered Wool Bracer": 1,
+        "Corroded Bronze Dagger": 1,
+        "Tattered Hide Boots": 1,
+        "Corroded Bronze Long Spear": 1
       },
       "zones": {
-        "Fallenpass": 185
+        "Fallenpass": 582
       },
-      "coin": 5001,
-      "corpses": 30
+      "coin": 17837,
+      "corpses": 99
     },
     "a bone carver": {
       "kills": 0,
       "drops": {
-        "Raw Beetle Meat": 5
+        "Raw Beetle Meat": 15,
+        "Cooked Beetle Meat": 1
       },
       "zones": {
-        "Fallenpass": 10
+        "Fallenpass": 30
       },
       "coin": 0,
-      "corpses": 5
+      "corpses": 16
     },
     "Lieutenant Gregan Snyde": {
       "kills": 1,
@@ -1272,13 +1291,34 @@
       "kills": 0,
       "drops": {
         "Raw Beetle Meat": 1,
-        "Carrioncaller": 1
+        "Carrioncaller": 1,
+        "Grave-Chitin Warshanks": 1
+      },
+      "zones": {
+        "Fallenpass": 3
+      },
+      "coin": 0,
+      "corpses": 3
+    },
+    "Merrisam Copperhelm": {
+      "kills": 1,
+      "drops": {
+        "Tattered Wool Bracer": 1
       },
       "zones": {
         "Fallenpass": 2
       },
-      "coin": 0,
-      "corpses": 2
+      "coin": 236,
+      "corpses": 1
+    },
+    "a restless skeleton": {
+      "kills": 1,
+      "drops": {},
+      "zones": {
+        "Fallenpass": 1
+      },
+      "coin": 148,
+      "corpses": 0
     }
   },
   "items": [
@@ -1639,9 +1679,9 @@
         },
         {
           "mob": "a dusty skeleton",
-          "drops": 20,
-          "corpses": 30,
-          "rate": 0.6666666666666666
+          "drops": 63,
+          "corpses": 99,
+          "rate": 0.6363636363636364
         },
         {
           "mob": "a skeletal vicar",
@@ -1754,9 +1794,9 @@
         },
         {
           "mob": "a dusty skeleton",
-          "drops": 12,
-          "corpses": 30,
-          "rate": 0.4
+          "drops": 38,
+          "corpses": 99,
+          "rate": 0.3838383838383838
         },
         {
           "mob": "a corrupt priest",
@@ -1839,9 +1879,9 @@
       "droppedBy": [
         {
           "mob": "a dusty skeleton",
-          "drops": 2,
-          "corpses": 30,
-          "rate": 0.06666666666666667
+          "drops": 3,
+          "corpses": 99,
+          "rate": 0.030303030303030304
         }
       ],
       "prices": [],
@@ -1896,8 +1936,8 @@
         {
           "mob": "Necroferius",
           "drops": 1,
-          "corpses": 2,
-          "rate": 0.5
+          "corpses": 3,
+          "rate": 0.3333333333333333
         }
       ],
       "prices": [],
@@ -2368,17 +2408,30 @@
     },
     {
       "id": "cooked_beetle_meat",
-      "gameId": null,
+      "gameId": "415eacdd1752af9b1218d992",
       "name": "Cooked Beetle Meat",
-      "droppedBy": [],
+      "droppedBy": [
+        {
+          "mob": "a bone carver",
+          "drops": 1,
+          "corpses": 16,
+          "rate": 0.0625
+        }
+      ],
       "prices": [
+        {
+          "copper": 2,
+          "count": 1
+        },
         {
           "copper": 5,
           "count": 1
         }
       ],
       "harvested": 0,
-      "zones": []
+      "zones": [
+        "Fallenpass"
+      ]
     },
     {
       "id": "cooked_snake_meat",
@@ -2426,15 +2479,33 @@
       ]
     },
     {
+      "id": "corroded_bronze_battle_axe",
+      "gameId": "2c7787a70e07c9eb17415908",
+      "name": "Corroded Bronze Battle Axe",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 99,
+          "rate": 0.010101010101010102
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
       "id": "corroded_bronze_chain_boots",
       "gameId": "c088982bfe6a4f309e35e4e6",
       "name": "Corroded Bronze Chain Boots",
       "droppedBy": [
         {
           "mob": "a dusty skeleton",
-          "drops": 1,
-          "corpses": 30,
-          "rate": 0.03333333333333333
+          "drops": 2,
+          "corpses": 99,
+          "rate": 0.020202020202020204
         }
       ],
       "prices": [],
@@ -2450,9 +2521,27 @@
       "droppedBy": [
         {
           "mob": "a dusty skeleton",
-          "drops": 1,
-          "corpses": 30,
-          "rate": 0.03333333333333333
+          "drops": 2,
+          "corpses": 99,
+          "rate": 0.020202020202020204
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "corroded_bronze_chain_gambeson",
+      "gameId": "1f34a9d325689320ef16fca7",
+      "name": "Corroded Bronze Chain Gambeson",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 2,
+          "corpses": 99,
+          "rate": 0.020202020202020204
         }
       ],
       "prices": [],
@@ -2485,18 +2574,46 @@
       ]
     },
     {
+      "id": "corroded_bronze_chain_gorget",
+      "gameId": "df5e0ea258ce399a07765c88",
+      "name": "Corroded Bronze Chain Gorget",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 99,
+          "rate": 0.010101010101010102
+        }
+      ],
+      "prices": [
+        {
+          "copper": 50,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
       "id": "corroded_bronze_chain_mask",
       "gameId": "55d1a8395651f2c1080a93f5",
       "name": "Corroded Bronze Chain Mask",
       "droppedBy": [
         {
           "mob": "a dusty skeleton",
-          "drops": 1,
-          "corpses": 30,
-          "rate": 0.03333333333333333
+          "drops": 2,
+          "corpses": 99,
+          "rate": 0.020202020202020204
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 50,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Fallenpass"
@@ -2510,8 +2627,26 @@
         {
           "mob": "a dusty skeleton",
           "drops": 1,
-          "corpses": 30,
-          "rate": 0.03333333333333333
+          "corpses": 99,
+          "rate": 0.010101010101010102
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "corroded_bronze_chain_wristguard",
+      "gameId": "96fa2e77e74a61ff8d16745f",
+      "name": "Corroded Bronze Chain Wristguard",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 99,
+          "rate": 0.010101010101010102
         }
       ],
       "prices": [],
@@ -2530,6 +2665,12 @@
           "drops": 1,
           "corpses": 3,
           "rate": 0.3333333333333333
+        },
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 99,
+          "rate": 0.010101010101010102
         }
       ],
       "prices": [
@@ -2540,7 +2681,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Night Harbor"
+        "Night Harbor",
+        "Fallenpass"
       ]
     },
     {
@@ -2551,11 +2693,34 @@
         {
           "mob": "a dusty skeleton",
           "drops": 2,
-          "corpses": 30,
-          "rate": 0.06666666666666667
+          "corpses": 99,
+          "rate": 0.020202020202020204
         }
       ],
       "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "corroded_bronze_greatsword",
+      "gameId": "631fa166fb822f33ef4217e3",
+      "name": "Corroded Bronze Greatsword",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 99,
+          "rate": 0.010101010101010102
+        }
+      ],
+      "prices": [
+        {
+          "copper": 60,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Fallenpass"
@@ -2571,12 +2736,60 @@
           "drops": 1,
           "corpses": 4,
           "rate": 0.25
+        },
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 99,
+          "rate": 0.010101010101010102
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Night Harbor"
+        "Night Harbor",
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "corroded_bronze_longsword",
+      "gameId": "766d1c24ab2c35bec955270d",
+      "name": "Corroded Bronze Longsword",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 4,
+          "corpses": 99,
+          "rate": 0.04040404040404041
+        }
+      ],
+      "prices": [
+        {
+          "copper": 50,
+          "count": 2
+        }
+      ],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "corroded_bronze_mace",
+      "gameId": "27c2915249c51af934c40ea9",
+      "name": "Corroded Bronze Mace",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 2,
+          "corpses": 99,
+          "rate": 0.020202020202020204
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
       ]
     },
     {
@@ -2586,9 +2799,32 @@
       "droppedBy": [
         {
           "mob": "a dusty skeleton",
+          "drops": 3,
+          "corpses": 99,
+          "rate": 0.030303030303030304
+        }
+      ],
+      "prices": [
+        {
+          "copper": 60,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "corroded_bronze_plate_arming_doublet",
+      "gameId": "9e81d455f3841b5616ecd6d4",
+      "name": "Corroded Bronze Plate Arming Doublet",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
           "drops": 1,
-          "corpses": 30,
-          "rate": 0.03333333333333333
+          "corpses": 99,
+          "rate": 0.010101010101010102
         }
       ],
       "prices": [],
@@ -2605,8 +2841,8 @@
         {
           "mob": "a dusty skeleton",
           "drops": 1,
-          "corpses": 30,
-          "rate": 0.03333333333333333
+          "corpses": 99,
+          "rate": 0.010101010101010102
         }
       ],
       "prices": [],
@@ -2623,8 +2859,8 @@
         {
           "mob": "a dusty skeleton",
           "drops": 1,
-          "corpses": 30,
-          "rate": 0.03333333333333333
+          "corpses": 99,
+          "rate": 0.010101010101010102
         }
       ],
       "prices": [],
@@ -2640,9 +2876,27 @@
       "droppedBy": [
         {
           "mob": "a dusty skeleton",
-          "drops": 2,
-          "corpses": 30,
-          "rate": 0.06666666666666667
+          "drops": 3,
+          "corpses": 99,
+          "rate": 0.030303030303030304
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "corroded_bronze_shortsword",
+      "gameId": "16c39cb0f1ded858c2bcb95d",
+      "name": "Corroded Bronze Shortsword",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 99,
+          "rate": 0.010101010101010102
         }
       ],
       "prices": [],
@@ -2683,8 +2937,8 @@
         {
           "mob": "a dusty skeleton",
           "drops": 1,
-          "corpses": 30,
-          "rate": 0.03333333333333333
+          "corpses": 99,
+          "rate": 0.010101010101010102
         }
       ],
       "prices": [],
@@ -2701,9 +2955,27 @@
       "droppedBy": [
         {
           "mob": "a dusty skeleton",
+          "drops": 3,
+          "corpses": 99,
+          "rate": 0.030303030303030304
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "corroded_bronze_war_lance",
+      "gameId": "7294dac569563d2c1f305899",
+      "name": "Corroded Bronze War Lance",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
           "drops": 1,
-          "corpses": 30,
-          "rate": 0.03333333333333333
+          "corpses": 99,
+          "rate": 0.010101010101010102
         }
       ],
       "prices": [],
@@ -2720,8 +2992,8 @@
         {
           "mob": "a dusty skeleton",
           "drops": 1,
-          "corpses": 30,
-          "rate": 0.03333333333333333
+          "corpses": 99,
+          "rate": 0.010101010101010102
         }
       ],
       "prices": [],
@@ -2798,8 +3070,8 @@
         {
           "mob": "a dusty skeleton",
           "drops": 1,
-          "corpses": 30,
-          "rate": 0.03333333333333333
+          "corpses": 99,
+          "rate": 0.010101010101010102
         }
       ],
       "prices": [],
@@ -3199,6 +3471,24 @@
       ]
     },
     {
+      "id": "grave_chitin_warshanks",
+      "gameId": "ec84d603bbb2a08be3a000f2",
+      "name": "Grave-Chitin Warshanks",
+      "droppedBy": [
+        {
+          "mob": "Necroferius",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
       "id": "hammer_and_chisel",
       "gameId": "46b8f31e14432362591ee293",
       "name": "Hammer and Chisel",
@@ -3271,9 +3561,9 @@
         },
         {
           "mob": "a dusty skeleton",
-          "drops": 7,
-          "corpses": 30,
-          "rate": 0.23333333333333334
+          "drops": 21,
+          "corpses": 99,
+          "rate": 0.21212121212121213
         },
         {
           "mob": "a poacher pathfinder",
@@ -3968,9 +4258,9 @@
       "droppedBy": [
         {
           "mob": "a bone carver",
-          "drops": 5,
-          "corpses": 5,
-          "rate": 1
+          "drops": 15,
+          "corpses": 16,
+          "rate": 0.9375
         },
         {
           "mob": "a tomb burrower",
@@ -3987,8 +4277,8 @@
         {
           "mob": "Necroferius",
           "drops": 1,
-          "corpses": 2,
-          "rate": 0.5
+          "corpses": 3,
+          "rate": 0.3333333333333333
         }
       ],
       "prices": [
@@ -6745,6 +7035,60 @@
       ]
     },
     {
+      "id": "tattered_hide_belt",
+      "gameId": "954e5561df06ba0e39c14b0f",
+      "name": "Tattered Hide Belt",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 99,
+          "rate": 0.010101010101010102
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "tattered_hide_boots",
+      "gameId": "12a0d9db275b9f4c3a7a8145",
+      "name": "Tattered Hide Boots",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 99,
+          "rate": 0.010101010101010102
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "tattered_hide_bracer",
+      "gameId": "1d378d2be1c2961a3a249a65",
+      "name": "Tattered Hide Bracer",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 99,
+          "rate": 0.010101010101010102
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
       "id": "tattered_hide_cap",
       "gameId": "c0b27c433e9526db1c199a7f",
       "name": "Tattered Hide Cap",
@@ -6752,8 +7096,8 @@
         {
           "mob": "a dusty skeleton",
           "drops": 1,
-          "corpses": 30,
-          "rate": 0.03333333333333333
+          "corpses": 99,
+          "rate": 0.010101010101010102
         }
       ],
       "prices": [],
@@ -6770,8 +7114,8 @@
         {
           "mob": "a dusty skeleton",
           "drops": 1,
-          "corpses": 30,
-          "rate": 0.03333333333333333
+          "corpses": 99,
+          "rate": 0.010101010101010102
         }
       ],
       "prices": [],
@@ -6793,16 +7137,16 @@
         },
         {
           "mob": "a dusty skeleton",
-          "drops": 1,
-          "corpses": 30,
-          "rate": 0.03333333333333333
+          "drops": 4,
+          "corpses": 99,
+          "rate": 0.04040404040404041
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Night Harbor",
-        "Fallenpass"
+        "Fallenpass",
+        "Night Harbor"
       ]
     },
     {
@@ -7627,8 +7971,8 @@
         {
           "mob": "a dusty skeleton",
           "drops": 1,
-          "corpses": 30,
-          "rate": 0.03333333333333333
+          "corpses": 99,
+          "rate": 0.010101010101010102
         }
       ],
       "prices": [],
@@ -7639,15 +7983,39 @@
       ]
     },
     {
+      "id": "tattered_wool_bracer",
+      "gameId": "46c32b605a3419a8a6e95af3",
+      "name": "Tattered Wool Bracer",
+      "droppedBy": [
+        {
+          "mob": "Merrisam Copperhelm",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 99,
+          "rate": 0.010101010101010102
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
       "id": "tattered_wool_cape",
       "gameId": "3fdae3b5ecfb2b842415842a",
       "name": "Tattered Wool Cape",
       "droppedBy": [
         {
           "mob": "a dusty skeleton",
-          "drops": 1,
-          "corpses": 30,
-          "rate": 0.03333333333333333
+          "drops": 3,
+          "corpses": 99,
+          "rate": 0.030303030303030304
         }
       ],
       "prices": [],
@@ -7664,8 +8032,8 @@
         {
           "mob": "a dusty skeleton",
           "drops": 1,
-          "corpses": 30,
-          "rate": 0.03333333333333333
+          "corpses": 99,
+          "rate": 0.010101010101010102
         }
       ],
       "prices": [],
@@ -7681,9 +8049,9 @@
       "droppedBy": [
         {
           "mob": "a dusty skeleton",
-          "drops": 1,
-          "corpses": 30,
-          "rate": 0.03333333333333333
+          "drops": 3,
+          "corpses": 99,
+          "rate": 0.030303030303030304
         }
       ],
       "prices": [],
@@ -7699,9 +8067,27 @@
       "droppedBy": [
         {
           "mob": "a dusty skeleton",
+          "drops": 2,
+          "corpses": 99,
+          "rate": 0.020202020202020204
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "tattered_wool_shirt",
+      "gameId": "1bb0c9f9653723e5c641ffa0",
+      "name": "Tattered Wool Shirt",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
           "drops": 1,
-          "corpses": 30,
-          "rate": 0.03333333333333333
+          "corpses": 99,
+          "rate": 0.010101010101010102
         }
       ],
       "prices": [],
@@ -7717,9 +8103,9 @@
       "droppedBy": [
         {
           "mob": "a dusty skeleton",
-          "drops": 1,
-          "corpses": 30,
-          "rate": 0.03333333333333333
+          "drops": 3,
+          "corpses": 99,
+          "rate": 0.030303030303030304
         }
       ],
       "prices": [],
@@ -7736,8 +8122,8 @@
         {
           "mob": "a dusty skeleton",
           "drops": 1,
-          "corpses": 30,
-          "rate": 0.03333333333333333
+          "corpses": 99,
+          "rate": 0.010101010101010102
         }
       ],
       "prices": [],
@@ -7974,9 +8360,9 @@
         },
         {
           "mob": "a dusty skeleton",
-          "drops": 5,
-          "corpses": 30,
-          "rate": 0.16666666666666666
+          "drops": 20,
+          "corpses": 99,
+          "rate": 0.20202020202020202
         },
         {
           "mob": "a poacher pathfinder",
@@ -7988,8 +8374,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Night Harbor",
         "Fallenpass",
+        "Night Harbor",
         "Keepersbight"
       ]
     },
@@ -8045,6 +8431,24 @@
       "harvested": 0,
       "zones": [
         "Tomb of the Last Wyrmsbane"
+      ]
+    },
+    {
+      "id": "worn_fine_wood_bow",
+      "gameId": "001efba0e86d287c41aecc66",
+      "name": "Worn Fine Wood Bow",
+      "droppedBy": [
+        {
+          "mob": "a dusty skeleton",
+          "drops": 1,
+          "corpses": 99,
+          "rate": 0.010101010101010102
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
       ]
     },
     {
