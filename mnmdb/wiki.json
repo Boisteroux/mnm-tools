@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-25T07:01:19.161Z",
+  "generatedAt": "2026-07-26T07:01:29.221Z",
   "items": {
     "Bone Chips": {
       "hasPage": true,
@@ -49263,9 +49263,46 @@
       "fromTrade": true
     },
     "Darkened Chain Shawl": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0024AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 4,
+      "size": "MEDIUM",
+      "class": "BRD CLR FTR INQ PAL RNG ROG SHD SHM",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 23,
+      "stats": {
+        "STR": 4
+      },
+      "hp": 10,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Keeper's Bight"
+      ],
+      "from": [
+        "Mirella Nighthorn"
+      ],
+      "categories": [
+        "Wrist"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/5/58/Itemicon0024AA.png/64px-Itemicon0024AA.png"
     },
     "Benu Dhai Prayer Beads": {
       "hasPage": true,
@@ -90046,9 +90083,40 @@
       "fromTrade": true
     },
     "Darklight Reliquary": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ELE ENC NEC SPB WIZ",
+      "race": "ALL",
+      "flags": [
+        "MAGIC",
+        "UNIQUE"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "INT": 5,
+        "WIS": 5
+      },
+      "hp": 20,
+      "mana": 20,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "CORR": -7
+      },
+      "instr": {},
+      "container": null,
+      "effect": null
     },
     "Inlaid Pearl Silver Ring": {
       "hasPage": false,
@@ -95780,6 +95848,174 @@
       "fromTrade": true
     },
     "Greater Serum Of Wisdom": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Corroded Mithril Great Scythe": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Raw Deep Elf Meat": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Enchanted Steel Plate Breastplate": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Enchanted Iron Plate Breastplate": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Sneed's Bauble": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Weatherproof Cloak": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Ethtongue": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0258AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "TINY",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "categories": [
+        "Tradeskill Ingredient",
+        "Herb"
+      ],
+      "harvestedBy": "Herbalism",
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/d/db/Itemicon0258AA.png"
+    },
+    "Inlaid Fire Emeral« Platinum Earring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Streel Shortsword": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Sreel Longsword) [Steel Trident": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Steel Longs Word": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Star Ruby Platinum Ring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Bloodstone Silver Ring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaic Jacinth Silver Ring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Black Pearl Platinum Earring) [Inlaid Cat's Eye Agate Platinum Earring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Obscure Broardsword": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Jade Steel Necklace": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Sandstorm Seal": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Giant Il Ree Feller": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Goresnout's Rugged Greaves": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0019AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 1.5,
+      "size": "LARGE",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 7,
+      "stats": {
+        "INT": 1
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Sungreet Strand"
+      ],
+      "from": [
+        "Rizik Goresnout"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/e9/Itemicon0019AA.png/64px-Itemicon0019AA.png"
+    },
+    "Carrion Beetle Eye": {
       "hasPage": false,
       "wikiOnly": true,
       "fromTrade": true
