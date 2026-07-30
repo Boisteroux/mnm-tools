@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-29T07:00:51.153Z",
+  "generatedAt": "2026-07-30T07:00:54.799Z",
   "items": {
     "Bone Chips": {
       "hasPage": true,
@@ -90339,9 +90339,42 @@
       "fromTrade": true
     },
     "Minor Stoneskin Tincture": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0227AD",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 1,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": {
+        "name": "Minor Stoneskin Tincture",
+        "trigger": "Click",
+        "castTime": "5s",
+        "level": 1,
+        "detail": "On Click. Any Slot. Cast Time: 5s, Level: 1"
+      },
+      "tradeskills": [
+        "Alchemy"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/e/ea/Itemicon0227AD.png"
     },
     "Packleader's Forged Greaves": {
       "hasPage": false,
@@ -94590,9 +94623,44 @@
       "fromTrade": true
     },
     "Brawler's Fist": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0149AB",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 6,
+      "size": "MEDIUM",
+      "class": "ARC BRD BST FTR INQ PAL RNG SHD SPB WIZ",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "STR": 3,
+        "STA": 1
+      },
+      "hp": 10,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Blacktide Bay"
+      ],
+      "from": [
+        "Gore"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/1/1e/Itemicon0149AB.png/64px-Itemicon0149AB.png"
     },
     "Kathmere’s Spyglass": {
       "hasPage": false,
@@ -96551,6 +96619,106 @@
       "fromTrade": true
     },
     "Fell ‘L'rident": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Terrifying Staff": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Steelhead Arrow": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Clang's Forge Hammer": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Green Crude Silk Robe": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Medium-Quality Bear Pelt)x3, [Saltglass Knuckles": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Kilnforged Cowl": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Gore-Smeared Warleggings|[Smuggler's Greaves": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Blooded Sage Gloves": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Deadly Spider Venom Sac": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0112AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.2,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Glinting Hollow"
+      ],
+      "from": [
+        "a wandering spider"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/4/49/Itemicon0112AA.png/64px-Itemicon0112AA.png"
+    },
+    "Inlaic Amber Platinum Earring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Green Crude Silk Shirt": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Stoler Circlet": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Copper": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "L Emon": {
       "hasPage": false,
       "wikiOnly": true,
       "fromTrade": true
