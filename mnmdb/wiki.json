@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-07T07:00:43.196Z",
+  "generatedAt": "2026-08-08T07:00:50.150Z",
   "items": {
     "Bone Chips": {
       "hasPage": true,
@@ -90586,9 +90586,45 @@
       "fromTrade": true
     },
     "Oversized Wristplate": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0042AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 2,
+      "size": "SMALL",
+      "class": "CLR FTR INQ PAL SHD",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 16,
+      "stats": {
+        "STR": 4,
+        "STA": 1,
+        "DEX": 2
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Tel Ekir"
+      ],
+      "from": [
+        "Luhum the Plump"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/a/ab/Itemicon0042AA.png/64px-Itemicon0042AA.png"
     },
     "Inlaid Star Ruby Iron Earring": {
       "hasPage": false,
@@ -98451,9 +98487,45 @@
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/f6/Itemicon0022AA.png/64px-Itemicon0022AA.png"
     },
     "Pyrmos Browguard": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0031AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "SMALL",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 19,
+      "stats": {
+        "WIS": 6
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "ER": 4
+      },
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Sungreet Strand"
+      ],
+      "from": [
+        "Mercenary Lord Hrrush"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/fd/Itemicon0031AA.png/64px-Itemicon0031AA.png"
     },
     "Rusty Steel Chain Mask": {
       "hasPage": false,
@@ -98640,6 +98712,150 @@
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/b6/Itemicon0028AA.png/64px-Itemicon0028AA.png"
     },
     "Inlaid Peridot Silver Necklace": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Steel Chain Tunic": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Platinum Bar) [Platinum Chain Links": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Star Ruby Bronze Ring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Peridot Bronze Necklace": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Ruby Bronze Necklace": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Bracer of Arcane Endeavors": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0014AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 5,
+      "size": "SMALL",
+      "class": "ARC BST FTR INQ MNK PAL RNG SHD SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC",
+        "LORE",
+        "UNIQUE"
+      ],
+      "handed": null,
+      "ac": 16,
+      "stats": {
+        "STR": 7,
+        "STA": 2
+      },
+      "hp": 10,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Pass"
+      ],
+      "from": [
+        "Ivor Thrym"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/fc/Itemicon0014AA.png/64px-Itemicon0014AA.png"
+    },
+    "Earthenec Gloves": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Armins Dagger Of Long Nights": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Corroded Bronze Chair Gambeson": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Knottec Cudgel": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Rider's Chainmail Leggings|[Polished Iron Boots": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Poisonous Spider Venom Sac": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Corroded Mithril Maul": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0160AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 13,
+      "size": "LARGE",
+      "class": "BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [],
+      "handed": "Two Handed",
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Vale of Zintar"
+      ],
+      "from": [
+        "Khal'Baar the Growler",
+        "Spicy Raziq",
+        "Zubair Goldtongue"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/9/96/Itemicon0160AA.png/64px-Itemicon0160AA.png"
+    },
+    "House Patriarch's Bracer": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Lapis Lazuli Platinum Ring": {
       "hasPage": false,
       "wikiOnly": true,
       "fromTrade": true
