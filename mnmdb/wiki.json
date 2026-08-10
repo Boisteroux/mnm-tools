@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-09T07:01:23.380Z",
+  "generatedAt": "2026-08-10T07:01:29.489Z",
   "items": {
     "Bone Chips": {
       "hasPage": true,
@@ -91876,9 +91876,45 @@
       "fromTrade": true
     },
     "Lupine Amulet": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0008AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "BRD BST CLR DRU ELE ENC INQ NEC PAL RNG SHD SHM SPB WIZ",
+      "race": "ALL",
+      "flags": [
+        "MAGIC",
+        "UNIQUE"
+      ],
+      "handed": null,
+      "ac": 4,
+      "stats": {
+        "INT": 3,
+        "WIS": 3
+      },
+      "hp": 5,
+      "mana": 5,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Tel Ekir"
+      ],
+      "from": [
+        "an ashira fortune teller"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/34/Itemicon0008AA.png/64px-Itemicon0008AA.png"
     },
     "Inlaid Black Pearl Steel Ring": {
       "hasPage": true,
@@ -98582,9 +98618,44 @@
       "fromTrade": true
     },
     "Plaguewater Cuff": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0043AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 1.4,
+      "size": "SMALL",
+      "class": "BRD CLR FTR INQ PAL RNG ROG SHD SHM",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 26,
+      "stats": {
+        "STA": 4,
+        "WIS": 7
+      },
+      "hp": null,
+      "mana": 10,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Pass"
+      ],
+      "from": [
+        "Blightcaller Zirat"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/a/ad/Itemicon0043AA.png/64px-Itemicon0043AA.png"
     },
     "Mask Of Impatience": {
       "hasPage": false,
@@ -98814,9 +98885,47 @@
       "fromTrade": true
     },
     "Dust-Worn Cuirass": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0023AF",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 6,
+      "size": "MEDIUM",
+      "class": "CLR FTR INQ PAL SHD",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 57,
+      "stats": {
+        "STA": 5,
+        "AGI": 5,
+        "DEX": 1
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "ER": 2
+      },
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Pass"
+      ],
+      "from": [
+        "Aidan Thrym"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/0/06/Itemicon0023AF.png/64px-Itemicon0023AF.png"
     },
     "Promise Of Prowess": {
       "hasPage": false,
@@ -99217,6 +99326,176 @@
       "fromTrade": true
     },
     "Rakamatar Whorl": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Squire's Gambeson": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 3,
+      "size": "MEDIUM",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 36,
+      "stats": {
+        "STR": 6,
+        "STA": 4,
+        "AGI": 2
+      },
+      "hp": 15,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Pass"
+      ],
+      "from": [
+        "Faylan Torvald"
+      ]
+    },
+    "Inlaid Jade Iron Ring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Pearl Iron Earring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Nosebleed Stud": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Faceguarc Of The Torturer": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Orange Crude Silk Robe": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Diamond Silver Earring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Bloodstone Steel Ring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Thunderfury, Blessed Blade Of The Windseeker": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Emissary's Veil Of Persuasion} Mantl Of Zeal - Mid Range Fighter Armor And Gear[Crested Dagger Of House Bromm": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Deser Nomad Treadwraps": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Deser: Nomad Treadwraps": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Bronze Stirrups": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0232AC",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "TINY",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "tradeskills": [
+        "Leatherworking",
+        "Blacksmithing"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/0/0c/Itemicon0232AC.png"
+    },
+    "Bronze Tread": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0232AC",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "TINY",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "tradeskills": [
+        "Blacksmithing"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/0/0c/Itemicon0232AC.png"
+    },
+    "Inlaid Fire Opal Platinum Ring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Sea Giant's Handkerchiet": {
       "hasPage": false,
       "wikiOnly": true,
       "fromTrade": true
