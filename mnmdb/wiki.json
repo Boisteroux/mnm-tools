@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T07:01:25.225Z",
+  "generatedAt": "2026-08-13T07:00:52.579Z",
   "items": {
     "Bone Chips": {
       "hasPage": true,
@@ -94968,9 +94968,41 @@
       "fromTrade": true
     },
     "Balm-Stained Leather Gloves": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0015AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "SMALL",
+      "class": "BST CLR DRU PAL RNG SHM",
+      "race": "ALL",
+      "flags": [
+        "MAGIC",
+        "UNIQUE"
+      ],
+      "handed": null,
+      "ac": 18,
+      "stats": {
+        "WIS": 8
+      },
+      "hp": 10,
+      "mana": 5,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Pass"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/66/Itemicon0015AA.png/64px-Itemicon0015AA.png"
     },
     "Skullbender's Aegis": {
       "hasPage": false,
@@ -99408,9 +99440,44 @@
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/9/96/Itemicon0160AA.png/64px-Itemicon0160AA.png"
     },
     "House Patriarch's Bracer": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0042AC",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 2,
+      "size": "SMALL",
+      "class": "CLR FTR INQ PAL SHD",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 31,
+      "stats": {
+        "STA": 3,
+        "WIS": 7
+      },
+      "hp": 15,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Pass"
+      ],
+      "from": [
+        "Dougal Bromm"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/fe/Itemicon0042AC.png/64px-Itemicon0042AC.png"
     },
     "Inlaid Lapis Lazuli Platinum Ring": {
       "hasPage": false,
@@ -100258,6 +100325,109 @@
         "Leatherworking"
       ],
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/66/Itemicon0015AA.png/64px-Itemicon0015AA.png"
+    },
+    "LOverseer's Filthy Maul": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Jacinth Bronze Earring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Headhunter's Companion": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 7,
+      "size": "MEDIUM",
+      "class": "ARC BST FTR INQ PAL RNG ROG SHD SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "STR": 4,
+        "STA": 4,
+        "DEX": 4
+      },
+      "hp": 10,
+      "mana": 10,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "CORR": 15
+      },
+      "instr": {},
+      "container": null,
+      "effect": {
+        "name": "Strength of Eth-el",
+        "trigger": "Click",
+        "castTime": null,
+        "level": 30,
+        "detail": "On Click. Any Slot. Cast Time 10s. Level: 30"
+      },
+      "wikiZones": [
+        "Fallen Pass"
+      ],
+      "from": [
+        "Tora'Galdo"
+      ]
+    },
+    "Inlaid Opal Bronze Ring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Imperfec: Bloodstone": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Star Rose Quartz Platinun Earring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Faceguard Of Th« Torturer": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Shadowwek Shoulders": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Threadbar« Cape": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Woo Scraps": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Steel Plate Boots": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Cat's Eye Agate Iror Ring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
     }
   },
   "mobs": {
