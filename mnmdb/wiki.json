@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-13T07:00:52.579Z",
+  "generatedAt": "2026-08-15T07:00:40.918Z",
   "items": {
     "Bone Chips": {
       "hasPage": true,
@@ -43261,9 +43261,43 @@
       "effect": null
     },
     "Ravine Hauberk": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0009AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 4,
+      "size": "MEDIUM",
+      "class": "BRD CLR FTR INQ PAL RNG ROG SHD SHM",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 15,
+      "stats": {
+        "STR": 3
+      },
+      "hp": 5,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Sungreet Strand"
+      ],
+      "from": [
+        "Tolman Sneed"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/7/7d/Itemicon0009AA.png/64px-Itemicon0009AA.png"
     },
     "Inlaid Cat's Eye Agate Bronze Earring": {
       "hasPage": true,
@@ -91510,9 +91544,45 @@
       "fromTrade": true
     },
     "Drycrack Jerkin": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0026AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 3,
+      "size": "MEDIUM",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 24,
+      "stats": {
+        "STR": 5,
+        "STA": 2,
+        "AGI": 2
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Pass"
+      ],
+      "from": [
+        "Kowmeh Lalen"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/c/cd/Itemicon0026AA.png/64px-Itemicon0026AA.png"
     },
     "Rat-Ski1 Warhood": {
       "hasPage": false,
@@ -97902,9 +97972,37 @@
       "fromTrade": true
     },
     "Padded Leather Satchel": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0087AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "MEDIUM",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": {
+        "capacity": 11,
+        "maxSize": "MEDIUM",
+        "weightReduction": null
+      },
+      "effect": null,
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/c/cb/Itemicon0087AA.png/64px-Itemicon0087AA.png"
     },
     "Inlaid Blue Diamond Bronze Ring": {
       "hasPage": false,
@@ -99895,9 +99993,51 @@
       "fromTrade": true
     },
     "Murcanthrope Blade": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 7,
+      "size": "MEDIUM",
+      "class": "BST",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "STR": 6,
+        "DEX": 2
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "DR": -8
+      },
+      "instr": {},
+      "container": null,
+      "effect": {
+        "name": "Rat Form",
+        "trigger": "Click",
+        "castTime": null,
+        "level": 30,
+        "detail": "On Click. Must Equip. Cast Time: Instant. Level: 30"
+      },
+      "wikiZones": [
+        "Fallen Pass"
+      ],
+      "from": [
+        "Qassem Brolt"
+      ]
     },
     "Tora's Sneakin' Mantle) [Sand-Polished Shield": {
       "hasPage": false,
@@ -100425,6 +100565,122 @@
       "fromTrade": true
     },
     "Inlaid Cat's Eye Agate Iror Ring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Murkraal Greaves": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Sanddrift Tassel": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Turnwatcher's Chain": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Spaulders Of The Mercenary Lord": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Lesser Serum Of Stamina": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Corruptec Leather Shoulderpads": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Corruptec Leather Boots": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Mote O Shadow": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Faller Ranger Hide Bracer": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Giant L’'ree Feller": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Handmaid's Needler": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0190AB",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 3,
+      "size": "MEDIUM",
+      "class": "ARC BST FTR INQ PAL RNG ROG SHD SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "STR": 8,
+        "STA": 1,
+        "DEX": 3
+      },
+      "hp": 5,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Pass"
+      ],
+      "from": [
+        "Handmaiden Mira"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/6/67/Itemicon0190AB.png"
+    },
+    "Fine Elver Flute": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Turquoise Bronze Earring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Crimson Silk Robel[Ancient Idol": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Crimson Silk Robel": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Black Pearl Iron Necklace": {
       "hasPage": false,
       "wikiOnly": true,
       "fromTrade": true
