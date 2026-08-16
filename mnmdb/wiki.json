@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-15T07:00:40.918Z",
+  "generatedAt": "2026-08-16T07:00:49.333Z",
   "items": {
     "Bone Chips": {
       "hasPage": true,
@@ -48294,9 +48294,45 @@
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/bd/Itemicon0023AG.png/64px-Itemicon0023AG.png"
     },
     "Suresight War Wraps": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0043AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 1.4,
+      "size": "SMALL",
+      "class": "BRD CLR FTR INQ PAL RNG ROG SHD SHM",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 11,
+      "stats": {
+        "STR": 2,
+        "STA": 1,
+        "DEX": 2
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Tel Ekir"
+      ],
+      "from": [
+        "Rami Suresight"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/a/ad/Itemicon0043AA.png/64px-Itemicon0043AA.png"
     },
     "The Final Word": {
       "hasPage": true,
@@ -92187,9 +92223,36 @@
       "fromTrade": true
     },
     "Oiled Tracker Shoulders": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "SMALL",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 14,
+      "stats": {
+        "STR": 4
+      },
+      "hp": 20,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null
     },
     "Overlord's Pl: Helm": {
       "hasPage": false,
@@ -98502,9 +98565,43 @@
       ]
     },
     "Observer's Manacle": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 2,
+      "size": "SMALL",
+      "class": "CLR FTR INQ PAL SHD",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 27,
+      "stats": {
+        "STA": 5,
+        "WIS": 6
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Pass"
+      ],
+      "from": [
+        "Observer Samvel"
+      ]
     },
     "Plagueroyal Treads": {
       "hasPage": true,
@@ -99644,9 +99741,39 @@
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/f6/Itemicon0022AA.png/64px-Itemicon0022AA.png"
     },
     "Shunned Herbalist's Tunic": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0026AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 3,
+      "size": "MEDIUM",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC",
+        "UNIQUE"
+      ],
+      "handed": null,
+      "ac": 38,
+      "stats": {
+        "STA": 4,
+        "WIS": 7
+      },
+      "hp": null,
+      "mana": 25,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/c/cd/Itemicon0026AA.png/64px-Itemicon0026AA.png"
     },
     "Enchantec Rawhide Leggings": {
       "hasPage": false,
@@ -100681,6 +100808,208 @@
       "fromTrade": true
     },
     "Inlaid Black Pearl Iron Necklace": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Emerald Bronze Ring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Garrison Bulwark Shield": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Cabbage Stew": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0205AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "categories": [
+        "Food"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/c/c0/Itemicon0205AA.png/64px-Itemicon0205AA.png"
+    },
+    "Luminthread Gloves": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Thistlefire Lantern": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0004AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.8,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": {
+        "name": "Lamp",
+        "trigger": "Worn",
+        "castTime": null,
+        "level": null,
+        "detail": "Passive. Must Equip. Level 1"
+      },
+      "wikiZones": [
+        "Scarwood"
+      ],
+      "from": [
+        "Garran Grinholdt"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/ee/Itemicon0004AA.png/64px-Itemicon0004AA.png"
+    },
+    "Enchantec¢ Rawhide Cap": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Cinch Of The Giant} [Coil Of The Slithering": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Shining Crystallizec Magic": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Drap« Of The Clouded Sky": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Ragged Leathe1 Cloak": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Ragged Leathez Cloak": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Ragged Leathex Cloak": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Diamond Gold Earring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Spirit World Ch. 6": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0126AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "SHM",
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Sungreet Strand",
+        "Blacktide Bay"
+      ],
+      "from": [
+        "a cinder harvester",
+        "a Fellstone sentinel"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/9/91/Itemicon0126AA.png/64px-Itemicon0126AA.png"
+    },
+    "Putrid Carpenter’ Vest": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Putrid Carpenter’: Vest": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Black Sapphire Iron Earring) [Corrupted Leather Gorget": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Leathe: Linked Chain Belt": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Westments Of Vakraar": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Leather Pouch": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Enchant Legs: Lesser Strength": {
       "hasPage": false,
       "wikiOnly": true,
       "fromTrade": true
