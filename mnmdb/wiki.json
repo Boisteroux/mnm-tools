@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-21T07:00:57.629Z",
+  "generatedAt": "2026-08-22T07:01:04.296Z",
   "items": {
     "Bone Chips": {
       "hasPage": true,
@@ -44243,9 +44243,40 @@
       ]
     },
     "Crystalline Belt": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "MEDIUM",
+      "class": "BRD CLR DRU ELE ENC SHM SPB WIZ",
+      "race": "ALL",
+      "flags": [
+        "MAGIC",
+        "UNIQUE"
+      ],
+      "handed": null,
+      "ac": 9,
+      "stats": {
+        "INT": 5
+      },
+      "hp": null,
+      "mana": 35,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "FR": 1,
+        "HR": 1
+      },
+      "instr": {},
+      "container": null,
+      "effect": null
     },
     "Inlaid Amber Iron Earring": {
       "hasPage": true,
@@ -91311,9 +91342,40 @@
       "fromTrade": true
     },
     "Darla's Heirloom Pendant": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0008AL",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [
+        "MAGIC",
+        "LORE",
+        "UNIQUE"
+      ],
+      "handed": null,
+      "ac": 3,
+      "stats": {
+        "INT": 3,
+        "CHA": 3
+      },
+      "hp": 5,
+      "mana": 10,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/67/Itemicon0008AL.png/64px-Itemicon0008AL.png"
     },
     "Widow's Carapace Mantle": {
       "hasPage": true,
@@ -91473,9 +91535,41 @@
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/e6/Itemicon0137AI.png/64px-Itemicon0137AI.png"
     },
     "Ripper Gauntlets": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0015AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "SMALL",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 15,
+      "stats": {
+        "STR": 4,
+        "DEX": 2
+      },
+      "hp": 10,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "from": [
+        "Echo of the Unfinished"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/66/Itemicon0015AA.png/64px-Itemicon0015AA.png"
     },
     "Inlaid Black Pearl Bronze Earring": {
       "hasPage": true,
@@ -91696,9 +91790,36 @@
       "fromTrade": true
     },
     "Clear Wood Finish": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0017AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "tradeskills": [
+        "Alchemy"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/9/91/Itemicon0017AA.png/64px-Itemicon0017AA.png"
     },
     "Inlaid Fire Opal Steel Earring": {
       "hasPage": true,
@@ -93058,14 +93179,84 @@
       "fromTrade": true
     },
     "Summoned: Wool Bandage": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0092AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.15,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "flags": [
+        "NO RENT"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": {
+        "name": "Bind Wound",
+        "trigger": "Click",
+        "castTime": null,
+        "level": 15,
+        "detail": "On Click. Any Slot. Cast Time: Instant. Level: 15"
+      },
+      "categories": [
+        "Bandage"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/fa/Itemicon0092AA.png/64px-Itemicon0092AA.png"
     },
     "Summoned: Heavy Wool Bandage": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0092AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.15,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "flags": [
+        "NO RENT"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": {
+        "name": "Bind Wound",
+        "trigger": "Click",
+        "castTime": null,
+        "level": 20,
+        "detail": "On Click. Any Slot. Cast Time: Instant. Level: 20"
+      },
+      "categories": [
+        "Bandage"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/fa/Itemicon0092AA.png/64px-Itemicon0092AA.png"
     },
     "Moontide Salmon": {
       "hasPage": true,
@@ -93563,9 +93754,34 @@
       "fromTrade": true
     },
     "Inlaid Star Rose Quartz Gold Earring": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "INT": 5
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null
     },
     "Hid Backpack": {
       "hasPage": false,
@@ -94287,9 +94503,33 @@
       "fromTrade": true
     },
     "Wooden Table": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0104AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0,
+      "size": "EXTRA LARGE",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/66/Itemicon0104AA.png/64px-Itemicon0104AA.png"
     },
     "Dagge Of The Damned": {
       "hasPage": false,
@@ -94918,9 +95158,33 @@
       "fromTrade": true
     },
     "Wooden Stool": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0104AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0,
+      "size": "LARGE",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/66/Itemicon0104AA.png/64px-Itemicon0104AA.png"
     },
     "Wooden Bed": {
       "hasPage": false,
@@ -99970,9 +100234,38 @@
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/0/0e/Itemicon0103BD.png"
     },
     "Luminous Cowl": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0030AC",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 12,
+      "stats": {
+        "STA": 1,
+        "INT": 6
+      },
+      "hp": null,
+      "mana": 10,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/fe/Itemicon0030AC.png/64px-Itemicon0030AC.png"
     },
     "Inlaid Blue Diamond Platinum Earring": {
       "hasPage": true,
@@ -100975,9 +101268,45 @@
       "fromTrade": true
     },
     "Rakamatar Whorl": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ELE ENC INQ NEC SHD SPB WIZ",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "INT": 4
+      },
+      "hp": 10,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "FR": 4,
+        "CR": 1
+      },
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Pass"
+      ],
+      "from": [
+        "Chieftain Raka'Matar"
+      ]
     },
     "Squire's Gambeson": {
       "hasPage": true,
@@ -101904,9 +102233,42 @@
       "fromTrade": true
     },
     "Sanddrift Tassel": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "BST CLR DRU PAL RNG SHM",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "WIS": 1
+      },
+      "hp": 10,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Sungreet Strand"
+      ],
+      "from": [
+        "Zhakir Dunewake"
+      ]
     },
     "Turnwatcher's Chain": {
       "hasPage": false,
@@ -103226,6 +103588,372 @@
       "fromTrade": true
     },
     "Inlaid Bloodston« Gold Earring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Beguiling Minstrel Staff": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0185AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 8,
+      "size": "LARGE",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": "Two Handed",
+      "ac": null,
+      "stats": {
+        "CHA": 11
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "MR": 3,
+        "CR": 4
+      },
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Rothold"
+      ],
+      "from": [
+        "a conscript overseer"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/32/Itemicon0185AA.png/64px-Itemicon0185AA.png"
+    },
+    "Mystic Protective Shield": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Shattershriel Spike": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Reinforced Champion's Gloves": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0051AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 3,
+      "size": "SMALL",
+      "class": "CLR FTR INQ PAL SHD",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 31,
+      "stats": {
+        "STR": 3,
+        "STA": 3,
+        "DEX": 3
+      },
+      "hp": 10,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Rothold"
+      ],
+      "from": [
+        "Watcher Terian"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/3/33/Itemicon0051AA.png/64px-Itemicon0051AA.png"
+    },
+    "Well-Tempered Arcane Shiv": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0162AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 2.5,
+      "size": "SMALL",
+      "class": "ARC BRD BST ELE ENC FTR INQ NEC FTR INQ NEC RNG ROG SHD SHM SPB WIZ",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "STA": 2,
+        "INT": 5
+      },
+      "hp": 5,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "ER": 1
+      },
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Rothold"
+      ],
+      "from": [
+        "Watcher Terial"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/68/Itemicon0162AA.png/64px-Itemicon0162AA.png"
+    },
+    "Beguilins Minstrel Staff": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Pak'Kor Wraps": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0015AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "SMALL",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 17,
+      "stats": {
+        "STA": 5,
+        "WIS": 5
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Pass"
+      ],
+      "from": [
+        "Pak'Har"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/66/Itemicon0015AA.png/64px-Itemicon0015AA.png"
+    },
+    "Gloves of Vigilance": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0051AC",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 3,
+      "size": "SMALL",
+      "class": "CLR FTR INQ PAL SHD",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 35,
+      "stats": {
+        "STR": 6,
+        "STA": 6
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Rothold"
+      ],
+      "from": [
+        "Watcher Terial"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/5/5c/Itemicon0051AC.png/64px-Itemicon0051AC.png"
+    },
+    "Tidebreaker Cane": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Thrallmaker Shroud": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0021AE",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 1.1,
+      "size": "MEDIUM",
+      "class": "ELE ENC NEC WIZ",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 20,
+      "stats": {
+        "STA": 5
+      },
+      "hp": 40,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Rothold"
+      ],
+      "from": [
+        "Thrallmaker Syllis"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/b/b7/Itemicon0021AE.png"
+    },
+    "Inlaid Firs Emerald Gold Earring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Cat's Eye Agate Iroz Earring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Cat's Eye Agate Iror Earring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Gleaming Priest's Loop": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Silverfin Koi": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Ruby Stee Earring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Jad« Silver Earring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Flexible": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Sapphire Iron Necklace": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Seeker's Byrnie": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0024AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 4,
+      "size": "MEDIUM",
+      "class": "BRD CLR FTR INQ PAL RNG ROD SHD SHM",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 35,
+      "stats": {
+        "STR": 6,
+        "AGI": 3
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "ER": 1
+      },
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Rothold"
+      ],
+      "from": [
+        "Thrallmaker Syllis"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/5/58/Itemicon0024AA.png/64px-Itemicon0024AA.png"
+    },
+    "Humble Woolen Buskins": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Templar Crushers": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Protective Shield": {
       "hasPage": false,
       "wikiOnly": true,
       "fromTrade": true
