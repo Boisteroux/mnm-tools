@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-27T07:01:15.728Z",
+  "generatedAt": "2026-08-28T07:01:05.331Z",
   "items": {
     "Bone Chips": {
       "hasPage": true,
@@ -32009,9 +32009,44 @@
       "effect": null
     },
     "Fingerbone Rings": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0098AG",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ELE ENC INQ NEC SHD SPB WIZ",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "STA": 1,
+        "INT": 1
+      },
+      "hp": null,
+      "mana": 5,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Night Harbor"
+      ],
+      "from": [
+        "Grubbfist"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/0/09/Itemicon0098AG.png/64px-Itemicon0098AG.png"
     },
     "Ironhide Bracer": {
       "hasPage": true,
@@ -95176,9 +95211,34 @@
       "fromTrade": true
     },
     "Inlaid Sapphire Steel Earring": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "INT": 6
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null
     },
     "Inlaid Peridot Steel Earring": {
       "hasPage": false,
@@ -95466,9 +95526,43 @@
       "fromTrade": true
     },
     "Scribe's Cuff": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0014AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 12,
+      "stats": {
+        "INT": 6
+      },
+      "hp": 15,
+      "mana": 20,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Pass"
+      ],
+      "from": [
+        "Alaric Bromm"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/fc/Itemicon0014AA.png/64px-Itemicon0014AA.png"
     },
     "Rigid Sharpenin: Stone": {
       "hasPage": false,
@@ -97030,9 +97124,34 @@
       "fromTrade": true
     },
     "Inlaid Peridot Platinum Ring": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "DEX": 7
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null
     },
     "Inlaid Pearl Steel Ring": {
       "hasPage": false,
@@ -105366,9 +105485,45 @@
       "fromTrade": true
     },
     "Deadly Arcane Blade": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0162AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 2.5,
+      "size": "SMALL",
+      "class": "ARC BRD BST ELE ENC FTR IN NEC RNG ROG SHD SHM SPB WIZ",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "INT": 7
+      },
+      "hp": null,
+      "mana": 10,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "PR": 1
+      },
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Watch"
+      ],
+      "from": [
+        "Truthseeker Rongrim"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/68/Itemicon0162AA.png/64px-Itemicon0162AA.png"
     },
     "Enchant Belt: Greate: Agility": {
       "hasPage": false,
@@ -105798,6 +105953,275 @@
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/0/09/Itemicon0098AG.png/64px-Itemicon0098AG.png"
     },
     "Fyr-Corrupted Bone Shard": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Trainee's Lumberjack Axe": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Tattered Padded Leather Cloak": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0012AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "MEDIUM",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": 4,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Glass Flats",
+        "Fallen Pass",
+        "Grimtide Sanctum",
+        "Vale of Zintar"
+      ],
+      "from": [
+        "a charred peasant",
+        "a tormented guardian",
+        "a charred grovekeeper",
+        "a Plagueborn watchman",
+        "a Plagueborn stablehand",
+        "a Plagueborn nobleman",
+        "a Plagueborn servant",
+        "a Plagueborn myrmidon",
+        "Stablemaster Tomaz",
+        "a Plagueborn maid",
+        "a Grimtide moondrowner",
+        "a sand giant bandit"
+      ],
+      "categories": [
+        "Items without Details"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/2/27/Itemicon0012AA.png/64px-Itemicon0012AA.png"
+    },
+    "Thrallmakez Shroud": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Thrallmake1 Shroud": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "60s": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "20s": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Hardened Ooze Pustule": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0133AE",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.2,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Watch"
+      ],
+      "from": [
+        "a shrewd shanker",
+        "a ratman rogue",
+        "a merciless marauder",
+        "a gargantuan ghoul"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/a/a4/Itemicon0133AE.png/64px-Itemicon0133AE.png"
+    },
+    "Inlaid Sapphire Steel Necklace": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Shadowforged Breastplate": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0023AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 6,
+      "size": "LARGE",
+      "class": "FTR INQ SHD",
+      "race": "ALL",
+      "flags": [
+        "MAGIC",
+        "UNIQUE"
+      ],
+      "handed": null,
+      "ac": 58,
+      "stats": {
+        "STR": 5,
+        "STA": 5,
+        "INT": 5
+      },
+      "hp": 10,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Rothold"
+      ],
+      "from": [
+        "Lord Dorian"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/4/4a/Itemicon0023AA.png/64px-Itemicon0023AA.png"
+    },
+    "Onyx Vambrace} [Mother's Sorrow": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Raw Wolf Fillet": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "itemicon0079AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Shallow Shoals",
+        "Glinting Hollow",
+        "Vale of Zintar"
+      ],
+      "from": [
+        "an obedient sniffer",
+        "a snarling wolf",
+        "a prowling wolf",
+        "a giant wolf"
+      ],
+      "tradeskills": [
+        "Cooking"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/d/db/Itemicon0079AA.png/64px-Itemicon0079AA.png"
+    },
+    "Molderins Robes": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Pristine Basilisk Scale": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0017AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "MEDIUM",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/9/91/Itemicon0017AA.png/64px-Itemicon0017AA.png"
+    },
+    "Greater Serum Of Stamina": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Fou! Chitin Bracer": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Fow! Chitin Bracer": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Fow Chitin Bracer": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Fou Chitin Bracer": {
       "hasPage": false,
       "wikiOnly": true,
       "fromTrade": true
