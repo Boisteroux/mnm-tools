@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T07:00:52.500Z",
+  "generatedAt": "2026-09-01T07:01:16.696Z",
   "items": {
     "Bone Chips": {
       "hasPage": true,
@@ -49528,9 +49528,43 @@
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/d/d0/Itemicon0266AB.png"
     },
     "Bloodied Allegiance Cuff": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0042AB",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.3,
+      "size": "MEDIUM",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 5,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Night Harbor"
+      ],
+      "from": [
+        "a loyal protector",
+        "a devotee",
+        "a lawbreaker"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/8/8e/Itemicon0042AB.png/64px-Itemicon0042AB.png"
     },
     "Girault's Bulwark": {
       "hasPage": true,
@@ -95236,9 +95270,44 @@
       "fromTrade": true
     },
     "Jumana's Mask": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0011AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "MEDIUM",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 7,
+      "stats": {
+        "INT": 4,
+        "WIS": 4
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": {
+        "name": "Minor Heal",
+        "trigger": "Click",
+        "castTime": "5s",
+        "level": 20,
+        "detail": "On Click. Any Slot. Cast Time: 5s. Level: 20"
+      },
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/ee/Itemicon0011AA.png/64px-Itemicon0011AA.png"
     },
     "Scratched Armguard": {
       "hasPage": false,
@@ -95671,9 +95740,38 @@
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/6/6c/Itemicon0103BB.png"
     },
     "Hydrosurge Mantle": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0012AD",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "MEDIUM",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 3,
+      "stats": {
+        "STA": 2,
+        "CHA": 1
+      },
+      "hp": 5,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/c/c2/Itemicon0012AD.png"
     },
     "Inlaid Jade Steel Ring": {
       "hasPage": true,
@@ -96403,9 +96501,34 @@
       "effect": null
     },
     "Inlaid Star Ruby Silver Necklace": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "DEX": 3
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null
     },
     "Inlaic¢ Star Rose Quartz Bronze Earring": {
       "hasPage": false,
@@ -109087,9 +109210,37 @@
       "effect": null
     },
     "Garrison Bulwark Shield": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0174AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 2,
+      "size": "LARGE",
+      "class": "BRD BST CLR DRU FTR INQ PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 24,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "MR": 5
+      },
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/2/2c/Itemicon0174AA.png/64px-Itemicon0174AA.png"
     },
     "Cabbage Stew": {
       "hasPage": true,
@@ -110915,9 +111066,44 @@
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/5/58/Itemicon0024AA.png/64px-Itemicon0024AA.png"
     },
     "Humble Woolen Buskins": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0037AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "MEDIUM",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 20,
+      "stats": {
+        "STA": 3,
+        "WIS": 7
+      },
+      "hp": 15,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Pass"
+      ],
+      "from": [
+        "Handmaiden Mira"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/bd/Itemicon0037AA.png/64px-Itemicon0037AA.png"
     },
     "Templar Crushers": {
       "hasPage": false,
@@ -110925,9 +111111,47 @@
       "fromTrade": true
     },
     "Protective Shield": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0173AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 2,
+      "size": "MEDIUM",
+      "class": "BRD CLR DRU FTR INQ PAL RNG SHD SHM",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 19,
+      "stats": {
+        "STR": 5
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "FR": 2,
+        "CR": 1,
+        "PR": 1
+      },
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Rothold"
+      ],
+      "from": [
+        "Distiller Sybil"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/9/9e/Itemicon0173AA.png/64px-Itemicon0173AA.png"
     },
     "Lesser Serun Of Stamina": {
       "hasPage": false,
@@ -112674,6 +112898,256 @@
       "fromTrade": true
     },
     "Chippec Cat's Eye Agate": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Ironbark Bank Crate": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Tarnished Steel Chain Cloak": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Cat's Ey« Agate Platinum Ring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Coral-Encrusted Plats Bracer": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Coral-Encrusted Plat Bracer": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Champion's Sternum": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Warstrike Dagger": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0162AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 2.5,
+      "size": "SMALL",
+      "class": "ARC BRD BST ELE ENC FTR INQ NEC RNG ROG SHD SHM SPB WIZ",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "STR": 7,
+        "STA": 1,
+        "AGI": 2
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Blacktide Bay"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/68/Itemicon0162AA.png/64px-Itemicon0162AA.png"
+    },
+    "Fungal Mail Cap": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0030AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.7,
+      "size": "SMALL",
+      "class": "BRD CLR FTR INQ PAL RNG ROG SHD SHM",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 27,
+      "stats": {
+        "STR": 8,
+        "STA": 2
+      },
+      "hp": 10,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Rothold"
+      ],
+      "from": [
+        "Rootmind"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/8/83/Itemicon0030AA.png/64px-Itemicon0030AA.png"
+    },
+    "Shins Of The Disgracec Line": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Shins Of The Disgrace Line": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Someone Please Sell Me One Of These": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Inlaid Lapis Lazuli Bronze Ring": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Infused Gatorhide Hunt Mantle": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0022AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "SMALL",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 27,
+      "stats": {
+        "STR": 6,
+        "STA": 2,
+        "AGI": 5
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Watch"
+      ],
+      "from": [
+        "Constable Brennan"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/f6/Itemicon0022AA.png/64px-Itemicon0022AA.png"
+    },
+    "Raw Basilisk Fillet": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0079AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 1.5,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Shallow Shoals",
+        "Glass Flats"
+      ],
+      "from": [
+        "a water basilisk",
+        "an ancient basilisk"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/d/db/Itemicon0079AA.png/64px-Itemicon0079AA.png"
+    },
+    "Fine Wood Stool": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0104AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/66/Itemicon0104AA.png/64px-Itemicon0104AA.png"
+    },
+    "Suresigh' War Wraps": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Giant Tree Feller|[Vale Giant Shortbow": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Tarnished Steel Chain Leggings": {
       "hasPage": false,
       "wikiOnly": true,
       "fromTrade": true
