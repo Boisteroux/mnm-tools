@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-01T07:01:16.696Z",
+  "generatedAt": "2026-09-02T07:00:39.308Z",
   "items": {
     "Bone Chips": {
       "hasPage": true,
@@ -98174,9 +98174,33 @@
       "fromTrade": true
     },
     "Giant Cinder Beetle Eye": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0108AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.2,
+      "size": "MEDIUM",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/c/c1/Itemicon0108AA.png/64px-Itemicon0108AA.png"
     },
     "Inlaid Malachite Iron Earring": {
       "hasPage": true,
@@ -103749,9 +103773,33 @@
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/e/e9/Itemicon0019AA.png/64px-Itemicon0019AA.png"
     },
     "Carrion Beetle Eye": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0055AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.2,
+      "size": "MEDIUM",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/c/c0/Itemicon0055AA.png/64px-Itemicon0055AA.png"
     },
     "Giant Lree Feller": {
       "hasPage": false,
@@ -113148,6 +113196,143 @@
       "fromTrade": true
     },
     "Tarnished Steel Chain Leggings": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Beguiler's Charm": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0235AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 3,
+      "size": "MEDIUM",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "CHA": 6
+      },
+      "hp": 15,
+      "mana": 5,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Rothold"
+      ],
+      "from": [
+        "a conscript liason",
+        "a conscript liaison"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/5/5a/Itemicon0235AA.png/64px-Itemicon0235AA.png"
+    },
+    "Bog Scryer Circlet": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0044AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 4,
+      "stats": {
+        "DEX": 1,
+        "INT": 3
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/bb/Itemicon0044AA.png/64px-Itemicon0044AA.png"
+    },
+    "Sand-Scorec¢ Leggings": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Sand-Score¢ Leggings": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Enchant Earring: Charisma": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0096AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": {
+        "name": "Enchant Earring:  Charisma +3 CHA",
+        "trigger": "Click",
+        "castTime": "5s",
+        "level": 1,
+        "detail": "On Click. Any Slot. Cast Time: 5s. Level: 1"
+      },
+      "tradeskills": [
+        "Enchanting"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/8/86/Itemicon0096AA.png/64px-Itemicon0096AA.png"
+    },
+    "Sand-Score« Leggings": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Dia Mond": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Diamo Nd": {
       "hasPage": false,
       "wikiOnly": true,
       "fromTrade": true
