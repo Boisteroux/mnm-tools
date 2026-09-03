@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-02T07:00:39.308Z",
+  "generatedAt": "2026-09-03T07:00:58.000Z",
   "items": {
     "Bone Chips": {
       "hasPage": true,
@@ -92607,9 +92607,34 @@
       "fromTrade": true
     },
     "Inlaid Bloodstone Gold Earring": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "STA": 5
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null
     },
     "Inlaid Bloodstone Gold Necklace": {
       "hasPage": false,
@@ -112714,9 +112739,43 @@
       "fromTrade": true
     },
     "Gorgeous Seeker's Garb": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0021AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 1.1,
+      "size": "MEDIUM",
+      "class": "ELE ENC NEC WIZ",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 23,
+      "stats": {
+        "INT": 8
+      },
+      "hp": 10,
+      "mana": 15,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Watch"
+      ],
+      "from": [
+        "Osmund the Unspent"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/1/12/Itemicon0021AA.png/64px-Itemicon0021AA.png"
     },
     "Clouded Crystallizec Magic": {
       "hasPage": false,
@@ -113333,6 +113392,154 @@
       "fromTrade": true
     },
     "Diamo Nd": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Tattered Padded Leather Cap": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0031AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.5,
+      "size": "SMALL",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": 12,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Pass",
+        "Glass Flats",
+        "Rothold",
+        "Vale of Zintar",
+        "Keeper's Bight",
+        "Fallen Watch"
+      ],
+      "from": [
+        "a Plagueborn watchman",
+        "a Plagueborn myrmidon",
+        "a Plagueborn housewarden",
+        "Blightcaller Zirat",
+        "a Plagueborn stablehand",
+        "a Plagueborn acolyte",
+        "Aidan Thrym",
+        "a Plagueborn maid",
+        "a Plagueborn servant",
+        "a cult initiate",
+        "a charred peasant",
+        "an ashen servant",
+        "a skeletal quartermaster",
+        "a fallen warden",
+        "a charred grovekeeper",
+        "an ashen knight",
+        "an immolated grovekeeper",
+        "a fallen freeman",
+        "Prince Ademaar Reims",
+        "a sand giant bandit",
+        "a sand giant raider",
+        "a sand giant brigand",
+        "a hill giant bandit",
+        "a zombified rat"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/fd/Itemicon0031AA.png/64px-Itemicon0031AA.png"
+    },
+    "Exalted Luminous Channeling Staff": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Low-Quality Jackal Pelt. X8 For [Rawhide Backpack": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Low-Quality Jackal Pelt X8 For [Rawhide Backpack": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Maleg's Loothpick": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Maleg’s Loothpick": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Flesh Ripper": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Corrupt Spider Fang": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0111AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ARC BRD BST ELE ENC FTR INQ NEC RNG ROG SHD SHM SPB WIZ",
+      "race": "ALL",
+      "flags": [
+        "MAGIC",
+        "LORE"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "STR": 4,
+        "AGI": 2
+      },
+      "hp": 5,
+      "mana": 5,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/a/a3/Itemicon0111AA.png/64px-Itemicon0111AA.png"
+    },
+    "Bronz Bar": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Bronz« Bar": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Bronz: Bar": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Burnt Rune Staff) [Ragged Leather Cloak": {
       "hasPage": false,
       "wikiOnly": true,
       "fromTrade": true
