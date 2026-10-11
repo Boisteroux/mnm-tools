@@ -244,7 +244,7 @@ if (require.main === module) {
   const rows = JSON.parse(fs.readFileSync(file, 'utf8'));
   const { listings, review, requests, enrich } = parseAuctions(rows);
 
-  for (const server of ['PvP', 'PvE']) {
+  for (const server of [...new Set(listings.map((l) => l.server))]) {
     const rows = listings.filter((l) => l.server === server);
     console.log(`\n=== ${server}  (${rows.length} listings) ===`);
     for (const l of rows) {

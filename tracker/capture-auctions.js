@@ -36,7 +36,10 @@ const FF = process.env.MNM_FFMPEG || 'C:\\Users\\zacha\\AppData\\Local\\Microsof
 const SL = process.env.MNM_STREAMLINK || 'C:\\Users\\zacha\\AppData\\Local\\Programs\\Streamlink\\bin\\streamlink.exe';
 const TESS = process.env.MNM_TESSERACT || 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe';
 
-const PANELS = { PvP: 'crop=930:410:25:650', PvE: 'crop=930:410:975:650' };
+// One auction panel per server shown on stream, as an ffmpeg crop of the 1920x1080
+// frame. Since Early Access (2026-10-09) the stream shows a single client on Trem with
+// its auction chat bottom-right (beta showed PvP + PvE side by side along the bottom).
+const PANELS = { Trem: 'crop=1005:400:912:680' };
 const PRE = 'scale=iw*2:ih*2:flags=lanczos,format=gray,negate,eq=contrast=1.3';
 
 fs.mkdirSync(DATA, { recursive: true });
@@ -123,7 +126,7 @@ function runCycle() {
   const url = streamUrl();
   sh(FF, ['-y', '-loglevel', 'error', '-i', url, '-frames:v', '1', '-q:v', '2', framePng], false);
   const rows = [];
-  for (const server of ['PvP', 'PvE']) {
+  for (const server of Object.keys(PANELS)) {
     let txt = '';
     try { txt = ocrPanel(server); } catch (e) { log(`  ocr ${server} skipped: ${e.message}`); continue; }
     // Flag any shaky reads (no image stored — just a heads-up list).

@@ -127,6 +127,15 @@ const linkify = (s) => esc(s).replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" tar
 // auctions.json now publishes once a day (midnight Pacific), so cache-bust by the
 // Pacific date instead of Date.now() — the URL is stable all day (browser caches it)
 // and only changes when a fresh snapshot lands.
+// Early Access (2026-10-09) replaced beta's PvP/PvE pair with a new set of servers. The
+// LiveMNM stream shows one of them — Trem, the busiest — so that is the only live market.
+// Beta prices survive as a labelled reference (auctions-beta.json) while Trem's own
+// history builds: shown per item until it has BETA_REF_MIN_LIVE live sales, and for
+// nobody after BETA_REF_UNTIL. Beta never feeds the live averages or the market read.
+const AUC_SERVER = 'Trem';
+const BETA_REF_UNTIL = Date.parse('2026-11-15T00:00:00Z');
+const BETA_REF_MIN_LIVE = 5;
+let BETA = {}; // item name (lowercased) -> { name, PvP: { n, low, high, mid, avg }, PvE: {…} }
 const aucCacheV = () => { try { return new Date().toLocaleDateString('en-CA', { timeZone: 'America/Los_Angeles' }); } catch { return new Date().toISOString().slice(0, 10); } };
 const slugify = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
 // Cache-buster for curated map images: keyed to the maps' publish time, so browsers
@@ -144,6 +153,17 @@ function coin(c) {
 }
 
 const pct = (r) => (r == null ? '—' : Math.round(r * 100) + '%');
+
+// Drop/harvest data comes in two sets. DATA (data.json) is the frozen closed-beta set;
+// EA (data-ea.json) is what players have logged since Early Access began on 2026-10-09.
+// Pages show them as separate, labelled blocks — an Early Access block that fills in as
+// logs are published, and the beta block as the reference underneath.
+let EA = { items: [], mobs: {}, events: 0 };
+let EA_ITEMS = {}; // item name -> its Early Access record
+const eraHead = (era) => era === 'ea'
+  ? '<h3 class="era-h">Early Access <span class="tag good" title="Logged on Early Access servers, since Oct 9 2026">live servers</span></h3>'
+  : '<h3 class="era-h">Beta <span class="tag warn" title="Logged during closed beta, before Early Access began on Oct 9 2026">before Early Access</span></h3>';
+const EA_EMPTY = '<p class="sub era-empty">No Early Access drops logged for this yet — it fills in as players publish logs from the new servers.</p>';
 
 function rateCell(rate, drops, total) {
   if (rate == null) return '<span class="sample">' + drops + ' seen</span>';
@@ -603,7 +623,7 @@ function renderHome() {
   }).join('');
   const hasEstLevel = bracketKeys.some((k) => byBracket[k].some((x) => x.est));
   const bracketSection = bracketKeys.length
-    ? '<h2>Best value by level</h2><p class="sub">Top value/kill in each level band (level from the wiki).' +
+    ? '<h2>Best value by level <span class="tag warn" title="Drop rates logged during closed beta, before Early Access began on Oct 9 2026">Beta data</span></h2><p class="sub">Top value/kill in each level band (level from the wiki).' +
       (hasEstLevel ? ' A <span class="est">~</span> level is estimated from in-game /con (rough, may change).' : '') +
       (unleveled ? ' ' + unleveled + ' valuable mob' + (unleveled === 1 ? '' : 's') + ' not shown — no wiki level yet.' : '') + '</p>' +
       '<div class="col2">' + bracketCols + '</div>'
@@ -670,18 +690,21 @@ async function fillHomeMarket() {
   const box = $('home-market'); if (!box) return;
   const A = await loadAuctionsData();
   const live = $('home-stat-live'); if (live) live.textContent = A.listings.length;
-  const bySrv = { PvP: 0, PvE: 0 };
-  for (const l of A.listings) if (bySrv[l.server] != null) bySrv[l.server]++;
+  // Most-listed priced items on the live server: distinct sellers, with their lowest ask.
   const pm = {};
-  for (const l of A.listings) { if (l.price == null) continue; const m = pm[l.item] = pm[l.item] || {}; m[l.server] = Math.min(m[l.server] == null ? Infinity : m[l.server], l.price); }
-  const gaps = Object.entries(pm).filter(([, m]) => m.PvP && m.PvE)
-    .map(([item, m]) => ({ item, pvp: m.PvP, pve: m.PvE, ratio: Math.max(m.PvP, m.PvE) / Math.min(m.PvP, m.PvE) }))
-    .sort((a, b) => b.ratio - a.ratio).slice(0, 6);
-  const gapRows = gaps.length
-    ? '<div class="card"><table><thead><tr><th>Item</th><th class="num">PvP</th><th class="num">PvE</th></tr></thead><tbody>' +
-      gaps.map((g) => '<tr><td>' + itemLink(g.item, g.item) + '</td><td class="num coin">' + coin(g.pvp) + '</td><td class="num coin">' + coin(g.pve) + '</td></tr>').join('') +
+  for (const l of A.listings) {
+    if (l.price == null || l.intent === 'buy') continue;
+    const m = pm[l.item] = pm[l.item] || { sellers: new Set(), prices: [] };
+    m.sellers.add(l.player); m.prices.push(l.unit != null ? l.unit : l.price);
+  }
+  // Lowest ask after the usual outlier fence, so one misread price can't be the headline.
+  const busy = Object.entries(pm).map(([item, m]) => ({ item, n: m.sellers.size, low: Math.min.apply(null, trimOutliers(m.prices)) }))
+    .sort((a, b) => b.n - a.n || a.item.localeCompare(b.item)).slice(0, 6);
+  const busyRows = busy.length
+    ? '<div class="card"><table><thead><tr><th>Item</th><th class="num">Sellers</th><th class="num">From</th></tr></thead><tbody>' +
+      busy.map((g) => '<tr><td>' + itemLink(g.item, g.item) + '</td><td class="num">' + g.n + '</td><td class="num coin">' + coin(g.low) + '</td></tr>').join('') +
       '</tbody></table></div>'
-    : '<p class="sub">Not enough cross-server prices yet.</p>';
+    : '<p class="sub">No priced listings yet.</p>';
   const reqs = (A.requests || []).slice(-10).reverse();
   const reqHtml = reqs.length
     ? '<div class="ticker">' + reqs.map((r) => {
@@ -690,9 +713,9 @@ async function fillHomeMarket() {
       }).join('') + '</div>'
     : '<p class="sub">No open requests right now.</p>';
   box.innerHTML =
-    '<p class="sub">' + A.listings.length + ' listings live · ' + bySrv.PvP + ' PvP · ' + bySrv.PvE + ' PvE' +
+    '<p class="sub">' + A.listings.length + ' listings on ' + AUC_SERVER + ' (the server the LiveMNM stream shows)' +
       (A.generatedAt ? ' · updated ' + esc(new Date(A.generatedAt).toLocaleString()) : '') + '</p>' +
-    '<div class="col2"><div><h3 class="bracket">Biggest PvP ↔ PvE price gaps</h3>' + gapRows + '</div>' +
+    '<div class="col2"><div><h3 class="bracket">Most listed on ' + AUC_SERVER + '</h3>' + busyRows + '</div>' +
     '<div><h3 class="bracket">🛠 Crafting demand</h3>' + reqHtml + '</div></div>';
 }
 
@@ -773,25 +796,33 @@ function renderItem(id) {
       dropRows.push({ mob: key, rate: obs.rate, drops: obs.count, corpses: obs.pulls, node: true }); anyRate = true;
     } else dropRows.push({ mob: key, rate: null, node: isNode });
   });
-  if (dropRows.length) {
-    sections.push('<h2>Dropped by</h2><div class="card"><table><thead><tr><th>Source</th><th class="num">Drop rate</th></tr></thead><tbody>' +
-      dropRows.map((r) => '<tr><td>' + (r.node ? nodeLink(r.mob) + ' <span class="sample">node</span>' : sourceLink(r.mob)) + '</td><td class="num">' +
+  const eaRows = ((EA_ITEMS[it.name] || {}).droppedBy || []);
+  if (dropRows.length || eaRows.length) {
+    const dropTable = (rows) => '<div class="card"><table><thead><tr><th>Source</th><th class="num">Drop rate</th></tr></thead><tbody>' +
+      rows.map((r) => '<tr><td>' + (r.node ? nodeLink(r.mob) + ' <span class="sample">node</span>' : sourceLink(r.mob)) + '</td><td class="num">' +
         (r.rate == null ? '<span class="sample">—</span>'
           : r.node ? harvestRateCell(r.rate, r.drops, r.corpses) : rateCell(r.rate, r.drops, r.corpses)) + '</td></tr>').join('') +
-      '</tbody></table></div>' +
+      '</tbody></table></div>';
+    // Era blocks only when there is logged data to attribute; an item known purely from
+    // wiki-listed sources (no rates from either era) keeps the plain single table.
+    const hasBeta = it.droppedBy.length > 0 || anyRate;
+    const eras = hasBeta || eaRows.length > 0;
+    sections.push('<h2>Dropped by</h2>' +
+      (eras ? eraHead('ea') + (eaRows.length ? dropTable(eaRows) : EA_EMPTY) : '') +
+      (dropRows.length ? (eras && hasBeta ? eraHead('beta') : eras ? '<h3 class="era-h">Other listed sources</h3>' : '') + dropTable(dropRows) : '') +
       (anyRate ? '<div class="note">Node drop rates are observed <b>per harvest</b> and combined across a node’s tiers (regular + rich) — the game log records what dropped, not which node. Click a node for its full table.</div>' : ''));
   }
 
-  // Player trade value — PvP and PvE are separate markets, so price each one on its
-  // own: 30-day high/low, 10-day average, and a buyer's/seller's market read.
+  // Player trade value — the live market (Trem): 30-day high/low, 10-day average, and
+  // a buyer's/seller's market read, plus the beta reference price while it still applies.
   {
-    const logged = 'Read from live player auctions on the <a href="https://www.twitch.tv/livemnm" target="_blank" rel="noopener">LiveMNM stream</a>.';
+    const logged = 'Read from live player auctions on the <a href="https://www.twitch.tv/livemnm" target="_blank" rel="noopener">LiveMNM stream</a>, which shows the ' + AUC_SERVER + ' server — other servers will price differently.';
     // The 4th block: buyer's vs seller's market (WTB vs WTS in the last 10 days).
     const pressureBox = (server) => {
       const mp = marketPressure(it.name, server, 10);
       return '<div class="vbox"><div class="vlbl">Market (10d)</div>' +
         (mp
-          ? '<a class="vval mkt-link ' + mp.cls + '" href="#/market/' + (server || 'PvP') + '" title="' + mp.wts + ' selling vs ' + mp.wtb + ' buying — last 10 days · see the full board">' + mp.arrow + ' ' + esc(mp.verdict) + (mp.strong ? '*' : '') + '</a>' +
+          ? '<a class="vval mkt-link ' + mp.cls + '" href="#/market" title="' + mp.wts + ' selling vs ' + mp.wtb + ' buying — last 10 days · see the full board">' + mp.arrow + ' ' + esc(mp.verdict) + (mp.strong ? '*' : '') + '</a>' +
             '<div class="mkt-sub">' + mp.wts + ' selling · ' + mp.wtb + ' buying</div>'
           : '<div class="vval sample">—</div>') + '</div>';
     };
@@ -813,16 +844,24 @@ function renderItem(id) {
         (mp ? '<div class="vendor-summary">' + pressureBox(server) + '</div>' : '') +
         '<div class="note sample">' + older + '</div></div>';
     };
-    const pvp = tradeStats(it.name, 'PvP'), pve = tradeStats(it.name, 'PvE');
-    const anyActivity = pvp || pve || marketPressure(it.name, 'PvP', 10) || marketPressure(it.name, 'PvE', 10);
+    const live = tradeStats(it.name, AUC_SERVER);
+    const anyActivity = live || marketPressure(it.name, AUC_SERVER, 10);
+    // Beta reference: what this sold for before Early Access. A separate, labelled card —
+    // never blended into the live numbers — that retires once the live market has its
+    // own handful of sales for this item (or at BETA_REF_UNTIL, whichever is first).
+    const beta = BETA[it.name.toLowerCase()];
+    const showBeta = beta && Date.now() < BETA_REF_UNTIL && !(live && live.n30 >= BETA_REF_MIN_LIVE);
+    const betaCell = (label, b) => !b ? '' : '<div class="vbox"><div class="vlbl">' + label + '</div><div class="vval">' + coin(b.mid) + '</div>' +
+      '<div class="mkt-sub">' + (b.low === b.high ? '' : coin(b.low) + '–' + coin(b.high) + ' · ') + b.n + ' sale' + (b.n === 1 ? '' : 's') + '</div></div>';
+    const betaBox = !showBeta ? '' : '<div class="mkt mkt-beta"><div class="mkt-h">Beta price <span class="tag warn">reference</span></div>' +
+      '<div class="vendor-summary">' + betaCell('PvE · typical', beta.PvE) + betaCell('PvP · typical', beta.PvP) + '</div>' +
+      '<div class="note sample">From closed-beta auctions (Jul–Oct 2026), before Early Access. The live economy is new, so treat this as a rough guide; it drops away once ' + AUC_SERVER + ' has enough sales of its own.</div></div>';
     let body;
-    if (anyActivity) {
-      body = '<div class="mkt-cols">' + marketBox('PvP', pvp, 'PvP') + marketBox('PvE', pve, 'PvE') + '</div>' +
+    if (anyActivity || betaBox) {
+      body = '<div class="mkt-cols">' + marketBox(AUC_SERVER, live, AUC_SERVER) + betaBox + '</div>' +
         '<div class="note">' + logged + ' <b>Market</b> compares people selling (WTS) vs buying (WTB) over 10 days — “Buyer’s ↓” means oversupply (price may be soft), “Seller’s ↑” means demand (price firm); * = strongly one-sided.</div>';
     } else {
-      const tv = tradeStats(it.name);
-      if (tv) body = marketBox('Player market', tv, null) + '<div class="note">' + logged + '</div>';
-      else body = '<div class="note">No player auctions seen for this item yet. ' + logged + '</div>';
+      body = '<div class="note">No player auctions seen for this item yet. ' + logged + '</div>';
     }
     sections.push('<h2>Player trade value</h2>' + body);
   }
@@ -884,7 +923,7 @@ function renderItem(id) {
 // Market overview: the most lopsided buyer's / seller's markets right now, per server.
 // Reached by clicking the "Buyer’s ↓ / Seller’s ↑" read on any item page.
 function renderMarket(arg) {
-  const server = /pve/i.test(arg || '') ? 'PvE' : 'PvP';
+  const server = AUC_SERVER; // one live market since Early Access (old #/market/PvP links land here too)
   const { buyers, sellers } = marketBoard(server, 10);
   const linkFor = (name) => { const it = itemByName[name]; return itemLink(it ? it.id : slugify(name), name); };
   const priceOf = (name) => {
@@ -903,14 +942,11 @@ function renderMarket(arg) {
       ? '<table class="mkt-board"><thead><tr><th>Item</th><th class="num">' + activityHdr + '</th><th class="num">~Price</th></tr></thead><tbody>' +
         list.map(rowHtml).join('') + '</tbody></table>'
       : '<div class="note sample">Nothing clearly one-sided on ' + server + ' right now.</div>') + '</div>';
-  const toggle = ['PvP', 'PvE'].map((s) =>
-    '<a class="adv-tab' + (s === server ? ' is-on' : '') + '" href="#/market/' + s + '">' + s + '</a>').join('');
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › market</div>' +
-    '<h1>Buyer’s &amp; Seller’s Markets</h1>' +
-    '<p class="sub">Which items are most oversupplied or most in demand on the auction market over the last 10 days. ' +
+    '<h1>Buyer’s &amp; Seller’s Markets <span class="sample">· ' + server + '</span></h1>' +
+    '<p class="sub">Which items are most oversupplied or most in demand on the ' + server + ' auction market over the last 10 days. ' +
     'A <b>buyer’s market</b> (more selling than buying) means prices are soft — a good time to buy; a <b>seller’s market</b> (more buying than selling) means prices are firm — a good time to sell.</p>' +
-    '<div class="adv-tabs">' + toggle + '</div>' +
     '<div class="mkt-cols">' +
       board('↓ Best for buyers', 'mkt-buyer', 'Most oversupplied — lots of sellers, few buyers, so prices are likely soft or negotiable down.', buyers, 'Activity (10d)') +
       board('↑ Best for sellers', 'mkt-seller', 'Most in demand — lots of buyers, few sellers, so prices are firm or rising.', sellers, 'Activity (10d)') +
@@ -923,52 +959,67 @@ function renderMob(name) {
   const m = DATA.mobs[name];
   if (!m) return notFound('mob', name);
 
-  const zones = Object.keys(m.zones || {});
-  const val = mobValuePerKill(m);
-  const corpses = mobCorpses(m);
+  // The same mob as logged since Early Access began (null until someone publishes it).
+  const eaM = (EA.mobs || {})[name] || null;
+  const zones = [...new Set(Object.keys(m.zones || {}).concat(Object.keys((eaM && eaM.zones) || {})))];
+  // Headline numbers (value per kill, breakdown) use beta's larger sample where there
+  // is one, otherwise whatever Early Access has so far; the page says which.
+  const main = mobCorpses(m) || !eaM ? m : eaM;
+  const mainEra = main === m ? 'beta' : 'Early Access';
+  const val = mobValuePerKill(main);
+  const corpses = mobCorpses(main);
 
-  const drops = Object.entries(m.drops).map(([item, n]) => {
-    const rate = corpses ? n / corpses : null;
-    const reg = regularPrice(itemByName[item]);
-    return { item, n, rate, reg, perKill: rate ? rate * reg : 0, hasPrice: reg > 0 };
-  }).sort((a, b) => (b.rate || 0) - (a.rate || 0) || b.n - a.n);
+  const dropsOf = (d) => {
+    const c = mobCorpses(d);
+    return Object.entries(d.drops || {}).map(([item, n]) => {
+      const rate = c ? n / c : null;
+      const reg = regularPrice(itemByName[item]);
+      return { item, n, rate, reg, perKill: rate ? rate * reg : 0, hasPrice: reg > 0 };
+    }).sort((a, b) => (b.rate || 0) - (a.rate || 0) || b.n - a.n);
+  };
+  const drops = dropsOf(main);
 
-  // Drops the wiki lists for this mob that we haven't observed yet — shown as extra
-  // rows with "no drop data" in the rate column (rates fill in once they're looted).
+  // Drops the wiki lists for this mob that no one has logged in either era — shown as
+  // extra rows with "no drop data" in the rate column (rates fill in once they're looted).
   const mw = m.wiki || {};
-  const wikiLoot = (mw.loot || []).filter((it) => !m.drops[it]);
+  const wikiLoot = (mw.loot || []).filter((it) => !(m.drops || {})[it] && !((eaM && eaM.drops) || {})[it]);
 
-  let table = '<p class="muted">No drops recorded.</p>';
-  if (drops.length || wikiLoot.length) {
-    const obsRows = drops.map((d) => {
+  const lootTable = (list, c, extra) => {
+    const obsRows = list.map((d) => {
       const id = nameToId[d.item] || d.item;
       const sell = d.hasPrice ? coin(d.reg) : '<span class="sample">no price yet</span>';
       const pk = d.hasPrice ? coin(d.perKill) : '<span class="sample">—</span>';
-      return '<tr><td>' + itemLink(id, d.item) + '</td><td class="num">' + rateCell(d.rate, d.n, corpses) +
+      return '<tr><td>' + itemLink(id, d.item) + '</td><td class="num">' + rateCell(d.rate, d.n, c) +
         '</td><td class="num coin">' + sell + '</td><td class="num coin">' + pk + '</td></tr>';
     }).join('');
-    const wikiRows = wikiLoot.map((it) => {
+    const wikiRows = (extra || []).map((it) => {
       const reg = regularPrice(itemByName[it]);
       const sell = reg > 0 ? coin(reg) : '<span class="sample">no price yet</span>';
       return '<tr><td>' + itemLink(nameToId[it] || it, it) + '</td>' +
         '<td class="num"><span class="sample">no drop data</span></td>' +
         '<td class="num coin">' + sell + '</td><td class="num sample">—</td></tr>';
     }).join('');
-    table = '<div class="card"><table><thead><tr><th>Item</th><th class="num">Drop rate</th><th class="num">Sell value</th><th class="num">Avg kill value</th></tr></thead><tbody>' +
+    return '<div class="card"><table><thead><tr><th>Item</th><th class="num">Drop rate</th><th class="num">Sell value</th><th class="num">Avg kill value</th></tr></thead><tbody>' +
       obsRows + wikiRows + '</tbody></table></div>';
-  }
+  };
+  const eaDrops = eaM ? dropsOf(eaM) : [], betaDrops = dropsOf(m);
+  const table =
+    eraHead('ea') + (eaDrops.length ? lootTable(eaDrops, mobCorpses(eaM)) : EA_EMPTY) +
+    (betaDrops.length ? eraHead('beta') + lootTable(betaDrops, mobCorpses(m), wikiLoot)
+      : wikiLoot.length ? '<h3 class="era-h">Listed on the wiki</h3>' + lootTable([], 0, wikiLoot) : '');
 
   const boxes = ['<div class="vbox"><div class="vlbl">Corpses looted</div><div class="vval">' + corpses + '</div></div>'];
-  if (m.kills) boxes.push('<div class="vbox"><div class="vlbl">Coin / kill</div><div class="vval">' + coin(val.coin) + '</div></div>');
+  if (main.kills) boxes.push('<div class="vbox"><div class="vlbl">Coin / kill</div><div class="vval">' + coin(val.coin) + '</div></div>');
   boxes.push('<div class="vbox"><div class="vlbl">Est. value / kill</div><div class="vval">' + coin(val.total) + '</div></div>');
-  const summary = '<div class="vendor-summary">' + boxes.join('') + '</div>';
+  const summary = '<div class="vendor-summary">' + boxes.join('') + '</div>' +
+    '<p class="sub">These figures use <b>' + mainEra + '</b> data.</p>';
 
   // Value breakdown — what share of an average kill's value each source contributes
   // (coin + each priced drop). A quick read on "where the worth comes from".
   let breakdown = '';
   {
     const segs = [];
-    if (m.kills && val.coin > 0) segs.push({ label: 'Coin', value: val.coin });
+    if (main.kills && val.coin > 0) segs.push({ label: 'Coin', value: val.coin });
     drops.forEach((d) => { if (d.perKill > 0) segs.push({ label: d.item, value: d.perKill, id: nameToId[d.item] || d.item }); });
     const segTotal = segs.reduce((s, x) => s + x.value, 0);
     if (segTotal > 0 && segs.some((s) => s.id)) {
@@ -1822,8 +1873,44 @@ window.setBrowseEffect = (v) => { browse.effect = v; renderBrowse('items'); };
 
 // ---- Read-only map viewer ----
 
+// Zones the community MnM Atlas (mnmatlas.com) has drawn: our zone name -> its map id.
+// They are shown through the Atlas's own embed frame (mnmatlas.com/embed) — its artwork
+// is not copied into this site — as the default map for the zone, with our own map and
+// its community markers one tab away. Zones the Atlas hasn't drawn keep our map only.
+// Each entry is [atlas map id, a marker near the map's centre]. The marker picks the
+// Atlas's "mini map" still (/mini/<map>/<marker>.webp — the small image it offers for
+// other sites) used as the zone's preview on the Maps page. The last three are zones
+// only the Atlas has drawn; they get a page here with no marker map of ours.
+const ATLAS_MAPS = {
+  'Night Harbor': ['night-harbor', 'wiki-7'], 'Faelindral': ['faelindral', 'maggot-npc-05'],
+  'Evershade Weald': ['evershade-weald', 'community-132'], 'Sungreet Strand': ['sungreet-strand', 'generic-6-10-3'],
+  'Shaded Dunes': ['shaded-dunes', 'undead-10-15-1'], 'Fallen Pass': ['fallen-pass', 'ratkin-31-40-8'],
+  'Tomb of the Last Wyrmsbane': ['wyrmsbane-tomb', 'jakob-tomb-route-from'], 'Glass Flats': ['glass-flats', 'salt-elementals-30-36-1'],
+  'Ancient Crypt': ['ancient-crypt', 'ladder-library-south-floor-1'], 'Scarwood': ['scarwood', 'grinholdt-thorne-grinholdt'],
+  'Vale of Zintar': ['vale-of-zintar', 'lake-notables-najarica'], 'Grain Cellar': ['grain-cellar', 'stair-foot'],
+  'Tel Ekir': ['tel-ekir', 'link-007-b'], "Keeper's Bight": ['keepers-bight', 'farmers-heather'],
+  'Fallen Watch': ['fallen-watch', 'splint'],
+  'Underdocks': ['underdocks', 'community-167'], "Ail'Vorith": ['ail-vorith', 'grindstone'],
+  'Great Cavern Sea': ['great-cavern-sea', 'vhaleth-halkareth'],
+};
+const ATLAS_URL = 'https://www.mnmatlas.com/';
+const atlasIdOf = (zone) => (ATLAS_MAPS[zone] || [])[0] || null;
+const atlasThumb = (zone) => ATLAS_URL + 'mini/' + ATLAS_MAPS[zone][0] + '/' + ATLAS_MAPS[zone][1] + '.webp';
+// `path` is "<map id>/?embed=map" for one zone, or "?embed=1" for the whole atlas.
+const atlasFrame = (path, title, open) =>
+  '<iframe class="atlas-frame" src="' + ATLAS_URL + path + '" title="' + esc(title) + ' · MnM Atlas" width="100%" height="680" style="border:0" loading="lazy" allow="fullscreen; clipboard-write" allowfullscreen></iframe>' +
+  '<p class="sub">Map by <a href="' + ATLAS_URL + (open || '') + '" target="_blank" rel="noopener">MnM Atlas ↗</a>, an illustrated community atlas, shown here through its embed. Click the map before scrolling to zoom.</p>';
+function renderAtlasWorld() {
+  $('content').innerHTML = '<div class="crumb"><a href="#/">MnMdb</a> › <a href="#/maps">maps</a> › world</div><h1>World map</h1>' +
+    atlasFrame('?embed=1', 'World map');
+}
+
 function renderMapsList() {
   const zones = (MAPS.zones || []).slice();
+  // Zones only the Atlas has drawn join the list (no map or markers of ours).
+  const ours = new Set(zones.map((z) => z.name));
+  Object.keys(ATLAS_MAPS).forEach((n) => { if (!ours.has(n)) zones.push({ name: n, atlasOnly: true, markers: [] }); });
+  zones.sort((a, b) => a.name.localeCompare(b.name));
   if (!zones.length) {
     return $('content').innerHTML = '<div class="crumb"><a href="#/">MnMdb</a> › maps</div><h1>Zone maps</h1>' +
       '<p class="muted">No maps published yet.</p>';
@@ -1831,8 +1918,15 @@ function renderMapsList() {
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › maps</div>' +
     '<h1>Zone maps</h1>' +
-    '<p class="sub">Curated maps with marked resource nodes, camps and points of interest. View-only.</p>' +
-    '<div class="mapgrid">' + zones.map((z) => z.comingSoon
+    '<p class="sub">Zone maps with marked resource nodes, camps and points of interest. Zones tagged <span class="tag good">Atlas</span> open on the illustrated <a href="' + ATLAS_URL + '" target="_blank" rel="noopener">MnM Atlas ↗</a> map, with our marker map one tab away.</p>' +
+    '<div class="mapgrid">' +
+    '<a class="mapcard" href="#/atlas"><span class="mapthumb"><span class="soon-tag">World map</span></span><span class="mapname">World map <span class="tag good">Atlas</span></span></a>' +
+    zones.map((z) => ATLAS_MAPS[z.name] // Atlas zones preview with the Atlas's own mini-map still
+      ? '<a class="mapcard" href="#/map/' + encodeURIComponent(z.name) + '">' +
+        '<span class="mapthumb"><img src="' + atlasThumb(z.name) + '" alt="" loading="lazy" /></span>' +
+        '<span class="mapname">' + esc(z.name) + ' <span class="tag good">Atlas</span>' +
+        (z.markers.length ? ' <span class="sample">' + z.markers.length + ' marks</span>' : '') + '</span></a>'
+      : z.comingSoon
       ? '<a class="mapcard soon" href="#/map/' + encodeURIComponent(z.name) + '">' +
         '<span class="mapthumb"><span class="soon-tag">Map coming soon</span></span>' +
         '<span class="mapname">' + esc(z.name) + '</span></a>'
@@ -1941,7 +2035,13 @@ function openMapLightbox(src, markers, caption) {
 
 function renderMapView(name) {
   const z = (MAPS.zones || []).find((x) => x.name === name);
-  if (!z) return notFound('map', name);
+  const atlasId = atlasIdOf(name);
+  if (!z && !atlasId) return notFound('map', name);
+  if (!z || (z.comingSoon && atlasId)) { // no map of ours, but the Atlas has drawn this zone
+    return $('content').innerHTML =
+      '<div class="crumb"><a href="#/">MnMdb</a> › <a href="#/maps">maps</a> › ' + esc(name) + '</div>' +
+      '<h1>' + esc(name) + '</h1>' + atlasFrame(atlasId + '/?embed=map', name, atlasId + '/');
+  }
   if (z.comingSoon) {
     return $('content').innerHTML =
       '<div class="crumb"><a href="#/">MnMdb</a> › <a href="#/maps">maps</a> › ' + esc(name) + '</div>' +
@@ -1967,6 +2067,11 @@ function renderMapView(name) {
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › <a href="#/maps">maps</a> › ' + esc(name) + '</div>' +
     '<h1>' + esc(name) + '</h1>' +
+    // Zones the MnM Atlas covers open on its map; ours (with the community markers and
+    // the add-a-marker tools) is the second tab. The choice is remembered per browser.
+    (atlasId ? '<div class="map-tabs" id="map-source"><button class="mtab" data-src="atlas">MnM Atlas map</button><button class="mtab" data-src="own">MnMdb marker map</button></div>' +
+      '<div id="atlas-map" class="hidden"></div>' : '') +
+    '<div id="own-map">' +
     '<div id="map-tabs" class="map-tabs hidden"></div>' +
     '<div class="maptools">' +
       (legend ? '<div class="mlegend">' + legend + '</div>' : '<span class="sub">No markers yet — add the first one.</span>') +
@@ -1979,6 +2084,7 @@ function renderMapView(name) {
     '<div class="mapview" title="Click to enlarge"><img id="mapimg" src="' + mapLightSrc + '" alt="' + esc(name) + ' map" />' +
     '<div id="maplayer"></div></div>' +
     '<p class="sub">Community-submitted markers are reviewed before they appear. <b>Click a marker</b> for its details; click the map itself to view it full size.<span id="map-count"></span></p>' +
+    '</div>' +
     '<div id="suggest-modal" class="modal-overlay hidden">' +
       '<div class="modal-card">' +
         '<h3>Add a marker</h3>' +
@@ -2024,6 +2130,19 @@ function renderMapView(name) {
           '<div class="sp-actions"><button id="mapf-cancel">Close</button></div>') +
     '</div></div>';
   wireMapView(name, catById, fallback);
+  if (atlasId) {
+    const show = (src) => {
+      const atlas = src === 'atlas', box = $('atlas-map');
+      if (atlas && !box.innerHTML) box.innerHTML = atlasFrame(atlasId + '/?embed=map', name, atlasId + '/'); // load the frame on first use
+      box.classList.toggle('hidden', !atlas);
+      $('own-map').classList.toggle('hidden', atlas);
+      document.querySelectorAll('#map-source .mtab').forEach((t) => t.classList.toggle('active', t.dataset.src === src));
+      try { localStorage.setItem('map-source', src); } catch {}
+    };
+    document.querySelectorAll('#map-source .mtab').forEach((t) => t.addEventListener('click', () => show(t.dataset.src)));
+    let pref = 'atlas'; try { if (localStorage.getItem('map-source') === 'own') pref = 'own'; } catch {}
+    show(pref);
+  }
 }
 
 // Markers are stored in image-pixel coords; place them as percentages once the
@@ -2802,7 +2921,7 @@ const aucTag = (i) => i === 'sell' ? '<span class="atag sell">WTS</span>' : i ==
 
 async function renderAuctions() {
   if (!AUCTIONS) {
-    $('content').innerHTML = '<div class="crumb"><a href="#/">MnMdb</a> › auctions</div><h1>Auction House</h1><p class="sub">Loading live market…</p>';
+    $('content').innerHTML = '<div class="crumb"><a href="#/">MnMdb</a> › auctions</div><h1>Auction House</h1><p class="sub">Loading auctions…</p>';
     try { AUCTIONS = await (await fetch('./auctions.json?v=' + aucCacheV())).json(); } catch { AUCTIONS = { listings: [], requests: [], stats: {}, generatedAt: null }; }
   }
   const A = AUCTIONS;
@@ -2810,14 +2929,13 @@ async function renderAuctions() {
   const when = A.generatedAt ? new Date(A.generatedAt).toLocaleString() : '—';
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › auctions</div><h1>Auction House</h1>' +
-    '<div class="auc-paused">⏸ Auction data collection is paused — please visit the <a href="https://www.twitch.tv/livemnm" target="_blank" rel="noopener">LiveMNM stream ↗</a> for live data.</div>' +
-    '<p class="sub">Player buy/sell auctions read from the <a href="https://www.twitch.tv/livemnm" target="_blank" rel="noopener">LiveMNM stream ↗</a> — PvP and PvE are separate markets. ' +
+    '<p class="sub">Player buy/sell auctions on the <b>' + AUC_SERVER + '</b> server, read from the <a href="https://www.twitch.tv/livemnm" target="_blank" rel="noopener">LiveMNM stream ↗</a>. ' +
+    'This page updates <b>once a day</b>, so listings can be up to a day old — watch the stream for live prices. Other servers will price differently. ' +
     '<span id="auc-meta"></span> Hover an item for its stats.</p>' +
     '<div class="auc-controls"><input id="auc-q" placeholder="Search item or seller…">' +
     '<select id="auc-sort"><option value="new">Newest</option><option value="price">Price (high→low)</option><option value="item">Item name</option></select>' +
     '<button id="auc-priced" class="toggle-btn" type="button" aria-pressed="false">Prices Only</button></div>' +
-    '<div class="auc-cols"><div class="auc-panel"><div class="auc-head">PvP <span id="auc-pvp-n" class="muted"></span></div><div id="auc-pvp"></div></div>' +
-    '<div class="auc-panel"><div class="auc-head">PvE <span id="auc-pve-n" class="muted"></span></div><div id="auc-pve"></div></div></div>' +
+    '<div class="auc-cols"><div class="auc-panel"><div class="auc-head">' + AUC_SERVER + ' <span id="auc-live-n" class="muted"></span></div><div id="auc-live"></div></div></div>' +
     '<div class="auc-panel" style="margin-top:16px"><div class="auc-head">🛠 Crafting / gear requests <span class="muted" id="auc-reqn"></span></div><div id="auc-reqs"></div></div>';
   ['auc-q', 'auc-sort'].forEach((id) => { const el = $(id); if (el) { el.addEventListener('input', paintAuctions); el.addEventListener('change', paintAuctions); } });
   const pb = $('auc-priced');
@@ -2952,7 +3070,7 @@ const AUC_MAX_ITEMS = 250; // cap what the page shows; search still spans the wh
 const AUC_TOP_ITEMS = 50;  // grouped tail shows only the 50 most-seen items per server
 function paintAuctions() {
   const searching = ($('auc-q').value || '').trim().length > 0;
-  for (const [srv, id] of [['PvP', 'auc-pvp'], ['PvE', 'auc-pve']]) {
+  for (const [srv, id] of [[AUC_SERVER, 'auc-live']]) {
     const rs = aucRecentRows(srv);
     $(id + '-n').textContent = rs.length;
     const recent = rs.slice(0, AUC_RECENT_N), older = rs.slice(AUC_RECENT_N);
@@ -3539,8 +3657,10 @@ function route() {
   if (h === 'vendors') return renderVendors();
   if (h === 'bestiary') return renderBestiary();
   if (h === 'maps') return renderMapsList();
-  // The Auction House ticker page is retired — auction prices now live on each item's
-  // page (see tradeStats). renderAuctions() is kept dormant in case we bring it back.
+  // Auction House: a browsable list of the day's published listings (the feed is
+  // published once a day, not live — the page says so). Prices also sit on item pages.
+  if (h === 'auctions') return renderAuctions();
+  if (h === 'atlas') return renderAtlasWorld();
   if (h === 'advanced' || h === 'bis') return renderAdvanced();
   if (h === 'moderate') return renderModerate();
   if (h === 'quests') return renderQuests();
@@ -3611,18 +3731,12 @@ async function loadWikiStats() {
     vendorsSelling = {};
     VENDORS.forEach((vn) => (vn.sells || []).forEach((n) => { (vendorsSelling[n] = vendorsSelling[n] || []).push(vn); }));
   } catch {}
-  try {
-    const t = await (await fetch('./trades.json')).json();
-    TRADES = {};
-    for (const e of (t && t.trades) || []) {
-      const k = String(e.item).toLowerCase();
-      (TRADES[k] = TRADES[k] || []).push({ item: e.item, price: e.price, side: e.side === 'buy' ? 'buy' : 'sell', date: e.date });
-    }
-  } catch {}
-  // Live player prices now come from the LiveMNM auction feed (auctions.json),
-  // not the retired manual trade log. Merge priced listings into TRADES so item
-  // pages, crafting economics and movers all reflect current market prices.
-  // (Prices are base-100 copper, same unit as trades.json — safe to combine.)
+  // Live player prices come from the LiveMNM auction feed (auctions.json). The old
+  // manual trade log (trades.json) is beta-era data and is no longer loaded — it would
+  // leak pre-Early-Access prices into crafting economics. Priced listings go into
+  // TRADES so item pages, crafting economics and movers reflect the live market.
+  TRADES = {};
+  try { BETA = ((await (await fetch('./auctions-beta.json')).json()) || {}).items || {}; } catch {}
   try {
     AUCTIONS = AUCTIONS || await (await fetch('./auctions.json?v=' + aucCacheV())).json();
     for (const l of (AUCTIONS && AUCTIONS.listings) || []) {
@@ -3662,6 +3776,15 @@ fetch('./data.json')
     // not a real mob (also fixed at the source in tracker/ledger-parser.js). Guards
     // older data.json and any friend-contributed data that still carries it.
     if (DATA.mobs) Object.keys(DATA.mobs).forEach((k) => { if (/^party[_ ]?split$/i.test(k)) delete DATA.mobs[k]; });
+    // Early Access set (optional — absent or empty until logs are published). Anything
+    // seen only in Early Access gets an empty beta record so its page and links resolve;
+    // the era blocks on each page then show where the numbers came from.
+    try { EA = (await (await fetch('./data-ea.json')).json()) || EA; } catch {}
+    EA.items = EA.items || []; EA.mobs = EA.mobs || {};
+    EA_ITEMS = {}; EA.items.forEach((i) => { EA_ITEMS[i.name] = i; });
+    const betaNames = new Set(DATA.items.map((i) => i.name));
+    EA.items.forEach((i) => { if (!betaNames.has(i.name)) DATA.items.push({ id: i.id, gameId: i.gameId, name: i.name, droppedBy: [], prices: i.prices || [], harvested: 0, zones: i.zones || [] }); });
+    Object.entries(EA.mobs).forEach(([k, v]) => { if (!DATA.mobs[k] && !/^party[_ ]?split$/i.test(k)) DATA.mobs[k] = { kills: 0, drops: {}, zones: Object.assign({}, v.zones), coin: 0, corpses: 0 }; });
     await loadWikiStats();
     DATA.items.forEach((i) => { nameToId[i.name] = i.id; itemByName[i.name] = i; });
     HARVEST_NODES = DATA.harvestNodes || [];
@@ -3687,8 +3810,9 @@ fetch('./data.json')
       harvestWikiNodes[node.name] = set;
     });
     const when = d.generatedAt ? new Date(d.generatedAt).toLocaleDateString() : '';
-    $('data-meta').textContent = (d.events || 0).toLocaleString() + ' events · ' +
-      DATA.items.length + ' items · updated ' + when;
+    $('data-meta').textContent = 'Drop data: ' + (EA.events || 0).toLocaleString() + ' Early Access events' +
+      (EA.generatedAt ? ' (updated ' + new Date(EA.generatedAt).toLocaleDateString() + ')' : '') +
+      ' · ' + (d.events || 0).toLocaleString() + ' beta events (frozen ' + when + ') · ' + DATA.items.length + ' items';
     window.addEventListener('hashchange', () => {
       // Clicking a result navigates (changes the hash) — clear the search so the
       // page shows instead of the search results staying stuck over it.

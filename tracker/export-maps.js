@@ -47,6 +47,14 @@ async function webImage(buf, ext) {
 
 const slug = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
 
+// Pixel size of a published image, recorded on its zone in maps.json. Markers are
+// stored in these pixels, so the app needs the size to place them on a copy of the
+// map that is a different size. {} when sharp isn't available.
+async function imageSize(buf) {
+  if (!sharp) return {};
+  try { const m = await sharp(buf).metadata(); return { width: m.width, height: m.height }; } catch { return {}; }
+}
+
 // The wiki's generic "Phformaps.png" placeholder, by content hash — zones whose
 // only map is this aren't really mapped, so we don't publish it.
 const PLACEHOLDER_MD5 = '8d779540f4e2000004c82893a6ff622b';
@@ -89,6 +97,7 @@ async function exportMaps(mapDataFile, destDir) {
     zones.push({
       name: z.name,
       image: fname,
+      ...(await imageSize(out.buf)),
       markers: (z.markers || []).map((m) => ({
         x: Math.round(m.x * out.scale), y: Math.round(m.y * out.scale), // match the downscaled image
         label: m.label || '', category: m.category || 'misc', notes: m.notes || '',
@@ -110,7 +119,7 @@ async function exportMaps(mapDataFile, destDir) {
   return { zones: zones.length, markers: zones.reduce((s, z) => s + z.markers.length, 0) };
 }
 
-module.exports = { exportMaps, CATEGORIES };
+module.exports = { exportMaps, CATEGORIES, webImage, slug, imageSize };
 
 if (require.main === module) {
   const userData = path.join(process.env.APPDATA || '', 'mnm-minimap');

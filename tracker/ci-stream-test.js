@@ -13,7 +13,7 @@ const STREAM = process.env.MNM_STREAM || 'https://www.twitch.tv/livemnm';
 const FF = process.env.MNM_FFMPEG || 'ffmpeg';
 const SL = process.env.MNM_STREAMLINK || 'streamlink';
 const TESS = process.env.MNM_TESSERACT || 'tesseract';
-const PANELS = { PvP: 'crop=930:410:25:650', PvE: 'crop=930:410:975:650' };
+const PANELS = { Trem: 'crop=1005:400:912:680' }; // keep in step with capture-auctions.js
 const PRE = 'scale=iw*2:ih*2:flags=lanczos,format=gray,negate,eq=contrast=1.3';
 const OUT = process.env.MNM_DATA || '.';
 const p = (f) => path.join(OUT, f);
@@ -42,7 +42,7 @@ function ocrPanel(server) {
   const glossary = P.loadGlossary();
   const itemIndex = P.loadItemIndex();
   const rows = [];
-  for (const server of ['PvP', 'PvE']) {
+  for (const server of Object.keys(PANELS)) {
     let txt = '';
     try { txt = ocrPanel(server); } catch (e) { console.log(`OCR ${server} failed: ${e.message}`); continue; }
     const lines = P.foldOcrLines(txt);

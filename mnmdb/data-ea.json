@@ -1,0 +1,340 @@
+{
+  "generatedAt": "2026-10-10T23:23:11.495Z",
+  "source": "mnm-tools",
+  "ledgerFiles": 2,
+  "events": 54,
+  "era": "early-access",
+  "servers": [
+    "estaire"
+  ],
+  "contributors": [],
+  "mobs": {
+    "a rotting skeleton": {
+      "kills": 1,
+      "drops": {
+        "Bone Chips": 1,
+        "Cloth Scraps": 1
+      },
+      "zones": {
+        "Evershade Weald": 4
+      },
+      "coin": 1,
+      "corpses": 1
+    },
+    "a black wolf pup": {
+      "kills": 0,
+      "drops": {
+        "Wolf Tooth": 2,
+        "Raw Wolf Meat": 2
+      },
+      "zones": {
+        "Evershade Weald": 6
+      },
+      "coin": 0,
+      "corpses": 2
+    },
+    "a wasp drone": {
+      "kills": 0,
+      "drops": {
+        "Wasp Wing": 2,
+        "Wasp Venom Sac": 2
+      },
+      "zones": {
+        "Evershade Weald": 4
+      },
+      "coin": 0,
+      "corpses": 3
+    },
+    "a black bat": {
+      "kills": 0,
+      "drops": {
+        "Bat Eye": 3,
+        "Bat Tooth": 3,
+        "Bat Wing": 5,
+        "Bat Fur": 2,
+        "Raw Bat Meat": 1
+      },
+      "zones": {
+        "Evershade Weald": 16
+      },
+      "coin": 0,
+      "corpses": 7
+    },
+    "a black widow hatchling": {
+      "kills": 0,
+      "drops": {
+        "Spider Legs": 1
+      },
+      "zones": {
+        "Evershade Weald": 1
+      },
+      "coin": 0,
+      "corpses": 1
+    }
+  },
+  "items": [
+    {
+      "id": "bat_eye",
+      "gameId": "a8f4fb29849a35c7a5b1a8d9",
+      "name": "Bat Eye",
+      "droppedBy": [
+        {
+          "mob": "a black bat",
+          "drops": 3,
+          "corpses": 7,
+          "rate": 0.42857142857142855
+        }
+      ],
+      "prices": [
+        {
+          "copper": 5,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
+      "id": "bat_fur",
+      "gameId": "3413ae85a6bdb1ffd4d4c665",
+      "name": "Bat Fur",
+      "droppedBy": [
+        {
+          "mob": "a black bat",
+          "drops": 2,
+          "corpses": 7,
+          "rate": 0.2857142857142857
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
+      "id": "bat_tooth",
+      "gameId": "ecfab4f31a58122a9c917a93",
+      "name": "Bat Tooth",
+      "droppedBy": [
+        {
+          "mob": "a black bat",
+          "drops": 3,
+          "corpses": 7,
+          "rate": 0.42857142857142855
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
+      "id": "bat_wing",
+      "gameId": "3b9eae4b79a3090957aed13e",
+      "name": "Bat Wing",
+      "droppedBy": [
+        {
+          "mob": "a black bat",
+          "drops": 5,
+          "corpses": 7,
+          "rate": 0.7142857142857143
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
+      "id": "bone_chips",
+      "gameId": "9fae14dfbd2ef030e0993461",
+      "name": "Bone Chips",
+      "droppedBy": [
+        {
+          "mob": "a rotting skeleton",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
+      "id": "brittle_stone",
+      "gameId": null,
+      "name": "Brittle Stone",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
+      "id": "cloth_scraps",
+      "gameId": "b688897ebe26c20e25e8b0b8",
+      "name": "Cloth Scraps",
+      "droppedBy": [
+        {
+          "mob": "a rotting skeleton",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
+      "id": "copper_ore",
+      "gameId": null,
+      "name": "Copper Ore",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 2,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
+      "id": "raw_bat_meat",
+      "gameId": "579a9471f975601473792884",
+      "name": "Raw Bat Meat",
+      "droppedBy": [
+        {
+          "mob": "a black bat",
+          "drops": 1,
+          "corpses": 7,
+          "rate": 0.14285714285714285
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
+      "id": "raw_wolf_meat",
+      "gameId": "8793c163f2ef7aab67bd87ee",
+      "name": "Raw Wolf Meat",
+      "droppedBy": [
+        {
+          "mob": "a black wolf pup",
+          "drops": 2,
+          "corpses": 2,
+          "rate": 1
+        }
+      ],
+      "prices": [
+        {
+          "copper": 1,
+          "count": 2
+        }
+      ],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
+      "id": "spider_legs",
+      "gameId": "4257c9ae8bccbcda1f9ed856",
+      "name": "Spider Legs",
+      "droppedBy": [
+        {
+          "mob": "a black widow hatchling",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
+      "id": "wasp_venom_sac",
+      "gameId": "40b05d4248d00d85fecdc372",
+      "name": "Wasp Venom Sac",
+      "droppedBy": [
+        {
+          "mob": "a wasp drone",
+          "drops": 2,
+          "corpses": 3,
+          "rate": 0.6666666666666666
+        }
+      ],
+      "prices": [
+        {
+          "copper": 5,
+          "count": 2
+        }
+      ],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
+      "id": "wasp_wing",
+      "gameId": "2c3f3e936487d3e942b774fe",
+      "name": "Wasp Wing",
+      "droppedBy": [
+        {
+          "mob": "a wasp drone",
+          "drops": 2,
+          "corpses": 3,
+          "rate": 0.6666666666666666
+        }
+      ],
+      "prices": [
+        {
+          "copper": 1,
+          "count": 2
+        }
+      ],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
+      "id": "wolf_tooth",
+      "gameId": "66323e2f7f0be050e1c27507",
+      "name": "Wolf Tooth",
+      "droppedBy": [
+        {
+          "mob": "a black wolf pup",
+          "drops": 2,
+          "corpses": 2,
+          "rate": 1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
+    }
+  ],
+  "harvest": {
+    "Copper Ore": 2,
+    "Brittle Stone": 1
+  },
+  "harvestNodes": []
+}

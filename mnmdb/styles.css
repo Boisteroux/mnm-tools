@@ -791,6 +791,14 @@ tr.bis-total td { border-top: 2px solid var(--line-2); background: var(--panel-2
 .mkt-cols { display: flex; gap: 16px; flex-wrap: wrap; }
 .mkt { flex: 1; min-width: 240px; }
 .mkt-h { font-weight: 600; margin-bottom: 6px; color: var(--accent); }
+/* Embedded MnM Atlas map (third-party iframe). */
+.atlas-frame { display: block; border-radius: 8px; background: #16120e; min-height: 420px; height: min(680px, 78vh); }
+/* Era sub-headings inside a drop section (Early Access block, then Beta). */
+.era-h { font-size: 14px; font-weight: 600; margin: 14px 0 6px; display: flex; align-items: center; gap: 8px; }
+.era-empty { margin: 0 0 4px; }
+/* Beta reference price: visibly secondary to the live market card beside it. */
+.mkt-beta { opacity: 0.8; }
+.mkt-beta .mkt-h { color: var(--muted); }
 .adv-controls { display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0; }
 .adv-controls input, .adv-controls select { padding: 7px 10px; border: 1px solid var(--line); border-radius: 7px; background: var(--panel); color: var(--text); font: inherit; }
 .adv-controls input#adv-name { flex: 1; min-width: 180px; }

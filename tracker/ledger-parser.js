@@ -90,6 +90,30 @@ function findLedgerFiles(base = GAME_BASE) {
   return out;
 }
 
+// The game keeps each server's ledgers in its own folder (<base>/<server>/<Character>/…).
+// Closed beta ran on "beta1" / "betapvp"; Early Access (2026-10-09) started fresh servers
+// such as "estaire". Beta and Early Access data are published separately, so the server
+// folder is what decides which set a file's events belong to.
+function ledgerServer(file, base = GAME_BASE) {
+  return path.relative(base, file).split(path.sep)[0] || '';
+}
+const ledgerEra = (file, base) => (/^beta/i.test(ledgerServer(file, base)) ? 'beta' : 'early-access');
+
+// The site-ready play-data file for one era (mnmdb/data.json = beta, data-ea.json = EA).
+function buildDataset(agg, extra) {
+  return Object.assign({
+    generatedAt: new Date().toISOString(),
+    source: 'mnm-tools',
+    ledgerFiles: agg.fileCount,
+    events: agg.events,
+  }, extra || {}, {
+    mobs: agg.mobs,
+    items: buildItemReport(agg),
+    harvest: agg.harvest,
+    harvestNodes: agg.harvestNodes,
+  });
+}
+
 // Aggregate a list of ledger files into mobs / items / harvest tables
 function parseLedgers(files, opts) {
   const mobs = {};     // mobName -> { kills, drops: { itemName: count } }
@@ -616,7 +640,7 @@ function mergeAggs(aggs) {
 
 module.exports = {
   GAME_BASE, b64, priceToCopper, copperToString,
-  findLedgerFiles, parseLedgers, buildItemReport,
+  findLedgerFiles, parseLedgers, buildItemReport, buildDataset, ledgerServer, ledgerEra,
   buildSessions, todayRollup, SESSION_GAP_MS,
   charactersFromFiles, mergeAggs,
 };

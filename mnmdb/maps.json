@@ -132,12 +132,17 @@
           "category": "named",
           "notes": ""
         }
-      ]
+      ],
+      "width": 5400,
+      "height": 7200
     },
     {
       "name": "Caves of Irem",
-      "image": "caves_of_irem.png",
-      "markers": []
+      "image": "caves_of_irem.avif",
+      "markers": [],
+      "source": "wiki: Irem.png",
+      "width": 3440,
+      "height": 2087
     },
     {
       "name": "Evershade Weald",
@@ -521,12 +526,16 @@
           "category": "herb",
           "notes": ""
         }
-      ]
+      ],
+      "width": 4096,
+      "height": 2738
     },
     {
       "name": "Faelindral",
       "image": "faelindral.avif",
-      "markers": []
+      "markers": [],
+      "width": 3528,
+      "height": 3456
     },
     {
       "name": "Fallen Pass",
@@ -602,7 +611,9 @@
           "category": "ore",
           "notes": ""
         }
-      ]
+      ],
+      "width": 3888,
+      "height": 3744
     },
     {
       "name": "Glass Flats",
@@ -650,27 +661,45 @@
           "category": "ore",
           "notes": ""
         }
-      ]
+      ],
+      "width": 4096,
+      "height": 2458
     },
     {
       "name": "Glinting Hollow",
       "image": "glinting_hollow.avif",
-      "markers": []
+      "markers": [],
+      "width": 700,
+      "height": 448
     },
     {
       "name": "Grain Cellar",
       "image": "grain_cellar.avif",
-      "markers": []
+      "markers": [],
+      "width": 1475,
+      "height": 1066
+    },
+    {
+      "name": "Grimtide Sanctum",
+      "markers": [],
+      "image": "grimtide_sanctum.avif",
+      "source": "wiki: MAP GrimtideSanctum.png",
+      "width": 1600,
+      "height": 983
     },
     {
       "name": "Infested Crypt",
       "image": "infested_crypt.avif",
-      "markers": []
+      "markers": [],
+      "width": 4096,
+      "height": 3072
     },
     {
       "name": "Keeper's Bight",
       "image": "keeper_s_bight.avif",
-      "markers": []
+      "markers": [],
+      "width": 2276,
+      "height": 1856
     },
     {
       "name": "Night Harbor",
@@ -690,12 +719,24 @@
           "category": "ore",
           "notes": ""
         }
-      ]
+      ],
+      "width": 5760,
+      "height": 4896
     },
     {
       "name": "Night Harbor Sewers",
       "image": "night_harbor_sewers.avif",
-      "markers": []
+      "markers": [],
+      "width": 2560,
+      "height": 1440
+    },
+    {
+      "name": "Rothold",
+      "markers": [],
+      "image": "rothold.avif",
+      "source": "wiki: Rothold map by skoop.png",
+      "width": 4096,
+      "height": 2015
     },
     {
       "name": "Scarwood",
@@ -736,7 +777,9 @@
           "category": "ore",
           "notes": ""
         }
-      ]
+      ],
+      "width": 4096,
+      "height": 2491
     },
     {
       "name": "Shaded Dunes",
@@ -756,32 +799,45 @@
           "category": "ore",
           "notes": ""
         }
-      ]
+      ],
+      "width": 4096,
+      "height": 2509
     },
     {
       "name": "Shallow Shoals",
-      "image": "shallow_shoals.png",
-      "markers": []
+      "image": "shallow_shoals.avif",
+      "markers": [],
+      "source": "wiki: Shallowshoalseg.png",
+      "width": 2000,
+      "height": 4020
     },
     {
       "name": "Sungreet Strand",
       "image": "sungreet_strand.avif",
-      "markers": []
+      "markers": [],
+      "width": 4096,
+      "height": 2644
     },
     {
       "name": "Tel Ekir",
       "image": "tel_ekir.avif",
-      "markers": []
+      "markers": [],
+      "width": 4096,
+      "height": 3072
     },
     {
       "name": "Tomb of the Last Wyrmsbane",
       "image": "tomb_of_the_last_wyrmsbane.avif",
-      "markers": []
+      "markers": [],
+      "width": 4096,
+      "height": 3072
     },
     {
       "name": "Vale of Zintar",
       "image": "vale_of_zintar.avif",
-      "markers": []
+      "markers": [],
+      "width": 4096,
+      "height": 6462
     },
     {
       "name": "Ancient Crypt",
@@ -790,21 +846,6 @@
     },
     {
       "name": "Fallen Watch",
-      "comingSoon": true,
-      "markers": []
-    },
-    {
-      "name": "Grimtide Sanctum",
-      "comingSoon": true,
-      "markers": []
-    },
-    {
-      "name": "Rothold",
-      "comingSoon": true,
-      "markers": []
-    },
-    {
-      "name": "Wyrmsbanetomb",
       "comingSoon": true,
       "markers": []
     }
