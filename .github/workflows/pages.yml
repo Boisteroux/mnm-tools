@@ -46,7 +46,11 @@ jobs:
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add mnmdb/wiki.json
             git commit -m "Auto-enrich traded items from the wiki [skip ci]"
-            git push
+            # Another push can land while this job runs (the capture server publishes
+            # on its own schedule). Rebase onto it and retry once; if that still fails,
+            # carry on — the enriched wiki.json is deployed below either way and gets
+            # committed on the next run. A sync hiccup must never block the deploy.
+            git push || (git pull --rebase origin main && git push) || echo "wiki.json not pushed this run (non-fatal)"
           else
             echo "No new traded items — wiki.json unchanged."
           fi
