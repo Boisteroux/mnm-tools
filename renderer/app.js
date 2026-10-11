@@ -36,6 +36,7 @@ let popupMarkerId = null;
 let popupIsCommunity = false;                  // the open popup is a read-only community marker
 let communityMarkers = [];                     // approved community submissions from mnm-db.com (read-only)
 let showCommunity = false;                     // overlay them on the map?
+let atlasAlign = null;                         // an open "Align with Atlas" session, else null
 
 const GRID_SIZE = 2000;                        // blank-map play area in world units
 const MARKER_RADIUS = 11;                      // screen pixels, constant at any zoom
@@ -158,6 +159,34 @@ function webScale() {
   return long > WEB_MAX ? WEB_MAX / long : 1;
 }
 
+// The site's own record of each zone map (image size + curated markers), fetched once.
+// Its image sizes let us place site markers correctly when this install's copy of a
+// zone map is a different size than the one the site shows (e.g. a smaller wiki
+// download of the same picture) — webScale() alone assumes they are the same file.
+const SITE_MAPS_URL = 'https://mnm-db.com/maps.json';
+let siteMaps = null;
+async function loadSiteMaps() {
+  if (siteMaps) return siteMaps;
+  try {
+    const j = await (await fetch(SITE_MAPS_URL + '?t=' + Date.now())).json();
+    siteMaps = {};
+    for (const z of j.zones || []) siteMaps[z.name] = z;
+  } catch {}
+  return siteMaps || {};
+}
+// Site-pixel → this-image-pixel divisor for a zone's markers. null means this install's
+// map is a different picture from the site's (other proportions), so site markers can't
+// be placed on it at all and are left off rather than drawn in the wrong spots.
+function siteScale(zoneName) {
+  if (!mapImage) return 1;
+  const z = siteMaps && siteMaps[zoneName];
+  if (z && z.width && z.height) {
+    const sx = z.width / mapImage.width, sy = z.height / mapImage.height;
+    return Math.abs(sx / sy - 1) < 0.03 ? sx : null;
+  }
+  return webScale(); // site data without sizes yet: assume the same source image
+}
+
 // Pull approved community markers from the API (read-only). Best-effort: a failure
 // (offline, etc.) just leaves the overlay empty without disturbing the user's own map.
 async function loadCommunityMarkers() {
@@ -166,6 +195,7 @@ async function loadCommunityMarkers() {
     if (!r.ok) return;
     const j = await r.json();
     communityMarkers = Array.isArray(j.markers) ? j.markers : [];
+    await loadSiteMaps();
   } catch { return; }
   refreshSidebar();
   draw();
@@ -254,8 +284,8 @@ function draw() {
 
   // Community markers (read-only overlay from mnm-db.com) — a dashed white ring and a
   // faint-blue label set them apart from your own. Web-pixel coords ÷ scale → image px.
-  if (showCommunity && mapImage && zone.name) {
-    const sc = webScale();
+  const sc = showCommunity && mapImage && zone.name ? siteScale(zone.name) : null;
+  if (sc) {
     ctx.save();
     for (const m of communityMarkers) {
       if (m.zone !== zone.name || (m.map_id || 'official') !== 'official' || hiddenCategories.has(m.category)) continue;
@@ -273,6 +303,7 @@ function draw() {
     }
     ctx.restore();
   }
+  if (atlasAlign) drawAlignPairs();
 }
 
 function drawGrid() {
@@ -333,6 +364,8 @@ function switchZone(zoneId, fit = true) {
   if (fit) fitView();
   refreshSidebar();
   draw();
+  if (atlasAlign) closeAtlasAlign(); // an alignment belongs to the zone it was opened on
+  applyMapSource();
 }
 
 // Enable zone tools only when they're usable, and surface the first-time action.
@@ -499,8 +532,8 @@ function markerAt(sx, sy) {
     if (Math.hypot(p.x - sx, p.y - sy) <= MARKER_RADIUS + 3) return m;
   }
   // Then the community overlay (read-only) — converting web-pixel coords to this image's
-  if (showCommunity && mapImage && zone.name) {
-    const sc = webScale();
+  const sc = showCommunity && mapImage && zone.name ? siteScale(zone.name) : null;
+  if (sc) {
     for (let i = communityMarkers.length - 1; i >= 0; i--) {
       const m = communityMarkers[i];
       if (m.zone !== zone.name || (m.map_id || 'official') !== 'official' || hiddenCategories.has(m.category)) continue;
@@ -514,6 +547,9 @@ function markerAt(sx, sy) {
 canvas.addEventListener('click', (e) => {
   if (dragMoved) return; // it was a pan, not a click
   const rect = canvas.getBoundingClientRect();
+
+  // Aligning with the Atlas: a click marks where the chosen landmark sits on this map
+  if (atlasAlign) { alignClick(toWorld(e.clientX - rect.left, e.clientY - rect.top)); return; }
 
   // Quick Place: every click drops a marker of the chosen type, no dialog
   if (quickPlace) {
@@ -550,7 +586,7 @@ canvas.addEventListener('click', (e) => {
 
 canvas.addEventListener('dblclick', (e) => {
   const zone = currentZone();
-  if (!zone || quickPlace) return;
+  if (!zone || quickPlace || atlasAlign) return;
   const rect = canvas.getBoundingClientRect();
   const m = markerAt(e.clientX - rect.left, e.clientY - rect.top);
   if (m) return; // double-clicked an existing marker; the click handler opened it
@@ -566,6 +602,7 @@ let quickAddCategory = CATEGORIES[0].id;
 
 function setQuickPlace(on) {
   quickPlace = on;
+  if (on && atlasShowing()) setMapSource('own'); // markers are placed on your own map, not the Atlas frame
   canvas.classList.toggle('quickplace', on);
   if (on) hidePopup();
   refreshSidebar(); // the armed category button shows its own active color
@@ -1668,6 +1705,7 @@ $('overlay-min-btn').addEventListener('click', () => window.mapAPI.minimizeWindo
 // Two independent opacity controls: the map canvas, and the UI chrome (bar + sidebar)
 $('opacity-map').addEventListener('input', (e) => {
   canvas.style.opacity = String(+e.target.value / 100);
+  $('atlas-view').style.opacity = canvas.style.opacity; // the Atlas frame fades with the map
 });
 $('opacity-ui').addEventListener('input', (e) => {
   const v = String(+e.target.value / 100);
@@ -1799,6 +1837,257 @@ async function switchToMap(name) {
   wikiStatus(got ? name + ' map ready.' : name + ' added — use Import Map if the map is missing.');
 }
 
+// ---- MnM Atlas view ----
+// The illustrated community atlas (mnmatlas.com) is shown through its own embed frame —
+// none of its artwork ships with this app — and follows your zone like the map does.
+// The frame is another site's page, so this app can't draw on it; instead, your markers
+// can be exported as an Atlas "notes" file and brought in with the Atlas's own Import,
+// after which the Atlas draws them itself. Markers live in this map's pixel space, so a
+// zone is first aligned with the Atlas map by matching a few landmarks (a least-squares
+// affine fit, stored on the zone as `atlas`).
+
+const ATLAS_URL = 'https://www.mnmatlas.com/';
+const ATLAS_IDS = { // normalised zone name (or game zone code) -> Atlas map id
+  nightharbor: 'night-harbor', underdocks: 'underdocks', ailvorith: 'ail-vorith', faelindral: 'faelindral',
+  evershadeweald: 'evershade-weald', sungreetstrand: 'sungreet-strand', shadeddunes: 'shaded-dunes',
+  fallenpass: 'fallen-pass', tombofthelastwyrmsbane: 'wyrmsbane-tomb', wyrmsbanetomb: 'wyrmsbane-tomb',
+  glassflats: 'glass-flats', ancientcrypt: 'ancient-crypt', scarwood: 'scarwood', valeofzintar: 'vale-of-zintar',
+  graincellar: 'grain-cellar', greatcavernsea: 'great-cavern-sea', telekir: 'tel-ekir',
+  keepersbight: 'keepers-bight', fallenwatch: 'fallen-watch',
+};
+// By name first: two zones can share a game code (Evershade Weald / Faelindral).
+const atlasIdFor = (zone) => (zone ? ATLAS_IDS[normName(zone.name)] || ATLAS_IDS[normName(zone.gameName || '')] || null : null);
+
+const MAP_SOURCE_KEY = 'mnm-map-source';
+let atlasMode = true; // prefer the Atlas wherever it has the zone
+try { atlasMode = localStorage.getItem(MAP_SOURCE_KEY) !== 'own'; } catch {}
+let atlasShownId = null;
+const atlasShowing = () => !$('atlas-view').classList.contains('hidden');
+
+function applyMapSource() {
+  const frame = $('atlas-view');
+  const id = atlasIdFor(currentZone());
+  const show = atlasMode && !!id && !atlasAlign;
+  // Desktop window: the compact full atlas (embed=1), which has personal notes + Import.
+  // Minimap mode: the single-map embed (embed=map) — no top bar and no in-frame zone
+  // switcher (our own "Show <other map>" button in the bar does that job), drawn small
+  // by the CSS so the Atlas's title plate and tools don't crowd a little window.
+  const src = ATLAS_URL + id + '/?embed=' + (isOverlay ? 'map' : '1');
+  if (show && atlasShownId !== src) { frame.src = src; atlasShownId = src; }
+  frame.classList.toggle('hidden', !show);
+  $('map-area').classList.toggle('atlas', show);
+  document.querySelectorAll('#map-source button').forEach((b) => {
+    b.classList.toggle('active', (b.dataset.src === 'atlas') === show);
+    if (b.dataset.src === 'atlas') b.disabled = !id;
+  });
+  $('map-source-note').textContent = id ? '' : (currentZone() ? 'The MnM Atlas has no map for this zone yet.' : '');
+  const ob = $('overlay-atlas-btn');
+  ob.textContent = show ? 'My map' : 'Atlas';
+  ob.disabled = !id;
+  ob.title = id ? (show ? 'Show your own marker map' : 'Show the MnM Atlas map') : 'The MnM Atlas has no map for this zone yet';
+}
+function setMapSource(src) {
+  atlasMode = src === 'atlas';
+  try { localStorage.setItem(MAP_SOURCE_KEY, atlasMode ? 'atlas' : 'own'); } catch {}
+  if (atlasMode && atlasAlign) closeAtlasAlign();
+  applyMapSource();
+  if (!atlasMode) { resizeCanvas(); }
+}
+
+// The Atlas's map index (ids, pixel sizes, current tile revision), fetched once.
+let atlasIndex = null;
+async function atlasMapInfo(id) {
+  if (!atlasIndex) {
+    const j = await (await fetch(ATLAS_URL + 'data/maps.json')).json();
+    atlasIndex = {};
+    for (const m of j.maps || []) atlasIndex[m.id] = m;
+  }
+  return atlasIndex[id] || null;
+}
+
+// Least-squares affine fit: Atlas [ax, ay] = M · this map's [x, y, 1]. Needs 3+
+// pairs that aren't in a line; returns [a, b, c, d, e, f] or null.
+function fitAffine(pairs) {
+  if (pairs.length < 3) return null;
+  let sxx = 0, sxy = 0, sx = 0, syy = 0, sy = 0;
+  const bx = [0, 0, 0], by = [0, 0, 0];
+  for (const p of pairs) {
+    sxx += p.x * p.x; sxy += p.x * p.y; sx += p.x; syy += p.y * p.y; sy += p.y;
+    bx[0] += p.x * p.ax; bx[1] += p.y * p.ax; bx[2] += p.ax;
+    by[0] += p.x * p.ay; by[1] += p.y * p.ay; by[2] += p.ay;
+  }
+  const A = [[sxx, sxy, sx], [sxy, syy, sy], [sx, sy, pairs.length]];
+  const det3 = (m) => m[0][0] * (m[1][1] * m[2][2] - m[1][2] * m[2][1]) - m[0][1] * (m[1][0] * m[2][2] - m[1][2] * m[2][0]) + m[0][2] * (m[1][0] * m[2][1] - m[1][1] * m[2][0]);
+  const d = det3(A);
+  if (!isFinite(d) || Math.abs(d) < 1e-6) return null;
+  const solve = (b) => [0, 1, 2].map((col) => det3(A.map((row, r) => row.map((v, c) => (c === col ? b[r] : v)))) / d);
+  return solve(bx).concat(solve(by));
+}
+const atlasPoint = (t, x, y) => ({ x: t[0] * x + t[1] * y + t[2], y: t[3] * x + t[4] * y + t[5] });
+
+async function openAtlasAlign() {
+  const zone = currentZone(), id = atlasIdFor(zone);
+  if (!zone || !id) { wikiStatus('The MnM Atlas has no map for this zone.'); return; }
+  if (!mapImage) { wikiStatus('This zone needs its own map image first (Import Map) — markers are aligned from it.'); return; }
+  let info, marks;
+  try {
+    info = await atlasMapInfo(id);
+    marks = await (await fetch(ATLAS_URL + info.markersFile)).json();
+  } catch { wikiStatus('Could not reach the MnM Atlas — check your connection.'); return; }
+  const landmarks = marks.filter((m) => m.id && Number.isFinite(m.x) && Number.isFinite(m.y))
+    .sort((a, b) => a.name.localeCompare(b.name));
+  const saved = zone.atlas && zone.atlas.map === id ? zone.atlas.pairs || [] : [];
+  atlasAlign = { zoneId: zone.id, id, info, landmarks, pairs: saved.map((p) => Object.assign({}, p)) };
+  const sel = $('aa-landmark');
+  sel.innerHTML = landmarks.map((m) => '<option value="' + m.id + '"></option>').join('');
+  [...sel.options].forEach((o, i) => { o.textContent = landmarks[i].name + '  ·  ' + landmarks[i].category; });
+  $('atlas-align').classList.remove('hidden');
+  applyMapSource(); // alignment happens on your own map
+  resizeCanvas();
+  renderAlign();
+}
+function closeAtlasAlign() {
+  atlasAlign = null;
+  $('atlas-align').classList.add('hidden');
+  applyMapSource();
+  draw();
+}
+function alignClick(pos) {
+  const lm = atlasAlign.landmarks.find((m) => m.id === $('aa-landmark').value);
+  if (!lm) return;
+  atlasAlign.pairs = atlasAlign.pairs.filter((p) => p.id !== lm.id); // re-clicking a landmark moves it
+  atlasAlign.pairs.push({ id: lm.id, name: lm.name, x: Math.round(pos.x), y: Math.round(pos.y), ax: lm.x, ay: lm.y });
+  // Step to the next landmark that hasn't been placed yet
+  const used = new Set(atlasAlign.pairs.map((p) => p.id));
+  const next = atlasAlign.landmarks.find((m) => !used.has(m.id));
+  if (next) $('aa-landmark').value = next.id;
+  renderAlign();
+  draw();
+}
+function renderAlign() {
+  const a = atlasAlign; if (!a) return;
+  const lm = a.landmarks.find((m) => m.id === $('aa-landmark').value);
+  // The Atlas's small still of that spot, so you can see where the landmark is
+  $('aa-mini').src = lm ? ATLAS_URL + 'mini/' + a.id + '/' + lm.id + '.webp' : '';
+  const box = $('aa-pairs');
+  box.innerHTML = '';
+  a.pairs.forEach((p, i) => {
+    const row = document.createElement('div');
+    row.className = 'aa-pair';
+    const name = document.createElement('span'); name.textContent = (i + 1) + '. ' + p.name;
+    const rm = document.createElement('button'); rm.textContent = '✕'; rm.title = 'Remove this point';
+    rm.addEventListener('click', () => { a.pairs.splice(i, 1); renderAlign(); draw(); });
+    row.append(name, rm);
+    box.appendChild(row);
+  });
+  const t = fitAffine(a.pairs);
+  let msg = a.pairs.length + ' of 3 points needed';
+  if (a.pairs.length >= 3 && !t) msg = 'These points are in a line — add one off to the side.';
+  if (t) {
+    const err = a.pairs.reduce((s, p) => { const q = atlasPoint(t, p.x, p.y); return s + Math.hypot(q.x - p.ax, q.y - p.ay); }, 0) / a.pairs.length;
+    const pctOff = (err / Math.max(a.info.width, a.info.height)) * 100;
+    msg = a.pairs.length === 3
+      ? 'Aligned on 3 points. Add a 4th to check how well the two maps agree.'
+      : 'Aligned on ' + a.pairs.length + ' points — average miss ' + pctOff.toFixed(1) + '% of the map' + (pctOff > 3 ? '. That is loose: re-check a point, or the two drawings differ here.' : '.');
+  }
+  $('aa-fit').textContent = msg;
+  $('aa-save').disabled = !t;
+}
+// Numbered dots for the points placed so far
+function drawAlignPairs() {
+  atlasAlign.pairs.forEach((p, i) => {
+    const s = toScreen(p.x, p.y);
+    ctx.beginPath(); ctx.arc(s.x, s.y, 9, 0, Math.PI * 2);
+    ctx.fillStyle = '#3f9088'; ctx.fill();
+    ctx.lineWidth = 2; ctx.strokeStyle = '#ffffff'; ctx.stroke();
+    ctx.fillStyle = '#ffffff'; ctx.font = 'bold 11px "Segoe UI", sans-serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(String(i + 1), s.x, s.y + 0.5);
+    ctx.textAlign = 'start'; ctx.textBaseline = 'alphabetic';
+  });
+}
+function saveAtlasAlign() {
+  const a = atlasAlign, zone = data.zones.find((z) => z.id === a.zoneId), t = fitAffine(a.pairs);
+  if (!zone || !t) return;
+  zone.atlas = { map: a.id, pairs: a.pairs, t };
+  save();
+  closeAtlasAlign();
+  wikiStatus(zone.name + ' aligned with the Atlas. Export Atlas Notes is ready.');
+}
+
+// Our marker categories -> the Atlas's personal-note types (it has Ore / Herbs / Wood
+// notes of its own); anything else becomes a plain "Personal" pin in a fitting colour.
+const ATLAS_NOTE_TYPE = { ore: 'Ore', herb: 'Herbs', wood: 'Wood', quest: 'Quest', named: 'Named mob' };
+const ATLAS_PIN = { fishing: '#2f6f9a', crafting: '#385f60', trainer: '#6a4a7a', misc: '#4d5560' };
+
+// Save this zone's markers — yours, plus the community and curated ones from mnm-db.com
+// — as an Atlas notes file for its map. The Atlas only accepts a file made for the
+// map's current tile revision, so that is read from the Atlas at export time.
+async function exportAtlasNotes() {
+  const zone = currentZone(), id = atlasIdFor(zone);
+  if (!zone || !id) { wikiStatus('The MnM Atlas has no map for this zone.'); return; }
+  if (!zone.atlas || zone.atlas.map !== id || !zone.atlas.t) { wikiStatus('Align this zone with the Atlas first (Align with Atlas).'); return; }
+  if (!mapImage) { wikiStatus('Waiting for this zone’s map image — try again in a moment.'); return; }
+  wikiStatus('Collecting markers for the Atlas…');
+  let info;
+  try { info = await atlasMapInfo(id); } catch {}
+  if (!info) { wikiStatus('Could not reach the MnM Atlas — check your connection.'); return; }
+  const { markers, outside } = await buildAtlasNotes(zone, info);
+  if (!markers.length) { wikiStatus('No markers to export for ' + zone.name + ' yet.'); return; }
+  const res = await window.mapAPI.saveJson('mnm-atlas-notes-' + id + '.json', { version: 1, map: id, tileRevision: info.tileRevision, markers });
+  if (!res || res.canceled) { wikiStatus(''); return; }
+  if (res.error) { wikiStatus('Export failed: ' + res.error); return; }
+  wikiStatus('Saved ' + markers.length + ' markers' + (outside ? ' (' + outside + ' fell outside the Atlas map)' : '') +
+    '. In the Atlas map: open its menu → Import → choose that file.');
+}
+// The zone's markers from all three sources, moved into the Atlas map's coordinates
+// and shaped as Atlas notes. `outside` counts any the alignment put off the map.
+async function buildAtlasNotes(zone, info) {
+  const found = zone.markers.map((m) => ({ x: m.x, y: m.y, label: m.label, category: m.category, notes: m.notes, from: 'mine' }));
+  const site = await loadSiteMaps();
+  const sc = siteScale(zone.name); // site markers are in the site image's pixels; ÷ scale → this map's pixels
+  if (sc) {
+    try {
+      const j = await (await fetch(COMMUNITY_MARKERS_URL + '?t=' + Date.now())).json();
+      for (const m of j.markers || []) {
+        if (m.zone === zone.name && (m.map_id || 'official') === 'official') found.push({ x: m.x / sc, y: m.y / sc, label: m.label, category: m.category, notes: m.submitter ? 'by ' + m.submitter : '', from: 'community' });
+      }
+    } catch {}
+    for (const m of (site[zone.name] && site[zone.name].markers) || []) found.push({ x: m.x / sc, y: m.y / sc, label: m.label, category: m.category, notes: m.notes, from: 'mnm-db' });
+  }
+
+  const seen = new Set(), markers = [];
+  let outside = 0;
+  for (const m of found) {
+    const p = atlasPoint(zone.atlas.t, m.x, m.y);
+    const x = Math.round(p.x), y = Math.round(p.y);
+    if (!(x >= 0 && y >= 0 && x <= info.width && y <= info.height)) { outside++; continue; }
+    const cat = catById(m.category);
+    const name = String(m.label || cat.name).trim().slice(0, 100) || cat.name;
+    const key = name.toLowerCase() + '|' + Math.round(x / 12) + '|' + Math.round(y / 12); // same pin from two sources
+    if (seen.has(key)) continue;
+    seen.add(key);
+    const type = ATLAS_NOTE_TYPE[m.category] || 'Personal';
+    const note = { id: 'personal-mnmdb-' + markers.length + '-' + x + '-' + y, name, category: type, note: ['MnMdb · ' + cat.name, m.from === 'mine' ? '' : m.from, m.notes || ''].filter(Boolean).join(' · ').slice(0, 2000), x, y };
+    if (type === 'Personal') note.color = ATLAS_PIN[m.category] || ATLAS_PIN.misc;
+    if (info.levels && info.levels.length) note.level = info.defaultLevel || info.levels[0].id;
+    markers.push(note);
+    if (markers.length >= 2000) break; // the Atlas's own limit
+  }
+  return { markers, outside };
+}
+
+function initAtlas() {
+  document.querySelectorAll('#map-source button').forEach((b) => b.addEventListener('click', () => setMapSource(b.dataset.src)));
+  $('overlay-atlas-btn').addEventListener('click', () => setMapSource(atlasShowing() ? 'own' : 'atlas'));
+  $('btn-atlas-align').addEventListener('click', openAtlasAlign);
+  $('btn-atlas-export').addEventListener('click', exportAtlasNotes);
+  $('aa-landmark').addEventListener('change', renderAlign);
+  $('aa-close').addEventListener('click', closeAtlasAlign);
+  $('aa-save').addEventListener('click', saveAtlasAlign);
+  applyMapSource();
+}
+
 (async function init() {
   if (isOverlay) document.body.classList.add('overlay');
 
@@ -1896,6 +2185,7 @@ async function switchToMap(name) {
 
   // Discord sign-in (lives under Zone ▸ Options)
   initDiscordAuth();
+  initAtlas();
 
   // Open on whatever zone the player was last in, according to the game log
   appReady = true;

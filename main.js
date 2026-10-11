@@ -272,10 +272,13 @@ ipcMain.handle('zone-aliases', () => {
 ipcMain.handle('publish-mnmdb', async () => {
   if (!isDev) return { error: 'Publishing is only available in the owner (dev) build.' };
   try {
-    // 1. Regenerate mnmdb/data.json from the latest ledger, pooling any trusted-
-    //    friend contributions dropped into contributions/*.json. Counts are summed
-    //    (mergeAggs) before rates are computed, so everyone's corpses add up.
-    const files = ledgerParser.findLedgerFiles();
+    // 1. Regenerate mnmdb/data-ea.json from the EARLY ACCESS ledgers, pooling any
+    //    trusted-friend contributions dropped into contributions/*.json. Counts are
+    //    summed (mergeAggs) before rates are computed, so everyone's corpses add up.
+    //    Beta ledgers are left out: mnmdb/data.json is the frozen beta set (built once
+    //    by tracker/build-play-data.js --freeze-beta) and is never rewritten here.
+    const files = ledgerParser.findLedgerFiles().filter((f) => ledgerParser.ledgerEra(f) === 'early-access');
+    if (!files.length) return { error: 'No Early Access Ledger files found yet — play on an Early Access server first.' };
     const aggs = [ledgerParser.parseLedgers(files, harvestSkillOpts())];
     const contributors = [];
     let contribTrades = [];
@@ -285,7 +288,7 @@ ipcMain.handle('publish-mnmdb', async () => {
         if (!/\.json$/i.test(f) || /^README/i.test(f)) continue;
         try {
           const c = JSON.parse(fs.readFileSync(path.join(contribDir, f), 'utf8'));
-          if (c && c.agg) {
+          if (c && c.agg && c.era === 'early-access') { // exports from before Early Access carry beta data
             aggs.push(c.agg);
             contributors.push({ character: c.character || f.replace(/\.json$/i, ''), events: c.events || 0 });
             if (Array.isArray(c.trades)) contribTrades = contribTrades.concat(c.trades);
@@ -294,19 +297,10 @@ ipcMain.handle('publish-mnmdb', async () => {
       }
     } catch {}
     const agg = aggs.length > 1 ? ledgerParser.mergeAggs(aggs) : aggs[0];
-    const items = ledgerParser.buildItemReport(agg);
-    const dataset = {
-      generatedAt: new Date().toISOString(),
-      source: 'mnm-tools',
-      ledgerFiles: agg.fileCount,
-      events: agg.events,
-      contributors,
-      mobs: agg.mobs,
-      items,
-      harvest: agg.harvest,
-      harvestNodes: agg.harvestNodes,
-    };
-    fs.writeFileSync(path.join(REPO_ROOT, 'mnmdb', 'data.json'), JSON.stringify(dataset, null, 2));
+    const servers = [...new Set(files.map((f) => ledgerParser.ledgerServer(f)))].sort();
+    const dataset = ledgerParser.buildDataset(agg, { era: 'early-access', servers, contributors });
+    const items = dataset.items;
+    fs.writeFileSync(path.join(REPO_ROOT, 'mnmdb', 'data-ea.json'), JSON.stringify(dataset, null, 2));
 
     // 2. Merge any locally-logged trades into the site's trades.json (dedup).
     const siteTradesPath = path.join(REPO_ROOT, 'mnmdb', 'trades.json');
@@ -328,10 +322,10 @@ ipcMain.handle('publish-mnmdb', async () => {
     // separately via `node tracker/export-maps.js` in the dev environment.
 
     // 3. Commit + push.
-    await gitRun(['add', 'mnmdb/data.json', 'mnmdb/trades.json', 'contributions']);
+    await gitRun(['add', 'mnmdb/data-ea.json', 'mnmdb/trades.json', 'contributions']);
     const tradeNote = added ? ` + ${added} trade${added === 1 ? '' : 's'}` : '';
     const contribNote = contributors.length ? ` + ${contributors.length} contributor${contributors.length === 1 ? '' : 's'}` : '';
-    const commit = await gitRun(['commit', '-m', `Publish play data (${agg.events} events, ${items.length} items${tradeNote}${contribNote})`]);
+    const commit = await gitRun(['commit', '-m', `Publish Early Access play data (${agg.events} events, ${items.length} items${tradeNote}${contribNote})`]);
     if (commit.code !== 0) {
       if (/nothing to commit/i.test(commit.out)) {
         return { ok: true, message: 'Already up to date — no new data since last publish.' };
@@ -670,12 +664,14 @@ ipcMain.handle('export-data', async (event, { scope, zones }) => {
 // prices, logged trades) — no raw chat, no personal files, nothing uploaded.
 ipcMain.handle('export-contribution', async () => {
   try {
-    const files = ledgerParser.findLedgerFiles();
-    if (!files.length) return { error: 'No Monsters & Memories Ledger files found yet — play a little first.' };
+    // Early Access ledgers only — the shared site keeps beta data as a frozen set.
+    const files = ledgerParser.findLedgerFiles().filter((f) => ledgerParser.ledgerEra(f) === 'early-access');
+    if (!files.length) return { error: 'No Early Access Ledger files found yet — play a little first.' };
     const agg = ledgerParser.parseLedgers(files, harvestSkillOpts());
     const characters = ledgerParser.charactersFromFiles(files);
     const payload = {
       schema: 'mnm-contribution/1',
+      era: 'early-access',
       character: characters[0] || 'unknown',
       characters,
       exportedAt: new Date().toISOString(),
@@ -696,6 +692,23 @@ ipcMain.handle('export-contribution', async () => {
     if (result.canceled || !result.filePath) return { canceled: true };
     fs.writeFileSync(result.filePath, JSON.stringify(payload), 'utf8');
     return { ok: true, character: characters[0] || 'unknown', events: agg.events, mobs: Object.keys(agg.mobs).length, items: Object.keys(agg.items).length };
+  } catch (e) {
+    return { error: e.message };
+  }
+});
+
+// Save a small JSON document the renderer built (e.g. an MnM Atlas notes file) to a
+// location the user picks.
+ipcMain.handle('save-json', async (event, { name, data }) => {
+  try {
+    const result = await dialog.showSaveDialog(win, {
+      title: 'Save file',
+      defaultPath: path.join(app.getPath('documents'), String(name || 'export.json').replace(/[^a-z0-9 ._-]/gi, '')),
+      filters: [{ name: 'JSON', extensions: ['json'] }],
+    });
+    if (result.canceled || !result.filePath) return { canceled: true };
+    fs.writeFileSync(result.filePath, JSON.stringify(data, null, 2), 'utf8');
+    return { ok: true, path: result.filePath };
   } catch (e) {
     return { error: e.message };
   }

@@ -355,6 +355,38 @@ button.active { background: var(--accent); border-color: var(--accent); color: v
   background: rgba(var(--glass-rgb), 0.85);
 }
 
+/* MnM Atlas embed: fills the map area in place of the canvas (which keeps its layout
+   box so it is the right size the moment you switch back). */
+#atlas-view { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #16120e; }
+/* Minimap mode: lay the Atlas frame out larger than the window and scale it down, so
+   its own title plate and tool buttons come out at 60% size and more map fits. */
+body.overlay #atlas-view { width: calc(100% / 0.6); height: calc(100% / 0.6); transform: scale(0.6); transform-origin: 0 0; }
+#map-area.atlas #map { visibility: hidden; }
+#map-area.atlas #btn-fit, #map-area.atlas #zoom-controls { display: none !important; } /* the Atlas has its own */
+#map-source { display: flex; gap: 6px; }
+#map-source button { flex: 1; }
+#map-source button.active { background: var(--accent); border-color: var(--accent); color: #15161a; }
+/* Keep our floating controls off the Atlas's own: its map picker sits top-left and
+   its attribution line bottom-right. */
+#map-area.atlas #btn-sidebar { top: 50%; }
+#map-area.atlas #mob-timer { margin-bottom: 22px; }
+#map-source-note:empty { display: none; }
+
+/* "Align with Atlas" — a small panel beside the map; you click landmarks on the canvas. */
+#atlas-align {
+  position: absolute; top: 10px; left: 50px; z-index: 12; width: 250px;
+  display: flex; flex-direction: column; gap: 6px;
+  background: rgba(var(--glass-rgb), 0.95); border: 1px solid var(--line-2); border-radius: 7px; padding: 8px 10px;
+  font-size: 12px;
+}
+.aa-head { display: flex; justify-content: space-between; align-items: center; }
+.aa-head button { padding: 0 6px; }
+.aa-help { margin: 0; opacity: 0.85; }
+#aa-mini { width: 100%; aspect-ratio: 8 / 5; object-fit: cover; border-radius: 5px; background: #16120e; }
+#aa-pairs { display: flex; flex-direction: column; gap: 2px; max-height: 120px; overflow: auto; }
+.aa-pair { display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+.aa-pair button { padding: 0 5px; font-size: 10px; }
+
 #btn-fit { position: absolute; top: 10px; right: 10px; z-index: 10; }
 #btn-sidebar { position: absolute; top: 10px; left: 10px; z-index: 10; }
 

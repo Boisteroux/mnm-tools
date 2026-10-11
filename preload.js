@@ -31,6 +31,7 @@ contextBridge.exposeInMainWorld('mapAPI', {
   tradeLog: (rec) => ipcRenderer.invoke('trade-log', rec),
   tradeItemNames: () => ipcRenderer.invoke('trade-item-names'),
   onTrackerUpdated: (cb) => ipcRenderer.on('tracker-updated', (e, s) => cb(s)),
+  saveJson: (name, data) => ipcRenderer.invoke('save-json', { name, data }),
   discordLogin: () => ipcRenderer.invoke('discord-login'),
   onDiscordAuth: (cb) => ipcRenderer.on('discord-auth', (e, data) => cb(data)),
 });
