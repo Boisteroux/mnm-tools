@@ -796,6 +796,8 @@ tr.bis-total td { border-top: 2px solid var(--line-2); background: var(--panel-2
 /* Era sub-headings inside a drop section (Early Access block, then Beta). */
 .era-h { font-size: 14px; font-weight: 600; margin: 14px 0 6px; display: flex; align-items: center; gap: 8px; }
 .era-empty { margin: 0 0 4px; }
+/* "see the N listings →" beside a market card's server name */
+.mkt-more { font-weight: 400; font-size: 12px; margin-left: 8px; }
 /* Beta reference price: visibly secondary to the live market card beside it. */
 .mkt-beta { opacity: 0.8; }
 .mkt-beta .mkt-h { color: var(--muted); }

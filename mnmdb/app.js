@@ -856,9 +856,27 @@ function renderItem(id) {
     const betaBox = !showBeta ? '' : '<div class="mkt mkt-beta"><div class="mkt-h">Beta price <span class="tag warn">reference</span></div>' +
       '<div class="vendor-summary">' + betaCell('PvE · typical', beta.PvE) + betaCell('PvP · typical', beta.PvP) + '</div>' +
       '<div class="note sample">From closed-beta auctions (Jul–Oct 2026), before Early Access. The live economy is new, so treat this as a rough guide; it drops away once ' + AUC_SERVER + ' has enough sales of its own.</div></div>';
+    // The listings behind those numbers: a link from the card to the Auctions page
+    // filtered to this item, and the most recent few shown right here.
+    const posts = ((AUCTIONS && AUCTIONS.listings) || [])
+      .filter((l) => l.server === AUC_SERVER && l.item.toLowerCase() === it.name.toLowerCase())
+      .sort((a, b) => (b.seen || '').localeCompare(a.seen || ''));
+    const aucHref = '#/auctions/' + encodeURIComponent(it.name);
+    const liveLabel = AUC_SERVER + (posts.length ? ' <a class="mkt-more" href="' + aucHref + '">see the ' + posts.length + ' listing' + (posts.length === 1 ? '' : 's') + ' →</a>' : '');
+    const POSTS_SHOWN = 12;
+    const postsTable = !posts.length ? '' :
+      '<h3 class="era-h">Recent ' + AUC_SERVER + ' listings</h3>' +
+      '<div class="card"><table class="auc"><tbody>' + posts.slice(0, POSTS_SHOWN).map((l) =>
+        '<tr' + (l.price == null ? ' class="noprice"' : '') + '><td class="at">' + aucTag(l.intent) + '</td>' +
+        '<td class="ap">' + aucPriceDisplay(l) + (l.qty ? ' <span class="muted">×' + l.qty + '</span>' : '') + '</td>' +
+        '<td class="muted">' + esc(l.player) + '</td>' +
+        '<td class="aw muted" title="' + esc(aucTime(l.seen)) + '">' + esc(aucAgo(l.seen)) + '</td></tr>').join('') +
+      '</tbody></table></div>' +
+      (posts.length > POSTS_SHOWN ? '<p class="sub"><a href="' + aucHref + '">All ' + posts.length + ' listings on the Auctions page →</a></p>' : '');
     let body;
     if (anyActivity || betaBox) {
-      body = '<div class="mkt-cols">' + marketBox(AUC_SERVER, live, AUC_SERVER) + betaBox + '</div>' +
+      body = '<div class="mkt-cols">' + marketBox(liveLabel, live, AUC_SERVER) + betaBox + '</div>' +
+        postsTable +
         '<div class="note">' + logged + ' <b>Market</b> compares people selling (WTS) vs buying (WTB) over 10 days — “Buyer’s ↓” means oversupply (price may be soft), “Seller’s ↑” means demand (price firm); * = strongly one-sided.</div>';
     } else {
       body = '<div class="note">No player auctions seen for this item yet. ' + logged + '</div>';
@@ -2919,7 +2937,9 @@ let AUCTIONS = null;
 const aucCoin = (c) => { if (c == null) return null; let x = c; const p = Math.floor(x / 1e6); x %= 1e6; const g = Math.floor(x / 1e4); x %= 1e4; const s = Math.floor(x / 100); x %= 100; return [p ? p + 'p' : '', g ? g + 'g' : '', s ? s + 's' : '', x ? x + 'c' : ''].filter(Boolean).join(' ') || '0c'; };
 const aucTag = (i) => i === 'sell' ? '<span class="atag sell">WTS</span>' : i === 'buy' ? '<span class="atag buy">WTB</span>' : i === 'trade' ? '<span class="atag trade">WTT</span>' : i === 'inquiry' ? '<span class="atag pc">PC</span>' : '<span class="atag">?</span>';
 
-async function renderAuctions() {
+// `find` pre-fills the search box — "#/auctions/<item name>" is how item pages link
+// straight to an item's listings.
+async function renderAuctions(find) {
   if (!AUCTIONS) {
     $('content').innerHTML = '<div class="crumb"><a href="#/">MnMdb</a> › auctions</div><h1>Auction House</h1><p class="sub">Loading auctions…</p>';
     try { AUCTIONS = await (await fetch('./auctions.json?v=' + aucCacheV())).json(); } catch { AUCTIONS = { listings: [], requests: [], stats: {}, generatedAt: null }; }
@@ -2937,12 +2957,13 @@ async function renderAuctions() {
     '<button id="auc-priced" class="toggle-btn" type="button" aria-pressed="false">Prices Only</button></div>' +
     '<div class="auc-cols"><div class="auc-panel"><div class="auc-head">' + AUC_SERVER + ' <span id="auc-live-n" class="muted"></span></div><div id="auc-live"></div></div></div>' +
     '<div class="auc-panel" style="margin-top:16px"><div class="auc-head">🛠 Crafting / gear requests <span class="muted" id="auc-reqn"></span></div><div id="auc-reqs"></div></div>';
+  if (find) $('auc-q').value = find;
   ['auc-q', 'auc-sort'].forEach((id) => { const el = $(id); if (el) { el.addEventListener('input', paintAuctions); el.addEventListener('change', paintAuctions); } });
   const pb = $('auc-priced');
   if (pb) pb.addEventListener('click', () => { const on = pb.getAttribute('aria-pressed') !== 'true'; pb.setAttribute('aria-pressed', String(on)); pb.classList.toggle('is-on', on); paintAuctions(); });
   paintAuctions(); aucReqs(); aucHoverInit(); aucUpdateMeta(); aucAutoRefreshInit();
 }
-const onAuctionsPage = () => decodeURIComponent(location.hash.replace(/^#\/?/, '')) === 'auctions';
+const onAuctionsPage = () => /^auctions(\/|$)/.test(decodeURIComponent(location.hash.replace(/^#\/?/, '')));
 // Header line: counts + how long ago the data was published (kept fresh by the tick).
 function aucUpdateMeta() {
   const el = $('auc-meta'); if (!el || !AUCTIONS) return;
@@ -3649,7 +3670,7 @@ function route() {
   // The auctions page shows two side-by-side markets — give it a wider content
   // column so PvP/PvE don't get squeezed (they stack on narrow screens via CSS).
   const hashPath = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
-  document.body.classList.toggle('page-wide', !q && (hashPath === 'auctions' || hashPath === 'market' || hashPath.startsWith('market/')));
+  document.body.classList.toggle('page-wide', !q && (hashPath === 'auctions' || hashPath.startsWith('auctions/') || hashPath === 'market' || hashPath.startsWith('market/')));
   if (q) return renderSearch(q);
   const h = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
   if (h === 'items' || h === 'mobs' || h === 'gathering') return renderBrowse(h);
@@ -3659,7 +3680,7 @@ function route() {
   if (h === 'maps') return renderMapsList();
   // Auction House: a browsable list of the day's published listings (the feed is
   // published once a day, not live — the page says so). Prices also sit on item pages.
-  if (h === 'auctions') return renderAuctions();
+  if (h === 'auctions' || h.startsWith('auctions/')) return renderAuctions(h.slice(9));
   if (h === 'atlas') return renderAtlasWorld();
   if (h === 'advanced' || h === 'bis') return renderAdvanced();
   if (h === 'moderate') return renderModerate();
