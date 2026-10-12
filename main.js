@@ -475,7 +475,13 @@ function toggleOverlay() {
     isToggling = false;
     return;
   }
-  if (old && !old.isDestroyed() && old !== win) old.destroy();
+  if (old && !old.isDestroyed() && old !== win) {
+    // Take the old window out of the taskbar / Alt+Tab list and hide it BEFORE destroying
+    // it. Destroying a still-listed window while its replacement is appearing can leave
+    // Windows showing a dead "MnM Map" tile in Alt+Tab for every mode switch.
+    try { old.setSkipTaskbar(true); old.hide(); } catch {}
+    old.destroy();
+  }
   isToggling = false;
 }
 
