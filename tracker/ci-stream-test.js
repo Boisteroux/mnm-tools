@@ -13,7 +13,7 @@ const STREAM = process.env.MNM_STREAM || 'https://www.twitch.tv/livemnm';
 const FF = process.env.MNM_FFMPEG || 'ffmpeg';
 const SL = process.env.MNM_STREAMLINK || 'streamlink';
 const TESS = process.env.MNM_TESSERACT || 'tesseract';
-const PANELS = { Trem: 'crop=1005:400:912:680' }; // keep in step with capture-auctions.js
+const PANELS = { Trem: ['crop=1910:415:5:662', 'crop=1005:400:912:680'] }; // keep in step with capture-auctions.js
 const PRE = 'scale=iw*2:ih*2:flags=lanczos,format=gray,negate,eq=contrast=1.3';
 const OUT = process.env.MNM_DATA || '.';
 const p = (f) => path.join(OUT, f);
@@ -27,10 +27,17 @@ function streamUrl() {
   if (!u) throw new Error('no HLS url — Twitch may be blocking datacenter IPs, requiring auth, or the stream is offline');
   return u;
 }
+// Try every known chat-box layout; keep the crop that reads the most auction lines.
 function ocrPanel(server) {
-  const png = p(server.toLowerCase() + '.png');
-  sh(FF, ['-y', '-loglevel', 'error', '-i', framePng, '-vf', `${PANELS[server]},${PRE}`, png], false);
-  return sh(TESS, [png, '-', '--psm', '6', '-l', 'eng'], true);
+  let best = null;
+  PANELS[server].forEach((crop, i) => {
+    const png = p(server.toLowerCase() + '-' + i + '.png');
+    sh(FF, ['-y', '-loglevel', 'error', '-i', framePng, '-vf', `${crop},${PRE}`, png], false);
+    const txt = sh(TESS, [png, '-', '--psm', '6', '-l', 'eng'], true);
+    const hits = (txt.match(/auctions?s*,/gi) || []).length;
+    if (!best || hits > best.hits) best = { txt, hits };
+  });
+  return best.txt;
 }
 
 (async () => {

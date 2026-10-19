@@ -45,7 +45,9 @@ function foldOcrLines(text) {
   for (const raw of String(text).split(/\r?\n/)) {
     const line = raw.trim();
     if (!line) continue;
-    if (/^\S+\s+auctions\b/i.test(line) || out.length === 0) out.push(line);
+    // Any new speaker starts a new entry — so a "Bob says out of character, …" line
+    // under an auction isn't glued onto it (non-auction entries are dropped below).
+    if (/^\S+\s+(?:auctions|says|tells|shouts|yells|whispers|emotes)\b/i.test(line) || out.length === 0) out.push(line);
     else out[out.length - 1] += ' ' + line;
   }
   return out.filter((l) => /\bauctions\b/i.test(l));

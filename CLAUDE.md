@@ -35,7 +35,7 @@ subsystems live in this one repo:
 - **Beta vs Early Access (EA began 2026-10-09).** `mnmdb/data.json` is the FROZEN beta
   drop data; the app's Publish writes EA ledgers (server folders not named `beta*`) to
   `mnmdb/data-ea.json`. `auctions.json` holds only the live server the stream shows
-  (`AUC_SERVER` in app.js / `PANELS` in capture-auctions.js, currently Trem);
+  (`AUC_SERVER` in app.js / `PANELS` in capture-auctions.js + ci-stream-test.js, currently Trem — a list of crops, one per known stream layout);
   `auctions-beta.json` is the per-item beta reference price. Raw beta data is kept in
   `archive/beta-2026/` (not deployed).
 - `tracker/parse-auctions.js`, `publish-auctions.js`, `capture-auctions.js` — the
