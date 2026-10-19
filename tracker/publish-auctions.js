@@ -154,7 +154,31 @@ for (const name of names) {
   };
 }
 
-fs.writeFileSync(OUT, JSON.stringify({ generatedAt: new Date().toISOString(), listings, requests, stats }));
+// Capture health over the last 24h, from capture-auctions.js's per-cycle log. "Blind"
+// = cycles where the stream was up (a frame was grabbed) but zero auction lines were
+// read — what a moved chat box looks like. Checked daily by capture-health.yml.
+function captureHealth() {
+  const H = read('health.json', null);
+  if (!Array.isArray(H)) return null;
+  const since = Date.now() - 24 * 3600 * 1000;
+  const day = H.filter((h) => new Date(h.t).getTime() >= since);
+  let longestBlindMin = 0, runStart = null;
+  for (const h of day) {
+    if (h.lines === 0) { runStart = runStart || h.t; longestBlindMin = Math.max(longestBlindMin, Math.round((new Date(h.t) - new Date(runStart)) / 60000)); }
+    else runStart = null;
+  }
+  const withLines = H.filter((h) => h.lines > 0);
+  return {
+    liveCycles24h: day.filter((h) => h.lines >= 0).length,
+    readingCycles24h: day.filter((h) => h.lines > 0).length,
+    offlineCycles24h: day.filter((h) => h.lines < 0).length,
+    longestBlindMin,
+    blindNowMin: runStart ? Math.round((Date.now() - new Date(runStart)) / 60000) : 0,
+    lastLinesAt: withLines.length ? withLines[withLines.length - 1].t : null,
+  };
+}
+
+fs.writeFileSync(OUT, JSON.stringify({ generatedAt: new Date().toISOString(), capture: captureHealth(), listings, requests, stats }));
 const kb = Math.round(fs.statSync(OUT).size / 1024);
 const trashed = discarded.filter((d) => d.status === 'trashed').length, review = discarded.filter((d) => d.status === 'review').length;
 console.log(`wrote mnmdb/auctions.json — ${listings.length} listings (recent, capped ${MAX_PER_SERVER}/server), ${requests.length} requests, ${Object.keys(stats).length} stats (${kb} KB); discarded.json: ${trashed} trashed + ${review} to review`);

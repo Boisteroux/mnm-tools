@@ -1,0 +1,23 @@
+name: Auction capture health
+
+# Once a day, after the VPS's 07:00 UTC publish, check that the auction capture is
+# actually reading the stream. A failed run is GitHub's alert: it emails the repo
+# owner (Settings → Notifications → Actions controls this). See
+# tracker/check-capture-health.js for what counts as unhealthy.
+on:
+  schedule:
+    - cron: '30 8 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node tracker/check-capture-health.js

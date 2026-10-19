@@ -130,6 +130,18 @@ function persist() {
   fs.writeFileSync(p('lowconf.json'), JSON.stringify(Object.values(lowconf).sort((a, b) => a.minConf - b.minConf), null, 2));
 }
 
+// Per-cycle health log (last 48h): how many auction lines each cycle read, or -1 when
+// the cycle failed (stream offline, ffmpeg error). publish-auctions.js summarises it into
+// auctions.json, and the capture-health workflow fails (= GitHub emails) when the stream
+// was live but nothing was read for an hour — the Oct 2026 layout change went 6 days unseen.
+const health = (() => { try { return JSON.parse(fs.readFileSync(p('health.json'), 'utf8')); } catch { return []; } })();
+function recordHealth(lines) {
+  const cut = Date.now() - 48 * 3600 * 1000;
+  health.push({ t: new Date().toISOString(), lines });
+  while (health.length && new Date(health[0].t).getTime() < cut) health.shift();
+  try { fs.writeFileSync(p('health.json'), JSON.stringify(health)); } catch {}
+}
+
 let cycles = 0, errors = 0;
 function runCycle() {
   const now = new Date().toISOString();
@@ -154,6 +166,7 @@ function runCycle() {
   for (const r of review) { const k = [r.reason, r.detail].join('|'); if (!reviewMap[k]) reviewMap[k] = Object.assign({ key: k, firstSeen: now }, r); }
   for (const n of enrich) enrichSet.add(n);
   persist();
+  recordHealth(rows.length);
   log(`cycle ${cycles}: ${rows.length} lines · +${added} new (total ${Object.keys(agg).length} listings, ${Object.keys(requests).length} requests) · review ${Object.keys(reviewMap).length} · enrich ${enrichSet.size} · lowconf ${Object.keys(lowconf).length}`);
 }
 
@@ -163,7 +176,7 @@ function loop() {
     process.exit(0);
   }
   cycles++;
-  try { runCycle(); } catch (e) { errors++; log(`cycle ${cycles} error (skipped): ${e.message}`); }
+  try { runCycle(); } catch (e) { errors++; recordHealth(-1); log(`cycle ${cycles} error (skipped): ${e.message}`); }
   if (ONCE) { log('ONCE mode — one cycle done, exiting.'); process.exit(0); }
   setTimeout(loop, INTERVAL_MS);
 }
