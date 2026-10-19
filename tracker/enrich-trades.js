@@ -45,6 +45,15 @@ function entryFromWikitext(wt) {
   );
 }
 
+// OCR'd auction text sometimes yields fragments ("TB", "1s", "W Ood") or a whole chat
+// line ('Bronze Chain Es)" Auctions, "WTS [...'). Those never become item entries.
+const SHORT_WORDS = new Set(['of', 'the', 'a', 'an', 'to', 'in', 'on', 'ii', 'iii', 'iv', 'vi', 'vii', 'ix', 'xi']);
+function plausibleName(n) {
+  const s = String(n).trim();
+  if (s.length < 4 || /["“”\[\]{}<>|=@#$%^*_~]/.test(s) || /\b(?:wts|wtb|auctions?)\b/i.test(s)) return false;
+  return s.split(/\s+/).every((w) => /^[A-Za-z][A-Za-z'’-]*:?$/.test(w) ? (w.length > 2 || SHORT_WORDS.has(w.toLowerCase())) : /^[IVX]+$/.test(w));
+}
+
 async function enrichTrades({ write = true } = {}) {
   const wiki = JSON.parse(fs.readFileSync(WIKI, 'utf8'));
   wiki.items = wiki.items || {};
@@ -98,6 +107,8 @@ async function enrichTrades({ write = true } = {}) {
     if (entry) {
       added[hitKey] = entry;          // key under the real wiki title casing
       addedNames.push(`${item}${hitKey !== item ? ` → ${hitKey}` : ''}`);
+    } else if (!hitKey && !plausibleName(item)) {
+      noPage.push('(skipped OCR fragment) ' + item);
     } else {
       // No usable wiki page — create a minimal stub so the item still gets a page
       // (its trade price shows), flagged so it's easy to find + fix later.

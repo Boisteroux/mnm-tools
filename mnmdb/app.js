@@ -1234,6 +1234,7 @@ function observedTrivialsSection(name) {
 // estimate marked "~55" (and "~80+" when it's only a lower bound so far).
 function trivialCell(r) {
   if (!r.trivial) return '—';
+  if (r.trivialUnconfirmed) return '<span class="est" title="The wiki marks this trivial as unconfirmed">' + r.trivial + '?</span>';
   if (!r.trivialEstimated) return String(r.trivial);
   return '<span class="est" title="Estimated from in-game crafting difficulty colours — the wiki has no trivial for this recipe">~' + r.trivial + (r.trivialMin ? '+' : '') + '</span>';
 }

@@ -100,6 +100,7 @@ function entryFromWikitext(wt) {
   if (!missing.length) { console.log('Nothing to import.'); return; }
 
   const added = {};
+  const pageRecipes = []; // crafting recipes on the imported pages' own "playercrafted" blocks
   const seenLc = new Set(haveLower); // guard: never add a case/whitespace variant of an existing or already-added item
   for (let i = 0; i < missing.length; i += 45) {
     const batch = missing.slice(i, i + 45);
@@ -111,6 +112,8 @@ function entryFromWikitext(wt) {
       const wt = texts[title]; if (!wt) continue;
       const entry = entryFromWikitext(wt);
       if (entry) { added[title] = entry; seenLc.add(lc); }
+      const rec = W.parsePlayercrafted(wt, title);
+      if (rec) pageRecipes.push(rec);
     }
     await sleep(300);
   }
@@ -129,6 +132,15 @@ function entryFromWikitext(wt) {
   }
 
   Object.assign(wiki.items, added);
+  // Their recipes too, merged the same way enrich-wiki.js does (the skill-page table
+  // wins; an item page adds missing recipes and fills missing trivials).
+  wiki.recipes = wiki.recipes || [];
+  const merged = W.mergePageRecipes(wiki.recipes, pageRecipes);
+  console.log(`Recipes from those pages: ${merged.added} new, ${merged.trivialsFilled} table trivials filled.`);
+  if (merged.differ.length) {
+    console.log(`  ${merged.differ.length} where the table and the item page disagree (table used):`);
+    merged.differ.forEach((d) => console.log('   ' + d));
+  }
   wiki.generatedAt = new Date().toISOString();
   fs.writeFileSync(WIKI, JSON.stringify(wiki, null, 2));
   const kb = Math.round(fs.statSync(WIKI).size / 1024);

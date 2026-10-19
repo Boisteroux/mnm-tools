@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-26T17:29:53.730Z",
+  "generatedAt": "2026-10-19T17:34:17.686Z",
   "_note": "Auto-generated from the wiki's Merchant pages by tracker/enrich-wiki.js — do not hand-edit.",
   "vendors": [
     {
@@ -15,24 +15,35 @@
         "Hides"
       ],
       "zone": "Faelindral",
-      "location": "In Faelindral: ... In Night Harbor: Night Market / North Gate / Shortfolk Area",
+      "location": "In Faelindral: Traders Terrace In Night Harbor: Night Market / North Gate / Shortfolk Area",
       "race": "Elf, Human, Gnome",
       "desc": null
     },
     {
-      "name": "A baker",
+      "name": "A baker (Night Market)",
       "sells": [
         "Halva",
         "Harissa",
         "Knafeh",
         "Mountain Flatbread",
-        "Szuur's Famous Foods",
-        "Water Flask"
+        "Szuur's Famous Foods"
       ],
       "buys": [],
       "zone": "Night Harbor",
       "location": "Night market, at a window near the forge",
-      "race": "Human Halfling",
+      "race": "Human",
+      "desc": null
+    },
+    {
+      "name": "A baker (Shortfolk Area)",
+      "sells": [
+        "Mountain Flatbread",
+        "Water Flask"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "Shortfolk Area",
+      "race": "Halfling",
       "desc": null
     },
     {
@@ -52,9 +63,20 @@
         "Vegetables (Wild Carrots ...)"
       ],
       "zone": "Night Harbor",
-      "location": "The North gate inn",
+      "location": "The North Gate Inn, The Thirsty Glance",
       "race": "Human",
-      "desc": "Bartender"
+      "desc": "A bartender, a seller of drink and food."
+    },
+    {
+      "name": "A beastmaster instructor",
+      "sells": [
+        "Spellbook"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "Seekers of the Lost Eye (shaman / beastmaster guild)",
+      "race": "Human",
+      "desc": "Beastmaster spell vendor in Night Harbor."
     },
     {
       "name": "A blacksmith",
@@ -71,12 +93,12 @@
         "Metal Scraps"
       ],
       "zone": "Night Harbor",
-      "location": "Night Market",
+      "location": "Night Market, at the forge, next to Blacksmith Musafar",
       "race": "Human",
       "desc": "Blacksmithing Merchant"
     },
     {
-      "name": "A bowyer",
+      "name": "A bowyer (Night Harbor)",
       "sells": [
         "Arrow",
         "Bow",
@@ -84,9 +106,9 @@
         "Large Back Quiver",
         "Small Back Quiver",
         "Throwing Dagger",
-        "Recipe: Pitch-Wrapped Arrow",
-        "Recipe: Net Arrow",
-        "Recipe: Smoke Bomb Arrow"
+        "Recipe: Pitch-Wrapped Arrow (x20)",
+        "Recipe: Net Arrow (x20)",
+        "Recipe: Smoke Bomb Arrow (x20)"
       ],
       "buys": [],
       "zone": "Night Harbor",
@@ -105,6 +127,24 @@
       "location": "Night Market",
       "race": "Human",
       "desc": "Chain Armor Merchant"
+    },
+    {
+      "name": "A cleric scribe",
+      "sells": [
+        "Spellbook",
+        "Token of Deliverance",
+        "Token of Devotion",
+        "Token of Divinity"
+      ],
+      "buys": [
+        "Blister Beetle Gland",
+        "Immature Snake Venom Sac",
+        "Intact Diseased Bat Bile Duct"
+      ],
+      "zone": "Night Harbor",
+      "location": "Wayfarers Hospice in the Sojourners camp",
+      "race": "Human",
+      "desc": null
     },
     {
       "name": "A cloth armorer",
@@ -138,6 +178,17 @@
       "location": "The Night Market",
       "race": "Human",
       "desc": "A merchant located within The Night Market who sells Patched Cloth Boots and purchases some types of footware."
+    },
+    {
+      "name": "A composer",
+      "sells": [
+        "Bard#Bard_Songs"
+      ],
+      "buys": [],
+      "zone": "Faelindral",
+      "location": "One platform above the Willows Whisper stage, in the building across from the rogue guild",
+      "race": "Wood Elf",
+      "desc": "Bard song vendor in Faelindral."
     },
     {
       "name": "A cook",
@@ -177,6 +228,28 @@
       "desc": null
     },
     {
+      "name": "A cooking supplies vendor",
+      "sells": [],
+      "buys": [
+        "unknown"
+      ],
+      "zone": "Ail'Vorith",
+      "location": "Inn",
+      "race": "Deep Elf",
+      "desc": "Entering city gates from Foreign Quarters, hard right, take elevated path along the city wall to the third (last building on path) past Inquisitor House and the City Bank."
+    },
+    {
+      "name": "A druid scribe",
+      "sells": [
+        "Spellbook"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "Circle of the Scarce Rains (Druid guild)",
+      "race": "Human",
+      "desc": "Druid spell vendor in Night Harbor."
+    },
+    {
       "name": "A fisherman (Faelindral)",
       "sells": [
         "Fishing Pole",
@@ -193,10 +266,26 @@
       "desc": null
     },
     {
+      "name": "A fisherman (Night Harbor)",
+      "sells": [
+        "Fishing Pole",
+        "Grub"
+      ],
+      "buys": [
+        "Bait (Grub ...)",
+        "Fish",
+        "Wood"
+      ],
+      "zone": "Night Harbor",
+      "location": "Twilight Harbor at the end of the 3rd pier from the west",
+      "race": "Human",
+      "desc": null
+    },
+    {
       "name": "A fishwife",
       "sells": [
         "Cooked Whitefish Fillet",
-        "Raw Whitefish"
+        "Whitefish"
       ],
       "buys": [],
       "zone": "Night Harbor",
@@ -243,6 +332,19 @@
       "desc": null
     },
     {
+      "name": "A grain seller",
+      "sells": [
+        "Chickpeas",
+        "Cup of Basmati Rice",
+        "Wheat Flour"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "North bank, next to a druid and a guild registrar",
+      "race": "Human",
+      "desc": null
+    },
+    {
       "name": "A greedy halfling",
       "sells": [
         "Candle",
@@ -265,7 +367,6 @@
       "name": "A grocer",
       "sells": [
         "Bell Pepper",
-        "Carrots",
         "Cauliflower",
         "Cayenne Peppers",
         "Celery",
@@ -278,17 +379,31 @@
         "White Onion"
       ],
       "buys": [
-        "Wild Carrots (foraged)"
+        "Bell Pepper",
+        "Cheese",
+        "Various vegetables"
       ],
       "zone": "Night Harbor",
-      "location": "Night Market, next to Used Weapons Dealer. Appears only at night.",
+      "location": "Night Market, next to a used weapons dealer. Appears only at night.",
       "race": "Human",
       "desc": null
     },
     {
       "name": "A jewelcrafter",
       "sells": [
-        "Jewelcrafting Kit"
+        "Annealed Earring Mold",
+        "Annealed Necklace Mold",
+        "Annealed Ring Mold",
+        "Crude Earring Mold",
+        "Crude Necklace Mold",
+        "Crude Ring Mold",
+        "Hardened Earring Mold",
+        "Hardened Necklace Mold",
+        "Hardened Ring Mold",
+        "Jewelcrafting Kit",
+        "Tempered Earring Mold",
+        "Tempered Necklace Mold",
+        "Tempered Ring Mold"
       ],
       "buys": [
         "Jewelry",
@@ -316,7 +431,7 @@
         "Thread"
       ],
       "zone": "Night Harbor",
-      "location": "Tannery",
+      "location": "North Night Harbor, Tannery",
       "race": "Human",
       "desc": "Leatherworking Merchant"
     },
@@ -382,6 +497,17 @@
       "desc": "Mining Merchant"
     },
     {
+      "name": "A paladin instructor",
+      "sells": [
+        "Spellbook"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "Wayfarers Hospice in the Sojourners camp",
+      "race": "Human",
+      "desc": null
+    },
+    {
       "name": "A pelt trader",
       "sells": [
         "Heavy Thread",
@@ -415,9 +541,41 @@
       "desc": "Plate Armor Merchant"
     },
     {
+      "name": "A poison maker (Night Harbor)",
+      "sells": [
+        "Annealed Vial",
+        "Crystallized Vial",
+        "Debilitant Agent",
+        "Deliriant Agent",
+        "Lock Pick",
+        "Makeshift Vial",
+        "Poison Making Kit",
+        "Soporific Agent",
+        "Tempered Vial",
+        "Throwing Dagger",
+        "Torporific Agent",
+        "Vial of Smoke (reagent)"
+      ],
+      "buys": [
+        "Bat Wing",
+        "Bone Ash",
+        "Bone Chips",
+        "Fire Beetle Eye",
+        "Fire Beetle Gland",
+        "Ghoul Skin",
+        "Holy Water",
+        "Multhele Root",
+        "Resin",
+        "Zombie Skin"
+      ],
+      "zone": "Night Harbor",
+      "location": "Second floor of The City Illuminator's Guild",
+      "race": "Human",
+      "desc": null
+    },
+    {
       "name": "A produce vendor",
       "sells": [
-        "Carrots",
         "Cauliflower",
         "Chicken Egg",
         "Red Cabbage",
@@ -425,7 +583,10 @@
         "White Onion"
       ],
       "buys": [
-        "Wild Carrots"
+        "Bell Pepper",
+        "Cheese",
+        "Mushroom",
+        "Various vegetables"
       ],
       "zone": "Night Harbor",
       "location": "Saltbreeze Park, on the west wall",
@@ -433,15 +594,141 @@
       "desc": null
     },
     {
-      "name": "A reagent vendor",
+      "name": "A property merchant",
+      "sells": [
+        "Furniture Wrench",
+        "Property Key"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "Night Market, next to Suhib the Night Market Realtor North bank, next to Auditor Kristoff",
+      "race": "Human",
+      "desc": "Merchant for Housing"
+    },
+    {
+      "name": "A ranger instructor",
+      "sells": [
+        "Spellbook"
+      ],
+      "buys": [
+        "Multhele Root"
+      ],
+      "zone": "Faelindral",
+      "location": "Rangers Rest",
+      "race": "Wood Elf",
+      "desc": "The merchant for Ranger spell and ability scrolls."
+    },
+    {
+      "name": "A reagent vendor (Chartered Academy of Arcane Inquiry)",
+      "sells": [
+        "Guide to the Spirit World",
+        "Mage Light Core",
+        "Quill",
+        "Rift Dust"
+      ],
+      "buys": [
+        "Bat Wing",
+        "Bone Chips",
+        "Drake Scale",
+        "Fire Beetle Gland",
+        "Ghoul Skin",
+        "Multhele Root",
+        "Resin",
+        "Zombie Skin"
+      ],
+      "zone": "Night Harbor",
+      "location": "Chartered Academy of Arcane Inquiry (wizard guild)",
+      "race": "Human",
+      "desc": "You say, \"Hail, a reagent vendor.\" a reagent vendor says, \"Welcome, dear shopper. Are you in the market for reagents? I stock only the finest.\""
+    },
+    {
+      "name": "A reagent vendor (Concourse of Souls)",
+      "sells": [
+        "Malleable Bone Ornamented Coffin",
+        "Nature Walker's Journal",
+        "Quill"
+      ],
+      "buys": [
+        "Bat Fur",
+        "Bat Wing",
+        "Bone Chips",
+        "Ghoul Skin",
+        "Multhele Root",
+        "Resin",
+        "Scorched Skeletal Remains",
+        "Shattered Skeleton Femur",
+        "Skeleton Jawbone",
+        "Zombie Skin"
+      ],
+      "zone": "Night Harbor",
+      "location": "Concourse of Souls",
+      "race": "Human",
+      "desc": "You say, \"Hail, a reagent vendor.\" a reagent vendor says, \"Welcome! Much of what I have to sell has seen better days, but 'tis by no mean bad!\" a reagent vendor laughs."
+    },
+    {
+      "name": "A reagent vendor (Shortfolk Area)",
+      "sells": [
+        "Powdered Tangle Vine",
+        "Quill",
+        "Tome of Shadows"
+      ],
+      "buys": [
+        "Bat Wing",
+        "Bone Chips",
+        "Fire Beetle Eye",
+        "Fire Beetle Gland",
+        "Ghoul Skin",
+        "Holy Water",
+        "Multhele Root",
+        "Resin",
+        "Zombie Skin"
+      ],
+      "zone": "Night Harbor",
+      "location": "Shortfolk Area",
+      "race": "Halfling",
+      "desc": null
+    },
+    {
+      "name": "A reagent vendor (Spellbinders of the Spire)",
       "sells": [
         "Ethereal Dagger"
       ],
-      "buys": [],
+      "buys": [
+        "Bat Wing",
+        "Bone Chips",
+        "Fire Beetle Gland",
+        "Ghoul Skin",
+        "Multhele Root",
+        "Resin",
+        "Zombie Skin"
+      ],
       "zone": "Night Harbor",
       "location": "Spellbinders of the Spire bottom floor, in Registrar Vauquelin's room. Take 2 rights when entering from the entrance in the residential area",
       "race": "Human",
       "desc": null
+    },
+    {
+      "name": "A reagent vendor (Wayfarers Hospice)",
+      "sells": [
+        "Blessed Beeswax Candle",
+        "Prayer Beads",
+        "Quill",
+        "Spellbook",
+        "Lectionary of Light",
+        "Vial of Anointing Oil"
+      ],
+      "buys": [
+        "Animal parts",
+        "Limestone",
+        "Multhele Root",
+        "Resin",
+        "Sealants",
+        "Undead parts"
+      ],
+      "zone": "Night Harbor",
+      "location": "Wayfarers Hospice in the Sojourners camp",
+      "race": "Human",
+      "desc": "You say, \"Hail, a reagent vendor.\" a reagent vendor says, \"Greetings, and blessings upon you. Care to see my modest but powerful assortment of reagents?\""
     },
     {
       "name": "A rider",
@@ -455,18 +742,31 @@
       "desc": "Riding Merchant"
     },
     {
+      "name": "A scrap dealer",
+      "sells": [
+        "Rusty Dagger",
+        "Rusty Mace",
+        "Rusty Shortsword",
+        "Rusty Spear"
+      ],
+      "buys": [],
+      "zone": "Evershade Weald",
+      "location": null,
+      "race": "Wood Elf",
+      "desc": "Rusty weapons merchant"
+    },
+    {
       "name": "A shady peddler",
       "sells": [
         "Backpack",
         "Cracked Amphora",
         "Dispel Stone",
-        "Scroll: Speed of the Wild",
         "Malleable Bone Ornamented Coffin",
         "Unguent of Revealing",
         "Volatile Rift Potion"
       ],
       "buys": [
-        "about anything at a reduced cost compared to regular merchants"
+        "About anything at a reduced cost compared to regular merchants."
       ],
       "zone": "Night Harbor",
       "location": "Tucked in an alley in the Night Market, just southeast of the forge. Appears only at night (spawns at 6 PM in-game time and despawns at 6 AM in-game time.)",
@@ -489,6 +789,43 @@
       "zone": "Faelindral",
       "location": "By a caravan near the stables",
       "race": "Human",
+      "desc": "A greedy merchant."
+    },
+    {
+      "name": "A shaman scribe",
+      "sells": [
+        "Ancestral Ritual Talisman",
+        "Greater Ritual Talisman",
+        "Ritual Talisman",
+        "Spellbook"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "Seekers of the Lost Eye (shaman / beastmaster guild)",
+      "race": "Human",
+      "desc": null
+    },
+    {
+      "name": "A shifty elf",
+      "sells": [
+        "Candle",
+        "Charcoal",
+        "Dispel Stone",
+        "Lantern",
+        "Lantern Fuel",
+        "Lock Pick",
+        "Lumberjack Axe",
+        "Malleable Bone Ornamented Coffin",
+        "Parchment",
+        "Ration",
+        "Torch",
+        "Volatile Rift Potion",
+        "Water Flask"
+      ],
+      "buys": [],
+      "zone": "Evershade Weald",
+      "location": "By a campfire in the forest",
+      "race": "Wood Elf",
       "desc": "A greedy merchant."
     },
     {
@@ -529,7 +866,7 @@
         "Antique Billon Coin"
       ],
       "zone": "Night Harbor",
-      "location": "Night Market",
+      "location": "Night Market, at the forge",
       "race": "Human",
       "desc": "Smelting Supplies Merchant"
     },
@@ -630,6 +967,19 @@
       "desc": "Weapon Merchant"
     },
     {
+      "name": "A used weapons dealer-Faelindral",
+      "sells": [
+        "Rusty Dagger",
+        "Rusty Mace",
+        "Rusty Shortsword"
+      ],
+      "buys": [],
+      "zone": "Faelindral",
+      "location": "Trader's Terrace",
+      "race": "Wood Elf",
+      "desc": "Weapon Merchant"
+    },
+    {
       "name": "A weaponsmith",
       "sells": [
         "Rivet Cutters",
@@ -648,6 +998,52 @@
       "location": "Night Market",
       "race": "Human",
       "desc": "Blacksmithing Merchant"
+    },
+    {
+      "name": "A wise elder",
+      "sells": [
+        "Wooden Bow",
+        "Wooden Claw",
+        "Wooden Club",
+        "Wooden Dagger",
+        "Wooden Scythe",
+        "Wooden Sword"
+      ],
+      "buys": [
+        "Handmade Torch",
+        "Resin",
+        "Wood"
+      ],
+      "zone": "Night Harbor",
+      "location": "Inside the temple against the cliff between Sojourner's Camp and the Tannery.",
+      "race": "Human",
+      "desc": "Sells wooden weapons"
+    },
+    {
+      "name": "A woodworker",
+      "sells": [],
+      "buys": [
+        "unknown"
+      ],
+      "zone": "Keeper's Bight",
+      "location": "Lumberjack camp, north of Penshaw",
+      "race": "Human",
+      "desc": null
+    },
+    {
+      "name": "Adah Mukhtar",
+      "sells": [
+        "Baladi",
+        "Langsdorf Pale Ale",
+        "Twilight Bay Rum",
+        "Water Flask",
+        "Weak Beer"
+      ],
+      "buys": [],
+      "zone": "Sungreet Strand",
+      "location": "River pirate tavern.",
+      "race": "Human",
+      "desc": "Adah works behind the counter at the river pirate tavern. Hits for 300ish."
     },
     {
       "name": "Adventure Gear",
@@ -674,11 +1070,47 @@
       "desc": null
     },
     {
+      "name": "Ailis Hal'kareth",
+      "sells": [],
+      "buys": [
+        "None"
+      ],
+      "zone": "Ail'Vorith",
+      "location": "Located in a building on the lower ledges in the city to the west of the entrance bridge.",
+      "race": "Deep Elf",
+      "desc": "House Hal'kareth Quest Giver"
+    },
+    {
+      "name": "Alarys Drezzorith",
+      "sells": [],
+      "buys": [
+        "None"
+      ],
+      "zone": "Ail'Vorith",
+      "location": "Alarys Drezzorith is located in a building in the main city of Ail'Vorith, 4th floor, south side... just southeast of the high level Paladin and Cleric trainers.",
+      "race": "Deep Elf",
+      "desc": "House Drezzorith Supporter"
+    },
+    {
+      "name": "Alysse Selegrass",
+      "sells": [
+        "Ration",
+        "Water Flask"
+      ],
+      "buys": [],
+      "zone": "Keeper's Bight",
+      "location": "Treehouse",
+      "race": "Wood Elf",
+      "desc": "Merchant"
+    },
+    {
       "name": "An alchemist",
       "sells": [
         "Annealed Vial",
         "Crude Flask",
         "Crystallized Vial",
+        "Imbued Flask",
+        "Leaded Flask",
         "Makeshift Vial",
         "Mortar and Pestle",
         "Potion Bandolier",
@@ -701,12 +1133,59 @@
       "name": "An elemental quartermaster",
       "sells": [
         "Crushed Malachite",
+        "Crushed Pearl",
+        "Quill",
+        "Small Incense Stick",
+        "Tablet of the Elements",
         "Water Flask"
       ],
       "buys": [],
       "zone": "Night Harbor",
       "location": "Bottom alcove in the School of the Fourfold Path (ELE/MNK guildhall)",
       "race": "Elemental",
+      "desc": null
+    },
+    {
+      "name": "An enchanter",
+      "sells": [
+        "Disenchanting Cube",
+        "Tome of Enchantment"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "* Enchanters guild (near the docks), on a balcony with Vauquelin and Disenchanter Qaridi * Spellbinders of the Spire, next to Enchanter Haffiz",
+      "race": "Human",
+      "desc": null
+    },
+    {
+      "name": "An enchanter scribe",
+      "sells": [
+        "Spellbook"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "Next to Master Khaila.",
+      "race": "Human",
+      "desc": "Enchanter spell vendor."
+    },
+    {
+      "name": "An exotic cook",
+      "sells": [
+        "Ceramic Mixing Bowl",
+        "Hunter's Guide to Carnivorism",
+        "Ration",
+        "Water Flask",
+        "Basilisk Seasoning"
+      ],
+      "buys": [
+        "Bone Chips",
+        "Fish",
+        "Food",
+        "Wood"
+      ],
+      "zone": "Shallow Shoals",
+      "location": "On Zaedin's Landing island, upstairs from the cooking apprentice room.",
+      "race": "Wood Elf",
       "desc": null
     },
     {
@@ -736,9 +1215,354 @@
       "desc": null
     },
     {
+      "name": "An inquisitor instructor",
+      "sells": [
+        "Spellbook"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "Spellbinders of the Spire",
+      "race": "Human",
+      "desc": null
+    },
+    {
+      "name": "An outfitter",
+      "sells": [
+        "Animal Glue",
+        "Backpack",
+        "Candle",
+        "Charcoal",
+        "Cooking Pot",
+        "Fish Scaler",
+        "Grappling Hook",
+        "Lantern",
+        "Lantern Fuel",
+        "Lumberjack Axe",
+        "Parchment",
+        "Rope, Hempen, 50 Length",
+        "Rope, Silk, 50 Length",
+        "Small Field Pack",
+        "Torch"
+      ],
+      "buys": [
+        "Bags",
+        "Torches"
+      ],
+      "zone": "Faelindral",
+      "location": null,
+      "race": "Wood Elf",
+      "desc": null
+    },
+    {
+      "name": "Apprentice Esveth",
+      "sells": [],
+      "buys": [
+        "None"
+      ],
+      "zone": "Ail'Vorith",
+      "location": "Located in the Foreign Quarter, across from the fountain.",
+      "race": "Deep Elf",
+      "desc": "House Varros Supplier"
+    },
+    {
+      "name": "Aragon Brythe",
+      "sells": [
+        "Spellbook"
+      ],
+      "buys": [],
+      "zone": "Keeper's Bight",
+      "location": "In the abbey south of village of Penshaw. He is located in the northern hallway, by the north door.",
+      "race": "Human",
+      "desc": "Inquisitor spells vendor"
+    },
+    {
+      "name": "Assistant Enchanter",
+      "sells": [],
+      "buys": [
+        "unknown"
+      ],
+      "zone": "Ail'Vorith",
+      "location": "Inside second room of the Enchanter House's arched vestibule.",
+      "race": "Deep Elf",
+      "desc": "Take the right side elevated path from the archway leading to the boat dock. Opposite the city bank. First building on the right exiting the tunnel."
+    },
+    {
+      "name": "Barkeep Zahra",
+      "sells": [
+        "Ration",
+        "Twilight Bay Rum",
+        "Water Flask",
+        "Weak Beer"
+      ],
+      "buys": [
+        "Water Flask"
+      ],
+      "zone": "Shallow Shoals",
+      "location": "The Rusted Anchor, on Zaedin's Landing island.",
+      "race": "Human",
+      "desc": null
+    },
+    {
+      "name": "Blacksmith Baran",
+      "sells": [
+        "Schematic: Bronze Axe",
+        "Schematic: Bronze Battle Axe",
+        "Schematic: Bronze Bracket",
+        "Schematic: Bronze Cauldron",
+        "Schematic: Bronze Chain Boots",
+        "Schematic: Bronze Chain Cloak",
+        "Schematic: Bronze Chain Coif",
+        "Schematic: Bronze Chain Gambeson",
+        "Schematic: Bronze Chain Gloves",
+        "Schematic: Bronze Chain Gorget",
+        "Schematic: Bronze Chain Leggings",
+        "Schematic: Bronze Chain Mask",
+        "Schematic: Bronze Chain Shoulderguards",
+        "Schematic: Bronze Chain Tunic",
+        "Schematic: Bronze Chain Waistguard",
+        "Schematic: Bronze Chain Wristguard",
+        "Schematic: Bronze Dagger",
+        "Schematic: Bronze Great Scythe",
+        "Schematic: Bronze Greatsword",
+        "Schematic: Bronze Hinge",
+        "Schematic: Bronze Kite Shield",
+        "Schematic: Bronze Longsword",
+        "Schematic: Bronze Mace",
+        "Schematic: Bronze Maul",
+        "Schematic: Bronze Plate Arming Doublet",
+        "Schematic: Bronze Plate Barding",
+        "Schematic: Bronze Plate Boots",
+        "Schematic: Bronze Plate Bracer",
+        "Schematic: Bronze Plate Breastplate",
+        "Schematic: Bronze Plate Cloak",
+        "Schematic: Bronze Plate Collar",
+        "Schematic: Bronze Plate Gauntlets",
+        "Schematic: Bronze Plate Girdle",
+        "Schematic: Bronze Plate Greaves",
+        "Schematic: Bronze Plate Helm",
+        "Schematic: Bronze Plate Pauldrons",
+        "Schematic: Bronze Plate Visor",
+        "Schematic: Bronze Scimitar",
+        "Schematic: Bronze Scythe",
+        "Schematic: Bronze Shortsword",
+        "Schematic: Bronze Spear",
+        "Schematic: Bronze Stirrups",
+        "Schematic: Bronze Throwing Dagger x100",
+        "Schematic: Bronze Throwing Dagger x20",
+        "Schematic: Bronze Throwing Dagger x200",
+        "Schematic: Bronze Tower Shield",
+        "Schematic: Bronze Tread",
+        "Schematic: Bronze Trident",
+        "Schematic: Bronze War Lance",
+        "Schematic: Bronze Warhammer",
+        "Schematic: Copper Axe",
+        "Schematic: Copper Battle Axe",
+        "Schematic: Copper Cauldron",
+        "Schematic: Copper Chain Boots",
+        "Schematic: Copper Chain Cloak",
+        "Schematic: Copper Chain Coif",
+        "Schematic: Copper Chain Gambeson",
+        "Schematic: Copper Chain Gloves",
+        "Schematic: Copper Chain Gorget",
+        "Schematic: Copper Chain Leggings",
+        "Schematic: Copper Chain Mask",
+        "Schematic: Copper Chain Shoulderguards",
+        "Schematic: Copper Chain Tunic",
+        "Schematic: Copper Chain Waistguard",
+        "Schematic: Copper Chain Wristguard",
+        "Schematic: Copper Dagger",
+        "Schematic: Copper Great Scythe",
+        "Schematic: Copper Greatsword",
+        "Schematic: Copper Kite Shield",
+        "Schematic: Copper Longsword",
+        "Schematic: Copper Mace",
+        "Schematic: Copper Maul",
+        "Schematic: Copper Nails",
+        "Schematic: Copper Plate Arming Doublet",
+        "Schematic: Copper Plate Barding",
+        "Schematic: Copper Plate Boots",
+        "Schematic: Copper Plate Bracer",
+        "Schematic: Copper Plate Breastplate",
+        "Schematic: Copper Plate Cloak",
+        "Schematic: Copper Plate Collar",
+        "Schematic: Copper Plate Gauntlets",
+        "Schematic: Copper Plate Girdle",
+        "Schematic: Copper Plate Greaves",
+        "Schematic: Copper Plate Helm",
+        "Schematic: Copper Plate Pauldrons",
+        "Schematic: Copper Plate Visor",
+        "Schematic: Copper Scimitar",
+        "Schematic: Copper Scythe",
+        "Schematic: Copper Shortsword",
+        "Schematic: Copper Spear",
+        "Schematic: Copper Stirrups",
+        "Schematic: Copper Throwing Dagger x100",
+        "Schematic: Copper Throwing Dagger x20",
+        "Schematic: Copper Throwing Dagger x200",
+        "Schematic: Copper Tower Shield",
+        "Schematic: Copper Tread",
+        "Schematic: Copper Trident",
+        "Schematic: Copper War Lance",
+        "Schematic: Copper Warhammer",
+        "Schematic: Enchanted Bronze Chain Coif",
+        "Schematic: Enchanted Bronze Chain Leggings",
+        "Schematic: Enchanted Bronze Chain Tunic",
+        "Schematic: Enchanted Bronze Plate Breastplate",
+        "Schematic: Enchanted Bronze Plate Greaves",
+        "Schematic: Enchanted Bronze Plate Helm",
+        "Schematic: Enchanted Copper Chain Coif",
+        "Schematic: Enchanted Copper Chain Leggings",
+        "Schematic: Enchanted Copper Chain Tunic",
+        "Schematic: Enchanted Copper Plate Breastplate",
+        "Schematic: Enchanted Copper Plate Greaves",
+        "Schematic: Enchanted Copper Plate Helm",
+        "Schematic: Enchanted Iron Chain Coif",
+        "Schematic: Enchanted Iron Chain Leggings",
+        "Schematic: Enchanted Iron Chain Tunic",
+        "Schematic: Enchanted Iron Plate Breastplate",
+        "Schematic: Enchanted Iron Plate Greaves",
+        "Schematic: Enchanted Iron Plate Helm",
+        "Schematic: Enchanted Steel Chain Coif",
+        "Schematic: Enchanted Steel Chain Leggings",
+        "Schematic: Enchanted Steel Chain Tunic",
+        "Schematic: Enchanted Steel Plate Breastplate",
+        "Schematic: Enchanted Steel Plate Greaves",
+        "Schematic: Enchanted Steel Plate Helm",
+        "Schematic: Gold Plate Barding",
+        "Schematic: Gold Stirrups",
+        "Schematic: Iron Axe",
+        "Schematic: Iron Battle Axe",
+        "Schematic: Iron Cauldron",
+        "Schematic: Iron Chain Boots",
+        "Schematic: Iron Chain Cloak",
+        "Schematic: Iron Chain Coif",
+        "Schematic: Iron Chain Gambeson",
+        "Schematic: Iron Chain Gloves",
+        "Schematic: Iron Chain Gorget",
+        "Schematic: Iron Chain Leggings",
+        "Schematic: Iron Chain Mask",
+        "Schematic: Iron Chain Shoulderguards",
+        "Schematic: Iron Chain Tunic",
+        "Schematic: Iron Chain Waistguard",
+        "Schematic: Iron Chain Wristguard",
+        "Schematic: Iron Dagger",
+        "Schematic: Iron Great Scythe",
+        "Schematic: Iron Greatsword",
+        "Schematic: Iron Kite Shield",
+        "Schematic: Iron Longsword",
+        "Schematic: Iron Mace",
+        "Schematic: Iron Maul",
+        "Schematic: Iron Plate Arming Doublet",
+        "Schematic: Iron Plate Barding",
+        "Schematic: Iron Plate Boots",
+        "Schematic: Iron Plate Bracer",
+        "Schematic: Iron Plate Breastplate",
+        "Schematic: Iron Plate Cloak",
+        "Schematic: Iron Plate Collar",
+        "Schematic: Iron Plate Gauntlets",
+        "Schematic: Iron Plate Girdle",
+        "Schematic: Iron Plate Greaves",
+        "Schematic: Iron Plate Helm",
+        "Schematic: Iron Plate Pauldrons",
+        "Schematic: Iron Plate Visor",
+        "Schematic: Iron Scimitar",
+        "Schematic: Iron Scythe",
+        "Schematic: Iron Shortsword",
+        "Schematic: Iron Spear",
+        "Schematic: Iron Stirrups",
+        "Schematic: Iron Throwing Dagger x100",
+        "Schematic: Iron Throwing Dagger x20",
+        "Schematic: Iron Throwing Dagger x200",
+        "Schematic: Iron Tower Shield",
+        "Schematic: Iron Tread",
+        "Schematic: Iron Trident",
+        "Schematic: Iron War Lance",
+        "Schematic: Iron Warhammer",
+        "Schematic: Platinum Plate Barding",
+        "Schematic: Platinum Stirrups",
+        "Schematic: Silver Plate Barding",
+        "Schematic: Silver Stirrups",
+        "Schematic: Steel Axe",
+        "Schematic: Steel Battle Axe",
+        "Schematic: Steel Cauldron",
+        "Schematic: Steel Chain Boots",
+        "Schematic: Steel Chain Cloak",
+        "Schematic: Steel Chain Coif",
+        "Schematic: Steel Chain Gambeson",
+        "Schematic: Steel Chain Gloves",
+        "Schematic: Steel Chain Gorget",
+        "Schematic: Steel Chain Leggings",
+        "Schematic: Steel Chain Mask",
+        "Schematic: Steel Chain Shoulderguards",
+        "Schematic: Steel Chain Tunic",
+        "Schematic: Steel Chain Waistguard",
+        "Schematic: Steel Chain Wristguard",
+        "Schematic: Steel Dagger",
+        "Schematic: Steel Great Scythe",
+        "Schematic: Steel Greatsword",
+        "Schematic: Steel Kite Shield",
+        "Schematic: Steel Longsword",
+        "Schematic: Steel Mace",
+        "Schematic: Steel Maul",
+        "Schematic: Steel Plate Arming Doublet",
+        "Schematic: Steel Plate Barding",
+        "Schematic: Steel Plate Boots",
+        "Schematic: Steel Plate Bracer",
+        "Schematic: Steel Plate Breastplate",
+        "Schematic: Steel Plate Cloak",
+        "Schematic: Steel Plate Collar",
+        "Schematic: Steel Plate Gauntlets",
+        "Schematic: Steel Plate Girdle",
+        "Schematic: Steel Plate Greaves",
+        "Schematic: Steel Plate Helm",
+        "Schematic: Steel Plate Pauldrons",
+        "Schematic: Steel Plate Visor",
+        "Schematic: Steel Scimitar",
+        "Schematic: Steel Scythe",
+        "Schematic: Steel Shortsword",
+        "Schematic: Steel Spear",
+        "Schematic: Steel Stirrups",
+        "Schematic: Steel Throwing Dagger x100",
+        "Schematic: Steel Throwing Dagger x20",
+        "Schematic: Steel Throwing Dagger x200",
+        "Schematic: Steel Tower Shield",
+        "Schematic: Steel Tread",
+        "Schematic: Steel Trident",
+        "Schematic: Steel War Lance",
+        "Schematic: Steel Warhammer",
+        "Schematic: Tin Cauldron"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "Night Market forge, next to Blacksmith Musafar",
+      "race": "Human",
+      "desc": "Sells Blacksmithing schematics."
+    },
+    {
+      "name": "Bowyer Nulvessa",
+      "sells": [
+        "Recipe: Pitch-Wrapped Arrow (x20)",
+        "Recipe: Net Arrow (x20)",
+        "Recipe: Smoke Bomb Arrow (x20)",
+        "Arrow",
+        "Bow",
+        "Fletching Kit",
+        "Hip Quiver",
+        "Large Back Quiver",
+        "Small Back Quiver",
+        "Throwing Dagger"
+      ],
+      "buys": [
+        "unknown"
+      ],
+      "zone": "Ail'Vorith",
+      "location": "Foreign Quarter",
+      "race": "Deep Elf",
+      "desc": "Fletching and Throwing items"
+    },
+    {
       "name": "Captain Eilionoir",
       "sells": [
-        "Black Feather Whiskey",
         "Langsdorf Pale Ale",
         "Twilight Bay Rum",
         "Water Flask",
@@ -749,6 +1573,17 @@
       "location": "The Changing of the Guard",
       "race": "Human",
       "desc": "Bartender"
+    },
+    {
+      "name": "Chef Arzya",
+      "sells": [],
+      "buys": [
+        "unknown"
+      ],
+      "zone": "Ail'Vorith",
+      "location": "Inn",
+      "race": "Deep Elf",
+      "desc": "Entering city gates from Foreign Quarters, hard right, take elevated path along the city wall to the third (last building on path) past Inquisitor House and the City Bank."
     },
     {
       "name": "Chef Belle",
@@ -767,7 +1602,29 @@
         "Wood"
       ],
       "zone": "Night Harbor",
-      "location": null,
+      "location": "At the North Gate inn, next to Chef Daisy",
+      "race": "Halfling",
+      "desc": null
+    },
+    {
+      "name": "Chef Daisy",
+      "sells": [
+        "Basil",
+        "Black Pepper",
+        "Butter",
+        "Cleaver",
+        "Cooking Sage",
+        "Milk",
+        "Paprika",
+        "Parsley",
+        "Rice",
+        "Stock",
+        "Thyme",
+        "Wheat Flour"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "At the North Gate inn, next to Chef Belle",
       "race": "Halfling",
       "desc": null
     },
@@ -784,27 +1641,6 @@
       "location": "East of the Steel Talon Garrison",
       "race": "Human",
       "desc": "Bartender"
-    },
-    {
-      "name": "Cleric Reagents",
-      "sells": [
-        "Blessed Beeswax Candle",
-        "Prayer Beads",
-        "Spellbook",
-        "Vial of Anointing Oil"
-      ],
-      "buys": [
-        "Animal parts",
-        "Limestone",
-        "Multhele Root",
-        "Resin",
-        "Sealants",
-        "Undead parts"
-      ],
-      "zone": "Night Harbor",
-      "location": "Wayfarers Hospice in the Sojourners camp",
-      "race": "Human",
-      "desc": null
     },
     {
       "name": "Clint the Innocent",
@@ -833,12 +1669,55 @@
       "desc": "Clint the Innocent, was added to the game as a memorial to the player \"Innocent\", who sadly passed away in January 2024. His friend put together [https://youtu.be/OwLZcJrEf_g?si=3G5ioxV1UtInxCLL a YouTube video] during the June playtest for his family, to show them the character, explain his role in the game and recount some fun stories that were the inspiration for his dialogue. {{#ev:youtube|https://www.youtube.com/watch?v=OwLZcJrEf_g|dimensions=640x360}}"
     },
     {
+      "name": "Cook Vashuk",
+      "sells": [],
+      "buys": [
+        "unknown"
+      ],
+      "zone": "Ail'Vorith",
+      "location": "Foreign Quarter Inn (Kitchen/Cellar)",
+      "race": "Deep Elf",
+      "desc": "Cook Vashuk is a Deep Elf found in the kitchen area of the Foreign Quarter Inn."
+    },
+    {
+      "name": "Cyra Brinewell",
+      "sells": [
+        "Fisherman's Guide to Dinner",
+        "Raw Bay Crab",
+        "Raw Swordfish Steak"
+      ],
+      "buys": [],
+      "zone": "Keeper's Bight",
+      "location": "The Salty Fish, at the docks",
+      "race": "Human",
+      "desc": "Fish Merchant"
+    },
+    {
+      "name": "Delloreli the Butcher",
+      "sells": [
+        "Raw Beef",
+        "Raw Mutton"
+      ],
+      "buys": [
+        "Fish",
+        "Monster Parts"
+      ],
+      "zone": "Faelindral",
+      "location": null,
+      "race": "Wood Elf",
+      "desc": "Butcher merchant for cooking"
+    },
+    {
       "name": "Dilshad Abolfazl",
       "sells": [
         "Backpack",
         "Pouch",
         "Satchel",
-        "Small Field Pack"
+        "Small Field Pack",
+        "Small Trader's Pack",
+        "Trader's Backpack",
+        "Trader's Pouch",
+        "Trader's Satchel"
       ],
       "buys": [
         "Bags",
@@ -848,6 +1727,30 @@
       "location": "West building in the Tannery",
       "race": "Human",
       "desc": "Bags and Packs Merchant"
+    },
+    {
+      "name": "Drogo the Grocer",
+      "sells": [
+        "Cauliflower",
+        "Celery",
+        "Chickpeas",
+        "Cup of Basmati Rice",
+        "Green Onions",
+        "Lemon",
+        "Ration",
+        "Red Cabbage",
+        "Tomato",
+        "Water Flask",
+        "Wheat Flour"
+      ],
+      "buys": [
+        "Food",
+        "Vegetables"
+      ],
+      "zone": "Faelindral",
+      "location": null,
+      "race": "Halfling",
+      "desc": null
     },
     {
       "name": "Enchanter Reagents",
@@ -869,17 +1772,20 @@
       "desc": "Please use Karsyn now that his name has changed."
     },
     {
-      "name": "Enchanting Supplies",
+      "name": "Feslan Godfrey",
       "sells": [
-        "An Introduction to Enchanting",
-        "Disenchanting Cube",
-        "Tome of Enchantment"
+        "Basil",
+        "Black Pepper",
+        "Sea Salt"
       ],
-      "buys": [],
-      "zone": "Night Harbor",
-      "location": "Inside the Library, in Vaclav's room (requires Silver Key of Candor)",
+      "buys": [
+        "Cooking Supplies",
+        "Creature parts"
+      ],
+      "zone": "Underdocks",
+      "location": "Inn behind pirate's tavern.",
       "race": "Human",
-      "desc": null
+      "desc": "Sells tavern goods."
     },
     {
       "name": "Fisher Mardan",
@@ -894,21 +1800,27 @@
       "desc": "Fishing Merchant"
     },
     {
-      "name": "Fishing Supplies",
-      "sells": [
-        "An Introduction to Fishing",
-        "Fishing Pole",
-        "Grub"
-      ],
+      "name": "Gorik Tundsen",
+      "sells": [],
       "buys": [
-        "Bait (Grub ...)",
-        "Fish",
-        "Wood"
+        "Cooking Supplies",
+        "Creature parts"
       ],
-      "zone": "Night Harbor",
-      "location": "Twilight Harbor at the end of the 3rd pier from the west",
-      "race": "Human",
-      "desc": "You say, \"Hail, Fishing Supplies.\" Fishing Supplies gives you a relaxed nod. Fishing Supplies says, \"Greetings, friend. Are you wanting to learn how to fish?\""
+      "zone": "Underdocks",
+      "location": "Inn behind pirate's tavern.",
+      "race": "Dwarf",
+      "desc": "Sells tavern goods."
+    },
+    {
+      "name": "Grakkesh",
+      "sells": [],
+      "buys": [
+        "unknown"
+      ],
+      "zone": "Ail'Vorith",
+      "location": "Standing outside, above the ramp, one building up from the Enchanter house.",
+      "race": "Orc",
+      "desc": "Take the right side elevated path from the archway leading to the boat dock. Opposite the city bank."
     },
     {
       "name": "Halrinn Grimsul",
@@ -928,23 +1840,245 @@
       "desc": "Bartender You say, \"Hail, Halrinn Grimsul.\" Halrinn Grimsul says, \"Hello, friend! I hope you're thirsty.\""
     },
     {
+      "name": "Haredi",
+      "sells": [
+        "Pocket Mirror",
+        "Quill"
+      ],
+      "buys": [
+        "Spell scrolls"
+      ],
+      "zone": "Night Harbor",
+      "location": "Haredi is in the Library. Once there, take the teleportation platform in front of you. You'll see Haredi to the left.",
+      "race": "Human",
+      "desc": null
+    },
+    {
+      "name": "Harold Abegg",
+      "sells": [],
+      "buys": [
+        "unknown"
+      ],
+      "zone": "Keeper's Bight",
+      "location": "Village of Penshaw - Mossy Brook Inn",
+      "race": "Human",
+      "desc": null
+    },
+    {
+      "name": "Hendrick Valbreken",
+      "sells": [
+        "Animal Glue",
+        "Backpack",
+        "Candle",
+        "Charcoal",
+        "Cleaver",
+        "Lantern",
+        "Lantern Fuel",
+        "Parchment",
+        "Portion of Olive Oil",
+        "Pouch",
+        "Satchel",
+        "Torch"
+      ],
+      "buys": [],
+      "zone": "Keeper's Bight",
+      "location": "Village of Penshaw - Timberwolf Trading Co.",
+      "race": "Human",
+      "desc": "general goods Merchant"
+    },
+    {
+      "name": "Hendrik Valbreken",
+      "sells": [
+        "Animal Glue",
+        "Backpack",
+        "Candle",
+        "Cellar of Sea Salt",
+        "Charcoal",
+        "Cleaver",
+        "Lantern",
+        "Lantern Fuel",
+        "Lumberjack Axe",
+        "Parchment",
+        "Portion of Olive Oil",
+        "Pouch",
+        "Torch"
+      ],
+      "buys": [
+        "Bags",
+        "Torches"
+      ],
+      "zone": "Keeper's Bight",
+      "location": "Timberwolf Trading Co.",
+      "race": "Human",
+      "desc": "Supplies vendor"
+    },
+    {
+      "name": "Instructor Afzal",
+      "sells": [
+        "Enchanter#Enchanter_Spells",
+        "Spellbook"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "Spellbinders of the Spire",
+      "race": "Human",
+      "desc": "Enchanter Spells"
+    },
+    {
+      "name": "Kalessa Velgarrith",
+      "sells": [
+        "Deep Gnome Guise",
+        "Recipe: Charred Mudfish",
+        "Recipe: Crude Prison Shiv",
+        "Recipe: Shale Hilt"
+      ],
+      "buys": [],
+      "zone": "Blind Midden",
+      "location": null,
+      "race": "Deep Elf",
+      "desc": "Merchant and recipe vendor, potential quest NPC as well."
+    },
+    {
+      "name": "Karlin Saddler",
+      "sells": [
+        "Animal Feed",
+        "Basic Pack Rigging",
+        "Premium Animal Feed"
+      ],
+      "buys": [],
+      "zone": "Underdocks",
+      "location": "Underdocks stables",
+      "race": "Human",
+      "desc": "Riding Merchant"
+    },
+    {
       "name": "Karsyn",
       "sells": [
-        "Ethereal Dagger"
+        "Ethereal Dagger",
+        "Pinch of Sparkling Sand",
+        "Tome of Shadows"
       ],
       "buys": [
         "Animal parts",
         "Chipped gems",
         "Limestone",
-        "Multhele Roots",
+        "Multhele Root",
         "Resin",
         "Sealants",
         "Undead parts"
       ],
       "zone": "Night Harbor",
-      "location": "Enchanters guild (near the docks), outside the door an on a balcony from Jaakima",
+      "location": "Enchanters guild (near the docks), outside the door and on a balcony from Jaakima",
       "race": "Human",
-      "desc": "Was previously named Enchanter Regents."
+      "desc": null
+    },
+    {
+      "name": "Kulzzara",
+      "sells": [],
+      "buys": [
+        "unknown"
+      ],
+      "zone": "Ail'Vorith",
+      "location": "Foreign Quarter Market",
+      "race": "Deep Elf",
+      "desc": "Weapon Merchant"
+    },
+    {
+      "name": "Leatherworker Saif",
+      "sells": [
+        "Pattern: Enchanted Hide Cap",
+        "Pattern: Enchanted Hide Leggings",
+        "Pattern: Enchanted Hide Tunic",
+        "Pattern: Enchanted Leather Cap",
+        "Pattern: Enchanted Leather Leggings",
+        "Pattern: Enchanted Leather Tunic",
+        "Pattern: Enchanted Padded Leather Cap",
+        "Pattern: Enchanted Padded Leather Leggings",
+        "Pattern: Enchanted Padded Leather Tunic",
+        "Pattern: Enchanted Rawhide Cap",
+        "Pattern: Enchanted Rawhide Leggings",
+        "Pattern: Enchanted Rawhide Tunic",
+        "Pattern: Hide Backpack",
+        "Pattern: Hide Belt",
+        "Pattern: Hide Boots",
+        "Pattern: Hide Bracelet",
+        "Pattern: Hide Cap",
+        "Pattern: Hide Gloves",
+        "Pattern: Hide Gorget",
+        "Pattern: Hide Leggings",
+        "Pattern: Hide Mask",
+        "Pattern: Hide Pouch",
+        "Pattern: Hide Saddle",
+        "Pattern: Hide Satchel",
+        "Pattern: Hide Shoulderpads",
+        "Pattern: Hide Tunic",
+        "Pattern: Hide Vest",
+        "Pattern: Leather Backpack",
+        "Pattern: Leather Belt",
+        "Pattern: Leather Boots",
+        "Pattern: Leather Bracelet",
+        "Pattern: Leather Cap",
+        "Pattern: Leather Gloves",
+        "Pattern: Leather Gorget",
+        "Pattern: Leather Leggings",
+        "Pattern: Leather Mask",
+        "Pattern: Leather Pouch",
+        "Pattern: Leather Saddle",
+        "Pattern: Leather Satchel",
+        "Pattern: Leather Shoulderpads",
+        "Pattern: Leather Tunic",
+        "Pattern: Leather Vest",
+        "Pattern: Linen Backpack",
+        "Pattern: Padded Leather Belt",
+        "Pattern: Padded Leather Boots",
+        "Pattern: Padded Leather Bracelet",
+        "Pattern: Padded Leather Cap",
+        "Pattern: Padded Leather Gloves",
+        "Pattern: Padded Leather Gorget",
+        "Pattern: Padded Leather Leggings",
+        "Pattern: Padded Leather Mask",
+        "Pattern: Padded Leather Pouch",
+        "Pattern: Padded Leather Saddle",
+        "Pattern: Padded Leather Satchel",
+        "Pattern: Padded Leather Shoulderpads",
+        "Pattern: Padded Leather Tunic",
+        "Pattern: Padded Leather Vest",
+        "Pattern: Rawhide Backpack",
+        "Pattern: Rawhide Belt",
+        "Pattern: Rawhide Boots",
+        "Pattern: Rawhide Bracelet",
+        "Pattern: Rawhide Cap",
+        "Pattern: Rawhide Gloves",
+        "Pattern: Rawhide Gorget",
+        "Pattern: Rawhide Mask",
+        "Pattern: Rawhide Pouch",
+        "Pattern: Rawhide Saddle",
+        "Pattern: Rawhide Saddlebag",
+        "Pattern: Rawhide Satchel",
+        "Pattern: Rawhide Shoulderpads",
+        "Pattern: Rawhide Tunic",
+        "Pattern: Rawhide Vest",
+        "Pattern: Thin Leather"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "Tannery, next to Leatherworker Haiat",
+      "race": "Human",
+      "desc": "Sells Leatherworking patterns."
+    },
+    {
+      "name": "Leatherworker Vex",
+      "sells": [
+        "Leatherworking Kit"
+      ],
+      "buys": [
+        "Tattered Rawhide",
+        "Rawhide Scraps"
+      ],
+      "zone": "Ail'Vorith",
+      "location": "Foreign Trader's Market",
+      "race": "Deep Elf",
+      "desc": "Leatherworker, gives Newbie Armor quest"
     },
     {
       "name": "Leatherworking Supplies",
@@ -960,9 +2094,28 @@
       "desc": "Leatherworking Supplies Merchant"
     },
     {
-      "name": "Maheed the Butcher",
-      "sells": [],
+      "name": "Lloyd Matthias",
+      "sells": [
+        "Calafreyan Sap",
+        "Elven Wine",
+        "Langsdorf Pale Ale",
+        "Water Flask",
+        "Weak Beer"
+      ],
+      "buys": [],
+      "zone": "Keeper's Bight",
+      "location": "Treehouse",
+      "race": "Human",
+      "desc": "Merchant"
+    },
+    {
+      "name": "Mafeed the Butcher",
+      "sells": [
+        "Raw Beef",
+        "Raw Mutton"
+      ],
       "buys": [
+        "Fish",
         "Monster Parts"
       ],
       "zone": "Night Harbor",
@@ -971,13 +2124,24 @@
       "desc": "Butcher Merchant for Cooking"
     },
     {
+      "name": "Marcus Aden",
+      "sells": [
+        "Scrivener's Satchel"
+      ],
+      "buys": [],
+      "zone": "Fallen Watch",
+      "location": "To the left of the zone in",
+      "race": "Human",
+      "desc": "Merchant"
+    },
+    {
       "name": "Mason Steinn",
       "sells": [
         "Hammer and Chisel"
       ],
       "buys": [],
       "zone": "Night Harbor",
-      "location": "The Changing of the Guard",
+      "location": "Inside the temple against the cliff between Sojourner's Camp and the Tannery.",
       "race": "Dwarf",
       "desc": "Mason"
     },
@@ -998,6 +2162,55 @@
       "zone": "Night Harbor",
       "location": "North gate, third door on the right when heading to the Mage Tower",
       "race": "Human",
+      "desc": null
+    },
+    {
+      "name": "Melxura Ithvayen",
+      "sells": [],
+      "buys": [
+        "unknown"
+      ],
+      "zone": "Ail'Vorith",
+      "location": "Inn",
+      "race": "Deep Elf",
+      "desc": "Entering city gates from Foreign Quarters, hard right, take elevated path along the city wall to the third (last building on path) past Inquisitor House and the City Bank."
+    },
+    {
+      "name": "Melzorra",
+      "sells": [
+        "Backpack",
+        "Pouch",
+        "Satchel",
+        "Small Field Pack",
+        "Small Trader's Pack",
+        "Trader's Backpack",
+        "Trader's Pouch",
+        "Trader's Satchel"
+      ],
+      "buys": [
+        "Bags",
+        "Bat Fur",
+        "Leatherworking Mats",
+        "Large Bat Fur",
+        "Wererat Pelt"
+      ],
+      "zone": "Ail'Vorith",
+      "location": "Foreign Quarter's Courtyard",
+      "race": "Deep Elf",
+      "desc": "Vendor"
+    },
+    {
+      "name": "Minel Ublast",
+      "sells": [
+        "Leatherworking Kit"
+      ],
+      "buys": [
+        "Tattered Rawhide Armor",
+        "Rawhide Scarps"
+      ],
+      "zone": "Ail'Vorith",
+      "location": "By the inquisitor guards in the main city, up ramp on right",
+      "race": "Deep Elf",
       "desc": null
     },
     {
@@ -1023,17 +2236,89 @@
       "desc": null
     },
     {
+      "name": "Munk",
+      "sells": [
+        "Munk's Meat",
+        "Raw Beef",
+        "Raw Mutton"
+      ],
+      "buys": [
+        "Fish",
+        "Monster Parts"
+      ],
+      "zone": "Underdocks",
+      "location": null,
+      "race": "Ogre",
+      "desc": "Butcher Merchant for Cooking"
+    },
+    {
       "name": "Nerida Thinblade",
       "sells": [
         "Black Feather Whiskey",
-        "Rusty Dagger",
-        "Twilight Bay Rum",
         "Water Flask",
         "Weak Beer"
       ],
       "buys": [],
       "zone": "Night Harbor",
-      "location": "The Spirit Tap",
+      "location": "The Spirit Tap (in the Black Feather Bazaar)",
+      "race": "Human",
+      "desc": "Bartender"
+    },
+    {
+      "name": "Nibs Mudknuckle",
+      "sells": [
+        "Deep Gnome Guise",
+        "Recipe: Charred Mudfish",
+        "Recipe: Crude Prison Shiv",
+        "Recipe: Shale Hilt"
+      ],
+      "buys": [],
+      "zone": "Blind Midden",
+      "location": null,
+      "race": "Deep Gnome",
+      "desc": "Merchant and recipe vendor."
+    },
+    {
+      "name": "Nyssara Mesmerin",
+      "sells": [],
+      "buys": [
+        "unknown"
+      ],
+      "zone": "Underdocks",
+      "location": "Casters Guild",
+      "race": "Human",
+      "desc": null
+    },
+    {
+      "name": "Nyxia Ak'kin",
+      "sells": [
+        "Ration",
+        "Water Flask"
+      ],
+      "buys": [
+        "Drinks",
+        "Deep Beetle Eye (79c)",
+        "Food"
+      ],
+      "zone": "Ail'Vorith",
+      "location": "Foreign Quarter Supper Hall",
+      "race": "Deep Elf",
+      "desc": "Bartender and merchant in the Foreign Quarter Supper Hall."
+    },
+    {
+      "name": "Otto Roth",
+      "sells": [
+        "Calafreyan Sap",
+        "Elven Wine",
+        "Langsdorf Pale Ale",
+        "Water Flask",
+        "Weak Beer"
+      ],
+      "buys": [
+        "Water Flask"
+      ],
+      "zone": "Keeper's Bight",
+      "location": "The Wheelhouse Tavern",
       "race": "Human",
       "desc": "Bartender"
     },
@@ -1071,7 +2356,7 @@
       ],
       "buys": [],
       "zone": "Night Harbor",
-      "location": "Glimmermoon Hall",
+      "location": "Glimmermoon Hall (bard guild), in a room next to Jalwa Noor",
       "race": "Human",
       "desc": "Instrument Merchant"
     },
@@ -1086,6 +2371,39 @@
       "location": "Docks",
       "race": "Human",
       "desc": "Dye Merchant, Only around during the day."
+    },
+    {
+      "name": "Rogue Supply Officer",
+      "sells": [],
+      "buys": [
+        "unknown"
+      ],
+      "zone": "Ail'Vorith",
+      "location": "First room in the arched vestibule of Enchanter House",
+      "race": "Deep Elf",
+      "desc": "Take the right side elevated path from the archway leading to the boat dock. Opposite the city bank.First building on the right exiting the tunnel."
+    },
+    {
+      "name": "Rolan Talmula",
+      "sells": [
+        "Spellbook"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "Found around the entrance of the druid guild in Saltbreeze Park",
+      "race": "Human",
+      "desc": "Druid guildmaster You say, \"Hail, Rolan Talmula.\" Rolan Talmula straightens up and turns toward you. Rolan Talmula says, \"Welcome to the Circle of Scarce Rains. I am Rolan Talmula, master and spellwriter of the guild. Please, browse my scrolls."
+    },
+    {
+      "name": "Ruzzuna",
+      "sells": [],
+      "buys": [
+        "Cloth Armor"
+      ],
+      "zone": "Ail'Vorith",
+      "location": "Foreign Trader's Market",
+      "race": "Deep Elf",
+      "desc": "Cloth Merchant"
     },
     {
       "name": "Sproggets Bedsprings",
@@ -1119,6 +2437,243 @@
       "desc": "Sproggets Bedsprings buys and sells adventuring supplies. You say, \"Hail, Sproggets Bedsprings.\" Sproggets Bedsprings says, \"Heyo! Looking to get into some adventuring? Take a look at my wares.\""
     },
     {
+      "name": "Stonecutter Selin",
+      "sells": [
+        "Hammer and Chisel"
+      ],
+      "buys": [
+        "Brittle Stone",
+        "Weighty Stone"
+      ],
+      "zone": "Night Harbor",
+      "location": "Inside the temple against the cliff between Sojourner's Camp and the Tannery.",
+      "race": "Human",
+      "desc": "Stone Cutting vendor"
+    },
+    {
+      "name": "Supplier Jul",
+      "sells": [
+        "Candle",
+        "Dispel Stone",
+        "Lantern",
+        "Lantern Fuel",
+        "Lock Pick",
+        "Lumberjack Axe",
+        "Parchment",
+        "Torch"
+      ],
+      "buys": [
+        "Tattered Cloth",
+        "Tattered Rawhide",
+        "Raw Meats",
+        "Gems",
+        "Food",
+        "Various"
+      ],
+      "zone": "Ail'Vorith",
+      "location": "Located in Foreign Quarter in first house on left.",
+      "race": "Deep Elf",
+      "desc": "General Goods"
+    },
+    {
+      "name": "Sybille Abegg",
+      "sells": [],
+      "buys": [
+        "fish, vegetables, and meats"
+      ],
+      "zone": "Keeper's Bight",
+      "location": "Village of Penshaw - Mossy Brook Inn",
+      "race": "Human",
+      "desc": null
+    },
+    {
+      "name": "Tailor Darya",
+      "sells": [
+        "Pattern: Cloth Backpack",
+        "Pattern: Cloth Pouch",
+        "Pattern: Cloth Satchel",
+        "Pattern: Cotton Backpack",
+        "Pattern: Cotton Pouch",
+        "Pattern: Cotton Satchel",
+        "Pattern: Enchanted Cloth Cap",
+        "Pattern: Enchanted Cloth Pants",
+        "Pattern: Enchanted Cloth Tunic",
+        "Pattern: Enchanted Cotton Cap",
+        "Pattern: Enchanted Cotton Pants",
+        "Pattern: Enchanted Cotton Tunic",
+        "Pattern: Enchanted Linen Cap",
+        "Pattern: Enchanted Linen Pants",
+        "Pattern: Enchanted Linen Tunic",
+        "Pattern: Enchanted Wool Cap",
+        "Pattern: Enchanted Wool Pants",
+        "Pattern: Enchanted Wool Tunic",
+        "Pattern: Fine Cloth Belt",
+        "Pattern: Fine Cloth Boots",
+        "Pattern: Fine Cloth Bracer",
+        "Pattern: Fine Cloth Cap",
+        "Pattern: Fine Cloth Cape",
+        "Pattern: Fine Cloth Gloves",
+        "Pattern: Fine Cloth Gorget",
+        "Pattern: Fine Cloth Mantle",
+        "Pattern: Fine Cloth Pants",
+        "Pattern: Fine Cloth Robe",
+        "Pattern: Fine Cloth Shirt",
+        "Pattern: Fine Cloth Tunic",
+        "Pattern: Fine Cloth Veil",
+        "Pattern: Fine Cotton Belt",
+        "Pattern: Fine Cotton Boots",
+        "Pattern: Fine Cotton Bracer",
+        "Pattern: Fine Cotton Cap",
+        "Pattern: Fine Cotton Cape",
+        "Pattern: Fine Cotton Gloves",
+        "Pattern: Fine Cotton Gorget",
+        "Pattern: Fine Cotton Mantle",
+        "Pattern: Fine Cotton Pants",
+        "Pattern: Fine Cotton Robe",
+        "Pattern: Fine Cotton Shirt",
+        "Pattern: Fine Cotton Tunic",
+        "Pattern: Fine Cotton Veil",
+        "Pattern: Fine Linen Belt",
+        "Pattern: Fine Linen Boots",
+        "Pattern: Fine Linen Bracer",
+        "Pattern: Fine Linen Cap",
+        "Pattern: Fine Linen Cape",
+        "Pattern: Fine Linen Gloves",
+        "Pattern: Fine Linen Gorget",
+        "Pattern: Fine Linen Mantle",
+        "Pattern: Fine Linen Pants",
+        "Pattern: Fine Linen Robe",
+        "Pattern: Fine Linen Shirt",
+        "Pattern: Fine Linen Tunic",
+        "Pattern: Fine Linen Veil",
+        "Pattern: Fine Wool Belt",
+        "Pattern: Fine Wool Boots",
+        "Pattern: Fine Wool Bracer",
+        "Pattern: Fine Wool Cap",
+        "Pattern: Fine Wool Cape",
+        "Pattern: Fine Wool Gloves",
+        "Pattern: Fine Wool Gorget",
+        "Pattern: Fine Wool Mantle",
+        "Pattern: Fine Wool Pants",
+        "Pattern: Fine Wool Robe",
+        "Pattern: Fine Wool Shirt",
+        "Pattern: Fine Wool Tunic",
+        "Pattern: Fine Wool Veil",
+        "Pattern: Linen Backpack",
+        "Pattern: Linen Pouch",
+        "Pattern: Linen Satchel",
+        "Pattern: Wool Backpack",
+        "Pattern: Wool Pouch",
+        "Pattern: Wool Satchel"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "Night Market, next to Noura the Tailor",
+      "race": "Human",
+      "desc": "Sells Tailoring patterns."
+    },
+    {
+      "name": "Tal Drezzorith",
+      "sells": [],
+      "buys": [
+        "None"
+      ],
+      "zone": "Ail'Vorith",
+      "location": "located in the building right next to Alarys Drezzorth, directly across from the cleric/paladin guild",
+      "race": "Deep Elf",
+      "desc": "House Drezzorith benefactor"
+    },
+    {
+      "name": "Talnach Wilenner",
+      "sells": [
+        "Spellbook"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "Seekers of the Lost Eye (shaman / beastmaster guild)",
+      "race": "Human",
+      "desc": null
+    },
+    {
+      "name": "Tessa Kentwell",
+      "sells": [],
+      "buys": [
+        "Pelts and Hides",
+        "Threads"
+      ],
+      "zone": "Keeper's Bight",
+      "location": "In the tannery near the Red Mantle building.",
+      "race": "Human",
+      "desc": null
+    },
+    {
+      "name": "Tinkerer Vilsis",
+      "sells": [
+        "Schematic: Chompers",
+        "Schematic: Copper Spring",
+        "Schematic: Miniature Bell",
+        "Schematic: Pressure Plate",
+        "Tinkering Toolkit"
+      ],
+      "buys": [],
+      "zone": "Night Harbor",
+      "location": "Inside the temple against the cliff between Sojourner's Camp and the Tannery.",
+      "race": "Human",
+      "desc": "Tinkering vendor"
+    },
+    {
+      "name": "Toilmaster Verith",
+      "sells": [],
+      "buys": [
+        "None"
+      ],
+      "zone": "Ail'Vorith",
+      "location": "Left of bridge near Foreign Quarters",
+      "race": "Deep Elf",
+      "desc": "Newbie Quest Guide"
+    },
+    {
+      "name": "Tolrad Oarsen",
+      "sells": [
+        "Fishing Pole",
+        "Grub"
+      ],
+      "buys": [
+        "Grub",
+        "Wood"
+      ],
+      "zone": "Keeper's Bight",
+      "location": "In the fishing camp at the end of the docks of Penshaw.",
+      "race": "Human",
+      "desc": "Fishing vendor"
+    },
+    {
+      "name": "Veldara Stillflask",
+      "sells": [
+        "Annealed Vial",
+        "Bone Ash",
+        "Crude Fish Oil",
+        "Crude Flask",
+        "Crude Wood Finish",
+        "Crystallized Vial",
+        "Ghost Poppy Powder",
+        "Glass Vial",
+        "Imbued Flask",
+        "Leaded Flask",
+        "Makeshift Vial",
+        "Minor Serum of Strength",
+        "Mortar and Pestle",
+        "Potion Bandolier",
+        "Runed Flask",
+        "Tempered Vial"
+      ],
+      "buys": [],
+      "zone": "Underdocks",
+      "location": "Alchemy Supplies shop in Western District",
+      "race": "Human",
+      "desc": null
+    },
+    {
       "name": "Weaponsmith Sielah Zefir",
       "sells": [
         "Rusty Dagger",
@@ -1131,7 +2686,42 @@
       "zone": "Night Harbor",
       "location": "Blackfeather Bazaar",
       "race": "Human",
-      "desc": "Weapon Merchant"
+      "desc": "Weapon Merchant You say, \"Hail, Weaponsmith Sielah Zefir.\" Weaponsmith Sielah Zefir says, \"Ah, a customer... or just a curious wanderer?\" Weaponsmith Sielah Zefir leans in to speak candidly. Weaponsmith Sielah Zefir says, \"Listen, I'm not here for idle chit-chat. If you've got coin, we can make a deal. If not, best move along before there's trouble. The bazaar is not as safe as it seems.\" Weaponsmith Sielah Zefir says, \"If you're looking for something in particular, name it and I'll see if I have it in my private stock.\""
+    },
+    {
+      "name": "Xeldrin Waymark",
+      "sells": [
+        "Ranger"
+      ],
+      "buys": [
+        "unknown"
+      ],
+      "zone": "Underdocks",
+      "location": null,
+      "race": "Human",
+      "desc": "Ranger spell and ability scroll vendor."
+    },
+    {
+      "name": "Xilonen Velgarrith",
+      "sells": [],
+      "buys": [
+        "unknown"
+      ],
+      "zone": "Ail'Vorith",
+      "location": "Upstairs in the martial trainer building in the Foreign Quarter.",
+      "race": "Deep Elf",
+      "desc": "Velgarrith Recruiter."
+    },
+    {
+      "name": "Zalex Mortaine",
+      "sells": [],
+      "buys": [
+        "unknown"
+      ],
+      "zone": "Underdocks",
+      "location": "Necromancer guild, third floor library",
+      "race": "Human",
+      "desc": null
     }
   ]
 }

@@ -225,7 +225,13 @@ function parseCategories(wikitext) {
 const TRADESKILLS = new Set([
   'Alchemy', 'Baking', 'Blacksmithing', 'Brewing', 'Cooking', 'Enchanting', 'Fletching', 'Jewelcrafting',
   'Leatherworking', 'Pottery', 'Smelting', 'Survival', 'Tailoring', 'Tanning', 'Woodworking',
+  // Crafting skills the wiki has added since (its Tradeskills list); Carpentry makes
+  // the bank crates, panels and frames.
+  'Carpentry', 'Masonry', 'Stone Cutting', 'Spinning', 'Tinkering', 'Poison Making', 'Spellcrafting',
 ]);
+// A recipe's skill link is written either [[Carpentry]] or [[Skill Carpentry|Carpentry]];
+// both mean the same skill.
+const skillOfLink = (link) => String(link).split('|').pop().replace(/^Skill\s+/i, '').trim();
 // Gathering skills + crafting skills — used to filter skill/tool links out of
 // drop sources and to recognise "Harvested by [[Skill]]".
 const GATHER_SKILLS = new Set(['Herbalism', 'Mining', 'Lumberjacking', 'Foraging', 'Fishing', 'Skinning']);
@@ -258,7 +264,34 @@ const allItemLinks = (s) => [...s.matchAll(/(?:(\d+)\s*x?\s*)?\[\[([^\]]+)\]\]/g
 
 // Reusable tools appear in Components cells but aren't consumed per craft (Smithing
 // Pliers/Hammer, Hammer & Chisel) — excluded so they don't inflate a recipe's cost.
-const TOOLS = new Set(['Smithing Pliers', 'Smithing Hammer', 'Hammer and Chisel', 'Rivet Cutters']);
+const TOOLS = new Set(['Smithing Pliers', 'Smithing Hammer', 'Hammer and Chisel', 'Rivet Cutters', 'Cleaver']);
+
+// A data cell can open with its own attributes — `style="…" | 25` — as the restyled
+// (Oct 2026) tables do; keep only the value. Links inside the value ([[A|B]]) are left
+// alone, which is why this doesn't just cut at the last "|".
+const cellValue = (c) => c.replace(/^\s*\|?\s*(?:(?:style|align|class|colspan|rowspan|width|scope|data-sort-value)\s*=\s*("[^"]*"|\S+)\s*)+\|(?!\|)/i, '').replace(/^\s*\|\s*/, '').trim();
+
+// One result can have a recipe both in its skill page's table and on its own item page,
+// and the two sometimes disagree. The skill-page TABLE wins: after the Oct 2026 wiki
+// reorganisation the tables are the maintained copy — they match recipes confirmed in
+// game (Copper Maul = 9 Copper Bar) where item pages still show retired inputs (Weak
+// Flux). An item page adds a recipe only when no table has one, and lends its trivial
+// to a table recipe that lacks one. Returns the disagreements so a run can report them.
+function mergePageRecipes(recipes, pageRecipes) {
+  const byResult = new Map();
+  recipes.forEach((r) => { const k = r.result.item.toLowerCase(); (byResult.get(k) || byResult.set(k, []).get(k)).push(r); });
+  const sig = (r) => r.result.qty + '|' + r.components.map((c) => c.qty + ' ' + c.item).sort().join(', ');
+  const say = (r) => (r.result.qty > 1 ? 'makes ' + r.result.qty + ' from ' : '') + r.components.map((c) => c.qty + ' ' + c.item).join(', ');
+  const differ = [];
+  let added = 0, trivialsFilled = 0;
+  for (const r of pageRecipes) {
+    const k = r.result.item.toLowerCase(), table = byResult.get(k);
+    if (!table) { byResult.set(k, [r]); recipes.push(r); added++; continue; }
+    if (!table.some((t) => sig(t) === sig(r))) differ.push(`${r.result.item}: table ${table.map(say).join(' OR ')} · item page ${say(r)}`);
+    if (r.trivial != null) for (const t of table) if (t.trivial == null) { t.trivial = r.trivial; if (r.trivialUnconfirmed) t.trivialUnconfirmed = true; trivialsFilled++; }
+  }
+  return { added, trivialsFilled, differ };
+}
 
 // Parse ONE wiki table into recipes, reading the column HEADERS so it adapts to each
 // skill's layout (Result/Product/Name for the output, Components/Ingredients for inputs).
@@ -276,15 +309,22 @@ function parseRecipeTable(table, tradeskill) {
   const resultCol = find(/result/i, /product/i, /yield/i, /^name/i, /^item/i);
   const compCol = find(/component/i, /ingredient/i);
   const trivCol = find(/trivial/i);
+  const moldCol = find(/mold/i); // Smelting lists the (consumed) ingot mold in its own column
   if (resultCol < 0 || compCol < 0) return [];
 
   const out = [];
   for (const r of rows) {
     if (/(^|\n)\s*!/.test(r) || !/\[\[/.test(r)) continue; // header / empty
-    let cells = r.split('||').map((c) => c.replace(/^\s*\|\s*/, '').trim());
+    let cells = r.split('||').map(cellValue);
     if (cells[0] === '') cells = cells.slice(1);
     const res = firstItemLink(cells[resultCol] || '');
-    const components = allItemLinks(cells[compCol] || '').filter((c) => !TOOLS.has(c.item));
+    // "5x Tier 1 Fish (e.g. [[Whitefish]], [[Basa]], [[Grouper]])" = 5 of ANY one of them,
+    // not one of each — keep the quantity against the first example ("e.g." is optional:
+    // the Tier 2 row omits it).
+    const compCell = (cells[compCol] || '').replace(/(\d+)\s*x\s*[^,\[\]()]*\(\s*(?:e\.?g\.?,?\s*)?(\[\[[^\]]+\]\])[^)]*\)/gi, '$1x $2');
+    const components = allItemLinks(compCell).filter((c) => !TOOLS.has(c.item));
+    const mold = moldCol >= 0 ? firstItemLink(cells[moldCol] || '') : null;
+    if (mold) components.push({ qty: 1, item: mold.item });
     if (!res || !components.length || /example/i.test(res.item)) continue;
     if (/scraps$/i.test(res.item)) continue; // breakdown byproduct (Hammer & Chisel master list), not a craft recipe
     out.push({ tradeskill, result: res, components, trivial: trivCol >= 0 ? (parseInt(cells[trivCol], 10) || null) : null });
@@ -297,7 +337,8 @@ function parseRecipeTable(table, tradeskill) {
 // (components, sharpening stones, mount gear, shields, and weapons + armor by metal
 // tier); the old code stopped at the first table, dropping everything after "Components".
 function parseRecipes(wikitext, tradeskill) {
-  const h = wikitext.search(/==\s*Recipes\s*==/i);
+  // "== Recipes ==", or since the wiki's Oct 2026 reorganisation "== Blacksmithing Recipes =="
+  const h = wikitext.search(/==\s*(?:[A-Za-z' ]+\s)?Recipes\s*==/i);
   if (h < 0) return [];
   const bodyStart = wikitext.indexOf('\n', h) + 1;
   const rest = wikitext.slice(bodyStart);
@@ -307,6 +348,13 @@ function parseRecipes(wikitext, tradeskill) {
   const tableRe = /\{\|[\s\S]*?\n\|\}/g;
   let tm;
   while ((tm = tableRe.exec(section))) out.push(...parseRecipeTable(tm[0], tradeskill));
+  // Cooking keeps its prep recipes (cooked meats, fish bones, stock) in a collapsible
+  // "Preparation Recipes" box ABOVE the Recipes heading.
+  const prep = wikitext.slice(0, h).search(/PREPARATION RECIPES/i);
+  if (prep >= 0) {
+    const pre = wikitext.slice(prep, h);
+    while ((tm = tableRe.exec(pre))) out.push(...parseRecipeTable(tm[0], tradeskill));
+  }
   return out;
 }
 
@@ -314,8 +362,9 @@ function parseRecipes(wikitext, tradeskill) {
 // own page, not only in the tradeskill Recipes table — so these were being missed).
 const itemRecipes = [];
 
-// Parse an item page's "playercrafted" block into a recipe. The page's trivial is a
-// "##" placeholder, so trivial is left null — our reverse-engineered observations
+// Parse an item page's "playercrafted" block into a recipe. The trivial is taken when
+// the page gives a number ("Trivial: 25", or "45?" = unconfirmed, flagged); "??", "X"
+// and "##" placeholders leave it null, and our reverse-engineered observations
 // (recipe-observations.json) fill those in. Crafting stations (Anvil/Forge/…) and the
 // yield item itself are skipped; only "xN [[Item]]" ingredients are kept.
 function parsePlayercrafted(wikitext, itemName) {
@@ -324,10 +373,16 @@ function parsePlayercrafted(wikitext, itemName) {
   let pc = templateParams(m[1]).playercrafted;
   if (!pc || !/Yield:/i.test(pc)) return null;
   pc = pc.split(/\n(?=\*\s*\[\[[^\]]+\]\]\s*\(\s*Trivial)/i)[0]; // first recipe block only
+  // …and within it, the first yield only: a block can list an alternative input set
+  // under a second "Yield:" line (e.g. a bar from ore OR from scraps).
+  const firstY = pc.search(/Yield:/i);
+  const secondY = pc.slice(firstY + 6).search(/Yield:/i);
+  if (secondY >= 0) pc = pc.slice(0, pc.lastIndexOf('\n', firstY + 6 + secondY));
   if (/\bx\s*\?\s*\[\[/.test(pc)) return null; // an ingredient qty is unknown on the wiki ("x?") — skip rather than publish a partial recipe
-  const tsM = pc.match(/\[\[([^\]|]+?)\]\]\s*\(\s*Trivial/i);
-  const tradeskill = tsM && tsM[1].trim();
+  const tsM = pc.match(/\[\[([^\]]+?)\]\]\s*\(\s*Trivial\s*:?\s*([^)]*)\)/i);
+  const tradeskill = tsM && skillOfLink(tsM[1]);
   if (!tradeskill || !TRADESKILLS.has(tradeskill)) return null;
+  const tv = tsM[2].trim().match(/^(\d+)\s*(\?)?$/);
   const yQty = parseInt((pc.match(/Yield:[\s\S]*?\bx\s*(\d+)/i) || [])[1], 10) || 1;
   const comps = [];
   const re = /\bx\s*(\d+)\s*\[\[([^\]|]+?)\]\]/gi;
@@ -335,11 +390,13 @@ function parsePlayercrafted(wikitext, itemName) {
   while ((c = re.exec(pc))) {
     const item = c[2].trim();
     if (item === itemName) continue; // the yield, not an ingredient
+    if (TOOLS.has(item)) continue;   // reusable tool (hammer, pliers), not used up per craft
     if (/^(Anvil|Forge|Oven|Loom|Kiln|Workbench|Stove|Campfire|Brewing Barrel|Spinning Wheel|Tanning Kit|Pottery Wheel)$/i.test(item)) continue;
     comps.push({ qty: parseInt(c[1], 10), item });
   }
   if (!comps.length) return null;
-  return { tradeskill, result: { qty: yQty, item: itemName }, components: comps, trivial: null, fromItemPage: true };
+  return Object.assign({ tradeskill, result: { qty: yQty, item: itemName }, components: comps, trivial: tv ? +tv[1] : null, fromItemPage: true },
+    tv && tv[2] ? { trivialUnconfirmed: true } : {});
 }
 
 // Fetch + parse ItemBox/sources for a list of item names into `into`
@@ -474,15 +531,13 @@ async function run() {
     !SKILLS.has(nm) && !/^(a|an|the)\s/i.test(nm) && !/^File:/i.test(nm)); // skip NPCs/skills/images
   if (toFetch.length) await enrichItems(toFetch, items, 'extra items', true);
 
-  // ---- Merge in recipes found on item pages (not in the tradeskill tables) ----
-  // Tradeskill-table recipes win on conflict (they may carry a real trivial).
-  const haveResult = new Set(recipes.map((r) => r.result.item));
-  let itemPageAdded = 0;
-  for (const r of itemRecipes) {
-    if (haveResult.has(r.result.item)) continue;
-    recipes.push(r); haveResult.add(r.result.item); itemPageAdded++;
+  // ---- Merge in recipes found on item pages (see mergePageRecipes for which wins) ----
+  const merged = mergePageRecipes(recipes, itemRecipes);
+  console.log(`  + ${merged.added} recipes only on item pages; ${merged.trivialsFilled} table trivials filled from item pages.`);
+  if (merged.differ.length) {
+    console.log(`  !! ${merged.differ.length} recipe(s) where the skill-page table and the item page disagree (table used):`);
+    merged.differ.forEach((d) => console.log('     ' + d));
   }
-  console.log(`  + ${itemPageAdded} recipes from item pages.`);
 
   // ---- Conflict check: our VERIFIED screenshot trivials vs the (unverified) wiki ----
   // recipe-observations.json is ground truth (read in-game); the wiki is a strong lead.
@@ -561,7 +616,7 @@ if (require.main === module) run();
 // Exported so a targeted update can reuse the wiki fetch + recipe parsing without a
 // full re-scrape (e.g. scripts that pull just the item-page recipes the tables miss).
 module.exports = {
-  parsePlayercrafted, parseSources, templateParams, fetchWikitext, TRADESKILLS,
+  parsePlayercrafted, parseRecipes, mergePageRecipes, parseSources, templateParams, fetchWikitext, TRADESKILLS,
   // Also used by enrich-trades.js to enrich trade-only items without a full re-scrape.
   parseItemBox, parseSoldBy, parseCategories, parseTradeskills, parseHarvestedBy,
   fetchImageUrls, titleCaseName,
