@@ -145,26 +145,36 @@ WantedBy=multi-user.target
 EOF
 ```
 
-Create the publish service (commits + pushes every 15 min):
+Create the publish service — a one-shot (build auctions.json, commit, push) fired by a
+timer every 6 hours (00:00/06:00/12:00/18:00 Pacific; the site's cache key follows the
+same blocks, see `aucCacheV` in mnmdb/app.js):
 
 ```bash
 cat > /etc/systemd/system/mnm-publish.service <<'EOF'
 [Unit]
-Description=MnM auction publish (state -> auctions.json -> git push)
+Description=MnM auction publish (one-shot — fired by mnm-publish.timer)
 After=network-online.target
 Wants=network-online.target
 
 [Service]
+Type=oneshot
 WorkingDirectory=/opt/mnm-tools
 ExecStart=/usr/bin/node tracker/auto-publish-auctions.js
 Environment=MNM_DATA=/opt/mnm-tools/auction-data
-Environment=MNM_HOURS=100000
-Environment=MNM_PUBLISH_INTERVAL=900
-Restart=always
-RestartSec=30
+Environment=MNM_PUBLISH_ONCE=1
+EOF
+
+cat > /etc/systemd/system/mnm-publish.timer <<'EOF'
+[Unit]
+Description=Publish MnM auction data every 6 hours (00/06/12/18 America/Los_Angeles)
+
+[Timer]
+OnCalendar=*-*-* 00,06,12,18:00:00 America/Los_Angeles
+Persistent=true
+AccuracySec=1min
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=timers.target
 EOF
 ```
 
@@ -172,7 +182,7 @@ Start and enable both:
 
 ```bash
 systemctl daemon-reload
-systemctl enable --now mnm-capture mnm-publish
+systemctl enable --now mnm-capture mnm-publish.timer
 ```
 
 ---
@@ -194,17 +204,19 @@ race it. Disable it (keep the site-deploy workflow — it still runs on each pus
 ```bash
 # live capture log (should show a cycle every ~2 min)
 journalctl -u mnm-capture -f
-# publish log (should push every ~15 min)
+# publish log (one run every 6 hours) and when the next one fires
 journalctl -u mnm-publish -f
+systemctl list-timers mnm-publish
 ```
 
 You should see the site's `auctions.json` getting new "Auto-publish auction
-prices" commits on GitHub every ~15 min, and mnm-db.com updating automatically.
+prices" commits on GitHub every 6 hours, and mnm-db.com updating automatically.
+Publish right now (outside the schedule): `systemctl start mnm-publish`.
 
 Handy later:
-- Update to the latest code: `cd /opt/mnm-tools && git pull && systemctl restart mnm-capture mnm-publish`
-- Stop everything: `systemctl disable --now mnm-capture mnm-publish`
-- Check status: `systemctl status mnm-capture mnm-publish`
+- Update to the latest code: `cd /opt/mnm-tools && git pull && systemctl restart mnm-capture`
+- Stop everything: `systemctl disable --now mnm-capture mnm-publish.timer`
+- Check status: `systemctl status mnm-capture mnm-publish.timer`
 
 ---
 

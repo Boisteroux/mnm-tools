@@ -124,9 +124,10 @@ const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 // Escape text, then turn any bare http(s) URLs in it into clickable links.
 const linkify = (s) => esc(s).replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
-// auctions.json now publishes once a day (midnight Pacific), so cache-bust by the
-// Pacific date instead of Date.now() — the URL is stable all day (browser caches it)
-// and only changes when a fresh snapshot lands.
+// auctions.json publishes every 6 hours (00:00/06:00/12:00/18:00 Pacific), so cache-bust
+// by the Pacific date + 6-hour block instead of Date.now() — the URL is stable within a
+// block (browser caches it) and only changes when a fresh snapshot lands. Blocks start
+// 15 min after each publish so the Pages deploy has landed before the URL changes.
 // Early Access (2026-10-09) replaced beta's PvP/PvE pair with a new set of servers. The
 // LiveMNM stream shows one of them — Trem, the busiest — so that is the only live market.
 // Beta prices survive as a labelled reference (auctions-beta.json) while Trem's own
@@ -136,7 +137,13 @@ const AUC_SERVER = 'Trem';
 const BETA_REF_UNTIL = Date.parse('2026-11-15T00:00:00Z');
 const BETA_REF_MIN_LIVE = 5;
 let BETA = {}; // item name (lowercased) -> { name, PvP: { n, low, high, mid, avg }, PvE: {…} }
-const aucCacheV = () => { try { return new Date().toLocaleDateString('en-CA', { timeZone: 'America/Los_Angeles' }); } catch { return new Date().toISOString().slice(0, 10); } };
+const aucCacheV = () => {
+  const t = new Date(Date.now() - 15 * 60000);
+  try {
+    const hour = +new Intl.DateTimeFormat('en-US', { timeZone: 'America/Los_Angeles', hour: 'numeric', hourCycle: 'h23' }).format(t);
+    return t.toLocaleDateString('en-CA', { timeZone: 'America/Los_Angeles' }) + '-' + Math.floor(hour / 6);
+  } catch { return t.toISOString().slice(0, 13); }
+};
 const slugify = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
 // Cache-buster for curated map images: keyed to the maps' publish time, so browsers
 // re-fetch a map only when it's actually republished (same filename, changed contents).
@@ -2951,7 +2958,7 @@ async function renderAuctions(find) {
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › auctions</div><h1>Auction House</h1>' +
     '<p class="sub">Player buy/sell auctions on the <b>' + AUC_SERVER + '</b> server, read from the <a href="https://www.twitch.tv/livemnm" target="_blank" rel="noopener">LiveMNM stream ↗</a>. ' +
-    'This page updates <b>once a day</b>, so listings can be up to a day old — watch the stream for live prices. Other servers will price differently. ' +
+    'This page updates <b>every 6 hours</b>, so listings can be a few hours old — watch the stream for live prices. Other servers will price differently. ' +
     '<span id="auc-meta"></span> Hover an item for its stats.</p>' +
     '<div class="auc-controls"><input id="auc-q" placeholder="Search item or seller…">' +
     '<select id="auc-sort"><option value="new">Newest</option><option value="price">Price (high→low)</option><option value="item">Item name</option></select>' +
@@ -3680,7 +3687,7 @@ function route() {
   if (h === 'bestiary') return renderBestiary();
   if (h === 'maps') return renderMapsList();
   // Auction House: a browsable list of the day's published listings (the feed is
-  // published once a day, not live — the page says so). Prices also sit on item pages.
+  // published every 6 hours, not live — the page says so). Prices also sit on item pages.
   if (h === 'auctions' || h.startsWith('auctions/')) return renderAuctions(h.slice(9));
   if (h === 'atlas') return renderAtlasWorld();
   if (h === 'advanced' || h === 'bis') return renderAdvanced();
