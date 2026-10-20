@@ -49,10 +49,29 @@ function trimOutliers(prices) {
   return prices.filter((p) => p >= q1 - 3 * iqr && p <= q3 + 3 * iqr);
 }
 
+// Gathered bulk materials (ore, wood, herbs…) trade per stack (see stacks.js), but beta
+// listings were normalized per unit with a bare price taken as one item's price. Re-read
+// them from the published fields the way publish-auctions.js now does: "stack" → the
+// price is a stack; 10+ items → the price covered that many; otherwise the stated price
+// is a stack. (The raw post text isn't kept in the published history.)
+const { bulkMaterials } = require('./stacks.js');
+let BULK = new Map();
+try {
+  const wikiItems = JSON.parse(fs.readFileSync(path.join(ROOT, 'mnmdb', 'wiki.json'), 'utf8')).items || {};
+  const nodes = [];
+  for (const f of ['data.json', 'data-ea.json']) { try { nodes.push(...(JSON.parse(fs.readFileSync(path.join(ROOT, 'mnmdb', f), 'utf8')).harvestNodes || [])); } catch {} }
+  BULK = bulkMaterials({ wikiItems, harvestNodes: nodes });
+} catch {}
+const bulkUnit = (l, stack) => {
+  const stackPrice = l.perStack ? l.price : (l.qty >= 10 ? l.price * stack / l.qty : l.price);
+  return Math.round(stackPrice / stack);
+};
+
 const byItem = {};
 for (const l of listings) {
   if (l.price == null || l.intent === 'buy') continue; // sell-side asks only, like tradeStats
-  const unit = l.unit != null ? l.unit : l.price;
+  const bulk = BULK.get(l.item.toLowerCase());
+  const unit = bulk ? bulkUnit(l, bulk.stack) : l.unit != null ? l.unit : l.price;
   if (!(unit > 0)) continue;
   const e = byItem[l.item.toLowerCase()] = byItem[l.item.toLowerCase()] || { name: l.item, markets: {} };
   (e.markets[l.server] = e.markets[l.server] || []).push(unit);

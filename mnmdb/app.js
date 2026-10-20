@@ -702,14 +702,14 @@ async function fillHomeMarket() {
   for (const l of A.listings) {
     if (l.price == null || l.intent === 'buy') continue;
     const m = pm[l.item] = pm[l.item] || { sellers: new Set(), prices: [] };
-    m.sellers.add(l.player); m.prices.push(l.unit != null ? l.unit : l.price);
+    m.sellers.add(l.player); m.prices.push(listingUnit(l));
   }
   // Lowest ask after the usual outlier fence, so one misread price can't be the headline.
   const busy = Object.entries(pm).map(([item, m]) => ({ item, n: m.sellers.size, low: Math.min.apply(null, trimOutliers(m.prices)) }))
     .sort((a, b) => b.n - a.n || a.item.localeCompare(b.item)).slice(0, 6);
   const busyRows = busy.length
     ? '<div class="card"><table><thead><tr><th>Item</th><th class="num">Sellers</th><th class="num">From</th></tr></thead><tbody>' +
-      busy.map((g) => '<tr><td>' + itemLink(g.item, g.item) + '</td><td class="num">' + g.n + '</td><td class="num coin">' + coin(g.low) + '</td></tr>').join('') +
+      busy.map((g) => { const st = stackSize(g.item); return '<tr><td>' + itemLink(g.item, g.item) + '</td><td class="num">' + g.n + '</td><td class="num coin">' + (st ? coin(g.low * st) + '<span class="muted">/stack</span>' : coin(g.low)) + '</td></tr>'; }).join('') +
       '</tbody></table></div>'
     : '<p class="sub">No priced listings yet.</p>';
   const reqs = (A.requests || []).slice(-10).reverse();
@@ -833,20 +833,25 @@ function renderItem(id) {
             '<div class="mkt-sub">' + mp.wts + ' selling · ' + mp.wtb + ' buying</div>'
           : '<div class="vval sample">—</div>') + '</div>';
     };
+    // Gathered bulk materials trade by the stack: show the stack price, with each underneath.
+    const stack = stackSize(it.name);
+    const val = (x) => !stack ? coin(x) : coin(x * stack) + '<span class="per">/stack</span><div class="mkt-sub">' + coin(x) + ' each</div>';
+    const span = (a, b) => !stack ? coin(a) + (b !== a ? '–' + coin(b) : '') : coin(a * stack) + (b !== a ? '–' + coin(b * stack) : '') + ' a stack';
+    const stackNote = stack ? '<div class="note">Gathered material — priced per <b>stack of ' + stack + '</b>, as players trade it (a bare “2s” means 2s a stack).</div>' : '';
     // One market's summary card (or a muted line when there's no priced data for it).
     const marketBox = (label, tv, server) => {
       if (tv && tv.n30) {
         return '<div class="mkt"><div class="mkt-h">' + label + '</div><div class="vendor-summary">' +
-          '<div class="vbox"><div class="vlbl">30-day high</div><div class="vval">' + coin(tv.high) + '</div></div>' +
-          '<div class="vbox"><div class="vlbl">30-day low</div><div class="vval">' + coin(tv.low) + '</div></div>' +
-          '<div class="vbox"><div class="vlbl">10-day avg</div><div class="vval">' + (tv.avg10 != null ? coin(tv.avg10) : '<span class="sample">no recent</span>') + '</div></div>' +
+          '<div class="vbox"><div class="vlbl">30-day high</div><div class="vval">' + val(tv.high) + '</div></div>' +
+          '<div class="vbox"><div class="vlbl">30-day low</div><div class="vval">' + val(tv.low) + '</div></div>' +
+          '<div class="vbox"><div class="vlbl">10-day avg</div><div class="vval">' + (tv.avg10 != null ? val(tv.avg10) : '<span class="sample">no recent</span>') + '</div></div>' +
           pressureBox(server) +
           '</div><div class="note">' + tv.n30 + ' sale' + (tv.n30 === 1 ? '' : 's') + ' in 30d' + (tv.n10 ? ' (' + tv.n10 + ' in 10d)' : '') +
           (tv.trimmed ? ' · ' + tv.trimmed + ' outlier' + (tv.trimmed === 1 ? '' : 's') + ' excluded' : '') + '</div></div>';
       }
       // No priced sales in the 30-day window — still show the market read if there's activity.
       const mp = marketPressure(it.name, server, 10);
-      const older = tv ? 'Last sold ' + coin(tv.allLow) + (tv.allHigh !== tv.allLow ? '–' + coin(tv.allHigh) : '') + ' (older than 30d)' : 'No sales seen yet';
+      const older = tv ? 'Last sold ' + span(tv.allLow, tv.allHigh) + ' (older than 30d)' : 'No sales seen yet';
       return '<div class="mkt"><div class="mkt-h">' + label + '</div>' +
         (mp ? '<div class="vendor-summary">' + pressureBox(server) + '</div>' : '') +
         '<div class="note sample">' + older + '</div></div>';
@@ -858,8 +863,8 @@ function renderItem(id) {
     // own handful of sales for this item (or at BETA_REF_UNTIL, whichever is first).
     const beta = BETA[it.name.toLowerCase()];
     const showBeta = beta && Date.now() < BETA_REF_UNTIL && !(live && live.n30 >= BETA_REF_MIN_LIVE);
-    const betaCell = (label, b) => !b ? '' : '<div class="vbox"><div class="vlbl">' + label + '</div><div class="vval">' + coin(b.mid) + '</div>' +
-      '<div class="mkt-sub">' + (b.low === b.high ? '' : coin(b.low) + '–' + coin(b.high) + ' · ') + b.n + ' sale' + (b.n === 1 ? '' : 's') + '</div></div>';
+    const betaCell = (label, b) => !b ? '' : '<div class="vbox"><div class="vlbl">' + label + '</div><div class="vval">' + val(b.mid) + '</div>' +
+      '<div class="mkt-sub">' + (b.low === b.high ? '' : span(b.low, b.high) + ' · ') + b.n + ' sale' + (b.n === 1 ? '' : 's') + '</div></div>';
     const betaBox = !showBeta ? '' : '<div class="mkt mkt-beta"><div class="mkt-h">Beta price <span class="tag warn">reference</span></div>' +
       '<div class="vendor-summary">' + betaCell('PvE · typical', beta.PvE) + betaCell('PvP · typical', beta.PvP) + '</div>' +
       '<div class="note sample">From closed-beta auctions (Jul–Oct 2026), before Early Access. The live economy is new, so treat this as a rough guide; it drops away once ' + AUC_SERVER + ' has enough sales of its own.</div></div>';
@@ -883,7 +888,7 @@ function renderItem(id) {
     let body;
     if (anyActivity || betaBox) {
       body = '<div class="mkt-cols">' + marketBox(liveLabel, live, AUC_SERVER) + betaBox + '</div>' +
-        postsTable +
+        postsTable + stackNote +
         '<div class="note">' + logged + ' <b>Market</b> compares people selling (WTS) vs buying (WTB) over 10 days — “Buyer’s ↓” means oversupply (price may be soft), “Seller’s ↑” means demand (price firm); * = strongly one-sided.</div>';
     } else {
       body = '<div class="note">No player auctions seen for this item yet. ' + logged + '</div>';
@@ -3044,19 +3049,24 @@ function aggregateItems(list) {
   for (const l of list) {
     const k = l.item.toLowerCase();
     let g = map.get(k);
-    if (!g) { g = { item: l.item, matched: l.matched, sellers: new Set(), buyers: new Set(), prices: [], sightings: 0 }; map.set(k, g); }
+    if (!g) { g = { item: l.item, matched: l.matched, stack: l.stack || null, sellers: new Set(), buyers: new Set(), prices: [], sightings: 0 }; map.set(k, g); }
     g.sightings += (l.count || 1); // total times this item was read — the "most seen" measure
     if (l.intent === 'buy') g.buyers.add(l.player);
-    else { g.sellers.add(l.player); if (l.price != null) g.prices.push(aucUnit(l)); } // per-unit, so ranges compare fairly
+    else { g.sellers.add(l.player); if (l.price != null) g.prices.push(listingUnit(l)); } // per-unit, so ranges compare fairly
   }
   return [...map.values()].map((g) => ({
-    item: g.item, matched: g.matched, sellers: g.sellers.size, buyers: g.buyers.size, sightings: g.sightings,
+    item: g.item, matched: g.matched, stack: g.stack, sellers: g.sellers.size, buyers: g.buyers.size, sightings: g.sightings,
     low: g.prices.length ? Math.min.apply(null, g.prices) : null,
     high: g.prices.length ? Math.max.apply(null, g.prices) : null,
     priced: g.prices.length > 0,
   }));
 }
-const aucPriceCell = (priced, low, high) => priced ? (low === high ? esc(aucCoin(low)) : esc(aucCoin(low)) + '–' + esc(aucCoin(high))) : '<span class="muted">—</span>';
+const aucPriceCell = (priced, low, high, stack) => {
+  if (!priced) return '<span class="muted">—</span>';
+  const range = (a, b) => (Math.round(a) === Math.round(b) ? esc(coin(a)) : esc(coin(a)) + '–' + esc(coin(b)));
+  if (stack) return '<span title="stack of ' + stack + '">' + range(low * stack, high * stack) + '<span class="muted">/stack</span></span> <span class="muted">· ' + range(low, high) + ' ea</span>';
+  return range(low, high);
+};
 // Listing time, in the viewer's local timezone (e.g. "Jul 6, 5:03 PM"), with the
 // full timestamp on hover — so you can track when something was posted.
 const aucTime = (iso) => { if (!iso) return ''; const d = new Date(iso); return isNaN(d) ? '' : d.toLocaleString([], { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }); };
@@ -3071,10 +3081,18 @@ const aucAgo = (iso) => {
   const h = Math.round(m / 60); if (h < 24) return h + ' hr' + (h === 1 ? '' : 's') + ' ago';
   const dy = Math.round(h / 24); return dy + ' day' + (dy === 1 ? '' : 's') + ' ago';
 };
+// Gathered bulk materials (ore, wood, herbs, fish…) trade by the stack: auctions.json
+// carries each one's stack size, and their prices read "2s/stack · 10c ea" everywhere.
+const stackSize = (name) => (AUCTIONS && AUCTIONS.stacks && AUCTIONS.stacks[String(name).toLowerCase()]) || null;
+const perStackHtml = (unit, stack) => '<span title="stack of ' + stack + '">' + esc(coin(unit * stack)) + '<span class="muted">/stack</span></span> <span class="muted">· ' + esc(coin(unit)) + ' ea</span>';
+// Per-unit price, unrounded for stack listings (2s 50c a stack = 12.5c each) so the
+// stack price shown back is exactly what was posted.
+const listingUnit = (l) => (l.stack && l.perStack ? l.price / l.stack : l.unit != null ? l.unit : l.price);
 // Price cell — shows the per-unit price with an "ea" tag when a quantity/stack was
 // listed (the whole-lot total is on hover); otherwise the plain price.
 function aucPriceDisplay(l) {
   if (l.price == null) return '<span class="muted">—</span>';
+  if (l.stack && l.perStack) return perStackHtml(l.price / l.stack, l.stack);
   const multi = l.perStack || (l.qty && l.qty > 1);
   if (multi && l.unit != null) {
     const q = l.perStack ? 'stack (20)' : '×' + l.qty;
@@ -3091,7 +3109,7 @@ const aucRecentRowHtml = (l) =>
 const aucItemRowHtml = (g) =>
   '<tr data-item="' + esc(g.item) + '"' + (g.priced ? '' : ' class="noprice"') + '>' +
   '<td class="ai">' + (g.matched ? itemLink(g.item, g.item) : esc(g.item)) + '</td>' +
-  '<td class="ap">' + aucPriceCell(g.priced, g.low, g.high) + '</td>' +
+  '<td class="ap">' + aucPriceCell(g.priced, g.low, g.high, g.stack) + '</td>' +
   '<td class="muted">' + g.sellers + ' selling' + (g.buyers ? ' · ' + g.buyers + ' buying' : '') +
   (g.sightings ? ' · <span title="times seen in the feed">seen ' + g.sightings + '×</span>' : '') + '</td></tr>';
 const aucTable = (rowsHtml) => '<table class="auc"><tbody>' + rowsHtml + '</tbody></table>';
@@ -3771,8 +3789,9 @@ async function loadWikiStats() {
     for (const l of (AUCTIONS && AUCTIONS.listings) || []) {
       if (l.price == null) continue; // only priced listings inform value
       const k = String(l.item).toLowerCase();
-      // Use the per-unit price so a "x4 for 48s" listing values the item at 12s, not 48s.
-      (TRADES[k] = TRADES[k] || []).push({ item: l.item, price: l.unit != null ? l.unit : l.price, side: l.intent === 'buy' ? 'buy' : 'sell', date: l.seen, server: l.server });
+      // Use the per-unit price so a "x4 for 48s" listing values the item at 12s, not 48s
+      // (and a 2s stack of ore at 10c each).
+      (TRADES[k] = TRADES[k] || []).push({ item: l.item, price: listingUnit(l), side: l.intent === 'buy' ? 'buy' : 'sell', date: l.seen, server: l.server });
     }
   } catch {}
   try {

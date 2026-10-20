@@ -42,6 +42,7 @@ const TESS = process.env.MNM_TESSERACT || 'C:\\Program Files\\Tesseract-OCR\\tes
 // along the bottom), so each cycle tries every known layout and keeps whichever crop
 // reads the most "X auctions," lines — a layout switch no longer silently zeroes capture.
 const PANELS = { Trem: ['crop=1910:415:5:662', 'crop=1005:400:912:680'] };
+const RX_AUCTION_LINE = /\bauctions?\s*,/gi; // "Name auctions," — scores each crop
 const PRE = 'scale=iw*2:ih*2:flags=lanczos,format=gray,negate,eq=contrast=1.3';
 
 fs.mkdirSync(DATA, { recursive: true });
@@ -79,7 +80,7 @@ function ocrPanel(server) {
     const out = p(server.toLowerCase() + '-' + i + '.png');
     sh(FF, ['-y', '-loglevel', 'error', '-i', framePng, '-vf', `${crop},${PRE}`, out], false);
     const txt = sh(TESS, [out, '-', '--psm', '6', '-l', 'eng'], true);
-    const hits = (txt.match(/auctions?s*,/gi) || []).length;
+    const hits = (txt.match(RX_AUCTION_LINE) || []).length;
     if (!best || hits > best.hits) best = { txt, hits, out };
   });
   fs.copyFileSync(best.out, png); // ocrConfidence + the frame preview read <server>.png

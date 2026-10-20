@@ -23,6 +23,16 @@ try {
   wikiNames = new Set(Object.keys(wikiByLc));
 } catch {}
 
+// Gathered bulk materials (ore, wood, herbs, fish…) are priced per stack — see stacks.js.
+const { bulkMaterials, normalizeBulk } = require('./stacks.js');
+let BULK = new Map();
+try {
+  const wikiItems = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'mnmdb', 'wiki.json'), 'utf8')).items || {};
+  const nodes = [];
+  for (const f of ['data.json', 'data-ea.json']) { try { nodes.push(...(JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'mnmdb', f), 'utf8')).harvestNodes || [])); } catch {} }
+  BULK = bulkMaterials({ wikiItems, harvestNodes: nodes });
+} catch {}
+
 const L = read('listings.json', []);
 const Q = read('requests.json', []);
 
@@ -121,6 +131,21 @@ function normalize(l) {
 }
 
 const listings = rows.map((l) => {
+  const bulk = BULK.get(l.item.toLowerCase());
+  if (bulk) {
+    const lc = String(l.raw || '').toLowerCase();
+    const r = normalizeBulk({
+      raw: l.raw, item: l.item, price: l.priceCopper, qty: l.qty, stack: bulk.stack,
+      header: lc.slice(0, Math.max(0, lc.indexOf('['))), multiItem: (lc.match(/\[/g) || []).length > 1,
+    });
+    return {
+      server: l.server, intent: l.intent || null, item: l.item,
+      price: r ? r.stackPrice : null, unit: r ? r.unit : null, priceStr: r ? copperToStr(r.stackPrice) : null,
+      stack: bulk.stack, perStack: r ? true : undefined, // price = one stack; unit = one item
+      player: l.player, seen: l.firstSeen, qty: l.qty || undefined,
+      count: l.count || 1, assumed: l.assumed || undefined, matched: wikiNames.has(l.item.toLowerCase()),
+    };
+  }
   const { unit, total, perStack } = normalize(l);
   return {
     server: l.server, intent: l.intent || null, item: l.item,
@@ -178,7 +203,11 @@ function captureHealth() {
   };
 }
 
-fs.writeFileSync(OUT, JSON.stringify({ generatedAt: new Date().toISOString(), capture: captureHealth(), listings, requests, stats }));
+// Stack size of every gathered bulk material, so item pages can show per-stack prices.
+const stacks = {};
+for (const [lc, b] of BULK) stacks[lc] = b.stack;
+
+fs.writeFileSync(OUT, JSON.stringify({ generatedAt: new Date().toISOString(), capture: captureHealth(), listings, requests, stats, stacks }));
 const kb = Math.round(fs.statSync(OUT).size / 1024);
 const trashed = discarded.filter((d) => d.status === 'trashed').length, review = discarded.filter((d) => d.status === 'review').length;
 console.log(`wrote mnmdb/auctions.json — ${listings.length} listings (recent, capped ${MAX_PER_SERVER}/server), ${requests.length} requests, ${Object.keys(stats).length} stats (${kb} KB); discarded.json: ${trashed} trashed + ${review} to review`);

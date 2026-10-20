@@ -71,7 +71,7 @@ function entryFromWikitext(wt) {
       iconId: full.iconId || box.iconId || null,
       slot: full.slot || box.slot || null, handed: full.handed || null,
       dmg: full.dmg ?? box.dmg ?? null, delay: full.delay ?? box.delay ?? null, skill: full.skill || box.skill || null,
-      weight: full.weight ?? box.weight ?? null, size: full.size || box.size || null,
+      weight: full.weight ?? box.weight ?? null, size: full.size || box.size || null, stackSize: box.stackSize || null,
       class: full.class || box.class || null, race: full.race || box.race || null,
       flags: full.flags, ac: full.ac, stats: full.stats, hp: full.hp, mana: full.mana,
       hpRegen: full.hpRegen, manaRegen: full.manaRegen, haste: full.haste,

@@ -99,6 +99,7 @@ function templateParams(body) {
   return params;
 }
 
+const RX_STACK_STAT = /Stack(?:\s*Size)?:\s*(\d+)/i;
 function parseItemBox(wikitext) {
   const m = wikitext.match(/\{\{\s*ItemBox([\s\S]*?)\n\}\}/i);
   if (!m) return null;
@@ -117,6 +118,10 @@ function parseItemBox(wikitext) {
     class: clean(params.class || (classRaw && classRaw[1]) || grab(/Class:\s*([^\n<]+)/i)),
     race: clean(params.race || grab(/Race:\s*([A-Za-z ]+)/i)),
   };
+  // Stack size — the wiki has no field for it yet (Oct 2026); picked up if one appears.
+  // Auctions fall back to 20 per stack for gathered materials (tracker/stacks.js).
+  const stack = toNum(params.stack_size || params.stacksize || params.stack || grab(RX_STACK_STAT));
+  if (stack > 1) data.stackSize = stack;
   const hasAny = Object.entries(data).some(([k, v]) => k !== 'iconId' && v != null);
   return hasAny || data.iconId ? data : null;
 }
