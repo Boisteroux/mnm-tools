@@ -49,7 +49,7 @@ function trimOutliers(prices) {
   return prices.filter((p) => p >= q1 - 3 * iqr && p <= q3 + 3 * iqr);
 }
 
-// Gathered bulk materials (ore, wood, herbs…) trade per stack (see stacks.js), but beta
+// Bulk tradeskill materials (ore, wood, herbs, scraps…) trade per stack (see stacks.js), but beta
 // listings were normalized per unit with a bare price taken as one item's price. Re-read
 // them from the published fields the way publish-auctions.js now does: "stack" → the
 // price is a stack; 10+ items → the price covered that many; otherwise the stated price

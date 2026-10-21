@@ -23,7 +23,7 @@ try {
   wikiNames = new Set(Object.keys(wikiByLc));
 } catch {}
 
-// Gathered bulk materials (ore, wood, herbs, fish…) are priced per stack — see stacks.js.
+// Bulk tradeskill materials (ore, wood, herbs, fish, scraps…) are priced per stack — see stacks.js.
 const { bulkMaterials, normalizeBulk } = require('./stacks.js');
 let BULK = new Map();
 try {

@@ -833,11 +833,11 @@ function renderItem(id) {
             '<div class="mkt-sub">' + mp.wts + ' selling · ' + mp.wtb + ' buying</div>'
           : '<div class="vval sample">—</div>') + '</div>';
     };
-    // Gathered bulk materials trade by the stack: show the stack price, with each underneath.
+    // Bulk tradeskill materials trade by the stack: show the stack price, with each underneath.
     const stack = stackSize(it.name);
     const val = (x) => !stack ? coin(x) : coin(x * stack) + '<span class="per">/stack</span><div class="mkt-sub">' + coin(x) + ' each</div>';
     const span = (a, b) => !stack ? coin(a) + (b !== a ? '–' + coin(b) : '') : coin(a * stack) + (b !== a ? '–' + coin(b * stack) : '') + ' a stack';
-    const stackNote = stack ? '<div class="note">Gathered material — priced per <b>stack of ' + stack + '</b>, as players trade it (a bare “2s” means 2s a stack).</div>' : '';
+    const stackNote = stack ? '<div class="note">Tradeskill material — priced per <b>stack of ' + stack + '</b>, as players trade it (a bare “2s” means 2s a stack).</div>' : '';
     // One market's summary card (or a muted line when there's no priced data for it).
     const marketBox = (label, tv, server) => {
       if (tv && tv.n30) {
@@ -3081,7 +3081,7 @@ const aucAgo = (iso) => {
   const h = Math.round(m / 60); if (h < 24) return h + ' hr' + (h === 1 ? '' : 's') + ' ago';
   const dy = Math.round(h / 24); return dy + ' day' + (dy === 1 ? '' : 's') + ' ago';
 };
-// Gathered bulk materials (ore, wood, herbs, fish…) trade by the stack: auctions.json
+// Bulk tradeskill materials (ore, wood, herbs, fish, scraps…) trade by the stack: auctions.json
 // carries each one's stack size, and their prices read "2s/stack · 10c ea" everywhere.
 const stackSize = (name) => (AUCTIONS && AUCTIONS.stacks && AUCTIONS.stacks[String(name).toLowerCase()]) || null;
 const perStackHtml = (unit, stack) => '<span title="stack of ' + stack + '">' + esc(coin(unit * stack)) + '<span class="muted">/stack</span></span> <span class="muted">· ' + esc(coin(unit)) + ' ea</span>';

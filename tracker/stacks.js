@@ -1,5 +1,5 @@
-// Gathered bulk materials — ore, stone, wood, resin, herbs, fish, foraged goods — trade
-// by the STACK. Players post "WTS Copper Ore 2s" meaning 2s for a stack, so for these
+// Bulk tradeskill materials — gathered ore, stone, wood, resin, herbs, fish, foraged
+// goods, plus looted scraps, bone chips and spider silk — trade by the STACK. Players post "WTS Copper Ore 2s" meaning 2s for a stack, so for these
 // items a price is normalized to a per-stack price (and a per-unit price = stack / size)
 // and the site shows both. Rare node drops (gems, Crystallized Magic, Alunite) still
 // trade per piece and keep the usual per-unit rules in publish-auctions.js.
@@ -13,6 +13,10 @@ const STACK_OVERRIDES = {}; // lowercase item name -> stack size, once confirmed
 const RESOURCE_NODE = /\b(vein|wood pile|deposit)\b/i;            // wiki "from" = gathered from a node
 const RARE_NAME = /^(chipped|flawed|imperfect|flawless)\b|crystallized magic|\bfrond\b|\balunite\b|\bquartz\b/i;
 const GATHER_CATS = /^(herb|fish|foraged)$/i;
+// Looted tradeskill stock that also trades by the stack: every Scraps (metal, cloth,
+// leather, silk) and Chips (bone) item, and spider silk ("Cloth Scraps 1s/stack",
+// "Bone Chips 60c a stack"). Pelts stay per piece — players price them each.
+const TRADESKILL_STACK = /\b(?:scraps|chips)$|\bspider silk$/i;
 
 // lowercase name -> { name, stack } for every bulk material we know of:
 //  - yields a harvest node drops on ≥10% of pulls (our own gathering logs), plus
@@ -32,7 +36,7 @@ function bulkMaterials({ wikiItems = {}, harvestNodes = [] } = {}) {
   };
   for (const node of harvestNodes) for (const y of node.yields || []) if (y.rate >= 0.1) add(y.res);
   for (const [name, w] of Object.entries(wikiItems)) {
-    if ((w.from || []).some((f) => RESOURCE_NODE.test(f)) || (w.categories || []).some((c) => GATHER_CATS.test(c)) || w.harvestedBy) add(name);
+    if ((w.from || []).some((f) => RESOURCE_NODE.test(f)) || (w.categories || []).some((c) => GATHER_CATS.test(c)) || w.harvestedBy || TRADESKILL_STACK.test(name)) add(name);
   }
   return out;
 }
@@ -92,15 +96,18 @@ function normalizeBulk({ raw, item, price, qty, header = '', stack = STACK_DEFAU
   // a "(" aside, an "or", or the next number (another offer).
   const tailWords = own ? seg.after.slice(own.end).split(/[(\d]|\bor\b/)[0].slice(0, 16) : '';
   const s = seg ? seg.before + ' ' + (own ? seg.after.slice(0, own.end) + tailWords : seg.after) : String(raw || '').toLowerCase();
-  const q = (seg && segmentQty(s)) || (qty && qty > 1 ? qty : 1);
+  // The count: this item's own text first ("[Bronze Scraps] x37"), then its lead-in.
+  const q = (seg && (segmentQty(seg.after.slice(0, own ? own.end + tailWords.length : undefined)) || segmentQty(seg.before))) || (qty && qty > 1 ? qty : 1);
   const stackWord = /\bstac\w*|\bst[ac]?ck\b|\bstk\b|\/\s*s\b|[/\s]st\b|\dstack/.test(s) || /\bstacks?\b/.test(header);
   const perUnit = /\b(?:per|each|ea)\s*(?:ore|unit|piece|pc|log|one)\b|\/\s*(?:ore|unit|piece|pc)\b/.test(s);
   const total = /\btotal\b|\bfor all\b|\ball for\b|\btake all\b|\bthe lot\b/.test(s);
   const each = /\b(?:ea|each|per)\b/.test(s);
   const perN = s.match(new RegExp(COIN + '\\s*\\/\\s*(\\d+)\\b(?!\\s*(?:pp|p|g|s|c)\\b)'));
   const nPer = s.match(new RegExp('\\b(\\d+)\\s*\\/\\s*' + COIN));
+  // "5s/per", "1s ea" with no stack and no count anywhere = one piece ("Burnt Bone Chips 5s/per").
+  const eachOne = each && !stackWord && q === 1;
   let stackPrice;
-  if (perUnit) stackPrice = price * stack;
+  if (perUnit || eachOne) stackPrice = price * stack;
   else if (perN && +perN[2] > 1) stackPrice = price * stack / +perN[2];
   else if (nPer && +nPer[1] > 1) stackPrice = price * stack / +nPer[1];
   else if (stackWord) stackPrice = total && q > 1 ? price / q : price;
