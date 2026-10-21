@@ -375,10 +375,41 @@ function boundsOnScreen(b) {
   });
 }
 
+// One window per mode, each built the first time its mode is used and then kept for
+// the life of the app: switching modes shows one and hides the other (see
+// toggleOverlay). A window's transparency can't change once it exists, which is why
+// there are two — but they are never destroyed and rebuilt on a switch, because on
+// Windows every rebuilt window left a dead "MnM Map" tile behind in Alt+Tab.
+const modeWindows = { desktop: null, overlay: null };
+let minimizeOnShow = false; // set when the minimap's "—" asks for the normal window, minimised
+
 function createWindow(overlay = false, fromOverlay = false) {
   overlayMode = overlay;
   clickThrough = false;
   overlayFull = false;
+
+  const slot = overlay ? 'overlay' : 'desktop';
+  const query = { overlay: overlay ? '1' : '0', dev: isDev ? '1' : '0', fromOverlay: fromOverlay ? '1' : '0', appVersion: app.getVersion() };
+  const kept = modeWindows[slot];
+  if (kept && !kept.isDestroyed()) {
+    // Reuse: put it back in its starting state, reload the page for this mode, and
+    // show it once the page is in (so the previous contents never flash up).
+    win = kept;
+    if (overlay) {
+      win.setIgnoreMouseEvents(false);
+      const saved = loadOverlayBounds();
+      if (boundsOnScreen(saved)) win.setBounds(saved);
+      compactBounds = win.getBounds();
+    }
+    win.webContents.once('did-finish-load', () => {
+      if (win !== kept || kept.isDestroyed()) return; // switched away again before it loaded
+      kept.show();
+      if (overlay) kept.setAlwaysOnTop(true, 'screen-saver');
+      if (minimizeOnShow) { minimizeOnShow = false; if (!overlay) kept.minimize(); }
+    });
+    win.loadFile('renderer/index.html', { query });
+    return;
+  }
 
   const base = {
     webPreferences: {
@@ -401,7 +432,13 @@ function createWindow(overlay = false, fromOverlay = false) {
       transparent: true,
       resizable: true,
       alwaysOnTop: true,
-      skipTaskbar: false,
+      // A "toolbar" window is one Windows never lists in Alt+Tab or the taskbar. The
+      // minimap sits on top of the game the whole time, so it isn't something you
+      // switch *to* — and while it was listed, Windows kept adding dead "MnM Map"
+      // tiles to Alt+Tab during play (the window's click-through state changes
+      // constantly as the pointer crosses the bar; nothing was created or destroyed).
+      type: 'toolbar',
+      skipTaskbar: true,
     });
     win.setAlwaysOnTop(true, 'screen-saver');
 
@@ -453,34 +490,41 @@ function createWindow(overlay = false, fromOverlay = false) {
     return { action: 'deny' };
   });
 
+  // Closing the window you're using closes the app, so take the other mode's hidden
+  // window down with it (otherwise the app would live on with nothing on screen).
+  const mine = win;
+  modeWindows[slot] = mine;
+  mine.on('closed', () => {
+    if (modeWindows[slot] === mine) modeWindows[slot] = null;
+    if (win !== mine) return; // a hidden spare went away; the app carries on
+    for (const other of Object.values(modeWindows)) if (other && !other.isDestroyed()) other.destroy();
+  });
+
   win.setMenuBarVisibility(false);
-  win.loadFile('renderer/index.html', { query: { overlay: overlay ? '1' : '0', dev: isDev ? '1' : '0', fromOverlay: fromOverlay ? '1' : '0', appVersion: app.getVersion() } });
+  win.loadFile('renderer/index.html', { query });
 }
 
-// Swap between desktop and overlay modes by recreating the window (a window's
-// transparency can't be changed once it exists). Create the replacement BEFORE
-// destroying the old window, so there's never a zero-window moment that would
-// trip Electron's "all windows closed -> quit".
+// Swap between desktop and overlay modes: bring up the other mode's window (built on
+// first use, reused after that) and hide the one we're leaving. Nothing is destroyed.
 function toggleOverlay() {
   const wasOverlay = overlayMode;
   const old = win;
   isToggling = true;
   try {
-    // When leaving the overlay (wasOverlay), tell the new desktop window so it
-    // always opens with the sidebar expanded, regardless of the overlay's state.
+    // When leaving the overlay (wasOverlay), tell the desktop window so it always
+    // opens with the sidebar expanded, regardless of the overlay's state.
     createWindow(!wasOverlay, wasOverlay);
   } catch (err) {
-    // If the overlay window failed to build, stay in the current window
-    if (old && !old.isDestroyed()) win = old;
+    // If the other window failed to build, stay in the current one
+    if (old && !old.isDestroyed()) { win = old; overlayMode = wasOverlay; }
     isToggling = false;
     return;
   }
   if (old && !old.isDestroyed() && old !== win) {
-    // Take the old window out of the taskbar / Alt+Tab list and hide it BEFORE destroying
-    // it. Destroying a still-listed window while its replacement is appearing can leave
-    // Windows showing a dead "MnM Map" tile in Alt+Tab for every mode switch.
-    try { old.setSkipTaskbar(true); old.hide(); } catch {}
-    old.destroy();
+    old.hide();
+    // Empty the hidden window's page so its timers, the zone watcher's messages and
+    // the Atlas frame don't keep running in the background.
+    old.webContents.loadURL('about:blank').catch(() => {});
   }
   isToggling = false;
 }
@@ -525,7 +569,16 @@ ipcMain.handle('overlay-set-ignore', (event, ignore) => {
   if (overlayMode && win && !win.isDestroyed()) win.setIgnoreMouseEvents(ignore, { forward: true });
   return true;
 });
-ipcMain.handle('window-minimize', () => { if (win && !win.isDestroyed()) win.minimize(); return true; });
+ipcMain.handle('window-minimize', () => {
+  if (!win || win.isDestroyed()) return true;
+  if (!overlayMode) { win.minimize(); return true; }
+  // The minimap has no taskbar button to come back from, so minimising it means:
+  // return to the normal window and minimise that (its taskbar button restores it).
+  minimizeOnShow = true;
+  toggleOverlay();
+  if (win && !win.isDestroyed() && win.isVisible()) { win.minimize(); minimizeOnShow = false; } // freshly built windows are already showing
+  return true;
+});
 
 app.whenReady().then(() => {
   if (!gotSingleLock) { app.quit(); return; } // another copy is already running; it got the deep link
