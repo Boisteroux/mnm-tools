@@ -3,7 +3,6 @@ const fs = require('fs');
 const path = require('path');
 const ledgerParser = require('./tracker/ledger-parser');
 const contrib = require('./contrib');
-const { execFile } = require('child_process');
 
 let win;
 let isToggling = false; // true while we deliberately recreate the window (overlay swap)
@@ -80,19 +79,7 @@ let compactBounds = null; // remembers the floating-panel size while in full-scr
 const dataFile = () => path.join(app.getPath('userData'), 'map-data.json');
 const mapsDir = () => path.join(app.getPath('userData'), 'maps');
 
-// ---- Drop / vendor tracker ----
-// Parses the game's Ledger files into an aggregated dataset (drops, kill
-// counts, vendor prices, harvest) saved locally and exportable for the website.
-const trackerFile = () => path.join(app.getPath('userData'), 'tracker-data.json');
-const tradesFile = () => path.join(app.getPath('userData'), 'trades.json');
-
-function readTrades(file) {
-  try {
-    const j = JSON.parse(fs.readFileSync(file, 'utf8'));
-    return Array.isArray(j) ? j : (j.trades || []);
-  } catch { return []; }
-}
-
+// ---- Ledger parsing helpers ----
 // Map each resource to its gather skill (from the wiki) so harvest nodes can split
 // herbs/fish out by skill+zone. Read from mnmdb/wiki.json; empty if unavailable.
 function harvestSkillOpts() {
@@ -103,64 +90,6 @@ function harvestSkillOpts() {
     return { skillOf: (n) => map[n] || null };
   } catch { return {}; }
 }
-
-function scanTracker() {
-  const files = ledgerParser.findLedgerFiles();
-  const agg = ledgerParser.parseLedgers(files, harvestSkillOpts());
-  const items = ledgerParser.buildItemReport(agg);
-  const dataset = {
-    generatedAt: new Date().toISOString(),
-    source: 'mnm-tools',
-    ledgerFiles: agg.fileCount,
-    events: agg.events,
-    mobs: agg.mobs,
-    items,
-    harvest: agg.harvest,
-    harvestNodes: agg.harvestNodes,
-  };
-  fs.writeFileSync(trackerFile(), JSON.stringify(dataset, null, 2));
-  return {
-    ledgerFiles: agg.fileCount,
-    events: agg.events,
-    mobs: Object.keys(agg.mobs).length,
-    items: items.length,
-    harvest: Object.keys(agg.harvest).length,
-    generatedAt: dataset.generatedAt,
-  };
-}
-
-ipcMain.handle('tracker-scan', () => {
-  try { return scanTracker(); } catch (e) { return { error: e.message }; }
-});
-
-// Log a player trade price to a local file. Merged into the site on Publish.
-ipcMain.handle('trade-log', (event, rec) => {
-  try {
-    if (!rec || !rec.item || !(rec.price > 0)) return { error: 'Need an item name and a price.' };
-    const trades = readTrades(tradesFile());
-    trades.push({
-      item: String(rec.item).trim(),
-      price: Math.round(rec.price),
-      side: rec.side === 'buy' ? 'buy' : 'sell',
-      date: new Date().toISOString().slice(0, 10),
-      who: rec.who ? String(rec.who).trim() : '',
-      src: 'app',
-    });
-    fs.writeFileSync(tradesFile(), JSON.stringify({ trades }, null, 2));
-    return { ok: true, count: trades.length };
-  } catch (e) { return { error: e.message }; }
-});
-
-// Item names for the logger's autocomplete (from what you've collected so far).
-ipcMain.handle('trade-item-names', () => {
-  try {
-    const j = JSON.parse(fs.readFileSync(trackerFile(), 'utf8'));
-    const names = new Set();
-    (j.items || []).forEach((i) => i.name && names.add(i.name));
-    Object.keys(j.harvest || {}).forEach((n) => names.add(n));
-    return [...names].sort();
-  } catch { return []; }
-});
 
 // Session Replay — group the ledger into play sessions and recap each one.
 const sessionEndsFile = () => path.join(app.getPath('userData'), 'session-ends.json');
@@ -205,59 +134,8 @@ ipcMain.handle('session-end', () => {
   } catch (e) { return { error: e.message }; }
 });
 
-// Auto-rescan: watch the game folder and re-parse a few seconds after the game
-// writes a ledger file, so the app's data stays current with no manual step.
-let trackerWatcher = null;
-let trackerWatchTimer = null;
-
-function startTrackerWatch() {
-  if (trackerWatcher || !fs.existsSync(ledgerParser.GAME_BASE)) return;
-  try {
-    trackerWatcher = fs.watch(ledgerParser.GAME_BASE, { recursive: true }, (event, filename) => {
-      if (!filename) return;
-      const f = String(filename);
-      // Only react to ledger files — ignore Player.log and other constant writes
-      if (!/_(Character|Social)_/i.test(f) && !/Ledger/i.test(f)) return;
-      clearTimeout(trackerWatchTimer);
-      trackerWatchTimer = setTimeout(() => {
-        try {
-          const summary = scanTracker();
-          if (win && !win.isDestroyed()) win.webContents.send('tracker-updated', summary);
-        } catch {}
-      }, 4000);
-    });
-  } catch {}
-}
-
-function stopTrackerWatch() {
-  if (trackerWatcher) { try { trackerWatcher.close(); } catch {} trackerWatcher = null; }
-  clearTimeout(trackerWatchTimer);
-}
-
-ipcMain.handle('tracker-set-enabled', (event, enabled) => {
-  if (enabled) {
-    let summary;
-    try { summary = scanTracker(); } catch (e) { return { error: e.message }; }
-    startTrackerWatch();
-    return summary;
-  }
-  stopTrackerWatch();
-  return { disabled: true };
-});
-
-// Owner-only: regenerate the MnMdb dataset from the ledger and push it to GitHub.
-// This needs the repo checkout + an authenticated git, so it only exists in the
-// dev build (npm start). The packaged app shared with testers never sees it.
+// The dev build (npm start) vs the installed app; passed to the page as ?dev=1.
 const isDev = !app.isPackaged;
-const REPO_ROOT = __dirname;
-
-function gitRun(args) {
-  return new Promise((resolve) => {
-    execFile('git', args, { cwd: REPO_ROOT }, (err, stdout, stderr) => {
-      resolve({ code: err && typeof err.code === 'number' ? err.code : (err ? 1 : 0), out: (stdout || '') + (stderr || '') });
-    });
-  });
-}
 
 // Zones that share one game zone-code but have multiple maps (e.g. a city above
 // ground and the wilderness below). The renderer uses this to offer a manual
@@ -267,77 +145,6 @@ ipcMain.handle('zone-aliases', () => {
     return JSON.parse(fs.readFileSync(path.join(__dirname, 'zone-aliases.json'), 'utf8'));
   } catch {
     return { zones: {} };
-  }
-});
-
-ipcMain.handle('publish-mnmdb', async () => {
-  if (!isDev) return { error: 'Publishing is only available in the owner (dev) build.' };
-  try {
-    // 1. Regenerate mnmdb/data-ea.json from the EARLY ACCESS ledgers, pooling any
-    //    trusted-friend contributions dropped into contributions/*.json. Counts are
-    //    summed (mergeAggs) before rates are computed, so everyone's corpses add up.
-    //    Beta ledgers are left out: mnmdb/data.json is the frozen beta set (built once
-    //    by tracker/build-play-data.js --freeze-beta) and is never rewritten here.
-    const files = ledgerParser.findLedgerFiles().filter((f) => ledgerParser.ledgerEra(f) === 'early-access');
-    if (!files.length) return { error: 'No Early Access Ledger files found yet — play on an Early Access server first.' };
-    const aggs = [ledgerParser.parseLedgers(files, harvestSkillOpts())];
-    const contributors = [];
-    let contribTrades = [];
-    try {
-      const contribDir = path.join(REPO_ROOT, 'contributions');
-      for (const f of fs.readdirSync(contribDir)) {
-        if (!/\.json$/i.test(f) || /^README/i.test(f)) continue;
-        try {
-          const c = JSON.parse(fs.readFileSync(path.join(contribDir, f), 'utf8'));
-          if (c && c.agg && c.era === 'early-access') { // exports from before Early Access carry beta data
-            aggs.push(c.agg);
-            contributors.push({ character: c.character || f.replace(/\.json$/i, ''), events: c.events || 0 });
-            if (Array.isArray(c.trades)) contribTrades = contribTrades.concat(c.trades);
-          }
-        } catch {}
-      }
-    } catch {}
-    const agg = aggs.length > 1 ? ledgerParser.mergeAggs(aggs) : aggs[0];
-    const servers = [...new Set(files.map((f) => ledgerParser.ledgerServer(f)))].sort();
-    const dataset = ledgerParser.buildDataset(agg, { era: 'early-access', servers, contributors });
-    const items = dataset.items;
-    fs.writeFileSync(path.join(REPO_ROOT, 'mnmdb', 'data-ea.json'), JSON.stringify(dataset, null, 2));
-
-    // 2. Merge any locally-logged trades into the site's trades.json (dedup).
-    const siteTradesPath = path.join(REPO_ROOT, 'mnmdb', 'trades.json');
-    let siteTrades = {};
-    try { siteTrades = JSON.parse(fs.readFileSync(siteTradesPath, 'utf8')); } catch {}
-    const existing = siteTrades.trades || [];
-    const seen = new Set(existing.map((t) => [t.item, t.price, t.side, t.date].join('|')));
-    let added = 0;
-    for (const t of [...readTrades(tradesFile()), ...contribTrades]) {
-      const key = [t.item, t.price, t.side, t.date].join('|');
-      if (!seen.has(key)) { existing.push(t); seen.add(key); added++; }
-    }
-    siteTrades.trades = existing;
-    fs.writeFileSync(siteTradesPath, JSON.stringify(siteTrades, null, 2));
-
-    // NB: maps are intentionally NOT exported here. The packaged app has no
-    // sharp/jimp, so exporting would recompress every map back to raw/JPEG and
-    // wipe the full-res AVIF versions. Maps change rarely and are published
-    // separately via `node tracker/export-maps.js` in the dev environment.
-
-    // 3. Commit + push.
-    await gitRun(['add', 'mnmdb/data-ea.json', 'mnmdb/trades.json', 'contributions']);
-    const tradeNote = added ? ` + ${added} trade${added === 1 ? '' : 's'}` : '';
-    const contribNote = contributors.length ? ` + ${contributors.length} contributor${contributors.length === 1 ? '' : 's'}` : '';
-    const commit = await gitRun(['commit', '-m', `Publish Early Access play data (${agg.events} events, ${items.length} items${tradeNote}${contribNote})`]);
-    if (commit.code !== 0) {
-      if (/nothing to commit/i.test(commit.out)) {
-        return { ok: true, message: 'Already up to date — no new data since last publish.' };
-      }
-      return { error: 'Commit failed: ' + commit.out.trim().slice(0, 200) };
-    }
-    const push = await gitRun(['push']);
-    if (push.code !== 0) return { error: 'Push failed: ' + push.out.trim().slice(0, 200) };
-    return { ok: true, message: `Published ${items.length} items · ${agg.events} events${contributors.length ? ' · ' + contributors.length + ' contributor' + (contributors.length === 1 ? '' : 's') : ''}${added ? ' · ' + added + ' new trade' + (added === 1 ? '' : 's') : ''}. Live on MnMdb in ~30s.` };
-  } catch (e) {
-    return { error: e.message };
   }
 });
 
@@ -724,45 +531,6 @@ ipcMain.handle('export-data', async (event, { scope, zones }) => {
   return true;
 });
 
-// Export this player's rolled-up play data so the owner can merge it into the
-// shared site (the trusted-friend crowdsourcing flow). Contains only the same
-// aggregated counts the parser already builds (drops, kills, harvests, vendor
-// prices, logged trades) — no raw chat, no personal files, nothing uploaded.
-ipcMain.handle('export-contribution', async () => {
-  try {
-    // Early Access ledgers only — the shared site keeps beta data as a frozen set.
-    const files = ledgerParser.findLedgerFiles().filter((f) => ledgerParser.ledgerEra(f) === 'early-access');
-    if (!files.length) return { error: 'No Early Access Ledger files found yet — play a little first.' };
-    const agg = ledgerParser.parseLedgers(files, harvestSkillOpts());
-    const characters = ledgerParser.charactersFromFiles(files);
-    const payload = {
-      schema: 'mnm-contribution/1',
-      era: 'early-access',
-      character: characters[0] || 'unknown',
-      characters,
-      exportedAt: new Date().toISOString(),
-      events: agg.events,
-      agg: {
-        mobs: agg.mobs, items: agg.items, harvest: agg.harvest,
-        harvestZones: agg.harvestZones, harvestNodes: agg.harvestNodes,
-        events: agg.events, fileCount: agg.fileCount,
-      },
-      trades: readTrades(tradesFile()),
-    };
-    const safe = (characters[0] || 'data').replace(/[^a-z0-9 _-]/gi, '') || 'data';
-    const result = await dialog.showSaveDialog(win, {
-      title: 'Export my play data to share',
-      defaultPath: `mnm-data-${safe}-${new Date().toISOString().slice(0, 10)}.json`,
-      filters: [{ name: 'JSON', extensions: ['json'] }],
-    });
-    if (result.canceled || !result.filePath) return { canceled: true };
-    fs.writeFileSync(result.filePath, JSON.stringify(payload), 'utf8');
-    return { ok: true, character: characters[0] || 'unknown', events: agg.events, mobs: Object.keys(agg.mobs).length, items: Object.keys(agg.items).length };
-  } catch (e) {
-    return { error: e.message };
-  }
-});
-
 // Save a small JSON document the renderer built (e.g. an MnM Atlas notes file) to a
 // location the user picks.
 ipcMain.handle('save-json', async (event, { name, data }) => {
@@ -793,17 +561,6 @@ async function wikiJson(params) {
   if (!res.ok) throw new Error('Wiki returned HTTP ' + res.status);
   return res.json();
 }
-
-ipcMain.handle('wiki-zone-list', async () => {
-  try {
-    const j = await wikiJson({ action: 'parse', page: 'Zones', prop: 'links' });
-    return j.parse.links
-      .map((l) => l['*'])
-      .filter((n) => n && n !== 'Zone Connection Map');
-  } catch (err) {
-    return { error: 'Could not reach the wiki: ' + err.message };
-  }
-});
 
 // Find the map-sized images on a zone's wiki page, with small preview thumbs.
 // Sorted: "map"-named files first, then largest.

@@ -141,23 +141,22 @@ select option {
 .hint { font-size: 11px; color: var(--muted); margin: 0 0 3px; line-height: 1.4; }
 .coin-row { display: flex; gap: 4px; margin: 3px 0; }
 .coin-row input { width: 100%; text-align: center; padding: 6px 4px; }
-#trade-side { flex: 1 1 auto; }
-#trade-log-btn { flex: 0 0 auto; }
-
 #wiki-status,
-#tracker-status,
-#publish-status,
-#trade-status,
 #contrib-line,
 #discord-status,
-#contribution-status {
+#map-source-note {
   font-size: 11px;
   color: var(--muted);
   min-height: 0;
   line-height: 1.4;
 }
-#wiki-status:empty, #tracker-status:empty, #publish-status:empty, #trade-status:empty,
-#contrib-line:empty, #discord-status:empty, #contribution-status:empty { display: none; }
+#wiki-status:empty,
+#contrib-line:empty, #discord-status:empty, #map-source-note:empty { display: none; }
+
+/* Audit tidy-up: own-map tools say they're for your own map while the Atlas shows */
+.options-head { font-size: 10.5px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 4px 0 0; }
+.community-toggle .on-own { font-size: 10.5px; color: var(--muted); }
+.follow-row.dimmed { opacity: 0.55; }
 
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }

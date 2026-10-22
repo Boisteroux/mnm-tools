@@ -31,7 +31,7 @@
   <div id="sidebar">
     <div class="sidebar-head"><h1>MnM Map</h1><button id="theme-toggle" class="theme-toggle" type="button" title="Toggle light/dark theme" aria-label="Toggle theme">☾</button></div>
 
-    <div class="help" data-overlay-hide>
+    <div id="own-map-help" class="help" data-overlay-hide>
       <b>Drag</b> to pan &nbsp;•&nbsp; <b>Scroll</b> to zoom<br />
       <b>Double-click</b> to add a marker<br />
       <b>Click</b> a marker to edit or delete<br />
@@ -55,15 +55,13 @@
         <button type="button" data-src="atlas">Atlas map</button><button type="button" data-src="own">My markers</button>
       </div>
       <div id="map-source-note" class="mini-status"></div>
-      <button id="btn-wiki-all-hero" class="btn-hero hidden" title="First-time setup — create every zone and download all maps from the wiki">Import All Maps from Wiki</button>
       <button id="btn-zone-options" title="Show zone tools: import map, review maps, export markers">Options ▾</button>
       <div id="zone-options" class="hidden">
+        <div class="options-head">Your own maps &amp; markers</div>
+        <div class="hint">These don't change the MnM Atlas view.</div>
         <div class="btn-row">
           <button id="btn-zone-image" title="Pick an image file to use as this zone's map">Import Map</button>
-          <button id="btn-wiki-all" title="Create every zone from the wiki and download all their maps">Import All</button>
-        </div>
-        <div class="btn-row">
-          <button id="btn-zone-review" title="See every zone's current map at a glance and set defaults">Review Zone Maps</button>
+          <button id="btn-zone-review" title="See every zone's current map at a glance and set defaults">Review Maps</button>
         </div>
         <div class="btn-row">
           <button id="btn-export" title="Save your markers (and maps) to a file to share with friends">Export Markers</button>
@@ -79,19 +77,16 @@
 
     <div class="section">
       <label class="section-title">Marker Quick Add</label>
+      <div id="marker-tools-note" class="hint hidden">Markers go on your own map. Clicking a type switches to My markers.</div>
       <div id="category-list"></div>
-      <label class="follow-row community-toggle" title="Show read-only markers submitted by the community on mnm-db.com (a dashed ring marks them)">
+      <label class="follow-row community-toggle" title="Show read-only markers submitted by the community on mnm-db.com (a dashed ring marks them). They appear on My markers, not on the Atlas.">
         <input type="checkbox" id="community-enabled" />
-        <span>Community markers<span id="community-count" class="cat-count"></span></span>
+        <span>Community markers<span id="community-count" class="cat-count"></span> <span class="on-own">(on My markers)</span></span>
       </label>
     </div>
 
     <div class="section" data-overlay-hide>
       <label class="section-title">Drop Tracker</label>
-      <label class="follow-row" title="Reads the game's Ledger files to tally drops, kills and vendor prices">
-        <input type="checkbox" id="tracker-enabled" />
-        <span>Collect drop &amp; vendor data</span>
-      </label>
       <div id="contrib-box" class="contrib-box">
         <label class="follow-row" title="Uploads your kill, drop, harvest and vendor-price counts to mnm-db.com every 30 minutes while the app is open. No chat, no account details.">
           <input type="checkbox" id="contrib-enabled" />
@@ -132,11 +127,6 @@
           <div class="account-atlas">The <b>Sign in</b> at the top of the map is MnM Atlas's own account, only needed to sync your Atlas notes. MnMdb doesn't use it.</div>
         </div>
       </div>
-      <button id="tracker-publish" class="primary hidden" title="Regenerate the site data from your ledger and push it live to MnMdb (owner only)">Publish to MnMdb</button>
-      <button id="btn-export-contribution" class="secondary" title="Save your rolled-up play data (drops, kills, harvests, prices) to a file instead — for sharing by hand">Export my data to a file</button>
-      <div id="tracker-status"></div>
-      <div id="publish-status"></div>
-      <div id="contribution-status"></div>
     </div>
 
     <div class="section" data-overlay-hide>
@@ -179,8 +169,7 @@
     <div id="overlay-passthrough-hint" class="hidden">Locked — clicks go to the game. Click <b>Edit</b> (top bar) or press Ctrl+Shift+X to edit the map.</div>
     <div id="empty-state" class="hidden">
       <p>No zones yet.</p>
-      <p>Click <b>Import All</b> to grab every zone from the wiki,<br />
-      or just play — zones appear automatically as you enter them.</p>
+      <p>Just play: zones appear automatically as you enter them.</p>
     </div>
   </div>
   </div>

@@ -387,11 +387,8 @@ function updateZoneControls() {
     el.title = on ? ZONE_BTN_TITLES[id] : offHint;
   };
   setBtn('btn-zone-image', hasCurrent, 'Select or create a zone first');
-  setBtn('btn-zone-review', hasZones, 'No zones yet — Import All or just play to create them');
+  setBtn('btn-zone-review', hasZones, 'No zones yet — they appear as you play');
   $('zone-select').disabled = !hasZones;
-  // First run (no zones): surface a highlighted Import All above Options as the
-  // getting-started action; it disappears once any zone exists.
-  $('btn-wiki-all-hero').classList.toggle('hidden', hasZones);
 }
 
 function refreshSidebar() {
@@ -624,6 +621,16 @@ const ZONE_ALIASES = {
 let MULTI_MAP = {};
 
 const normName = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
+// Proper names for zones the game only gives us as a code ("keepersbight"): the site's
+// zone maps plus the zones the MnM Atlas draws. Unknown codes fall back to autoZoneName.
+const KNOWN_ZONE_NAMES = [
+  'Blacktide Bay', 'Caves of Irem', 'Evershade Weald', 'Faelindral', 'Fallen Pass', 'Glass Flats', 'Glinting Hollow',
+  'Grain Cellar', 'Grimtide Sanctum', 'Infested Crypt', "Keeper's Bight", 'Night Harbor', 'Night Harbor Sewers', 'Rothold',
+  'Scarwood', 'Shaded Dunes', 'Shallow Shoals', 'Sungreet Strand', 'Tel Ekir', 'Tomb of the Last Wyrmsbane', 'Vale of Zintar',
+  'Ancient Crypt', 'Fallen Watch', 'Underdocks', "Ail'Vorith", 'Great Cavern Sea',
+];
+const knownZoneName = (code) => KNOWN_ZONE_NAMES.find((n) => normName(n) === normName(code)) || null;
+const autoZoneName = (code) => code.charAt(0).toUpperCase() + code.slice(1);
 
 // The game's zone code is the display name's words run together, often REORDERED and
 // dropping the filler words: "wyrmsbanetomb" = "Tomb of the Last Wyrmsbane". Match by
@@ -689,12 +696,15 @@ async function handleGameZone(internalName) {
   }
 
   // 3. Brand-new place: create the zone automatically
-  const pretty = key.charAt(0).toUpperCase() + key.slice(1);
+  const pretty = knownZoneName(key) || autoZoneName(key);
   zone = { id: uid(), name: pretty, gameName: key, image: null, markers: [] };
   data.zones.push(zone);
   characterZoneId = zone.id;
   save();
   switchZone(zone.id);
+  // The MnM Atlas has this zone: nothing to set up (our own map is fetched later, the
+  // first time you open My markers here).
+  if (atlasIdFor(zone)) { wikiStatus(''); return; }
   // Desktop: let you pick when several maps exist. Overlay: just grab the best.
   const got = await chooseWikiMap(zone, isOverlay);
   if (got === 'picker') {
@@ -976,44 +986,6 @@ function changeZoneMap(zone) {
 $('btn-zone-review').addEventListener('click', openZoneReview);
 $('zone-review-close').addEventListener('click', () => $('zone-review-modal').classList.add('hidden'));
 
-$('btn-wiki-all-hero').addEventListener('click', () => $('btn-wiki-all').click());
-
-$('btn-wiki-all').addEventListener('click', async () => {
-  if (!confirm(
-    'Import All is normally only needed once, when first setting up.\n\n' +
-    'It creates any missing zones and downloads maps only for zones that have none — maps you already have are left untouched. Continue?'
-  )) return;
-  wikiStatus('Fetching zone list from wiki…');
-  const names = await window.mapAPI.wikiZoneList();
-  if (names.error) {
-    wikiStatus(names.error);
-    return;
-  }
-
-  // Create any zones we don't have yet
-  for (const name of names) {
-    if (!data.zones.some((z) => z.name.toLowerCase() === name.toLowerCase())) {
-      data.zones.push({ id: uid(), name, image: null, markers: [] });
-    }
-  }
-  save();
-  if (!currentZoneId && data.zones.length) switchZone(data.zones[0].id);
-  refreshSidebar();
-
-  // Download maps one at a time (zones that already have a map are skipped)
-  let done = 0, failed = 0, skipped = 0;
-  for (let i = 0; i < data.zones.length; i++) {
-    const zone = data.zones[i];
-    if (zone.image) { skipped++; continue; }
-    wikiStatus('(' + (i + 1) + '/' + data.zones.length + ') ' + zone.name + '…');
-    (await fetchWikiMapFor(zone)) ? done++ : failed++;
-  }
-  wikiStatus('Done: ' + done + ' maps downloaded' +
-    (skipped ? ', ' + skipped + ' already had maps' : '') +
-    (failed ? ', ' + failed + ' had no wiki map yet' : '') + '.');
-  refreshSidebar();
-});
-
 // ---- Export / import ----
 
 $('btn-export').addEventListener('click', () => {
@@ -1214,63 +1186,6 @@ $('btn-zone-options').addEventListener('click', () => {
   const hidden = $('zone-options').classList.toggle('hidden');
   $('btn-zone-options').textContent = hidden ? 'Options ▾' : 'Options ▴';
 });
-
-// ---- Drop tracker (data collection) ----
-
-const TRACKER_KEY = 'mnm-tracker-enabled';
-const trackerStatus = (msg) => { $('tracker-status').textContent = msg; };
-
-function showTrackerSummary(r, suffix) {
-  if (!r || r.error) return trackerStatus((r && r.error) || 'Scan failed.');
-  if (r.disabled) return trackerStatus('Collection off.');
-  trackerStatus(r.items + ' items · ' + r.mobs + ' mobs · ' + r.events + ' events' + (suffix || ''));
-}
-
-$('tracker-enabled').addEventListener('change', async (e) => {
-  const on = e.target.checked;
-  try { localStorage.setItem(TRACKER_KEY, on ? '1' : '0'); } catch {}
-  if (on) {
-    trackerStatus('Collecting…');
-    showTrackerSummary(await window.mapAPI.trackerSetEnabled(true), ' · auto-updating');
-  } else {
-    await window.mapAPI.trackerSetEnabled(false);
-    trackerStatus('Collection off.');
-  }
-});
-
-// Publish to MnMdb — owner build only (the dev flag is passed from main.js).
-const isDev = new URLSearchParams(location.search).get('dev') === '1';
-const publishStatus = (msg) => { $('publish-status').textContent = msg; };
-if (isDev) {
-  const pubBtn = $('tracker-publish');
-  pubBtn.classList.remove('hidden');
-  // The owner publishes their own data directly, so the friend-facing
-  // "Export my data to share" button is redundant on the owner build — hide it.
-  $('btn-export-contribution').classList.add('hidden');
-  pubBtn.addEventListener('click', async () => {
-    pubBtn.disabled = true;
-    publishStatus('Publishing… regenerating data & pushing to GitHub.');
-    const r = await window.mapAPI.publishMnmdb();
-    publishStatus(r && r.ok ? r.message : (r && r.error) ? r.error : 'Publish failed.');
-    pubBtn.disabled = false;
-  });
-}
-
-// Export my data to share — everyone can do this (it's how trusted friends
-// contribute their play data; the owner merges the file in on Publish).
-const contributionStatus = (msg) => { $('contribution-status').textContent = msg; };
-{
-  const exBtn = $('btn-export-contribution');
-  exBtn.addEventListener('click', async () => {
-    exBtn.disabled = true;
-    contributionStatus('Building your data file…');
-    const r = await window.mapAPI.exportContribution();
-    if (r && r.ok) contributionStatus(`Saved ${r.events.toLocaleString()} events (${r.mobs} mobs, ${r.items} items). Send the file to the site owner to pool it in.`);
-    else if (r && r.canceled) contributionStatus('');
-    else contributionStatus((r && r.error) || 'Export failed.');
-    exBtn.disabled = false;
-  });
-}
 
 // ---- Share with MnMdb (opt-in automatic sharing; the work happens in contrib.js) ----
 // Asked once (the modal), then a switch under Drop Tracker. The status line says what
@@ -1816,7 +1731,6 @@ $('replay-next').addEventListener('click', () => { if (replayIdx > 0) { replayId
 })();
 
 // The app re-scans itself a few seconds after the game writes new loot/kills
-window.mapAPI.onTrackerUpdated((r) => showTrackerSummary(r, ' · updated just now'));
 
 $('btn-overlay').addEventListener('click', () => window.mapAPI.toggleOverlay());
 $('overlay-exit-btn').addEventListener('click', () => window.mapAPI.overlayExit());
@@ -1983,6 +1897,7 @@ try { atlasMode = localStorage.getItem(MAP_SOURCE_KEY) !== 'own'; } catch {}
 let atlasShownId = null;
 const atlasShowing = () => !$('atlas-view').classList.contains('hidden');
 
+const ownMapTried = new Set(); // zones we've already tried to fetch a wiki map for
 function applyMapSource() {
   const frame = $('atlas-view');
   const id = atlasIdFor(currentZone());
@@ -2004,6 +1919,21 @@ function applyMapSource() {
   ob.textContent = show ? 'My map' : 'Atlas';
   ob.disabled = !id;
   ob.title = id ? (show ? 'Show your own marker map' : 'Show the MnM Atlas map') : 'The MnM Atlas has no map for this zone yet';
+  // Pan/zoom/double-click help and the marker tools are about your own map; the Atlas
+  // has its own controls. Say so instead of offering things that do nothing there.
+  $('own-map-help').classList.toggle('hidden', show);
+  $('marker-tools-note').classList.toggle('hidden', !show);
+  $('community-enabled').closest('label').classList.toggle('dimmed', show);
+  // Your own map for this zone is fetched from the wiki the first time it's needed
+  // (My markers, or a zone the Atlas doesn't have) — not all up front.
+  const z = currentZone();
+  if (!show && z && !z.image && !ownMapTried.has(z.id)) {
+    ownMapTried.add(z.id);
+    chooseWikiMap(z, isOverlay).then((got) => {
+      if (got === 'picker') wikiStatus('Choose a map for ' + z.name + '.');
+      else if (!got) wikiStatus('No wiki map for ' + z.name + ' yet. Use Options → Import Map to add one.');
+    }).catch(() => {});
+  }
 }
 function setMapSource(src) {
   atlasMode = src === 'atlas';
@@ -2217,12 +2147,6 @@ function initAtlas() {
   } catch {}
   $('btn-sidebar').textContent = document.body.classList.contains('sidebar-collapsed') ? '»' : '«';
 
-  // Restore the drop-tracker toggle; if it was left on, scan + start auto-watch
-  try { $('tracker-enabled').checked = localStorage.getItem(TRACKER_KEY) === '1'; } catch {}
-  if ($('tracker-enabled').checked) {
-    window.mapAPI.trackerSetEnabled(true).then((r) => showTrackerSummary(r, ' · auto-updating'));
-  }
-
   // Multi-map zones (Evershade Weald ⇄ Faelindral, etc.). Also feed each group's
   // default name into ZONE_ALIASES so auto-follow lands on the right map first.
   try {
@@ -2242,6 +2166,20 @@ function initAtlas() {
 
   // Markers from categories that no longer exist become "Other"
   let migrated = false;
+  // A fresh install starts with every known zone listed (names only, no downloads), so
+  // the dropdown and the Atlas work before you've played. Own maps are fetched later,
+  // the first time a zone needs one.
+  if (!data.zones.length) {
+    data.zones = KNOWN_ZONE_NAMES.map((name) => ({ id: uid(), name, image: null, markers: [] }))
+      .sort((a, b) => a.name.localeCompare(b.name));
+    migrated = true;
+  }
+  // Zones auto-created under the game's code ("Keepersbight") get their proper name
+  // ("Keeper's Bight") — only while the name is still the untouched auto one.
+  for (const zone of data.zones) {
+    const proper = zone.gameName && knownZoneName(zone.gameName);
+    if (proper && zone.name !== proper && zone.name === autoZoneName(zone.gameName)) { zone.name = proper; migrated = true; }
+  }
   for (const zone of data.zones) {
     for (const m of zone.markers) {
       if (!CATEGORIES.some((c) => c.id === m.category)) {
