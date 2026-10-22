@@ -38,15 +38,17 @@ let SESSION = null;
     if (incoming) localStorage.setItem('mnmdb-session', incoming);
     if (incoming || q.get('login_error')) history.replaceState({}, '', location.pathname + location.hash);
   } catch {}
+  // Moderation is Discord-only now; forget any moderator password an older version saved.
+  try { localStorage.removeItem('mnmdb-admin'); } catch {}
   let saved; try { saved = localStorage.getItem('mnmdb-session'); } catch {}
   if (!saved) return;
   try {
     const bin = atob(saved.split('.')[0].replace(/-/g, '+').replace(/_/g, '/'));
     const p = JSON.parse(new TextDecoder().decode(Uint8Array.from(bin, (c) => c.charCodeAt(0))));
     if (p.exp && p.exp > Date.now()) {
-      SESSION = { token: saved, id: String(p.id), name: String(p.name || ''), admin: false, trusted: false };
+      SESSION = { token: saved, id: String(p.id), name: String(p.name || ''), admin: false, trusted: false, owner: false };
       // hydrate cached powers so admin tools show without a flash; refreshMe() confirms them
-      try { const m = JSON.parse(localStorage.getItem('mnmdb-me') || 'null'); if (m && m.id === SESSION.id) { SESSION.admin = !!m.admin; SESSION.trusted = !!m.trusted; } } catch {}
+      try { const m = JSON.parse(localStorage.getItem('mnmdb-me') || 'null'); if (m && m.id === SESSION.id) { SESSION.admin = !!m.admin; SESSION.trusted = !!m.trusted; SESSION.owner = !!m.owner; } } catch {}
     } else localStorage.removeItem('mnmdb-session');
   } catch { try { localStorage.removeItem('mnmdb-session'); } catch {} }
 })();
@@ -60,10 +62,10 @@ async function refreshMe() {
     if (r.status === 401) { signOut(); route(); return; }
     if (!r.ok) return;
     const me = await r.json();
-    const before = SESSION.admin;
-    SESSION.admin = !!me.admin; SESSION.trusted = !!me.trusted;
-    try { localStorage.setItem('mnmdb-me', JSON.stringify({ id: SESSION.id, admin: SESSION.admin, trusted: SESSION.trusted })); } catch {}
-    if (SESSION.admin !== before) route();
+    const before = SESSION.admin + '|' + SESSION.owner;
+    SESSION.admin = !!me.admin; SESSION.trusted = !!me.trusted; SESSION.owner = !!me.owner;
+    try { localStorage.setItem('mnmdb-me', JSON.stringify({ id: SESSION.id, admin: SESSION.admin, trusted: SESSION.trusted, owner: SESSION.owner })); } catch {}
+    if (SESSION.admin + '|' + SESSION.owner !== before) route();
   } catch {}
 }
 // The identity block in the Add-a-Marker modal: signed-in users see their verified name
@@ -2229,9 +2231,9 @@ function wireMapView(name, catById, fallback) {
   // ---- Admin: click a community marker to edit / delete / move it (all via a modal) ----
   const moveHint = document.getElementById('move-hint');
   const markerModal = document.getElementById('marker-modal');
-  const isAdmin = () => !!localStorage.getItem('mnmdb-admin') || !!(SESSION && SESSION.admin);
-  // The token holder authenticates with the bearer; a signed-in admin uses their session.
-  const adminAuth = () => { const t = localStorage.getItem('mnmdb-admin'); return t ? { bearer: t } : { session: SESSION.token }; };
+  const isAdmin = () => !!(SESSION && SESSION.admin);
+  // Admins act with their Discord session (there's no password login).
+  const adminAuth = () => ({ session: SESSION.token });
   let moveId = null, moveAuth = null;
   if (isAdmin()) box.classList.add('admin');
 
@@ -2538,32 +2540,25 @@ function wireMapView(name, catById, fallback) {
   }
 }
 
-// ---- Moderation — a private page (#/moderate, not linked in the nav). Reachable two
-// ways: the ADMIN_TOKEN password (super-admin, kept in localStorage), or signing in with
-// Discord as a per-user admin (their session token is used as the bearer). ----
+// ---- Moderation — a private page (#/moderate, not linked in the nav), for Discord
+// admins only: their session token is the bearer. The site owner (OWNER_DISCORD_IDS on
+// the API) also manages who the admins are. There is no password login. ----
 function renderModerate() {
-  const mod = localStorage.getItem('mnmdb-admin') || '';   // the moderator password, if set
-  const viaSession = !mod && !!(SESSION && SESSION.admin);
-  const creds = mod || (viaSession ? SESSION.token : '');
-  const isSuper = !!mod;                                    // only the password holder is super-admin
-  const adminAuth = mod ? { bearer: mod } : { session: SESSION && SESSION.token };
+  const creds = SESSION && SESSION.admin ? SESSION.token : '';
+  const isSuper = !!(SESSION && SESSION.owner);             // the owner can promote/demote admins
+  const adminAuth = { session: SESSION && SESSION.token };
   if (!creds) {
     $('content').innerHTML =
       '<h1>Moderation</h1>' +
-      '<p class="sub">Enter the moderator password to review submissions.</p>' +
-      '<div class="modlogin"><input id="mod-token" type="password" placeholder="Moderator password" autocomplete="current-password" />' +
-      '<button id="mod-signin" class="primary">Sign in</button></div>' +
       (SESSION
-        ? '<p class="sub">Signed in as <b>' + esc(SESSION.name) + '</b> — this account isn’t an admin.</p>'
-        : '<div class="sp-signin"><button id="mod-discord" class="btn-discord">Sign in with Discord</button><span class="muted">if you’re an admin</span></div>');
-    const go = () => { const t = $('mod-token').value.trim(); if (t) { localStorage.setItem('mnmdb-admin', t); renderModerate(); } };
-    $('mod-signin').addEventListener('click', go);
-    $('mod-token').addEventListener('keydown', (e) => { if (e.key === 'Enter') go(); });
+        ? '<p class="sub">Signed in as <b>' + esc(SESSION.name) + '</b>. This account isn’t an admin.</p>'
+        : '<p class="sub">Admins sign in with Discord to review submissions.</p>' +
+          '<div class="sp-signin"><button id="mod-discord" class="btn-discord">Sign in with Discord</button></div>');
     const dc = $('mod-discord'); if (dc) dc.addEventListener('click', () => { location.href = API_BASE + '/auth/discord/start'; });
     return;
   }
   $('content').innerHTML =
-    '<div class="modbar"><h1>Moderation</h1>' + (isSuper ? '' : '<span class="modwho">admin · ' + esc(SESSION.name) + '</span>') + '<button id="mod-signout">Sign out</button></div>' +
+    '<div class="modbar"><h1>Moderation</h1><span class="modwho">' + (isSuper ? 'owner' : 'admin') + ' · ' + esc(SESSION.name) + '</span><button id="mod-signout">Sign out</button></div>' +
     '<div id="mod-trusted" class="modtrusted"></div>' +
     (isSuper ? '<div id="mod-admins" class="modtrusted"></div>' : '') +
     '<div id="mod-maps"></div>' +
@@ -2571,7 +2566,7 @@ function renderModerate() {
     '<div id="mod-list"><p class="sub">Loading…</p></div>' +
     '<div class="modmanage"><button id="mod-manage-btn">⚙ Manage approved markers</button><div id="mod-manage"></div></div>' +
     '<div class="modmanage"><button id="mod-maps-btn">⚙ Manage approved maps</button><div id="mod-maps-manage"></div></div>';
-  $('mod-signout').addEventListener('click', () => { if (mod) localStorage.removeItem('mnmdb-admin'); else signOut(); renderModerate(); });
+  $('mod-signout').addEventListener('click', () => { signOut(); renderModerate(); });
   $('mod-manage-btn').addEventListener('click', async () => {
     const box = $('mod-manage'), btn = $('mod-manage-btn');
     if (box.dataset.open === '1') { box.innerHTML = ''; box.dataset.open = '0'; btn.textContent = '⚙ Manage approved markers'; return; }
@@ -2689,7 +2684,7 @@ async function loadApprovedMaps(creds, box) {
   });
 }
 
-// The per-user admin chips (super-admin only): promote by trusting first, demote with ✕.
+// The per-user admin chips (owner only): promote by trusting first, demote with ✕.
 async function loadAdmins(creds) {
   const el = $('mod-admins');
   if (!el) return;
@@ -2711,7 +2706,7 @@ async function loadPending(creds, isSuper) {
   let j;
   try {
     const r = await fetch(API_BASE + '/admin/pending', { headers: { Authorization: 'Bearer ' + creds } });
-    if (r.status === 401) { localStorage.removeItem('mnmdb-admin'); list.innerHTML = '<p class="sp-status err">Wrong password.</p>'; setTimeout(renderModerate, 1000); return; }
+    if (r.status === 401) { signOut(); list.innerHTML = '<p class="sp-status err">Your Discord sign-in expired. Sign in again.</p>'; setTimeout(renderModerate, 1500); return; }
     j = await r.json();
   } catch { list.innerHTML = '<p class="sp-status err">Network error — try again.</p>'; return; }
   const items = j.pending || [];
@@ -2795,7 +2790,7 @@ async function loadPending(creds, isSuper) {
 }
 
 // The trusted-contributor chips at the top of the moderation page (each removable).
-// The super-admin also gets a ⬆ on each chip to promote a trusted person to full admin.
+// The owner also gets a ⬆ on each chip to promote a trusted person to full admin.
 async function loadTrusted(creds, isSuper) {
   const el = $('mod-trusted');
   if (!el) return;

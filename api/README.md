@@ -12,7 +12,7 @@ Run these from this `api/` folder. `npx` fetches `wrangler` on first use — no 
 2. `npx wrangler login` — authorize in the browser.
 3. `npx wrangler d1 create mnmdb` — copy the `database_id` it prints into `wrangler.toml`.
 4. `npx wrangler d1 execute mnmdb --remote --file=schema.sql` — creates the table.
-5. `npx wrangler secret put ADMIN_TOKEN` — type a strong password (your moderation login).
+5. `npx wrangler secret put OWNER_DISCORD_IDS` — your Discord user id (the owner: full admin, and the only one who can add/remove admins). Moderation is Discord sign-in only; there is no password.
 6. `npx wrangler deploy` — prints your `https://mnmdb-api.<you>.workers.dev` URL.
 
 Later: add Turnstile (`npx wrangler secret put TURNSTILE_SECRET`) and a custom route
@@ -29,7 +29,7 @@ Later: add Turnstile (`npx wrangler secret put TURNSTILE_SECRET`) and a custom r
 | POST | `/admin/approve` | admin  | `{ "id": N }` → approve |
 | POST | `/admin/reject`  | admin  | `{ "id": N }` → reject |
 
-Admin calls send `Authorization: Bearer <ADMIN_TOKEN>`.
+Admin calls send `Authorization: Bearer <Discord session token>` from a signed-in admin (the owner, the `admins` table, or `ADMIN_DISCORD_IDS`). Promote/demote is owner-only.
 
 ### Play-data sharing (MnM Map's opt-in "Share with MnMdb")
 

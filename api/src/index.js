@@ -4,7 +4,8 @@
 // the approved ones back to the static site. Bound to a D1 database (binding "DB").
 //
 // Secrets / vars (set with `wrangler secret put NAME`, or in wrangler.toml [vars]):
-//   ADMIN_TOKEN          (secret)        bearer token for the /admin endpoints — you set this
+//   OWNER_DISCORD_IDS    (secret)        comma-separated Discord ids of the site owner(s): full admin,
+//                                        and the only ones who may promote/demote admins
 //   TURNSTILE_SECRET     (secret, opt.)  Cloudflare Turnstile secret; the bot check is SKIPPED
 //                                        when unset (skipped anyway for signed-in Discord users)
 //   DISCORD_CLIENT_SECRET (secret, opt.) Discord OAuth client secret (for "Sign in with Discord")
@@ -97,9 +98,14 @@ const getCookie = (request, name) => {
   return m ? m[1] : null;
 };
 
-// Is this Discord id a full admin? (env seed list OR the self-service `admins` table.)
+// The site owner(s): full admin, and the only ones who may promote/demote admins.
+// OWNER_DISCORD_IDS is a secret (comma-separated Discord ids) so it stays out of the repo.
+const isOwnerId = (id, env) => !!id && (env.OWNER_DISCORD_IDS || '').split(',').map((s) => s.trim()).filter(Boolean).includes(String(id));
+
+// Is this Discord id a full admin? (owner, env seed list, OR the self-service `admins` table.)
 async function isAdminId(id, env) {
   if (!id) return false;
+  if (isOwnerId(id, env)) return true;
   const seed = (env.ADMIN_DISCORD_IDS || '').split(',').map((s) => s.trim()).filter(Boolean);
   if (seed.includes(String(id))) return true;
   return !!(await env.DB.prepare('SELECT 1 FROM admins WHERE discord_id=?').bind(String(id)).first());
@@ -164,11 +170,9 @@ function checkAgg(agg) {
   return null;
 }
 
-// Who may edit/delete/move a marker: the super-admin (ADMIN_TOKEN bearer), a signed-in
-// admin, or the signed-in user who submitted it. Returns { allowed, admin }.
+// Who may edit/delete/move a marker: a signed-in admin, or the signed-in user who
+// submitted it. Returns { allowed, admin }.
 async function authorizeMarker(request, env, body, markerId) {
-  const adminTok = (request.headers.get('Authorization') || '').replace(/^Bearer\s+/i, '');
-  if (env.ADMIN_TOKEN && adminTok === env.ADMIN_TOKEN) return { allowed: true, admin: true };
   const sess = await readSession(body.session, env.SESSION_SECRET);
   if (!sess) return { allowed: false };
   if (await isAdminId(sess.id, env)) return { allowed: true, admin: true };
@@ -433,7 +437,7 @@ export default {
       const admin = await isAdminId(sess.id, env);
       const seedT = (env.TRUSTED_DISCORD_IDS || '').split(',').map((s) => s.trim()).filter(Boolean);
       const trusted = admin || seedT.includes(sess.id) || !!(await env.DB.prepare('SELECT 1 FROM trusted WHERE discord_id=?').bind(sess.id).first());
-      return json({ id: sess.id, name: sess.name, admin, trusted }, 200, origin);
+      return json({ id: sess.id, name: sess.name, admin, trusted, owner: isOwnerId(sess.id, env) }, 200, origin);
     }
 
     // --- Play-data contributions (opt-in automatic sharing from MnM Map) ---
@@ -509,10 +513,10 @@ export default {
     }
 
     // Approved contributions for the 6-hourly site build on the VPS (EXPORT_TOKEN, a
-    // read-only secret kept separate from ADMIN_TOKEN) — or any admin.
+    // read-only secret kept separate from any login) — or a signed-in admin.
     if (request.method === 'GET' && url.pathname === '/contrib/export') {
       const bearer = (request.headers.get('Authorization') || '').replace(/^Bearer\s+/i, '');
-      let ok = (env.EXPORT_TOKEN && bearer === env.EXPORT_TOKEN) || (env.ADMIN_TOKEN && bearer === env.ADMIN_TOKEN);
+      let ok = !!env.EXPORT_TOKEN && bearer === env.EXPORT_TOKEN;
       if (!ok) { const s = await readSession(bearer, env.SESSION_SECRET); ok = !!(s && (await isAdminId(s.id, env))); }
       if (!ok) return json({ error: 'unauthorized' }, 401, origin);
       const { results } = await env.DB.prepare(
@@ -524,14 +528,13 @@ export default {
       })) }, 200, origin);
     }
 
-    // Admin (moderation) — the ADMIN_TOKEN bearer (super-admin) OR a signed-in admin
-    // (their session token sent as the bearer). Promote/demote below is super-only.
+    // Admin (moderation) — signed-in Discord admins only (their session token sent as the
+    // bearer). There is no password login. Promote/demote below is owner-only.
     if (url.pathname.startsWith('/admin/')) {
       const bearer = (request.headers.get('Authorization') || '').replace(/^Bearer\s+/i, '');
-      const isSuper = !!env.ADMIN_TOKEN && bearer === env.ADMIN_TOKEN;
-      let allowed = isSuper;
-      if (!isSuper) { const s = await readSession(bearer, env.SESSION_SECRET); if (s && (await isAdminId(s.id, env))) allowed = true; }
-      if (!allowed) return json({ error: 'unauthorized' }, 401, origin);
+      const s = await readSession(bearer, env.SESSION_SECRET);
+      if (!s || !(await isAdminId(s.id, env))) return json({ error: 'unauthorized' }, 401, origin);
+      const isSuper = isOwnerId(s.id, env);
 
       if (request.method === 'GET' && url.pathname === '/admin/pending') {
         const { results } = await env.DB.prepare(
@@ -576,14 +579,14 @@ export default {
         return json({ ok: true }, 200, origin);
       }
 
-      // Per-user admin list. Anyone with admin access can SEE it; only the super-admin
-      // (ADMIN_TOKEN) may promote/demote, so an admin can't entrench or remove peers.
+      // Per-user admin list. Anyone with admin access can SEE it; only the owner
+      // (OWNER_DISCORD_IDS) may promote/demote, so an admin can't entrench or remove peers.
       if (request.method === 'GET' && url.pathname === '/admin/admins') {
         const { results } = await env.DB.prepare('SELECT discord_id, name, added_at FROM admins ORDER BY added_at DESC').all();
         return json({ admins: results, super: isSuper }, 200, origin);
       }
       if (request.method === 'POST' && (url.pathname === '/admin/promote' || url.pathname === '/admin/demote')) {
-        if (!isSuper) return json({ error: 'super-admin only' }, 403, origin);
+        if (!isSuper) return json({ error: 'owner only' }, 403, origin);
         let b; try { b = await request.json(); } catch { return json({ error: 'bad json' }, 400, origin); }
         const did = String(b.discord_id || '').trim();
         if (!did) return json({ error: 'discord_id required' }, 400, origin);
