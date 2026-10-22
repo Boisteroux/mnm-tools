@@ -25,14 +25,21 @@ function load() {
 }
 function defaults() {
   // optIn: null = not asked yet, true = sharing, false = declined
-  return { optIn: null, credit: false, token: null, status: null, lastSharedAt: null, lastEvents: 0, lastError: null, lastCheckedAt: null };
+  // creditName: who to thank (null = the most-played Early Access character)
+  return { optIn: null, credit: false, creditName: null, token: null, status: null, lastSharedAt: null, lastEvents: 0, lastError: null, lastCheckedAt: null };
 }
 function save(s) { try { fs.writeFileSync(file(), JSON.stringify(s, null, 2)); } catch {} }
 function update(patch) { const s = Object.assign(load(), patch); save(s); notify(s); return s; }
 const publicState = (s) => {
   const { token, ...rest } = s; // the credential never leaves the main process
-  return Object.assign(rest, { character: (characters()[0] || null), signedIn: !!session });
+  const chars = characters();
+  return Object.assign(rest, { characters: chars, character: chars[0] || null, creditName: creditNameFor(s, chars), signedIn: !!session });
 };
+// Who to thank: the name the player picked (a character, or one typed under "Other"),
+// else their most-played Early Access character.
+const creditNameFor = (s, chars) => s.creditName || chars[0] || null;
+// Same rule the API applies: 2-24 letters, digits, spaces, apostrophes or hyphens.
+const cleanName = (n) => { const t = String(n || '').replace(/\s+/g, ' ').trim(); return /^[A-Za-z0-9' -]{2,24}$/.test(t) ? t : null; };
 function notify(s) { if (deps && deps.onChange) deps.onChange(publicState(s || load())); }
 
 function eaFiles() {
@@ -70,14 +77,14 @@ async function shareNow({ force = false } = {}) {
     const servers = [...new Set(files.map((f) => deps.ledgerParser.ledgerServer(f)))];
     const body = {
       agg: { mobs: agg.mobs, items: agg.items, harvest: agg.harvest, harvestZones: agg.harvestZones, harvestNodes: agg.harvestNodes, events: agg.events, fileCount: agg.fileCount },
-      servers, characters: chars, credit: !!s.credit, creditName: s.credit ? (chars[0] || null) : null,
+      servers, characters: chars, credit: !!s.credit, creditName: s.credit ? creditNameFor(s, chars) : null,
       session: session || undefined,
     };
     const up = await api('POST', '/contrib/upload', { token: s.token, body });
     if (up.status === 401) return publicState(update({ token: null, status: null, lastError: 'MnMdb no longer knows this install — it will sign up again next time.' }));
     if (up.status === 429) return publicState(update(Object.assign({ lastError: null, lastCheckedAt: new Date().toISOString() }, up.j.status ? { status: up.j.status } : {}))); // shared very recently
     if (up.status !== 200) return publicState(update({ lastError: up.j.error || 'Upload failed (' + up.status + ').' }));
-    return publicState(update({ status: up.j.status, lastSharedAt: new Date().toISOString(), lastEvents: agg.events, lastError: null, lastCheckedAt: new Date().toISOString() }));
+    return publicState(update({ status: up.j.status, creditPending: !!up.j.creditPending, lastSharedAt: new Date().toISOString(), lastEvents: agg.events, lastError: null, lastCheckedAt: new Date().toISOString() }));
   } catch (e) {
     return publicState(update({ lastError: 'Could not reach MnMdb: ' + e.message }));
   } finally { busy = false; }
@@ -89,7 +96,7 @@ async function refreshStatus() {
   if (!s.token) return publicState(s);
   try {
     const r = await api('GET', '/contrib/status', { token: s.token });
-    if (r.status === 200) return publicState(update({ status: r.j.status }));
+    if (r.status === 200) return publicState(update({ status: r.j.status, creditPending: !!r.j.creditPending }));
   } catch {}
   return publicState(s);
 }
@@ -111,6 +118,14 @@ async function setOptIn(on, { forget = false } = {}) {
   return publicState(next);
 }
 
+// Pick who to thank. A name the site wouldn't accept comes back with creditError.
+async function setCreditName(name) {
+  const clean = cleanName(name);
+  if (!clean) return Object.assign(publicState(load()), { creditError: 'Use 2-24 letters, numbers, spaces, apostrophes or hyphens.' });
+  const s = update({ creditName: clean });
+  return s.credit && s.optIn === true ? shareNow({ force: true }) : publicState(s);
+}
+
 async function setCredit(on) {
   update({ credit: !!on });
   return shareNow({ force: true }); // push the credit change through
@@ -130,6 +145,7 @@ function init(d) {
   ipcMain.handle('contrib-state', async () => (load().token ? refreshStatus() : publicState(load())));
   ipcMain.handle('contrib-set-optin', (e, on, opts) => setOptIn(!!on, opts || {}));
   ipcMain.handle('contrib-set-credit', (e, on) => setCredit(!!on));
+  ipcMain.handle('contrib-set-credit-name', (e, name) => setCreditName(name));
   ipcMain.handle('contrib-share-now', () => shareNow({ force: true }));
   ipcMain.handle('contrib-session', (e, sess) => { setSession(sess); return true; });
 }

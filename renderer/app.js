@@ -1279,13 +1279,47 @@ const contributionStatus = (msg) => { $('contribution-status').textContent = msg
   const box = $('contrib-box');
   const minsAgo = (iso) => { if (!iso) return ''; const m = Math.round((Date.now() - new Date(iso)) / 60000); return m < 1 ? 'just now' : m < 60 ? m + ' min ago' : Math.round(m / 60) + ' hr ago'; };
   let last = null;
+  const OTHER = '__other';
+  // "Thank me on the site as [▾]": every Early Access character (most-played first),
+  // then "Other…", which reveals a text box. A typed name shows once an admin OKs it.
+  function fillNames(sel, other, s) {
+    const chars = s.characters || [];
+    const picked = s.creditName || chars[0] || '';
+    const isOther = !!picked && !chars.includes(picked);
+    sel.innerHTML = chars.map((c) => '<option>' + reEsc(c) + '</option>').join('') +
+      '<option value="' + OTHER + '">Other…</option>';
+    sel.value = isOther || !chars.length ? OTHER : picked;
+    if (document.activeElement !== other) other.value = isOther ? picked : '';
+    other.classList.toggle('hidden', sel.value !== OTHER);
+  }
+  const chosenName = (sel, other) => (sel.value === OTHER ? other.value : sel.value);
+  async function saveName(sel, other, err) {
+    const name = chosenName(sel, other).trim();
+    if (!name) return; // nothing typed yet
+    const r = await window.mapAPI.contribSetCreditName(name);
+    err.textContent = (r && r.creditError) || '';
+    err.classList.toggle('hidden', !(r && r.creditError));
+    if (r && !r.creditError) paint(r);
+  }
+  function wireNames(sel, other, err) {
+    sel.addEventListener('change', () => {
+      other.classList.toggle('hidden', sel.value !== OTHER);
+      if (sel.value === OTHER) other.focus(); else saveName(sel, other, err);
+    });
+    other.addEventListener('change', () => saveName(sel, other, err));
+    other.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); other.blur(); } });
+  }
   function paint(s) {
     if (!s || !box) return;
     last = s;
-    document.querySelectorAll('.contrib-char').forEach((el) => { el.textContent = s.character || 'my character'; });
+    fillNames($('contrib-credit-name'), $('contrib-credit-other'), s);
+    if (!$('contrib-modal').classList.contains('hidden') && document.activeElement !== $('contrib-modal-name')) fillNames($('contrib-modal-name'), $('contrib-modal-other'), s);
     $('contrib-enabled').checked = s.optIn === true;
     $('contrib-credit').checked = !!s.credit;
     $('contrib-credit').disabled = s.optIn !== true;
+    $('contrib-credit-name').disabled = $('contrib-credit-other').disabled = s.optIn !== true || !s.credit;
+    // A name typed under "Other" shows on the site once an admin OKs it — say so.
+    $('contrib-credit-wait').classList.toggle('hidden', !(s.optIn === true && s.credit && s.creditPending));
     $('contrib-share-now').classList.toggle('hidden', s.optIn !== true);
     let line;
     if (s.optIn !== true) line = 'Off. Nothing is shared.';
@@ -1295,7 +1329,7 @@ const contributionStatus = (msg) => { $('contribution-status').textContent = msg
       const when = 'Shared ' + minsAgo(s.lastSharedAt) + ' · ' + (s.lastEvents || 0).toLocaleString() + ' events';
       line = s.status === 'approved' ? when + ' · on MnMdb within 6 hrs'
         : s.status === 'rejected' ? 'Your shares aren\'t being used on MnMdb. Questions? Use Give feedback.'
-        : when + ' · waiting for a one-time check' + (s.signedIn ? '' : ' (trusted players can sign in with Discord to skip it)');
+        : when + ' · waiting for a one-time check' + (s.signedIn ? '' : ' (trusted players can sign in to MnMdb below to skip it)');
     }
     $('contrib-line').textContent = line;
   }
@@ -1305,14 +1339,34 @@ const contributionStatus = (msg) => { $('contribution-status').textContent = msg
     // Hand the Discord session (owned by the sign-in panel) to the sharing engine.
     window.mapAPI.contribSession(localStorage.getItem(DISCORD_SESSION_KEY) || '');
     refresh().then(() => {
-      if (last && last.optIn === null) $('contrib-modal').classList.remove('hidden'); // ask once
+      if (last && last.optIn === null) { // ask once
+        $('contrib-modal').classList.remove('hidden');
+        fillNames($('contrib-modal-name'), $('contrib-modal-other'), last);
+      }
     });
     setInterval(refresh, 5 * 60 * 1000); // keeps "x min ago" and the approval status current
 
+    wireNames($('contrib-credit-name'), $('contrib-credit-other'), $('contrib-credit-err'));
+    // In the prompt the name is only saved on "Share automatically" (with the checkbox ticked).
+    $('contrib-modal-name').addEventListener('change', () => {
+      $('contrib-modal-other').classList.toggle('hidden', $('contrib-modal-name').value !== OTHER);
+      if ($('contrib-modal-name').value === OTHER) $('contrib-modal-other').focus();
+      $('contrib-modal-credit').checked = true; // picking a name means they want the credit
+    });
+    $('contrib-modal-other').addEventListener('input', () => { $('contrib-modal-credit').checked = true; });
+
     const close = () => $('contrib-modal').classList.add('hidden');
     $('contrib-yes').addEventListener('click', async () => {
+      const credit = $('contrib-modal-credit').checked;
+      if (credit) {
+        const name = chosenName($('contrib-modal-name'), $('contrib-modal-other')).trim();
+        const r = name ? await window.mapAPI.contribSetCreditName(name) : { creditError: 'Type the name to show, or untick the box.' };
+        const err = $('contrib-modal-name-err');
+        if (r && r.creditError) { err.textContent = r.creditError; err.classList.remove('hidden'); return; } // keep the prompt open
+        err.classList.add('hidden');
+      }
       close();
-      await window.mapAPI.contribSetCredit($('contrib-modal-credit').checked).catch(() => {});
+      await window.mapAPI.contribSetCredit(credit).catch(() => {});
       paint(await window.mapAPI.contribSetOptIn(true));
     });
     $('contrib-later').addEventListener('click', async () => { close(); paint(await window.mapAPI.contribSetOptIn(false)); });

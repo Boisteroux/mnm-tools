@@ -59,6 +59,7 @@ CREATE TABLE IF NOT EXISTS contributors (
   discord_id   TEXT,
   discord_name TEXT,
   credit_name  TEXT,                                 -- set only when the player opts in to credit
+  credit_review INTEGER NOT NULL DEFAULT 0,          -- 1 = a typed-in name waiting for an admin's OK
   ip_hash      TEXT,                                 -- hashed, for sign-up rate-limiting only
   created_at   TEXT NOT NULL DEFAULT (datetime('now')),
   reviewed_at  TEXT

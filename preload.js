@@ -29,6 +29,7 @@ contextBridge.exposeInMainWorld('mapAPI', {
   contribState: () => ipcRenderer.invoke('contrib-state'),
   contribSetOptIn: (on, opts) => ipcRenderer.invoke('contrib-set-optin', on, opts),
   contribSetCredit: (on) => ipcRenderer.invoke('contrib-set-credit', on),
+  contribSetCreditName: (name) => ipcRenderer.invoke('contrib-set-credit-name', name),
   contribShareNow: () => ipcRenderer.invoke('contrib-share-now'),
   contribSession: (session) => ipcRenderer.invoke('contrib-session', session),
   onContribState: (cb) => ipcRenderer.on('contrib-state', (e, state) => cb(state)),

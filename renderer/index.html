@@ -73,14 +73,6 @@
           <button id="btn-atlas-align" title="Line this zone's map up with the MnM Atlas map by matching a few landmarks — needed once per zone before exporting">Align with Atlas</button>
           <button id="btn-atlas-export" title="Save this zone's markers as an MnM Atlas notes file, to bring in with the Atlas's own Import">Export Atlas Notes</button>
         </div>
-        <div id="discord-signedout">
-          <div class="btn-row"><button id="btn-discord-login" class="secondary" title="Sign in with Discord to verify who you are — for submitting and moderating community markers">Sign in with Discord</button></div>
-        </div>
-        <div id="discord-signedin" class="hidden">
-          <div class="follow-row">Signed in as <b id="discord-name"></b></div>
-          <div class="btn-row"><button id="btn-discord-logout" class="secondary" title="Sign out of your Discord session">Sign out</button></div>
-        </div>
-        <div id="discord-status" class="mini-status"></div>
       </div>
       <div id="wiki-status"></div>
     </div>
@@ -105,10 +97,16 @@
           <input type="checkbox" id="contrib-enabled" />
           <span>Share with MnMdb automatically</span>
         </label>
-        <label class="follow-row contrib-sub" title="Adds your character name to the thank-you list on mnm-db.com. Otherwise you're counted anonymously.">
-          <input type="checkbox" id="contrib-credit" />
-          <span>Thank me on the site as <b class="contrib-char">my character</b></span>
-        </label>
+        <div class="credit-row contrib-sub">
+          <label class="follow-row" title="Adds a name to the thank-you list on mnm-db.com. Otherwise you're counted anonymously.">
+            <input type="checkbox" id="contrib-credit" />
+            <span>Thank me on the site as</span>
+          </label>
+          <select id="contrib-credit-name" class="credit-select" aria-label="Name to be thanked under"></select>
+          <input id="contrib-credit-other" class="credit-other hidden" maxlength="24" placeholder="Type the name to show" aria-label="Other name to be thanked under" />
+          <div id="contrib-credit-err" class="credit-err hidden"></div>
+          <div id="contrib-credit-wait" class="credit-note hidden">This name appears on the site once an admin OKs it.</div>
+        </div>
         <div id="contrib-off-confirm" class="contrib-confirm hidden">
           <span>Stop sharing. Also delete what you've shared so far?</span>
           <div class="btn-row">
@@ -118,6 +116,19 @@
         </div>
         <div id="contrib-line" class="mini-status"></div>
         <div class="btn-row"><button id="contrib-share-now" class="secondary hidden" title="Upload your latest counts now instead of waiting for the next 30-minute share">Share now</button></div>
+        <!-- MnMdb account (Discord). Lives here because sharing is what it's mostly for. -->
+        <div class="mnmdb-account">
+          <div id="discord-signedout">
+            <div class="btn-row"><button id="btn-discord-login" class="discord-btn" title="Opens Discord in your browser to confirm who you are to mnm-db.com">Sign in to MnMdb with Discord</button></div>
+            <div class="account-why">Optional. Skips the one-time approval for trusted players and lets you add markers to mnm-db.com.</div>
+          </div>
+          <div id="discord-signedin" class="hidden">
+            <div class="account-who">MnMdb: signed in as <b id="discord-name"></b></div>
+            <div class="btn-row"><button id="btn-discord-logout" class="secondary" title="Sign out of MnMdb on this app">Sign out of MnMdb</button></div>
+          </div>
+          <div id="discord-status" class="mini-status"></div>
+          <div class="account-atlas">The <b>Sign in</b> at the top of the map is MnM Atlas's own account, only needed to sync your Atlas notes. MnMdb doesn't use it.</div>
+        </div>
       </div>
       <button id="tracker-publish" class="primary hidden" title="Regenerate the site data from your ledger and push it live to MnMdb (owner only)">Publish to MnMdb</button>
       <button id="btn-export-contribution" class="secondary" title="Save your rolled-up play data (drops, kills, harvests, prices) to a file instead — for sharing by hand">Export my data to a file</button>
@@ -208,8 +219,13 @@
         <li>You're anonymous unless you tick the box below.</li>
         <li>It uploads every 30 minutes while the app is open. Turn it off any time under Drop Tracker.</li>
       </ul>
-      <label class="follow-row"><input type="checkbox" id="contrib-modal-credit" /><span>Thank me on the site as <b class="contrib-char">my character</b></span></label>
-      <p class="contrib-note">New contributors are checked once before their data goes live. Trusted players signed in with Discord skip the wait.</p>
+      <div class="credit-row">
+        <label class="follow-row"><input type="checkbox" id="contrib-modal-credit" /><span>Thank me on the site as</span></label>
+        <select id="contrib-modal-name" class="credit-select" aria-label="Name to be thanked under"></select>
+        <input id="contrib-modal-other" class="credit-other hidden" maxlength="24" placeholder="Type the name to show" aria-label="Other name to be thanked under" />
+      </div>
+      <div id="contrib-modal-name-err" class="credit-err hidden"></div>
+      <p class="contrib-note">New contributors are checked once before their data goes live. Optional: sign in to MnMdb with Discord (under Drop Tracker) to skip the wait if you're a trusted player.</p>
       <div class="btn-row right">
         <button id="contrib-later">Not now</button>
         <button id="contrib-yes" class="primary">Share automatically</button>

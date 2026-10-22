@@ -147,13 +147,17 @@ select option {
 #wiki-status,
 #tracker-status,
 #publish-status,
-#trade-status {
+#trade-status,
+#contrib-line,
+#discord-status,
+#contribution-status {
   font-size: 11px;
   color: var(--muted);
   min-height: 0;
   line-height: 1.4;
 }
-#wiki-status:empty, #tracker-status:empty, #publish-status:empty, #trade-status:empty { display: none; }
+#wiki-status:empty, #tracker-status:empty, #publish-status:empty, #trade-status:empty,
+#contrib-line:empty, #discord-status:empty, #contribution-status:empty { display: none; }
 
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
@@ -497,6 +501,20 @@ body.sidebar-collapsed #sidebar { display: none; }
 .contrib-points { margin: 4px 0 6px; padding-left: 18px; font-size: 12px; line-height: 1.6; color: var(--muted); }
 .contrib-note { font-size: 11px; color: var(--muted); margin: 4px 0 0; line-height: 1.5; }
 .modal .follow-row span { text-transform: none; letter-spacing: 0; font-size: 12px; color: var(--text); }
+/* "Thank me on the site as [character ▾ / Other…]" */
+.credit-row { display: flex; flex-direction: column; gap: 4px; }
+.credit-select, .credit-other { width: 100%; font-size: 12px; padding: 4px 6px; }
+.modal .credit-select, .modal .credit-other { margin-left: 22px; width: calc(100% - 22px); }
+.credit-err { font-size: 10.5px; color: var(--danger); }
+.credit-note { font-size: 10.5px; color: var(--muted); }
+
+/* MnMdb account (Discord) inside the Share box — named so it can't be mistaken for the Atlas's own Sign in */
+.mnmdb-account { display: flex; flex-direction: column; gap: 5px; margin-top: 6px; padding-top: 8px; border-top: 1px solid var(--line-2); }
+button.discord-btn { background: #5865f2; border-color: #5865f2; color: #fff; font-weight: 600; }
+button.discord-btn:hover { background: #4752c4; border-color: #4752c4; }
+.account-why, .account-atlas { font-size: 10.5px; line-height: 1.45; color: var(--muted); }
+.account-who { font-size: 11.5px; color: var(--text); }
+.account-atlas { padding: 6px 7px; background: var(--surface); border-radius: 5px; }
 
 .map-picker-grid {
   display: grid;

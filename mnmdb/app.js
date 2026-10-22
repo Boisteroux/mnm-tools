@@ -2596,7 +2596,9 @@ async function loadContributors(creds) {
   let j; try { j = await (await fetch(API_BASE + '/admin/contributors', { headers: { Authorization: 'Bearer ' + creds } })).json(); } catch { return; }
   const all = j.contributors || [];
   if (!all.length) { el.innerHTML = ''; return; }
-  const pending = all.filter((c) => c.status === 'pending'), rest = all.filter((c) => c.status !== 'pending');
+  // Needs a look: new contributors, and anyone whose typed-in credit name is waiting for an OK.
+  const needs = (c) => c.status === 'pending' || !!c.credit_review;
+  const pending = all.filter(needs), rest = all.filter((c) => !needs(c));
   const when = (s) => String(s || '').replace('T', ' ').replace(/\..*$/, '').slice(0, 16);
   const card = (c) => '<div class="modcard modcontrib" data-id="' + esc(c.id) + '">' +
     '<div class="modinfo">' +
@@ -2604,10 +2606,11 @@ async function loadContributors(creds) {
         (c.discord_name ? ' <span class="vbadge">✓ Discord: ' + esc(c.discord_name) + '</span>' : '') +
         (c.status !== 'pending' ? ' <span class="pill">' + esc(c.status) + '</span>' : '') + '</div>' +
       '<div class="modmeta">' + (c.events || 0).toLocaleString() + ' events · ' + (c.kills || 0).toLocaleString() + ' kills · ' + (c.items || 0) + ' items · ' + esc((c.servers || []).join(', ') || 'no server') +
-        (c.credit_name ? ' · credit as ' + esc(c.credit_name) : ' · anonymous') + '</div>' +
+        (c.credit_name ? ' · credit as <b>' + esc(c.credit_name) + '</b>' + (c.credit_review ? ' <span class="pill">typed name, not shown until OK’d</span>' : '') : ' · anonymous') + '</div>' +
       '<div class="modmeta muted">last shared ' + esc(when(c.updated_at)) + ' UTC · joined ' + esc(when(c.created_at)) + ' UTC</div>' +
       '<div class="modactions">' +
         (c.status !== 'approved' ? '<button class="primary" data-cact="approve">Approve</button>' : '') +
+        (c.credit_review ? '<button data-cact="approve-name" title="Let this typed-in name appear in the site’s thank-you list">OK name</button>' : '') +
         (c.status !== 'rejected' ? '<button class="danger" data-cact="reject">' + (c.status === 'approved' ? 'Stop counting' : 'Reject') + '</button>' : '') +
         '<button data-cact="delete" title="Remove this install and everything it shared">Delete data</button>' +
       '</div></div></div>';
@@ -2626,7 +2629,8 @@ async function loadContributors(creds) {
         if (r.ok) {
           cardEl.classList.add('done');
           cardEl.querySelector('.modactions').innerHTML = '<span class="sp-status ok">' +
-            (act === 'approve' ? 'Approved ✓ — included in the next 6-hourly update' : act === 'reject' ? 'No longer counted' : 'Deleted') + '</span>';
+            (act === 'approve' ? 'Approved ✓ — included in the next 6-hourly update' : act === 'approve-name' ? 'Name OK’d ✓ — shows from the next update'
+              : act === 'reject' ? 'No longer counted' : 'Deleted') + '</span>';
         } else cardEl.querySelectorAll('button').forEach((x) => (x.disabled = false));
       } catch { cardEl.querySelectorAll('button').forEach((x) => (x.disabled = false)); }
     }));

@@ -134,6 +134,9 @@ async function readContributor(request, env) {
   if (!row || row.token_hash !== (await sha256(secret))) return null;
   return row;
 }
+// A credit name shown on the public site: 2-24 letters, digits, spaces, apostrophes or
+// hyphens (the app applies the same rule). Anything else means no credit.
+const cleanCreditName = (n) => { const t = String(n || '').replace(/\s+/g, ' ').trim(); return /^[A-Za-z0-9' -]{2,24}$/.test(t) ? t : null; };
 // The ledger aggregate the app's parser builds (tracker/ledger-parser.js parseLedgers):
 // check its shape and bounds so a bad or hostile upload can't poison the merge.
 function checkAgg(agg) {
@@ -473,9 +476,19 @@ export default {
         discordId = sess.id; discordName = sess.name.slice(0, 40);
         if (status === 'pending' && (await isTrustedId(sess.id, env))) status = 'approved';
       }
-      const credit = b.credit && typeof b.creditName === 'string' ? b.creditName.trim().slice(0, 40) || null : null;
-      await env.DB.prepare('UPDATE contributors SET status=?, discord_id=?, discord_name=?, credit_name=? WHERE id=?')
-        .bind(status, discordId || null, discordName || null, credit, who.id).run();
+      const characters = (Array.isArray(b.characters) ? b.characters : []).map(String).filter((s) => s && s.length <= 40).slice(0, 20);
+      // Credit ("thank me on the site as"): one of the player's own characters shows right
+      // away; a name typed under "Other" waits for an admin's OK (credit_review=1) unless
+      // it's the name already OK'd, or the player is a trusted Discord user.
+      const credit = b.credit ? cleanCreditName(b.creditName) : null;
+      let creditReview = 0;
+      if (credit && !characters.includes(credit)) {
+        const okBefore = who.credit_name === credit && !who.credit_review;
+        const trusted = sess && (await isTrustedId(sess.id, env));
+        creditReview = okBefore || trusted ? 0 : 1;
+      }
+      await env.DB.prepare('UPDATE contributors SET status=?, discord_id=?, discord_name=?, credit_name=?, credit_review=? WHERE id=?')
+        .bind(status, discordId || null, discordName || null, credit, creditReview, who.id).run();
 
       const last = await env.DB.prepare("SELECT (strftime('%s','now') - strftime('%s', updated_at)) AS age FROM contributions WHERE contributor_id=?").bind(who.id).first();
       if (last && last.age < CONTRIB_MIN_GAP_S) return json({ error: 'too soon', status, retryAfter: CONTRIB_MIN_GAP_S - last.age }, 429, origin);
@@ -483,7 +496,6 @@ export default {
       if (bad) return json({ error: 'rejected data: ' + bad }, 400, origin);
       const servers = (Array.isArray(b.servers) ? b.servers : []).map(String).filter((s) => s && s.length <= 40).slice(0, 20);
       if (servers.some((s) => /^beta/i.test(s))) return json({ error: 'beta data is not collected' }, 400, origin);
-      const characters = (Array.isArray(b.characters) ? b.characters : []).map(String).filter((s) => s && s.length <= 40).slice(0, 20);
 
       const agg = { mobs: b.agg.mobs || {}, items: b.agg.items || {}, harvest: b.agg.harvest || {}, harvestZones: b.agg.harvestZones || {},
         harvestNodes: b.agg.harvestNodes || [], events: b.agg.events || 0, fileCount: b.agg.fileCount || 0 };
@@ -491,7 +503,7 @@ export default {
       await env.DB.prepare(
         "INSERT OR REPLACE INTO contributions (contributor_id, characters, servers, events, kills, items, data, updated_at) VALUES (?,?,?,?,?,?,?,datetime('now'))"
       ).bind(who.id, JSON.stringify(characters), JSON.stringify(servers), agg.events, kills, Object.keys(agg.items).length, JSON.stringify(agg)).run();
-      return json({ ok: true, status }, 200, origin);
+      return json({ ok: true, status, creditPending: !!creditReview }, 200, origin);
     }
 
     // The app's status line: waiting for approval / accepted, and when it last shared.
@@ -499,7 +511,7 @@ export default {
       const who = await readContributor(request, env);
       if (!who) return json({ error: 'unknown contributor' }, 401, origin);
       const c = await env.DB.prepare('SELECT events, kills, updated_at FROM contributions WHERE contributor_id=?').bind(who.id).first();
-      return json({ status: who.status, credit: who.credit_name || null, discord: who.discord_name || null,
+      return json({ status: who.status, credit: who.credit_name || null, creditPending: !!who.credit_review, discord: who.discord_name || null,
         events: c ? c.events : 0, kills: c ? c.kills : 0, updatedAt: c ? c.updated_at : null }, 200, origin);
     }
 
@@ -520,11 +532,11 @@ export default {
       if (!ok) { const s = await readSession(bearer, env.SESSION_SECRET); ok = !!(s && (await isAdminId(s.id, env))); }
       if (!ok) return json({ error: 'unauthorized' }, 401, origin);
       const { results } = await env.DB.prepare(
-        "SELECT c.contributor_id AS id, c.characters, c.servers, c.events, c.data, c.updated_at, p.credit_name FROM contributions c JOIN contributors p ON p.id=c.contributor_id WHERE p.status='approved'"
+        "SELECT c.contributor_id AS id, c.characters, c.servers, c.events, c.data, c.updated_at, p.credit_name, p.credit_review FROM contributions c JOIN contributors p ON p.id=c.contributor_id WHERE p.status='approved'"
       ).all();
       return json({ contributions: (results || []).map((r) => ({
         id: r.id, characters: JSON.parse(r.characters || '[]'), servers: JSON.parse(r.servers || '[]'),
-        events: r.events, updatedAt: r.updated_at, credit: r.credit_name || null, agg: JSON.parse(r.data),
+        events: r.events, updatedAt: r.updated_at, credit: (!r.credit_review && r.credit_name) || null, agg: JSON.parse(r.data), // held names stay off the site
       })) }, 200, origin);
     }
 
@@ -605,18 +617,20 @@ export default {
       // counting (its uploads are ignored); delete removes the install and its data.
       if (request.method === 'GET' && url.pathname === '/admin/contributors') {
         const { results } = await env.DB.prepare(
-          'SELECT p.id, p.status, p.discord_id, p.discord_name, p.credit_name, p.created_at, p.reviewed_at, c.characters, c.servers, c.events, c.kills, c.items, c.updated_at ' +
+          'SELECT p.id, p.status, p.discord_id, p.discord_name, p.credit_name, p.credit_review, p.created_at, p.reviewed_at, c.characters, c.servers, c.events, c.kills, c.items, c.updated_at ' +
           "FROM contributors p LEFT JOIN contributions c ON c.contributor_id=p.id WHERE c.contributor_id IS NOT NULL OR p.status != 'pending' " +
           "ORDER BY CASE p.status WHEN 'pending' THEN 0 WHEN 'approved' THEN 1 ELSE 2 END, c.updated_at DESC"
         ).all();
         return json({ contributors: (results || []).map((r) => ({ ...r, characters: JSON.parse(r.characters || '[]'), servers: JSON.parse(r.servers || '[]') })) }, 200, origin);
       }
-      if (request.method === 'POST' && /^\/admin\/contributors\/(approve|reject|delete)$/.test(url.pathname)) {
+      if (request.method === 'POST' && /^\/admin\/contributors\/(approve|reject|delete|approve-name)$/.test(url.pathname)) {
         let b; try { b = await request.json(); } catch { return json({ error: 'bad json' }, 400, origin); }
         const id = String(b.id || '').trim();
         if (!id) return json({ error: 'id required' }, 400, origin);
         const act = url.pathname.split('/').pop();
-        if (act === 'delete') {
+        if (act === 'approve-name') { // OK a typed-in credit name for the site
+          await env.DB.prepare('UPDATE contributors SET credit_review=0 WHERE id=?').bind(id).run();
+        } else if (act === 'delete') {
           await env.DB.prepare('DELETE FROM contributions WHERE contributor_id=?').bind(id).run();
           await env.DB.prepare('DELETE FROM contributors WHERE id=?').bind(id).run();
         } else {
