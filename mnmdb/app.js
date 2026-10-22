@@ -2998,16 +2998,301 @@ const aucTag = (i) => i === 'sell' ? '<span class="atag sell">WTS</span>' : i ==
 
 // `find` pre-fills the search box — "#/auctions/<item name>" is how item pages link
 // straight to an item's listings.
+// ---- Trem Market — the Auctions landing page (#/auctions) ----
+// One page for three kinds of player: a "What's it worth?" search and a 24-hour pulse
+// on top, then tabs — New player (sell or vendor, what's busy, what people want),
+// Crafter (margins, materials per stack, crafting requests), Adventurer (coin per
+// kill from shared drop logs). Everything comes from data the site already loads;
+// the full feed lives at #/auctions/all. Numbers show how many posts back them.
+const TM_TABS = ['new', 'crafter', 'adventurer'];
+const tmMedian = (p) => { const s = p.slice().sort((a, b) => a - b); return s.length ? (s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2) : null; };
+const tmThin = (n) => (n < 5 ? '<span class="tm-thin" title="Fewer than 5 priced posts">thin</span>' : '');
+const tmPrice = (unit, stack, each) => (stack ? coin(unit * stack) + '<span class="per">/stack</span>' + (each ? ' <span class="per">· ' + coin(unit) + ' ea</span>' : '') : coin(unit));
+const tmArrow = (m) => (m === 'buyers' ? '<span class="arrow-b" title="More sellers than buyers: price may be soft">↓ buyer’s</span>'
+  : m === 'sellers' ? '<span class="arrow-s" title="More buyers than sellers: price is firm">↑ seller’s</span>' : '<span class="muted">→ balanced</span>');
+
+function tmCompute() {
+  const A = AUCTIONS || { listings: [], requests: [] };
+  const now = A.generatedAt ? new Date(A.generatedAt).getTime() : Date.now();
+  const DAY = 864e5, lcOf = (s) => String(s).toLowerCase();
+  const L = A.listings.filter((l) => l.server === AUC_SERVER);
+  const by = {};
+  for (const l of L) {
+    const k = lcOf(l.item);
+    const e = by[k] || (by[k] = { name: l.item, matched: !!l.matched, stack: l.stack || null, sells: [], sells10: [], sellers: new Set(), buyers: new Set(), posts: 0, posts24: 0 });
+    const t = new Date(l.seen).getTime();
+    e.posts++; if (now - t < DAY) e.posts24++;
+    if (now - t < 10 * DAY) (l.intent === 'buy' ? e.buyers : e.sellers).add(l.player);
+    if (l.price == null || l.intent === 'buy' || now - t > 30 * DAY) continue;
+    e.sells.push(listingUnit(l)); if (now - t < 10 * DAY) e.sells10.push(listingUnit(l));
+  }
+  for (const e of Object.values(by)) {
+    const p = trimOutliers(e.sells);
+    e.n = p.length;
+    if (p.length) { e.typical = tmMedian(p); e.low = Math.min.apply(null, p); e.high = Math.max.apply(null, p); }
+    const r = trimOutliers(e.sells10); e.recent = r.length ? tmMedian(r) : null;
+    e.market = e.sellers.size === e.buyers.size ? 'balanced' : e.sellers.size > e.buyers.size ? 'buyers' : 'sellers';
+    const it = itemByName[e.name];
+    e.vendorPays = it ? regularPrice(it) || null : null;
+    e.vendorSells = vendorSellPrice(e.name);
+    const b = BETA[lcOf(e.name)]; e.beta = b && (b.PvE || b.PvP) ? (b.PvE || b.PvP).mid : null;
+  }
+  // Lists only show real items with a wiki page — chat like "WTB copper" names no item,
+  // and placeholder entries made from such chat (hasPage false) don't count.
+  const realItem = (name) => { const it = itemByName[name]; return !!(it && it.wiki && it.wiki.hasPage !== false); };
+  const items = Object.values(by).filter((e) => e.matched && realItem(e.name));
+  const priced = (e, min) => e.n >= (min || 3);
+
+  const last24 = L.filter((l) => now - new Date(l.seen).getTime() < DAY);
+  const pulse = {
+    posts24: last24.length, items24: new Set(last24.map((l) => lcOf(l.item))).size,
+    sellers24: new Set(last24.filter((l) => l.intent !== 'buy').map((l) => l.player)).size,
+    buyers24: new Set(last24.filter((l) => l.intent === 'buy').map((l) => l.player)).size,
+    generatedAt: A.generatedAt,
+  };
+
+  const sellOrVendor = items.filter((e) => priced(e) && e.vendorPays > 0 && !e.stack)
+    .map((e) => Object.assign({ ratio: e.typical / e.vendorPays }, e)).filter((e) => e.ratio >= 3).sort((a, b) => b.ratio - a.ratio);
+  const busy = items.filter((e) => priced(e, 1)).sort((a, b) => b.posts24 - a.posts24 || b.posts - a.posts).slice(0, 8);
+  const hot = items.filter((e) => e.buyers.size > e.sellers.size && e.buyers.size >= 2)
+    .sort((a, b) => (b.buyers.size - b.sellers.size) - (a.buyers.size - a.sellers.size)).slice(0, 8);
+
+  // Crafts: the result's typical player price vs buying every material (player price
+  // where it trades, else the vendor's). Needs 5+ priced posts for the result — a thin
+  // price times a big batch (500 arrows) makes a misleading headline.
+  const value = (name) => { const e = by[lcOf(name)]; if (e && priced(e, 2)) return e.typical; const v = vendorSellPrice(name); return v != null ? v : null; };
+  const seen = new Set(), crafts = [];
+  for (const r of RECIPES) {
+    const out = by[lcOf(r.result.item)];
+    if (!out || !priced(out, 5) || seen.has(lcOf(r.result.item))) continue;
+    let cost = 0, ok = true;
+    for (const c of r.components) { const v = value(c.item); if (v == null) { ok = false; break; } cost += c.qty * v; }
+    if (!ok) continue;
+    const sale = out.typical * (r.result.qty || 1);
+    crafts.push({ name: r.result.item, qty: r.result.qty || 1, skill: r.tradeskill, trivial: r.trivial, sale, cost, margin: sale - cost, n: out.n, mats: r.components });
+  }
+  crafts.sort((a, b) => b.margin - a.margin);
+  const profitable = crafts.filter((c) => { if (c.margin <= 0 || seen.has(lcOf(c.name))) return false; seen.add(lcOf(c.name)); return true; }).slice(0, 10);
+
+  const materials = items.filter((e) => e.stack && priced(e)).sort((a, b) => b.n - a.n).slice(0, 12);
+
+  const reqCount = {};
+  for (const r of (A.requests || [])) {
+    if (r.server !== AUC_SERVER || now - new Date(r.lastSeen || r.seen).getTime() > 10 * DAY) continue;
+    const what = [(r.plus || []).length ? '+' + r.plus.join('/') : '', (r.stats || []).join('/'), r.category || ''].filter(Boolean).join(' ').trim();
+    if (what) reqCount[what] = (reqCount[what] || 0) + 1;
+  }
+  const demand = Object.entries(reqCount).sort((a, b) => b[1] - a[1]).slice(0, 10);
+
+  // Farm for coin: coin per kill + each drop's chance × what it sells for. Early Access
+  // drop logs where a mob has 15+ shared kills, otherwise the beta logs.
+  const squash = (s) => lcOf(s).replace(/[^a-z0-9]/g, '');
+  const zoneNames = {}; ((MAPS && MAPS.zones) || []).forEach((z) => { zoneNames[squash(z.name)] = z.name; });
+  const levels = mobLevelByName();
+  const farm = [];
+  const consider = (mob, m, era) => {
+    if (!m || (m.kills || 0) < 15 || !m.corpses) return;
+    const loot = [];
+    for (const [item, cnt] of Object.entries(m.drops || {})) {
+      const e = by[lcOf(item)];
+      const it = itemByName[item];
+      const v = e && priced(e) ? e.typical : (it ? regularPrice(it) : 0);
+      if (!v) continue;
+      const rate = cnt / m.corpses;
+      loot.push({ item, rate, each: v, vendor: !(e && priced(e)), ev: rate * v });
+    }
+    loot.sort((a, b) => b.ev - a.ev);
+    const coinPer = (m.coin || 0) / m.kills;
+    const z = Object.entries(m.zones || {}).sort((a, b) => b[1] - a[1])[0];
+    farm.push({ mob, era, kills: m.kills, coinPer, ev: coinPer + loot.reduce((s, x) => s + x.ev, 0), loot: loot.slice(0, 3),
+      zone: z ? (zoneNames[squash(z[0])] || z[0]) : null, level: levels[lcOf(mob)] });
+  };
+  const eaMobs = (EA && EA.mobs) || {};
+  for (const [mob, m] of Object.entries(eaMobs)) consider(mob, m, 'ea');
+  for (const [mob, m] of Object.entries(DATA.mobs || {})) if (!(eaMobs[mob] && eaMobs[mob].kills >= 15)) consider(mob, m, 'beta');
+  farm.sort((a, b) => b.ev - a.ev);
+
+  const kills = (set) => Object.values(set || {}).reduce((s, m) => s + (m.kills || 0), 0);
+  const coverage = { eaKills: kills(eaMobs), eaMobs: Object.keys(eaMobs).length, betaKills: kills(DATA.mobs), betaMobs: Object.keys(DATA.mobs || {}).length,
+    contributors: (EA && EA.contributorCount) || 0 };
+  return { by, items, pulse, sellOrVendor, busy, hot, profitable, materials, demand, farm: farm.slice(0, 8), coverage };
+}
+
+async function renderTremMarket() {
+  $('content').innerHTML = '<div class="crumb"><a href="#/">MnMdb</a> › auctions</div><h1>Trem Market</h1><p class="sub">Loading the market…</p>';
+  await loadAuctionsData();
+  if (!/^auctions\/?$/.test(location.hash.replace(/^#\/?/, ''))) return; // navigated away while loading
+  const M = tmCompute(), P = M.pulse;
+  const il = (name) => itemLink(name, name);
+  const ago = (iso) => { if (!iso) return '—'; const m = Math.round((Date.now() - new Date(iso)) / 6e4); return m < 60 ? m + ' min ago' : m < 2880 ? Math.round(m / 60) + ' hrs ago' : Math.round(m / 1440) + ' days ago'; };
+  const table = (head, rows) => '<div class="tm-scroll"><table class="tm-table"><thead><tr>' + head + '</tr></thead><tbody>' + rows + '</tbody></table></div>';
+  const empty = (msg) => '<p class="sub">' + msg + '</p>';
+  const QUICK = ['Copper Ore', 'Rawhide Backpack', 'Cloth Scraps', 'Wool Scraps', 'Clouded Crystallized Magic', 'Wood'].filter((n) => M.by[n.toLowerCase()] && M.by[n.toLowerCase()].n);
+  const icon = {
+    new: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>',
+    crafter: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4l6 6-3 3-6-6 3-3z"/><path d="M11 7L4 14v4h4l7-7"/><path d="M3 21h18"/></svg>',
+    adventurer: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 3.5l6 6L10 20l-6 1 1-6L14.5 3.5z"/><path d="M12 6l6 6"/></svg>',
+  };
+  const tab = (id, title, who) => '<button class="tm-tab" role="tab" id="tm-t-' + id + '" aria-controls="tm-p-' + id + '" data-tab="' + id + '">' + icon[id] + title + '<span class="tm-who">' + who + '</span></button>';
+
+  const sovRows = (rows) => rows.map((e) => '<tr><td>' + il(e.name) + tmThin(e.n) + '</td><td class="num coin">' + coin(e.typical) + '</td><td class="num coin muted">' + coin(e.vendorPays) +
+    '</td><td class="num"><span class="tm-up">' + (e.ratio >= 100 ? '100×+' : Math.round(e.ratio) + '×') + '</span></td></tr>').join('');
+  const sovHead = '<th>Item</th><th class="num">Players pay</th><th class="num">Vendor pays</th><th></th>';
+  const hotRows = M.hot.map((e) => '<tr><td>' + il(e.name) + '</td><td class="num tm-up">' + e.buyers.size + '</td><td class="num">' + e.sellers.size + '</td><td class="num">' +
+    (e.n ? tmPrice(e.typical, e.stack) : '<span class="muted">—</span>') + '</td></tr>').join('');
+  const hotHead = '<th>Item</th><th class="num">Buying</th><th class="num">Selling</th><th class="num">Typical</th>';
+  const C = M.coverage;
+
+  $('content').innerHTML =
+    '<div class="crumb"><a href="#/">MnMdb</a> › auctions</div>' +
+    '<h1>Trem Market</h1>' +
+    '<p class="sub">What things sell for on <b>' + AUC_SERVER + '</b>, read from player auctions on the <a href="https://www.twitch.tv/livemnm" target="_blank" rel="noopener">LiveMNM stream ↗</a>. Updated every 6 hours; other servers will price differently.</p>' +
+
+    '<section class="tm-check" aria-labelledby="tm-q-label">' +
+      '<div class="tm-check-h"><label id="tm-q-label" for="tm-q">What’s it worth?</label>' +
+      '<span class="sub">Search any item to see what players pay, what a vendor pays, and whether to post it.</span></div>' +
+      '<form class="tm-search" id="tm-form" role="search" autocomplete="off">' +
+        '<div class="tm-search-box"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>' +
+        '<input id="tm-q" type="search" placeholder="Search an item, e.g. Copper Ore or Rawhide Backpack" aria-describedby="tm-q-label">' +
+        '<button class="tm-go" type="submit">Search</button></div>' +
+        '<div class="tm-sugg" id="tm-sugg" hidden></div>' +
+      '</form>' +
+      (QUICK.length ? '<div class="tm-quick"><span class="muted">Popular:</span>' + QUICK.map((n) => '<button type="button" data-pick="' + esc(n) + '">' + esc(n) + '</button>').join('') + '</div>' : '') +
+      '<div class="tm-answer" id="tm-answer"></div>' +
+    '</section>' +
+
+    '<section class="tm-pulse" aria-label="Market pulse, last 24 hours">' +
+      [[P.posts24.toLocaleString(), 'auction posts in 24 hrs'], [P.items24.toLocaleString(), 'different items listed'],
+       [P.sellers24 + ' / ' + P.buyers24, 'sellers / buyers posting'], [ago(P.generatedAt), 'last update · next within 6 hrs']]
+        .map(([v, k]) => '<div class="tm-tile"><div class="v">' + v + '</div><div class="k">' + k + '</div></div>').join('') +
+    '</section>' +
+
+    '<section aria-labelledby="tm-tabs-title">' +
+      '<div class="tm-tabs-h"><h2 id="tm-tabs-title">How do you play?</h2><span class="sub">Pick one to see the market from that angle.</span></div>' +
+      '<div class="tm-tabs" role="tablist">' + tab('new', 'New player', 'Sell smart, don’t overpay') + tab('crafter', 'Crafter', 'Margins, mats, demand') + tab('adventurer', 'Adventurer', 'What to farm for coin') + '</div>' +
+
+      '<div role="tabpanel" id="tm-p-new" aria-labelledby="tm-t-new" class="tm-grid">' +
+        '<div class="tm-card tm-wide"><h2>Sell it or vendor it?</h2><p class="tm-why">Loot players pay far more for than a vendor does. Post these on /auction instead of selling them to an NPC.</p>' +
+          (M.sellOrVendor.length ? table(sovHead, sovRows(M.sellOrVendor.slice(0, 10))) : empty('Not enough priced posts yet.')) + '</div>' +
+        '<div class="tm-card"><h2>Most traded right now</h2><p class="tm-why">The typical asking price, so you can spot a bad deal.</p>' +
+          table('<th>Item</th><th class="num">Typical</th><th class="num">Posts 24h</th>', M.busy.map((e) => '<tr><td>' + il(e.name) + tmThin(e.n) + '</td><td class="num">' + tmPrice(e.typical, e.stack) + '</td><td class="num">' + e.posts24 + '</td></tr>').join('')) + '</div>' +
+        '<div class="tm-card"><h2>People are buying</h2><p class="tm-why">More buyers than sellers over the last 10 days. Hang on to these.</p>' +
+          (M.hot.length ? table(hotHead, hotRows) : empty('No strong demand right now.')) + '</div>' +
+      '</div>' +
+
+      '<div role="tabpanel" id="tm-p-crafter" aria-labelledby="tm-t-crafter" class="tm-grid" hidden>' +
+        '<div class="tm-card tm-wide"><h2>Profitable crafts</h2><p class="tm-why">What the result sells for minus buying every material at today’s prices (the vendor’s price where players don’t trade it). Gathering your own mats makes the margin bigger.</p>' +
+          (M.profitable.length ? table('<th>Make</th><th>Skill</th><th class="num">Trivial</th><th class="num">Sells for</th><th class="num">Mats cost</th><th class="num">Margin</th>',
+            M.profitable.map((c) => '<tr><td>' + il(c.name) + (c.qty > 1 ? ' <span class="muted">×' + c.qty + '</span>' : '') + tmThin(c.n) +
+              '<div class="tm-mats">' + c.mats.map((m) => m.qty + '× ' + esc(m.item)).join(', ') + '</div></td><td>' + esc(c.skill) + '</td><td class="num">' + (c.trivial != null ? c.trivial : '—') +
+              '</td><td class="num coin">' + coin(c.sale) + '</td><td class="num coin muted">' + coin(c.cost) + '</td><td class="num coin tm-up">+' + coin(c.margin) + '</td></tr>').join('')) : empty('Not enough priced recipes yet.')) + '</div>' +
+        '<div class="tm-card"><h2>Materials board</h2><p class="tm-why">Per stack of 20. The arrow compares the last 10 days with the 30-day typical.</p>' +
+          table('<th>Material</th><th class="num">Per stack</th><th class="num">10 days</th>', M.materials.map((e) => {
+            const d = e.recent != null && e.typical ? (e.recent - e.typical) / e.typical : 0;
+            const tr = Math.abs(d) < 0.08 ? '<span class="muted">→ steady</span>' : d > 0 ? '<span class="arrow-s">↑ ' + Math.round(d * 100) + '%</span>' : '<span class="arrow-b">↓ ' + Math.round(-d * 100) + '%</span>';
+            return '<tr><td>' + il(e.name) + tmThin(e.n) + '</td><td class="num">' + tmPrice(e.typical, e.stack) + '<div class="per">' + coin(e.typical) + ' ea</div></td><td class="num">' + tr + '</td></tr>';
+          }).join('')) + '</div>' +
+        '<div class="tm-card"><h2>What people want crafted</h2><p class="tm-why">Requests from the last 10 days, grouped. The number is how many posts.</p>' +
+          (M.demand.length ? '<div class="tm-chips">' + M.demand.map(([w, n]) => '<span>' + esc(w) + '<b>' + n + '</b></span>').join('') + '</div>' : empty('No requests in the last 10 days.')) +
+          '<p class="sub"><a href="#/auctions/all">See every request with the full listings →</a></p></div>' +
+      '</div>' +
+
+      '<div role="tabpanel" id="tm-p-adventurer" aria-labelledby="tm-t-adventurer" class="tm-grid" hidden>' +
+        '<div class="tm-card tm-wide tm-cta"><div class="tm-cta-main"><h2>Help fill in Early Access</h2>' +
+          '<p>Farm estimates come from drop logs players share from MnM Map. So far <b>' + C.contributors + ' player' + (C.contributors === 1 ? ' has' : 's have') + '</b> shared <b>' +
+          C.eaKills.toLocaleString() + ' Early Access kills</b> across ' + C.eaMobs + ' mobs; anything thinner still uses beta logs (' + C.betaKills.toLocaleString() + ' kills, ' + C.betaMobs + ' mobs).</p>' +
+          '<ol class="tm-steps"><li><b>Install MnM Map</b>, our free Windows companion app.</li><li><b>Say yes to “Share with MnMdb”</b> when it asks (or turn it on under Drop Tracker).</li><li><b>Play as usual.</b> It shares your kill, drop and harvest counts every 30 minutes. No chat logs, no account details.</li></ol></div>' +
+          '<div class="tm-cta-side"><a class="tm-dl" href="https://github.com/Boisteroux/mnm-tools/releases/latest" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg>Download MnM Map</a>' +
+          '<span class="sub">Windows 10/11 · free</span></div></div>' +
+        '<div class="tm-card tm-wide"><h2>Farm for coin</h2><p class="tm-why">Estimated value per kill: coin dropped plus each drop’s chance × what it sells for today. Tagged by where the drop rates come from.</p>' +
+          (M.farm.length ? M.farm.map((f) => '<div class="tm-mob"><div class="tm-mob-h"><span><b>' + mobLink(f.mob) + '</b> <span class="tm-era ' + f.era + '">' + (f.era === 'ea' ? 'Early Access' : 'beta') + '</span></span>' +
+            '<span class="tm-ev coin">≈ ' + coin(f.ev) + ' <span class="per">/kill</span></span></div>' +
+            '<div class="sub">' + (f.zone ? zoneLink(f.zone) : 'zone unknown') + (f.level != null ? ' · level ' + f.level : '') + ' · ' + coin(f.coinPer) + ' coin per kill · from ' + f.kills.toLocaleString() + ' logged kills</div>' +
+            '<div class="tm-loot">' + f.loot.map((l) => '<span>' + esc(l.item) + ' · ' + (Math.round(l.rate * 1000) / 10) + '% × ' + coin(l.each) + (l.vendor ? ' (vendor)' : '') + '</span>').join('') + '</div></div>').join('')
+            : empty('Not enough drop logs yet.')) + '</div>' +
+        '<div class="tm-card"><h2>Don’t vendor these</h2><p class="tm-why">Drops worth far more to players than to an NPC.</p>' +
+          (M.sellOrVendor.filter((e) => e.n >= 5).length ? table(sovHead, sovRows(M.sellOrVendor.filter((e) => e.n >= 5).slice(0, 6))) : empty('Not enough priced posts yet.')) + '</div>' +
+        '<div class="tm-card"><h2>Seller’s market</h2><p class="tm-why">Buyers outnumber sellers. A good time to sell if you have them.</p>' +
+          (M.hot.length ? table(hotHead, hotRows) : empty('No strong demand right now.')) + '</div>' +
+      '</div>' +
+    '</section>' +
+
+    '<footer class="tm-foot"><a class="tm-browse" href="#/auctions/all">Browse all listings →</a>' +
+      '<div>' + AUC_SERVER + ' only, the server the LiveMNM stream shows. Prices are typical asks after removing outliers; anything from fewer than 5 posts is tagged <span class="tm-thin">thin</span>. Ore, wood, herbs, fish, scraps and bone chips are priced per stack of 20, as players trade them.</div></footer>';
+
+  // Tabs (remembered per browser)
+  const show = (t) => {
+    TM_TABS.forEach((x) => { $('tm-t-' + x).setAttribute('aria-selected', String(x === t)); $('tm-p-' + x).hidden = x !== t; });
+    try { localStorage.setItem('mnmdb-tm-tab', t); } catch {}
+  };
+  document.querySelectorAll('.tm-tab').forEach((b) => b.addEventListener('click', () => show(b.dataset.tab)));
+  let start = 'new'; try { const s = localStorage.getItem('mnmdb-tm-tab'); if (TM_TABS.includes(s)) start = s; } catch {}
+  show(start);
+
+  // What's it worth? — every item seen at auction on this server
+  const names = M.items.slice().sort((a, b) => b.posts - a.posts);
+  const answer = (e, example) => {
+    if (!e.n) {
+      $('tm-answer').innerHTML = '<div class="sub">' + il(e.name) + ' has been posted ' + e.posts + ' time' + (e.posts === 1 ? '' : 's') + ', but never with a price yet. ' +
+        '<a href="#/auctions/' + encodeURIComponent(e.name) + '">See the posts →</a></div>';
+      return;
+    }
+    const sp = (x) => coin(e.stack ? x * e.stack : x);
+    const verdict = e.vendorPays && e.typical >= e.vendorPays * 3 ? '<span class="tm-verdict post">Post it: players pay ' + Math.round(e.typical / e.vendorPays) + '× the vendor</span>'
+      : e.vendorPays && e.typical < e.vendorPays * 1.5 ? '<span class="tm-verdict vendor">Just vendor it</span>'
+      : e.market === 'sellers' ? '<span class="tm-verdict hot">In demand: buyers outnumber sellers</span>' : '';
+    const fact = (k, v, s) => '<div class="tm-fact"><div class="k">' + k + '</div><div class="v">' + v + '</div><div class="sub">' + s + '</div></div>';
+    $('tm-answer').innerHTML =
+      '<div><div class="sub">' + (example ? 'Example · ' : '') + il(e.name) + ' · typical ask on ' + AUC_SERVER + '</div>' +
+      '<div class="tm-big coin">' + sp(e.typical) + (e.stack ? ' <small>/stack of ' + e.stack + '</small>' : '') + '</div>' +
+      '<div class="sub">' + (e.stack ? coin(e.typical) + ' each · ' : '') + 'range ' + sp(e.low) + '–' + sp(e.high) + ' · ' + e.n + ' priced post' + (e.n === 1 ? '' : 's') + tmThin(e.n) +
+      ' · <a href="#/auctions/' + encodeURIComponent(e.name) + '">see them →</a></div>' +
+      (verdict ? '<div class="tm-verdict-row">' + verdict + '</div>' : '') + '</div>' +
+      '<div class="tm-facts">' +
+        fact('Market, 10 days', tmArrow(e.market), e.sellers.size + ' selling · ' + e.buyers.size + ' buying') +
+        fact('Vendor pays', e.vendorPays ? coin(e.vendorPays) : '—', e.vendorPays ? 'best NPC buy price seen' : 'not logged yet') +
+        fact('Vendor sells', e.vendorSells != null ? coin(e.vendorSells) : '—', e.vendorSells != null ? 'buy it from an NPC' : 'not sold by NPCs') +
+        fact('Beta price', e.beta ? tmPrice(e.beta, e.stack) : '—', 'closed beta, for reference') +
+      '</div>';
+  };
+  const q = $('tm-q'), sugg = $('tm-sugg');
+  const pick = (name, example) => { const e = M.by[String(name).toLowerCase()]; if (!e) return; if (!example) q.value = e.name; sugg.hidden = true; answer(e, example); };
+  q.addEventListener('input', () => {
+    const t = q.value.trim().toLowerCase();
+    const hits = t ? names.filter((e) => e.name.toLowerCase().includes(t)).slice(0, 8) : [];
+    sugg.innerHTML = hits.map((e) => '<button type="button" data-pick="' + esc(e.name) + '"><span>' + esc(e.name) + '</span><span class="muted">' + (e.n ? tmPrice(e.typical, e.stack) : 'no price yet') + '</span></button>').join('');
+    sugg.hidden = !hits.length;
+  });
+  q.addEventListener('keydown', (ev) => { if (ev.key === 'Escape') sugg.hidden = true; });
+  $('tm-form').addEventListener('submit', (ev) => {
+    ev.preventDefault();
+    const t = q.value.trim().toLowerCase(); if (!t) { q.focus(); return; }
+    const hit = M.by[t] || names.find((e) => e.name.toLowerCase().includes(t));
+    if (hit) { pick(hit.name); return; }
+    sugg.hidden = true;
+    $('tm-answer').innerHTML = '<div class="sub">No ' + AUC_SERVER + ' auctions seen for “' + esc(q.value.trim()) + '” yet. <button type="button" class="tm-linkbtn" id="tm-dbsearch">Search the whole database →</button></div>';
+    $('tm-dbsearch').addEventListener('click', () => { $('search').value = q.value.trim(); route(); });
+  });
+  $('content').querySelectorAll('[data-pick]').forEach((b) => b.addEventListener('click', () => pick(b.dataset.pick)));
+  sugg.addEventListener('click', (ev) => { const b = ev.target.closest('[data-pick]'); if (b) pick(b.dataset.pick); });
+  if (!renderTremMarket.outsideClick) { // close suggestions on any click outside the search (bound once)
+    renderTremMarket.outsideClick = true;
+    document.addEventListener('click', (ev) => { const s = $('tm-sugg'); if (s && !ev.target.closest('.tm-search')) s.hidden = true; });
+  }
+  const first = QUICK[0] || (names.find((e) => e.n) || {}).name;
+  if (first) pick(first, true);
+}
+
 async function renderAuctions(find) {
   if (!AUCTIONS) {
-    $('content').innerHTML = '<div class="crumb"><a href="#/">MnMdb</a> › auctions</div><h1>Auction House</h1><p class="sub">Loading auctions…</p>';
+    $('content').innerHTML = '<div class="crumb"><a href="#/">MnMdb</a> › <a href="#/auctions">Trem Market</a> › all listings</div><h1>All listings</h1><p class="sub">Loading auctions…</p>';
     try { AUCTIONS = await (await fetch('./auctions.json?v=' + aucCacheV())).json(); } catch { AUCTIONS = { listings: [], requests: [], stats: {}, generatedAt: null }; }
   }
   const A = AUCTIONS;
   const priced = A.listings.filter((l) => l.price != null).length;
   const when = A.generatedAt ? new Date(A.generatedAt).toLocaleString() : '—';
   $('content').innerHTML =
-    '<div class="crumb"><a href="#/">MnMdb</a> › auctions</div><h1>Auction House</h1>' +
+    '<div class="crumb"><a href="#/">MnMdb</a> › <a href="#/auctions">Trem Market</a> › all listings</div><h1>All listings</h1>' +
     '<p class="sub">Player buy/sell auctions on the <b>' + AUC_SERVER + '</b> server, read from the <a href="https://www.twitch.tv/livemnm" target="_blank" rel="noopener">LiveMNM stream ↗</a>. ' +
     'This page updates <b>every 6 hours</b>, so listings can be a few hours old — watch the stream for live prices. Other servers will price differently. ' +
     '<span id="auc-meta"></span> Hover an item for its stats.</p>' +
@@ -3022,7 +3307,8 @@ async function renderAuctions(find) {
   if (pb) pb.addEventListener('click', () => { const on = pb.getAttribute('aria-pressed') !== 'true'; pb.setAttribute('aria-pressed', String(on)); pb.classList.toggle('is-on', on); paintAuctions(); });
   paintAuctions(); aucReqs(); aucHoverInit(); aucUpdateMeta(); aucAutoRefreshInit();
 }
-const onAuctionsPage = () => /^auctions(\/|$)/.test(decodeURIComponent(location.hash.replace(/^#\/?/, '')));
+// The listings feed (#/auctions/all or /<item>) — not the Trem Market landing page.
+const onAuctionsPage = () => /^auctions\//.test(decodeURIComponent(location.hash.replace(/^#\/?/, '')));
 // Header line: counts + how long ago the data was published (kept fresh by the tick).
 function aucUpdateMeta() {
   const el = $('auc-meta'); if (!el || !AUCTIONS) return;
@@ -3752,7 +4038,10 @@ function route() {
   if (h === 'maps') return renderMapsList();
   // Auction House: a browsable list of the day's published listings (the feed is
   // published every 6 hours, not live — the page says so). Prices also sit on item pages.
-  if (h === 'auctions' || h.startsWith('auctions/')) return renderAuctions(h.slice(9));
+  // #/auctions is the Trem Market landing page; #/auctions/all the full feed; and
+  // #/auctions/<item> the feed filtered to one item (linked from item pages).
+  if (h === 'auctions') return renderTremMarket();
+  if (h.startsWith('auctions/')) return renderAuctions(h.slice(9) === 'all' ? '' : h.slice(9));
   if (h === 'atlas') return renderAtlasWorld();
   if (h === 'advanced' || h === 'bis') return renderAdvanced();
   if (h === 'moderate') return renderModerate();
