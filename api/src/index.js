@@ -9,6 +9,8 @@
 //                                        when unset (skipped anyway for signed-in Discord users)
 //   DISCORD_CLIENT_SECRET (secret, opt.) Discord OAuth client secret (for "Sign in with Discord")
 //   SESSION_SECRET       (secret, opt.)  signs the login session tokens
+//   EXPORT_TOKEN         (secret)        read-only bearer for GET /contrib/export (the VPS's
+//                                        6-hourly build of the site's Early Access play data)
 //   ALLOWED_ORIGIN       (var)           the site origin allowed to call this API
 //   DISCORD_CLIENT_ID    (var, opt.)     Discord OAuth client id (public)
 //   TRUSTED_DISCORD_IDS  (var, opt.)     comma-separated Discord user ids whose markers auto-approve
@@ -101,6 +103,65 @@ async function isAdminId(id, env) {
   const seed = (env.ADMIN_DISCORD_IDS || '').split(',').map((s) => s.trim()).filter(Boolean);
   if (seed.includes(String(id))) return true;
   return !!(await env.DB.prepare('SELECT 1 FROM admins WHERE discord_id=?').bind(String(id)).first());
+}
+
+// Trusted contributor: an admin, the env seed list, or the self-service `trusted` table.
+async function isTrustedId(id, env) {
+  if (!id) return false;
+  if (await isAdminId(id, env)) return true;
+  const seed = (env.TRUSTED_DISCORD_IDS || '').split(',').map((s) => s.trim()).filter(Boolean);
+  if (seed.includes(String(id))) return true;
+  return !!(await env.DB.prepare('SELECT 1 FROM trusted WHERE discord_id=?').bind(String(id)).first());
+}
+
+// ---- Play-data contributions (opt-in sharing from the desktop app) ----
+const MAX_CONTRIB_BYTES = 1024 * 1024;   // one upload's JSON body
+const CONTRIB_MIN_GAP_S = 240;           // an install may upload at most every 4 minutes
+const CONTRIB_SIGNUPS_PER_HOUR = 5;      // per IP
+const MAX_COUNT = 1e7;                   // no single count in a ledger aggregate gets near this
+// An install's credential is "<id>.<secret>"; only sha256(secret) is stored.
+async function readContributor(request, env) {
+  const tok = (request.headers.get('Authorization') || '').replace(/^Bearer\s+/i, '');
+  const [id, secret] = tok.split('.');
+  if (!id || !secret) return null;
+  const row = await env.DB.prepare('SELECT * FROM contributors WHERE id=?').bind(id).first();
+  if (!row || row.token_hash !== (await sha256(secret))) return null;
+  return row;
+}
+// The ledger aggregate the app's parser builds (tracker/ledger-parser.js parseLedgers):
+// check its shape and bounds so a bad or hostile upload can't poison the merge.
+function checkAgg(agg) {
+  if (!agg || typeof agg !== 'object') return 'agg missing';
+  const count = (v) => Number.isFinite(v) && v >= 0 && v <= MAX_COUNT;
+  const name = (k) => typeof k === 'string' && k.length > 0 && k.length <= 100;
+  const counts = (o, max) => o && typeof o === 'object' && !Array.isArray(o) && Object.keys(o).length <= max &&
+    Object.entries(o).every(([k, v]) => name(k) && count(v));
+  if (!count(agg.events || 0) || !count(agg.fileCount || 0)) return 'bad totals';
+  const mobs = agg.mobs || {};
+  if (typeof mobs !== 'object' || Object.keys(mobs).length > 5000) return 'too many mobs';
+  for (const [k, m] of Object.entries(mobs)) {
+    if (!name(k) || !m || ![m.kills, m.coin, m.corpses].every((v) => count(v || 0))) return 'bad mob ' + String(k).slice(0, 40);
+    if (!counts(m.drops || {}, 500) || !counts(m.zones || {}, 200)) return 'bad mob detail ' + String(k).slice(0, 40);
+    const dropped = Object.values(m.drops || {}).reduce((s, v) => s + v, 0);
+    if (dropped > (m.corpses || 0) * 25 + 25) return 'implausible drops for ' + String(k).slice(0, 40);
+  }
+  const items = agg.items || {};
+  if (typeof items !== 'object' || Object.keys(items).length > 20000) return 'too many items';
+  for (const [k, it] of Object.entries(items)) {
+    if (!name(k) || !it || !counts(it.sources || {}, 500) || !counts(it.prices || {}, 500) || !counts(it.zones || {}, 200)) return 'bad item ' + String(k).slice(0, 40);
+    for (const p of Object.keys(it.prices || {})) if (!(+p >= 0 && +p <= 1e9)) return 'bad price for ' + String(k).slice(0, 40);
+  }
+  if (!counts(agg.harvest || {}, 5000)) return 'bad harvest';
+  const hz = agg.harvestZones || {};
+  if (typeof hz !== 'object' || Object.keys(hz).length > 5000 || !Object.values(hz).every((z) => counts(z, 200))) return 'bad harvest zones';
+  const nodes = agg.harvestNodes || [];
+  if (!Array.isArray(nodes) || nodes.length > 5000) return 'bad harvest nodes';
+  for (const n of nodes) {
+    if (!n || !name(n.name) || !count(n.pulls || 0) || !Array.isArray(n.yields || []) || (n.yields || []).length > 200) return 'bad harvest node';
+    if (!(n.yields || []).every((y) => y && name(y.res) && count(y.count || 0) && (y.count || 0) <= (n.pulls || 0) * 5 + 5)) return 'implausible yields at ' + String(n.name).slice(0, 40);
+    if (!Array.isArray(n.zones || []) || !(n.zones || []).every(name)) return 'bad node zones';
+  }
+  return null;
 }
 
 // Who may edit/delete/move a marker: the super-admin (ADMIN_TOKEN bearer), a signed-in
@@ -375,6 +436,94 @@ export default {
       return json({ id: sess.id, name: sess.name, admin, trusted }, 200, origin);
     }
 
+    // --- Play-data contributions (opt-in automatic sharing from MnM Map) ---
+    // The app signs up once for an install credential, then uploads its rolled-up
+    // Early Access ledger counts every so often. New installs wait for approval;
+    // trusted/admin Discord users (signed in inside the app) go straight in.
+    if (request.method === 'POST' && url.pathname === '/contrib/register') {
+      const ip = request.headers.get('CF-Connecting-IP') || '';
+      const ipHash = ip ? await sha256(ip + '|mnmdb-salt') : null;
+      if (ipHash) {
+        const r = await env.DB.prepare("SELECT COUNT(*) AS n FROM contributors WHERE ip_hash=? AND created_at > datetime('now','-1 hour')").bind(ipHash).first();
+        if (r && r.n >= CONTRIB_SIGNUPS_PER_HOUR) return json({ error: 'too many sign-ups from this network — try later' }, 429, origin);
+      }
+      const id = crypto.randomUUID();
+      const secret = [...crypto.getRandomValues(new Uint8Array(24))].map((b) => b.toString(16).padStart(2, '0')).join('');
+      await env.DB.prepare('INSERT INTO contributors (id, token_hash, ip_hash) VALUES (?,?,?)').bind(id, await sha256(secret), ipHash).run();
+      return json({ ok: true, token: id + '.' + secret, status: 'pending' }, 201, origin);
+    }
+
+    if (request.method === 'POST' && url.pathname === '/contrib/upload') {
+      const clen = parseInt(request.headers.get('Content-Length') || '0', 10);
+      if (clen > MAX_CONTRIB_BYTES) return json({ error: 'upload too large' }, 413, origin);
+      const who = await readContributor(request, env);
+      if (!who) return json({ error: 'unknown contributor' }, 401, origin);
+      let b; try { b = JSON.parse(await request.text()); } catch { return json({ error: 'bad json' }, 400, origin); }
+      if (who.status === 'rejected') return json({ ok: true, status: 'rejected' }, 200, origin); // politely ignored
+
+      // Discord sign-in (optional) links the install; trusted/admin users are approved.
+      // Settled before the rate limit, so signing in takes effect right away.
+      let status = who.status, discordId = who.discord_id, discordName = who.discord_name;
+      const sess = await readSession(b.session, env.SESSION_SECRET);
+      if (sess) {
+        discordId = sess.id; discordName = sess.name.slice(0, 40);
+        if (status === 'pending' && (await isTrustedId(sess.id, env))) status = 'approved';
+      }
+      const credit = b.credit && typeof b.creditName === 'string' ? b.creditName.trim().slice(0, 40) || null : null;
+      await env.DB.prepare('UPDATE contributors SET status=?, discord_id=?, discord_name=?, credit_name=? WHERE id=?')
+        .bind(status, discordId || null, discordName || null, credit, who.id).run();
+
+      const last = await env.DB.prepare("SELECT (strftime('%s','now') - strftime('%s', updated_at)) AS age FROM contributions WHERE contributor_id=?").bind(who.id).first();
+      if (last && last.age < CONTRIB_MIN_GAP_S) return json({ error: 'too soon', status, retryAfter: CONTRIB_MIN_GAP_S - last.age }, 429, origin);
+      const bad = checkAgg(b.agg);
+      if (bad) return json({ error: 'rejected data: ' + bad }, 400, origin);
+      const servers = (Array.isArray(b.servers) ? b.servers : []).map(String).filter((s) => s && s.length <= 40).slice(0, 20);
+      if (servers.some((s) => /^beta/i.test(s))) return json({ error: 'beta data is not collected' }, 400, origin);
+      const characters = (Array.isArray(b.characters) ? b.characters : []).map(String).filter((s) => s && s.length <= 40).slice(0, 20);
+
+      const agg = { mobs: b.agg.mobs || {}, items: b.agg.items || {}, harvest: b.agg.harvest || {}, harvestZones: b.agg.harvestZones || {},
+        harvestNodes: b.agg.harvestNodes || [], events: b.agg.events || 0, fileCount: b.agg.fileCount || 0 };
+      const kills = Object.values(agg.mobs).reduce((s, m) => s + (m.kills || 0), 0);
+      await env.DB.prepare(
+        "INSERT OR REPLACE INTO contributions (contributor_id, characters, servers, events, kills, items, data, updated_at) VALUES (?,?,?,?,?,?,?,datetime('now'))"
+      ).bind(who.id, JSON.stringify(characters), JSON.stringify(servers), agg.events, kills, Object.keys(agg.items).length, JSON.stringify(agg)).run();
+      return json({ ok: true, status }, 200, origin);
+    }
+
+    // The app's status line: waiting for approval / accepted, and when it last shared.
+    if (request.method === 'GET' && url.pathname === '/contrib/status') {
+      const who = await readContributor(request, env);
+      if (!who) return json({ error: 'unknown contributor' }, 401, origin);
+      const c = await env.DB.prepare('SELECT events, kills, updated_at FROM contributions WHERE contributor_id=?').bind(who.id).first();
+      return json({ status: who.status, credit: who.credit_name || null, discord: who.discord_name || null,
+        events: c ? c.events : 0, kills: c ? c.kills : 0, updatedAt: c ? c.updated_at : null }, 200, origin);
+    }
+
+    // Stop sharing AND remove what this install shared (the app offers this on opt-out).
+    if (request.method === 'POST' && url.pathname === '/contrib/forget') {
+      const who = await readContributor(request, env);
+      if (!who) return json({ error: 'unknown contributor' }, 401, origin);
+      await env.DB.prepare('DELETE FROM contributions WHERE contributor_id=?').bind(who.id).run();
+      await env.DB.prepare('DELETE FROM contributors WHERE id=?').bind(who.id).run();
+      return json({ ok: true }, 200, origin);
+    }
+
+    // Approved contributions for the 6-hourly site build on the VPS (EXPORT_TOKEN, a
+    // read-only secret kept separate from ADMIN_TOKEN) — or any admin.
+    if (request.method === 'GET' && url.pathname === '/contrib/export') {
+      const bearer = (request.headers.get('Authorization') || '').replace(/^Bearer\s+/i, '');
+      let ok = (env.EXPORT_TOKEN && bearer === env.EXPORT_TOKEN) || (env.ADMIN_TOKEN && bearer === env.ADMIN_TOKEN);
+      if (!ok) { const s = await readSession(bearer, env.SESSION_SECRET); ok = !!(s && (await isAdminId(s.id, env))); }
+      if (!ok) return json({ error: 'unauthorized' }, 401, origin);
+      const { results } = await env.DB.prepare(
+        "SELECT c.contributor_id AS id, c.characters, c.servers, c.events, c.data, c.updated_at, p.credit_name FROM contributions c JOIN contributors p ON p.id=c.contributor_id WHERE p.status='approved'"
+      ).all();
+      return json({ contributions: (results || []).map((r) => ({
+        id: r.id, characters: JSON.parse(r.characters || '[]'), servers: JSON.parse(r.servers || '[]'),
+        events: r.events, updatedAt: r.updated_at, credit: r.credit_name || null, agg: JSON.parse(r.data),
+      })) }, 200, origin);
+    }
+
     // Admin (moderation) — the ADMIN_TOKEN bearer (super-admin) OR a signed-in admin
     // (their session token sent as the bearer). Promote/demote below is super-only.
     if (url.pathname.startsWith('/admin/')) {
@@ -415,8 +564,9 @@ export default {
         const did = String(b.discord_id || '').trim();
         if (!did) return json({ error: 'discord_id required' }, 400, origin);
         await env.DB.prepare("INSERT OR REPLACE INTO trusted (discord_id, name, added_at) VALUES (?,?,datetime('now'))").bind(did, String(b.name || '').slice(0, 60)).run();
-        // trusting someone clears their existing pending backlog too
+        // trusting someone clears their existing pending backlog too (markers + play data)
         await env.DB.prepare("UPDATE submissions SET status='approved', reviewed_at=datetime('now') WHERE discord_id=? AND status='pending'").bind(did).run();
+        await env.DB.prepare("UPDATE contributors SET status='approved', reviewed_at=datetime('now') WHERE discord_id=? AND status='pending'").bind(did).run();
         return json({ ok: true }, 200, origin);
       }
       if (request.method === 'POST' && url.pathname === '/admin/untrust') {
@@ -445,6 +595,31 @@ export default {
           await env.DB.prepare('DELETE FROM admins WHERE discord_id=?').bind(did).run();
         }
         return json({ ok: true }, 200, origin);
+      }
+
+      // Play-data contributors (any admin): who's sharing, how much, and approve/reject.
+      // Approving an install accepts everything it sends from then on; reject stops it
+      // counting (its uploads are ignored); delete removes the install and its data.
+      if (request.method === 'GET' && url.pathname === '/admin/contributors') {
+        const { results } = await env.DB.prepare(
+          'SELECT p.id, p.status, p.discord_id, p.discord_name, p.credit_name, p.created_at, p.reviewed_at, c.characters, c.servers, c.events, c.kills, c.items, c.updated_at ' +
+          "FROM contributors p LEFT JOIN contributions c ON c.contributor_id=p.id WHERE c.contributor_id IS NOT NULL OR p.status != 'pending' " +
+          "ORDER BY CASE p.status WHEN 'pending' THEN 0 WHEN 'approved' THEN 1 ELSE 2 END, c.updated_at DESC"
+        ).all();
+        return json({ contributors: (results || []).map((r) => ({ ...r, characters: JSON.parse(r.characters || '[]'), servers: JSON.parse(r.servers || '[]') })) }, 200, origin);
+      }
+      if (request.method === 'POST' && /^\/admin\/contributors\/(approve|reject|delete)$/.test(url.pathname)) {
+        let b; try { b = await request.json(); } catch { return json({ error: 'bad json' }, 400, origin); }
+        const id = String(b.id || '').trim();
+        if (!id) return json({ error: 'id required' }, 400, origin);
+        const act = url.pathname.split('/').pop();
+        if (act === 'delete') {
+          await env.DB.prepare('DELETE FROM contributions WHERE contributor_id=?').bind(id).run();
+          await env.DB.prepare('DELETE FROM contributors WHERE id=?').bind(id).run();
+        } else {
+          await env.DB.prepare("UPDATE contributors SET status=?, reviewed_at=datetime('now') WHERE id=?").bind(act === 'approve' ? 'approved' : 'rejected', id).run();
+        }
+        return json({ ok: true, id, action: act }, 200, origin);
       }
 
       // Map moderation (any admin). reject/delete both remove the row + the R2 object.

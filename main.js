@@ -2,6 +2,7 @@ const { app, BrowserWindow, ipcMain, dialog, globalShortcut, screen, crashReport
 const fs = require('fs');
 const path = require('path');
 const ledgerParser = require('./tracker/ledger-parser');
+const contrib = require('./contrib');
 const { execFile } = require('child_process');
 
 let win;
@@ -583,6 +584,12 @@ ipcMain.handle('window-minimize', () => {
 app.whenReady().then(() => {
   if (!gotSingleLock) { app.quit(); return; } // another copy is already running; it got the deep link
   logCrash('app-start', { version: app.getVersion(), pid: process.pid });
+  // Opt-in "Share with MnMdb": uploads the player's Early Access counts every 30 min.
+  // Registered before the window opens so its IPC handlers exist when the page asks.
+  contrib.init({
+    app, ledgerParser, harvestSkillOpts,
+    onChange: (state) => { if (win && !win.isDestroyed()) win.webContents.send('contrib-state', state); },
+  });
   createWindow();
   registerShortcuts();
   startGameLogWatch();

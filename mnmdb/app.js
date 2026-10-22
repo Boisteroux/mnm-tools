@@ -2567,6 +2567,7 @@ function renderModerate() {
     '<div id="mod-trusted" class="modtrusted"></div>' +
     (isSuper ? '<div id="mod-admins" class="modtrusted"></div>' : '') +
     '<div id="mod-maps"></div>' +
+    '<div id="mod-contrib"></div>' +
     '<div id="mod-list"><p class="sub">Loading…</p></div>' +
     '<div class="modmanage"><button id="mod-manage-btn">⚙ Manage approved markers</button><div id="mod-manage"></div></div>' +
     '<div class="modmanage"><button id="mod-maps-btn">⚙ Manage approved maps</button><div id="mod-maps-manage"></div></div>';
@@ -2589,6 +2590,52 @@ function renderModerate() {
   loadTrusted(creds, isSuper);
   loadPending(creds, isSuper);
   loadPendingMaps(creds);
+  loadContributors(creds);
+}
+
+// Play-data contributors (MnM Map's opt-in sharing). New installs wait here once;
+// approving one accepts everything it shares from then on. Approved ones fold away
+// under a toggle with Stop counting (reject) / Delete (removes the install's data).
+async function loadContributors(creds) {
+  const el = $('mod-contrib'); if (!el) return;
+  let j; try { j = await (await fetch(API_BASE + '/admin/contributors', { headers: { Authorization: 'Bearer ' + creds } })).json(); } catch { return; }
+  const all = j.contributors || [];
+  if (!all.length) { el.innerHTML = ''; return; }
+  const pending = all.filter((c) => c.status === 'pending'), rest = all.filter((c) => c.status !== 'pending');
+  const when = (s) => String(s || '').replace('T', ' ').replace(/\..*$/, '').slice(0, 16);
+  const card = (c) => '<div class="modcard modcontrib" data-id="' + esc(c.id) + '">' +
+    '<div class="modinfo">' +
+      '<div class="modlabel">' + esc((c.characters || []).join(', ') || 'unknown character') +
+        (c.discord_name ? ' <span class="vbadge">✓ Discord: ' + esc(c.discord_name) + '</span>' : '') +
+        (c.status !== 'pending' ? ' <span class="pill">' + esc(c.status) + '</span>' : '') + '</div>' +
+      '<div class="modmeta">' + (c.events || 0).toLocaleString() + ' events · ' + (c.kills || 0).toLocaleString() + ' kills · ' + (c.items || 0) + ' items · ' + esc((c.servers || []).join(', ') || 'no server') +
+        (c.credit_name ? ' · credit as ' + esc(c.credit_name) : ' · anonymous') + '</div>' +
+      '<div class="modmeta muted">last shared ' + esc(when(c.updated_at)) + ' UTC · joined ' + esc(when(c.created_at)) + ' UTC</div>' +
+      '<div class="modactions">' +
+        (c.status !== 'approved' ? '<button class="primary" data-cact="approve">Approve</button>' : '') +
+        (c.status !== 'rejected' ? '<button class="danger" data-cact="reject">' + (c.status === 'approved' ? 'Stop counting' : 'Reject') + '</button>' : '') +
+        '<button data-cact="delete" title="Remove this install and everything it shared">Delete data</button>' +
+      '</div></div></div>';
+  el.innerHTML =
+    (pending.length ? '<h2 class="modsub">Play-data contributors <span class="pill">' + pending.length + '</span></h2>' +
+      '<p class="sub">Players sharing drop data from MnM Map. Approve once; their later shares count automatically.</p>' + pending.map(card).join('') : '') +
+    (rest.length ? '<div class="modmanage"><button id="mod-contrib-btn">⚙ Manage contributors (' + rest.length + ')</button><div id="mod-contrib-manage" hidden>' + rest.map(card).join('') + '</div></div>' : '');
+  const tog = $('mod-contrib-btn');
+  if (tog) tog.addEventListener('click', () => { const b = $('mod-contrib-manage'); b.hidden = !b.hidden; });
+  el.querySelectorAll('.modcontrib').forEach((cardEl) => {
+    cardEl.querySelectorAll('[data-cact]').forEach((b) => b.addEventListener('click', async () => {
+      const act = b.dataset.cact;
+      cardEl.querySelectorAll('button').forEach((x) => (x.disabled = true));
+      try {
+        const r = await fetch(API_BASE + '/admin/contributors/' + act, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + creds }, body: JSON.stringify({ id: cardEl.dataset.id }) });
+        if (r.ok) {
+          cardEl.classList.add('done');
+          cardEl.querySelector('.modactions').innerHTML = '<span class="sp-status ok">' +
+            (act === 'approve' ? 'Approved ✓ — included in the next 6-hourly update' : act === 'reject' ? 'No longer counted' : 'Deleted') + '</span>';
+        } else cardEl.querySelectorAll('button').forEach((x) => (x.disabled = false));
+      } catch { cardEl.querySelectorAll('button').forEach((x) => (x.disabled = false)); }
+    }));
+  });
 }
 
 // Pending map submissions — image preview + Approve / Reject. Shows nothing when empty.
@@ -3861,6 +3908,12 @@ fetch('./data.json')
     $('data-meta').textContent = 'Drop data: ' + (EA.events || 0).toLocaleString() + ' Early Access events' +
       (EA.generatedAt ? ' (updated ' + new Date(EA.generatedAt).toLocaleDateString() + ')' : '') +
       ' · ' + (d.events || 0).toLocaleString() + ' beta events (frozen ' + when + ') · ' + DATA.items.length + ' items';
+    // Players sharing from MnM Map: counted, and named only if they opted in to credit.
+    if (EA.contributorCount) {
+      const named = (EA.contributors || []).map((c) => c.character).filter(Boolean);
+      $('data-meta').textContent += ' · Early Access data shared by ' + EA.contributorCount + ' player' + (EA.contributorCount === 1 ? '' : 's') +
+        (named.length ? ', thanks to ' + named.slice(0, 12).join(', ') + (named.length > 12 ? ' and ' + (named.length - 12) + ' more' : '') : '');
+    }
     window.addEventListener('hashchange', () => {
       // Clicking a result navigates (changes the hash) — clear the search so the
       // page shows instead of the search results staying stuck over it.

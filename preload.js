@@ -25,6 +25,13 @@ contextBridge.exposeInMainWorld('mapAPI', {
   trackerSetEnabled: (on) => ipcRenderer.invoke('tracker-set-enabled', on),
   publishMnmdb: () => ipcRenderer.invoke('publish-mnmdb'),
   exportContribution: () => ipcRenderer.invoke('export-contribution'),
+  // Opt-in automatic sharing with MnMdb (contrib.js)
+  contribState: () => ipcRenderer.invoke('contrib-state'),
+  contribSetOptIn: (on, opts) => ipcRenderer.invoke('contrib-set-optin', on, opts),
+  contribSetCredit: (on) => ipcRenderer.invoke('contrib-set-credit', on),
+  contribShareNow: () => ipcRenderer.invoke('contrib-share-now'),
+  contribSession: (session) => ipcRenderer.invoke('contrib-session', session),
+  onContribState: (cb) => ipcRenderer.on('contrib-state', (e, state) => cb(state)),
   zoneAliases: () => ipcRenderer.invoke('zone-aliases'),
   sessionReplay: (opts) => ipcRenderer.invoke('session-replay', opts),
   sessionEnd: () => ipcRenderer.invoke('session-end'),

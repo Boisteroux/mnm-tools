@@ -229,11 +229,15 @@ function initDiscordAuth() {
   const loginBtn = $('btn-discord-login');
   if (loginBtn) loginBtn.addEventListener('click', () => { status('Opening Discord in your browser…'); window.mapAPI.discordLogin(); });
   const logoutBtn = $('btn-discord-logout');
-  if (logoutBtn) logoutBtn.addEventListener('click', () => { localStorage.removeItem(DISCORD_SESSION_KEY); paintDiscordAuth(); status('Signed out.'); });
+  if (logoutBtn) logoutBtn.addEventListener('click', () => {
+    localStorage.removeItem(DISCORD_SESSION_KEY); paintDiscordAuth(); status('Signed out.');
+    if (window.mapAPI.contribSession) window.mapAPI.contribSession('');
+  });
   if (window.mapAPI.onDiscordAuth) window.mapAPI.onDiscordAuth(({ session, error }) => {
     if (error) { status('Sign-in failed: ' + error); return; }
     if (!session) return;
     localStorage.setItem(DISCORD_SESSION_KEY, session);
+    if (window.mapAPI.contribSession) window.mapAPI.contribSession(session); // lets sharing skip approval if trusted
     paintDiscordAuth();
     status(''); // the panel's "Signed in as X" line already shows this — no duplicate
   });
@@ -1266,6 +1270,67 @@ const contributionStatus = (msg) => { $('contribution-status').textContent = msg
     else contributionStatus((r && r.error) || 'Export failed.');
     exBtn.disabled = false;
   });
+}
+
+// ---- Share with MnMdb (opt-in automatic sharing; the work happens in contrib.js) ----
+// Asked once (the modal), then a switch under Drop Tracker. The status line says what
+// happened last: shared when, waiting for approval, or what went wrong.
+{
+  const box = $('contrib-box');
+  const minsAgo = (iso) => { if (!iso) return ''; const m = Math.round((Date.now() - new Date(iso)) / 60000); return m < 1 ? 'just now' : m < 60 ? m + ' min ago' : Math.round(m / 60) + ' hr ago'; };
+  let last = null;
+  function paint(s) {
+    if (!s || !box) return;
+    last = s;
+    document.querySelectorAll('.contrib-char').forEach((el) => { el.textContent = s.character || 'my character'; });
+    $('contrib-enabled').checked = s.optIn === true;
+    $('contrib-credit').checked = !!s.credit;
+    $('contrib-credit').disabled = s.optIn !== true;
+    $('contrib-share-now').classList.toggle('hidden', s.optIn !== true);
+    let line;
+    if (s.optIn !== true) line = 'Off. Nothing is shared.';
+    else if (s.lastError) line = s.lastError;
+    else if (!s.lastSharedAt) line = 'Sharing on. First upload in a minute or two.';
+    else {
+      const when = 'Shared ' + minsAgo(s.lastSharedAt) + ' · ' + (s.lastEvents || 0).toLocaleString() + ' events';
+      line = s.status === 'approved' ? when + ' · on MnMdb within 6 hrs'
+        : s.status === 'rejected' ? 'Your shares aren\'t being used on MnMdb. Questions? Use Give feedback.'
+        : when + ' · waiting for a one-time check' + (s.signedIn ? '' : ' (trusted players can sign in with Discord to skip it)');
+    }
+    $('contrib-line').textContent = line;
+  }
+  async function refresh() { try { paint(await window.mapAPI.contribState()); } catch {} }
+  if (box && window.mapAPI.contribState) {
+    window.mapAPI.onContribState(paint);
+    // Hand the Discord session (owned by the sign-in panel) to the sharing engine.
+    window.mapAPI.contribSession(localStorage.getItem(DISCORD_SESSION_KEY) || '');
+    refresh().then(() => {
+      if (last && last.optIn === null) $('contrib-modal').classList.remove('hidden'); // ask once
+    });
+    setInterval(refresh, 5 * 60 * 1000); // keeps "x min ago" and the approval status current
+
+    const close = () => $('contrib-modal').classList.add('hidden');
+    $('contrib-yes').addEventListener('click', async () => {
+      close();
+      await window.mapAPI.contribSetCredit($('contrib-modal-credit').checked).catch(() => {});
+      paint(await window.mapAPI.contribSetOptIn(true));
+    });
+    $('contrib-later').addEventListener('click', async () => { close(); paint(await window.mapAPI.contribSetOptIn(false)); });
+
+    $('contrib-enabled').addEventListener('change', async (e) => {
+      if (e.target.checked) { $('contrib-off-confirm').classList.add('hidden'); paint(await window.mapAPI.contribSetOptIn(true)); return; }
+      e.target.checked = true; // stays on until they pick one of the two "stop" choices
+      $('contrib-off-confirm').classList.remove('hidden');
+    });
+    const stop = async (forget) => { $('contrib-off-confirm').classList.add('hidden'); paint(await window.mapAPI.contribSetOptIn(false, { forget })); };
+    $('contrib-off-keep').addEventListener('click', () => stop(false));
+    $('contrib-off-delete').addEventListener('click', () => stop(true));
+    $('contrib-credit').addEventListener('change', async (e) => paint(await window.mapAPI.contribSetCredit(e.target.checked)));
+    $('contrib-share-now').addEventListener('click', async () => {
+      $('contrib-line').textContent = 'Sharing…';
+      paint(await window.mapAPI.contribShareNow());
+    });
+  }
 }
 
 // (Manual "Log a Trade" removed — buy/sell prices are now collected automatically

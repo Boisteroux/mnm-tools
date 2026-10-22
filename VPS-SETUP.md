@@ -162,7 +162,13 @@ WorkingDirectory=/opt/mnm-tools
 ExecStart=/usr/bin/node tracker/auto-publish-auctions.js
 Environment=MNM_DATA=/opt/mnm-tools/auction-data
 Environment=MNM_PUBLISH_ONCE=1
+EnvironmentFile=/etc/mnm-tools.env
 EOF
+
+# The publish also builds mnmdb/data-ea.json from play data players share through
+# MnM Map (tracker/build-ea-data.js). It reads approved contributions from the API
+# with the Worker's EXPORT_TOKEN secret — keep the same value here, root-only:
+umask 077; printf 'MNM_EXPORT_TOKEN=%s\n' '<the EXPORT_TOKEN value>' > /etc/mnm-tools.env
 
 cat > /etc/systemd/system/mnm-publish.timer <<'EOF'
 [Unit]

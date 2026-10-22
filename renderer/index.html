@@ -100,8 +100,27 @@
         <input type="checkbox" id="tracker-enabled" />
         <span>Collect drop &amp; vendor data</span>
       </label>
+      <div id="contrib-box" class="contrib-box">
+        <label class="follow-row" title="Uploads your kill, drop, harvest and vendor-price counts to mnm-db.com every 30 minutes while the app is open. No chat, no account details.">
+          <input type="checkbox" id="contrib-enabled" />
+          <span>Share with MnMdb automatically</span>
+        </label>
+        <label class="follow-row contrib-sub" title="Adds your character name to the thank-you list on mnm-db.com. Otherwise you're counted anonymously.">
+          <input type="checkbox" id="contrib-credit" />
+          <span>Thank me on the site as <b class="contrib-char">my character</b></span>
+        </label>
+        <div id="contrib-off-confirm" class="contrib-confirm hidden">
+          <span>Stop sharing. Also delete what you've shared so far?</span>
+          <div class="btn-row">
+            <button id="contrib-off-keep" class="secondary">Stop, keep it</button>
+            <button id="contrib-off-delete" class="secondary">Stop and delete</button>
+          </div>
+        </div>
+        <div id="contrib-line" class="mini-status"></div>
+        <div class="btn-row"><button id="contrib-share-now" class="secondary hidden" title="Upload your latest counts now instead of waiting for the next 30-minute share">Share now</button></div>
+      </div>
       <button id="tracker-publish" class="primary hidden" title="Regenerate the site data from your ledger and push it live to MnMdb (owner only)">Publish to MnMdb</button>
-      <button id="btn-export-contribution" class="btn-spotlight" title="Save your rolled-up play data (drops, kills, harvests, prices) to a file you can send to the site owner to pool into MnMdb">Export my data to share</button>
+      <button id="btn-export-contribution" class="secondary" title="Save your rolled-up play data (drops, kills, harvests, prices) to a file instead — for sharing by hand">Export my data to a file</button>
       <div id="tracker-status"></div>
       <div id="publish-status"></div>
       <div id="contribution-status"></div>
@@ -179,6 +198,25 @@
 
 
   <!-- Export choice dialog -->
+  <!-- One-time ask: share play data with MnMdb automatically? (contrib.js) -->
+  <div id="contrib-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="contrib-modal-title">
+    <div class="modal modal-mid">
+      <h2 id="contrib-modal-title">Help build MnMdb</h2>
+      <p class="contrib-lede">MnM Map can share your kill, drop and harvest counts with mnm-db.com, so everyone gets real Early Access drop rates and farming estimates.</p>
+      <ul class="contrib-points">
+        <li>Only counts are shared: kills, drops, harvests, vendor prices. No chat logs, no account details.</li>
+        <li>You're anonymous unless you tick the box below.</li>
+        <li>It uploads every 30 minutes while the app is open. Turn it off any time under Drop Tracker.</li>
+      </ul>
+      <label class="follow-row"><input type="checkbox" id="contrib-modal-credit" /><span>Thank me on the site as <b class="contrib-char">my character</b></span></label>
+      <p class="contrib-note">New contributors are checked once before their data goes live. Trusted players signed in with Discord skip the wait.</p>
+      <div class="btn-row right">
+        <button id="contrib-later">Not now</button>
+        <button id="contrib-yes" class="primary">Share automatically</button>
+      </div>
+    </div>
+  </div>
+
   <div id="export-modal" class="modal-backdrop hidden">
     <div class="modal">
       <h2>Export Markers</h2>

@@ -25,12 +25,20 @@ function publishOnce() {
   try {
     execFileSync(process.execPath, [path.join(__dirname, 'publish-auctions.js')], { cwd: ROOT, env: Object.assign({}, process.env, { MNM_DATA: DATA }), stdio: 'ignore' });
   } catch (e) { log('build failed: ' + e.message); return; }
+  // Early Access play data shared from MnM Map (approved contributors). Optional: needs
+  // MNM_EXPORT_TOKEN; a failure here never blocks the auction publish.
+  try {
+    const out = execFileSync(process.execPath, [path.join(__dirname, 'build-ea-data.js')], { cwd: ROOT, env: process.env, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] });
+    if (out.trim()) log(out.trim());
+  } catch (e) { log('play-data build failed: ' + ((e.stderr || '') + e.message).trim().slice(0, 300)); }
 
+  const FILES = ['mnmdb/auctions.json', 'mnmdb/data-ea.json'];
   let changed = '';
-  try { changed = git(['status', '--porcelain', 'mnmdb/auctions.json']); } catch (e) { log('status failed: ' + e.message); return; }
+  try { changed = git(['status', '--porcelain', ...FILES]); } catch (e) { log('status failed: ' + e.message); return; }
   if (!changed.trim()) { log('no change — nothing to push'); return; }
+  const what = /data-ea\.json/.test(changed) ? (/auctions\.json/.test(changed) ? 'auction prices + shared play data' : 'shared play data') : 'auction prices';
 
-  try { git(['add', 'mnmdb/auctions.json']); git(['commit', '-m', 'Auto-publish auction prices']); }
+  try { git(['add', ...FILES]); git(['commit', '-m', 'Auto-publish ' + what]); }
   catch (e) { log('commit failed: ' + e.message); return; }
 
   try { git(['pull', '--rebase', '--autostash', 'origin', 'main']); }

@@ -31,6 +31,24 @@ Later: add Turnstile (`npx wrangler secret put TURNSTILE_SECRET`) and a custom r
 
 Admin calls send `Authorization: Bearer <ADMIN_TOKEN>`.
 
+### Play-data sharing (MnM Map's opt-in "Share with MnMdb")
+
+Run `migrate-contributions.sql` once on an existing database, and set the
+`EXPORT_TOKEN` secret (the VPS reads approved data with it; keep it out of the repo).
+
+| Method | Path | Who | Purpose |
+|--------|------|-----|---------|
+| POST | `/contrib/register`  | the app | one-time anonymous install credential |
+| POST | `/contrib/upload`    | the app (install bearer) | replace this install's rolled-up EA counts; optional Discord `session` |
+| GET  | `/contrib/status`    | the app (install bearer) | pending / approved / rejected + last share |
+| POST | `/contrib/forget`    | the app (install bearer) | stop + delete everything this install shared |
+| GET  | `/contrib/export`    | `EXPORT_TOKEN` or admin | approved contributions, for `tracker/build-ea-data.js` |
+| GET  | `/admin/contributors` | admin | who's sharing, with a summary |
+| POST | `/admin/contributors/approve` · `reject` · `delete` | admin | `{ "id": "<install id>" }` |
+
+New installs are `pending` until approved once; trusted/admin Discord users signed in
+inside the app are approved automatically (trusting someone also approves their installs).
+
 ## Local dev
 
 `npx wrangler dev` runs it at `http://localhost:8787`. Use `--local` for a local D1.
