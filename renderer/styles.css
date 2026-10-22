@@ -503,8 +503,14 @@ body.sidebar-collapsed #sidebar { display: none; }
 .modal .follow-row span { text-transform: none; letter-spacing: 0; font-size: 12px; color: var(--text); }
 /* "Thank me on the site as [character ▾ / Other…]" */
 .credit-row { display: flex; flex-direction: column; gap: 4px; }
-.credit-select, .credit-other { width: 100%; font-size: 12px; padding: 4px 6px; }
-.modal .credit-select, .modal .credit-other { margin-left: 22px; width: calc(100% - 22px); }
+/* "Thank me as" then the dropdown: stacked in the narrow sidebar (the label fits one
+   line), side by side in the wider opt-in prompt */
+.credit-line { display: flex; flex-direction: column; gap: 4px; }
+.credit-line .follow-row { white-space: nowrap; margin: 0; }
+.modal .credit-line { flex-direction: row; align-items: center; gap: 8px; }
+.modal .credit-line .credit-select { flex: 1 1 auto; min-width: 0; width: auto; }
+.credit-select, .credit-other { width: 100%; font-size: 12px; padding: 3px 5px; }
+.modal .credit-other { margin-left: 22px; width: calc(100% - 22px); }
 .credit-err { font-size: 10.5px; color: var(--danger); }
 .credit-note { font-size: 10.5px; color: var(--muted); }
 

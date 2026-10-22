@@ -98,11 +98,13 @@
           <span>Share with MnMdb automatically</span>
         </label>
         <div class="credit-row contrib-sub">
-          <label class="follow-row" title="Adds a name to the thank-you list on mnm-db.com. Otherwise you're counted anonymously.">
-            <input type="checkbox" id="contrib-credit" />
-            <span>Thank me on the site as</span>
-          </label>
-          <select id="contrib-credit-name" class="credit-select" aria-label="Name to be thanked under"></select>
+          <div class="credit-line">
+            <label class="follow-row" title="Adds a name to the thank-you list on mnm-db.com. Otherwise you're counted anonymously.">
+              <input type="checkbox" id="contrib-credit" />
+              <span>Thank me as</span>
+            </label>
+            <select id="contrib-credit-name" class="credit-select" aria-label="Name to be thanked under on mnm-db.com"></select>
+          </div>
           <input id="contrib-credit-other" class="credit-other hidden" maxlength="24" placeholder="Type the name to show" aria-label="Other name to be thanked under" />
           <div id="contrib-credit-err" class="credit-err hidden"></div>
           <div id="contrib-credit-wait" class="credit-note hidden">This name appears on the site once an admin OKs it.</div>
@@ -220,8 +222,10 @@
         <li>It uploads every 30 minutes while the app is open. Turn it off any time under Drop Tracker.</li>
       </ul>
       <div class="credit-row">
-        <label class="follow-row"><input type="checkbox" id="contrib-modal-credit" /><span>Thank me on the site as</span></label>
-        <select id="contrib-modal-name" class="credit-select" aria-label="Name to be thanked under"></select>
+        <div class="credit-line">
+          <label class="follow-row" title="Adds a name to the thank-you list on mnm-db.com. Otherwise you're counted anonymously."><input type="checkbox" id="contrib-modal-credit" /><span>Thank me as</span></label>
+          <select id="contrib-modal-name" class="credit-select" aria-label="Name to be thanked under on mnm-db.com"></select>
+        </div>
         <input id="contrib-modal-other" class="credit-other hidden" maxlength="24" placeholder="Type the name to show" aria-label="Other name to be thanked under" />
       </div>
       <div id="contrib-modal-name-err" class="credit-err hidden"></div>

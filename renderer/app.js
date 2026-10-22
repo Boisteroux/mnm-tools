@@ -1280,7 +1280,7 @@ const contributionStatus = (msg) => { $('contribution-status').textContent = msg
   const minsAgo = (iso) => { if (!iso) return ''; const m = Math.round((Date.now() - new Date(iso)) / 60000); return m < 1 ? 'just now' : m < 60 ? m + ' min ago' : Math.round(m / 60) + ' hr ago'; };
   let last = null;
   const OTHER = '__other';
-  // "Thank me on the site as [▾]": every Early Access character (most-played first),
+  // "Thank me as [▾]": every Early Access character (most-played first),
   // then "Other…", which reveals a text box. A typed name shows once an admin OKs it.
   function fillNames(sel, other, s) {
     const chars = s.characters || [];
