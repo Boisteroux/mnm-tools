@@ -1730,8 +1730,6 @@ $('replay-next').addEventListener('click', () => { if (replayIdx > 0) { replayId
   });
 })();
 
-// The app re-scans itself a few seconds after the game writes new loot/kills
-
 $('btn-overlay').addEventListener('click', () => window.mapAPI.toggleOverlay());
 $('overlay-exit-btn').addEventListener('click', () => window.mapAPI.overlayExit());
 $('overlay-min-btn').addEventListener('click', () => window.mapAPI.minimizeWindow());
