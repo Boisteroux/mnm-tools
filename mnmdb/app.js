@@ -1921,18 +1921,30 @@ window.setBrowseEffect = (v) => { browse.effect = v; renderBrowse('items'); };
 // Atlas's "mini map" still (/mini/<map>/<marker>.webp — the small image it offers for
 // other sites) used as the zone's preview on the Maps page. The last three are zones
 // only the Atlas has drawn; they get a page here with no marker map of ours.
+// Zone -> [Atlas map id, a marked spot on it whose /mini/ still is the card preview].
+// The Atlas sometimes renames or removes spots — a dead still falls back on the card
+// (see renderMapsList), and `node tracker/check-atlas-thumbs.js` lists dead ones.
 const ATLAS_MAPS = {
-  'Night Harbor': ['night-harbor', 'wiki-7'], 'Faelindral': ['faelindral', 'maggot-npc-05'],
+  'Night Harbor': ['night-harbor', 'wiki-7'], 'Faelindral': ['faelindral', 'wiki-6'],
   'Evershade Weald': ['evershade-weald', 'community-132'], 'Sungreet Strand': ['sungreet-strand', 'generic-6-10-3'],
   'Shaded Dunes': ['shaded-dunes', 'undead-10-15-1'], 'Fallen Pass': ['fallen-pass', 'ratkin-31-40-8'],
   'Tomb of the Last Wyrmsbane': ['wyrmsbane-tomb', 'jakob-tomb-route-from'], 'Glass Flats': ['glass-flats', 'salt-elementals-30-36-1'],
   'Ancient Crypt': ['ancient-crypt', 'ladder-library-south-floor-1'], 'Scarwood': ['scarwood', 'grinholdt-thorne-grinholdt'],
-  'Vale of Zintar': ['vale-of-zintar', 'lake-notables-najarica'], 'Grain Cellar': ['grain-cellar', 'stair-foot'],
+  'Vale of Zintar': ['vale-of-zintar', 'lake-notables-najarica'], 'Grain Cellar': ['grain-cellar', 'a-sneaky-rat'],
   'Tel Ekir': ['tel-ekir', 'link-007-b'], "Keeper's Bight": ['keepers-bight', 'farmers-heather'],
   'Fallen Watch': ['fallen-watch', 'splint'],
   'Underdocks': ['underdocks', 'community-167'], "Ail'Vorith": ['ail-vorith', 'grindstone'],
   'Great Cavern Sea': ['great-cavern-sea', 'vhaleth-halkareth'],
+  // Drawn by the Atlas since Oct 2026
+  'Blacktide Bay': ['blacktide-bay', 'stairs-fortress-floor-1'], 'Caves of Irem': ['caves-of-irem', 'community-751'],
+  'Glinting Hollow': ['glinting-hollow', 'community-1097'], 'Grimtide Sanctum': ['grimtide-sanctum', 'link-stairs-1-floor-2'],
+  'Infested Crypt': ['infested-crypt', 'web-ladder-floor-1'], 'Rothold': ['rothold', 'main-stair-2'],
+  'Shallow Shoals': ['shallow-shoals', 'zaedin-bank'], 'Sunken Resort': ['sunken-resort', 'link-a-floor-1'],
+  'Blind Midden': ['blind-midden', 'ramp-1-canyon'],
 };
+// The World map card uses the Atlas's own share card for its world page (its og:image) —
+// an uncaptioned overview, where every world-map /mini/ still is captioned with a dungeon.
+const ATLAS_WORLD_THUMB = 'assets/cards/world.jpg?v=3';
 const ATLAS_URL = 'https://www.mnmatlas.com/';
 const atlasIdOf = (zone) => (ATLAS_MAPS[zone] || [])[0] || null;
 const atlasThumb = (zone) => ATLAS_URL + 'mini/' + ATLAS_MAPS[zone][0] + '/' + ATLAS_MAPS[zone][1] + '.webp';
@@ -1960,10 +1972,11 @@ function renderMapsList() {
     '<h1>Zone maps</h1>' +
     '<p class="sub">Zone maps with marked resource nodes, camps and points of interest. Zones tagged <span class="tag good">Atlas</span> open on the illustrated <a href="' + ATLAS_URL + '" target="_blank" rel="noopener">MnM Atlas ↗</a> map, with our marker map one tab away.</p>' +
     '<div class="mapgrid">' +
-    '<a class="mapcard" href="#/atlas"><span class="mapthumb"><span class="soon-tag">World map</span></span><span class="mapname">World map <span class="tag good">Atlas</span></span></a>' +
+    '<a class="mapcard" href="#/atlas"><span class="mapthumb"><img class="atlas-thumb" src="' + ATLAS_URL + ATLAS_WORLD_THUMB + '" alt="" loading="lazy" data-label="World map" /></span><span class="mapname">World map <span class="tag good">Atlas</span></span></a>' +
     zones.map((z) => ATLAS_MAPS[z.name] // Atlas zones preview with the Atlas's own mini-map still
       ? '<a class="mapcard" href="#/map/' + encodeURIComponent(z.name) + '">' +
-        '<span class="mapthumb"><img src="' + atlasThumb(z.name) + '" alt="" loading="lazy" /></span>' +
+        '<span class="mapthumb"><img class="atlas-thumb" src="' + atlasThumb(z.name) + '" alt="" loading="lazy" data-label="' + esc(z.name) + '"' +
+        (z.image ? ' data-fallback="maps/' + encodeURIComponent(z.image) + mapVer() + '"' : '') + ' /></span>' +
         '<span class="mapname">' + esc(z.name) + ' <span class="tag good">Atlas</span>' +
         (z.markers.length ? ' <span class="sample">' + z.markers.length + ' marks</span>' : '') + '</span></a>'
       : z.comingSoon
@@ -1975,6 +1988,15 @@ function renderMapsList() {
         '<span class="mapname">' + esc(z.name) +
         (z.markers.length ? ' <span class="sample">' + z.markers.length + ' marks</span>' : '') + '</span></a>'
     ).join('') + '</div>';
+  // An Atlas still that's gone (the Atlas renamed or removed that spot) falls back to our
+  // own map image, or to the zone's name, instead of a broken image.
+  document.querySelectorAll('img.atlas-thumb').forEach((img) => img.addEventListener('error', () => {
+    const fb = img.dataset.fallback;
+    if (fb && img.getAttribute('src') !== fb) { img.src = fb; return; }
+    const tag = document.createElement('span');
+    tag.className = 'soon-tag'; tag.textContent = img.dataset.label || 'Atlas map';
+    img.replaceWith(tag);
+  }));
   // Badge zones that have extra community maps (total = official + community).
   loadMaps().then((byZone) => {
     document.querySelectorAll('.mapcount[data-zone]').forEach((el) => {

@@ -627,7 +627,7 @@ const KNOWN_ZONE_NAMES = [
   'Blacktide Bay', 'Caves of Irem', 'Evershade Weald', 'Faelindral', 'Fallen Pass', 'Glass Flats', 'Glinting Hollow',
   'Grain Cellar', 'Grimtide Sanctum', 'Infested Crypt', "Keeper's Bight", 'Night Harbor', 'Night Harbor Sewers', 'Rothold',
   'Scarwood', 'Shaded Dunes', 'Shallow Shoals', 'Sungreet Strand', 'Tel Ekir', 'Tomb of the Last Wyrmsbane', 'Vale of Zintar',
-  'Ancient Crypt', 'Fallen Watch', 'Underdocks', "Ail'Vorith", 'Great Cavern Sea',
+  'Ancient Crypt', 'Fallen Watch', 'Underdocks', "Ail'Vorith", 'Great Cavern Sea', 'Sunken Resort', 'Blind Midden',
 ];
 const knownZoneName = (code) => KNOWN_ZONE_NAMES.find((n) => normName(n) === normName(code)) || null;
 const autoZoneName = (code) => code.charAt(0).toUpperCase() + code.slice(1);
@@ -1885,6 +1885,10 @@ const ATLAS_IDS = { // normalised zone name (or game zone code) -> Atlas map id
   glassflats: 'glass-flats', ancientcrypt: 'ancient-crypt', scarwood: 'scarwood', valeofzintar: 'vale-of-zintar',
   graincellar: 'grain-cellar', greatcavernsea: 'great-cavern-sea', telekir: 'tel-ekir',
   keepersbight: 'keepers-bight', fallenwatch: 'fallen-watch',
+  // drawn by the Atlas since Oct 2026
+  blacktidebay: 'blacktide-bay', cavesofirem: 'caves-of-irem', glintinghollow: 'glinting-hollow',
+  grimtidesanctum: 'grimtide-sanctum', infestedcrypt: 'infested-crypt', rothold: 'rothold',
+  shallowshoals: 'shallow-shoals', sunkenresort: 'sunken-resort', blindmidden: 'blind-midden',
 };
 // By name first: two zones can share a game code (Evershade Weald / Faelindral).
 const atlasIdFor = (zone) => (zone ? ATLAS_IDS[normName(zone.name)] || ATLAS_IDS[normName(zone.gameName || '')] || null : null);
