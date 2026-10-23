@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-23T07:00:15.199Z",
+  "generatedAt": "2026-10-23T19:00:15.214Z",
   "source": "mnm-tools",
-  "ledgerFiles": 20,
-  "events": 7160,
+  "ledgerFiles": 21,
+  "events": 7319,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 7160
+      "events": 7319
     }
   ],
   "contributorCount": 1,
@@ -2219,10 +2219,10 @@
         },
         {
           "copper": 54,
-          "count": 1
+          "count": 2
         }
       ],
-      "harvested": 3,
+      "harvested": 4,
       "zones": [
         "Scarwood"
       ]
@@ -2251,10 +2251,10 @@
       "prices": [
         {
           "copper": 54,
-          "count": 1
+          "count": 2
         }
       ],
-      "harvested": 1,
+      "harvested": 2,
       "zones": [
         "Scarwood"
       ]
@@ -2267,10 +2267,10 @@
       "prices": [
         {
           "copper": 54,
-          "count": 1
+          "count": 2
         }
       ],
-      "harvested": 1,
+      "harvested": 3,
       "zones": [
         "Scarwood"
       ]
@@ -2377,7 +2377,7 @@
       "name": "Glinting Crystallized Magic",
       "droppedBy": [],
       "prices": [],
-      "harvested": 6,
+      "harvested": 7,
       "zones": [
         "Scarwood"
       ]
@@ -2518,7 +2518,7 @@
       "name": "Jagged Stone",
       "droppedBy": [],
       "prices": [],
-      "harvested": 116,
+      "harvested": 134,
       "zones": [
         "Scarwood"
       ]
@@ -2683,7 +2683,7 @@
       "name": "Limestone",
       "droppedBy": [],
       "prices": [],
-      "harvested": 69,
+      "harvested": 76,
       "zones": [
         "Scarwood"
       ]
@@ -2760,9 +2760,10 @@
       "name": "Magic Frond",
       "droppedBy": [],
       "prices": [],
-      "harvested": 4,
+      "harvested": 5,
       "zones": [
-        "Evershade Weald"
+        "Evershade Weald",
+        "Scarwood"
       ]
     },
     {
@@ -2901,7 +2902,7 @@
       "name": "Moonveil",
       "droppedBy": [],
       "prices": [],
-      "harvested": 19,
+      "harvested": 21,
       "zones": [
         "Scarwood"
       ]
@@ -2926,7 +2927,7 @@
       "name": "Nomad's Grace",
       "droppedBy": [],
       "prices": [],
-      "harvested": 15,
+      "harvested": 16,
       "zones": [
         "Evershade Weald",
         "Scarwood"
@@ -4304,7 +4305,7 @@
       "name": "Silver Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 49,
+      "harvested": 73,
       "zones": [
         "Scarwood"
       ]
@@ -4482,7 +4483,7 @@
       "name": "Sylvine",
       "droppedBy": [],
       "prices": [],
-      "harvested": 38,
+      "harvested": 43,
       "zones": [
         "Evershade Weald",
         "Scarwood"
@@ -5767,7 +5768,7 @@
       "name": "Tin Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 507,
+      "harvested": 586,
       "zones": [
         "Scarwood"
       ]
@@ -5979,7 +5980,7 @@
       "name": "Whispering Sage",
       "droppedBy": [],
       "prices": [],
-      "harvested": 31,
+      "harvested": 33,
       "zones": [
         "Evershade Weald",
         "Keepersbight"
@@ -6221,30 +6222,30 @@
     "Resin": 278,
     "Lionleaf": 51,
     "Chipped Diamond": 9,
-    "Sylvine": 38,
+    "Sylvine": 43,
     "Chipped Sapphire": 9,
-    "Whispering Sage": 31,
-    "Magic Frond": 4,
-    "Nomad's Grace": 15,
+    "Whispering Sage": 33,
+    "Magic Frond": 5,
+    "Nomad's Grace": 16,
     "Chipped Peridot": 9,
     "Selstie Kelp": 2,
     "Alunite Ore": 8,
     "Chipped Emerald": 8,
     "Chipped Ruby": 8,
-    "Limestone": 69,
-    "Tin Ore": 507,
-    "Flawed Diamond": 3,
-    "Glinting Crystallized Magic": 6,
-    "Jagged Stone": 116,
-    "Silver Ore": 49,
+    "Limestone": 76,
+    "Tin Ore": 586,
+    "Flawed Diamond": 4,
+    "Glinting Crystallized Magic": 7,
+    "Jagged Stone": 134,
+    "Silver Ore": 73,
     "Flawed Sapphire": 4,
     "Flawed Ruby": 4,
     "Flawed Cat's Eye Agate": 7,
     "Chipped Jade": 5,
-    "Moonveil": 19,
+    "Moonveil": 21,
     "Flawed Emerald": 5,
-    "Flawed Peridot": 1,
-    "Flawed Jade": 1
+    "Flawed Peridot": 3,
+    "Flawed Jade": 2
   },
   "harvestNodes": [
     {
@@ -6313,67 +6314,67 @@
     },
     {
       "name": "Tin Ore",
-      "pulls": 514,
+      "pulls": 597,
       "yields": [
         {
           "res": "Tin Ore",
-          "count": 507,
-          "rate": 0.9863813229571985
+          "count": 586,
+          "rate": 0.981574539363484
         },
         {
           "res": "Jagged Stone",
-          "count": 116,
-          "rate": 0.22568093385214008
+          "count": 134,
+          "rate": 0.22445561139028475
         },
         {
           "res": "Limestone",
-          "count": 27,
-          "rate": 0.05252918287937743
+          "count": 34,
+          "rate": 0.05695142378559464
         },
         {
           "res": "Silver Ore",
-          "count": 7,
-          "rate": 0.013618677042801557
+          "count": 11,
+          "rate": 0.018425460636515914
+        },
+        {
+          "res": "Glinting Crystallized Magic",
+          "count": 6,
+          "rate": 0.010050251256281407
         },
         {
           "res": "Flawed Cat's Eye Agate",
           "count": 6,
-          "rate": 0.011673151750972763
-        },
-        {
-          "res": "Glinting Crystallized Magic",
-          "count": 5,
-          "rate": 0.009727626459143969
+          "rate": 0.010050251256281407
         },
         {
           "res": "Flawed Emerald",
           "count": 5,
-          "rate": 0.009727626459143969
+          "rate": 0.008375209380234505
+        },
+        {
+          "res": "Flawed Diamond",
+          "count": 4,
+          "rate": 0.006700167504187605
         },
         {
           "res": "Flawed Ruby",
           "count": 4,
-          "rate": 0.007782101167315175
-        },
-        {
-          "res": "Flawed Diamond",
-          "count": 3,
-          "rate": 0.005836575875486381
+          "rate": 0.006700167504187605
         },
         {
           "res": "Flawed Sapphire",
           "count": 3,
-          "rate": 0.005836575875486381
+          "rate": 0.005025125628140704
         },
         {
           "res": "Flawed Peridot",
-          "count": 1,
-          "rate": 0.0019455252918287938
+          "count": 3,
+          "rate": 0.005025125628140704
         },
         {
           "res": "Flawed Jade",
-          "count": 1,
-          "rate": 0.0019455252918287938
+          "count": 2,
+          "rate": 0.0033500837520938024
         }
       ],
       "zones": [
@@ -6402,32 +6403,32 @@
     },
     {
       "name": "Silver Ore",
-      "pulls": 42,
+      "pulls": 62,
       "yields": [
         {
           "res": "Silver Ore",
-          "count": 42,
+          "count": 62,
           "rate": 1
         },
         {
           "res": "Glinting Crystallized Magic",
           "count": 1,
-          "rate": 0.023809523809523808
+          "rate": 0.016129032258064516
         },
         {
           "res": "Flawed Cat's Eye Agate",
           "count": 1,
-          "rate": 0.023809523809523808
+          "rate": 0.016129032258064516
         },
         {
           "res": "Flawed Sapphire",
           "count": 1,
-          "rate": 0.023809523809523808
+          "rate": 0.016129032258064516
         },
         {
           "res": "Limestone",
           "count": 1,
-          "rate": 0.023809523809523808
+          "rate": 0.016129032258064516
         }
       ],
       "zones": [
@@ -6450,17 +6451,17 @@
     },
     {
       "name": "Sylvine",
-      "pulls": 22,
+      "pulls": 25,
       "yields": [
         {
           "res": "Sylvine",
-          "count": 22,
+          "count": 25,
           "rate": 1
         },
         {
           "res": "Magic Frond",
-          "count": 2,
-          "rate": 0.09090909090909091
+          "count": 3,
+          "rate": 0.12
         }
       ],
       "zones": [
@@ -6470,17 +6471,17 @@
     },
     {
       "name": "Whispering Sage",
-      "pulls": 21,
+      "pulls": 22,
       "yields": [
         {
           "res": "Whispering Sage",
-          "count": 21,
+          "count": 22,
           "rate": 1
         },
         {
           "res": "Magic Frond",
           "count": 2,
-          "rate": 0.09523809523809523
+          "rate": 0.09090909090909091
         }
       ],
       "zones": [
@@ -6518,11 +6519,11 @@
     },
     {
       "name": "Herbs - Scarwood",
-      "pulls": 11,
+      "pulls": 13,
       "yields": [
         {
           "res": "Moonveil",
-          "count": 11,
+          "count": 13,
           "rate": 1
         }
       ],
@@ -6532,11 +6533,11 @@
     },
     {
       "name": "Nomad's Grace",
-      "pulls": 9,
+      "pulls": 10,
       "yields": [
         {
           "res": "Nomad's Grace",
-          "count": 9,
+          "count": 10,
           "rate": 1
         }
       ],
