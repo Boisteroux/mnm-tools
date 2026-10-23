@@ -57,10 +57,10 @@ function trimOutliers(prices) {
 const { bulkMaterials } = require('./stacks.js');
 let BULK = new Map();
 try {
-  const wikiItems = JSON.parse(fs.readFileSync(path.join(ROOT, 'mnmdb', 'wiki.json'), 'utf8')).items || {};
+  const wiki = JSON.parse(fs.readFileSync(path.join(ROOT, 'mnmdb', 'wiki.json'), 'utf8'));
   const nodes = [];
   for (const f of ['data.json', 'data-ea.json']) { try { nodes.push(...(JSON.parse(fs.readFileSync(path.join(ROOT, 'mnmdb', f), 'utf8')).harvestNodes || [])); } catch {} }
-  BULK = bulkMaterials({ wikiItems, harvestNodes: nodes });
+  BULK = bulkMaterials({ wikiItems: wiki.items || {}, harvestNodes: nodes, recipes: wiki.recipes || [] });
 } catch {}
 const bulkUnit = (l, stack) => {
   const stackPrice = l.perStack ? l.price : (l.qty >= 10 ? l.price * stack / l.qty : l.price);

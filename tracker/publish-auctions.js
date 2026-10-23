@@ -27,10 +27,10 @@ try {
 const { bulkMaterials, normalizeBulk } = require('./stacks.js');
 let BULK = new Map();
 try {
-  const wikiItems = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'mnmdb', 'wiki.json'), 'utf8')).items || {};
+  const wiki = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'mnmdb', 'wiki.json'), 'utf8'));
   const nodes = [];
   for (const f of ['data.json', 'data-ea.json']) { try { nodes.push(...(JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'mnmdb', f), 'utf8')).harvestNodes || [])); } catch {} }
-  BULK = bulkMaterials({ wikiItems, harvestNodes: nodes });
+  BULK = bulkMaterials({ wikiItems: wiki.items || {}, harvestNodes: nodes, recipes: wiki.recipes || [] });
 } catch {}
 
 const L = read('listings.json', []);

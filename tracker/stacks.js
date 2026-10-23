@@ -1,5 +1,7 @@
 // Bulk tradeskill materials — gathered ore, stone, wood, resin, herbs, fish, foraged
-// goods, plus looted scraps, bone chips and spider silk — trade by the STACK. Players post "WTS Copper Ore 2s" meaning 2s for a stack, so for these
+// goods, looted scraps, bone chips and spider silk, and crafting materials (bars,
+// boards, thread, powders…) — trade by the STACK. Players post "WTS Copper Ore 2s"
+// meaning 2s for a stack, so for these
 // items a price is normalized to a per-stack price (and a per-unit price = stack / size)
 // and the site shows both. Rare node drops (gems, Crystallized Magic, Alunite) still
 // trade per piece and keep the usual per-unit rules in publish-auctions.js.
@@ -23,7 +25,30 @@ const TRADESKILL_STACK = /\b(?:scraps|chips)$|\bspider silk$/i;
 //  - wiki items gathered from a vein / wood pile / deposit, or tagged Herb / Fish /
 //    Foraged — minus gems (any name that also exists as a Chipped/Flawed/Imperfect
 //    variant, e.g. Ruby) and other rare drops.
-function bulkMaterials({ wikiItems = {}, harvestNodes = [] } = {}) {
+// Crafting materials stack too (bars, plates, links, boards, thread, padding, canvas,
+// straps, powders, bolts, molds, vials, spices — "Bronze Bar 8s/stack", "Enchanted
+// Powder 12s per stack"): every recipe ingredient except gear, gems/rare drops, pelts,
+// and mob drops that nobody makes or sells (Wolf Heart, raw meats, Fire Beetle Gland),
+// which players still price per piece.
+function craftingMaterials(wikiItems, recipes, gems) {
+  const results = new Set(recipes.map((r) => String(r.result.item).toLowerCase()));
+  const byLc = {};
+  for (const [name, w] of Object.entries(wikiItems)) byLc[name.toLowerCase()] = [name, w];
+  const out = [];
+  for (const r of recipes) for (const c of r.components || []) {
+    const lc = String(c.item).toLowerCase(), hit = byLc[lc];
+    if (!hit) continue;
+    const [name, w] = hit;
+    if (w.slot || RARE_NAME.test(name) || /\bpelt$/i.test(name) || gems.has(lc)) continue;
+    const made = results.has(lc), vendor = !!(w.soldBy && w.soldBy.base != null);
+    const mobDrop = (w.from || []).some((f) => !RESOURCE_NODE.test(f));
+    if (mobDrop && !made && !vendor) continue;
+    out.push(name);
+  }
+  return out;
+}
+
+function bulkMaterials({ wikiItems = {}, harvestNodes = [], recipes = [] } = {}) {
   const gems = new Set();
   for (const n of Object.keys(wikiItems)) { const m = n.match(/^(?:chipped|flawed|imperfect)\s+(.+)$/i); if (m) gems.add(m[1].toLowerCase()); }
   for (const node of harvestNodes) for (const y of node.yields || []) { const m = y.res.match(/^(?:chipped|flawed|imperfect)\s+(.+)$/i); if (m) gems.add(m[1].toLowerCase()); }
@@ -38,6 +63,7 @@ function bulkMaterials({ wikiItems = {}, harvestNodes = [] } = {}) {
   for (const [name, w] of Object.entries(wikiItems)) {
     if ((w.from || []).some((f) => RESOURCE_NODE.test(f)) || (w.categories || []).some((c) => GATHER_CATS.test(c)) || w.harvestedBy || TRADESKILL_STACK.test(name)) add(name);
   }
+  for (const name of craftingMaterials(wikiItems, recipes, gems)) add(name);
   return out;
 }
 

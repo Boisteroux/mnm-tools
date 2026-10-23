@@ -419,6 +419,10 @@ tr.rowlink { cursor: pointer; }
   min-width: 130px;
 }
 .vbox.warnbox { border-left-color: var(--warn); }
+/* The lead number on an item's trade value (10-day average): bold accent so it's seen first */
+.vbox.vbox-hero { border-left-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, var(--panel)); }
+.vbox.vbox-hero .vlbl { color: var(--accent); font-weight: 600; }
+.vbox.vbox-hero .vval { color: var(--accent); font-size: 24px; font-weight: 700; }
 .vbox .vlbl { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
 .vbox .vval { font-size: 20px; font-weight: 600; color: var(--text); font-variant-numeric: tabular-nums; }
 /* Buyer's vs seller's market read: oversupply (buyer's) is a caution the listed price
