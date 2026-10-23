@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-22T22:58:29.699Z",
+  "generatedAt": "2026-10-23T07:00:15.199Z",
   "source": "mnm-tools",
   "ledgerFiles": 20,
-  "events": 6937,
+  "events": 7160,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 6937
+      "events": 7160
     }
   ],
   "contributorCount": 1,
@@ -809,6 +809,17 @@
       },
       "zones": {
         "Keepersbight": 1
+      },
+      "coin": 0,
+      "corpses": 1
+    },
+    "an emerald grass viper": {
+      "kills": 0,
+      "drops": {
+        "Fractured Snake Vertebra": 1
+      },
+      "zones": {
+        "Scarwood": 1
       },
       "coin": 0,
       "corpses": 1
@@ -2188,10 +2199,10 @@
         },
         {
           "copper": 54,
-          "count": 1
+          "count": 2
         }
       ],
-      "harvested": 6,
+      "harvested": 7,
       "zones": [
         "Scarwood"
       ]
@@ -2204,6 +2215,10 @@
       "prices": [
         {
           "copper": 52,
+          "count": 1
+        },
+        {
+          "copper": 54,
           "count": 1
         }
       ],
@@ -2220,10 +2235,10 @@
       "prices": [
         {
           "copper": 54,
-          "count": 1
+          "count": 2
         }
       ],
-      "harvested": 4,
+      "harvested": 5,
       "zones": [
         "Scarwood"
       ]
@@ -2233,7 +2248,12 @@
       "gameId": null,
       "name": "Flawed Jade",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 54,
+          "count": 1
+        }
+      ],
       "harvested": 1,
       "zones": [
         "Scarwood"
@@ -2244,7 +2264,12 @@
       "gameId": null,
       "name": "Flawed Peridot",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 54,
+          "count": 1
+        }
+      ],
       "harvested": 1,
       "zones": [
         "Scarwood"
@@ -2262,7 +2287,7 @@
         },
         {
           "copper": 54,
-          "count": 1
+          "count": 2
         }
       ],
       "harvested": 4,
@@ -2282,8 +2307,13 @@
           "rate": 0.5
         }
       ],
-      "prices": [],
-      "harvested": 3,
+      "prices": [
+        {
+          "copper": 54,
+          "count": 1
+        }
+      ],
+      "harvested": 4,
       "zones": [
         "Scarwood",
         "Keepersbight"
@@ -2308,6 +2338,29 @@
       ]
     },
     {
+      "id": "fractured_snake_vertebra",
+      "gameId": "dc58dd820040273a0e7c0d97",
+      "name": "Fractured Snake Vertebra",
+      "droppedBy": [
+        {
+          "mob": "an emerald grass viper",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        }
+      ],
+      "prices": [
+        {
+          "copper": 100,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": [
+        "Scarwood"
+      ]
+    },
+    {
       "id": "ghost_poppy",
       "gameId": null,
       "name": "Ghost Poppy",
@@ -2324,7 +2377,7 @@
       "name": "Glinting Crystallized Magic",
       "droppedBy": [],
       "prices": [],
-      "harvested": 5,
+      "harvested": 6,
       "zones": [
         "Scarwood"
       ]
@@ -2465,7 +2518,7 @@
       "name": "Jagged Stone",
       "droppedBy": [],
       "prices": [],
-      "harvested": 93,
+      "harvested": 116,
       "zones": [
         "Scarwood"
       ]
@@ -2630,7 +2683,7 @@
       "name": "Limestone",
       "droppedBy": [],
       "prices": [],
-      "harvested": 62,
+      "harvested": 69,
       "zones": [
         "Scarwood"
       ]
@@ -2848,7 +2901,7 @@
       "name": "Moonveil",
       "droppedBy": [],
       "prices": [],
-      "harvested": 9,
+      "harvested": 19,
       "zones": [
         "Scarwood"
       ]
@@ -2873,9 +2926,10 @@
       "name": "Nomad's Grace",
       "droppedBy": [],
       "prices": [],
-      "harvested": 13,
+      "harvested": 15,
       "zones": [
-        "Evershade Weald"
+        "Evershade Weald",
+        "Scarwood"
       ]
     },
     {
@@ -3286,7 +3340,7 @@
           "count": 8
         }
       ],
-      "harvested": 272,
+      "harvested": 278,
       "zones": [
         "Evershade Weald",
         "Keepersbight"
@@ -3340,7 +3394,12 @@
           "rate": 1
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 47,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Keepersbight"
@@ -4245,7 +4304,7 @@
       "name": "Silver Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 34,
+      "harvested": 49,
       "zones": [
         "Scarwood"
       ]
@@ -4423,7 +4482,7 @@
       "name": "Sylvine",
       "droppedBy": [],
       "prices": [],
-      "harvested": 36,
+      "harvested": 38,
       "zones": [
         "Evershade Weald",
         "Scarwood"
@@ -5708,7 +5767,7 @@
       "name": "Tin Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 403,
+      "harvested": 507,
       "zones": [
         "Scarwood"
       ]
@@ -5993,7 +6052,7 @@
       "name": "Wood",
       "droppedBy": [],
       "prices": [],
-      "harvested": 221,
+      "harvested": 228,
       "zones": [
         "Evershade Weald",
         "Keepersbight"
@@ -6158,32 +6217,32 @@
     "Clouded Crystallized Magic": 17,
     "Chipped Cat's Eye Agate": 8,
     "Ghost Poppy": 23,
-    "Wood": 221,
-    "Resin": 272,
+    "Wood": 228,
+    "Resin": 278,
     "Lionleaf": 51,
     "Chipped Diamond": 9,
-    "Sylvine": 36,
+    "Sylvine": 38,
     "Chipped Sapphire": 9,
     "Whispering Sage": 31,
     "Magic Frond": 4,
-    "Nomad's Grace": 13,
+    "Nomad's Grace": 15,
     "Chipped Peridot": 9,
     "Selstie Kelp": 2,
     "Alunite Ore": 8,
     "Chipped Emerald": 8,
     "Chipped Ruby": 8,
-    "Limestone": 62,
-    "Tin Ore": 403,
+    "Limestone": 69,
+    "Tin Ore": 507,
     "Flawed Diamond": 3,
-    "Glinting Crystallized Magic": 5,
-    "Jagged Stone": 93,
-    "Silver Ore": 34,
-    "Flawed Sapphire": 3,
+    "Glinting Crystallized Magic": 6,
+    "Jagged Stone": 116,
+    "Silver Ore": 49,
+    "Flawed Sapphire": 4,
     "Flawed Ruby": 4,
-    "Flawed Cat's Eye Agate": 6,
+    "Flawed Cat's Eye Agate": 7,
     "Chipped Jade": 5,
-    "Moonveil": 9,
-    "Flawed Emerald": 4,
+    "Moonveil": 19,
+    "Flawed Emerald": 5,
     "Flawed Peridot": 1,
     "Flawed Jade": 1
   },
@@ -6254,67 +6313,67 @@
     },
     {
       "name": "Tin Ore",
-      "pulls": 407,
+      "pulls": 514,
       "yields": [
         {
           "res": "Tin Ore",
-          "count": 403,
-          "rate": 0.9901719901719902
+          "count": 507,
+          "rate": 0.9863813229571985
         },
         {
           "res": "Jagged Stone",
-          "count": 93,
-          "rate": 0.2285012285012285
+          "count": 116,
+          "rate": 0.22568093385214008
         },
         {
           "res": "Limestone",
-          "count": 21,
-          "rate": 0.051597051597051594
-        },
-        {
-          "res": "Flawed Cat's Eye Agate",
-          "count": 5,
-          "rate": 0.012285012285012284
-        },
-        {
-          "res": "Glinting Crystallized Magic",
-          "count": 4,
-          "rate": 0.009828009828009828
+          "count": 27,
+          "rate": 0.05252918287937743
         },
         {
           "res": "Silver Ore",
-          "count": 4,
-          "rate": 0.009828009828009828
+          "count": 7,
+          "rate": 0.013618677042801557
+        },
+        {
+          "res": "Flawed Cat's Eye Agate",
+          "count": 6,
+          "rate": 0.011673151750972763
+        },
+        {
+          "res": "Glinting Crystallized Magic",
+          "count": 5,
+          "rate": 0.009727626459143969
+        },
+        {
+          "res": "Flawed Emerald",
+          "count": 5,
+          "rate": 0.009727626459143969
         },
         {
           "res": "Flawed Ruby",
           "count": 4,
-          "rate": 0.009828009828009828
-        },
-        {
-          "res": "Flawed Emerald",
-          "count": 4,
-          "rate": 0.009828009828009828
+          "rate": 0.007782101167315175
         },
         {
           "res": "Flawed Diamond",
           "count": 3,
-          "rate": 0.007371007371007371
+          "rate": 0.005836575875486381
         },
         {
           "res": "Flawed Sapphire",
           "count": 3,
-          "rate": 0.007371007371007371
+          "rate": 0.005836575875486381
         },
         {
           "res": "Flawed Peridot",
           "count": 1,
-          "rate": 0.002457002457002457
+          "rate": 0.0019455252918287938
         },
         {
           "res": "Flawed Jade",
           "count": 1,
-          "rate": 0.002457002457002457
+          "rate": 0.0019455252918287938
         }
       ],
       "zones": [
@@ -6323,22 +6382,56 @@
     },
     {
       "name": "Wood & Resin",
-      "pulls": 221,
+      "pulls": 228,
       "yields": [
         {
           "res": "Wood",
-          "count": 221,
+          "count": 228,
           "rate": 1
         },
         {
           "res": "Resin",
-          "count": 190,
-          "rate": 0.8597285067873304
+          "count": 194,
+          "rate": 0.8508771929824561
         }
       ],
       "zones": [
         "Evershade Weald",
         "Keepersbight"
+      ]
+    },
+    {
+      "name": "Silver Ore",
+      "pulls": 42,
+      "yields": [
+        {
+          "res": "Silver Ore",
+          "count": 42,
+          "rate": 1
+        },
+        {
+          "res": "Glinting Crystallized Magic",
+          "count": 1,
+          "rate": 0.023809523809523808
+        },
+        {
+          "res": "Flawed Cat's Eye Agate",
+          "count": 1,
+          "rate": 0.023809523809523808
+        },
+        {
+          "res": "Flawed Sapphire",
+          "count": 1,
+          "rate": 0.023809523809523808
+        },
+        {
+          "res": "Limestone",
+          "count": 1,
+          "rate": 0.023809523809523808
+        }
+      ],
+      "zones": [
+        "Scarwood"
       ]
     },
     {
@@ -6356,42 +6449,18 @@
       ]
     },
     {
-      "name": "Silver Ore",
-      "pulls": 30,
-      "yields": [
-        {
-          "res": "Silver Ore",
-          "count": 30,
-          "rate": 1
-        },
-        {
-          "res": "Glinting Crystallized Magic",
-          "count": 1,
-          "rate": 0.03333333333333333
-        },
-        {
-          "res": "Flawed Cat's Eye Agate",
-          "count": 1,
-          "rate": 0.03333333333333333
-        }
-      ],
-      "zones": [
-        "Scarwood"
-      ]
-    },
-    {
       "name": "Sylvine",
-      "pulls": 21,
+      "pulls": 22,
       "yields": [
         {
           "res": "Sylvine",
-          "count": 21,
+          "count": 22,
           "rate": 1
         },
         {
           "res": "Magic Frond",
           "count": 2,
-          "rate": 0.09523809523809523
+          "rate": 0.09090909090909091
         }
       ],
       "zones": [
@@ -6448,30 +6517,31 @@
       ]
     },
     {
-      "name": "Nomad's Grace",
-      "pulls": 8,
-      "yields": [
-        {
-          "res": "Nomad's Grace",
-          "count": 8,
-          "rate": 1
-        }
-      ],
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
       "name": "Herbs - Scarwood",
-      "pulls": 6,
+      "pulls": 11,
       "yields": [
         {
           "res": "Moonveil",
-          "count": 6,
+          "count": 11,
           "rate": 1
         }
       ],
       "zones": [
+        "Scarwood"
+      ]
+    },
+    {
+      "name": "Nomad's Grace",
+      "pulls": 9,
+      "yields": [
+        {
+          "res": "Nomad's Grace",
+          "count": 9,
+          "rate": 1
+        }
+      ],
+      "zones": [
+        "Evershade Weald",
         "Scarwood"
       ]
     }
