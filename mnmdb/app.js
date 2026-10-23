@@ -1254,12 +1254,16 @@ function trivialCell(r) {
   return '<span class="est" title="Estimated from in-game crafting difficulty colours — the wiki has no trivial for this recipe">~' + r.trivial + (r.trivialMin ? '+' : '') + '</span>';
 }
 
-// A value per item, plus a per-stack line for things that trade by the stack.
-const eachAndStack = (v, stack) => coin(v) + (stack ? '<div class="per">' + coin(v * stack) + '/stack</div>' : '');
+// Things that trade by the stack lead with the stack price (how they're bought and
+// sold), with one item under it; everything else is just per item.
+const eachAndStack = (v, stack, sign) => {
+  const p = (x) => (sign && x >= 0 ? '+' : '') + coin(x);
+  return stack ? p(v * stack) + '<span class="per">/stack</span><div class="per">' + p(v) + ' ea</div>' : p(v);
+};
 
 // One combined recipe table: raw materials (per craft), trivial, then raw cost, sell
-// value and margin per ITEM made — with a per-stack line for stackable results — so a
-// recipe that makes 2 Bronze Bars compares with how bars actually sell (each / stack).
+// value and margin — per stack for stackable results (with one item under it), per
+// item otherwise — so a recipe that makes 2 Bronze Bars compares with how bars sell.
 function recipeTable(recs, showSkill) {
   const rows = recs.map((r) => {
     const rc = recipeRawCost(r);
@@ -1270,18 +1274,17 @@ function recipeTable(recs, showSkill) {
     return { r, rc, qty, costEach, sellEach, margin, stack: stackSize(r.result.item) };
   }).sort((a, b) => (a.r.trivial || 1e9) - (b.r.trivial || 1e9) || a.rc.cost - b.rc.cost);
   const head = '<th>Make</th><th>Raw materials <span class="per">per craft</span></th>' + (showSkill ? '<th>Skill</th>' : '') +
-    '<th class="num">Trivial</th><th class="num">Raw cost <span class="per">each</span></th><th class="num">Sell value <span class="per">each</span></th><th class="num">Margin <span class="per">each</span></th>';
+    '<th class="num">Trivial</th><th class="num">Raw cost</th><th class="num">Sell value</th><th class="num">Margin</th>';
   return '<div class="card"><table><thead><tr>' + head + '</tr></thead><tbody>' +
     rows.map(({ r, rc, qty, costEach, sellEach, margin, stack }) => {
       const rid = nameToId[r.result.item] || r.result.item;
       // "?" only when a cost is genuinely unknown (an unresolved intermediate like an
       // enchanted bar). All-gathered recipes cost nothing to buy → "free", not "?".
       const cost = rc.unresolved
-        ? (rc.cost > 0 ? coin(costEach) + ' <span class="sample">+?</span>' : '<span class="sample">?</span>')
+        ? (rc.cost > 0 ? eachAndStack(costEach, stack) + '<span class="sample">+?</span>' : '<span class="sample">?</span>')
         : (rc.cost > 0 ? eachAndStack(costEach, stack) : '<span class="sample">free</span>');
       const mg = margin == null ? '<span class="sample">—</span>'
-        : '<span class="' + (margin >= 0 ? 'pos' : 'neg') + '">' + (margin >= 0 ? '+' : '') + coin(margin) + '</span>' +
-          (stack ? '<div class="per">' + (margin >= 0 ? '+' : '') + coin(margin * stack) + '/stack</div>' : '');
+        : '<span class="' + (margin >= 0 ? 'pos' : 'neg') + '">' + eachAndStack(margin, stack, true) + '</span>';
       return '<tr><td>' + itemLink(rid, r.result.item) + (qty > 1 ? '<div class="per">' + qty + ' per craft</div>' : '') + '</td>' +
         '<td class="sample">' + rawMatsHtml(rc) + '</td>' + (showSkill ? '<td>' + tradeskillLink(r.tradeskill) + '</td>' : '') +
         '<td class="num sample">' + trivialCell(r) + '</td>' +
@@ -1292,7 +1295,7 @@ function recipeTable(recs, showSkill) {
 }
 
 const marginNote = '<div class="note">Sorted by trivial. <b>Raw materials</b> = everything broken down to gathered/base mats (reusable tools like hammers &amp; pliers excluded; molds and other consumables counted). ' +
-  '<b>Raw cost</b> values those at the best known price (gathered mats are free) and is split <b>per item made</b> — a craft that makes 2 bars shows the cost of one bar. <b>Sell value</b> = one item’s best player-trade/vendor price. <b>Margin</b> = sell − raw cost, per item. Things that trade by the stack (bars, boards, thread…) also show a per-stack (20) line. <b>free</b> = made entirely from gathered mats (nothing to buy); <b>?</b> = a cost is genuinely unknown — an unresolved crafted intermediate (e.g. an enchanted bar whose enchanting cost we can’t see). ' +
+  '<b>Raw cost</b> values those at the best known price (gathered mats are free) and is split across what the craft makes — a craft that makes 2 bars costs half per bar. Things players trade by the stack (bars, ore, herbs, fish, boards, thread…) show <b>per stack of 20</b> with one item under it; everything else is per item. <b>Sell value</b> = the best player-trade/vendor price. <b>Margin</b> = sell − raw cost. <b>free</b> = made entirely from gathered mats (nothing to buy); <b>?</b> = a cost is genuinely unknown — an unresolved crafted intermediate (e.g. an enchanted bar whose enchanting cost we can’t see). ' +
   'A <b class="est">~</b> trivial (e.g. <span class="est">~55</span>) is our own estimate from in-game crafting colours where the wiki has none — “+” means a lower bound until more data lands.</div>';
 
 // Reusable, one-time crafting tools (a hammer/pliers lasts many crafts), so they
@@ -3035,7 +3038,7 @@ const aucTag = (i) => i === 'sell' ? '<span class="atag sell">WTS</span>' : i ==
 // the full feed lives at #/auctions/all. Numbers show how many posts back them.
 const TM_TABS = ['new', 'crafter', 'adventurer'];
 const tmMedian = (p) => { const s = p.slice().sort((a, b) => a - b); return s.length ? (s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2) : null; };
-const tmThin = (n) => (n < 5 ? '<span class="tm-thin" title="Fewer than 5 priced posts">thin</span>' : '');
+const tmThin = (n) => (n < 5 ? '<span class="tm-thin" title="Fewer than 5 priced posts">thin data</span>' : '');
 const tmPrice = (unit, stack, each) => (stack ? coin(unit * stack) + '<span class="per">/stack</span>' + (each ? ' <span class="per">· ' + coin(unit) + ' ea</span>' : '') : coin(unit));
 const tmArrow = (m) => (m === 'buyers' ? '<span class="arrow-b" title="More sellers than buyers: price may be soft">↓ buyer’s</span>'
   : m === 'sellers' ? '<span class="arrow-s" title="More buyers than sellers: price is firm">↑ seller’s</span>' : '<span class="muted">→ balanced</span>');
@@ -3170,10 +3173,11 @@ async function renderTremMarket() {
   const sovRows = (rows) => rows.map((e) => '<tr><td>' + il(e.name) + tmThin(e.n) + '</td><td class="num coin">' + coin(e.typical) + '</td><td class="num coin muted">' + coin(e.vendorPays) +
     '</td><td class="num"><span class="tm-up">' + (e.ratio >= 100 ? '100×+' : Math.round(e.ratio) + '×') + '</span></td></tr>').join('');
   const sovHead = '<th>Item</th><th class="num">Players pay</th><th class="num">Vendor pays</th><th></th>';
-  // Typical price as two columns: per item, and per stack (— for things that don't stack).
+  // Typical price as two columns: per stack first (how bulk goods trade; — for things
+  // that don't stack), then per item.
   const dash = '<span class="muted">—</span>';
-  const eachCols = (e) => '<td class="num coin">' + (e.n ? coin(e.typical) : dash) + '</td><td class="num coin">' + (e.n && e.stack ? coin(e.typical * e.stack) : dash) + '</td>';
-  const eachHead = '<th class="num">Each</th><th class="num">Per stack</th>';
+  const eachCols = (e) => '<td class="num coin">' + (e.n && e.stack ? coin(e.typical * e.stack) : dash) + '</td><td class="num coin">' + (e.n ? coin(e.typical) : dash) + '</td>';
+  const eachHead = '<th class="num">Per stack</th><th class="num">Each</th>';
   const hotRows = M.hot.map((e) => '<tr><td>' + il(e.name) + '</td><td class="num tm-up">' + e.buyers.size + '</td><td class="num">' + e.sellers.size + '</td>' + eachCols(e) + '</tr>').join('');
   const hotHead = '<th>Item</th><th class="num">Buying</th><th class="num">Selling</th>' + eachHead;
   const C = M.coverage;
@@ -3216,19 +3220,22 @@ async function renderTremMarket() {
       '</div>' +
 
       '<div role="tabpanel" id="tm-p-crafter" aria-labelledby="tm-t-crafter" class="tm-grid" hidden>' +
-        '<div class="tm-card tm-wide"><h2>Profitable crafts</h2><p class="tm-why">Per item made, and per stack of 20 for things that trade by the stack: what one sells for minus buying its share of the materials at today’s prices (the vendor’s price where players don’t trade it). A recipe that makes 2 bars splits the cost across both. <span class="tm-thin">thin</span> = the result or a material price comes from fewer than 5 posts. Gathering your own mats makes the margin bigger.</p>' +
+        '<div class="tm-card tm-wide"><h2>Profitable crafts</h2><p class="tm-why">Per stack of 20 for things players trade by the stack (bars, ore, herbs, fish…), with one item under it; per item for everything else. Each figure is what it sells for minus buying its share of the materials at today’s prices (the vendor’s price where players don’t trade it). A recipe that makes 2 bars splits the cost across both. <span class="tm-thin">thin data</span> = the result or a material price comes from fewer than 5 posts. Gathering your own mats makes the margin bigger.</p>' +
           (M.profitable.length ? table('<th>Make</th><th>Skill</th><th class="num">Trivial</th><th class="num">Sells for</th><th class="num">Mats cost</th><th class="num">Margin</th>',
             M.profitable.map((c) => {
-              // Each value per item, with the per-stack figure under it for stackable results.
-              const two = (v, cls, sign) => '<span class="' + cls + '">' + (sign ? '+' : '') + coin(v) + '</span><span class="per"> ea</span>' +
-                (c.stack ? '<div class="per">' + (sign ? '+' : '') + coin(v * c.stack) + '/stack</div>' : '');
+              // Things that trade by the stack (bars, ore, herbs, fish…) lead with the stack
+              // price — how they're actually bought and sold — with one item under it.
+              const p = (x, sign) => (sign && x >= 0 ? '+' : '') + coin(x);
+              const two = (v, cls, sign) => c.stack
+                ? '<span class="' + cls + '">' + p(v * c.stack, sign) + '</span><span class="per">/stack</span><div class="per">' + p(v, sign) + ' ea</div>'
+                : '<span class="' + cls + '">' + p(v, sign) + '</span><span class="per"> ea</span>';
               return '<tr><td>' + il(c.name) + tmThin(Math.min(c.n, c.thinMats ? 0 : c.n)) +
                 '<div class="tm-mats">' + c.mats.map((m) => m.qty + '× ' + esc(m.item)).join(', ') + (c.qty > 1 ? ' → ' + c.qty + ' per craft' : '') + '</div></td>' +
                 '<td>' + esc(c.skill) + '</td><td class="num">' + (c.trivial != null ? c.trivial : '—') + '</td>' +
                 '<td class="num coin">' + two(c.saleEach, '', false) + '</td><td class="num coin">' + two(c.costEach, 'muted', false) + '</td>' +
                 '<td class="num coin">' + two(c.margin, 'tm-up', true) + '</td></tr>';
             }).join('')) : empty('Not enough priced recipes yet.')) + '</div>' +
-        '<div class="tm-card"><h2>Materials board</h2><p class="tm-why">Typical price each and per stack of 20. The arrow compares the last 10 days with the 30-day typical.</p>' +
+        '<div class="tm-card"><h2>Materials board</h2><p class="tm-why">Typical price per stack of 20 and each. The arrow compares the last 10 days with the 30-day typical.</p>' +
           table('<th>Material</th>' + eachHead + '<th class="num">10 days</th>', M.materials.map((e) => {
             const d = e.recent != null && e.typical ? (e.recent - e.typical) / e.typical : 0;
             const tr = Math.abs(d) < 0.08 ? '<span class="muted">→ steady</span>' : d > 0 ? '<span class="arrow-s">↑ ' + Math.round(d * 100) + '%</span>' : '<span class="arrow-b">↓ ' + Math.round(-d * 100) + '%</span>';
@@ -3260,7 +3267,7 @@ async function renderTremMarket() {
     '</section>' +
 
     '<footer class="tm-foot"><a class="tm-browse" href="#/auctions/all">Browse all listings →</a>' +
-      '<div>' + AUC_SERVER + ' only, the server the LiveMNM stream shows. Prices are typical asks after removing outliers; anything from fewer than 5 posts is tagged <span class="tm-thin">thin</span>. Ore, wood, herbs, fish, scraps and bone chips are priced per stack of 20, as players trade them.</div></footer>';
+      '<div>' + AUC_SERVER + ' only, the server the LiveMNM stream shows. Prices are typical asks after removing outliers; anything from fewer than 5 posts is tagged <span class="tm-thin">thin data</span>. Ore, wood, herbs, fish, scraps and bone chips are priced per stack of 20, as players trade them.</div></footer>';
 
   // Tabs (remembered per browser)
   const show = (t) => {
