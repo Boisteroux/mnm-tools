@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-23T19:00:15.214Z",
+  "generatedAt": "2026-10-24T07:00:15.177Z",
   "source": "mnm-tools",
-  "ledgerFiles": 21,
-  "events": 7319,
+  "ledgerFiles": 22,
+  "events": 7666,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 7319
+      "events": 7666
     }
   ],
   "contributorCount": 1,
@@ -670,17 +670,34 @@
       "corpses": 7
     },
     "a Sangrel striker": {
-      "kills": 3,
+      "kills": 33,
       "drops": {
         "Tattered Hide Cap": 1,
-        "Sangrel Rite I": 1,
-        "Sangrel Fist Wraps": 1
+        "Sangrel Rite I": 2,
+        "Sangrel Fist Wraps": 1,
+        "Bronze Scraps": 2,
+        "Wool Scraps": 7,
+        "Raw Human Meat": 6,
+        "Hide Scraps": 5,
+        "Corroded Bronze Shortsword": 1,
+        "Tattered Wool Robe": 1,
+        "Onion": 1,
+        "Corroded Bronze Spear": 1,
+        "Corroded Bronze Kite Shield": 1,
+        "Mushroom": 2,
+        "Potato": 1,
+        "Tattered Wool Belt": 1,
+        "Garlic": 2,
+        "Corroded Bronze Longsword": 1,
+        "Tomato": 1,
+        "Tattered Hide Boots": 1,
+        "Cheese": 1
       },
       "zones": {
-        "Keepersbight": 6
+        "Keepersbight": 73
       },
-      "coin": 60,
-      "corpses": 3
+      "coin": 574,
+      "corpses": 27
     },
     "Commander Rursk": {
       "kills": 1,
@@ -824,6 +841,43 @@
       "coin": 0,
       "corpses": 1
     },
+    "a Sangrel shadowblade": {
+      "kills": 15,
+      "drops": {
+        "Bronze Scraps": 4,
+        "Raw Human Meat": 4,
+        "Onion": 1,
+        "Wool Scraps": 1,
+        "Cheese": 1,
+        "Tattered Hide Gorget": 1,
+        "Corroded Bronze Chain Boots": 1,
+        "Corroded Bronze War Lance": 1
+      },
+      "zones": {
+        "Keepersbight": 33
+      },
+      "coin": 276,
+      "corpses": 10
+    },
+    "a Sangrel hunter": {
+      "kills": 11,
+      "drops": {
+        "Carrot": 1,
+        "Sangrel Rite I": 1,
+        "Wool Scraps": 4,
+        "Raw Human Meat": 2,
+        "Tattered Hide Belt": 1,
+        "Mushroom": 1,
+        "Bronze Scraps": 1,
+        "Bell Pepper": 1,
+        "Tomato": 1
+      },
+      "zones": {
+        "Keepersbight": 26
+      },
+      "coin": 399,
+      "corpses": 11
+    },
     "a gloom widow": {
       "kills": 0,
       "drops": {
@@ -923,6 +977,44 @@
       },
       "coin": 23,
       "corpses": 1
+    },
+    "a Sangrel entangler": {
+      "kills": 4,
+      "drops": {
+        "Hide Scraps": 2,
+        "Wool Scraps": 2
+      },
+      "zones": {
+        "Keepersbight": 8
+      },
+      "coin": 86,
+      "corpses": 4
+    },
+    "a Sangrel arcanist": {
+      "kills": 3,
+      "drops": {
+        "Wool Scraps": 1,
+        "Corroded Bronze War Lance": 1,
+        "Tattered Wool Cape": 1
+      },
+      "zones": {
+        "Keepersbight": 6
+      },
+      "coin": 136,
+      "corpses": 2
+    },
+    "a Sangrel grappler": {
+      "kills": 3,
+      "drops": {
+        "Sangrel Fist Wraps": 1,
+        "Wool Scraps": 1,
+        "Tomato": 1
+      },
+      "zones": {
+        "Keepersbight": 6
+      },
+      "coin": 71,
+      "corpses": 2
     }
   },
   "items": [
@@ -932,7 +1024,7 @@
       "name": "Alunite Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 8,
+      "harvested": 9,
       "zones": [
         "Evershade Weald"
       ]
@@ -1105,6 +1197,12 @@
           "drops": 2,
           "corpses": 18,
           "rate": 0.1111111111111111
+        },
+        {
+          "mob": "a Sangrel hunter",
+          "drops": 1,
+          "corpses": 11,
+          "rate": 0.09090909090909091
         }
       ],
       "prices": [
@@ -1115,7 +1213,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Evershade Weald"
+        "Evershade Weald",
+        "Keepersbight"
       ]
     },
     {
@@ -1181,10 +1280,10 @@
       "prices": [
         {
           "copper": 1,
-          "count": 12
+          "count": 14
         }
       ],
-      "harvested": 235,
+      "harvested": 256,
       "zones": [
         "Evershade Weald"
       ]
@@ -1205,6 +1304,36 @@
       "harvested": 0,
       "zones": [
         "Evershade Weald"
+      ]
+    },
+    {
+      "id": "bronze_scraps",
+      "gameId": "4bd63c9adfb5348a4e0832e7",
+      "name": "Bronze Scraps",
+      "droppedBy": [
+        {
+          "mob": "a Sangrel shadowblade",
+          "drops": 4,
+          "corpses": 10,
+          "rate": 0.4
+        },
+        {
+          "mob": "a Sangrel hunter",
+          "drops": 1,
+          "corpses": 11,
+          "rate": 0.09090909090909091
+        },
+        {
+          "mob": "a Sangrel striker",
+          "drops": 2,
+          "corpses": 27,
+          "rate": 0.07407407407407407
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
       ]
     },
     {
@@ -1277,6 +1406,12 @@
       "name": "Carrot",
       "droppedBy": [
         {
+          "mob": "a Sangrel hunter",
+          "drops": 1,
+          "corpses": 11,
+          "rate": 0.09090909090909091
+        },
+        {
           "mob": "a fossergrim watcher",
           "drops": 1,
           "corpses": 18,
@@ -1291,7 +1426,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Evershade Weald"
+        "Evershade Weald",
+        "Keepersbight"
       ]
     },
     {
@@ -1315,6 +1451,30 @@
       "harvested": 0,
       "zones": [
         "Evershade Weald"
+      ]
+    },
+    {
+      "id": "cheese",
+      "gameId": "2e56d4c09d5f796d029947ec",
+      "name": "Cheese",
+      "droppedBy": [
+        {
+          "mob": "a Sangrel shadowblade",
+          "drops": 1,
+          "corpses": 10,
+          "rate": 0.1
+        },
+        {
+          "mob": "a Sangrel striker",
+          "drops": 1,
+          "corpses": 27,
+          "rate": 0.037037037037037035
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
       ]
     },
     {
@@ -1399,10 +1559,10 @@
       "prices": [
         {
           "copper": 21,
-          "count": 4
+          "count": 5
         }
       ],
-      "harvested": 5,
+      "harvested": 6,
       "zones": [
         "Evershade Weald"
       ]
@@ -1446,10 +1606,10 @@
         },
         {
           "copper": 21,
-          "count": 4
+          "count": 5
         }
       ],
-      "harvested": 8,
+      "harvested": 10,
       "zones": [
         "Evershade Weald"
       ]
@@ -1466,10 +1626,10 @@
         },
         {
           "copper": 21,
-          "count": 2
+          "count": 3
         }
       ],
-      "harvested": 9,
+      "harvested": 10,
       "zones": [
         "Evershade Weald"
       ]
@@ -1664,7 +1824,7 @@
       "name": "Copper Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 889,
+      "harvested": 969,
       "zones": [
         "Evershade Weald"
       ]
@@ -1696,6 +1856,120 @@
       ],
       "harvested": 0,
       "zones": []
+    },
+    {
+      "id": "corroded_bronze_chain_boots",
+      "gameId": "c088982bfe6a4f309e35e4e6",
+      "name": "Corroded Bronze Chain Boots",
+      "droppedBy": [
+        {
+          "mob": "a Sangrel shadowblade",
+          "drops": 1,
+          "corpses": 10,
+          "rate": 0.1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
+      "id": "corroded_bronze_kite_shield",
+      "gameId": "0763d32616a25676bed32782",
+      "name": "Corroded Bronze Kite Shield",
+      "droppedBy": [
+        {
+          "mob": "a Sangrel striker",
+          "drops": 1,
+          "corpses": 27,
+          "rate": 0.037037037037037035
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
+      "id": "corroded_bronze_longsword",
+      "gameId": "766d1c24ab2c35bec955270d",
+      "name": "Corroded Bronze Longsword",
+      "droppedBy": [
+        {
+          "mob": "a Sangrel striker",
+          "drops": 1,
+          "corpses": 27,
+          "rate": 0.037037037037037035
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
+      "id": "corroded_bronze_shortsword",
+      "gameId": "16c39cb0f1ded858c2bcb95d",
+      "name": "Corroded Bronze Shortsword",
+      "droppedBy": [
+        {
+          "mob": "a Sangrel striker",
+          "drops": 1,
+          "corpses": 27,
+          "rate": 0.037037037037037035
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
+      "id": "corroded_bronze_spear",
+      "gameId": "ebf427192a41765c98516ba5",
+      "name": "Corroded Bronze Spear",
+      "droppedBy": [
+        {
+          "mob": "a Sangrel striker",
+          "drops": 1,
+          "corpses": 27,
+          "rate": 0.037037037037037035
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
+      "id": "corroded_bronze_war_lance",
+      "gameId": "7294dac569563d2c1f305899",
+      "name": "Corroded Bronze War Lance",
+      "droppedBy": [
+        {
+          "mob": "a Sangrel arcanist",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
+          "mob": "a Sangrel shadowblade",
+          "drops": 1,
+          "corpses": 10,
+          "rate": 0.1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
     },
     {
       "id": "cracked_staff",
@@ -2361,6 +2635,24 @@
       ]
     },
     {
+      "id": "garlic",
+      "gameId": "f008f734277f98228e6b5d62",
+      "name": "Garlic",
+      "droppedBy": [
+        {
+          "mob": "a Sangrel striker",
+          "drops": 2,
+          "corpses": 27,
+          "rate": 0.07407407407407407
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
       "id": "ghost_poppy",
       "gameId": null,
       "name": "Ghost Poppy",
@@ -2510,6 +2802,30 @@
       "harvested": 0,
       "zones": [
         "Evershade Weald"
+      ]
+    },
+    {
+      "id": "hide_scraps",
+      "gameId": "11af0fdfc6e868be0eec690f",
+      "name": "Hide Scraps",
+      "droppedBy": [
+        {
+          "mob": "a Sangrel entangler",
+          "drops": 2,
+          "corpses": 4,
+          "rate": 0.5
+        },
+        {
+          "mob": "a Sangrel striker",
+          "drops": 5,
+          "corpses": 27,
+          "rate": 0.18518518518518517
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
       ]
     },
     {
@@ -2922,6 +3238,30 @@
       "zones": []
     },
     {
+      "id": "mushroom",
+      "gameId": "a72960443f1011e142fc792c",
+      "name": "Mushroom",
+      "droppedBy": [
+        {
+          "mob": "a Sangrel hunter",
+          "drops": 1,
+          "corpses": 11,
+          "rate": 0.09090909090909091
+        },
+        {
+          "mob": "a Sangrel striker",
+          "drops": 2,
+          "corpses": 27,
+          "rate": 0.07407407407407407
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
       "id": "nomad_s_grace",
       "gameId": null,
       "name": "Nomad's Grace",
@@ -2935,9 +3275,22 @@
     },
     {
       "id": "onion",
-      "gameId": null,
+      "gameId": "93190eda5810e51decab6837",
       "name": "Onion",
-      "droppedBy": [],
+      "droppedBy": [
+        {
+          "mob": "a Sangrel shadowblade",
+          "drops": 1,
+          "corpses": 10,
+          "rate": 0.1
+        },
+        {
+          "mob": "a Sangrel striker",
+          "drops": 1,
+          "corpses": 27,
+          "rate": 0.037037037037037035
+        }
+      ],
       "prices": [
         {
           "copper": 3,
@@ -2945,7 +3298,9 @@
         }
       ],
       "harvested": 0,
-      "zones": []
+      "zones": [
+        "Keepersbight"
+      ]
     },
     {
       "id": "poisonous_spider_venom_sac",
@@ -2957,6 +3312,24 @@
           "drops": 1,
           "corpses": 8,
           "rate": 0.125
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
+      "id": "potato",
+      "gameId": "7344328837f0e260ae91ef77",
+      "name": "Potato",
+      "droppedBy": [
+        {
+          "mob": "a Sangrel striker",
+          "drops": 1,
+          "corpses": 27,
+          "rate": 0.037037037037037035
         }
       ],
       "prices": [],
@@ -3042,6 +3415,36 @@
           "count": 1
         }
       ],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
+      "id": "raw_human_meat",
+      "gameId": "0aba99615b57b2523938d9ae",
+      "name": "Raw Human Meat",
+      "droppedBy": [
+        {
+          "mob": "a Sangrel shadowblade",
+          "drops": 4,
+          "corpses": 10,
+          "rate": 0.4
+        },
+        {
+          "mob": "a Sangrel striker",
+          "drops": 6,
+          "corpses": 27,
+          "rate": 0.2222222222222222
+        },
+        {
+          "mob": "a Sangrel hunter",
+          "drops": 2,
+          "corpses": 11,
+          "rate": 0.18181818181818182
+        }
+      ],
+      "prices": [],
       "harvested": 0,
       "zones": [
         "Keepersbight"
@@ -3341,7 +3744,7 @@
           "count": 8
         }
       ],
-      "harvested": 278,
+      "harvested": 307,
       "zones": [
         "Evershade Weald",
         "Keepersbight"
@@ -4216,10 +4619,16 @@
       "name": "Sangrel Fist Wraps",
       "droppedBy": [
         {
+          "mob": "a Sangrel grappler",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 3,
-          "rate": 0.3333333333333333
+          "corpses": 27,
+          "rate": 0.037037037037037035
         }
       ],
       "prices": [],
@@ -4234,10 +4643,16 @@
       "name": "Sangrel Rite I",
       "droppedBy": [
         {
-          "mob": "a Sangrel striker",
+          "mob": "a Sangrel hunter",
           "drops": 1,
-          "corpses": 3,
-          "rate": 0.3333333333333333
+          "corpses": 11,
+          "rate": 0.09090909090909091
+        },
+        {
+          "mob": "a Sangrel striker",
+          "drops": 2,
+          "corpses": 27,
+          "rate": 0.07407407407407407
         }
       ],
       "prices": [],
@@ -4483,7 +4898,7 @@
       "name": "Sylvine",
       "droppedBy": [],
       "prices": [],
-      "harvested": 43,
+      "harvested": 45,
       "zones": [
         "Evershade Weald",
         "Scarwood"
@@ -5254,6 +5669,42 @@
       ]
     },
     {
+      "id": "tattered_hide_belt",
+      "gameId": "954e5561df06ba0e39c14b0f",
+      "name": "Tattered Hide Belt",
+      "droppedBy": [
+        {
+          "mob": "a Sangrel hunter",
+          "drops": 1,
+          "corpses": 11,
+          "rate": 0.09090909090909091
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
+      "id": "tattered_hide_boots",
+      "gameId": "12a0d9db275b9f4c3a7a8145",
+      "name": "Tattered Hide Boots",
+      "droppedBy": [
+        {
+          "mob": "a Sangrel striker",
+          "drops": 1,
+          "corpses": 27,
+          "rate": 0.037037037037037035
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
       "id": "tattered_hide_cap",
       "gameId": "c0b27c433e9526db1c199a7f",
       "name": "Tattered Hide Cap",
@@ -5261,8 +5712,26 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 3,
-          "rate": 0.3333333333333333
+          "corpses": 27,
+          "rate": 0.037037037037037035
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
+      "id": "tattered_hide_gorget",
+      "gameId": "a439e01f612f78594fb4a8f3",
+      "name": "Tattered Hide Gorget",
+      "droppedBy": [
+        {
+          "mob": "a Sangrel shadowblade",
+          "drops": 1,
+          "corpses": 10,
+          "rate": 0.1
         }
       ],
       "prices": [],
@@ -5763,6 +6232,60 @@
       ]
     },
     {
+      "id": "tattered_wool_belt",
+      "gameId": "1406845a8407311abd34c963",
+      "name": "Tattered Wool Belt",
+      "droppedBy": [
+        {
+          "mob": "a Sangrel striker",
+          "drops": 1,
+          "corpses": 27,
+          "rate": 0.037037037037037035
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
+      "id": "tattered_wool_cape",
+      "gameId": "3fdae3b5ecfb2b842415842a",
+      "name": "Tattered Wool Cape",
+      "droppedBy": [
+        {
+          "mob": "a Sangrel arcanist",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
+      "id": "tattered_wool_robe",
+      "gameId": "598d749e1f94b380df460b37",
+      "name": "Tattered Wool Robe",
+      "droppedBy": [
+        {
+          "mob": "a Sangrel striker",
+          "drops": 1,
+          "corpses": 27,
+          "rate": 0.037037037037037035
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
       "id": "tin_ore",
       "gameId": null,
       "name": "Tin Ore",
@@ -5779,16 +6302,34 @@
       "name": "Tomato",
       "droppedBy": [
         {
+          "mob": "a Sangrel grappler",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
           "mob": "a naiad maiden",
           "drops": 1,
           "corpses": 7,
           "rate": 0.14285714285714285
         },
         {
+          "mob": "a Sangrel hunter",
+          "drops": 1,
+          "corpses": 11,
+          "rate": 0.09090909090909091
+        },
+        {
           "mob": "a fossergrim watcher",
           "drops": 1,
           "corpses": 18,
           "rate": 0.05555555555555555
+        },
+        {
+          "mob": "a Sangrel striker",
+          "drops": 1,
+          "corpses": 27,
+          "rate": 0.037037037037037035
         }
       ],
       "prices": [
@@ -5799,7 +6340,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Evershade Weald"
+        "Evershade Weald",
+        "Keepersbight"
       ]
     },
     {
@@ -5980,7 +6522,7 @@
       "name": "Whispering Sage",
       "droppedBy": [],
       "prices": [],
-      "harvested": 33,
+      "harvested": 35,
       "zones": [
         "Evershade Weald",
         "Keepersbight"
@@ -6053,9 +6595,57 @@
       "name": "Wood",
       "droppedBy": [],
       "prices": [],
-      "harvested": 228,
+      "harvested": 251,
       "zones": [
         "Evershade Weald",
+        "Keepersbight"
+      ]
+    },
+    {
+      "id": "wool_scraps",
+      "gameId": "09a5d2baf931db48aee9cf9a",
+      "name": "Wool Scraps",
+      "droppedBy": [
+        {
+          "mob": "a Sangrel entangler",
+          "drops": 2,
+          "corpses": 4,
+          "rate": 0.5
+        },
+        {
+          "mob": "a Sangrel arcanist",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
+          "mob": "a Sangrel grappler",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
+          "mob": "a Sangrel hunter",
+          "drops": 4,
+          "corpses": 11,
+          "rate": 0.36363636363636365
+        },
+        {
+          "mob": "a Sangrel striker",
+          "drops": 7,
+          "corpses": 27,
+          "rate": 0.25925925925925924
+        },
+        {
+          "mob": "a Sangrel shadowblade",
+          "drops": 1,
+          "corpses": 10,
+          "rate": 0.1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
         "Keepersbight"
       ]
     },
@@ -6213,25 +6803,25 @@
     }
   ],
   "harvest": {
-    "Copper Ore": 889,
-    "Brittle Stone": 235,
+    "Copper Ore": 969,
+    "Brittle Stone": 256,
     "Clouded Crystallized Magic": 17,
     "Chipped Cat's Eye Agate": 8,
     "Ghost Poppy": 23,
-    "Wood": 228,
-    "Resin": 278,
+    "Wood": 251,
+    "Resin": 307,
     "Lionleaf": 51,
     "Chipped Diamond": 9,
-    "Sylvine": 43,
-    "Chipped Sapphire": 9,
-    "Whispering Sage": 33,
+    "Sylvine": 45,
+    "Chipped Sapphire": 10,
+    "Whispering Sage": 35,
     "Magic Frond": 5,
     "Nomad's Grace": 16,
     "Chipped Peridot": 9,
     "Selstie Kelp": 2,
-    "Alunite Ore": 8,
+    "Alunite Ore": 9,
     "Chipped Emerald": 8,
-    "Chipped Ruby": 8,
+    "Chipped Ruby": 10,
     "Limestone": 76,
     "Tin Ore": 586,
     "Flawed Diamond": 4,
@@ -6241,7 +6831,7 @@
     "Flawed Sapphire": 4,
     "Flawed Ruby": 4,
     "Flawed Cat's Eye Agate": 7,
-    "Chipped Jade": 5,
+    "Chipped Jade": 6,
     "Moonveil": 21,
     "Flawed Emerald": 5,
     "Flawed Peridot": 3,
@@ -6250,62 +6840,62 @@
   "harvestNodes": [
     {
       "name": "Copper Ore",
-      "pulls": 920,
+      "pulls": 1005,
       "yields": [
         {
           "res": "Copper Ore",
-          "count": 887,
-          "rate": 0.9641304347826087
+          "count": 967,
+          "rate": 0.9621890547263682
         },
         {
           "res": "Brittle Stone",
-          "count": 235,
-          "rate": 0.2554347826086957
+          "count": 256,
+          "rate": 0.25472636815920396
         },
         {
           "res": "Clouded Crystallized Magic",
           "count": 15,
-          "rate": 0.016304347826086956
+          "rate": 0.014925373134328358
+        },
+        {
+          "res": "Chipped Ruby",
+          "count": 10,
+          "rate": 0.009950248756218905
+        },
+        {
+          "res": "Chipped Sapphire",
+          "count": 9,
+          "rate": 0.008955223880597015
         },
         {
           "res": "Chipped Peridot",
           "count": 9,
-          "rate": 0.009782608695652175
+          "rate": 0.008955223880597015
+        },
+        {
+          "res": "Alunite Ore",
+          "count": 9,
+          "rate": 0.008955223880597015
         },
         {
           "res": "Chipped Diamond",
           "count": 8,
-          "rate": 0.008695652173913044
-        },
-        {
-          "res": "Chipped Sapphire",
-          "count": 8,
-          "rate": 0.008695652173913044
-        },
-        {
-          "res": "Alunite Ore",
-          "count": 8,
-          "rate": 0.008695652173913044
-        },
-        {
-          "res": "Chipped Ruby",
-          "count": 8,
-          "rate": 0.008695652173913044
+          "rate": 0.007960199004975124
         },
         {
           "res": "Chipped Cat's Eye Agate",
           "count": 7,
-          "rate": 0.007608695652173913
+          "rate": 0.006965174129353234
         },
         {
           "res": "Chipped Emerald",
           "count": 7,
-          "rate": 0.007608695652173913
+          "rate": 0.006965174129353234
         },
         {
           "res": "Chipped Jade",
-          "count": 4,
-          "rate": 0.004347826086956522
+          "count": 5,
+          "rate": 0.004975124378109453
         }
       ],
       "zones": [
@@ -6383,17 +6973,17 @@
     },
     {
       "name": "Wood & Resin",
-      "pulls": 228,
+      "pulls": 251,
       "yields": [
         {
           "res": "Wood",
-          "count": 228,
+          "count": 251,
           "rate": 1
         },
         {
           "res": "Resin",
-          "count": 194,
-          "rate": 0.8508771929824561
+          "count": 214,
+          "rate": 0.852589641434263
         }
       ],
       "zones": [
@@ -6451,17 +7041,17 @@
     },
     {
       "name": "Sylvine",
-      "pulls": 25,
+      "pulls": 26,
       "yields": [
         {
           "res": "Sylvine",
-          "count": 25,
+          "count": 26,
           "rate": 1
         },
         {
           "res": "Magic Frond",
           "count": 3,
-          "rate": 0.12
+          "rate": 0.11538461538461539
         }
       ],
       "zones": [
@@ -6471,17 +7061,17 @@
     },
     {
       "name": "Whispering Sage",
-      "pulls": 22,
+      "pulls": 23,
       "yields": [
         {
           "res": "Whispering Sage",
-          "count": 22,
+          "count": 23,
           "rate": 1
         },
         {
           "res": "Magic Frond",
           "count": 2,
-          "rate": 0.09090909090909091
+          "rate": 0.08695652173913043
         }
       ],
       "zones": [
