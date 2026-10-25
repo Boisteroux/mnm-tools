@@ -24,7 +24,7 @@ try {
 } catch {}
 
 // Bulk tradeskill materials (ore, wood, herbs, fish, scraps…) are priced per stack — see stacks.js.
-const { bulkMaterials, normalizeBulk } = require('./stacks.js');
+const { bulkMaterials, normalizeBulk, itemQty } = require('./stacks.js');
 let BULK = new Map();
 try {
   const wiki = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'mnmdb', 'wiki.json'), 'utf8'));
@@ -111,10 +111,14 @@ function itemScope(rawStr, item) {
   const start = i + key.length, next = lc.indexOf('[', start);
   return lc.slice(start, next < 0 ? lc.length : next); // after this item's bracket, up to the next item
 }
+// The count a listing offers, from the item's own part of the post (see itemQty in
+// stacks.js) — falls back to the parser's qty only when the item can't be located.
+const listingQty = (l) => { const o = itemQty(l.raw, l.item); return o.found ? o.qty : (l.qty && l.qty > 1 ? l.qty : null); };
+
 function normalize(l) {
   const price = l.priceCopper;
   if (price == null) return { unit: null, total: null, perStack: false };
-  const qty = l.qty && l.qty > 1 ? l.qty : 1;
+  const qty = listingQty(l) || 1;
   const raw = itemScope(l.raw, l.item);
   const each = /\b(?:ea|each)\b|\/\s*ea\b/.test(raw);                                     // explicit per-unit
   const stack = /\bstacks?\b|\bstk\b|[/\s]st\b/.test(raw);                                // "a stack" / "stk" / "40s/st" = a 20-unit lot
@@ -135,14 +139,14 @@ const listings = rows.map((l) => {
   if (bulk) {
     const lc = String(l.raw || '').toLowerCase();
     const r = normalizeBulk({
-      raw: l.raw, item: l.item, price: l.priceCopper, qty: l.qty, stack: bulk.stack,
+      raw: l.raw, item: l.item, price: l.priceCopper, qty: listingQty(l), stack: bulk.stack,
       header: lc.slice(0, Math.max(0, lc.indexOf('['))), multiItem: (lc.match(/\[/g) || []).length > 1,
     });
     return {
       server: l.server, intent: l.intent || null, item: l.item,
       price: r ? r.stackPrice : null, unit: r ? r.unit : null, priceStr: r ? copperToStr(r.stackPrice) : null,
       stack: bulk.stack, perStack: r ? true : undefined, // price = one stack; unit = one item
-      player: l.player, seen: l.firstSeen, qty: l.qty || undefined,
+      player: l.player, seen: l.firstSeen, qty: listingQty(l) || undefined,
       count: l.count || 1, assumed: l.assumed || undefined, matched: wikiNames.has(l.item.toLowerCase()),
     };
   }
@@ -150,7 +154,7 @@ const listings = rows.map((l) => {
   return {
     server: l.server, intent: l.intent || null, item: l.item,
     price: total, unit, priceStr: total != null ? copperToStr(total) : null,
-    player: l.player, seen: l.firstSeen, qty: l.qty || undefined, perStack: perStack || undefined,
+    player: l.player, seen: l.firstSeen, qty: listingQty(l) || undefined, perStack: perStack || undefined,
     count: l.count || 1, // times this listing was read — powers the "most seen" ranking
     assumed: l.assumed || undefined, matched: wikiNames.has(l.item.toLowerCase()),
   };

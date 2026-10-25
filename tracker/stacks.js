@@ -97,7 +97,8 @@ function firstPrice(s) {
   }
   return total == null ? null : { value: Math.round(total), end: lastEnd };
 }
-const segmentQty = (s) => { const m = s.match(/\bx\s*(\d+)|\b(\d+)\s*x\b|\b(\d+)\s*(?:stacks?|stk)\b/); return m ? +(m[1] || m[2] || m[3]) : null; };
+const QTY_RE = /(?:\b|stacks?)x\s*(\d+)|\b(\d+)\s*x\b|\b(\d+)\s*(?:stacks?|stk)\b/;
+const segmentQty = (s) => { const m = s.match(QTY_RE); return m ? +(m[1] || m[2] || m[3]) : null; };
 
 // Per-stack price for one bulk-material listing, read from the item's own segment of
 // the post (itemSegment). Rules, from how Trem actually posts these (Oct 2026 history):
@@ -143,4 +144,26 @@ function normalizeBulk({ raw, item, price, qty, header = '', stack = STACK_DEFAU
   return { stackPrice, unit: Math.round(stackPrice / stack), stack };
 }
 
-module.exports = { STACK_DEFAULT, STACK_OVERRIDES, bulkMaterials, normalizeBulk };
+// How many of `item` a post offers, read from the item's own part of the text (its
+// lead-in and what follows it, up to the next [item]). The OCR sometimes runs two chat
+// lines together — 'WTS [Tin Ore] x80" … "WTB [Rawhide Backpack] x5, 20s' — and the
+// generic parser would hand the backpack Tin Ore's x80. Returns { found, qty }: found is
+// false when the item can't be located in the text (use the parser's qty then); qty is
+// null when its part names no count. "5s each, 2 left" always counts; a count after the
+// item's price that has a price of its own is another offer ("[Earring] 35s x16 stacks
+// 2s each[Cloth Scraps]", "[Hood] 30s MQ pelt x2 15s").
+function itemQty(raw, item) {
+  const seg = itemSegment(raw, item);
+  if (!seg) return { found: false, qty: null };
+  const left = seg.after.match(/\b(\d+)\s*(?:units?|left|remaining|available)\b/);
+  let after = seg.after;
+  const own = firstPrice(after);
+  if (own) {
+    const rest = after.slice(own.end), c = rest.match(QTY_RE);
+    if (c && firstPrice(rest.slice(c.index + c[0].length))) after = after.slice(0, own.end);
+  }
+  const q = (left && +left[1]) || segmentQty(after) || segmentQty(seg.before);
+  return { found: true, qty: q && q > 1 ? q : null };
+}
+
+module.exports = { STACK_DEFAULT, STACK_OVERRIDES, bulkMaterials, normalizeBulk, itemQty };

@@ -699,18 +699,18 @@ async function fillHomeMarket() {
   const box = $('home-market'); if (!box) return;
   const A = await loadAuctionsData();
   const live = $('home-stat-live'); if (live) live.textContent = A.listings.length;
-  // Most-listed priced items on the live server: distinct sellers, with their lowest ask.
+  // Most-listed priced items on the live server: distinct sellers, with their typical ask.
   const pm = {};
   for (const l of A.listings) {
     if (l.price == null || l.intent === 'buy') continue;
     const m = pm[l.item] = pm[l.item] || { sellers: new Set(), prices: [] };
     m.sellers.add(l.player); m.prices.push(listingUnit(l));
   }
-  // Lowest ask after the usual outlier fence, so one misread price can't be the headline.
-  const busy = Object.entries(pm).map(([item, m]) => ({ item, n: m.sellers.size, low: Math.min.apply(null, trimOutliers(m.prices)) }))
+  // Median ask after the usual outlier fence, so one misread price can't be the headline.
+  const busy = Object.entries(pm).map(([item, m]) => ({ item, n: m.sellers.size, low: tmMedian(trimOutliers(m.prices)) }))
     .sort((a, b) => b.n - a.n || a.item.localeCompare(b.item)).slice(0, 6);
   const busyRows = busy.length
-    ? '<div class="card"><table><thead><tr><th>Item</th><th class="num">Sellers</th><th class="num">From</th></tr></thead><tbody>' +
+    ? '<div class="card"><table><thead><tr><th>Item</th><th class="num">Sellers</th><th class="num">Typical</th></tr></thead><tbody>' +
       busy.map((g) => { const st = stackSize(g.item); return '<tr><td>' + itemLink(g.item, g.item) + '</td><td class="num">' + g.n + '</td><td class="num coin">' + (st ? coin(g.low * st) + '<span class="muted">/stack</span>' : coin(g.low)) + '</td></tr>'; }).join('') +
       '</tbody></table></div>'
     : '<p class="sub">No priced listings yet.</p>';
