@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-26T07:00:07.452Z",
+  "generatedAt": "2026-10-26T19:00:05.054Z",
   "source": "mnm-tools",
-  "ledgerFiles": 26,
-  "events": 10225,
+  "ledgerFiles": 28,
+  "events": 10248,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 10225
+      "events": 10248
     }
   ],
   "contributorCount": 1,
@@ -2551,7 +2551,7 @@
       "prices": [
         {
           "copper": 163,
-          "count": 1
+          "count": 2
         }
       ],
       "harvested": 0,
@@ -2733,7 +2733,12 @@
           "rate": 0.008695652173913044
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 135,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Blacktidebay",
@@ -2813,7 +2818,12 @@
           "rate": 0.003289473684210526
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 135,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Keepersbight",
@@ -3167,7 +3177,12 @@
           "rate": 0.01694915254237288
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 203,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Blacktidebay"
@@ -3227,12 +3242,31 @@
           "rate": 0.003289473684210526
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 176,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Blacktidebay",
         "Keepersbight"
       ]
+    },
+    {
+      "id": "corroded_bronze_plate_pauldrons",
+      "gameId": null,
+      "name": "Corroded Bronze Plate Pauldrons",
+      "droppedBy": [],
+      "prices": [
+        {
+          "copper": 163,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "corroded_bronze_plate_visor",
@@ -3509,7 +3543,12 @@
           "rate": 0.003289473684210526
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 163,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Keepersbight"
@@ -7109,7 +7148,7 @@
       "prices": [
         {
           "copper": 70,
-          "count": 1
+          "count": 2
         }
       ],
       "harvested": 0,
@@ -9427,7 +9466,12 @@
           "rate": 0.2033898305084746
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 19,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Blacktidebay"
@@ -9689,6 +9733,10 @@
         {
           "copper": 263,
           "count": 1
+        },
+        {
+          "copper": 271,
+          "count": 1
         }
       ],
       "harvested": 0,
@@ -9732,7 +9780,12 @@
           "rate": 0.003289473684210526
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 54,
+          "count": 2
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Keepersbight",
