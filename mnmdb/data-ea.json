@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-26T01:00:15.556Z",
+  "generatedAt": "2026-10-26T07:00:07.452Z",
   "source": "mnm-tools",
   "ledgerFiles": 26,
-  "events": 9739,
+  "events": 10225,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 9739
+      "events": 10225
     }
   ],
   "contributorCount": 1,
@@ -160,14 +160,14 @@
       "corpses": 7
     },
     "a skeleton": {
-      "kills": 107,
+      "kills": 109,
       "drops": {
         "Worn Great Staff": 1,
         "Tattered Cloth Pantaloons": 1,
         "Bone Chips": 57,
         "Tattered Cloth Boots": 1,
         "Tattered Rawhide Mask": 2,
-        "Cloth Scraps": 53,
+        "Cloth Scraps": 54,
         "Rusty Kite Shield": 2,
         "Rawhide Scraps": 7,
         "Worn Bow": 4,
@@ -190,10 +190,10 @@
         "Tattered Cloth Tunic": 1
       },
       "zones": {
-        "Evershade Weald": 309
+        "Evershade Weald": 313
       },
-      "coin": 1370,
-      "corpses": 86
+      "coin": 1412,
+      "corpses": 87
     },
     "a wasp worker": {
       "kills": 0,
@@ -250,13 +250,13 @@
       "corpses": 9
     },
     "an old elven skeleton": {
-      "kills": 51,
+      "kills": 55,
       "drops": {
-        "Cloth Scraps": 26,
+        "Cloth Scraps": 27,
         "Tattered Rawhide Leggings": 1,
-        "Bone Chips": 17,
+        "Bone Chips": 18,
         "Rusty Shortsword": 1,
-        "Rawhide Scraps": 9,
+        "Rawhide Scraps": 10,
         "Tattered Rawhide Cloak": 1,
         "Rusty Kite Shield": 1,
         "Tattered Rawhide Belt": 2,
@@ -270,13 +270,14 @@
         "Tattered Rawhide Gorget": 1,
         "Rusty Longsword": 1,
         "Rusty Warhammer": 1,
-        "Tattered Cloth Robe": 1
+        "Tattered Cloth Robe": 1,
+        "Tattered Rawhide Mask": 1
       },
       "zones": {
-        "Evershade Weald": 152
+        "Evershade Weald": 168
       },
-      "coin": 1160,
-      "corpses": 38
+      "coin": 1254,
+      "corpses": 39
     },
     "a Fellstone tracker": {
       "kills": 40,
@@ -617,7 +618,7 @@
         "Rusty Scythe": 2,
         "Rusty Longsword": 1,
         "Tattered Rawhide Gorget": 1,
-        "Tattered Rawhide Cap": 1,
+        "Tattered Rawhide Cap": 2,
         "Tattered Rawhide Leggings": 1,
         "Rusty Axe": 1,
         "Tattered Cloth Gloves": 1,
@@ -636,10 +637,10 @@
         "Rusty Scimitar": 1
       },
       "zones": {
-        "Blacktidebay": 586
+        "Blacktidebay": 587
       },
       "coin": 6030,
-      "corpses": 141
+      "corpses": 142
     },
     "a trained wolf": {
       "kills": 0,
@@ -1196,6 +1197,77 @@
       "coin": 257,
       "corpses": 2
     },
+    "a Bloodchain guard": {
+      "kills": 83,
+      "drops": {
+        "Tattered Wool Cape": 1,
+        "Raw Orc Meat": 18,
+        "Weathered Medallion": 12,
+        "Bronze Scraps": 8,
+        "Corroded Bronze Chain Mask": 1,
+        "Worn Fine Wood Buckler": 1,
+        "Corroded Bronze Battle Axe": 2,
+        "Tattered Wool Cap": 1,
+        "Wool Scraps": 10,
+        "Corroded Bronze Great Scythe": 2,
+        "Hide Scraps": 11,
+        "Corroded Bronze Scimitar": 1,
+        "Corroded Bronze Chain Waistguard": 1,
+        "Tattered Hide Vest": 1,
+        "Tattered Wool Veil": 1,
+        "Simple Medallion": 6,
+        "Corroded Bronze Shortsword": 1,
+        "Corroded Bronze Axe": 1,
+        "Tattered Hide Belt": 1,
+        "Corroded Bronze Plate Breastplate": 1,
+        "Tattered Wool Gloves": 1,
+        "Worn Fine Wood Bow": 1,
+        "Corroded Bronze Chain Gorget": 1
+      },
+      "zones": {
+        "Blacktidebay": 184
+      },
+      "coin": 4083,
+      "corpses": 59
+    },
+    "a Bloodchain champion": {
+      "kills": 3,
+      "drops": {
+        "Simple Medallion": 1,
+        "Raw Orc Meat": 1,
+        "Hide Scraps": 1,
+        "Battleworn Clasp": 2
+      },
+      "zones": {
+        "Blacktidebay": 11
+      },
+      "coin": 511,
+      "corpses": 3
+    },
+    "a Bloodchain sentry": {
+      "kills": 37,
+      "drops": {
+        "Wool Scraps": 2,
+        "Simple Medallion": 16,
+        "Corroded Bronze Longsword": 1,
+        "Bronze Scraps": 4,
+        "Hide Scraps": 6,
+        "Corroded Bronze Scimitar": 1,
+        "Raw Orc Meat": 6,
+        "Corroded Bronze Battle Axe": 1,
+        "Worn Fine Wood Buckler": 1,
+        "Corroded Bronze Chain Shoulderguards": 1,
+        "Torch": 1,
+        "Tattered Hide Leggings": 1,
+        "Corroded Bronze Plate Greaves": 1,
+        "Corroded Bronze Trident": 1
+      },
+      "zones": {
+        "Blacktidebay": 87
+      },
+      "coin": 2087,
+      "corpses": 29
+    },
     "a gloom widow": {
       "kills": 0,
       "drops": {
@@ -1295,6 +1367,39 @@
       },
       "coin": 156,
       "corpses": 3
+    },
+    "a Bloodchain soulherder": {
+      "kills": 12,
+      "drops": {
+        "Wool Scraps": 4,
+        "Corroded Bronze Warhammer": 1,
+        "Simple Medallion": 5,
+        "Corroded Bronze Scimitar": 1,
+        "Corroded Bronze Maul": 1,
+        "Raw Orc Meat": 2,
+        "Bronze Scraps": 1
+      },
+      "zones": {
+        "Blacktidebay": 27
+      },
+      "coin": 700,
+      "corpses": 10
+    },
+    "a Bloodchain mender": {
+      "kills": 12,
+      "drops": {
+        "Raw Orc Meat": 2,
+        "Bronze Scraps": 2,
+        "Simple Medallion": 4,
+        "Tattered Wool Veil": 1,
+        "Hide Scraps": 2,
+        "Wool Scraps": 2
+      },
+      "zones": {
+        "Blacktidebay": 26
+      },
+      "coin": 764,
+      "corpses": 9
     }
   },
   "items": [
@@ -1423,6 +1528,24 @@
           "drops": 2,
           "corpses": 4,
           "rate": 0.5
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Blacktidebay"
+      ]
+    },
+    {
+      "id": "battleworn_clasp",
+      "gameId": "7c153fb1ee7273812ae6cbf9",
+      "name": "Battleworn Clasp",
+      "droppedBy": [
+        {
+          "mob": "a Bloodchain champion",
+          "drops": 2,
+          "corpses": 3,
+          "rate": 0.6666666666666666
         }
       ],
       "prices": [],
@@ -1578,8 +1701,8 @@
         {
           "mob": "a skeleton",
           "drops": 57,
-          "corpses": 86,
-          "rate": 0.6627906976744186
+          "corpses": 87,
+          "rate": 0.6551724137931034
         },
         {
           "mob": "a Calafreyan soldier",
@@ -1589,9 +1712,9 @@
         },
         {
           "mob": "an old elven skeleton",
-          "drops": 17,
-          "corpses": 38,
-          "rate": 0.4473684210526316
+          "drops": 18,
+          "corpses": 39,
+          "rate": 0.46153846153846156
         }
       ],
       "prices": [
@@ -1645,10 +1768,34 @@
       "name": "Bronze Scraps",
       "droppedBy": [
         {
+          "mob": "a Bloodchain mender",
+          "drops": 2,
+          "corpses": 9,
+          "rate": 0.2222222222222222
+        },
+        {
+          "mob": "a Bloodchain sentry",
+          "drops": 4,
+          "corpses": 29,
+          "rate": 0.13793103448275862
+        },
+        {
+          "mob": "a Bloodchain guard",
+          "drops": 8,
+          "corpses": 59,
+          "rate": 0.13559322033898305
+        },
+        {
           "mob": "a Sangrel shadowblade",
           "drops": 13,
           "corpses": 115,
           "rate": 0.11304347826086956
+        },
+        {
+          "mob": "a Bloodchain soulherder",
+          "drops": 1,
+          "corpses": 10,
+          "rate": 0.1
         },
         {
           "mob": "a Sangrel striker",
@@ -1671,7 +1818,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Blacktidebay"
       ]
     },
     {
@@ -2124,9 +2272,9 @@
         },
         {
           "mob": "an old elven skeleton",
-          "drops": 26,
-          "corpses": 38,
-          "rate": 0.6842105263157895
+          "drops": 27,
+          "corpses": 39,
+          "rate": 0.6923076923076923
         },
         {
           "mob": "a Fellstone guard",
@@ -2137,14 +2285,14 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 91,
-          "corpses": 141,
-          "rate": 0.6453900709219859
+          "corpses": 142,
+          "rate": 0.6408450704225352
         },
         {
           "mob": "a skeleton",
-          "drops": 53,
-          "corpses": 86,
-          "rate": 0.6162790697674418
+          "drops": 54,
+          "corpses": 87,
+          "rate": 0.6206896551724138
         },
         {
           "mob": "a Fellstone warrior",
@@ -2344,6 +2492,12 @@
           "drops": 1,
           "corpses": 41,
           "rate": 0.024390243902439025
+        },
+        {
+          "mob": "a Bloodchain guard",
+          "drops": 1,
+          "corpses": 59,
+          "rate": 0.01694915254237288
         }
       ],
       "prices": [
@@ -2354,7 +2508,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Blacktidebay"
       ]
     },
     {
@@ -2362,6 +2517,18 @@
       "gameId": "2c7787a70e07c9eb17415908",
       "name": "Corroded Bronze Battle Axe",
       "droppedBy": [
+        {
+          "mob": "a Bloodchain sentry",
+          "drops": 1,
+          "corpses": 29,
+          "rate": 0.034482758620689655
+        },
+        {
+          "mob": "a Bloodchain guard",
+          "drops": 2,
+          "corpses": 59,
+          "rate": 0.03389830508474576
+        },
         {
           "mob": "a Sangrel shadowblade",
           "drops": 2,
@@ -2389,7 +2556,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Blacktidebay"
       ]
     },
     {
@@ -2503,12 +2671,19 @@
           "drops": 2,
           "corpses": 115,
           "rate": 0.017391304347826087
+        },
+        {
+          "mob": "a Bloodchain guard",
+          "drops": 1,
+          "corpses": 59,
+          "rate": 0.01694915254237288
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Blacktidebay"
       ]
     },
     {
@@ -2546,6 +2721,12 @@
       "name": "Corroded Bronze Chain Mask",
       "droppedBy": [
         {
+          "mob": "a Bloodchain guard",
+          "drops": 1,
+          "corpses": 59,
+          "rate": 0.01694915254237288
+        },
+        {
           "mob": "a Sangrel shadowblade",
           "drops": 1,
           "corpses": 115,
@@ -2555,6 +2736,7 @@
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Blacktidebay",
         "Keepersbight"
       ]
     },
@@ -2563,6 +2745,12 @@
       "gameId": "d010fb3151745a375e3135a4",
       "name": "Corroded Bronze Chain Shoulderguards",
       "droppedBy": [
+        {
+          "mob": "a Bloodchain sentry",
+          "drops": 1,
+          "corpses": 29,
+          "rate": 0.034482758620689655
+        },
         {
           "mob": "a Sangrel hunter",
           "drops": 1,
@@ -2573,7 +2761,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Blacktidebay"
       ]
     },
     {
@@ -2600,6 +2789,12 @@
       "name": "Corroded Bronze Chain Waistguard",
       "droppedBy": [
         {
+          "mob": "a Bloodchain guard",
+          "drops": 1,
+          "corpses": 59,
+          "rate": 0.01694915254237288
+        },
+        {
           "mob": "a Sangrel hunter",
           "drops": 1,
           "corpses": 79,
@@ -2621,7 +2816,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Blacktidebay"
       ]
     },
     {
@@ -2684,6 +2880,12 @@
       "name": "Corroded Bronze Great Scythe",
       "droppedBy": [
         {
+          "mob": "a Bloodchain guard",
+          "drops": 2,
+          "corpses": 59,
+          "rate": 0.03389830508474576
+        },
+        {
           "mob": "a Sangrel hunter",
           "drops": 1,
           "corpses": 79,
@@ -2710,7 +2912,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Blacktidebay"
       ]
     },
     {
@@ -2820,6 +3023,12 @@
       "name": "Corroded Bronze Longsword",
       "droppedBy": [
         {
+          "mob": "a Bloodchain sentry",
+          "drops": 1,
+          "corpses": 29,
+          "rate": 0.034482758620689655
+        },
+        {
           "mob": "a Sangrel arcanist",
           "drops": 1,
           "corpses": 75,
@@ -2846,7 +3055,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Blacktidebay"
       ]
     },
     {
@@ -2854,6 +3064,12 @@
       "gameId": "f56eeb59d2d04886adb56685",
       "name": "Corroded Bronze Maul",
       "droppedBy": [
+        {
+          "mob": "a Bloodchain soulherder",
+          "drops": 1,
+          "corpses": 10,
+          "rate": 0.1
+        },
         {
           "mob": "a Sangrel grappler",
           "drops": 1,
@@ -2881,7 +3097,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Blacktidebay"
       ]
     },
     {
@@ -2939,6 +3156,24 @@
       ]
     },
     {
+      "id": "corroded_bronze_plate_breastplate",
+      "gameId": "64c31c059e6e7254e7b74ecf",
+      "name": "Corroded Bronze Plate Breastplate",
+      "droppedBy": [
+        {
+          "mob": "a Bloodchain guard",
+          "drops": 1,
+          "corpses": 59,
+          "rate": 0.01694915254237288
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Blacktidebay"
+      ]
+    },
+    {
       "id": "corroded_bronze_plate_collar",
       "gameId": "90bef43bf8cbd79730a7c9aa",
       "name": "Corroded Bronze Plate Collar",
@@ -2980,6 +3215,12 @@
       "name": "Corroded Bronze Plate Greaves",
       "droppedBy": [
         {
+          "mob": "a Bloodchain sentry",
+          "drops": 1,
+          "corpses": 29,
+          "rate": 0.034482758620689655
+        },
+        {
           "mob": "a Sangrel striker",
           "drops": 1,
           "corpses": 304,
@@ -2989,6 +3230,7 @@
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Blacktidebay",
         "Keepersbight"
       ]
     },
@@ -3016,6 +3258,18 @@
       "name": "Corroded Bronze Scimitar",
       "droppedBy": [
         {
+          "mob": "a Bloodchain soulherder",
+          "drops": 1,
+          "corpses": 10,
+          "rate": 0.1
+        },
+        {
+          "mob": "a Bloodchain sentry",
+          "drops": 1,
+          "corpses": 29,
+          "rate": 0.034482758620689655
+        },
+        {
           "mob": "a Sangrel entangler",
           "drops": 1,
           "corpses": 41,
@@ -3028,6 +3282,12 @@
           "rate": 0.017391304347826087
         },
         {
+          "mob": "a Bloodchain guard",
+          "drops": 1,
+          "corpses": 59,
+          "rate": 0.01694915254237288
+        },
+        {
           "mob": "a Sangrel striker",
           "drops": 2,
           "corpses": 304,
@@ -3037,7 +3297,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Blacktidebay"
       ]
     },
     {
@@ -3087,6 +3348,12 @@
           "rate": 0.024390243902439025
         },
         {
+          "mob": "a Bloodchain guard",
+          "drops": 1,
+          "corpses": 59,
+          "rate": 0.01694915254237288
+        },
+        {
           "mob": "a Sangrel striker",
           "drops": 1,
           "corpses": 304,
@@ -3101,7 +3368,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Blacktidebay"
       ]
     },
     {
@@ -3181,6 +3449,12 @@
           "rate": 0.04878048780487805
         },
         {
+          "mob": "a Bloodchain sentry",
+          "drops": 1,
+          "corpses": 29,
+          "rate": 0.034482758620689655
+        },
+        {
           "mob": "a Sangrel arcanist",
           "drops": 1,
           "corpses": 75,
@@ -3207,7 +3481,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Blacktidebay"
       ]
     },
     {
@@ -3246,6 +3521,12 @@
       "name": "Corroded Bronze Warhammer",
       "droppedBy": [
         {
+          "mob": "a Bloodchain soulherder",
+          "drops": 1,
+          "corpses": 10,
+          "rate": 0.1
+        },
+        {
           "mob": "a Sangrel hunter",
           "drops": 1,
           "corpses": 79,
@@ -3261,7 +3542,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Blacktidebay"
       ]
     },
     {
@@ -4332,6 +4614,12 @@
           "rate": 0.5
         },
         {
+          "mob": "a Bloodchain champion",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        },
+        {
           "mob": "a Sangrel entangler",
           "drops": 11,
           "corpses": 41,
@@ -4342,6 +4630,24 @@
           "drops": 6,
           "corpses": 26,
           "rate": 0.23076923076923078
+        },
+        {
+          "mob": "a Bloodchain mender",
+          "drops": 2,
+          "corpses": 9,
+          "rate": 0.2222222222222222
+        },
+        {
+          "mob": "a Bloodchain sentry",
+          "drops": 6,
+          "corpses": 29,
+          "rate": 0.20689655172413793
+        },
+        {
+          "mob": "a Bloodchain guard",
+          "drops": 11,
+          "corpses": 59,
+          "rate": 0.1864406779661017
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -4365,7 +4671,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Blacktidebay"
       ]
     },
     {
@@ -4439,8 +4746,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 39,
-          "corpses": 141,
-          "rate": 0.2765957446808511
+          "corpses": 142,
+          "rate": 0.2746478873239437
         },
         {
           "mob": "a Fellstone warrior",
@@ -4836,7 +5143,7 @@
       "name": "Moonveil",
       "droppedBy": [],
       "prices": [],
-      "harvested": 26,
+      "harvested": 31,
       "zones": [
         "Scarwood",
         "Keepersbight"
@@ -5182,6 +5489,18 @@
           "rate": 0.5
         },
         {
+          "mob": "a Bloodchain champion",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        },
+        {
+          "mob": "a Bloodchain guard",
+          "drops": 18,
+          "corpses": 59,
+          "rate": 0.3050847457627119
+        },
+        {
           "mob": "a Fellstone ragecaller",
           "drops": 11,
           "corpses": 46,
@@ -5190,14 +5509,26 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 32,
-          "corpses": 141,
-          "rate": 0.22695035460992907
+          "corpses": 142,
+          "rate": 0.22535211267605634
         },
         {
           "mob": "a Fellstone sentinel",
           "drops": 23,
           "corpses": 103,
           "rate": 0.22330097087378642
+        },
+        {
+          "mob": "a Bloodchain mender",
+          "drops": 2,
+          "corpses": 9,
+          "rate": 0.2222222222222222
+        },
+        {
+          "mob": "a Bloodchain sentry",
+          "drops": 6,
+          "corpses": 29,
+          "rate": 0.20689655172413793
         },
         {
           "mob": "a Fellstone guard",
@@ -5209,6 +5540,12 @@
           "mob": "a Fellstone shaman",
           "drops": 1,
           "corpses": 5,
+          "rate": 0.2
+        },
+        {
+          "mob": "a Bloodchain soulherder",
+          "drops": 2,
+          "corpses": 10,
           "rate": 0.2
         },
         {
@@ -5387,6 +5724,12 @@
           "rate": 0.26495726495726496
         },
         {
+          "mob": "an old elven skeleton",
+          "drops": 10,
+          "corpses": 39,
+          "rate": 0.2564102564102564
+        },
+        {
           "mob": "a naiad trickster",
           "drops": 1,
           "corpses": 4,
@@ -5399,12 +5742,6 @@
           "rate": 0.24324324324324326
         },
         {
-          "mob": "an old elven skeleton",
-          "drops": 9,
-          "corpses": 38,
-          "rate": 0.23684210526315788
-        },
-        {
           "mob": "a Fellstone defiler",
           "drops": 7,
           "corpses": 35,
@@ -5413,8 +5750,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 28,
-          "corpses": 141,
-          "rate": 0.19858156028368795
+          "corpses": 142,
+          "rate": 0.19718309859154928
         },
         {
           "mob": "a Fellstone sentinel",
@@ -5437,8 +5774,8 @@
         {
           "mob": "a skeleton",
           "drops": 7,
-          "corpses": 86,
-          "rate": 0.08139534883720931
+          "corpses": 87,
+          "rate": 0.08045977011494253
         },
         {
           "mob": "a Fellstone ragecaller",
@@ -5657,8 +5994,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 141,
-          "rate": 0.0070921985815602835
+          "corpses": 142,
+          "rate": 0.007042253521126761
         }
       ],
       "prices": [
@@ -5687,8 +6024,8 @@
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 86,
-          "rate": 0.023255813953488372
+          "corpses": 87,
+          "rate": 0.022988505747126436
         },
         {
           "mob": "a rotting skeleton",
@@ -5699,8 +6036,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 141,
-          "rate": 0.0070921985815602835
+          "corpses": 142,
+          "rate": 0.007042253521126761
         }
       ],
       "prices": [
@@ -5735,8 +6072,8 @@
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 86,
-          "rate": 0.023255813953488372
+          "corpses": 87,
+          "rate": 0.022988505747126436
         }
       ],
       "prices": [
@@ -5769,14 +6106,14 @@
         {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 141,
-          "rate": 0.0070921985815602835
+          "corpses": 142,
+          "rate": 0.007042253521126761
         }
       ],
       "prices": [
@@ -5817,8 +6154,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 3,
-          "corpses": 141,
-          "rate": 0.02127659574468085
+          "corpses": 142,
+          "rate": 0.02112676056338028
         },
         {
           "mob": "a Fellstone sentinel",
@@ -5867,14 +6204,14 @@
         {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 86,
-          "rate": 0.023255813953488372
+          "corpses": 87,
+          "rate": 0.022988505747126436
         },
         {
           "mob": "a rotting skeleton",
@@ -5944,8 +6281,8 @@
         {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a Fellstone sentinel",
@@ -5962,8 +6299,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 141,
-          "rate": 0.0070921985815602835
+          "corpses": 142,
+          "rate": 0.007042253521126761
         }
       ],
       "prices": [
@@ -5998,8 +6335,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 86,
-          "rate": 0.011627906976744186
+          "corpses": 87,
+          "rate": 0.011494252873563218
         },
         {
           "mob": "a Fellstone guard",
@@ -6032,8 +6369,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 141,
-          "rate": 0.0070921985815602835
+          "corpses": 142,
+          "rate": 0.007042253521126761
         }
       ],
       "prices": [],
@@ -6056,8 +6393,8 @@
         {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a Fellstone ragecaller",
@@ -6068,8 +6405,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 141,
-          "rate": 0.0070921985815602835
+          "corpses": 142,
+          "rate": 0.007042253521126761
         }
       ],
       "prices": [
@@ -6110,8 +6447,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 2,
-          "corpses": 141,
-          "rate": 0.014184397163120567
+          "corpses": 142,
+          "rate": 0.014084507042253521
         }
       ],
       "prices": [
@@ -6144,14 +6481,14 @@
         {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 141,
-          "rate": 0.0070921985815602835
+          "corpses": 142,
+          "rate": 0.007042253521126761
         }
       ],
       "prices": [],
@@ -6175,8 +6512,8 @@
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 86,
-          "rate": 0.023255813953488372
+          "corpses": 87,
+          "rate": 0.022988505747126436
         },
         {
           "mob": "a rotting skeleton",
@@ -6193,8 +6530,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 141,
-          "rate": 0.0070921985815602835
+          "corpses": 142,
+          "rate": 0.007042253521126761
         }
       ],
       "prices": [
@@ -6229,8 +6566,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 2,
-          "corpses": 141,
-          "rate": 0.014184397163120567
+          "corpses": 142,
+          "rate": 0.014084507042253521
         }
       ],
       "prices": [
@@ -6269,8 +6606,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 86,
-          "rate": 0.011627906976744186
+          "corpses": 87,
+          "rate": 0.011494252873563218
         }
       ],
       "prices": [
@@ -6293,14 +6630,14 @@
         {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 86,
-          "rate": 0.011627906976744186
+          "corpses": 87,
+          "rate": 0.011494252873563218
         },
         {
           "mob": "a Fellstone guard",
@@ -6344,8 +6681,8 @@
         {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a Fellstone sentinel",
@@ -6658,8 +6995,8 @@
         {
           "mob": "a skeleton",
           "drops": 3,
-          "corpses": 86,
-          "rate": 0.03488372093023256
+          "corpses": 87,
+          "rate": 0.034482758620689655
         },
         {
           "mob": "a rotting skeleton",
@@ -6691,10 +7028,34 @@
       "name": "Simple Medallion",
       "droppedBy": [
         {
+          "mob": "a Bloodchain sentry",
+          "drops": 16,
+          "corpses": 29,
+          "rate": 0.5517241379310345
+        },
+        {
           "mob": "a shady farmer",
           "drops": 1,
           "corpses": 2,
           "rate": 0.5
+        },
+        {
+          "mob": "a Bloodchain soulherder",
+          "drops": 5,
+          "corpses": 10,
+          "rate": 0.5
+        },
+        {
+          "mob": "a Bloodchain mender",
+          "drops": 4,
+          "corpses": 9,
+          "rate": 0.4444444444444444
+        },
+        {
+          "mob": "a Bloodchain champion",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
         },
         {
           "mob": "Mirella Nighthorn",
@@ -6707,6 +7068,12 @@
           "drops": 9,
           "corpses": 79,
           "rate": 0.11392405063291139
+        },
+        {
+          "mob": "a Bloodchain guard",
+          "drops": 6,
+          "corpses": 59,
+          "rate": 0.1016949152542373
         },
         {
           "mob": "a Sangrel entangler",
@@ -6747,7 +7114,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Blacktidebay"
       ]
     },
     {
@@ -7080,8 +7448,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 50,
-          "corpses": 141,
-          "rate": 0.3546099290780142
+          "corpses": 142,
+          "rate": 0.352112676056338
         },
         {
           "mob": "a Fellstone ragecaller",
@@ -7132,8 +7500,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 86,
-          "rate": 0.011627906976744186
+          "corpses": 87,
+          "rate": 0.011494252873563218
         },
         {
           "mob": "a Fellstone guard",
@@ -7144,8 +7512,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 141,
-          "rate": 0.0070921985815602835
+          "corpses": 142,
+          "rate": 0.007042253521126761
         }
       ],
       "prices": [
@@ -7186,14 +7554,14 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 86,
-          "rate": 0.011627906976744186
+          "corpses": 87,
+          "rate": 0.011494252873563218
         },
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 141,
-          "rate": 0.0070921985815602835
+          "corpses": 142,
+          "rate": 0.007042253521126761
         }
       ],
       "prices": [],
@@ -7229,8 +7597,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 2,
-          "corpses": 141,
-          "rate": 0.014184397163120567
+          "corpses": 142,
+          "rate": 0.014084507042253521
         }
       ],
       "prices": [],
@@ -7272,8 +7640,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 86,
-          "rate": 0.011627906976744186
+          "corpses": 87,
+          "rate": 0.011494252873563218
         },
         {
           "mob": "a Fellstone sentinel",
@@ -7284,8 +7652,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 141,
-          "rate": 0.0070921985815602835
+          "corpses": 142,
+          "rate": 0.007042253521126761
         }
       ],
       "prices": [],
@@ -7327,8 +7695,8 @@
         {
           "mob": "a skeleton",
           "drops": 3,
-          "corpses": 86,
-          "rate": 0.03488372093023256
+          "corpses": 87,
+          "rate": 0.034482758620689655
         },
         {
           "mob": "a Fellstone sentinel",
@@ -7345,8 +7713,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 141,
-          "rate": 0.0070921985815602835
+          "corpses": 142,
+          "rate": 0.007042253521126761
         }
       ],
       "prices": [],
@@ -7374,15 +7742,15 @@
           "rate": 0.02702702702702703
         },
         {
-          "mob": "an old elven skeleton",
-          "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
-        },
-        {
           "mob": "a Fellstone guard",
           "drops": 3,
           "corpses": 117,
+          "rate": 0.02564102564102564
+        },
+        {
+          "mob": "an old elven skeleton",
+          "drops": 1,
+          "corpses": 39,
           "rate": 0.02564102564102564
         },
         {
@@ -7394,8 +7762,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 141,
-          "rate": 0.0070921985815602835
+          "corpses": 142,
+          "rate": 0.007042253521126761
         }
       ],
       "prices": [],
@@ -7419,14 +7787,14 @@
         {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 86,
-          "rate": 0.023255813953488372
+          "corpses": 87,
+          "rate": 0.022988505747126436
         },
         {
           "mob": "a rotting skeleton",
@@ -7437,8 +7805,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 141,
-          "rate": 0.0070921985815602835
+          "corpses": 142,
+          "rate": 0.007042253521126761
         }
       ],
       "prices": [],
@@ -7468,8 +7836,8 @@
         {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a rotting skeleton",
@@ -7480,8 +7848,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 86,
-          "rate": 0.011627906976744186
+          "corpses": 87,
+          "rate": 0.011494252873563218
         }
       ],
       "prices": [],
@@ -7534,8 +7902,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 86,
-          "rate": 0.011627906976744186
+          "corpses": 87,
+          "rate": 0.011494252873563218
         },
         {
           "mob": "a Fellstone sentinel",
@@ -7552,8 +7920,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 141,
-          "rate": 0.0070921985815602835
+          "corpses": 142,
+          "rate": 0.007042253521126761
         }
       ],
       "prices": [],
@@ -7595,14 +7963,14 @@
         {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 86,
-          "rate": 0.023255813953488372
+          "corpses": 87,
+          "rate": 0.022988505747126436
         },
         {
           "mob": "a Fellstone guard",
@@ -7631,8 +7999,8 @@
         {
           "mob": "a skeleton",
           "drops": 5,
-          "corpses": 86,
-          "rate": 0.05813953488372093
+          "corpses": 87,
+          "rate": 0.05747126436781609
         },
         {
           "mob": "a rotting skeleton",
@@ -7674,14 +8042,14 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 2,
-          "corpses": 141,
-          "rate": 0.014184397163120567
+          "corpses": 142,
+          "rate": 0.014084507042253521
         },
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 86,
-          "rate": 0.011627906976744186
+          "corpses": 87,
+          "rate": 0.011494252873563218
         },
         {
           "mob": "a Fellstone guard",
@@ -7717,14 +8085,14 @@
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 86,
-          "rate": 0.023255813953488372
+          "corpses": 87,
+          "rate": 0.022988505747126436
         },
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 141,
-          "rate": 0.0070921985815602835
+          "corpses": 142,
+          "rate": 0.007042253521126761
         }
       ],
       "prices": [],
@@ -7746,6 +8114,12 @@
           "rate": 0.024390243902439025
         },
         {
+          "mob": "a Bloodchain guard",
+          "drops": 1,
+          "corpses": 59,
+          "rate": 0.01694915254237288
+        },
+        {
           "mob": "a Sangrel hunter",
           "drops": 1,
           "corpses": 79,
@@ -7755,7 +8129,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Blacktidebay"
       ]
     },
     {
@@ -7878,6 +8253,12 @@
       "name": "Tattered Hide Leggings",
       "droppedBy": [
         {
+          "mob": "a Bloodchain sentry",
+          "drops": 1,
+          "corpses": 29,
+          "rate": 0.034482758620689655
+        },
+        {
           "mob": "a Sangrel entangler",
           "drops": 1,
           "corpses": 41,
@@ -7887,7 +8268,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Blacktidebay"
       ]
     },
     {
@@ -7936,12 +8318,19 @@
           "drops": 1,
           "corpses": 26,
           "rate": 0.038461538461538464
+        },
+        {
+          "mob": "a Bloodchain guard",
+          "drops": 1,
+          "corpses": 59,
+          "rate": 0.01694915254237288
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Blacktidebay"
       ]
     },
     {
@@ -7952,8 +8341,8 @@
         {
           "mob": "an old elven skeleton",
           "drops": 2,
-          "corpses": 38,
-          "rate": 0.05263157894736842
+          "corpses": 39,
+          "rate": 0.05128205128205128
         },
         {
           "mob": "a Fellstone ragecaller",
@@ -7964,8 +8353,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 2,
-          "corpses": 141,
-          "rate": 0.014184397163120567
+          "corpses": 142,
+          "rate": 0.014084507042253521
         },
         {
           "mob": "a Fellstone sentinel",
@@ -8006,8 +8395,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 2,
-          "corpses": 141,
-          "rate": 0.014184397163120567
+          "corpses": 142,
+          "rate": 0.014084507042253521
         }
       ],
       "prices": [],
@@ -8037,8 +8426,8 @@
         {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a Fellstone ragecaller",
@@ -8055,8 +8444,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 141,
-          "rate": 0.0070921985815602835
+          "corpses": 142,
+          "rate": 0.007042253521126761
         }
       ],
       "prices": [
@@ -8095,16 +8484,16 @@
           "rate": 0.02564102564102564
         },
         {
+          "mob": "a Fellstone sentry",
+          "drops": 2,
+          "corpses": 142,
+          "rate": 0.014084507042253521
+        },
+        {
           "mob": "a Fellstone sentinel",
           "drops": 1,
           "corpses": 103,
           "rate": 0.009708737864077669
-        },
-        {
-          "mob": "a Fellstone sentry",
-          "drops": 1,
-          "corpses": 141,
-          "rate": 0.0070921985815602835
         }
       ],
       "prices": [],
@@ -8128,8 +8517,8 @@
         {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a Fellstone sentinel",
@@ -8171,8 +8560,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 141,
-          "rate": 0.0070921985815602835
+          "corpses": 142,
+          "rate": 0.007042253521126761
         }
       ],
       "prices": [
@@ -8207,8 +8596,8 @@
         {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a Fellstone ragecaller",
@@ -8225,8 +8614,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 141,
-          "rate": 0.0070921985815602835
+          "corpses": 142,
+          "rate": 0.007042253521126761
         }
       ],
       "prices": [
@@ -8255,8 +8644,8 @@
         {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a Fellstone sentinel",
@@ -8273,8 +8662,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 141,
-          "rate": 0.0070921985815602835
+          "corpses": 142,
+          "rate": 0.007042253521126761
         }
       ],
       "prices": [],
@@ -8290,10 +8679,16 @@
       "name": "Tattered Rawhide Mask",
       "droppedBy": [
         {
+          "mob": "an old elven skeleton",
+          "drops": 1,
+          "corpses": 39,
+          "rate": 0.02564102564102564
+        },
+        {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 86,
-          "rate": 0.023255813953488372
+          "corpses": 87,
+          "rate": 0.022988505747126436
         },
         {
           "mob": "a Fellstone guard",
@@ -8310,8 +8705,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 141,
-          "rate": 0.0070921985815602835
+          "corpses": 142,
+          "rate": 0.007042253521126761
         }
       ],
       "prices": [
@@ -8350,8 +8745,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 3,
-          "corpses": 141,
-          "rate": 0.02127659574468085
+          "corpses": 142,
+          "rate": 0.02112676056338028
         }
       ],
       "prices": [],
@@ -8375,8 +8770,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 2,
-          "corpses": 141,
-          "rate": 0.014184397163120567
+          "corpses": 142,
+          "rate": 0.014084507042253521
         },
         {
           "mob": "a Fellstone guard",
@@ -8424,8 +8819,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 2,
-          "corpses": 141,
-          "rate": 0.014184397163120567
+          "corpses": 142,
+          "rate": 0.014084507042253521
         }
       ],
       "prices": [],
@@ -8514,6 +8909,24 @@
       ]
     },
     {
+      "id": "tattered_wool_cap",
+      "gameId": "4b314c5b8c7a867815629587",
+      "name": "Tattered Wool Cap",
+      "droppedBy": [
+        {
+          "mob": "a Bloodchain guard",
+          "drops": 1,
+          "corpses": 59,
+          "rate": 0.01694915254237288
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Blacktidebay"
+      ]
+    },
+    {
       "id": "tattered_wool_cape",
       "gameId": "3fdae3b5ecfb2b842415842a",
       "name": "Tattered Wool Cape",
@@ -8523,6 +8936,12 @@
           "drops": 2,
           "corpses": 75,
           "rate": 0.02666666666666667
+        },
+        {
+          "mob": "a Bloodchain guard",
+          "drops": 1,
+          "corpses": 59,
+          "rate": 0.01694915254237288
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -8540,7 +8959,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Blacktidebay"
       ]
     },
     {
@@ -8548,6 +8968,12 @@
       "gameId": "46d0d15c9239d5771f8adb5b",
       "name": "Tattered Wool Gloves",
       "droppedBy": [
+        {
+          "mob": "a Bloodchain guard",
+          "drops": 1,
+          "corpses": 59,
+          "rate": 0.01694915254237288
+        },
         {
           "mob": "a Sangrel striker",
           "drops": 1,
@@ -8558,7 +8984,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Blacktidebay"
       ]
     },
     {
@@ -8669,6 +9096,18 @@
       "name": "Tattered Wool Veil",
       "droppedBy": [
         {
+          "mob": "a Bloodchain mender",
+          "drops": 1,
+          "corpses": 9,
+          "rate": 0.1111111111111111
+        },
+        {
+          "mob": "a Bloodchain guard",
+          "drops": 1,
+          "corpses": 59,
+          "rate": 0.01694915254237288
+        },
+        {
           "mob": "a Sangrel hunter",
           "drops": 1,
           "corpses": 79,
@@ -8684,7 +9123,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Blacktidebay"
       ]
     },
     {
@@ -8776,6 +9216,12 @@
           "rate": 0.043478260869565216
         },
         {
+          "mob": "a Bloodchain sentry",
+          "drops": 1,
+          "corpses": 29,
+          "rate": 0.034482758620689655
+        },
+        {
           "mob": "a Sangrel arcanist",
           "drops": 1,
           "corpses": 75,
@@ -8790,8 +9236,8 @@
         {
           "mob": "a Fellstone sentry",
           "drops": 1,
-          "corpses": 141,
-          "rate": 0.0070921985815602835
+          "corpses": 142,
+          "rate": 0.007042253521126761
         }
       ],
       "prices": [],
@@ -8970,12 +9416,30 @@
       ]
     },
     {
+      "id": "weathered_medallion",
+      "gameId": "ee7012b8ea3a86520180d8f7",
+      "name": "Weathered Medallion",
+      "droppedBy": [
+        {
+          "mob": "a Bloodchain guard",
+          "drops": 12,
+          "corpses": 59,
+          "rate": 0.2033898305084746
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Blacktidebay"
+      ]
+    },
+    {
       "id": "whispering_sage",
       "gameId": null,
       "name": "Whispering Sage",
       "droppedBy": [],
       "prices": [],
-      "harvested": 41,
+      "harvested": 44,
       "zones": [
         "Evershade Weald",
         "Keepersbight"
@@ -9066,6 +9530,12 @@
           "rate": 0.4533333333333333
         },
         {
+          "mob": "a Bloodchain soulherder",
+          "drops": 4,
+          "corpses": 10,
+          "rate": 0.4
+        },
+        {
           "mob": "a Sangrel striker",
           "drops": 80,
           "corpses": 304,
@@ -9076,6 +9546,12 @@
           "drops": 6,
           "corpses": 26,
           "rate": 0.23076923076923078
+        },
+        {
+          "mob": "a Bloodchain mender",
+          "drops": 2,
+          "corpses": 9,
+          "rate": 0.2222222222222222
         },
         {
           "mob": "a Sangrel hunter",
@@ -9094,12 +9570,25 @@
           "drops": 7,
           "corpses": 41,
           "rate": 0.17073170731707318
+        },
+        {
+          "mob": "a Bloodchain guard",
+          "drops": 10,
+          "corpses": 59,
+          "rate": 0.1694915254237288
+        },
+        {
+          "mob": "a Bloodchain sentry",
+          "drops": 2,
+          "corpses": 29,
+          "rate": 0.06896551724137931
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Blacktidebay"
       ]
     },
     {
@@ -9110,8 +9599,8 @@
         {
           "mob": "a skeleton",
           "drops": 4,
-          "corpses": 86,
-          "rate": 0.046511627906976744
+          "corpses": 87,
+          "rate": 0.04597701149425287
         },
         {
           "mob": "a rotting skeleton",
@@ -9156,8 +9645,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 86,
-          "rate": 0.011627906976744186
+          "corpses": 87,
+          "rate": 0.011494252873563218
         },
         {
           "mob": "a Fellstone sentinel",
@@ -9188,6 +9677,12 @@
           "drops": 1,
           "corpses": 2,
           "rate": 0.5
+        },
+        {
+          "mob": "a Bloodchain guard",
+          "drops": 1,
+          "corpses": 59,
+          "rate": 0.01694915254237288
         }
       ],
       "prices": [
@@ -9206,6 +9701,18 @@
       "gameId": "95b4f72185263f6418580be9",
       "name": "Worn Fine Wood Buckler",
       "droppedBy": [
+        {
+          "mob": "a Bloodchain sentry",
+          "drops": 1,
+          "corpses": 29,
+          "rate": 0.034482758620689655
+        },
+        {
+          "mob": "a Bloodchain guard",
+          "drops": 1,
+          "corpses": 59,
+          "rate": 0.01694915254237288
+        },
         {
           "mob": "a Sangrel hunter",
           "drops": 1,
@@ -9228,7 +9735,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Blacktidebay"
       ]
     },
     {
@@ -9251,8 +9759,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 86,
-          "rate": 0.011627906976744186
+          "corpses": 87,
+          "rate": 0.011494252873563218
         }
       ],
       "prices": [
@@ -9297,7 +9805,7 @@
     "Chipped Diamond": 9,
     "Sylvine": 45,
     "Chipped Sapphire": 10,
-    "Whispering Sage": 41,
+    "Whispering Sage": 44,
     "Magic Frond": 5,
     "Nomad's Grace": 16,
     "Chipped Peridot": 9,
@@ -9315,7 +9823,7 @@
     "Flawed Ruby": 4,
     "Flawed Cat's Eye Agate": 7,
     "Chipped Jade": 6,
-    "Moonveil": 26,
+    "Moonveil": 31,
     "Flawed Emerald": 5,
     "Flawed Peridot": 3,
     "Flawed Jade": 2
@@ -9523,6 +10031,26 @@
       ]
     },
     {
+      "name": "Whispering Sage",
+      "pulls": 28,
+      "yields": [
+        {
+          "res": "Whispering Sage",
+          "count": 28,
+          "rate": 1
+        },
+        {
+          "res": "Magic Frond",
+          "count": 2,
+          "rate": 0.07142857142857142
+        }
+      ],
+      "zones": [
+        "Evershade Weald",
+        "Keepersbight"
+      ]
+    },
+    {
       "name": "Sylvine",
       "pulls": 26,
       "yields": [
@@ -9540,26 +10068,6 @@
       "zones": [
         "Evershade Weald",
         "Scarwood"
-      ]
-    },
-    {
-      "name": "Whispering Sage",
-      "pulls": 26,
-      "yields": [
-        {
-          "res": "Whispering Sage",
-          "count": 26,
-          "rate": 1
-        },
-        {
-          "res": "Magic Frond",
-          "count": 2,
-          "rate": 0.07692307692307693
-        }
-      ],
-      "zones": [
-        "Evershade Weald",
-        "Keepersbight"
       ]
     },
     {
@@ -9621,11 +10129,11 @@
     },
     {
       "name": "Herbs - Keepersbight",
-      "pulls": 3,
+      "pulls": 7,
       "yields": [
         {
           "res": "Moonveil",
-          "count": 3,
+          "count": 7,
           "rate": 1
         }
       ],
