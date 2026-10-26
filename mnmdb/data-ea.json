@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-25T21:20:33.862Z",
+  "generatedAt": "2026-10-26T01:00:15.556Z",
   "source": "mnm-tools",
   "ledgerFiles": 26,
-  "events": 9704,
+  "events": 9739,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 9704
+      "events": 9739
     }
   ],
   "contributorCount": 1,
@@ -64,15 +64,17 @@
     "a wasp drone": {
       "kills": 0,
       "drops": {
-        "Wasp Wing": 7,
-        "Wasp Venom Sac": 3,
-        "Royal Jelly": 2
+        "Wasp Wing": 8,
+        "Wasp Venom Sac": 4,
+        "Royal Jelly": 2,
+        "Cracked Wasp Barb": 1
       },
       "zones": {
-        "Evershade Weald": 16
+        "Evershade Weald": 16,
+        "Keepersbight": 3
       },
       "coin": 0,
-      "corpses": 8
+      "corpses": 9
     },
     "a black bat": {
       "kills": 0,
@@ -1179,6 +1181,20 @@
       },
       "coin": 0,
       "corpses": 4
+    },
+    "a shady farmer": {
+      "kills": 5,
+      "drops": {
+        "Sangrel Rite II": 1,
+        "Simple Medallion": 1,
+        "Hide Scraps": 1,
+        "Garlic": 1
+      },
+      "zones": {
+        "Keepersbight": 12
+      },
+      "coin": 257,
+      "corpses": 2
     },
     "a gloom widow": {
       "kills": 0,
@@ -3309,6 +3325,24 @@
       "zones": []
     },
     {
+      "id": "cracked_wasp_barb",
+      "gameId": "671afe295c9283c5b38953cd",
+      "name": "Cracked Wasp Barb",
+      "droppedBy": [
+        {
+          "mob": "a wasp drone",
+          "drops": 1,
+          "corpses": 9,
+          "rate": 0.1111111111111111
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
       "id": "crude_brine_grit",
       "gameId": "72cc31a5fb51ea3f2961b3f1",
       "name": "Crude Brine Grit",
@@ -4087,6 +4121,12 @@
       "name": "Garlic",
       "droppedBy": [
         {
+          "mob": "a shady farmer",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
           "mob": "a Sangrel striker",
           "drops": 14,
           "corpses": 304,
@@ -4285,6 +4325,12 @@
       "gameId": "11af0fdfc6e868be0eec690f",
       "name": "Hide Scraps",
       "droppedBy": [
+        {
+          "mob": "a shady farmer",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
         {
           "mob": "a Sangrel entangler",
           "drops": 11,
@@ -4790,7 +4836,7 @@
       "name": "Moonveil",
       "droppedBy": [],
       "prices": [],
-      "harvested": 24,
+      "harvested": 26,
       "zones": [
         "Scarwood",
         "Keepersbight"
@@ -5455,7 +5501,7 @@
           "count": 11
         }
       ],
-      "harvested": 366,
+      "harvested": 373,
       "zones": [
         "Evershade Weald",
         "Keepersbight"
@@ -5552,8 +5598,8 @@
         {
           "mob": "a wasp drone",
           "drops": 2,
-          "corpses": 8,
-          "rate": 0.25
+          "corpses": 9,
+          "rate": 0.2222222222222222
         }
       ],
       "prices": [],
@@ -6463,6 +6509,24 @@
       ]
     },
     {
+      "id": "sangrel_rite_ii",
+      "gameId": "36628c388bb20ed2975c69ea",
+      "name": "Sangrel Rite II",
+      "droppedBy": [
+        {
+          "mob": "a shady farmer",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
       "id": "sangrel_rite_iv",
       "gameId": "454c99e5f615f61d801ce491",
       "name": "Sangrel Rite IV",
@@ -6626,6 +6690,12 @@
       "gameId": "330fe196240b9ae1935ae445",
       "name": "Simple Medallion",
       "droppedBy": [
+        {
+          "mob": "a shady farmer",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
         {
           "mob": "Mirella Nighthorn",
           "drops": 1,
@@ -8828,9 +8898,9 @@
       "droppedBy": [
         {
           "mob": "a wasp drone",
-          "drops": 3,
-          "corpses": 8,
-          "rate": 0.375
+          "drops": 4,
+          "corpses": 9,
+          "rate": 0.4444444444444444
         },
         {
           "mob": "a wasp worker",
@@ -8847,7 +8917,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Evershade Weald"
+        "Evershade Weald",
+        "Keepersbight"
       ]
     },
     {
@@ -8857,9 +8928,9 @@
       "droppedBy": [
         {
           "mob": "a wasp drone",
-          "drops": 7,
-          "corpses": 8,
-          "rate": 0.875
+          "drops": 8,
+          "corpses": 9,
+          "rate": 0.8888888888888888
         },
         {
           "mob": "a wasp worker",
@@ -8876,7 +8947,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Evershade Weald"
+        "Evershade Weald",
+        "Keepersbight"
       ]
     },
     {
@@ -8976,7 +9048,7 @@
       "name": "Wood",
       "droppedBy": [],
       "prices": [],
-      "harvested": 297,
+      "harvested": 303,
       "zones": [
         "Evershade Weald",
         "Keepersbight"
@@ -9219,8 +9291,8 @@
     "Clouded Crystallized Magic": 17,
     "Chipped Cat's Eye Agate": 8,
     "Ghost Poppy": 23,
-    "Wood": 297,
-    "Resin": 366,
+    "Wood": 303,
+    "Resin": 373,
     "Lionleaf": 51,
     "Chipped Diamond": 9,
     "Sylvine": 45,
@@ -9243,7 +9315,7 @@
     "Flawed Ruby": 4,
     "Flawed Cat's Eye Agate": 7,
     "Chipped Jade": 6,
-    "Moonveil": 24,
+    "Moonveil": 26,
     "Flawed Emerald": 5,
     "Flawed Peridot": 3,
     "Flawed Jade": 2
@@ -9384,17 +9456,17 @@
     },
     {
       "name": "Wood & Resin",
-      "pulls": 297,
+      "pulls": 303,
       "yields": [
         {
           "res": "Wood",
-          "count": 297,
+          "count": 303,
           "rate": 1
         },
         {
           "res": "Resin",
-          "count": 254,
-          "rate": 0.8552188552188552
+          "count": 259,
+          "rate": 0.8547854785478548
         }
       ],
       "zones": [
@@ -9545,6 +9617,20 @@
       "zones": [
         "Evershade Weald",
         "Scarwood"
+      ]
+    },
+    {
+      "name": "Herbs - Keepersbight",
+      "pulls": 3,
+      "yields": [
+        {
+          "res": "Moonveil",
+          "count": 3,
+          "rate": 1
+        }
+      ],
+      "zones": [
+        "Keepersbight"
       ]
     }
   ]
