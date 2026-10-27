@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-27T07:00:15.636Z",
+  "generatedAt": "2026-10-27T19:00:15.695Z",
   "source": "mnm-tools",
-  "ledgerFiles": 28,
-  "events": 10474,
+  "ledgerFiles": 29,
+  "events": 10519,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 10474
+      "events": 10519
     }
   ],
   "contributorCount": 1,
@@ -4513,6 +4513,17 @@
       ]
     },
     {
+      "id": "gold_ore",
+      "gameId": null,
+      "name": "Gold Ore",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 6,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
       "id": "green_drakeling_hide",
       "gameId": "1bbc22ceebc71a84c19abef1",
       "name": "Green Drakeling Hide",
@@ -4765,7 +4776,7 @@
       "name": "Imperfect Sapphire",
       "droppedBy": [],
       "prices": [],
-      "harvested": 1,
+      "harvested": 2,
       "zones": [
         "Fallenpass"
       ]
@@ -4778,10 +4789,10 @@
       "prices": [
         {
           "copper": 1,
-          "count": 8
+          "count": 9
         }
       ],
-      "harvested": 146,
+      "harvested": 176,
       "zones": [
         "Fallenpass"
       ]
@@ -7145,7 +7156,7 @@
       "name": "Shining Crystallized Magic",
       "droppedBy": [],
       "prices": [],
-      "harvested": 2,
+      "harvested": 3,
       "zones": [
         "Fallenpass"
       ]
@@ -9585,10 +9596,10 @@
       "prices": [
         {
           "copper": 1,
-          "count": 4
+          "count": 6
         }
       ],
-      "harvested": 28,
+      "harvested": 31,
       "zones": [
         "Fallenpass"
       ]
@@ -9996,15 +10007,16 @@
     "Flawed Emerald": 5,
     "Flawed Peridot": 3,
     "Flawed Jade": 2,
-    "Iron Ore": 146,
-    "Weighty Stone": 28,
+    "Iron Ore": 176,
+    "Weighty Stone": 31,
     "Ironroot": 6,
-    "Imperfect Sapphire": 1,
+    "Imperfect Sapphire": 2,
     "Imperfect Peridot": 1,
     "Imperfect Emerald": 1,
     "Imperfect Jade": 1,
-    "Shining Crystallized Magic": 2,
-    "Imperfect Cat's Eye Agate": 1
+    "Shining Crystallized Magic": 3,
+    "Imperfect Cat's Eye Agate": 1,
+    "Gold Ore": 6
   },
   "harvestNodes": [
     {
@@ -10162,47 +10174,47 @@
     },
     {
       "name": "Iron Ore",
-      "pulls": 145,
+      "pulls": 175,
       "yields": [
         {
           "res": "Iron Ore",
-          "count": 145,
+          "count": 175,
           "rate": 1
         },
         {
           "res": "Weighty Stone",
-          "count": 28,
-          "rate": 0.19310344827586207
+          "count": 31,
+          "rate": 0.17714285714285713
         },
         {
           "res": "Shining Crystallized Magic",
-          "count": 2,
-          "rate": 0.013793103448275862
+          "count": 3,
+          "rate": 0.017142857142857144
         },
         {
           "res": "Imperfect Sapphire",
-          "count": 1,
-          "rate": 0.006896551724137931
+          "count": 2,
+          "rate": 0.011428571428571429
         },
         {
           "res": "Imperfect Peridot",
           "count": 1,
-          "rate": 0.006896551724137931
+          "rate": 0.005714285714285714
         },
         {
           "res": "Imperfect Emerald",
           "count": 1,
-          "rate": 0.006896551724137931
+          "rate": 0.005714285714285714
         },
         {
           "res": "Imperfect Jade",
           "count": 1,
-          "rate": 0.006896551724137931
+          "rate": 0.005714285714285714
         },
         {
           "res": "Imperfect Cat's Eye Agate",
           "count": 1,
-          "rate": 0.006896551724137931
+          "rate": 0.005714285714285714
         }
       ],
       "zones": [
@@ -10372,6 +10384,20 @@
       ],
       "zones": [
         "Keepersbight"
+      ]
+    },
+    {
+      "name": "Gold Ore",
+      "pulls": 6,
+      "yields": [
+        {
+          "res": "Gold Ore",
+          "count": 6,
+          "rate": 1
+        }
+      ],
+      "zones": [
+        "Fallenpass"
       ]
     },
     {
