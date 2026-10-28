@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-28T13:00:15.918Z",
+  "generatedAt": "2026-10-28T19:00:15.815Z",
   "source": "mnm-tools",
   "ledgerFiles": 30,
-  "events": 11187,
+  "events": 11198,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 11187
+      "events": 11198
     }
   ],
   "contributorCount": 1,
@@ -3963,7 +3963,12 @@
           "rate": 1
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 636,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Evershade Weald"
@@ -4739,7 +4744,7 @@
       "prices": [
         {
           "copper": 136,
-          "count": 1
+          "count": 2
         }
       ],
       "harvested": 4,
@@ -4752,7 +4757,12 @@
       "gameId": null,
       "name": "Imperfect Diamond",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 136,
+          "count": 1
+        }
+      ],
       "harvested": 4,
       "zones": [
         "Fallenpass"
@@ -4766,7 +4776,7 @@
       "prices": [
         {
           "copper": 136,
-          "count": 1
+          "count": 2
         }
       ],
       "harvested": 6,
@@ -4779,7 +4789,12 @@
       "gameId": null,
       "name": "Imperfect Jade",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 136,
+          "count": 1
+        }
+      ],
       "harvested": 4,
       "zones": [
         "Fallenpass"
@@ -4793,7 +4808,7 @@
       "prices": [
         {
           "copper": 136,
-          "count": 1
+          "count": 2
         }
       ],
       "harvested": 8,
@@ -4806,7 +4821,12 @@
       "gameId": null,
       "name": "Imperfect Ruby",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 136,
+          "count": 1
+        }
+      ],
       "harvested": 3,
       "zones": [
         "Fallenpass"
