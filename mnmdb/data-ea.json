@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-28T07:00:06.261Z",
+  "generatedAt": "2026-10-28T13:00:15.918Z",
   "source": "mnm-tools",
-  "ledgerFiles": 29,
-  "events": 11174,
+  "ledgerFiles": 30,
+  "events": 11187,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 11174
+      "events": 11187
     }
   ],
   "contributorCount": 1,
@@ -4856,9 +4856,10 @@
       "name": "Jagged Stone",
       "droppedBy": [],
       "prices": [],
-      "harvested": 134,
+      "harvested": 135,
       "zones": [
-        "Scarwood"
+        "Scarwood",
+        "Fallenpass"
       ]
     },
     {
@@ -5386,10 +5387,11 @@
       "name": "Nomad's Grace",
       "droppedBy": [],
       "prices": [],
-      "harvested": 16,
+      "harvested": 18,
       "zones": [
         "Evershade Weald",
-        "Scarwood"
+        "Scarwood",
+        "Shaded Dunes"
       ]
     },
     {
@@ -9325,9 +9327,10 @@
       "name": "Tin Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 586,
+      "harvested": 593,
       "zones": [
-        "Scarwood"
+        "Scarwood",
+        "Fallenpass"
       ]
     },
     {
@@ -10029,17 +10032,17 @@
     "Chipped Sapphire": 10,
     "Whispering Sage": 44,
     "Magic Frond": 5,
-    "Nomad's Grace": 16,
+    "Nomad's Grace": 18,
     "Chipped Peridot": 9,
     "Selstie Kelp": 2,
     "Alunite Ore": 9,
     "Chipped Emerald": 8,
     "Chipped Ruby": 10,
     "Limestone": 98,
-    "Tin Ore": 586,
+    "Tin Ore": 593,
     "Flawed Diamond": 4,
     "Glinting Crystallized Magic": 7,
-    "Jagged Stone": 134,
+    "Jagged Stone": 135,
     "Silver Ore": 73,
     "Flawed Sapphire": 4,
     "Flawed Ruby": 4,
@@ -10129,66 +10132,67 @@
     },
     {
       "name": "Tin Ore",
-      "pulls": 586,
+      "pulls": 593,
       "yields": [
         {
           "res": "Tin Ore",
-          "count": 586,
+          "count": 593,
           "rate": 1
         },
         {
           "res": "Jagged Stone",
-          "count": 123,
-          "rate": 0.2098976109215017
+          "count": 124,
+          "rate": 0.209106239460371
         },
         {
           "res": "Limestone",
           "count": 33,
-          "rate": 0.05631399317406143
+          "rate": 0.05564924114671164
         },
         {
           "res": "Glinting Crystallized Magic",
           "count": 6,
-          "rate": 0.010238907849829351
+          "rate": 0.01011804384485666
         },
         {
           "res": "Flawed Cat's Eye Agate",
           "count": 6,
-          "rate": 0.010238907849829351
+          "rate": 0.01011804384485666
         },
         {
           "res": "Flawed Emerald",
           "count": 5,
-          "rate": 0.008532423208191127
+          "rate": 0.008431703204047217
         },
         {
           "res": "Flawed Diamond",
           "count": 4,
-          "rate": 0.006825938566552901
+          "rate": 0.006745362563237774
         },
         {
           "res": "Flawed Ruby",
           "count": 4,
-          "rate": 0.006825938566552901
+          "rate": 0.006745362563237774
         },
         {
           "res": "Flawed Sapphire",
           "count": 3,
-          "rate": 0.005119453924914676
+          "rate": 0.00505902192242833
         },
         {
           "res": "Flawed Peridot",
           "count": 3,
-          "rate": 0.005119453924914676
+          "rate": 0.00505902192242833
         },
         {
           "res": "Flawed Jade",
           "count": 2,
-          "rate": 0.0034129692832764505
+          "rate": 0.003372681281618887
         }
       ],
       "zones": [
-        "Scarwood"
+        "Scarwood",
+        "Fallenpass"
       ]
     },
     {
@@ -10436,6 +10440,22 @@
       ]
     },
     {
+      "name": "Nomad's Grace",
+      "pulls": 11,
+      "yields": [
+        {
+          "res": "Nomad's Grace",
+          "count": 11,
+          "rate": 1
+        }
+      ],
+      "zones": [
+        "Evershade Weald",
+        "Scarwood",
+        "Shaded Dunes"
+      ]
+    },
+    {
       "name": "Silver Ore & Jagged Stone",
       "pulls": 11,
       "yields": [
@@ -10456,21 +10476,6 @@
         }
       ],
       "zones": [
-        "Scarwood"
-      ]
-    },
-    {
-      "name": "Nomad's Grace",
-      "pulls": 10,
-      "yields": [
-        {
-          "res": "Nomad's Grace",
-          "count": 10,
-          "rate": 1
-        }
-      ],
-      "zones": [
-        "Evershade Weald",
         "Scarwood"
       ]
     },
