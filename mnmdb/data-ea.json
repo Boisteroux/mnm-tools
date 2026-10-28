@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-28T01:00:15.684Z",
+  "generatedAt": "2026-10-28T07:00:06.261Z",
   "source": "mnm-tools",
   "ledgerFiles": 29,
-  "events": 11049,
+  "events": 11174,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 11049
+      "events": 11174
     }
   ],
   "contributorCount": 1,
@@ -4517,8 +4517,13 @@
       "gameId": null,
       "name": "Gold Ore",
       "droppedBy": [],
-      "prices": [],
-      "harvested": 36,
+      "prices": [
+        {
+          "copper": 5,
+          "count": 1
+        }
+      ],
+      "harvested": 59,
       "zones": [
         "Fallenpass"
       ]
@@ -4764,7 +4769,7 @@
           "count": 1
         }
       ],
-      "harvested": 5,
+      "harvested": 6,
       "zones": [
         "Fallenpass"
       ]
@@ -4775,7 +4780,7 @@
       "name": "Imperfect Jade",
       "droppedBy": [],
       "prices": [],
-      "harvested": 3,
+      "harvested": 4,
       "zones": [
         "Fallenpass"
       ]
@@ -4791,7 +4796,7 @@
           "count": 1
         }
       ],
-      "harvested": 7,
+      "harvested": 8,
       "zones": [
         "Fallenpass"
       ]
@@ -4802,7 +4807,7 @@
       "name": "Imperfect Ruby",
       "droppedBy": [],
       "prices": [],
-      "harvested": 2,
+      "harvested": 3,
       "zones": [
         "Fallenpass"
       ]
@@ -4813,7 +4818,7 @@
       "name": "Imperfect Sapphire",
       "droppedBy": [],
       "prices": [],
-      "harvested": 6,
+      "harvested": 7,
       "zones": [
         "Fallenpass"
       ]
@@ -4829,7 +4834,7 @@
           "count": 23
         }
       ],
-      "harvested": 500,
+      "harvested": 564,
       "zones": [
         "Fallenpass"
       ]
@@ -4840,7 +4845,7 @@
       "name": "Ironroot",
       "droppedBy": [],
       "prices": [],
-      "harvested": 10,
+      "harvested": 14,
       "zones": [
         "Fallenpass"
       ]
@@ -7193,7 +7198,7 @@
       "name": "Shining Crystallized Magic",
       "droppedBy": [],
       "prices": [],
-      "harvested": 7,
+      "harvested": 8,
       "zones": [
         "Fallenpass"
       ]
@@ -9636,7 +9641,7 @@
           "count": 15
         }
       ],
-      "harvested": 114,
+      "harvested": 128,
       "zones": [
         "Fallenpass"
       ]
@@ -10044,17 +10049,17 @@
     "Flawed Emerald": 5,
     "Flawed Peridot": 3,
     "Flawed Jade": 2,
-    "Iron Ore": 500,
-    "Weighty Stone": 114,
-    "Ironroot": 10,
-    "Imperfect Sapphire": 6,
-    "Imperfect Peridot": 7,
-    "Imperfect Emerald": 5,
-    "Imperfect Jade": 3,
-    "Shining Crystallized Magic": 7,
+    "Iron Ore": 564,
+    "Weighty Stone": 128,
+    "Ironroot": 14,
+    "Imperfect Sapphire": 7,
+    "Imperfect Peridot": 8,
+    "Imperfect Emerald": 6,
+    "Imperfect Jade": 4,
+    "Shining Crystallized Magic": 8,
     "Imperfect Cat's Eye Agate": 4,
-    "Gold Ore": 36,
-    "Imperfect Ruby": 2,
+    "Gold Ore": 59,
+    "Imperfect Ruby": 3,
     "Imperfect Diamond": 4
   },
   "harvestNodes": [
@@ -10124,67 +10129,62 @@
     },
     {
       "name": "Tin Ore",
-      "pulls": 597,
+      "pulls": 586,
       "yields": [
         {
           "res": "Tin Ore",
           "count": 586,
-          "rate": 0.981574539363484
+          "rate": 1
         },
         {
           "res": "Jagged Stone",
-          "count": 134,
-          "rate": 0.22445561139028475
+          "count": 123,
+          "rate": 0.2098976109215017
         },
         {
           "res": "Limestone",
-          "count": 34,
-          "rate": 0.05695142378559464
-        },
-        {
-          "res": "Silver Ore",
-          "count": 11,
-          "rate": 0.018425460636515914
+          "count": 33,
+          "rate": 0.05631399317406143
         },
         {
           "res": "Glinting Crystallized Magic",
           "count": 6,
-          "rate": 0.010050251256281407
+          "rate": 0.010238907849829351
         },
         {
           "res": "Flawed Cat's Eye Agate",
           "count": 6,
-          "rate": 0.010050251256281407
+          "rate": 0.010238907849829351
         },
         {
           "res": "Flawed Emerald",
           "count": 5,
-          "rate": 0.008375209380234505
+          "rate": 0.008532423208191127
         },
         {
           "res": "Flawed Diamond",
           "count": 4,
-          "rate": 0.006700167504187605
+          "rate": 0.006825938566552901
         },
         {
           "res": "Flawed Ruby",
           "count": 4,
-          "rate": 0.006700167504187605
+          "rate": 0.006825938566552901
         },
         {
           "res": "Flawed Sapphire",
           "count": 3,
-          "rate": 0.005025125628140704
+          "rate": 0.005119453924914676
         },
         {
           "res": "Flawed Peridot",
           "count": 3,
-          "rate": 0.005025125628140704
+          "rate": 0.005119453924914676
         },
         {
           "res": "Flawed Jade",
           "count": 2,
-          "rate": 0.0033500837520938024
+          "rate": 0.0034129692832764505
         }
       ],
       "zones": [
@@ -10193,57 +10193,57 @@
     },
     {
       "name": "Iron Ore",
-      "pulls": 499,
+      "pulls": 563,
       "yields": [
         {
           "res": "Iron Ore",
-          "count": 499,
+          "count": 563,
           "rate": 1
         },
         {
           "res": "Weighty Stone",
-          "count": 110,
-          "rate": 0.22044088176352705
+          "count": 120,
+          "rate": 0.21314387211367672
         },
         {
           "res": "Imperfect Sapphire",
-          "count": 6,
-          "rate": 0.012024048096192385
+          "count": 7,
+          "rate": 0.012433392539964476
         },
         {
           "res": "Imperfect Peridot",
-          "count": 6,
-          "rate": 0.012024048096192385
+          "count": 7,
+          "rate": 0.012433392539964476
         },
         {
           "res": "Shining Crystallized Magic",
-          "count": 6,
-          "rate": 0.012024048096192385
+          "count": 7,
+          "rate": 0.012433392539964476
         },
         {
           "res": "Imperfect Emerald",
-          "count": 5,
-          "rate": 0.01002004008016032
+          "count": 6,
+          "rate": 0.010657193605683837
+        },
+        {
+          "res": "Imperfect Jade",
+          "count": 4,
+          "rate": 0.007104795737122558
         },
         {
           "res": "Imperfect Cat's Eye Agate",
           "count": 4,
-          "rate": 0.008016032064128256
+          "rate": 0.007104795737122558
         },
         {
-          "res": "Imperfect Jade",
+          "res": "Imperfect Ruby",
           "count": 3,
-          "rate": 0.006012024048096192
+          "rate": 0.0053285968028419185
         },
         {
           "res": "Imperfect Diamond",
           "count": 3,
-          "rate": 0.006012024048096192
-        },
-        {
-          "res": "Imperfect Ruby",
-          "count": 2,
-          "rate": 0.004008016032064128
+          "rate": 0.0053285968028419185
         }
       ],
       "zones": [
@@ -10305,6 +10305,35 @@
       ]
     },
     {
+      "name": "Gold Ore",
+      "pulls": 51,
+      "yields": [
+        {
+          "res": "Gold Ore",
+          "count": 51,
+          "rate": 1
+        },
+        {
+          "res": "Imperfect Diamond",
+          "count": 1,
+          "rate": 0.0196078431372549
+        },
+        {
+          "res": "Shining Crystallized Magic",
+          "count": 1,
+          "rate": 0.0196078431372549
+        },
+        {
+          "res": "Imperfect Peridot",
+          "count": 1,
+          "rate": 0.0196078431372549
+        }
+      ],
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
       "name": "Lionleaf",
       "pulls": 32,
       "yields": [
@@ -10316,35 +10345,6 @@
       ],
       "zones": [
         "Evershade Weald"
-      ]
-    },
-    {
-      "name": "Gold Ore",
-      "pulls": 32,
-      "yields": [
-        {
-          "res": "Gold Ore",
-          "count": 32,
-          "rate": 1
-        },
-        {
-          "res": "Imperfect Diamond",
-          "count": 1,
-          "rate": 0.03125
-        },
-        {
-          "res": "Shining Crystallized Magic",
-          "count": 1,
-          "rate": 0.03125
-        },
-        {
-          "res": "Imperfect Peridot",
-          "count": 1,
-          "rate": 0.03125
-        }
-      ],
-      "zones": [
-        "Fallenpass"
       ]
     },
     {
@@ -10436,6 +10436,30 @@
       ]
     },
     {
+      "name": "Silver Ore & Jagged Stone",
+      "pulls": 11,
+      "yields": [
+        {
+          "res": "Silver Ore",
+          "count": 11,
+          "rate": 1
+        },
+        {
+          "res": "Jagged Stone",
+          "count": 11,
+          "rate": 1
+        },
+        {
+          "res": "Limestone",
+          "count": 1,
+          "rate": 0.09090909090909091
+        }
+      ],
+      "zones": [
+        "Scarwood"
+      ]
+    },
+    {
       "name": "Nomad's Grace",
       "pulls": 10,
       "yields": [
@@ -10451,6 +10475,39 @@
       ]
     },
     {
+      "name": "Ironroot",
+      "pulls": 9,
+      "yields": [
+        {
+          "res": "Ironroot",
+          "count": 9,
+          "rate": 1
+        }
+      ],
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "name": "Gold Ore & Weighty Stone",
+      "pulls": 8,
+      "yields": [
+        {
+          "res": "Gold Ore",
+          "count": 8,
+          "rate": 1
+        },
+        {
+          "res": "Weighty Stone",
+          "count": 8,
+          "rate": 1
+        }
+      ],
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
       "name": "Herbs - Keepersbight",
       "pulls": 7,
       "yields": [
@@ -10462,39 +10519,6 @@
       ],
       "zones": [
         "Keepersbight"
-      ]
-    },
-    {
-      "name": "Ironroot",
-      "pulls": 6,
-      "yields": [
-        {
-          "res": "Ironroot",
-          "count": 6,
-          "rate": 1
-        }
-      ],
-      "zones": [
-        "Fallenpass"
-      ]
-    },
-    {
-      "name": "Gold Ore & Weighty Stone",
-      "pulls": 4,
-      "yields": [
-        {
-          "res": "Gold Ore",
-          "count": 4,
-          "rate": 1
-        },
-        {
-          "res": "Weighty Stone",
-          "count": 4,
-          "rate": 1
-        }
-      ],
-      "zones": [
-        "Fallenpass"
       ]
     }
   ]
