@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-29T19:00:16.148Z",
+  "generatedAt": "2026-10-30T01:00:09.647Z",
   "source": "mnm-tools",
   "ledgerFiles": 32,
-  "events": 11496,
+  "events": 11559,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 11496
+      "events": 11559
     }
   ],
   "contributorCount": 1,
@@ -1057,18 +1057,19 @@
       "corpses": 41
     },
     "a forest drakeling": {
-      "kills": 19,
+      "kills": 21,
       "drops": {
         "Flawed Sapphire": 1,
         "Pristine Drake Fang": 2,
         "Drake Fang": 3,
-        "Drake Claw": 4
+        "Drake Claw": 4,
+        "Drake Scale": 1
       },
       "zones": {
-        "Keepersbight": 31
+        "Keepersbight": 34
       },
-      "coin": 1183,
-      "corpses": 9
+      "coin": 1340,
+      "corpses": 10
     },
     "a Sangrel arcanist": {
       "kills": 67,
@@ -1162,26 +1163,28 @@
       "drops": {
         "Cooked Bear Meat": 1,
         "Scuffed Bear Paw": 2,
-        "Medium-Quality Bear Pelt": 1
+        "Medium-Quality Bear Pelt": 1,
+        "Raw Bear Meat": 1
       },
       "zones": {
-        "Keepersbight": 5
+        "Keepersbight": 6
       },
       "coin": 0,
-      "corpses": 4
+      "corpses": 5
     },
     "a forest stalker": {
       "kills": 0,
       "drops": {
-        "Scuffed Canine Ear": 3,
-        "Medium-Quality Wolf Pelt": 1,
-        "Raw Wolf Meat": 1
+        "Scuffed Canine Ear": 7,
+        "Medium-Quality Wolf Pelt": 3,
+        "Raw Wolf Meat": 3,
+        "Savage Wolf Claw": 1
       },
       "zones": {
-        "Keepersbight": 5
+        "Keepersbight": 17
       },
       "coin": 0,
-      "corpses": 4
+      "corpses": 8
     },
     "a shady farmer": {
       "kills": 5,
@@ -1279,6 +1282,32 @@
       "coin": 0,
       "corpses": 1
     },
+    "a cave bear": {
+      "kills": 0,
+      "drops": {
+        "Scuffed Bear Paw": 2,
+        "Torn Leather Bracer": 1,
+        "Medium-Quality Bear Pelt": 1,
+        "Cooked Bear Meat": 1
+      },
+      "zones": {
+        "Keepersbight": 8
+      },
+      "coin": 0,
+      "corpses": 3
+    },
+    "a forest drake": {
+      "kills": 4,
+      "drops": {
+        "Drake Claw": 1,
+        "Drake Scale": 1
+      },
+      "zones": {
+        "Keepersbight": 6
+      },
+      "coin": 665,
+      "corpses": 2
+    },
     "a gloom widow": {
       "kills": 0,
       "drops": {
@@ -1341,18 +1370,6 @@
       },
       "coin": 23,
       "corpses": 1
-    },
-    "a cave bear": {
-      "kills": 0,
-      "drops": {
-        "Scuffed Bear Paw": 1,
-        "Torn Leather Bracer": 1
-      },
-      "zones": {
-        "Keepersbight": 2
-      },
-      "coin": 0,
-      "corpses": 2
     },
     "a canyon stalker": {
       "kills": 0,
@@ -2425,10 +2442,16 @@
       "name": "Cooked Bear Meat",
       "droppedBy": [
         {
+          "mob": "a cave bear",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        },
+        {
           "mob": "a grizzly bear",
           "drops": 1,
-          "corpses": 4,
-          "rate": 0.25
+          "corpses": 5,
+          "rate": 0.2
         }
       ],
       "prices": [],
@@ -3867,10 +3890,16 @@
       "name": "Drake Claw",
       "droppedBy": [
         {
+          "mob": "a forest drake",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
           "mob": "a forest drakeling",
           "drops": 4,
-          "corpses": 9,
-          "rate": 0.4444444444444444
+          "corpses": 10,
+          "rate": 0.4
         },
         {
           "mob": "a green drakeling",
@@ -3903,8 +3932,8 @@
         {
           "mob": "a forest drakeling",
           "drops": 3,
-          "corpses": 9,
-          "rate": 0.3333333333333333
+          "corpses": 10,
+          "rate": 0.3
         },
         {
           "mob": "a green drakeling",
@@ -3922,6 +3951,30 @@
       "harvested": 0,
       "zones": [
         "Evershade Weald",
+        "Keepersbight"
+      ]
+    },
+    {
+      "id": "drake_scale",
+      "gameId": "6ee2d0b631f489c15eb6380a",
+      "name": "Drake Scale",
+      "droppedBy": [
+        {
+          "mob": "a forest drake",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
+          "mob": "a forest drakeling",
+          "drops": 1,
+          "corpses": 10,
+          "rate": 0.1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
         "Keepersbight"
       ]
     },
@@ -4411,8 +4464,8 @@
         {
           "mob": "a forest drakeling",
           "drops": 1,
-          "corpses": 9,
-          "rate": 0.1111111111111111
+          "corpses": 10,
+          "rate": 0.1
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -5340,6 +5393,12 @@
       "name": "Medium-Quality Bear Pelt",
       "droppedBy": [
         {
+          "mob": "a cave bear",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        },
+        {
           "mob": "an elder black bear",
           "drops": 3,
           "corpses": 9,
@@ -5348,8 +5407,8 @@
         {
           "mob": "a grizzly bear",
           "drops": 1,
-          "corpses": 4,
-          "rate": 0.25
+          "corpses": 5,
+          "rate": 0.2
         }
       ],
       "prices": [],
@@ -5365,9 +5424,9 @@
       "droppedBy": [
         {
           "mob": "a forest stalker",
-          "drops": 1,
-          "corpses": 4,
-          "rate": 0.25
+          "drops": 3,
+          "corpses": 8,
+          "rate": 0.375
         }
       ],
       "prices": [],
@@ -5405,7 +5464,7 @@
       "name": "Moonveil",
       "droppedBy": [],
       "prices": [],
-      "harvested": 33,
+      "harvested": 36,
       "zones": [
         "Scarwood",
         "Keepersbight"
@@ -5598,8 +5657,8 @@
         {
           "mob": "a forest drakeling",
           "drops": 2,
-          "corpses": 9,
-          "rate": 0.2222222222222222
+          "corpses": 10,
+          "rate": 0.2
         },
         {
           "mob": "a green drakeling",
@@ -5682,6 +5741,12 @@
           "drops": 2,
           "corpses": 9,
           "rate": 0.2222222222222222
+        },
+        {
+          "mob": "a grizzly bear",
+          "drops": 1,
+          "corpses": 5,
+          "rate": 0.2
         }
       ],
       "prices": [
@@ -5900,16 +5965,16 @@
           "rate": 0.5
         },
         {
+          "mob": "a forest stalker",
+          "drops": 3,
+          "corpses": 8,
+          "rate": 0.375
+        },
+        {
           "mob": "a rabid wolf",
           "drops": 3,
           "corpses": 9,
           "rate": 0.3333333333333333
-        },
-        {
-          "mob": "a forest stalker",
-          "drops": 1,
-          "corpses": 4,
-          "rate": 0.25
         },
         {
           "mob": "a black wolf pup",
@@ -6113,7 +6178,7 @@
           "count": 11
         }
       ],
-      "harvested": 380,
+      "harvested": 392,
       "zones": [
         "Evershade Weald",
         "Keepersbight"
@@ -7197,21 +7262,39 @@
       ]
     },
     {
+      "id": "savage_wolf_claw",
+      "gameId": "18e0d2d8e6361959b9eb6deb",
+      "name": "Savage Wolf Claw",
+      "droppedBy": [
+        {
+          "mob": "a forest stalker",
+          "drops": 1,
+          "corpses": 8,
+          "rate": 0.125
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
       "id": "scuffed_bear_paw",
       "gameId": "814661d84390ebd2057db3ce",
       "name": "Scuffed Bear Paw",
       "droppedBy": [
         {
-          "mob": "a grizzly bear",
+          "mob": "a cave bear",
           "drops": 2,
-          "corpses": 4,
-          "rate": 0.5
+          "corpses": 3,
+          "rate": 0.6666666666666666
         },
         {
-          "mob": "a cave bear",
-          "drops": 1,
-          "corpses": 2,
-          "rate": 0.5
+          "mob": "a grizzly bear",
+          "drops": 2,
+          "corpses": 5,
+          "rate": 0.4
         }
       ],
       "prices": [
@@ -7238,9 +7321,9 @@
         },
         {
           "mob": "a forest stalker",
-          "drops": 3,
-          "corpses": 4,
-          "rate": 0.75
+          "drops": 7,
+          "corpses": 8,
+          "rate": 0.875
         }
       ],
       "prices": [],
@@ -9612,8 +9695,8 @@
         {
           "mob": "a cave bear",
           "drops": 1,
-          "corpses": 2,
-          "rate": 0.5
+          "corpses": 3,
+          "rate": 0.3333333333333333
         }
       ],
       "prices": [],
@@ -9799,7 +9882,7 @@
       "name": "Whispering Sage",
       "droppedBy": [],
       "prices": [],
-      "harvested": 68,
+      "harvested": 69,
       "zones": [
         "Evershade Weald",
         "Keepersbight",
@@ -9873,7 +9956,7 @@
       "name": "Wood",
       "droppedBy": [],
       "prices": [],
-      "harvested": 312,
+      "harvested": 319,
       "zones": [
         "Evershade Weald",
         "Keepersbight"
@@ -10169,13 +10252,13 @@
     "Clouded Crystallized Magic": 18,
     "Chipped Cat's Eye Agate": 8,
     "Ghost Poppy": 23,
-    "Wood": 312,
-    "Resin": 380,
+    "Wood": 319,
+    "Resin": 392,
     "Lionleaf": 52,
     "Chipped Diamond": 9,
     "Sylvine": 45,
     "Chipped Sapphire": 10,
-    "Whispering Sage": 68,
+    "Whispering Sage": 69,
     "Magic Frond": 6,
     "Nomad's Grace": 19,
     "Chipped Peridot": 9,
@@ -10193,7 +10276,7 @@
     "Flawed Ruby": 4,
     "Flawed Cat's Eye Agate": 7,
     "Chipped Jade": 6,
-    "Moonveil": 33,
+    "Moonveil": 36,
     "Flawed Emerald": 5,
     "Flawed Peridot": 3,
     "Flawed Jade": 2,
@@ -10409,17 +10492,17 @@
     },
     {
       "name": "Wood & Resin",
-      "pulls": 312,
+      "pulls": 319,
       "yields": [
         {
           "res": "Wood",
-          "count": 312,
+          "count": 319,
           "rate": 1
         },
         {
           "res": "Resin",
-          "count": 265,
-          "rate": 0.8493589743589743
+          "count": 272,
+          "rate": 0.8526645768025078
         }
       ],
       "zones": [
@@ -10532,17 +10615,17 @@
     },
     {
       "name": "Whispering Sage",
-      "pulls": 44,
+      "pulls": 45,
       "yields": [
         {
           "res": "Whispering Sage",
-          "count": 44,
+          "count": 45,
           "rate": 1
         },
         {
           "res": "Magic Frond",
           "count": 3,
-          "rate": 0.06818181818181818
+          "rate": 0.06666666666666667
         }
       ],
       "zones": [
@@ -10692,6 +10775,20 @@
       ]
     },
     {
+      "name": "Herbs - Keepersbight",
+      "pulls": 10,
+      "yields": [
+        {
+          "res": "Moonveil",
+          "count": 10,
+          "rate": 1
+        }
+      ],
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
       "name": "Gold Ore & Weighty Stone",
       "pulls": 8,
       "yields": [
@@ -10727,20 +10824,6 @@
       ],
       "zones": [
         "Sungreetstrand"
-      ]
-    },
-    {
-      "name": "Herbs - Keepersbight",
-      "pulls": 8,
-      "yields": [
-        {
-          "res": "Moonveil",
-          "count": 8,
-          "rate": 1
-        }
-      ],
-      "zones": [
-        "Keepersbight"
       ]
     }
   ]
