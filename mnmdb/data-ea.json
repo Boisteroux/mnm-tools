@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-30T01:00:09.647Z",
+  "generatedAt": "2026-10-30T19:00:16.317Z",
   "source": "mnm-tools",
-  "ledgerFiles": 32,
-  "events": 11559,
+  "ledgerFiles": 33,
+  "events": 11614,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 11559
+      "events": 11614
     }
   ],
   "contributorCount": 1,
@@ -1163,28 +1163,28 @@
       "drops": {
         "Cooked Bear Meat": 1,
         "Scuffed Bear Paw": 2,
-        "Medium-Quality Bear Pelt": 1,
-        "Raw Bear Meat": 1
+        "Medium-Quality Bear Pelt": 2,
+        "Raw Bear Meat": 2
       },
       "zones": {
-        "Keepersbight": 6
+        "Keepersbight": 8
       },
       "coin": 0,
-      "corpses": 5
+      "corpses": 6
     },
     "a forest stalker": {
       "kills": 0,
       "drops": {
-        "Scuffed Canine Ear": 7,
-        "Medium-Quality Wolf Pelt": 3,
-        "Raw Wolf Meat": 3,
-        "Savage Wolf Claw": 1
+        "Scuffed Canine Ear": 10,
+        "Medium-Quality Wolf Pelt": 6,
+        "Raw Wolf Meat": 6,
+        "Savage Wolf Claw": 3
       },
       "zones": {
-        "Keepersbight": 17
+        "Keepersbight": 33
       },
       "coin": 0,
-      "corpses": 8
+      "corpses": 13
     },
     "a shady farmer": {
       "kills": 5,
@@ -1297,15 +1297,15 @@
       "corpses": 3
     },
     "a forest drake": {
-      "kills": 4,
+      "kills": 5,
       "drops": {
         "Drake Claw": 1,
         "Drake Scale": 1
       },
       "zones": {
-        "Keepersbight": 6
+        "Keepersbight": 7
       },
-      "coin": 665,
+      "coin": 798,
       "corpses": 2
     },
     "a gloom widow": {
@@ -2450,8 +2450,8 @@
         {
           "mob": "a grizzly bear",
           "drops": 1,
-          "corpses": 5,
-          "rate": 0.2
+          "corpses": 6,
+          "rate": 0.16666666666666666
         }
       ],
       "prices": [],
@@ -5399,16 +5399,16 @@
           "rate": 0.3333333333333333
         },
         {
+          "mob": "a grizzly bear",
+          "drops": 2,
+          "corpses": 6,
+          "rate": 0.3333333333333333
+        },
+        {
           "mob": "an elder black bear",
           "drops": 3,
           "corpses": 9,
           "rate": 0.3333333333333333
-        },
-        {
-          "mob": "a grizzly bear",
-          "drops": 1,
-          "corpses": 5,
-          "rate": 0.2
         }
       ],
       "prices": [],
@@ -5424,9 +5424,9 @@
       "droppedBy": [
         {
           "mob": "a forest stalker",
-          "drops": 3,
-          "corpses": 8,
-          "rate": 0.375
+          "drops": 6,
+          "corpses": 13,
+          "rate": 0.46153846153846156
         }
       ],
       "prices": [],
@@ -5737,16 +5737,16 @@
       "name": "Raw Bear Meat",
       "droppedBy": [
         {
+          "mob": "a grizzly bear",
+          "drops": 2,
+          "corpses": 6,
+          "rate": 0.3333333333333333
+        },
+        {
           "mob": "an elder black bear",
           "drops": 2,
           "corpses": 9,
           "rate": 0.2222222222222222
-        },
-        {
-          "mob": "a grizzly bear",
-          "drops": 1,
-          "corpses": 5,
-          "rate": 0.2
         }
       ],
       "prices": [
@@ -5966,9 +5966,9 @@
         },
         {
           "mob": "a forest stalker",
-          "drops": 3,
-          "corpses": 8,
-          "rate": 0.375
+          "drops": 6,
+          "corpses": 13,
+          "rate": 0.46153846153846156
         },
         {
           "mob": "a rabid wolf",
@@ -6178,7 +6178,7 @@
           "count": 11
         }
       ],
-      "harvested": 392,
+      "harvested": 409,
       "zones": [
         "Evershade Weald",
         "Keepersbight"
@@ -7268,9 +7268,9 @@
       "droppedBy": [
         {
           "mob": "a forest stalker",
-          "drops": 1,
-          "corpses": 8,
-          "rate": 0.125
+          "drops": 3,
+          "corpses": 13,
+          "rate": 0.23076923076923078
         }
       ],
       "prices": [],
@@ -7293,8 +7293,8 @@
         {
           "mob": "a grizzly bear",
           "drops": 2,
-          "corpses": 5,
-          "rate": 0.4
+          "corpses": 6,
+          "rate": 0.3333333333333333
         }
       ],
       "prices": [
@@ -7321,9 +7321,9 @@
         },
         {
           "mob": "a forest stalker",
-          "drops": 7,
-          "corpses": 8,
-          "rate": 0.875
+          "drops": 10,
+          "corpses": 13,
+          "rate": 0.7692307692307693
         }
       ],
       "prices": [],
@@ -9882,7 +9882,7 @@
       "name": "Whispering Sage",
       "droppedBy": [],
       "prices": [],
-      "harvested": 69,
+      "harvested": 70,
       "zones": [
         "Evershade Weald",
         "Keepersbight",
@@ -9956,7 +9956,7 @@
       "name": "Wood",
       "droppedBy": [],
       "prices": [],
-      "harvested": 319,
+      "harvested": 333,
       "zones": [
         "Evershade Weald",
         "Keepersbight"
@@ -10252,13 +10252,13 @@
     "Clouded Crystallized Magic": 18,
     "Chipped Cat's Eye Agate": 8,
     "Ghost Poppy": 23,
-    "Wood": 319,
-    "Resin": 392,
+    "Wood": 333,
+    "Resin": 409,
     "Lionleaf": 52,
     "Chipped Diamond": 9,
     "Sylvine": 45,
     "Chipped Sapphire": 10,
-    "Whispering Sage": 69,
+    "Whispering Sage": 70,
     "Magic Frond": 6,
     "Nomad's Grace": 19,
     "Chipped Peridot": 9,
@@ -10492,17 +10492,17 @@
     },
     {
       "name": "Wood & Resin",
-      "pulls": 319,
+      "pulls": 333,
       "yields": [
         {
           "res": "Wood",
-          "count": 319,
+          "count": 333,
           "rate": 1
         },
         {
           "res": "Resin",
-          "count": 272,
-          "rate": 0.8526645768025078
+          "count": 283,
+          "rate": 0.8498498498498499
         }
       ],
       "zones": [
@@ -10615,17 +10615,17 @@
     },
     {
       "name": "Whispering Sage",
-      "pulls": 45,
+      "pulls": 46,
       "yields": [
         {
           "res": "Whispering Sage",
-          "count": 45,
+          "count": 46,
           "rate": 1
         },
         {
           "res": "Magic Frond",
           "count": 3,
-          "rate": 0.06666666666666667
+          "rate": 0.06521739130434782
         }
       ],
       "zones": [
