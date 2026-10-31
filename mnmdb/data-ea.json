@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-30T19:00:16.317Z",
+  "generatedAt": "2026-10-31T07:00:08.834Z",
   "source": "mnm-tools",
   "ledgerFiles": 33,
-  "events": 11614,
+  "events": 11669,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 11614
+      "events": 11669
     }
   ],
   "contributorCount": 1,
@@ -1133,15 +1133,15 @@
     "a shadow wolf": {
       "kills": 0,
       "drops": {
-        "Mangy Canine Ear": 8,
-        "Low-Quality Wolf Pelt": 1,
+        "Mangy Canine Ear": 10,
+        "Low-Quality Wolf Pelt": 2,
         "Raw Wolf Meat": 1
       },
       "zones": {
-        "Keepersbight": 12
+        "Keepersbight": 15
       },
       "coin": 0,
-      "corpses": 8
+      "corpses": 10
     },
     "a boulder viper": {
       "kills": 0,
@@ -1175,16 +1175,16 @@
     "a forest stalker": {
       "kills": 0,
       "drops": {
-        "Scuffed Canine Ear": 10,
+        "Scuffed Canine Ear": 11,
         "Medium-Quality Wolf Pelt": 6,
-        "Raw Wolf Meat": 6,
-        "Savage Wolf Claw": 3
+        "Raw Wolf Meat": 7,
+        "Savage Wolf Claw": 4
       },
       "zones": {
-        "Keepersbight": 33
+        "Keepersbight": 36
       },
       "coin": 0,
-      "corpses": 13
+      "corpses": 15
     },
     "a shady farmer": {
       "kills": 5,
@@ -1285,16 +1285,18 @@
     "a cave bear": {
       "kills": 0,
       "drops": {
-        "Scuffed Bear Paw": 2,
-        "Torn Leather Bracer": 1,
-        "Medium-Quality Bear Pelt": 1,
-        "Cooked Bear Meat": 1
+        "Scuffed Bear Paw": 6,
+        "Torn Leather Bracer": 3,
+        "Medium-Quality Bear Pelt": 2,
+        "Cooked Bear Meat": 1,
+        "Raw Bear Meat": 1,
+        "Ragged Bear Paw": 1
       },
       "zones": {
-        "Keepersbight": 8
+        "Keepersbight": 17
       },
       "coin": 0,
-      "corpses": 3
+      "corpses": 8
     },
     "a forest drake": {
       "kills": 5,
@@ -1307,6 +1309,42 @@
       },
       "coin": 798,
       "corpses": 2
+    },
+    "a bear cub": {
+      "kills": 0,
+      "drops": {
+        "Damaged Bear Paw": 2,
+        "Raw Bear Meat": 1
+      },
+      "zones": {
+        "Keepersbight": 3
+      },
+      "coin": 0,
+      "corpses": 2
+    },
+    "Redpaw": {
+      "kills": 0,
+      "drops": {
+        "Den Dweller's Boots": 1,
+        "Medium-Quality Bear Pelt": 1
+      },
+      "zones": {
+        "Keepersbight": 2
+      },
+      "coin": 0,
+      "corpses": 1
+    },
+    "a fat cave bear": {
+      "kills": 0,
+      "drops": {
+        "Medium-Quality Bear Pelt": 1,
+        "Raw Bear Meat": 1
+      },
+      "zones": {
+        "Keepersbight": 2
+      },
+      "coin": 0,
+      "corpses": 1
     },
     "a gloom widow": {
       "kills": 0,
@@ -2442,16 +2480,16 @@
       "name": "Cooked Bear Meat",
       "droppedBy": [
         {
-          "mob": "a cave bear",
-          "drops": 1,
-          "corpses": 3,
-          "rate": 0.3333333333333333
-        },
-        {
           "mob": "a grizzly bear",
           "drops": 1,
           "corpses": 6,
           "rate": 0.16666666666666666
+        },
+        {
+          "mob": "a cave bear",
+          "drops": 1,
+          "corpses": 8,
+          "rate": 0.125
         }
       ],
       "prices": [],
@@ -3779,6 +3817,24 @@
       ]
     },
     {
+      "id": "damaged_bear_paw",
+      "gameId": "9708d45bc935f7b0ddc1d013",
+      "name": "Damaged Bear Paw",
+      "droppedBy": [
+        {
+          "mob": "a bear cub",
+          "drops": 2,
+          "corpses": 2,
+          "rate": 1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
       "id": "damaged_canine_ear",
       "gameId": "59c83068175b54f072e6d17c",
       "name": "Damaged Canine Ear",
@@ -3817,6 +3873,24 @@
           "drops": 1,
           "corpses": 3,
           "rate": 0.3333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
+      "id": "den_dweller_s_boots",
+      "gameId": "2a1566b25678e6367a8e05a3",
+      "name": "Den Dweller's Boots",
+      "droppedBy": [
+        {
+          "mob": "Redpaw",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
         }
       ],
       "prices": [],
@@ -3915,7 +3989,7 @@
         },
         {
           "copper": 21,
-          "count": 1
+          "count": 2
         }
       ],
       "harvested": 0,
@@ -3972,7 +4046,12 @@
           "rate": 0.1
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 95,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Keepersbight"
@@ -5250,9 +5329,9 @@
         },
         {
           "mob": "a shadow wolf",
-          "drops": 1,
-          "corpses": 8,
-          "rate": 0.125
+          "drops": 2,
+          "corpses": 10,
+          "rate": 0.2
         }
       ],
       "prices": [],
@@ -5316,8 +5395,8 @@
       "droppedBy": [
         {
           "mob": "a shadow wolf",
-          "drops": 8,
-          "corpses": 8,
+          "drops": 10,
+          "corpses": 10,
           "rate": 1
         },
         {
@@ -5393,10 +5472,16 @@
       "name": "Medium-Quality Bear Pelt",
       "droppedBy": [
         {
-          "mob": "a cave bear",
+          "mob": "Redpaw",
           "drops": 1,
-          "corpses": 3,
-          "rate": 0.3333333333333333
+          "corpses": 1,
+          "rate": 1
+        },
+        {
+          "mob": "a fat cave bear",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
         },
         {
           "mob": "a grizzly bear",
@@ -5409,6 +5494,12 @@
           "drops": 3,
           "corpses": 9,
           "rate": 0.3333333333333333
+        },
+        {
+          "mob": "a cave bear",
+          "drops": 2,
+          "corpses": 8,
+          "rate": 0.25
         }
       ],
       "prices": [],
@@ -5425,8 +5516,8 @@
         {
           "mob": "a forest stalker",
           "drops": 6,
-          "corpses": 13,
-          "rate": 0.46153846153846156
+          "corpses": 15,
+          "rate": 0.4
         }
       ],
       "prices": [],
@@ -5689,6 +5780,12 @@
           "drops": 4,
           "corpses": 9,
           "rate": 0.4444444444444444
+        },
+        {
+          "mob": "a cave bear",
+          "drops": 1,
+          "corpses": 8,
+          "rate": 0.125
         }
       ],
       "prices": [
@@ -5737,6 +5834,18 @@
       "name": "Raw Bear Meat",
       "droppedBy": [
         {
+          "mob": "a fat cave bear",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
+        {
+          "mob": "a bear cub",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
           "mob": "a grizzly bear",
           "drops": 2,
           "corpses": 6,
@@ -5747,9 +5856,19 @@
           "drops": 2,
           "corpses": 9,
           "rate": 0.2222222222222222
+        },
+        {
+          "mob": "a cave bear",
+          "drops": 1,
+          "corpses": 8,
+          "rate": 0.125
         }
       ],
       "prices": [
+        {
+          "copper": 1,
+          "count": 1
+        },
         {
           "copper": 3,
           "count": 1
@@ -5966,9 +6085,9 @@
         },
         {
           "mob": "a forest stalker",
-          "drops": 6,
-          "corpses": 13,
-          "rate": 0.46153846153846156
+          "drops": 7,
+          "corpses": 15,
+          "rate": 0.4666666666666667
         },
         {
           "mob": "a rabid wolf",
@@ -5991,14 +6110,14 @@
         {
           "mob": "a shadow wolf",
           "drops": 1,
-          "corpses": 8,
-          "rate": 0.125
+          "corpses": 10,
+          "rate": 0.1
         }
       ],
       "prices": [
         {
           "copper": 1,
-          "count": 3
+          "count": 4
         },
         {
           "copper": 3,
@@ -6178,7 +6297,7 @@
           "count": 11
         }
       ],
-      "harvested": 409,
+      "harvested": 415,
       "zones": [
         "Evershade Weald",
         "Keepersbight"
@@ -7268,12 +7387,17 @@
       "droppedBy": [
         {
           "mob": "a forest stalker",
-          "drops": 3,
-          "corpses": 13,
-          "rate": 0.23076923076923078
+          "drops": 4,
+          "corpses": 15,
+          "rate": 0.26666666666666666
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 27,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Keepersbight"
@@ -7286,9 +7410,9 @@
       "droppedBy": [
         {
           "mob": "a cave bear",
-          "drops": 2,
-          "corpses": 3,
-          "rate": 0.6666666666666666
+          "drops": 6,
+          "corpses": 8,
+          "rate": 0.75
         },
         {
           "mob": "a grizzly bear",
@@ -7300,6 +7424,10 @@
       "prices": [
         {
           "copper": 141,
+          "count": 1
+        },
+        {
+          "copper": 142,
           "count": 1
         }
       ],
@@ -7321,12 +7449,17 @@
         },
         {
           "mob": "a forest stalker",
-          "drops": 10,
-          "corpses": 13,
-          "rate": 0.7692307692307693
+          "drops": 11,
+          "corpses": 15,
+          "rate": 0.7333333333333333
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 151,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Keepersbight"
@@ -9694,9 +9827,9 @@
       "droppedBy": [
         {
           "mob": "a cave bear",
-          "drops": 1,
-          "corpses": 3,
-          "rate": 0.3333333333333333
+          "drops": 3,
+          "corpses": 8,
+          "rate": 0.375
         }
       ],
       "prices": [],
@@ -9956,7 +10089,7 @@
       "name": "Wood",
       "droppedBy": [],
       "prices": [],
-      "harvested": 333,
+      "harvested": 340,
       "zones": [
         "Evershade Weald",
         "Keepersbight"
@@ -10252,8 +10385,8 @@
     "Clouded Crystallized Magic": 18,
     "Chipped Cat's Eye Agate": 8,
     "Ghost Poppy": 23,
-    "Wood": 333,
-    "Resin": 409,
+    "Wood": 340,
+    "Resin": 415,
     "Lionleaf": 52,
     "Chipped Diamond": 9,
     "Sylvine": 45,
@@ -10492,17 +10625,17 @@
     },
     {
       "name": "Wood & Resin",
-      "pulls": 333,
+      "pulls": 340,
       "yields": [
         {
           "res": "Wood",
-          "count": 333,
+          "count": 340,
           "rate": 1
         },
         {
           "res": "Resin",
-          "count": 283,
-          "rate": 0.8498498498498499
+          "count": 288,
+          "rate": 0.8470588235294118
         }
       ],
       "zones": [
