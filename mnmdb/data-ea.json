@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-02T02:00:15.629Z",
+  "generatedAt": "2026-11-02T08:00:09.894Z",
   "source": "mnm-tools",
   "ledgerFiles": 36,
-  "events": 12375,
+  "events": 12389,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 12375
+      "events": 12389
     }
   ],
   "contributorCount": 1,
@@ -1162,15 +1162,16 @@
       "kills": 0,
       "drops": {
         "Cooked Bear Meat": 1,
-        "Scuffed Bear Paw": 4,
+        "Scuffed Bear Paw": 5,
         "Medium-Quality Bear Pelt": 3,
         "Raw Bear Meat": 3
       },
       "zones": {
-        "Keepersbight": 15
+        "Keepersbight": 15,
+        "Scarwood": 1
       },
       "coin": 0,
-      "corpses": 8
+      "corpses": 9
     },
     "a forest stalker": {
       "kills": 0,
@@ -2704,13 +2705,13 @@
       "name": "Cooked Bear Meat",
       "droppedBy": [
         {
-          "mob": "a grizzly bear",
+          "mob": "a cave bear",
           "drops": 1,
-          "corpses": 8,
-          "rate": 0.125
+          "corpses": 9,
+          "rate": 0.1111111111111111
         },
         {
-          "mob": "a cave bear",
+          "mob": "a grizzly bear",
           "drops": 1,
           "corpses": 9,
           "rate": 0.1111111111111111
@@ -6052,8 +6053,8 @@
         {
           "mob": "a grizzly bear",
           "drops": 3,
-          "corpses": 8,
-          "rate": 0.375
+          "corpses": 9,
+          "rate": 0.3333333333333333
         },
         {
           "mob": "an elder black bear",
@@ -6121,7 +6122,7 @@
       "name": "Moonveil",
       "droppedBy": [],
       "prices": [],
-      "harvested": 36,
+      "harvested": 38,
       "zones": [
         "Scarwood",
         "Keepersbight"
@@ -6425,8 +6426,8 @@
         {
           "mob": "a grizzly bear",
           "drops": 3,
-          "corpses": 8,
-          "rate": 0.375
+          "corpses": 9,
+          "rate": 0.3333333333333333
         },
         {
           "mob": "a cave bear",
@@ -8023,9 +8024,9 @@
         },
         {
           "mob": "a grizzly bear",
-          "drops": 4,
-          "corpses": 8,
-          "rate": 0.5
+          "drops": 5,
+          "corpses": 9,
+          "rate": 0.5555555555555556
         },
         {
           "mob": "a fat cave bear",
@@ -8050,7 +8051,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Scarwood"
       ]
     },
     {
@@ -10443,7 +10445,7 @@
       "name": "Tin Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 593,
+      "harvested": 597,
       "zones": [
         "Scarwood",
         "Fallenpass"
@@ -11234,7 +11236,7 @@
     "Chipped Emerald": 8,
     "Chipped Ruby": 10,
     "Limestone": 107,
-    "Tin Ore": 593,
+    "Tin Ore": 597,
     "Flawed Diamond": 4,
     "Glinting Crystallized Magic": 7,
     "Jagged Stone": 135,
@@ -11243,7 +11245,7 @@
     "Flawed Ruby": 4,
     "Flawed Cat's Eye Agate": 7,
     "Chipped Jade": 6,
-    "Moonveil": 36,
+    "Moonveil": 38,
     "Flawed Emerald": 5,
     "Flawed Peridot": 3,
     "Flawed Jade": 2,
@@ -11335,62 +11337,62 @@
     },
     {
       "name": "Tin Ore",
-      "pulls": 593,
+      "pulls": 597,
       "yields": [
         {
           "res": "Tin Ore",
-          "count": 593,
+          "count": 597,
           "rate": 1
         },
         {
           "res": "Jagged Stone",
           "count": 124,
-          "rate": 0.209106239460371
+          "rate": 0.20770519262981574
         },
         {
           "res": "Limestone",
           "count": 33,
-          "rate": 0.05564924114671164
+          "rate": 0.05527638190954774
         },
         {
           "res": "Glinting Crystallized Magic",
           "count": 6,
-          "rate": 0.01011804384485666
+          "rate": 0.010050251256281407
         },
         {
           "res": "Flawed Cat's Eye Agate",
           "count": 6,
-          "rate": 0.01011804384485666
+          "rate": 0.010050251256281407
         },
         {
           "res": "Flawed Emerald",
           "count": 5,
-          "rate": 0.008431703204047217
+          "rate": 0.008375209380234505
         },
         {
           "res": "Flawed Diamond",
           "count": 4,
-          "rate": 0.006745362563237774
+          "rate": 0.006700167504187605
         },
         {
           "res": "Flawed Ruby",
           "count": 4,
-          "rate": 0.006745362563237774
+          "rate": 0.006700167504187605
         },
         {
           "res": "Flawed Sapphire",
           "count": 3,
-          "rate": 0.00505902192242833
+          "rate": 0.005025125628140704
         },
         {
           "res": "Flawed Peridot",
           "count": 3,
-          "rate": 0.00505902192242833
+          "rate": 0.005025125628140704
         },
         {
           "res": "Flawed Jade",
           "count": 2,
-          "rate": 0.003372681281618887
+          "rate": 0.0033500837520938024
         }
       ],
       "zones": [
@@ -11673,11 +11675,11 @@
     },
     {
       "name": "Herbs - Scarwood",
-      "pulls": 13,
+      "pulls": 14,
       "yields": [
         {
           "res": "Moonveil",
-          "count": 13,
+          "count": 14,
           "rate": 1
         }
       ],
