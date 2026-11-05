@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-04T08:00:07.949Z",
+  "generatedAt": "2026-11-05T02:00:05.870Z",
   "source": "mnm-tools",
-  "ledgerFiles": 40,
-  "events": 14178,
+  "ledgerFiles": 41,
+  "events": 14444,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 14178
+      "events": 14444
     }
   ],
   "contributorCount": 1,
@@ -2365,7 +2365,7 @@
       "name": "Brilliant Crystallized Magic",
       "droppedBy": [],
       "prices": [],
-      "harvested": 7,
+      "harvested": 11,
       "zones": [
         "Sungreetstrand",
         "Scarwood"
@@ -3215,7 +3215,7 @@
       "name": "Coal",
       "droppedBy": [],
       "prices": [],
-      "harvested": 420,
+      "harvested": 573,
       "zones": [
         "Sungreetstrand",
         "Scarwood"
@@ -3651,6 +3651,10 @@
         }
       ],
       "prices": [
+        {
+          "copper": 126,
+          "count": 1
+        },
         {
           "copper": 135,
           "count": 2
@@ -4282,6 +4286,10 @@
       ],
       "prices": [
         {
+          "copper": 188,
+          "count": 1
+        },
+        {
           "copper": 203,
           "count": 1
         }
@@ -4763,6 +4771,10 @@
         }
       ],
       "prices": [
+        {
+          "copper": 126,
+          "count": 1
+        },
         {
           "copper": 135,
           "count": 1
@@ -5402,10 +5414,10 @@
       "name": "Emerald",
       "droppedBy": [],
       "prices": [],
-      "harvested": 3,
+      "harvested": 5,
       "zones": [
-        "Scarwood",
-        "Sungreetstrand"
+        "Sungreetstrand",
+        "Scarwood"
       ]
     },
     {
@@ -5429,6 +5441,17 @@
       "harvested": 0,
       "zones": [
         "Evershade Weald"
+      ]
+    },
+    {
+      "id": "enchanted_frond",
+      "gameId": null,
+      "name": "Enchanted Frond",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 1,
+      "zones": [
+        "Sungreetstrand"
       ]
     },
     {
@@ -5769,6 +5792,10 @@
         }
       ],
       "prices": [
+        {
+          "copper": 50,
+          "count": 1
+        },
         {
           "copper": 54,
           "count": 2
@@ -6550,6 +6577,10 @@
         {
           "copper": 136,
           "count": 2
+        },
+        {
+          "copper": 151,
+          "count": 1
         }
       ],
       "harvested": 5,
@@ -6565,6 +6596,10 @@
       "prices": [
         {
           "copper": 136,
+          "count": 1
+        },
+        {
+          "copper": 151,
           "count": 1
         }
       ],
@@ -6597,6 +6632,10 @@
       "prices": [
         {
           "copper": 136,
+          "count": 1
+        },
+        {
+          "copper": 151,
           "count": 1
         }
       ],
@@ -6692,7 +6731,7 @@
       "name": "Ironroot",
       "droppedBy": [],
       "prices": [],
-      "harvested": 22,
+      "harvested": 24,
       "zones": [
         "Fallenpass",
         "Sungreetstrand"
@@ -6704,10 +6743,10 @@
       "name": "Jade",
       "droppedBy": [],
       "prices": [],
-      "harvested": 3,
+      "harvested": 5,
       "zones": [
-        "Scarwood",
-        "Sungreetstrand"
+        "Sungreetstrand",
+        "Scarwood"
       ]
     },
     {
@@ -6715,7 +6754,12 @@
       "gameId": null,
       "name": "Jagged Stone",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 1,
+          "count": 1
+        }
+      ],
       "harvested": 135,
       "zones": [
         "Scarwood",
@@ -6956,7 +7000,7 @@
           "count": 1
         }
       ],
-      "harvested": 167,
+      "harvested": 176,
       "zones": [
         "Scarwood",
         "Sungreetstrand",
@@ -6969,7 +7013,7 @@
       "name": "Lionleaf",
       "droppedBy": [],
       "prices": [],
-      "harvested": 56,
+      "harvested": 58,
       "zones": [
         "Evershade Weald",
         "Sungreetstrand"
@@ -7346,7 +7390,7 @@
       "name": "Nomad's Grace",
       "droppedBy": [],
       "prices": [],
-      "harvested": 22,
+      "harvested": 23,
       "zones": [
         "Evershade Weald",
         "Sungreetstrand",
@@ -7412,10 +7456,10 @@
       "name": "Peridot",
       "droppedBy": [],
       "prices": [],
-      "harvested": 2,
+      "harvested": 3,
       "zones": [
-        "Scarwood",
-        "Sungreetstrand"
+        "Sungreetstrand",
+        "Scarwood"
       ]
     },
     {
@@ -7424,7 +7468,7 @@
       "name": "Platinum Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 64,
+      "harvested": 78,
       "zones": [
         "Scarwood",
         "Sungreetstrand"
@@ -7481,7 +7525,7 @@
       "prices": [
         {
           "copper": 105,
-          "count": 1
+          "count": 2
         }
       ],
       "harvested": 0,
@@ -7880,7 +7924,7 @@
         },
         {
           "copper": 5,
-          "count": 2
+          "count": 3
         }
       ],
       "harvested": 0,
@@ -8308,8 +8352,13 @@
       "gameId": null,
       "name": "Rigid Stone",
       "droppedBy": [],
-      "prices": [],
-      "harvested": 93,
+      "prices": [
+        {
+          "copper": 17,
+          "count": 4
+        }
+      ],
+      "harvested": 132,
       "zones": [
         "Sungreetstrand",
         "Scarwood"
@@ -9744,6 +9793,10 @@
         }
       ],
       "prices": [
+        {
+          "copper": 65,
+          "count": 1
+        },
         {
           "copper": 70,
           "count": 3
@@ -12468,6 +12521,10 @@
         {
           "copper": 1,
           "count": 15
+        },
+        {
+          "copper": 3,
+          "count": 2
         }
       ],
       "harvested": 158,
@@ -12481,10 +12538,10 @@
       "name": "Whispering Sage",
       "droppedBy": [],
       "prices": [],
-      "harvested": 84,
+      "harvested": 88,
       "zones": [
-        "Keepersbight",
         "Sungreetstrand",
+        "Keepersbight",
         "Evershade Weald"
       ]
     },
@@ -12972,19 +13029,19 @@
     "Ghost Poppy": 23,
     "Wood": 375,
     "Resin": 451,
-    "Lionleaf": 56,
+    "Lionleaf": 58,
     "Chipped Diamond": 9,
     "Sylvine": 45,
     "Chipped Sapphire": 10,
-    "Whispering Sage": 84,
+    "Whispering Sage": 88,
     "Magic Frond": 6,
-    "Nomad's Grace": 22,
+    "Nomad's Grace": 23,
     "Chipped Peridot": 9,
     "Selstie Kelp": 2,
     "Alunite Ore": 9,
     "Chipped Emerald": 9,
     "Chipped Ruby": 10,
-    "Limestone": 167,
+    "Limestone": 176,
     "Tin Ore": 600,
     "Flawed Diamond": 4,
     "Glinting Crystallized Magic": 7,
@@ -13000,7 +13057,7 @@
     "Flawed Jade": 2,
     "Iron Ore": 670,
     "Weighty Stone": 158,
-    "Ironroot": 22,
+    "Ironroot": 24,
     "Imperfect Sapphire": 7,
     "Imperfect Peridot": 8,
     "Imperfect Emerald": 6,
@@ -13010,17 +13067,18 @@
     "Gold Ore": 74,
     "Imperfect Ruby": 4,
     "Imperfect Diamond": 5,
-    "Coal": 420,
-    "Brilliant Crystallized Magic": 7,
-    "Rigid Stone": 93,
+    "Coal": 573,
+    "Brilliant Crystallized Magic": 11,
+    "Rigid Stone": 132,
     "Sapphire": 2,
-    "Platinum Ore": 64,
-    "Jade": 3,
+    "Platinum Ore": 78,
+    "Jade": 5,
     "Cat's Eye Agate": 3,
     "Ruby": 6,
     "Diamond": 3,
-    "Peridot": 2,
-    "Emerald": 3
+    "Peridot": 3,
+    "Emerald": 5,
+    "Enchanted Frond": 1
   },
   "harvestNodes": [
     {
@@ -13216,57 +13274,57 @@
     },
     {
       "name": "Coal",
-      "pulls": 420,
+      "pulls": 573,
       "yields": [
         {
           "res": "Coal",
-          "count": 420,
+          "count": 573,
           "rate": 1
         },
         {
           "res": "Rigid Stone",
-          "count": 79,
-          "rate": 0.1880952380952381
+          "count": 114,
+          "rate": 0.19895287958115182
         },
         {
           "res": "Brilliant Crystallized Magic",
-          "count": 6,
-          "rate": 0.014285714285714285
+          "count": 9,
+          "rate": 0.015706806282722512
         },
         {
           "res": "Ruby",
           "count": 5,
-          "rate": 0.011904761904761904
+          "rate": 0.008726003490401396
+        },
+        {
+          "res": "Emerald",
+          "count": 5,
+          "rate": 0.008726003490401396
         },
         {
           "res": "Cat's Eye Agate",
           "count": 3,
-          "rate": 0.007142857142857143
+          "rate": 0.005235602094240838
         },
         {
           "res": "Diamond",
           "count": 3,
-          "rate": 0.007142857142857143
-        },
-        {
-          "res": "Emerald",
-          "count": 3,
-          "rate": 0.007142857142857143
+          "rate": 0.005235602094240838
         },
         {
           "res": "Sapphire",
           "count": 2,
-          "rate": 0.004761904761904762
+          "rate": 0.0034904013961605585
         },
         {
           "res": "Peridot",
           "count": 2,
-          "rate": 0.004761904761904762
+          "rate": 0.0034904013961605585
         },
         {
           "res": "Jade",
-          "count": 1,
-          "rate": 0.002380952380952381
+          "count": 2,
+          "rate": 0.0034904013961605585
         }
       ],
       "zones": [
@@ -13293,6 +13351,32 @@
         "Evershade Weald",
         "Keepersbight",
         "Sungreetstrand"
+      ]
+    },
+    {
+      "name": "Limestone",
+      "pulls": 66,
+      "yields": [
+        {
+          "res": "Limestone",
+          "count": 66,
+          "rate": 1
+        },
+        {
+          "res": "Clouded Crystallized Magic",
+          "count": 2,
+          "rate": 0.030303030303030304
+        },
+        {
+          "res": "Silver Ore",
+          "count": 1,
+          "rate": 0.015151515151515152
+        }
+      ],
+      "zones": [
+        "Sungreetstrand",
+        "Scarwood",
+        "Fallenpass"
       ]
     },
     {
@@ -13330,32 +13414,6 @@
       ]
     },
     {
-      "name": "Limestone",
-      "pulls": 62,
-      "yields": [
-        {
-          "res": "Limestone",
-          "count": 62,
-          "rate": 1
-        },
-        {
-          "res": "Clouded Crystallized Magic",
-          "count": 2,
-          "rate": 0.03225806451612903
-        },
-        {
-          "res": "Silver Ore",
-          "count": 1,
-          "rate": 0.016129032258064516
-        }
-      ],
-      "zones": [
-        "Sungreetstrand",
-        "Scarwood",
-        "Fallenpass"
-      ]
-    },
-    {
       "name": "Silver Ore",
       "pulls": 61,
       "yields": [
@@ -13385,63 +13443,68 @@
       ]
     },
     {
+      "name": "Platinum Ore",
+      "pulls": 60,
+      "yields": [
+        {
+          "res": "Platinum Ore",
+          "count": 60,
+          "rate": 1
+        },
+        {
+          "res": "Jade",
+          "count": 3,
+          "rate": 0.05
+        },
+        {
+          "res": "Brilliant Crystallized Magic",
+          "count": 2,
+          "rate": 0.03333333333333333
+        },
+        {
+          "res": "Ruby",
+          "count": 1,
+          "rate": 0.016666666666666666
+        },
+        {
+          "res": "Peridot",
+          "count": 1,
+          "rate": 0.016666666666666666
+        }
+      ],
+      "zones": [
+        "Sungreetstrand",
+        "Scarwood"
+      ]
+    },
+    {
       "name": "Whispering Sage",
-      "pulls": 55,
+      "pulls": 58,
       "yields": [
         {
           "res": "Whispering Sage",
-          "count": 55,
+          "count": 58,
           "rate": 1
         },
         {
           "res": "Magic Frond",
           "count": 3,
-          "rate": 0.05454545454545454
+          "rate": 0.05172413793103448
         }
       ],
       "zones": [
+        "Sungreetstrand",
         "Evershade Weald",
-        "Keepersbight",
-        "Sungreetstrand"
-      ]
-    },
-    {
-      "name": "Platinum Ore",
-      "pulls": 50,
-      "yields": [
-        {
-          "res": "Platinum Ore",
-          "count": 50,
-          "rate": 1
-        },
-        {
-          "res": "Jade",
-          "count": 2,
-          "rate": 0.04
-        },
-        {
-          "res": "Ruby",
-          "count": 1,
-          "rate": 0.02
-        },
-        {
-          "res": "Brilliant Crystallized Magic",
-          "count": 1,
-          "rate": 0.02
-        }
-      ],
-      "zones": [
-        "Scarwood",
-        "Sungreetstrand"
+        "Keepersbight"
       ]
     },
     {
       "name": "Lionleaf",
-      "pulls": 35,
+      "pulls": 37,
       "yields": [
         {
           "res": "Lionleaf",
-          "count": 35,
+          "count": 37,
           "rate": 1
         }
       ],
@@ -13471,26 +13534,52 @@
       ]
     },
     {
-      "name": "Ghost Poppy",
-      "pulls": 15,
+      "name": "Platinum Ore & Rigid Stone",
+      "pulls": 18,
       "yields": [
         {
-          "res": "Ghost Poppy",
-          "count": 15,
+          "res": "Platinum Ore",
+          "count": 18,
+          "rate": 1
+        },
+        {
+          "res": "Rigid Stone",
+          "count": 18,
           "rate": 1
         }
       ],
       "zones": [
-        "Evershade Weald"
+        "Scarwood",
+        "Sungreetstrand"
+      ]
+    },
+    {
+      "name": "Ironroot",
+      "pulls": 17,
+      "yields": [
+        {
+          "res": "Ironroot",
+          "count": 17,
+          "rate": 1
+        },
+        {
+          "res": "Enchanted Frond",
+          "count": 1,
+          "rate": 0.058823529411764705
+        }
+      ],
+      "zones": [
+        "Fallenpass",
+        "Sungreetstrand"
       ]
     },
     {
       "name": "Nomad's Grace",
-      "pulls": 15,
+      "pulls": 16,
       "yields": [
         {
           "res": "Nomad's Grace",
-          "count": 15,
+          "count": 16,
           "rate": 1
         }
       ],
@@ -13502,38 +13591,17 @@
       ]
     },
     {
-      "name": "Ironroot",
+      "name": "Ghost Poppy",
       "pulls": 15,
       "yields": [
         {
-          "res": "Ironroot",
+          "res": "Ghost Poppy",
           "count": 15,
           "rate": 1
         }
       ],
       "zones": [
-        "Fallenpass",
-        "Sungreetstrand"
-      ]
-    },
-    {
-      "name": "Platinum Ore & Rigid Stone",
-      "pulls": 14,
-      "yields": [
-        {
-          "res": "Platinum Ore",
-          "count": 14,
-          "rate": 1
-        },
-        {
-          "res": "Rigid Stone",
-          "count": 14,
-          "rate": 1
-        }
-      ],
-      "zones": [
-        "Scarwood",
-        "Sungreetstrand"
+        "Evershade Weald"
       ]
     },
     {
