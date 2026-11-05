@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-05T02:00:05.870Z",
+  "generatedAt": "2026-11-05T08:00:07.900Z",
   "source": "mnm-tools",
-  "ledgerFiles": 41,
-  "events": 14444,
+  "ledgerFiles": 42,
+  "events": 14697,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 14444
+      "events": 14697
     }
   ],
   "contributorCount": 1,
@@ -1784,6 +1784,86 @@
       "coin": 4965,
       "corpses": 46
     },
+    "a restless skeleton": {
+      "kills": 2,
+      "drops": {
+        "Bone Chips": 2,
+        "Weathered Medallion": 1
+      },
+      "zones": {
+        "Fallenpass": 7
+      },
+      "coin": 128,
+      "corpses": 2
+    },
+    "a Dustrend foot soldier": {
+      "kills": 59,
+      "drops": {
+        "Polished Medallion": 16,
+        "Hide Scraps": 10,
+        "Wool Scraps": 5,
+        "Corroded Bronze Chain Mask": 1,
+        "Corroded Bronze Dagger": 1,
+        "Tattered Wool Bracer": 1,
+        "Bronze Scraps": 6,
+        "Corroded Bronze Spear": 1,
+        "Raw Orc Meat": 5,
+        "Corroded Bronze Plate Cloak": 1,
+        "Corroded Bronze Longsword": 1,
+        "Tattered Hide Boots": 1,
+        "Tattered Hide Leggings": 1,
+        "Tattered Wool Pantaloons": 1,
+        "Corroded Bronze Plate Girdle": 1
+      },
+      "zones": {
+        "Valeofzintar": 119
+      },
+      "coin": 5970,
+      "corpses": 35
+    },
+    "a Dustrend priest": {
+      "kills": 12,
+      "drops": {
+        "Polished Medallion": 3,
+        "Hide Scraps": 3,
+        "Wool Scraps": 4,
+        "Torch": 1,
+        "Tattered Wool Bracer": 1
+      },
+      "zones": {
+        "Valeofzintar": 26
+      },
+      "coin": 1249,
+      "corpses": 9
+    },
+    "a Dustrend patroller": {
+      "kills": 15,
+      "drops": {
+        "Cotton Scraps": 2,
+        "Polished Medallion": 4,
+        "Hide Scraps": 3,
+        "Corroded Bronze Axe": 1
+      },
+      "zones": {
+        "Valeofzintar": 28
+      },
+      "coin": 1412,
+      "corpses": 7
+    },
+    "a dire wolf patroller": {
+      "kills": 0,
+      "drops": {
+        "Savage Wolf Claw": 1,
+        "Raw Wolf Meat": 1,
+        "Wolf Blood": 1,
+        "Grizzled Canine Ear": 1
+      },
+      "zones": {
+        "Valeofzintar": 6
+      },
+      "coin": 0,
+      "corpses": 2
+    },
     "a gloom widow": {
       "kills": 0,
       "drops": {
@@ -1903,17 +1983,6 @@
       "coin": 109,
       "corpses": 3
     },
-    "a restless skeleton": {
-      "kills": 1,
-      "drops": {
-        "Bone Chips": 1
-      },
-      "zones": {
-        "Fallenpass": 3
-      },
-      "coin": 58,
-      "corpses": 1
-    },
     "a giant fire beetle": {
       "kills": 0,
       "drops": {
@@ -1933,6 +2002,42 @@
       },
       "coin": 15,
       "corpses": 0
+    },
+    "a desert creeper": {
+      "kills": 0,
+      "drops": {
+        "Grizzled Spinneret": 1,
+        "Rugged Spider Silk": 1,
+        "Clawed Spider Legs": 1
+      },
+      "zones": {
+        "Valeofzintar": 3
+      },
+      "coin": 0,
+      "corpses": 2
+    },
+    "a bloodthirsty black bat": {
+      "kills": 0,
+      "drops": {
+        "Fleshy Bat Membrane": 1
+      },
+      "zones": {
+        "Valeofzintar": 1
+      },
+      "coin": 0,
+      "corpses": 1
+    },
+    "a Dustrend venator": {
+      "kills": 1,
+      "drops": {
+        "Leather Scraps": 1,
+        "Polished Medallion": 1
+      },
+      "zones": {
+        "Valeofzintar": 3
+      },
+      "coin": 142,
+      "corpses": 1
     }
   },
   "items": [
@@ -2312,8 +2417,8 @@
       "droppedBy": [
         {
           "mob": "a restless skeleton",
-          "drops": 1,
-          "corpses": 1,
+          "drops": 2,
+          "corpses": 2,
           "rate": 1
         },
         {
@@ -2430,6 +2535,12 @@
           "rate": 0.1875
         },
         {
+          "mob": "a Dustrend foot soldier",
+          "drops": 6,
+          "corpses": 35,
+          "rate": 0.17142857142857143
+        },
+        {
           "mob": "a captured dockhand",
           "drops": 2,
           "corpses": 12,
@@ -2519,6 +2630,7 @@
         "Keepersbight",
         "Blacktidebay",
         "Sungreetstrand",
+        "Valeofzintar",
         "Fallenpass"
       ]
     },
@@ -2759,10 +2871,11 @@
       "name": "Cat's Eye Agate",
       "droppedBy": [],
       "prices": [],
-      "harvested": 3,
+      "harvested": 4,
       "zones": [
         "Sungreetstrand",
-        "Scarwood"
+        "Scarwood",
+        "Valeofzintar"
       ]
     },
     {
@@ -3056,6 +3169,12 @@
       "name": "Clawed Spider Legs",
       "droppedBy": [
         {
+          "mob": "a desert creeper",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
           "mob": "a deadwood matriarch",
           "drops": 1,
           "corpses": 8,
@@ -3065,7 +3184,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Valeofzintar"
       ]
     },
     {
@@ -3215,10 +3335,11 @@
       "name": "Coal",
       "droppedBy": [],
       "prices": [],
-      "harvested": 573,
+      "harvested": 584,
       "zones": [
         "Sungreetstrand",
-        "Scarwood"
+        "Scarwood",
+        "Valeofzintar"
       ]
     },
     {
@@ -3375,6 +3496,12 @@
       "name": "Corroded Bronze Axe",
       "droppedBy": [
         {
+          "mob": "a Dustrend patroller",
+          "drops": 1,
+          "corpses": 7,
+          "rate": 0.14285714285714285
+        },
+        {
           "mob": "a captured dockhand",
           "drops": 1,
           "corpses": 12,
@@ -3402,7 +3529,8 @@
       "harvested": 0,
       "zones": [
         "Keepersbight",
-        "Blacktidebay"
+        "Blacktidebay",
+        "Valeofzintar"
       ]
     },
     {
@@ -3672,6 +3800,12 @@
       "name": "Corroded Bronze Chain Mask",
       "droppedBy": [
         {
+          "mob": "a Dustrend foot soldier",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
+        },
+        {
           "mob": "a Bloodchain guard",
           "drops": 1,
           "corpses": 108,
@@ -3693,7 +3827,8 @@
       "harvested": 0,
       "zones": [
         "Blacktidebay",
-        "Keepersbight"
+        "Keepersbight",
+        "Valeofzintar"
       ]
     },
     {
@@ -3850,6 +3985,12 @@
           "rate": 0.03225806451612903
         },
         {
+          "mob": "a Dustrend foot soldier",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
+        },
+        {
           "mob": "a Sangrel arcanist",
           "drops": 1,
           "corpses": 75,
@@ -3879,7 +4020,8 @@
       "zones": [
         "Keepersbight",
         "Sungreetstrand",
-        "Blacktidebay"
+        "Blacktidebay",
+        "Valeofzintar"
       ]
     },
     {
@@ -4070,6 +4212,12 @@
           "rate": 0.029850746268656716
         },
         {
+          "mob": "a Dustrend foot soldier",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
+        },
+        {
           "mob": "a Sangrel arcanist",
           "drops": 1,
           "corpses": 75,
@@ -4097,7 +4245,8 @@
       "harvested": 0,
       "zones": [
         "Keepersbight",
-        "Blacktidebay"
+        "Blacktidebay",
+        "Valeofzintar"
       ]
     },
     {
@@ -4310,12 +4459,19 @@
           "drops": 2,
           "corpses": 67,
           "rate": 0.029850746268656716
+        },
+        {
+          "mob": "a Dustrend foot soldier",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Blacktidebay"
+        "Blacktidebay",
+        "Valeofzintar"
       ]
     },
     {
@@ -4359,6 +4515,24 @@
       "harvested": 0,
       "zones": [
         "Keepersbight"
+      ]
+    },
+    {
+      "id": "corroded_bronze_plate_girdle",
+      "gameId": "7cfa651762783aebad8da690",
+      "name": "Corroded Bronze Plate Girdle",
+      "droppedBy": [
+        {
+          "mob": "a Dustrend foot soldier",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Valeofzintar"
       ]
     },
     {
@@ -4661,6 +4835,12 @@
           "rate": 0.0625
         },
         {
+          "mob": "a Dustrend foot soldier",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
+        },
+        {
           "mob": "a Sangrel striker",
           "drops": 3,
           "corpses": 304,
@@ -4676,7 +4856,8 @@
       "harvested": 0,
       "zones": [
         "Keepersbight",
-        "Fallenpass"
+        "Fallenpass",
+        "Valeofzintar"
       ]
     },
     {
@@ -4865,6 +5046,24 @@
       "zones": [
         "Keepersbight",
         "Blacktidebay"
+      ]
+    },
+    {
+      "id": "cotton_scraps",
+      "gameId": "b3cc71327b2f815a0168720c",
+      "name": "Cotton Scraps",
+      "droppedBy": [
+        {
+          "mob": "a Dustrend patroller",
+          "drops": 2,
+          "corpses": 7,
+          "rate": 0.2857142857142857
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Valeofzintar"
       ]
     },
     {
@@ -5991,6 +6190,24 @@
       ]
     },
     {
+      "id": "fleshy_bat_membrane",
+      "gameId": "a8a3d98e4ccb2ddfe7099677",
+      "name": "Fleshy Bat Membrane",
+      "droppedBy": [
+        {
+          "mob": "a bloodthirsty black bat",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Valeofzintar"
+      ]
+    },
+    {
       "id": "fossergrim_watcher_ring",
       "gameId": "f1a9032a9ba529a387d15cbd",
       "name": "Fossergrim Watcher Ring",
@@ -6385,6 +6602,12 @@
       "name": "Grizzled Canine Ear",
       "droppedBy": [
         {
+          "mob": "a dire wolf patroller",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
           "mob": "a dismal cur",
           "drops": 7,
           "corpses": 19,
@@ -6394,7 +6617,26 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Sungreetstrand"
+        "Sungreetstrand",
+        "Valeofzintar"
+      ]
+    },
+    {
+      "id": "grizzled_spinneret",
+      "gameId": "04c6f0fd41c24f7f3e25036e",
+      "name": "Grizzled Spinneret",
+      "droppedBy": [
+        {
+          "mob": "a desert creeper",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Valeofzintar"
       ]
     },
     {
@@ -6445,10 +6687,28 @@
           "rate": 0.45454545454545453
         },
         {
+          "mob": "a Dustrend patroller",
+          "drops": 3,
+          "corpses": 7,
+          "rate": 0.42857142857142855
+        },
+        {
+          "mob": "a Dustrend priest",
+          "drops": 3,
+          "corpses": 9,
+          "rate": 0.3333333333333333
+        },
+        {
           "mob": "a dusty skeleton",
           "drops": 5,
           "corpses": 16,
           "rate": 0.3125
+        },
+        {
+          "mob": "a Dustrend foot soldier",
+          "drops": 10,
+          "corpses": 35,
+          "rate": 0.2857142857142857
         },
         {
           "mob": "a Sangrel entangler",
@@ -6565,6 +6825,7 @@
         "Keepersbight",
         "Blacktidebay",
         "Sungreetstrand",
+        "Valeofzintar",
         "Fallenpass"
       ]
     },
@@ -6686,7 +6947,7 @@
       "name": "Imperfect Sapphire",
       "droppedBy": [],
       "prices": [],
-      "harvested": 7,
+      "harvested": 8,
       "zones": [
         "Fallenpass"
       ]
@@ -6720,7 +6981,7 @@
           "count": 23
         }
       ],
-      "harvested": 670,
+      "harvested": 691,
       "zones": [
         "Fallenpass"
       ]
@@ -6810,6 +7071,24 @@
       "harvested": 0,
       "zones": [
         "Evershade Weald"
+      ]
+    },
+    {
+      "id": "leather_scraps",
+      "gameId": "65a834c2ae7e8e8978d5fcc0",
+      "name": "Leather Scraps",
+      "droppedBy": [
+        {
+          "mob": "a Dustrend venator",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Valeofzintar"
       ]
     },
     {
@@ -7000,7 +7279,7 @@
           "count": 1
         }
       ],
-      "harvested": 176,
+      "harvested": 181,
       "zones": [
         "Scarwood",
         "Sungreetstrand",
@@ -7498,16 +7777,40 @@
       "name": "Polished Medallion",
       "droppedBy": [
         {
+          "mob": "a Dustrend venator",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
+        {
+          "mob": "a Dustrend patroller",
+          "drops": 4,
+          "corpses": 7,
+          "rate": 0.5714285714285714
+        },
+        {
           "mob": "a henchman",
           "drops": 17,
           "corpses": 35,
           "rate": 0.4857142857142857
         },
         {
+          "mob": "a Dustrend foot soldier",
+          "drops": 16,
+          "corpses": 35,
+          "rate": 0.45714285714285713
+        },
+        {
           "mob": "a bodyguard",
           "drops": 14,
           "corpses": 37,
           "rate": 0.3783783783783784
+        },
+        {
+          "mob": "a Dustrend priest",
+          "drops": 3,
+          "corpses": 9,
+          "rate": 0.3333333333333333
         },
         {
           "mob": "a corrupt clergyman",
@@ -7530,7 +7833,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Sungreetstrand"
+        "Sungreetstrand",
+        "Valeofzintar"
       ]
     },
     {
@@ -8024,6 +8328,12 @@
           "rate": 0.19230769230769232
         },
         {
+          "mob": "a Dustrend foot soldier",
+          "drops": 5,
+          "corpses": 35,
+          "rate": 0.14285714285714285
+        },
+        {
           "mob": "a Fellstone corrupter",
           "drops": 1,
           "corpses": 8,
@@ -8055,7 +8365,8 @@
       "harvested": 0,
       "zones": [
         "Blacktidebay",
-        "Evershade Weald"
+        "Evershade Weald",
+        "Valeofzintar"
       ]
     },
     {
@@ -8105,6 +8416,12 @@
           "drops": 1,
           "corpses": 1,
           "rate": 1
+        },
+        {
+          "mob": "a dire wolf patroller",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
         },
         {
           "mob": "a beguiled wolf",
@@ -8168,7 +8485,8 @@
         "Evershade Weald",
         "Blacktidebay",
         "Keepersbight",
-        "Sungreetstrand"
+        "Sungreetstrand",
+        "Valeofzintar"
       ]
     },
     {
@@ -8358,10 +8676,11 @@
           "count": 4
         }
       ],
-      "harvested": 132,
+      "harvested": 134,
       "zones": [
         "Sungreetstrand",
-        "Scarwood"
+        "Scarwood",
+        "Valeofzintar"
       ]
     },
     {
@@ -8501,6 +8820,12 @@
           "rate": 0.875
         },
         {
+          "mob": "a desert creeper",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
           "mob": "Widow Vethra",
           "drops": 1,
           "corpses": 3,
@@ -8515,7 +8840,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Valeofzintar"
       ]
     },
     {
@@ -9437,10 +9763,11 @@
       "name": "Sapphire",
       "droppedBy": [],
       "prices": [],
-      "harvested": 2,
+      "harvested": 3,
       "zones": [
         "Sungreetstrand",
-        "Scarwood"
+        "Scarwood",
+        "Valeofzintar"
       ]
     },
     {
@@ -9448,6 +9775,12 @@
       "gameId": "18e0d2d8e6361959b9eb6deb",
       "name": "Savage Wolf Claw",
       "droppedBy": [
+        {
+          "mob": "a dire wolf patroller",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
         {
           "mob": "a forest stalker",
           "drops": 5,
@@ -9474,7 +9807,8 @@
       "harvested": 0,
       "zones": [
         "Keepersbight",
-        "Sungreetstrand"
+        "Sungreetstrand",
+        "Valeofzintar"
       ]
     },
     {
@@ -9656,7 +9990,7 @@
       "name": "Shining Crystallized Magic",
       "droppedBy": [],
       "prices": [],
-      "harvested": 9,
+      "harvested": 10,
       "zones": [
         "Fallenpass"
       ]
@@ -10880,6 +11214,12 @@
       "name": "Tattered Hide Boots",
       "droppedBy": [
         {
+          "mob": "a Dustrend foot soldier",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
+        },
+        {
           "mob": "a Sangrel shadowblade",
           "drops": 1,
           "corpses": 115,
@@ -10895,7 +11235,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Valeofzintar"
       ]
     },
     {
@@ -11067,6 +11408,12 @@
           "rate": 0.043478260869565216
         },
         {
+          "mob": "a Dustrend foot soldier",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
+        },
+        {
           "mob": "a Sangrel entangler",
           "drops": 1,
           "corpses": 41,
@@ -11090,7 +11437,8 @@
       "zones": [
         "Keepersbight",
         "Blacktidebay",
-        "Sungreetstrand"
+        "Sungreetstrand",
+        "Valeofzintar"
       ]
     },
     {
@@ -11787,6 +12135,18 @@
       "name": "Tattered Wool Bracer",
       "droppedBy": [
         {
+          "mob": "a Dustrend priest",
+          "drops": 1,
+          "corpses": 9,
+          "rate": 0.1111111111111111
+        },
+        {
+          "mob": "a Dustrend foot soldier",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
+        },
+        {
           "mob": "a Sangrel arcanist",
           "drops": 1,
           "corpses": 75,
@@ -11802,7 +12162,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Valeofzintar"
       ]
     },
     {
@@ -11971,12 +12332,19 @@
           "drops": 1,
           "corpses": 12,
           "rate": 0.08333333333333333
+        },
+        {
+          "mob": "a Dustrend foot soldier",
+          "drops": 1,
+          "corpses": 35,
+          "rate": 0.02857142857142857
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Blacktidebay"
+        "Blacktidebay",
+        "Valeofzintar"
       ]
     },
     {
@@ -12217,6 +12585,12 @@
       "name": "Torch",
       "droppedBy": [
         {
+          "mob": "a Dustrend priest",
+          "drops": 1,
+          "corpses": 9,
+          "rate": 0.1111111111111111
+        },
+        {
           "mob": "a Bloodchain taskmaster",
           "drops": 1,
           "corpses": 18,
@@ -12257,7 +12631,8 @@
       "harvested": 0,
       "zones": [
         "Blacktidebay",
-        "Keepersbight"
+        "Keepersbight",
+        "Valeofzintar"
       ]
     },
     {
@@ -12470,6 +12845,12 @@
       "name": "Weathered Medallion",
       "droppedBy": [
         {
+          "mob": "a restless skeleton",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
           "mob": "a Bloodchain guard",
           "drops": 26,
           "corpses": 108,
@@ -12527,7 +12908,7 @@
           "count": 2
         }
       ],
-      "harvested": 158,
+      "harvested": 164,
       "zones": [
         "Fallenpass"
       ]
@@ -12576,6 +12957,24 @@
       ],
       "harvested": 0,
       "zones": []
+    },
+    {
+      "id": "wolf_blood",
+      "gameId": "19e856e25a4c153caabb4896",
+      "name": "Wolf Blood",
+      "droppedBy": [
+        {
+          "mob": "a dire wolf patroller",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Valeofzintar"
+      ]
     },
     {
       "id": "wolf_tooth",
@@ -12635,6 +13034,12 @@
           "drops": 34,
           "corpses": 75,
           "rate": 0.4533333333333333
+        },
+        {
+          "mob": "a Dustrend priest",
+          "drops": 4,
+          "corpses": 9,
+          "rate": 0.4444444444444444
         },
         {
           "mob": "a Bloodchain soulherder",
@@ -12745,6 +13150,12 @@
           "rate": 0.16666666666666666
         },
         {
+          "mob": "a Dustrend foot soldier",
+          "drops": 5,
+          "corpses": 35,
+          "rate": 0.14285714285714285
+        },
+        {
           "mob": "a henchman",
           "drops": 5,
           "corpses": 35,
@@ -12763,6 +13174,7 @@
         "Keepersbight",
         "Blacktidebay",
         "Sungreetstrand",
+        "Valeofzintar",
         "Fallenpass"
       ]
     },
@@ -13041,7 +13453,7 @@
     "Alunite Ore": 9,
     "Chipped Emerald": 9,
     "Chipped Ruby": 10,
-    "Limestone": 176,
+    "Limestone": 181,
     "Tin Ore": 600,
     "Flawed Diamond": 4,
     "Glinting Crystallized Magic": 7,
@@ -13055,25 +13467,25 @@
     "Flawed Emerald": 5,
     "Flawed Peridot": 3,
     "Flawed Jade": 2,
-    "Iron Ore": 670,
-    "Weighty Stone": 158,
+    "Iron Ore": 691,
+    "Weighty Stone": 164,
     "Ironroot": 24,
-    "Imperfect Sapphire": 7,
+    "Imperfect Sapphire": 8,
     "Imperfect Peridot": 8,
     "Imperfect Emerald": 6,
     "Imperfect Jade": 7,
-    "Shining Crystallized Magic": 9,
+    "Shining Crystallized Magic": 10,
     "Imperfect Cat's Eye Agate": 5,
     "Gold Ore": 74,
     "Imperfect Ruby": 4,
     "Imperfect Diamond": 5,
-    "Coal": 573,
+    "Coal": 584,
     "Brilliant Crystallized Magic": 11,
-    "Rigid Stone": 132,
-    "Sapphire": 2,
+    "Rigid Stone": 134,
+    "Sapphire": 3,
     "Platinum Ore": 78,
     "Jade": 5,
-    "Cat's Eye Agate": 3,
+    "Cat's Eye Agate": 4,
     "Ruby": 6,
     "Diamond": 3,
     "Peridot": 3,
@@ -13149,57 +13561,57 @@
     },
     {
       "name": "Iron Ore",
-      "pulls": 669,
+      "pulls": 690,
       "yields": [
         {
           "res": "Iron Ore",
-          "count": 669,
+          "count": 690,
           "rate": 1
         },
         {
           "res": "Weighty Stone",
-          "count": 147,
-          "rate": 0.21973094170403587
+          "count": 153,
+          "rate": 0.2217391304347826
         },
         {
           "res": "Imperfect Sapphire",
-          "count": 7,
-          "rate": 0.01046337817638266
+          "count": 8,
+          "rate": 0.011594202898550725
+        },
+        {
+          "res": "Shining Crystallized Magic",
+          "count": 8,
+          "rate": 0.011594202898550725
         },
         {
           "res": "Imperfect Peridot",
           "count": 7,
-          "rate": 0.01046337817638266
-        },
-        {
-          "res": "Shining Crystallized Magic",
-          "count": 7,
-          "rate": 0.01046337817638266
+          "rate": 0.010144927536231883
         },
         {
           "res": "Imperfect Emerald",
           "count": 6,
-          "rate": 0.008968609865470852
+          "rate": 0.008695652173913044
         },
         {
           "res": "Imperfect Jade",
           "count": 6,
-          "rate": 0.008968609865470852
+          "rate": 0.008695652173913044
         },
         {
           "res": "Imperfect Cat's Eye Agate",
           "count": 5,
-          "rate": 0.007473841554559043
+          "rate": 0.007246376811594203
         },
         {
           "res": "Imperfect Ruby",
           "count": 4,
-          "rate": 0.005979073243647235
+          "rate": 0.005797101449275362
         },
         {
           "res": "Imperfect Diamond",
           "count": 4,
-          "rate": 0.005979073243647235
+          "rate": 0.005797101449275362
         }
       ],
       "zones": [
@@ -13274,62 +13686,63 @@
     },
     {
       "name": "Coal",
-      "pulls": 573,
+      "pulls": 584,
       "yields": [
         {
           "res": "Coal",
-          "count": 573,
+          "count": 584,
           "rate": 1
         },
         {
           "res": "Rigid Stone",
-          "count": 114,
-          "rate": 0.19895287958115182
+          "count": 116,
+          "rate": 0.19863013698630136
         },
         {
           "res": "Brilliant Crystallized Magic",
           "count": 9,
-          "rate": 0.015706806282722512
+          "rate": 0.015410958904109588
         },
         {
           "res": "Ruby",
           "count": 5,
-          "rate": 0.008726003490401396
+          "rate": 0.008561643835616438
         },
         {
           "res": "Emerald",
           "count": 5,
-          "rate": 0.008726003490401396
+          "rate": 0.008561643835616438
         },
         {
           "res": "Cat's Eye Agate",
+          "count": 4,
+          "rate": 0.00684931506849315
+        },
+        {
+          "res": "Sapphire",
           "count": 3,
-          "rate": 0.005235602094240838
+          "rate": 0.005136986301369863
         },
         {
           "res": "Diamond",
           "count": 3,
-          "rate": 0.005235602094240838
-        },
-        {
-          "res": "Sapphire",
-          "count": 2,
-          "rate": 0.0034904013961605585
+          "rate": 0.005136986301369863
         },
         {
           "res": "Peridot",
           "count": 2,
-          "rate": 0.0034904013961605585
+          "rate": 0.003424657534246575
         },
         {
           "res": "Jade",
           "count": 2,
-          "rate": 0.0034904013961605585
+          "rate": 0.003424657534246575
         }
       ],
       "zones": [
         "Sungreetstrand",
-        "Scarwood"
+        "Scarwood",
+        "Valeofzintar"
       ]
     },
     {
@@ -13355,22 +13768,22 @@
     },
     {
       "name": "Limestone",
-      "pulls": 66,
+      "pulls": 69,
       "yields": [
         {
           "res": "Limestone",
-          "count": 66,
+          "count": 69,
           "rate": 1
         },
         {
           "res": "Clouded Crystallized Magic",
           "count": 2,
-          "rate": 0.030303030303030304
+          "rate": 0.028985507246376812
         },
         {
           "res": "Silver Ore",
           "count": 1,
-          "rate": 0.015151515151515152
+          "rate": 0.014492753623188406
         }
       ],
       "zones": [
