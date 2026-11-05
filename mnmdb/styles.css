@@ -18,6 +18,8 @@
   --stat-dk:   #d2a877; /* light tint — gradient start (flipped for light theme) */
   --stat-2:    #4d6631; /* olive — secondary stat colour (AA-tuned) */
   --stat-2-dk: #c8b990;
+  --wts:       #3c8f43; /* selling — WTS tags and chart line (both themes) */
+  --wtb:       #2f74c0; /* buying — WTB tags and chart line (both themes) */
   color-scheme: light;
 }
 
@@ -750,7 +752,7 @@ table.auc tr.noprice td { opacity: 0.5; }
 .auc .ap { color: var(--accent); white-space: nowrap; font-variant-numeric: tabular-nums; }
 .muted { color: var(--muted); }
 .atag { font-size: 11px; font-weight: 700; padding: 1px 6px; border-radius: 4px; background: var(--panel-2); color: var(--muted); }
-.atag.sell { color: #3c8f43; } .atag.buy { color: #2f74c0; } .atag.trade { color: var(--accent); } .atag.pc { color: #8a5cd0; }
+.atag.sell { color: var(--wts); } .atag.buy { color: var(--wtb); } .atag.trade { color: var(--accent); } .atag.pc { color: #8a5cd0; }
 .amute { color: var(--muted); font-size: 11px; margin-left: 3px; }
 .auc-empty { padding: 20px; text-align: center; color: var(--muted); }
 #auc-pop { position: fixed; z-index: 200; max-width: 320px; background: var(--panel); border: 1px solid var(--line-2); border-radius: 10px; padding: 10px 12px; box-shadow: 0 10px 34px rgba(0,0,0,.35); pointer-events: none; display: none; font-size: 13px; }
@@ -791,10 +793,17 @@ h2 .h2-link { font-size: 13px; font-weight: 400; margin-left: 10px; }
 .ph-plot svg { display: block; overflow: visible; }
 .ph-axis text { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
 .ph-grid { stroke: var(--line); stroke-width: 1; }
-.ph-line { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
-.ph-dot { fill: var(--accent); stroke: var(--panel); stroke-width: 2; }
+.ph-line { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.ph-line.ph-s { stroke: var(--wts); } .ph-line.ph-b { stroke: var(--wtb); stroke-dasharray: 6 4; }
+.ph-dot, .ph-hi { stroke: var(--panel); stroke-width: 2; }
+.ph-dot.ph-s, .ph-hi.ph-s { fill: var(--wts); } .ph-dot.ph-b, .ph-hi.ph-b { fill: var(--wtb); }
+.ph-end { font-size: 11px; font-weight: 700; fill: var(--muted); }
+.ph-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; font-size: 13px; margin-bottom: 6px; }
+.ph-key { display: inline-flex; align-items: center; gap: 6px; color: var(--text); }
+.ph-key i { width: 22px; height: 0; border-top: 2px solid; }
+.ph-key.ph-s i { border-color: var(--wts); } .ph-key.ph-b i { border-color: var(--wtb); border-top-style: dashed; }
 .ph-x { stroke: var(--line-2); stroke-width: 1; stroke-dasharray: 3 3; visibility: hidden; }
-.ph-hi { fill: var(--accent); stroke: var(--panel); stroke-width: 2; visibility: hidden; }
+.ph-hi { visibility: hidden; }
 .ph-wrap.is-hover .ph-x, .ph-wrap.is-hover .ph-hi { visibility: visible; }
 .ph-tip { position: absolute; display: none; pointer-events: none; transform: translate(-50%, calc(-100% - 12px)); white-space: nowrap;
   background: var(--panel-2); color: var(--text); border: 1px solid var(--line-2); border-radius: 6px; padding: 4px 8px; font-size: 13px; }
@@ -867,8 +876,20 @@ tr.bis-total td { border-top: 2px solid var(--line-2); background: var(--panel-2
 .tm-quick { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 13px; }
 .tm-quick button { font-family: inherit; font-size: 13px; font-weight: 500; color: var(--text); background: var(--panel-2); border: 1px solid var(--line); border-radius: 99px; padding: 3px 11px; cursor: pointer; }
 .tm-quick button:hover { border-color: var(--accent); }
-.tm-answer { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 2fr); gap: 18px; align-items: start; }
+.tm-answer { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 2fr); gap: 18px; align-items: start; border-radius: 10px; }
 .tm-big { font-size: 32px; font-weight: 700; line-height: 1.15; color: var(--text); }
+.tm-big.muted { font-size: 20px; color: var(--muted); }
+/* What's it worth? — Both / Sellers / Buyers, and the answer (one price block per side). */
+.tm-side-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; font-size: 14px; }
+.tm-answer-main { display: grid; gap: 10px; min-width: 0; }
+.tm-answer-h { display: grid; gap: 2px; }
+.tm-answer-h h2 { margin: 0; font-size: 22px; }
+.tm-example { justify-self: start; font-size: 11.5px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); background: var(--panel-2); border-radius: 4px; padding: 1px 6px; }
+.tm-pblocks { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+.tm-pblock { display: grid; gap: 2px; align-content: start; }
+.tm-answer.is-new { animation: tm-answer-in .45s ease-out; }
+@keyframes tm-answer-in { from { opacity: 0; transform: translateY(8px); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 45%, transparent); } to { opacity: 1; transform: none; box-shadow: 0 0 0 0 transparent; } }
+@media (prefers-reduced-motion: reduce) { .tm-answer.is-new { animation: none; } }
 .tm-big small { font-size: 15px; font-weight: 500; color: var(--muted); }
 .tm-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
 .tm-fact { background: var(--bg); border: 1px solid var(--line); border-radius: 9px; padding: 9px 11px; min-width: 0; }

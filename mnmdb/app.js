@@ -388,45 +388,55 @@ function tradeStats(name, server) {
   };
 }
 
-// 30-day price history for an item page: the typical asking price (median, outliers
-// trimmed) for each day that had priced posts. Days with none are gaps, not zeros — the
-// line only joins days up to 3 apart, so a capture outage shows as a break. The page gets
-// a placeholder carrying the daily numbers; phDrawAll draws it at the box's real width
-// (crisp text at any size) and the hover layer reads the same numbers. A table view of
-// the days sits under it.
-const PH_DAYS = 30, PH_H = 190, PH_JOIN = 3;
+// 30-day price history for an item page: two lines, what sellers ask (WTS, green) and
+// what buyers offer (WTB, blue, dashed), each the typical (median) price on each day
+// that had priced posts. Days with none are gaps, not zeros: a line only joins days up to
+// 3 apart, so a capture outage shows as a break. The page gets a placeholder carrying the
+// daily numbers; phDrawAll draws it at the box's real width (crisp text at any size) and
+// the hover layer reads the same numbers. A table view of the days sits under it.
+const PH_DAYS = 30, PH_H = 200, PH_JOIN = 3;
+const PH_SIDES = [['s', 'sell', 'Selling (WTS)', 'WTS'], ['b', 'buy', 'Buying (WTB)', 'WTB']];
 function priceHistoryHtml(name, server, stack) {
   const dayKey = (d) => d.toLocaleDateString('en-CA'); // the viewer's calendar day
   const today = new Date(); today.setHours(0, 0, 0, 0);
   const days = [], idx = {};
-  for (let i = PH_DAYS - 1; i >= 0; i--) { const d = new Date(today); d.setDate(d.getDate() - i); idx[dayKey(d)] = days.length; days.push({ date: d, prices: [] }); }
+  for (let i = PH_DAYS - 1; i >= 0; i--) { const d = new Date(today); d.setDate(d.getDate() - i); idx[dayKey(d)] = days.length; days.push({ date: d, sell: [], buy: [] }); }
   for (const t of TRADES[String(name).toLowerCase()] || []) {
-    if (t.side !== 'sell' || t.server !== server) continue;
-    const i = idx[dayKey(new Date(t.date))]; if (i != null) days[i].prices.push(t.price);
+    if (t.server !== server) continue;
+    const i = idx[dayKey(new Date(t.date))]; if (i != null) days[i][t.side === 'buy' ? 'buy' : 'sell'].push(t.price);
   }
-  // Misreads are judged against the whole 30 days, not just their own day — a quiet day
-  // has too few posts to spot one (two posts of a 4s stack misread as 12s 50c).
-  const kept = trimOutliers([].concat.apply([], days.map((d) => d.prices)));
-  if (!kept.length) return '';
-  const lo = Math.min.apply(null, kept), hi = Math.max.apply(null, kept), mult = stack || 1;
-  const pts = days.map((d, i) => { const p = d.prices.filter((x) => x >= lo && x <= hi); return p.length ? { i, v: tmMedian(p) * mult, n: p.length, day: d.date.toLocaleDateString([], { month: 'short', day: 'numeric' }) } : null; }).filter(Boolean);
-  if (pts.length < 3) return '';
+  // Misreads are judged against each side's whole 30 days, not just their own day — a
+  // quiet day has too few posts to spot one (two posts of a 4s stack misread as 12s 50c).
+  const mult = stack || 1, counts = { s: 0, b: 0 };
+  const pts = days.map((d, i) => ({ i, day: d.date.toLocaleDateString([], { month: 'short', day: 'numeric' }) }));
+  for (const [k, side] of PH_SIDES) {
+    const kept = trimOutliers([].concat.apply([], days.map((d) => d[side])));
+    if (!kept.length) continue;
+    const lo = Math.min.apply(null, kept), hi = Math.max.apply(null, kept);
+    days.forEach((d, i) => { const p = d[side].filter((x) => x >= lo && x <= hi); if (p.length) { pts[i][k] = { v: tmMedian(p) * mult, n: p.length }; counts[k]++; } });
+  }
+  if (counts.s < 3 && counts.b < 3) return '';
+  const shown = pts.filter((p) => p.s || p.b);
   const what = stack ? 'per stack of ' + stack : 'per item';
+  const cell = (o) => o ? '<td class="num coin">' + coin(o.v) + '</td><td class="num">' + o.n + '</td>' : '<td class="num muted">—</td><td class="num muted">—</td>';
   setTimeout(phDrawAll, 0);
   return '<h3 class="era-h">Price over the last 30 days</h3>' +
-    '<div class="card ph-card"><div class="ph-wrap" data-ph="' + esc(JSON.stringify(pts)) + '" data-label="' + esc(what) + '">' +
+    '<div class="card ph-card"><div class="ph-legend">' + PH_SIDES.filter(([k]) => counts[k]).map(([k, , label]) => '<span class="ph-key ph-' + k + '"><i></i>' + label + '</span>').join('') +
+      '<span class="muted">' + what + '</span></div>' +
+    '<div class="ph-wrap" data-ph="' + esc(JSON.stringify(shown)) + '" data-label="' + esc(what) + '">' +
       '<div class="ph-plot"></div><div class="ph-tip" aria-hidden="true"></div></div>' +
-    '<div class="note">The typical asking price ' + what + ', day by day, with misread prices left out. Gaps are days with no priced posts. Hover or tap a day for its numbers.</div>' +
-    '<details class="ph-table"><summary>Show as a table</summary><table><thead><tr><th>Day</th><th class="num">Typical (' + what + ')</th><th class="num">Priced posts</th></tr></thead><tbody>' +
-      pts.slice().reverse().map((p) => '<tr><td>' + esc(p.day) + '</td><td class="num coin">' + coin(p.v) + '</td><td class="num">' + p.n + '</td></tr>').join('') +
+    '<div class="note">The typical price ' + what + ' each day: green is what sellers ask (WTS), blue dashed is what buyers offer (WTB). Misread prices are left out, and gaps are days with no priced posts. Hover or tap a day for its numbers.</div>' +
+    '<details class="ph-table"><summary>Show as a table</summary><table><thead><tr><th>Day</th><th class="num">Selling (WTS)</th><th class="num">Posts</th><th class="num">Buying (WTB)</th><th class="num">Posts</th></tr></thead><tbody>' +
+      shown.slice().reverse().map((p) => '<tr><td>' + esc(p.day) + '</td>' + cell(p.s) + cell(p.b) + '</tr>').join('') +
     '</tbody></table></details></div>';
 }
 // A round axis step (1, 2, 2.5, 5 × 10^n) giving about three gridlines up to `max`.
 const phStep = (max) => { const raw = max / 3 || 1, pow = Math.pow(10, Math.floor(Math.log10(raw))), f = raw / pow; return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * pow; };
 function phGeom(wrap) {
   const pts = JSON.parse(wrap.dataset.ph), W = Math.max(280, wrap.clientWidth || 600);
-  const step = phStep(Math.max.apply(null, pts.map((p) => p.v))), top = Math.ceil(Math.max.apply(null, pts.map((p) => p.v)) / step) * step || step;
-  const L = 12 + Math.max.apply(null, [0, step, top].map((t) => coin(t).length)) * 7, R = 12, T = 12, B = 26;
+  const max = Math.max.apply(null, [].concat.apply([], pts.map((p) => [p.s ? p.s.v : 0, p.b ? p.b.v : 0])));
+  const step = phStep(max), top = Math.ceil(max / step) * step || step;
+  const L = 12 + Math.max.apply(null, [0, step, top].map((t) => coin(t).length)) * 7, R = 40, T = 12, B = 26;
   const x = (i) => L + i * (W - L - R) / (PH_DAYS - 1), y = (v) => T + (1 - v / top) * (PH_H - T - B);
   return { pts, W, L, R, T, B, step, top, x, y };
 }
@@ -437,29 +447,50 @@ function phDraw(wrap) {
   const first = new Date(); first.setDate(first.getDate() - (PH_DAYS - 1));
   const xl = [[0, first.toLocaleDateString([], { month: 'short', day: 'numeric' }), 'start'], [PH_DAYS - 1, 'Today', 'end']];
   const axis = xl.map(([i, s, a]) => '<text x="' + x(i) + '" y="' + (PH_H - B + 18) + '" text-anchor="' + a + '">' + esc(s) + '</text>').join('');
-  let d = '';
-  pts.forEach((p, k) => { d += (k && p.i - pts[k - 1].i <= PH_JOIN ? 'L' : 'M') + x(p.i).toFixed(1) + ' ' + y(p.v).toFixed(1); });
-  const dots = pts.map((p) => '<circle class="ph-dot" cx="' + x(p.i).toFixed(1) + '" cy="' + y(p.v).toFixed(1) + '" r="4"/>').join('');
-  const lo = Math.min.apply(null, pts.map((p) => p.v)), hi = Math.max.apply(null, pts.map((p) => p.v));
-  wrap.querySelector('.ph-plot').innerHTML = '<svg width="' + W + '" height="' + PH_H + '" viewBox="0 0 ' + W + ' ' + PH_H + '" role="img" aria-label="Typical price ' + esc(wrap.dataset.label) + ' per day over 30 days, between ' + esc(coin(lo)) + ' and ' + esc(coin(hi)) + '">' +
+  // One line + dots per side, and a direct label at its last point (nudged apart when
+  // the two ends sit close together).
+  let marks = '';
+  const ends = [];
+  for (const [k, , , tag] of PH_SIDES) {
+    const sp = pts.filter((p) => p[k]);
+    if (!sp.length) continue;
+    let d = '';
+    sp.forEach((p, n) => { d += (n && p.i - sp[n - 1].i <= PH_JOIN ? 'L' : 'M') + x(p.i).toFixed(1) + ' ' + y(p[k].v).toFixed(1); });
+    marks += '<path class="ph-line ph-' + k + '" d="' + d + '"/>' + sp.map((p) => '<circle class="ph-dot ph-' + k + '" cx="' + x(p.i).toFixed(1) + '" cy="' + y(p[k].v).toFixed(1) + '" r="4"/>').join('');
+    const last = sp[sp.length - 1];
+    ends.push({ k, tag, x: x(last.i) + 8, y: y(last[k].v) + 4 });
+  }
+  if (ends.length === 2 && Math.abs(ends[0].y - ends[1].y) < 14) {
+    const mid = (ends[0].y + ends[1].y) / 2, up = ends[0].y <= ends[1].y ? 0 : 1;
+    ends[up].y = mid - 7; ends[1 - up].y = mid + 7;
+  }
+  marks += ends.map((e) => '<text class="ph-end ph-' + e.k + '" x="' + e.x.toFixed(1) + '" y="' + e.y.toFixed(1) + '">' + e.tag + '</text>').join('');
+  const all = [].concat.apply([], pts.map((p) => [p.s, p.b].filter(Boolean).map((o) => o.v)));
+  wrap.querySelector('.ph-plot').innerHTML = '<svg width="' + W + '" height="' + PH_H + '" viewBox="0 0 ' + W + ' ' + PH_H + '" role="img" aria-label="Typical selling and buying price ' + esc(wrap.dataset.label) + ' per day over 30 days, between ' + esc(coin(Math.min.apply(null, all))) + ' and ' + esc(coin(Math.max.apply(null, all))) + '">' +
     '<g class="ph-axis">' + grid + axis + '</g><line class="ph-x" y1="' + g.T + '" y2="' + (PH_H - B) + '"/>' +
-    '<path class="ph-line" d="' + d + '"/>' + dots + '<circle class="ph-hi" r="6"/></svg>';
+    marks + '<circle class="ph-hi ph-s" r="6"/><circle class="ph-hi ph-b" r="6"/></svg>';
   wrap.dataset.w = W;
 }
 function phDrawAll() { document.querySelectorAll('.ph-wrap').forEach((w) => { if (+w.dataset.w !== w.clientWidth) phDraw(w); }); }
-// Hover layer: snap to the nearest day with a price, draw a crosshair and show its numbers.
+// Hover layer: snap to the nearest day with a price, draw a crosshair and show both sides.
 function phHover(ev) {
   const wrap = ev.target.closest && ev.target.closest('.ph-wrap');
   document.querySelectorAll('.ph-wrap.is-hover').forEach((w) => { if (w !== wrap) w.classList.remove('is-hover'); });
   if (!wrap || !wrap.querySelector('svg')) return;
-  const g = phGeom(wrap), r = wrap.querySelector('svg').getBoundingClientRect(), mx = ev.clientX - r.left;
+  const g = phGeom(wrap), svg = wrap.querySelector('svg'), mx = ev.clientX - svg.getBoundingClientRect().left;
   const p = g.pts.reduce((best, q) => (Math.abs(g.x(q.i) - mx) < Math.abs(g.x(best.i) - mx) ? q : best));
-  const px = g.x(p.i), py = g.y(p.v), svg = wrap.querySelector('svg');
+  const px = g.x(p.i);
   svg.querySelector('.ph-x').setAttribute('x1', px); svg.querySelector('.ph-x').setAttribute('x2', px);
-  svg.querySelector('.ph-hi').setAttribute('cx', px); svg.querySelector('.ph-hi').setAttribute('cy', py);
+  for (const [k] of PH_SIDES) {
+    const c = svg.querySelector('.ph-hi.ph-' + k);
+    c.style.display = p[k] ? '' : 'none';
+    if (p[k]) { c.setAttribute('cx', px); c.setAttribute('cy', g.y(p[k].v)); }
+  }
+  const line = (k, tag) => p[k] ? '<div><span class="atag ' + (k === 's' ? 'sell' : 'buy') + '">' + tag + '</span> ' + coin(p[k].v) + ' <span class="muted">· ' + p[k].n + ' post' + (p[k].n === 1 ? '' : 's') + '</span></div>' : '';
   const tip = wrap.querySelector('.ph-tip');
-  tip.innerHTML = '<b>' + esc(p.day) + '</b> · ' + coin(p.v) + ' <span class="muted">' + esc(wrap.dataset.label) + ' · ' + p.n + ' post' + (p.n === 1 ? '' : 's') + '</span>';
-  tip.style.left = Math.min(Math.max(px, 90), g.W - 90) + 'px'; tip.style.top = py + 'px';
+  tip.innerHTML = '<b>' + esc(p.day) + '</b> <span class="muted">' + esc(wrap.dataset.label) + '</span>' + line('s', 'WTS') + line('b', 'WTB');
+  tip.style.left = Math.min(Math.max(px, 100), g.W - 100) + 'px';
+  tip.style.top = Math.min.apply(null, [p.s, p.b].filter(Boolean).map((o) => g.y(o.v))) + 'px';
   wrap.classList.add('is-hover');
 }
 document.addEventListener('pointermove', phHover);
@@ -3132,9 +3163,12 @@ function tmCompute() {
   const by = {};
   for (const l of L) {
     const k = lcOf(l.item);
-    const e = by[k] || (by[k] = { name: l.item, matched: !!l.matched, stack: l.stack || null, sells: [], sells10: [], sellers: new Set(), buyers: new Set(), posts: 0, posts24: 0, bids: [], asks: [] });
+    const e = by[k] || (by[k] = { name: l.item, matched: !!l.matched, stack: l.stack || null, sells: [], sells10: [], buys: [], sellers: new Set(), buyers: new Set(),
+      posts: 0, posts24: 0, sidePosts: { sell: 0, buy: 0, other: 0 }, bids: [], asks: [] });
     const t = new Date(l.seen).getTime();
     e.posts++; if (now - t < DAY) e.posts24++;
+    e.sidePosts[aucSideOf(l)]++;
+    if (l.price != null && l.intent === 'buy' && now - t <= 30 * DAY) e.buys.push(listingUnit(l)); // what buyers offer, 30 days
     if (now - t < 10 * DAY) (l.intent === 'buy' ? e.buyers : e.sellers).add(l.player);
     // Priced offers from the last 2 days, for the Trader tab (older ones are likely gone).
     if (l.price != null && now - t < TM_OFFER_DAYS * DAY && aucSideOf(l) !== 'other') (l.intent === 'buy' ? e.bids : e.asks).push({ u: listingUnit(l), player: l.player, seen: l.seen });
@@ -3146,6 +3180,9 @@ function tmCompute() {
     e.n = p.length;
     if (p.length) { e.typical = tmMedian(p); e.low = Math.min.apply(null, p); e.high = Math.max.apply(null, p); }
     const r = trimOutliers(e.sells10); e.recent = r.length ? tmMedian(r) : null;
+    const bp = trimOutliers(e.buys);
+    e.bn = bp.length;
+    if (bp.length) { e.bTypical = tmMedian(bp); e.bLow = Math.min.apply(null, bp); e.bHigh = Math.max.apply(null, bp); }
     e.market = e.sellers.size === e.buyers.size ? 'balanced' : e.sellers.size > e.buyers.size ? 'buyers' : 'sellers';
     const it = itemByName[e.name];
     e.vendorPays = it ? regularPrice(it) || null : null;
@@ -3259,9 +3296,16 @@ function tmCompute() {
 }
 
 async function renderTremMarket() {
-  $('content').innerHTML = '<div class="crumb"><a href="#/">MnMdb</a> › auctions</div><h1>Trem Market</h1><p class="sub">Loading the market…</p>';
+  // Only show "Loading" the first time: a search re-renders from loaded data, and a blank
+  // flash would throw the page back to the top.
+  if (!AUCTIONS) $('content').innerHTML = '<div class="crumb"><a href="#/">MnMdb</a> › auctions</div><h1>Trem Market</h1><p class="sub">Loading the market…</p>';
   await loadAuctionsData();
-  if (!/^auctions\/?$/.test(location.hash.replace(/^#\/?/, ''))) return; // navigated away while loading
+  const hm = /^auctions\/?(?:\?(.*))?$/.exec(location.hash.replace(/^#\/?/, ''));
+  if (!hm) return; // navigated away while loading
+  // A search is its own address — #/auctions?item=Copper%20Ore&side=buy — so picking an
+  // item loads a fresh page (Back returns to the last one) and a result can be linked.
+  const params = new URLSearchParams(hm[1] || '');
+  const side = ['sell', 'buy'].includes(params.get('side')) ? params.get('side') : 'all', picked = params.get('item');
   const M = tmCompute(), P = M.pulse;
   const il = (name) => itemLink(name, name);
   const ago = (iso) => { if (!iso) return '—'; const m = Math.round((Date.now() - new Date(iso)) / 6e4); return m < 60 ? m + ' min ago' : m < 2880 ? Math.round(m / 60) + ' hrs ago' : Math.round(m / 1440) + ' days ago'; };
@@ -3295,7 +3339,7 @@ async function renderTremMarket() {
   const C = M.coverage;
 
   $('content').innerHTML =
-    '<div class="crumb"><a href="#/">MnMdb</a> › auctions</div>' +
+    '<div class="crumb"><a href="#/">MnMdb</a> › ' + (picked ? '<a href="#/auctions">auctions</a> › ' + esc(picked) : 'auctions') + '</div>' +
     '<h1>Trem Market</h1>' +
     '<p class="sub">What things sell for on <b>' + AUC_SERVER + '</b>, read from player auctions on the <a href="https://www.twitch.tv/livemnm" target="_blank" rel="noopener">LiveMNM stream ↗</a>. Updated every 6 hours; other servers will price differently.</p>' +
 
@@ -3308,6 +3352,9 @@ async function renderTremMarket() {
         '<button class="tm-go" type="submit">Search</button></div>' +
         '<div class="tm-sugg" id="tm-sugg" hidden></div>' +
       '</form>' +
+      '<div class="tm-side-row"><span class="muted">Show prices from</span><div class="auc-seg tm-side" role="group" aria-label="Show sellers, buyers or both">' +
+        [['all', 'Both'], ['sell', 'Sellers (WTS)'], ['buy', 'Buyers (WTB)']].map(([id, label]) =>
+          '<button type="button" class="toggle-btn' + (id === side ? ' is-on' : '') + '" data-side="' + id + '" aria-pressed="' + (id === side) + '">' + label + '</button>').join('') + '</div></div>' +
       (QUICK.length ? '<div class="tm-quick"><span class="muted">Popular:</span>' + QUICK.map((n) => '<button type="button" data-pick="' + esc(n) + '">' + esc(n) + '</button>').join('') + '</div>' : '') +
       '<div class="tm-answer" id="tm-answer"></div>' +
     '</section>' +
@@ -3414,56 +3461,91 @@ async function renderTremMarket() {
 
   // What's it worth? — every item seen at auction on this server
   const names = M.items.slice().sort((a, b) => b.posts - a.posts);
+  // Every search is its own address (see `params` above): picking an item, or switching
+  // between sellers and buyers, navigates there and the page loads afresh.
+  const go = (name, s) => {
+    const qs = new URLSearchParams();
+    if (name) qs.set('item', name);
+    if (s && s !== 'all') qs.set('side', s);
+    const hash = '#/auctions' + (qs.toString() ? '?' + qs.toString() : '');
+    if (location.hash === hash) renderTremMarket(); else location.hash = hash;
+  };
+  const findItem = (text) => { const t = String(text || '').trim().toLowerCase(); return t ? M.by[t] || names.find((e) => e.name.toLowerCase().includes(t)) : null; };
   const answer = (e, example) => {
-    if (!e.n) {
-      $('tm-answer').innerHTML = '<div class="sub">' + il(e.name) + ' has been posted ' + e.posts + ' time' + (e.posts === 1 ? '' : 's') + ', but never with a price yet. ' +
+    const box = $('tm-answer');
+    if (!e.n && !e.bn) {
+      box.innerHTML = '<div class="sub">' + il(e.name) + ' has been posted ' + e.posts + ' time' + (e.posts === 1 ? '' : 's') + ', but never with a price yet. ' +
         '<a href="#/auctions/' + encodeURIComponent(e.name) + '">See the posts →</a></div>';
       return;
     }
     const sp = (x) => coin(e.stack ? x * e.stack : x);
-    const verdict = e.vendorPays && e.typical >= e.vendorPays * 3 ? '<span class="tm-verdict post">Post it: players pay ' + Math.round(e.typical / e.vendorPays) + '× the vendor</span>'
+    // One price block per side: typical, range and post count, and a link to those posts.
+    const block = (s, tag, label, typ, low, high, n) => {
+      const posts = e.sidePosts[s];
+      return '<div class="tm-pblock"><div class="sub"><span class="atag ' + s + '">' + tag + '</span> ' + label + '</div>' +
+        (n ? '<div class="tm-big coin">' + sp(typ) + (e.stack ? ' <small>/stack of ' + e.stack + '</small>' : '') + '</div>' +
+          '<div class="sub">' + (e.stack ? coin(typ) + ' each · ' : '') + (low !== high ? 'range ' + sp(low) + '–' + sp(high) + ' · ' : '') + n + ' priced post' + (n === 1 ? '' : 's') + tmThin(n) + '</div>'
+          : '<div class="tm-big muted">No price yet</div>') +
+        (posts ? '<div class="sub"><a href="#/auctions/' + encodeURIComponent(e.name) + '?side=' + s + '">see the ' + posts + ' ' + (s === 'buy' ? 'buy offer' : 'listing') + (posts === 1 ? '' : 's') + ' →</a></div>' : '') + '</div>';
+    };
+    const blocks = (side !== 'buy' ? block('sell', 'WTS', 'Sellers ask', e.typical, e.low, e.high, e.n) : '') +
+      (side !== 'sell' ? block('buy', 'WTB', 'Buyers offer', e.bTypical, e.bLow, e.bHigh, e.bn) : '');
+    const verdict = !e.n ? '' : e.vendorPays && e.typical >= e.vendorPays * 3 ? '<span class="tm-verdict post">Post it: players pay ' + Math.round(e.typical / e.vendorPays) + '× the vendor</span>'
       : e.vendorPays && e.typical < e.vendorPays * 1.5 ? '<span class="tm-verdict vendor">Just vendor it</span>'
       : e.market === 'sellers' ? '<span class="tm-verdict hot">In demand: buyers outnumber sellers</span>' : '';
-    const fact = (k, v, s) => '<div class="tm-fact"><div class="k">' + k + '</div><div class="v">' + v + '</div><div class="sub">' + s + '</div></div>';
-    $('tm-answer').innerHTML =
-      '<div><div class="sub">' + (example ? 'Example · ' : '') + il(e.name) + ' · typical ask on ' + AUC_SERVER + '</div>' +
-      '<div class="tm-big coin">' + sp(e.typical) + (e.stack ? ' <small>/stack of ' + e.stack + '</small>' : '') + '</div>' +
-      '<div class="sub">' + (e.stack ? coin(e.typical) + ' each · ' : '') + 'range ' + sp(e.low) + '–' + sp(e.high) + ' · ' + e.n + ' priced post' + (e.n === 1 ? '' : 's') + tmThin(e.n) +
-      ' · <a href="#/auctions/' + encodeURIComponent(e.name) + '">see them →</a></div>' +
-      (verdict ? '<div class="tm-verdict-row">' + verdict + '</div>' : '') + '</div>' +
+    const fact = (k, v, s) => '<div class="tm-fact"><div class="k">' + k + '</div><div class="v">' + v + '</div>' + (s ? '<div class="sub">' + s + '</div>' : '') + '</div>';
+    const none = '<span class="muted">No data</span>';
+    box.innerHTML =
+      '<div class="tm-answer-main"><div class="tm-answer-h">' + (example ? '<span class="tm-example">Example</span>' : '') + '<h2>' + il(e.name) + '</h2>' +
+        '<span class="sub">on ' + AUC_SERVER + ' · ' + itemLink(e.name, 'item page and 30-day chart →') + '</span></div>' +
+        '<div class="tm-pblocks">' + blocks + '</div>' +
+        (verdict ? '<div class="tm-verdict-row">' + verdict + '</div>' : '') + '</div>' +
       '<div class="tm-facts">' +
         fact('Market, 10 days', tmArrow(e.market), e.sellers.size + ' selling · ' + e.buyers.size + ' buying') +
-        fact('Vendor pays', e.vendorPays ? coin(e.vendorPays) : '—', e.vendorPays ? 'best NPC buy price seen' : 'not logged yet') +
-        fact('Vendor sells', e.vendorSells != null ? coin(e.vendorSells) : '—', e.vendorSells != null ? 'buy it from an NPC' : 'not sold by NPCs') +
-        fact('Beta price', e.beta ? tmPrice(e.beta, e.stack) : '—', 'closed beta, for reference') +
+        fact('Vendor pays', e.vendorPays ? coin(e.vendorPays) : none, e.vendorPays ? 'best NPC buy price seen' : '') +
+        fact('Vendor sells', e.vendorSells != null ? coin(e.vendorSells) : none, e.vendorSells != null ? 'buy it from an NPC' : '') +
+        fact('Beta price', e.beta ? tmPrice(e.beta, e.stack) : none, e.beta ? 'closed beta, for reference' : '') +
       '</div>';
+    // A new result slides in, so it's obvious the answer changed.
+    box.classList.remove('is-new'); void box.offsetWidth; if (!example) box.classList.add('is-new');
   };
   const q = $('tm-q'), sugg = $('tm-sugg');
-  const pick = (name, example) => { const e = M.by[String(name).toLowerCase()]; if (!e) return; if (!example) q.value = e.name; sugg.hidden = true; answer(e, example); };
+  const pick = (name) => { const e = M.by[String(name).toLowerCase()]; if (e) { sugg.hidden = true; go(e.name, side); } };
   q.addEventListener('input', () => {
     const t = q.value.trim().toLowerCase();
     const hits = t ? names.filter((e) => e.name.toLowerCase().includes(t)).slice(0, 8) : [];
-    sugg.innerHTML = hits.map((e) => '<button type="button" data-pick="' + esc(e.name) + '"><span>' + esc(e.name) + '</span><span class="muted">' + (e.n ? tmPrice(e.typical, e.stack) : 'no price yet') + '</span></button>').join('');
+    const price = (e) => side === 'buy' ? (e.bn ? tmPrice(e.bTypical, e.stack) : 'no buy price yet') : (e.n ? tmPrice(e.typical, e.stack) : 'no price yet');
+    sugg.innerHTML = hits.map((e) => '<button type="button" data-pick="' + esc(e.name) + '"><span>' + esc(e.name) + '</span><span class="muted">' + price(e) + '</span></button>').join('');
     sugg.hidden = !hits.length;
   });
   q.addEventListener('keydown', (ev) => { if (ev.key === 'Escape') sugg.hidden = true; });
   $('tm-form').addEventListener('submit', (ev) => {
     ev.preventDefault();
-    const t = q.value.trim().toLowerCase(); if (!t) { q.focus(); return; }
-    const hit = M.by[t] || names.find((e) => e.name.toLowerCase().includes(t));
-    if (hit) { pick(hit.name); return; }
-    sugg.hidden = true;
-    $('tm-answer').innerHTML = '<div class="sub">No ' + AUC_SERVER + ' auctions seen for “' + esc(q.value.trim()) + '” yet. <button type="button" class="tm-linkbtn" id="tm-dbsearch">Search the whole database →</button></div>';
-    $('tm-dbsearch').addEventListener('click', () => { $('search').value = q.value.trim(); route(); });
+    const text = q.value.trim(); if (!text) { q.focus(); return; }
+    const hit = findItem(text);
+    if (hit) pick(hit.name); else go(text, side); // the new page says nothing matched
   });
   $('content').querySelectorAll('[data-pick]').forEach((b) => b.addEventListener('click', () => pick(b.dataset.pick)));
   sugg.addEventListener('click', (ev) => { const b = ev.target.closest('[data-pick]'); if (b) pick(b.dataset.pick); });
+  document.querySelectorAll('.tm-side [data-side]').forEach((b) => b.addEventListener('click', () => go(picked, b.dataset.side)));
   if (!renderTremMarket.outsideClick) { // close suggestions on any click outside the search (bound once)
     renderTremMarket.outsideClick = true;
     document.addEventListener('click', (ev) => { const s = $('tm-sugg'); if (s && !ev.target.closest('.tm-search')) s.hidden = true; });
   }
-  const first = QUICK[0] || (names.find((e) => e.n) || {}).name;
-  if (first) pick(first, true);
+  if (picked) {
+    const hit = findItem(picked);
+    q.value = hit ? hit.name : picked;
+    if (hit) answer(hit);
+    else {
+      $('tm-answer').innerHTML = '<div class="sub">No ' + AUC_SERVER + ' auctions seen for “' + esc(picked) + '” yet. <button type="button" class="tm-linkbtn" id="tm-dbsearch">Search the whole database →</button></div>';
+      $('tm-dbsearch').addEventListener('click', () => { $('search').value = picked; route(); });
+    }
+    const top = $('tm-answer').getBoundingClientRect().top;
+    if (top < 0 || top > window.innerHeight * 0.6) $('tm-answer').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  } else {
+    const first = QUICK[0] || (names.find((e) => e.n) || {}).name;
+    if (first) answer(M.by[first.toLowerCase()], true);
+  }
 }
 
 // Buying / Selling filter for the listings feed. Kept in the address as "?side=buy" or
@@ -4231,7 +4313,7 @@ function route() {
   // The auctions page shows two side-by-side markets — give it a wider content
   // column so PvP/PvE don't get squeezed (they stack on narrow screens via CSS).
   const hashPath = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
-  document.body.classList.toggle('page-wide', !q && (hashPath === 'auctions' || hashPath.startsWith('auctions/') || hashPath === 'market' || hashPath.startsWith('market/')));
+  document.body.classList.toggle('page-wide', !q && (hashPath === 'auctions' || hashPath.startsWith('auctions/') || hashPath.startsWith('auctions?') || hashPath === 'market' || hashPath.startsWith('market/')));
   if (q) return renderSearch(q);
   const h = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
   if (h === 'items' || h === 'mobs' || h === 'gathering') return renderBrowse(h);
@@ -4243,7 +4325,7 @@ function route() {
   // published every 6 hours, not live — the page says so). Prices also sit on item pages.
   // #/auctions is the Trem Market landing page; #/auctions/all the full feed; and
   // #/auctions/<item> the feed filtered to one item (linked from item pages).
-  if (h === 'auctions') return renderTremMarket();
+  if (h === 'auctions' || h.startsWith('auctions?')) return renderTremMarket(); // ?item=…&side=… = a search
   if (h.startsWith('auctions/')) return renderAuctions(h.slice(9)); // "all" (optionally ?side=…) = no item filter
   if (h === 'atlas') return renderAtlasWorld();
   if (h === 'advanced' || h === 'bis') return renderAdvanced();
