@@ -95,9 +95,18 @@ const COIN = { p: 1e6, pp: 1e6, plat: 1e6, platinum: 1e6, g: 1e4, gp: 1e4, gold:
 // The price stated right before "each" (e.g. "1.5g each") — read straight from the
 // raw so compound posts like "1.5g each or 90g for all" don't get the two prices
 // summed together (a quirk of the coin parser).
-function eachPrice(raw) {
-  const m = raw.match(/([\d.]+)\s*(pp|platinum|plat|gp|gold|sp|silver|cp|copper|p|g|s|c)\s*(?:ea|each)\b/);
-  return m && COIN[m[2]] != null ? Math.round(parseFloat(m[1]) * COIN[m[2]]) : null;
+// Words that make a price "for one": "5s ea", "45s each", "45s per x11", "1s/per",
+// "3s apiece". A "per" followed by a number or a stack word means per-N / per-stack
+// ("10s per 3", "2s per stack") and is handled by those rules instead.
+const EACH_WORD = '(?:ea|each|apiece|a\\s*piece|per(?!\\s*(?:\\d|stacks?\\b|stk\\b|st\\b|s\\b)))';
+const EACH_RE = new RegExp('\\b' + EACH_WORD + '\\b');
+const COIN_AT = /([\d.]+)\s*(pp|platinum|plat|gp|gold|sp|silver|cp|copper|p|g|s|c)\b/;
+const EACH_AT = new RegExp('([\\d.]+)\\s*(pp|platinum|plat|gp|gold|sp|silver|cp|copper|p|g|s|c)\\s*[\\/(\\-]?\\s*' + EACH_WORD + '\\b');
+// A price in copper with where it starts, or null: the first price (COIN_AT) or the first
+// price written "for one" (EACH_AT).
+function priceAt(raw, re) {
+  const m = raw.match(re);
+  return m && COIN[m[2]] != null ? { value: Math.round(parseFloat(m[1]) * COIN[m[2]]), index: m.index } : null;
 }
 // Scope qualifier detection to THIS item's segment of a multi-item post: in
 // "[A] 15s a stack [B] 5g" the "a stack" belongs to A, not B. Single-item posts
@@ -115,20 +124,41 @@ function itemScope(rawStr, item) {
 // stacks.js) — falls back to the parser's qty only when the item can't be located.
 const listingQty = (l) => { const o = itemQty(l.raw, l.item); return o.found ? o.qty : (l.qty && l.qty > 1 ? l.qty : null); };
 
+// The text after this item's [bracket] up to the next [, or null (no bracket, or no price
+// there: "WTS 25s [Harseal's Quill]").
+// Tolerates stray spaces inside the brackets ("[ Wicked Longbow]", left by chat link
+// markup) and stops where the next chat line starts ('… 5s" auctions, "wtb wood …' —
+// the OCR often reads "auctions" as "1uctions" or "iuctions").
+function ownPart(rawStr, item) {
+  const lc = String(rawStr || '').toLowerCase();
+  const m = new RegExp('\\[\\s*' + String(item).toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\s*\\]').exec(lc);
+  if (!m) return null;
+  let part = lc.slice(m.index + m[0].length);
+  const next = part.search(/\[|uctions,/);
+  if (next >= 0) part = part.slice(0, next);
+  return COIN_AT.test(part) ? part : null;
+}
 function normalize(l) {
   const price = l.priceCopper;
   if (price == null) return { unit: null, total: null, perStack: false };
   const qty = listingQty(l) || 1;
   const raw = itemScope(l.raw, l.item);
-  const each = /\b(?:ea|each)\b|\/\s*ea\b/.test(raw);                                     // explicit per-unit
+  // Explicit per-unit (see EACH_WORD): "5s each", "45s per x11". The price used is the one
+  // written right before that word.
+  // `each` = the word appears; eachAt = a price written right before it. Read from the
+  // item's own part of the post when it has one.
+  const own = ownPart(l.raw, l.item) || raw;
+  const first = priceAt(own, COIN_AT), eachAt = priceAt(own, EACH_AT), each = EACH_RE.test(own);
   const stack = /\bstacks?\b|\bstk\b|[/\s]st\b/.test(raw);                                // "a stack" / "stk" / "40s/st" = a 20-unit lot
-  const takeAll = /\btake all\b|\ball for\b|\bfor all\b|\bthe lot\b/.test(raw);           // explicit whole-lot total
   const priceThenQty = /\d+(?:\.\d+)?\s*(?:pp|p|plat|platinum|gp|g|gold|sp|s|silver|cp|c|copper)\s*x\s*\d+/.test(raw); // "1.1g x28" = per-unit
   // A stack price ("30g a stack") is per 20 units — unless it also says "each"
   // (then the price is already per-unit). This is the confirmed "stack = 20" rule.
   if (stack && !each) return { unit: Math.round(price / STACK), total: price, perStack: true };
+  // An "each" that comes after this item's own first price belongs to the next offer:
+  // "[Earring] 40s, 10s/ea [Tooth][Staff]" is a 40s earring, not 10s.
+  if (eachAt && !stack && first && eachAt.index !== first.index) return { unit: Math.round(first.value / qty), total: first.value, perStack: false };
   if (each || priceThenQty) {
-    const u = (each && eachPrice(raw)) || price; // prefer the price read right before "each"
+    const u = (eachAt && eachAt.value) || price;
     return { unit: u, total: qty > 1 ? u * qty : u, perStack: false };
   }
   return { unit: Math.round(price / qty), total: price, perStack: false };                // default: price is the whole lot

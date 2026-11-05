@@ -347,6 +347,26 @@ function vendorsBuying(it) {
   return out;
 }
 
+// Search shorthand players use in chat: initials ("bcm", "bcms" → Brilliant Crystallized
+// Magic; "mqwp" → Medium-Quality Wolf Pelt) and a few short words ("rawhide bp",
+// "mq pelt"). nameMatch is true when the name contains the query, its initials are the
+// query, or every word of the query (shorthand expanded) is in the name. nameRank orders
+// hits: initials, then names starting with the query, then the rest.
+const SHORTHAND = { bp: 'backpack', lq: 'low-quality', mq: 'medium-quality', hq: 'high-quality' };
+const nameInitials = (name) => String(name).toLowerCase().split(/[\s-]+/).map((w) => w.replace(/[^a-z0-9]/g, '').charAt(0)).join('');
+const isInitials = (t, name) => /^[a-z]{2,6}$/.test(t) && (nameInitials(name) === t || (t.endsWith('s') && nameInitials(name) === t.slice(0, -1)));
+function nameMatch(q, name) {
+  const t = String(q || '').trim().toLowerCase(), n = String(name).toLowerCase();
+  if (!t) return false;
+  if (n.includes(t) || isInitials(t, name)) return true;
+  const words = t.split(/\s+/);
+  return (words.length > 1 || SHORTHAND[t]) && words.every((w) => n.includes(SHORTHAND[w] || w));
+}
+function nameRank(q, name) {
+  const t = String(q || '').trim().toLowerCase(), n = String(name).toLowerCase();
+  return isInitials(t, name) ? 0 : n === t ? 0 : n.startsWith(t) ? 1 : 2;
+}
+
 // Drop extreme outliers with an IQR fence so one fat-fingered price can't skew
 // the range. Needs >=4 points to judge; below that every price is kept.
 function trimOutliers(prices) {
@@ -1853,7 +1873,7 @@ function notFound(kind, id) {
 function renderSearch(q) {
   const query = q.toLowerCase();
   // Resources are now first-class items, so a single item search covers them
-  const items = DATA.items.filter((i) => i.name.toLowerCase().includes(query)).slice(0, 50)
+  const items = DATA.items.filter((i) => nameMatch(query, i.name)).sort((a, b) => nameRank(query, a.name) - nameRank(query, b.name)).slice(0, 50)
     .map((i) => {
       const bits = [];
       if (i.droppedBy.length) bits.push(i.droppedBy.length + ' source(s)');
@@ -1862,7 +1882,7 @@ function renderSearch(q) {
       const isResource = i.harvested && !i.droppedBy.length;
       return { kind: isResource ? 'harvest' : 'item', name: i.name, id: i.id, meta: bits.join(' · ') };
     });
-  const mobs = Object.entries(DATA.mobs).filter(([m]) => m.toLowerCase().includes(query)).slice(0, 20)
+  const mobs = Object.entries(DATA.mobs).filter(([m]) => nameMatch(query, m)).slice(0, 20)
     .map(([m, d]) => ({ kind: 'mob', name: m, meta: mobCorpses(d) + ' looted' }));
 
   const all = [...mobs, ...items];
@@ -3164,7 +3184,7 @@ function tmCompute() {
   for (const l of L) {
     const k = lcOf(l.item);
     const e = by[k] || (by[k] = { name: l.item, matched: !!l.matched, stack: l.stack || null, sells: [], sells10: [], buys: [], sellers: new Set(), buyers: new Set(),
-      posts: 0, posts24: 0, sidePosts: { sell: 0, buy: 0, other: 0 }, bids: [], asks: [] });
+      posts: 0, posts24: 0, sidePosts: { sell: 0, buy: 0, other: 0 }, bids: [], asks: [], asks7: [] });
     const t = new Date(l.seen).getTime();
     e.posts++; if (now - t < DAY) e.posts24++;
     e.sidePosts[aucSideOf(l)]++;
@@ -3172,6 +3192,7 @@ function tmCompute() {
     if (now - t < 10 * DAY) (l.intent === 'buy' ? e.buyers : e.sellers).add(l.player);
     // Priced offers from the last 2 days, for the Trader tab (older ones are likely gone).
     if (l.price != null && now - t < TM_OFFER_DAYS * DAY && aucSideOf(l) !== 'other') (l.intent === 'buy' ? e.bids : e.asks).push({ u: listingUnit(l), player: l.player, seen: l.seen });
+    if (l.price != null && now - t < 7 * DAY && aucSideOf(l) === 'sell') e.asks7.push({ u: listingUnit(l), player: l.player, seen: l.seen }); // for Priciest listings
     if (l.price == null || l.intent === 'buy' || now - t > 30 * DAY) continue;
     e.sells.push(listingUnit(l)); if (now - t < 10 * DAY) e.sells10.push(listingUnit(l));
   }
@@ -3252,13 +3273,13 @@ function tmCompute() {
 
   const materials = items.filter((e) => e.stack && priced(e)).sort((a, b) => b.n - a.n).slice(0, 12);
 
-  const reqCount = {};
-  for (const r of (A.requests || [])) {
-    if (r.server !== AUC_SERVER || now - new Date(r.lastSeen || r.seen).getTime() > 10 * DAY) continue;
-    const what = [(r.plus || []).length ? '+' + r.plus.join('/') : '', (r.stats || []).join('/'), r.category || ''].filter(Boolean).join(' ').trim();
-    if (what) reqCount[what] = (reqCount[what] || 0) + 1;
-  }
-  const demand = Object.entries(reqCount).sort((a, b) => b[1] - a[1]).slice(0, 10);
+  // Priciest listings: the highest ask per item over the last 7 days, per item (not per
+  // stack). Where an item has 4+ priced posts, asks over 3× its typical are left out as
+  // likely misreads.
+  const priciest = items.map((e) => {
+    const cap = e.n >= 4 ? e.typical * 3 : Infinity;
+    return { e, o: best(e.asks7.filter((a) => a.u <= cap), (x, m) => x.u > m.u) };
+  }).filter((r) => r.o).sort((a, b) => b.o.u - a.o.u).slice(0, 12);
 
   // Farm for coin: coin per kill + each drop's chance × what it sells for. Early Access
   // drop logs where a mob has 15+ shared kills, otherwise the beta logs.
@@ -3291,7 +3312,7 @@ function tmCompute() {
   const kills = (set) => Object.values(set || {}).reduce((s, m) => s + (m.kills || 0), 0);
   const coverage = { eaKills: kills(eaMobs), eaMobs: Object.keys(eaMobs).length, betaKills: kills(DATA.mobs), betaMobs: Object.keys(DATA.mobs || {}).length,
     contributors: (EA && EA.contributorCount) || 0 };
-  return { by, items, pulse, sellOrVendor, busy, hot, profitable, materials, demand, farm: farm.slice(0, 8), coverage,
+  return { by, items, pulse, sellOrVendor, busy, hot, profitable, materials, priciest, farm: farm.slice(0, 8), coverage,
     flips: flips.slice(0, 12), bigBids: bigBids.slice(0, 10), bargains: bargains.slice(0, 10) };
 }
 
@@ -3367,7 +3388,7 @@ async function renderTremMarket() {
 
     '<section aria-labelledby="tm-tabs-title">' +
       '<div class="tm-tabs-h"><h2 id="tm-tabs-title">How do you play?</h2><span class="sub">Pick one to see the market from that angle.</span></div>' +
-      '<div class="tm-tabs" role="tablist">' + tab('new', 'New player', 'Sell smart, don’t overpay') + tab('crafter', 'Crafter', 'Margins, mats, demand') + tab('adventurer', 'Adventurer', 'What to farm for coin') + tab('trader', 'Trader', 'Flips, buyers, bargains') + '</div>' +
+      '<div class="tm-tabs" role="tablist">' + tab('new', 'New player', 'Sell smart, don’t overpay') + tab('crafter', 'Crafter', 'Margins, mats, top prices') + tab('adventurer', 'Adventurer', 'What to farm for coin') + tab('trader', 'Trader', 'Flips, buyers, bargains') + '</div>' +
 
       '<div role="tabpanel" id="tm-p-new" aria-labelledby="tm-t-new" class="tm-grid">' +
         '<div class="tm-card tm-wide"><h2>Sell it or vendor it?</h2><p class="tm-why">Loot players pay far more for than a vendor does. Post these on /auction instead of selling them to an NPC.</p>' +
@@ -3400,9 +3421,11 @@ async function renderTremMarket() {
             const tr = Math.abs(d) < 0.08 ? '<span class="muted">→ steady</span>' : d > 0 ? '<span class="arrow-s">↑ ' + Math.round(d * 100) + '%</span>' : '<span class="arrow-b">↓ ' + Math.round(-d * 100) + '%</span>';
             return '<tr><td>' + il(e.name) + tmThin(e.n) + '</td>' + eachCols(e) + '<td class="num">' + tr + '</td></tr>';
           }).join('')) + '</div>' +
-        '<div class="tm-card"><h2>What people want crafted</h2><p class="tm-why">Requests from the last 10 days, grouped. The number is how many posts.</p>' +
-          (M.demand.length ? '<div class="tm-chips">' + M.demand.map(([w, n]) => '<span>' + esc(w) + '<b>' + n + '</b></span>').join('') + '</div>' : empty('No requests in the last 10 days.')) +
-          '<p class="sub"><a href="#/auctions/all">See every request with the full listings →</a></p></div>' +
+        '<div class="tm-card"><h2>Priciest listings</h2><p class="tm-why">The most expensive things up for sale on ' + AUC_SERVER + ' this week: the highest ask for each item.</p>' +
+          (M.priciest.length ? table('<th>Item</th><th class="num">Asking</th>',
+            M.priciest.map((r) => '<tr><td>' + il(r.e.name) + (r.e.n >= 2 ? '<div class="tm-mats">usually ' + coin(r.e.typical) + '</div>' : '') + '</td>' +
+              '<td class="num coin">' + coin(r.o.u) + who(r.o) + '</td></tr>').join(''))
+            : empty('Nothing priced listed this week.')) + '</div>' +
       '</div>' +
 
       '<div role="tabpanel" id="tm-p-adventurer" aria-labelledby="tm-t-adventurer" class="tm-grid" hidden>' +
@@ -3470,7 +3493,10 @@ async function renderTremMarket() {
     const hash = '#/auctions' + (qs.toString() ? '?' + qs.toString() : '');
     if (location.hash === hash) renderTremMarket(); else location.hash = hash;
   };
-  const findItem = (text) => { const t = String(text || '').trim().toLowerCase(); return t ? M.by[t] || names.find((e) => e.name.toLowerCase().includes(t)) : null; };
+  // Best match for typed text: exact name, else initials ("bcm"), else the busiest item
+  // whose name contains it (see nameMatch).
+  const matches = (text) => names.filter((e) => nameMatch(text, e.name)).sort((a, b) => nameRank(text, a.name) - nameRank(text, b.name));
+  const findItem = (text) => { const t = String(text || '').trim().toLowerCase(); return t ? M.by[t] || matches(t)[0] : null; };
   const answer = (e, example) => {
     const box = $('tm-answer');
     if (!e.n && !e.bn) {
@@ -3513,7 +3539,7 @@ async function renderTremMarket() {
   const pick = (name) => { const e = M.by[String(name).toLowerCase()]; if (e) { sugg.hidden = true; go(e.name, side); } };
   q.addEventListener('input', () => {
     const t = q.value.trim().toLowerCase();
-    const hits = t ? names.filter((e) => e.name.toLowerCase().includes(t)).slice(0, 8) : [];
+    const hits = t ? matches(t).slice(0, 8) : [];
     const price = (e) => side === 'buy' ? (e.bn ? tmPrice(e.bTypical, e.stack) : 'no buy price yet') : (e.n ? tmPrice(e.typical, e.stack) : 'no price yet');
     sugg.innerHTML = hits.map((e) => '<button type="button" data-pick="' + esc(e.name) + '"><span>' + esc(e.name) + '</span><span class="muted">' + price(e) + '</span></button>').join('');
     sugg.hidden = !hits.length;
@@ -3642,7 +3668,7 @@ function aucBase(server) {
   const q = ($('auc-q').value || '').trim().toLowerCase();
   let rs = AUCTIONS.listings.filter((l) => l.server === server);
   if (aucSide !== 'all') rs = rs.filter((l) => aucSideOf(l) === aucSide);
-  if (q) rs = rs.filter((l) => (l.item + ' ' + l.player).toLowerCase().includes(q));
+  if (q) rs = rs.filter((l) => nameMatch(q, l.item) || String(l.player).toLowerCase().includes(q));
   return rs;
 }
 // "Recent activity" — raw per-post feed, most recent first (a live scrolling
