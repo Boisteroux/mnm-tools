@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-06T06:22:40.632Z",
+  "generatedAt": "2026-11-06T20:00:16.850Z",
   "source": "mnm-tools",
-  "ledgerFiles": 44,
-  "events": 15159,
+  "ledgerFiles": 45,
+  "events": 15167,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 15159
+      "events": 15167
     }
   ],
   "contributorCount": 1,
@@ -1879,6 +1879,32 @@
       "coin": 0,
       "corpses": 8
     },
+    "a cinder sentinel": {
+      "kills": 0,
+      "drops": {
+        "Giant Cinder Beetle Eye": 1,
+        "Giant Cinder Beetle Carapace": 1,
+        "Cinder Beetle Serrated Mandible": 1,
+        "Grizzled Beetle Antenna": 1
+      },
+      "zones": {
+        "Sungreetstrand": 4
+      },
+      "coin": 0,
+      "corpses": 3
+    },
+    "a cinder harvester": {
+      "kills": 0,
+      "drops": {
+        "Cracked Beetle Thorax": 2,
+        "Pyrite Ore": 1
+      },
+      "zones": {
+        "Sungreetstrand": 3
+      },
+      "coin": 0,
+      "corpses": 2
+    },
     "a gloom widow": {
       "kills": 0,
       "drops": {
@@ -3224,6 +3250,24 @@
           "drops": 1,
           "corpses": 8,
           "rate": 0.125
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Sungreetstrand"
+      ]
+    },
+    {
+      "id": "cinder_beetle_serrated_mandible",
+      "gameId": "64d7255fca3095ebe04ec9fd",
+      "name": "Cinder Beetle Serrated Mandible",
+      "droppedBy": [
+        {
+          "mob": "a cinder sentinel",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
         }
       ],
       "prices": [],
@@ -5136,6 +5180,24 @@
       ]
     },
     {
+      "id": "cracked_beetle_thorax",
+      "gameId": "eda8d462e3eb6d027e289226",
+      "name": "Cracked Beetle Thorax",
+      "droppedBy": [
+        {
+          "mob": "a cinder harvester",
+          "drops": 2,
+          "corpses": 2,
+          "rate": 1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Sungreetstrand"
+      ]
+    },
+    {
       "id": "cracked_fine_wood_staff",
       "gameId": "c8945854c8b1a0659e5fd748",
       "name": "Cracked Fine Wood Staff",
@@ -6449,6 +6511,42 @@
       ]
     },
     {
+      "id": "giant_cinder_beetle_carapace",
+      "gameId": "e1ce45417fb4109e287197c5",
+      "name": "Giant Cinder Beetle Carapace",
+      "droppedBy": [
+        {
+          "mob": "a cinder sentinel",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Sungreetstrand"
+      ]
+    },
+    {
+      "id": "giant_cinder_beetle_eye",
+      "gameId": "89fd07643d966febde9529ff",
+      "name": "Giant Cinder Beetle Eye",
+      "droppedBy": [
+        {
+          "mob": "a cinder sentinel",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Sungreetstrand"
+      ]
+    },
+    {
       "id": "giant_fire_beetle_eye",
       "gameId": "037f3ff319d7ab331da0102e",
       "name": "Giant Fire Beetle Eye",
@@ -6681,6 +6779,24 @@
       "harvested": 0,
       "zones": [
         "Evershade Weald"
+      ]
+    },
+    {
+      "id": "grizzled_beetle_antenna",
+      "gameId": "dd0b5010a384407a664a52e1",
+      "name": "Grizzled Beetle Antenna",
+      "droppedBy": [
+        {
+          "mob": "a cinder sentinel",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Sungreetstrand"
       ]
     },
     {
@@ -8039,6 +8155,24 @@
       "zones": [
         "Keepersbight",
         "Evershade Weald"
+      ]
+    },
+    {
+      "id": "pyrite_ore",
+      "gameId": "d4e263de0482f62fef0fb4c0",
+      "name": "Pyrite Ore",
+      "droppedBy": [
+        {
+          "mob": "a cinder harvester",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Sungreetstrand"
       ]
     },
     {
