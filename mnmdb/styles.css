@@ -970,3 +970,17 @@ tr.bis-total td { border-top: 2px solid var(--line-2); background: var(--panel-2
   .tm-dl { justify-content: center; }
   .tm-go { padding: 0 14px; }
 }
+
+/* Crafting costs: how each material is cheapest to get, and the nested breakdown. */
+.cost-how { font-size: 11px; white-space: nowrap; border-radius: 4px; padding: 0 5px; border: 1px solid var(--line-2); color: var(--muted); }
+.cost-made { color: var(--accent); border-color: currentColor; }
+.cost-vendor { color: var(--text); }
+.cost-unknown { color: var(--warn); border-color: currentColor; }
+.cost-mat { white-space: nowrap; line-height: 1.7; }
+.cost-break { margin: 10px 0 18px; padding: 10px 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; }
+.cost-break summary { cursor: pointer; }
+.cost-break summary b { color: var(--text); }
+.cost-tree { list-style: none; margin: 6px 0 0; padding-left: 0; font-size: 14px; }
+.cost-tree .cost-tree { padding-left: 18px; border-left: 1px solid var(--line-2); margin: 2px 0 4px 6px; font-size: 13.5px; }
+.cost-tree li { padding: 2px 0; }
+.cost-tree .cost-how { font-size: 12px; }

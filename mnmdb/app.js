@@ -587,21 +587,6 @@ function itemMarketValue(name) {
   return { value: 0, source: null };
 }
 
-// Crafting economics for one recipe: cost of the mats vs the value of the
-// output. "Margin" = output value − mats value = what crafting adds over just
-// selling the raw materials. Components without a known price are flagged.
-function recipeEconomics(r) {
-  let matCost = 0, missing = 0;
-  for (const c of r.components) {
-    const v = itemMarketValue(c.item).value;
-    if (v > 0) matCost += c.qty * v; else missing++;
-  }
-  const outMv = itemMarketValue(r.result.item);
-  const outValue = r.result.qty * outMv.value;
-  const margin = outMv.value > 0 ? outValue - matCost : null;
-  return { matCost, missing, outValue, haveOutput: outMv.value > 0, margin };
-}
-
 // Biggest movers — items whose 7-day average sell price changed most vs the
 // previous week. Needs sells in both windows; empty until trade data builds up.
 function tradeMovers() {
@@ -1328,13 +1313,6 @@ function renderNode(name) {
     body;
 }
 
-// Build a recipe table sorted by best margin first (unpriced recipes last).
-// Compact raw-material list for a recipe (base mats, tools excluded).
-function rawMatsHtml(rc) {
-  return rc.parts.map((p) => fmtQty(p.qty) + '× ' + (nameToId[p.name] ? itemLink(nameToId[p.name], p.name) : esc(p.name)) +
-    (p.value <= 0 ? ' <span class="sample">?</span>' : '')).join(', ');
-}
-
 // Apply trivials reverse-engineered from in-game crafting difficulty colours
 // (recipe-observations.json) where the wiki has none. The wiki value always wins;
 // estimates only fill the blanks and are flagged so the UI can mark them.
@@ -1395,38 +1373,56 @@ const eachAndStack = (v, stack, sign) => {
 // One combined recipe table: raw materials (per craft), trivial, then raw cost, sell
 // value and margin — per stack for stackable results (with one item under it), per
 // item otherwise — so a recipe that makes 2 Bronze Bars compares with how bars sell.
+// What a crafted thing sells for: the typical Trem ask, else the best older/vendor value.
+function craftSaleValue(name) {
+  const a = marketAsk(name);
+  if (a) return { value: a.v, n: a.n };
+  return { value: itemMarketValue(name).value, n: null };
+}
+// The table of recipes for an item (showSkill, on its page, with the full breakdown under
+// it) or a tradeskill. Cost = making one with each material bought, vendored or crafted,
+// whichever is cheapest (recipeCost); split across what a craft makes.
 function recipeTable(recs, showSkill) {
   const rows = recs.map((r) => {
-    const rc = recipeRawCost(r);
+    const rc = recipeCost(r);
     const qty = r.result.qty || 1;
-    const sellEach = itemMarketValue(r.result.item).value;
-    const costEach = rc.cost / qty;
-    const margin = (sellEach > 0 && !rc.unresolved) ? sellEach - costEach : null;
-    return { r, rc, qty, costEach, sellEach, margin, stack: stackSize(r.result.item) };
-  }).sort((a, b) => (a.r.trivial || 1e9) - (b.r.trivial || 1e9) || a.rc.cost - b.rc.cost);
-  const head = '<th>Make</th><th>Raw materials <span class="per">per craft</span></th>' + (showSkill ? '<th>Skill</th>' : '') +
-    '<th class="num">Trivial</th><th class="num">Raw cost</th><th class="num">Sell value</th><th class="num">Margin</th>';
-  return '<div class="card"><table><thead><tr>' + head + '</tr></thead><tbody>' +
-    rows.map(({ r, rc, qty, costEach, sellEach, margin, stack }) => {
+    const sale = craftSaleValue(r.result.item), sellEach = sale.value;
+    const margin = (sellEach > 0 && !rc.unknown.length) ? sellEach - rc.each : null;
+    return { r, rc, qty, sale, sellEach, margin, stack: stackSize(r.result.item) };
+  }).sort((a, b) => (a.r.trivial || 1e9) - (b.r.trivial || 1e9) || a.rc.each - b.rc.each);
+  const head = '<th>Make</th><th>Materials <span class="per">per craft</span></th>' + (showSkill ? '<th>Skill</th>' : '') +
+    '<th class="num">Trivial</th><th class="num">Cost to make</th><th class="num">Sells for</th><th class="num">Margin</th>';
+  const matsHtml = (rc) => rc.parts.map(({ item, qty, p }) => '<div class="cost-mat">' + fmtQty(qty) + '× ' + (nameToId[item] ? itemLink(nameToId[item], item) : esc(item)) +
+    ' <span class="cost-how cost-' + p.how + '">' + COST_HOW[p.how] + '</span></div>').join('');
+  const table = '<div class="card"><table><thead><tr>' + head + '</tr></thead><tbody>' +
+    rows.map(({ r, rc, qty, sale, sellEach, margin, stack }) => {
       const rid = nameToId[r.result.item] || r.result.item;
-      // "?" only when a cost is genuinely unknown (an unresolved intermediate like an
-      // enchanted bar). All-gathered recipes cost nothing to buy → "free", not "?".
-      const cost = rc.unresolved
-        ? (rc.cost > 0 ? eachAndStack(costEach, stack) + '<span class="sample">+?</span>' : '<span class="sample">?</span>')
-        : (rc.cost > 0 ? eachAndStack(costEach, stack) : '<span class="sample">free</span>');
+      // "+?" when a material has no price anywhere (the cost is then a minimum).
+      const cost = rc.unknown.length
+        ? (rc.each > 0 ? eachAndStack(rc.each, stack) + '<span class="sample" title="No price for: ' + esc(rc.unknown.join(', ')) + '">+?</span>' : '<span class="sample">?</span>')
+        : (rc.each > 0 ? eachAndStack(rc.each, stack) : '<span class="sample">free</span>');
       const mg = margin == null ? '<span class="sample">—</span>'
         : '<span class="' + (margin >= 0 ? 'pos' : 'neg') + '">' + eachAndStack(margin, stack, true) + '</span>';
       return '<tr><td>' + itemLink(rid, r.result.item) + (qty > 1 ? '<div class="per">' + qty + ' per craft</div>' : '') + '</td>' +
-        '<td class="sample">' + rawMatsHtml(rc) + '</td>' + (showSkill ? '<td>' + tradeskillLink(r.tradeskill) + '</td>' : '') +
+        '<td class="sample">' + matsHtml(rc) + '</td>' + (showSkill ? '<td>' + tradeskillLink(r.tradeskill) + '</td>' : '') +
         '<td class="num sample">' + trivialCell(r) + '</td>' +
         '<td class="num coin">' + cost + '</td>' +
-        '<td class="num coin">' + (sellEach > 0 ? eachAndStack(sellEach, stack) : '—') + '</td>' +
+        '<td class="num coin">' + (sellEach > 0 ? eachAndStack(sellEach, stack) + (sale.n != null && sale.n < CRAFT_TRUST ? tmThin(sale.n) : '') : '—') + '</td>' +
         '<td class="num">' + mg + '</td></tr>';
     }).join('') + '</tbody></table></div>';
+  if (!showSkill) return table;
+  // On an item's page: the whole breakdown, so the math can be checked line by line.
+  return table + rows.map(({ r, rc, qty }) =>
+    '<details class="cost-break"' + (rows.length === 1 ? ' open' : '') + '><summary>Cost breakdown' + (rows.length > 1 ? ' — ' + esc(r.tradeskill) : '') +
+    ': <b class="coin">' + coin(rc.total) + (rc.unknown.length ? '+?' : '') + '</b> per craft' + (qty > 1 ? ' (' + qty + ' made, ' + coin(rc.each) + ' each)' : '') + '</summary>' +
+    costTreeHtml(rc) +
+    (rc.unknown.length ? '<p class="note">No price yet for <b>' + rc.unknown.map(esc).join(', ') + '</b>, so this is the cost without ' + (rc.unknown.length > 1 ? 'them' : 'it') + '.</p>' : '') +
+    '</details>').join('');
 }
 
-const marginNote = '<div class="note">Sorted by trivial. <b>Raw materials</b> = everything broken down to gathered/base mats (reusable tools like hammers &amp; pliers excluded; molds and other consumables counted). ' +
-  '<b>Raw cost</b> values those at the best known price (gathered mats are free) and is split across what the craft makes — a craft that makes 2 bars costs half per bar. Things players trade by the stack (bars, ore, herbs, fish, boards, thread…) show <b>per stack of 20</b> with one item under it; everything else is per item. <b>Sell value</b> = the best player-trade/vendor price. <b>Margin</b> = sell − raw cost. <b>free</b> = made entirely from gathered mats (nothing to buy); <b>?</b> = a cost is genuinely unknown — an unresolved crafted intermediate (e.g. an enchanted bar whose enchanting cost we can’t see). ' +
+const marginNote = '<div class="note">Sorted by trivial. <b>Cost to make</b> prices each material the cheapest way to get it: <b>players</b> (the typical Trem asking price over 30 days, from 5+ posts), <b>vendor</b>, or <b>make</b> it yourself (priced the same way, all the way down). A player price from fewer than 5 posts is only used when there’s no other way to get it. ' +
+  'Molds are used up each craft; reusable tools like hammers &amp; pliers aren’t counted. Failed combines aren’t counted, so the cost assumes every combine succeeds. A craft that makes 2 bars costs half per bar. Things players trade by the stack (bars, ore, herbs, fish, boards, thread…) show <b>per stack of 20</b> with one item under it; everything else is per item. ' +
+  '<b>Sells for</b> = the typical Trem asking price. <b>Margin</b> = sells for − cost to make. <b>gather</b> = no price anywhere, but you can gather or loot it (counted as free); <b>+?</b> = a material has no price at all, so the cost is a minimum. ' +
   'A <b class="est">~</b> trivial (e.g. <span class="est">~55</span>) is our own estimate from in-game crafting colours where the wiki has none — “+” means a lower bound until more data lands.</div>';
 
 // Reusable, one-time crafting tools (a hammer/pliers lasts many crafts), so they
@@ -1509,6 +1505,105 @@ function recipeRawCost(r) {
     return { name: n, qty: q, value: v };
   }).sort((a, b) => (b.qty * b.value) - (a.qty * a.value) || b.qty - a.qty);
   return { parts, cost, missing, unresolved };
+}
+
+// ---- What it costs to make something -------------------------------------------------
+// Every material costs the cheapest of: buying it from players (the typical Trem ask over
+// 30 days, trusted at 5+ priced posts), buying it from a vendor, or crafting it, priced the
+// same way all the way down. A player price from fewer than 5 posts is only used when
+// there's no other way to get it. Molds are used up by each craft; reusable tools (hammers,
+// pliers) aren't counted. Failed combines aren't counted either: costs assume every combine
+// succeeds. Something with no price anywhere is "unknown" and makes the total a minimum.
+const CRAFT_TRUST = 5;
+let VENDOR_PRICES = {}; // vendor-prices.json: prices checked in game, lowercased name → copper
+let _askMemo = null, _costMemo = null, _costFor = null; // reset whenever the auction data changes
+function marketAsk(name) {
+  if (_costFor !== AUCTIONS || !_costMemo) { _askMemo = null; _costMemo = {}; _costFor = AUCTIONS; }
+  if (!_askMemo) {
+    _askMemo = {};
+    const A = AUCTIONS || { listings: [] }, now = A.generatedAt ? Date.parse(A.generatedAt) : Date.now(), raw = {};
+    for (const l of A.listings) {
+      if (l.server !== AUC_SERVER || l.price == null || l.intent === 'buy' || now - Date.parse(l.seen) > 30 * 864e5) continue;
+      (raw[l.item.toLowerCase()] = raw[l.item.toLowerCase()] || []).push(listingUnit(l));
+    }
+    for (const [k, p] of Object.entries(raw)) { const t = trimOutliers(p); if (t.length) _askMemo[k] = { v: tmMedian(t), n: t.length }; }
+  }
+  return _askMemo[String(name).toLowerCase()] || null;
+}
+const vendorBuyPrice = (name) => { const v = VENDOR_PRICES[String(name).toLowerCase()]; return v > 0 ? v : (vendorSellPrice(name) || null); };
+
+// { how: 'players'|'vendor'|'made'|'thin'|'gathered'|'unknown', each (copper, null when
+//   unknown), n (player posts), made (the recipe costing when crafting was considered),
+//   ask (any player price, for showing the other option), unknown: [names], thin }
+function materialCost(name) { marketAsk(name); return costOf(name, new Set()); }
+function costOf(name, path) {
+  const key = String(name).toLowerCase();
+  if (_costMemo[key]) return _costMemo[key];
+  const ask = marketAsk(name), vend = vendorBuyPrice(name);
+  let made = null, cut = path.has(key) && !!(recipesByResult[key] || []).length; // a recipe loop stopped here
+  if (!path.has(key) && !isBaseMaterial(name)) {
+    const next = new Set(path); next.add(key);
+    for (const r of recipesByResult[key] || []) {
+      const c = recipeCostOf(r, next);
+      cut = cut || c.cut;
+      // Fully priced recipes first: one leaning on unpriced (gathered, counted free) or
+      // unknown materials only wins when there's nothing better.
+      const rank = (x) => x.unknown.length * 2 + (x.gathered ? 1 : 0);
+      if (!made || rank(c) < rank(made) || (rank(c) === rank(made) && c.each < made.each)) made = c;
+    }
+  }
+  const opts = [];
+  if (ask && ask.n >= CRAFT_TRUST) opts.push({ how: 'players', each: ask.v });
+  if (vend) opts.push({ how: 'vendor', each: vend });
+  if (made && !made.unknown.length && !made.gathered) opts.push({ how: 'made', each: made.each, thin: made.thin });
+  let out;
+  if (opts.length) out = opts.reduce((a, b) => (b.each < a.each ? b : a));
+  else if (ask) out = { how: 'thin', each: ask.v, thin: true };
+  else if (made) out = { how: 'made', each: made.each, unknown: made.unknown, thin: made.thin, gathered: made.gathered };
+  else if (isBaseMaterial(name) || isGatherableRaw(name)) out = { how: 'gathered', each: 0 };
+  else out = { how: 'unknown', each: null, unknown: [name] };
+  out = Object.assign({ unknown: [], thin: false, gathered: false, n: ask ? ask.n : 0, ask, vend, made, cut }, out);
+  if (!cut) _costMemo[key] = out; // answers cut short by a recipe loop depend on the path, so aren't kept
+  return out;
+}
+// The cost of one craft of a recipe, split across what it makes (2 bars → per bar).
+function recipeCost(r) { marketAsk(r.result.item); return recipeCostOf(r, new Set([r.result.item.toLowerCase()])); }
+function recipeCostOf(r, path) {
+  let total = 0, thin = false, gathered = false, cut = false; const unknown = new Set(), parts = [];
+  for (const c of r.components) {
+    if (isReusableTool(c.item)) continue;
+    const p = costOf(c.item, path);
+    parts.push({ item: c.item, qty: c.qty, p });
+    cut = cut || p.cut;
+    if (p.each != null) total += c.qty * p.each;
+    p.unknown.forEach((u) => unknown.add(u));
+    thin = thin || p.thin; gathered = gathered || p.how === 'gathered' || p.gathered;
+  }
+  const q = r.result.qty || 1;
+  return { recipe: r, each: total / q, total, parts, unknown: [...unknown], thin, gathered, cut };
+}
+// How one material line reads: "make 1s 67c" plus the other option worth knowing.
+const COST_HOW = { players: 'players', vendor: 'vendor', made: 'make', thin: 'players', gathered: 'gather', unknown: 'no price' };
+function costHowHtml(p) {
+  const main = p.each == null ? '' : ' ' + coin(p.each) + (p.unknown.length ? '+?' : '');
+  const alt = [];
+  if (p.how !== 'players' && p.how !== 'thin' && p.ask) alt.push('players ask ' + coin(p.ask.v) + (p.ask.n < CRAFT_TRUST ? ', ' + p.ask.n + ' post' + (p.ask.n === 1 ? '' : 's') : ''));
+  if (p.how !== 'vendor' && p.vend) alt.push('vendor ' + coin(p.vend));
+  if (p.how !== 'made' && p.made && !p.made.unknown.length && !p.made.gathered) alt.push('make ' + coin(p.made.each));
+  return '<span class="cost-how cost-' + p.how + '">' + COST_HOW[p.how] + main + '</span>' +
+    (p.how === 'thin' ? ' <span class="tm-thin" title="Fewer than 5 priced posts">thin</span>' : '') +
+    (alt.length ? ' <span class="muted">(' + alt.join(' · ') + ')</span>' : '');
+}
+// The full breakdown of a recipe, nested: every material, how it's cheapest to get, and
+// for the ones worth making, what goes into them.
+function costTreeHtml(rc, depth) {
+  depth = depth || 0;
+  return '<ul class="cost-tree">' + rc.parts.map(({ item, qty, p }) => {
+    const id = nameToId[item];
+    const sub = p.how === 'made' && p.made && depth < 4 ? costTreeHtml(p.made, depth + 1) : '';
+    return '<li>' + fmtQty(qty) + '× ' + (id ? itemLink(id, item) : esc(item)) + ' — ' + costHowHtml(p) +
+      (qty > 1 && p.each ? ' <span class="muted">= ' + coin(qty * p.each) + '</span>' : '') + sub + '</li>';
+  }).join('') + '</ul>';
 }
 
 // Cheapest path to level a tradeskill: at each skill point, the recipe that still
@@ -3251,25 +3346,29 @@ function tmCompute() {
   const bargains = fair.map(({ e, asks }) => ({ e, o: best(asks, (x, m) => x.u < m.u) }))
     .filter((r) => r.o && r.o.u <= r.e.typical * 0.7).sort((a, b) => a.o.u / a.e.typical - b.o.u / b.e.typical);
 
-  // Crafts: the result's typical player price vs buying every material (player price
-  // where it trades, else the vendor's). Needs 5+ priced posts for the result — a thin
-  // price times a big batch (500 arrows) makes a misleading headline.
+  // Crafts: the result's typical player price vs making it, each material bought from
+  // players, a vendor, or crafted, whichever is cheapest (recipeCost). Needs 5+ priced
+  // posts for the result — a thin price times a big batch (500 arrows) makes a misleading
+  // headline — and a real price for every material (none unknown or counted free).
   // Everything per item made (a craft that makes 2 bars → the cost of one bar), and per
   // stack for stackable results; ranked by margin per unit as traded (stack or item).
-  const value = (name) => { const e = by[lcOf(name)]; if (e && priced(e, 2)) return { v: e.typical, thin: e.n < 5 }; const v = vendorSellPrice(name); return v != null ? { v, thin: false } : null; };
   const seen = new Set(), crafts = [];
+  let unpriced = 0; const unpricedMats = {};
   for (const r of RECIPES) {
     const out = by[lcOf(r.result.item)];
-    if (!out || !priced(out, 5) || seen.has(lcOf(r.result.item))) continue;
-    let cost = 0, ok = true, thinMats = false;
-    for (const c of r.components) { const p = value(c.item); if (!p) { ok = false; break; } cost += c.qty * p.v; thinMats = thinMats || p.thin; }
-    if (!ok) continue;
-    const qty = r.result.qty || 1, costEach = cost / qty, marginEach = out.typical - costEach;
-    crafts.push({ name: r.result.item, qty, skill: r.tradeskill, trivial: r.trivial, saleEach: out.typical, costEach, margin: marginEach,
-      rank: marginEach * (out.stack || 1), stack: out.stack, n: out.n, thinMats, mats: r.components });
+    if (!out || !priced(out, 5)) continue;
+    const rc = recipeCost(r);
+    if (rc.unknown.length || rc.gathered) {
+      unpriced++; rc.unknown.forEach((u) => { unpricedMats[u] = (unpricedMats[u] || 0) + 1; });
+      continue;
+    }
+    const qty = r.result.qty || 1, marginEach = out.typical - rc.each;
+    crafts.push({ name: r.result.item, qty, skill: r.tradeskill, trivial: r.trivial, saleEach: out.typical, costEach: rc.each, margin: marginEach,
+      rank: marginEach * (out.stack || 1), stack: out.stack, n: out.n, thinMats: rc.thin, parts: rc.parts });
   }
   crafts.sort((a, b) => b.rank - a.rank);
   const profitable = crafts.filter((c) => { if (c.margin <= 0 || seen.has(lcOf(c.name))) return false; seen.add(lcOf(c.name)); return true; }).slice(0, 10);
+  const missingPrices = { recipes: unpriced, mats: Object.entries(unpricedMats).sort((a, b) => b[1] - a[1]).map(([n]) => n) };
 
   const materials = items.filter((e) => e.stack && priced(e)).sort((a, b) => b.n - a.n).slice(0, 12);
 
@@ -3312,7 +3411,7 @@ function tmCompute() {
   const kills = (set) => Object.values(set || {}).reduce((s, m) => s + (m.kills || 0), 0);
   const coverage = { eaKills: kills(eaMobs), eaMobs: Object.keys(eaMobs).length, betaKills: kills(DATA.mobs), betaMobs: Object.keys(DATA.mobs || {}).length,
     contributors: (EA && EA.contributorCount) || 0 };
-  return { by, items, pulse, sellOrVendor, busy, hot, profitable, materials, priciest, farm: farm.slice(0, 8), coverage,
+  return { by, items, pulse, sellOrVendor, busy, hot, profitable, missingPrices, materials, priciest, farm: farm.slice(0, 8), coverage,
     flips: flips.slice(0, 12), bigBids: bigBids.slice(0, 10), bargains: bargains.slice(0, 10) };
 }
 
@@ -3400,8 +3499,8 @@ async function renderTremMarket() {
       '</div>' +
 
       '<div role="tabpanel" id="tm-p-crafter" aria-labelledby="tm-t-crafter" class="tm-grid" hidden>' +
-        '<div class="tm-card tm-wide"><h2>Profitable crafts</h2><p class="tm-why">Per stack of 20 for things players trade by the stack (bars, ore, herbs, fish…), with one item under it; per item for everything else. Each figure is what it sells for minus buying its share of the materials at today’s prices (the vendor’s price where players don’t trade it). A recipe that makes 2 bars splits the cost across both. <span class="tm-thin">thin data</span> = the result or a material price comes from fewer than 5 posts. Gathering your own mats makes the margin bigger.</p>' +
-          (M.profitable.length ? table('<th>Make</th><th>Skill</th><th class="num">Trivial</th><th class="num">Sells for</th><th class="num">Mats cost</th><th class="num">Margin</th>',
+        '<div class="tm-card tm-wide"><h2>Profitable crafts</h2><p class="tm-why">Per stack of 20 for things players trade by the stack (bars, ore, herbs, fish…), with one item under it; per item for everything else. Each figure is what it sells for minus making it, with every material bought from <b>players</b>, a <b>vendor</b>, or made yourself (<b>make</b>), whichever is cheapest. A recipe that makes 2 bars splits the cost across both. Assumes every combine succeeds. <span class="tm-thin">thin data</span> = the result or a material price comes from fewer than 5 posts. Gathering your own mats makes the margin bigger.</p>' +
+          (M.profitable.length ? table('<th>Make</th><th>Skill</th><th class="num">Trivial</th><th class="num">Sells for</th><th class="num">Cost to make</th><th class="num">Margin</th>',
             M.profitable.map((c) => {
               // Things that trade by the stack (bars, ore, herbs, fish…) lead with the stack
               // price — how they're actually bought and sold — with one item under it.
@@ -3410,11 +3509,14 @@ async function renderTremMarket() {
                 ? '<span class="' + cls + '">' + p(v * c.stack, sign) + '</span><span class="per">/stack</span><div class="per">' + p(v, sign) + ' ea</div>'
                 : '<span class="' + cls + '">' + p(v, sign) + '</span><span class="per"> ea</span>';
               return '<tr><td>' + il(c.name) + tmThin(Math.min(c.n, c.thinMats ? 0 : c.n)) +
-                '<div class="tm-mats">' + c.mats.map((m) => m.qty + '× ' + esc(m.item)).join(', ') + (c.qty > 1 ? ' → ' + c.qty + ' per craft' : '') + '</div></td>' +
+                '<div class="tm-mats">' + c.parts.map(({ item, qty, p }) => qty + '× ' + esc(item) + ' <span class="cost-how cost-' + p.how + '">' + COST_HOW[p.how] + '</span>').join(', ') +
+                (c.qty > 1 ? ' → ' + c.qty + ' per craft' : '') + '</div></td>' +
                 '<td>' + esc(c.skill) + '</td><td class="num">' + (c.trivial != null ? c.trivial : '—') + '</td>' +
                 '<td class="num coin">' + two(c.saleEach, '', false) + '</td><td class="num coin">' + two(c.costEach, 'muted', false) + '</td>' +
                 '<td class="num coin">' + two(c.margin, 'tm-up', true) + '</td></tr>';
-            }).join('')) : empty('Not enough priced recipes yet.')) + '</div>' +
+            }).join('')) : empty('Not enough priced recipes yet.')) +
+          (M.missingPrices.recipes ? '<p class="tm-why">' + M.missingPrices.recipes + ' more recipe' + (M.missingPrices.recipes === 1 ? '' : 's') + ' with a priced result left out because a material has no price yet' +
+            (M.missingPrices.mats.length ? ', mostly ' + M.missingPrices.mats.slice(0, 4).map(esc).join(', ') : '') + '. Click an item for its full cost breakdown.</p>' : '') + '</div>' +
         '<div class="tm-card"><h2>Materials board</h2><p class="tm-why">Typical price per stack of 20 and each. The arrow compares the last 10 days with the 30-day typical.</p>' +
           table('<th>Material</th>' + eachHead + '<th class="num">10 days</th>', M.materials.map((e) => {
             const d = e.recent != null && e.typical ? (e.recent - e.typical) / e.typical : 0;
@@ -4423,6 +4525,13 @@ async function loadWikiStats() {
     VENDORS = (v && v.vendors) || [];
     vendorsSelling = {};
     VENDORS.forEach((vn) => (vn.sells || []).forEach((n) => { (vendorsSelling[n] = vendorsSelling[n] || []).push(vn); }));
+  } catch {}
+  // Vendor prices checked in game, for things the wiki has no price for (molds, settings…).
+  // They win over the wiki's price and feed crafting costs.
+  try {
+    const vp = await (await fetch('./vendor-prices.json')).json();
+    VENDOR_PRICES = {};
+    for (const [n, c] of Object.entries((vp && vp.prices) || {})) if (c > 0) VENDOR_PRICES[n.toLowerCase()] = c;
   } catch {}
   // Live player prices come from the LiveMNM auction feed (auctions.json). The old
   // manual trade log (trades.json) is beta-era data and is no longer loaded — it would
