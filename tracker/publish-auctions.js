@@ -161,7 +161,10 @@ function normalize(l) {
     const u = (eachAt && eachAt.value) || price;
     return { unit: u, total: qty > 1 ? u * qty : u, perStack: false };
   }
-  return { unit: Math.round(price / qty), total: price, perStack: false };                // default: price is the whole lot
+  // Default: the price is the whole lot. A small lot that doesn't say so ("for all", "for
+  // both", "the pair", "all 8", "total") is checked against the market below.
+  const saysLot = /\bfor\s+(?:all|both|the\s+(?:pair|lot|set)|\d+)\b|\ball\s+\d+\b|\btotal\b|\bthe\s+lot\b|\bpair\b/.test(own);
+  return { unit: Math.round(price / qty), total: price, perStack: false, lot: qty > 1 && qty <= 20 && !saysLot };
 }
 
 const listings = rows.map((l) => {
@@ -180,15 +183,35 @@ const listings = rows.map((l) => {
       count: l.count || 1, assumed: l.assumed || undefined, matched: wikiNames.has(l.item.toLowerCase()),
     };
   }
-  const { unit, total, perStack } = normalize(l);
+  const { unit, total, perStack, lot } = normalize(l);
   return {
     server: l.server, intent: l.intent || null, item: l.item,
     price: total, unit, priceStr: total != null ? copperToStr(total) : null,
     player: l.player, seen: l.firstSeen, qty: listingQty(l) || undefined, perStack: perStack || undefined,
     count: l.count || 1, // times this listing was read — powers the "most seen" ranking
-    assumed: l.assumed || undefined, matched: wikiNames.has(l.item.toLowerCase()),
+    assumed: l.assumed || undefined, matched: wikiNames.has(l.item.toLowerCase()), lot,
   };
 });
+
+// "2x [Brilliant Crystallized Magic] 45s" can mean 45s for both or 45s each: players write
+// it both ways. With no "each", "stack" or "for all" words, and 20 or fewer, it's read as the price of the lot, unless
+// that makes each one far cheaper than the item normally trades for (under 60%) while the
+// price itself is in line with it (60%–160%): then it's per item. "Normally" = the median
+// of that item's unambiguous posts on the same server (a single item, or priced "each"),
+// and needs 3 of them.
+const median = (p) => { const s = p.slice().sort((a, b) => a - b), m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
+const plain = {};
+for (const l of listings) if (l.unit != null && !l.stack && !l.lot) (plain[(l.server + '|' + l.item).toLowerCase()] ||= []).push(l.unit);
+for (const l of listings) {
+  const ref = l.lot && plain[(l.server + '|' + l.item).toLowerCase()];
+  if (ref && ref.length >= 3) {
+    const typ = median(ref);
+    if (l.unit < typ * 0.6 && l.price >= typ * 0.6 && l.price <= typ * 1.6) {
+      l.unit = l.price; l.price = l.price * l.qty; l.priceStr = copperToStr(l.price);
+    }
+  }
+  delete l.lot;
+}
 
 try { fs.writeFileSync(path.join(DATA, 'discarded.json'), JSON.stringify(discarded, null, 2)); } catch {}
 
