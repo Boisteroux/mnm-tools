@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-06T02:00:06.608Z",
+  "generatedAt": "2026-11-06T06:22:40.632Z",
   "source": "mnm-tools",
-  "ledgerFiles": 43,
-  "events": 15005,
+  "ledgerFiles": 44,
+  "events": 15159,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 15005
+      "events": 15159
     }
   ],
   "contributorCount": 1,
@@ -1864,6 +1864,21 @@
       "coin": 0,
       "corpses": 2
     },
+    "a cinder drone": {
+      "kills": 0,
+      "drops": {
+        "Cinder Beetle Carapace": 6,
+        "Cinder Beetle Legs": 6,
+        "Fractured Beetle Mandible": 5,
+        "Scuffed Beetle Antenna": 6,
+        "Cinder Beetle Mandible": 1
+      },
+      "zones": {
+        "Sungreetstrand": 37
+      },
+      "coin": 0,
+      "corpses": 8
+    },
     "a gloom widow": {
       "kills": 0,
       "drops": {
@@ -2470,7 +2485,7 @@
       "name": "Brilliant Crystallized Magic",
       "droppedBy": [],
       "prices": [],
-      "harvested": 15,
+      "harvested": 16,
       "zones": [
         "Sungreetstrand",
         "Scarwood"
@@ -3164,6 +3179,60 @@
       ]
     },
     {
+      "id": "cinder_beetle_carapace",
+      "gameId": "a03ea794491082fc83275671",
+      "name": "Cinder Beetle Carapace",
+      "droppedBy": [
+        {
+          "mob": "a cinder drone",
+          "drops": 6,
+          "corpses": 8,
+          "rate": 0.75
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Sungreetstrand"
+      ]
+    },
+    {
+      "id": "cinder_beetle_legs",
+      "gameId": "7f57ca6b26ba9945c2f23f52",
+      "name": "Cinder Beetle Legs",
+      "droppedBy": [
+        {
+          "mob": "a cinder drone",
+          "drops": 6,
+          "corpses": 8,
+          "rate": 0.75
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Sungreetstrand"
+      ]
+    },
+    {
+      "id": "cinder_beetle_mandible",
+      "gameId": "6ed09b0b4384c814676c13e0",
+      "name": "Cinder Beetle Mandible",
+      "droppedBy": [
+        {
+          "mob": "a cinder drone",
+          "drops": 1,
+          "corpses": 8,
+          "rate": 0.125
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Sungreetstrand"
+      ]
+    },
+    {
       "id": "clawed_spider_legs",
       "gameId": "085f9575b16391c839fe8708",
       "name": "Clawed Spider Legs",
@@ -3335,7 +3404,7 @@
       "name": "Coal",
       "droppedBy": [],
       "prices": [],
-      "harvested": 716,
+      "harvested": 758,
       "zones": [
         "Sungreetstrand",
         "Scarwood",
@@ -6226,6 +6295,24 @@
       ]
     },
     {
+      "id": "fractured_beetle_mandible",
+      "gameId": "099cf1ac3cc424d5f4894c33",
+      "name": "Fractured Beetle Mandible",
+      "droppedBy": [
+        {
+          "mob": "a cinder drone",
+          "drops": 5,
+          "corpses": 8,
+          "rate": 0.625
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Sungreetstrand"
+      ]
+    },
+    {
       "id": "fractured_beetle_thorax",
       "gameId": "04969b74b8f14e9cbfd9d587",
       "name": "Fractured Beetle Thorax",
@@ -7284,7 +7371,7 @@
           "count": 1
         }
       ],
-      "harvested": 206,
+      "harvested": 239,
       "zones": [
         "Sungreetstrand",
         "Scarwood",
@@ -7752,7 +7839,7 @@
       "name": "Platinum Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 80,
+      "harvested": 83,
       "zones": [
         "Sungreetstrand",
         "Scarwood"
@@ -8681,7 +8768,7 @@
           "count": 5
         }
       ],
-      "harvested": 158,
+      "harvested": 167,
       "zones": [
         "Sungreetstrand",
         "Scarwood",
@@ -9861,6 +9948,24 @@
       ]
     },
     {
+      "id": "scuffed_beetle_antenna",
+      "gameId": "a3bb933c0ed8f463d774a56e",
+      "name": "Scuffed Beetle Antenna",
+      "droppedBy": [
+        {
+          "mob": "a cinder drone",
+          "drops": 6,
+          "corpses": 8,
+          "rate": 0.75
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Sungreetstrand"
+      ]
+    },
+    {
       "id": "scuffed_canine_ear",
       "gameId": "75964adc2d3c1426252c514b",
       "name": "Scuffed Canine Ear",
@@ -10006,9 +10111,10 @@
       "name": "Silver Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 73,
+      "harvested": 76,
       "zones": [
-        "Scarwood"
+        "Scarwood",
+        "Sungreetstrand"
       ]
     },
     {
@@ -13462,12 +13568,12 @@
     "Alunite Ore": 9,
     "Chipped Emerald": 9,
     "Chipped Ruby": 10,
-    "Limestone": 206,
+    "Limestone": 239,
     "Tin Ore": 600,
     "Flawed Diamond": 4,
     "Glinting Crystallized Magic": 7,
     "Jagged Stone": 135,
-    "Silver Ore": 73,
+    "Silver Ore": 76,
     "Flawed Sapphire": 4,
     "Flawed Ruby": 4,
     "Flawed Cat's Eye Agate": 7,
@@ -13488,11 +13594,11 @@
     "Gold Ore": 84,
     "Imperfect Ruby": 4,
     "Imperfect Diamond": 5,
-    "Coal": 716,
-    "Brilliant Crystallized Magic": 15,
-    "Rigid Stone": 158,
+    "Coal": 758,
+    "Brilliant Crystallized Magic": 16,
+    "Rigid Stone": 167,
     "Sapphire": 3,
-    "Platinum Ore": 80,
+    "Platinum Ore": 83,
     "Jade": 5,
     "Cat's Eye Agate": 5,
     "Ruby": 6,
@@ -13569,6 +13675,67 @@
       ]
     },
     {
+      "name": "Coal",
+      "pulls": 758,
+      "yields": [
+        {
+          "res": "Coal",
+          "count": 758,
+          "rate": 1
+        },
+        {
+          "res": "Rigid Stone",
+          "count": 148,
+          "rate": 0.19525065963060687
+        },
+        {
+          "res": "Brilliant Crystallized Magic",
+          "count": 14,
+          "rate": 0.018469656992084433
+        },
+        {
+          "res": "Emerald",
+          "count": 6,
+          "rate": 0.0079155672823219
+        },
+        {
+          "res": "Cat's Eye Agate",
+          "count": 5,
+          "rate": 0.006596306068601583
+        },
+        {
+          "res": "Ruby",
+          "count": 5,
+          "rate": 0.006596306068601583
+        },
+        {
+          "res": "Sapphire",
+          "count": 3,
+          "rate": 0.00395778364116095
+        },
+        {
+          "res": "Diamond",
+          "count": 3,
+          "rate": 0.00395778364116095
+        },
+        {
+          "res": "Peridot",
+          "count": 3,
+          "rate": 0.00395778364116095
+        },
+        {
+          "res": "Jade",
+          "count": 2,
+          "rate": 0.002638522427440633
+        }
+      ],
+      "zones": [
+        "Sungreetstrand",
+        "Scarwood",
+        "Valeofzintar"
+      ]
+    },
+    {
       "name": "Iron Ore",
       "pulls": 742,
       "yields": [
@@ -13625,67 +13792,6 @@
       ],
       "zones": [
         "Fallenpass"
-      ]
-    },
-    {
-      "name": "Coal",
-      "pulls": 716,
-      "yields": [
-        {
-          "res": "Coal",
-          "count": 716,
-          "rate": 1
-        },
-        {
-          "res": "Rigid Stone",
-          "count": 140,
-          "rate": 0.19553072625698323
-        },
-        {
-          "res": "Brilliant Crystallized Magic",
-          "count": 13,
-          "rate": 0.018156424581005588
-        },
-        {
-          "res": "Emerald",
-          "count": 6,
-          "rate": 0.008379888268156424
-        },
-        {
-          "res": "Cat's Eye Agate",
-          "count": 5,
-          "rate": 0.006983240223463687
-        },
-        {
-          "res": "Ruby",
-          "count": 5,
-          "rate": 0.006983240223463687
-        },
-        {
-          "res": "Sapphire",
-          "count": 3,
-          "rate": 0.004189944134078212
-        },
-        {
-          "res": "Diamond",
-          "count": 3,
-          "rate": 0.004189944134078212
-        },
-        {
-          "res": "Peridot",
-          "count": 3,
-          "rate": 0.004189944134078212
-        },
-        {
-          "res": "Jade",
-          "count": 2,
-          "rate": 0.002793296089385475
-        }
-      ],
-      "zones": [
-        "Sungreetstrand",
-        "Scarwood",
-        "Valeofzintar"
       ]
     },
     {
@@ -13777,22 +13883,22 @@
     },
     {
       "name": "Limestone",
-      "pulls": 82,
+      "pulls": 98,
       "yields": [
         {
           "res": "Limestone",
-          "count": 82,
+          "count": 98,
           "rate": 1
         },
         {
           "res": "Clouded Crystallized Magic",
           "count": 3,
-          "rate": 0.036585365853658534
+          "rate": 0.030612244897959183
         },
         {
           "res": "Silver Ore",
           "count": 1,
-          "rate": 0.012195121951219513
+          "rate": 0.01020408163265306
         }
       ],
       "zones": [
@@ -13836,66 +13942,67 @@
       ]
     },
     {
-      "name": "Platinum Ore",
-      "pulls": 62,
-      "yields": [
-        {
-          "res": "Platinum Ore",
-          "count": 62,
-          "rate": 1
-        },
-        {
-          "res": "Jade",
-          "count": 3,
-          "rate": 0.04838709677419355
-        },
-        {
-          "res": "Brilliant Crystallized Magic",
-          "count": 2,
-          "rate": 0.03225806451612903
-        },
-        {
-          "res": "Ruby",
-          "count": 1,
-          "rate": 0.016129032258064516
-        },
-        {
-          "res": "Peridot",
-          "count": 1,
-          "rate": 0.016129032258064516
-        }
-      ],
-      "zones": [
-        "Sungreetstrand",
-        "Scarwood"
-      ]
-    },
-    {
       "name": "Silver Ore",
-      "pulls": 61,
+      "pulls": 64,
       "yields": [
         {
           "res": "Silver Ore",
-          "count": 61,
+          "count": 64,
           "rate": 1
         },
         {
           "res": "Glinting Crystallized Magic",
           "count": 1,
-          "rate": 0.01639344262295082
+          "rate": 0.015625
         },
         {
           "res": "Flawed Cat's Eye Agate",
           "count": 1,
-          "rate": 0.01639344262295082
+          "rate": 0.015625
         },
         {
           "res": "Flawed Sapphire",
           "count": 1,
-          "rate": 0.01639344262295082
+          "rate": 0.015625
         }
       ],
       "zones": [
+        "Scarwood",
+        "Sungreetstrand"
+      ]
+    },
+    {
+      "name": "Platinum Ore",
+      "pulls": 64,
+      "yields": [
+        {
+          "res": "Platinum Ore",
+          "count": 64,
+          "rate": 1
+        },
+        {
+          "res": "Jade",
+          "count": 3,
+          "rate": 0.046875
+        },
+        {
+          "res": "Brilliant Crystallized Magic",
+          "count": 2,
+          "rate": 0.03125
+        },
+        {
+          "res": "Ruby",
+          "count": 1,
+          "rate": 0.015625
+        },
+        {
+          "res": "Peridot",
+          "count": 1,
+          "rate": 0.015625
+        }
+      ],
+      "zones": [
+        "Sungreetstrand",
         "Scarwood"
       ]
     },
@@ -13977,16 +14084,16 @@
     },
     {
       "name": "Platinum Ore & Rigid Stone",
-      "pulls": 18,
+      "pulls": 19,
       "yields": [
         {
           "res": "Platinum Ore",
-          "count": 18,
+          "count": 19,
           "rate": 1
         },
         {
           "res": "Rigid Stone",
-          "count": 18,
+          "count": 19,
           "rate": 1
         }
       ],
