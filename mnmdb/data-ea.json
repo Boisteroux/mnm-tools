@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-07T20:00:12.565Z",
+  "generatedAt": "2026-11-08T02:00:06.946Z",
   "source": "mnm-tools",
   "ledgerFiles": 48,
-  "events": 16274,
+  "events": 16342,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 16274
+      "events": 16342
     }
   ],
   "contributorCount": 1,
@@ -1149,17 +1149,17 @@
     "a boulder viper": {
       "kills": 0,
       "drops": {
-        "Snake Fang": 2,
+        "Snake Fang": 3,
         "Fractured Snake Vertebra": 1,
         "Bight Serpent Skin": 3,
         "Raw Snake Meat": 1,
         "Crumbled Snake Vertebra": 3
       },
       "zones": {
-        "Keepersbight": 14
+        "Keepersbight": 15
       },
       "coin": 0,
-      "corpses": 6
+      "corpses": 7
     },
     "a grizzly bear": {
       "kills": 0,
@@ -1319,17 +1319,17 @@
       "kills": 0,
       "drops": {
         "Scuffed Bear Paw": 7,
-        "Torn Leather Bracer": 3,
+        "Torn Leather Bracer": 4,
         "Medium-Quality Bear Pelt": 2,
         "Cooked Bear Meat": 1,
-        "Raw Bear Meat": 2,
+        "Raw Bear Meat": 3,
         "Ragged Bear Paw": 1
       },
       "zones": {
-        "Keepersbight": 20
+        "Keepersbight": 22
       },
       "coin": 0,
-      "corpses": 9
+      "corpses": 10
     },
     "a forest drake": {
       "kills": 7,
@@ -1371,15 +1371,15 @@
     "a fat cave bear": {
       "kills": 0,
       "drops": {
-        "Medium-Quality Bear Pelt": 1,
+        "Medium-Quality Bear Pelt": 2,
         "Raw Bear Meat": 1,
         "Scuffed Bear Paw": 1
       },
       "zones": {
-        "Keepersbight": 3
+        "Keepersbight": 4
       },
       "coin": 0,
-      "corpses": 2
+      "corpses": 3
     },
     "a Bloodchain mender": {
       "kills": 19,
@@ -2107,6 +2107,57 @@
       "coin": 349,
       "corpses": 2
     },
+    "a chasm drake": {
+      "kills": 3,
+      "drops": {
+        "Drake Fang": 2
+      },
+      "zones": {
+        "Keepersbight": 5
+      },
+      "coin": 624,
+      "corpses": 2
+    },
+    "a canyon stalker": {
+      "kills": 0,
+      "drops": {
+        "Raw Wolf Meat": 1,
+        "Scuffed Canine Ear": 1,
+        "Medium-Quality Wolf Pelt": 1
+      },
+      "zones": {
+        "Keepersbight": 3
+      },
+      "coin": 0,
+      "corpses": 2
+    },
+    "a green drake": {
+      "kills": 12,
+      "drops": {
+        "Drake Fang": 2,
+        "Drake Claw": 1,
+        "Drake Scale": 1,
+        "Hardened Drake Scale": 2,
+        "Flawed Diamond": 1
+      },
+      "zones": {
+        "Scarwood": 20
+      },
+      "coin": 3000,
+      "corpses": 6
+    },
+    "a timber wolf": {
+      "kills": 0,
+      "drops": {
+        "Intact Wolf Claw": 1,
+        "Medium-Quality Wolf Pelt": 1
+      },
+      "zones": {
+        "Scarwood": 2
+      },
+      "coin": 0,
+      "corpses": 1
+    },
     "a gloom widow": {
       "kills": 0,
       "drops": {
@@ -2168,18 +2219,6 @@
         "Evershade Weald": 3
       },
       "coin": 23,
-      "corpses": 1
-    },
-    "a canyon stalker": {
-      "kills": 0,
-      "drops": {
-        "Raw Wolf Meat": 1,
-        "Scuffed Canine Ear": 1
-      },
-      "zones": {
-        "Keepersbight": 2
-      },
-      "coin": 0,
       "corpses": 1
     },
     "Mirella Nighthorn": {
@@ -2691,8 +2730,8 @@
         {
           "mob": "a boulder viper",
           "drops": 3,
-          "corpses": 6,
-          "rate": 0.5
+          "corpses": 7,
+          "rate": 0.42857142857142855
         }
       ],
       "prices": [
@@ -3914,8 +3953,8 @@
         {
           "mob": "a cave bear",
           "drops": 1,
-          "corpses": 9,
-          "rate": 0.1111111111111111
+          "corpses": 10,
+          "rate": 0.1
         },
         {
           "mob": "a grizzly bear",
@@ -5938,8 +5977,8 @@
         {
           "mob": "a boulder viper",
           "drops": 3,
-          "corpses": 6,
-          "rate": 0.5
+          "corpses": 7,
+          "rate": 0.42857142857142855
         }
       ],
       "prices": [
@@ -6170,6 +6209,12 @@
           "drops": 7,
           "corpses": 29,
           "rate": 0.2413793103448276
+        },
+        {
+          "mob": "a green drake",
+          "drops": 1,
+          "corpses": 6,
+          "rate": 0.16666666666666666
         }
       ],
       "prices": [
@@ -6179,13 +6224,14 @@
         },
         {
           "copper": 21,
-          "count": 2
+          "count": 3
         }
       ],
       "harvested": 0,
       "zones": [
         "Evershade Weald",
-        "Keepersbight"
+        "Keepersbight",
+        "Scarwood"
       ]
     },
     {
@@ -6194,9 +6240,21 @@
       "name": "Drake Fang",
       "droppedBy": [
         {
+          "mob": "a chasm drake",
+          "drops": 2,
+          "corpses": 2,
+          "rate": 1
+        },
+        {
           "mob": "a forest drake",
           "drops": 1,
           "corpses": 3,
+          "rate": 0.3333333333333333
+        },
+        {
+          "mob": "a green drake",
+          "drops": 2,
+          "corpses": 6,
           "rate": 0.3333333333333333
         },
         {
@@ -6215,7 +6273,7 @@
       "prices": [
         {
           "copper": 2,
-          "count": 3
+          "count": 4
         },
         {
           "copper": 5,
@@ -6224,8 +6282,9 @@
       ],
       "harvested": 0,
       "zones": [
+        "Keepersbight",
         "Evershade Weald",
-        "Keepersbight"
+        "Scarwood"
       ]
     },
     {
@@ -6240,6 +6299,12 @@
           "rate": 0.3333333333333333
         },
         {
+          "mob": "a green drake",
+          "drops": 1,
+          "corpses": 6,
+          "rate": 0.16666666666666666
+        },
+        {
           "mob": "a forest drakeling",
           "drops": 1,
           "corpses": 11,
@@ -6249,12 +6314,13 @@
       "prices": [
         {
           "copper": 95,
-          "count": 1
+          "count": 2
         }
       ],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Scarwood"
       ]
     },
     {
@@ -6646,6 +6712,12 @@
       "name": "Flawed Diamond",
       "droppedBy": [
         {
+          "mob": "a green drake",
+          "drops": 1,
+          "corpses": 6,
+          "rate": 0.16666666666666666
+        },
+        {
           "mob": "a hired tracker",
           "drops": 2,
           "corpses": 50,
@@ -6954,10 +7026,10 @@
       "prices": [
         {
           "copper": 54,
-          "count": 1
+          "count": 2
         }
       ],
-      "harvested": 4,
+      "harvested": 5,
       "zones": [
         "Sungreetstrand",
         "Keepersbight",
@@ -7060,8 +7132,8 @@
         {
           "mob": "a boulder viper",
           "drops": 1,
-          "corpses": 6,
-          "rate": 0.16666666666666666
+          "corpses": 7,
+          "rate": 0.14285714285714285
         }
       ],
       "prices": [
@@ -7573,6 +7645,29 @@
       ]
     },
     {
+      "id": "hardened_drake_scale",
+      "gameId": "b29ba58a74a23a0ff02f50de",
+      "name": "Hardened Drake Scale",
+      "droppedBy": [
+        {
+          "mob": "a green drake",
+          "drops": 2,
+          "corpses": 6,
+          "rate": 0.3333333333333333
+        }
+      ],
+      "prices": [
+        {
+          "copper": 136,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": [
+        "Scarwood"
+      ]
+    },
+    {
       "id": "hazy_tidal_sliver",
       "gameId": "808c6b9720e3f5a71a89faf7",
       "name": "Hazy Tidal Sliver",
@@ -7941,6 +8036,29 @@
       ]
     },
     {
+      "id": "intact_wolf_claw",
+      "gameId": "a31451ab36f9a6351b093990",
+      "name": "Intact Wolf Claw",
+      "droppedBy": [
+        {
+          "mob": "a timber wolf",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        }
+      ],
+      "prices": [
+        {
+          "copper": 13,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": [
+        "Scarwood"
+      ]
+    },
+    {
       "id": "iron_ore",
       "gameId": null,
       "name": "Iron Ore",
@@ -7974,7 +8092,12 @@
           "rate": 0.13157894736842105
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 8,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Keepersbight"
@@ -8012,10 +8135,10 @@
       "prices": [
         {
           "copper": 1,
-          "count": 2
+          "count": 6
         }
       ],
-      "harvested": 136,
+      "harvested": 138,
       "zones": [
         "Scarwood",
         "Fallenpass",
@@ -8058,7 +8181,12 @@
           "rate": 0.25
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 135,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Keepersbight"
@@ -8335,7 +8463,7 @@
           "count": 1
         }
       ],
-      "harvested": 239,
+      "harvested": 241,
       "zones": [
         "Sungreetstrand",
         "Scarwood",
@@ -8553,9 +8681,9 @@
         },
         {
           "mob": "a fat cave bear",
-          "drops": 1,
-          "corpses": 2,
-          "rate": 0.5
+          "drops": 2,
+          "corpses": 3,
+          "rate": 0.6666666666666666
         },
         {
           "mob": "a grizzly bear",
@@ -8572,8 +8700,8 @@
         {
           "mob": "a cave bear",
           "drops": 2,
-          "corpses": 9,
-          "rate": 0.2222222222222222
+          "corpses": 10,
+          "rate": 0.2
         }
       ],
       "prices": [],
@@ -8588,6 +8716,18 @@
       "gameId": "1ffa083e474640236da3e5fc",
       "name": "Medium-Quality Wolf Pelt",
       "droppedBy": [
+        {
+          "mob": "a timber wolf",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
+        {
+          "mob": "a canyon stalker",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
         {
           "mob": "a forest stalker",
           "drops": 8,
@@ -8605,7 +8745,8 @@
       "harvested": 0,
       "zones": [
         "Keepersbight",
-        "Sungreetstrand"
+        "Sungreetstrand",
+        "Scarwood"
       ]
     },
     {
@@ -8737,7 +8878,7 @@
       "name": "Nomad's Grace",
       "droppedBy": [],
       "prices": [],
-      "harvested": 25,
+      "harvested": 26,
       "zones": [
         "Evershade Weald",
         "Sungreetstrand",
@@ -9104,8 +9245,8 @@
         {
           "mob": "a cave bear",
           "drops": 1,
-          "corpses": 9,
-          "rate": 0.1111111111111111
+          "corpses": 10,
+          "rate": 0.1
         }
       ],
       "prices": [
@@ -9189,20 +9330,20 @@
         {
           "mob": "a fat cave bear",
           "drops": 1,
-          "corpses": 2,
-          "rate": 0.5
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        },
+        {
+          "mob": "a cave bear",
+          "drops": 3,
+          "corpses": 10,
+          "rate": 0.3
         },
         {
           "mob": "a grizzly bear",
           "drops": 4,
           "corpses": 17,
           "rate": 0.23529411764705882
-        },
-        {
-          "mob": "a cave bear",
-          "drops": 2,
-          "corpses": 9,
-          "rate": 0.2222222222222222
         },
         {
           "mob": "an elder black bear",
@@ -9218,7 +9359,7 @@
         },
         {
           "copper": 3,
-          "count": 1
+          "count": 2
         }
       ],
       "harvested": 0,
@@ -9560,8 +9701,8 @@
         {
           "mob": "a boulder viper",
           "drops": 1,
-          "corpses": 6,
-          "rate": 0.16666666666666666
+          "corpses": 7,
+          "rate": 0.14285714285714285
         }
       ],
       "prices": [
@@ -9583,12 +9724,6 @@
       "name": "Raw Wolf Meat",
       "droppedBy": [
         {
-          "mob": "a canyon stalker",
-          "drops": 1,
-          "corpses": 1,
-          "rate": 1
-        },
-        {
           "mob": "a dire wolf patroller",
           "drops": 1,
           "corpses": 2,
@@ -9598,6 +9733,12 @@
           "mob": "a beguiled wolf",
           "drops": 2,
           "corpses": 4,
+          "rate": 0.5
+        },
+        {
+          "mob": "a canyon stalker",
+          "drops": 1,
+          "corpses": 2,
           "rate": 0.5
         },
         {
@@ -10274,7 +10415,12 @@
           "rate": 0.011235955056179775
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 185,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Keepersbight"
@@ -10514,7 +10660,12 @@
           "rate": 0.033707865168539325
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 219,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Keepersbight"
@@ -10532,7 +10683,12 @@
           "rate": 0.011235955056179775
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 219,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Keepersbight"
@@ -10616,7 +10772,12 @@
           "rate": 0.011235955056179775
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 273,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Keepersbight"
@@ -11457,22 +11618,22 @@
       "name": "Scuffed Bear Paw",
       "droppedBy": [
         {
-          "mob": "a cave bear",
-          "drops": 7,
-          "corpses": 9,
-          "rate": 0.7777777777777778
-        },
-        {
           "mob": "a grizzly bear",
           "drops": 12,
           "corpses": 17,
           "rate": 0.7058823529411765
         },
         {
+          "mob": "a cave bear",
+          "drops": 7,
+          "corpses": 10,
+          "rate": 0.7
+        },
+        {
           "mob": "a fat cave bear",
           "drops": 1,
-          "corpses": 2,
-          "rate": 0.5
+          "corpses": 3,
+          "rate": 0.3333333333333333
         }
       ],
       "prices": [
@@ -11524,16 +11685,16 @@
       "name": "Scuffed Canine Ear",
       "droppedBy": [
         {
-          "mob": "a canyon stalker",
-          "drops": 1,
-          "corpses": 1,
-          "rate": 1
-        },
-        {
           "mob": "a forest stalker",
           "drops": 13,
           "corpses": 20,
           "rate": 0.65
+        },
+        {
+          "mob": "a canyon stalker",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
         },
         {
           "mob": "a dismal cur",
@@ -11664,7 +11825,7 @@
       "name": "Silver Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 76,
+      "harvested": 82,
       "zones": [
         "Scarwood",
         "Sungreetstrand"
@@ -11879,15 +12040,15 @@
         },
         {
           "mob": "a boulder viper",
-          "drops": 2,
-          "corpses": 6,
-          "rate": 0.3333333333333333
+          "drops": 3,
+          "corpses": 7,
+          "rate": 0.42857142857142855
         }
       ],
       "prices": [
         {
           "copper": 2,
-          "count": 1
+          "count": 2
         }
       ],
       "harvested": 0,
@@ -14646,9 +14807,9 @@
       "droppedBy": [
         {
           "mob": "a cave bear",
-          "drops": 3,
-          "corpses": 9,
-          "rate": 0.3333333333333333
+          "drops": 4,
+          "corpses": 10,
+          "rate": 0.4
         }
       ],
       "prices": [],
@@ -15467,7 +15628,12 @@
           "rate": 0.011235955056179775
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 109,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Keepersbight"
@@ -15506,19 +15672,19 @@
     "Chipped Sapphire": 10,
     "Whispering Sage": 88,
     "Magic Frond": 6,
-    "Nomad's Grace": 25,
+    "Nomad's Grace": 26,
     "Chipped Peridot": 9,
     "Selstie Kelp": 2,
     "Alunite Ore": 9,
     "Chipped Emerald": 9,
     "Chipped Ruby": 10,
-    "Limestone": 239,
+    "Limestone": 241,
     "Tin Ore": 604,
     "Flawed Diamond": 4,
     "Glinting Crystallized Magic": 7,
-    "Jagged Stone": 136,
-    "Silver Ore": 76,
-    "Flawed Sapphire": 4,
+    "Jagged Stone": 138,
+    "Silver Ore": 82,
+    "Flawed Sapphire": 5,
     "Flawed Ruby": 4,
     "Flawed Cat's Eye Agate": 7,
     "Chipped Jade": 6,
@@ -15833,22 +15999,22 @@
     },
     {
       "name": "Limestone",
-      "pulls": 98,
+      "pulls": 100,
       "yields": [
         {
           "res": "Limestone",
-          "count": 98,
+          "count": 100,
           "rate": 1
+        },
+        {
+          "res": "Silver Ore",
+          "count": 3,
+          "rate": 0.03
         },
         {
           "res": "Clouded Crystallized Magic",
           "count": 3,
-          "rate": 0.030612244897959183
-        },
-        {
-          "res": "Silver Ore",
-          "count": 1,
-          "rate": 0.01020408163265306
+          "rate": 0.03
         }
       ],
       "zones": [
@@ -15893,27 +16059,27 @@
     },
     {
       "name": "Silver Ore",
-      "pulls": 64,
+      "pulls": 66,
       "yields": [
         {
           "res": "Silver Ore",
-          "count": 64,
+          "count": 66,
           "rate": 1
         },
         {
           "res": "Glinting Crystallized Magic",
           "count": 1,
-          "rate": 0.015625
+          "rate": 0.015151515151515152
         },
         {
           "res": "Flawed Cat's Eye Agate",
           "count": 1,
-          "rate": 0.015625
+          "rate": 0.015151515151515152
         },
         {
           "res": "Flawed Sapphire",
           "count": 1,
-          "rate": 0.015625
+          "rate": 0.015151515151515152
         }
       ],
       "zones": [
@@ -16054,11 +16220,11 @@
     },
     {
       "name": "Nomad's Grace",
-      "pulls": 17,
+      "pulls": 18,
       "yields": [
         {
           "res": "Nomad's Grace",
-          "count": 17,
+          "count": 18,
           "rate": 1
         }
       ],
@@ -16112,6 +16278,35 @@
       ]
     },
     {
+      "name": "Silver Ore & Jagged Stone",
+      "pulls": 13,
+      "yields": [
+        {
+          "res": "Silver Ore",
+          "count": 13,
+          "rate": 1
+        },
+        {
+          "res": "Jagged Stone",
+          "count": 13,
+          "rate": 1
+        },
+        {
+          "res": "Limestone",
+          "count": 1,
+          "rate": 0.07692307692307693
+        },
+        {
+          "res": "Flawed Sapphire",
+          "count": 1,
+          "rate": 0.07692307692307693
+        }
+      ],
+      "zones": [
+        "Scarwood"
+      ]
+    },
+    {
       "name": "Gold Ore & Weighty Stone",
       "pulls": 13,
       "yields": [
@@ -16128,30 +16323,6 @@
       ],
       "zones": [
         "Fallenpass"
-      ]
-    },
-    {
-      "name": "Silver Ore & Jagged Stone",
-      "pulls": 11,
-      "yields": [
-        {
-          "res": "Silver Ore",
-          "count": 11,
-          "rate": 1
-        },
-        {
-          "res": "Jagged Stone",
-          "count": 11,
-          "rate": 1
-        },
-        {
-          "res": "Limestone",
-          "count": 1,
-          "rate": 0.09090909090909091
-        }
-      ],
-      "zones": [
-        "Scarwood"
       ]
     }
   ]
