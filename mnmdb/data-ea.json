@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-08T02:00:06.946Z",
+  "generatedAt": "2026-11-08T08:00:07.394Z",
   "source": "mnm-tools",
   "ledgerFiles": 48,
-  "events": 16342,
+  "events": 16817,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 16342
+      "events": 16817
     }
   ],
   "contributorCount": 1,
@@ -1060,19 +1060,20 @@
       "corpses": 41
     },
     "a forest drakeling": {
-      "kills": 22,
+      "kills": 23,
       "drops": {
         "Flawed Sapphire": 1,
         "Pristine Drake Fang": 3,
         "Drake Fang": 3,
         "Drake Claw": 4,
-        "Drake Scale": 1
+        "Drake Scale": 1,
+        "Flawed Diamond": 1
       },
       "zones": {
-        "Keepersbight": 36
+        "Keepersbight": 38
       },
-      "coin": 1386,
-      "corpses": 11
+      "coin": 1455,
+      "corpses": 12
     },
     "a Sangrel arcanist": {
       "kills": 67,
@@ -1980,104 +1981,120 @@
       "corpses": 1
     },
     "a poacher herbalist": {
-      "kills": 5,
+      "kills": 7,
       "drops": {
-        "Lacquered Medallion": 3,
-        "Raw Human Meat": 2,
-        "Cotton Scraps": 1,
+        "Lacquered Medallion": 4,
+        "Raw Human Meat": 3,
+        "Cotton Scraps": 2,
         "Tattered Leather Shoulderpads": 1,
-        "Rusty Iron War Lance": 1
+        "Rusty Iron War Lance": 1,
+        "Tattered Cotton Bracer": 1,
+        "Lemon": 1
       },
       "zones": {
-        "Keepersbight": 13
+        "Keepersbight": 20
       },
-      "coin": 747,
-      "corpses": 4
+      "coin": 1080,
+      "corpses": 6
     },
     "a poacher bruiser": {
-      "kills": 142,
+      "kills": 254,
       "drops": {
-        "Raw Human Meat": 30,
-        "Leather Scraps": 19,
-        "Cracked Ironbark Staff": 2,
-        "Poacher's Skinner": 3,
-        "Carrot": 2,
-        "Cotton Scraps": 22,
+        "Raw Human Meat": 45,
+        "Leather Scraps": 37,
+        "Cracked Ironbark Staff": 3,
+        "Poacher's Skinner": 4,
+        "Carrot": 3,
+        "Cotton Scraps": 42,
         "Worn Ironbark Bow": 2,
         "Tattered Leather Cap": 1,
-        "Imperfect Emerald": 1,
-        "Lacquered Medallion": 29,
+        "Imperfect Emerald": 3,
+        "Lacquered Medallion": 57,
         "Potato": 4,
-        "Bell Pepper": 1,
-        "Polished Medallion": 4,
-        "Iron Scraps": 19,
+        "Bell Pepper": 3,
+        "Polished Medallion": 5,
+        "Iron Scraps": 26,
         "Celery": 5,
-        "Cheese": 3,
+        "Cheese": 6,
         "Rusty Iron Battle Axe": 1,
-        "Imperfect Sapphire": 2,
+        "Imperfect Sapphire": 3,
         "Tattered Leather Boots": 1,
-        "Rusty Iron War Lance": 1,
+        "Rusty Iron War Lance": 5,
         "Rusty Iron Scimitar": 2,
-        "Onion": 2,
-        "Rusty Iron Kite Shield": 1,
+        "Onion": 3,
+        "Rusty Iron Kite Shield": 2,
         "Rusty Iron Plate Boots": 1,
         "Rusty Iron Plate Arming Doublet": 1,
-        "Rusty Iron Tower Shield": 1,
+        "Rusty Iron Tower Shield": 2,
         "Rusty Iron Chain Tunic": 1,
         "Rusty Iron Chain Coif": 1,
         "Rusty Iron Long Spear": 1,
         "Tattered Leather Bracer": 1,
         "Rusty Iron Chain Gorget": 1,
-        "Tomato": 2,
-        "Rusty Iron Shortsword": 1,
+        "Tomato": 5,
+        "Rusty Iron Shortsword": 2,
         "Tattered Cotton Robe": 1,
         "Rusty Iron Plate Cloak": 3,
         "Imperfect Peridot": 1,
         "Rusty Iron Plate Helm": 1,
-        "Rusty Iron Greatsword": 1,
+        "Rusty Iron Greatsword": 2,
         "Rusty Iron Great Scythe": 1,
         "Rusty Iron Mace": 1,
-        "Mushroom": 1,
-        "Garlic": 2,
-        "Rusty Iron Spear": 1,
-        "Cabbage": 2,
+        "Mushroom": 3,
+        "Garlic": 4,
+        "Rusty Iron Spear": 2,
+        "Cabbage": 7,
         "Tattered Cotton Boots": 1,
         "Torch": 1,
-        "Imperfect Ruby": 1,
+        "Imperfect Ruby": 2,
         "Rusty Iron Trident": 1,
-        "Tattered Leather Cloak": 1,
+        "Tattered Leather Cloak": 3,
         "Worn Ironbark Buckler": 1,
         "Rusty Iron Plate Collar": 1,
-        "Tattered Cotton Gorget": 1
+        "Tattered Cotton Gorget": 1,
+        "Rusty Iron Plate Breastplate": 1,
+        "Tattered Leather Gorget": 2,
+        "Imperfect Jade": 2,
+        "Lemon": 3,
+        "Rusty Iron Scythe": 1,
+        "Tattered Cotton Tunic": 1,
+        "Tattered Leather Tunic": 2,
+        "Tattered Cotton Cape": 1,
+        "Tattered Leather Shoulderpads": 1,
+        "Imperfect Cat's Eye Agate": 2,
+        "Worn Ironbark Great Staff": 1,
+        "Imperfect Diamond": 1,
+        "Rusty Iron Longsword": 2,
+        "Rusty Iron Warhammer": 1
       },
       "zones": {
-        "Keepersbight": 363
+        "Keepersbight": 642
       },
-      "coin": 21086,
-      "corpses": 89
+      "coin": 38257,
+      "corpses": 161
     },
     "a poacher pathfinder": {
-      "kills": 51,
+      "kills": 91,
       "drops": {
-        "Cotton Scraps": 4,
-        "Lacquered Medallion": 16,
-        "Raw Human Meat": 9,
-        "Rusty Iron Great Scythe": 3,
+        "Cotton Scraps": 8,
+        "Lacquered Medallion": 28,
+        "Raw Human Meat": 13,
+        "Rusty Iron Great Scythe": 4,
         "Rusty Iron War Lance": 1,
-        "Leather Scraps": 4,
+        "Leather Scraps": 11,
         "Rusty Iron Chain Coif": 2,
         "Rusty Iron Dagger": 2,
-        "Iron Scraps": 5,
+        "Iron Scraps": 7,
         "Rusty Iron Shortsword": 1,
         "Tomato": 1,
         "Mushroom": 1,
         "Rusty Iron Spear": 1,
         "Tattered Cotton Gloves": 1,
         "Rusty Iron Trident": 1,
-        "Cabbage": 1,
+        "Cabbage": 2,
         "Tattered Cotton Gorget": 1,
         "Bell Pepper": 2,
-        "Polished Medallion": 4,
+        "Polished Medallion": 7,
         "Tattered Cotton Pantaloons": 1,
         "Carrot": 2,
         "Worn Ironbark Bow": 1,
@@ -2085,27 +2102,39 @@
         "Flawed Ruby": 1,
         "Potato": 1,
         "Tattered Wool Tunic": 1,
-        "Rusty Iron Chain Waistguard": 1,
+        "Rusty Iron Chain Waistguard": 2,
         "Cracked Ironbark Staff": 1,
-        "Rusty Iron Chain Gloves": 1
+        "Rusty Iron Chain Gloves": 2,
+        "Worn Ironbark Great Staff": 1,
+        "Imperfect Diamond": 1,
+        "Imperfect Jade": 1,
+        "Celery": 1,
+        "Hide Scraps": 2,
+        "Rusty Iron Chain Boots": 1,
+        "Rusty Iron Tower Shield": 1,
+        "Bronze Scraps": 1,
+        "Rusty Iron Chain Leggings": 1,
+        "Onion": 1
       },
       "zones": {
-        "Keepersbight": 131
+        "Keepersbight": 228
       },
-      "coin": 6503,
-      "corpses": 38
+      "coin": 12439,
+      "corpses": 71
     },
     "Poacher Tolan": {
-      "kills": 1,
+      "kills": 2,
       "drops": {
         "Lacquered Medallion": 1,
-        "Tolan's Torn Hide Vest": 1
+        "Tolan's Torn Hide Vest": 1,
+        "Raw Human Meat": 1,
+        "Cotton Scraps": 1
       },
       "zones": {
-        "Keepersbight": 4
+        "Keepersbight": 7
       },
-      "coin": 349,
-      "corpses": 2
+      "coin": 630,
+      "corpses": 4
     },
     "a chasm drake": {
       "kills": 3,
@@ -2132,31 +2161,34 @@
       "corpses": 2
     },
     "a green drake": {
-      "kills": 12,
+      "kills": 20,
       "drops": {
-        "Drake Fang": 2,
-        "Drake Claw": 1,
+        "Drake Fang": 4,
+        "Drake Claw": 2,
         "Drake Scale": 1,
-        "Hardened Drake Scale": 2,
-        "Flawed Diamond": 1
+        "Hardened Drake Scale": 4,
+        "Flawed Diamond": 1,
+        "Pristine Drake Fang": 1
       },
       "zones": {
-        "Scarwood": 20
+        "Scarwood": 34
       },
-      "coin": 3000,
-      "corpses": 6
+      "coin": 5239,
+      "corpses": 9
     },
     "a timber wolf": {
       "kills": 0,
       "drops": {
         "Intact Wolf Claw": 1,
-        "Medium-Quality Wolf Pelt": 1
+        "Medium-Quality Wolf Pelt": 2,
+        "Scuffed Canine Ear": 1,
+        "Raw Wolf Meat": 1
       },
       "zones": {
-        "Scarwood": 2
+        "Scarwood": 5
       },
       "coin": 0,
-      "corpses": 1
+      "corpses": 2
     },
     "a gloom widow": {
       "kills": 0,
@@ -2637,12 +2669,6 @@
           "rate": 0.06
         },
         {
-          "mob": "a poacher pathfinder",
-          "drops": 2,
-          "corpses": 38,
-          "rate": 0.05263157894736842
-        },
-        {
           "mob": "a Sangrel hunter",
           "drops": 4,
           "corpses": 79,
@@ -2655,6 +2681,12 @@
           "rate": 0.038461538461538464
         },
         {
+          "mob": "a poacher pathfinder",
+          "drops": 2,
+          "corpses": 71,
+          "rate": 0.028169014084507043
+        },
+        {
           "mob": "a Sangrel entangler",
           "drops": 1,
           "corpses": 41,
@@ -2665,6 +2697,12 @@
           "drops": 1,
           "corpses": 53,
           "rate": 0.018867924528301886
+        },
+        {
+          "mob": "a poacher bruiser",
+          "drops": 3,
+          "corpses": 161,
+          "rate": 0.018633540372670808
         },
         {
           "mob": "a henchman",
@@ -2695,12 +2733,6 @@
           "drops": 1,
           "corpses": 75,
           "rate": 0.013333333333333334
-        },
-        {
-          "mob": "a poacher bruiser",
-          "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -3027,6 +3059,12 @@
           "drops": 1,
           "corpses": 16,
           "rate": 0.0625
+        },
+        {
+          "mob": "a poacher pathfinder",
+          "drops": 1,
+          "corpses": 71,
+          "rate": 0.014084507042253521
         }
       ],
       "prices": [
@@ -3110,6 +3148,12 @@
           "rate": 0.04878048780487805
         },
         {
+          "mob": "a poacher bruiser",
+          "drops": 7,
+          "corpses": 161,
+          "rate": 0.043478260869565216
+        },
+        {
           "mob": "a Sangrel grappler",
           "drops": 1,
           "corpses": 26,
@@ -3129,9 +3173,9 @@
         },
         {
           "mob": "a poacher pathfinder",
-          "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "drops": 2,
+          "corpses": 71,
+          "rate": 0.028169014084507043
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -3150,12 +3194,6 @@
           "drops": 7,
           "corpses": 304,
           "rate": 0.023026315789473683
-        },
-        {
-          "mob": "a poacher bruiser",
-          "drops": 2,
-          "corpses": 89,
-          "rate": 0.02247191011235955
         },
         {
           "mob": "a sly farmhand",
@@ -3231,12 +3269,6 @@
           "rate": 0.05555555555555555
         },
         {
-          "mob": "a poacher pathfinder",
-          "drops": 2,
-          "corpses": 38,
-          "rate": 0.05263157894736842
-        },
-        {
           "mob": "a henchman",
           "drops": 2,
           "corpses": 56,
@@ -3247,6 +3279,12 @@
           "drops": 2,
           "corpses": 67,
           "rate": 0.029850746268656716
+        },
+        {
+          "mob": "a poacher pathfinder",
+          "drops": 2,
+          "corpses": 71,
+          "rate": 0.028169014084507043
         },
         {
           "mob": "a Sangrel arcanist",
@@ -3267,12 +3305,6 @@
           "rate": 0.024390243902439025
         },
         {
-          "mob": "a poacher bruiser",
-          "drops": 2,
-          "corpses": 89,
-          "rate": 0.02247191011235955
-        },
-        {
           "mob": "a Sangrel striker",
           "drops": 6,
           "corpses": 304,
@@ -3283,6 +3315,12 @@
           "drops": 1,
           "corpses": 53,
           "rate": 0.018867924528301886
+        },
+        {
+          "mob": "a poacher bruiser",
+          "drops": 3,
+          "corpses": 161,
+          "rate": 0.018633540372670808
         },
         {
           "mob": "a bodyguard",
@@ -3336,12 +3374,6 @@
           "rate": 0.14285714285714285
         },
         {
-          "mob": "a poacher bruiser",
-          "drops": 5,
-          "corpses": 89,
-          "rate": 0.056179775280898875
-        },
-        {
           "mob": "a corrupt clergyman",
           "drops": 2,
           "corpses": 41,
@@ -3372,6 +3404,12 @@
           "rate": 0.031746031746031744
         },
         {
+          "mob": "a poacher bruiser",
+          "drops": 5,
+          "corpses": 161,
+          "rate": 0.031055900621118012
+        },
+        {
           "mob": "a Sangrel striker",
           "drops": 8,
           "corpses": 304,
@@ -3388,6 +3426,12 @@
           "drops": 1,
           "corpses": 50,
           "rate": 0.02
+        },
+        {
+          "mob": "a poacher pathfinder",
+          "drops": 1,
+          "corpses": 71,
+          "rate": 0.014084507042253521
         },
         {
           "mob": "a Sangrel arcanist",
@@ -3422,9 +3466,9 @@
         },
         {
           "mob": "a poacher bruiser",
-          "drops": 3,
-          "corpses": 89,
-          "rate": 0.033707865168539325
+          "drops": 6,
+          "corpses": 161,
+          "rate": 0.037267080745341616
         },
         {
           "mob": "a bodyguard",
@@ -5736,16 +5780,22 @@
       "name": "Cotton Scraps",
       "droppedBy": [
         {
+          "mob": "a poacher herbalist",
+          "drops": 2,
+          "corpses": 6,
+          "rate": 0.3333333333333333
+        },
+        {
           "mob": "a Dustrend patroller",
           "drops": 2,
           "corpses": 7,
           "rate": 0.2857142857142857
         },
         {
-          "mob": "a poacher herbalist",
-          "drops": 1,
-          "corpses": 4,
-          "rate": 0.25
+          "mob": "a poacher bruiser",
+          "drops": 42,
+          "corpses": 161,
+          "rate": 0.2608695652173913
         },
         {
           "mob": "Poacher Garrus",
@@ -5754,16 +5804,16 @@
           "rate": 0.25
         },
         {
-          "mob": "a poacher bruiser",
-          "drops": 22,
-          "corpses": 89,
-          "rate": 0.24719101123595505
+          "mob": "Poacher Tolan",
+          "drops": 1,
+          "corpses": 4,
+          "rate": 0.25
         },
         {
           "mob": "a poacher pathfinder",
-          "drops": 4,
-          "corpses": 38,
-          "rate": 0.10526315789473684
+          "drops": 8,
+          "corpses": 71,
+          "rate": 0.11267605633802817
         }
       ],
       "prices": [],
@@ -5859,16 +5909,16 @@
       "name": "Cracked Ironbark Staff",
       "droppedBy": [
         {
-          "mob": "a poacher pathfinder",
-          "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "mob": "a poacher bruiser",
+          "drops": 3,
+          "corpses": 161,
+          "rate": 0.018633540372670808
         },
         {
-          "mob": "a poacher bruiser",
-          "drops": 2,
-          "corpses": 89,
-          "rate": 0.02247191011235955
+          "mob": "a poacher pathfinder",
+          "drops": 1,
+          "corpses": 71,
+          "rate": 0.014084507042253521
         }
       ],
       "prices": [],
@@ -6195,8 +6245,8 @@
         {
           "mob": "a forest drakeling",
           "drops": 4,
-          "corpses": 11,
-          "rate": 0.36363636363636365
+          "corpses": 12,
+          "rate": 0.3333333333333333
         },
         {
           "mob": "a forest drake",
@@ -6212,9 +6262,9 @@
         },
         {
           "mob": "a green drake",
-          "drops": 1,
-          "corpses": 6,
-          "rate": 0.16666666666666666
+          "drops": 2,
+          "corpses": 9,
+          "rate": 0.2222222222222222
         }
       ],
       "prices": [
@@ -6246,22 +6296,22 @@
           "rate": 1
         },
         {
+          "mob": "a green drake",
+          "drops": 4,
+          "corpses": 9,
+          "rate": 0.4444444444444444
+        },
+        {
           "mob": "a forest drake",
           "drops": 1,
           "corpses": 3,
           "rate": 0.3333333333333333
         },
         {
-          "mob": "a green drake",
-          "drops": 2,
-          "corpses": 6,
-          "rate": 0.3333333333333333
-        },
-        {
           "mob": "a forest drakeling",
           "drops": 3,
-          "corpses": 11,
-          "rate": 0.2727272727272727
+          "corpses": 12,
+          "rate": 0.25
         },
         {
           "mob": "a green drakeling",
@@ -6301,14 +6351,14 @@
         {
           "mob": "a green drake",
           "drops": 1,
-          "corpses": 6,
-          "rate": 0.16666666666666666
+          "corpses": 9,
+          "rate": 0.1111111111111111
         },
         {
           "mob": "a forest drakeling",
           "drops": 1,
-          "corpses": 11,
-          "rate": 0.09090909090909091
+          "corpses": 12,
+          "rate": 0.08333333333333333
         }
       ],
       "prices": [
@@ -6635,7 +6685,7 @@
       "name": "Fine Wood",
       "droppedBy": [],
       "prices": [],
-      "harvested": 8,
+      "harvested": 21,
       "zones": [
         "Keepersbight"
       ]
@@ -6714,8 +6764,14 @@
         {
           "mob": "a green drake",
           "drops": 1,
-          "corpses": 6,
-          "rate": 0.16666666666666666
+          "corpses": 9,
+          "rate": 0.1111111111111111
+        },
+        {
+          "mob": "a forest drakeling",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
         },
         {
           "mob": "a hired tracker",
@@ -6927,12 +6983,6 @@
           "rate": 0.09090909090909091
         },
         {
-          "mob": "a poacher pathfinder",
-          "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
-        },
-        {
           "mob": "a sly farmhand",
           "drops": 1,
           "corpses": 53,
@@ -6943,6 +6993,12 @@
           "drops": 1,
           "corpses": 63,
           "rate": 0.015873015873015872
+        },
+        {
+          "mob": "a poacher pathfinder",
+          "drops": 1,
+          "corpses": 71,
+          "rate": 0.014084507042253521
         },
         {
           "mob": "a Sangrel hunter",
@@ -6983,8 +7039,8 @@
         {
           "mob": "a forest drakeling",
           "drops": 1,
-          "corpses": 11,
-          "rate": 0.09090909090909091
+          "corpses": 12,
+          "rate": 0.08333333333333333
         },
         {
           "mob": "a sly farmhand",
@@ -7196,22 +7252,16 @@
           "rate": 0.02666666666666667
         },
         {
-          "mob": "a poacher pathfinder",
-          "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "mob": "a poacher bruiser",
+          "drops": 4,
+          "corpses": 161,
+          "rate": 0.024844720496894408
         },
         {
           "mob": "a Sangrel entangler",
           "drops": 1,
           "corpses": 41,
           "rate": 0.024390243902439025
-        },
-        {
-          "mob": "a poacher bruiser",
-          "drops": 2,
-          "corpses": 89,
-          "rate": 0.02247191011235955
         },
         {
           "mob": "a hired tracker",
@@ -7224,6 +7274,12 @@
           "drops": 1,
           "corpses": 56,
           "rate": 0.017857142857142856
+        },
+        {
+          "mob": "a poacher pathfinder",
+          "drops": 1,
+          "corpses": 71,
+          "rate": 0.014084507042253521
         },
         {
           "mob": "a Sangrel hunter",
@@ -7651,9 +7707,9 @@
       "droppedBy": [
         {
           "mob": "a green drake",
-          "drops": 2,
-          "corpses": 6,
-          "rate": 0.3333333333333333
+          "drops": 4,
+          "corpses": 9,
+          "rate": 0.4444444444444444
         }
       ],
       "prices": [
@@ -7845,6 +7901,12 @@
           "drops": 1,
           "corpses": 16,
           "rate": 0.0625
+        },
+        {
+          "mob": "a poacher pathfinder",
+          "drops": 2,
+          "corpses": 71,
+          "rate": 0.028169014084507043
         }
       ],
       "prices": [],
@@ -7859,9 +7921,16 @@
     },
     {
       "id": "imperfect_cat_s_eye_agate",
-      "gameId": null,
+      "gameId": "6ee8b450435b992bac9f382b",
       "name": "Imperfect Cat's Eye Agate",
-      "droppedBy": [],
+      "droppedBy": [
+        {
+          "mob": "a poacher bruiser",
+          "drops": 2,
+          "corpses": 161,
+          "rate": 0.012422360248447204
+        }
+      ],
       "prices": [
         {
           "copper": 136,
@@ -7874,14 +7943,28 @@
       ],
       "harvested": 5,
       "zones": [
-        "Fallenpass"
+        "Fallenpass",
+        "Keepersbight"
       ]
     },
     {
       "id": "imperfect_diamond",
-      "gameId": null,
+      "gameId": "32a44743f87f67cdbf1b4b6e",
       "name": "Imperfect Diamond",
-      "droppedBy": [],
+      "droppedBy": [
+        {
+          "mob": "a poacher pathfinder",
+          "drops": 1,
+          "corpses": 71,
+          "rate": 0.014084507042253521
+        },
+        {
+          "mob": "a poacher bruiser",
+          "drops": 1,
+          "corpses": 161,
+          "rate": 0.006211180124223602
+        }
+      ],
       "prices": [
         {
           "copper": 136,
@@ -7894,7 +7977,8 @@
       ],
       "harvested": 5,
       "zones": [
-        "Fallenpass"
+        "Fallenpass",
+        "Keepersbight"
       ]
     },
     {
@@ -7904,9 +7988,9 @@
       "droppedBy": [
         {
           "mob": "a poacher bruiser",
-          "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "drops": 3,
+          "corpses": 161,
+          "rate": 0.018633540372670808
         }
       ],
       "prices": [
@@ -7923,9 +8007,22 @@
     },
     {
       "id": "imperfect_jade",
-      "gameId": null,
+      "gameId": "f8f8d3e84e7794eca7a84b0a",
       "name": "Imperfect Jade",
-      "droppedBy": [],
+      "droppedBy": [
+        {
+          "mob": "a poacher pathfinder",
+          "drops": 1,
+          "corpses": 71,
+          "rate": 0.014084507042253521
+        },
+        {
+          "mob": "a poacher bruiser",
+          "drops": 2,
+          "corpses": 161,
+          "rate": 0.012422360248447204
+        }
+      ],
       "prices": [
         {
           "copper": 136,
@@ -7938,7 +8035,8 @@
       ],
       "harvested": 7,
       "zones": [
-        "Fallenpass"
+        "Fallenpass",
+        "Keepersbight"
       ]
     },
     {
@@ -7949,8 +8047,8 @@
         {
           "mob": "a poacher bruiser",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 161,
+          "rate": 0.006211180124223602
         }
       ],
       "prices": [
@@ -7972,9 +8070,9 @@
       "droppedBy": [
         {
           "mob": "a poacher bruiser",
-          "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "drops": 2,
+          "corpses": 161,
+          "rate": 0.012422360248447204
         }
       ],
       "prices": [
@@ -8000,9 +8098,9 @@
       "droppedBy": [
         {
           "mob": "a poacher bruiser",
-          "drops": 2,
-          "corpses": 89,
-          "rate": 0.02247191011235955
+          "drops": 3,
+          "corpses": 161,
+          "rate": 0.018633540372670808
         }
       ],
       "prices": [
@@ -8043,8 +8141,8 @@
         {
           "mob": "a timber wolf",
           "drops": 1,
-          "corpses": 1,
-          "rate": 1
+          "corpses": 2,
+          "rate": 0.5
         }
       ],
       "prices": [
@@ -8081,15 +8179,15 @@
       "droppedBy": [
         {
           "mob": "a poacher bruiser",
-          "drops": 19,
-          "corpses": 89,
-          "rate": 0.21348314606741572
+          "drops": 26,
+          "corpses": 161,
+          "rate": 0.16149068322981366
         },
         {
           "mob": "a poacher pathfinder",
-          "drops": 5,
-          "corpses": 38,
-          "rate": 0.13157894736842105
+          "drops": 7,
+          "corpses": 71,
+          "rate": 0.09859154929577464
         }
       ],
       "prices": [
@@ -8138,7 +8236,7 @@
           "count": 6
         }
       ],
-      "harvested": 138,
+      "harvested": 141,
       "zones": [
         "Scarwood",
         "Fallenpass",
@@ -8152,30 +8250,30 @@
       "droppedBy": [
         {
           "mob": "a poacher herbalist",
-          "drops": 3,
-          "corpses": 4,
-          "rate": 0.75
-        },
-        {
-          "mob": "Poacher Tolan",
-          "drops": 1,
-          "corpses": 2,
-          "rate": 0.5
+          "drops": 4,
+          "corpses": 6,
+          "rate": 0.6666666666666666
         },
         {
           "mob": "a poacher pathfinder",
-          "drops": 16,
-          "corpses": 38,
-          "rate": 0.42105263157894735
+          "drops": 28,
+          "corpses": 71,
+          "rate": 0.39436619718309857
         },
         {
           "mob": "a poacher bruiser",
-          "drops": 29,
-          "corpses": 89,
-          "rate": 0.3258426966292135
+          "drops": 57,
+          "corpses": 161,
+          "rate": 0.35403726708074534
         },
         {
           "mob": "Poacher Garrus",
+          "drops": 1,
+          "corpses": 4,
+          "rate": 0.25
+        },
+        {
+          "mob": "Poacher Tolan",
           "drops": 1,
           "corpses": 4,
           "rate": 0.25
@@ -8251,15 +8349,15 @@
         },
         {
           "mob": "a poacher bruiser",
-          "drops": 19,
-          "corpses": 89,
-          "rate": 0.21348314606741572
+          "drops": 37,
+          "corpses": 161,
+          "rate": 0.22981366459627328
         },
         {
           "mob": "a poacher pathfinder",
-          "drops": 4,
-          "corpses": 38,
-          "rate": 0.10526315789473684
+          "drops": 11,
+          "corpses": 71,
+          "rate": 0.15492957746478872
         }
       ],
       "prices": [],
@@ -8360,6 +8458,12 @@
           "rate": 0.25
         },
         {
+          "mob": "a poacher herbalist",
+          "drops": 1,
+          "corpses": 6,
+          "rate": 0.16666666666666666
+        },
+        {
           "mob": "a fossergrim watcher",
           "drops": 2,
           "corpses": 18,
@@ -8426,6 +8530,12 @@
           "rate": 0.018867924528301886
         },
         {
+          "mob": "a poacher bruiser",
+          "drops": 3,
+          "corpses": 161,
+          "rate": 0.018633540372670808
+        },
+        {
           "mob": "a Sangrel arcanist",
           "drops": 1,
           "corpses": 75,
@@ -8446,8 +8556,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Sungreetstrand",
         "Keepersbight",
+        "Sungreetstrand",
         "Evershade Weald",
         "Blacktidebay"
       ]
@@ -8718,8 +8828,8 @@
       "droppedBy": [
         {
           "mob": "a timber wolf",
-          "drops": 1,
-          "corpses": 1,
+          "drops": 2,
+          "corpses": 2,
           "rate": 1
         },
         {
@@ -8834,16 +8944,16 @@
           "rate": 0.034782608695652174
         },
         {
-          "mob": "a poacher pathfinder",
-          "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
-        },
-        {
           "mob": "a corrupt clergyman",
           "drops": 1,
           "corpses": 41,
           "rate": 0.024390243902439025
+        },
+        {
+          "mob": "a poacher bruiser",
+          "drops": 3,
+          "corpses": 161,
+          "rate": 0.018633540372670808
         },
         {
           "mob": "a henchman",
@@ -8858,10 +8968,10 @@
           "rate": 0.015873015873015872
         },
         {
-          "mob": "a poacher bruiser",
+          "mob": "a poacher pathfinder",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 71,
+          "rate": 0.014084507042253521
         }
       ],
       "prices": [],
@@ -8916,22 +9026,28 @@
           "rate": 0.024390243902439025
         },
         {
-          "mob": "a poacher bruiser",
-          "drops": 2,
-          "corpses": 89,
-          "rate": 0.02247191011235955
-        },
-        {
           "mob": "a sly farmhand",
           "drops": 1,
           "corpses": 53,
           "rate": 0.018867924528301886
         },
         {
+          "mob": "a poacher bruiser",
+          "drops": 3,
+          "corpses": 161,
+          "rate": 0.018633540372670808
+        },
+        {
           "mob": "a Sangrel striker",
           "drops": 5,
           "corpses": 304,
           "rate": 0.01644736842105263
+        },
+        {
+          "mob": "a poacher pathfinder",
+          "drops": 1,
+          "corpses": 71,
+          "rate": 0.014084507042253521
         }
       ],
       "prices": [
@@ -8981,9 +9097,9 @@
       "droppedBy": [
         {
           "mob": "a poacher bruiser",
-          "drops": 3,
-          "corpses": 89,
-          "rate": 0.033707865168539325
+          "drops": 4,
+          "corpses": 161,
+          "rate": 0.024844720496894408
         }
       ],
       "prices": [],
@@ -9065,15 +9181,15 @@
         },
         {
           "mob": "a poacher pathfinder",
-          "drops": 4,
-          "corpses": 38,
-          "rate": 0.10526315789473684
+          "drops": 7,
+          "corpses": 71,
+          "rate": 0.09859154929577464
         },
         {
           "mob": "a poacher bruiser",
-          "drops": 4,
-          "corpses": 89,
-          "rate": 0.0449438202247191
+          "drops": 5,
+          "corpses": 161,
+          "rate": 0.031055900621118012
         }
       ],
       "prices": [
@@ -9101,12 +9217,6 @@
           "rate": 0.05357142857142857
         },
         {
-          "mob": "a poacher bruiser",
-          "drops": 4,
-          "corpses": 89,
-          "rate": 0.0449438202247191
-        },
-        {
           "mob": "a sly farmhand",
           "drops": 2,
           "corpses": 53,
@@ -9125,10 +9235,10 @@
           "rate": 0.02666666666666667
         },
         {
-          "mob": "a poacher pathfinder",
-          "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "mob": "a poacher bruiser",
+          "drops": 4,
+          "corpses": 161,
+          "rate": 0.024844720496894408
         },
         {
           "mob": "a Sangrel entangler",
@@ -9161,6 +9271,12 @@
           "rate": 0.014925373134328358
         },
         {
+          "mob": "a poacher pathfinder",
+          "drops": 1,
+          "corpses": 71,
+          "rate": 0.014084507042253521
+        },
+        {
           "mob": "a Sangrel hunter",
           "drops": 1,
           "corpses": 79,
@@ -9187,8 +9303,14 @@
         {
           "mob": "a forest drakeling",
           "drops": 3,
-          "corpses": 11,
-          "rate": 0.2727272727272727
+          "corpses": 12,
+          "rate": 0.25
+        },
+        {
+          "mob": "a green drake",
+          "drops": 1,
+          "corpses": 9,
+          "rate": 0.1111111111111111
         },
         {
           "mob": "a green drakeling",
@@ -9210,7 +9332,8 @@
       "harvested": 0,
       "zones": [
         "Keepersbight",
-        "Evershade Weald"
+        "Evershade Weald",
+        "Scarwood"
       ]
     },
     {
@@ -9422,21 +9545,21 @@
       "droppedBy": [
         {
           "mob": "a poacher herbalist",
-          "drops": 2,
-          "corpses": 4,
+          "drops": 3,
+          "corpses": 6,
           "rate": 0.5
-        },
-        {
-          "mob": "a poacher bruiser",
-          "drops": 30,
-          "corpses": 89,
-          "rate": 0.33707865168539325
         },
         {
           "mob": "a Sangrel shadowblade",
           "drops": 33,
           "corpses": 115,
           "rate": 0.28695652173913044
+        },
+        {
+          "mob": "a poacher bruiser",
+          "drops": 45,
+          "corpses": 161,
+          "rate": 0.2795031055900621
         },
         {
           "mob": "a captured dockhand",
@@ -9451,16 +9574,16 @@
           "rate": 0.25
         },
         {
+          "mob": "Poacher Tolan",
+          "drops": 1,
+          "corpses": 4,
+          "rate": 0.25
+        },
+        {
           "mob": "a corrupt clergyman",
           "drops": 10,
           "corpses": 41,
           "rate": 0.24390243902439024
-        },
-        {
-          "mob": "a poacher pathfinder",
-          "drops": 9,
-          "corpses": 38,
-          "rate": 0.23684210526315788
         },
         {
           "mob": "a gruff farmhand",
@@ -9497,6 +9620,12 @@
           "drops": 5,
           "corpses": 26,
           "rate": 0.19230769230769232
+        },
+        {
+          "mob": "a poacher pathfinder",
+          "drops": 13,
+          "corpses": 71,
+          "rate": 0.18309859154929578
         },
         {
           "mob": "a Sangrel arcanist",
@@ -9730,6 +9859,12 @@
           "rate": 0.5
         },
         {
+          "mob": "a timber wolf",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
           "mob": "a beguiled wolf",
           "drops": 2,
           "corpses": 4,
@@ -9798,7 +9933,8 @@
         "Blacktidebay",
         "Keepersbight",
         "Sungreetstrand",
-        "Valeofzintar"
+        "Valeofzintar",
+        "Scarwood"
       ]
     },
     {
@@ -9983,7 +10119,7 @@
           "count": 11
         }
       ],
-      "harvested": 477,
+      "harvested": 486,
       "zones": [
         "Evershade Weald",
         "Keepersbight",
@@ -10387,8 +10523,26 @@
         {
           "mob": "a poacher bruiser",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 161,
+          "rate": 0.006211180124223602
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
+      "id": "rusty_iron_chain_boots",
+      "gameId": "72fd0731aaa81245aab8e283",
+      "name": "Rusty Iron Chain Boots",
+      "droppedBy": [
+        {
+          "mob": "a poacher pathfinder",
+          "drops": 1,
+          "corpses": 71,
+          "rate": 0.014084507042253521
         }
       ],
       "prices": [],
@@ -10405,14 +10559,14 @@
         {
           "mob": "a poacher pathfinder",
           "drops": 2,
-          "corpses": 38,
-          "rate": 0.05263157894736842
+          "corpses": 71,
+          "rate": 0.028169014084507043
         },
         {
           "mob": "a poacher bruiser",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 161,
+          "rate": 0.006211180124223602
         }
       ],
       "prices": [
@@ -10433,9 +10587,9 @@
       "droppedBy": [
         {
           "mob": "a poacher pathfinder",
-          "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "drops": 2,
+          "corpses": 71,
+          "rate": 0.028169014084507043
         }
       ],
       "prices": [],
@@ -10452,8 +10606,26 @@
         {
           "mob": "a poacher bruiser",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 161,
+          "rate": 0.006211180124223602
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
+      "id": "rusty_iron_chain_leggings",
+      "gameId": "a71b9379fa734551f1b6df9d",
+      "name": "Rusty Iron Chain Leggings",
+      "droppedBy": [
+        {
+          "mob": "a poacher pathfinder",
+          "drops": 1,
+          "corpses": 71,
+          "rate": 0.014084507042253521
         }
       ],
       "prices": [],
@@ -10470,8 +10642,8 @@
         {
           "mob": "a poacher bruiser",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 161,
+          "rate": 0.006211180124223602
         }
       ],
       "prices": [],
@@ -10487,9 +10659,9 @@
       "droppedBy": [
         {
           "mob": "a poacher pathfinder",
-          "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "drops": 2,
+          "corpses": 71,
+          "rate": 0.028169014084507043
         }
       ],
       "prices": [],
@@ -10506,8 +10678,8 @@
         {
           "mob": "a poacher pathfinder",
           "drops": 2,
-          "corpses": 38,
-          "rate": 0.05263157894736842
+          "corpses": 71,
+          "rate": 0.028169014084507043
         }
       ],
       "prices": [],
@@ -10523,15 +10695,15 @@
       "droppedBy": [
         {
           "mob": "a poacher pathfinder",
-          "drops": 3,
-          "corpses": 38,
-          "rate": 0.07894736842105263
+          "drops": 4,
+          "corpses": 71,
+          "rate": 0.056338028169014086
         },
         {
           "mob": "a poacher bruiser",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 161,
+          "rate": 0.006211180124223602
         }
       ],
       "prices": [],
@@ -10547,9 +10719,9 @@
       "droppedBy": [
         {
           "mob": "a poacher bruiser",
-          "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "drops": 2,
+          "corpses": 161,
+          "rate": 0.012422360248447204
         }
       ],
       "prices": [],
@@ -10565,9 +10737,9 @@
       "droppedBy": [
         {
           "mob": "a poacher bruiser",
-          "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "drops": 2,
+          "corpses": 161,
+          "rate": 0.012422360248447204
         }
       ],
       "prices": [],
@@ -10584,8 +10756,26 @@
         {
           "mob": "a poacher bruiser",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 161,
+          "rate": 0.006211180124223602
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
+      "id": "rusty_iron_longsword",
+      "gameId": "41b88efc5980c167246ef541",
+      "name": "Rusty Iron Longsword",
+      "droppedBy": [
+        {
+          "mob": "a poacher bruiser",
+          "drops": 2,
+          "corpses": 161,
+          "rate": 0.012422360248447204
         }
       ],
       "prices": [],
@@ -10602,8 +10792,8 @@
         {
           "mob": "a poacher bruiser",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 161,
+          "rate": 0.006211180124223602
         }
       ],
       "prices": [],
@@ -10620,8 +10810,8 @@
         {
           "mob": "a poacher bruiser",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 161,
+          "rate": 0.006211180124223602
         }
       ],
       "prices": [],
@@ -10638,8 +10828,26 @@
         {
           "mob": "a poacher bruiser",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 161,
+          "rate": 0.006211180124223602
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
+      "id": "rusty_iron_plate_breastplate",
+      "gameId": "d3b11df55a86a611467dc07b",
+      "name": "Rusty Iron Plate Breastplate",
+      "droppedBy": [
+        {
+          "mob": "a poacher bruiser",
+          "drops": 1,
+          "corpses": 161,
+          "rate": 0.006211180124223602
         }
       ],
       "prices": [],
@@ -10656,8 +10864,8 @@
         {
           "mob": "a poacher bruiser",
           "drops": 3,
-          "corpses": 89,
-          "rate": 0.033707865168539325
+          "corpses": 161,
+          "rate": 0.018633540372670808
         }
       ],
       "prices": [
@@ -10679,8 +10887,8 @@
         {
           "mob": "a poacher bruiser",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 161,
+          "rate": 0.006211180124223602
         }
       ],
       "prices": [
@@ -10702,8 +10910,8 @@
         {
           "mob": "a poacher bruiser",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 161,
+          "rate": 0.006211180124223602
         }
       ],
       "prices": [],
@@ -10720,8 +10928,26 @@
         {
           "mob": "a poacher bruiser",
           "drops": 2,
-          "corpses": 89,
-          "rate": 0.02247191011235955
+          "corpses": 161,
+          "rate": 0.012422360248447204
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
+      "id": "rusty_iron_scythe",
+      "gameId": "fc77d30906b8ae62bf371830",
+      "name": "Rusty Iron Scythe",
+      "droppedBy": [
+        {
+          "mob": "a poacher bruiser",
+          "drops": 1,
+          "corpses": 161,
+          "rate": 0.006211180124223602
         }
       ],
       "prices": [],
@@ -10738,14 +10964,14 @@
         {
           "mob": "a poacher pathfinder",
           "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "corpses": 71,
+          "rate": 0.014084507042253521
         },
         {
           "mob": "a poacher bruiser",
-          "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "drops": 2,
+          "corpses": 161,
+          "rate": 0.012422360248447204
         }
       ],
       "prices": [],
@@ -10762,14 +10988,14 @@
         {
           "mob": "a poacher pathfinder",
           "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "corpses": 71,
+          "rate": 0.014084507042253521
         },
         {
           "mob": "a poacher bruiser",
-          "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "drops": 2,
+          "corpses": 161,
+          "rate": 0.012422360248447204
         }
       ],
       "prices": [
@@ -10789,10 +11015,16 @@
       "name": "Rusty Iron Tower Shield",
       "droppedBy": [
         {
-          "mob": "a poacher bruiser",
+          "mob": "a poacher pathfinder",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 71,
+          "rate": 0.014084507042253521
+        },
+        {
+          "mob": "a poacher bruiser",
+          "drops": 2,
+          "corpses": 161,
+          "rate": 0.012422360248447204
         }
       ],
       "prices": [],
@@ -10809,14 +11041,14 @@
         {
           "mob": "a poacher pathfinder",
           "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "corpses": 71,
+          "rate": 0.014084507042253521
         },
         {
           "mob": "a poacher bruiser",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 161,
+          "rate": 0.006211180124223602
         }
       ],
       "prices": [],
@@ -10833,20 +11065,38 @@
         {
           "mob": "a poacher herbalist",
           "drops": 1,
-          "corpses": 4,
-          "rate": 0.25
+          "corpses": 6,
+          "rate": 0.16666666666666666
+        },
+        {
+          "mob": "a poacher bruiser",
+          "drops": 5,
+          "corpses": 161,
+          "rate": 0.031055900621118012
         },
         {
           "mob": "a poacher pathfinder",
           "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
-        },
+          "corpses": 71,
+          "rate": 0.014084507042253521
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
+      "id": "rusty_iron_warhammer",
+      "gameId": "fdd4e22eb1549dc073dd696e",
+      "name": "Rusty Iron Warhammer",
+      "droppedBy": [
         {
           "mob": "a poacher bruiser",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 161,
+          "rate": 0.006211180124223602
         }
       ],
       "prices": [],
@@ -11691,6 +11941,12 @@
           "rate": 0.65
         },
         {
+          "mob": "a timber wolf",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
           "mob": "a canyon stalker",
           "drops": 1,
           "corpses": 2,
@@ -11716,7 +11972,8 @@
       "harvested": 0,
       "zones": [
         "Keepersbight",
-        "Sungreetstrand"
+        "Sungreetstrand",
+        "Scarwood"
       ]
     },
     {
@@ -13049,8 +13306,44 @@
         {
           "mob": "a poacher bruiser",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 161,
+          "rate": 0.006211180124223602
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
+      "id": "tattered_cotton_bracer",
+      "gameId": "2eb2a894d94a31e6da5a61a6",
+      "name": "Tattered Cotton Bracer",
+      "droppedBy": [
+        {
+          "mob": "a poacher herbalist",
+          "drops": 1,
+          "corpses": 6,
+          "rate": 0.16666666666666666
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
+      "id": "tattered_cotton_cape",
+      "gameId": "5e5539ff0b4c87b4bf6386a9",
+      "name": "Tattered Cotton Cape",
+      "droppedBy": [
+        {
+          "mob": "a poacher bruiser",
+          "drops": 1,
+          "corpses": 161,
+          "rate": 0.006211180124223602
         }
       ],
       "prices": [],
@@ -13067,8 +13360,8 @@
         {
           "mob": "a poacher pathfinder",
           "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "corpses": 71,
+          "rate": 0.014084507042253521
         }
       ],
       "prices": [],
@@ -13085,14 +13378,14 @@
         {
           "mob": "a poacher pathfinder",
           "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "corpses": 71,
+          "rate": 0.014084507042253521
         },
         {
           "mob": "a poacher bruiser",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 161,
+          "rate": 0.006211180124223602
         }
       ],
       "prices": [],
@@ -13109,8 +13402,8 @@
         {
           "mob": "a poacher pathfinder",
           "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "corpses": 71,
+          "rate": 0.014084507042253521
         }
       ],
       "prices": [],
@@ -13127,8 +13420,26 @@
         {
           "mob": "a poacher bruiser",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 161,
+          "rate": 0.006211180124223602
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
+      "id": "tattered_cotton_tunic",
+      "gameId": "37d7fdf6106351736d40a61c",
+      "name": "Tattered Cotton Tunic",
+      "droppedBy": [
+        {
+          "mob": "a poacher bruiser",
+          "drops": 1,
+          "corpses": 161,
+          "rate": 0.006211180124223602
         }
       ],
       "prices": [],
@@ -13533,8 +13844,8 @@
         {
           "mob": "a poacher bruiser",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 161,
+          "rate": 0.006211180124223602
         }
       ],
       "prices": [],
@@ -13557,8 +13868,8 @@
         {
           "mob": "a poacher bruiser",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 161,
+          "rate": 0.006211180124223602
         }
       ],
       "prices": [],
@@ -13576,8 +13887,8 @@
         {
           "mob": "a poacher bruiser",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 161,
+          "rate": 0.006211180124223602
         }
       ],
       "prices": [],
@@ -13593,9 +13904,27 @@
       "droppedBy": [
         {
           "mob": "a poacher bruiser",
-          "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "drops": 3,
+          "corpses": 161,
+          "rate": 0.018633540372670808
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
+      "id": "tattered_leather_gorget",
+      "gameId": "43a33e9218ef4009687da98b",
+      "name": "Tattered Leather Gorget",
+      "droppedBy": [
+        {
+          "mob": "a poacher bruiser",
+          "drops": 2,
+          "corpses": 161,
+          "rate": 0.012422360248447204
         }
       ],
       "prices": [],
@@ -13612,8 +13941,32 @@
         {
           "mob": "a poacher herbalist",
           "drops": 1,
-          "corpses": 4,
-          "rate": 0.25
+          "corpses": 6,
+          "rate": 0.16666666666666666
+        },
+        {
+          "mob": "a poacher bruiser",
+          "drops": 1,
+          "corpses": 161,
+          "rate": 0.006211180124223602
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
+      "id": "tattered_leather_tunic",
+      "gameId": "a64200c70aae42bd4b8bcf7b",
+      "name": "Tattered Leather Tunic",
+      "droppedBy": [
+        {
+          "mob": "a poacher bruiser",
+          "drops": 2,
+          "corpses": 161,
+          "rate": 0.012422360248447204
         }
       ],
       "prices": [],
@@ -14480,12 +14833,6 @@
           "rate": 0.09090909090909091
         },
         {
-          "mob": "a poacher pathfinder",
-          "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
-        },
-        {
           "mob": "a Sangrel entangler",
           "drops": 1,
           "corpses": 41,
@@ -14496,6 +14843,12 @@
           "drops": 1,
           "corpses": 53,
           "rate": 0.018867924528301886
+        },
+        {
+          "mob": "a poacher pathfinder",
+          "drops": 1,
+          "corpses": 71,
+          "rate": 0.014084507042253521
         },
         {
           "mob": "a Sangrel arcanist",
@@ -14573,7 +14926,7 @@
       "name": "Tin Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 604,
+      "harvested": 615,
       "zones": [
         "Scarwood",
         "Fallenpass",
@@ -14588,8 +14941,8 @@
         {
           "mob": "Poacher Tolan",
           "drops": 1,
-          "corpses": 2,
-          "rate": 0.5
+          "corpses": 4,
+          "rate": 0.25
         }
       ],
       "prices": [],
@@ -14652,15 +15005,15 @@
           "rate": 0.034782608695652174
         },
         {
+          "mob": "a poacher bruiser",
+          "drops": 5,
+          "corpses": 161,
+          "rate": 0.031055900621118012
+        },
+        {
           "mob": "a Sangrel striker",
           "drops": 8,
           "corpses": 304,
-          "rate": 0.02631578947368421
-        },
-        {
-          "mob": "a poacher pathfinder",
-          "drops": 1,
-          "corpses": 38,
           "rate": 0.02631578947368421
         },
         {
@@ -14676,12 +15029,6 @@
           "rate": 0.024390243902439025
         },
         {
-          "mob": "a poacher bruiser",
-          "drops": 2,
-          "corpses": 89,
-          "rate": 0.02247191011235955
-        },
-        {
           "mob": "a henchman",
           "drops": 1,
           "corpses": 56,
@@ -14692,6 +15039,12 @@
           "drops": 1,
           "corpses": 67,
           "rate": 0.014925373134328358
+        },
+        {
+          "mob": "a poacher pathfinder",
+          "drops": 1,
+          "corpses": 71,
+          "rate": 0.014084507042253521
         },
         {
           "mob": "a Sangrel arcanist",
@@ -14755,12 +15108,6 @@
           "rate": 0.013333333333333334
         },
         {
-          "mob": "a poacher bruiser",
-          "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
-        },
-        {
           "mob": "a Sangrel shadowblade",
           "drops": 1,
           "corpses": 115,
@@ -14771,6 +15118,12 @@
           "drops": 1,
           "corpses": 145,
           "rate": 0.006896551724137931
+        },
+        {
+          "mob": "a poacher bruiser",
+          "drops": 1,
+          "corpses": 161,
+          "rate": 0.006211180124223602
         }
       ],
       "prices": [],
@@ -15600,14 +15953,14 @@
         {
           "mob": "a poacher pathfinder",
           "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "corpses": 71,
+          "rate": 0.014084507042253521
         },
         {
           "mob": "a poacher bruiser",
           "drops": 2,
-          "corpses": 89,
-          "rate": 0.02247191011235955
+          "corpses": 161,
+          "rate": 0.012422360248447204
         }
       ],
       "prices": [],
@@ -15624,8 +15977,8 @@
         {
           "mob": "a poacher bruiser",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 161,
+          "rate": 0.006211180124223602
         }
       ],
       "prices": [
@@ -15634,6 +15987,30 @@
           "count": 1
         }
       ],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
+      "id": "worn_ironbark_great_staff",
+      "gameId": "702c54981e2527ac9eb34391",
+      "name": "Worn Ironbark Great Staff",
+      "droppedBy": [
+        {
+          "mob": "a poacher pathfinder",
+          "drops": 1,
+          "corpses": 71,
+          "rate": 0.014084507042253521
+        },
+        {
+          "mob": "a poacher bruiser",
+          "drops": 1,
+          "corpses": 161,
+          "rate": 0.006211180124223602
+        }
+      ],
+      "prices": [],
       "harvested": 0,
       "zones": [
         "Keepersbight"
@@ -15665,7 +16042,7 @@
     "Chipped Cat's Eye Agate": 8,
     "Ghost Poppy": 23,
     "Wood": 391,
-    "Resin": 477,
+    "Resin": 486,
     "Lionleaf": 58,
     "Chipped Diamond": 9,
     "Sylvine": 45,
@@ -15679,10 +16056,10 @@
     "Chipped Emerald": 9,
     "Chipped Ruby": 10,
     "Limestone": 241,
-    "Tin Ore": 604,
+    "Tin Ore": 615,
     "Flawed Diamond": 4,
     "Glinting Crystallized Magic": 7,
-    "Jagged Stone": 138,
+    "Jagged Stone": 141,
     "Silver Ore": 82,
     "Flawed Sapphire": 5,
     "Flawed Ruby": 4,
@@ -15716,7 +16093,7 @@
     "Peridot": 4,
     "Emerald": 6,
     "Enchanted Frond": 1,
-    "Fine Wood": 8
+    "Fine Wood": 21
   },
   "harvestNodes": [
     {
@@ -15907,62 +16284,62 @@
     },
     {
       "name": "Tin Ore",
-      "pulls": 604,
+      "pulls": 615,
       "yields": [
         {
           "res": "Tin Ore",
-          "count": 604,
+          "count": 615,
           "rate": 1
         },
         {
           "res": "Jagged Stone",
-          "count": 125,
-          "rate": 0.20695364238410596
+          "count": 128,
+          "rate": 0.208130081300813
         },
         {
           "res": "Limestone",
           "count": 34,
-          "rate": 0.056291390728476824
+          "rate": 0.055284552845528454
         },
         {
           "res": "Glinting Crystallized Magic",
           "count": 6,
-          "rate": 0.009933774834437087
+          "rate": 0.00975609756097561
         },
         {
           "res": "Flawed Cat's Eye Agate",
           "count": 6,
-          "rate": 0.009933774834437087
+          "rate": 0.00975609756097561
         },
         {
           "res": "Flawed Emerald",
           "count": 5,
-          "rate": 0.008278145695364239
+          "rate": 0.008130081300813009
         },
         {
           "res": "Flawed Diamond",
           "count": 4,
-          "rate": 0.006622516556291391
+          "rate": 0.0065040650406504065
         },
         {
           "res": "Flawed Ruby",
           "count": 4,
-          "rate": 0.006622516556291391
+          "rate": 0.0065040650406504065
         },
         {
           "res": "Flawed Sapphire",
           "count": 3,
-          "rate": 0.004966887417218543
+          "rate": 0.004878048780487805
         },
         {
           "res": "Flawed Peridot",
           "count": 3,
-          "rate": 0.004966887417218543
+          "rate": 0.004878048780487805
         },
         {
           "res": "Flawed Jade",
           "count": 2,
-          "rate": 0.0033112582781456954
+          "rate": 0.0032520325203252032
         }
       ],
       "zones": [
@@ -15973,22 +16350,22 @@
     },
     {
       "name": "Wood & Resin",
-      "pulls": 397,
+      "pulls": 405,
       "yields": [
         {
           "res": "Wood",
           "count": 391,
-          "rate": 0.9848866498740554
+          "rate": 0.9654320987654321
         },
         {
           "res": "Resin",
-          "count": 333,
-          "rate": 0.8387909319899244
+          "count": 341,
+          "rate": 0.8419753086419753
         },
         {
           "res": "Fine Wood",
-          "count": 6,
-          "rate": 0.015113350125944584
+          "count": 14,
+          "rate": 0.0345679012345679
         }
       ],
       "zones": [
@@ -16323,6 +16700,20 @@
       ],
       "zones": [
         "Fallenpass"
+      ]
+    },
+    {
+      "name": "Fine Wood",
+      "pulls": 7,
+      "yields": [
+        {
+          "res": "Fine Wood",
+          "count": 7,
+          "rate": 1
+        }
+      ],
+      "zones": [
+        "Keepersbight"
       ]
     }
   ]
