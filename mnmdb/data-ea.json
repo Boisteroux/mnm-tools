@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-08T20:00:16.226Z",
+  "generatedAt": "2026-11-09T02:00:09.045Z",
   "source": "mnm-tools",
   "ledgerFiles": 49,
-  "events": 17145,
+  "events": 17213,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 17145
+      "events": 17213
     }
   ],
   "contributorCount": 1,
@@ -4009,7 +4009,7 @@
       "name": "Coal",
       "droppedBy": [],
       "prices": [],
-      "harvested": 758,
+      "harvested": 774,
       "zones": [
         "Sungreetstrand",
         "Scarwood",
@@ -6772,10 +6772,10 @@
         },
         {
           "copper": 54,
-          "count": 4
+          "count": 5
         }
       ],
-      "harvested": 7,
+      "harvested": 8,
       "zones": [
         "Keepersbight",
         "Scarwood",
@@ -6952,10 +6952,10 @@
       "prices": [
         {
           "copper": 54,
-          "count": 2
+          "count": 3
         }
       ],
-      "harvested": 3,
+      "harvested": 4,
       "zones": [
         "Keepersbight",
         "Scarwood",
@@ -6989,7 +6989,7 @@
       "prices": [
         {
           "copper": 54,
-          "count": 2
+          "count": 3
         }
       ],
       "harvested": 4,
@@ -8275,7 +8275,7 @@
           "count": 6
         }
       ],
-      "harvested": 147,
+      "harvested": 155,
       "zones": [
         "Scarwood",
         "Fallenpass",
@@ -9123,7 +9123,7 @@
       "name": "Platinum Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 83,
+      "harvested": 85,
       "zones": [
         "Sungreetstrand",
         "Scarwood"
@@ -10176,7 +10176,7 @@
           "count": 7
         }
       ],
-      "harvested": 167,
+      "harvested": 170,
       "zones": [
         "Sungreetstrand",
         "Scarwood",
@@ -12521,7 +12521,7 @@
       "name": "Sylvine",
       "droppedBy": [],
       "prices": [],
-      "harvested": 45,
+      "harvested": 48,
       "zones": [
         "Evershade Weald",
         "Scarwood"
@@ -14972,7 +14972,7 @@
       "name": "Tin Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 651,
+      "harvested": 671,
       "zones": [
         "Scarwood",
         "Fallenpass",
@@ -16091,7 +16091,7 @@
     "Resin": 529,
     "Lionleaf": 58,
     "Chipped Diamond": 10,
-    "Sylvine": 45,
+    "Sylvine": 48,
     "Chipped Sapphire": 12,
     "Whispering Sage": 88,
     "Magic Frond": 6,
@@ -16102,19 +16102,19 @@
     "Chipped Emerald": 11,
     "Chipped Ruby": 10,
     "Limestone": 245,
-    "Tin Ore": 651,
+    "Tin Ore": 671,
     "Flawed Diamond": 4,
     "Glinting Crystallized Magic": 9,
-    "Jagged Stone": 147,
+    "Jagged Stone": 155,
     "Silver Ore": 88,
     "Flawed Sapphire": 5,
     "Flawed Ruby": 4,
-    "Flawed Cat's Eye Agate": 7,
+    "Flawed Cat's Eye Agate": 8,
     "Chipped Jade": 8,
     "Moonveil": 53,
     "Flawed Emerald": 5,
     "Flawed Peridot": 4,
-    "Flawed Jade": 3,
+    "Flawed Jade": 4,
     "Iron Ore": 743,
     "Weighty Stone": 180,
     "Ironroot": 27,
@@ -16127,11 +16127,11 @@
     "Gold Ore": 84,
     "Imperfect Ruby": 4,
     "Imperfect Diamond": 5,
-    "Coal": 758,
+    "Coal": 774,
     "Brilliant Crystallized Magic": 16,
-    "Rigid Stone": 167,
+    "Rigid Stone": 170,
     "Sapphire": 3,
-    "Platinum Ore": 83,
+    "Platinum Ore": 85,
     "Jade": 5,
     "Cat's Eye Agate": 5,
     "Ruby": 6,
@@ -16210,57 +16210,57 @@
     },
     {
       "name": "Coal",
-      "pulls": 758,
+      "pulls": 774,
       "yields": [
         {
           "res": "Coal",
-          "count": 758,
+          "count": 774,
           "rate": 1
         },
         {
           "res": "Rigid Stone",
-          "count": 148,
-          "rate": 0.19525065963060687
+          "count": 151,
+          "rate": 0.19509043927648578
         },
         {
           "res": "Brilliant Crystallized Magic",
           "count": 14,
-          "rate": 0.018469656992084433
+          "rate": 0.01808785529715762
         },
         {
           "res": "Emerald",
           "count": 6,
-          "rate": 0.0079155672823219
+          "rate": 0.007751937984496124
         },
         {
           "res": "Cat's Eye Agate",
           "count": 5,
-          "rate": 0.006596306068601583
+          "rate": 0.006459948320413436
         },
         {
           "res": "Ruby",
           "count": 5,
-          "rate": 0.006596306068601583
+          "rate": 0.006459948320413436
         },
         {
           "res": "Sapphire",
           "count": 3,
-          "rate": 0.00395778364116095
+          "rate": 0.003875968992248062
         },
         {
           "res": "Diamond",
           "count": 3,
-          "rate": 0.00395778364116095
+          "rate": 0.003875968992248062
         },
         {
           "res": "Peridot",
           "count": 3,
-          "rate": 0.00395778364116095
+          "rate": 0.003875968992248062
         },
         {
           "res": "Jade",
           "count": 2,
-          "rate": 0.002638522427440633
+          "rate": 0.002583979328165375
         }
       ],
       "zones": [
@@ -16330,62 +16330,62 @@
     },
     {
       "name": "Tin Ore",
-      "pulls": 651,
+      "pulls": 671,
       "yields": [
         {
           "res": "Tin Ore",
-          "count": 651,
+          "count": 671,
           "rate": 1
         },
         {
           "res": "Jagged Stone",
-          "count": 134,
-          "rate": 0.20583717357910905
+          "count": 142,
+          "rate": 0.21162444113263784
         },
         {
           "res": "Limestone",
           "count": 38,
-          "rate": 0.05837173579109063
+          "rate": 0.05663189269746647
         },
         {
           "res": "Glinting Crystallized Magic",
           "count": 8,
-          "rate": 0.01228878648233487
+          "rate": 0.011922503725782414
         },
         {
           "res": "Flawed Cat's Eye Agate",
-          "count": 6,
-          "rate": 0.009216589861751152
+          "count": 7,
+          "rate": 0.010432190760059613
         },
         {
           "res": "Flawed Emerald",
           "count": 5,
-          "rate": 0.007680491551459293
+          "rate": 0.007451564828614009
         },
         {
           "res": "Flawed Diamond",
           "count": 4,
-          "rate": 0.006144393241167435
+          "rate": 0.005961251862891207
         },
         {
           "res": "Flawed Ruby",
           "count": 4,
-          "rate": 0.006144393241167435
+          "rate": 0.005961251862891207
         },
         {
           "res": "Flawed Peridot",
           "count": 4,
-          "rate": 0.006144393241167435
+          "rate": 0.005961251862891207
         },
         {
           "res": "Flawed Sapphire",
           "count": 3,
-          "rate": 0.004608294930875576
+          "rate": 0.004470938897168405
         },
         {
           "res": "Flawed Jade",
-          "count": 2,
-          "rate": 0.0030721966205837174
+          "count": 3,
+          "rate": 0.004470938897168405
         }
       ],
       "zones": [
@@ -16517,32 +16517,32 @@
     },
     {
       "name": "Platinum Ore",
-      "pulls": 64,
+      "pulls": 66,
       "yields": [
         {
           "res": "Platinum Ore",
-          "count": 64,
+          "count": 66,
           "rate": 1
         },
         {
           "res": "Jade",
           "count": 3,
-          "rate": 0.046875
+          "rate": 0.045454545454545456
         },
         {
           "res": "Brilliant Crystallized Magic",
           "count": 2,
-          "rate": 0.03125
+          "rate": 0.030303030303030304
         },
         {
           "res": "Ruby",
           "count": 1,
-          "rate": 0.015625
+          "rate": 0.015151515151515152
         },
         {
           "res": "Peridot",
           "count": 1,
-          "rate": 0.015625
+          "rate": 0.015151515151515152
         }
       ],
       "zones": [
@@ -16588,17 +16588,17 @@
     },
     {
       "name": "Sylvine",
-      "pulls": 26,
+      "pulls": 27,
       "yields": [
         {
           "res": "Sylvine",
-          "count": 26,
+          "count": 27,
           "rate": 1
         },
         {
           "res": "Magic Frond",
           "count": 3,
-          "rate": 0.11538461538461539
+          "rate": 0.1111111111111111
         }
       ],
       "zones": [
