@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-09T08:00:07.023Z",
+  "generatedAt": "2026-11-09T20:00:07.391Z",
   "source": "mnm-tools",
-  "ledgerFiles": 50,
-  "events": 17351,
+  "ledgerFiles": 51,
+  "events": 17431,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 17351
+      "events": 17431
     }
   ],
   "contributorCount": 1,
@@ -7530,7 +7530,7 @@
           "count": 1
         }
       ],
-      "harvested": 87,
+      "harvested": 97,
       "zones": [
         "Fallenpass"
       ]
@@ -7971,7 +7971,7 @@
           "count": 1
         }
       ],
-      "harvested": 5,
+      "harvested": 6,
       "zones": [
         "Fallenpass",
         "Keepersbight"
@@ -8209,7 +8209,7 @@
           "count": 23
         }
       ],
-      "harvested": 780,
+      "harvested": 822,
       "zones": [
         "Fallenpass"
       ]
@@ -8249,7 +8249,7 @@
       "name": "Ironroot",
       "droppedBy": [],
       "prices": [],
-      "harvested": 41,
+      "harvested": 44,
       "zones": [
         "Fallenpass",
         "Sungreetstrand",
@@ -12526,7 +12526,7 @@
       "name": "Stranglevine",
       "droppedBy": [],
       "prices": [],
-      "harvested": 19,
+      "harvested": 26,
       "zones": [
         "Fallenpass"
       ]
@@ -15474,7 +15474,7 @@
           "count": 5
         }
       ],
-      "harvested": 192,
+      "harvested": 203,
       "zones": [
         "Fallenpass"
       ]
@@ -16132,16 +16132,16 @@
     "Flawed Emerald": 5,
     "Flawed Peridot": 4,
     "Flawed Jade": 4,
-    "Iron Ore": 780,
-    "Weighty Stone": 192,
-    "Ironroot": 41,
+    "Iron Ore": 822,
+    "Weighty Stone": 203,
+    "Ironroot": 44,
     "Imperfect Sapphire": 8,
     "Imperfect Peridot": 9,
     "Imperfect Emerald": 6,
     "Imperfect Jade": 7,
     "Shining Crystallized Magic": 12,
-    "Imperfect Cat's Eye Agate": 5,
-    "Gold Ore": 87,
+    "Imperfect Cat's Eye Agate": 6,
+    "Gold Ore": 97,
     "Imperfect Ruby": 5,
     "Imperfect Diamond": 6,
     "Coal": 774,
@@ -16157,7 +16157,7 @@
     "Emerald": 6,
     "Enchanted Frond": 2,
     "Fine Wood": 21,
-    "Stranglevine": 19
+    "Stranglevine": 26
   },
   "harvestNodes": [
     {
@@ -16229,57 +16229,57 @@
     },
     {
       "name": "Iron Ore",
-      "pulls": 779,
+      "pulls": 821,
       "yields": [
         {
           "res": "Iron Ore",
-          "count": 779,
+          "count": 821,
           "rate": 1
         },
         {
           "res": "Weighty Stone",
-          "count": 178,
-          "rate": 0.22849807445442877
+          "count": 189,
+          "rate": 0.23020706455542023
         },
         {
           "res": "Shining Crystallized Magic",
           "count": 10,
-          "rate": 0.012836970474967908
+          "rate": 0.012180267965895249
         },
         {
           "res": "Imperfect Sapphire",
           "count": 8,
-          "rate": 0.010269576379974325
+          "rate": 0.0097442143727162
         },
         {
           "res": "Imperfect Peridot",
           "count": 8,
-          "rate": 0.010269576379974325
+          "rate": 0.0097442143727162
         },
         {
           "res": "Imperfect Emerald",
           "count": 6,
-          "rate": 0.007702182284980745
+          "rate": 0.007308160779537149
         },
         {
           "res": "Imperfect Jade",
           "count": 6,
-          "rate": 0.007702182284980745
+          "rate": 0.007308160779537149
         },
         {
           "res": "Imperfect Cat's Eye Agate",
-          "count": 5,
-          "rate": 0.006418485237483954
+          "count": 6,
+          "rate": 0.007308160779537149
         },
         {
           "res": "Imperfect Ruby",
           "count": 5,
-          "rate": 0.006418485237483954
+          "rate": 0.0060901339829476245
         },
         {
           "res": "Imperfect Diamond",
           "count": 5,
-          "rate": 0.006418485237483954
+          "rate": 0.0060901339829476245
         }
       ],
       "zones": [
@@ -16467,32 +16467,32 @@
     },
     {
       "name": "Gold Ore",
-      "pulls": 73,
+      "pulls": 83,
       "yields": [
         {
           "res": "Gold Ore",
-          "count": 73,
+          "count": 83,
           "rate": 1
         },
         {
           "res": "Shining Crystallized Magic",
           "count": 2,
-          "rate": 0.0273972602739726
+          "rate": 0.024096385542168676
         },
         {
           "res": "Imperfect Diamond",
           "count": 1,
-          "rate": 0.0136986301369863
+          "rate": 0.012048192771084338
         },
         {
           "res": "Imperfect Peridot",
           "count": 1,
-          "rate": 0.0136986301369863
+          "rate": 0.012048192771084338
         },
         {
           "res": "Imperfect Jade",
           "count": 1,
-          "rate": 0.0136986301369863
+          "rate": 0.012048192771084338
         }
       ],
       "zones": [
@@ -16609,17 +16609,17 @@
     },
     {
       "name": "Ironroot",
-      "pulls": 29,
+      "pulls": 32,
       "yields": [
         {
           "res": "Ironroot",
-          "count": 29,
+          "count": 32,
           "rate": 1
         },
         {
           "res": "Enchanted Frond",
           "count": 1,
-          "rate": 0.034482758620689655
+          "rate": 0.03125
         }
       ],
       "zones": [
@@ -16715,6 +16715,25 @@
       ]
     },
     {
+      "name": "Stranglevine",
+      "pulls": 16,
+      "yields": [
+        {
+          "res": "Stranglevine",
+          "count": 16,
+          "rate": 1
+        },
+        {
+          "res": "Enchanted Frond",
+          "count": 1,
+          "rate": 0.0625
+        }
+      ],
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
       "name": "Gold Ore & Weighty Stone",
       "pulls": 14,
       "yields": [
@@ -16774,25 +16793,6 @@
       ],
       "zones": [
         "Scarwood"
-      ]
-    },
-    {
-      "name": "Stranglevine",
-      "pulls": 12,
-      "yields": [
-        {
-          "res": "Stranglevine",
-          "count": 12,
-          "rate": 1
-        },
-        {
-          "res": "Enchanted Frond",
-          "count": 1,
-          "rate": 0.08333333333333333
-        }
-      ],
-      "zones": [
-        "Fallenpass"
       ]
     },
     {
