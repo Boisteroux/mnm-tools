@@ -1563,10 +1563,12 @@ function costOf(name, path, mode) {
   if (mode === 'gather' && canGather(name))
     return (_costMemo[mkey] = { how: 'gathered', each: 0, unknown: [], thin: false, gathered: true, n: ask ? ask.n : 0, ask, vend, made: null, cut: false });
   let made = null, cut = path.has(key) && !!(recipesByResult[key] || []).length; // a recipe loop stopped here
+  const routes = []; // every recipe that makes it, costed, so the breakdown can show the other ways
   if (!path.has(key) && !isBaseMaterial(name)) {
     const next = new Set(path); next.add(key);
     for (const r of recipesByResult[key] || []) {
       const c = recipeCostOf(r, next, mode);
+      routes.push(c);
       cut = cut || c.cut;
       // Fully priced recipes first: one leaning on unpriced (gathered, counted free) or
       // unknown materials only wins when there's nothing better.
@@ -1592,7 +1594,7 @@ function costOf(name, path, mode) {
   // price is cheaper than buying it. The cost is then a minimum (+?), not the bought price.
   if (mode === 'gather' && made && made.unknown.length && made.gathered && out.how !== 'gathered' && (out.each == null || made.each < out.each))
     out = { how: 'made', each: made.each, unknown: made.unknown, thin: made.thin, gathered: true };
-  out = Object.assign({ unknown: [], thin: false, gathered: false, n: ask ? ask.n : 0, ask, vend, made, cut }, out);
+  out = Object.assign({ unknown: [], thin: false, gathered: false, n: ask ? ask.n : 0, ask, vend, made, routes, cut }, out);
   if (!cut) _costMemo[mkey] = out; // answers cut short by a recipe loop depend on the path, so aren't kept
   return out;
 }
@@ -1634,8 +1636,16 @@ function costTreeHtml(rc, depth) {
   return '<ul class="cost-tree">' + rc.parts.map(({ item, qty, p }) => {
     const id = nameToId[item];
     const sub = p.how === 'made' && p.made && depth < 4 ? costTreeHtml(p.made, depth + 1) : '';
+    // The other recipes for it (a steel bar from 6 scraps, or from an iron bar + coal + flux).
+    const others = (p.routes || []).filter((c) => c !== (p.how === 'made' ? p.made : null));
+    const alt = p.how === 'made' && others.length
+      ? '<div class="cost-alt muted">Other way' + (others.length > 1 ? 's' : '') + ': ' + others.map((c) =>
+          c.recipe.components.filter((x) => !isReusableTool(x.item)).map((x) => fmtQty(x.qty) + '× ' + esc(x.item)).join(' + ') +
+          ' — ' + (c.each == null ? '?' : coinMin(c.each, c.unknown.length)) +
+          (c.gathered && !p.made.gathered ? ' with gathered materials' : '')).join('; ') + '</div>'
+      : '';
     return '<li>' + fmtQty(qty) + '× ' + (id ? itemLink(id, item) : esc(item)) + ' — ' + costHowHtml(p) +
-      (qty > 1 && p.each ? ' <span class="muted">= ' + coin(qty * p.each) + '</span>' : '') + sub + '</li>';
+      (qty > 1 && p.each ? ' <span class="muted">= ' + coin(qty * p.each) + '</span>' : '') + alt + sub + '</li>';
   }).join('') + '</ul>';
 }
 

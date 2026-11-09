@@ -984,6 +984,7 @@ tr.bis-total td { border-top: 2px solid var(--line-2); background: var(--panel-2
 .cost-tree .cost-tree { padding-left: 18px; border-left: 1px solid var(--line-2); margin: 2px 0 4px 6px; font-size: 13.5px; }
 .cost-tree li { padding: 2px 0; }
 .cost-tree .cost-how { font-size: 12px; }
+.cost-alt { font-size: 12px; margin: 1px 0 0 2px; }
 .cost-g { font-size: 11.5px; color: var(--good); white-space: nowrap; margin-top: 2px; }
 .cost-modes { margin-top: 8px; }
 .cost-modes input { position: absolute; opacity: 0; pointer-events: none; }
