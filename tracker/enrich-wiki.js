@@ -375,7 +375,14 @@ const itemRecipes = [];
 function parsePlayercrafted(wikitext, itemName) {
   const m = wikitext.match(/\{\{\s*Itempage([\s\S]*?)\n\}\}/i);
   if (!m) return null;
-  let pc = templateParams(m[1]).playercrafted;
+  const params = templateParams(m[1]);
+  let pc = params.playercrafted;
+  // Some pages put the item's own recipe under "recipes" (meant for what it's used in),
+  // e.g. Bone Ash. Taken only when that block's first yield is this very item.
+  if ((!pc || !/Yield:/i.test(pc)) && params.recipes) {
+    const y = params.recipes.match(/Yield:\W*([^'\n]+?)'*\s*x\s*\d+/i);
+    if (y && y[1].trim().toLowerCase() === String(itemName).toLowerCase()) pc = params.recipes;
+  }
   if (!pc || !/Yield:/i.test(pc)) return null;
   pc = pc.split(/\n(?=\*\s*\[\[[^\]]+\]\]\s*\(\s*Trivial)/i)[0]; // first recipe block only
   // …and within it, the first yield only: a block can list an alternative input set
