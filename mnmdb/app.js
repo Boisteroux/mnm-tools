@@ -1388,14 +1388,17 @@ function recipeTable(recs, showSkill) {
     const qty = r.result.qty || 1;
     const sale = craftSaleValue(r.result.item), sellEach = sale.value;
     const margin = (sellEach > 0 && !rc.unknown.length) ? sellEach - rc.each : null;
-    const marginG = (sellEach > 0 && !rg.unknown.length) ? sellEach - rg.each : null;
+    const marginG = sellEach > 0 && rg.each != null ? sellEach - rg.each : null; // a maximum when rg has unknowns
     return { r, rc, rg, qty, sale, sellEach, margin, marginG, stack: stackSize(r.result.item) };
   }).sort((a, b) => (a.r.trivial || 1e9) - (b.r.trivial || 1e9) || a.rc.each - b.rc.each);
   const head = '<th>Make</th><th>Materials <span class="per">per craft</span></th>' + (showSkill ? '<th>Skill</th>' : '') +
     '<th class="num">Trivial</th><th class="num">Cost to make <span class="per">bought / gathered</span></th><th class="num">Sells for</th><th class="num">Margin <span class="per">bought / gathered</span></th>';
   // The "if you gather your own" figure, under the bought one (per stack where that leads).
-  const gLine = (v, stack, sign, unknown) => '<div class="cost-g" title="Gathering, mining and looting what you can yourself">gathered ' +
-    (v == null ? '—' : (sign && v >= 0 ? '+' : '') + coin(stack ? v * stack : v) + (unknown ? '+?' : '') + (stack ? '/stack' : '')) + '</div>';
+  // With an unpriced material (a mold) the cost is a minimum ("+?") and the margin a
+  // maximum ("up to").
+  const gLine = (v, stack, sign, unknown) => '<div class="cost-g" title="Gathering, mining and looting what you can yourself' +
+    (unknown ? '; a material has no price yet' : '') + '">gathered ' +
+    (v == null ? '—' : (sign && unknown ? 'up to ' : '') + (sign && v >= 0 ? '+' : '') + (sign ? coin(stack ? v * stack : v) : coinMin(stack ? v * stack : v, unknown)) + (stack ? '/stack' : '')) + '</div>';
   const matsHtml = (rc) => rc.parts.map(({ item, qty, p }) => '<div class="cost-mat">' + fmtQty(qty) + '× ' + (nameToId[item] ? itemLink(nameToId[item], item) : esc(item)) +
     ' <span class="cost-how cost-' + p.how + '">' + COST_HOW[p.how] + '</span></div>').join('');
   const table = '<div class="card"><table><thead><tr>' + head + '</tr></thead><tbody>' +
@@ -1412,13 +1415,13 @@ function recipeTable(recs, showSkill) {
         '<td class="num sample">' + trivialCell(r) + '</td>' +
         '<td class="num coin">' + cost + gLine(rg.each, stack, false, rg.unknown.length) + '</td>' +
         '<td class="num coin">' + (sellEach > 0 ? eachAndStack(sellEach, stack) + (sale.n != null && sale.n < CRAFT_TRUST ? tmThin(sale.n) : '') : '—') + '</td>' +
-        '<td class="num">' + mg + (sellEach > 0 ? gLine(marginG, stack, true) : '') + '</td></tr>';
+        '<td class="num">' + mg + (sellEach > 0 ? gLine(marginG, stack, true, rg.unknown.length) : '') + '</td></tr>';
     }).join('') + '</tbody></table></div>';
   if (!showSkill) return table;
   // On an item's page: the whole breakdown, so the math can be checked line by line.
   // Two views, switched with radio buttons (no script): buying everything, or gathering
   // what you can yourself.
-  const total = (x) => coin(x.total) + (x.unknown.length ? '+?' : '');
+  const total = (x) => coinMin(x.total, x.unknown.length);
   const pane = (x, cls) => '<div class="cost-pane ' + cls + '">' + costTreeHtml(x) +
     (x.unknown.length ? '<p class="note">No price yet for <b>' + x.unknown.map(esc).join(', ') + '</b>, so this is the cost without ' + (x.unknown.length > 1 ? 'them' : 'it') + '.</p>' : '') + '</div>';
   return table + rows.map(({ r, rc, rg, qty }, i) => {
@@ -1584,6 +1587,11 @@ function costOf(name, path, mode) {
   else if (made) out = { how: 'made', each: made.each, unknown: made.unknown, thin: made.thin, gathered: made.gathered };
   else if (isBaseMaterial(name) || isGatherableRaw(name)) out = { how: 'gathered', each: 0 };
   else out = { how: 'unknown', each: null, unknown: [name] };
+  // Gathering your own: making it from what you gather still wins when part of it has no
+  // price yet (a copper bar = mined ore + a mold we can't price), as long as what we can
+  // price is cheaper than buying it. The cost is then a minimum (+?), not the bought price.
+  if (mode === 'gather' && made && made.unknown.length && made.gathered && out.how !== 'gathered' && (out.each == null || made.each < out.each))
+    out = { how: 'made', each: made.each, unknown: made.unknown, thin: made.thin, gathered: true };
   out = Object.assign({ unknown: [], thin: false, gathered: false, n: ask ? ask.n : 0, ask, vend, made, cut }, out);
   if (!cut) _costMemo[mkey] = out; // answers cut short by a recipe loop depend on the path, so aren't kept
   return out;
@@ -1605,9 +1613,12 @@ function recipeCostOf(r, path, mode) {
   return { recipe: r, each: total / q, total, parts, unknown: [...unknown], thin, gathered, cut };
 }
 // How one material line reads: "make 1s 67c" plus the other option worth knowing.
+// A cost with a material we can't price is a minimum: "1s 20c+?", or just "?" when
+// everything else is free (gathered ore + a mold with no price).
+function coinMin(v, unknown) { return !unknown ? coin(v) : v > 0 ? coin(v) + '+?' : '?'; }
 const COST_HOW = { players: 'players', vendor: 'vendor', made: 'make', thin: 'players', gathered: 'gather', unknown: 'no price' };
 function costHowHtml(p) {
-  const main = p.each == null ? '' : ' ' + coin(p.each) + (p.unknown.length ? '+?' : '');
+  const main = p.each == null ? '' : ' ' + coinMin(p.each, p.unknown.length);
   const alt = [];
   if (p.how !== 'players' && p.how !== 'thin' && p.ask) alt.push('players ask ' + coin(p.ask.v) + (p.ask.n < CRAFT_TRUST ? ', ' + p.ask.n + ' post' + (p.ask.n === 1 ? '' : 's') : ''));
   if (p.how !== 'vendor' && p.vend) alt.push('vendor ' + coin(p.vend));
@@ -3386,7 +3397,7 @@ function tmCompute() {
     }
     const qty = r.result.qty || 1, marginEach = out.typical - rc.each, rg = recipeCost(r, 'gather');
     crafts.push({ name: r.result.item, qty, skill: r.tradeskill, trivial: r.trivial, saleEach: out.typical, costEach: rc.each, margin: marginEach,
-      costG: rg.unknown.length ? null : rg.each,
+      costG: rg.each, costGUnknown: rg.unknown.length > 0, // with a material unpriced, a minimum
       rank: marginEach * (out.stack || 1), stack: out.stack, n: out.n, thinMats: rc.thin, parts: rc.parts });
   }
   crafts.sort((a, b) => b.rank - a.rank);
@@ -3532,8 +3543,10 @@ async function renderTremMarket() {
                 ? '<span class="' + cls + '">' + p(v * c.stack, sign) + '</span><span class="per">/stack</span><div class="per">' + p(v, sign) + ' ea</div>'
                 : '<span class="' + cls + '">' + p(v, sign) + '</span><span class="per"> ea</span>';
               // If you gather your own mats (per stack where the price leads with a stack).
-              const gl = (v, sign) => v == null ? '' : '<div class="cost-g" title="Gathering, mining and looting what you can yourself">gathered ' +
-                p(c.stack ? v * c.stack : v, sign) + (c.stack ? '/stack' : '') + '</div>';
+              // A material with no price yet makes the cost a minimum (+?) and the margin a maximum.
+              const u = c.costGUnknown;
+              const gl = (v, sign) => v == null ? '' : '<div class="cost-g" title="Gathering, mining and looting what you can yourself' + (u ? '; a material has no price yet' : '') + '">gathered ' +
+                (sign && u ? 'up to ' : '') + (sign ? p(c.stack ? v * c.stack : v, sign) : coinMin(c.stack ? v * c.stack : v, u)) + (c.stack ? '/stack' : '') + '</div>';
               return '<tr><td>' + il(c.name) + tmThin(Math.min(c.n, c.thinMats ? 0 : c.n)) +
                 '<div class="tm-mats">' + c.parts.map(({ item, qty, p }) => qty + '× ' + esc(item) + ' <span class="cost-how cost-' + p.how + '">' + COST_HOW[p.how] + '</span>').join(', ') +
                 (c.qty > 1 ? ' → ' + c.qty + ' per craft' : '') + '</div></td>' +
