@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-10T08:00:16.677Z",
+  "generatedAt": "2026-11-10T20:00:16.549Z",
   "source": "mnm-tools",
-  "ledgerFiles": 51,
-  "events": 17970,
+  "ledgerFiles": 50,
+  "events": 17939,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,191 +10,11 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 17970
+      "events": 17939
     }
   ],
   "contributorCount": 1,
   "mobs": {
-    "a rotting skeleton": {
-      "kills": 60,
-      "drops": {
-        "Bone Chips": 41,
-        "Cloth Scraps": 42,
-        "Skeleton Jawbone": 6,
-        "Shattered Skull": 1,
-        "Rusty Battle Axe": 1,
-        "Tattered Cloth Bracer": 1,
-        "Rusty Long Spear": 1,
-        "Tattered Cloth Robe": 2,
-        "Tattered Cloth Boots": 1,
-        "Rusty Warhammer": 2,
-        "Rusty Axe": 1,
-        "Tattered Cloth Tunic": 1,
-        "Cracked Staff": 1,
-        "Tattered Cloth Mantle": 1,
-        "Worn Bow": 1,
-        "Rusty Kite Shield": 1,
-        "Rusty Spear": 1,
-        "Tattered Cloth Cap": 1,
-        "Tattered Cloth Shirt": 1,
-        "Worn Buckler": 1,
-        "Tattered Cloth Gorget": 1,
-        "Rusty Tower Shield": 1
-      },
-      "zones": {
-        "Evershade Weald": 191
-      },
-      "coin": 92,
-      "corpses": 56
-    },
-    "a black wolf pup": {
-      "kills": 0,
-      "drops": {
-        "Wolf Tooth": 23,
-        "Raw Wolf Meat": 8,
-        "Low-Quality Wolf Pelt": 11,
-        "Damaged Canine Ear": 4
-      },
-      "zones": {
-        "Evershade Weald": 48
-      },
-      "coin": 0,
-      "corpses": 37
-    },
-    "a wasp drone": {
-      "kills": 0,
-      "drops": {
-        "Wasp Wing": 8,
-        "Wasp Venom Sac": 4,
-        "Royal Jelly": 2,
-        "Cracked Wasp Barb": 1
-      },
-      "zones": {
-        "Evershade Weald": 16,
-        "Keepersbight": 3
-      },
-      "coin": 0,
-      "corpses": 9
-    },
-    "a black bat": {
-      "kills": 0,
-      "drops": {
-        "Bat Eye": 6,
-        "Bat Tooth": 11,
-        "Bat Wing": 17,
-        "Bat Fur": 11,
-        "Raw Bat Meat": 6
-      },
-      "zones": {
-        "Evershade Weald": 53
-      },
-      "coin": 0,
-      "corpses": 31
-    },
-    "a black widow hatchling": {
-      "kills": 0,
-      "drops": {
-        "Spider Legs": 10,
-        "Spider Silk": 20,
-        "Spider Venom Sac": 3
-      },
-      "zones": {
-        "Evershade Weald": 45
-      },
-      "coin": 0,
-      "corpses": 27
-    },
-    "a Fellstone scout": {
-      "kills": 19,
-      "drops": {
-        "Tattered Cloth Mantle": 1,
-        "Cloth Scraps": 12,
-        "Unintelligible Writings": 4,
-        "Tattered Cloth Belt": 2,
-        "Rusty Tower Shield": 1,
-        "Rusty Scythe": 1,
-        "Rusty Scimitar": 1
-      },
-      "zones": {
-        "Evershade Weald": 42
-      },
-      "coin": 81,
-      "corpses": 17
-    },
-    "a Fellstone warrior": {
-      "kills": 23,
-      "drops": {
-        "Fellstone Warrior's Belt": 4,
-        "Rusty Greatsword": 2,
-        "Tattered Cloth Robe": 1,
-        "Rusty Scythe": 1,
-        "Left Orc Ear": 7,
-        "Cloth Scraps": 16,
-        "Raw Orc Meat": 5,
-        "Rusty Great Scythe": 1,
-        "Rusty Spear": 1,
-        "Tattered Cloth Pantaloons": 1,
-        "Rawhide Scraps": 1,
-        "Tattered Cloth Cape": 1,
-        "Rusty Trident": 1,
-        "Tattered Rawhide Cap": 1,
-        "Tattered Rawhide Tunic": 1
-      },
-      "zones": {
-        "Evershade Weald": 69
-      },
-      "coin": 324,
-      "corpses": 26
-    },
-    "a large black bat": {
-      "kills": 0,
-      "drops": {
-        "Large Bat Wing": 2,
-        "Large Bat Fur": 1,
-        "Raw Bat Meat": 5
-      },
-      "zones": {
-        "Evershade Weald": 8
-      },
-      "coin": 0,
-      "corpses": 7
-    },
-    "a skeleton": {
-      "kills": 109,
-      "drops": {
-        "Worn Great Staff": 1,
-        "Tattered Cloth Pantaloons": 1,
-        "Bone Chips": 57,
-        "Tattered Cloth Boots": 1,
-        "Tattered Rawhide Mask": 2,
-        "Cloth Scraps": 54,
-        "Rusty Kite Shield": 2,
-        "Rawhide Scraps": 7,
-        "Worn Bow": 4,
-        "Tattered Cloth Shirt": 5,
-        "Shattered Skull": 3,
-        "Tattered Cloth Robe": 2,
-        "Tattered Cloth Gorget": 2,
-        "Tattered Cloth Cape": 3,
-        "Rusty War Lance": 1,
-        "Tattered Cloth Cap": 1,
-        "Rusty Mace": 1,
-        "Tattered Cloth Veil": 2,
-        "Rusty Spear": 2,
-        "Rusty Dagger": 2,
-        "Tattered Cloth Belt": 1,
-        "Rusty Battle Axe": 2,
-        "Worn Buckler": 1,
-        "Rusty Trident": 1,
-        "Tattered Cloth Mantle": 1,
-        "Tattered Cloth Tunic": 1
-      },
-      "zones": {
-        "Evershade Weald": 313
-      },
-      "coin": 1412,
-      "corpses": 87
-    },
     "a wasp worker": {
       "kills": 0,
       "drops": {
@@ -220,6 +40,120 @@
       "coin": 60,
       "corpses": 1
     },
+    "a rotting skeleton": {
+      "kills": 44,
+      "drops": {
+        "Cloth Scraps": 29,
+        "Tattered Cloth Boots": 1,
+        "Bone Chips": 30,
+        "Rusty Warhammer": 2,
+        "Rusty Axe": 1,
+        "Skeleton Jawbone": 3,
+        "Tattered Cloth Tunic": 1,
+        "Cracked Staff": 1,
+        "Tattered Cloth Mantle": 1,
+        "Worn Bow": 1,
+        "Rusty Kite Shield": 1,
+        "Rusty Spear": 1,
+        "Tattered Cloth Cap": 1,
+        "Tattered Cloth Shirt": 1,
+        "Worn Buckler": 1,
+        "Tattered Cloth Gorget": 1,
+        "Rusty Tower Shield": 1,
+        "Tattered Cloth Robe": 1
+      },
+      "zones": {
+        "Evershade Weald": 140
+      },
+      "coin": 68,
+      "corpses": 39
+    },
+    "a black bat": {
+      "kills": 0,
+      "drops": {
+        "Bat Fur": 5,
+        "Bat Wing": 6,
+        "Bat Eye": 3,
+        "Raw Bat Meat": 2,
+        "Bat Tooth": 3
+      },
+      "zones": {
+        "Evershade Weald": 19
+      },
+      "coin": 0,
+      "corpses": 13
+    },
+    "a black wolf pup": {
+      "kills": 0,
+      "drops": {
+        "Low-Quality Wolf Pelt": 7,
+        "Wolf Tooth": 15,
+        "Raw Wolf Meat": 5,
+        "Damaged Canine Ear": 4
+      },
+      "zones": {
+        "Evershade Weald": 33
+      },
+      "coin": 0,
+      "corpses": 26
+    },
+    "a Fellstone scout": {
+      "kills": 14,
+      "drops": {
+        "Tattered Cloth Belt": 2,
+        "Cloth Scraps": 9,
+        "Rusty Tower Shield": 1,
+        "Rusty Scythe": 1,
+        "Unintelligible Writings": 2,
+        "Rusty Scimitar": 1
+      },
+      "zones": {
+        "Evershade Weald": 31
+      },
+      "coin": 62,
+      "corpses": 12
+    },
+    "a large black bat": {
+      "kills": 0,
+      "drops": {
+        "Large Bat Fur": 1,
+        "Raw Bat Meat": 5,
+        "Large Bat Wing": 1
+      },
+      "zones": {
+        "Evershade Weald": 7
+      },
+      "coin": 0,
+      "corpses": 6
+    },
+    "a wasp drone": {
+      "kills": 0,
+      "drops": {
+        "Wasp Wing": 6,
+        "Wasp Venom Sac": 2,
+        "Royal Jelly": 2,
+        "Cracked Wasp Barb": 1
+      },
+      "zones": {
+        "Evershade Weald": 12,
+        "Keepersbight": 3
+      },
+      "coin": 0,
+      "corpses": 6
+    },
+    "a black widow hatchling": {
+      "kills": 0,
+      "drops": {
+        "Spider Silk": 19,
+        "Spider Legs": 9,
+        "Spider Venom Sac": 3
+      },
+      "zones": {
+        "Evershade Weald": 42
+      },
+      "coin": 0,
+      "corpses": 25
+    },
     "a black widow": {
       "kills": 0,
       "drops": {
@@ -233,6 +167,65 @@
       },
       "coin": 0,
       "corpses": 8
+    },
+    "a Fellstone warrior": {
+      "kills": 23,
+      "drops": {
+        "Tattered Cloth Robe": 1,
+        "Rusty Scythe": 1,
+        "Left Orc Ear": 7,
+        "Fellstone Warrior's Belt": 2,
+        "Cloth Scraps": 16,
+        "Raw Orc Meat": 5,
+        "Rusty Great Scythe": 1,
+        "Rusty Spear": 1,
+        "Rusty Greatsword": 1,
+        "Tattered Cloth Pantaloons": 1,
+        "Rawhide Scraps": 1,
+        "Tattered Cloth Cape": 1,
+        "Rusty Trident": 1,
+        "Tattered Rawhide Cap": 1,
+        "Tattered Rawhide Tunic": 1
+      },
+      "zones": {
+        "Evershade Weald": 66
+      },
+      "coin": 324,
+      "corpses": 23
+    },
+    "a skeleton": {
+      "kills": 108,
+      "drops": {
+        "Tattered Cloth Boots": 1,
+        "Tattered Rawhide Mask": 2,
+        "Cloth Scraps": 54,
+        "Bone Chips": 56,
+        "Rusty Kite Shield": 2,
+        "Rawhide Scraps": 7,
+        "Worn Bow": 4,
+        "Tattered Cloth Shirt": 5,
+        "Shattered Skull": 3,
+        "Tattered Cloth Robe": 2,
+        "Tattered Cloth Gorget": 2,
+        "Tattered Cloth Cape": 3,
+        "Rusty War Lance": 1,
+        "Tattered Cloth Cap": 1,
+        "Rusty Mace": 1,
+        "Tattered Cloth Veil": 2,
+        "Rusty Spear": 2,
+        "Rusty Dagger": 2,
+        "Tattered Cloth Belt": 1,
+        "Rusty Battle Axe": 2,
+        "Worn Buckler": 1,
+        "Rusty Trident": 1,
+        "Tattered Cloth Mantle": 1,
+        "Tattered Cloth Tunic": 1
+      },
+      "zones": {
+        "Evershade Weald": 309
+      },
+      "coin": 1405,
+      "corpses": 86
     },
     "a rabid wolf": {
       "kills": 0,
@@ -1505,16 +1498,16 @@
       "kills": 0,
       "drops": {
         "Savage Wolf Claw": 5,
-        "Scuffed Canine Ear": 13,
-        "Raw Wolf Meat": 6,
-        "Grizzled Canine Ear": 9,
-        "Medium-Quality Wolf Pelt": 10
+        "Scuffed Canine Ear": 17,
+        "Raw Wolf Meat": 7,
+        "Grizzled Canine Ear": 10,
+        "Medium-Quality Wolf Pelt": 12
       },
       "zones": {
-        "Sungreetstrand": 47
+        "Sungreetstrand": 55
       },
       "coin": 0,
-      "corpses": 33
+      "corpses": 38
     },
     "a giant spider": {
       "kills": 0,
@@ -1528,20 +1521,20 @@
       "corpses": 1
     },
     "a bodyguard": {
-      "kills": 110,
+      "kills": 130,
       "drops": {
-        "Polished Medallion": 35,
+        "Polished Medallion": 44,
         "Flawed Ruby": 1,
         "Cabbage": 1,
-        "Lemon": 2,
+        "Lemon": 3,
         "Cracked Fine Wood Staff": 1,
         "Bell Pepper": 2,
         "Mushroom": 1,
-        "Wool Scraps": 22,
-        "Hide Scraps": 15,
+        "Wool Scraps": 24,
+        "Hide Scraps": 18,
         "Tomato": 5,
         "Potato": 1,
-        "Bronze Scraps": 15,
+        "Bronze Scraps": 18,
         "Raw Human Meat": 22,
         "Corroded Bronze Maul": 1,
         "Celery": 3,
@@ -1550,47 +1543,50 @@
         "Tattered Wool Cape": 1,
         "Worn Fine Wood Buckler": 1,
         "Cooked Human Meat": 1,
-        "Cheese": 2,
+        "Cheese": 3,
         "Tattered Wool Cap": 1,
         "Carrot": 2,
-        "Tattered Wool Gloves": 1,
+        "Tattered Wool Gloves": 2,
         "Flawed Diamond": 1,
         "Corroded Bronze Chain Gloves": 1,
         "Corroded Bronze Dagger": 1,
         "Corroded Bronze Greatsword": 1,
         "Corroded Bronze Long Spear": 1,
         "Corroded Bronze Chain Waistguard": 1,
-        "Garlic": 1,
+        "Garlic": 2,
         "Flawed Cat's Eye Agate": 1,
-        "Corroded Bronze Spear": 1,
-        "Corroded Bronze Mace": 1
+        "Corroded Bronze Spear": 2,
+        "Corroded Bronze Mace": 1,
+        "Corroded Bronze Longsword": 1,
+        "Tattered Hide Gorget": 1,
+        "Tattered Wool Bracer": 1
       },
       "zones": {
-        "Sungreetstrand": 279
+        "Sungreetstrand": 327
       },
-      "coin": 8488,
-      "corpses": 89
+      "coin": 9996,
+      "corpses": 106
     },
     "a sly farmhand": {
-      "kills": 89,
+      "kills": 94,
       "drops": {
         "Celery": 2,
         "Corroded Bronze Chain Waistguard": 1,
-        "Simple Medallion": 27,
-        "Hide Scraps": 10,
+        "Simple Medallion": 30,
+        "Hide Scraps": 11,
         "Cabbage": 2,
         "Raw Human Meat": 8,
         "Tattered Hide Cloak": 1,
         "Flawed Ruby": 1,
         "Flawed Sapphire": 3,
         "Tattered Hide Belt": 1,
-        "Wool Scraps": 18,
+        "Wool Scraps": 21,
         "Flawed Diamond": 1,
         "Bell Pepper": 1,
         "Flawed Peridot": 3,
         "Bronze Scraps": 6,
         "Onion": 1,
-        "Tomato": 2,
+        "Tomato": 3,
         "Potato": 2,
         "Corroded Bronze Shortsword": 1,
         "Carrot": 2,
@@ -1601,33 +1597,34 @@
         "Corroded Bronze Tower Shield": 1,
         "Corroded Bronze Chain Wristguard": 1,
         "Corroded Bronze Mace": 1,
-        "Corroded Bronze Trident": 1
+        "Corroded Bronze Trident": 1,
+        "Mushroom": 1
       },
       "zones": {
-        "Sungreetstrand": 202
+        "Sungreetstrand": 216
       },
-      "coin": 7223,
-      "corpses": 67
+      "coin": 7686,
+      "corpses": 72
     },
     "a henchman": {
-      "kills": 115,
+      "kills": 139,
       "drops": {
-        "Polished Medallion": 35,
-        "Bronze Scraps": 11,
-        "Raw Human Meat": 12,
+        "Polished Medallion": 45,
+        "Bronze Scraps": 12,
+        "Raw Human Meat": 18,
         "Carrot": 3,
         "Corroded Bronze Chain Shoulderguards": 1,
-        "Corroded Bronze Mace": 1,
-        "Hide Scraps": 16,
-        "Wool Scraps": 17,
-        "Bell Pepper": 1,
-        "Corroded Bronze Scythe": 2,
+        "Corroded Bronze Mace": 2,
+        "Hide Scraps": 22,
+        "Wool Scraps": 22,
+        "Bell Pepper": 2,
+        "Corroded Bronze Scythe": 3,
         "Corroded Bronze Maul": 3,
         "Cabbage": 2,
         "Tattered Hide Mask": 1,
         "Tattered Wool Gorget": 1,
         "Cracked Fine Wood Staff": 2,
-        "Flawed Sapphire": 1,
+        "Flawed Sapphire": 2,
         "Flawed Peridot": 1,
         "Potato": 3,
         "Flawed Cat's Eye Agate": 2,
@@ -1636,7 +1633,7 @@
         "Tattered Hide Gloves": 1,
         "Corroded Bronze Plate Breastplate": 1,
         "Corroded Bronze Plate Visor": 1,
-        "Lemon": 2,
+        "Lemon": 4,
         "Corroded Bronze Battle Axe": 1,
         "Corroded Bronze Great Scythe": 1,
         "Garlic": 1,
@@ -1644,35 +1641,40 @@
         "Corroded Bronze War Lance": 2,
         "Flawed Diamond": 2,
         "Tattered Hide Bracer": 1,
-        "Onion": 2,
+        "Onion": 3,
         "Tattered Hide Cloak": 1,
         "Tattered Hide Vest": 1,
         "Corroded Bronze Dagger": 1,
-        "Corroded Bronze Longsword": 1
+        "Corroded Bronze Longsword": 2,
+        "Corroded Bronze Warhammer": 1,
+        "Torch": 1,
+        "Tattered Wool Gloves": 1,
+        "Corroded Bronze Trident": 1,
+        "Worn Fine Wood Buckler": 1
       },
       "zones": {
-        "Sungreetstrand": 273
+        "Sungreetstrand": 348
       },
-      "coin": 10276,
-      "corpses": 81
+      "coin": 12329,
+      "corpses": 96
     },
     "a corrupt clergyman": {
-      "kills": 60,
+      "kills": 66,
       "drops": {
         "Simple Medallion": 7,
-        "Wool Scraps": 12,
+        "Wool Scraps": 13,
         "Corroded Bronze War Lance": 1,
-        "Raw Human Meat": 14,
+        "Raw Human Meat": 16,
         "Tattered Hide Gorget": 1,
-        "Bronze Scraps": 6,
-        "Polished Medallion": 18,
+        "Bronze Scraps": 7,
+        "Polished Medallion": 19,
         "Tattered Wool Shirt": 1,
         "Mushroom": 1,
         "Cabbage": 1,
         "Flawed Diamond": 1,
         "Lemon": 2,
         "Celery": 2,
-        "Hide Scraps": 4,
+        "Hide Scraps": 5,
         "Tomato": 1,
         "Corroded Bronze Plate Greaves": 1,
         "Corroded Bronze Dagger": 1,
@@ -1686,37 +1688,38 @@
         "Tattered Hide Cloak": 1,
         "Flawed Jade": 1,
         "Corroded Bronze Shortsword": 1,
-        "Corroded Bronze Chain Mask": 1
+        "Corroded Bronze Chain Mask": 1,
+        "Corroded Bronze Battle Axe": 1
       },
       "zones": {
-        "Sungreetstrand": 158
+        "Sungreetstrand": 171
       },
-      "coin": 4824,
-      "corpses": 51
+      "coin": 5365,
+      "corpses": 56
     },
     "a hired tracker": {
-      "kills": 84,
+      "kills": 98,
       "drops": {
         "Carrot": 3,
-        "Raw Human Meat": 18,
+        "Raw Human Meat": 21,
         "Simple Medallion": 11,
-        "Hide Scraps": 7,
+        "Hide Scraps": 9,
         "Worn Fine Wood Bow": 2,
-        "Wool Scraps": 15,
+        "Wool Scraps": 18,
         "Flawed Diamond": 2,
         "Flawed Sapphire": 1,
         "Cabbage": 5,
         "Bronze Scraps": 7,
-        "Polished Medallion": 19,
+        "Polished Medallion": 23,
         "Corroded Bronze Dagger": 1,
         "Celery": 1,
         "Potato": 1,
-        "Corroded Bronze Scimitar": 1,
+        "Corroded Bronze Scimitar": 2,
         "Garlic": 1,
         "Flawed Jade": 1,
         "Corroded Bronze Trident": 1,
         "Worn Fine Wood Buckler": 1,
-        "Lemon": 1,
+        "Lemon": 2,
         "Bell Pepper": 3,
         "Cracked Fine Wood Staff": 1,
         "Tattered Hide Cap": 1,
@@ -1726,13 +1729,17 @@
         "Flawed Ruby": 1,
         "Tattered Hide Cloak": 1,
         "Corroded Bronze Chain Cloak": 1,
-        "Corroded Bronze Spear": 1
+        "Corroded Bronze Spear": 1,
+        "Worn Fine Wood Great Staff": 1,
+        "Corroded Bronze Shortsword": 1,
+        "Onion": 1,
+        "Corroded Bronze Chain Shoulderguards": 1
       },
       "zones": {
-        "Sungreetstrand": 208
+        "Sungreetstrand": 242
       },
-      "coin": 6846,
-      "corpses": 70
+      "coin": 7983,
+      "corpses": 82
     },
     "a rattlesnake": {
       "kills": 0,
@@ -1796,16 +1803,16 @@
       "corpses": 16
     },
     "a gruff farmhand": {
-      "kills": 99,
+      "kills": 107,
       "drops": {
-        "Wool Scraps": 18,
+        "Wool Scraps": 19,
         "Raw Human Meat": 18,
-        "Simple Medallion": 37,
+        "Simple Medallion": 40,
         "Cheese": 2,
         "Flawed Cat's Eye Agate": 1,
         "Corroded Bronze Battle Axe": 1,
         "Corroded Bronze Chain Gloves": 1,
-        "Hide Scraps": 14,
+        "Hide Scraps": 16,
         "Cooked Human Meat": 3,
         "Tattered Hide Leggings": 2,
         "Corroded Bronze Plate Helm": 1,
@@ -1816,7 +1823,7 @@
         "Cabbage": 1,
         "Tattered Hide Mask": 1,
         "Bronze Scraps": 6,
-        "Potato": 1,
+        "Potato": 2,
         "Tattered Hide Cap": 1,
         "Carrot": 2,
         "Lemon": 2,
@@ -1832,13 +1839,14 @@
         "Corroded Bronze Plate Girdle": 1,
         "Corroded Bronze Mace": 1,
         "Corroded Bronze Shortsword": 1,
-        "Corroded Bronze Chain Cloak": 1
+        "Corroded Bronze Chain Cloak": 1,
+        "Corroded Bronze Plate Arming Doublet": 1
       },
       "zones": {
-        "Sungreetstrand": 242
+        "Sungreetstrand": 259
       },
-      "coin": 8070,
-      "corpses": 79
+      "coin": 8778,
+      "corpses": 87
     },
     "a restless skeleton": {
       "kills": 2,
@@ -2231,21 +2239,23 @@
       "corpses": 1
     },
     "a burly henchman": {
-      "kills": 15,
+      "kills": 21,
       "drops": {
-        "Wool Scraps": 6,
-        "Hide Scraps": 2,
-        "Polished Medallion": 4,
+        "Wool Scraps": 7,
+        "Hide Scraps": 3,
+        "Polished Medallion": 6,
         "Corroded Bronze Mace": 1,
         "Raw Human Meat": 2,
         "Potato": 1,
-        "Onion": 1
+        "Onion": 1,
+        "Corroded Bronze Trident": 1,
+        "Bronze Scraps": 1
       },
       "zones": {
-        "Sungreetstrand": 33
+        "Sungreetstrand": 46
       },
-      "coin": 1277,
-      "corpses": 10
+      "coin": 1983,
+      "corpses": 14
     },
     "a gloom widow": {
       "kills": 0,
@@ -2550,19 +2560,15 @@
       "droppedBy": [
         {
           "mob": "a black bat",
-          "drops": 6,
-          "corpses": 31,
-          "rate": 0.1935483870967742
+          "drops": 3,
+          "corpses": 13,
+          "rate": 0.23076923076923078
         }
       ],
       "prices": [
         {
-          "copper": 2,
-          "count": 1
-        },
-        {
           "copper": 5,
-          "count": 2
+          "count": 1
         }
       ],
       "harvested": 0,
@@ -2577,19 +2583,15 @@
       "droppedBy": [
         {
           "mob": "a black bat",
-          "drops": 11,
-          "corpses": 31,
-          "rate": 0.3548387096774194
+          "drops": 5,
+          "corpses": 13,
+          "rate": 0.38461538461538464
         }
       ],
       "prices": [
         {
           "copper": 2,
-          "count": 4
-        },
-        {
-          "copper": 5,
-          "count": 1
+          "count": 3
         }
       ],
       "harvested": 0,
@@ -2604,15 +2606,15 @@
       "droppedBy": [
         {
           "mob": "a black bat",
-          "drops": 11,
-          "corpses": 31,
-          "rate": 0.3548387096774194
+          "drops": 3,
+          "corpses": 13,
+          "rate": 0.23076923076923078
         }
       ],
       "prices": [
         {
           "copper": 2,
-          "count": 5
+          "count": 2
         }
       ],
       "harvested": 0,
@@ -2627,19 +2629,15 @@
       "droppedBy": [
         {
           "mob": "a black bat",
-          "drops": 17,
-          "corpses": 31,
-          "rate": 0.5483870967741935
+          "drops": 6,
+          "corpses": 13,
+          "rate": 0.46153846153846156
         }
       ],
       "prices": [
         {
-          "copper": 2,
-          "count": 1
-        },
-        {
           "copper": 5,
-          "count": 5
+          "count": 3
         }
       ],
       "harvested": 0,
@@ -2737,16 +2735,16 @@
           "rate": 0.05063291139240506
         },
         {
-          "mob": "a hired tracker",
-          "drops": 3,
-          "corpses": 70,
-          "rate": 0.04285714285714286
-        },
-        {
           "mob": "a Sangrel grappler",
           "drops": 1,
           "corpses": 26,
           "rate": 0.038461538461538464
+        },
+        {
+          "mob": "a hired tracker",
+          "drops": 3,
+          "corpses": 82,
+          "rate": 0.036585365853658534
         },
         {
           "mob": "a poacher pathfinder",
@@ -2761,10 +2759,16 @@
           "rate": 0.024390243902439025
         },
         {
+          "mob": "a henchman",
+          "drops": 2,
+          "corpses": 96,
+          "rate": 0.020833333333333332
+        },
+        {
           "mob": "a bodyguard",
           "drops": 2,
-          "corpses": 89,
-          "rate": 0.02247191011235955
+          "corpses": 106,
+          "rate": 0.018867924528301886
         },
         {
           "mob": "a poacher bruiser",
@@ -2781,8 +2785,8 @@
         {
           "mob": "a sly farmhand",
           "drops": 1,
-          "corpses": 67,
-          "rate": 0.014925373134328358
+          "corpses": 72,
+          "rate": 0.013888888888888888
         },
         {
           "mob": "a Sangrel arcanist",
@@ -2793,14 +2797,8 @@
         {
           "mob": "a gruff farmhand",
           "drops": 1,
-          "corpses": 79,
-          "rate": 0.012658227848101266
-        },
-        {
-          "mob": "a henchman",
-          "drops": 1,
-          "corpses": 81,
-          "rate": 0.012345679012345678
+          "corpses": 87,
+          "rate": 0.011494252873563218
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -2938,15 +2936,15 @@
         },
         {
           "mob": "a rotting skeleton",
-          "drops": 41,
-          "corpses": 56,
-          "rate": 0.7321428571428571
+          "drops": 30,
+          "corpses": 39,
+          "rate": 0.7692307692307693
         },
         {
           "mob": "a skeleton",
-          "drops": 57,
-          "corpses": 87,
-          "rate": 0.6551724137931034
+          "drops": 56,
+          "corpses": 86,
+          "rate": 0.6511627906976745
         },
         {
           "mob": "a Calafreyan soldier",
@@ -2967,12 +2965,7 @@
           "rate": 0.475
         }
       ],
-      "prices": [
-        {
-          "copper": 1,
-          "count": 1
-        }
-      ],
+      "prices": [],
       "harvested": 0,
       "zones": [
         "Evershade Weald",
@@ -3001,10 +2994,10 @@
       "prices": [
         {
           "copper": 1,
-          "count": 15
+          "count": 14
         }
       ],
-      "harvested": 289,
+      "harvested": 272,
       "zones": [
         "Evershade Weald",
         "Keepersbight"
@@ -3059,9 +3052,9 @@
         },
         {
           "mob": "a bodyguard",
-          "drops": 15,
-          "corpses": 89,
-          "rate": 0.16853932584269662
+          "drops": 18,
+          "corpses": 106,
+          "rate": 0.16981132075471697
         },
         {
           "mob": "a captured dockhand",
@@ -3070,22 +3063,22 @@
           "rate": 0.16666666666666666
         },
         {
+          "mob": "a corrupt clergyman",
+          "drops": 7,
+          "corpses": 56,
+          "rate": 0.125
+        },
+        {
           "mob": "a henchman",
-          "drops": 11,
-          "corpses": 81,
-          "rate": 0.13580246913580246
+          "drops": 12,
+          "corpses": 96,
+          "rate": 0.125
         },
         {
           "mob": "a Bloodchain sentry",
           "drops": 8,
           "corpses": 67,
           "rate": 0.11940298507462686
-        },
-        {
-          "mob": "a corrupt clergyman",
-          "drops": 6,
-          "corpses": 51,
-          "rate": 0.11764705882352941
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -3100,28 +3093,34 @@
           "rate": 0.1111111111111111
         },
         {
-          "mob": "a hired tracker",
-          "drops": 7,
-          "corpses": 70,
-          "rate": 0.1
-        },
-        {
           "mob": "a Sangrel striker",
           "drops": 28,
           "corpses": 304,
           "rate": 0.09210526315789473
         },
         {
+          "mob": "a hired tracker",
+          "drops": 7,
+          "corpses": 82,
+          "rate": 0.08536585365853659
+        },
+        {
           "mob": "a sly farmhand",
           "drops": 6,
-          "corpses": 67,
-          "rate": 0.08955223880597014
+          "corpses": 72,
+          "rate": 0.08333333333333333
+        },
+        {
+          "mob": "a burly henchman",
+          "drops": 1,
+          "corpses": 14,
+          "rate": 0.07142857142857142
         },
         {
           "mob": "a gruff farmhand",
           "drops": 6,
-          "corpses": 79,
-          "rate": 0.0759493670886076
+          "corpses": 87,
+          "rate": 0.06896551724137931
         },
         {
           "mob": "a Sangrel hunter",
@@ -3207,8 +3206,8 @@
         {
           "mob": "a hired tracker",
           "drops": 5,
-          "corpses": 70,
-          "rate": 0.07142857142857142
+          "corpses": 82,
+          "rate": 0.06097560975609756
         },
         {
           "mob": "a fossergrim watcher",
@@ -3241,16 +3240,16 @@
           "rate": 0.0379746835443038
         },
         {
-          "mob": "a sly farmhand",
-          "drops": 2,
-          "corpses": 67,
-          "rate": 0.029850746268656716
-        },
-        {
           "mob": "a poacher pathfinder",
           "drops": 2,
           "corpses": 71,
           "rate": 0.028169014084507043
+        },
+        {
+          "mob": "a sly farmhand",
+          "drops": 2,
+          "corpses": 72,
+          "rate": 0.027777777777777776
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -3259,22 +3258,22 @@
           "rate": 0.02608695652173913
         },
         {
-          "mob": "a henchman",
-          "drops": 2,
-          "corpses": 81,
-          "rate": 0.024691358024691357
-        },
-        {
           "mob": "a Sangrel striker",
           "drops": 7,
           "corpses": 304,
           "rate": 0.023026315789473683
         },
         {
+          "mob": "a henchman",
+          "drops": 2,
+          "corpses": 96,
+          "rate": 0.020833333333333332
+        },
+        {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 51,
-          "rate": 0.0196078431372549
+          "corpses": 56,
+          "rate": 0.017857142857142856
         },
         {
           "mob": "a Sangrel arcanist",
@@ -3285,14 +3284,14 @@
         {
           "mob": "a gruff farmhand",
           "drops": 1,
-          "corpses": 79,
-          "rate": 0.012658227848101266
+          "corpses": 87,
+          "rate": 0.011494252873563218
         },
         {
           "mob": "a bodyguard",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 106,
+          "rate": 0.009433962264150943
         }
       ],
       "prices": [
@@ -3340,26 +3339,26 @@
         {
           "mob": "a hired tracker",
           "drops": 3,
-          "corpses": 70,
-          "rate": 0.04285714285714286
+          "corpses": 82,
+          "rate": 0.036585365853658534
         },
         {
           "mob": "a henchman",
           "drops": 3,
-          "corpses": 81,
-          "rate": 0.037037037037037035
-        },
-        {
-          "mob": "a sly farmhand",
-          "drops": 2,
-          "corpses": 67,
-          "rate": 0.029850746268656716
+          "corpses": 96,
+          "rate": 0.03125
         },
         {
           "mob": "a poacher pathfinder",
           "drops": 2,
           "corpses": 71,
           "rate": 0.028169014084507043
+        },
+        {
+          "mob": "a sly farmhand",
+          "drops": 2,
+          "corpses": 72,
+          "rate": 0.027777777777777776
         },
         {
           "mob": "a Sangrel arcanist",
@@ -3376,14 +3375,8 @@
         {
           "mob": "a gruff farmhand",
           "drops": 2,
-          "corpses": 79,
-          "rate": 0.02531645569620253
-        },
-        {
-          "mob": "a bodyguard",
-          "drops": 2,
-          "corpses": 89,
-          "rate": 0.02247191011235955
+          "corpses": 87,
+          "rate": 0.022988505747126436
         },
         {
           "mob": "a Sangrel striker",
@@ -3392,16 +3385,22 @@
           "rate": 0.019736842105263157
         },
         {
-          "mob": "a corrupt clergyman",
-          "drops": 1,
-          "corpses": 51,
-          "rate": 0.0196078431372549
+          "mob": "a bodyguard",
+          "drops": 2,
+          "corpses": 106,
+          "rate": 0.018867924528301886
         },
         {
           "mob": "a poacher bruiser",
           "drops": 3,
           "corpses": 161,
           "rate": 0.018633540372670808
+        },
+        {
+          "mob": "a corrupt clergyman",
+          "drops": 1,
+          "corpses": 56,
+          "rate": 0.017857142857142856
         },
         {
           "mob": "a Sangrel hunter",
@@ -3449,16 +3448,16 @@
           "rate": 0.14285714285714285
         },
         {
-          "mob": "a corrupt clergyman",
-          "drops": 2,
-          "corpses": 51,
-          "rate": 0.0392156862745098
-        },
-        {
           "mob": "a Sangrel grappler",
           "drops": 1,
           "corpses": 26,
           "rate": 0.038461538461538464
+        },
+        {
+          "mob": "a corrupt clergyman",
+          "drops": 2,
+          "corpses": 56,
+          "rate": 0.03571428571428571
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -3467,22 +3466,22 @@
           "rate": 0.034782608695652174
         },
         {
-          "mob": "a bodyguard",
-          "drops": 3,
-          "corpses": 89,
-          "rate": 0.033707865168539325
-        },
-        {
           "mob": "a poacher bruiser",
           "drops": 5,
           "corpses": 161,
           "rate": 0.031055900621118012
         },
         {
+          "mob": "a bodyguard",
+          "drops": 3,
+          "corpses": 106,
+          "rate": 0.02830188679245283
+        },
+        {
           "mob": "a sly farmhand",
           "drops": 2,
-          "corpses": 67,
-          "rate": 0.029850746268656716
+          "corpses": 72,
+          "rate": 0.027777777777777776
         },
         {
           "mob": "a Sangrel striker",
@@ -3497,12 +3496,6 @@
           "rate": 0.02531645569620253
         },
         {
-          "mob": "a hired tracker",
-          "drops": 1,
-          "corpses": 70,
-          "rate": 0.014285714285714285
-        },
-        {
           "mob": "a poacher pathfinder",
           "drops": 1,
           "corpses": 71,
@@ -3513,6 +3506,12 @@
           "drops": 1,
           "corpses": 75,
           "rate": 0.013333333333333334
+        },
+        {
+          "mob": "a hired tracker",
+          "drops": 1,
+          "corpses": 82,
+          "rate": 0.012195121951219513
         }
       ],
       "prices": [
@@ -3546,6 +3545,12 @@
           "rate": 0.037267080745341616
         },
         {
+          "mob": "a bodyguard",
+          "drops": 3,
+          "corpses": 106,
+          "rate": 0.02830188679245283
+        },
+        {
           "mob": "a Sangrel hunter",
           "drops": 2,
           "corpses": 79,
@@ -3554,20 +3559,14 @@
         {
           "mob": "a gruff farmhand",
           "drops": 2,
-          "corpses": 79,
-          "rate": 0.02531645569620253
-        },
-        {
-          "mob": "a bodyguard",
-          "drops": 2,
-          "corpses": 89,
-          "rate": 0.02247191011235955
+          "corpses": 87,
+          "rate": 0.022988505747126436
         },
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 51,
-          "rate": 0.0196078431372549
+          "corpses": 56,
+          "rate": 0.017857142857142856
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -3596,14 +3595,14 @@
       "prices": [
         {
           "copper": 20,
-          "count": 3
+          "count": 2
         },
         {
           "copper": 21,
           "count": 4
         }
       ],
-      "harvested": 9,
+      "harvested": 8,
       "zones": [
         "Evershade Weald"
       ]
@@ -3919,9 +3918,9 @@
           "rate": 0.7777777777777778
         },
         {
-          "mob": "a rotting skeleton",
-          "drops": 42,
-          "corpses": 56,
+          "mob": "a Fellstone scout",
+          "drops": 9,
+          "corpses": 12,
           "rate": 0.75
         },
         {
@@ -3937,16 +3936,22 @@
           "rate": 0.75
         },
         {
-          "mob": "a Fellstone scout",
-          "drops": 12,
-          "corpses": 17,
-          "rate": 0.7058823529411765
+          "mob": "a rotting skeleton",
+          "drops": 29,
+          "corpses": 39,
+          "rate": 0.7435897435897436
         },
         {
           "mob": "an old elven skeleton",
           "drops": 28,
           "corpses": 40,
           "rate": 0.7
+        },
+        {
+          "mob": "a Fellstone warrior",
+          "drops": 16,
+          "corpses": 23,
+          "rate": 0.6956521739130435
         },
         {
           "mob": "a sullen farmhand",
@@ -3969,14 +3974,8 @@
         {
           "mob": "a skeleton",
           "drops": 54,
-          "corpses": 87,
-          "rate": 0.6206896551724138
-        },
-        {
-          "mob": "a Fellstone warrior",
-          "drops": 16,
-          "corpses": 26,
-          "rate": 0.6153846153846154
+          "corpses": 86,
+          "rate": 0.627906976744186
         },
         {
           "mob": "a Fellstone shaman",
@@ -4055,7 +4054,7 @@
       "name": "Clouded Crystallized Magic",
       "droppedBy": [],
       "prices": [],
-      "harvested": 22,
+      "harvested": 21,
       "zones": [
         "Evershade Weald",
         "Sungreetstrand",
@@ -4109,8 +4108,8 @@
         {
           "mob": "a gruff farmhand",
           "drops": 3,
-          "corpses": 79,
-          "rate": 0.0379746835443038
+          "corpses": 87,
+          "rate": 0.034482758620689655
         },
         {
           "mob": "a Sangrel hunter",
@@ -4121,8 +4120,8 @@
         {
           "mob": "a bodyguard",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 106,
+          "rate": 0.009433962264150943
         },
         {
           "mob": "a Sangrel striker",
@@ -4190,7 +4189,7 @@
       "name": "Copper Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 1088,
+      "harvested": 1033,
       "zones": [
         "Evershade Weald",
         "Keepersbight",
@@ -4287,6 +4286,12 @@
           "rate": 0.027777777777777776
         },
         {
+          "mob": "a corrupt clergyman",
+          "drops": 1,
+          "corpses": 56,
+          "rate": 0.017857142857142856
+        },
+        {
           "mob": "a Sangrel shadowblade",
           "drops": 2,
           "corpses": 115,
@@ -4307,14 +4312,14 @@
         {
           "mob": "a gruff farmhand",
           "drops": 1,
-          "corpses": 79,
-          "rate": 0.012658227848101266
+          "corpses": 87,
+          "rate": 0.011494252873563218
         },
         {
           "mob": "a henchman",
           "drops": 1,
-          "corpses": 81,
-          "rate": 0.012345679012345678
+          "corpses": 96,
+          "rate": 0.010416666666666666
         },
         {
           "mob": "a Sangrel striker",
@@ -4344,8 +4349,8 @@
         {
           "mob": "a bodyguard",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 106,
+          "rate": 0.009433962264150943
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -4369,14 +4374,14 @@
         {
           "mob": "a hired tracker",
           "drops": 1,
-          "corpses": 70,
-          "rate": 0.014285714285714285
+          "corpses": 82,
+          "rate": 0.012195121951219513
         },
         {
           "mob": "a gruff farmhand",
           "drops": 1,
-          "corpses": 79,
-          "rate": 0.012658227848101266
+          "corpses": 87,
+          "rate": 0.011494252873563218
         },
         {
           "mob": "a Bloodchain guard",
@@ -4455,14 +4460,14 @@
         {
           "mob": "a gruff farmhand",
           "drops": 1,
-          "corpses": 79,
-          "rate": 0.012658227848101266
+          "corpses": 87,
+          "rate": 0.011494252873563218
         },
         {
           "mob": "a bodyguard",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 106,
+          "rate": 0.009433962264150943
         },
         {
           "mob": "a Sangrel striker",
@@ -4521,16 +4526,16 @@
           "rate": 0.017391304347826087
         },
         {
-          "mob": "a gruff farmhand",
+          "mob": "a Sangrel hunter",
           "drops": 1,
           "corpses": 79,
           "rate": 0.012658227848101266
         },
         {
-          "mob": "a Sangrel hunter",
+          "mob": "a gruff farmhand",
           "drops": 1,
-          "corpses": 79,
-          "rate": 0.012658227848101266
+          "corpses": 87,
+          "rate": 0.011494252873563218
         }
       ],
       "prices": [
@@ -4563,8 +4568,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 51,
-          "rate": 0.0196078431372549
+          "corpses": 56,
+          "rate": 0.017857142857142856
         },
         {
           "mob": "a Bloodchain guard",
@@ -4611,10 +4616,16 @@
           "rate": 0.012658227848101266
         },
         {
+          "mob": "a hired tracker",
+          "drops": 1,
+          "corpses": 82,
+          "rate": 0.012195121951219513
+        },
+        {
           "mob": "a henchman",
           "drops": 1,
-          "corpses": 81,
-          "rate": 0.012345679012345678
+          "corpses": 96,
+          "rate": 0.010416666666666666
         },
         {
           "mob": "a Bloodchain guard",
@@ -4626,9 +4637,9 @@
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Sungreetstrand",
         "Blacktidebay",
-        "Keepersbight",
-        "Sungreetstrand"
+        "Keepersbight"
       ]
     },
     {
@@ -4645,14 +4656,14 @@
         {
           "mob": "a hired tracker",
           "drops": 1,
-          "corpses": 70,
-          "rate": 0.014285714285714285
+          "corpses": 82,
+          "rate": 0.012195121951219513
         },
         {
           "mob": "a bodyguard",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 106,
+          "rate": 0.009433962264150943
         }
       ],
       "prices": [],
@@ -4670,8 +4681,8 @@
         {
           "mob": "a sly farmhand",
           "drops": 1,
-          "corpses": 67,
-          "rate": 0.014925373134328358
+          "corpses": 72,
+          "rate": 0.013888888888888888
         },
         {
           "mob": "a Sangrel hunter",
@@ -4682,8 +4693,8 @@
         {
           "mob": "a bodyguard",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 106,
+          "rate": 0.009433962264150943
         },
         {
           "mob": "a Bloodchain guard",
@@ -4731,14 +4742,14 @@
         {
           "mob": "a sly farmhand",
           "drops": 1,
-          "corpses": 67,
-          "rate": 0.014925373134328358
+          "corpses": 72,
+          "rate": 0.013888888888888888
         },
         {
           "mob": "a gruff farmhand",
           "drops": 1,
-          "corpses": 79,
-          "rate": 0.012658227848101266
+          "corpses": 87,
+          "rate": 0.011494252873563218
         },
         {
           "mob": "a Sangrel striker",
@@ -4768,20 +4779,14 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 51,
-          "rate": 0.0196078431372549
+          "corpses": 56,
+          "rate": 0.017857142857142856
         },
         {
           "mob": "a sly farmhand",
           "drops": 1,
-          "corpses": 67,
-          "rate": 0.014925373134328358
-        },
-        {
-          "mob": "a hired tracker",
-          "drops": 1,
-          "corpses": 70,
-          "rate": 0.014285714285714285
+          "corpses": 72,
+          "rate": 0.013888888888888888
         },
         {
           "mob": "a Sangrel arcanist",
@@ -4790,16 +4795,22 @@
           "rate": 0.013333333333333334
         },
         {
+          "mob": "a hired tracker",
+          "drops": 1,
+          "corpses": 82,
+          "rate": 0.012195121951219513
+        },
+        {
           "mob": "a henchman",
           "drops": 1,
-          "corpses": 81,
-          "rate": 0.012345679012345678
+          "corpses": 96,
+          "rate": 0.010416666666666666
         },
         {
           "mob": "a bodyguard",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 106,
+          "rate": 0.009433962264150943
         },
         {
           "mob": "a Bloodchain guard",
@@ -4855,8 +4866,8 @@
         {
           "mob": "a henchman",
           "drops": 1,
-          "corpses": 81,
-          "rate": 0.012345679012345678
+          "corpses": 96,
+          "rate": 0.010416666666666666
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -4905,8 +4916,8 @@
         {
           "mob": "a bodyguard",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 106,
+          "rate": 0.009433962264150943
         },
         {
           "mob": "a Sangrel striker",
@@ -4985,8 +4996,8 @@
         {
           "mob": "a bodyguard",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 106,
+          "rate": 0.009433962264150943
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -5037,22 +5048,28 @@
           "rate": 0.02857142857142857
         },
         {
+          "mob": "a henchman",
+          "drops": 2,
+          "corpses": 96,
+          "rate": 0.020833333333333332
+        },
+        {
           "mob": "a Sangrel arcanist",
           "drops": 1,
           "corpses": 75,
           "rate": 0.013333333333333334
         },
         {
-          "mob": "a henchman",
-          "drops": 1,
-          "corpses": 81,
-          "rate": 0.012345679012345678
-        },
-        {
           "mob": "a Sangrel striker",
           "drops": 3,
           "corpses": 304,
           "rate": 0.009868421052631578
+        },
+        {
+          "mob": "a bodyguard",
+          "drops": 1,
+          "corpses": 106,
+          "rate": 0.009433962264150943
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -5071,8 +5088,8 @@
       "zones": [
         "Keepersbight",
         "Blacktidebay",
-        "Valeofzintar",
-        "Sungreetstrand"
+        "Sungreetstrand",
+        "Valeofzintar"
       ]
     },
     {
@@ -5081,40 +5098,40 @@
       "name": "Corroded Bronze Mace",
       "droppedBy": [
         {
-          "mob": "a burly henchman",
-          "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
-        },
-        {
           "mob": "an enslaved elf",
           "drops": 1,
           "corpses": 11,
           "rate": 0.09090909090909091
         },
         {
+          "mob": "a burly henchman",
+          "drops": 1,
+          "corpses": 14,
+          "rate": 0.07142857142857142
+        },
+        {
+          "mob": "a henchman",
+          "drops": 2,
+          "corpses": 96,
+          "rate": 0.020833333333333332
+        },
+        {
           "mob": "a sly farmhand",
           "drops": 1,
-          "corpses": 67,
-          "rate": 0.014925373134328358
+          "corpses": 72,
+          "rate": 0.013888888888888888
         },
         {
           "mob": "a gruff farmhand",
           "drops": 1,
-          "corpses": 79,
-          "rate": 0.012658227848101266
-        },
-        {
-          "mob": "a henchman",
-          "drops": 1,
-          "corpses": 81,
-          "rate": 0.012345679012345678
+          "corpses": 87,
+          "rate": 0.011494252873563218
         },
         {
           "mob": "a bodyguard",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 106,
+          "rate": 0.009433962264150943
         }
       ],
       "prices": [
@@ -5149,14 +5166,14 @@
         {
           "mob": "a henchman",
           "drops": 3,
-          "corpses": 81,
-          "rate": 0.037037037037037035
+          "corpses": 96,
+          "rate": 0.03125
         },
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 51,
-          "rate": 0.0196078431372549
+          "corpses": 56,
+          "rate": 0.017857142857142856
         },
         {
           "mob": "a Sangrel hunter",
@@ -5167,8 +5184,8 @@
         {
           "mob": "a bodyguard",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 106,
+          "rate": 0.009433962264150943
         },
         {
           "mob": "a Sangrel striker",
@@ -5196,10 +5213,16 @@
       "name": "Corroded Bronze Plate Arming Doublet",
       "droppedBy": [
         {
+          "mob": "a gruff farmhand",
+          "drops": 1,
+          "corpses": 87,
+          "rate": 0.011494252873563218
+        },
+        {
           "mob": "a henchman",
           "drops": 1,
-          "corpses": 81,
-          "rate": 0.012345679012345678
+          "corpses": 96,
+          "rate": 0.010416666666666666
         },
         {
           "mob": "a Sangrel striker",
@@ -5211,8 +5234,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight",
-        "Sungreetstrand"
+        "Sungreetstrand",
+        "Keepersbight"
       ]
     },
     {
@@ -5254,8 +5277,8 @@
         {
           "mob": "a gruff farmhand",
           "drops": 1,
-          "corpses": 79,
-          "rate": 0.012658227848101266
+          "corpses": 87,
+          "rate": 0.011494252873563218
         },
         {
           "mob": "a Sangrel striker",
@@ -5280,8 +5303,8 @@
         {
           "mob": "a henchman",
           "drops": 1,
-          "corpses": 81,
-          "rate": 0.012345679012345678
+          "corpses": 96,
+          "rate": 0.010416666666666666
         },
         {
           "mob": "a Bloodchain guard",
@@ -5326,8 +5349,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 51,
-          "rate": 0.0196078431372549
+          "corpses": 56,
+          "rate": 0.017857142857142856
         }
       ],
       "prices": [],
@@ -5395,8 +5418,8 @@
         {
           "mob": "a gruff farmhand",
           "drops": 1,
-          "corpses": 79,
-          "rate": 0.012658227848101266
+          "corpses": 87,
+          "rate": 0.011494252873563218
         }
       ],
       "prices": [],
@@ -5414,8 +5437,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 51,
-          "rate": 0.0196078431372549
+          "corpses": 56,
+          "rate": 0.017857142857142856
         },
         {
           "mob": "a Bloodchain sentry",
@@ -5451,8 +5474,8 @@
         {
           "mob": "a gruff farmhand",
           "drops": 1,
-          "corpses": 79,
-          "rate": 0.012658227848101266
+          "corpses": 87,
+          "rate": 0.011494252873563218
         },
         {
           "mob": "a Bloodchain guard",
@@ -5490,8 +5513,8 @@
         {
           "mob": "a henchman",
           "drops": 1,
-          "corpses": 81,
-          "rate": 0.012345679012345678
+          "corpses": 96,
+          "rate": 0.010416666666666666
         },
         {
           "mob": "a Sangrel striker",
@@ -5537,6 +5560,12 @@
           "rate": 0.024390243902439025
         },
         {
+          "mob": "a hired tracker",
+          "drops": 2,
+          "corpses": 82,
+          "rate": 0.024390243902439025
+        },
+        {
           "mob": "a Sangrel shadowblade",
           "drops": 2,
           "corpses": 115,
@@ -5549,16 +5578,10 @@
           "rate": 0.014925373134328358
         },
         {
-          "mob": "a hired tracker",
-          "drops": 1,
-          "corpses": 70,
-          "rate": 0.014285714285714285
-        },
-        {
           "mob": "a gruff farmhand",
           "drops": 1,
-          "corpses": 79,
-          "rate": 0.012658227848101266
+          "corpses": 87,
+          "rate": 0.011494252873563218
         },
         {
           "mob": "a Bloodchain guard",
@@ -5601,9 +5624,9 @@
         },
         {
           "mob": "a henchman",
-          "drops": 2,
-          "corpses": 81,
-          "rate": 0.024691358024691357
+          "drops": 3,
+          "corpses": 96,
+          "rate": 0.03125
         },
         {
           "mob": "a Sangrel hunter",
@@ -5614,8 +5637,8 @@
         {
           "mob": "a gruff farmhand",
           "drops": 1,
-          "corpses": 79,
-          "rate": 0.012658227848101266
+          "corpses": 87,
+          "rate": 0.011494252873563218
         },
         {
           "mob": "a Bloodchain guard",
@@ -5636,6 +5659,10 @@
           "count": 1
         },
         {
+          "copper": 126,
+          "count": 1
+        },
+        {
           "copper": 135,
           "count": 2
         }
@@ -5643,8 +5670,8 @@
       "harvested": 0,
       "zones": [
         "Keepersbight",
-        "Fallenpass",
         "Sungreetstrand",
+        "Fallenpass",
         "Blacktidebay"
       ]
     },
@@ -5660,16 +5687,16 @@
           "rate": 0.024390243902439025
         },
         {
-          "mob": "a corrupt clergyman",
-          "drops": 1,
-          "corpses": 51,
-          "rate": 0.0196078431372549
-        },
-        {
           "mob": "a Bloodchain guard",
           "drops": 2,
           "corpses": 108,
           "rate": 0.018518518518518517
+        },
+        {
+          "mob": "a corrupt clergyman",
+          "drops": 1,
+          "corpses": 56,
+          "rate": 0.017857142857142856
         },
         {
           "mob": "a Bloodchain sentry",
@@ -5680,14 +5707,20 @@
         {
           "mob": "a sly farmhand",
           "drops": 1,
-          "corpses": 67,
-          "rate": 0.014925373134328358
+          "corpses": 72,
+          "rate": 0.013888888888888888
+        },
+        {
+          "mob": "a hired tracker",
+          "drops": 1,
+          "corpses": 82,
+          "rate": 0.012195121951219513
         },
         {
           "mob": "a gruff farmhand",
           "drops": 1,
-          "corpses": 79,
-          "rate": 0.012658227848101266
+          "corpses": 87,
+          "rate": 0.011494252873563218
         },
         {
           "mob": "a Sangrel striker",
@@ -5709,8 +5742,8 @@
       "harvested": 0,
       "zones": [
         "Blacktidebay",
-        "Keepersbight",
-        "Sungreetstrand"
+        "Sungreetstrand",
+        "Keepersbight"
       ]
     },
     {
@@ -5731,16 +5764,16 @@
           "rate": 0.02857142857142857
         },
         {
-          "mob": "a hired tracker",
-          "drops": 1,
-          "corpses": 70,
-          "rate": 0.014285714285714285
+          "mob": "a bodyguard",
+          "drops": 2,
+          "corpses": 106,
+          "rate": 0.018867924528301886
         },
         {
-          "mob": "a bodyguard",
+          "mob": "a hired tracker",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 82,
+          "rate": 0.012195121951219513
         },
         {
           "mob": "a Sangrel striker",
@@ -5750,6 +5783,10 @@
         }
       ],
       "prices": [
+        {
+          "copper": 126,
+          "count": 1
+        },
         {
           "copper": 135,
           "count": 1
@@ -5783,8 +5820,8 @@
         {
           "mob": "a sly farmhand",
           "drops": 1,
-          "corpses": 67,
-          "rate": 0.014925373134328358
+          "corpses": 72,
+          "rate": 0.013888888888888888
         },
         {
           "mob": "a Sangrel arcanist",
@@ -5825,6 +5862,12 @@
           "rate": 0.07692307692307693
         },
         {
+          "mob": "a burly henchman",
+          "drops": 1,
+          "corpses": 14,
+          "rate": 0.07142857142857142
+        },
+        {
           "mob": "a Sangrel entangler",
           "drops": 2,
           "corpses": 41,
@@ -5839,20 +5882,26 @@
         {
           "mob": "a sly farmhand",
           "drops": 1,
-          "corpses": 67,
-          "rate": 0.014925373134328358
-        },
-        {
-          "mob": "a hired tracker",
-          "drops": 1,
-          "corpses": 70,
-          "rate": 0.014285714285714285
+          "corpses": 72,
+          "rate": 0.013888888888888888
         },
         {
           "mob": "a Sangrel arcanist",
           "drops": 1,
           "corpses": 75,
           "rate": 0.013333333333333334
+        },
+        {
+          "mob": "a hired tracker",
+          "drops": 1,
+          "corpses": 82,
+          "rate": 0.012195121951219513
+        },
+        {
+          "mob": "a henchman",
+          "drops": 1,
+          "corpses": 96,
+          "rate": 0.010416666666666666
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -5892,14 +5941,14 @@
         {
           "mob": "a henchman",
           "drops": 2,
-          "corpses": 81,
-          "rate": 0.024691358024691357
+          "corpses": 96,
+          "rate": 0.020833333333333332
         },
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 51,
-          "rate": 0.0196078431372549
+          "corpses": 56,
+          "rate": 0.017857142857142856
         },
         {
           "mob": "a Sangrel arcanist",
@@ -5957,6 +6006,12 @@
           "rate": 0.012658227848101266
         },
         {
+          "mob": "a henchman",
+          "drops": 1,
+          "corpses": 96,
+          "rate": 0.010416666666666666
+        },
+        {
           "mob": "a Sangrel striker",
           "drops": 1,
           "corpses": 304,
@@ -5967,7 +6022,8 @@
       "harvested": 0,
       "zones": [
         "Keepersbight",
-        "Blacktidebay"
+        "Blacktidebay",
+        "Sungreetstrand"
       ]
     },
     {
@@ -6056,8 +6112,8 @@
         {
           "mob": "a henchman",
           "drops": 2,
-          "corpses": 81,
-          "rate": 0.024691358024691357
+          "corpses": 96,
+          "rate": 0.020833333333333332
         },
         {
           "mob": "a Bloodchain guard",
@@ -6068,14 +6124,14 @@
         {
           "mob": "a hired tracker",
           "drops": 1,
-          "corpses": 70,
-          "rate": 0.014285714285714285
+          "corpses": 82,
+          "rate": 0.012195121951219513
         },
         {
           "mob": "a bodyguard",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 106,
+          "rate": 0.009433962264150943
         }
       ],
       "prices": [
@@ -6131,8 +6187,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 39,
+          "rate": 0.02564102564102564
         }
       ],
       "prices": [
@@ -6168,8 +6224,8 @@
         {
           "mob": "a wasp drone",
           "drops": 1,
-          "corpses": 9,
-          "rate": 0.1111111111111111
+          "corpses": 6,
+          "rate": 0.16666666666666666
         }
       ],
       "prices": [],
@@ -6275,8 +6331,8 @@
         {
           "mob": "a black wolf pup",
           "drops": 4,
-          "corpses": 37,
-          "rate": 0.10810810810810811
+          "corpses": 26,
+          "rate": 0.15384615384615385
         }
       ],
       "prices": [
@@ -6865,9 +6921,9 @@
       "droppedBy": [
         {
           "mob": "a Fellstone warrior",
-          "drops": 4,
-          "corpses": 26,
-          "rate": 0.15384615384615385
+          "drops": 2,
+          "corpses": 23,
+          "rate": 0.08695652173913043
         }
       ],
       "prices": [],
@@ -6901,8 +6957,8 @@
         {
           "mob": "a henchman",
           "drops": 2,
-          "corpses": 81,
-          "rate": 0.024691358024691357
+          "corpses": 96,
+          "rate": 0.020833333333333332
         },
         {
           "mob": "a Sangrel striker",
@@ -6913,8 +6969,8 @@
         {
           "mob": "a sly farmhand",
           "drops": 1,
-          "corpses": 67,
-          "rate": 0.014925373134328358
+          "corpses": 72,
+          "rate": 0.013888888888888888
         },
         {
           "mob": "a Sangrel arcanist",
@@ -6931,17 +6987,21 @@
         {
           "mob": "a gruff farmhand",
           "drops": 1,
-          "corpses": 79,
-          "rate": 0.012658227848101266
+          "corpses": 87,
+          "rate": 0.011494252873563218
         },
         {
           "mob": "a bodyguard",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 106,
+          "rate": 0.009433962264150943
         }
       ],
       "prices": [
+        {
+          "copper": 20,
+          "count": 1
+        },
         {
           "copper": 52,
           "count": 1
@@ -6983,28 +7043,28 @@
           "rate": 0.038461538461538464
         },
         {
-          "mob": "a hired tracker",
-          "drops": 2,
-          "corpses": 70,
-          "rate": 0.02857142857142857
-        },
-        {
           "mob": "a Sangrel arcanist",
           "drops": 2,
           "corpses": 75,
           "rate": 0.02666666666666667
         },
         {
+          "mob": "a hired tracker",
+          "drops": 2,
+          "corpses": 82,
+          "rate": 0.024390243902439025
+        },
+        {
           "mob": "a henchman",
           "drops": 2,
-          "corpses": 81,
-          "rate": 0.024691358024691357
+          "corpses": 96,
+          "rate": 0.020833333333333332
         },
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 51,
-          "rate": 0.0196078431372549
+          "corpses": 56,
+          "rate": 0.017857142857142856
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -7015,14 +7075,14 @@
         {
           "mob": "a sly farmhand",
           "drops": 1,
-          "corpses": 67,
-          "rate": 0.014925373134328358
+          "corpses": 72,
+          "rate": 0.013888888888888888
         },
         {
           "mob": "a bodyguard",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 106,
+          "rate": 0.009433962264150943
         },
         {
           "mob": "a Sangrel striker",
@@ -7062,20 +7122,20 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 51,
-          "rate": 0.0196078431372549
+          "corpses": 56,
+          "rate": 0.017857142857142856
         },
         {
           "mob": "a hired tracker",
           "drops": 1,
-          "corpses": 70,
-          "rate": 0.014285714285714285
+          "corpses": 82,
+          "rate": 0.012195121951219513
         },
         {
           "mob": "a gruff farmhand",
           "drops": 1,
-          "corpses": 79,
-          "rate": 0.012658227848101266
+          "corpses": 87,
+          "rate": 0.011494252873563218
         },
         {
           "mob": "a Sangrel striker",
@@ -7121,14 +7181,14 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 51,
-          "rate": 0.0196078431372549
+          "corpses": 56,
+          "rate": 0.017857142857142856
         },
         {
           "mob": "a hired tracker",
           "drops": 1,
-          "corpses": 70,
-          "rate": 0.014285714285714285
+          "corpses": 82,
+          "rate": 0.012195121951219513
         },
         {
           "mob": "a Sangrel striker",
@@ -7158,20 +7218,20 @@
         {
           "mob": "a sly farmhand",
           "drops": 3,
-          "corpses": 67,
-          "rate": 0.04477611940298507
+          "corpses": 72,
+          "rate": 0.041666666666666664
         },
         {
           "mob": "a gruff farmhand",
           "drops": 1,
-          "corpses": 79,
-          "rate": 0.012658227848101266
+          "corpses": 87,
+          "rate": 0.011494252873563218
         },
         {
           "mob": "a henchman",
           "drops": 1,
-          "corpses": 81,
-          "rate": 0.012345679012345678
+          "corpses": 96,
+          "rate": 0.010416666666666666
         }
       ],
       "prices": [
@@ -7198,22 +7258,16 @@
           "rate": 0.09090909090909091
         },
         {
-          "mob": "a sly farmhand",
-          "drops": 1,
-          "corpses": 67,
-          "rate": 0.014925373134328358
-        },
-        {
-          "mob": "a hired tracker",
-          "drops": 1,
-          "corpses": 70,
-          "rate": 0.014285714285714285
-        },
-        {
           "mob": "a poacher pathfinder",
           "drops": 1,
           "corpses": 71,
           "rate": 0.014084507042253521
+        },
+        {
+          "mob": "a sly farmhand",
+          "drops": 1,
+          "corpses": 72,
+          "rate": 0.013888888888888888
         },
         {
           "mob": "a Sangrel hunter",
@@ -7222,10 +7276,16 @@
           "rate": 0.012658227848101266
         },
         {
+          "mob": "a hired tracker",
+          "drops": 1,
+          "corpses": 82,
+          "rate": 0.012195121951219513
+        },
+        {
           "mob": "a bodyguard",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 106,
+          "rate": 0.009433962264150943
         },
         {
           "mob": "a Sangrel striker",
@@ -7266,8 +7326,14 @@
         {
           "mob": "a sly farmhand",
           "drops": 3,
-          "corpses": 67,
-          "rate": 0.04477611940298507
+          "corpses": 72,
+          "rate": 0.041666666666666664
+        },
+        {
+          "mob": "a henchman",
+          "drops": 2,
+          "corpses": 96,
+          "rate": 0.020833333333333332
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -7278,20 +7344,14 @@
         {
           "mob": "a hired tracker",
           "drops": 1,
-          "corpses": 70,
-          "rate": 0.014285714285714285
+          "corpses": 82,
+          "rate": 0.012195121951219513
         },
         {
           "mob": "a gruff farmhand",
           "drops": 1,
-          "corpses": 79,
-          "rate": 0.012658227848101266
-        },
-        {
-          "mob": "a henchman",
-          "drops": 1,
-          "corpses": 81,
-          "rate": 0.012345679012345678
+          "corpses": 87,
+          "rate": 0.011494252873563218
         },
         {
           "mob": "a Sangrel striker",
@@ -7467,12 +7527,6 @@
           "rate": 0.02666666666666667
         },
         {
-          "mob": "a gruff farmhand",
-          "drops": 2,
-          "corpses": 79,
-          "rate": 0.02531645569620253
-        },
-        {
           "mob": "a poacher bruiser",
           "drops": 4,
           "corpses": 161,
@@ -7485,10 +7539,16 @@
           "rate": 0.024390243902439025
         },
         {
-          "mob": "a hired tracker",
-          "drops": 1,
-          "corpses": 70,
-          "rate": 0.014285714285714285
+          "mob": "a gruff farmhand",
+          "drops": 2,
+          "corpses": 87,
+          "rate": 0.022988505747126436
+        },
+        {
+          "mob": "a bodyguard",
+          "drops": 2,
+          "corpses": 106,
+          "rate": 0.018867924528301886
         },
         {
           "mob": "a poacher pathfinder",
@@ -7503,16 +7563,16 @@
           "rate": 0.012658227848101266
         },
         {
-          "mob": "a henchman",
+          "mob": "a hired tracker",
           "drops": 1,
-          "corpses": 81,
-          "rate": 0.012345679012345678
+          "corpses": 82,
+          "rate": 0.012195121951219513
         },
         {
-          "mob": "a bodyguard",
+          "mob": "a henchman",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 96,
+          "rate": 0.010416666666666666
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -7575,7 +7635,7 @@
       "name": "Ghost Poppy",
       "droppedBy": [],
       "prices": [],
-      "harvested": 25,
+      "harvested": 22,
       "zones": [
         "Evershade Weald",
         "Shaded Dunes"
@@ -7898,9 +7958,9 @@
         },
         {
           "mob": "a dismal cur",
-          "drops": 9,
-          "corpses": 33,
-          "rate": 0.2727272727272727
+          "drops": 10,
+          "corpses": 38,
+          "rate": 0.2631578947368421
         }
       ],
       "prices": [
@@ -8040,22 +8100,28 @@
           "rate": 0.23076923076923078
         },
         {
-          "mob": "a burly henchman",
-          "drops": 2,
-          "corpses": 10,
-          "rate": 0.2
+          "mob": "a henchman",
+          "drops": 22,
+          "corpses": 96,
+          "rate": 0.22916666666666666
         },
         {
-          "mob": "a henchman",
-          "drops": 16,
-          "corpses": 81,
-          "rate": 0.19753086419753085
+          "mob": "a burly henchman",
+          "drops": 3,
+          "corpses": 14,
+          "rate": 0.21428571428571427
         },
         {
           "mob": "a Bloodchain guard",
           "drops": 20,
           "corpses": 108,
           "rate": 0.18518518518518517
+        },
+        {
+          "mob": "a gruff farmhand",
+          "drops": 16,
+          "corpses": 87,
+          "rate": 0.1839080459770115
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -8070,16 +8136,10 @@
           "rate": 0.1791044776119403
         },
         {
-          "mob": "a gruff farmhand",
-          "drops": 14,
-          "corpses": 79,
-          "rate": 0.17721518987341772
-        },
-        {
           "mob": "a bodyguard",
-          "drops": 15,
-          "corpses": 89,
-          "rate": 0.16853932584269662
+          "drops": 18,
+          "corpses": 106,
+          "rate": 0.16981132075471697
         },
         {
           "mob": "a Bloodchain champion",
@@ -8095,9 +8155,9 @@
         },
         {
           "mob": "a sly farmhand",
-          "drops": 10,
-          "corpses": 67,
-          "rate": 0.14925373134328357
+          "drops": 11,
+          "corpses": 72,
+          "rate": 0.1527777777777778
         },
         {
           "mob": "a Sangrel striker",
@@ -8118,22 +8178,22 @@
           "rate": 0.1111111111111111
         },
         {
+          "mob": "a hired tracker",
+          "drops": 9,
+          "corpses": 82,
+          "rate": 0.10975609756097561
+        },
+        {
           "mob": "a Sangrel hunter",
           "drops": 8,
           "corpses": 79,
           "rate": 0.10126582278481013
         },
         {
-          "mob": "a hired tracker",
-          "drops": 7,
-          "corpses": 70,
-          "rate": 0.1
-        },
-        {
           "mob": "a corrupt clergyman",
-          "drops": 4,
-          "corpses": 51,
-          "rate": 0.0784313725490196
+          "drops": 5,
+          "corpses": 56,
+          "rate": 0.08928571428571429
         },
         {
           "mob": "a Bloodchain soulherder",
@@ -8565,8 +8625,8 @@
         {
           "mob": "a large black bat",
           "drops": 1,
-          "corpses": 7,
-          "rate": 0.14285714285714285
+          "corpses": 6,
+          "rate": 0.16666666666666666
         }
       ],
       "prices": [
@@ -8587,15 +8647,15 @@
       "droppedBy": [
         {
           "mob": "a large black bat",
-          "drops": 2,
-          "corpses": 7,
-          "rate": 0.2857142857142857
+          "drops": 1,
+          "corpses": 6,
+          "rate": 0.16666666666666666
         }
       ],
       "prices": [
         {
           "copper": 7,
-          "count": 2
+          "count": 1
         }
       ],
       "harvested": 0,
@@ -8648,8 +8708,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 7,
-          "corpses": 26,
-          "rate": 0.2692307692307692
+          "corpses": 23,
+          "rate": 0.30434782608695654
         },
         {
           "mob": "a Fellstone sentry",
@@ -8749,10 +8809,22 @@
           "rate": 0.08333333333333333
         },
         {
+          "mob": "a henchman",
+          "drops": 4,
+          "corpses": 96,
+          "rate": 0.041666666666666664
+        },
+        {
           "mob": "a corrupt clergyman",
           "drops": 2,
-          "corpses": 51,
-          "rate": 0.0392156862745098
+          "corpses": 56,
+          "rate": 0.03571428571428571
+        },
+        {
+          "mob": "a bodyguard",
+          "drops": 3,
+          "corpses": 106,
+          "rate": 0.02830188679245283
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -8761,28 +8833,22 @@
           "rate": 0.02608695652173913
         },
         {
-          "mob": "a gruff farmhand",
-          "drops": 2,
-          "corpses": 79,
-          "rate": 0.02531645569620253
-        },
-        {
-          "mob": "a henchman",
-          "drops": 2,
-          "corpses": 81,
-          "rate": 0.024691358024691357
-        },
-        {
           "mob": "a Sangrel entangler",
           "drops": 1,
           "corpses": 41,
           "rate": 0.024390243902439025
         },
         {
-          "mob": "a bodyguard",
+          "mob": "a hired tracker",
           "drops": 2,
-          "corpses": 89,
-          "rate": 0.02247191011235955
+          "corpses": 82,
+          "rate": 0.024390243902439025
+        },
+        {
+          "mob": "a gruff farmhand",
+          "drops": 2,
+          "corpses": 87,
+          "rate": 0.022988505747126436
         },
         {
           "mob": "a poacher bruiser",
@@ -8793,14 +8859,8 @@
         {
           "mob": "a sly farmhand",
           "drops": 1,
-          "corpses": 67,
-          "rate": 0.014925373134328358
-        },
-        {
-          "mob": "a hired tracker",
-          "drops": 1,
-          "corpses": 70,
-          "rate": 0.014285714285714285
+          "corpses": 72,
+          "rate": 0.013888888888888888
         },
         {
           "mob": "a Sangrel arcanist",
@@ -8823,8 +8883,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Keepersbight",
         "Sungreetstrand",
+        "Keepersbight",
         "Evershade Weald",
         "Blacktidebay"
       ]
@@ -8840,7 +8900,7 @@
           "count": 1
         }
       ],
-      "harvested": 245,
+      "harvested": 251,
       "zones": [
         "Sungreetstrand",
         "Scarwood",
@@ -8891,9 +8951,9 @@
         },
         {
           "mob": "a black wolf pup",
-          "drops": 11,
-          "corpses": 37,
-          "rate": 0.2972972972972973
+          "drops": 7,
+          "corpses": 26,
+          "rate": 0.2692307692307692
         },
         {
           "mob": "a beguiled wolf",
@@ -8917,8 +8977,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Evershade Weald",
         "Blacktidebay",
+        "Evershade Weald",
         "Keepersbight"
       ]
     },
@@ -9114,9 +9174,9 @@
         },
         {
           "mob": "a dismal cur",
-          "drops": 10,
-          "corpses": 33,
-          "rate": 0.30303030303030304
+          "drops": 12,
+          "corpses": 38,
+          "rate": 0.3157894736842105
         }
       ],
       "prices": [],
@@ -9212,16 +9272,16 @@
           "rate": 0.034782608695652174
         },
         {
-          "mob": "a corrupt clergyman",
-          "drops": 1,
-          "corpses": 51,
-          "rate": 0.0196078431372549
-        },
-        {
           "mob": "a poacher bruiser",
           "drops": 3,
           "corpses": 161,
           "rate": 0.018633540372670808
+        },
+        {
+          "mob": "a corrupt clergyman",
+          "drops": 1,
+          "corpses": 56,
+          "rate": 0.017857142857142856
         },
         {
           "mob": "a poacher pathfinder",
@@ -9230,16 +9290,22 @@
           "rate": 0.014084507042253521
         },
         {
+          "mob": "a sly farmhand",
+          "drops": 1,
+          "corpses": 72,
+          "rate": 0.013888888888888888
+        },
+        {
           "mob": "a henchman",
           "drops": 1,
-          "corpses": 81,
-          "rate": 0.012345679012345678
+          "corpses": 96,
+          "rate": 0.010416666666666666
         },
         {
           "mob": "a bodyguard",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 106,
+          "rate": 0.009433962264150943
         }
       ],
       "prices": [],
@@ -9278,8 +9344,8 @@
         {
           "mob": "a burly henchman",
           "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
+          "corpses": 14,
+          "rate": 0.07142857142857142
         },
         {
           "mob": "a Sangrel arcanist",
@@ -9288,22 +9354,16 @@
           "rate": 0.04
         },
         {
+          "mob": "a henchman",
+          "drops": 3,
+          "corpses": 96,
+          "rate": 0.03125
+        },
+        {
           "mob": "a Sangrel shadowblade",
           "drops": 3,
           "corpses": 115,
           "rate": 0.02608695652173913
-        },
-        {
-          "mob": "a henchman",
-          "drops": 2,
-          "corpses": 81,
-          "rate": 0.024691358024691357
-        },
-        {
-          "mob": "a corrupt clergyman",
-          "drops": 1,
-          "corpses": 51,
-          "rate": 0.0196078431372549
         },
         {
           "mob": "a poacher bruiser",
@@ -9312,22 +9372,34 @@
           "rate": 0.018633540372670808
         },
         {
+          "mob": "a corrupt clergyman",
+          "drops": 1,
+          "corpses": 56,
+          "rate": 0.017857142857142856
+        },
+        {
           "mob": "a Sangrel striker",
           "drops": 5,
           "corpses": 304,
           "rate": 0.01644736842105263
         },
         {
-          "mob": "a sly farmhand",
-          "drops": 1,
-          "corpses": 67,
-          "rate": 0.014925373134328358
-        },
-        {
           "mob": "a poacher pathfinder",
           "drops": 1,
           "corpses": 71,
           "rate": 0.014084507042253521
+        },
+        {
+          "mob": "a sly farmhand",
+          "drops": 1,
+          "corpses": 72,
+          "rate": 0.013888888888888888
+        },
+        {
+          "mob": "a hired tracker",
+          "drops": 1,
+          "corpses": 82,
+          "rate": 0.012195121951219513
         }
       ],
       "prices": [
@@ -9425,34 +9497,34 @@
           "rate": 0.5714285714285714
         },
         {
+          "mob": "a henchman",
+          "drops": 45,
+          "corpses": 96,
+          "rate": 0.46875
+        },
+        {
           "mob": "a Dustrend foot soldier",
           "drops": 16,
           "corpses": 35,
           "rate": 0.45714285714285713
         },
         {
-          "mob": "a henchman",
-          "drops": 35,
-          "corpses": 81,
-          "rate": 0.43209876543209874
-        },
-        {
           "mob": "a burly henchman",
-          "drops": 4,
-          "corpses": 10,
-          "rate": 0.4
+          "drops": 6,
+          "corpses": 14,
+          "rate": 0.42857142857142855
         },
         {
           "mob": "a bodyguard",
-          "drops": 35,
-          "corpses": 89,
-          "rate": 0.39325842696629215
+          "drops": 44,
+          "corpses": 106,
+          "rate": 0.41509433962264153
         },
         {
           "mob": "a corrupt clergyman",
-          "drops": 18,
-          "corpses": 51,
-          "rate": 0.35294117647058826
+          "drops": 19,
+          "corpses": 56,
+          "rate": 0.3392857142857143
         },
         {
           "mob": "a Dustrend priest",
@@ -9462,9 +9534,9 @@
         },
         {
           "mob": "a hired tracker",
-          "drops": 19,
-          "corpses": 70,
-          "rate": 0.2714285714285714
+          "drops": 23,
+          "corpses": 82,
+          "rate": 0.2804878048780488
         },
         {
           "mob": "a poacher pathfinder",
@@ -9482,7 +9554,7 @@
       "prices": [
         {
           "copper": 105,
-          "count": 4
+          "count": 5
         }
       ],
       "harvested": 0,
@@ -9500,14 +9572,8 @@
         {
           "mob": "a burly henchman",
           "drops": 1,
-          "corpses": 10,
-          "rate": 0.1
-        },
-        {
-          "mob": "a henchman",
-          "drops": 3,
-          "corpses": 81,
-          "rate": 0.037037037037037035
+          "corpses": 14,
+          "rate": 0.07142857142857142
         },
         {
           "mob": "a Sangrel striker",
@@ -9516,10 +9582,16 @@
           "rate": 0.03289473684210526
         },
         {
+          "mob": "a henchman",
+          "drops": 3,
+          "corpses": 96,
+          "rate": 0.03125
+        },
+        {
           "mob": "a sly farmhand",
           "drops": 2,
-          "corpses": 67,
-          "rate": 0.029850746268656716
+          "corpses": 72,
+          "rate": 0.027777777777777776
         },
         {
           "mob": "a Sangrel arcanist",
@@ -9540,16 +9612,16 @@
           "rate": 0.024390243902439025
         },
         {
+          "mob": "a gruff farmhand",
+          "drops": 2,
+          "corpses": 87,
+          "rate": 0.022988505747126436
+        },
+        {
           "mob": "a Sangrel shadowblade",
           "drops": 2,
           "corpses": 115,
           "rate": 0.017391304347826087
-        },
-        {
-          "mob": "a hired tracker",
-          "drops": 1,
-          "corpses": 70,
-          "rate": 0.014285714285714285
         },
         {
           "mob": "a poacher pathfinder",
@@ -9564,16 +9636,16 @@
           "rate": 0.012658227848101266
         },
         {
-          "mob": "a gruff farmhand",
+          "mob": "a hired tracker",
           "drops": 1,
-          "corpses": 79,
-          "rate": 0.012658227848101266
+          "corpses": 82,
+          "rate": 0.012195121951219513
         },
         {
           "mob": "a bodyguard",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 106,
+          "rate": 0.009433962264150943
         }
       ],
       "prices": [
@@ -9711,20 +9783,20 @@
         {
           "mob": "a large black bat",
           "drops": 5,
-          "corpses": 7,
-          "rate": 0.7142857142857143
+          "corpses": 6,
+          "rate": 0.8333333333333334
         },
         {
           "mob": "a black bat",
-          "drops": 6,
-          "corpses": 31,
-          "rate": 0.1935483870967742
+          "drops": 2,
+          "corpses": 13,
+          "rate": 0.15384615384615385
         }
       ],
       "prices": [
         {
           "copper": 3,
-          "count": 6
+          "count": 4
         }
       ],
       "harvested": 0,
@@ -9849,22 +9921,22 @@
           "rate": 0.28695652173913044
         },
         {
+          "mob": "a corrupt clergyman",
+          "drops": 16,
+          "corpses": 56,
+          "rate": 0.2857142857142857
+        },
+        {
           "mob": "a poacher bruiser",
           "drops": 45,
           "corpses": 161,
           "rate": 0.2795031055900621
         },
         {
-          "mob": "a corrupt clergyman",
-          "drops": 14,
-          "corpses": 51,
-          "rate": 0.27450980392156865
-        },
-        {
           "mob": "a hired tracker",
-          "drops": 18,
-          "corpses": 70,
-          "rate": 0.2571428571428571
+          "drops": 21,
+          "corpses": 82,
+          "rate": 0.25609756097560976
         },
         {
           "mob": "a captured dockhand",
@@ -9887,14 +9959,14 @@
         {
           "mob": "a bodyguard",
           "drops": 22,
-          "corpses": 89,
-          "rate": 0.24719101123595505
+          "corpses": 106,
+          "rate": 0.20754716981132076
         },
         {
           "mob": "a gruff farmhand",
           "drops": 18,
-          "corpses": 79,
-          "rate": 0.22784810126582278
+          "corpses": 87,
+          "rate": 0.20689655172413793
         },
         {
           "mob": "a Sangrel hunter",
@@ -9909,16 +9981,16 @@
           "rate": 0.20065789473684212
         },
         {
-          "mob": "a burly henchman",
-          "drops": 2,
-          "corpses": 10,
-          "rate": 0.2
-        },
-        {
           "mob": "a Sangrel grappler",
           "drops": 5,
           "corpses": 26,
           "rate": 0.19230769230769232
+        },
+        {
+          "mob": "a henchman",
+          "drops": 18,
+          "corpses": 96,
+          "rate": 0.1875
         },
         {
           "mob": "a poacher pathfinder",
@@ -9939,16 +10011,16 @@
           "rate": 0.17073170731707318
         },
         {
-          "mob": "a henchman",
-          "drops": 12,
-          "corpses": 81,
-          "rate": 0.14814814814814814
+          "mob": "a burly henchman",
+          "drops": 2,
+          "corpses": 14,
+          "rate": 0.14285714285714285
         },
         {
           "mob": "a sly farmhand",
           "drops": 8,
-          "corpses": 67,
-          "rate": 0.11940298507462686
+          "corpses": 72,
+          "rate": 0.1111111111111111
         },
         {
           "mob": "a sullen farmhand",
@@ -10044,6 +10116,12 @@
           "rate": 0.2206896551724138
         },
         {
+          "mob": "a Fellstone warrior",
+          "drops": 5,
+          "corpses": 23,
+          "rate": 0.21739130434782608
+        },
+        {
           "mob": "a Bloodchain sentry",
           "drops": 14,
           "corpses": 67,
@@ -10060,12 +10138,6 @@
           "drops": 1,
           "corpses": 5,
           "rate": 0.2
-        },
-        {
-          "mob": "a Fellstone warrior",
-          "drops": 5,
-          "corpses": 26,
-          "rate": 0.19230769230769232
         },
         {
           "mob": "a Dustrend foot soldier",
@@ -10188,22 +10260,22 @@
           "rate": 0.3333333333333333
         },
         {
-          "mob": "a black wolf pup",
-          "drops": 8,
-          "corpses": 37,
-          "rate": 0.21621621621621623
-        },
-        {
           "mob": "a trained wolf",
           "drops": 8,
           "corpses": 38,
           "rate": 0.21052631578947367
         },
         {
+          "mob": "a black wolf pup",
+          "drops": 5,
+          "corpses": 26,
+          "rate": 0.19230769230769232
+        },
+        {
           "mob": "a dismal cur",
-          "drops": 6,
-          "corpses": 33,
-          "rate": 0.18181818181818182
+          "drops": 7,
+          "corpses": 38,
+          "rate": 0.18421052631578946
         },
         {
           "mob": "a shadow wolf",
@@ -10215,7 +10287,7 @@
       "prices": [
         {
           "copper": 1,
-          "count": 5
+          "count": 3
         },
         {
           "copper": 3,
@@ -10228,9 +10300,9 @@
       ],
       "harvested": 0,
       "zones": [
-        "Evershade Weald",
         "Blacktidebay",
         "Keepersbight",
+        "Evershade Weald",
         "Sungreetstrand",
         "Valeofzintar",
         "Scarwood"
@@ -10353,8 +10425,8 @@
         {
           "mob": "a skeleton",
           "drops": 7,
-          "corpses": 87,
-          "rate": 0.08045977011494253
+          "corpses": 86,
+          "rate": 0.08139534883720931
         },
         {
           "mob": "a Fellstone ragecaller",
@@ -10377,8 +10449,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 26,
-          "rate": 0.038461538461538464
+          "corpses": 23,
+          "rate": 0.043478260869565216
         }
       ],
       "prices": [],
@@ -10418,10 +10490,10 @@
           "count": 11
         }
       ],
-      "harvested": 541,
+      "harvested": 532,
       "zones": [
-        "Evershade Weald",
         "Keepersbight",
+        "Evershade Weald",
         "Sungreetstrand"
       ]
     },
@@ -10539,16 +10611,16 @@
       "name": "Royal Jelly",
       "droppedBy": [
         {
+          "mob": "a wasp drone",
+          "drops": 2,
+          "corpses": 6,
+          "rate": 0.3333333333333333
+        },
+        {
           "mob": "a wasp worker",
           "drops": 2,
           "corpses": 8,
           "rate": 0.25
-        },
-        {
-          "mob": "a wasp drone",
-          "drops": 2,
-          "corpses": 9,
-          "rate": 0.2222222222222222
         }
       ],
       "prices": [],
@@ -10619,8 +10691,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a Fellstone sentry",
@@ -10655,14 +10727,8 @@
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 87,
-          "rate": 0.022988505747126436
-        },
-        {
-          "mob": "a rotting skeleton",
-          "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 86,
+          "rate": 0.023255813953488372
         },
         {
           "mob": "a Fellstone sentry",
@@ -10674,7 +10740,7 @@
       "prices": [
         {
           "copper": 25,
-          "count": 3
+          "count": 2
         }
       ],
       "harvested": 0,
@@ -10703,8 +10769,8 @@
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 87,
-          "rate": 0.022988505747126436
+          "corpses": 86,
+          "rate": 0.023255813953488372
         }
       ],
       "prices": [
@@ -10731,8 +10797,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 26,
-          "rate": 0.038461538461538464
+          "corpses": 23,
+          "rate": 0.043478260869565216
         },
         {
           "mob": "an old elven skeleton",
@@ -10765,16 +10831,16 @@
       "name": "Rusty Greatsword",
       "droppedBy": [
         {
-          "mob": "a Fellstone warrior",
-          "drops": 2,
-          "corpses": 26,
-          "rate": 0.07692307692307693
-        },
-        {
           "mob": "a Calafreyan soldier",
           "drops": 1,
           "corpses": 20,
           "rate": 0.05
+        },
+        {
+          "mob": "a Fellstone warrior",
+          "drops": 1,
+          "corpses": 23,
+          "rate": 0.043478260869565216
         },
         {
           "mob": "a Fellstone defiler",
@@ -10796,10 +10862,6 @@
         }
       ],
       "prices": [
-        {
-          "copper": 25,
-          "count": 1
-        },
         {
           "copper": 26,
           "count": 1
@@ -11423,6 +11485,12 @@
           "rate": 0.02912621359223301
         },
         {
+          "mob": "a rotting skeleton",
+          "drops": 1,
+          "corpses": 39,
+          "rate": 0.02564102564102564
+        },
+        {
           "mob": "an old elven skeleton",
           "drops": 1,
           "corpses": 40,
@@ -11431,14 +11499,8 @@
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 87,
-          "rate": 0.022988505747126436
-        },
-        {
-          "mob": "a rotting skeleton",
-          "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 86,
+          "rate": 0.023255813953488372
         }
       ],
       "prices": [
@@ -11459,24 +11521,13 @@
       "name": "Rusty Long Spear",
       "droppedBy": [
         {
-          "mob": "a rotting skeleton",
-          "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
-        },
-        {
           "mob": "a Fellstone guard",
           "drops": 1,
           "corpses": 119,
           "rate": 0.008403361344537815
         }
       ],
-      "prices": [
-        {
-          "copper": 25,
-          "count": 1
-        }
-      ],
+      "prices": [],
       "harvested": 0,
       "zones": [
         "Evershade Weald"
@@ -11556,8 +11607,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 87,
-          "rate": 0.011494252873563218
+          "corpses": 86,
+          "rate": 0.011627906976744186
         },
         {
           "mob": "a Fellstone guard",
@@ -11608,8 +11659,8 @@
         {
           "mob": "a Fellstone scout",
           "drops": 1,
-          "corpses": 17,
-          "rate": 0.058823529411764705
+          "corpses": 12,
+          "rate": 0.08333333333333333
         },
         {
           "mob": "an old elven skeleton",
@@ -11650,14 +11701,14 @@
         {
           "mob": "a Fellstone scout",
           "drops": 1,
-          "corpses": 17,
-          "rate": 0.058823529411764705
+          "corpses": 12,
+          "rate": 0.08333333333333333
         },
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 26,
-          "rate": 0.038461538461538464
+          "corpses": 23,
+          "rate": 0.043478260869565216
         },
         {
           "mob": "a Fellstone sentinel",
@@ -11727,20 +11778,20 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 26,
-          "rate": 0.038461538461538464
-        },
-        {
-          "mob": "a skeleton",
-          "drops": 2,
-          "corpses": 87,
-          "rate": 0.022988505747126436
+          "corpses": 23,
+          "rate": 0.043478260869565216
         },
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 39,
+          "rate": 0.02564102564102564
+        },
+        {
+          "mob": "a skeleton",
+          "drops": 2,
+          "corpses": 86,
+          "rate": 0.023255813953488372
         },
         {
           "mob": "a Fellstone guard",
@@ -11775,14 +11826,14 @@
         {
           "mob": "a Fellstone scout",
           "drops": 1,
-          "corpses": 17,
-          "rate": 0.058823529411764705
+          "corpses": 12,
+          "rate": 0.08333333333333333
         },
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a Fellstone sentry",
@@ -11815,8 +11866,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 26,
-          "rate": 0.038461538461538464
+          "corpses": 23,
+          "rate": 0.043478260869565216
         },
         {
           "mob": "a Fellstone sentinel",
@@ -11827,8 +11878,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 87,
-          "rate": 0.011494252873563218
+          "corpses": 86,
+          "rate": 0.011627906976744186
         }
       ],
       "prices": [
@@ -11857,8 +11908,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 87,
-          "rate": 0.011494252873563218
+          "corpses": 86,
+          "rate": 0.011627906976744186
         },
         {
           "mob": "a Fellstone guard",
@@ -11890,8 +11941,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 2,
-          "corpses": 56,
-          "rate": 0.03571428571428571
+          "corpses": 39,
+          "rate": 0.05128205128205128
         },
         {
           "mob": "a Fellstone tracker",
@@ -12141,8 +12192,8 @@
         {
           "mob": "a dismal cur",
           "drops": 5,
-          "corpses": 33,
-          "rate": 0.15151515151515152
+          "corpses": 38,
+          "rate": 0.13157894736842105
         }
       ],
       "prices": [
@@ -12254,9 +12305,9 @@
         },
         {
           "mob": "a dismal cur",
-          "drops": 13,
-          "corpses": 33,
-          "rate": 0.3939393939393939
+          "drops": 17,
+          "corpses": 38,
+          "rate": 0.4473684210526316
         }
       ],
       "prices": [
@@ -12331,14 +12382,8 @@
         {
           "mob": "a skeleton",
           "drops": 3,
-          "corpses": 87,
-          "rate": 0.034482758620689655
-        },
-        {
-          "mob": "a rotting skeleton",
-          "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 86,
+          "rate": 0.03488372093023256
         }
       ],
       "prices": [],
@@ -12418,16 +12463,16 @@
           "rate": 0.5
         },
         {
-          "mob": "a gruff farmhand",
-          "drops": 37,
-          "corpses": 79,
-          "rate": 0.46835443037974683
-        },
-        {
           "mob": "a Bloodchain sentry",
           "drops": 31,
           "corpses": 67,
           "rate": 0.4626865671641791
+        },
+        {
+          "mob": "a gruff farmhand",
+          "drops": 40,
+          "corpses": 87,
+          "rate": 0.45977011494252873
         },
         {
           "mob": "a Bloodchain soulherder",
@@ -12437,9 +12482,9 @@
         },
         {
           "mob": "a sly farmhand",
-          "drops": 27,
-          "corpses": 67,
-          "rate": 0.40298507462686567
+          "drops": 30,
+          "corpses": 72,
+          "rate": 0.4166666666666667
         },
         {
           "mob": "Mirella Nighthorn",
@@ -12456,14 +12501,14 @@
         {
           "mob": "a hired tracker",
           "drops": 11,
-          "corpses": 70,
-          "rate": 0.15714285714285714
+          "corpses": 82,
+          "rate": 0.13414634146341464
         },
         {
           "mob": "a corrupt clergyman",
           "drops": 7,
-          "corpses": 51,
-          "rate": 0.13725490196078433
+          "corpses": 56,
+          "rate": 0.125
         },
         {
           "mob": "a Bloodchain guard",
@@ -12511,7 +12556,7 @@
       "prices": [
         {
           "copper": 65,
-          "count": 2
+          "count": 3
         },
         {
           "copper": 70,
@@ -12532,9 +12577,9 @@
       "droppedBy": [
         {
           "mob": "a rotting skeleton",
-          "drops": 6,
-          "corpses": 56,
-          "rate": 0.10714285714285714
+          "drops": 3,
+          "corpses": 39,
+          "rate": 0.07692307692307693
         }
       ],
       "prices": [
@@ -12626,16 +12671,16 @@
           "rate": 0.6666666666666666
         },
         {
-          "mob": "a black widow hatchling",
-          "drops": 10,
-          "corpses": 27,
-          "rate": 0.37037037037037035
-        },
-        {
           "mob": "a deadwood recluse",
           "drops": 8,
           "corpses": 22,
           "rate": 0.36363636363636365
+        },
+        {
+          "mob": "a black widow hatchling",
+          "drops": 9,
+          "corpses": 25,
+          "rate": 0.36
         },
         {
           "mob": "a black widow",
@@ -12669,16 +12714,16 @@
           "rate": 0.8181818181818182
         },
         {
+          "mob": "a black widow hatchling",
+          "drops": 19,
+          "corpses": 25,
+          "rate": 0.76
+        },
+        {
           "mob": "a black widow",
           "drops": 6,
           "corpses": 8,
           "rate": 0.75
-        },
-        {
-          "mob": "a black widow hatchling",
-          "drops": 20,
-          "corpses": 27,
-          "rate": 0.7407407407407407
         },
         {
           "mob": "a gloom widow",
@@ -12690,7 +12735,7 @@
       "prices": [
         {
           "copper": 2,
-          "count": 3
+          "count": 2
         },
         {
           "copper": 5,
@@ -12724,8 +12769,8 @@
         {
           "mob": "a black widow hatchling",
           "drops": 3,
-          "corpses": 27,
-          "rate": 0.1111111111111111
+          "corpses": 25,
+          "rate": 0.12
         }
       ],
       "prices": [
@@ -12987,8 +13032,8 @@
         {
           "mob": "a Fellstone scout",
           "drops": 2,
-          "corpses": 17,
-          "rate": 0.11764705882352941
+          "corpses": 12,
+          "rate": 0.16666666666666666
         },
         {
           "mob": "a fossergrim watcher",
@@ -12999,8 +13044,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 87,
-          "rate": 0.011494252873563218
+          "corpses": 86,
+          "rate": 0.011627906976744186
         },
         {
           "mob": "a Fellstone guard",
@@ -13042,8 +13087,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a Fellstone guard",
@@ -13054,8 +13099,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 87,
-          "rate": 0.011494252873563218
+          "corpses": 86,
+          "rate": 0.011627906976744186
         },
         {
           "mob": "a Fellstone sentry",
@@ -13087,12 +13132,6 @@
           "drops": 1,
           "corpses": 8,
           "rate": 0.125
-        },
-        {
-          "mob": "a rotting skeleton",
-          "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
         },
         {
           "mob": "a Fellstone guard",
@@ -13141,14 +13180,14 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 87,
-          "rate": 0.011494252873563218
+          "corpses": 86,
+          "rate": 0.011627906976744186
         },
         {
           "mob": "a Fellstone sentinel",
@@ -13202,14 +13241,14 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 26,
-          "rate": 0.038461538461538464
+          "corpses": 23,
+          "rate": 0.043478260869565216
         },
         {
           "mob": "a skeleton",
           "drops": 3,
-          "corpses": 87,
-          "rate": 0.034482758620689655
+          "corpses": 86,
+          "rate": 0.03488372093023256
         },
         {
           "mob": "a Fellstone sentinel",
@@ -13299,6 +13338,12 @@
           "rate": 0.05555555555555555
         },
         {
+          "mob": "a rotting skeleton",
+          "drops": 1,
+          "corpses": 39,
+          "rate": 0.02564102564102564
+        },
+        {
           "mob": "an old elven skeleton",
           "drops": 1,
           "corpses": 40,
@@ -13307,14 +13352,8 @@
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 87,
-          "rate": 0.022988505747126436
-        },
-        {
-          "mob": "a rotting skeleton",
-          "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 86,
+          "rate": 0.023255813953488372
         },
         {
           "mob": "a Fellstone sentry",
@@ -13336,16 +13375,16 @@
       "name": "Tattered Cloth Mantle",
       "droppedBy": [
         {
-          "mob": "a Fellstone scout",
-          "drops": 1,
-          "corpses": 17,
-          "rate": 0.058823529411764705
-        },
-        {
           "mob": "a Fellstone tracker",
           "drops": 1,
           "corpses": 37,
           "rate": 0.02702702702702703
+        },
+        {
+          "mob": "a rotting skeleton",
+          "drops": 1,
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "an old elven skeleton",
@@ -13354,16 +13393,10 @@
           "rate": 0.025
         },
         {
-          "mob": "a rotting skeleton",
-          "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
-        },
-        {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 87,
-          "rate": 0.011494252873563218
+          "corpses": 86,
+          "rate": 0.011627906976744186
         }
       ],
       "prices": [],
@@ -13392,8 +13425,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 26,
-          "rate": 0.038461538461538464
+          "corpses": 23,
+          "rate": 0.043478260869565216
         },
         {
           "mob": "a Fellstone defiler",
@@ -13412,12 +13445,6 @@
           "drops": 1,
           "corpses": 46,
           "rate": 0.021739130434782608
-        },
-        {
-          "mob": "a skeleton",
-          "drops": 1,
-          "corpses": 87,
-          "rate": 0.011494252873563218
         },
         {
           "mob": "a Fellstone sentinel",
@@ -13451,28 +13478,28 @@
       "name": "Tattered Cloth Robe",
       "droppedBy": [
         {
+          "mob": "a Fellstone warrior",
+          "drops": 1,
+          "corpses": 23,
+          "rate": 0.043478260869565216
+        },
+        {
           "mob": "a Fellstone ragecaller",
           "drops": 2,
           "corpses": 46,
           "rate": 0.043478260869565216
         },
         {
-          "mob": "a Fellstone warrior",
-          "drops": 1,
-          "corpses": 26,
-          "rate": 0.038461538461538464
-        },
-        {
-          "mob": "a rotting skeleton",
-          "drops": 2,
-          "corpses": 56,
-          "rate": 0.03571428571428571
-        },
-        {
           "mob": "a Fellstone defiler",
           "drops": 1,
           "corpses": 35,
           "rate": 0.02857142857142857
+        },
+        {
+          "mob": "a rotting skeleton",
+          "drops": 1,
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "an old elven skeleton",
@@ -13483,8 +13510,8 @@
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 87,
-          "rate": 0.022988505747126436
+          "corpses": 86,
+          "rate": 0.023255813953488372
         },
         {
           "mob": "a Fellstone guard",
@@ -13493,12 +13520,7 @@
           "rate": 0.008403361344537815
         }
       ],
-      "prices": [
-        {
-          "copper": 37,
-          "count": 1
-        }
-      ],
+      "prices": [],
       "harvested": 0,
       "zones": [
         "Evershade Weald",
@@ -13513,14 +13535,14 @@
         {
           "mob": "a skeleton",
           "drops": 5,
-          "corpses": 87,
-          "rate": 0.05747126436781609
+          "corpses": 86,
+          "rate": 0.05813953488372093
         },
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a Fellstone guard",
@@ -13542,16 +13564,16 @@
       "name": "Tattered Cloth Tunic",
       "droppedBy": [
         {
+          "mob": "a rotting skeleton",
+          "drops": 1,
+          "corpses": 39,
+          "rate": 0.02564102564102564
+        },
+        {
           "mob": "a Fellstone ragecaller",
           "drops": 1,
           "corpses": 46,
           "rate": 0.021739130434782608
-        },
-        {
-          "mob": "a rotting skeleton",
-          "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
         },
         {
           "mob": "a Fellstone sentry",
@@ -13562,8 +13584,8 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 87,
-          "rate": 0.011494252873563218
+          "corpses": 86,
+          "rate": 0.011627906976744186
         },
         {
           "mob": "a Fellstone guard",
@@ -13599,8 +13621,8 @@
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 87,
-          "rate": 0.022988505747126436
+          "corpses": 86,
+          "rate": 0.023255813953488372
         },
         {
           "mob": "a Fellstone sentry",
@@ -13786,8 +13808,8 @@
         {
           "mob": "a sly farmhand",
           "drops": 1,
-          "corpses": 67,
-          "rate": 0.014925373134328358
+          "corpses": 72,
+          "rate": 0.013888888888888888
         },
         {
           "mob": "a Sangrel hunter",
@@ -13849,8 +13871,8 @@
         {
           "mob": "a henchman",
           "drops": 1,
-          "corpses": 81,
-          "rate": 0.012345679012345678
+          "corpses": 96,
+          "rate": 0.010416666666666666
         }
       ],
       "prices": [],
@@ -13874,14 +13896,14 @@
         {
           "mob": "a hired tracker",
           "drops": 1,
-          "corpses": 70,
-          "rate": 0.014285714285714285
+          "corpses": 82,
+          "rate": 0.012195121951219513
         },
         {
           "mob": "a gruff farmhand",
           "drops": 1,
-          "corpses": 79,
-          "rate": 0.012658227848101266
+          "corpses": 87,
+          "rate": 0.011494252873563218
         },
         {
           "mob": "a Sangrel striker",
@@ -13912,20 +13934,14 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 51,
-          "rate": 0.0196078431372549
+          "corpses": 56,
+          "rate": 0.017857142857142856
         },
         {
           "mob": "a sly farmhand",
           "drops": 1,
-          "corpses": 67,
-          "rate": 0.014925373134328358
-        },
-        {
-          "mob": "a hired tracker",
-          "drops": 1,
-          "corpses": 70,
-          "rate": 0.014285714285714285
+          "corpses": 72,
+          "rate": 0.013888888888888888
         },
         {
           "mob": "a Sangrel hunter",
@@ -13934,10 +13950,16 @@
           "rate": 0.012658227848101266
         },
         {
+          "mob": "a hired tracker",
+          "drops": 1,
+          "corpses": 82,
+          "rate": 0.012195121951219513
+        },
+        {
           "mob": "a henchman",
           "drops": 1,
-          "corpses": 81,
-          "rate": 0.012345679012345678
+          "corpses": 96,
+          "rate": 0.010416666666666666
         }
       ],
       "prices": [],
@@ -13967,14 +13989,14 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 51,
-          "rate": 0.0196078431372549
+          "corpses": 56,
+          "rate": 0.017857142857142856
         },
         {
           "mob": "a henchman",
           "drops": 1,
-          "corpses": 81,
-          "rate": 0.012345679012345678
+          "corpses": 96,
+          "rate": 0.010416666666666666
         },
         {
           "mob": "a Sangrel striker",
@@ -14005,8 +14027,14 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 51,
-          "rate": 0.0196078431372549
+          "corpses": 56,
+          "rate": 0.017857142857142856
+        },
+        {
+          "mob": "a bodyguard",
+          "drops": 1,
+          "corpses": 106,
+          "rate": 0.009433962264150943
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -14025,8 +14053,8 @@
       "harvested": 0,
       "zones": [
         "Keepersbight",
-        "Blacktidebay",
-        "Sungreetstrand"
+        "Sungreetstrand",
+        "Blacktidebay"
       ]
     },
     {
@@ -14041,16 +14069,16 @@
           "rate": 0.02857142857142857
         },
         {
-          "mob": "a gruff farmhand",
-          "drops": 2,
-          "corpses": 79,
-          "rate": 0.02531645569620253
-        },
-        {
           "mob": "a Sangrel entangler",
           "drops": 1,
           "corpses": 41,
           "rate": 0.024390243902439025
+        },
+        {
+          "mob": "a gruff farmhand",
+          "drops": 2,
+          "corpses": 87,
+          "rate": 0.022988505747126436
         },
         {
           "mob": "a Bloodchain sentry",
@@ -14094,14 +14122,14 @@
         {
           "mob": "a gruff farmhand",
           "drops": 1,
-          "corpses": 79,
-          "rate": 0.012658227848101266
+          "corpses": 87,
+          "rate": 0.011494252873563218
         },
         {
           "mob": "a henchman",
           "drops": 1,
-          "corpses": 81,
-          "rate": 0.012345679012345678
+          "corpses": 96,
+          "rate": 0.010416666666666666
         }
       ],
       "prices": [],
@@ -14168,8 +14196,8 @@
         {
           "mob": "a henchman",
           "drops": 1,
-          "corpses": 81,
-          "rate": 0.012345679012345678
+          "corpses": 96,
+          "rate": 0.010416666666666666
         },
         {
           "mob": "a Bloodchain guard",
@@ -14466,8 +14494,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 26,
-          "rate": 0.038461538461538464
+          "corpses": 23,
+          "rate": 0.043478260869565216
         },
         {
           "mob": "a Fellstone guard",
@@ -14686,8 +14714,8 @@
         {
           "mob": "a skeleton",
           "drops": 2,
-          "corpses": 87,
-          "rate": 0.022988505747126436
+          "corpses": 86,
+          "rate": 0.023255813953488372
         },
         {
           "mob": "a Fellstone guard",
@@ -14763,8 +14791,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 26,
-          "rate": 0.038461538461538464
+          "corpses": 23,
+          "rate": 0.043478260869565216
         },
         {
           "mob": "a Fellstone sentry",
@@ -14849,8 +14877,8 @@
         {
           "mob": "a gruff farmhand",
           "drops": 1,
-          "corpses": 79,
-          "rate": 0.012658227848101266
+          "corpses": 87,
+          "rate": 0.011494252873563218
         },
         {
           "mob": "a Sangrel striker",
@@ -14921,6 +14949,12 @@
           "rate": 0.013333333333333334
         },
         {
+          "mob": "a bodyguard",
+          "drops": 1,
+          "corpses": 106,
+          "rate": 0.009433962264150943
+        },
+        {
           "mob": "a Sangrel striker",
           "drops": 1,
           "corpses": 304,
@@ -14931,7 +14965,8 @@
       "harvested": 0,
       "zones": [
         "Keepersbight",
-        "Valeofzintar"
+        "Valeofzintar",
+        "Sungreetstrand"
       ]
     },
     {
@@ -14942,8 +14977,8 @@
         {
           "mob": "a bodyguard",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 106,
+          "rate": 0.009433962264150943
         },
         {
           "mob": "a Bloodchain guard",
@@ -14979,8 +15014,8 @@
         {
           "mob": "a bodyguard",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 106,
+          "rate": 0.009433962264150943
         },
         {
           "mob": "a Bloodchain guard",
@@ -15016,9 +15051,15 @@
       "droppedBy": [
         {
           "mob": "a bodyguard",
+          "drops": 2,
+          "corpses": 106,
+          "rate": 0.018867924528301886
+        },
+        {
+          "mob": "a henchman",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 96,
+          "rate": 0.010416666666666666
         },
         {
           "mob": "a Bloodchain guard",
@@ -15036,9 +15077,9 @@
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Sungreetstrand",
         "Keepersbight",
-        "Blacktidebay",
-        "Sungreetstrand"
+        "Blacktidebay"
       ]
     },
     {
@@ -15061,8 +15102,8 @@
         {
           "mob": "a henchman",
           "drops": 1,
-          "corpses": 81,
-          "rate": 0.012345679012345678
+          "corpses": 96,
+          "rate": 0.010416666666666666
         },
         {
           "mob": "a Sangrel striker",
@@ -15087,8 +15128,8 @@
         {
           "mob": "a gruff farmhand",
           "drops": 1,
-          "corpses": 79,
-          "rate": 0.012658227848101266
+          "corpses": 87,
+          "rate": 0.011494252873563218
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -15161,8 +15202,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 51,
-          "rate": 0.0196078431372549
+          "corpses": 56,
+          "rate": 0.017857142857142856
         }
       ],
       "prices": [],
@@ -15189,16 +15230,16 @@
           "rate": 0.024390243902439025
         },
         {
-          "mob": "a sly farmhand",
-          "drops": 1,
-          "corpses": 67,
-          "rate": 0.014925373134328358
-        },
-        {
           "mob": "a poacher pathfinder",
           "drops": 1,
           "corpses": 71,
           "rate": 0.014084507042253521
+        },
+        {
+          "mob": "a sly farmhand",
+          "drops": 1,
+          "corpses": 72,
+          "rate": 0.013888888888888888
         },
         {
           "mob": "a Sangrel arcanist",
@@ -15331,16 +15372,22 @@
           "rate": 0.06329113924050633
         },
         {
-          "mob": "a bodyguard",
-          "drops": 5,
-          "corpses": 89,
-          "rate": 0.056179775280898875
-        },
-        {
           "mob": "a fossergrim watcher",
           "drops": 1,
           "corpses": 18,
           "rate": 0.05555555555555555
+        },
+        {
+          "mob": "a bodyguard",
+          "drops": 5,
+          "corpses": 106,
+          "rate": 0.04716981132075472
+        },
+        {
+          "mob": "a sly farmhand",
+          "drops": 3,
+          "corpses": 72,
+          "rate": 0.041666666666666664
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -15353,12 +15400,6 @@
           "drops": 5,
           "corpses": 161,
           "rate": 0.031055900621118012
-        },
-        {
-          "mob": "a sly farmhand",
-          "drops": 2,
-          "corpses": 67,
-          "rate": 0.029850746268656716
         },
         {
           "mob": "a Sangrel striker",
@@ -15375,8 +15416,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 51,
-          "rate": 0.0196078431372549
+          "corpses": 56,
+          "rate": 0.017857142857142856
         },
         {
           "mob": "a poacher pathfinder",
@@ -15393,14 +15434,14 @@
         {
           "mob": "a gruff farmhand",
           "drops": 1,
-          "corpses": 79,
-          "rate": 0.012658227848101266
+          "corpses": 87,
+          "rate": 0.011494252873563218
         },
         {
           "mob": "a henchman",
           "drops": 1,
-          "corpses": 81,
-          "rate": 0.012345679012345678
+          "corpses": 96,
+          "rate": 0.010416666666666666
         }
       ],
       "prices": [
@@ -15446,16 +15487,22 @@
           "rate": 0.014925373134328358
         },
         {
-          "mob": "a hired tracker",
-          "drops": 1,
-          "corpses": 70,
-          "rate": 0.014285714285714285
-        },
-        {
           "mob": "a Sangrel arcanist",
           "drops": 1,
           "corpses": 75,
           "rate": 0.013333333333333334
+        },
+        {
+          "mob": "a hired tracker",
+          "drops": 1,
+          "corpses": 82,
+          "rate": 0.012195121951219513
+        },
+        {
+          "mob": "a henchman",
+          "drops": 1,
+          "corpses": 96,
+          "rate": 0.010416666666666666
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -15481,8 +15528,8 @@
       "zones": [
         "Blacktidebay",
         "Keepersbight",
-        "Valeofzintar",
-        "Sungreetstrand"
+        "Sungreetstrand",
+        "Valeofzintar"
       ]
     },
     {
@@ -15564,9 +15611,9 @@
       "droppedBy": [
         {
           "mob": "a Fellstone scout",
-          "drops": 4,
-          "corpses": 17,
-          "rate": 0.23529411764705882
+          "drops": 2,
+          "corpses": 12,
+          "rate": 0.16666666666666666
         }
       ],
       "prices": [],
@@ -15581,22 +15628,22 @@
       "name": "Wasp Venom Sac",
       "droppedBy": [
         {
-          "mob": "a wasp drone",
-          "drops": 4,
-          "corpses": 9,
-          "rate": 0.4444444444444444
-        },
-        {
           "mob": "a wasp worker",
           "drops": 3,
           "corpses": 8,
           "rate": 0.375
+        },
+        {
+          "mob": "a wasp drone",
+          "drops": 2,
+          "corpses": 6,
+          "rate": 0.3333333333333333
         }
       ],
       "prices": [
         {
           "copper": 5,
-          "count": 6
+          "count": 4
         }
       ],
       "harvested": 0,
@@ -15612,9 +15659,9 @@
       "droppedBy": [
         {
           "mob": "a wasp drone",
-          "drops": 8,
-          "corpses": 9,
-          "rate": 0.8888888888888888
+          "drops": 6,
+          "corpses": 6,
+          "rate": 1
         },
         {
           "mob": "a wasp worker",
@@ -15626,7 +15673,7 @@
       "prices": [
         {
           "copper": 1,
-          "count": 8
+          "count": 6
         }
       ],
       "harvested": 0,
@@ -15773,7 +15820,7 @@
       "name": "Whispering Sage",
       "droppedBy": [],
       "prices": [],
-      "harvested": 91,
+      "harvested": 94,
       "zones": [
         "Sungreetstrand",
         "Keepersbight",
@@ -15807,7 +15854,7 @@
       "prices": [
         {
           "copper": 1,
-          "count": 3
+          "count": 1
         },
         {
           "copper": 2,
@@ -15842,9 +15889,9 @@
       "droppedBy": [
         {
           "mob": "a black wolf pup",
-          "drops": 23,
-          "corpses": 37,
-          "rate": 0.6216216216216216
+          "drops": 15,
+          "corpses": 26,
+          "rate": 0.5769230769230769
         },
         {
           "mob": "a rabid wolf",
@@ -15856,7 +15903,7 @@
       "prices": [
         {
           "copper": 2,
-          "count": 7
+          "count": 4
         }
       ],
       "harvested": 0,
@@ -15870,7 +15917,7 @@
       "name": "Wood",
       "droppedBy": [],
       "prices": [],
-      "harvested": 437,
+      "harvested": 430,
       "zones": [
         "Evershade Weald",
         "Keepersbight",
@@ -15883,15 +15930,15 @@
       "name": "Wool Scraps",
       "droppedBy": [
         {
-          "mob": "a burly henchman",
-          "drops": 6,
-          "corpses": 10,
-          "rate": 0.6
-        },
-        {
           "mob": "a Bloodchain mindbreaker",
           "drops": 4,
           "corpses": 8,
+          "rate": 0.5
+        },
+        {
+          "mob": "a burly henchman",
+          "drops": 7,
+          "corpses": 14,
           "rate": 0.5
         },
         {
@@ -15926,9 +15973,9 @@
         },
         {
           "mob": "a sly farmhand",
-          "drops": 18,
-          "corpses": 67,
-          "rate": 0.26865671641791045
+          "drops": 21,
+          "corpses": 72,
+          "rate": 0.2916666666666667
         },
         {
           "mob": "a Sangrel striker",
@@ -15937,16 +15984,10 @@
           "rate": 0.2631578947368421
         },
         {
-          "mob": "a bodyguard",
-          "drops": 22,
-          "corpses": 89,
-          "rate": 0.24719101123595505
-        },
-        {
           "mob": "a corrupt clergyman",
-          "drops": 12,
-          "corpses": 51,
-          "rate": 0.23529411764705882
+          "drops": 13,
+          "corpses": 56,
+          "rate": 0.23214285714285715
         },
         {
           "mob": "a Sangrel grappler",
@@ -15955,10 +15996,28 @@
           "rate": 0.23076923076923078
         },
         {
-          "mob": "a gruff farmhand",
+          "mob": "a henchman",
+          "drops": 22,
+          "corpses": 96,
+          "rate": 0.22916666666666666
+        },
+        {
+          "mob": "a bodyguard",
+          "drops": 24,
+          "corpses": 106,
+          "rate": 0.22641509433962265
+        },
+        {
+          "mob": "a hired tracker",
           "drops": 18,
-          "corpses": 79,
-          "rate": 0.22784810126582278
+          "corpses": 82,
+          "rate": 0.21951219512195122
+        },
+        {
+          "mob": "a gruff farmhand",
+          "drops": 19,
+          "corpses": 87,
+          "rate": 0.21839080459770116
         },
         {
           "mob": "a Sangrel hunter",
@@ -15973,22 +16032,10 @@
           "rate": 0.21428571428571427
         },
         {
-          "mob": "a hired tracker",
-          "drops": 15,
-          "corpses": 70,
-          "rate": 0.21428571428571427
-        },
-        {
           "mob": "a Bloodchain guard",
           "drops": 23,
           "corpses": 108,
           "rate": 0.21296296296296297
-        },
-        {
-          "mob": "a henchman",
-          "drops": 17,
-          "corpses": 81,
-          "rate": 0.20987654320987653
         },
         {
           "mob": "a Bloodchain sentry",
@@ -16074,14 +16121,14 @@
         {
           "mob": "a skeleton",
           "drops": 4,
-          "corpses": 87,
-          "rate": 0.04597701149425287
+          "corpses": 86,
+          "rate": 0.046511627906976744
         },
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a Fellstone sentinel",
@@ -16114,14 +16161,14 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 39,
+          "rate": 0.02564102564102564
         },
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 87,
-          "rate": 0.011494252873563218
+          "corpses": 86,
+          "rate": 0.011627906976744186
         },
         {
           "mob": "a Fellstone sentinel",
@@ -16156,8 +16203,8 @@
         {
           "mob": "a hired tracker",
           "drops": 2,
-          "corpses": 70,
-          "rate": 0.02857142857142857
+          "corpses": 82,
+          "rate": 0.024390243902439025
         },
         {
           "mob": "a Bloodchain guard",
@@ -16200,22 +16247,28 @@
           "rate": 0.029850746268656716
         },
         {
-          "mob": "a hired tracker",
-          "drops": 1,
-          "corpses": 70,
-          "rate": 0.014285714285714285
-        },
-        {
           "mob": "a Sangrel hunter",
           "drops": 1,
           "corpses": 79,
           "rate": 0.012658227848101266
         },
         {
+          "mob": "a hired tracker",
+          "drops": 1,
+          "corpses": 82,
+          "rate": 0.012195121951219513
+        },
+        {
+          "mob": "a henchman",
+          "drops": 1,
+          "corpses": 96,
+          "rate": 0.010416666666666666
+        },
+        {
           "mob": "a bodyguard",
           "drops": 1,
-          "corpses": 89,
-          "rate": 0.011235955056179775
+          "corpses": 106,
+          "rate": 0.009433962264150943
         },
         {
           "mob": "a Bloodchain guard",
@@ -16259,12 +16312,19 @@
           "drops": 2,
           "corpses": 108,
           "rate": 0.018518518518518517
+        },
+        {
+          "mob": "a hired tracker",
+          "drops": 1,
+          "corpses": 82,
+          "rate": 0.012195121951219513
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Blacktidebay"
+        "Blacktidebay",
+        "Sungreetstrand"
       ]
     },
     {
@@ -16283,20 +16343,9 @@
           "drops": 1,
           "corpses": 18,
           "rate": 0.05555555555555555
-        },
-        {
-          "mob": "a skeleton",
-          "drops": 1,
-          "corpses": 87,
-          "rate": 0.011494252873563218
         }
       ],
-      "prices": [
-        {
-          "copper": 56,
-          "count": 1
-        }
-      ],
+      "prices": [],
       "harvested": 0,
       "zones": [
         "Evershade Weald"
@@ -16393,26 +16442,26 @@
     }
   ],
   "harvest": {
-    "Copper Ore": 1088,
-    "Brittle Stone": 289,
-    "Clouded Crystallized Magic": 22,
-    "Chipped Cat's Eye Agate": 9,
-    "Ghost Poppy": 25,
-    "Wood": 437,
-    "Resin": 541,
     "Lionleaf": 61,
+    "Copper Ore": 1033,
+    "Brittle Stone": 272,
+    "Clouded Crystallized Magic": 21,
+    "Wood": 430,
+    "Resin": 532,
     "Chipped Diamond": 10,
+    "Ghost Poppy": 22,
     "Sylvine": 48,
     "Chipped Sapphire": 12,
-    "Whispering Sage": 91,
+    "Whispering Sage": 94,
     "Magic Frond": 6,
     "Nomad's Grace": 27,
+    "Chipped Cat's Eye Agate": 8,
     "Chipped Peridot": 10,
     "Selstie Kelp": 2,
     "Alunite Ore": 10,
     "Chipped Emerald": 11,
     "Chipped Ruby": 10,
-    "Limestone": 245,
+    "Limestone": 251,
     "Tin Ore": 671,
     "Flawed Diamond": 4,
     "Glinting Crystallized Magic": 9,
@@ -16456,62 +16505,62 @@
   "harvestNodes": [
     {
       "name": "Copper Ore",
-      "pulls": 1126,
+      "pulls": 1070,
       "yields": [
         {
           "res": "Copper Ore",
-          "count": 1086,
-          "rate": 0.9644760213143873
+          "count": 1031,
+          "rate": 0.9635514018691589
         },
         {
           "res": "Brittle Stone",
-          "count": 289,
-          "rate": 0.2566607460035524
+          "count": 272,
+          "rate": 0.2542056074766355
         },
         {
           "res": "Clouded Crystallized Magic",
-          "count": 17,
-          "rate": 0.015097690941385435
+          "count": 16,
+          "rate": 0.014953271028037384
         },
         {
           "res": "Chipped Sapphire",
           "count": 11,
-          "rate": 0.009769094138543518
+          "rate": 0.010280373831775701
         },
         {
           "res": "Chipped Peridot",
           "count": 10,
-          "rate": 0.008880994671403197
+          "rate": 0.009345794392523364
         },
         {
           "res": "Alunite Ore",
           "count": 10,
-          "rate": 0.008880994671403197
+          "rate": 0.009345794392523364
         },
         {
           "res": "Chipped Emerald",
           "count": 10,
-          "rate": 0.008880994671403197
+          "rate": 0.009345794392523364
         },
         {
           "res": "Chipped Ruby",
           "count": 10,
-          "rate": 0.008880994671403197
+          "rate": 0.009345794392523364
         },
         {
           "res": "Chipped Diamond",
           "count": 9,
-          "rate": 0.007992895204262877
+          "rate": 0.008411214953271028
         },
         {
           "res": "Chipped Cat's Eye Agate",
           "count": 8,
-          "rate": 0.007104795737122558
+          "rate": 0.007476635514018692
         },
         {
           "res": "Chipped Jade",
           "count": 6,
-          "rate": 0.0053285968028419185
+          "rate": 0.005607476635514018
         }
       ],
       "zones": [
@@ -16710,48 +16759,48 @@
     },
     {
       "name": "Wood & Resin",
-      "pulls": 451,
+      "pulls": 444,
       "yields": [
         {
           "res": "Wood",
-          "count": 437,
-          "rate": 0.9689578713968958
+          "count": 430,
+          "rate": 0.9684684684684685
         },
         {
           "res": "Resin",
-          "count": 379,
-          "rate": 0.8403547671840355
+          "count": 374,
+          "rate": 0.8423423423423423
         },
         {
           "res": "Fine Wood",
           "count": 14,
-          "rate": 0.031042128603104215
+          "rate": 0.03153153153153153
         }
       ],
       "zones": [
-        "Evershade Weald",
         "Keepersbight",
+        "Evershade Weald",
         "Sungreetstrand"
       ]
     },
     {
       "name": "Limestone",
-      "pulls": 100,
+      "pulls": 103,
       "yields": [
         {
           "res": "Limestone",
-          "count": 100,
+          "count": 103,
           "rate": 1
         },
         {
           "res": "Silver Ore",
           "count": 3,
-          "rate": 0.03
+          "rate": 0.02912621359223301
         },
         {
           "res": "Clouded Crystallized Magic",
           "count": 3,
-          "rate": 0.03
+          "rate": 0.02912621359223301
         }
       ],
       "zones": [
@@ -16867,17 +16916,17 @@
     },
     {
       "name": "Whispering Sage",
-      "pulls": 60,
+      "pulls": 61,
       "yields": [
         {
           "res": "Whispering Sage",
-          "count": 60,
+          "count": 61,
           "rate": 1
         },
         {
           "res": "Magic Frond",
           "count": 3,
-          "rate": 0.05
+          "rate": 0.04918032786885246
         }
       ],
       "zones": [
@@ -17017,11 +17066,11 @@
     },
     {
       "name": "Ghost Poppy",
-      "pulls": 17,
+      "pulls": 15,
       "yields": [
         {
           "res": "Ghost Poppy",
-          "count": 17,
+          "count": 15,
           "rate": 1
         }
       ],
