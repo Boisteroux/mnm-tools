@@ -929,6 +929,11 @@ tr.bis-total td { border-top: 2px solid var(--line-2); background: var(--panel-2
 .tm-why { margin: 0; font-size: 13.5px; color: var(--muted); }
 .tm-scroll { overflow-x: auto; }
 .tm-table td { vertical-align: top; }
+.tm-filters { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin: 4px 0 10px; font-size: 13px; }
+.tm-filters select { margin-left: 6px; }
+.tm-flips { min-width: 0; } /* lets its table scroll inside the card on phones */
+.tm-sort { background: none; border: 0; padding: 0; font: inherit; color: inherit; text-transform: inherit; letter-spacing: inherit; cursor: pointer; text-decoration: underline dotted; text-underline-offset: 3px; }
+.tm-sort.on { text-decoration: none; color: var(--accent, inherit); }
 .tm-mats { font-size: 12.5px; color: var(--muted); }
 .tm-up { color: var(--good); font-weight: 600; }
 .arrow-b { color: var(--warn); }

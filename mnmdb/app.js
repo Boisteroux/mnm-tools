@@ -682,26 +682,6 @@ function scatterSvg(points) {
 }
 
 // Average price players SELL an item for (WTS trades) — the realistic resale value.
-function playerSellValue(name) {
-  const arr = TRADES[name.toLowerCase()] || [];
-  const sells = arr.filter((t) => t.side === 'sell').map((t) => t.price);
-  return sells.length ? sells.reduce((a, b) => a + b, 0) / sells.length : 0;
-}
-
-// Arbitrage: items you can buy from a vendor (wiki base price) and resell to
-// players for more. Margin = player sell − vendor buy. Empty until enough player
-// SELL prices are logged for items that vendors stock.
-function flipFinder() {
-  const out = [];
-  DATA.items.forEach((it) => {
-    const base = it.wiki && it.wiki.soldBy && it.wiki.soldBy.base;
-    if (base == null || !(base > 0)) return;
-    const sell = playerSellValue(it.name);
-    if (sell > base) out.push({ it, buy: base, sell, margin: sell - base, pct: (sell - base) / base });
-  });
-  return out.sort((a, b) => b.margin - a.margin).slice(0, 15);
-}
-
 // ---- Views ----
 
 function renderHome() {
@@ -3307,6 +3287,9 @@ const aucTag = (i) => i === 'sell' ? '<span class="atag sell">WTS</span>' : i ==
 // the full feed lives at #/auctions/all. Numbers show how many posts back them.
 const TM_TABS = ['new', 'crafter', 'adventurer', 'trader'];
 const TM_OFFER_DAYS = 2;
+// Flip finder price filter, on what you pay the seller (per stack for stacked goods).
+const FLIP_BANDS = [['Any', 0, Infinity], ['Under 1s', 0, 100], ['1s to 10s', 100, 1000], ['10s to 1g', 1000, 10000], ['1g and up', 10000, Infinity]];
+const roiText = (r) => '<span class="tm-up">+' + (r >= 10 ? Math.round(r * 100).toLocaleString() : Math.round(r * 100)) + '%</span>';
 const tmMedian = (p) => { const s = p.slice().sort((a, b) => a - b); return s.length ? (s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2) : null; };
 const tmThin = (n) => (n < 5 ? '<span class="tm-thin" title="Fewer than 5 priced posts">thin data</span>' : '');
 const tmPrice = (unit, stack, each) => (stack ? coin(unit * stack) + '<span class="per">/stack</span>' + (each ? ' <span class="per">· ' + coin(unit) + ' ea</span>' : '') : coin(unit));
@@ -3374,16 +3357,28 @@ function tmCompute() {
   //  flips:    someone is buying for at least 10% more than someone else is asking
   //  bids:     buyers offering 25%+ over typical — sell to them directly
   //  bargains: sellers asking 30%+ under typical
-  const fair = items.filter((e) => priced(e, 5)).map((e) => ({ e,
-    bids: e.bids.filter((b) => b.u <= e.typical * 3), asks: e.asks.filter((a) => a.u >= e.typical / 3) }));
+  const offersOf = (e) => ({ e, bids: e.bids.filter((b) => b.u <= e.typical * 3), asks: e.asks.filter((a) => a.u >= e.typical / 3) });
+  const fair = items.filter((e) => priced(e, 5)).map(offersOf);
   const best = (list, better) => list.reduce((m, x) => (!m || better(x, m) ? x : m), null);
+  // Flips come from items with 3+ priced posts; the page filters them down (5+ by default).
   const flips = [];
-  for (const { e, bids, asks } of fair) {
+  for (const { e, bids, asks } of items.filter((x) => priced(x, 3)).map(offersOf)) {
     const bid = best(bids, (x, m) => x.u > m.u); if (!bid) continue;
     const ask = best(asks.filter((a) => a.player !== bid.player), (x, m) => x.u < m.u);
-    if (ask && bid.u >= ask.u * 1.1) flips.push({ e, bid, ask, gain: bid.u - ask.u, rank: (bid.u - ask.u) * (e.stack || 1) });
+    if (ask && bid.u >= ask.u * 1.1) flips.push({ e, bid, ask, gain: bid.u - ask.u, roi: (bid.u - ask.u) / ask.u,
+      rank: (bid.u - ask.u) * (e.stack || 1), oldest: Math.min(Date.parse(bid.seen), Date.parse(ask.seen)) });
   }
   flips.sort((a, b) => b.rank - a.rank);
+  // Vendor flips: an NPC sells it, players usually ask well over that. Buy from the vendor,
+  // post it. Needs no second player, so it's the steadiest kind. Vendor price is ours from
+  // game checks (vendor-prices.json) or the wiki's listed price.
+  const vendorStocked = items.filter((e) => e.n && vendorBuyPrice(e.name) > 0).length;
+  const vendorFlips = items.filter((e) => priced(e, 3)).map((e) => {
+    const buy = vendorBuyPrice(e.name); if (!(buy > 0) || e.typical < buy * 1.25) return null;
+    const it = itemByName[e.name], vendors = (it && it.wiki && it.wiki.soldBy && it.wiki.soldBy.vendors) || [];
+    const bid = best(offersOf(e).bids, (x, m) => x.u > m.u);
+    return { e, buy, gain: e.typical - buy, roi: (e.typical - buy) / buy, vendors, bid };
+  }).filter(Boolean).sort((a, b) => b.gain * (b.e.stack || 1) - a.gain * (a.e.stack || 1));
   const bigBids = fair.map(({ e, bids }) => ({ e, o: best(bids, (x, m) => x.u > m.u), n: new Set(bids.map((b) => b.player)).size }))
     .filter((r) => r.o && r.o.u >= r.e.typical * 1.25).sort((a, b) => b.o.u / b.e.typical - a.o.u / a.e.typical);
   const bargains = fair.map(({ e, asks }) => ({ e, o: best(asks, (x, m) => x.u < m.u) }))
@@ -3456,7 +3451,7 @@ function tmCompute() {
   const coverage = { eaKills: kills(eaMobs), eaMobs: Object.keys(eaMobs).length, betaKills: kills(DATA.mobs), betaMobs: Object.keys(DATA.mobs || {}).length,
     contributors: (EA && EA.contributorCount) || 0 };
   return { by, items, pulse, sellOrVendor, busy, hot, profitable, missingPrices, materials, priciest, farm: farm.slice(0, 8), coverage,
-    flips: flips.slice(0, 12), bigBids: bigBids.slice(0, 10), bargains: bargains.slice(0, 10) };
+    flips, vendorFlips: vendorFlips.slice(0, 15), vendorStocked, bigBids: bigBids.slice(0, 10), bargains: bargains.slice(0, 10) };
 }
 
 async function renderTremMarket() {
@@ -3600,12 +3595,21 @@ async function renderTremMarket() {
 
       '<div role="tabpanel" id="tm-p-trader" aria-labelledby="tm-t-trader" class="tm-grid" hidden>' +
         '<div class="tm-card tm-wide"><h2>Flip finder</h2><p class="tm-why">Someone is buying for more than someone else is asking. Buy from the seller, sell to the buyer, keep the gap. ' +
-          'From posts in the last ' + TM_OFFER_DAYS + ' days, so whisper both before you trade; they may have sold already.</p>' +
-          (M.flips.length ? table('<th>Item</th><th class="num">Buy from</th><th class="num">Sell to</th><th class="num">Gap</th><th class="num">Typical</th>',
-            M.flips.map((f) => '<tr><td>' + il(f.e.name) + '<div class="tm-mats">' + sideLink(f.e.name, 'sell', 'all sellers') + ' · ' + sideLink(f.e.name, 'buy', 'all buyers') + '</div></td>' +
-              '<td class="num coin">' + tp(f.ask.u, f.e.stack) + who(f.ask) + '</td><td class="num coin">' + tp(f.bid.u, f.e.stack) + who(f.bid) + '</td>' +
-              '<td class="num coin"><span class="tm-up">+' + tp(f.gain, f.e.stack) + '</span></td><td class="num coin muted">' + tp(f.e.typical, f.e.stack) + '</td></tr>').join(''))
-            : empty('No flips in the last ' + TM_OFFER_DAYS + ' days.')) + '</div>' +
+          'From posts in the last ' + TM_OFFER_DAYS + ' days, so whisper both before you trade; they may have sold already. The older of the two posts is the one to worry about.</p>' +
+          '<div class="tm-filters">' +
+            '<label>Price <select id="flip-band">' + FLIP_BANDS.map((b, i) => '<option value="' + i + '">' + b[0] + '</option>').join('') + '</select></label>' +
+            '<label>Backed by <select id="flip-posts"><option value="3">3+ posts</option><option value="5">5+ posts</option><option value="10">10+ posts</option></select></label>' +
+            '<span class="muted" id="flip-count"></span></div>' +
+          '<div id="flip-table" class="tm-flips"></div></div>' +
+        '<div class="tm-card tm-wide"><h2>Vendor flips</h2><p class="tm-why">An NPC sells it for much less than players usually ask. Buy from the vendor, post it, keep the difference. ' +
+          'No second player needed, so these are the steadiest flips. The vendor price is what we’ve checked in game or the wiki’s listed price; yours may differ a little.</p>' +
+          (M.vendorFlips.length ? table('<th>Item</th><th class="num">Vendor sells</th><th class="num">Players ask</th><th class="num">Gap</th><th class="num">Return</th><th class="num">Best buyer now</th>',
+            M.vendorFlips.map((v) => '<tr><td>' + il(v.e.name) + tmThin(v.e.n) +
+                (v.vendors.length ? '<div class="tm-mats">from ' + v.vendors.slice(0, 2).map(esc).join(', ') + (v.vendors.length > 2 ? ' +' + (v.vendors.length - 2) + ' more' : '') + '</div>' : '') + '</td>' +
+              '<td class="num coin">' + tp(v.buy, v.e.stack) + '</td><td class="num coin">' + tp(v.e.typical, v.e.stack) + '<div class="tm-mats">' + v.e.n + ' posts</div></td>' +
+              '<td class="num coin"><span class="tm-up">+' + tp(v.gain, v.e.stack) + '</span></td><td class="num">' + roiText(v.roi) + '</td>' +
+              '<td class="num coin">' + (v.bid ? tp(v.bid.u, v.e.stack) + who(v.bid) : dash) + '</td></tr>').join(''))
+            : empty('Players have posted prices for ' + M.vendorStocked + ' item' + (M.vendorStocked === 1 ? '' : 's') + ' we know an NPC sells, and none go for well over the vendor price yet (25%+, from 3+ posts). This grows as more vendor prices are added.')) + '</div>' +
         '<div class="tm-card"><h2>Buyers paying over typical</h2><p class="tm-why">The best offer on each item, 25% or more above what it usually sells for. Message them to sell direct.</p>' +
           (M.bigBids.length ? table('<th>Item</th><th class="num">Offering</th><th class="num">vs typical</th>',
             M.bigBids.map((r) => '<tr><td>' + il(r.e.name) + '<div class="tm-mats">' + sideLink(r.e.name, 'buy', r.n === 1 ? '1 buyer' : r.n + ' buyers') + '</div></td>' +
@@ -3632,6 +3636,38 @@ async function renderTremMarket() {
   document.querySelectorAll('.tm-tab').forEach((b) => b.addEventListener('click', () => show(b.dataset.tab)));
   let start = 'new'; try { const s = localStorage.getItem('mnmdb-tm-tab'); if (TM_TABS.includes(s)) start = s; } catch {}
   show(start);
+
+  // Flip finder: every flip, sortable by column, filtered by price and how many posts
+  // back the typical price. The view is remembered per browser.
+  const FLIP_COLS = [
+    ['gap', 'Gap', (f) => f.rank], ['roi', 'Return', (f) => f.roi],
+    ['act', 'Activity', (f) => f.e.posts24 * 1000 + f.e.sellers.size + f.e.buyers.size], ['age', 'Oldest post', (f) => f.oldest],
+  ];
+  let fv = { sort: 'gap', band: 0, posts: 5 };
+  try { fv = Object.assign(fv, JSON.parse(localStorage.getItem('mnmdb-flip-view') || '{}')); } catch {}
+  const flipTable = () => {
+    const band = FLIP_BANDS[fv.band] || FLIP_BANDS[0], col = FLIP_COLS.find((c) => c[0] === fv.sort) || FLIP_COLS[0];
+    const rows = M.flips.filter((f) => { const pay = f.ask.u * (f.e.stack || 1); return f.e.n >= fv.posts && pay >= band[1] && pay < band[2]; })
+      .sort((a, b) => col[2](b) - col[2](a));
+    const th = (id) => { const c = FLIP_COLS.find((x) => x[0] === id), on = fv.sort === id;
+      return '<th class="num" aria-sort="' + (on ? 'descending' : 'none') + '"><button class="tm-sort' + (on ? ' on' : '') + '" data-sort="' + id + '">' + c[1] + (on ? ' ▾' : '') + '</button></th>'; };
+    $('flip-count').textContent = rows.length + ' of ' + M.flips.length + ' flip' + (M.flips.length === 1 ? '' : 's');
+    $('flip-table').innerHTML = !M.flips.length ? empty('No flips in the last ' + TM_OFFER_DAYS + ' days.')
+      : !rows.length ? empty('No flips match these filters. Try a wider price range or fewer posts.')
+      : table('<th>Item</th><th class="num">Buy from</th><th class="num">Sell to</th>' + th('gap') + th('roi') + th('act') + th('age') + '<th class="num">Typical</th>',
+        rows.map((f) => '<tr><td>' + il(f.e.name) + tmThin(f.e.n) + '<div class="tm-mats">' + sideLink(f.e.name, 'sell', 'all sellers') + ' · ' + sideLink(f.e.name, 'buy', 'all buyers') + '</div></td>' +
+          '<td class="num coin">' + tp(f.ask.u, f.e.stack) + who(f.ask) + '</td><td class="num coin">' + tp(f.bid.u, f.e.stack) + who(f.bid) + '</td>' +
+          '<td class="num coin"><span class="tm-up">+' + tp(f.gain, f.e.stack) + '</span></td><td class="num">' + roiText(f.roi) + '</td>' +
+          '<td class="num">' + f.e.posts24 + ' today<div class="tm-mats">' + f.e.sellers.size + ' selling · ' + f.e.buyers.size + ' buying</div></td>' +
+          '<td class="num">' + esc(aucAgo(new Date(f.oldest).toISOString())) + '</td>' +
+          '<td class="num coin muted">' + tp(f.e.typical, f.e.stack) + '<div class="tm-mats">' + f.e.n + ' posts</div></td></tr>').join(''));
+    $('flip-table').querySelectorAll('.tm-sort').forEach((b) => b.addEventListener('click', () => { fv.sort = b.dataset.sort; saveFlip(); }));
+  };
+  const saveFlip = () => { try { localStorage.setItem('mnmdb-flip-view', JSON.stringify(fv)); } catch {} flipTable(); };
+  $('flip-band').value = String(fv.band); $('flip-posts').value = String(fv.posts);
+  $('flip-band').addEventListener('change', (ev) => { fv.band = +ev.target.value; saveFlip(); });
+  $('flip-posts').addEventListener('change', (ev) => { fv.posts = +ev.target.value; saveFlip(); });
+  flipTable();
 
   // What's it worth? — every item seen at auction on this server
   const names = M.items.slice().sort((a, b) => b.posts - a.posts);
