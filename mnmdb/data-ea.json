@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-11T02:00:06.604Z",
+  "generatedAt": "2026-11-11T20:00:06.915Z",
   "source": "mnm-tools",
   "ledgerFiles": 51,
-  "events": 18360,
+  "events": 18408,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 18360
+      "events": 18408
     }
   ],
   "contributorCount": 1,
@@ -2196,20 +2196,20 @@
       "corpses": 2
     },
     "a green drake": {
-      "kills": 20,
+      "kills": 36,
       "drops": {
-        "Drake Fang": 4,
-        "Drake Claw": 2,
+        "Drake Fang": 7,
+        "Drake Claw": 6,
         "Drake Scale": 1,
-        "Hardened Drake Scale": 4,
+        "Hardened Drake Scale": 5,
         "Flawed Diamond": 1,
         "Pristine Drake Fang": 1
       },
       "zones": {
-        "Scarwood": 34
+        "Scarwood": 60
       },
-      "coin": 5239,
-      "corpses": 9
+      "coin": 9400,
+      "corpses": 14
     },
     "a timber wolf": {
       "kills": 0,
@@ -4086,12 +4086,13 @@
       "name": "Coal",
       "droppedBy": [],
       "prices": [],
-      "harvested": 848,
+      "harvested": 852,
       "zones": [
         "Sungreetstrand",
         "Scarwood",
         "Valeofzintar",
-        "Fallenpass"
+        "Fallenpass",
+        "Keepersbight"
       ]
     },
     {
@@ -6513,6 +6514,12 @@
       "name": "Drake Claw",
       "droppedBy": [
         {
+          "mob": "a green drake",
+          "drops": 6,
+          "corpses": 14,
+          "rate": 0.42857142857142855
+        },
+        {
           "mob": "a forest drakeling",
           "drops": 4,
           "corpses": 12,
@@ -6529,12 +6536,6 @@
           "drops": 7,
           "corpses": 29,
           "rate": 0.2413793103448276
-        },
-        {
-          "mob": "a green drake",
-          "drops": 2,
-          "corpses": 9,
-          "rate": 0.2222222222222222
         }
       ],
       "prices": [
@@ -6567,9 +6568,9 @@
         },
         {
           "mob": "a green drake",
-          "drops": 4,
-          "corpses": 9,
-          "rate": 0.4444444444444444
+          "drops": 7,
+          "corpses": 14,
+          "rate": 0.5
         },
         {
           "mob": "a forest drake",
@@ -6602,9 +6603,9 @@
       ],
       "harvested": 0,
       "zones": [
+        "Scarwood",
         "Keepersbight",
-        "Evershade Weald",
-        "Scarwood"
+        "Evershade Weald"
       ]
     },
     {
@@ -6619,16 +6620,16 @@
           "rate": 0.3333333333333333
         },
         {
-          "mob": "a green drake",
-          "drops": 1,
-          "corpses": 9,
-          "rate": 0.1111111111111111
-        },
-        {
           "mob": "a forest drakeling",
           "drops": 1,
           "corpses": 12,
           "rate": 0.08333333333333333
+        },
+        {
+          "mob": "a green drake",
+          "drops": 1,
+          "corpses": 14,
+          "rate": 0.07142857142857142
         }
       ],
       "prices": [
@@ -7054,16 +7055,16 @@
       "name": "Flawed Diamond",
       "droppedBy": [
         {
-          "mob": "a green drake",
-          "drops": 1,
-          "corpses": 9,
-          "rate": 0.1111111111111111
-        },
-        {
           "mob": "a forest drakeling",
           "drops": 1,
           "corpses": 12,
           "rate": 0.08333333333333333
+        },
+        {
+          "mob": "a green drake",
+          "drops": 1,
+          "corpses": 14,
+          "rate": 0.07142857142857142
         },
         {
           "mob": "a Sangrel grappler",
@@ -8029,9 +8030,9 @@
       "droppedBy": [
         {
           "mob": "a green drake",
-          "drops": 4,
-          "corpses": 9,
-          "rate": 0.4444444444444444
+          "drops": 5,
+          "corpses": 14,
+          "rate": 0.35714285714285715
         }
       ],
       "prices": [
@@ -9017,11 +9018,12 @@
       "name": "Magic Frond",
       "droppedBy": [],
       "prices": [],
-      "harvested": 6,
+      "harvested": 7,
       "zones": [
         "Evershade Weald",
         "Scarwood",
-        "Sungreetstrand"
+        "Sungreetstrand",
+        "Keepersbight"
       ]
     },
     {
@@ -9245,7 +9247,7 @@
       "name": "Moonveil",
       "droppedBy": [],
       "prices": [],
-      "harvested": 53,
+      "harvested": 57,
       "zones": [
         "Keepersbight",
         "Scarwood"
@@ -9703,8 +9705,8 @@
         {
           "mob": "a green drake",
           "drops": 1,
-          "corpses": 9,
-          "rate": 0.1111111111111111
+          "corpses": 14,
+          "rate": 0.07142857142857142
         },
         {
           "mob": "a green drakeling",
@@ -10519,7 +10521,7 @@
           "count": 11
         }
       ],
-      "harvested": 532,
+      "harvested": 537,
       "zones": [
         "Keepersbight",
         "Evershade Weald",
@@ -10537,12 +10539,13 @@
           "count": 7
         }
       ],
-      "harvested": 193,
+      "harvested": 194,
       "zones": [
         "Sungreetstrand",
         "Scarwood",
         "Fallenpass",
-        "Valeofzintar"
+        "Valeofzintar",
+        "Keepersbight"
       ]
     },
     {
@@ -15855,7 +15858,7 @@
       "name": "Whispering Sage",
       "droppedBy": [],
       "prices": [],
-      "harvested": 100,
+      "harvested": 103,
       "zones": [
         "Sungreetstrand",
         "Keepersbight",
@@ -15952,7 +15955,7 @@
       "name": "Wood",
       "droppedBy": [],
       "prices": [],
-      "harvested": 430,
+      "harvested": 434,
       "zones": [
         "Evershade Weald",
         "Keepersbight",
@@ -16481,14 +16484,14 @@
     "Copper Ore": 1033,
     "Brittle Stone": 272,
     "Clouded Crystallized Magic": 22,
-    "Wood": 430,
-    "Resin": 532,
+    "Wood": 434,
+    "Resin": 537,
     "Chipped Diamond": 10,
     "Ghost Poppy": 22,
     "Sylvine": 48,
     "Chipped Sapphire": 12,
-    "Whispering Sage": 100,
-    "Magic Frond": 6,
+    "Whispering Sage": 103,
+    "Magic Frond": 7,
     "Nomad's Grace": 44,
     "Chipped Cat's Eye Agate": 8,
     "Chipped Peridot": 10,
@@ -16506,7 +16509,7 @@
     "Flawed Ruby": 4,
     "Flawed Cat's Eye Agate": 8,
     "Chipped Jade": 8,
-    "Moonveil": 53,
+    "Moonveil": 57,
     "Flawed Emerald": 5,
     "Flawed Peridot": 4,
     "Flawed Jade": 4,
@@ -16522,9 +16525,9 @@
     "Gold Ore": 97,
     "Imperfect Ruby": 5,
     "Imperfect Diamond": 6,
-    "Coal": 848,
+    "Coal": 852,
     "Brilliant Crystallized Magic": 18,
-    "Rigid Stone": 193,
+    "Rigid Stone": 194,
     "Sapphire": 3,
     "Platinum Ore": 115,
     "Jade": 5,
@@ -16684,64 +16687,65 @@
     },
     {
       "name": "Coal",
-      "pulls": 848,
+      "pulls": 852,
       "yields": [
         {
           "res": "Coal",
-          "count": 848,
+          "count": 852,
           "rate": 1
         },
         {
           "res": "Rigid Stone",
-          "count": 166,
-          "rate": 0.1957547169811321
+          "count": 167,
+          "rate": 0.1960093896713615
         },
         {
           "res": "Brilliant Crystallized Magic",
           "count": 15,
-          "rate": 0.01768867924528302
+          "rate": 0.017605633802816902
         },
         {
           "res": "Emerald",
           "count": 7,
-          "rate": 0.008254716981132075
+          "rate": 0.008215962441314555
         },
         {
           "res": "Cat's Eye Agate",
           "count": 5,
-          "rate": 0.00589622641509434
+          "rate": 0.005868544600938967
         },
         {
           "res": "Ruby",
           "count": 5,
-          "rate": 0.00589622641509434
+          "rate": 0.005868544600938967
         },
         {
           "res": "Sapphire",
           "count": 3,
-          "rate": 0.003537735849056604
+          "rate": 0.0035211267605633804
         },
         {
           "res": "Diamond",
           "count": 3,
-          "rate": 0.003537735849056604
+          "rate": 0.0035211267605633804
         },
         {
           "res": "Peridot",
           "count": 3,
-          "rate": 0.003537735849056604
+          "rate": 0.0035211267605633804
         },
         {
           "res": "Jade",
           "count": 2,
-          "rate": 0.0023584905660377358
+          "rate": 0.002347417840375587
         }
       ],
       "zones": [
         "Sungreetstrand",
         "Scarwood",
         "Valeofzintar",
-        "Fallenpass"
+        "Fallenpass",
+        "Keepersbight"
       ]
     },
     {
@@ -16805,22 +16809,22 @@
     },
     {
       "name": "Wood & Resin",
-      "pulls": 444,
+      "pulls": 448,
       "yields": [
         {
           "res": "Wood",
-          "count": 430,
-          "rate": 0.9684684684684685
+          "count": 434,
+          "rate": 0.96875
         },
         {
           "res": "Resin",
-          "count": 374,
-          "rate": 0.8423423423423423
+          "count": 378,
+          "rate": 0.84375
         },
         {
           "res": "Fine Wood",
           "count": 14,
-          "rate": 0.03153153153153153
+          "rate": 0.03125
         }
       ],
       "zones": [
@@ -16936,23 +16940,23 @@
     },
     {
       "name": "Whispering Sage",
-      "pulls": 65,
+      "pulls": 67,
       "yields": [
         {
           "res": "Whispering Sage",
-          "count": 65,
+          "count": 67,
           "rate": 1
         },
         {
           "res": "Magic Frond",
-          "count": 3,
-          "rate": 0.046153846153846156
+          "count": 4,
+          "rate": 0.05970149253731343
         }
       ],
       "zones": [
         "Sungreetstrand",
-        "Evershade Weald",
         "Keepersbight",
+        "Evershade Weald",
         "Shaded Dunes"
       ]
     },
@@ -17072,11 +17076,11 @@
     },
     {
       "name": "Herbs - Keepersbight",
-      "pulls": 18,
+      "pulls": 20,
       "yields": [
         {
           "res": "Moonveil",
-          "count": 18,
+          "count": 20,
           "rate": 1
         }
       ],
