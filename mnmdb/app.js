@@ -2183,7 +2183,7 @@ const ATLAS_MAPS = {
   'Tomb of the Last Wyrmsbane': ['wyrmsbane-tomb', 'jakob-tomb-route-from'], 'Glass Flats': ['glass-flats', 'salt-elementals-30-36-1'],
   'Ancient Crypt': ['ancient-crypt', 'ladder-library-south-floor-1'], 'Scarwood': ['scarwood', 'grinholdt-thorne-grinholdt'],
   'Vale of Zintar': ['vale-of-zintar', 'lake-notables-najarica'], 'Grain Cellar': ['grain-cellar', 'a-sneaky-rat'],
-  'Tel Ekir': ['tel-ekir', 'link-007-b'], "Keeper's Bight": ['keepers-bight', 'farmers-heather'],
+  'Tel Ekir': ['tel-ekir', 'community-360'], "Keeper's Bight": ['keepers-bight', 'farmers-heather'],
   'Fallen Watch': ['fallen-watch', 'splint'],
   'Underdocks': ['underdocks', 'community-167'], "Ail'Vorith": ['ail-vorith', 'grindstone'],
   'Great Cavern Sea': ['great-cavern-sea', 'vhaleth-halkareth'],
@@ -2191,8 +2191,8 @@ const ATLAS_MAPS = {
   'Blacktide Bay': ['blacktide-bay', 'stairs-fortress-floor-1'], 'Caves of Irem': ['caves-of-irem', 'community-751'],
   'Glinting Hollow': ['glinting-hollow', 'community-1097'], 'Grimtide Sanctum': ['grimtide-sanctum', 'link-stairs-1-floor-2'],
   'Infested Crypt': ['infested-crypt', 'web-ladder-floor-1'], 'Rothold': ['rothold', 'main-stair-2'],
-  'Shallow Shoals': ['shallow-shoals', 'zaedin-bank'], 'Sunken Resort': ['sunken-resort', 'link-a-floor-1'],
-  'Blind Midden': ['blind-midden', 'ramp-1-canyon'],
+  'Shallow Shoals': ['shallow-shoals', 'zaedin-appraiser'], 'Sunken Resort': ['sunken-resort', 'link-a-floor-1'],
+  'Blind Midden': ['blind-midden', 'ramp-1-canyon'], 'Undead Keep': ['undead-keep', 'tower-door-outside'],
 };
 // The World map card uses the Atlas's own share card for its world page (its og:image) —
 // an uncaptioned overview, where every world-map /mini/ still is captioned with a dungeon.
