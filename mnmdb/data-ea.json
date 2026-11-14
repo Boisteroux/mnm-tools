@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-14T08:00:07.266Z",
+  "generatedAt": "2026-11-14T20:00:16.199Z",
   "source": "mnm-tools",
   "ledgerFiles": 54,
-  "events": 17553,
+  "events": 17326,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,273 +10,11 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 17553
+      "events": 17326
     }
   ],
   "contributorCount": 1,
   "mobs": {
-    "an old elven skeleton": {
-      "kills": 54,
-      "drops": {
-        "Cloth Scraps": 27,
-        "Bone Chips": 19,
-        "Rusty Shortsword": 1,
-        "Rawhide Scraps": 10,
-        "Tattered Rawhide Cloak": 1,
-        "Rusty Kite Shield": 1,
-        "Tattered Rawhide Belt": 2,
-        "Tattered Rawhide Bracer": 1,
-        "Tattered Cloth Gloves": 1,
-        "Rusty Scimitar": 1,
-        "Rusty War Lance": 1,
-        "Tattered Cloth Gorget": 1,
-        "Rusty Great Scythe": 1,
-        "Tattered Cloth Mantle": 1,
-        "Tattered Rawhide Gorget": 1,
-        "Rusty Longsword": 1,
-        "Rusty Warhammer": 1,
-        "Tattered Cloth Robe": 1,
-        "Tattered Rawhide Mask": 1
-      },
-      "zones": {
-        "Evershade Weald": 169
-      },
-      "coin": 1226,
-      "corpses": 39
-    },
-    "a skeleton": {
-      "kills": 51,
-      "drops": {
-        "Cloth Scraps": 23,
-        "Bone Chips": 26,
-        "Rusty Battle Axe": 1,
-        "Rawhide Scraps": 3,
-        "Tattered Cloth Mantle": 1,
-        "Tattered Cloth Veil": 1,
-        "Tattered Cloth Cape": 1,
-        "Tattered Cloth Shirt": 1,
-        "Tattered Cloth Tunic": 1
-      },
-      "zones": {
-        "Evershade Weald": 141
-      },
-      "coin": 789,
-      "corpses": 38
-    },
-    "a Fellstone warrior": {
-      "kills": 13,
-      "drops": {
-        "Left Orc Ear": 6,
-        "Cloth Scraps": 10,
-        "Tattered Cloth Pantaloons": 1,
-        "Rawhide Scraps": 1,
-        "Raw Orc Meat": 2,
-        "Tattered Cloth Cape": 1,
-        "Rusty Trident": 1,
-        "Tattered Rawhide Cap": 1,
-        "Tattered Rawhide Tunic": 1
-      },
-      "zones": {
-        "Evershade Weald": 39
-      },
-      "coin": 216,
-      "corpses": 15
-    },
-    "a rabid wolf": {
-      "kills": 0,
-      "drops": {
-        "Damaged Canine Ear": 3,
-        "Low-Quality Wolf Pelt": 1,
-        "Diseased Wolf Pelt": 3,
-        "Raw Wolf Meat": 1
-      },
-      "zones": {
-        "Evershade Weald": 11
-      },
-      "coin": 0,
-      "corpses": 5
-    },
-    "a Fellstone shaman": {
-      "kills": 5,
-      "drops": {
-        "Cloth Scraps": 3,
-        "Left Orc Ear": 1,
-        "Broken Shaman Idol": 1,
-        "Raw Orc Meat": 1,
-        "Worn Great Staff": 1,
-        "Tattered Cloth Cap": 1,
-        "Tattered Rawhide Shoulderpads": 1
-      },
-      "zones": {
-        "Evershade Weald": 16
-      },
-      "coin": 111,
-      "corpses": 5
-    },
-    "a Fellstone guard": {
-      "kills": 175,
-      "drops": {
-        "Tattered Cloth Gloves": 3,
-        "Raw Orc Meat": 23,
-        "Cloth Scraps": 79,
-        "Rawhide Scraps": 31,
-        "Rusty Long Spear": 1,
-        "Left Orc Ear": 31,
-        "Tattered Rawhide Mask": 2,
-        "Tattered Rawhide Belt": 1,
-        "Tattered Cloth Pantaloons": 1,
-        "Tattered Cloth Boots": 2,
-        "Tattered Rawhide Gorget": 1,
-        "Tattered Cloth Bracer": 2,
-        "Tattered Cloth Tunic": 1,
-        "Tattered Rawhide Cap": 3,
-        "Rusty Mace": 1,
-        "Rusty Longsword": 2,
-        "Tattered Cloth Robe": 1,
-        "Rusty War Lance": 1,
-        "Tattered Rawhide Tunic": 1,
-        "Tattered Cloth Cape": 1,
-        "Tattered Cloth Veil": 3,
-        "Tattered Rawhide Gloves": 1,
-        "Tattered Rawhide Leggings": 1,
-        "Rusty Spear": 1,
-        "Tattered Cloth Belt": 1,
-        "Tattered Cloth Shirt": 1
-      },
-      "zones": {
-        "Evershade Weald": 389,
-        "Blacktidebay": 63
-      },
-      "coin": 5442,
-      "corpses": 118
-    },
-    "a Fellstone tracker": {
-      "kills": 39,
-      "drops": {
-        "Tattered Cloth Mantle": 1,
-        "Unintelligible Report": 2,
-        "Cloth Scraps": 18,
-        "Rawhide Scraps": 9,
-        "Tattered Cloth Gloves": 1,
-        "Tarnished Medallion": 20,
-        "Left Orc Ear": 8,
-        "Rusty Warhammer": 1,
-        "Raw Orc Meat": 4,
-        "Tattered Rawhide Vest": 1,
-        "Rusty Longsword": 1
-      },
-      "zones": {
-        "Evershade Weald": 20,
-        "Blacktidebay": 90
-      },
-      "coin": 1056,
-      "corpses": 36
-    },
-    "a Fellstone defiler": {
-      "kills": 41,
-      "drops": {
-        "Cloth Scraps": 20,
-        "Rawhide Scraps": 7,
-        "Left Orc Ear": 7,
-        "Tattered Cloth Cape": 2,
-        "Tarnished Medallion": 4,
-        "Tattered Cloth Robe": 1,
-        "Tattered Cloth Cap": 1,
-        "Raw Orc Meat": 3,
-        "Tattered Rawhide Bracer": 2,
-        "Tattered Cloth Pantaloons": 1,
-        "Rusty Greatsword": 1,
-        "Tattered Rawhide Shoulderpads": 1,
-        "Tattered Cloth Gloves": 1,
-        "Rusty Dagger": 1
-      },
-      "zones": {
-        "Evershade Weald": 73,
-        "Blacktidebay": 31
-      },
-      "coin": 1357,
-      "corpses": 35
-    },
-    "a Fellstone scout": {
-      "kills": 8,
-      "drops": {
-        "Cloth Scraps": 5,
-        "Rusty Scimitar": 1,
-        "Unintelligible Writings": 1
-      },
-      "zones": {
-        "Evershade Weald": 16
-      },
-      "coin": 36,
-      "corpses": 6
-    },
-    "a Fellstone ragecaller": {
-      "kills": 48,
-      "drops": {
-        "Cloth Scraps": 21,
-        "Left Orc Ear": 8,
-        "Tattered Cloth Pantaloons": 1,
-        "Tattered Cloth Cape": 2,
-        "Raw Orc Meat": 11,
-        "Tattered Cloth Boots": 3,
-        "Rawhide Scraps": 3,
-        "Tattered Cloth Robe": 2,
-        "Tarnished Medallion": 14,
-        "Rusty Scimitar": 1,
-        "Torch": 2,
-        "Tattered Rawhide Gloves": 1,
-        "Tattered Rawhide Belt": 2,
-        "Tattered Rawhide Vest": 1,
-        "Tattered Rawhide Gorget": 1,
-        "Tattered Cloth Tunic": 1,
-        "Tattered Rawhide Bracer": 1
-      },
-      "zones": {
-        "Evershade Weald": 65,
-        "Blacktidebay": 69
-      },
-      "coin": 1494,
-      "corpses": 46
-    },
-    "a Fellstone corrupter": {
-      "kills": 9,
-      "drops": {
-        "Tarnished Medallion": 6,
-        "Rawhide Scraps": 4,
-        "Cloth Scraps": 4,
-        "Left Orc Ear": 2,
-        "Rusty Mace": 1,
-        "Tattered Cloth Bracer": 1,
-        "Raw Orc Meat": 1
-      },
-      "zones": {
-        "Evershade Weald": 21,
-        "Blacktidebay": 13
-      },
-      "coin": 270,
-      "corpses": 8
-    },
-    "a Calafreyan soldier": {
-      "kills": 18,
-      "drops": {
-        "Cloth Scraps": 10,
-        "Bone Chips": 13,
-        "Tarnished Medallion": 10,
-        "Tattered Cloth Cap": 1,
-        "Tattered Rawhide Gorget": 1,
-        "Tattered Rawhide Vest": 1,
-        "Rawhide Scraps": 1,
-        "Rusty Greatsword": 1,
-        "Tattered Rawhide Leggings": 1,
-        "Rusty Kite Shield": 1,
-        "Rusty Battle Axe": 1
-      },
-      "zones": {
-        "Evershade Weald": 69
-      },
-      "coin": 471,
-      "corpses": 20
-    },
     "a small river elemental": {
       "kills": 0,
       "drops": {
@@ -352,22 +90,175 @@
       "coin": 0,
       "corpses": 1
     },
+    "an old elven skeleton": {
+      "kills": 33,
+      "drops": {
+        "Tattered Rawhide Bracer": 1,
+        "Bone Chips": 14,
+        "Cloth Scraps": 16,
+        "Tattered Cloth Gloves": 1,
+        "Rusty Scimitar": 1,
+        "Rusty War Lance": 1,
+        "Rawhide Scraps": 6,
+        "Tattered Cloth Gorget": 1,
+        "Rusty Great Scythe": 1,
+        "Tattered Cloth Mantle": 1,
+        "Tattered Rawhide Gorget": 1,
+        "Rusty Longsword": 1,
+        "Tattered Rawhide Belt": 1,
+        "Rusty Warhammer": 1,
+        "Tattered Cloth Robe": 1,
+        "Tattered Rawhide Mask": 1
+      },
+      "zones": {
+        "Evershade Weald": 112
+      },
+      "coin": 738,
+      "corpses": 25
+    },
+    "a skeleton": {
+      "kills": 24,
+      "drops": {
+        "Cloth Scraps": 11,
+        "Bone Chips": 10,
+        "Tattered Cloth Cape": 1,
+        "Tattered Cloth Shirt": 1,
+        "Tattered Cloth Tunic": 1
+      },
+      "zones": {
+        "Evershade Weald": 63
+      },
+      "coin": 391,
+      "corpses": 16
+    },
+    "a Fellstone guard": {
+      "kills": 98,
+      "drops": {
+        "Cloth Scraps": 48,
+        "Rusty Mace": 1,
+        "Rawhide Scraps": 19,
+        "Tattered Cloth Bracer": 1,
+        "Raw Orc Meat": 16,
+        "Left Orc Ear": 14,
+        "Rusty Longsword": 2,
+        "Tattered Cloth Robe": 1,
+        "Tattered Rawhide Cap": 2,
+        "Rusty War Lance": 1,
+        "Tattered Rawhide Tunic": 1,
+        "Tattered Cloth Cape": 1,
+        "Tattered Cloth Veil": 3,
+        "Tattered Rawhide Gloves": 1,
+        "Tattered Rawhide Mask": 1,
+        "Tattered Rawhide Leggings": 1,
+        "Rusty Spear": 1,
+        "Tattered Cloth Belt": 1,
+        "Tattered Cloth Boots": 1,
+        "Tattered Cloth Shirt": 1
+      },
+      "zones": {
+        "Evershade Weald": 189,
+        "Blacktidebay": 63
+      },
+      "coin": 3031,
+      "corpses": 73
+    },
+    "a Fellstone ragecaller": {
+      "kills": 33,
+      "drops": {
+        "Cloth Scraps": 14,
+        "Left Orc Ear": 4,
+        "Raw Orc Meat": 9,
+        "Tattered Cloth Robe": 2,
+        "Tarnished Medallion": 14,
+        "Rusty Scimitar": 1,
+        "Tattered Cloth Cape": 1,
+        "Torch": 2,
+        "Tattered Rawhide Gloves": 1,
+        "Tattered Rawhide Belt": 2,
+        "Tattered Rawhide Vest": 1,
+        "Tattered Rawhide Gorget": 1,
+        "Tattered Cloth Boots": 2,
+        "Tattered Cloth Tunic": 1,
+        "Rawhide Scraps": 2,
+        "Tattered Rawhide Bracer": 1
+      },
+      "zones": {
+        "Evershade Weald": 29,
+        "Blacktidebay": 69
+      },
+      "coin": 1002,
+      "corpses": 34
+    },
+    "a Fellstone defiler": {
+      "kills": 25,
+      "drops": {
+        "Left Orc Ear": 5,
+        "Tattered Cloth Cap": 1,
+        "Raw Orc Meat": 3,
+        "Rawhide Scraps": 3,
+        "Cloth Scraps": 14,
+        "Tarnished Medallion": 1,
+        "Tattered Rawhide Bracer": 2,
+        "Tattered Cloth Pantaloons": 1,
+        "Rusty Greatsword": 1,
+        "Tattered Rawhide Shoulderpads": 1,
+        "Tattered Cloth Gloves": 1,
+        "Rusty Dagger": 1
+      },
+      "zones": {
+        "Evershade Weald": 32,
+        "Blacktidebay": 31
+      },
+      "coin": 866,
+      "corpses": 23
+    },
+    "a Fellstone corrupter": {
+      "kills": 7,
+      "drops": {
+        "Rawhide Scraps": 3,
+        "Cloth Scraps": 2,
+        "Tarnished Medallion": 5,
+        "Left Orc Ear": 1,
+        "Rusty Mace": 1,
+        "Tattered Cloth Bracer": 1,
+        "Raw Orc Meat": 1
+      },
+      "zones": {
+        "Evershade Weald": 10,
+        "Blacktidebay": 13
+      },
+      "coin": 212,
+      "corpses": 6
+    },
+    "a Fellstone scout": {
+      "kills": 6,
+      "drops": {
+        "Rusty Scimitar": 1,
+        "Unintelligible Writings": 1,
+        "Cloth Scraps": 4
+      },
+      "zones": {
+        "Evershade Weald": 12
+      },
+      "coin": 28,
+      "corpses": 5
+    },
     "a green drakeling": {
       "kills": 6,
       "drops": {
-        "Green Drakeling Wing": 4,
-        "Green Drakeling Scale": 3,
+        "Green Drakeling Scale": 2,
         "Drake Claw": 2,
+        "Green Drakeling Wing": 3,
         "Green Drakeling Poison Duct": 1,
         "Drake Fang": 1,
         "Green Drakeling Hide": 1,
         "Pristine Drake Fang": 1
       },
       "zones": {
-        "Evershade Weald": 19
+        "Evershade Weald": 17
       },
       "coin": 75,
-      "corpses": 7
+      "corpses": 6
     },
     "Widow Vethra": {
       "kills": 0,
@@ -421,6 +312,23 @@
       },
       "coin": 0,
       "corpses": 1
+    },
+    "a Fellstone warrior": {
+      "kills": 8,
+      "drops": {
+        "Raw Orc Meat": 1,
+        "Cloth Scraps": 8,
+        "Tattered Cloth Cape": 1,
+        "Left Orc Ear": 3,
+        "Rusty Trident": 1,
+        "Tattered Rawhide Cap": 1,
+        "Tattered Rawhide Tunic": 1
+      },
+      "zones": {
+        "Evershade Weald": 25
+      },
+      "coin": 132,
+      "corpses": 10
     },
     "a Fellstone sentry": {
       "kills": 201,
@@ -628,6 +536,27 @@
       },
       "coin": 11919,
       "corpses": 304
+    },
+    "a Fellstone tracker": {
+      "kills": 35,
+      "drops": {
+        "Cloth Scraps": 17,
+        "Unintelligible Report": 1,
+        "Tattered Cloth Gloves": 1,
+        "Tarnished Medallion": 20,
+        "Rawhide Scraps": 8,
+        "Left Orc Ear": 8,
+        "Rusty Warhammer": 1,
+        "Raw Orc Meat": 4,
+        "Tattered Rawhide Vest": 1,
+        "Rusty Longsword": 1
+      },
+      "zones": {
+        "Blacktidebay": 90,
+        "Evershade Weald": 8
+      },
+      "coin": 950,
+      "corpses": 34
     },
     "Commander Rursk": {
       "kills": 1,
@@ -1493,7 +1422,7 @@
       "corpses": 72
     },
     "a henchman": {
-      "kills": 139,
+      "kills": 141,
       "drops": {
         "Polished Medallion": 45,
         "Bronze Scraps": 12,
@@ -1539,13 +1468,13 @@
         "Worn Fine Wood Buckler": 1
       },
       "zones": {
-        "Sungreetstrand": 348
+        "Sungreetstrand": 350
       },
-      "coin": 12329,
+      "coin": 12557,
       "corpses": 96
     },
     "a corrupt clergyman": {
-      "kills": 66,
+      "kills": 67,
       "drops": {
         "Simple Medallion": 7,
         "Wool Scraps": 13,
@@ -1560,7 +1489,7 @@
         "Flawed Diamond": 1,
         "Lemon": 2,
         "Celery": 2,
-        "Hide Scraps": 5,
+        "Hide Scraps": 6,
         "Tomato": 1,
         "Corroded Bronze Plate Greaves": 1,
         "Corroded Bronze Dagger": 1,
@@ -1578,10 +1507,10 @@
         "Corroded Bronze Battle Axe": 1
       },
       "zones": {
-        "Sungreetstrand": 171
+        "Sungreetstrand": 173
       },
-      "coin": 5365,
-      "corpses": 56
+      "coin": 5420,
+      "corpses": 57
     },
     "a hired tracker": {
       "kills": 98,
@@ -2182,6 +2111,182 @@
       "coin": 0,
       "corpses": 26
     },
+    "a ghostly fighter": {
+      "kills": 15,
+      "drops": {
+        "Cotton Scraps": 4,
+        "Polished Medallion": 4,
+        "Phantom Residue": 2,
+        "Leather Scraps": 1,
+        "Rusty Iron Maul": 1,
+        "Rusty Iron Chain Leggings": 1,
+        "Tattered Leather Tunic": 1
+      },
+      "zones": {
+        "Graincellar": 32
+      },
+      "coin": 1939,
+      "corpses": 8
+    },
+    "a ghostly figure": {
+      "kills": 8,
+      "drops": {
+        "Tattered Leather Cloak": 1,
+        "Lacquered Medallion": 3,
+        "Leather Scraps": 1,
+        "Rusty Iron Shortsword": 1,
+        "Cotton Scraps": 1,
+        "Rusty Iron Spear": 1
+      },
+      "zones": {
+        "Graincellar": 17
+      },
+      "coin": 835,
+      "corpses": 7
+    },
+    "a skeletal captive": {
+      "kills": 6,
+      "drops": {
+        "Bone Chips": 3,
+        "Cotton Scraps": 3,
+        "Lacquered Medallion": 1
+      },
+      "zones": {
+        "Graincellar": 16
+      },
+      "coin": 777,
+      "corpses": 5
+    },
+    "a nefarious cultist": {
+      "kills": 18,
+      "drops": {
+        "Cotton Scraps": 9,
+        "Raw Human Meat": 2,
+        "Tattered Cotton Robe": 1,
+        "Lacquered Medallion": 6,
+        "Imperfect Peridot": 1,
+        "Carrot": 1,
+        "Spirit World Ch. 11": 1,
+        "Potato": 1,
+        "Tattered Cotton Cape": 1,
+        "Lemon": 1,
+        "Rusty Iron Shortsword": 1,
+        "Tomato": 1,
+        "Rusty Iron War Lance": 1
+      },
+      "zones": {
+        "Graincellar": 52
+      },
+      "coin": 2051,
+      "corpses": 12
+    },
+    "a craven cultist": {
+      "kills": 21,
+      "drops": {
+        "Lacquered Medallion": 8,
+        "Iron Scraps": 3,
+        "Cotton Scraps": 3,
+        "Raw Human Meat": 3,
+        "Garlic": 1,
+        "Leather Scraps": 2,
+        "Cabbage": 2,
+        "Rusty Iron Mace": 1,
+        "Tattered Leather Shoulderpads": 1
+      },
+      "zones": {
+        "Graincellar": 53
+      },
+      "coin": 2643,
+      "corpses": 14
+    },
+    "a skeletal worker": {
+      "kills": 8,
+      "drops": {
+        "Iron Scraps": 1,
+        "Metamorphosis Journal Page": 1,
+        "Rusty Iron Greatsword": 1,
+        "Rusty Iron Plate Cloak": 2,
+        "Rusty Iron Kite Shield": 1,
+        "Lacquered Medallion": 1,
+        "Rusty Iron Plate Pauldrons": 1
+      },
+      "zones": {
+        "Graincellar": 20
+      },
+      "coin": 1003,
+      "corpses": 4
+    },
+    "a wandering skeleton": {
+      "kills": 4,
+      "drops": {
+        "Bone Chips": 2,
+        "Lacquered Medallion": 1,
+        "Cotton Scraps": 1,
+        "Iron Scraps": 1
+      },
+      "zones": {
+        "Graincellar": 12
+      },
+      "coin": 608,
+      "corpses": 2
+    },
+    "a ghostly cleric": {
+      "kills": 6,
+      "drops": {
+        "Tattered Cotton Bracer": 1,
+        "Lacquered Medallion": 1,
+        "Worn Ironbark Buckler": 1,
+        "Cotton Scraps": 1
+      },
+      "zones": {
+        "Graincellar": 10
+      },
+      "coin": 747,
+      "corpses": 3
+    },
+    "a skeletal slave": {
+      "kills": 3,
+      "drops": {
+        "Lacquered Medallion": 1,
+        "Rusty Iron Chain Boots": 1,
+        "Bone Chips": 1
+      },
+      "zones": {
+        "Graincellar": 8
+      },
+      "coin": 378,
+      "corpses": 1
+    },
+    "a rabid wolf": {
+      "kills": 0,
+      "drops": {
+        "Low-Quality Wolf Pelt": 1,
+        "Diseased Wolf Pelt": 3,
+        "Damaged Canine Ear": 1,
+        "Raw Wolf Meat": 1
+      },
+      "zones": {
+        "Evershade Weald": 6
+      },
+      "coin": 0,
+      "corpses": 3
+    },
+    "a Calafreyan soldier": {
+      "kills": 8,
+      "drops": {
+        "Bone Chips": 6,
+        "Tarnished Medallion": 6,
+        "Tattered Rawhide Leggings": 1,
+        "Rusty Kite Shield": 1,
+        "Cloth Scraps": 5,
+        "Rusty Battle Axe": 1
+      },
+      "zones": {
+        "Evershade Weald": 30
+      },
+      "coin": 225,
+      "corpses": 9
+    },
     "a gloom widow": {
       "kills": 0,
       "drops": {
@@ -2194,6 +2299,20 @@
       },
       "coin": 0,
       "corpses": 3
+    },
+    "a Fellstone shaman": {
+      "kills": 1,
+      "drops": {
+        "Cloth Scraps": 1,
+        "Worn Great Staff": 1,
+        "Tattered Cloth Cap": 1,
+        "Tattered Rawhide Shoulderpads": 1
+      },
+      "zones": {
+        "Evershade Weald": 5
+      },
+      "coin": 22,
+      "corpses": 2
     },
     "a beguiled wolf": {
       "kills": 0,
@@ -2454,17 +2573,6 @@
       "coin": 606,
       "corpses": 4
     },
-    "a craven cultist": {
-      "kills": 1,
-      "drops": {
-        "Lacquered Medallion": 1
-      },
-      "zones": {
-        "Graincellar": 2
-      },
-      "coin": 125,
-      "corpses": 1
-    },
     "a water basilisk broodmother": {
       "kills": 0,
       "drops": {
@@ -2473,6 +2581,79 @@
       },
       "zones": {
         "Shallowshoals": 2
+      },
+      "coin": 0,
+      "corpses": 1
+    },
+    "a devoted cultist": {
+      "kills": 13,
+      "drops": {
+        "Lacquered Medallion": 5,
+        "Cotton Scraps": 5,
+        "Torch": 1,
+        "Rusty Iron Axe": 1,
+        "Tattered Leather Cap": 1,
+        "Mushroom": 1,
+        "Rusty Iron Maul": 1,
+        "Leather Scraps": 2,
+        "Raw Human Meat": 1
+      },
+      "zones": {
+        "Graincellar": 31
+      },
+      "coin": 1569,
+      "corpses": 12
+    },
+    "a skeletal farmer": {
+      "kills": 19,
+      "drops": {
+        "Bone Chips": 9,
+        "Leather Scraps": 3,
+        "Cotton Scraps": 3,
+        "Lacquered Medallion": 5,
+        "Rusty Iron Plate Cloak": 1,
+        "Iron Scraps": 1,
+        "Rusty Iron Plate Breastplate": 1,
+        "Metamorphosis Journal Page": 1
+      },
+      "zones": {
+        "Graincellar": 47
+      },
+      "coin": 2656,
+      "corpses": 15
+    },
+    "a sneaky rat": {
+      "kills": 0,
+      "drops": {
+        "Burrow Hide Pants": 1
+      },
+      "zones": {
+        "Graincellar": 1
+      },
+      "coin": 0,
+      "corpses": 1
+    },
+    "a diminished ghost": {
+      "kills": 5,
+      "drops": {
+        "Lacquered Medallion": 3,
+        "Rusty Iron Battle Axe": 1,
+        "Leather Scraps": 3,
+        "Rusty Iron Long Spear": 1
+      },
+      "zones": {
+        "Graincellar": 13
+      },
+      "coin": 640,
+      "corpses": 5
+    },
+    "a rat": {
+      "kills": 0,
+      "drops": {
+        "Grizzled Rodent Ear": 1
+      },
+      "zones": {
+        "Graincellar": 1
       },
       "coin": 0,
       "corpses": 1
@@ -2849,22 +3030,46 @@
           "rate": 1
         },
         {
+          "mob": "a wandering skeleton",
+          "drops": 2,
+          "corpses": 2,
+          "rate": 1
+        },
+        {
+          "mob": "a skeletal slave",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
+        {
           "mob": "a rotting skeleton",
           "drops": 5,
           "corpses": 6,
           "rate": 0.8333333333333334
         },
         {
-          "mob": "a skeleton",
-          "drops": 26,
-          "corpses": 38,
-          "rate": 0.6842105263157895
+          "mob": "a Calafreyan soldier",
+          "drops": 6,
+          "corpses": 9,
+          "rate": 0.6666666666666666
         },
         {
-          "mob": "a Calafreyan soldier",
-          "drops": 13,
-          "corpses": 20,
-          "rate": 0.65
+          "mob": "a skeleton",
+          "drops": 10,
+          "corpses": 16,
+          "rate": 0.625
+        },
+        {
+          "mob": "a skeletal captive",
+          "drops": 3,
+          "corpses": 5,
+          "rate": 0.6
+        },
+        {
+          "mob": "a skeletal farmer",
+          "drops": 9,
+          "corpses": 15,
+          "rate": 0.6
         },
         {
           "mob": "a dusty skeleton",
@@ -2874,15 +3079,16 @@
         },
         {
           "mob": "an old elven skeleton",
-          "drops": 19,
-          "corpses": 39,
-          "rate": 0.48717948717948717
+          "drops": 14,
+          "corpses": 25,
+          "rate": 0.56
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
         "Evershade Weald",
+        "Graincellar",
         "Fallenpass",
         "Tomb of the Last Wyrmsbane",
         "Keepersbight"
@@ -2911,28 +3117,10 @@
           "count": 13
         }
       ],
-      "harvested": 256,
+      "harvested": 250,
       "zones": [
         "Evershade Weald",
         "Keepersbight"
-      ]
-    },
-    {
-      "id": "broken_shaman_idol",
-      "gameId": "1a31429b23c115e1fc8dece5",
-      "name": "Broken Shaman Idol",
-      "droppedBy": [
-        {
-          "mob": "a Fellstone shaman",
-          "drops": 1,
-          "corpses": 5,
-          "rate": 0.2
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
       ]
     },
     {
@@ -2983,16 +3171,16 @@
           "rate": 0.16666666666666666
         },
         {
-          "mob": "a corrupt clergyman",
-          "drops": 7,
-          "corpses": 56,
-          "rate": 0.125
-        },
-        {
           "mob": "a henchman",
           "drops": 12,
           "corpses": 96,
           "rate": 0.125
+        },
+        {
+          "mob": "a corrupt clergyman",
+          "drops": 7,
+          "corpses": 57,
+          "rate": 0.12280701754385964
         },
         {
           "mob": "a Bloodchain sentry",
@@ -3119,10 +3307,34 @@
       ]
     },
     {
+      "id": "burrow_hide_pants",
+      "gameId": "21678e01dfeef806a3b17380",
+      "name": "Burrow Hide Pants",
+      "droppedBy": [
+        {
+          "mob": "a sneaky rat",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Graincellar"
+      ]
+    },
+    {
       "id": "cabbage",
       "gameId": "7464484d69831c9587f6b80e",
       "name": "Cabbage",
       "droppedBy": [
+        {
+          "mob": "a craven cultist",
+          "drops": 2,
+          "corpses": 14,
+          "rate": 0.14285714285714285
+        },
         {
           "mob": "a hired tracker",
           "drops": 5,
@@ -3192,8 +3404,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 57,
+          "rate": 0.017543859649122806
         },
         {
           "mob": "a Sangrel arcanist",
@@ -3224,6 +3436,7 @@
       "zones": [
         "Keepersbight",
         "Sungreetstrand",
+        "Graincellar",
         "Evershade Weald"
       ]
     },
@@ -3246,6 +3459,12 @@
         },
         {
           "mob": "a captured dockhand",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
+        },
+        {
+          "mob": "a nefarious cultist",
           "drops": 1,
           "corpses": 12,
           "rate": 0.08333333333333333
@@ -3319,8 +3538,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 57,
+          "rate": 0.017543859649122806
         },
         {
           "mob": "a Sangrel hunter",
@@ -3340,7 +3559,8 @@
         "Keepersbight",
         "Sungreetstrand",
         "Blacktidebay",
-        "Evershade Weald"
+        "Evershade Weald",
+        "Graincellar"
       ]
     },
     {
@@ -3376,8 +3596,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 2,
-          "corpses": 56,
-          "rate": 0.03571428571428571
+          "corpses": 57,
+          "rate": 0.03508771929824561
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -3485,8 +3705,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 57,
+          "rate": 0.017543859649122806
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -3522,7 +3742,7 @@
           "count": 4
         }
       ],
-      "harvested": 8,
+      "harvested": 7,
       "zones": [
         "Evershade Weald"
       ]
@@ -3620,7 +3840,7 @@
           "count": 5
         }
       ],
-      "harvested": 10,
+      "harvested": 9,
       "zones": [
         "Evershade Weald"
       ]
@@ -3832,16 +4052,22 @@
           "rate": 1
         },
         {
-          "mob": "a Fellstone scout",
+          "mob": "a rotting skeleton",
           "drops": 5,
           "corpses": 6,
           "rate": 0.8333333333333334
         },
         {
-          "mob": "a rotting skeleton",
-          "drops": 5,
-          "corpses": 6,
-          "rate": 0.8333333333333334
+          "mob": "a Fellstone scout",
+          "drops": 4,
+          "corpses": 5,
+          "rate": 0.8
+        },
+        {
+          "mob": "a Fellstone warrior",
+          "drops": 8,
+          "corpses": 10,
+          "rate": 0.8
         },
         {
           "mob": "a fossergrim watcher",
@@ -3862,22 +4088,10 @@
           "rate": 0.75
         },
         {
-          "mob": "an old elven skeleton",
-          "drops": 27,
-          "corpses": 39,
-          "rate": 0.6923076923076923
-        },
-        {
-          "mob": "a Fellstone guard",
-          "drops": 79,
-          "corpses": 118,
-          "rate": 0.6694915254237288
-        },
-        {
-          "mob": "a Fellstone warrior",
-          "drops": 10,
-          "corpses": 15,
-          "rate": 0.6666666666666666
+          "mob": "a skeleton",
+          "drops": 11,
+          "corpses": 16,
+          "rate": 0.6875
         },
         {
           "mob": "a sullen farmhand",
@@ -3886,28 +4100,28 @@
           "rate": 0.6666666666666666
         },
         {
+          "mob": "a Fellstone guard",
+          "drops": 48,
+          "corpses": 73,
+          "rate": 0.6575342465753424
+        },
+        {
           "mob": "a Fellstone sentry",
           "drops": 94,
           "corpses": 145,
           "rate": 0.6482758620689655
         },
         {
-          "mob": "a skeleton",
-          "drops": 23,
-          "corpses": 38,
-          "rate": 0.6052631578947368
-        },
-        {
-          "mob": "a Fellstone shaman",
-          "drops": 3,
-          "corpses": 5,
-          "rate": 0.6
+          "mob": "an old elven skeleton",
+          "drops": 16,
+          "corpses": 25,
+          "rate": 0.64
         },
         {
           "mob": "a Fellstone defiler",
-          "drops": 20,
-          "corpses": 35,
-          "rate": 0.5714285714285714
+          "drops": 14,
+          "corpses": 23,
+          "rate": 0.6086956521739131
         },
         {
           "mob": "a Fellstone sentinel",
@@ -3916,28 +4130,22 @@
           "rate": 0.5686274509803921
         },
         {
-          "mob": "a Fellstone tracker",
-          "drops": 18,
-          "corpses": 36,
-          "rate": 0.5
-        },
-        {
-          "mob": "a Fellstone corrupter",
-          "drops": 4,
-          "corpses": 8,
-          "rate": 0.5
-        },
-        {
           "mob": "a Calafreyan soldier",
-          "drops": 10,
-          "corpses": 20,
+          "drops": 5,
+          "corpses": 9,
+          "rate": 0.5555555555555556
+        },
+        {
+          "mob": "a Fellstone tracker",
+          "drops": 17,
+          "corpses": 34,
           "rate": 0.5
         },
         {
-          "mob": "a Fellstone ragecaller",
-          "drops": 21,
-          "corpses": 46,
-          "rate": 0.45652173913043476
+          "mob": "a Fellstone shaman",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
         },
         {
           "mob": "Gurowl the Beast",
@@ -3952,6 +4160,18 @@
           "rate": 0.42857142857142855
         },
         {
+          "mob": "a Fellstone ragecaller",
+          "drops": 14,
+          "corpses": 34,
+          "rate": 0.4117647058823529
+        },
+        {
+          "mob": "a Fellstone corrupter",
+          "drops": 2,
+          "corpses": 6,
+          "rate": 0.3333333333333333
+        },
+        {
           "mob": "a filthy henchman",
           "drops": 1,
           "corpses": 3,
@@ -3961,8 +4181,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Evershade Weald",
         "Blacktidebay",
+        "Evershade Weald",
         "Sungreetstrand",
         "Tomb of the Last Wyrmsbane",
         "Keepersbight"
@@ -4128,7 +4348,7 @@
       "name": "Copper Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 961,
+      "harvested": 943,
       "zones": [
         "Evershade Weald",
         "Keepersbight",
@@ -4227,8 +4447,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 57,
+          "rate": 0.017543859649122806
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -4507,8 +4727,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 57,
+          "rate": 0.017543859649122806
         },
         {
           "mob": "a Bloodchain guard",
@@ -4718,8 +4938,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 57,
+          "rate": 0.017543859649122806
         },
         {
           "mob": "a sly farmhand",
@@ -5111,8 +5331,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 57,
+          "rate": 0.017543859649122806
         },
         {
           "mob": "a Sangrel hunter",
@@ -5288,8 +5508,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 57,
+          "rate": 0.017543859649122806
         }
       ],
       "prices": [],
@@ -5376,8 +5596,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 57,
+          "rate": 0.017543859649122806
         },
         {
           "mob": "a Bloodchain sentry",
@@ -5634,8 +5854,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 57,
+          "rate": 0.017543859649122806
         },
         {
           "mob": "a Bloodchain sentry",
@@ -5886,8 +6106,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 57,
+          "rate": 0.017543859649122806
         },
         {
           "mob": "a Sangrel arcanist",
@@ -5971,9 +6191,45 @@
       "name": "Cotton Scraps",
       "droppedBy": [
         {
+          "mob": "a nefarious cultist",
+          "drops": 9,
+          "corpses": 12,
+          "rate": 0.75
+        },
+        {
+          "mob": "a skeletal captive",
+          "drops": 3,
+          "corpses": 5,
+          "rate": 0.6
+        },
+        {
+          "mob": "a ghostly fighter",
+          "drops": 4,
+          "corpses": 8,
+          "rate": 0.5
+        },
+        {
+          "mob": "a wandering skeleton",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
+          "mob": "a devoted cultist",
+          "drops": 5,
+          "corpses": 12,
+          "rate": 0.4166666666666667
+        },
+        {
           "mob": "a poacher herbalist",
           "drops": 2,
           "corpses": 6,
+          "rate": 0.3333333333333333
+        },
+        {
+          "mob": "a ghostly cleric",
+          "drops": 1,
+          "corpses": 3,
           "rate": 0.3333333333333333
         },
         {
@@ -6001,6 +6257,24 @@
           "rate": 0.25
         },
         {
+          "mob": "a craven cultist",
+          "drops": 3,
+          "corpses": 14,
+          "rate": 0.21428571428571427
+        },
+        {
+          "mob": "a skeletal farmer",
+          "drops": 3,
+          "corpses": 15,
+          "rate": 0.2
+        },
+        {
+          "mob": "a ghostly figure",
+          "drops": 1,
+          "corpses": 7,
+          "rate": 0.14285714285714285
+        },
+        {
           "mob": "a poacher pathfinder",
           "drops": 8,
           "corpses": 71,
@@ -6011,6 +6285,7 @@
       "harvested": 0,
       "zones": [
         "Keepersbight",
+        "Graincellar",
         "Valeofzintar"
       ]
     },
@@ -6246,9 +6521,9 @@
         },
         {
           "mob": "a rabid wolf",
-          "drops": 3,
-          "corpses": 5,
-          "rate": 0.6
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
         }
       ],
       "prices": [
@@ -6395,8 +6670,8 @@
         {
           "mob": "a rabid wolf",
           "drops": 3,
-          "corpses": 5,
-          "rate": 0.6
+          "corpses": 3,
+          "rate": 1
         }
       ],
       "prices": [],
@@ -6417,6 +6692,12 @@
           "rate": 0.3888888888888889
         },
         {
+          "mob": "a green drakeling",
+          "drops": 2,
+          "corpses": 6,
+          "rate": 0.3333333333333333
+        },
+        {
           "mob": "a forest drakeling",
           "drops": 4,
           "corpses": 12,
@@ -6427,12 +6708,6 @@
           "drops": 1,
           "corpses": 3,
           "rate": 0.3333333333333333
-        },
-        {
-          "mob": "a green drakeling",
-          "drops": 2,
-          "corpses": 7,
-          "rate": 0.2857142857142857
         }
       ],
       "prices": [
@@ -6488,8 +6763,8 @@
         {
           "mob": "a green drakeling",
           "drops": 1,
-          "corpses": 7,
-          "rate": 0.14285714285714285
+          "corpses": 6,
+          "rate": 0.16666666666666666
         }
       ],
       "prices": [
@@ -6962,8 +7237,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 57,
+          "rate": 0.017543859649122806
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -7021,8 +7296,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 57,
+          "rate": 0.017543859649122806
         },
         {
           "mob": "a hired tracker",
@@ -7080,8 +7355,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 57,
+          "rate": 0.017543859649122806
         },
         {
           "mob": "a hired tracker",
@@ -7414,6 +7689,12 @@
           "rate": 0.25
         },
         {
+          "mob": "a craven cultist",
+          "drops": 1,
+          "corpses": 14,
+          "rate": 0.07142857142857142
+        },
+        {
           "mob": "a Sangrel striker",
           "drops": 14,
           "corpses": 304,
@@ -7489,7 +7770,8 @@
       "harvested": 0,
       "zones": [
         "Keepersbight",
-        "Sungreetstrand"
+        "Sungreetstrand",
+        "Graincellar"
       ]
     },
     {
@@ -7723,8 +8005,8 @@
         {
           "mob": "a green drakeling",
           "drops": 1,
-          "corpses": 7,
-          "rate": 0.14285714285714285
+          "corpses": 6,
+          "rate": 0.16666666666666666
         }
       ],
       "prices": [
@@ -7752,8 +8034,8 @@
         {
           "mob": "a green drakeling",
           "drops": 1,
-          "corpses": 7,
-          "rate": 0.14285714285714285
+          "corpses": 6,
+          "rate": 0.16666666666666666
         }
       ],
       "prices": [
@@ -7778,9 +8060,9 @@
       "droppedBy": [
         {
           "mob": "a green drakeling",
-          "drops": 3,
-          "corpses": 7,
-          "rate": 0.42857142857142855
+          "drops": 2,
+          "corpses": 6,
+          "rate": 0.3333333333333333
         }
       ],
       "prices": [
@@ -7801,9 +8083,9 @@
       "droppedBy": [
         {
           "mob": "a green drakeling",
-          "drops": 4,
-          "corpses": 7,
-          "rate": 0.5714285714285714
+          "drops": 3,
+          "corpses": 6,
+          "rate": 0.5
         }
       ],
       "prices": [
@@ -7872,6 +8154,24 @@
       "zones": [
         "Sungreetstrand",
         "Valeofzintar"
+      ]
+    },
+    {
+      "id": "grizzled_rodent_ear",
+      "gameId": "80b405016e570ae54eea6296",
+      "name": "Grizzled Rodent Ear",
+      "droppedBy": [
+        {
+          "mob": "a rat",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Graincellar"
       ]
     },
     {
@@ -8105,16 +8405,16 @@
           "rate": 0.10975609756097561
         },
         {
+          "mob": "a corrupt clergyman",
+          "drops": 6,
+          "corpses": 57,
+          "rate": 0.10526315789473684
+        },
+        {
           "mob": "a Sangrel hunter",
           "drops": 8,
           "corpses": 79,
           "rate": 0.10126582278481013
-        },
-        {
-          "mob": "a corrupt clergyman",
-          "drops": 5,
-          "corpses": 56,
-          "rate": 0.08928571428571429
         },
         {
           "mob": "a Bloodchain soulherder",
@@ -8132,8 +8432,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight",
         "Sungreetstrand",
+        "Keepersbight",
         "Blacktidebay",
         "Valeofzintar",
         "Fallenpass"
@@ -8284,6 +8584,12 @@
       "name": "Imperfect Peridot",
       "droppedBy": [
         {
+          "mob": "a nefarious cultist",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
+        },
+        {
           "mob": "a poacher bruiser",
           "drops": 1,
           "corpses": 161,
@@ -8303,7 +8609,8 @@
       "harvested": 11,
       "zones": [
         "Fallenpass",
-        "Keepersbight"
+        "Keepersbight",
+        "Graincellar"
       ]
     },
     {
@@ -8375,7 +8682,12 @@
           "rate": 0.5
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 315,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Shallowshoals"
@@ -8445,6 +8757,24 @@
       "name": "Iron Scraps",
       "droppedBy": [
         {
+          "mob": "a wandering skeleton",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
+          "mob": "a skeletal worker",
+          "drops": 1,
+          "corpses": 4,
+          "rate": 0.25
+        },
+        {
+          "mob": "a craven cultist",
+          "drops": 3,
+          "corpses": 14,
+          "rate": 0.21428571428571427
+        },
+        {
           "mob": "a poacher bruiser",
           "drops": 26,
           "corpses": 161,
@@ -8455,6 +8785,12 @@
           "drops": 7,
           "corpses": 71,
           "rate": 0.09859154929577464
+        },
+        {
+          "mob": "a skeletal farmer",
+          "drops": 1,
+          "corpses": 15,
+          "rate": 0.06666666666666667
         }
       ],
       "prices": [
@@ -8465,7 +8801,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Graincellar"
       ]
     },
     {
@@ -8518,7 +8855,7 @@
       "name": "Lacquered Medallion",
       "droppedBy": [
         {
-          "mob": "a craven cultist",
+          "mob": "a skeletal slave",
           "drops": 1,
           "corpses": 1,
           "rate": 1
@@ -8528,6 +8865,42 @@
           "drops": 4,
           "corpses": 6,
           "rate": 0.6666666666666666
+        },
+        {
+          "mob": "a diminished ghost",
+          "drops": 3,
+          "corpses": 5,
+          "rate": 0.6
+        },
+        {
+          "mob": "a craven cultist",
+          "drops": 8,
+          "corpses": 14,
+          "rate": 0.5714285714285714
+        },
+        {
+          "mob": "a nefarious cultist",
+          "drops": 6,
+          "corpses": 12,
+          "rate": 0.5
+        },
+        {
+          "mob": "a wandering skeleton",
+          "drops": 1,
+          "corpses": 2,
+          "rate": 0.5
+        },
+        {
+          "mob": "a ghostly figure",
+          "drops": 3,
+          "corpses": 7,
+          "rate": 0.42857142857142855
+        },
+        {
+          "mob": "a devoted cultist",
+          "drops": 5,
+          "corpses": 12,
+          "rate": 0.4166666666666667
         },
         {
           "mob": "a poacher pathfinder",
@@ -8542,6 +8915,18 @@
           "rate": 0.35403726708074534
         },
         {
+          "mob": "a skeletal farmer",
+          "drops": 5,
+          "corpses": 15,
+          "rate": 0.3333333333333333
+        },
+        {
+          "mob": "a ghostly cleric",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        },
+        {
           "mob": "Poacher Garrus",
           "drops": 1,
           "corpses": 4,
@@ -8552,6 +8937,18 @@
           "drops": 1,
           "corpses": 4,
           "rate": 0.25
+        },
+        {
+          "mob": "a skeletal worker",
+          "drops": 1,
+          "corpses": 4,
+          "rate": 0.25
+        },
+        {
+          "mob": "a skeletal captive",
+          "drops": 1,
+          "corpses": 5,
+          "rate": 0.2
         }
       ],
       "prices": [
@@ -8578,22 +8975,59 @@
           "rate": 1
         },
         {
+          "mob": "a diminished ghost",
+          "drops": 3,
+          "corpses": 5,
+          "rate": 0.6
+        },
+        {
           "mob": "a poacher bruiser",
           "drops": 37,
           "corpses": 161,
           "rate": 0.22981366459627328
         },
         {
+          "mob": "a skeletal farmer",
+          "drops": 3,
+          "corpses": 15,
+          "rate": 0.2
+        },
+        {
+          "mob": "a devoted cultist",
+          "drops": 2,
+          "corpses": 12,
+          "rate": 0.16666666666666666
+        },
+        {
           "mob": "a poacher pathfinder",
           "drops": 11,
           "corpses": 71,
           "rate": 0.15492957746478872
+        },
+        {
+          "mob": "a craven cultist",
+          "drops": 2,
+          "corpses": 14,
+          "rate": 0.14285714285714285
+        },
+        {
+          "mob": "a ghostly figure",
+          "drops": 1,
+          "corpses": 7,
+          "rate": 0.14285714285714285
+        },
+        {
+          "mob": "a ghostly fighter",
+          "drops": 1,
+          "corpses": 8,
+          "rate": 0.125
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
         "Keepersbight",
+        "Graincellar",
         "Valeofzintar"
       ]
     },
@@ -8610,9 +9044,9 @@
         },
         {
           "mob": "a Fellstone warrior",
-          "drops": 6,
-          "corpses": 15,
-          "rate": 0.4
+          "drops": 3,
+          "corpses": 10,
+          "rate": 0.3
         },
         {
           "mob": "a Fellstone sentry",
@@ -8621,22 +9055,16 @@
           "rate": 0.2689655172413793
         },
         {
-          "mob": "a Fellstone guard",
-          "drops": 31,
-          "corpses": 118,
-          "rate": 0.2627118644067797
-        },
-        {
-          "mob": "a Fellstone corrupter",
-          "drops": 2,
-          "corpses": 8,
-          "rate": 0.25
-        },
-        {
           "mob": "a Fellstone tracker",
           "drops": 8,
-          "corpses": 36,
-          "rate": 0.2222222222222222
+          "corpses": 34,
+          "rate": 0.23529411764705882
+        },
+        {
+          "mob": "a Fellstone defiler",
+          "drops": 5,
+          "corpses": 23,
+          "rate": 0.21739130434782608
         },
         {
           "mob": "a Fellstone sentinel",
@@ -8645,28 +9073,28 @@
           "rate": 0.21568627450980393
         },
         {
-          "mob": "a Fellstone shaman",
+          "mob": "a Fellstone guard",
+          "drops": 14,
+          "corpses": 73,
+          "rate": 0.1917808219178082
+        },
+        {
+          "mob": "a Fellstone corrupter",
           "drops": 1,
-          "corpses": 5,
-          "rate": 0.2
-        },
-        {
-          "mob": "a Fellstone defiler",
-          "drops": 7,
-          "corpses": 35,
-          "rate": 0.2
-        },
-        {
-          "mob": "a Fellstone ragecaller",
-          "drops": 8,
-          "corpses": 46,
-          "rate": 0.17391304347826086
+          "corpses": 6,
+          "rate": 0.16666666666666666
         },
         {
           "mob": "Gurowl the Beast",
           "drops": 1,
           "corpses": 7,
           "rate": 0.14285714285714285
+        },
+        {
+          "mob": "a Fellstone ragecaller",
+          "drops": 4,
+          "corpses": 34,
+          "rate": 0.11764705882352941
         }
       ],
       "prices": [],
@@ -8712,6 +9140,12 @@
           "rate": 0.08333333333333333
         },
         {
+          "mob": "a nefarious cultist",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
+        },
+        {
           "mob": "a henchman",
           "drops": 4,
           "corpses": 96,
@@ -8720,8 +9154,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 2,
-          "corpses": 56,
-          "rate": 0.03571428571428571
+          "corpses": 57,
+          "rate": 0.03508771929824561
         },
         {
           "mob": "a bodyguard",
@@ -8789,7 +9223,8 @@
         "Sungreetstrand",
         "Keepersbight",
         "Evershade Weald",
-        "Blacktidebay"
+        "Blacktidebay",
+        "Graincellar"
       ]
     },
     {
@@ -8816,7 +9251,7 @@
       "name": "Lionleaf",
       "droppedBy": [],
       "prices": [],
-      "harvested": 29,
+      "harvested": 25,
       "zones": [
         "Evershade Weald",
         "Sungreetstrand",
@@ -8853,6 +9288,12 @@
           "rate": 0.3333333333333333
         },
         {
+          "mob": "a rabid wolf",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        },
+        {
           "mob": "a trained wolf",
           "drops": 12,
           "corpses": 38,
@@ -8868,12 +9309,6 @@
           "mob": "a shadow wolf",
           "drops": 2,
           "corpses": 10,
-          "rate": 0.2
-        },
-        {
-          "mob": "a rabid wolf",
-          "drops": 1,
-          "corpses": 5,
           "rate": 0.2
         }
       ],
@@ -9092,6 +9527,30 @@
       ]
     },
     {
+      "id": "metamorphosis_journal_page",
+      "gameId": "3fe3ec048f79f57fad92143f",
+      "name": "Metamorphosis Journal Page",
+      "droppedBy": [
+        {
+          "mob": "a skeletal worker",
+          "drops": 1,
+          "corpses": 4,
+          "rate": 0.25
+        },
+        {
+          "mob": "a skeletal farmer",
+          "drops": 1,
+          "corpses": 15,
+          "rate": 0.06666666666666667
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Graincellar"
+      ]
+    },
+    {
       "id": "moldy_sandals",
       "gameId": "f43328f6abbdd2379b7ac3d7",
       "name": "Moldy Sandals",
@@ -9152,6 +9611,12 @@
           "rate": 0.08333333333333333
         },
         {
+          "mob": "a devoted cultist",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
+        },
+        {
           "mob": "a Sangrel grappler",
           "drops": 1,
           "corpses": 26,
@@ -9184,8 +9649,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 57,
+          "rate": 0.017543859649122806
         },
         {
           "mob": "a poacher pathfinder",
@@ -9217,7 +9682,8 @@
       "zones": [
         "Keepersbight",
         "Sungreetstrand",
-        "Blacktidebay"
+        "Blacktidebay",
+        "Graincellar"
       ]
     },
     {
@@ -9278,8 +9744,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 57,
+          "rate": 0.017543859649122806
         },
         {
           "mob": "a Sangrel striker",
@@ -9332,6 +9798,24 @@
       "zones": [
         "Sungreetstrand",
         "Scarwood"
+      ]
+    },
+    {
+      "id": "phantom_residue",
+      "gameId": "e07000d24532907bf78eb391",
+      "name": "Phantom Residue",
+      "droppedBy": [
+        {
+          "mob": "a ghostly fighter",
+          "drops": 2,
+          "corpses": 8,
+          "rate": 0.25
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Graincellar"
       ]
     },
     {
@@ -9401,6 +9885,12 @@
           "rate": 0.5714285714285714
         },
         {
+          "mob": "a ghostly fighter",
+          "drops": 4,
+          "corpses": 8,
+          "rate": 0.5
+        },
+        {
           "mob": "a henchman",
           "drops": 45,
           "corpses": 96,
@@ -9427,8 +9917,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 19,
-          "corpses": 56,
-          "rate": 0.3392857142857143
+          "corpses": 57,
+          "rate": 0.3333333333333333
         },
         {
           "mob": "a Dustrend priest",
@@ -9465,7 +9955,8 @@
       "zones": [
         "Sungreetstrand",
         "Valeofzintar",
-        "Keepersbight"
+        "Keepersbight",
+        "Graincellar"
       ]
     },
     {
@@ -9473,6 +9964,12 @@
       "gameId": "7344328837f0e260ae91ef77",
       "name": "Potato",
       "droppedBy": [
+        {
+          "mob": "a nefarious cultist",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
+        },
         {
           "mob": "a burly henchman",
           "drops": 1,
@@ -9561,7 +10058,8 @@
       "harvested": 0,
       "zones": [
         "Keepersbight",
-        "Sungreetstrand"
+        "Sungreetstrand",
+        "Graincellar"
       ]
     },
     {
@@ -9578,8 +10076,8 @@
         {
           "mob": "a green drakeling",
           "drops": 1,
-          "corpses": 7,
-          "rate": 0.14285714285714285
+          "corpses": 6,
+          "rate": 0.16666666666666666
         },
         {
           "mob": "a green drake",
@@ -9816,8 +10314,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 16,
-          "corpses": 56,
-          "rate": 0.2857142857142857
+          "corpses": 57,
+          "rate": 0.2807017543859649
         },
         {
           "mob": "a poacher bruiser",
@@ -9848,6 +10346,12 @@
           "drops": 1,
           "corpses": 4,
           "rate": 0.25
+        },
+        {
+          "mob": "a craven cultist",
+          "drops": 3,
+          "corpses": 14,
+          "rate": 0.21428571428571427
         },
         {
           "mob": "a bodyguard",
@@ -9904,6 +10408,12 @@
           "rate": 0.17073170731707318
         },
         {
+          "mob": "a nefarious cultist",
+          "drops": 2,
+          "corpses": 12,
+          "rate": 0.16666666666666666
+        },
+        {
           "mob": "a burly henchman",
           "drops": 2,
           "corpses": 14,
@@ -9920,6 +10430,12 @@
           "drops": 1,
           "corpses": 9,
           "rate": 0.1111111111111111
+        },
+        {
+          "mob": "a devoted cultist",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
         }
       ],
       "prices": [
@@ -9933,13 +10449,14 @@
         },
         {
           "copper": 5,
-          "count": 4
+          "count": 5
         }
       ],
       "harvested": 0,
       "zones": [
         "Keepersbight",
         "Sungreetstrand",
+        "Graincellar",
         "Blacktidebay"
       ]
     },
@@ -9967,6 +10484,12 @@
           "rate": 0.3333333333333333
         },
         {
+          "mob": "a Fellstone ragecaller",
+          "drops": 9,
+          "corpses": 34,
+          "rate": 0.2647058823529412
+        },
+        {
           "mob": "a Bloodchain guard",
           "drops": 28,
           "corpses": 108,
@@ -9983,12 +10506,6 @@
           "drops": 2,
           "corpses": 8,
           "rate": 0.25
-        },
-        {
-          "mob": "a Fellstone ragecaller",
-          "drops": 11,
-          "corpses": 46,
-          "rate": 0.2391304347826087
         },
         {
           "mob": "a Fellstone sentinel",
@@ -10009,22 +10526,22 @@
           "rate": 0.2206896551724138
         },
         {
+          "mob": "a Fellstone guard",
+          "drops": 16,
+          "corpses": 73,
+          "rate": 0.2191780821917808
+        },
+        {
           "mob": "a Bloodchain sentry",
           "drops": 14,
           "corpses": 67,
           "rate": 0.208955223880597
         },
         {
-          "mob": "a Fellstone shaman",
+          "mob": "a Fellstone corrupter",
           "drops": 1,
-          "corpses": 5,
-          "rate": 0.2
-        },
-        {
-          "mob": "a Fellstone guard",
-          "drops": 23,
-          "corpses": 118,
-          "rate": 0.19491525423728814
+          "corpses": 6,
+          "rate": 0.16666666666666666
         },
         {
           "mob": "a Dustrend foot soldier",
@@ -10033,28 +10550,22 @@
           "rate": 0.14285714285714285
         },
         {
-          "mob": "a Fellstone warrior",
-          "drops": 2,
-          "corpses": 15,
-          "rate": 0.13333333333333333
-        },
-        {
-          "mob": "a Fellstone corrupter",
-          "drops": 1,
-          "corpses": 8,
-          "rate": 0.125
+          "mob": "a Fellstone defiler",
+          "drops": 3,
+          "corpses": 23,
+          "rate": 0.13043478260869565
         },
         {
           "mob": "a Fellstone tracker",
           "drops": 4,
-          "corpses": 36,
-          "rate": 0.1111111111111111
+          "corpses": 34,
+          "rate": 0.11764705882352941
         },
         {
-          "mob": "a Fellstone defiler",
-          "drops": 3,
-          "corpses": 35,
-          "rate": 0.08571428571428572
+          "mob": "a Fellstone warrior",
+          "drops": 1,
+          "corpses": 10,
+          "rate": 0.1
         }
       ],
       "prices": [
@@ -10153,16 +10664,16 @@
           "rate": 0.3333333333333333
         },
         {
+          "mob": "a rabid wolf",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        },
+        {
           "mob": "a trained wolf",
           "drops": 8,
           "corpses": 38,
           "rate": 0.21052631578947367
-        },
-        {
-          "mob": "a rabid wolf",
-          "drops": 1,
-          "corpses": 5,
-          "rate": 0.2
         },
         {
           "mob": "a dismal cur",
@@ -10251,27 +10762,15 @@
         },
         {
           "mob": "a Fellstone corrupter",
-          "drops": 4,
-          "corpses": 8,
+          "drops": 3,
+          "corpses": 6,
           "rate": 0.5
         },
         {
           "mob": "a Fellstone guard",
-          "drops": 31,
-          "corpses": 118,
-          "rate": 0.2627118644067797
-        },
-        {
-          "mob": "an old elven skeleton",
-          "drops": 10,
-          "corpses": 39,
-          "rate": 0.2564102564102564
-        },
-        {
-          "mob": "a Fellstone tracker",
-          "drops": 9,
-          "corpses": 36,
-          "rate": 0.25
+          "drops": 19,
+          "corpses": 73,
+          "rate": 0.2602739726027397
         },
         {
           "mob": "a naiad trickster",
@@ -10286,10 +10785,16 @@
           "rate": 0.25
         },
         {
-          "mob": "a Fellstone defiler",
-          "drops": 7,
-          "corpses": 35,
-          "rate": 0.2
+          "mob": "an old elven skeleton",
+          "drops": 6,
+          "corpses": 25,
+          "rate": 0.24
+        },
+        {
+          "mob": "a Fellstone tracker",
+          "drops": 8,
+          "corpses": 34,
+          "rate": 0.23529411764705882
         },
         {
           "mob": "a Fellstone sentry",
@@ -10316,34 +10821,22 @@
           "rate": 0.14285714285714285
         },
         {
-          "mob": "a skeleton",
+          "mob": "a Fellstone defiler",
           "drops": 3,
-          "corpses": 38,
-          "rate": 0.07894736842105263
-        },
-        {
-          "mob": "a Fellstone warrior",
-          "drops": 1,
-          "corpses": 15,
-          "rate": 0.06666666666666667
+          "corpses": 23,
+          "rate": 0.13043478260869565
         },
         {
           "mob": "a Fellstone ragecaller",
-          "drops": 3,
-          "corpses": 46,
-          "rate": 0.06521739130434782
+          "drops": 2,
+          "corpses": 34,
+          "rate": 0.058823529411764705
         },
         {
           "mob": "a fossergrim watcher",
           "drops": 1,
           "corpses": 18,
           "rate": 0.05555555555555555
-        },
-        {
-          "mob": "a Calafreyan soldier",
-          "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
         }
       ],
       "prices": [],
@@ -10580,14 +11073,8 @@
         {
           "mob": "a Calafreyan soldier",
           "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
-        },
-        {
-          "mob": "a skeleton",
-          "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "corpses": 9,
+          "rate": 0.1111111111111111
         },
         {
           "mob": "a Fellstone sentry",
@@ -10596,12 +11083,7 @@
           "rate": 0.006896551724137931
         }
       ],
-      "prices": [
-        {
-          "copper": 25,
-          "count": 1
-        }
-      ],
+      "prices": [],
       "harvested": 0,
       "zones": [
         "Evershade Weald",
@@ -10622,8 +11104,8 @@
         {
           "mob": "a Fellstone defiler",
           "drops": 1,
-          "corpses": 35,
-          "rate": 0.02857142857142857
+          "corpses": 23,
+          "rate": 0.043478260869565216
         }
       ],
       "prices": [],
@@ -10641,8 +11123,8 @@
         {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 39,
-          "rate": 0.02564102564102564
+          "corpses": 25,
+          "rate": 0.04
         },
         {
           "mob": "a Fellstone sentry",
@@ -10664,16 +11146,10 @@
       "name": "Rusty Greatsword",
       "droppedBy": [
         {
-          "mob": "a Calafreyan soldier",
-          "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
-        },
-        {
           "mob": "a Fellstone defiler",
           "drops": 1,
-          "corpses": 35,
-          "rate": 0.02857142857142857
+          "corpses": 23,
+          "rate": 0.043478260869565216
         },
         {
           "mob": "a Fellstone sentry",
@@ -10700,8 +11176,25 @@
       ],
       "harvested": 0,
       "zones": [
-        "Blacktidebay",
-        "Evershade Weald"
+        "Blacktidebay"
+      ]
+    },
+    {
+      "id": "rusty_iron_axe",
+      "gameId": "2da04838f8b3ed61b9e34e3e",
+      "name": "Rusty Iron Axe",
+      "droppedBy": [
+        {
+          "mob": "a devoted cultist",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Graincellar"
       ]
     },
     {
@@ -10709,6 +11202,12 @@
       "gameId": "a870b4bf1f50cd873070f510",
       "name": "Rusty Iron Battle Axe",
       "droppedBy": [
+        {
+          "mob": "a diminished ghost",
+          "drops": 1,
+          "corpses": 5,
+          "rate": 0.2
+        },
         {
           "mob": "a poacher bruiser",
           "drops": 1,
@@ -10719,7 +11218,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Graincellar"
       ]
     },
     {
@@ -10727,6 +11227,12 @@
       "gameId": "72fd0731aaa81245aab8e283",
       "name": "Rusty Iron Chain Boots",
       "droppedBy": [
+        {
+          "mob": "a skeletal slave",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
         {
           "mob": "a poacher pathfinder",
           "drops": 1,
@@ -10737,6 +11243,7 @@
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Graincellar",
         "Keepersbight"
       ]
     },
@@ -10811,6 +11318,12 @@
       "name": "Rusty Iron Chain Leggings",
       "droppedBy": [
         {
+          "mob": "a ghostly fighter",
+          "drops": 1,
+          "corpses": 8,
+          "rate": 0.125
+        },
+        {
           "mob": "a poacher pathfinder",
           "drops": 1,
           "corpses": 71,
@@ -10820,7 +11333,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Graincellar"
       ]
     },
     {
@@ -10907,23 +11421,11 @@
       "name": "Rusty Iron Greatsword",
       "droppedBy": [
         {
-          "mob": "a poacher bruiser",
-          "drops": 2,
-          "corpses": 161,
-          "rate": 0.012422360248447204
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Keepersbight"
-      ]
-    },
-    {
-      "id": "rusty_iron_kite_shield",
-      "gameId": "5317b7d75e716b09dbe64fb9",
-      "name": "Rusty Iron Kite Shield",
-      "droppedBy": [
+          "mob": "a skeletal worker",
+          "drops": 1,
+          "corpses": 4,
+          "rate": 0.25
+        },
         {
           "mob": "a poacher bruiser",
           "drops": 2,
@@ -10934,7 +11436,33 @@
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Graincellar",
         "Keepersbight"
+      ]
+    },
+    {
+      "id": "rusty_iron_kite_shield",
+      "gameId": "5317b7d75e716b09dbe64fb9",
+      "name": "Rusty Iron Kite Shield",
+      "droppedBy": [
+        {
+          "mob": "a skeletal worker",
+          "drops": 1,
+          "corpses": 4,
+          "rate": 0.25
+        },
+        {
+          "mob": "a poacher bruiser",
+          "drops": 2,
+          "corpses": 161,
+          "rate": 0.012422360248447204
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight",
+        "Graincellar"
       ]
     },
     {
@@ -10942,6 +11470,12 @@
       "gameId": "4bdd1b3a4d67025a3f5c90b0",
       "name": "Rusty Iron Long Spear",
       "droppedBy": [
+        {
+          "mob": "a diminished ghost",
+          "drops": 1,
+          "corpses": 5,
+          "rate": 0.2
+        },
         {
           "mob": "a poacher bruiser",
           "drops": 1,
@@ -10952,7 +11486,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Graincellar"
       ]
     },
     {
@@ -10979,6 +11514,12 @@
       "name": "Rusty Iron Mace",
       "droppedBy": [
         {
+          "mob": "a craven cultist",
+          "drops": 1,
+          "corpses": 14,
+          "rate": 0.07142857142857142
+        },
+        {
           "mob": "a poacher bruiser",
           "drops": 1,
           "corpses": 161,
@@ -10988,7 +11529,32 @@
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Graincellar",
         "Keepersbight"
+      ]
+    },
+    {
+      "id": "rusty_iron_maul",
+      "gameId": "a952e08b140a3f8b16643d10",
+      "name": "Rusty Iron Maul",
+      "droppedBy": [
+        {
+          "mob": "a ghostly fighter",
+          "drops": 1,
+          "corpses": 8,
+          "rate": 0.125
+        },
+        {
+          "mob": "a devoted cultist",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Graincellar"
       ]
     },
     {
@@ -11033,6 +11599,12 @@
       "name": "Rusty Iron Plate Breastplate",
       "droppedBy": [
         {
+          "mob": "a skeletal farmer",
+          "drops": 1,
+          "corpses": 15,
+          "rate": 0.06666666666666667
+        },
+        {
           "mob": "a poacher bruiser",
           "drops": 1,
           "corpses": 161,
@@ -11042,7 +11614,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Graincellar"
       ]
     },
     {
@@ -11050,6 +11623,18 @@
       "gameId": "009f3003e64e8bfd77a6dcdc",
       "name": "Rusty Iron Plate Cloak",
       "droppedBy": [
+        {
+          "mob": "a skeletal worker",
+          "drops": 2,
+          "corpses": 4,
+          "rate": 0.5
+        },
+        {
+          "mob": "a skeletal farmer",
+          "drops": 1,
+          "corpses": 15,
+          "rate": 0.06666666666666667
+        },
         {
           "mob": "a poacher bruiser",
           "drops": 3,
@@ -11065,7 +11650,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Graincellar"
       ]
     },
     {
@@ -11110,6 +11696,24 @@
       ]
     },
     {
+      "id": "rusty_iron_plate_pauldrons",
+      "gameId": "9fc082b1480a2b2e5e8345ff",
+      "name": "Rusty Iron Plate Pauldrons",
+      "droppedBy": [
+        {
+          "mob": "a skeletal worker",
+          "drops": 1,
+          "corpses": 4,
+          "rate": 0.25
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Graincellar"
+      ]
+    },
+    {
       "id": "rusty_iron_scimitar",
       "gameId": "530a6933a3046f8d659f9502",
       "name": "Rusty Iron Scimitar",
@@ -11151,6 +11755,18 @@
       "name": "Rusty Iron Shortsword",
       "droppedBy": [
         {
+          "mob": "a ghostly figure",
+          "drops": 1,
+          "corpses": 7,
+          "rate": 0.14285714285714285
+        },
+        {
+          "mob": "a nefarious cultist",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
+        },
+        {
           "mob": "a poacher pathfinder",
           "drops": 1,
           "corpses": 71,
@@ -11166,7 +11782,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Graincellar"
       ]
     },
     {
@@ -11174,6 +11791,12 @@
       "gameId": "20acd714d3e35c7e5f25e818",
       "name": "Rusty Iron Spear",
       "droppedBy": [
+        {
+          "mob": "a ghostly figure",
+          "drops": 1,
+          "corpses": 7,
+          "rate": 0.14285714285714285
+        },
         {
           "mob": "a poacher pathfinder",
           "drops": 1,
@@ -11195,7 +11818,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Graincellar"
       ]
     },
     {
@@ -11258,6 +11882,12 @@
           "rate": 0.16666666666666666
         },
         {
+          "mob": "a nefarious cultist",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
+        },
+        {
           "mob": "a poacher bruiser",
           "drops": 5,
           "corpses": 161,
@@ -11273,7 +11903,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Graincellar"
       ]
     },
     {
@@ -11302,44 +11933,20 @@
         {
           "mob": "a Calafreyan soldier",
           "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
+          "corpses": 9,
+          "rate": 0.1111111111111111
         },
         {
           "mob": "a Fellstone sentinel",
           "drops": 3,
           "corpses": 102,
           "rate": 0.029411764705882353
-        },
-        {
-          "mob": "an old elven skeleton",
-          "drops": 1,
-          "corpses": 39,
-          "rate": 0.02564102564102564
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
         "Blacktidebay",
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "rusty_long_spear",
-      "gameId": "e3fa2ab12c4eaf0a5480712f",
-      "name": "Rusty Long Spear",
-      "droppedBy": [
-        {
-          "mob": "a Fellstone guard",
-          "drops": 1,
-          "corpses": 118,
-          "rate": 0.00847457627118644
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
         "Evershade Weald"
       ]
     },
@@ -11355,28 +11962,28 @@
           "rate": 0.14285714285714285
         },
         {
-          "mob": "a Fellstone tracker",
-          "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
-        },
-        {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 39,
-          "rate": 0.02564102564102564
+          "corpses": 25,
+          "rate": 0.04
+        },
+        {
+          "mob": "a Fellstone tracker",
+          "drops": 1,
+          "corpses": 34,
+          "rate": 0.029411764705882353
+        },
+        {
+          "mob": "a Fellstone guard",
+          "drops": 2,
+          "corpses": 73,
+          "rate": 0.0273972602739726
         },
         {
           "mob": "a Fellstone sentinel",
           "drops": 2,
           "corpses": 102,
           "rate": 0.0196078431372549
-        },
-        {
-          "mob": "a Fellstone guard",
-          "drops": 2,
-          "corpses": 118,
-          "rate": 0.01694915254237288
         },
         {
           "mob": "a Fellstone sentry",
@@ -11405,14 +12012,14 @@
         {
           "mob": "a Fellstone corrupter",
           "drops": 1,
-          "corpses": 8,
-          "rate": 0.125
+          "corpses": 6,
+          "rate": 0.16666666666666666
         },
         {
           "mob": "a Fellstone guard",
           "drops": 1,
-          "corpses": 118,
-          "rate": 0.00847457627118644
+          "corpses": 73,
+          "rate": 0.0136986301369863
         }
       ],
       "prices": [],
@@ -11448,20 +12055,20 @@
         {
           "mob": "a Fellstone scout",
           "drops": 1,
-          "corpses": 6,
-          "rate": 0.16666666666666666
+          "corpses": 5,
+          "rate": 0.2
         },
         {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 39,
-          "rate": 0.02564102564102564
+          "corpses": 25,
+          "rate": 0.04
         },
         {
           "mob": "a Fellstone ragecaller",
           "drops": 1,
-          "corpses": 46,
-          "rate": 0.021739130434782608
+          "corpses": 34,
+          "rate": 0.029411764705882353
         },
         {
           "mob": "a Fellstone sentry",
@@ -11523,12 +12130,6 @@
           "rate": 0.05555555555555555
         },
         {
-          "mob": "an old elven skeleton",
-          "drops": 1,
-          "corpses": 39,
-          "rate": 0.02564102564102564
-        },
-        {
           "mob": "a Fellstone sentry",
           "drops": 1,
           "corpses": 145,
@@ -11538,8 +12139,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Evershade Weald",
-        "Blacktidebay"
+        "Blacktidebay",
+        "Evershade Weald"
       ]
     },
     {
@@ -11550,8 +12151,8 @@
         {
           "mob": "a Fellstone guard",
           "drops": 1,
-          "corpses": 118,
-          "rate": 0.00847457627118644
+          "corpses": 73,
+          "rate": 0.0136986301369863
         },
         {
           "mob": "a Fellstone sentry",
@@ -11598,8 +12199,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 15,
-          "rate": 0.06666666666666667
+          "corpses": 10,
+          "rate": 0.1
         },
         {
           "mob": "a Fellstone sentinel",
@@ -11623,14 +12224,14 @@
         {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 39,
-          "rate": 0.02564102564102564
+          "corpses": 25,
+          "rate": 0.04
         },
         {
           "mob": "a Fellstone guard",
           "drops": 1,
-          "corpses": 118,
-          "rate": 0.00847457627118644
+          "corpses": 73,
+          "rate": 0.0136986301369863
         }
       ],
       "prices": [
@@ -11656,16 +12257,16 @@
           "rate": 0.16666666666666666
         },
         {
-          "mob": "a Fellstone tracker",
-          "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
-        },
-        {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 39,
-          "rate": 0.02564102564102564
+          "corpses": 25,
+          "rate": 0.04
+        },
+        {
+          "mob": "a Fellstone tracker",
+          "drops": 1,
+          "corpses": 34,
+          "rate": 0.029411764705882353
         },
         {
           "mob": "a Fellstone sentinel",
@@ -12202,8 +12803,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 7,
-          "corpses": 56,
-          "rate": 0.125
+          "corpses": 57,
+          "rate": 0.12280701754385964
         },
         {
           "mob": "a Bloodchain guard",
@@ -12277,7 +12878,12 @@
           "rate": 0.46153846153846156
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 392,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Shallowshoals"
@@ -12437,6 +13043,24 @@
       ]
     },
     {
+      "id": "spirit_world_ch_11",
+      "gameId": "591eb6a634696ca72079d5e9",
+      "name": "Spirit World Ch. 11",
+      "droppedBy": [
+        {
+          "mob": "a nefarious cultist",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Graincellar"
+      ]
+    },
+    {
       "id": "spirit_world_ch_6",
       "gameId": "61ae287d6052cfe772f23fa6",
       "name": "Spirit World Ch. 6",
@@ -12556,9 +13180,9 @@
         },
         {
           "mob": "a Fellstone corrupter",
-          "drops": 6,
-          "corpses": 8,
-          "rate": 0.75
+          "drops": 5,
+          "corpses": 6,
+          "rate": 0.8333333333333334
         },
         {
           "mob": "an orcish tactician",
@@ -12579,6 +13203,12 @@
           "rate": 0.696078431372549
         },
         {
+          "mob": "a Calafreyan soldier",
+          "drops": 6,
+          "corpses": 9,
+          "rate": 0.6666666666666666
+        },
+        {
           "mob": "a sullen farmhand",
           "drops": 6,
           "corpses": 9,
@@ -12591,22 +13221,16 @@
           "rate": 0.6666666666666666
         },
         {
+          "mob": "a Fellstone tracker",
+          "drops": 20,
+          "corpses": 34,
+          "rate": 0.5882352941176471
+        },
+        {
           "mob": "a naiad maiden",
           "drops": 4,
           "corpses": 7,
           "rate": 0.5714285714285714
-        },
-        {
-          "mob": "a Fellstone tracker",
-          "drops": 20,
-          "corpses": 36,
-          "rate": 0.5555555555555556
-        },
-        {
-          "mob": "a Calafreyan soldier",
-          "drops": 10,
-          "corpses": 20,
-          "rate": 0.5
         },
         {
           "mob": "Commander Rursk",
@@ -12633,22 +13257,22 @@
           "rate": 0.42857142857142855
         },
         {
+          "mob": "a Fellstone ragecaller",
+          "drops": 14,
+          "corpses": 34,
+          "rate": 0.4117647058823529
+        },
+        {
           "mob": "a Fellstone sentry",
           "drops": 51,
           "corpses": 145,
           "rate": 0.35172413793103446
         },
         {
-          "mob": "a Fellstone ragecaller",
-          "drops": 14,
-          "corpses": 46,
-          "rate": 0.30434782608695654
-        },
-        {
           "mob": "a Fellstone defiler",
-          "drops": 4,
-          "corpses": 35,
-          "rate": 0.11428571428571428
+          "drops": 1,
+          "corpses": 23,
+          "rate": 0.043478260869565216
         }
       ],
       "prices": [
@@ -12689,8 +13313,8 @@
         {
           "mob": "a Fellstone guard",
           "drops": 1,
-          "corpses": 118,
-          "rate": 0.00847457627118644
+          "corpses": 73,
+          "rate": 0.0136986301369863
         },
         {
           "mob": "a Fellstone sentry",
@@ -12714,15 +13338,15 @@
       "droppedBy": [
         {
           "mob": "a Fellstone ragecaller",
-          "drops": 3,
-          "corpses": 46,
-          "rate": 0.06521739130434782
+          "drops": 2,
+          "corpses": 34,
+          "rate": 0.058823529411764705
         },
         {
           "mob": "a Fellstone guard",
-          "drops": 2,
-          "corpses": 118,
-          "rate": 0.01694915254237288
+          "drops": 1,
+          "corpses": 73,
+          "rate": 0.0136986301369863
         },
         {
           "mob": "a Fellstone sentry",
@@ -12734,8 +13358,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Evershade Weald",
-        "Blacktidebay"
+        "Blacktidebay",
+        "Evershade Weald"
       ]
     },
     {
@@ -12752,27 +13376,27 @@
         {
           "mob": "a Fellstone corrupter",
           "drops": 1,
-          "corpses": 8,
-          "rate": 0.125
-        },
-        {
-          "mob": "a Fellstone guard",
-          "drops": 2,
-          "corpses": 118,
-          "rate": 0.01694915254237288
+          "corpses": 6,
+          "rate": 0.16666666666666666
         },
         {
           "mob": "a Fellstone sentry",
           "drops": 2,
           "corpses": 145,
           "rate": 0.013793103448275862
+        },
+        {
+          "mob": "a Fellstone guard",
+          "drops": 1,
+          "corpses": 73,
+          "rate": 0.0136986301369863
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Evershade Weald",
         "Blacktidebay",
+        "Evershade Weald",
         "Sungreetstrand"
       ]
     },
@@ -12784,20 +13408,14 @@
         {
           "mob": "a Fellstone shaman",
           "drops": 1,
-          "corpses": 5,
-          "rate": 0.2
-        },
-        {
-          "mob": "a Calafreyan soldier",
-          "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
+          "corpses": 2,
+          "rate": 0.5
         },
         {
           "mob": "a Fellstone defiler",
           "drops": 1,
-          "corpses": 35,
-          "rate": 0.02857142857142857
+          "corpses": 23,
+          "rate": 0.043478260869565216
         },
         {
           "mob": "a Fellstone sentinel",
@@ -12833,14 +13451,14 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 15,
-          "rate": 0.06666666666666667
+          "corpses": 10,
+          "rate": 0.1
         },
         {
-          "mob": "a Fellstone defiler",
-          "drops": 2,
-          "corpses": 35,
-          "rate": 0.05714285714285714
+          "mob": "a skeleton",
+          "drops": 1,
+          "corpses": 16,
+          "rate": 0.0625
         },
         {
           "mob": "a fossergrim watcher",
@@ -12850,27 +13468,21 @@
         },
         {
           "mob": "a Fellstone ragecaller",
-          "drops": 2,
-          "corpses": 46,
-          "rate": 0.043478260869565216
+          "drops": 1,
+          "corpses": 34,
+          "rate": 0.029411764705882353
         },
         {
-          "mob": "a skeleton",
+          "mob": "a Fellstone guard",
           "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "corpses": 73,
+          "rate": 0.0136986301369863
         },
         {
           "mob": "a Fellstone sentinel",
           "drops": 1,
           "corpses": 102,
           "rate": 0.00980392156862745
-        },
-        {
-          "mob": "a Fellstone guard",
-          "drops": 1,
-          "corpses": 118,
-          "rate": 0.00847457627118644
         },
         {
           "mob": "a Fellstone sentry",
@@ -12882,8 +13494,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Evershade Weald",
         "Blacktidebay",
+        "Evershade Weald",
         "Sungreetstrand"
       ]
     },
@@ -12895,26 +13507,20 @@
         {
           "mob": "a Fellstone defiler",
           "drops": 1,
-          "corpses": 35,
-          "rate": 0.02857142857142857
-        },
-        {
-          "mob": "a Fellstone tracker",
-          "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
+          "corpses": 23,
+          "rate": 0.043478260869565216
         },
         {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 39,
-          "rate": 0.02564102564102564
+          "corpses": 25,
+          "rate": 0.04
         },
         {
-          "mob": "a Fellstone guard",
-          "drops": 3,
-          "corpses": 118,
-          "rate": 0.025423728813559324
+          "mob": "a Fellstone tracker",
+          "drops": 1,
+          "corpses": 34,
+          "rate": 0.029411764705882353
         },
         {
           "mob": "a Fellstone sentinel",
@@ -12932,8 +13538,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Evershade Weald",
-        "Blacktidebay"
+        "Blacktidebay",
+        "Evershade Weald"
       ]
     },
     {
@@ -12950,8 +13556,8 @@
         {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 39,
-          "rate": 0.02564102564102564
+          "corpses": 25,
+          "rate": 0.04
         },
         {
           "mob": "a Fellstone sentry",
@@ -12973,22 +13579,10 @@
       "name": "Tattered Cloth Mantle",
       "droppedBy": [
         {
-          "mob": "a Fellstone tracker",
-          "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
-        },
-        {
-          "mob": "a skeleton",
-          "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
-        },
-        {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 39,
-          "rate": 0.02564102564102564
+          "corpses": 25,
+          "rate": 0.04
         }
       ],
       "prices": [],
@@ -13009,12 +13603,6 @@
           "rate": 0.25
         },
         {
-          "mob": "a Fellstone warrior",
-          "drops": 1,
-          "corpses": 15,
-          "rate": 0.06666666666666667
-        },
-        {
           "mob": "a fossergrim watcher",
           "drops": 1,
           "corpses": 18,
@@ -13023,26 +13611,14 @@
         {
           "mob": "a Fellstone defiler",
           "drops": 1,
-          "corpses": 35,
-          "rate": 0.02857142857142857
-        },
-        {
-          "mob": "a Fellstone ragecaller",
-          "drops": 1,
-          "corpses": 46,
-          "rate": 0.021739130434782608
+          "corpses": 23,
+          "rate": 0.043478260869565216
         },
         {
           "mob": "a Fellstone sentinel",
           "drops": 1,
           "corpses": 102,
           "rate": 0.00980392156862745
-        },
-        {
-          "mob": "a Fellstone guard",
-          "drops": 1,
-          "corpses": 118,
-          "rate": 0.00847457627118644
         },
         {
           "mob": "a Fellstone sentry",
@@ -13072,26 +13648,20 @@
         {
           "mob": "a Fellstone ragecaller",
           "drops": 2,
-          "corpses": 46,
-          "rate": 0.043478260869565216
-        },
-        {
-          "mob": "a Fellstone defiler",
-          "drops": 1,
-          "corpses": 35,
-          "rate": 0.02857142857142857
+          "corpses": 34,
+          "rate": 0.058823529411764705
         },
         {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 39,
-          "rate": 0.02564102564102564
+          "corpses": 25,
+          "rate": 0.04
         },
         {
           "mob": "a Fellstone guard",
           "drops": 1,
-          "corpses": 118,
-          "rate": 0.00847457627118644
+          "corpses": 73,
+          "rate": 0.0136986301369863
         }
       ],
       "prices": [],
@@ -13109,14 +13679,14 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "corpses": 16,
+          "rate": 0.0625
         },
         {
           "mob": "a Fellstone guard",
           "drops": 1,
-          "corpses": 118,
-          "rate": 0.00847457627118644
+          "corpses": 73,
+          "rate": 0.0136986301369863
         }
       ],
       "prices": [],
@@ -13134,26 +13704,20 @@
         {
           "mob": "a skeleton",
           "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
+          "corpses": 16,
+          "rate": 0.0625
         },
         {
           "mob": "a Fellstone ragecaller",
           "drops": 1,
-          "corpses": 46,
-          "rate": 0.021739130434782608
+          "corpses": 34,
+          "rate": 0.029411764705882353
         },
         {
           "mob": "a Fellstone sentry",
           "drops": 2,
           "corpses": 145,
           "rate": 0.013793103448275862
-        },
-        {
-          "mob": "a Fellstone guard",
-          "drops": 1,
-          "corpses": 118,
-          "rate": 0.00847457627118644
         }
       ],
       "prices": [],
@@ -13169,22 +13733,16 @@
       "name": "Tattered Cloth Veil",
       "droppedBy": [
         {
+          "mob": "a Fellstone guard",
+          "drops": 3,
+          "corpses": 73,
+          "rate": 0.0410958904109589
+        },
+        {
           "mob": "a Fellstone sentinel",
           "drops": 3,
           "corpses": 102,
           "rate": 0.029411764705882353
-        },
-        {
-          "mob": "a skeleton",
-          "drops": 1,
-          "corpses": 38,
-          "rate": 0.02631578947368421
-        },
-        {
-          "mob": "a Fellstone guard",
-          "drops": 3,
-          "corpses": 118,
-          "rate": 0.025423728813559324
         },
         {
           "mob": "a Fellstone sentry",
@@ -13224,6 +13782,12 @@
       "name": "Tattered Cotton Bracer",
       "droppedBy": [
         {
+          "mob": "a ghostly cleric",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        },
+        {
           "mob": "a poacher herbalist",
           "drops": 1,
           "corpses": 6,
@@ -13233,7 +13797,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Graincellar"
       ]
     },
     {
@@ -13241,6 +13806,12 @@
       "gameId": "5e5539ff0b4c87b4bf6386a9",
       "name": "Tattered Cotton Cape",
       "droppedBy": [
+        {
+          "mob": "a nefarious cultist",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
+        },
         {
           "mob": "a poacher bruiser",
           "drops": 1,
@@ -13251,7 +13822,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Graincellar"
       ]
     },
     {
@@ -13320,6 +13892,12 @@
       "name": "Tattered Cotton Robe",
       "droppedBy": [
         {
+          "mob": "a nefarious cultist",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
+        },
+        {
           "mob": "a poacher bruiser",
           "drops": 1,
           "corpses": 161,
@@ -13329,6 +13907,7 @@
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Graincellar",
         "Keepersbight"
       ]
     },
@@ -13496,8 +14075,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 57,
+          "rate": 0.017543859649122806
         },
         {
           "mob": "a sly farmhand",
@@ -13551,8 +14130,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 57,
+          "rate": 0.017543859649122806
         },
         {
           "mob": "a henchman",
@@ -13589,8 +14168,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 57,
+          "rate": 0.017543859649122806
         },
         {
           "mob": "a bodyguard",
@@ -13825,6 +14404,12 @@
       "name": "Tattered Leather Cap",
       "droppedBy": [
         {
+          "mob": "a devoted cultist",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
+        },
+        {
           "mob": "a poacher bruiser",
           "drops": 1,
           "corpses": 161,
@@ -13834,7 +14419,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Graincellar"
       ]
     },
     {
@@ -13842,6 +14428,12 @@
       "gameId": "4cf85f4739c477f0f5fad198",
       "name": "Tattered Leather Cloak",
       "droppedBy": [
+        {
+          "mob": "a ghostly figure",
+          "drops": 1,
+          "corpses": 7,
+          "rate": 0.14285714285714285
+        },
         {
           "mob": "a poacher bruiser",
           "drops": 3,
@@ -13852,7 +14444,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Graincellar"
       ]
     },
     {
@@ -13885,6 +14478,12 @@
           "rate": 0.16666666666666666
         },
         {
+          "mob": "a craven cultist",
+          "drops": 1,
+          "corpses": 14,
+          "rate": 0.07142857142857142
+        },
+        {
           "mob": "a poacher bruiser",
           "drops": 1,
           "corpses": 161,
@@ -13894,7 +14493,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Graincellar"
       ]
     },
     {
@@ -13902,6 +14502,12 @@
       "gameId": "a64200c70aae42bd4b8bcf7b",
       "name": "Tattered Leather Tunic",
       "droppedBy": [
+        {
+          "mob": "a ghostly fighter",
+          "drops": 1,
+          "corpses": 8,
+          "rate": 0.125
+        },
         {
           "mob": "a poacher bruiser",
           "drops": 2,
@@ -13912,7 +14518,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Graincellar"
       ]
     },
     {
@@ -13921,16 +14528,16 @@
       "name": "Tattered Rawhide Belt",
       "droppedBy": [
         {
-          "mob": "an old elven skeleton",
-          "drops": 2,
-          "corpses": 39,
-          "rate": 0.05128205128205128
-        },
-        {
           "mob": "a Fellstone ragecaller",
           "drops": 2,
-          "corpses": 46,
-          "rate": 0.043478260869565216
+          "corpses": 34,
+          "rate": 0.058823529411764705
+        },
+        {
+          "mob": "an old elven skeleton",
+          "drops": 1,
+          "corpses": 25,
+          "rate": 0.04
         },
         {
           "mob": "a Fellstone sentry",
@@ -13943,12 +14550,6 @@
           "drops": 1,
           "corpses": 102,
           "rate": 0.00980392156862745
-        },
-        {
-          "mob": "a Fellstone guard",
-          "drops": 1,
-          "corpses": 118,
-          "rate": 0.00847457627118644
         }
       ],
       "prices": [
@@ -13959,8 +14560,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Evershade Weald",
-        "Blacktidebay"
+        "Blacktidebay",
+        "Evershade Weald"
       ]
     },
     {
@@ -13996,8 +14597,8 @@
         {
           "mob": "a Fellstone defiler",
           "drops": 2,
-          "corpses": 35,
-          "rate": 0.05714285714285714
+          "corpses": 23,
+          "rate": 0.08695652173913043
         },
         {
           "mob": "a fossergrim watcher",
@@ -14008,14 +14609,14 @@
         {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 39,
-          "rate": 0.02564102564102564
+          "corpses": 25,
+          "rate": 0.04
         },
         {
           "mob": "a Fellstone ragecaller",
           "drops": 1,
-          "corpses": 46,
-          "rate": 0.021739130434782608
+          "corpses": 34,
+          "rate": 0.029411764705882353
         },
         {
           "mob": "a Fellstone sentry",
@@ -14044,8 +14645,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 15,
-          "rate": 0.06666666666666667
+          "corpses": 10,
+          "rate": 0.1
         },
         {
           "mob": "a fossergrim watcher",
@@ -14055,9 +14656,9 @@
         },
         {
           "mob": "a Fellstone guard",
-          "drops": 3,
-          "corpses": 118,
-          "rate": 0.025423728813559324
+          "drops": 2,
+          "corpses": 73,
+          "rate": 0.0273972602739726
         },
         {
           "mob": "a Fellstone sentry",
@@ -14097,12 +14698,6 @@
           "rate": 0.1111111111111111
         },
         {
-          "mob": "an old elven skeleton",
-          "drops": 1,
-          "corpses": 39,
-          "rate": 0.02564102564102564
-        },
-        {
           "mob": "a Fellstone sentinel",
           "drops": 1,
           "corpses": 102,
@@ -14112,8 +14707,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Evershade Weald",
         "Blacktidebay",
+        "Evershade Weald",
         "Sungreetstrand"
       ]
     },
@@ -14125,8 +14720,8 @@
         {
           "mob": "a Fellstone ragecaller",
           "drops": 1,
-          "corpses": 46,
-          "rate": 0.021739130434782608
+          "corpses": 34,
+          "rate": 0.029411764705882353
         },
         {
           "mob": "a Fellstone sentinel",
@@ -14137,8 +14732,8 @@
         {
           "mob": "a Fellstone guard",
           "drops": 1,
-          "corpses": 118,
-          "rate": 0.00847457627118644
+          "corpses": 73,
+          "rate": 0.0136986301369863
         },
         {
           "mob": "a Fellstone sentry",
@@ -14165,12 +14760,6 @@
       "name": "Tattered Rawhide Gorget",
       "droppedBy": [
         {
-          "mob": "a Calafreyan soldier",
-          "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
-        },
-        {
           "mob": "a Fellstone sentinel",
           "drops": 5,
           "corpses": 102,
@@ -14179,20 +14768,14 @@
         {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 39,
-          "rate": 0.02564102564102564
+          "corpses": 25,
+          "rate": 0.04
         },
         {
           "mob": "a Fellstone ragecaller",
           "drops": 1,
-          "corpses": 46,
-          "rate": 0.021739130434782608
-        },
-        {
-          "mob": "a Fellstone guard",
-          "drops": 1,
-          "corpses": 118,
-          "rate": 0.00847457627118644
+          "corpses": 34,
+          "rate": 0.029411764705882353
         },
         {
           "mob": "a Fellstone sentry",
@@ -14221,8 +14804,8 @@
         {
           "mob": "a Calafreyan soldier",
           "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
+          "corpses": 9,
+          "rate": 0.1111111111111111
         },
         {
           "mob": "a Fellstone sentinel",
@@ -14233,8 +14816,8 @@
         {
           "mob": "a Fellstone guard",
           "drops": 1,
-          "corpses": 118,
-          "rate": 0.00847457627118644
+          "corpses": 73,
+          "rate": 0.0136986301369863
         },
         {
           "mob": "a Fellstone sentry",
@@ -14258,14 +14841,14 @@
         {
           "mob": "an old elven skeleton",
           "drops": 1,
-          "corpses": 39,
-          "rate": 0.02564102564102564
+          "corpses": 25,
+          "rate": 0.04
         },
         {
           "mob": "a Fellstone guard",
-          "drops": 2,
-          "corpses": 118,
-          "rate": 0.01694915254237288
+          "drops": 1,
+          "corpses": 73,
+          "rate": 0.0136986301369863
         },
         {
           "mob": "a Fellstone sentinel",
@@ -14300,14 +14883,14 @@
         {
           "mob": "a Fellstone shaman",
           "drops": 1,
-          "corpses": 5,
-          "rate": 0.2
+          "corpses": 2,
+          "rate": 0.5
         },
         {
           "mob": "a Fellstone defiler",
           "drops": 1,
-          "corpses": 35,
-          "rate": 0.02857142857142857
+          "corpses": 23,
+          "rate": 0.043478260869565216
         },
         {
           "mob": "a Fellstone sentry",
@@ -14331,8 +14914,8 @@
         {
           "mob": "a Fellstone warrior",
           "drops": 1,
-          "corpses": 15,
-          "rate": 0.06666666666666667
+          "corpses": 10,
+          "rate": 0.1
         },
         {
           "mob": "a Fellstone sentry",
@@ -14343,8 +14926,8 @@
         {
           "mob": "a Fellstone guard",
           "drops": 1,
-          "corpses": 118,
-          "rate": 0.00847457627118644
+          "corpses": 73,
+          "rate": 0.0136986301369863
         }
       ],
       "prices": [],
@@ -14360,28 +14943,22 @@
       "name": "Tattered Rawhide Vest",
       "droppedBy": [
         {
-          "mob": "a Calafreyan soldier",
-          "drops": 1,
-          "corpses": 20,
-          "rate": 0.05
-        },
-        {
           "mob": "a Fellstone sentinel",
           "drops": 3,
           "corpses": 102,
           "rate": 0.029411764705882353
         },
         {
-          "mob": "a Fellstone tracker",
-          "drops": 1,
-          "corpses": 36,
-          "rate": 0.027777777777777776
-        },
-        {
           "mob": "a Fellstone ragecaller",
           "drops": 1,
-          "corpses": 46,
-          "rate": 0.021739130434782608
+          "corpses": 34,
+          "rate": 0.029411764705882353
+        },
+        {
+          "mob": "a Fellstone tracker",
+          "drops": 1,
+          "corpses": 34,
+          "rate": 0.029411764705882353
         },
         {
           "mob": "a Fellstone sentry",
@@ -14393,8 +14970,7 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Blacktidebay",
-        "Evershade Weald"
+        "Blacktidebay"
       ]
     },
     {
@@ -14742,8 +15318,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 57,
+          "rate": 0.017543859649122806
         }
       ],
       "prices": [],
@@ -14900,6 +15476,12 @@
           "rate": 0.14285714285714285
         },
         {
+          "mob": "a nefarious cultist",
+          "drops": 1,
+          "corpses": 12,
+          "rate": 0.08333333333333333
+        },
+        {
           "mob": "a Sangrel grappler",
           "drops": 2,
           "corpses": 26,
@@ -14956,8 +15538,8 @@
         {
           "mob": "a corrupt clergyman",
           "drops": 1,
-          "corpses": 56,
-          "rate": 0.017857142857142856
+          "corpses": 57,
+          "rate": 0.017543859649122806
         },
         {
           "mob": "a poacher pathfinder",
@@ -14994,7 +15576,8 @@
       "zones": [
         "Keepersbight",
         "Sungreetstrand",
-        "Evershade Weald"
+        "Evershade Weald",
+        "Graincellar"
       ]
     },
     {
@@ -15009,16 +15592,22 @@
           "rate": 0.1111111111111111
         },
         {
-          "mob": "a Bloodchain taskmaster",
+          "mob": "a devoted cultist",
           "drops": 1,
-          "corpses": 18,
-          "rate": 0.05555555555555555
+          "corpses": 12,
+          "rate": 0.08333333333333333
         },
         {
           "mob": "a Fellstone ragecaller",
           "drops": 2,
-          "corpses": 46,
-          "rate": 0.043478260869565216
+          "corpses": 34,
+          "rate": 0.058823529411764705
+        },
+        {
+          "mob": "a Bloodchain taskmaster",
+          "drops": 1,
+          "corpses": 18,
+          "rate": 0.05555555555555555
         },
         {
           "mob": "a Bloodchain sentry",
@@ -15069,7 +15658,8 @@
         "Blacktidebay",
         "Keepersbight",
         "Sungreetstrand",
-        "Valeofzintar"
+        "Valeofzintar",
+        "Graincellar"
       ]
     },
     {
@@ -15133,9 +15723,9 @@
       "droppedBy": [
         {
           "mob": "a Fellstone tracker",
-          "drops": 2,
-          "corpses": 36,
-          "rate": 0.05555555555555555
+          "drops": 1,
+          "corpses": 34,
+          "rate": 0.029411764705882353
         }
       ],
       "prices": [],
@@ -15152,8 +15742,8 @@
         {
           "mob": "a Fellstone scout",
           "drops": 1,
-          "corpses": 6,
-          "rate": 0.16666666666666666
+          "corpses": 5,
+          "rate": 0.2
         }
       ],
       "prices": [],
@@ -15325,7 +15915,7 @@
       "name": "Whispering Sage",
       "droppedBy": [],
       "prices": [],
-      "harvested": 94,
+      "harvested": 92,
       "zones": [
         "Sungreetstrand",
         "Keepersbight",
@@ -15442,12 +16032,6 @@
           "rate": 0.2631578947368421
         },
         {
-          "mob": "a corrupt clergyman",
-          "drops": 13,
-          "corpses": 56,
-          "rate": 0.23214285714285715
-        },
-        {
           "mob": "a Sangrel grappler",
           "drops": 6,
           "corpses": 26,
@@ -15458,6 +16042,12 @@
           "drops": 22,
           "corpses": 96,
           "rate": 0.22916666666666666
+        },
+        {
+          "mob": "a corrupt clergyman",
+          "drops": 13,
+          "corpses": 57,
+          "rate": 0.22807017543859648
         },
         {
           "mob": "a bodyguard",
@@ -15753,8 +16343,8 @@
         {
           "mob": "a Fellstone shaman",
           "drops": 1,
-          "corpses": 5,
-          "rate": 0.2
+          "corpses": 2,
+          "rate": 0.5
         },
         {
           "mob": "a fossergrim watcher",
@@ -15799,6 +16389,12 @@
       "name": "Worn Ironbark Buckler",
       "droppedBy": [
         {
+          "mob": "a ghostly cleric",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        },
+        {
           "mob": "a poacher bruiser",
           "drops": 1,
           "corpses": 161,
@@ -15813,7 +16409,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Graincellar"
       ]
     },
     {
@@ -15860,24 +16457,24 @@
     }
   ],
   "harvest": {
-    "Copper Ore": 961,
-    "Brittle Stone": 256,
-    "Chipped Cat's Eye Agate": 8,
-    "Lionleaf": 29,
-    "Whispering Sage": 94,
-    "Chipped Peridot": 10,
+    "Whispering Sage": 92,
     "Ghost Poppy": 11,
     "Wood": 353,
     "Resin": 435,
     "Sylvine": 36,
     "Magic Frond": 6,
+    "Lionleaf": 25,
+    "Copper Ore": 943,
     "Selstie Kelp": 2,
+    "Brittle Stone": 250,
     "Chipped Diamond": 9,
+    "Chipped Peridot": 9,
     "Chipped Sapphire": 10,
     "Clouded Crystallized Magic": 21,
     "Alunite Ore": 10,
     "Chipped Emerald": 11,
     "Chipped Ruby": 10,
+    "Chipped Cat's Eye Agate": 7,
     "Limestone": 460,
     "Tin Ore": 671,
     "Flawed Diamond": 4,
@@ -15924,62 +16521,62 @@
   "harvestNodes": [
     {
       "name": "Copper Ore",
-      "pulls": 995,
+      "pulls": 975,
       "yields": [
         {
           "res": "Copper Ore",
-          "count": 959,
-          "rate": 0.963819095477387
+          "count": 941,
+          "rate": 0.9651282051282051
         },
         {
           "res": "Brittle Stone",
-          "count": 256,
-          "rate": 0.25728643216080405
+          "count": 250,
+          "rate": 0.2564102564102564
         },
         {
           "res": "Clouded Crystallized Magic",
           "count": 15,
-          "rate": 0.01507537688442211
-        },
-        {
-          "res": "Chipped Peridot",
-          "count": 10,
-          "rate": 0.010050251256281407
+          "rate": 0.015384615384615385
         },
         {
           "res": "Alunite Ore",
           "count": 10,
-          "rate": 0.010050251256281407
+          "rate": 0.010256410256410256
         },
         {
           "res": "Chipped Emerald",
           "count": 10,
-          "rate": 0.010050251256281407
+          "rate": 0.010256410256410256
         },
         {
           "res": "Chipped Ruby",
           "count": 10,
-          "rate": 0.010050251256281407
+          "rate": 0.010256410256410256
+        },
+        {
+          "res": "Chipped Peridot",
+          "count": 9,
+          "rate": 0.009230769230769232
         },
         {
           "res": "Chipped Sapphire",
           "count": 9,
-          "rate": 0.009045226130653266
-        },
-        {
-          "res": "Chipped Cat's Eye Agate",
-          "count": 8,
-          "rate": 0.008040201005025126
+          "rate": 0.009230769230769232
         },
         {
           "res": "Chipped Diamond",
           "count": 8,
-          "rate": 0.008040201005025126
+          "rate": 0.008205128205128205
+        },
+        {
+          "res": "Chipped Cat's Eye Agate",
+          "count": 7,
+          "rate": 0.0071794871794871795
         },
         {
           "res": "Chipped Jade",
           "count": 6,
-          "rate": 0.006030150753768844
+          "rate": 0.006153846153846154
         }
       ],
       "zones": [
@@ -16326,17 +16923,17 @@
     },
     {
       "name": "Whispering Sage",
-      "pulls": 60,
+      "pulls": 58,
       "yields": [
         {
           "res": "Whispering Sage",
-          "count": 60,
+          "count": 58,
           "rate": 1
         },
         {
           "res": "Magic Frond",
           "count": 3,
-          "rate": 0.05
+          "rate": 0.05172413793103448
         }
       ],
       "zones": [
@@ -16425,22 +17022,6 @@
       ]
     },
     {
-      "name": "Lionleaf",
-      "pulls": 20,
-      "yields": [
-        {
-          "res": "Lionleaf",
-          "count": 20,
-          "rate": 1
-        }
-      ],
-      "zones": [
-        "Evershade Weald",
-        "Sungreetstrand",
-        "Shaded Dunes"
-      ]
-    },
-    {
       "name": "Herbs - Keepersbight",
       "pulls": 20,
       "yields": [
@@ -16472,6 +17053,22 @@
       "zones": [
         "Evershade Weald",
         "Scarwood"
+      ]
+    },
+    {
+      "name": "Lionleaf",
+      "pulls": 18,
+      "yields": [
+        {
+          "res": "Lionleaf",
+          "count": 18,
+          "rate": 1
+        }
+      ],
+      "zones": [
+        "Evershade Weald",
+        "Sungreetstrand",
+        "Shaded Dunes"
       ]
     },
     {
