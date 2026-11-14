@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-13T20:00:07.504Z",
+  "generatedAt": "2026-11-14T08:00:07.266Z",
   "source": "mnm-tools",
-  "ledgerFiles": 53,
-  "events": 17484,
+  "ledgerFiles": 54,
+  "events": 17553,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 17484
+      "events": 17553
     }
   ],
   "contributorCount": 1,
@@ -2165,6 +2165,23 @@
       "coin": 222,
       "corpses": 0
     },
+    "a water basilisk": {
+      "kills": 0,
+      "drops": {
+        "Intact Basilisk Vertebra": 13,
+        "Smooth Basilisk Vertebra": 12,
+        "Basilisk Scale": 1,
+        "Basilisk Eye": 6,
+        "Raw Basilisk Steak": 2,
+        "Basilisk Tooth": 1,
+        "Cooked Basilisk Steak": 1
+      },
+      "zones": {
+        "Shallowshoals": 47
+      },
+      "coin": 0,
+      "corpses": 26
+    },
     "a gloom widow": {
       "kills": 0,
       "drops": {
@@ -2447,6 +2464,18 @@
       },
       "coin": 125,
       "corpses": 1
+    },
+    "a water basilisk broodmother": {
+      "kills": 0,
+      "drops": {
+        "Grotto Pauldrons": 1,
+        "Basilisk Eye": 1
+      },
+      "zones": {
+        "Shallowshoals": 2
+      },
+      "coin": 0,
+      "corpses": 1
     }
   },
   "items": [
@@ -2459,6 +2488,66 @@
       "harvested": 10,
       "zones": [
         "Evershade Weald"
+      ]
+    },
+    {
+      "id": "basilisk_eye",
+      "gameId": "13ccb6879af15a23a425bd75",
+      "name": "Basilisk Eye",
+      "droppedBy": [
+        {
+          "mob": "a water basilisk broodmother",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
+        {
+          "mob": "a water basilisk",
+          "drops": 6,
+          "corpses": 26,
+          "rate": 0.23076923076923078
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Shallowshoals"
+      ]
+    },
+    {
+      "id": "basilisk_scale",
+      "gameId": "44f20f782a259542b081f0d1",
+      "name": "Basilisk Scale",
+      "droppedBy": [
+        {
+          "mob": "a water basilisk",
+          "drops": 1,
+          "corpses": 26,
+          "rate": 0.038461538461538464
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Shallowshoals"
+      ]
+    },
+    {
+      "id": "basilisk_tooth",
+      "gameId": "bdd5edc418029c0a99f1b2fb",
+      "name": "Basilisk Tooth",
+      "droppedBy": [
+        {
+          "mob": "a water basilisk",
+          "drops": 1,
+          "corpses": 26,
+          "rate": 0.038461538461538464
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Shallowshoals"
       ]
     },
     {
@@ -3906,6 +3995,24 @@
         "Fallenpass",
         "Valeofzintar",
         "Keepersbight"
+      ]
+    },
+    {
+      "id": "cooked_basilisk_steak",
+      "gameId": "0c5ea75c9426f1ab1b549329",
+      "name": "Cooked Basilisk Steak",
+      "droppedBy": [
+        {
+          "mob": "a water basilisk",
+          "drops": 1,
+          "corpses": 26,
+          "rate": 0.038461538461538464
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Shallowshoals"
       ]
     },
     {
@@ -7786,6 +7893,24 @@
       ]
     },
     {
+      "id": "grotto_pauldrons",
+      "gameId": "3e41c24f1d33a6002f5bcc1e",
+      "name": "Grotto Pauldrons",
+      "droppedBy": [
+        {
+          "mob": "a water basilisk broodmother",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Shallowshoals"
+      ]
+    },
+    {
       "id": "hardened_drake_scale",
       "gameId": "b29ba58a74a23a0ff02f50de",
       "name": "Hardened Drake Scale",
@@ -8231,10 +8356,29 @@
           "count": 1
         }
       ],
-      "harvested": 8,
+      "harvested": 9,
       "zones": [
         "Fallenpass",
-        "Keepersbight"
+        "Keepersbight",
+        "Shallowshoals"
+      ]
+    },
+    {
+      "id": "intact_basilisk_vertebra",
+      "gameId": "3abcc5cefdb7213a311aedaa",
+      "name": "Intact Basilisk Vertebra",
+      "droppedBy": [
+        {
+          "mob": "a water basilisk",
+          "drops": 13,
+          "corpses": 26,
+          "rate": 0.5
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Shallowshoals"
       ]
     },
     {
@@ -8289,9 +8433,10 @@
           "count": 23
         }
       ],
-      "harvested": 877,
+      "harvested": 879,
       "zones": [
-        "Fallenpass"
+        "Fallenpass",
+        "Shallowshoals"
       ]
     },
     {
@@ -9532,6 +9677,24 @@
       "harvested": 0,
       "zones": [
         "Sungreetstrand"
+      ]
+    },
+    {
+      "id": "raw_basilisk_steak",
+      "gameId": "ef2934dfad809ec12b508ce7",
+      "name": "Raw Basilisk Steak",
+      "droppedBy": [
+        {
+          "mob": "a water basilisk",
+          "drops": 2,
+          "corpses": 26,
+          "rate": 0.07692307692307693
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Shallowshoals"
       ]
     },
     {
@@ -12100,6 +12263,24 @@
         "Sungreetstrand",
         "Blacktidebay",
         "Keepersbight"
+      ]
+    },
+    {
+      "id": "smooth_basilisk_vertebra",
+      "gameId": "d2a4890f48ffe653924ae9a1",
+      "name": "Smooth Basilisk Vertebra",
+      "droppedBy": [
+        {
+          "mob": "a water basilisk",
+          "drops": 12,
+          "corpses": 26,
+          "rate": 0.46153846153846156
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Shallowshoals"
       ]
     },
     {
@@ -15132,9 +15313,10 @@
           "count": 5
         }
       ],
-      "harvested": 220,
+      "harvested": 222,
       "zones": [
-        "Fallenpass"
+        "Fallenpass",
+        "Shallowshoals"
       ]
     },
     {
@@ -15711,10 +15893,10 @@
     "Flawed Emerald": 5,
     "Flawed Peridot": 4,
     "Flawed Jade": 4,
-    "Iron Ore": 877,
-    "Weighty Stone": 220,
+    "Iron Ore": 879,
+    "Weighty Stone": 222,
     "Ironroot": 79,
-    "Imperfect Sapphire": 8,
+    "Imperfect Sapphire": 9,
     "Imperfect Peridot": 11,
     "Imperfect Emerald": 6,
     "Imperfect Jade": 7,
@@ -15885,61 +16067,62 @@
     },
     {
       "name": "Iron Ore",
-      "pulls": 876,
+      "pulls": 878,
       "yields": [
         {
           "res": "Iron Ore",
-          "count": 876,
+          "count": 878,
           "rate": 1
         },
         {
           "res": "Weighty Stone",
-          "count": 204,
-          "rate": 0.2328767123287671
+          "count": 206,
+          "rate": 0.23462414578587698
         },
         {
           "res": "Shining Crystallized Magic",
           "count": 10,
-          "rate": 0.01141552511415525
+          "rate": 0.011389521640091117
+        },
+        {
+          "res": "Imperfect Sapphire",
+          "count": 9,
+          "rate": 0.010250569476082005
         },
         {
           "res": "Imperfect Peridot",
           "count": 9,
-          "rate": 0.010273972602739725
-        },
-        {
-          "res": "Imperfect Sapphire",
-          "count": 8,
-          "rate": 0.0091324200913242
+          "rate": 0.010250569476082005
         },
         {
           "res": "Imperfect Emerald",
           "count": 6,
-          "rate": 0.00684931506849315
+          "rate": 0.00683371298405467
         },
         {
           "res": "Imperfect Jade",
           "count": 6,
-          "rate": 0.00684931506849315
+          "rate": 0.00683371298405467
         },
         {
           "res": "Imperfect Cat's Eye Agate",
           "count": 6,
-          "rate": 0.00684931506849315
+          "rate": 0.00683371298405467
         },
         {
           "res": "Imperfect Ruby",
           "count": 5,
-          "rate": 0.005707762557077625
+          "rate": 0.0056947608200455585
         },
         {
           "res": "Imperfect Diamond",
           "count": 5,
-          "rate": 0.005707762557077625
+          "rate": 0.0056947608200455585
         }
       ],
       "zones": [
-        "Fallenpass"
+        "Fallenpass",
+        "Shallowshoals"
       ]
     },
     {
