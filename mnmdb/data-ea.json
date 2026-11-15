@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-14T20:00:16.199Z",
+  "generatedAt": "2026-11-15T02:00:16.200Z",
   "source": "mnm-tools",
-  "ledgerFiles": 54,
-  "events": 17326,
+  "ledgerFiles": 53,
+  "events": 17212,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,86 +10,11 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 17326
+      "events": 17212
     }
   ],
   "contributorCount": 1,
   "mobs": {
-    "a small river elemental": {
-      "kills": 0,
-      "drops": {
-        "Encrusted Heartleaf Spangenhelm": 5,
-        "Crude Brine Grit": 3,
-        "Torn Fishing Net": 7,
-        "Dull Brine Grit": 2,
-        "River Essence": 5,
-        "Encrusted Calafreyan Arrow": 2,
-        "Woven Heartleaf Tunic": 8,
-        "Dim Tide Heartstone": 9,
-        "Encrusted Calafreyan Buckler": 5,
-        "River Trout": 3,
-        "Encrusted Calafreyan Spear": 2,
-        "Hazy Tidal Sliver": 1,
-        "Encrusted Calafreyan Dagger": 1,
-        "Smooth River Stone": 1
-      },
-      "zones": {
-        "Evershade Weald": 54
-      },
-      "coin": 0,
-      "corpses": 24
-    },
-    "a rotting skeleton": {
-      "kills": 8,
-      "drops": {
-        "Cloth Scraps": 5,
-        "Rusty Warhammer": 1,
-        "Tattered Cloth Robe": 1,
-        "Bone Chips": 5
-      },
-      "zones": {
-        "Evershade Weald": 21
-      },
-      "coin": 12,
-      "corpses": 6
-    },
-    "a black wolf pup": {
-      "kills": 0,
-      "drops": {
-        "Low-Quality Wolf Pelt": 2,
-        "Damaged Canine Ear": 4,
-        "Raw Wolf Meat": 2
-      },
-      "zones": {
-        "Evershade Weald": 10
-      },
-      "coin": 0,
-      "corpses": 6
-    },
-    "a black bat": {
-      "kills": 0,
-      "drops": {
-        "Bat Tooth": 1
-      },
-      "zones": {
-        "Evershade Weald": 1
-      },
-      "coin": 0,
-      "corpses": 1
-    },
-    "a beguiled river elemental": {
-      "kills": 0,
-      "drops": {
-        "Moldy Sandals": 1,
-        "Encrusted Calafreyan Dagger": 1,
-        "Dull Brine Grit": 1
-      },
-      "zones": {
-        "Evershade Weald": 3
-      },
-      "coin": 0,
-      "corpses": 1
-    },
     "an old elven skeleton": {
       "kills": 33,
       "drops": {
@@ -161,6 +86,19 @@
       },
       "coin": 3031,
       "corpses": 73
+    },
+    "a rotting skeleton": {
+      "kills": 7,
+      "drops": {
+        "Tattered Cloth Robe": 1,
+        "Bone Chips": 5,
+        "Cloth Scraps": 4
+      },
+      "zones": {
+        "Evershade Weald": 18
+      },
+      "coin": 10,
+      "corpses": 5
     },
     "a Fellstone ragecaller": {
       "kills": 33,
@@ -312,6 +250,19 @@
       },
       "coin": 0,
       "corpses": 1
+    },
+    "a black wolf pup": {
+      "kills": 0,
+      "drops": {
+        "Damaged Canine Ear": 4,
+        "Low-Quality Wolf Pelt": 1,
+        "Raw Wolf Meat": 2
+      },
+      "zones": {
+        "Evershade Weald": 9
+      },
+      "coin": 0,
+      "corpses": 5
     },
     "a Fellstone warrior": {
       "kills": 8,
@@ -2097,19 +2048,19 @@
     "a water basilisk": {
       "kills": 0,
       "drops": {
-        "Intact Basilisk Vertebra": 13,
-        "Smooth Basilisk Vertebra": 12,
-        "Basilisk Scale": 1,
-        "Basilisk Eye": 6,
-        "Raw Basilisk Steak": 2,
+        "Intact Basilisk Vertebra": 14,
+        "Smooth Basilisk Vertebra": 13,
+        "Basilisk Scale": 3,
+        "Basilisk Eye": 7,
+        "Raw Basilisk Steak": 3,
         "Basilisk Tooth": 1,
         "Cooked Basilisk Steak": 1
       },
       "zones": {
-        "Shallowshoals": 47
+        "Shallowshoals": 54
       },
       "coin": 0,
-      "corpses": 26
+      "corpses": 31
     },
     "a ghostly fighter": {
       "kills": 15,
@@ -2684,9 +2635,9 @@
         },
         {
           "mob": "a water basilisk",
-          "drops": 6,
-          "corpses": 26,
-          "rate": 0.23076923076923078
+          "drops": 7,
+          "corpses": 31,
+          "rate": 0.22580645161290322
         }
       ],
       "prices": [],
@@ -2702,9 +2653,9 @@
       "droppedBy": [
         {
           "mob": "a water basilisk",
-          "drops": 1,
-          "corpses": 26,
-          "rate": 0.038461538461538464
+          "drops": 3,
+          "corpses": 31,
+          "rate": 0.0967741935483871
         }
       ],
       "prices": [],
@@ -2721,37 +2672,14 @@
         {
           "mob": "a water basilisk",
           "drops": 1,
-          "corpses": 26,
-          "rate": 0.038461538461538464
+          "corpses": 31,
+          "rate": 0.03225806451612903
         }
       ],
       "prices": [],
       "harvested": 0,
       "zones": [
         "Shallowshoals"
-      ]
-    },
-    {
-      "id": "bat_tooth",
-      "gameId": "ecfab4f31a58122a9c917a93",
-      "name": "Bat Tooth",
-      "droppedBy": [
-        {
-          "mob": "a black bat",
-          "drops": 1,
-          "corpses": 1,
-          "rate": 1
-        }
-      ],
-      "prices": [
-        {
-          "copper": 2,
-          "count": 1
-        }
-      ],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
       ]
     },
     {
@@ -3012,6 +2940,12 @@
       "name": "Bone Chips",
       "droppedBy": [
         {
+          "mob": "a rotting skeleton",
+          "drops": 5,
+          "corpses": 5,
+          "rate": 1
+        },
+        {
           "mob": "a restless skeleton",
           "drops": 2,
           "corpses": 2,
@@ -3040,12 +2974,6 @@
           "drops": 1,
           "corpses": 1,
           "rate": 1
-        },
-        {
-          "mob": "a rotting skeleton",
-          "drops": 5,
-          "corpses": 6,
-          "rate": 0.8333333333333334
         },
         {
           "mob": "a Calafreyan soldier",
@@ -3114,10 +3042,10 @@
       "prices": [
         {
           "copper": 1,
-          "count": 13
+          "count": 12
         }
       ],
-      "harvested": 250,
+      "harvested": 249,
       "zones": [
         "Evershade Weald",
         "Keepersbight"
@@ -3430,6 +3358,10 @@
         {
           "copper": 1,
           "count": 3
+        },
+        {
+          "copper": 3,
+          "count": 1
         }
       ],
       "harvested": 0,
@@ -3735,7 +3667,7 @@
       "prices": [
         {
           "copper": 20,
-          "count": 2
+          "count": 1
         },
         {
           "copper": 21,
@@ -3833,7 +3765,7 @@
       "prices": [
         {
           "copper": 20,
-          "count": 4
+          "count": 3
         },
         {
           "copper": 21,
@@ -3873,7 +3805,7 @@
       "prices": [
         {
           "copper": 20,
-          "count": 3
+          "count": 2
         },
         {
           "copper": 21,
@@ -4052,12 +3984,6 @@
           "rate": 1
         },
         {
-          "mob": "a rotting skeleton",
-          "drops": 5,
-          "corpses": 6,
-          "rate": 0.8333333333333334
-        },
-        {
           "mob": "a Fellstone scout",
           "drops": 4,
           "corpses": 5,
@@ -4067,6 +3993,12 @@
           "mob": "a Fellstone warrior",
           "drops": 8,
           "corpses": 10,
+          "rate": 0.8
+        },
+        {
+          "mob": "a rotting skeleton",
+          "drops": 4,
+          "corpses": 5,
           "rate": 0.8
         },
         {
@@ -4225,8 +4157,8 @@
         {
           "mob": "a water basilisk",
           "drops": 1,
-          "corpses": 26,
-          "rate": 0.038461538461538464
+          "corpses": 31,
+          "rate": 0.03225806451612903
         }
       ],
       "prices": [],
@@ -4348,7 +4280,7 @@
       "name": "Copper Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 943,
+      "harvested": 935,
       "zones": [
         "Evershade Weald",
         "Keepersbight",
@@ -6427,16 +6359,9 @@
     },
     {
       "id": "crude_brine_grit",
-      "gameId": "72cc31a5fb51ea3f2961b3f1",
+      "gameId": null,
       "name": "Crude Brine Grit",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 3,
-          "corpses": 24,
-          "rate": 0.125
-        }
-      ],
+      "droppedBy": [],
       "prices": [
         {
           "copper": 10,
@@ -6444,9 +6369,7 @@
         }
       ],
       "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
+      "zones": []
     },
     {
       "id": "crude_ingot_mold",
@@ -6516,8 +6439,8 @@
         {
           "mob": "a black wolf pup",
           "drops": 4,
-          "corpses": 6,
-          "rate": 0.6666666666666666
+          "corpses": 5,
+          "rate": 0.8
         },
         {
           "mob": "a rabid wolf",
@@ -6641,16 +6564,9 @@
     },
     {
       "id": "dim_tide_heartstone",
-      "gameId": "b5204941ec70dd7de642bc4b",
+      "gameId": null,
       "name": "Dim Tide Heartstone",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 9,
-          "corpses": 24,
-          "rate": 0.375
-        }
-      ],
+      "droppedBy": [],
       "prices": [
         {
           "copper": 19,
@@ -6658,9 +6574,7 @@
         }
       ],
       "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
+      "zones": []
     },
     {
       "id": "diseased_wolf_pelt",
@@ -6830,22 +6744,10 @@
       "name": "Dull Brine Grit",
       "droppedBy": [
         {
-          "mob": "a beguiled river elemental",
-          "drops": 1,
-          "corpses": 1,
-          "rate": 1
-        },
-        {
           "mob": "a beguiled water elemental",
           "drops": 1,
           "corpses": 2,
           "rate": 0.5
-        },
-        {
-          "mob": "a small river elemental",
-          "drops": 2,
-          "corpses": 24,
-          "rate": 0.08333333333333333
         }
       ],
       "prices": [
@@ -6948,134 +6850,6 @@
         }
       ],
       "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "encrusted_calafreyan_arrow",
-      "gameId": "ec721deef6178d43dbb37d8d",
-      "name": "Encrusted Calafreyan Arrow",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 2,
-          "corpses": 24,
-          "rate": 0.08333333333333333
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "encrusted_calafreyan_buckler",
-      "gameId": "f61854b52a126991d69e6f29",
-      "name": "Encrusted Calafreyan Buckler",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 5,
-          "corpses": 24,
-          "rate": 0.20833333333333334
-        }
-      ],
-      "prices": [
-        {
-          "copper": 2,
-          "count": 4
-        },
-        {
-          "copper": 5,
-          "count": 1
-        }
-      ],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "encrusted_calafreyan_dagger",
-      "gameId": "c364505c47a5f01389191b8d",
-      "name": "Encrusted Calafreyan Dagger",
-      "droppedBy": [
-        {
-          "mob": "a beguiled river elemental",
-          "drops": 1,
-          "corpses": 1,
-          "rate": 1
-        },
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 24,
-          "rate": 0.041666666666666664
-        }
-      ],
-      "prices": [
-        {
-          "copper": 5,
-          "count": 2
-        }
-      ],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "encrusted_calafreyan_spear",
-      "gameId": "f9287339adb95737f6ee34d4",
-      "name": "Encrusted Calafreyan Spear",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 2,
-          "corpses": 24,
-          "rate": 0.08333333333333333
-        }
-      ],
-      "prices": [
-        {
-          "copper": 5,
-          "count": 1
-        },
-        {
-          "copper": 12,
-          "count": 1
-        }
-      ],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "encrusted_heartleaf_spangenhelm",
-      "gameId": "233423dee978b13c203650a3",
-      "name": "Encrusted Heartleaf Spangenhelm",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 5,
-          "corpses": 24,
-          "rate": 0.20833333333333334
-        }
-      ],
-      "prices": [
-        {
-          "copper": 2,
-          "count": 3
-        },
-        {
-          "copper": 5,
-          "count": 2
-        }
-      ],
       "harvested": 0,
       "zones": [
         "Evershade Weald"
@@ -7816,7 +7590,7 @@
       "name": "Ghost Poppy",
       "droppedBy": [],
       "prices": [],
-      "harvested": 11,
+      "harvested": 9,
       "zones": [
         "Evershade Weald",
         "Shaded Dunes"
@@ -8247,12 +8021,6 @@
           "drops": 1,
           "corpses": 2,
           "rate": 0.5
-        },
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 24,
-          "rate": 0.041666666666666664
         }
       ],
       "prices": [],
@@ -8458,7 +8226,7 @@
         },
         {
           "copper": 151,
-          "count": 2
+          "count": 3
         }
       ],
       "harvested": 7,
@@ -8564,7 +8332,7 @@
         },
         {
           "copper": 151,
-          "count": 1
+          "count": 2
         },
         {
           "copper": 164,
@@ -8603,7 +8371,7 @@
         },
         {
           "copper": 151,
-          "count": 1
+          "count": 2
         }
       ],
       "harvested": 11,
@@ -8660,7 +8428,7 @@
       "prices": [
         {
           "copper": 151,
-          "count": 1
+          "count": 2
         }
       ],
       "harvested": 9,
@@ -8677,9 +8445,9 @@
       "droppedBy": [
         {
           "mob": "a water basilisk",
-          "drops": 13,
-          "corpses": 26,
-          "rate": 0.5
+          "drops": 14,
+          "corpses": 31,
+          "rate": 0.45161290322580644
         }
       ],
       "prices": [
@@ -8794,6 +8562,10 @@
         }
       ],
       "prices": [
+        {
+          "copper": 7,
+          "count": 1
+        },
         {
           "copper": 8,
           "count": 1
@@ -8952,6 +8724,10 @@
         }
       ],
       "prices": [
+        {
+          "copper": 125,
+          "count": 1
+        },
         {
           "copper": 135,
           "count": 2
@@ -9251,7 +9027,7 @@
       "name": "Lionleaf",
       "droppedBy": [],
       "prices": [],
-      "harvested": 25,
+      "harvested": 22,
       "zones": [
         "Evershade Weald",
         "Sungreetstrand",
@@ -9282,12 +9058,6 @@
       "name": "Low-Quality Wolf Pelt",
       "droppedBy": [
         {
-          "mob": "a black wolf pup",
-          "drops": 2,
-          "corpses": 6,
-          "rate": 0.3333333333333333
-        },
-        {
           "mob": "a rabid wolf",
           "drops": 1,
           "corpses": 3,
@@ -9304,6 +9074,12 @@
           "drops": 1,
           "corpses": 4,
           "rate": 0.25
+        },
+        {
+          "mob": "a black wolf pup",
+          "drops": 1,
+          "corpses": 5,
+          "rate": 0.2
         },
         {
           "mob": "a shadow wolf",
@@ -9326,7 +9102,7 @@
       "name": "Magic Frond",
       "droppedBy": [],
       "prices": [],
-      "harvested": 6,
+      "harvested": 5,
       "zones": [
         "Evershade Weald",
         "Scarwood",
@@ -9548,29 +9324,6 @@
       "harvested": 0,
       "zones": [
         "Graincellar"
-      ]
-    },
-    {
-      "id": "moldy_sandals",
-      "gameId": "f43328f6abbdd2379b7ac3d7",
-      "name": "Moldy Sandals",
-      "droppedBy": [
-        {
-          "mob": "a beguiled river elemental",
-          "drops": 1,
-          "corpses": 1,
-          "rate": 1
-        }
-      ],
-      "prices": [
-        {
-          "copper": 8,
-          "count": 1
-        }
-      ],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
       ]
     },
     {
@@ -10184,9 +9937,9 @@
       "droppedBy": [
         {
           "mob": "a water basilisk",
-          "drops": 2,
-          "corpses": 26,
-          "rate": 0.07692307692307693
+          "drops": 3,
+          "corpses": 31,
+          "rate": 0.0967741935483871
         }
       ],
       "prices": [],
@@ -10571,7 +10324,7 @@
       "prices": [
         {
           "copper": 2,
-          "count": 2
+          "count": 1
         },
         {
           "copper": 5,
@@ -10660,8 +10413,8 @@
         {
           "mob": "a black wolf pup",
           "drops": 2,
-          "corpses": 6,
-          "rate": 0.3333333333333333
+          "corpses": 5,
+          "rate": 0.4
         },
         {
           "mob": "a rabid wolf",
@@ -10876,7 +10629,7 @@
           "count": 4
         }
       ],
-      "harvested": 435,
+      "harvested": 423,
       "zones": [
         "Keepersbight",
         "Evershade Weald",
@@ -10901,42 +10654,6 @@
         "Fallenpass",
         "Valeofzintar",
         "Keepersbight"
-      ]
-    },
-    {
-      "id": "river_essence",
-      "gameId": "439347b9bdc1ac6da088b261",
-      "name": "River Essence",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 5,
-          "corpses": 24,
-          "rate": 0.20833333333333334
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
-      "id": "river_trout",
-      "gameId": "4e061489681d11ae8de74f9b",
-      "name": "River Trout",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 3,
-          "corpses": 24,
-          "rate": 0.125
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
       ]
     },
     {
@@ -11240,7 +10957,12 @@
           "rate": 0.014084507042253521
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 151,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Graincellar",
@@ -11643,6 +11365,10 @@
         }
       ],
       "prices": [
+        {
+          "copper": 202,
+          "count": 1
+        },
         {
           "copper": 219,
           "count": 1
@@ -12251,12 +11977,6 @@
       "name": "Rusty Warhammer",
       "droppedBy": [
         {
-          "mob": "a rotting skeleton",
-          "drops": 1,
-          "corpses": 6,
-          "rate": 0.16666666666666666
-        },
-        {
           "mob": "an old elven skeleton",
           "drops": 1,
           "corpses": 25,
@@ -12275,16 +11995,11 @@
           "rate": 0.00980392156862745
         }
       ],
-      "prices": [
-        {
-          "copper": 5,
-          "count": 1
-        }
-      ],
+      "prices": [],
       "harvested": 0,
       "zones": [
-        "Evershade Weald",
-        "Blacktidebay"
+        "Blacktidebay",
+        "Evershade Weald"
       ]
     },
     {
@@ -12654,17 +12369,6 @@
       ]
     },
     {
-      "id": "selstie_kelp",
-      "gameId": null,
-      "name": "Selstie Kelp",
-      "droppedBy": [],
-      "prices": [],
-      "harvested": 2,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
       "id": "shadowsteel_mantle",
       "gameId": "bcf7c7b3d17bf0ae2b3b9f1f",
       "name": "Shadowsteel Mantle",
@@ -12873,9 +12577,9 @@
       "droppedBy": [
         {
           "mob": "a water basilisk",
-          "drops": 12,
-          "corpses": 26,
-          "rate": 0.46153846153846156
+          "drops": 13,
+          "corpses": 31,
+          "rate": 0.41935483870967744
         }
       ],
       "prices": [
@@ -12887,24 +12591,6 @@
       "harvested": 0,
       "zones": [
         "Shallowshoals"
-      ]
-    },
-    {
-      "id": "smooth_river_stone",
-      "gameId": "bbf41074d578e6441f621fcd",
-      "name": "Smooth River Stone",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 1,
-          "corpses": 24,
-          "rate": 0.041666666666666664
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
       ]
     },
     {
@@ -13007,10 +12693,6 @@
         {
           "copper": 2,
           "count": 2
-        },
-        {
-          "copper": 5,
-          "count": 1
         }
       ],
       "harvested": 0,
@@ -13113,7 +12795,7 @@
       "name": "Sylvine",
       "droppedBy": [],
       "prices": [],
-      "harvested": 36,
+      "harvested": 34,
       "zones": [
         "Evershade Weald",
         "Scarwood"
@@ -13278,7 +12960,7 @@
       "prices": [
         {
           "copper": 19,
-          "count": 2
+          "count": 1
         },
         {
           "copper": 20,
@@ -13642,8 +13324,8 @@
         {
           "mob": "a rotting skeleton",
           "drops": 1,
-          "corpses": 6,
-          "rate": 0.16666666666666666
+          "corpses": 5,
+          "rate": 0.2
         },
         {
           "mob": "a Fellstone ragecaller",
@@ -15663,24 +15345,6 @@
       ]
     },
     {
-      "id": "torn_fishing_net",
-      "gameId": "567087e1b3c46f73c243c269",
-      "name": "Torn Fishing Net",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 7,
-          "corpses": 24,
-          "rate": 0.2916666666666667
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
-    },
-    {
       "id": "torn_leather_bracer",
       "gameId": "fa95370cd3a2ad6e35bf6899",
       "name": "Torn Leather Bracer",
@@ -15915,7 +15579,7 @@
       "name": "Whispering Sage",
       "droppedBy": [],
       "prices": [],
-      "harvested": 92,
+      "harvested": 89,
       "zones": [
         "Sungreetstrand",
         "Keepersbight",
@@ -15965,7 +15629,7 @@
       "name": "Wood",
       "droppedBy": [],
       "prices": [],
-      "harvested": 353,
+      "harvested": 342,
       "zones": [
         "Keepersbight",
         "Evershade Weald",
@@ -16436,37 +16100,14 @@
       "zones": [
         "Keepersbight"
       ]
-    },
-    {
-      "id": "woven_heartleaf_tunic",
-      "gameId": "e59bf5cae204bc6970fde93d",
-      "name": "Woven Heartleaf Tunic",
-      "droppedBy": [
-        {
-          "mob": "a small river elemental",
-          "drops": 8,
-          "corpses": 24,
-          "rate": 0.3333333333333333
-        }
-      ],
-      "prices": [],
-      "harvested": 0,
-      "zones": [
-        "Evershade Weald"
-      ]
     }
   ],
   "harvest": {
-    "Whispering Sage": 92,
-    "Ghost Poppy": 11,
-    "Wood": 353,
-    "Resin": 435,
-    "Sylvine": 36,
-    "Magic Frond": 6,
-    "Lionleaf": 25,
-    "Copper Ore": 943,
-    "Selstie Kelp": 2,
-    "Brittle Stone": 250,
+    "Copper Ore": 935,
+    "Brittle Stone": 249,
+    "Wood": 342,
+    "Resin": 423,
+    "Lionleaf": 22,
     "Chipped Diamond": 9,
     "Chipped Peridot": 9,
     "Chipped Sapphire": 10,
@@ -16474,7 +16115,10 @@
     "Alunite Ore": 10,
     "Chipped Emerald": 11,
     "Chipped Ruby": 10,
+    "Whispering Sage": 89,
+    "Sylvine": 34,
     "Chipped Cat's Eye Agate": 7,
+    "Ghost Poppy": 9,
     "Limestone": 460,
     "Tin Ore": 671,
     "Flawed Diamond": 4,
@@ -16485,6 +16129,7 @@
     "Flawed Ruby": 4,
     "Flawed Cat's Eye Agate": 8,
     "Chipped Jade": 8,
+    "Magic Frond": 5,
     "Nomad's Grace": 40,
     "Moonveil": 57,
     "Flawed Emerald": 5,
@@ -16521,62 +16166,62 @@
   "harvestNodes": [
     {
       "name": "Copper Ore",
-      "pulls": 975,
+      "pulls": 966,
       "yields": [
         {
           "res": "Copper Ore",
-          "count": 941,
-          "rate": 0.9651282051282051
+          "count": 933,
+          "rate": 0.9658385093167702
         },
         {
           "res": "Brittle Stone",
-          "count": 250,
-          "rate": 0.2564102564102564
+          "count": 249,
+          "rate": 0.2577639751552795
         },
         {
           "res": "Clouded Crystallized Magic",
           "count": 15,
-          "rate": 0.015384615384615385
+          "rate": 0.015527950310559006
         },
         {
           "res": "Alunite Ore",
           "count": 10,
-          "rate": 0.010256410256410256
+          "rate": 0.010351966873706004
         },
         {
           "res": "Chipped Emerald",
           "count": 10,
-          "rate": 0.010256410256410256
+          "rate": 0.010351966873706004
         },
         {
           "res": "Chipped Ruby",
           "count": 10,
-          "rate": 0.010256410256410256
+          "rate": 0.010351966873706004
         },
         {
           "res": "Chipped Peridot",
           "count": 9,
-          "rate": 0.009230769230769232
+          "rate": 0.009316770186335404
         },
         {
           "res": "Chipped Sapphire",
           "count": 9,
-          "rate": 0.009230769230769232
+          "rate": 0.009316770186335404
         },
         {
           "res": "Chipped Diamond",
           "count": 8,
-          "rate": 0.008205128205128205
+          "rate": 0.008281573498964804
         },
         {
           "res": "Chipped Cat's Eye Agate",
           "count": 7,
-          "rate": 0.0071794871794871795
+          "rate": 0.007246376811594203
         },
         {
           "res": "Chipped Jade",
           "count": 6,
-          "rate": 0.006153846153846154
+          "rate": 0.006211180124223602
         }
       ],
       "zones": [
@@ -16787,22 +16432,22 @@
     },
     {
       "name": "Wood & Resin",
-      "pulls": 367,
+      "pulls": 356,
       "yields": [
         {
           "res": "Wood",
-          "count": 353,
-          "rate": 0.9618528610354223
+          "count": 342,
+          "rate": 0.9606741573033708
         },
         {
           "res": "Resin",
-          "count": 308,
-          "rate": 0.8392370572207084
+          "count": 300,
+          "rate": 0.8426966292134831
         },
         {
           "res": "Fine Wood",
           "count": 14,
-          "rate": 0.03814713896457766
+          "rate": 0.03932584269662921
         }
       ],
       "zones": [
@@ -16923,17 +16568,17 @@
     },
     {
       "name": "Whispering Sage",
-      "pulls": 58,
+      "pulls": 56,
       "yields": [
         {
           "res": "Whispering Sage",
-          "count": 58,
+          "count": 56,
           "rate": 1
         },
         {
           "res": "Magic Frond",
           "count": 3,
-          "rate": 0.05172413793103448
+          "rate": 0.05357142857142857
         }
       ],
       "zones": [
@@ -17037,17 +16682,17 @@
     },
     {
       "name": "Sylvine",
-      "pulls": 19,
+      "pulls": 18,
       "yields": [
         {
           "res": "Sylvine",
-          "count": 19,
+          "count": 18,
           "rate": 1
         },
         {
           "res": "Magic Frond",
-          "count": 3,
-          "rate": 0.15789473684210525
+          "count": 2,
+          "rate": 0.1111111111111111
         }
       ],
       "zones": [
@@ -17057,11 +16702,11 @@
     },
     {
       "name": "Lionleaf",
-      "pulls": 18,
+      "pulls": 16,
       "yields": [
         {
           "res": "Lionleaf",
-          "count": 18,
+          "count": 16,
           "rate": 1
         }
       ],
@@ -17129,21 +16774,6 @@
       ]
     },
     {
-      "name": "Ghost Poppy",
-      "pulls": 7,
-      "yields": [
-        {
-          "res": "Ghost Poppy",
-          "count": 7,
-          "rate": 1
-        }
-      ],
-      "zones": [
-        "Evershade Weald",
-        "Shaded Dunes"
-      ]
-    },
-    {
       "name": "Fine Wood",
       "pulls": 7,
       "yields": [
@@ -17169,6 +16799,21 @@
       ],
       "zones": [
         "Sungreetstrand"
+      ]
+    },
+    {
+      "name": "Ghost Poppy",
+      "pulls": 6,
+      "yields": [
+        {
+          "res": "Ghost Poppy",
+          "count": 6,
+          "rate": 1
+        }
+      ],
+      "zones": [
+        "Evershade Weald",
+        "Shaded Dunes"
       ]
     }
   ]
