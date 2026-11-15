@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-15T02:00:16.200Z",
+  "generatedAt": "2026-11-15T08:00:06.657Z",
   "source": "mnm-tools",
   "ledgerFiles": 53,
-  "events": 17212,
+  "events": 17282,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 17212
+      "events": 17282
     }
   ],
   "contributorCount": 1,
@@ -2048,19 +2048,20 @@
     "a water basilisk": {
       "kills": 0,
       "drops": {
-        "Intact Basilisk Vertebra": 14,
-        "Smooth Basilisk Vertebra": 13,
-        "Basilisk Scale": 3,
-        "Basilisk Eye": 7,
-        "Raw Basilisk Steak": 3,
-        "Basilisk Tooth": 1,
-        "Cooked Basilisk Steak": 1
+        "Intact Basilisk Vertebra": 23,
+        "Smooth Basilisk Vertebra": 22,
+        "Basilisk Scale": 5,
+        "Basilisk Eye": 9,
+        "Raw Basilisk Steak": 5,
+        "Basilisk Tooth": 5,
+        "Cooked Basilisk Steak": 1,
+        "Bile-Drenched Artifact": 1
       },
       "zones": {
-        "Shallowshoals": 54
+        "Shallowshoals": 90
       },
       "coin": 0,
-      "corpses": 31
+      "corpses": 53
     },
     "a ghostly fighter": {
       "kills": 15,
@@ -2527,14 +2528,15 @@
     "a water basilisk broodmother": {
       "kills": 0,
       "drops": {
-        "Grotto Pauldrons": 1,
-        "Basilisk Eye": 1
+        "Grotto Pauldrons": 2,
+        "Basilisk Eye": 1,
+        "Smooth Basilisk Vertebra": 1
       },
       "zones": {
-        "Shallowshoals": 2
+        "Shallowshoals": 4
       },
       "coin": 0,
-      "corpses": 1
+      "corpses": 3
     },
     "a devoted cultist": {
       "kills": 13,
@@ -2630,14 +2632,14 @@
         {
           "mob": "a water basilisk broodmother",
           "drops": 1,
-          "corpses": 1,
-          "rate": 1
+          "corpses": 3,
+          "rate": 0.3333333333333333
         },
         {
           "mob": "a water basilisk",
-          "drops": 7,
-          "corpses": 31,
-          "rate": 0.22580645161290322
+          "drops": 9,
+          "corpses": 53,
+          "rate": 0.16981132075471697
         }
       ],
       "prices": [],
@@ -2653,9 +2655,9 @@
       "droppedBy": [
         {
           "mob": "a water basilisk",
-          "drops": 3,
-          "corpses": 31,
-          "rate": 0.0967741935483871
+          "drops": 5,
+          "corpses": 53,
+          "rate": 0.09433962264150944
         }
       ],
       "prices": [],
@@ -2671,9 +2673,9 @@
       "droppedBy": [
         {
           "mob": "a water basilisk",
-          "drops": 1,
-          "corpses": 31,
-          "rate": 0.03225806451612903
+          "drops": 5,
+          "corpses": 53,
+          "rate": 0.09433962264150944
         }
       ],
       "prices": [],
@@ -2878,6 +2880,24 @@
       "harvested": 0,
       "zones": [
         "Keepersbight"
+      ]
+    },
+    {
+      "id": "bile_drenched_artifact",
+      "gameId": "9e07a965cd165e17c82dfe96",
+      "name": "Bile-Drenched Artifact",
+      "droppedBy": [
+        {
+          "mob": "a water basilisk",
+          "drops": 1,
+          "corpses": 53,
+          "rate": 0.018867924528301886
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Shallowshoals"
       ]
     },
     {
@@ -4157,8 +4177,8 @@
         {
           "mob": "a water basilisk",
           "drops": 1,
-          "corpses": 31,
-          "rate": 0.03225806451612903
+          "corpses": 53,
+          "rate": 0.018867924528301886
         }
       ],
       "prices": [],
@@ -7748,9 +7768,10 @@
           "count": 1
         }
       ],
-      "harvested": 106,
+      "harvested": 118,
       "zones": [
-        "Fallenpass"
+        "Fallenpass",
+        "Shallowshoals"
       ]
     },
     {
@@ -7973,9 +7994,9 @@
       "droppedBy": [
         {
           "mob": "a water basilisk broodmother",
-          "drops": 1,
-          "corpses": 1,
-          "rate": 1
+          "drops": 2,
+          "corpses": 3,
+          "rate": 0.6666666666666666
         }
       ],
       "prices": [],
@@ -8229,10 +8250,11 @@
           "count": 3
         }
       ],
-      "harvested": 7,
+      "harvested": 8,
       "zones": [
         "Fallenpass",
-        "Keepersbight"
+        "Keepersbight",
+        "Shallowshoals"
       ]
     },
     {
@@ -8445,9 +8467,9 @@
       "droppedBy": [
         {
           "mob": "a water basilisk",
-          "drops": 14,
-          "corpses": 31,
-          "rate": 0.45161290322580644
+          "drops": 23,
+          "corpses": 53,
+          "rate": 0.4339622641509434
         }
       ],
       "prices": [
@@ -9937,9 +9959,9 @@
       "droppedBy": [
         {
           "mob": "a water basilisk",
-          "drops": 3,
-          "corpses": 31,
-          "rate": 0.0967741935483871
+          "drops": 5,
+          "corpses": 53,
+          "rate": 0.09433962264150944
         }
       ],
       "prices": [],
@@ -12410,9 +12432,10 @@
       "name": "Shining Crystallized Magic",
       "droppedBy": [],
       "prices": [],
-      "harvested": 12,
+      "harvested": 13,
       "zones": [
-        "Fallenpass"
+        "Fallenpass",
+        "Shallowshoals"
       ]
     },
     {
@@ -12577,9 +12600,15 @@
       "droppedBy": [
         {
           "mob": "a water basilisk",
-          "drops": 13,
-          "corpses": 31,
-          "rate": 0.41935483870967744
+          "drops": 22,
+          "corpses": 53,
+          "rate": 0.41509433962264153
+        },
+        {
+          "mob": "a water basilisk broodmother",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
         }
       ],
       "prices": [
@@ -15567,7 +15596,7 @@
           "count": 5
         }
       ],
-      "harvested": 222,
+      "harvested": 223,
       "zones": [
         "Fallenpass",
         "Shallowshoals"
@@ -16136,15 +16165,15 @@
     "Flawed Peridot": 4,
     "Flawed Jade": 4,
     "Iron Ore": 879,
-    "Weighty Stone": 222,
+    "Weighty Stone": 223,
     "Ironroot": 79,
     "Imperfect Sapphire": 9,
     "Imperfect Peridot": 11,
     "Imperfect Emerald": 6,
     "Imperfect Jade": 7,
-    "Shining Crystallized Magic": 12,
-    "Imperfect Cat's Eye Agate": 7,
-    "Gold Ore": 106,
+    "Shining Crystallized Magic": 13,
+    "Imperfect Cat's Eye Agate": 8,
+    "Gold Ore": 118,
     "Imperfect Ruby": 5,
     "Imperfect Diamond": 6,
     "Coal": 858,
@@ -16458,41 +16487,42 @@
     },
     {
       "name": "Gold Ore",
-      "pulls": 90,
+      "pulls": 101,
       "yields": [
         {
           "res": "Gold Ore",
-          "count": 90,
+          "count": 101,
           "rate": 1
         },
         {
           "res": "Shining Crystallized Magic",
-          "count": 2,
-          "rate": 0.022222222222222223
+          "count": 3,
+          "rate": 0.0297029702970297
         },
         {
           "res": "Imperfect Peridot",
           "count": 2,
-          "rate": 0.022222222222222223
+          "rate": 0.019801980198019802
+        },
+        {
+          "res": "Imperfect Cat's Eye Agate",
+          "count": 2,
+          "rate": 0.019801980198019802
         },
         {
           "res": "Imperfect Diamond",
           "count": 1,
-          "rate": 0.011111111111111112
+          "rate": 0.009900990099009901
         },
         {
           "res": "Imperfect Jade",
           "count": 1,
-          "rate": 0.011111111111111112
-        },
-        {
-          "res": "Imperfect Cat's Eye Agate",
-          "count": 1,
-          "rate": 0.011111111111111112
+          "rate": 0.009900990099009901
         }
       ],
       "zones": [
-        "Fallenpass"
+        "Fallenpass",
+        "Shallowshoals"
       ]
     },
     {
@@ -16701,6 +16731,26 @@
       ]
     },
     {
+      "name": "Gold Ore & Weighty Stone",
+      "pulls": 17,
+      "yields": [
+        {
+          "res": "Gold Ore",
+          "count": 17,
+          "rate": 1
+        },
+        {
+          "res": "Weighty Stone",
+          "count": 17,
+          "rate": 1
+        }
+      ],
+      "zones": [
+        "Fallenpass",
+        "Shallowshoals"
+      ]
+    },
+    {
       "name": "Lionleaf",
       "pulls": 16,
       "yields": [
@@ -16714,25 +16764,6 @@
         "Evershade Weald",
         "Sungreetstrand",
         "Shaded Dunes"
-      ]
-    },
-    {
-      "name": "Gold Ore & Weighty Stone",
-      "pulls": 16,
-      "yields": [
-        {
-          "res": "Gold Ore",
-          "count": 16,
-          "rate": 1
-        },
-        {
-          "res": "Weighty Stone",
-          "count": 16,
-          "rate": 1
-        }
-      ],
-      "zones": [
-        "Fallenpass"
       ]
     },
     {
