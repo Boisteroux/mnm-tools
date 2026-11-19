@@ -612,8 +612,10 @@ function setQuickPlace(on) {
 // ---- Auto-follow the game's current zone (read from its log file) ----
 // The log uses internal names; map them to our zone names here as we learn them.
 
+// Game zone codes that don't spell the zone's name.
 const ZONE_ALIASES = {
   evergrove: 'Evershade Weald',
+  deepdunes: 'Caves of Irem', // the buried sea beneath the Shaded Dunes
 };
 
 // Zones that share one game zone-code but have several maps (loaded from
@@ -629,7 +631,7 @@ const KNOWN_ZONE_NAMES = [
   'Scarwood', 'Shaded Dunes', 'Shallow Shoals', 'Sungreet Strand', 'Tel Ekir', 'Tomb of the Last Wyrmsbane', 'Vale of Zintar',
   'Ancient Crypt', 'Fallen Watch', 'Underdocks', "Ail'Vorith", 'Great Cavern Sea', 'Sunken Resort', 'Blind Midden', 'Undead Keep',
 ];
-const knownZoneName = (code) => KNOWN_ZONE_NAMES.find((n) => normName(n) === normName(code)) || null;
+const knownZoneName = (code) => ZONE_ALIASES[String(code).toLowerCase()] || KNOWN_ZONE_NAMES.find((n) => normName(n) === normName(code)) || null;
 const autoZoneName = (code) => code.charAt(0).toUpperCase() + code.slice(1);
 
 // The game's zone code is the display name's words run together, often REORDERED and
@@ -1888,7 +1890,7 @@ const ATLAS_IDS = { // normalised zone name (or game zone code) -> Atlas map id
   // drawn by the Atlas since Oct 2026
   blacktidebay: 'blacktide-bay', cavesofirem: 'caves-of-irem', glintinghollow: 'glinting-hollow',
   grimtidesanctum: 'grimtide-sanctum', infestedcrypt: 'infested-crypt', rothold: 'rothold',
-  shallowshoals: 'shallow-shoals', sunkenresort: 'sunken-resort', blindmidden: 'blind-midden',
+  shallowshoals: 'shallow-shoals', sunkenresort: 'sunken-resort', blindmidden: 'blind-midden', deepdunes: 'caves-of-irem',
   undeadkeep: 'undead-keep', // drawn Nov 2026; the Atlas places it in the Glass Flats
 };
 // By name first: two zones can share a game code (Evershade Weald / Faelindral).
@@ -2181,7 +2183,8 @@ function initAtlas() {
   // ("Keeper's Bight") — only while the name is still the untouched auto one.
   for (const zone of data.zones) {
     const proper = zone.gameName && knownZoneName(zone.gameName);
-    if (proper && zone.name !== proper && zone.name === autoZoneName(zone.gameName)) { zone.name = proper; migrated = true; }
+    if (proper && zone.name !== proper && zone.name === autoZoneName(zone.gameName) &&
+      !data.zones.some((z) => z !== zone && z.name === proper)) { zone.name = proper; migrated = true; }
   }
   for (const zone of data.zones) {
     for (const m of zone.markers) {
@@ -2202,8 +2205,12 @@ function initAtlas() {
   for (let i = data.zones.length - 1; i >= 0; i--) {
     const stub = data.zones[i];
     if (!stub.gameName || stub.image || (stub.markers && stub.markers.length)) continue;
-    const real = data.zones.find((z) => z !== stub && (z.image || (z.markers && z.markers.length)) &&
-      (normName(z.name) === normName(stub.gameName) || codeMatchesZoneName(stub.gameName, z.name)));
+    // A code with a known alias ("deepdunes" = Caves of Irem) goes to that zone even when
+    // it has no map yet: the alias says it's the same place.
+    const alias = ZONE_ALIASES[stub.gameName];
+    const real = data.zones.find((z) => z !== stub && (
+      (alias && z.name.toLowerCase() === alias.toLowerCase()) ||
+      ((z.image || (z.markers && z.markers.length)) && (normName(z.name) === normName(stub.gameName) || codeMatchesZoneName(stub.gameName, z.name)))));
     if (!real) continue;
     if (!real.gameName) real.gameName = stub.gameName;
     data.zones.splice(i, 1);
