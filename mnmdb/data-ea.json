@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-18T08:00:26.429Z",
+  "generatedAt": "2026-11-19T08:00:17.754Z",
   "source": "mnm-tools",
-  "ledgerFiles": 53,
-  "events": 16914,
+  "ledgerFiles": 55,
+  "events": 16993,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 16914
+      "events": 16993
     }
   ],
   "contributorCount": 1,
@@ -2056,42 +2056,56 @@
       "corpses": 5
     },
     "a glutted ghoul": {
-      "kills": 3,
+      "kills": 11,
       "drops": {
-        "Leather Scraps": 1,
-        "Lacquered Medallion": 2,
-        "Rusty Iron Chain Gorget": 1
-      },
-      "zones": {
-        "Deepdunes": 7
-      },
-      "coin": 400,
-      "corpses": 3
-    },
-    "a starved ghoul": {
-      "kills": 4,
-      "drops": {
+        "Leather Scraps": 3,
+        "Lacquered Medallion": 5,
+        "Rusty Iron Chain Gorget": 1,
+        "Rusty Iron Spear": 2,
         "Cotton Scraps": 2,
-        "Lacquered Medallion": 1,
-        "Rusty Iron Plate Collar": 1
-      },
-      "zones": {
-        "Deepdunes": 9
-      },
-      "coin": 623,
-      "corpses": 2
-    },
-    "a famished ghoul": {
-      "kills": 4,
-      "drops": {
-        "Leather Scraps": 1,
         "Rusty Iron Mace": 1
       },
       "zones": {
-        "Deepdunes": 6
+        "Deepdunes": 26
       },
-      "coin": 478,
-      "corpses": 1
+      "coin": 1528,
+      "corpses": 9
+    },
+    "a starved ghoul": {
+      "kills": 20,
+      "drops": {
+        "Cotton Scraps": 8,
+        "Lacquered Medallion": 5,
+        "Rusty Iron Plate Collar": 1,
+        "Iron Scraps": 2,
+        "Leather Scraps": 1,
+        "Rusty Iron Long Spear": 1,
+        "Rusty Iron Plate Arming Doublet": 1,
+        "Rusty Iron Plate Cloak": 1
+      },
+      "zones": {
+        "Deepdunes": 43
+      },
+      "coin": 2834,
+      "corpses": 10
+    },
+    "a famished ghoul": {
+      "kills": 11,
+      "drops": {
+        "Leather Scraps": 1,
+        "Rusty Iron Mace": 1,
+        "Rusty Iron Plate Helm": 1,
+        "Lacquered Medallion": 3,
+        "Worn Ironbark Great Staff": 1,
+        "Cotton Scraps": 2,
+        "Rusty Iron Chain Gloves": 1,
+        "Rusty Iron Chain Shoulderguards": 1
+      },
+      "zones": {
+        "Deepdunes": 22
+      },
+      "coin": 1396,
+      "corpses": 6
     },
     "a bound breath": {
       "kills": 0,
@@ -2108,6 +2122,17 @@
       "kills": 0,
       "drops": {
         "Gleaming Ember Sliver": 1
+      },
+      "zones": {
+        "Deepdunes": 1
+      },
+      "coin": 0,
+      "corpses": 1
+    },
+    "a pale cavern caiman": {
+      "kills": 0,
+      "drops": {
+        "Damaged Crocodile Knucklebone": 1
       },
       "zones": {
         "Deepdunes": 1
@@ -6088,9 +6113,9 @@
       "droppedBy": [
         {
           "mob": "a starved ghoul",
-          "drops": 2,
-          "corpses": 2,
-          "rate": 1
+          "drops": 8,
+          "corpses": 10,
+          "rate": 0.8
         },
         {
           "mob": "a nefarious cultist",
@@ -6123,6 +6148,12 @@
           "rate": 0.4166666666666667
         },
         {
+          "mob": "a famished ghoul",
+          "drops": 2,
+          "corpses": 6,
+          "rate": 0.3333333333333333
+        },
+        {
           "mob": "Poacher Garrus",
           "drops": 2,
           "corpses": 6,
@@ -6151,6 +6182,12 @@
           "drops": 2,
           "corpses": 7,
           "rate": 0.2857142857142857
+        },
+        {
+          "mob": "a glutted ghoul",
+          "drops": 2,
+          "corpses": 9,
+          "rate": 0.2222222222222222
         },
         {
           "mob": "a craven cultist",
@@ -6194,9 +6231,9 @@
       "zones": [
         "Keepersbight",
         "Graincellar",
+        "Deepdunes",
         "Valeofzintar",
-        "Fallenpass",
-        "Deepdunes"
+        "Fallenpass"
       ]
     },
     {
@@ -6407,6 +6444,24 @@
       "harvested": 0,
       "zones": [
         "Keepersbight"
+      ]
+    },
+    {
+      "id": "damaged_crocodile_knucklebone",
+      "gameId": "7ea5621db3e10b3c646acd0f",
+      "name": "Damaged Crocodile Knucklebone",
+      "droppedBy": [
+        {
+          "mob": "a pale cavern caiman",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Deepdunes"
       ]
     },
     {
@@ -8431,6 +8486,12 @@
           "rate": 0.21428571428571427
         },
         {
+          "mob": "a starved ghoul",
+          "drops": 2,
+          "corpses": 10,
+          "rate": 0.2
+        },
+        {
           "mob": "Seamas Growt",
           "drops": 1,
           "corpses": 5,
@@ -8469,6 +8530,7 @@
       "zones": [
         "Keepersbight",
         "Graincellar",
+        "Deepdunes",
         "Fallenpass"
       ]
     },
@@ -8528,12 +8590,6 @@
           "rate": 1
         },
         {
-          "mob": "a glutted ghoul",
-          "drops": 2,
-          "corpses": 3,
-          "rate": 0.6666666666666666
-        },
-        {
           "mob": "a diminished ghost",
           "drops": 3,
           "corpses": 5,
@@ -8552,6 +8608,12 @@
           "rate": 0.5714285714285714
         },
         {
+          "mob": "a glutted ghoul",
+          "drops": 5,
+          "corpses": 9,
+          "rate": 0.5555555555555556
+        },
+        {
           "mob": "a nefarious cultist",
           "drops": 6,
           "corpses": 12,
@@ -8559,8 +8621,14 @@
         },
         {
           "mob": "a starved ghoul",
-          "drops": 1,
-          "corpses": 2,
+          "drops": 5,
+          "corpses": 10,
+          "rate": 0.5
+        },
+        {
+          "mob": "a famished ghoul",
+          "drops": 3,
+          "corpses": 6,
           "rate": 0.5
         },
         {
@@ -8657,12 +8725,6 @@
       "name": "Leather Scraps",
       "droppedBy": [
         {
-          "mob": "a famished ghoul",
-          "drops": 1,
-          "corpses": 1,
-          "rate": 1
-        },
-        {
           "mob": "a Dustrend venator",
           "drops": 1,
           "corpses": 1,
@@ -8682,8 +8744,8 @@
         },
         {
           "mob": "a glutted ghoul",
-          "drops": 1,
-          "corpses": 3,
+          "drops": 3,
+          "corpses": 9,
           "rate": 0.3333333333333333
         },
         {
@@ -8703,6 +8765,12 @@
           "drops": 22,
           "corpses": 128,
           "rate": 0.171875
+        },
+        {
+          "mob": "a famished ghoul",
+          "drops": 1,
+          "corpses": 6,
+          "rate": 0.16666666666666666
         },
         {
           "mob": "a devoted cultist",
@@ -8727,6 +8795,12 @@
           "drops": 1,
           "corpses": 8,
           "rate": 0.125
+        },
+        {
+          "mob": "a starved ghoul",
+          "drops": 1,
+          "corpses": 10,
+          "rate": 0.1
         }
       ],
       "prices": [],
@@ -10910,6 +10984,12 @@
       "name": "Rusty Iron Chain Gloves",
       "droppedBy": [
         {
+          "mob": "a famished ghoul",
+          "drops": 1,
+          "corpses": 6,
+          "rate": 0.16666666666666666
+        },
+        {
           "mob": "a poacher pathfinder",
           "drops": 2,
           "corpses": 128,
@@ -10919,7 +10999,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Deepdunes"
       ]
     },
     {
@@ -10930,8 +11011,8 @@
         {
           "mob": "a glutted ghoul",
           "drops": 1,
-          "corpses": 3,
-          "rate": 0.3333333333333333
+          "corpses": 9,
+          "rate": 0.1111111111111111
         },
         {
           "mob": "a poacher bruiser",
@@ -10977,6 +11058,24 @@
         "Keepersbight",
         "Graincellar",
         "Fallenpass"
+      ]
+    },
+    {
+      "id": "rusty_iron_chain_shoulderguards",
+      "gameId": "c5d5eeac6a6a0f81a87eb19e",
+      "name": "Rusty Iron Chain Shoulderguards",
+      "droppedBy": [
+        {
+          "mob": "a famished ghoul",
+          "drops": 1,
+          "corpses": 6,
+          "rate": 0.16666666666666666
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Deepdunes"
       ]
     },
     {
@@ -11148,6 +11247,12 @@
           "rate": 0.2
         },
         {
+          "mob": "a starved ghoul",
+          "drops": 1,
+          "corpses": 10,
+          "rate": 0.1
+        },
+        {
           "mob": "a poacher bruiser",
           "drops": 5,
           "corpses": 280,
@@ -11158,6 +11263,7 @@
       "harvested": 0,
       "zones": [
         "Keepersbight",
+        "Deepdunes",
         "Graincellar"
       ]
     },
@@ -11187,8 +11293,14 @@
         {
           "mob": "a famished ghoul",
           "drops": 1,
-          "corpses": 1,
-          "rate": 1
+          "corpses": 6,
+          "rate": 0.16666666666666666
+        },
+        {
+          "mob": "a glutted ghoul",
+          "drops": 1,
+          "corpses": 9,
+          "rate": 0.1111111111111111
         },
         {
           "mob": "a grizzled smuggler",
@@ -11254,6 +11366,12 @@
       "name": "Rusty Iron Plate Arming Doublet",
       "droppedBy": [
         {
+          "mob": "a starved ghoul",
+          "drops": 1,
+          "corpses": 10,
+          "rate": 0.1
+        },
+        {
           "mob": "a poacher bruiser",
           "drops": 1,
           "corpses": 280,
@@ -11263,6 +11381,7 @@
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Deepdunes",
         "Keepersbight"
       ]
     },
@@ -11321,6 +11440,12 @@
           "rate": 0.5
         },
         {
+          "mob": "a starved ghoul",
+          "drops": 1,
+          "corpses": 10,
+          "rate": 0.1
+        },
+        {
           "mob": "a grizzled smuggler",
           "drops": 1,
           "corpses": 13,
@@ -11357,6 +11482,7 @@
       "zones": [
         "Keepersbight",
         "Graincellar",
+        "Deepdunes",
         "Fallenpass"
       ]
     },
@@ -11368,8 +11494,8 @@
         {
           "mob": "a starved ghoul",
           "drops": 1,
-          "corpses": 2,
-          "rate": 0.5
+          "corpses": 10,
+          "rate": 0.1
         },
         {
           "mob": "a poacher bruiser",
@@ -11396,6 +11522,12 @@
       "name": "Rusty Iron Plate Helm",
       "droppedBy": [
         {
+          "mob": "a famished ghoul",
+          "drops": 1,
+          "corpses": 6,
+          "rate": 0.16666666666666666
+        },
+        {
           "mob": "a poacher bruiser",
           "drops": 1,
           "corpses": 280,
@@ -11405,6 +11537,7 @@
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Deepdunes",
         "Keepersbight"
       ]
     },
@@ -11517,6 +11650,12 @@
       "name": "Rusty Iron Spear",
       "droppedBy": [
         {
+          "mob": "a glutted ghoul",
+          "drops": 2,
+          "corpses": 9,
+          "rate": 0.2222222222222222
+        },
+        {
           "mob": "a ghostly figure",
           "drops": 1,
           "corpses": 7,
@@ -11544,6 +11683,7 @@
       "harvested": 0,
       "zones": [
         "Keepersbight",
+        "Deepdunes",
         "Graincellar"
       ]
     },
@@ -15806,6 +15946,12 @@
       "name": "Worn Ironbark Great Staff",
       "droppedBy": [
         {
+          "mob": "a famished ghoul",
+          "drops": 1,
+          "corpses": 6,
+          "rate": 0.16666666666666666
+        },
+        {
           "mob": "a poacher pathfinder",
           "drops": 2,
           "corpses": 128,
@@ -15821,7 +15967,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Deepdunes"
       ]
     },
     {
