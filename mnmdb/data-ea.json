@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-19T20:00:11.127Z",
+  "generatedAt": "2026-11-20T02:00:13.475Z",
   "source": "mnm-tools",
   "ledgerFiles": 55,
-  "events": 16193,
+  "events": 16368,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 16193
+      "events": 16368
     }
   ],
   "contributorCount": 1,
@@ -782,13 +782,13 @@
       "drops": {
         "Tattered Leather Bracer": 1,
         "Steel Scraps": 2,
-        "Raw Giant Meat": 1
+        "Raw Giant Meat": 7
       },
       "zones": {
-        "Scarwood": 5
+        "Scarwood": 11
       },
       "coin": 0,
-      "corpses": 4
+      "corpses": 10
     },
     "a cave bear": {
       "kills": 0,
@@ -1784,20 +1784,20 @@
     "a water basilisk": {
       "kills": 0,
       "drops": {
-        "Intact Basilisk Vertebra": 23,
-        "Smooth Basilisk Vertebra": 22,
+        "Intact Basilisk Vertebra": 24,
+        "Smooth Basilisk Vertebra": 23,
         "Basilisk Scale": 5,
-        "Basilisk Eye": 9,
-        "Raw Basilisk Steak": 5,
-        "Basilisk Tooth": 5,
+        "Basilisk Eye": 10,
+        "Raw Basilisk Steak": 6,
+        "Basilisk Tooth": 6,
         "Cooked Basilisk Steak": 1,
         "Bile-Drenched Artifact": 1
       },
       "zones": {
-        "Shallowshoals": 90
+        "Shallowshoals": 95
       },
       "coin": 0,
-      "corpses": 53
+      "corpses": 57
     },
     "a ghostly fighter": {
       "kills": 15,
@@ -2070,14 +2070,16 @@
     "a great bight shark": {
       "kills": 0,
       "drops": {
-        "Worn Shark Vertebra": 1,
-        "Raw Shark Meat": 1
+        "Worn Shark Vertebra": 4,
+        "Raw Shark Meat": 5,
+        "Fractured Shark Vertebra": 6,
+        "Shark Fin": 5
       },
       "zones": {
-        "Keepersbight": 2
+        "Keepersbight": 20
       },
       "coin": 0,
-      "corpses": 1
+      "corpses": 14
     },
     "a Fellstone scout": {
       "kills": 1,
@@ -2555,9 +2557,9 @@
         },
         {
           "mob": "a water basilisk",
-          "drops": 9,
-          "corpses": 53,
-          "rate": 0.16981132075471697
+          "drops": 10,
+          "corpses": 57,
+          "rate": 0.17543859649122806
         }
       ],
       "prices": [],
@@ -2574,8 +2576,8 @@
         {
           "mob": "a water basilisk",
           "drops": 5,
-          "corpses": 53,
-          "rate": 0.09433962264150944
+          "corpses": 57,
+          "rate": 0.08771929824561403
         }
       ],
       "prices": [],
@@ -2591,12 +2593,17 @@
       "droppedBy": [
         {
           "mob": "a water basilisk",
-          "drops": 5,
-          "corpses": 53,
-          "rate": 0.09433962264150944
+          "drops": 6,
+          "corpses": 57,
+          "rate": 0.10526315789473684
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 55,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Shallowshoals"
@@ -2790,8 +2797,8 @@
         {
           "mob": "a water basilisk",
           "drops": 1,
-          "corpses": 53,
-          "rate": 0.018867924528301886
+          "corpses": 57,
+          "rate": 0.017543859649122806
         }
       ],
       "prices": [],
@@ -3405,7 +3412,7 @@
       "name": "Cat's Eye Agate",
       "droppedBy": [],
       "prices": [],
-      "harvested": 5,
+      "harvested": 6,
       "zones": [
         "Sungreetstrand",
         "Scarwood",
@@ -4011,7 +4018,7 @@
       "name": "Coal",
       "droppedBy": [],
       "prices": [],
-      "harvested": 862,
+      "harvested": 940,
       "zones": [
         "Sungreetstrand",
         "Scarwood",
@@ -4028,8 +4035,8 @@
         {
           "mob": "a water basilisk",
           "drops": 1,
-          "corpses": 53,
-          "rate": 0.018867924528301886
+          "corpses": 57,
+          "rate": 0.017543859649122806
         }
       ],
       "prices": [],
@@ -7240,6 +7247,29 @@
       ]
     },
     {
+      "id": "fractured_shark_vertebra",
+      "gameId": "a24ef88b691409a240741350",
+      "name": "Fractured Shark Vertebra",
+      "droppedBy": [
+        {
+          "mob": "a great bight shark",
+          "drops": 6,
+          "corpses": 14,
+          "rate": 0.42857142857142855
+        }
+      ],
+      "prices": [
+        {
+          "copper": 181,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
       "id": "fractured_snake_vertebra",
       "gameId": "dc58dd820040273a0e7c0d97",
       "name": "Fractured Snake Vertebra",
@@ -7611,7 +7641,7 @@
           "count": 1
         }
       ],
-      "harvested": 127,
+      "harvested": 133,
       "zones": [
         "Fallenpass",
         "Shallowshoals"
@@ -8245,9 +8275,9 @@
       "droppedBy": [
         {
           "mob": "a water basilisk",
-          "drops": 23,
-          "corpses": 53,
-          "rate": 0.4339622641509434
+          "drops": 24,
+          "corpses": 57,
+          "rate": 0.42105263157894735
         }
       ],
       "prices": [
@@ -8257,7 +8287,7 @@
         },
         {
           "copper": 328,
-          "count": 1
+          "count": 2
         }
       ],
       "harvested": 0,
@@ -8317,7 +8347,7 @@
           "count": 23
         }
       ],
-      "harvested": 898,
+      "harvested": 905,
       "zones": [
         "Fallenpass",
         "Shallowshoals"
@@ -8414,7 +8444,7 @@
       "name": "Jade",
       "droppedBy": [],
       "prices": [],
-      "harvested": 6,
+      "harvested": 7,
       "zones": [
         "Sungreetstrand",
         "Scarwood",
@@ -9175,7 +9205,7 @@
       "name": "Moonveil",
       "droppedBy": [],
       "prices": [],
-      "harvested": 58,
+      "harvested": 59,
       "zones": [
         "Keepersbight",
         "Scarwood"
@@ -9189,7 +9219,7 @@
       "prices": [
         {
           "copper": 1,
-          "count": 1
+          "count": 2
         }
       ],
       "harvested": 0,
@@ -9400,7 +9430,7 @@
       "name": "Peridot",
       "droppedBy": [],
       "prices": [],
-      "harvested": 4,
+      "harvested": 5,
       "zones": [
         "Sungreetstrand",
         "Scarwood"
@@ -9430,7 +9460,7 @@
       "name": "Platinum Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 115,
+      "harvested": 125,
       "zones": [
         "Sungreetstrand",
         "Scarwood",
@@ -9782,9 +9812,9 @@
       "droppedBy": [
         {
           "mob": "a water basilisk",
-          "drops": 5,
-          "corpses": 53,
-          "rate": 0.09433962264150944
+          "drops": 6,
+          "corpses": 57,
+          "rate": 0.10526315789473684
         }
       ],
       "prices": [],
@@ -9881,9 +9911,9 @@
       "droppedBy": [
         {
           "mob": "a hill giant",
-          "drops": 1,
-          "corpses": 4,
-          "rate": 0.25
+          "drops": 7,
+          "corpses": 10,
+          "rate": 0.7
         }
       ],
       "prices": [],
@@ -10191,9 +10221,9 @@
       "droppedBy": [
         {
           "mob": "a great bight shark",
-          "drops": 1,
-          "corpses": 1,
-          "rate": 1
+          "drops": 5,
+          "corpses": 14,
+          "rate": 0.35714285714285715
         }
       ],
       "prices": [],
@@ -10493,7 +10523,7 @@
           "count": 7
         }
       ],
-      "harvested": 194,
+      "harvested": 210,
       "zones": [
         "Sungreetstrand",
         "Scarwood",
@@ -12020,10 +12050,10 @@
       "name": "Sapphire",
       "droppedBy": [],
       "prices": [],
-      "harvested": 3,
+      "harvested": 4,
       "zones": [
-        "Sungreetstrand",
         "Scarwood",
+        "Sungreetstrand",
         "Valeofzintar"
       ]
     },
@@ -12210,6 +12240,24 @@
           "drops": 1,
           "corpses": 3,
           "rate": 0.3333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Keepersbight"
+      ]
+    },
+    {
+      "id": "shark_fin",
+      "gameId": "dbde66a07364a10d7bbfb43e",
+      "name": "Shark Fin",
+      "droppedBy": [
+        {
+          "mob": "a great bight shark",
+          "drops": 5,
+          "corpses": 14,
+          "rate": 0.35714285714285715
         }
       ],
       "prices": [],
@@ -12410,9 +12458,9 @@
       "droppedBy": [
         {
           "mob": "a water basilisk",
-          "drops": 22,
-          "corpses": 53,
-          "rate": 0.41509433962264153
+          "drops": 23,
+          "corpses": 57,
+          "rate": 0.40350877192982454
         },
         {
           "mob": "a water basilisk broodmother",
@@ -12428,7 +12476,7 @@
         },
         {
           "copper": 410,
-          "count": 1
+          "count": 2
         }
       ],
       "harvested": 0,
@@ -12528,8 +12576,8 @@
         {
           "mob": "a hill giant",
           "drops": 2,
-          "corpses": 4,
-          "rate": 0.5
+          "corpses": 10,
+          "rate": 0.2
         }
       ],
       "prices": [],
@@ -13643,8 +13691,8 @@
         {
           "mob": "a hill giant",
           "drops": 1,
-          "corpses": 4,
-          "rate": 0.25
+          "corpses": 10,
+          "rate": 0.1
         },
         {
           "mob": "a poacher pathfinder",
@@ -14937,7 +14985,7 @@
           "count": 6
         }
       ],
-      "harvested": 228,
+      "harvested": 232,
       "zones": [
         "Fallenpass",
         "Shallowshoals"
@@ -15444,12 +15492,17 @@
       "droppedBy": [
         {
           "mob": "a great bight shark",
-          "drops": 1,
-          "corpses": 1,
-          "rate": 1
+          "drops": 4,
+          "corpses": 14,
+          "rate": 0.2857142857142857
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 206,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Keepersbight"
@@ -15498,7 +15551,7 @@
     "Jagged Stone": 127,
     "Silver Ore": 82,
     "Flawed Cat's Eye Agate": 7,
-    "Moonveil": 58,
+    "Moonveil": 59,
     "Flawed Emerald": 5,
     "Limestone": 421,
     "Flawed Ruby": 2,
@@ -15507,8 +15560,8 @@
     "Flawed Sapphire": 4,
     "Glinting Crystallized Magic": 7,
     "Flawed Jade": 4,
-    "Iron Ore": 898,
-    "Weighty Stone": 228,
+    "Iron Ore": 905,
+    "Weighty Stone": 232,
     "Ironroot": 80,
     "Imperfect Sapphire": 9,
     "Imperfect Peridot": 11,
@@ -15516,19 +15569,19 @@
     "Imperfect Jade": 9,
     "Shining Crystallized Magic": 13,
     "Imperfect Cat's Eye Agate": 8,
-    "Gold Ore": 127,
+    "Gold Ore": 133,
     "Imperfect Ruby": 5,
     "Imperfect Diamond": 6,
-    "Coal": 862,
+    "Coal": 940,
     "Brilliant Crystallized Magic": 18,
-    "Rigid Stone": 194,
-    "Sapphire": 3,
-    "Platinum Ore": 115,
-    "Jade": 6,
-    "Cat's Eye Agate": 5,
+    "Rigid Stone": 210,
+    "Sapphire": 4,
+    "Platinum Ore": 125,
+    "Jade": 7,
+    "Cat's Eye Agate": 6,
     "Ruby": 6,
     "Diamond": 3,
-    "Peridot": 4,
+    "Peridot": 5,
     "Emerald": 7,
     "Enchanted Frond": 3,
     "Fine Wood": 21,
@@ -15537,123 +15590,63 @@
   },
   "harvestNodes": [
     {
-      "name": "Iron Ore",
-      "pulls": 915,
-      "yields": [
-        {
-          "res": "Iron Ore",
-          "count": 897,
-          "rate": 0.980327868852459
-        },
-        {
-          "res": "Weighty Stone",
-          "count": 228,
-          "rate": 0.24918032786885247
-        },
-        {
-          "res": "Gold Ore",
-          "count": 18,
-          "rate": 0.019672131147540985
-        },
-        {
-          "res": "Shining Crystallized Magic",
-          "count": 10,
-          "rate": 0.01092896174863388
-        },
-        {
-          "res": "Imperfect Sapphire",
-          "count": 9,
-          "rate": 0.009836065573770493
-        },
-        {
-          "res": "Imperfect Peridot",
-          "count": 9,
-          "rate": 0.009836065573770493
-        },
-        {
-          "res": "Imperfect Jade",
-          "count": 7,
-          "rate": 0.007650273224043716
-        },
-        {
-          "res": "Imperfect Emerald",
-          "count": 6,
-          "rate": 0.006557377049180328
-        },
-        {
-          "res": "Imperfect Cat's Eye Agate",
-          "count": 6,
-          "rate": 0.006557377049180328
-        },
-        {
-          "res": "Imperfect Ruby",
-          "count": 5,
-          "rate": 0.00546448087431694
-        },
-        {
-          "res": "Imperfect Diamond",
-          "count": 5,
-          "rate": 0.00546448087431694
-        }
-      ],
-      "zones": [
-        "Fallenpass",
-        "Shallowshoals"
-      ]
-    },
-    {
       "name": "Coal",
-      "pulls": 862,
+      "pulls": 968,
       "yields": [
         {
           "res": "Coal",
-          "count": 862,
-          "rate": 1
+          "count": 940,
+          "rate": 0.9710743801652892
         },
         {
           "res": "Rigid Stone",
-          "count": 167,
-          "rate": 0.1937354988399072
+          "count": 210,
+          "rate": 0.21694214876033058
+        },
+        {
+          "res": "Platinum Ore",
+          "count": 28,
+          "rate": 0.028925619834710745
         },
         {
           "res": "Brilliant Crystallized Magic",
           "count": 15,
-          "rate": 0.01740139211136891
+          "rate": 0.015495867768595042
         },
         {
           "res": "Emerald",
           "count": 7,
-          "rate": 0.008120649651972157
+          "rate": 0.007231404958677686
         },
         {
           "res": "Cat's Eye Agate",
-          "count": 5,
-          "rate": 0.00580046403712297
+          "count": 6,
+          "rate": 0.006198347107438017
         },
         {
           "res": "Ruby",
           "count": 5,
-          "rate": 0.00580046403712297
+          "rate": 0.005165289256198347
+        },
+        {
+          "res": "Jade",
+          "count": 4,
+          "rate": 0.004132231404958678
         },
         {
           "res": "Sapphire",
           "count": 3,
-          "rate": 0.0034802784222737818
+          "rate": 0.0030991735537190084
         },
         {
           "res": "Diamond",
           "count": 3,
-          "rate": 0.0034802784222737818
+          "rate": 0.0030991735537190084
         },
         {
           "res": "Peridot",
           "count": 3,
-          "rate": 0.0034802784222737818
-        },
-        {
-          "res": "Jade",
-          "count": 3,
-          "rate": 0.0034802784222737818
+          "rate": 0.0030991735537190084
         }
       ],
       "zones": [
@@ -15662,6 +15655,71 @@
         "Fallenpass",
         "Valeofzintar",
         "Keepersbight"
+      ]
+    },
+    {
+      "name": "Iron Ore",
+      "pulls": 925,
+      "yields": [
+        {
+          "res": "Iron Ore",
+          "count": 904,
+          "rate": 0.9772972972972973
+        },
+        {
+          "res": "Weighty Stone",
+          "count": 232,
+          "rate": 0.2508108108108108
+        },
+        {
+          "res": "Gold Ore",
+          "count": 21,
+          "rate": 0.022702702702702703
+        },
+        {
+          "res": "Shining Crystallized Magic",
+          "count": 10,
+          "rate": 0.010810810810810811
+        },
+        {
+          "res": "Imperfect Sapphire",
+          "count": 9,
+          "rate": 0.00972972972972973
+        },
+        {
+          "res": "Imperfect Peridot",
+          "count": 9,
+          "rate": 0.00972972972972973
+        },
+        {
+          "res": "Imperfect Jade",
+          "count": 7,
+          "rate": 0.0075675675675675675
+        },
+        {
+          "res": "Imperfect Emerald",
+          "count": 6,
+          "rate": 0.006486486486486486
+        },
+        {
+          "res": "Imperfect Cat's Eye Agate",
+          "count": 6,
+          "rate": 0.006486486486486486
+        },
+        {
+          "res": "Imperfect Ruby",
+          "count": 5,
+          "rate": 0.005405405405405406
+        },
+        {
+          "res": "Imperfect Diamond",
+          "count": 5,
+          "rate": 0.005405405405405406
+        }
+      ],
+      "zones": [
+        "Fallenpass",
+        "Shallowshoals"
       ]
     },
     {
@@ -15835,37 +15893,37 @@
     },
     {
       "name": "Gold Ore",
-      "pulls": 109,
+      "pulls": 112,
       "yields": [
         {
           "res": "Gold Ore",
-          "count": 109,
+          "count": 112,
           "rate": 1
         },
         {
           "res": "Shining Crystallized Magic",
           "count": 3,
-          "rate": 0.027522935779816515
+          "rate": 0.026785714285714284
         },
         {
           "res": "Imperfect Peridot",
           "count": 2,
-          "rate": 0.01834862385321101
+          "rate": 0.017857142857142856
         },
         {
           "res": "Imperfect Jade",
           "count": 2,
-          "rate": 0.01834862385321101
+          "rate": 0.017857142857142856
         },
         {
           "res": "Imperfect Cat's Eye Agate",
           "count": 2,
-          "rate": 0.01834862385321101
+          "rate": 0.017857142857142856
         },
         {
           "res": "Imperfect Diamond",
           "count": 1,
-          "rate": 0.009174311926605505
+          "rate": 0.008928571428571428
         }
       ],
       "zones": [
@@ -15875,32 +15933,37 @@
     },
     {
       "name": "Platinum Ore",
-      "pulls": 88,
+      "pulls": 97,
       "yields": [
         {
           "res": "Platinum Ore",
-          "count": 88,
+          "count": 97,
           "rate": 1
         },
         {
           "res": "Jade",
           "count": 3,
-          "rate": 0.03409090909090909
+          "rate": 0.030927835051546393
         },
         {
           "res": "Brilliant Crystallized Magic",
           "count": 3,
-          "rate": 0.03409090909090909
+          "rate": 0.030927835051546393
+        },
+        {
+          "res": "Peridot",
+          "count": 2,
+          "rate": 0.020618556701030927
         },
         {
           "res": "Ruby",
           "count": 1,
-          "rate": 0.011363636363636364
+          "rate": 0.010309278350515464
         },
         {
-          "res": "Peridot",
+          "res": "Sapphire",
           "count": 1,
-          "rate": 0.011363636363636364
+          "rate": 0.010309278350515464
         }
       ],
       "zones": [
@@ -16025,27 +16088,6 @@
       ]
     },
     {
-      "name": "Platinum Ore & Rigid Stone",
-      "pulls": 27,
-      "yields": [
-        {
-          "res": "Platinum Ore",
-          "count": 27,
-          "rate": 1
-        },
-        {
-          "res": "Rigid Stone",
-          "count": 27,
-          "rate": 1
-        }
-      ],
-      "zones": [
-        "Sungreetstrand",
-        "Scarwood",
-        "Fallenpass"
-      ]
-    },
-    {
       "name": "Brittle Stone",
       "pulls": 25,
       "yields": [
@@ -16096,11 +16138,11 @@
     },
     {
       "name": "Herbs - Scarwood",
-      "pulls": 14,
+      "pulls": 15,
       "yields": [
         {
           "res": "Moonveil",
-          "count": 14,
+          "count": 15,
           "rate": 1
         }
       ],
