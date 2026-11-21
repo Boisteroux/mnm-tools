@@ -187,6 +187,11 @@ function rateCell(rate, drops, total) {
 
 const WIKI_BASE = 'https://monstersandmemories.miraheze.org/wiki/';
 const wikiUrl = (name) => WIKI_BASE + encodeURIComponent(String(name).replace(/ /g, '_'));
+// monstersandmemories.wiki (a separate fan wiki). Linking is welcome there; copying isn't, so we only link.
+const NW_BASE = 'https://monstersandmemories.wiki/';
+const nwUrl = (kind, name) => NW_BASE + kind + '/' + String(name).toLowerCase().replace(/['’]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const nwLink = (kind, name) => '<a href="' + nwUrl(kind, name) + '" target="_blank" rel="noopener">See it on monstersandmemories.wiki ↗</a>';
+const wikiLinks = (oldHref, kind, name) => '<p class="sub">' + (oldHref ? '<a href="' + oldHref + '" target="_blank" rel="noopener">View &amp; Update on the Wiki ↗</a> · ' : '') + nwLink(kind, name) + '</p>';
 
 const itemLink = (id, name) => '<a href="#/item/' + encodeURIComponent(id) + '">' + esc(name) + '</a>';
 const mobLink = (name) => '<a href="#/mob/' + encodeURIComponent(name) + '">' + esc(name) + '</a>';
@@ -1038,9 +1043,7 @@ function renderItem(id) {
   }
 
   const icon = w.icon ? '<img class="entity-icon" src="' + w.icon + '" alt="" /> ' : '';
-  const wikiLine = (it.wiki && it.wiki.hasPage)
-    ? '<p class="sub"><a href="' + wikiUrl(it.name) + '" target="_blank" rel="noopener">View &amp; Update on the Wiki ↗</a></p>'
-    : '';
+  const wikiLine = wikiLinks((it.wiki && it.wiki.hasPage) ? wikiUrl(it.name) : null, 'items', it.name);
 
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › item</div>' +
@@ -1186,9 +1189,7 @@ function renderMob(name) {
   sadd('Special', mw.special);
   if (srows.length) statsBlock = '<h2>Stats</h2><div class="card"><table><tbody>' + srows.join('') + '</tbody></table></div>';
 
-  const wikiLine = mw.hasPage
-    ? '<p class="sub"><a href="' + wikiUrl(mw.title || (name.charAt(0).toUpperCase() + name.slice(1))) + '" target="_blank" rel="noopener">View &amp; Update on the Wiki ↗</a></p>'
-    : '';
+  const wikiLine = wikiLinks(mw.hasPage ? wikiUrl(mw.title || (name.charAt(0).toUpperCase() + name.slice(1))) : null, 'npcs', mw.title || name);
 
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › mob</div>' +
@@ -1227,7 +1228,7 @@ function renderZone(name) {
   $('content').innerHTML =
     '<div class="crumb"><a href="#/">MnMdb</a> › zone</div>' +
     '<h1>' + esc(name) + '</h1>' +
-    '<p class="sub"><a href="' + wikiUrl(name) + '" target="_blank" rel="noopener">View &amp; Update on the Wiki ↗</a></p>' +
+    wikiLinks(wikiUrl(name), 'zones', name) +
     mobTable + itemTable;
 }
 
