@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-22T08:00:07.621Z",
+  "generatedAt": "2026-11-22T20:00:16.798Z",
   "source": "mnm-tools",
-  "ledgerFiles": 58,
-  "events": 15443,
+  "ledgerFiles": 59,
+  "events": 15216,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,112 +10,11 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 15443
+      "events": 15216
     }
   ],
   "contributorCount": 1,
   "mobs": {
-    "an aggressive black bear": {
-      "kills": 0,
-      "drops": {
-        "Rotten Bear Paw": 1
-      },
-      "zones": {
-        "Keepersbight": 1
-      },
-      "coin": 0,
-      "corpses": 1
-    },
-    "a Sangrel striker": {
-      "kills": 399,
-      "drops": {
-        "Sangrel Fist Wraps": 22,
-        "Bronze Scraps": 28,
-        "Wool Scraps": 80,
-        "Raw Human Meat": 61,
-        "Hide Scraps": 44,
-        "Corroded Bronze Shortsword": 1,
-        "Tattered Wool Robe": 1,
-        "Onion": 5,
-        "Corroded Bronze Spear": 3,
-        "Sangrel Rite I": 6,
-        "Corroded Bronze Kite Shield": 2,
-        "Mushroom": 11,
-        "Potato": 10,
-        "Tattered Wool Belt": 1,
-        "Garlic": 14,
-        "Corroded Bronze Longsword": 3,
-        "Tomato": 8,
-        "Tattered Hide Boots": 1,
-        "Cheese": 14,
-        "Carrot": 6,
-        "Flawed Emerald": 3,
-        "Corroded Bronze Plate Bracer": 2,
-        "Flawed Diamond": 1,
-        "Corroded Bronze Plate Boots": 1,
-        "Corroded Bronze War Lance": 1,
-        "Corroded Bronze Plate Collar": 4,
-        "Corroded Bronze Dagger": 1,
-        "Tattered Wool Cape": 1,
-        "Celery": 8,
-        "Corroded Bronze Trident": 2,
-        "Corroded Bronze Battle Axe": 2,
-        "Corroded Bronze Scimitar": 2,
-        "Corroded Bronze Chain Wristguard": 2,
-        "Bell Pepper": 5,
-        "Cabbage": 7,
-        "Corroded Bronze Chain Waistguard": 1,
-        "Corroded Bronze Plate Greaves": 1,
-        "Corroded Bronze Scythe": 1,
-        "Lemon": 2,
-        "Tattered Wool Boots": 2,
-        "Corroded Bronze Plate Visor": 1,
-        "Tattered Wool Gloves": 1,
-        "Corroded Bronze Maul": 2,
-        "Corroded Bronze Chain Coif": 3,
-        "Tattered Hide Cap": 2,
-        "Flawed Cat's Eye Agate": 5,
-        "Tattered Wool Bracer": 1,
-        "Corroded Bronze Greatsword": 2,
-        "Tattered Wool Tunic": 1,
-        "Corroded Bronze Long Spear": 1,
-        "Tattered Wool Veil": 1,
-        "Flawed Jade": 2,
-        "Flawed Ruby": 1,
-        "Tattered Hide Gorget": 1,
-        "Tattered Wool Gorget": 1,
-        "Corroded Bronze Chain Gloves": 1,
-        "Corroded Bronze Warhammer": 1,
-        "Corroded Bronze Tower Shield": 2,
-        "Corroded Bronze Chain Gambeson": 2,
-        "Corroded Bronze Plate Gauntlets": 1,
-        "Simple Medallion": 27,
-        "Sangrel Rite IV": 4,
-        "Corroded Bronze Plate Arming Doublet": 1,
-        "Worn Fine Wood Buckler": 1,
-        "Cooked Human Meat": 2,
-        "Corroded Bronze Great Scythe": 1,
-        "Flawed Sapphire": 1,
-        "Tattered Hide Gloves": 1
-      },
-      "zones": {
-        "Keepersbight": 888
-      },
-      "coin": 11859,
-      "corpses": 302
-    },
-    "an emerald grass viper": {
-      "kills": 0,
-      "drops": {
-        "Fractured Snake Vertebra": 1,
-        "Raw Snake Meat": 1
-      },
-      "zones": {
-        "Scarwood": 2
-      },
-      "coin": 0,
-      "corpses": 2
-    },
     "a Sangrel shadowblade": {
       "kills": 147,
       "drops": {
@@ -213,6 +112,84 @@
       },
       "coin": 3148,
       "corpses": 79
+    },
+    "a Sangrel striker": {
+      "kills": 399,
+      "drops": {
+        "Bronze Scraps": 28,
+        "Wool Scraps": 80,
+        "Raw Human Meat": 61,
+        "Hide Scraps": 44,
+        "Corroded Bronze Shortsword": 1,
+        "Tattered Wool Robe": 1,
+        "Onion": 5,
+        "Corroded Bronze Spear": 3,
+        "Sangrel Rite I": 6,
+        "Corroded Bronze Kite Shield": 2,
+        "Mushroom": 11,
+        "Potato": 10,
+        "Tattered Wool Belt": 1,
+        "Garlic": 14,
+        "Corroded Bronze Longsword": 3,
+        "Tomato": 8,
+        "Tattered Hide Boots": 1,
+        "Cheese": 14,
+        "Carrot": 6,
+        "Flawed Emerald": 3,
+        "Corroded Bronze Plate Bracer": 2,
+        "Flawed Diamond": 1,
+        "Corroded Bronze Plate Boots": 1,
+        "Sangrel Fist Wraps": 21,
+        "Corroded Bronze War Lance": 1,
+        "Corroded Bronze Plate Collar": 4,
+        "Corroded Bronze Dagger": 1,
+        "Tattered Wool Cape": 1,
+        "Celery": 8,
+        "Corroded Bronze Trident": 2,
+        "Corroded Bronze Battle Axe": 2,
+        "Corroded Bronze Scimitar": 2,
+        "Corroded Bronze Chain Wristguard": 2,
+        "Bell Pepper": 5,
+        "Cabbage": 7,
+        "Corroded Bronze Chain Waistguard": 1,
+        "Corroded Bronze Plate Greaves": 1,
+        "Corroded Bronze Scythe": 1,
+        "Lemon": 2,
+        "Tattered Wool Boots": 2,
+        "Corroded Bronze Plate Visor": 1,
+        "Tattered Wool Gloves": 1,
+        "Corroded Bronze Maul": 2,
+        "Corroded Bronze Chain Coif": 3,
+        "Tattered Hide Cap": 2,
+        "Flawed Cat's Eye Agate": 5,
+        "Tattered Wool Bracer": 1,
+        "Corroded Bronze Greatsword": 2,
+        "Tattered Wool Tunic": 1,
+        "Corroded Bronze Long Spear": 1,
+        "Tattered Wool Veil": 1,
+        "Flawed Jade": 2,
+        "Flawed Ruby": 1,
+        "Tattered Hide Gorget": 1,
+        "Tattered Wool Gorget": 1,
+        "Corroded Bronze Chain Gloves": 1,
+        "Corroded Bronze Warhammer": 1,
+        "Corroded Bronze Tower Shield": 2,
+        "Corroded Bronze Chain Gambeson": 2,
+        "Corroded Bronze Plate Gauntlets": 1,
+        "Simple Medallion": 27,
+        "Sangrel Rite IV": 4,
+        "Corroded Bronze Plate Arming Doublet": 1,
+        "Worn Fine Wood Buckler": 1,
+        "Cooked Human Meat": 2,
+        "Corroded Bronze Great Scythe": 1,
+        "Flawed Sapphire": 1,
+        "Tattered Hide Gloves": 1
+      },
+      "zones": {
+        "Keepersbight": 887
+      },
+      "coin": 11859,
+      "corpses": 301
     },
     "a Sangrel grappler": {
       "kills": 35,
@@ -1866,32 +1843,32 @@
     "a roaming shark": {
       "kills": 0,
       "drops": {
-        "Sleek Shark Skin": 17,
-        "Shark Fin": 10,
-        "Intact Shark Vertebra": 12,
-        "Smooth Shark Vertebra": 15,
-        "Raw Shark Meat": 11,
+        "Sleek Shark Skin": 23,
+        "Shark Fin": 15,
+        "Intact Shark Vertebra": 15,
+        "Smooth Shark Vertebra": 20,
+        "Raw Shark Meat": 12,
         "Spirit World Ch. 11": 1
       },
       "zones": {
-        "Shallowshoals": 82
+        "Shallowshoals": 106
       },
       "coin": 0,
-      "corpses": 35
+      "corpses": 45
     },
     "Sharkie": {
       "kills": 0,
       "drops": {
         "Sleek Shark Skin": 2,
         "Smooth Shark Vertebra": 2,
-        "Mawtooth War-Shoulders": 2,
+        "Mawtooth War-Shoulders": 3,
         "Mawtooth": 1
       },
       "zones": {
-        "Shallowshoals": 10
+        "Shallowshoals": 11
       },
       "coin": 0,
-      "corpses": 3
+      "corpses": 4
     },
     "a cobweaver hatchling": {
       "kills": 0,
@@ -2134,6 +2111,17 @@
       },
       "coin": 109,
       "corpses": 3
+    },
+    "an emerald grass viper": {
+      "kills": 0,
+      "drops": {
+        "Raw Snake Meat": 1
+      },
+      "zones": {
+        "Scarwood": 1
+      },
+      "coin": 0,
+      "corpses": 1
     },
     "a giant fire beetle": {
       "kills": 0,
@@ -2595,8 +2583,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 5,
-          "corpses": 302,
-          "rate": 0.016556291390728478
+          "corpses": 301,
+          "rate": 0.016611295681063124
         },
         {
           "mob": "a sly farmhand",
@@ -2917,8 +2905,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 28,
-          "corpses": 302,
-          "rate": 0.09271523178807947
+          "corpses": 301,
+          "rate": 0.09302325581395349
         },
         {
           "mob": "a hired tracker",
@@ -3082,8 +3070,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 7,
-          "corpses": 302,
-          "rate": 0.023178807947019868
+          "corpses": 301,
+          "rate": 0.023255813953488372
         },
         {
           "mob": "a henchman",
@@ -3214,8 +3202,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 6,
-          "corpses": 302,
-          "rate": 0.019867549668874173
+          "corpses": 301,
+          "rate": 0.019933554817275746
         },
         {
           "mob": "a bodyguard",
@@ -3303,8 +3291,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 8,
-          "corpses": 302,
-          "rate": 0.026490066225165563
+          "corpses": 301,
+          "rate": 0.026578073089700997
         },
         {
           "mob": "a Sangrel hunter",
@@ -3363,8 +3351,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 14,
-          "corpses": 302,
-          "rate": 0.046357615894039736
+          "corpses": 301,
+          "rate": 0.046511627906976744
         },
         {
           "mob": "a poacher bruiser",
@@ -3769,7 +3757,7 @@
       "name": "Coal",
       "droppedBy": [],
       "prices": [],
-      "harvested": 1096,
+      "harvested": 1171,
       "zones": [
         "Sungreetstrand",
         "Scarwood",
@@ -3847,8 +3835,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 2,
-          "corpses": 302,
-          "rate": 0.006622516556291391
+          "corpses": 301,
+          "rate": 0.006644518272425249
         }
       ],
       "prices": [],
@@ -3989,8 +3977,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 2,
-          "corpses": 302,
-          "rate": 0.006622516556291391
+          "corpses": 301,
+          "rate": 0.006644518272425249
         }
       ],
       "prices": [
@@ -4077,8 +4065,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 3,
-          "corpses": 302,
-          "rate": 0.009933774834437087
+          "corpses": 301,
+          "rate": 0.009966777408637873
         }
       ],
       "prices": [
@@ -4106,8 +4094,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 2,
-          "corpses": 302,
-          "rate": 0.006622516556291391
+          "corpses": 301,
+          "rate": 0.006644518272425249
         }
       ],
       "prices": [],
@@ -4137,8 +4125,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 302,
-          "rate": 0.0033112582781456954
+          "corpses": 301,
+          "rate": 0.0033222591362126247
         }
       ],
       "prices": [],
@@ -4376,8 +4364,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 302,
-          "rate": 0.0033112582781456954
+          "corpses": 301,
+          "rate": 0.0033222591362126247
         }
       ],
       "prices": [
@@ -4419,8 +4407,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 2,
-          "corpses": 302,
-          "rate": 0.006622516556291391
+          "corpses": 301,
+          "rate": 0.006644518272425249
         }
       ],
       "prices": [],
@@ -4492,8 +4480,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 302,
-          "rate": 0.0033112582781456954
+          "corpses": 301,
+          "rate": 0.0033222591362126247
         }
       ],
       "prices": [],
@@ -4543,8 +4531,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 302,
-          "rate": 0.0033112582781456954
+          "corpses": 301,
+          "rate": 0.0033222591362126247
         }
       ],
       "prices": [
@@ -4587,8 +4575,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 2,
-          "corpses": 302,
-          "rate": 0.006622516556291391
+          "corpses": 301,
+          "rate": 0.006644518272425249
         }
       ],
       "prices": [],
@@ -4630,8 +4618,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 2,
-          "corpses": 302,
-          "rate": 0.006622516556291391
+          "corpses": 301,
+          "rate": 0.006644518272425249
         }
       ],
       "prices": [],
@@ -4673,8 +4661,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 302,
-          "rate": 0.0033112582781456954
+          "corpses": 301,
+          "rate": 0.0033222591362126247
         }
       ],
       "prices": [
@@ -4727,8 +4715,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 3,
-          "corpses": 302,
-          "rate": 0.009933774834437087
+          "corpses": 301,
+          "rate": 0.009966777408637873
         },
         {
           "mob": "a bodyguard",
@@ -4855,8 +4843,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 2,
-          "corpses": 302,
-          "rate": 0.006622516556291391
+          "corpses": 301,
+          "rate": 0.006644518272425249
         }
       ],
       "prices": [
@@ -4892,8 +4880,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 302,
-          "rate": 0.0033112582781456954
+          "corpses": 301,
+          "rate": 0.0033222591362126247
         }
       ],
       "prices": [],
@@ -4917,8 +4905,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 302,
-          "rate": 0.0033112582781456954
+          "corpses": 301,
+          "rate": 0.0033222591362126247
         }
       ],
       "prices": [],
@@ -4948,8 +4936,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 2,
-          "corpses": 302,
-          "rate": 0.006622516556291391
+          "corpses": 301,
+          "rate": 0.006644518272425249
         }
       ],
       "prices": [],
@@ -5034,8 +5022,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 4,
-          "corpses": 302,
-          "rate": 0.013245033112582781
+          "corpses": 301,
+          "rate": 0.013289036544850499
         },
         {
           "mob": "a Bloodchain guard",
@@ -5059,8 +5047,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 302,
-          "rate": 0.0033112582781456954
+          "corpses": 301,
+          "rate": 0.0033222591362126247
         }
       ],
       "prices": [],
@@ -5114,8 +5102,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 302,
-          "rate": 0.0033112582781456954
+          "corpses": 301,
+          "rate": 0.0033222591362126247
         }
       ],
       "prices": [
@@ -5184,8 +5172,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 302,
-          "rate": 0.0033112582781456954
+          "corpses": 301,
+          "rate": 0.0033222591362126247
         }
       ],
       "prices": [],
@@ -5257,8 +5245,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 2,
-          "corpses": 302,
-          "rate": 0.006622516556291391
+          "corpses": 301,
+          "rate": 0.006644518272425249
         }
       ],
       "prices": [],
@@ -5314,8 +5302,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 302,
-          "rate": 0.0033112582781456954
+          "corpses": 301,
+          "rate": 0.0033222591362126247
         }
       ],
       "prices": [
@@ -5396,8 +5384,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 302,
-          "rate": 0.0033112582781456954
+          "corpses": 301,
+          "rate": 0.0033222591362126247
         }
       ],
       "prices": [
@@ -5449,8 +5437,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 3,
-          "corpses": 302,
-          "rate": 0.009933774834437087
+          "corpses": 301,
+          "rate": 0.009966777408637873
         }
       ],
       "prices": [
@@ -5509,8 +5497,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 2,
-          "corpses": 302,
-          "rate": 0.006622516556291391
+          "corpses": 301,
+          "rate": 0.006644518272425249
         }
       ],
       "prices": [],
@@ -5583,8 +5571,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 2,
-          "corpses": 302,
-          "rate": 0.006622516556291391
+          "corpses": 301,
+          "rate": 0.006644518272425249
         }
       ],
       "prices": [
@@ -5642,8 +5630,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 302,
-          "rate": 0.0033112582781456954
+          "corpses": 301,
+          "rate": 0.0033222591362126247
         }
       ],
       "prices": [
@@ -5685,8 +5673,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 302,
-          "rate": 0.0033112582781456954
+          "corpses": 301,
+          "rate": 0.0033222591362126247
         }
       ],
       "prices": [],
@@ -6163,10 +6151,10 @@
       "name": "Diamond",
       "droppedBy": [],
       "prices": [],
-      "harvested": 5,
+      "harvested": 6,
       "zones": [
-        "Sungreetstrand",
         "Shallowshoals",
+        "Sungreetstrand",
         "Scarwood"
       ]
     },
@@ -6384,11 +6372,11 @@
       "name": "Emerald",
       "droppedBy": [],
       "prices": [],
-      "harvested": 9,
+      "harvested": 10,
       "zones": [
         "Sungreetstrand",
-        "Scarwood",
-        "Shallowshoals"
+        "Shallowshoals",
+        "Scarwood"
       ]
     },
     {
@@ -6466,8 +6454,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 5,
-          "corpses": 302,
-          "rate": 0.016556291390728478
+          "corpses": 301,
+          "rate": 0.016611295681063124
         },
         {
           "mob": "a sly farmhand",
@@ -6507,15 +6495,15 @@
         },
         {
           "copper": 54,
-          "count": 4
+          "count": 3
         }
       ],
-      "harvested": 5,
+      "harvested": 1,
       "zones": [
         "Keepersbight",
         "Sungreetstrand",
-        "Scarwood",
-        "Blacktidebay"
+        "Blacktidebay",
+        "Scarwood"
       ]
     },
     {
@@ -6586,17 +6574,17 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 302,
-          "rate": 0.0033112582781456954
+          "corpses": 301,
+          "rate": 0.0033222591362126247
         }
       ],
       "prices": [
         {
           "copper": 54,
-          "count": 3
+          "count": 2
         }
       ],
-      "harvested": 3,
+      "harvested": 1,
       "zones": [
         "Keepersbight",
         "Sungreetstrand",
@@ -6635,8 +6623,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 3,
-          "corpses": 302,
-          "rate": 0.009933774834437087
+          "corpses": 301,
+          "rate": 0.009966777408637873
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -6649,17 +6637,12 @@
         {
           "copper": 50,
           "count": 1
-        },
-        {
-          "copper": 54,
-          "count": 1
         }
       ],
-      "harvested": 4,
+      "harvested": 0,
       "zones": [
         "Keepersbight",
-        "Sungreetstrand",
-        "Scarwood"
+        "Sungreetstrand"
       ]
     },
     {
@@ -6688,17 +6671,17 @@
         {
           "mob": "a Sangrel striker",
           "drops": 2,
-          "corpses": 302,
-          "rate": 0.006622516556291391
+          "corpses": 301,
+          "rate": 0.006644518272425249
         }
       ],
       "prices": [
         {
           "copper": 54,
-          "count": 3
+          "count": 2
         }
       ],
-      "harvested": 4,
+      "harvested": 3,
       "zones": [
         "Keepersbight",
         "Scarwood",
@@ -6732,10 +6715,10 @@
       "prices": [
         {
           "copper": 54,
-          "count": 3
+          "count": 2
         }
       ],
-      "harvested": 4,
+      "harvested": 3,
       "zones": [
         "Sungreetstrand",
         "Scarwood"
@@ -6785,22 +6768,16 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 302,
-          "rate": 0.0033112582781456954
+          "corpses": 301,
+          "rate": 0.0033222591362126247
         }
       ],
-      "prices": [
-        {
-          "copper": 54,
-          "count": 1
-        }
-      ],
-      "harvested": 1,
+      "prices": [],
+      "harvested": 0,
       "zones": [
         "Keepersbight",
         "Sungreetstrand",
-        "Blacktidebay",
-        "Scarwood"
+        "Blacktidebay"
       ]
     },
     {
@@ -6841,25 +6818,25 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 302,
-          "rate": 0.0033112582781456954
+          "corpses": 301,
+          "rate": 0.0033222591362126247
         }
       ],
       "prices": [
         {
           "copper": 54,
-          "count": 2
+          "count": 1
         },
         {
           "copper": 55,
           "count": 1
         }
       ],
-      "harvested": 5,
+      "harvested": 2,
       "zones": [
         "Sungreetstrand",
-        "Scarwood",
-        "Keepersbight"
+        "Keepersbight",
+        "Scarwood"
       ]
     },
     {
@@ -6955,27 +6932,15 @@
       "name": "Fractured Snake Vertebra",
       "droppedBy": [
         {
-          "mob": "an emerald grass viper",
-          "drops": 1,
-          "corpses": 2,
-          "rate": 0.5
-        },
-        {
           "mob": "a boulder viper",
           "drops": 1,
           "corpses": 7,
           "rate": 0.14285714285714285
         }
       ],
-      "prices": [
-        {
-          "copper": 100,
-          "count": 1
-        }
-      ],
+      "prices": [],
       "harvested": 0,
       "zones": [
-        "Scarwood",
         "Keepersbight"
       ]
     },
@@ -7017,8 +6982,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 14,
-          "corpses": 302,
-          "rate": 0.046357615894039736
+          "corpses": 301,
+          "rate": 0.046511627906976744
         },
         {
           "mob": "a poacher bruiser",
@@ -7298,7 +7263,7 @@
       "name": "Glinting Crystallized Magic",
       "droppedBy": [],
       "prices": [],
-      "harvested": 7,
+      "harvested": 3,
       "zones": [
         "Scarwood"
       ]
@@ -7660,8 +7625,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 44,
-          "corpses": 302,
-          "rate": 0.1456953642384106
+          "corpses": 301,
+          "rate": 0.1461794019933555
         },
         {
           "mob": "a Bloodchain mender",
@@ -8039,9 +8004,9 @@
       "droppedBy": [
         {
           "mob": "a roaming shark",
-          "drops": 12,
-          "corpses": 35,
-          "rate": 0.34285714285714286
+          "drops": 15,
+          "corpses": 45,
+          "rate": 0.3333333333333333
         }
       ],
       "prices": [
@@ -8238,7 +8203,7 @@
           "count": 6
         }
       ],
-      "harvested": 102,
+      "harvested": 39,
       "zones": [
         "Scarwood",
         "Fallenpass",
@@ -8637,8 +8602,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 2,
-          "corpses": 302,
-          "rate": 0.006622516556291391
+          "corpses": 301,
+          "rate": 0.006644518272425249
         }
       ],
       "prices": [
@@ -8667,7 +8632,7 @@
           "count": 1
         }
       ],
-      "harvested": 414,
+      "harvested": 397,
       "zones": [
         "Sungreetstrand",
         "Fallenpass",
@@ -8816,8 +8781,8 @@
         {
           "mob": "Sharkie",
           "drops": 1,
-          "corpses": 3,
-          "rate": 0.3333333333333333
+          "corpses": 4,
+          "rate": 0.25
         }
       ],
       "prices": [],
@@ -8833,9 +8798,9 @@
       "droppedBy": [
         {
           "mob": "Sharkie",
-          "drops": 2,
-          "corpses": 3,
-          "rate": 0.6666666666666666
+          "drops": 3,
+          "corpses": 4,
+          "rate": 0.75
         }
       ],
       "prices": [],
@@ -8962,7 +8927,7 @@
       "name": "Moonveil",
       "droppedBy": [],
       "prices": [],
-      "harvested": 58,
+      "harvested": 40,
       "zones": [
         "Keepersbight",
         "Scarwood"
@@ -9014,8 +8979,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 11,
-          "corpses": 302,
-          "rate": 0.03642384105960265
+          "corpses": 301,
+          "rate": 0.036544850498338874
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -9075,11 +9040,10 @@
       "name": "Nomad's Grace",
       "droppedBy": [],
       "prices": [],
-      "harvested": 33,
+      "harvested": 31,
       "zones": [
         "Sungreetstrand",
         "Shaded Dunes",
-        "Scarwood",
         "Evershade Weald",
         "Valeofzintar"
       ]
@@ -9152,8 +9116,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 5,
-          "corpses": 302,
-          "rate": 0.016556291390728478
+          "corpses": 301,
+          "rate": 0.016611295681063124
         },
         {
           "mob": "a sly farmhand",
@@ -9211,10 +9175,10 @@
       "name": "Peridot",
       "droppedBy": [],
       "prices": [],
-      "harvested": 8,
+      "harvested": 9,
       "zones": [
-        "Sungreetstrand",
         "Shallowshoals",
+        "Sungreetstrand",
         "Scarwood"
       ]
     },
@@ -9242,7 +9206,7 @@
       "name": "Platinum Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 150,
+      "harvested": 157,
       "zones": [
         "Sungreetstrand",
         "Scarwood",
@@ -9408,8 +9372,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 10,
-          "corpses": 302,
-          "rate": 0.033112582781456956
+          "corpses": 301,
+          "rate": 0.03322259136212625
         },
         {
           "mob": "a poacher bruiser",
@@ -9799,16 +9763,16 @@
           "rate": 0.20689655172413793
         },
         {
+          "mob": "a Sangrel striker",
+          "drops": 61,
+          "corpses": 301,
+          "rate": 0.2026578073089701
+        },
+        {
           "mob": "a Sangrel hunter",
           "drops": 16,
           "corpses": 79,
           "rate": 0.20253164556962025
-        },
-        {
-          "mob": "a Sangrel striker",
-          "drops": 61,
-          "corpses": 302,
-          "rate": 0.20198675496688742
         },
         {
           "mob": "Seamas Growt",
@@ -9995,9 +9959,9 @@
         },
         {
           "mob": "a roaming shark",
-          "drops": 11,
-          "corpses": 35,
-          "rate": 0.3142857142857143
+          "drops": 12,
+          "corpses": 45,
+          "rate": 0.26666666666666666
         }
       ],
       "prices": [],
@@ -10015,8 +9979,8 @@
         {
           "mob": "an emerald grass viper",
           "drops": 1,
-          "corpses": 2,
-          "rate": 0.5
+          "corpses": 1,
+          "rate": 1
         },
         {
           "mob": "a rattlesnake",
@@ -10175,11 +10139,10 @@
           "count": 3
         }
       ],
-      "harvested": 310,
+      "harvested": 299,
       "zones": [
         "Keepersbight",
-        "Sungreetstrand",
-        "Evershade Weald"
+        "Sungreetstrand"
       ]
     },
     {
@@ -10193,7 +10156,7 @@
           "count": 7
         }
       ],
-      "harvested": 238,
+      "harvested": 256,
       "zones": [
         "Sungreetstrand",
         "Scarwood",
@@ -10219,29 +10182,6 @@
       "harvested": 0,
       "zones": [
         "Fallenpass"
-      ]
-    },
-    {
-      "id": "rotten_bear_paw",
-      "gameId": "eacc341ed65351b40b4e3066",
-      "name": "Rotten Bear Paw",
-      "droppedBy": [
-        {
-          "mob": "an aggressive black bear",
-          "drops": 1,
-          "corpses": 1,
-          "rate": 1
-        }
-      ],
-      "prices": [
-        {
-          "copper": 47,
-          "count": 1
-        }
-      ],
-      "harvested": 0,
-      "zones": [
-        "Keepersbight"
       ]
     },
     {
@@ -11469,9 +11409,9 @@
         },
         {
           "mob": "a Sangrel striker",
-          "drops": 22,
-          "corpses": 302,
-          "rate": 0.0728476821192053
+          "drops": 21,
+          "corpses": 301,
+          "rate": 0.06976744186046512
         },
         {
           "mob": "a Sangrel entangler",
@@ -11584,8 +11524,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 6,
-          "corpses": 302,
-          "rate": 0.019867549668874173
+          "corpses": 301,
+          "rate": 0.019933554817275746
         }
       ],
       "prices": [],
@@ -11626,8 +11566,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 4,
-          "corpses": 302,
-          "rate": 0.013245033112582781
+          "corpses": 301,
+          "rate": 0.013289036544850499
         }
       ],
       "prices": [],
@@ -11642,11 +11582,12 @@
       "name": "Sapphire",
       "droppedBy": [],
       "prices": [],
-      "harvested": 4,
+      "harvested": 5,
       "zones": [
         "Scarwood",
         "Sungreetstrand",
-        "Valeofzintar"
+        "Valeofzintar",
+        "Shallowshoals"
       ]
     },
     {
@@ -11835,9 +11776,9 @@
         },
         {
           "mob": "a roaming shark",
-          "drops": 10,
-          "corpses": 35,
-          "rate": 0.2857142857142857
+          "drops": 15,
+          "corpses": 45,
+          "rate": 0.3333333333333333
         }
       ],
       "prices": [],
@@ -11883,7 +11824,7 @@
       "name": "Silver Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 73,
+      "harvested": 39,
       "zones": [
         "Scarwood",
         "Sungreetstrand"
@@ -11999,8 +11940,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 27,
-          "corpses": 302,
-          "rate": 0.08940397350993377
+          "corpses": 301,
+          "rate": 0.08970099667774087
         },
         {
           "mob": "a Sangrel shadowblade",
@@ -12038,16 +11979,16 @@
       "name": "Sleek Shark Skin",
       "droppedBy": [
         {
-          "mob": "Sharkie",
-          "drops": 2,
-          "corpses": 3,
-          "rate": 0.6666666666666666
+          "mob": "a roaming shark",
+          "drops": 23,
+          "corpses": 45,
+          "rate": 0.5111111111111111
         },
         {
-          "mob": "a roaming shark",
-          "drops": 17,
-          "corpses": 35,
-          "rate": 0.4857142857142857
+          "mob": "Sharkie",
+          "drops": 2,
+          "corpses": 4,
+          "rate": 0.5
         }
       ],
       "prices": [],
@@ -12101,14 +12042,14 @@
         {
           "mob": "Sharkie",
           "drops": 2,
-          "corpses": 3,
-          "rate": 0.6666666666666666
+          "corpses": 4,
+          "rate": 0.5
         },
         {
           "mob": "a roaming shark",
-          "drops": 15,
-          "corpses": 35,
-          "rate": 0.42857142857142855
+          "drops": 20,
+          "corpses": 45,
+          "rate": 0.4444444444444444
         }
       ],
       "prices": [
@@ -12246,8 +12187,8 @@
         {
           "mob": "a roaming shark",
           "drops": 1,
-          "corpses": 35,
-          "rate": 0.02857142857142857
+          "corpses": 45,
+          "rate": 0.022222222222222223
         }
       ],
       "prices": [],
@@ -12310,7 +12251,7 @@
       "name": "Sylvine",
       "droppedBy": [],
       "prices": [],
-      "harvested": 12,
+      "harvested": 10,
       "zones": [
         "Scarwood",
         "Evershade Weald"
@@ -12754,8 +12695,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 302,
-          "rate": 0.0033112582781456954
+          "corpses": 301,
+          "rate": 0.0033222591362126247
         }
       ],
       "prices": [],
@@ -12816,8 +12757,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 2,
-          "corpses": 302,
-          "rate": 0.006622516556291391
+          "corpses": 301,
+          "rate": 0.006644518272425249
         }
       ],
       "prices": [],
@@ -12909,8 +12850,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 302,
-          "rate": 0.0033112582781456954
+          "corpses": 301,
+          "rate": 0.0033222591362126247
         }
       ],
       "prices": [],
@@ -12953,8 +12894,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 302,
-          "rate": 0.0033112582781456954
+          "corpses": 301,
+          "rate": 0.0033222591362126247
         }
       ],
       "prices": [],
@@ -13455,8 +13396,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 302,
-          "rate": 0.0033112582781456954
+          "corpses": 301,
+          "rate": 0.0033222591362126247
         }
       ],
       "prices": [],
@@ -13486,8 +13427,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 2,
-          "corpses": 302,
-          "rate": 0.006622516556291391
+          "corpses": 301,
+          "rate": 0.006644518272425249
         }
       ],
       "prices": [],
@@ -13529,8 +13470,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 302,
-          "rate": 0.0033112582781456954
+          "corpses": 301,
+          "rate": 0.0033222591362126247
         }
       ],
       "prices": [],
@@ -13604,8 +13545,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 302,
-          "rate": 0.0033112582781456954
+          "corpses": 301,
+          "rate": 0.0033222591362126247
         }
       ],
       "prices": [],
@@ -13642,8 +13583,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 302,
-          "rate": 0.0033112582781456954
+          "corpses": 301,
+          "rate": 0.0033222591362126247
         }
       ],
       "prices": [],
@@ -13680,8 +13621,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 302,
-          "rate": 0.0033112582781456954
+          "corpses": 301,
+          "rate": 0.0033222591362126247
         }
       ],
       "prices": [],
@@ -13763,8 +13704,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 302,
-          "rate": 0.0033112582781456954
+          "corpses": 301,
+          "rate": 0.0033222591362126247
         }
       ],
       "prices": [],
@@ -13835,8 +13776,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 302,
-          "rate": 0.0033112582781456954
+          "corpses": 301,
+          "rate": 0.0033222591362126247
         }
       ],
       "prices": [],
@@ -13879,8 +13820,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 302,
-          "rate": 0.0033112582781456954
+          "corpses": 301,
+          "rate": 0.0033222591362126247
         }
       ],
       "prices": [],
@@ -13896,7 +13837,7 @@
       "name": "Tin Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 474,
+      "harvested": 170,
       "zones": [
         "Scarwood",
         "Fallenpass",
@@ -13977,8 +13918,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 8,
-          "corpses": 302,
-          "rate": 0.026490066225165563
+          "corpses": 301,
+          "rate": 0.026578073089700997
         },
         {
           "mob": "a poacher bruiser",
@@ -14330,11 +14271,10 @@
       "name": "Wood",
       "droppedBy": [],
       "prices": [],
-      "harvested": 247,
+      "harvested": 237,
       "zones": [
         "Keepersbight",
-        "Sungreetstrand",
-        "Evershade Weald"
+        "Sungreetstrand"
       ]
     },
     {
@@ -14393,8 +14333,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 80,
-          "corpses": 302,
-          "rate": 0.26490066225165565
+          "corpses": 301,
+          "rate": 0.26578073089701
         },
         {
           "mob": "a Sangrel grappler",
@@ -14618,8 +14558,8 @@
         {
           "mob": "a Sangrel striker",
           "drops": 1,
-          "corpses": 302,
-          "rate": 0.0033112582781456954
+          "corpses": 301,
+          "rate": 0.0033222591362126247
         }
       ],
       "prices": [
@@ -14836,31 +14776,27 @@
     }
   ],
   "harvest": {
-    "Wood": 247,
-    "Resin": 310,
-    "Tin Ore": 474,
-    "Flawed Peridot": 4,
-    "Flawed Emerald": 4,
-    "Jagged Stone": 102,
-    "Moonveil": 58,
-    "Flawed Diamond": 3,
-    "Flawed Sapphire": 5,
-    "Limestone": 414,
-    "Silver Ore": 73,
-    "Glinting Crystallized Magic": 7,
-    "Flawed Cat's Eye Agate": 5,
-    "Flawed Ruby": 1,
-    "Flawed Jade": 4,
-    "Nomad's Grace": 33,
-    "Sylvine": 12,
+    "Tin Ore": 170,
+    "Jagged Stone": 39,
+    "Sylvine": 10,
     "Magic Frond": 3,
+    "Flawed Diamond": 1,
+    "Limestone": 397,
+    "Silver Ore": 39,
+    "Flawed Jade": 3,
+    "Moonveil": 40,
+    "Flawed Peridot": 3,
+    "Glinting Crystallized Magic": 3,
     "Whispering Sage": 72,
+    "Nomad's Grace": 31,
     "Copper Ore": 199,
     "Brittle Stone": 54,
     "Chipped Ruby": 2,
     "Chipped Jade": 3,
     "Chipped Sapphire": 3,
     "Alunite Ore": 2,
+    "Wood": 237,
+    "Resin": 299,
     "Clouded Crystallized Magic": 6,
     "Iron Ore": 912,
     "Weighty Stone": 235,
@@ -14874,24 +14810,26 @@
     "Gold Ore": 136,
     "Imperfect Ruby": 6,
     "Imperfect Diamond": 6,
-    "Coal": 1096,
+    "Coal": 1171,
     "Brilliant Crystallized Magic": 18,
-    "Rigid Stone": 238,
-    "Sapphire": 4,
-    "Platinum Ore": 150,
+    "Rigid Stone": 256,
+    "Sapphire": 5,
+    "Platinum Ore": 157,
     "Jade": 8,
     "Cat's Eye Agate": 9,
     "Ruby": 7,
     "Lionleaf": 12,
     "Chipped Emerald": 3,
-    "Diamond": 5,
-    "Peridot": 8,
-    "Emerald": 9,
+    "Diamond": 6,
+    "Peridot": 9,
+    "Emerald": 10,
     "Enchanted Frond": 3,
     "Fine Wood": 21,
+    "Flawed Sapphire": 2,
     "Chipped Peridot": 1,
     "Chipped Diamond": 1,
     "Chipped Cat's Eye Agate": 1,
+    "Flawed Cat's Eye Agate": 1,
     "Ghost Poppy": 2,
     "Stranglevine": 60,
     "Duneleaf": 12
@@ -14899,62 +14837,62 @@
   "harvestNodes": [
     {
       "name": "Coal",
-      "pulls": 1126,
+      "pulls": 1202,
       "yields": [
         {
           "res": "Coal",
-          "count": 1096,
-          "rate": 0.9733570159857904
+          "count": 1171,
+          "rate": 0.9742096505823628
         },
         {
           "res": "Rigid Stone",
-          "count": 238,
-          "rate": 0.2113676731793961
+          "count": 256,
+          "rate": 0.2129783693843594
         },
         {
           "res": "Platinum Ore",
-          "count": 30,
-          "rate": 0.02664298401420959
+          "count": 31,
+          "rate": 0.025790349417637273
         },
         {
           "res": "Brilliant Crystallized Magic",
           "count": 15,
-          "rate": 0.013321492007104795
+          "rate": 0.012479201331114808
         },
         {
           "res": "Emerald",
-          "count": 9,
-          "rate": 0.007992895204262877
+          "count": 10,
+          "rate": 0.008319467554076539
         },
         {
           "res": "Cat's Eye Agate",
           "count": 8,
-          "rate": 0.007104795737122558
+          "rate": 0.0066555740432612314
         },
         {
           "res": "Ruby",
           "count": 6,
-          "rate": 0.0053285968028419185
+          "rate": 0.004991680532445923
         },
         {
           "res": "Diamond",
-          "count": 5,
-          "rate": 0.004440497335701598
+          "count": 6,
+          "rate": 0.004991680532445923
         },
         {
           "res": "Peridot",
-          "count": 5,
-          "rate": 0.004440497335701598
+          "count": 6,
+          "rate": 0.004991680532445923
         },
         {
           "res": "Jade",
           "count": 5,
-          "rate": 0.004440497335701598
+          "rate": 0.004159733777038269
         },
         {
           "res": "Sapphire",
-          "count": 3,
-          "rate": 0.0026642984014209592
+          "count": 4,
+          "rate": 0.0033277870216306157
         }
       ],
       "zones": [
@@ -15032,105 +14970,69 @@
       ]
     },
     {
-      "name": "Tin Ore",
-      "pulls": 667,
-      "yields": [
-        {
-          "res": "Tin Ore",
-          "count": 474,
-          "rate": 0.7106446776611695
-        },
-        {
-          "res": "Limestone",
-          "count": 220,
-          "rate": 0.32983508245877063
-        },
-        {
-          "res": "Jagged Stone",
-          "count": 92,
-          "rate": 0.13793103448275862
-        },
-        {
-          "res": "Glinting Crystallized Magic",
-          "count": 6,
-          "rate": 0.008995502248875561
-        },
-        {
-          "res": "Flawed Peridot",
-          "count": 4,
-          "rate": 0.005997001499250375
-        },
-        {
-          "res": "Flawed Emerald",
-          "count": 4,
-          "rate": 0.005997001499250375
-        },
-        {
-          "res": "Flawed Cat's Eye Agate",
-          "count": 4,
-          "rate": 0.005997001499250375
-        },
-        {
-          "res": "Silver Ore",
-          "count": 4,
-          "rate": 0.005997001499250375
-        },
-        {
-          "res": "Clouded Crystallized Magic",
-          "count": 4,
-          "rate": 0.005997001499250375
-        },
-        {
-          "res": "Flawed Diamond",
-          "count": 3,
-          "rate": 0.004497751124437781
-        },
-        {
-          "res": "Flawed Sapphire",
-          "count": 3,
-          "rate": 0.004497751124437781
-        },
-        {
-          "res": "Flawed Jade",
-          "count": 3,
-          "rate": 0.004497751124437781
-        },
-        {
-          "res": "Flawed Ruby",
-          "count": 1,
-          "rate": 0.0014992503748125937
-        }
-      ],
-      "zones": [
-        "Scarwood",
-        "Sungreetstrand",
-        "Fallenpass"
-      ]
-    },
-    {
       "name": "Wood & Resin",
-      "pulls": 261,
+      "pulls": 251,
       "yields": [
         {
           "res": "Wood",
-          "count": 247,
-          "rate": 0.946360153256705
+          "count": 237,
+          "rate": 0.9442231075697212
         },
         {
           "res": "Resin",
-          "count": 219,
-          "rate": 0.8390804597701149
+          "count": 212,
+          "rate": 0.8446215139442231
         },
         {
           "res": "Fine Wood",
           "count": 14,
-          "rate": 0.05363984674329502
+          "rate": 0.055776892430278883
         }
       ],
       "zones": [
         "Keepersbight",
+        "Sungreetstrand"
+      ]
+    },
+    {
+      "name": "Limestone",
+      "pulls": 203,
+      "yields": [
+        {
+          "res": "Limestone",
+          "count": 203,
+          "rate": 1
+        },
+        {
+          "res": "Tin Ore",
+          "count": 11,
+          "rate": 0.054187192118226604
+        },
+        {
+          "res": "Clouded Crystallized Magic",
+          "count": 4,
+          "rate": 0.019704433497536946
+        },
+        {
+          "res": "Jagged Stone",
+          "count": 3,
+          "rate": 0.014778325123152709
+        },
+        {
+          "res": "Silver Ore",
+          "count": 3,
+          "rate": 0.014778325123152709
+        },
+        {
+          "res": "Flawed Peridot",
+          "count": 1,
+          "rate": 0.0049261083743842365
+        }
+      ],
+      "zones": [
         "Sungreetstrand",
-        "Evershade Weald"
+        "Fallenpass",
+        "Scarwood"
       ]
     },
     {
@@ -15196,43 +15098,94 @@
       ]
     },
     {
+      "name": "Tin Ore",
+      "pulls": 159,
+      "yields": [
+        {
+          "res": "Tin Ore",
+          "count": 159,
+          "rate": 1
+        },
+        {
+          "res": "Jagged Stone",
+          "count": 31,
+          "rate": 0.1949685534591195
+        },
+        {
+          "res": "Glinting Crystallized Magic",
+          "count": 3,
+          "rate": 0.018867924528301886
+        },
+        {
+          "res": "Flawed Jade",
+          "count": 2,
+          "rate": 0.012578616352201259
+        },
+        {
+          "res": "Flawed Peridot",
+          "count": 2,
+          "rate": 0.012578616352201259
+        },
+        {
+          "res": "Flawed Diamond",
+          "count": 1,
+          "rate": 0.006289308176100629
+        },
+        {
+          "res": "Flawed Cat's Eye Agate",
+          "count": 1,
+          "rate": 0.006289308176100629
+        },
+        {
+          "res": "Flawed Sapphire",
+          "count": 1,
+          "rate": 0.006289308176100629
+        }
+      ],
+      "zones": [
+        "Scarwood",
+        "Fallenpass",
+        "Sungreetstrand"
+      ]
+    },
+    {
       "name": "Platinum Ore",
-      "pulls": 120,
+      "pulls": 126,
       "yields": [
         {
           "res": "Platinum Ore",
-          "count": 120,
+          "count": 126,
           "rate": 1
         },
         {
           "res": "Jade",
           "count": 3,
-          "rate": 0.025
+          "rate": 0.023809523809523808
         },
         {
           "res": "Brilliant Crystallized Magic",
           "count": 3,
-          "rate": 0.025
+          "rate": 0.023809523809523808
         },
         {
           "res": "Peridot",
           "count": 3,
-          "rate": 0.025
+          "rate": 0.023809523809523808
         },
         {
           "res": "Ruby",
           "count": 1,
-          "rate": 0.008333333333333333
+          "rate": 0.007936507936507936
         },
         {
           "res": "Sapphire",
           "count": 1,
-          "rate": 0.008333333333333333
+          "rate": 0.007936507936507936
         },
         {
           "res": "Cat's Eye Agate",
           "count": 1,
-          "rate": 0.008333333333333333
+          "rate": 0.007936507936507936
         }
       ],
       "zones": [
@@ -15283,41 +15236,6 @@
       ]
     },
     {
-      "name": "Silver Ore",
-      "pulls": 59,
-      "yields": [
-        {
-          "res": "Silver Ore",
-          "count": 59,
-          "rate": 1
-        },
-        {
-          "res": "Glinting Crystallized Magic",
-          "count": 1,
-          "rate": 0.01694915254237288
-        },
-        {
-          "res": "Flawed Cat's Eye Agate",
-          "count": 1,
-          "rate": 0.01694915254237288
-        },
-        {
-          "res": "Flawed Sapphire",
-          "count": 1,
-          "rate": 0.01694915254237288
-        },
-        {
-          "res": "Flawed Jade",
-          "count": 1,
-          "rate": 0.01694915254237288
-        }
-      ],
-      "zones": [
-        "Scarwood",
-        "Sungreetstrand"
-      ]
-    },
-    {
       "name": "Ironroot",
       "pulls": 56,
       "yields": [
@@ -15360,6 +15278,36 @@
       ]
     },
     {
+      "name": "Silver Ore",
+      "pulls": 36,
+      "yields": [
+        {
+          "res": "Silver Ore",
+          "count": 36,
+          "rate": 1
+        },
+        {
+          "res": "Jagged Stone",
+          "count": 5,
+          "rate": 0.1388888888888889
+        },
+        {
+          "res": "Flawed Sapphire",
+          "count": 1,
+          "rate": 0.027777777777777776
+        },
+        {
+          "res": "Flawed Jade",
+          "count": 1,
+          "rate": 0.027777777777777776
+        }
+      ],
+      "zones": [
+        "Scarwood",
+        "Sungreetstrand"
+      ]
+    },
+    {
       "name": "Stranglevine",
       "pulls": 36,
       "yields": [
@@ -15379,24 +15327,6 @@
       ]
     },
     {
-      "name": "Nomad's Grace",
-      "pulls": 21,
-      "yields": [
-        {
-          "res": "Nomad's Grace",
-          "count": 21,
-          "rate": 1
-        }
-      ],
-      "zones": [
-        "Sungreetstrand",
-        "Shaded Dunes",
-        "Scarwood",
-        "Evershade Weald",
-        "Valeofzintar"
-      ]
-    },
-    {
       "name": "Herbs - Keepersbight",
       "pulls": 21,
       "yields": [
@@ -15411,41 +15341,20 @@
       ]
     },
     {
-      "name": "Herbs - Scarwood",
-      "pulls": 14,
+      "name": "Nomad's Grace",
+      "pulls": 20,
       "yields": [
         {
-          "res": "Moonveil",
-          "count": 14,
+          "res": "Nomad's Grace",
+          "count": 20,
           "rate": 1
         }
       ],
       "zones": [
-        "Scarwood"
-      ]
-    },
-    {
-      "name": "Silver Ore & Jagged Stone",
-      "pulls": 10,
-      "yields": [
-        {
-          "res": "Silver Ore",
-          "count": 10,
-          "rate": 1
-        },
-        {
-          "res": "Jagged Stone",
-          "count": 10,
-          "rate": 1
-        },
-        {
-          "res": "Flawed Sapphire",
-          "count": 1,
-          "rate": 0.1
-        }
-      ],
-      "zones": [
-        "Scarwood"
+        "Sungreetstrand",
+        "Shaded Dunes",
+        "Evershade Weald",
+        "Valeofzintar"
       ]
     },
     {
@@ -15518,22 +15427,36 @@
     },
     {
       "name": "Sylvine",
-      "pulls": 6,
+      "pulls": 5,
       "yields": [
         {
           "res": "Sylvine",
-          "count": 6,
+          "count": 5,
           "rate": 1
         },
         {
           "res": "Magic Frond",
           "count": 1,
-          "rate": 0.16666666666666666
+          "rate": 0.2
         }
       ],
       "zones": [
         "Scarwood",
         "Evershade Weald"
+      ]
+    },
+    {
+      "name": "Herbs - Scarwood",
+      "pulls": 4,
+      "yields": [
+        {
+          "res": "Moonveil",
+          "count": 4,
+          "rate": 1
+        }
+      ],
+      "zones": [
+        "Scarwood"
       ]
     }
   ]
