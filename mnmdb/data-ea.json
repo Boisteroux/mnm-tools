@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-21T20:00:16.629Z",
+  "generatedAt": "2026-11-22T02:00:06.542Z",
   "source": "mnm-tools",
-  "ledgerFiles": 57,
-  "events": 15337,
+  "ledgerFiles": 58,
+  "events": 15378,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 15337
+      "events": 15378
     }
   ],
   "contributorCount": 1,
@@ -1555,9 +1555,9 @@
     "a water basilisk": {
       "kills": 0,
       "drops": {
-        "Intact Basilisk Vertebra": 24,
+        "Intact Basilisk Vertebra": 25,
         "Smooth Basilisk Vertebra": 23,
-        "Basilisk Scale": 5,
+        "Basilisk Scale": 7,
         "Basilisk Eye": 10,
         "Raw Basilisk Steak": 6,
         "Basilisk Tooth": 6,
@@ -1565,10 +1565,10 @@
         "Bile-Drenched Artifact": 1
       },
       "zones": {
-        "Shallowshoals": 95
+        "Shallowshoals": 98
       },
       "coin": 0,
-      "corpses": 57
+      "corpses": 59
     },
     "a ghostly fighter": {
       "kills": 15,
@@ -1869,15 +1869,15 @@
         "Sleek Shark Skin": 17,
         "Shark Fin": 8,
         "Intact Shark Vertebra": 11,
-        "Smooth Shark Vertebra": 14,
-        "Raw Shark Meat": 8,
+        "Smooth Shark Vertebra": 15,
+        "Raw Shark Meat": 9,
         "Spirit World Ch. 11": 1
       },
       "zones": {
-        "Shallowshoals": 72
+        "Shallowshoals": 75
       },
       "coin": 0,
-      "corpses": 31
+      "corpses": 32
     },
     "Sharkie": {
       "kills": 0,
@@ -2470,8 +2470,8 @@
         {
           "mob": "a water basilisk",
           "drops": 10,
-          "corpses": 57,
-          "rate": 0.17543859649122806
+          "corpses": 59,
+          "rate": 0.1694915254237288
         }
       ],
       "prices": [],
@@ -2487,9 +2487,9 @@
       "droppedBy": [
         {
           "mob": "a water basilisk",
-          "drops": 5,
-          "corpses": 57,
-          "rate": 0.08771929824561403
+          "drops": 7,
+          "corpses": 59,
+          "rate": 0.11864406779661017
         }
       ],
       "prices": [],
@@ -2506,8 +2506,8 @@
         {
           "mob": "a water basilisk",
           "drops": 6,
-          "corpses": 57,
-          "rate": 0.10526315789473684
+          "corpses": 59,
+          "rate": 0.1016949152542373
         }
       ],
       "prices": [
@@ -2661,8 +2661,8 @@
         {
           "mob": "a water basilisk",
           "drops": 1,
-          "corpses": 57,
-          "rate": 0.017543859649122806
+          "corpses": 59,
+          "rate": 0.01694915254237288
         }
       ],
       "prices": [],
@@ -3769,7 +3769,7 @@
       "name": "Coal",
       "droppedBy": [],
       "prices": [],
-      "harvested": 1059,
+      "harvested": 1078,
       "zones": [
         "Sungreetstrand",
         "Scarwood",
@@ -3787,8 +3787,8 @@
         {
           "mob": "a water basilisk",
           "drops": 1,
-          "corpses": 57,
-          "rate": 0.017543859649122806
+          "corpses": 59,
+          "rate": 0.01694915254237288
         }
       ],
       "prices": [],
@@ -7379,7 +7379,7 @@
           "count": 1
         }
       ],
-      "harvested": 133,
+      "harvested": 136,
       "zones": [
         "Fallenpass",
         "Shallowshoals"
@@ -7907,11 +7907,12 @@
           "count": 2
         }
       ],
-      "harvested": 11,
+      "harvested": 12,
       "zones": [
         "Fallenpass",
         "Keepersbight",
-        "Graincellar"
+        "Graincellar",
+        "Shallowshoals"
       ]
     },
     {
@@ -7978,9 +7979,9 @@
       "droppedBy": [
         {
           "mob": "a water basilisk",
-          "drops": 24,
-          "corpses": 57,
-          "rate": 0.42105263157894735
+          "drops": 25,
+          "corpses": 59,
+          "rate": 0.423728813559322
         }
       ],
       "prices": [
@@ -8024,8 +8025,8 @@
         {
           "mob": "a roaming shark",
           "drops": 11,
-          "corpses": 31,
-          "rate": 0.3548387096774194
+          "corpses": 32,
+          "rate": 0.34375
         }
       ],
       "prices": [
@@ -8073,7 +8074,7 @@
           "count": 23
         }
       ],
-      "harvested": 905,
+      "harvested": 907,
       "zones": [
         "Fallenpass",
         "Shallowshoals"
@@ -9592,8 +9593,8 @@
         {
           "mob": "a water basilisk",
           "drops": 6,
-          "corpses": 57,
-          "rate": 0.10526315789473684
+          "corpses": 59,
+          "rate": 0.1016949152542373
         }
       ],
       "prices": [],
@@ -9975,9 +9976,9 @@
         },
         {
           "mob": "a roaming shark",
-          "drops": 8,
-          "corpses": 31,
-          "rate": 0.25806451612903225
+          "drops": 9,
+          "corpses": 32,
+          "rate": 0.28125
         }
       ],
       "prices": [],
@@ -10173,7 +10174,7 @@
           "count": 7
         }
       ],
-      "harvested": 231,
+      "harvested": 235,
       "zones": [
         "Sungreetstrand",
         "Scarwood",
@@ -11816,8 +11817,8 @@
         {
           "mob": "a roaming shark",
           "drops": 8,
-          "corpses": 31,
-          "rate": 0.25806451612903225
+          "corpses": 32,
+          "rate": 0.25
         }
       ],
       "prices": [],
@@ -12026,8 +12027,8 @@
         {
           "mob": "a roaming shark",
           "drops": 17,
-          "corpses": 31,
-          "rate": 0.5483870967741935
+          "corpses": 32,
+          "rate": 0.53125
         }
       ],
       "prices": [],
@@ -12044,8 +12045,8 @@
         {
           "mob": "a water basilisk",
           "drops": 23,
-          "corpses": 57,
-          "rate": 0.40350877192982454
+          "corpses": 59,
+          "rate": 0.3898305084745763
         },
         {
           "mob": "a water basilisk broodmother",
@@ -12082,9 +12083,9 @@
         },
         {
           "mob": "a roaming shark",
-          "drops": 14,
-          "corpses": 31,
-          "rate": 0.45161290322580644
+          "drops": 15,
+          "corpses": 32,
+          "rate": 0.46875
         }
       ],
       "prices": [
@@ -12218,8 +12219,8 @@
         {
           "mob": "a roaming shark",
           "drops": 1,
-          "corpses": 31,
-          "rate": 0.03225806451612903
+          "corpses": 32,
+          "rate": 0.03125
         }
       ],
       "prices": [],
@@ -14241,7 +14242,7 @@
           "count": 6
         }
       ],
-      "harvested": 232,
+      "harvested": 233,
       "zones": [
         "Fallenpass",
         "Shallowshoals"
@@ -14834,21 +14835,21 @@
     "Chipped Sapphire": 3,
     "Alunite Ore": 2,
     "Clouded Crystallized Magic": 6,
-    "Iron Ore": 905,
-    "Weighty Stone": 232,
+    "Iron Ore": 907,
+    "Weighty Stone": 233,
     "Ironroot": 80,
     "Imperfect Sapphire": 9,
-    "Imperfect Peridot": 11,
+    "Imperfect Peridot": 12,
     "Imperfect Emerald": 6,
     "Imperfect Jade": 9,
     "Shining Crystallized Magic": 13,
     "Imperfect Cat's Eye Agate": 8,
-    "Gold Ore": 133,
+    "Gold Ore": 136,
     "Imperfect Ruby": 5,
     "Imperfect Diamond": 6,
-    "Coal": 1059,
+    "Coal": 1078,
     "Brilliant Crystallized Magic": 18,
-    "Rigid Stone": 231,
+    "Rigid Stone": 235,
     "Sapphire": 4,
     "Platinum Ore": 147,
     "Jade": 8,
@@ -14871,62 +14872,62 @@
   "harvestNodes": [
     {
       "name": "Coal",
-      "pulls": 1088,
+      "pulls": 1107,
       "yields": [
         {
           "res": "Coal",
-          "count": 1059,
-          "rate": 0.9733455882352942
+          "count": 1078,
+          "rate": 0.973803071364047
         },
         {
           "res": "Rigid Stone",
-          "count": 231,
-          "rate": 0.21231617647058823
+          "count": 235,
+          "rate": 0.2122854561878952
         },
         {
           "res": "Platinum Ore",
           "count": 29,
-          "rate": 0.02665441176470588
+          "rate": 0.026196928635953028
         },
         {
           "res": "Brilliant Crystallized Magic",
           "count": 15,
-          "rate": 0.013786764705882353
+          "rate": 0.013550135501355014
         },
         {
           "res": "Emerald",
           "count": 9,
-          "rate": 0.008272058823529412
+          "rate": 0.008130081300813009
         },
         {
           "res": "Cat's Eye Agate",
           "count": 8,
-          "rate": 0.007352941176470588
+          "rate": 0.007226738934056007
         },
         {
           "res": "Ruby",
           "count": 6,
-          "rate": 0.0055147058823529415
+          "rate": 0.005420054200542005
         },
         {
           "res": "Peridot",
           "count": 5,
-          "rate": 0.004595588235294118
+          "rate": 0.004516711833785004
         },
         {
           "res": "Jade",
           "count": 5,
-          "rate": 0.004595588235294118
+          "rate": 0.004516711833785004
         },
         {
           "res": "Sapphire",
           "count": 3,
-          "rate": 0.0027573529411764708
+          "rate": 0.0027100271002710027
         },
         {
           "res": "Diamond",
           "count": 3,
-          "rate": 0.0027573529411764708
+          "rate": 0.0027100271002710027
         }
       ],
       "zones": [
@@ -14940,62 +14941,62 @@
     },
     {
       "name": "Iron Ore",
-      "pulls": 925,
+      "pulls": 928,
       "yields": [
         {
           "res": "Iron Ore",
-          "count": 904,
-          "rate": 0.9772972972972973
+          "count": 906,
+          "rate": 0.9762931034482759
         },
         {
           "res": "Weighty Stone",
-          "count": 232,
-          "rate": 0.2508108108108108
+          "count": 233,
+          "rate": 0.2510775862068966
         },
         {
           "res": "Gold Ore",
-          "count": 21,
-          "rate": 0.022702702702702703
+          "count": 22,
+          "rate": 0.023706896551724137
+        },
+        {
+          "res": "Imperfect Peridot",
+          "count": 10,
+          "rate": 0.010775862068965518
         },
         {
           "res": "Shining Crystallized Magic",
           "count": 10,
-          "rate": 0.010810810810810811
+          "rate": 0.010775862068965518
         },
         {
           "res": "Imperfect Sapphire",
           "count": 9,
-          "rate": 0.00972972972972973
-        },
-        {
-          "res": "Imperfect Peridot",
-          "count": 9,
-          "rate": 0.00972972972972973
+          "rate": 0.009698275862068966
         },
         {
           "res": "Imperfect Jade",
           "count": 7,
-          "rate": 0.0075675675675675675
+          "rate": 0.007543103448275862
         },
         {
           "res": "Imperfect Emerald",
           "count": 6,
-          "rate": 0.006486486486486486
+          "rate": 0.00646551724137931
         },
         {
           "res": "Imperfect Cat's Eye Agate",
           "count": 6,
-          "rate": 0.006486486486486486
+          "rate": 0.00646551724137931
         },
         {
           "res": "Imperfect Ruby",
           "count": 5,
-          "rate": 0.005405405405405406
+          "rate": 0.005387931034482759
         },
         {
           "res": "Imperfect Diamond",
           "count": 5,
-          "rate": 0.005405405405405406
+          "rate": 0.005387931034482759
         }
       ],
       "zones": [
@@ -15216,37 +15217,37 @@
     },
     {
       "name": "Gold Ore",
-      "pulls": 112,
+      "pulls": 114,
       "yields": [
         {
           "res": "Gold Ore",
-          "count": 112,
+          "count": 114,
           "rate": 1
         },
         {
           "res": "Shining Crystallized Magic",
           "count": 3,
-          "rate": 0.026785714285714284
+          "rate": 0.02631578947368421
         },
         {
           "res": "Imperfect Peridot",
           "count": 2,
-          "rate": 0.017857142857142856
+          "rate": 0.017543859649122806
         },
         {
           "res": "Imperfect Jade",
           "count": 2,
-          "rate": 0.017857142857142856
+          "rate": 0.017543859649122806
         },
         {
           "res": "Imperfect Cat's Eye Agate",
           "count": 2,
-          "rate": 0.017857142857142856
+          "rate": 0.017543859649122806
         },
         {
           "res": "Imperfect Diamond",
           "count": 1,
-          "rate": 0.008928571428571428
+          "rate": 0.008771929824561403
         }
       ],
       "zones": [
