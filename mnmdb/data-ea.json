@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-22T20:00:16.798Z",
+  "generatedAt": "2026-11-23T02:00:17.081Z",
   "source": "mnm-tools",
   "ledgerFiles": 59,
-  "events": 15216,
+  "events": 15314,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 15216
+      "events": 15314
     }
   ],
   "contributorCount": 1,
@@ -3756,7 +3756,12 @@
       "gameId": null,
       "name": "Coal",
       "droppedBy": [],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 1,
+          "count": 2
+        }
+      ],
       "harvested": 1171,
       "zones": [
         "Sungreetstrand",
@@ -8016,7 +8021,7 @@
         },
         {
           "copper": 364,
-          "count": 2
+          "count": 3
         }
       ],
       "harvested": 0,
@@ -9139,6 +9144,10 @@
         }
       ],
       "prices": [
+        {
+          "copper": 3,
+          "count": 1
+        },
         {
           "copper": 4,
           "count": 1
@@ -10268,7 +10277,12 @@
           "rate": 0.0035714285714285713
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 255,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Keepersbight",
@@ -10988,7 +11002,7 @@
         },
         {
           "copper": 204,
-          "count": 1
+          "count": 2
         },
         {
           "copper": 219,
@@ -12059,7 +12073,7 @@
         },
         {
           "copper": 374,
-          "count": 2
+          "count": 3
         }
       ],
       "harvested": 0,
@@ -12240,7 +12254,7 @@
       "name": "Stranglevine",
       "droppedBy": [],
       "prices": [],
-      "harvested": 60,
+      "harvested": 62,
       "zones": [
         "Fallenpass"
       ]
@@ -14831,7 +14845,7 @@
     "Chipped Cat's Eye Agate": 1,
     "Flawed Cat's Eye Agate": 1,
     "Ghost Poppy": 2,
-    "Stranglevine": 60,
+    "Stranglevine": 62,
     "Duneleaf": 12
   },
   "harvestNodes": [
@@ -15278,6 +15292,25 @@
       ]
     },
     {
+      "name": "Stranglevine",
+      "pulls": 37,
+      "yields": [
+        {
+          "res": "Stranglevine",
+          "count": 37,
+          "rate": 1
+        },
+        {
+          "res": "Enchanted Frond",
+          "count": 1,
+          "rate": 0.02702702702702703
+        }
+      ],
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
       "name": "Silver Ore",
       "pulls": 36,
       "yields": [
@@ -15305,25 +15338,6 @@
       "zones": [
         "Scarwood",
         "Sungreetstrand"
-      ]
-    },
-    {
-      "name": "Stranglevine",
-      "pulls": 36,
-      "yields": [
-        {
-          "res": "Stranglevine",
-          "count": 36,
-          "rate": 1
-        },
-        {
-          "res": "Enchanted Frond",
-          "count": 1,
-          "rate": 0.027777777777777776
-        }
-      ],
-      "zones": [
-        "Fallenpass"
       ]
     },
     {
