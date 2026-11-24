@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-24T14:00:17.350Z",
+  "generatedAt": "2026-11-24T20:00:17.214Z",
   "source": "mnm-tools",
-  "ledgerFiles": 58,
-  "events": 13563,
+  "ledgerFiles": 61,
+  "events": 13640,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 13563
+      "events": 13640
     }
   ],
   "contributorCount": 1,
@@ -2692,7 +2692,7 @@
           "count": 1
         }
       ],
-      "harvested": 33,
+      "harvested": 35,
       "zones": [
         "Evershade Weald",
         "Keepersbight"
@@ -3307,9 +3307,10 @@
           "count": 1
         }
       ],
-      "harvested": 1,
+      "harvested": 2,
       "zones": [
-        "Evershade Weald"
+        "Evershade Weald",
+        "Keepersbight"
       ]
     },
     {
@@ -3323,9 +3324,10 @@
           "count": 1
         }
       ],
-      "harvested": 2,
+      "harvested": 3,
       "zones": [
-        "Evershade Weald"
+        "Evershade Weald",
+        "Keepersbight"
       ]
     },
     {
@@ -3660,7 +3662,7 @@
       "name": "Copper Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 122,
+      "harvested": 128,
       "zones": [
         "Evershade Weald",
         "Keepersbight",
@@ -9440,7 +9442,7 @@
           "count": 3
         }
       ],
-      "harvested": 211,
+      "harvested": 241,
       "zones": [
         "Keepersbight",
         "Sungreetstrand"
@@ -13250,11 +13252,22 @@
       "name": "Whispering Sage",
       "droppedBy": [],
       "prices": [],
-      "harvested": 62,
+      "harvested": 63,
       "zones": [
         "Sungreetstrand",
         "Keepersbight",
         "Shaded Dunes"
+      ]
+    },
+    {
+      "id": "whisperpine_wood",
+      "gameId": null,
+      "name": "Whisperpine Wood",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 3,
+      "zones": [
+        "Keepersbight"
       ]
     },
     {
@@ -13299,7 +13312,7 @@
       "name": "Wood",
       "droppedBy": [],
       "prices": [],
-      "harvested": 168,
+      "harvested": 193,
       "zones": [
         "Keepersbight",
         "Sungreetstrand"
@@ -13793,9 +13806,9 @@
   ],
   "harvest": {
     "Moonveil": 44,
-    "Wood": 168,
-    "Resin": 211,
-    "Whispering Sage": 62,
+    "Wood": 193,
+    "Resin": 241,
+    "Whispering Sage": 63,
     "Limestone": 410,
     "Clouded Crystallized Magic": 6,
     "Iron Ore": 912,
@@ -13823,8 +13836,8 @@
     "Cat's Eye Agate": 9,
     "Ruby": 7,
     "Lionleaf": 12,
-    "Copper Ore": 122,
-    "Brittle Stone": 33,
+    "Copper Ore": 128,
+    "Brittle Stone": 35,
     "Chipped Emerald": 4,
     "Diamond": 6,
     "Peridot": 9,
@@ -13834,9 +13847,9 @@
     "Fine Wood": 21,
     "Flawed Sapphire": 2,
     "Alunite Ore": 1,
-    "Chipped Sapphire": 2,
+    "Chipped Sapphire": 3,
     "Chipped Jade": 2,
-    "Chipped Peridot": 1,
+    "Chipped Peridot": 2,
     "Chipped Diamond": 1,
     "Chipped Cat's Eye Agate": 1,
     "Flawed Peridot": 1,
@@ -13847,7 +13860,8 @@
     "Ghost Poppy": 2,
     "Stranglevine": 62,
     "Duneleaf": 12,
-    "Flawed Emerald": 1
+    "Flawed Emerald": 1,
+    "Whisperpine Wood": 3
   },
   "harvestNodes": [
     {
@@ -13985,6 +13999,36 @@
       ]
     },
     {
+      "name": "Wood & Resin",
+      "pulls": 210,
+      "yields": [
+        {
+          "res": "Wood",
+          "count": 193,
+          "rate": 0.919047619047619
+        },
+        {
+          "res": "Resin",
+          "count": 176,
+          "rate": 0.8380952380952381
+        },
+        {
+          "res": "Fine Wood",
+          "count": 14,
+          "rate": 0.06666666666666667
+        },
+        {
+          "res": "Whisperpine Wood",
+          "count": 3,
+          "rate": 0.014285714285714285
+        }
+      ],
+      "zones": [
+        "Keepersbight",
+        "Sungreetstrand"
+      ]
+    },
+    {
       "name": "Limestone",
       "pulls": 207,
       "yields": [
@@ -14021,23 +14065,65 @@
       ]
     },
     {
-      "name": "Wood & Resin",
-      "pulls": 168,
+      "name": "Copper Ore",
+      "pulls": 128,
       "yields": [
         {
-          "res": "Wood",
-          "count": 168,
+          "res": "Copper Ore",
+          "count": 128,
           "rate": 1
         },
         {
-          "res": "Resin",
-          "count": 138,
-          "rate": 0.8214285714285714
+          "res": "Brittle Stone",
+          "count": 33,
+          "rate": 0.2578125
+        },
+        {
+          "res": "Chipped Emerald",
+          "count": 4,
+          "rate": 0.03125
+        },
+        {
+          "res": "Chipped Sapphire",
+          "count": 3,
+          "rate": 0.0234375
+        },
+        {
+          "res": "Clouded Crystallized Magic",
+          "count": 2,
+          "rate": 0.015625
+        },
+        {
+          "res": "Alunite Ore",
+          "count": 1,
+          "rate": 0.0078125
+        },
+        {
+          "res": "Chipped Jade",
+          "count": 1,
+          "rate": 0.0078125
+        },
+        {
+          "res": "Chipped Diamond",
+          "count": 1,
+          "rate": 0.0078125
+        },
+        {
+          "res": "Chipped Cat's Eye Agate",
+          "count": 1,
+          "rate": 0.0078125
+        },
+        {
+          "res": "Chipped Peridot",
+          "count": 1,
+          "rate": 0.0078125
         }
       ],
       "zones": [
+        "Evershade Weald",
         "Keepersbight",
-        "Sungreetstrand"
+        "Nightharborw",
+        "Shaded Dunes"
       ]
     },
     {
@@ -14085,63 +14171,6 @@
         "Scarwood",
         "Shallowshoals",
         "Fallenpass"
-      ]
-    },
-    {
-      "name": "Copper Ore",
-      "pulls": 122,
-      "yields": [
-        {
-          "res": "Copper Ore",
-          "count": 122,
-          "rate": 1
-        },
-        {
-          "res": "Brittle Stone",
-          "count": 31,
-          "rate": 0.2540983606557377
-        },
-        {
-          "res": "Chipped Emerald",
-          "count": 4,
-          "rate": 0.03278688524590164
-        },
-        {
-          "res": "Clouded Crystallized Magic",
-          "count": 2,
-          "rate": 0.01639344262295082
-        },
-        {
-          "res": "Chipped Sapphire",
-          "count": 2,
-          "rate": 0.01639344262295082
-        },
-        {
-          "res": "Alunite Ore",
-          "count": 1,
-          "rate": 0.00819672131147541
-        },
-        {
-          "res": "Chipped Jade",
-          "count": 1,
-          "rate": 0.00819672131147541
-        },
-        {
-          "res": "Chipped Diamond",
-          "count": 1,
-          "rate": 0.00819672131147541
-        },
-        {
-          "res": "Chipped Cat's Eye Agate",
-          "count": 1,
-          "rate": 0.00819672131147541
-        }
-      ],
-      "zones": [
-        "Evershade Weald",
-        "Keepersbight",
-        "Nightharborw",
-        "Shaded Dunes"
       ]
     },
     {
@@ -14258,17 +14287,17 @@
     },
     {
       "name": "Whispering Sage",
-      "pulls": 41,
+      "pulls": 42,
       "yields": [
         {
           "res": "Whispering Sage",
-          "count": 41,
+          "count": 42,
           "rate": 1
         },
         {
           "res": "Magic Frond",
           "count": 2,
-          "rate": 0.04878048780487805
+          "rate": 0.047619047619047616
         }
       ],
       "zones": [
@@ -14325,25 +14354,6 @@
         "Shaded Dunes",
         "Valeofzintar",
         "Evershade Weald"
-      ]
-    },
-    {
-      "name": "Fine Wood & Resin",
-      "pulls": 14,
-      "yields": [
-        {
-          "res": "Fine Wood",
-          "count": 14,
-          "rate": 1
-        },
-        {
-          "res": "Resin",
-          "count": 14,
-          "rate": 1
-        }
-      ],
-      "zones": [
-        "Keepersbight"
       ]
     },
     {
