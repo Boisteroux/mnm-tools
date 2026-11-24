@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-24T02:00:51.299Z",
+  "generatedAt": "2026-11-24T08:00:47.274Z",
   "items": {
     "Ancient Painted Urn": {
       "hasPage": true,
@@ -152236,9 +152236,44 @@
       "fromTrade": true
     },
     "Twilight Defender": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Game_shield_kite1_weapon_201f1e",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 6.5,
+      "size": "LARGE",
+      "class": "FTR INQ PAL SHD",
+      "race": "ALL",
+      "flags": [
+        "MAGIC",
+        "UNIQUE"
+      ],
+      "handed": null,
+      "ac": 42,
+      "stats": {
+        "STA": 5,
+        "INT": 5
+      },
+      "hp": 25,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "DR": 1
+      },
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "from": [
+        "Vadim Nightsbane"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/7/73/Game_shield_kite1_weapon_201f1e.png/64px-Game_shield_kite1_weapon_201f1e.png"
     },
     "Staff Of Death": {
       "hasPage": false,
@@ -154685,9 +154720,41 @@
       ]
     },
     "Tibbek's Driftwood Bow": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Game_bow1_wood_weapon_956c16",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 6,
+      "size": "MEDIUM",
+      "class": "ARC BST FTR INQ PAL RNG ROG SHD SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "STA": 2,
+        "DEX": 1
+      },
+      "hp": 5,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "from": [
+        "Tibbek"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/d/dc/Game_bow1_wood_weapon_956c16.png/64px-Game_bow1_wood_weapon_956c16.png"
     },
     "Polished Champion's Sabatons": {
       "hasPage": true,
@@ -155910,9 +155977,40 @@
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/a/a0/Game_necklace_metal_goldruby_equipment_785738.png/64px-Game_necklace_metal_goldruby_equipment_785738.png"
     },
     "Yard Grunt's Belt": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Game_belt_leather_equipment_2d292d",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "SMALL",
+      "class": "ARC BRD BST FTR INQ MNK PAL RNG ROG SHD SPB",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": 2,
+      "stats": {
+        "STR": 1,
+        "DEX": 2
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "from": [
+        "A cave myconid",
+        "Ail'Vorith"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/0/01/Game_belt_leather_equipment_2d292d.png/64px-Game_belt_leather_equipment_2d292d.png"
     },
     "Vault Indexer's Cape": {
       "hasPage": true,
@@ -156192,9 +156290,39 @@
       "fromTrade": true
     },
     "Vault Curator's Staff": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Game_club4_weapon_493a1f",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 4.75,
+      "size": "MEDIUM",
+      "class": "ELE ENC NEC WIZ",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "INT": 2
+      },
+      "hp": 10,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "from": [
+        "A Deepcut cursecaller",
+        "Underdocks"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/7/77/Game_club4_weapon_493a1f.png/64px-Game_club4_weapon_493a1f.png"
     },
     "Woice Of The Land Sabatons": {
       "hasPage": false,
@@ -157348,6 +157476,120 @@
       "hasPage": false,
       "wikiOnly": true,
       "fromTrade": true
+    },
+    "Legendary Holy Sacred Buckler": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Game_shield_round1_weapon_6c5c35",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 4,
+      "size": "MEDIUM",
+      "class": "BRD CLR DRU FTR INQ PAL RNG SHD SHM",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 30,
+      "stats": {
+        "WIS": 9
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "MR": 2,
+        "DR": 4
+      },
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Watch"
+      ],
+      "from": [
+        "Priestess Grundlesen"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/1/1c/Game_shield_round1_weapon_6c5c35.png/64px-Game_shield_round1_weapon_6c5c35.png"
+    },
+    "Legendary Templar Helmet": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0016AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 4,
+      "size": "SMALL",
+      "class": "CLR FTR INQ PAL SHD",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 46,
+      "stats": {
+        "WIS": 10
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "DR": 5
+      },
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Fallen Watch"
+      ],
+      "from": [
+        "Brainiac"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/f6/Itemicon0016AA.png/64px-Itemicon0016AA.png"
+    },
+    "Woodland Scout's Shoulderpads": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Game_shoulders_leather_equipment_10140a",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 1,
+      "size": "SMALL",
+      "class": "ARC BRD BST FTR INQ MNK PAL RNG ROG SHD SPB",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": 6,
+      "stats": {
+        "STR": 1
+      },
+      "hp": 10,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "icon": null
     }
   },
   "mobs": {
