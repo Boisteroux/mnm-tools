@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-24T02:00:16.497Z",
+  "generatedAt": "2026-11-24T08:00:16.791Z",
   "source": "mnm-tools",
-  "ledgerFiles": 59,
-  "events": 14678,
+  "ledgerFiles": 60,
+  "events": 14730,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 14678
+      "events": 14730
     }
   ],
   "contributorCount": 1,
@@ -2006,6 +2006,30 @@
       },
       "coin": 301,
       "corpses": 2
+    },
+    "a corrupted hill giant": {
+      "kills": 0,
+      "drops": {
+        "Raw Giant Meat": 2
+      },
+      "zones": {
+        "Scarwood": 2
+      },
+      "coin": 0,
+      "corpses": 2
+    },
+    "a black drake": {
+      "kills": 10,
+      "drops": {
+        "Hardened Drake Scale": 3,
+        "Drake Claw": 2,
+        "Drake Fang": 1
+      },
+      "zones": {
+        "Scarwood": 16
+      },
+      "coin": 2594,
+      "corpses": 4
     },
     "Mirella Nighthorn": {
       "kills": 1,
@@ -6082,6 +6106,12 @@
       "name": "Drake Claw",
       "droppedBy": [
         {
+          "mob": "a black drake",
+          "drops": 2,
+          "corpses": 4,
+          "rate": 0.5
+        },
+        {
           "mob": "a forest drakeling",
           "drops": 4,
           "corpses": 10,
@@ -6138,6 +6168,12 @@
           "drops": 1,
           "corpses": 3,
           "rate": 0.3333333333333333
+        },
+        {
+          "mob": "a black drake",
+          "drops": 1,
+          "corpses": 4,
+          "rate": 0.25
         },
         {
           "mob": "a forest drakeling",
@@ -6534,10 +6570,11 @@
           "count": 1
         }
       ],
-      "harvested": 0,
+      "harvested": 1,
       "zones": [
         "Keepersbight",
-        "Sungreetstrand"
+        "Sungreetstrand",
+        "Scarwood"
       ]
     },
     {
@@ -7377,6 +7414,12 @@
       "name": "Hardened Drake Scale",
       "droppedBy": [
         {
+          "mob": "a black drake",
+          "drops": 3,
+          "corpses": 4,
+          "rate": 0.75
+        },
+        {
           "mob": "a green drake",
           "drops": 7,
           "corpses": 18,
@@ -8106,7 +8149,7 @@
           "count": 6
         }
       ],
-      "harvested": 21,
+      "harvested": 22,
       "zones": [
         "Scarwood",
         "Fallenpass",
@@ -8529,7 +8572,7 @@
           "count": 1
         }
       ],
-      "harvested": 390,
+      "harvested": 410,
       "zones": [
         "Sungreetstrand",
         "Fallenpass",
@@ -8823,11 +8866,11 @@
       "name": "Moonveil",
       "droppedBy": [],
       "prices": [],
-      "harvested": 42,
+      "harvested": 44,
       "zones": [
         "Keepersbight",
-        "Evershade Weald",
-        "Scarwood"
+        "Scarwood",
+        "Evershade Weald"
       ]
     },
     {
@@ -9577,6 +9620,12 @@
       "gameId": "3cfae3d4e40f6b80e2cd729e",
       "name": "Raw Giant Meat",
       "droppedBy": [
+        {
+          "mob": "a corrupted hill giant",
+          "drops": 2,
+          "corpses": 2,
+          "rate": 1
+        },
         {
           "mob": "a hill giant",
           "drops": 7,
@@ -13684,7 +13733,7 @@
       "name": "Tin Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 91,
+      "harvested": 98,
       "zones": [
         "Scarwood",
         "Fallenpass",
@@ -14626,8 +14675,8 @@
     "Wood": 191,
     "Resin": 237,
     "Whispering Sage": 68,
-    "Moonveil": 42,
-    "Limestone": 390,
+    "Moonveil": 44,
+    "Limestone": 410,
     "Clouded Crystallized Magic": 6,
     "Iron Ore": 912,
     "Weighty Stone": 236,
@@ -14642,8 +14691,8 @@
     "Imperfect Ruby": 6,
     "Imperfect Diamond": 6,
     "Nomad's Grace": 30,
-    "Tin Ore": 91,
-    "Jagged Stone": 21,
+    "Tin Ore": 98,
+    "Jagged Stone": 22,
     "Magic Frond": 2,
     "Coal": 1171,
     "Brilliant Crystallized Magic": 18,
@@ -14677,7 +14726,8 @@
     "Sylvine": 3,
     "Ghost Poppy": 2,
     "Stranglevine": 62,
-    "Duneleaf": 12
+    "Duneleaf": 12,
+    "Flawed Emerald": 1
   },
   "harvestNodes": [
     {
@@ -14815,6 +14865,42 @@
       ]
     },
     {
+      "name": "Limestone",
+      "pulls": 207,
+      "yields": [
+        {
+          "res": "Limestone",
+          "count": 207,
+          "rate": 1
+        },
+        {
+          "res": "Tin Ore",
+          "count": 6,
+          "rate": 0.028985507246376812
+        },
+        {
+          "res": "Clouded Crystallized Magic",
+          "count": 4,
+          "rate": 0.01932367149758454
+        },
+        {
+          "res": "Silver Ore",
+          "count": 2,
+          "rate": 0.00966183574879227
+        },
+        {
+          "res": "Jagged Stone",
+          "count": 1,
+          "rate": 0.004830917874396135
+        }
+      ],
+      "zones": [
+        "Sungreetstrand",
+        "Fallenpass",
+        "Scarwood"
+      ]
+    },
+    {
       "name": "Wood & Resin",
       "pulls": 205,
       "yields": [
@@ -14837,42 +14923,6 @@
       "zones": [
         "Keepersbight",
         "Sungreetstrand"
-      ]
-    },
-    {
-      "name": "Limestone",
-      "pulls": 196,
-      "yields": [
-        {
-          "res": "Limestone",
-          "count": 196,
-          "rate": 1
-        },
-        {
-          "res": "Tin Ore",
-          "count": 5,
-          "rate": 0.025510204081632654
-        },
-        {
-          "res": "Clouded Crystallized Magic",
-          "count": 4,
-          "rate": 0.02040816326530612
-        },
-        {
-          "res": "Silver Ore",
-          "count": 2,
-          "rate": 0.01020408163265306
-        },
-        {
-          "res": "Jagged Stone",
-          "count": 1,
-          "rate": 0.00510204081632653
-        }
-      ],
-      "zones": [
-        "Sungreetstrand",
-        "Fallenpass",
-        "Scarwood"
       ]
     },
     {
@@ -15021,42 +15071,47 @@
     },
     {
       "name": "Tin Ore",
-      "pulls": 86,
+      "pulls": 92,
       "yields": [
         {
           "res": "Tin Ore",
-          "count": 86,
+          "count": 92,
           "rate": 1
         },
         {
           "res": "Jagged Stone",
-          "count": 18,
-          "rate": 0.20930232558139536
+          "count": 19,
+          "rate": 0.20652173913043478
         },
         {
           "res": "Glinting Crystallized Magic",
           "count": 2,
-          "rate": 0.023255813953488372
+          "rate": 0.021739130434782608
         },
         {
           "res": "Flawed Peridot",
           "count": 1,
-          "rate": 0.011627906976744186
+          "rate": 0.010869565217391304
         },
         {
           "res": "Flawed Jade",
           "count": 1,
-          "rate": 0.011627906976744186
+          "rate": 0.010869565217391304
         },
         {
           "res": "Flawed Cat's Eye Agate",
           "count": 1,
-          "rate": 0.011627906976744186
+          "rate": 0.010869565217391304
         },
         {
           "res": "Flawed Sapphire",
           "count": 1,
-          "rate": 0.011627906976744186
+          "rate": 0.010869565217391304
+        },
+        {
+          "res": "Flawed Emerald",
+          "count": 1,
+          "rate": 0.010869565217391304
         }
       ],
       "zones": [
@@ -15218,6 +15273,20 @@
       ],
       "zones": [
         "Sungreetstrand"
+      ]
+    },
+    {
+      "name": "Herbs - Scarwood",
+      "pulls": 3,
+      "yields": [
+        {
+          "res": "Moonveil",
+          "count": 3,
+          "rate": 1
+        }
+      ],
+      "zones": [
+        "Scarwood"
       ]
     },
     {
