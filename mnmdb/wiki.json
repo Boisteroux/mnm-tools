@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-25T14:00:36.155Z",
+  "generatedAt": "2026-11-25T15:22:00.117Z",
   "items": {
     "Ancient Painted Urn": {
       "hasPage": true,
@@ -157738,9 +157738,39 @@
       "effect": null
     },
     "Dark Archivist's Veil": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Game_mask_bone_equipment_7a4c4e",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "SMALL",
+      "class": "ELE ENC NEC WIZ",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": 3,
+      "stats": {
+        "INT": 1
+      },
+      "hp": null,
+      "mana": 15,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "from": [
+        "A traversed forefather",
+        "Blind Midden"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/4/40/Game_mask_bone_equipment_7a4c4e.png/64px-Game_mask_bone_equipment_7a4c4e.png"
     },
     "Leather Bracer Of Obedience": {
       "hasPage": false,
@@ -157748,9 +157778,33 @@
       "fromTrade": true
     },
     "Wooden Wardrobe": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Game_questionmark_default_ui_161615",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0,
+      "size": "EXTRA LARGE",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/b/b9/Game_questionmark_default_ui_161615.png/64px-Game_questionmark_default_ui_161615.png"
     }
   },
   "mobs": {
