@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-24T20:00:17.214Z",
+  "generatedAt": "2026-11-25T02:00:07.346Z",
   "source": "mnm-tools",
   "ledgerFiles": 61,
-  "events": 13640,
+  "events": 13697,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 13640
+      "events": 13697
     }
   ],
   "contributorCount": 1,
@@ -1863,6 +1863,52 @@
       "coin": 2594,
       "corpses": 4
     },
+    "a warped fae": {
+      "kills": 2,
+      "drops": {
+        "Warped Scale": 1
+      },
+      "zones": {
+        "Evershade Weald": 4
+      },
+      "coin": 230,
+      "corpses": 1
+    },
+    "a twisted fae": {
+      "kills": 2,
+      "drops": {
+        "Twisted Scale": 1
+      },
+      "zones": {
+        "Evershade Weald": 4
+      },
+      "coin": 686,
+      "corpses": 1
+    },
+    "a fungal druid": {
+      "kills": 0,
+      "drops": {
+        "First Circle Blue Cap": 2,
+        "Flawed Sapphire": 1,
+        "First Circle Red Cap": 1
+      },
+      "zones": {
+        "Evershade Weald": 4
+      },
+      "coin": 0,
+      "corpses": 3
+    },
+    "Sporeweaver Underveil": {
+      "kills": 0,
+      "drops": {
+        "First Circle Green Cap": 1
+      },
+      "zones": {
+        "Evershade Weald": 2
+      },
+      "coin": 0,
+      "corpses": 1
+    },
     "a Sangrel entangler": {
       "kills": 20,
       "drops": {
@@ -2293,6 +2339,17 @@
       },
       "coin": 396,
       "corpses": 1
+    },
+    "a Muggrah robber": {
+      "kills": 0,
+      "drops": {
+        "Hide Scraps": 1
+      },
+      "zones": {
+        "Sungreetstrand": 1
+      },
+      "coin": 0,
+      "corpses": 1
     }
   },
   "items": [
@@ -2689,7 +2746,7 @@
       "prices": [
         {
           "copper": 1,
-          "count": 1
+          "count": 2
         }
       ],
       "harvested": 35,
@@ -3267,7 +3324,7 @@
       "prices": [
         {
           "copper": 20,
-          "count": 1
+          "count": 2
         },
         {
           "copper": 21,
@@ -3302,6 +3359,10 @@
       "name": "Chipped Peridot",
       "droppedBy": [],
       "prices": [
+        {
+          "copper": 20,
+          "count": 1
+        },
         {
           "copper": 21,
           "count": 1
@@ -3662,12 +3723,13 @@
       "name": "Copper Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 128,
+      "harvested": 130,
       "zones": [
         "Evershade Weald",
         "Keepersbight",
         "Nightharborw",
-        "Shaded Dunes"
+        "Shaded Dunes",
+        "Sungreetstrand"
       ]
     },
     {
@@ -5782,7 +5844,7 @@
       "name": "Duneleaf",
       "droppedBy": [],
       "prices": [],
-      "harvested": 12,
+      "harvested": 13,
       "zones": [
         "Sungreetstrand"
       ]
@@ -5907,6 +5969,75 @@
       "harvested": 21,
       "zones": [
         "Keepersbight"
+      ]
+    },
+    {
+      "id": "first_circle_blue_cap",
+      "gameId": "cba4ec26d1adacc027d1bcc4",
+      "name": "First Circle Blue Cap",
+      "droppedBy": [
+        {
+          "mob": "a fungal druid",
+          "drops": 2,
+          "corpses": 3,
+          "rate": 0.6666666666666666
+        }
+      ],
+      "prices": [
+        {
+          "copper": 1,
+          "count": 2
+        }
+      ],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
+      "id": "first_circle_green_cap",
+      "gameId": "eab31c339b5b5e36b5cbb3a4",
+      "name": "First Circle Green Cap",
+      "droppedBy": [
+        {
+          "mob": "Sporeweaver Underveil",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        }
+      ],
+      "prices": [
+        {
+          "copper": 1,
+          "count": 2
+        }
+      ],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
+      "id": "first_circle_red_cap",
+      "gameId": "d7fbfc0a9069116d18edefd2",
+      "name": "First Circle Red Cap",
+      "droppedBy": [
+        {
+          "mob": "a fungal druid",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        }
+      ],
+      "prices": [
+        {
+          "copper": 1,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
       ]
     },
     {
@@ -6088,6 +6219,10 @@
         {
           "copper": 50,
           "count": 1
+        },
+        {
+          "copper": 51,
+          "count": 1
         }
       ],
       "harvested": 1,
@@ -6213,6 +6348,12 @@
       "name": "Flawed Sapphire",
       "droppedBy": [
         {
+          "mob": "a fungal druid",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        },
+        {
           "mob": "a sly farmhand",
           "drops": 3,
           "corpses": 72,
@@ -6257,6 +6398,7 @@
       "zones": [
         "Sungreetstrand",
         "Scarwood",
+        "Evershade Weald",
         "Keepersbight"
       ]
     },
@@ -6905,6 +7047,12 @@
       "gameId": "11af0fdfc6e868be0eec690f",
       "name": "Hide Scraps",
       "droppedBy": [
+        {
+          "mob": "a Muggrah robber",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
         {
           "mob": "a beguiled builder",
           "drops": 2,
@@ -7605,7 +7753,7 @@
       "prices": [
         {
           "copper": 1,
-          "count": 6
+          "count": 7
         }
       ],
       "harvested": 22,
@@ -9442,7 +9590,7 @@
           "count": 3
         }
       ],
-      "harvested": 241,
+      "harvested": 249,
       "zones": [
         "Keepersbight",
         "Sungreetstrand"
@@ -13096,6 +13244,42 @@
       ]
     },
     {
+      "id": "twisted_scale",
+      "gameId": "99eb2ff1b839dcb9be4a7116",
+      "name": "Twisted Scale",
+      "droppedBy": [
+        {
+          "mob": "a twisted fae",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
+      "id": "warped_scale",
+      "gameId": "88ae7c58d9ca732ba1dbedae",
+      "name": "Warped Scale",
+      "droppedBy": [
+        {
+          "mob": "a warped fae",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Evershade Weald"
+      ]
+    },
+    {
       "id": "wasp_venom_sac",
       "gameId": "40b05d4248d00d85fecdc372",
       "name": "Wasp Venom Sac",
@@ -13312,7 +13496,7 @@
       "name": "Wood",
       "droppedBy": [],
       "prices": [],
-      "harvested": 193,
+      "harvested": 201,
       "zones": [
         "Keepersbight",
         "Sungreetstrand"
@@ -13806,8 +13990,8 @@
   ],
   "harvest": {
     "Moonveil": 44,
-    "Wood": 193,
-    "Resin": 241,
+    "Wood": 201,
+    "Resin": 249,
     "Whispering Sage": 63,
     "Limestone": 410,
     "Clouded Crystallized Magic": 6,
@@ -13836,7 +14020,7 @@
     "Cat's Eye Agate": 9,
     "Ruby": 7,
     "Lionleaf": 12,
-    "Copper Ore": 128,
+    "Copper Ore": 130,
     "Brittle Stone": 35,
     "Chipped Emerald": 4,
     "Diamond": 6,
@@ -13859,7 +14043,7 @@
     "Sylvine": 3,
     "Ghost Poppy": 2,
     "Stranglevine": 62,
-    "Duneleaf": 12,
+    "Duneleaf": 13,
     "Flawed Emerald": 1,
     "Whisperpine Wood": 3
   },
@@ -14000,27 +14184,27 @@
     },
     {
       "name": "Wood & Resin",
-      "pulls": 210,
+      "pulls": 218,
       "yields": [
         {
           "res": "Wood",
-          "count": 193,
-          "rate": 0.919047619047619
+          "count": 201,
+          "rate": 0.9220183486238532
         },
         {
           "res": "Resin",
-          "count": 176,
-          "rate": 0.8380952380952381
+          "count": 183,
+          "rate": 0.8394495412844036
         },
         {
           "res": "Fine Wood",
           "count": 14,
-          "rate": 0.06666666666666667
+          "rate": 0.06422018348623854
         },
         {
           "res": "Whisperpine Wood",
           "count": 3,
-          "rate": 0.014285714285714285
+          "rate": 0.013761467889908258
         }
       ],
       "zones": [
@@ -14066,64 +14250,65 @@
     },
     {
       "name": "Copper Ore",
-      "pulls": 128,
+      "pulls": 130,
       "yields": [
         {
           "res": "Copper Ore",
-          "count": 128,
+          "count": 130,
           "rate": 1
         },
         {
           "res": "Brittle Stone",
           "count": 33,
-          "rate": 0.2578125
+          "rate": 0.25384615384615383
         },
         {
           "res": "Chipped Emerald",
           "count": 4,
-          "rate": 0.03125
+          "rate": 0.03076923076923077
         },
         {
           "res": "Chipped Sapphire",
           "count": 3,
-          "rate": 0.0234375
+          "rate": 0.023076923076923078
         },
         {
           "res": "Clouded Crystallized Magic",
           "count": 2,
-          "rate": 0.015625
+          "rate": 0.015384615384615385
         },
         {
           "res": "Alunite Ore",
           "count": 1,
-          "rate": 0.0078125
+          "rate": 0.007692307692307693
         },
         {
           "res": "Chipped Jade",
           "count": 1,
-          "rate": 0.0078125
+          "rate": 0.007692307692307693
         },
         {
           "res": "Chipped Diamond",
           "count": 1,
-          "rate": 0.0078125
+          "rate": 0.007692307692307693
         },
         {
           "res": "Chipped Cat's Eye Agate",
           "count": 1,
-          "rate": 0.0078125
+          "rate": 0.007692307692307693
         },
         {
           "res": "Chipped Peridot",
           "count": 1,
-          "rate": 0.0078125
+          "rate": 0.007692307692307693
         }
       ],
       "zones": [
         "Evershade Weald",
         "Keepersbight",
         "Nightharborw",
-        "Shaded Dunes"
+        "Shaded Dunes",
+        "Sungreetstrand"
       ]
     },
     {
@@ -14392,6 +14577,20 @@
       ]
     },
     {
+      "name": "Duneleaf",
+      "pulls": 8,
+      "yields": [
+        {
+          "res": "Duneleaf",
+          "count": 8,
+          "rate": 1
+        }
+      ],
+      "zones": [
+        "Sungreetstrand"
+      ]
+    },
+    {
       "name": "Fine Wood",
       "pulls": 7,
       "yields": [
@@ -14403,20 +14602,6 @@
       ],
       "zones": [
         "Keepersbight"
-      ]
-    },
-    {
-      "name": "Duneleaf",
-      "pulls": 7,
-      "yields": [
-        {
-          "res": "Duneleaf",
-          "count": 7,
-          "rate": 1
-        }
-      ],
-      "zones": [
-        "Sungreetstrand"
       ]
     },
     {
