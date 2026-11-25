@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-25T02:00:07.346Z",
+  "generatedAt": "2026-11-25T08:00:11.054Z",
   "source": "mnm-tools",
-  "ledgerFiles": 61,
-  "events": 13697,
+  "ledgerFiles": 60,
+  "events": 13705,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,305 +10,11 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 13697
+      "events": 13705
     }
   ],
   "contributorCount": 1,
   "mobs": {
-    "a forest drakeling": {
-      "kills": 8,
-      "drops": {
-        "Drake Fang": 2,
-        "Drake Claw": 1,
-        "Drake Scale": 1,
-        "Pristine Drake Fang": 1,
-        "Flawed Diamond": 1
-      },
-      "zones": {
-        "Keepersbight": 14
-      },
-      "coin": 513,
-      "corpses": 6
-    },
-    "a forest stalker": {
-      "kills": 0,
-      "drops": {
-        "Medium-Quality Wolf Pelt": 8,
-        "Raw Wolf Meat": 9,
-        "Scuffed Canine Ear": 12,
-        "Savage Wolf Claw": 5
-      },
-      "zones": {
-        "Keepersbight": 46
-      },
-      "coin": 0,
-      "corpses": 19
-    },
-    "a boulder viper": {
-      "kills": 0,
-      "drops": {
-        "Bight Serpent Skin": 1,
-        "Crumbled Snake Vertebra": 1,
-        "Snake Fang": 1
-      },
-      "zones": {
-        "Keepersbight": 3
-      },
-      "coin": 0,
-      "corpses": 2
-    },
-    "a Sangrel striker": {
-      "kills": 122,
-      "drops": {
-        "Corroded Bronze Plate Gauntlets": 1,
-        "Raw Human Meat": 17,
-        "Cheese": 2,
-        "Simple Medallion": 27,
-        "Sangrel Rite IV": 4,
-        "Sangrel Fist Wraps": 6,
-        "Bronze Scraps": 13,
-        "Tattered Hide Cap": 1,
-        "Wool Scraps": 20,
-        "Potato": 4,
-        "Hide Scraps": 18,
-        "Tomato": 1,
-        "Corroded Bronze Plate Collar": 1,
-        "Carrot": 1,
-        "Mushroom": 4,
-        "Corroded Bronze Maul": 1,
-        "Bell Pepper": 1,
-        "Corroded Bronze Spear": 2,
-        "Corroded Bronze Plate Arming Doublet": 1,
-        "Corroded Bronze Greatsword": 1,
-        "Flawed Cat's Eye Agate": 2,
-        "Cabbage": 3,
-        "Garlic": 5,
-        "Worn Fine Wood Buckler": 1,
-        "Cooked Human Meat": 2,
-        "Tattered Wool Boots": 1,
-        "Celery": 1,
-        "Corroded Bronze Tower Shield": 1,
-        "Flawed Emerald": 1,
-        "Corroded Bronze Trident": 1,
-        "Corroded Bronze Great Scythe": 1,
-        "Flawed Sapphire": 1,
-        "Tattered Hide Gloves": 1
-      },
-      "zones": {
-        "Keepersbight": 282
-      },
-      "coin": 6328,
-      "corpses": 105
-    },
-    "a Sangrel shadowblade": {
-      "kills": 34,
-      "drops": {
-        "Hide Scraps": 5,
-        "Simple Medallion": 10,
-        "Corroded Bronze Scimitar": 1,
-        "Wool Scraps": 4,
-        "Raw Human Meat": 5,
-        "Corroded Bronze Chain Cloak": 1,
-        "Bell Pepper": 1,
-        "Torch": 1,
-        "Mushroom": 1,
-        "Potato": 1,
-        "Sangrel Fist Wraps": 2,
-        "Corroded Bronze Chain Gorget": 1,
-        "Corroded Bronze Chain Wristguard": 1,
-        "Flawed Emerald": 1,
-        "Bronze Scraps": 2,
-        "Sangrel Ring of the Shadowblade": 1,
-        "Corroded Bronze Chain Leggings": 1,
-        "Carrot": 1,
-        "Tomato": 1,
-        "Lemon": 1
-      },
-      "zones": {
-        "Keepersbight": 79
-      },
-      "coin": 1953,
-      "corpses": 33
-    },
-    "a Sangrel grappler": {
-      "kills": 9,
-      "drops": {
-        "Raw Human Meat": 2,
-        "Hide Scraps": 4,
-        "Bell Pepper": 1,
-        "Simple Medallion": 1,
-        "Sangrel Ring of the Grappler": 1,
-        "Corroded Bronze Scythe": 1,
-        "Mushroom": 1
-      },
-      "zones": {
-        "Keepersbight": 23
-      },
-      "coin": 481,
-      "corpses": 8
-    },
-    "a Sangrel arcanist": {
-      "kills": 21,
-      "drops": {
-        "Wool Scraps": 7,
-        "Garlic": 1,
-        "Sangrel Rite IV": 1,
-        "Tattered Wool Tunic": 1,
-        "Flawed Diamond": 1,
-        "Simple Medallion": 7,
-        "Raw Human Meat": 5,
-        "Corroded Bronze Kite Shield": 1,
-        "Tattered Wool Robe": 1,
-        "Corroded Bronze Dagger": 1,
-        "Onion": 1,
-        "Celery": 1,
-        "Flawed Cat's Eye Agate": 1,
-        "Tomato": 1,
-        "Bell Pepper": 1,
-        "Corroded Bronze Longsword": 1
-      },
-      "zones": {
-        "Keepersbight": 55
-      },
-      "coin": 1216,
-      "corpses": 24
-    },
-    "a shady farmer": {
-      "kills": 5,
-      "drops": {
-        "Sangrel Rite II": 1,
-        "Simple Medallion": 1,
-        "Hide Scraps": 1,
-        "Garlic": 1
-      },
-      "zones": {
-        "Keepersbight": 12
-      },
-      "coin": 257,
-      "corpses": 2
-    },
-    "an old elven skeleton": {
-      "kills": 4,
-      "drops": {
-        "Cloth Scraps": 2,
-        "Bone Chips": 2,
-        "Tattered Rawhide Mask": 1,
-        "Rawhide Scraps": 1
-      },
-      "zones": {
-        "Evershade Weald": 20
-      },
-      "coin": 94,
-      "corpses": 2
-    },
-    "a skeleton": {
-      "kills": 2,
-      "drops": {
-        "Cloth Scraps": 1
-      },
-      "zones": {
-        "Evershade Weald": 4
-      },
-      "coin": 42,
-      "corpses": 1
-    },
-    "a Bloodchain guard": {
-      "kills": 156,
-      "drops": {
-        "Tattered Wool Cape": 1,
-        "Raw Orc Meat": 28,
-        "Weathered Medallion": 26,
-        "Bronze Scraps": 12,
-        "Corroded Bronze Chain Mask": 1,
-        "Worn Fine Wood Buckler": 1,
-        "Corroded Bronze Battle Axe": 3,
-        "Tattered Wool Cap": 1,
-        "Wool Scraps": 23,
-        "Corroded Bronze Great Scythe": 2,
-        "Hide Scraps": 20,
-        "Corroded Bronze Scimitar": 1,
-        "Corroded Bronze Chain Waistguard": 1,
-        "Tattered Hide Vest": 1,
-        "Tattered Wool Veil": 1,
-        "Simple Medallion": 13,
-        "Corroded Bronze Shortsword": 2,
-        "Corroded Bronze Axe": 1,
-        "Tattered Hide Belt": 2,
-        "Corroded Bronze Plate Breastplate": 1,
-        "Tattered Wool Gloves": 1,
-        "Worn Fine Wood Bow": 1,
-        "Corroded Bronze Chain Gorget": 1,
-        "Corroded Bronze Chain Shoulderguards": 1,
-        "Corroded Bronze Plate Collar": 1,
-        "Corroded Bronze Chain Gambeson": 1,
-        "Worn Fine Wood Great Staff": 2,
-        "Corroded Bronze Kite Shield": 1,
-        "Corroded Bronze Scythe": 1,
-        "Cracked Fine Wood Staff": 2,
-        "Corroded Bronze Plate Helm": 1,
-        "Corroded Bronze War Lance": 1,
-        "Corroded Bronze Chain Cloak": 1,
-        "Corroded Bronze Dagger": 1,
-        "Tattered Hide Leggings": 1
-      },
-      "zones": {
-        "Blacktidebay": 349
-      },
-      "coin": 7501,
-      "corpses": 108
-    },
-    "a Bloodchain champion": {
-      "kills": 7,
-      "drops": {
-        "Simple Medallion": 3,
-        "Raw Orc Meat": 2,
-        "Hide Scraps": 1,
-        "Battleworn Clasp": 2,
-        "Blooded Sage Gloves": 1,
-        "Tattered Hide Cap": 1,
-        "Bloodmark Token": 1,
-        "Wool Scraps": 1,
-        "Bloodsworn Buckler": 1
-      },
-      "zones": {
-        "Blacktidebay": 26
-      },
-      "coin": 1115,
-      "corpses": 6
-    },
-    "a Bloodchain sentry": {
-      "kills": 84,
-      "drops": {
-        "Wool Scraps": 13,
-        "Simple Medallion": 31,
-        "Corroded Bronze Longsword": 2,
-        "Bronze Scraps": 8,
-        "Hide Scraps": 12,
-        "Corroded Bronze Scimitar": 1,
-        "Raw Orc Meat": 14,
-        "Corroded Bronze Battle Axe": 1,
-        "Worn Fine Wood Buckler": 2,
-        "Corroded Bronze Chain Shoulderguards": 1,
-        "Torch": 1,
-        "Tattered Hide Leggings": 1,
-        "Corroded Bronze Plate Greaves": 1,
-        "Corroded Bronze Trident": 1,
-        "Tattered Hide Vest": 1,
-        "Tattered Wool Gorget": 1,
-        "Corroded Bronze Plate Bracer": 2,
-        "Tattered Wool Cape": 1,
-        "Corroded Bronze Plate Cloak": 2,
-        "Tattered Hide Bracer": 1,
-        "Tattered Hide Mask": 1,
-        "Corroded Bronze Tower Shield": 1,
-        "Corroded Bronze Shortsword": 1
-      },
-      "zones": {
-        "Blacktidebay": 201
-      },
-      "coin": 4686,
-      "corpses": 67
-    },
     "a hill giant": {
       "kills": 0,
       "drops": {
@@ -321,6 +27,20 @@
       },
       "coin": 0,
       "corpses": 10
+    },
+    "a forest drakeling": {
+      "kills": 5,
+      "drops": {
+        "Drake Claw": 1,
+        "Drake Scale": 1,
+        "Pristine Drake Fang": 1,
+        "Flawed Diamond": 1
+      },
+      "zones": {
+        "Keepersbight": 9
+      },
+      "coin": 336,
+      "corpses": 4
     },
     "a cave bear": {
       "kills": 0,
@@ -337,6 +57,20 @@
       },
       "coin": 0,
       "corpses": 8
+    },
+    "a forest stalker": {
+      "kills": 0,
+      "drops": {
+        "Scuffed Canine Ear": 12,
+        "Raw Wolf Meat": 8,
+        "Savage Wolf Claw": 5,
+        "Medium-Quality Wolf Pelt": 7
+      },
+      "zones": {
+        "Keepersbight": 44
+      },
+      "coin": 0,
+      "corpses": 18
     },
     "a grizzly bear": {
       "kills": 0,
@@ -414,6 +148,103 @@
       },
       "coin": 0,
       "corpses": 3
+    },
+    "a Bloodchain guard": {
+      "kills": 151,
+      "drops": {
+        "Tattered Wool Cape": 1,
+        "Raw Orc Meat": 28,
+        "Weathered Medallion": 26,
+        "Bronze Scraps": 12,
+        "Corroded Bronze Chain Mask": 1,
+        "Worn Fine Wood Buckler": 1,
+        "Corroded Bronze Battle Axe": 3,
+        "Tattered Wool Cap": 1,
+        "Wool Scraps": 23,
+        "Corroded Bronze Great Scythe": 2,
+        "Hide Scraps": 20,
+        "Corroded Bronze Scimitar": 1,
+        "Corroded Bronze Chain Waistguard": 1,
+        "Tattered Hide Vest": 1,
+        "Tattered Wool Veil": 1,
+        "Simple Medallion": 13,
+        "Corroded Bronze Shortsword": 2,
+        "Corroded Bronze Axe": 1,
+        "Tattered Hide Belt": 2,
+        "Corroded Bronze Plate Breastplate": 1,
+        "Tattered Wool Gloves": 1,
+        "Worn Fine Wood Bow": 1,
+        "Corroded Bronze Chain Gorget": 1,
+        "Corroded Bronze Chain Shoulderguards": 1,
+        "Corroded Bronze Plate Collar": 1,
+        "Corroded Bronze Chain Gambeson": 1,
+        "Worn Fine Wood Great Staff": 2,
+        "Corroded Bronze Kite Shield": 1,
+        "Corroded Bronze Scythe": 1,
+        "Cracked Fine Wood Staff": 2,
+        "Corroded Bronze Plate Helm": 1,
+        "Corroded Bronze War Lance": 1,
+        "Corroded Bronze Chain Cloak": 1,
+        "Corroded Bronze Dagger": 1,
+        "Tattered Hide Leggings": 1
+      },
+      "zones": {
+        "Blacktidebay": 334
+      },
+      "coin": 7249,
+      "corpses": 108
+    },
+    "a Bloodchain sentry": {
+      "kills": 80,
+      "drops": {
+        "Wool Scraps": 13,
+        "Simple Medallion": 31,
+        "Corroded Bronze Longsword": 2,
+        "Bronze Scraps": 8,
+        "Hide Scraps": 12,
+        "Corroded Bronze Scimitar": 1,
+        "Raw Orc Meat": 14,
+        "Corroded Bronze Battle Axe": 1,
+        "Worn Fine Wood Buckler": 2,
+        "Corroded Bronze Chain Shoulderguards": 1,
+        "Torch": 1,
+        "Tattered Hide Leggings": 1,
+        "Corroded Bronze Plate Greaves": 1,
+        "Corroded Bronze Trident": 1,
+        "Tattered Hide Vest": 1,
+        "Tattered Wool Gorget": 1,
+        "Corroded Bronze Plate Bracer": 2,
+        "Tattered Wool Cape": 1,
+        "Corroded Bronze Plate Cloak": 2,
+        "Tattered Hide Bracer": 1,
+        "Tattered Hide Mask": 1,
+        "Corroded Bronze Tower Shield": 1,
+        "Corroded Bronze Shortsword": 1
+      },
+      "zones": {
+        "Blacktidebay": 191
+      },
+      "coin": 4517,
+      "corpses": 67
+    },
+    "a Bloodchain champion": {
+      "kills": 6,
+      "drops": {
+        "Simple Medallion": 3,
+        "Raw Orc Meat": 2,
+        "Hide Scraps": 1,
+        "Battleworn Clasp": 2,
+        "Blooded Sage Gloves": 1,
+        "Tattered Hide Cap": 1,
+        "Bloodmark Token": 1,
+        "Wool Scraps": 1,
+        "Bloodsworn Buckler": 1
+      },
+      "zones": {
+        "Blacktidebay": 22
+      },
+      "coin": 938,
+      "corpses": 6
     },
     "a Bloodchain mender": {
       "kills": 19,
@@ -1254,6 +1085,17 @@
       "coin": 0,
       "corpses": 1
     },
+    "a boulder viper": {
+      "kills": 0,
+      "drops": {
+        "Snake Fang": 1
+      },
+      "zones": {
+        "Keepersbight": 1
+      },
+      "coin": 0,
+      "corpses": 1
+    },
     "a green drake": {
       "kills": 46,
       "drops": {
@@ -1341,20 +1183,20 @@
     "a water basilisk": {
       "kills": 0,
       "drops": {
-        "Intact Basilisk Vertebra": 31,
-        "Smooth Basilisk Vertebra": 29,
+        "Intact Basilisk Vertebra": 34,
+        "Smooth Basilisk Vertebra": 32,
         "Basilisk Scale": 9,
         "Basilisk Eye": 16,
         "Raw Basilisk Steak": 9,
-        "Basilisk Tooth": 7,
+        "Basilisk Tooth": 8,
         "Cooked Basilisk Steak": 1,
         "Bile-Drenched Artifact": 3
       },
       "zones": {
-        "Shallowshoals": 126
+        "Shallowshoals": 136
       },
       "coin": 0,
-      "corpses": 72
+      "corpses": 76
     },
     "a ghostly fighter": {
       "kills": 15,
@@ -1503,41 +1345,45 @@
       "corpses": 1
     },
     "a grizzled smuggler": {
-      "kills": 12,
+      "kills": 20,
       "drops": {
-        "Leather Scraps": 5,
-        "Embossed Medallion": 5,
+        "Leather Scraps": 6,
+        "Embossed Medallion": 9,
         "Lemon": 2,
         "Rusty Iron Plate Cloak": 1,
-        "Cotton Scraps": 2,
+        "Cotton Scraps": 6,
         "Onion": 1,
         "Raw Human Meat": 1,
         "Rusty Iron Warhammer": 1,
         "Rusty Iron Chain Leggings": 1,
-        "Rusty Iron Mace": 1
+        "Rusty Iron Mace": 2,
+        "Bell Pepper": 1,
+        "Carrot": 1,
+        "Cheese": 1
       },
       "zones": {
-        "Fallenpass": 36
+        "Fallenpass": 57
       },
-      "coin": 2428,
-      "corpses": 13
+      "coin": 3691,
+      "corpses": 21
     },
     "Seamas Growt": {
-      "kills": 3,
+      "kills": 4,
       "drops": {
-        "Woven Rat Hide Belt": 3,
+        "Woven Rat Hide Belt": 4,
         "Tattered Cotton Pantaloons": 1,
         "Raw Human Meat": 1,
         "Embossed Medallion": 2,
         "Potato": 1,
         "Iron Scraps": 1,
-        "Cabbage": 1
+        "Cabbage": 1,
+        "Tattered Leather Leggings": 1
       },
       "zones": {
-        "Fallenpass": 14
+        "Fallenpass": 17
       },
-      "coin": 1377,
-      "corpses": 5
+      "coin": 1924,
+      "corpses": 7
     },
     "a glutted ghoul": {
       "kills": 11,
@@ -1652,18 +1498,18 @@
     "a roaming shark": {
       "kills": 0,
       "drops": {
-        "Sleek Shark Skin": 23,
-        "Shark Fin": 15,
+        "Sleek Shark Skin": 24,
+        "Shark Fin": 16,
         "Intact Shark Vertebra": 15,
         "Smooth Shark Vertebra": 20,
-        "Raw Shark Meat": 12,
+        "Raw Shark Meat": 13,
         "Spirit World Ch. 11": 1
       },
       "zones": {
-        "Shallowshoals": 106
+        "Shallowshoals": 109
       },
       "coin": 0,
-      "corpses": 45
+      "corpses": 47
     },
     "Sharkie": {
       "kills": 0,
@@ -1909,6 +1755,105 @@
       "coin": 0,
       "corpses": 1
     },
+    "a Sangrel striker": {
+      "kills": 122,
+      "drops": {
+        "Corroded Bronze Plate Gauntlets": 1,
+        "Raw Human Meat": 17,
+        "Cheese": 2,
+        "Simple Medallion": 27,
+        "Sangrel Rite IV": 4,
+        "Sangrel Fist Wraps": 6,
+        "Bronze Scraps": 13,
+        "Tattered Hide Cap": 1,
+        "Wool Scraps": 20,
+        "Potato": 4,
+        "Hide Scraps": 18,
+        "Tomato": 1,
+        "Corroded Bronze Plate Collar": 1,
+        "Carrot": 1,
+        "Mushroom": 4,
+        "Corroded Bronze Maul": 1,
+        "Bell Pepper": 1,
+        "Corroded Bronze Spear": 2,
+        "Corroded Bronze Plate Arming Doublet": 1,
+        "Corroded Bronze Greatsword": 1,
+        "Flawed Cat's Eye Agate": 2,
+        "Cabbage": 3,
+        "Garlic": 5,
+        "Worn Fine Wood Buckler": 1,
+        "Cooked Human Meat": 2,
+        "Tattered Wool Boots": 1,
+        "Celery": 1,
+        "Corroded Bronze Tower Shield": 1,
+        "Flawed Emerald": 1,
+        "Corroded Bronze Trident": 1,
+        "Corroded Bronze Great Scythe": 1,
+        "Flawed Sapphire": 1,
+        "Tattered Hide Gloves": 1
+      },
+      "zones": {
+        "Keepersbight": 272
+      },
+      "coin": 6328,
+      "corpses": 105
+    },
+    "a Sangrel arcanist": {
+      "kills": 21,
+      "drops": {
+        "Wool Scraps": 7,
+        "Garlic": 1,
+        "Sangrel Rite IV": 1,
+        "Tattered Wool Tunic": 1,
+        "Flawed Diamond": 1,
+        "Simple Medallion": 7,
+        "Raw Human Meat": 5,
+        "Corroded Bronze Kite Shield": 1,
+        "Tattered Wool Robe": 1,
+        "Corroded Bronze Dagger": 1,
+        "Onion": 1,
+        "Celery": 1,
+        "Flawed Cat's Eye Agate": 1,
+        "Tomato": 1,
+        "Bell Pepper": 1,
+        "Corroded Bronze Longsword": 1
+      },
+      "zones": {
+        "Keepersbight": 53
+      },
+      "coin": 1216,
+      "corpses": 24
+    },
+    "a Sangrel shadowblade": {
+      "kills": 34,
+      "drops": {
+        "Hide Scraps": 5,
+        "Simple Medallion": 10,
+        "Corroded Bronze Scimitar": 1,
+        "Wool Scraps": 4,
+        "Raw Human Meat": 5,
+        "Corroded Bronze Chain Cloak": 1,
+        "Bell Pepper": 1,
+        "Torch": 1,
+        "Mushroom": 1,
+        "Potato": 1,
+        "Sangrel Fist Wraps": 2,
+        "Corroded Bronze Chain Gorget": 1,
+        "Corroded Bronze Chain Wristguard": 1,
+        "Flawed Emerald": 1,
+        "Bronze Scraps": 2,
+        "Sangrel Ring of the Shadowblade": 1,
+        "Corroded Bronze Chain Leggings": 1,
+        "Carrot": 1,
+        "Tomato": 1,
+        "Lemon": 1
+      },
+      "zones": {
+        "Keepersbight": 78
+      },
+      "coin": 1953,
+      "corpses": 33
+    },
     "a Sangrel entangler": {
       "kills": 20,
       "drops": {
@@ -1957,6 +1902,23 @@
       "coin": 1470,
       "corpses": 29
     },
+    "a Sangrel grappler": {
+      "kills": 9,
+      "drops": {
+        "Raw Human Meat": 2,
+        "Hide Scraps": 4,
+        "Bell Pepper": 1,
+        "Simple Medallion": 1,
+        "Sangrel Ring of the Grappler": 1,
+        "Corroded Bronze Scythe": 1,
+        "Mushroom": 1
+      },
+      "zones": {
+        "Keepersbight": 20
+      },
+      "coin": 481,
+      "corpses": 8
+    },
     "Mirella Nighthorn": {
       "kills": 1,
       "drops": {
@@ -1970,6 +1932,20 @@
       "coin": 156,
       "corpses": 3
     },
+    "a shady farmer": {
+      "kills": 3,
+      "drops": {
+        "Sangrel Rite II": 1,
+        "Simple Medallion": 1,
+        "Hide Scraps": 1,
+        "Garlic": 1
+      },
+      "zones": {
+        "Keepersbight": 7
+      },
+      "coin": 149,
+      "corpses": 2
+    },
     "a wasp drone": {
       "kills": 0,
       "drops": {
@@ -1981,6 +1957,31 @@
         "Keepersbight": 3
       },
       "coin": 0,
+      "corpses": 1
+    },
+    "an old elven skeleton": {
+      "kills": 2,
+      "drops": {
+        "Cloth Scraps": 2,
+        "Bone Chips": 2,
+        "Tattered Rawhide Mask": 1,
+        "Rawhide Scraps": 1
+      },
+      "zones": {
+        "Evershade Weald": 12
+      },
+      "coin": 47,
+      "corpses": 2
+    },
+    "a skeleton": {
+      "kills": 1,
+      "drops": {
+        "Cloth Scraps": 1
+      },
+      "zones": {
+        "Evershade Weald": 2
+      },
+      "coin": 21,
       "corpses": 1
     },
     "a Bloodchain soulherder": {
@@ -2396,8 +2397,8 @@
         {
           "mob": "a water basilisk",
           "drops": 16,
-          "corpses": 72,
-          "rate": 0.2222222222222222
+          "corpses": 76,
+          "rate": 0.21052631578947367
         }
       ],
       "prices": [],
@@ -2414,8 +2415,8 @@
         {
           "mob": "a water basilisk",
           "drops": 9,
-          "corpses": 72,
-          "rate": 0.125
+          "corpses": 76,
+          "rate": 0.11842105263157894
         }
       ],
       "prices": [],
@@ -2431,9 +2432,9 @@
       "droppedBy": [
         {
           "mob": "a water basilisk",
-          "drops": 7,
-          "corpses": 72,
-          "rate": 0.09722222222222222
+          "drops": 8,
+          "corpses": 76,
+          "rate": 0.10526315789473684
         }
       ],
       "prices": [
@@ -2479,6 +2480,12 @@
           "drops": 1,
           "corpses": 8,
           "rate": 0.125
+        },
+        {
+          "mob": "a grizzled smuggler",
+          "drops": 1,
+          "corpses": 21,
+          "rate": 0.047619047619047616
         },
         {
           "mob": "a Sangrel arcanist",
@@ -2545,30 +2552,8 @@
       "harvested": 0,
       "zones": [
         "Keepersbight",
-        "Sungreetstrand"
-      ]
-    },
-    {
-      "id": "bight_serpent_skin",
-      "gameId": "c28b2d0ed92714dbe50bff3e",
-      "name": "Bight Serpent Skin",
-      "droppedBy": [
-        {
-          "mob": "a boulder viper",
-          "drops": 1,
-          "corpses": 2,
-          "rate": 0.5
-        }
-      ],
-      "prices": [
-        {
-          "copper": 3,
-          "count": 2
-        }
-      ],
-      "harvested": 0,
-      "zones": [
-        "Keepersbight"
+        "Sungreetstrand",
+        "Fallenpass"
       ]
     },
     {
@@ -2579,8 +2564,8 @@
         {
           "mob": "a water basilisk",
           "drops": 3,
-          "corpses": 72,
-          "rate": 0.041666666666666664
+          "corpses": 76,
+          "rate": 0.039473684210526314
         }
       ],
       "prices": [],
@@ -2649,12 +2634,6 @@
       "name": "Bone Chips",
       "droppedBy": [
         {
-          "mob": "an old elven skeleton",
-          "drops": 2,
-          "corpses": 2,
-          "rate": 1
-        },
-        {
           "mob": "a restless skeleton",
           "drops": 2,
           "corpses": 2,
@@ -2688,6 +2667,12 @@
           "mob": "a rotting skeleton",
           "drops": 1,
           "corpses": 1,
+          "rate": 1
+        },
+        {
+          "mob": "an old elven skeleton",
+          "drops": 2,
+          "corpses": 2,
           "rate": 1
         },
         {
@@ -2884,7 +2869,7 @@
       "prices": [
         {
           "copper": 4,
-          "count": 2
+          "count": 1
         }
       ],
       "harvested": 0,
@@ -2938,15 +2923,15 @@
       "name": "Cabbage",
       "droppedBy": [
         {
-          "mob": "Seamas Growt",
-          "drops": 1,
-          "corpses": 5,
-          "rate": 0.2
-        },
-        {
           "mob": "a craven cultist",
           "drops": 2,
           "corpses": 14,
+          "rate": 0.14285714285714285
+        },
+        {
+          "mob": "Seamas Growt",
+          "drops": 1,
+          "corpses": 7,
           "rate": 0.14285714285714285
         },
         {
@@ -3006,10 +2991,6 @@
       ],
       "prices": [
         {
-          "copper": 1,
-          "count": 1
-        },
-        {
           "copper": 3,
           "count": 1
         }
@@ -3050,6 +3031,12 @@
           "drops": 1,
           "corpses": 12,
           "rate": 0.08333333333333333
+        },
+        {
+          "mob": "a grizzled smuggler",
+          "drops": 1,
+          "corpses": 21,
+          "rate": 0.047619047619047616
         },
         {
           "mob": "a hired tracker",
@@ -3118,7 +3105,8 @@
         "Keepersbight",
         "Sungreetstrand",
         "Blacktidebay",
-        "Graincellar"
+        "Graincellar",
+        "Fallenpass"
       ]
     },
     {
@@ -3195,12 +3183,7 @@
           "rate": 0.009523809523809525
         }
       ],
-      "prices": [
-        {
-          "copper": 1,
-          "count": 1
-        }
-      ],
+      "prices": [],
       "harvested": 0,
       "zones": [
         "Keepersbight",
@@ -3223,6 +3206,12 @@
           "drops": 1,
           "corpses": 18,
           "rate": 0.05555555555555555
+        },
+        {
+          "mob": "a grizzled smuggler",
+          "drops": 1,
+          "corpses": 21,
+          "rate": 0.047619047619047616
         },
         {
           "mob": "a poacher bruiser",
@@ -3268,10 +3257,6 @@
         }
       ],
       "prices": [
-        {
-          "copper": 1,
-          "count": 1
-        },
         {
           "copper": 3,
           "count": 1
@@ -3497,18 +3482,6 @@
       "name": "Cloth Scraps",
       "droppedBy": [
         {
-          "mob": "an old elven skeleton",
-          "drops": 2,
-          "corpses": 2,
-          "rate": 1
-        },
-        {
-          "mob": "a skeleton",
-          "drops": 1,
-          "corpses": 1,
-          "rate": 1
-        },
-        {
           "mob": "a zombie laborer",
           "drops": 1,
           "corpses": 1,
@@ -3528,6 +3501,18 @@
         },
         {
           "mob": "an ancient elven skeleton",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
+        {
+          "mob": "an old elven skeleton",
+          "drops": 2,
+          "corpses": 2,
+          "rate": 1
+        },
+        {
+          "mob": "a skeleton",
           "drops": 1,
           "corpses": 1,
           "rate": 1
@@ -3591,8 +3576,8 @@
       "harvested": 0,
       "zones": [
         "Sungreetstrand",
-        "Evershade Weald",
         "Blacktidebay",
+        "Evershade Weald",
         "Tomb of the Last Wyrmsbane",
         "Keepersbight"
       ]
@@ -3640,8 +3625,8 @@
         {
           "mob": "a water basilisk",
           "drops": 1,
-          "corpses": 72,
-          "rate": 0.013888888888888888
+          "corpses": 76,
+          "rate": 0.013157894736842105
         }
       ],
       "prices": [],
@@ -3808,7 +3793,7 @@
       "prices": [
         {
           "copper": 163,
-          "count": 2
+          "count": 1
         }
       ],
       "harvested": 0,
@@ -3872,20 +3857,6 @@
         "Keepersbight",
         "Blacktidebay"
       ]
-    },
-    {
-      "id": "corroded_bronze_chain_coif",
-      "gameId": null,
-      "name": "Corroded Bronze Chain Coif",
-      "droppedBy": [],
-      "prices": [
-        {
-          "copper": 135,
-          "count": 1
-        }
-      ],
-      "harvested": 0,
-      "zones": []
     },
     {
       "id": "corroded_bronze_chain_gambeson",
@@ -3982,16 +3953,12 @@
         {
           "copper": 126,
           "count": 1
-        },
-        {
-          "copper": 135,
-          "count": 2
         }
       ],
       "harvested": 0,
       "zones": [
-        "Keepersbight",
-        "Sungreetstrand"
+        "Sungreetstrand",
+        "Keepersbight"
       ]
     },
     {
@@ -4266,16 +4233,11 @@
           "rate": 0.009523809523809525
         }
       ],
-      "prices": [
-        {
-          "copper": 163,
-          "count": 2
-        }
-      ],
+      "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight",
         "Blacktidebay",
+        "Keepersbight",
         "Fallenpass",
         "Sungreetstrand"
       ]
@@ -4360,12 +4322,7 @@
           "rate": 0.009433962264150943
         }
       ],
-      "prices": [
-        {
-          "copper": 163,
-          "count": 1
-        }
-      ],
+      "prices": [],
       "harvested": 0,
       "zones": [
         "Sungreetstrand"
@@ -4413,12 +4370,7 @@
           "rate": 0.009433962264150943
         }
       ],
-      "prices": [
-        {
-          "copper": 135,
-          "count": 1
-        }
-      ],
+      "prices": [],
       "harvested": 0,
       "zones": [
         "Blacktidebay",
@@ -4517,12 +4469,7 @@
           "rate": 0.009433962264150943
         }
       ],
-      "prices": [
-        {
-          "copper": 163,
-          "count": 1
-        }
-      ],
+      "prices": [],
       "harvested": 0,
       "zones": [
         "Sungreetstrand",
@@ -4634,8 +4581,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Blacktidebay",
-        "Sungreetstrand"
+        "Sungreetstrand",
+        "Blacktidebay"
       ]
     },
     {
@@ -4894,15 +4841,15 @@
       "name": "Corroded Bronze Scythe",
       "droppedBy": [
         {
-          "mob": "a Sangrel grappler",
-          "drops": 1,
-          "corpses": 8,
-          "rate": 0.125
-        },
-        {
           "mob": "a dusty skeleton",
           "drops": 2,
           "corpses": 16,
+          "rate": 0.125
+        },
+        {
+          "mob": "a Sangrel grappler",
+          "drops": 1,
+          "corpses": 8,
           "rate": 0.125
         },
         {
@@ -4931,10 +4878,6 @@
         },
         {
           "copper": 126,
-          "count": 1
-        },
-        {
-          "copper": 135,
           "count": 1
         }
       ],
@@ -4996,10 +4939,6 @@
       ],
       "prices": [
         {
-          "copper": 135,
-          "count": 1
-        },
-        {
           "copper": 136,
           "count": 1
         }
@@ -5050,10 +4989,6 @@
       "prices": [
         {
           "copper": 126,
-          "count": 1
-        },
-        {
-          "copper": 135,
           "count": 1
         }
       ],
@@ -5304,6 +5239,12 @@
           "rate": 0.2857142857142857
         },
         {
+          "mob": "a grizzled smuggler",
+          "drops": 6,
+          "corpses": 21,
+          "rate": 0.2857142857142857
+        },
+        {
           "mob": "a poacher herbalist",
           "drops": 2,
           "corpses": 7,
@@ -5356,12 +5297,6 @@
           "drops": 1,
           "corpses": 6,
           "rate": 0.16666666666666666
-        },
-        {
-          "mob": "a grizzled smuggler",
-          "drops": 2,
-          "corpses": 13,
-          "rate": 0.15384615384615385
         },
         {
           "mob": "a ghostly figure",
@@ -5536,29 +5471,6 @@
       ]
     },
     {
-      "id": "crumbled_snake_vertebra",
-      "gameId": "c3607bd54318c16ff2521a42",
-      "name": "Crumbled Snake Vertebra",
-      "droppedBy": [
-        {
-          "mob": "a boulder viper",
-          "drops": 1,
-          "corpses": 2,
-          "rate": 0.5
-        }
-      ],
-      "prices": [
-        {
-          "copper": 86,
-          "count": 1
-        }
-      ],
-      "harvested": 0,
-      "zones": [
-        "Keepersbight"
-      ]
-    },
-    {
       "id": "damaged_bear_paw",
       "gameId": "9708d45bc935f7b0ddc1d013",
       "name": "Damaged Bear Paw",
@@ -5726,8 +5638,8 @@
         {
           "mob": "a forest drakeling",
           "drops": 1,
-          "corpses": 6,
-          "rate": 0.16666666666666666
+          "corpses": 4,
+          "rate": 0.25
         }
       ],
       "prices": [
@@ -5764,12 +5676,6 @@
           "rate": 0.5
         },
         {
-          "mob": "a forest drakeling",
-          "drops": 2,
-          "corpses": 6,
-          "rate": 0.3333333333333333
-        },
-        {
           "mob": "a forest drake",
           "drops": 1,
           "corpses": 3,
@@ -5785,7 +5691,7 @@
       "prices": [
         {
           "copper": 2,
-          "count": 3
+          "count": 2
         },
         {
           "copper": 5,
@@ -5812,8 +5718,8 @@
         {
           "mob": "a forest drakeling",
           "drops": 1,
-          "corpses": 6,
-          "rate": 0.16666666666666666
+          "corpses": 4,
+          "rate": 0.25
         },
         {
           "mob": "a green drake",
@@ -5867,15 +5773,15 @@
           "rate": 0.5
         },
         {
+          "mob": "a grizzled smuggler",
+          "drops": 9,
+          "corpses": 21,
+          "rate": 0.42857142857142855
+        },
+        {
           "mob": "a Plagueborn constable",
           "drops": 4,
           "corpses": 10,
-          "rate": 0.4
-        },
-        {
-          "mob": "Seamas Growt",
-          "drops": 2,
-          "corpses": 5,
           "rate": 0.4
         },
         {
@@ -5885,10 +5791,10 @@
           "rate": 0.4
         },
         {
-          "mob": "a grizzled smuggler",
-          "drops": 5,
-          "corpses": 13,
-          "rate": 0.38461538461538464
+          "mob": "Seamas Growt",
+          "drops": 2,
+          "corpses": 7,
+          "rate": 0.2857142857142857
         }
       ],
       "prices": [
@@ -6095,7 +6001,7 @@
         },
         {
           "copper": 54,
-          "count": 2
+          "count": 1
         }
       ],
       "harvested": 1,
@@ -6114,8 +6020,8 @@
         {
           "mob": "a forest drakeling",
           "drops": 1,
-          "corpses": 6,
-          "rate": 0.16666666666666666
+          "corpses": 4,
+          "rate": 0.25
         },
         {
           "mob": "a green drake",
@@ -6580,10 +6486,6 @@
         }
       ],
       "prices": [
-        {
-          "copper": 1,
-          "count": 1
-        },
         {
           "copper": 3,
           "count": 1
@@ -7295,7 +7197,7 @@
           "count": 1
         }
       ],
-      "harvested": 6,
+      "harvested": 7,
       "zones": [
         "Fallenpass",
         "Keepersbight"
@@ -7333,10 +7235,11 @@
           "count": 1
         }
       ],
-      "harvested": 6,
+      "harvested": 7,
       "zones": [
         "Keepersbight",
-        "Fallenpass"
+        "Fallenpass",
+        "Shallowshoals"
       ]
     },
     {
@@ -7504,9 +7407,9 @@
       "droppedBy": [
         {
           "mob": "a water basilisk",
-          "drops": 31,
-          "corpses": 72,
-          "rate": 0.4305555555555556
+          "drops": 34,
+          "corpses": 76,
+          "rate": 0.4473684210526316
         }
       ],
       "prices": [
@@ -7558,8 +7461,8 @@
         {
           "mob": "a roaming shark",
           "drops": 15,
-          "corpses": 45,
-          "rate": 0.3333333333333333
+          "corpses": 47,
+          "rate": 0.3191489361702128
         }
       ],
       "prices": [
@@ -7611,7 +7514,7 @@
           "count": 23
         }
       ],
-      "harvested": 912,
+      "harvested": 922,
       "zones": [
         "Fallenpass",
         "Shallowshoals"
@@ -7659,16 +7562,16 @@
           "rate": 0.2
         },
         {
-          "mob": "Seamas Growt",
+          "mob": "Kallen Oison",
           "drops": 1,
           "corpses": 5,
           "rate": 0.2
         },
         {
-          "mob": "Kallen Oison",
+          "mob": "Seamas Growt",
           "drops": 1,
-          "corpses": 5,
-          "rate": 0.2
+          "corpses": 7,
+          "rate": 0.14285714285714285
         },
         {
           "mob": "a poacher bruiser",
@@ -7945,16 +7848,16 @@
           "rate": 0.6
         },
         {
-          "mob": "a grizzled smuggler",
-          "drops": 5,
-          "corpses": 13,
-          "rate": 0.38461538461538464
-        },
-        {
           "mob": "a glutted ghoul",
           "drops": 3,
           "corpses": 9,
           "rate": 0.3333333333333333
+        },
+        {
+          "mob": "a grizzled smuggler",
+          "drops": 6,
+          "corpses": 21,
+          "rate": 0.2857142857142857
         },
         {
           "mob": "a Plagueborn citizen",
@@ -8051,12 +7954,6 @@
       "name": "Lemon",
       "droppedBy": [
         {
-          "mob": "a grizzled smuggler",
-          "drops": 2,
-          "corpses": 13,
-          "rate": 0.15384615384615385
-        },
-        {
           "mob": "a poacher herbalist",
           "drops": 1,
           "corpses": 7,
@@ -8067,6 +7964,12 @@
           "drops": 2,
           "corpses": 18,
           "rate": 0.1111111111111111
+        },
+        {
+          "mob": "a grizzled smuggler",
+          "drops": 2,
+          "corpses": 21,
+          "rate": 0.09523809523809523
         },
         {
           "mob": "an enslaved elf",
@@ -8141,12 +8044,7 @@
           "rate": 0.0078125
         }
       ],
-      "prices": [
-        {
-          "copper": 1,
-          "count": 1
-        }
-      ],
+      "prices": [],
       "harvested": 0,
       "zones": [
         "Sungreetstrand",
@@ -8240,20 +8138,6 @@
       ]
     },
     {
-      "id": "mangy_bear_paw",
-      "gameId": null,
-      "name": "Mangy Bear Paw",
-      "droppedBy": [],
-      "prices": [
-        {
-          "copper": 47,
-          "count": 1
-        }
-      ],
-      "harvested": 0,
-      "zones": []
-    },
-    {
       "id": "mangy_canine_ear",
       "gameId": "80fc2d97641bd2da48158ef7",
       "name": "Mangy Canine Ear",
@@ -8268,10 +8152,6 @@
       "prices": [
         {
           "copper": 43,
-          "count": 1
-        },
-        {
-          "copper": 46,
           "count": 1
         }
       ],
@@ -8372,9 +8252,9 @@
         },
         {
           "mob": "a forest stalker",
-          "drops": 8,
-          "corpses": 19,
-          "rate": 0.42105263157894735
+          "drops": 7,
+          "corpses": 18,
+          "rate": 0.3888888888888889
         },
         {
           "mob": "a dismal cur",
@@ -8428,7 +8308,7 @@
       "name": "Moonveil",
       "droppedBy": [],
       "prices": [],
-      "harvested": 44,
+      "harvested": 34,
       "zones": [
         "Keepersbight",
         "Scarwood",
@@ -8443,7 +8323,7 @@
       "prices": [
         {
           "copper": 1,
-          "count": 2
+          "count": 1
         }
       ],
       "harvested": 0,
@@ -8568,12 +8448,6 @@
           "rate": 0.14285714285714285
         },
         {
-          "mob": "a grizzled smuggler",
-          "drops": 1,
-          "corpses": 13,
-          "rate": 0.07692307692307693
-        },
-        {
           "mob": "a burly henchman",
           "drops": 1,
           "corpses": 14,
@@ -8584,6 +8458,12 @@
           "drops": 1,
           "corpses": 14,
           "rate": 0.07142857142857142
+        },
+        {
+          "mob": "a grizzled smuggler",
+          "drops": 1,
+          "corpses": 21,
+          "rate": 0.047619047619047616
         },
         {
           "mob": "a Sangrel arcanist",
@@ -8631,10 +8511,6 @@
       "prices": [
         {
           "copper": 3,
-          "count": 1
-        },
-        {
-          "copper": 4,
           "count": 1
         }
       ],
@@ -8846,8 +8722,8 @@
         {
           "mob": "Seamas Growt",
           "drops": 1,
-          "corpses": 5,
-          "rate": 0.2
+          "corpses": 7,
+          "rate": 0.14285714285714285
         },
         {
           "mob": "a nefarious cultist",
@@ -8924,10 +8800,6 @@
       ],
       "prices": [
         {
-          "copper": 1,
-          "count": 1
-        },
-        {
           "copper": 2,
           "count": 1
         }
@@ -8948,8 +8820,8 @@
         {
           "mob": "a forest drakeling",
           "drops": 1,
-          "corpses": 6,
-          "rate": 0.16666666666666666
+          "corpses": 4,
+          "rate": 0.25
         },
         {
           "mob": "a green drake",
@@ -9008,10 +8880,6 @@
         {
           "copper": 63,
           "count": 1
-        },
-        {
-          "copper": 68,
-          "count": 1
         }
       ],
       "harvested": 0,
@@ -9050,8 +8918,8 @@
         {
           "mob": "a water basilisk",
           "drops": 9,
-          "corpses": 72,
-          "rate": 0.125
+          "corpses": 76,
+          "rate": 0.11842105263157894
         }
       ],
       "prices": [],
@@ -9243,12 +9111,6 @@
           "rate": 0.20689655172413793
         },
         {
-          "mob": "Seamas Growt",
-          "drops": 1,
-          "corpses": 5,
-          "rate": 0.2
-        },
-        {
           "mob": "a henchman",
           "drops": 18,
           "corpses": 96,
@@ -9285,6 +9147,12 @@
           "rate": 0.14285714285714285
         },
         {
+          "mob": "Seamas Growt",
+          "drops": 1,
+          "corpses": 7,
+          "rate": 0.14285714285714285
+        },
+        {
           "mob": "a sly farmhand",
           "drops": 8,
           "corpses": 72,
@@ -9309,16 +9177,16 @@
           "rate": 0.08333333333333333
         },
         {
-          "mob": "a grizzled smuggler",
-          "drops": 1,
-          "corpses": 13,
-          "rate": 0.07692307692307693
-        },
-        {
           "mob": "a Sangrel entangler",
           "drops": 1,
           "corpses": 14,
           "rate": 0.07142857142857142
+        },
+        {
+          "mob": "a grizzled smuggler",
+          "drops": 1,
+          "corpses": 21,
+          "rate": 0.047619047619047616
         },
         {
           "mob": "a Sangrel hunter",
@@ -9429,9 +9297,9 @@
         },
         {
           "mob": "a roaming shark",
-          "drops": 12,
-          "corpses": 45,
-          "rate": 0.26666666666666666
+          "drops": 13,
+          "corpses": 47,
+          "rate": 0.2765957446808511
         }
       ],
       "prices": [],
@@ -9490,9 +9358,9 @@
         },
         {
           "mob": "a forest stalker",
-          "drops": 9,
-          "corpses": 19,
-          "rate": 0.47368421052631576
+          "drops": 8,
+          "corpses": 18,
+          "rate": 0.4444444444444444
         },
         {
           "mob": "a dismal cur",
@@ -9512,7 +9380,7 @@
         },
         {
           "copper": 4,
-          "count": 2
+          "count": 1
         }
       ],
       "harvested": 0,
@@ -9584,13 +9452,8 @@
       "gameId": null,
       "name": "Resin",
       "droppedBy": [],
-      "prices": [
-        {
-          "copper": 1,
-          "count": 3
-        }
-      ],
-      "harvested": 249,
+      "prices": [],
+      "harvested": 242,
       "zones": [
         "Keepersbight",
         "Sungreetstrand"
@@ -9933,8 +9796,8 @@
         {
           "mob": "a grizzled smuggler",
           "drops": 1,
-          "corpses": 13,
-          "rate": 0.07692307692307693
+          "corpses": 21,
+          "rate": 0.047619047619047616
         },
         {
           "mob": "a poacher pathfinder",
@@ -10227,9 +10090,9 @@
         },
         {
           "mob": "a grizzled smuggler",
-          "drops": 1,
-          "corpses": 13,
-          "rate": 0.07692307692307693
+          "drops": 2,
+          "corpses": 21,
+          "rate": 0.09523809523809523
         },
         {
           "mob": "a craven cultist",
@@ -10265,9 +10128,9 @@
       "harvested": 0,
       "zones": [
         "Keepersbight",
+        "Fallenpass",
         "Graincellar",
-        "Deepdunes",
-        "Fallenpass"
+        "Deepdunes"
       ]
     },
     {
@@ -10413,16 +10276,16 @@
           "rate": 0.1
         },
         {
-          "mob": "a grizzled smuggler",
-          "drops": 1,
-          "corpses": 13,
-          "rate": 0.07692307692307693
-        },
-        {
           "mob": "a skeletal farmer",
           "drops": 1,
           "corpses": 15,
           "rate": 0.06666666666666667
+        },
+        {
+          "mob": "a grizzled smuggler",
+          "drops": 1,
+          "corpses": 21,
+          "rate": 0.047619047619047616
         },
         {
           "mob": "a Plagueborn citizen",
@@ -10835,8 +10698,8 @@
         {
           "mob": "a grizzled smuggler",
           "drops": 1,
-          "corpses": 13,
-          "rate": 0.07692307692307693
+          "corpses": 21,
+          "rate": 0.047619047619047616
         },
         {
           "mob": "a poacher bruiser",
@@ -10994,8 +10857,8 @@
         {
           "mob": "a forest stalker",
           "drops": 5,
-          "corpses": 19,
-          "rate": 0.2631578947368421
+          "corpses": 18,
+          "rate": 0.2777777777777778
         },
         {
           "mob": "a dismal cur",
@@ -11051,10 +10914,6 @@
           "count": 2
         },
         {
-          "copper": 141,
-          "count": 1
-        },
-        {
           "copper": 142,
           "count": 2
         }
@@ -11096,8 +10955,8 @@
         {
           "mob": "a forest stalker",
           "drops": 12,
-          "corpses": 19,
-          "rate": 0.631578947368421
+          "corpses": 18,
+          "rate": 0.6666666666666666
         },
         {
           "mob": "a timber wolf",
@@ -11160,9 +11019,9 @@
         },
         {
           "mob": "a roaming shark",
-          "drops": 15,
-          "corpses": 45,
-          "rate": 0.3333333333333333
+          "drops": 16,
+          "corpses": 47,
+          "rate": 0.3404255319148936
         }
       ],
       "prices": [],
@@ -11232,6 +11091,12 @@
           "rate": 0.5555555555555556
         },
         {
+          "mob": "a Bloodchain mindbreaker",
+          "drops": 4,
+          "corpses": 8,
+          "rate": 0.5
+        },
+        {
           "mob": "a shady farmer",
           "drops": 1,
           "corpses": 2,
@@ -11241,12 +11106,6 @@
           "mob": "a Bloodchain champion",
           "drops": 3,
           "corpses": 6,
-          "rate": 0.5
-        },
-        {
-          "mob": "a Bloodchain mindbreaker",
-          "drops": 4,
-          "corpses": 8,
           "rate": 0.5
         },
         {
@@ -11347,7 +11206,7 @@
         },
         {
           "copper": 70,
-          "count": 3
+          "count": 2
         }
       ],
       "harvested": 0,
@@ -11364,9 +11223,9 @@
       "droppedBy": [
         {
           "mob": "a roaming shark",
-          "drops": 23,
-          "corpses": 45,
-          "rate": 0.5111111111111111
+          "drops": 24,
+          "corpses": 47,
+          "rate": 0.5106382978723404
         },
         {
           "mob": "Sharkie",
@@ -11388,9 +11247,9 @@
       "droppedBy": [
         {
           "mob": "a water basilisk",
-          "drops": 29,
-          "corpses": 72,
-          "rate": 0.4027777777777778
+          "drops": 32,
+          "corpses": 76,
+          "rate": 0.42105263157894735
         },
         {
           "mob": "a water basilisk broodmother",
@@ -11436,8 +11295,8 @@
         {
           "mob": "a roaming shark",
           "drops": 20,
-          "corpses": 45,
-          "rate": 0.4444444444444444
+          "corpses": 47,
+          "rate": 0.425531914893617
         }
       ],
       "prices": [
@@ -11479,22 +11338,22 @@
       "name": "Snake Fang",
       "droppedBy": [
         {
+          "mob": "a boulder viper",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        },
+        {
           "mob": "a rattlesnake",
           "drops": 5,
           "corpses": 8,
           "rate": 0.625
-        },
-        {
-          "mob": "a boulder viper",
-          "drops": 1,
-          "corpses": 2,
-          "rate": 0.5
         }
       ],
       "prices": [
         {
           "copper": 2,
-          "count": 2
+          "count": 1
         }
       ],
       "harvested": 0,
@@ -11575,8 +11434,8 @@
         {
           "mob": "a roaming shark",
           "drops": 1,
-          "corpses": 45,
-          "rate": 0.022222222222222223
+          "corpses": 47,
+          "rate": 0.02127659574468085
         }
       ],
       "prices": [],
@@ -11903,8 +11762,8 @@
         {
           "mob": "Seamas Growt",
           "drops": 1,
-          "corpses": 5,
-          "rate": 0.2
+          "corpses": 7,
+          "rate": 0.14285714285714285
         },
         {
           "mob": "a poacher pathfinder",
@@ -12540,6 +12399,24 @@
       ]
     },
     {
+      "id": "tattered_leather_leggings",
+      "gameId": "c9923c475aafc04cb2d47f18",
+      "name": "Tattered Leather Leggings",
+      "droppedBy": [
+        {
+          "mob": "Seamas Growt",
+          "drops": 1,
+          "corpses": 7,
+          "rate": 0.14285714285714285
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
       "id": "tattered_leather_mask",
       "gameId": "accc2f28812938ae31e0d46e",
       "name": "Tattered Leather Mask",
@@ -13142,12 +13019,7 @@
           "rate": 0.009523809523809525
         }
       ],
-      "prices": [
-        {
-          "copper": 4,
-          "count": 1
-        }
-      ],
+      "prices": [],
       "harvested": 0,
       "zones": [
         "Keepersbight",
@@ -13424,7 +13296,7 @@
           "count": 6
         }
       ],
-      "harvested": 236,
+      "harvested": 238,
       "zones": [
         "Fallenpass",
         "Shallowshoals"
@@ -13436,7 +13308,7 @@
       "name": "Whispering Sage",
       "droppedBy": [],
       "prices": [],
-      "harvested": 63,
+      "harvested": 60,
       "zones": [
         "Sungreetstrand",
         "Keepersbight",
@@ -13460,10 +13332,6 @@
       "name": "Wild Carrots",
       "droppedBy": [],
       "prices": [
-        {
-          "copper": 1,
-          "count": 1
-        },
         {
           "copper": 2,
           "count": 1
@@ -13496,7 +13364,7 @@
       "name": "Wood",
       "droppedBy": [],
       "prices": [],
-      "harvested": 201,
+      "harvested": 195,
       "zones": [
         "Keepersbight",
         "Sungreetstrand"
@@ -13717,8 +13585,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Blacktidebay",
-        "Sungreetstrand"
+        "Sungreetstrand",
+        "Blacktidebay"
       ]
     },
     {
@@ -13976,9 +13844,9 @@
       "droppedBy": [
         {
           "mob": "Seamas Growt",
-          "drops": 3,
-          "corpses": 5,
-          "rate": 0.6
+          "drops": 4,
+          "corpses": 7,
+          "rate": 0.5714285714285714
         }
       ],
       "prices": [],
@@ -13989,27 +13857,24 @@
     }
   ],
   "harvest": {
-    "Moonveil": 44,
-    "Wood": 201,
-    "Resin": 249,
-    "Whispering Sage": 63,
     "Limestone": 410,
     "Clouded Crystallized Magic": 6,
-    "Iron Ore": 912,
-    "Weighty Stone": 236,
+    "Iron Ore": 922,
+    "Weighty Stone": 238,
     "Ironroot": 80,
     "Imperfect Sapphire": 9,
     "Imperfect Peridot": 12,
-    "Imperfect Emerald": 6,
+    "Imperfect Emerald": 7,
     "Imperfect Jade": 10,
     "Shining Crystallized Magic": 13,
     "Imperfect Cat's Eye Agate": 9,
     "Gold Ore": 140,
     "Imperfect Ruby": 6,
-    "Imperfect Diamond": 6,
+    "Imperfect Diamond": 7,
     "Nomad's Grace": 30,
     "Tin Ore": 98,
     "Jagged Stone": 22,
+    "Whispering Sage": 60,
     "Magic Frond": 2,
     "Coal": 1171,
     "Brilliant Crystallized Magic": 18,
@@ -14020,6 +13885,9 @@
     "Cat's Eye Agate": 9,
     "Ruby": 7,
     "Lionleaf": 12,
+    "Moonveil": 34,
+    "Wood": 195,
+    "Resin": 242,
     "Copper Ore": 130,
     "Brittle Stone": 35,
     "Chipped Emerald": 4,
@@ -14119,62 +13987,62 @@
     },
     {
       "name": "Iron Ore",
-      "pulls": 934,
+      "pulls": 944,
       "yields": [
         {
           "res": "Iron Ore",
-          "count": 911,
-          "rate": 0.9753747323340471
+          "count": 921,
+          "rate": 0.975635593220339
         },
         {
           "res": "Weighty Stone",
-          "count": 236,
-          "rate": 0.25267665952890794
+          "count": 238,
+          "rate": 0.2521186440677966
         },
         {
           "res": "Gold Ore",
           "count": 23,
-          "rate": 0.02462526766595289
+          "rate": 0.024364406779661018
         },
         {
           "res": "Imperfect Peridot",
           "count": 10,
-          "rate": 0.010706638115631691
+          "rate": 0.01059322033898305
         },
         {
           "res": "Shining Crystallized Magic",
           "count": 10,
-          "rate": 0.010706638115631691
+          "rate": 0.01059322033898305
         },
         {
           "res": "Imperfect Sapphire",
           "count": 9,
-          "rate": 0.009635974304068522
+          "rate": 0.009533898305084746
         },
         {
           "res": "Imperfect Jade",
           "count": 8,
-          "rate": 0.008565310492505354
+          "rate": 0.00847457627118644
         },
         {
           "res": "Imperfect Emerald",
-          "count": 6,
-          "rate": 0.006423982869379015
+          "count": 7,
+          "rate": 0.007415254237288136
         },
         {
           "res": "Imperfect Cat's Eye Agate",
           "count": 6,
-          "rate": 0.006423982869379015
+          "rate": 0.006355932203389831
         },
         {
           "res": "Imperfect Ruby",
           "count": 6,
-          "rate": 0.006423982869379015
+          "rate": 0.006355932203389831
         },
         {
           "res": "Imperfect Diamond",
-          "count": 5,
-          "rate": 0.0053533190578158455
+          "count": 6,
+          "rate": 0.006355932203389831
         }
       ],
       "zones": [
@@ -14184,27 +14052,27 @@
     },
     {
       "name": "Wood & Resin",
-      "pulls": 218,
+      "pulls": 212,
       "yields": [
         {
           "res": "Wood",
-          "count": 201,
-          "rate": 0.9220183486238532
+          "count": 195,
+          "rate": 0.9198113207547169
         },
         {
           "res": "Resin",
-          "count": 183,
-          "rate": 0.8394495412844036
+          "count": 178,
+          "rate": 0.839622641509434
         },
         {
           "res": "Fine Wood",
           "count": 14,
-          "rate": 0.06422018348623854
+          "rate": 0.0660377358490566
         },
         {
           "res": "Whisperpine Wood",
           "count": 3,
-          "rate": 0.013761467889908258
+          "rate": 0.014150943396226415
         }
       ],
       "zones": [
@@ -14472,17 +14340,17 @@
     },
     {
       "name": "Whispering Sage",
-      "pulls": 42,
+      "pulls": 40,
       "yields": [
         {
           "res": "Whispering Sage",
-          "count": 42,
+          "count": 40,
           "rate": 1
         },
         {
           "res": "Magic Frond",
           "count": 2,
-          "rate": 0.047619047619047616
+          "rate": 0.05
         }
       ],
       "zones": [
@@ -14511,20 +14379,6 @@
       ]
     },
     {
-      "name": "Herbs - Keepersbight",
-      "pulls": 21,
-      "yields": [
-        {
-          "res": "Moonveil",
-          "count": 21,
-          "rate": 1
-        }
-      ],
-      "zones": [
-        "Keepersbight"
-      ]
-    },
-    {
       "name": "Nomad's Grace",
       "pulls": 19,
       "yields": [
@@ -14539,6 +14393,20 @@
         "Shaded Dunes",
         "Valeofzintar",
         "Evershade Weald"
+      ]
+    },
+    {
+      "name": "Herbs - Keepersbight",
+      "pulls": 14,
+      "yields": [
+        {
+          "res": "Moonveil",
+          "count": 14,
+          "rate": 1
+        }
+      ],
+      "zones": [
+        "Keepersbight"
       ]
     },
     {
