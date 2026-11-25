@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-24T20:00:45.238Z",
+  "generatedAt": "2026-11-25T08:00:42.428Z",
   "items": {
     "Ancient Painted Urn": {
       "hasPage": true,
@@ -151765,9 +151765,44 @@
       "fromTrade": true
     },
     "Shaped Bark Mail": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 3.5,
+      "size": "MEDIUM",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG SHD SHM SPB",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 29,
+      "stats": {
+        "WIS": 7
+      },
+      "hp": null,
+      "mana": 10,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "MR": 3
+      },
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Rothold"
+      ],
+      "from": [
+        "Barkmother Aelindra"
+      ]
     },
     "Viper's Pauldrons": {
       "hasPage": true,
@@ -157602,9 +157637,40 @@
       "fromTrade": true
     },
     "Shipyard Bruiser's Medallion": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Game_coin1_5c8e8d",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": 3,
+      "stats": {
+        "STR": 1,
+        "AGI": 2
+      },
+      "hp": 5,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "from": [
+        "A smuggler",
+        "Underdocks"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/6b/Game_coin1_5c8e8d.png/64px-Game_coin1_5c8e8d.png"
     },
     "Shipyard Bruiser's Boots": {
       "hasPage": false,
@@ -157612,9 +157678,64 @@
       "fromTrade": true
     },
     "Steel Plate Breastplate": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0023AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 6.5,
+      "size": "LARGE",
+      "class": "CLR FTR INQ PAL SHD",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": 39,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/4/4a/Itemicon0023AA.png/64px-Itemicon0023AA.png"
+    },
+    "Yard Grunt's Claw": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 2,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "STR": 2,
+        "AGI": 1
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null
     }
   },
   "mobs": {
