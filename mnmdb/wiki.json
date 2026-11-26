@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-26T08:00:35.996Z",
+  "generatedAt": "2026-11-26T14:00:44.290Z",
   "items": {
     "Ancient Painted Urn": {
       "hasPage": true,
@@ -149872,9 +149872,39 @@
       "fromTrade": true
     },
     "League Recruitment Letter": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0126AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 2.5,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Shaded Dunes"
+      ],
+      "from": [
+        "A League prospect"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/9/91/Itemicon0126AA.png/64px-Itemicon0126AA.png"
     },
     "Heavy Saddle": {
       "hasPage": false,
@@ -150439,9 +150469,38 @@
       "fromTrade": true
     },
     "Mendicant's Ring": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Itemicon0098AA",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [
+        "MAGIC",
+        "LORE"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "DEX": 2
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/5/55/Itemicon0098AA.png/64px-Itemicon0098AA.png"
     },
     "Mycelium-Woven Shoes": {
       "hasPage": true,
@@ -157812,14 +157871,73 @@
       "fromTrade": true
     },
     "Shipyard Bruiser's Shortbow": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Game_bow1_wood_weapon_4d422c",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 6,
+      "size": "MEDIUM",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "STR": 2
+      },
+      "hp": 10,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "from": [
+        "A Deepcut basher",
+        "Underdocks"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/9/93/Game_bow1_wood_weapon_4d422c.png/64px-Game_bow1_wood_weapon_4d422c.png"
     },
     "Hospice Adept's Earring": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Game_earring_hoop_ce9343",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": 3,
+      "stats": {
+        "WIS": 1
+      },
+      "hp": null,
+      "mana": 15,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "from": [
+        "A ghoul"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/7/77/Game_earring_hoop_ce9343.png/64px-Game_earring_hoop_ce9343.png"
     },
     "Woodland Scout's Mask": {
       "hasPage": false,
@@ -157832,9 +157950,39 @@
       "fromTrade": true
     },
     "Temple Cenobite's Shoulderpads": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Game_shoulders_shawl_equipment_2a252c",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 1.25,
+      "size": "SMALL",
+      "class": "CLR DRU SHM",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": 8,
+      "stats": {
+        "WIS": 2
+      },
+      "hp": 10,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "from": [
+        "A starving outcast",
+        "Ail'Vorith"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/d/d5/Game_shoulders_shawl_equipment_2a252c.png/64px-Game_shoulders_shawl_equipment_2a252c.png"
     },
     "Temple Cenobite's Vestment": {
       "hasPage": false,
@@ -157847,29 +157995,190 @@
       "fromTrade": true
     },
     "Grovetender's Shoulderpads": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Game_shoulders_shawl_equipment_252a16",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 1,
+      "size": "SMALL",
+      "class": "CLR DRU SHM",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": 5,
+      "stats": {
+        "WIS": 2
+      },
+      "hp": null,
+      "mana": 5,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/6/6a/Game_shoulders_shawl_equipment_252a16.png/64px-Game_shoulders_shawl_equipment_252a16.png"
     },
     "Wild Crabapples": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "SMALL",
+      "class": null,
+      "race": null,
+      "flags": [],
+      "handed": null,
+      "ac": null,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": {
+        "name": "Wild Crabapples",
+        "trigger": "Worn",
+        "castTime": null,
+        "level": null,
+        "detail": "Passive. Must Equip. Level: -1"
+      }
     },
     "Whirling Cloak": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.25,
+      "size": "SMALL",
+      "class": "ARC BRD BST CLR DRU FTR INQ MNK PAL RNG ROG",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 7,
+      "stats": {
+        "STR": 5,
+        "AGI": 4,
+        "DEX": 4
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "ER": 1
+      },
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "from": [
+        "Sunken Resort",
+        "An Ethereal Corpse"
+      ]
     },
     "Woodland Scout's Medallion": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": null,
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 0.1,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": 2,
+      "stats": {
+        "STR": 1,
+        "DEX": 2
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "from": [
+        "A Fellstone warrior"
+      ]
     },
     "Worn Basilisk Vertebra": {
       "hasPage": false,
       "wikiOnly": true,
       "fromTrade": true
+    },
+    "Luminous Cow": {
+      "hasPage": false,
+      "wikiOnly": true,
+      "fromTrade": true
+    },
+    "Umbral Mantle": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Game_shoulders_shawl_equipment_312629",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 1,
+      "size": "SMALL",
+      "class": "ALL",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": 17,
+      "stats": {
+        "STA": 3,
+        "AGI": 1,
+        "INT": 7
+      },
+      "hp": 10,
+      "mana": 10,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {
+        "MR": 2
+      },
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/2/2d/Game_shoulders_shawl_equipment_312629.png/64px-Game_shoulders_shawl_equipment_312629.png"
     }
   },
   "mobs": {
