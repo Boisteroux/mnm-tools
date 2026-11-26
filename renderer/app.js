@@ -616,6 +616,8 @@ function setQuickPlace(on) {
 const ZONE_ALIASES = {
   evergrove: 'Evershade Weald',
   deepdunes: 'Caves of Irem', // the buried sea beneath the Shaded Dunes
+  nightharbore: 'Night Harbor', // Early Access splits the city into east and west halves
+  nightharborw: 'Night Harbor',
 };
 
 // Zones that share one game zone-code but have several maps (loaded from

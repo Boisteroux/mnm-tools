@@ -1206,8 +1206,11 @@ function renderMob(name) {
 }
 
 function renderZone(name) {
+  // Kills from both eras: a mob seen only in Early Access has an empty beta record.
+  const eaMob = (m) => (EA.mobs || {})[m];
   const mobs = Object.entries(DATA.mobs)
-    .filter(([, d]) => d.zones && d.zones[name])
+    .filter(([m, d]) => (d.zones && d.zones[name]) || (eaMob(m) && eaMob(m).zones && eaMob(m).zones[name]))
+    .map(([m, d]) => [m, { kills: (d.kills || 0) + ((eaMob(m) && eaMob(m).kills) || 0) }])
     .sort((a, b) => b[1].kills - a[1].kills);
   const items = DATA.items
     .filter((i) => (i.zones || []).includes(name) || (i.wiki && (i.wiki.wikiZones || []).includes(name)))

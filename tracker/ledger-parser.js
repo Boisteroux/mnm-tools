@@ -49,14 +49,40 @@ function priceToCopper(str) {
   return v.platinum * PLAT + v.gold * GOLD + v.silver * SILVER + v.copper;
 }
 
-// Internal zone names -> display names (extend as new zones appear)
+// Game zone codes -> display names. Most codes are the name's words run together,
+// sometimes reordered ("wyrmsbanetomb"), and those are matched against KNOWN_ZONES
+// below. Only codes that DON'T spell their zone need listing here.
 const ZONE_NAMES = {
-  evergrove: 'Evershade Weald',
-  nightharbor: 'Night Harbor',
-  shadeddunes: 'Shaded Dunes',
-  wyrmsbanetomb: 'Tomb of the Last Wyrmsbane',
+  evergrove: 'Evershade Weald',   // also Faelindral above it; the code can't tell them apart
+  deepdunes: 'Caves of Irem',     // the buried sea beneath the Shaded Dunes
+  nightharbore: 'Night Harbor',   // the city is split into east and west halves in Early Access
+  nightharborw: 'Night Harbor',
 };
-const zoneName = (z) => ZONE_NAMES[z] || (z ? z.charAt(0).toUpperCase() + z.slice(1) : '');
+const KNOWN_ZONES = [
+  'Ancient Crypt', "Ail'Vorith", 'Blacktide Bay', 'Blind Midden', 'Caves of Irem', 'Evershade Weald', 'Faelindral',
+  'Fallen Pass', 'Fallen Watch', 'Glass Flats', 'Glinting Hollow', 'Grain Cellar', 'Great Cavern Sea', 'Grimtide Sanctum',
+  'Infested Crypt', "Keeper's Bight", 'Night Harbor', 'Night Harbor Sewers', 'Rothold', 'Scarwood', 'Shaded Dunes',
+  'Shallow Shoals', 'Sungreet Strand', 'Sunken Resort', 'Tel Ekir', 'Tomb of the Last Wyrmsbane', 'Underdocks',
+  'Undead Keep', 'Vale of Zintar',
+];
+const zoneKey = (z) => String(z || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+// Can the code be spelled with the zone's own words, each used once, in any order?
+function codeSpells(code, zone) {
+  const eat = (rest, pool) => !rest || pool.some((w, i) => w && rest.startsWith(w) && eat(rest.slice(w.length), pool.map((x, j) => (j === i ? null : x))));
+  return eat(code, zone.toLowerCase().match(/[a-z0-9]+/g) || []);
+}
+// Works on raw codes and on names already shown (so "Sungreetstrand" from an older
+// app's shared data also becomes "Sungreet Strand"). Unknown codes keep the old
+// capitalised fallback so a brand-new zone still shows up.
+function zoneName(z) {
+  const k = zoneKey(z);
+  if (!k) return '';
+  if (ZONE_NAMES[k]) return ZONE_NAMES[k];
+  const exact = KNOWN_ZONES.find((n) => zoneKey(n) === k);
+  if (exact) return exact;
+  const spelled = KNOWN_ZONES.filter((n) => codeSpells(k, n)).sort((a, b) => a.split(' ').length - b.split(' ').length)[0];
+  return spelled || z.charAt(0).toUpperCase() + z.slice(1);
+}
 
 // Kill coin field d12 = "plat,gold,silver,copper" (base64) -> total copper
 function coinFromD12(s) {
@@ -601,6 +627,10 @@ function charactersFromFiles(files) {
 function mergeAggs(aggs) {
   const merged = { mobs: {}, items: {}, harvest: {}, harvestZones: {}, harvestNodes: [], events: 0, fileCount: 0 };
   const add = (dst, src) => { for (const [k, v] of Object.entries(src || {})) dst[k] = (dst[k] || 0) + v; };
+  // Shared data from older app versions carries raw zone codes ("Sungreetstrand");
+  // re-name them so one zone isn't split across two spellings.
+  const addZones = (dst, src) => { for (const [k, v] of Object.entries(src || {})) { const z = zoneName(k); dst[z] = (dst[z] || 0) + v; } };
+  const nodeName = (n) => String(n).replace(/ - (.+)$/, (m, z) => ' - ' + zoneName(z));
   const list = (aggs || []).filter(Boolean);
 
   for (const agg of list) {
@@ -609,25 +639,26 @@ function mergeAggs(aggs) {
     for (const [name, M] of Object.entries(agg.mobs || {})) {
       const D = merged.mobs[name] || (merged.mobs[name] = { kills: 0, drops: {}, zones: {}, coin: 0, corpses: 0 });
       D.kills += M.kills || 0; D.coin += M.coin || 0; D.corpses += M.corpses || 0;
-      add(D.drops, M.drops); add(D.zones, M.zones);
+      add(D.drops, M.drops); addZones(D.zones, M.zones);
     }
     for (const [name, it] of Object.entries(agg.items || {})) {
       const D = merged.items[name] || (merged.items[name] = { name, id: '', sources: {}, prices: {}, zones: {} });
       if (it.id && !D.id) D.id = it.id;
-      add(D.sources, it.sources); add(D.prices, it.prices); add(D.zones, it.zones);
+      add(D.sources, it.sources); add(D.prices, it.prices); addZones(D.zones, it.zones);
     }
     add(merged.harvest, agg.harvest);
-    for (const [res, zc] of Object.entries(agg.harvestZones || {})) add((merged.harvestZones[res] = merged.harvestZones[res] || {}), zc);
+    for (const [res, zc] of Object.entries(agg.harvestZones || {})) addZones((merged.harvestZones[res] = merged.harvestZones[res] || {}), zc);
   }
 
   // Harvest nodes carry their own pull/yield counts, so merge by node name: sum
   // pulls + per-yield counts, recompute the rate, union the zone lists.
   const nodes = {};
   for (const agg of list) for (const n of agg.harvestNodes || []) {
-    const D = nodes[n.name] || (nodes[n.name] = { name: n.name, pulls: 0, yc: {}, zones: [] });
+    const nm = nodeName(n.name);
+    const D = nodes[nm] || (nodes[nm] = { name: nm, pulls: 0, yc: {}, zones: [] });
     D.pulls += n.pulls || 0;
     for (const y of n.yields || []) D.yc[y.res] = (D.yc[y.res] || 0) + (y.count || 0);
-    for (const z of n.zones || []) if (!D.zones.includes(z)) D.zones.push(z);
+    for (const z of (n.zones || []).map(zoneName)) if (!D.zones.includes(z)) D.zones.push(z);
   }
   merged.harvestNodes = Object.values(nodes).map((D) => ({
     name: D.name, pulls: D.pulls,
@@ -639,7 +670,7 @@ function mergeAggs(aggs) {
 }
 
 module.exports = {
-  GAME_BASE, b64, priceToCopper, copperToString,
+  GAME_BASE, b64, priceToCopper, copperToString, zoneName,
   findLedgerFiles, parseLedgers, buildItemReport, buildDataset, ledgerServer, ledgerEra,
   buildSessions, todayRollup, SESSION_GAP_MS,
   charactersFromFiles, mergeAggs,
