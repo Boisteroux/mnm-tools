@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-26T14:00:44.290Z",
+  "generatedAt": "2026-11-26T20:00:44.107Z",
   "items": {
     "Ancient Painted Urn": {
       "hasPage": true,
@@ -153356,9 +153356,33 @@
       "fromTrade": true
     },
     "Steel Plate Boots": {
-      "hasPage": false,
+      "hasPage": true,
       "wikiOnly": true,
-      "fromTrade": true
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Custom_1792168243338295",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 3.25,
+      "size": "MEDIUM",
+      "class": "CLR FTR INQ PAL SHD",
+      "race": "ALL",
+      "flags": [],
+      "handed": null,
+      "ac": 24,
+      "stats": {},
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/a/aa/Custom_1792168243338295.png/64px-Custom_1792168243338295.png"
     },
     "Shield": {
       "hasPage": false,
@@ -158179,6 +158203,46 @@
       "container": null,
       "effect": null,
       "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/2/2d/Game_shoulders_shawl_equipment_312629.png/64px-Game_shoulders_shawl_equipment_312629.png"
+    },
+    "Sovereign's Edge": {
+      "hasPage": true,
+      "wikiOnly": true,
+      "fromTrade": true,
+      "statsV": 3,
+      "iconId": "Game_sword1_weapon_464a32",
+      "slot": null,
+      "dmg": null,
+      "delay": null,
+      "skill": null,
+      "weight": 5.5,
+      "size": "MEDIUM",
+      "class": "ARC BRD BST DRU ELE FTR INQ NEC PAL RNG ROG SHD SPB WIZ",
+      "race": "ALL",
+      "flags": [
+        "MAGIC"
+      ],
+      "handed": null,
+      "ac": null,
+      "stats": {
+        "STR": 10,
+        "STA": 7
+      },
+      "hp": null,
+      "mana": null,
+      "hpRegen": null,
+      "manaRegen": null,
+      "haste": null,
+      "resists": {},
+      "instr": {},
+      "container": null,
+      "effect": null,
+      "wikiZones": [
+        "Rothold"
+      ],
+      "from": [
+        "Prince Ademaar Reims"
+      ],
+      "icon": "https://static.wikitide.net/monstersandmemorieswiki/thumb/f/f9/Game_sword1_weapon_464a32.png/64px-Game_sword1_weapon_464a32.png"
     }
   },
   "mobs": {
