@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-26T02:00:16.583Z",
+  "generatedAt": "2026-11-26T08:00:16.519Z",
   "source": "mnm-tools",
-  "ledgerFiles": 61,
-  "events": 13044,
+  "ledgerFiles": 60,
+  "events": 13235,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 13044
+      "events": 13235
     }
   ],
   "contributorCount": 1,
@@ -1146,12 +1146,12 @@
       "corpses": 1
     },
     "a Plagueborn drake": {
-      "kills": 22,
+      "kills": 33,
       "drops": {},
       "zones": {
-        "Fallenpass": 22
+        "Fallenpass": 33
       },
-      "coin": 6326,
+      "coin": 9644,
       "corpses": 0
     },
     "a water basilisk": {
@@ -1742,6 +1742,133 @@
       "coin": 641,
       "corpses": 2
     },
+    "a dust drake": {
+      "kills": 2,
+      "drops": {},
+      "zones": {
+        "Glassflats": 2
+      },
+      "coin": 1004,
+      "corpses": 0
+    },
+    "a Plagueborn watchman": {
+      "kills": 72,
+      "drops": {
+        "Embossed Medallion": 17,
+        "Rusty Iron Warhammer": 1,
+        "Leather Scraps": 10,
+        "Eth-ur Metallurgical Journal Page": 1,
+        "Cotton Scraps": 12,
+        "Ghoul Skin": 18,
+        "Iron Scraps": 7,
+        "Ornate Medallion": 14,
+        "Ghoul Bile": 3,
+        "Rusty Iron Long Spear": 1,
+        "Rusty Iron Scythe": 3,
+        "Rusty Iron Scimitar": 1,
+        "Rusty Iron Chain Coif": 1,
+        "Worn Ironbark Buckler": 1,
+        "Rusty Iron Tower Shield": 1,
+        "Tattered Cotton Gloves": 1,
+        "Rusty Iron Kite Shield": 1,
+        "Cracked Ironbark Staff": 1,
+        "Tattered Cotton Cap": 1,
+        "Rusty Iron Plate Arming Doublet": 1
+      },
+      "zones": {
+        "Fallenpass": 190
+      },
+      "coin": 13430,
+      "corpses": 48
+    },
+    "a Plagueborn knight": {
+      "kills": 33,
+      "drops": {
+        "Leather Scraps": 5,
+        "Ghoul Bile": 1,
+        "Ornate Medallion": 9,
+        "Rusty Iron Scythe": 1,
+        "Ghoul Skin": 7,
+        "Tattered Leather Gorget": 1,
+        "Rusty Iron Dagger": 1,
+        "Cotton Scraps": 8,
+        "Torch": 1,
+        "Rusty Iron Greatsword": 1,
+        "Rusty Iron Plate Boots": 1
+      },
+      "zones": {
+        "Fallenpass": 75
+      },
+      "coin": 7136,
+      "corpses": 24
+    },
+    "a Plagueborn veteran": {
+      "kills": 17,
+      "drops": {
+        "Ornate Medallion": 7,
+        "Ghoul Bile": 1,
+        "Tattered Leather Belt": 2,
+        "Cotton Scraps": 4,
+        "Ghoul Skin": 2,
+        "Rusty Iron Dagger": 1,
+        "Leather Scraps": 2,
+        "Worn Ironbark Great Staff": 1,
+        "Tattered Leather Gloves": 1,
+        "Rusty Iron Tower Shield": 1,
+        "Rusty Iron Warhammer": 1
+      },
+      "zones": {
+        "Fallenpass": 44
+      },
+      "coin": 3927,
+      "corpses": 13
+    },
+    "a Plagueborn chaplain": {
+      "kills": 6,
+      "drops": {
+        "Cotton Scraps": 2,
+        "Ornate Medallion": 3,
+        "Leather Scraps": 1,
+        "Raw Human Meat": 3,
+        "Rusty Iron Plate Helm": 1,
+        "Iron Scraps": 1,
+        "Onion": 1
+      },
+      "zones": {
+        "Fallenpass": 20
+      },
+      "coin": 974,
+      "corpses": 5
+    },
+    "Captain Haring": {
+      "kills": 2,
+      "drops": {
+        "Rusty Steel Plate Bracer": 1,
+        "Ornate Medallion": 1,
+        "Pestilent Captain's Ring": 1,
+        "Broken Key Piece": 1
+      },
+      "zones": {
+        "Fallenpass": 8
+      },
+      "coin": 1446,
+      "corpses": 3
+    },
+    "Observer Samvel": {
+      "kills": 3,
+      "drops": {
+        "Observer's Manacle": 1,
+        "Linen Scraps": 2,
+        "Broken Key Piece": 1,
+        "Trousers of Shattered Sight": 1,
+        "Rusty Steel Greatsword": 1
+      },
+      "zones": {
+        "Fallenpass": 9
+      },
+      "coin": 1719,
+      "corpses": 4
+    },
     "an old elven skeleton": {
       "kills": 0,
       "drops": {
@@ -2117,6 +2244,17 @@
       },
       "coin": 0,
       "corpses": 1
+    },
+    "a stumbling zombie": {
+      "kills": 1,
+      "drops": {
+        "Tattered Cloth Robe": 1
+      },
+      "zones": {
+        "Shaded Dunes": 2
+      },
+      "coin": 23,
+      "corpses": 1
     }
   },
   "items": [
@@ -2206,7 +2344,7 @@
       "prices": [
         {
           "copper": 51,
-          "count": 1
+          "count": 2
         },
         {
           "copper": 55,
@@ -2462,6 +2600,30 @@
       "zones": [
         "Evershade Weald",
         "Keepersbight"
+      ]
+    },
+    {
+      "id": "broken_key_piece",
+      "gameId": "039e03bed584ffb43e4fad03",
+      "name": "Broken Key Piece",
+      "droppedBy": [
+        {
+          "mob": "Captain Haring",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        },
+        {
+          "mob": "Observer Samvel",
+          "drops": 1,
+          "corpses": 4,
+          "rate": 0.25
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
       ]
     },
     {
@@ -3240,10 +3402,9 @@
       "name": "Clouded Crystallized Magic",
       "droppedBy": [],
       "prices": [],
-      "harvested": 6,
+      "harvested": 5,
       "zones": [
         "Sungreetstrand",
-        "Fallenpass",
         "Keepersbight",
         "Evershade Weald"
       ]
@@ -3423,12 +3584,7 @@
           "rate": 0.010416666666666666
         }
       ],
-      "prices": [
-        {
-          "copper": 163,
-          "count": 1
-        }
-      ],
+      "prices": [],
       "harvested": 0,
       "zones": [
         "Blacktidebay",
@@ -3567,12 +3723,7 @@
           "rate": 0.017543859649122806
         }
       ],
-      "prices": [
-        {
-          "copper": 135,
-          "count": 1
-        }
-      ],
+      "prices": [],
       "harvested": 0,
       "zones": [
         "Valeofzintar",
@@ -3652,12 +3803,7 @@
           "rate": 0.009433962264150943
         }
       ],
-      "prices": [
-        {
-          "copper": 135,
-          "count": 1
-        }
-      ],
+      "prices": [],
       "harvested": 0,
       "zones": [
         "Sungreetstrand"
@@ -4039,10 +4185,6 @@
         {
           "copper": 188,
           "count": 1
-        },
-        {
-          "copper": 203,
-          "count": 1
         }
       ],
       "harvested": 0,
@@ -4137,12 +4279,7 @@
           "rate": 0.017543859649122806
         }
       ],
-      "prices": [
-        {
-          "copper": 176,
-          "count": 1
-        }
-      ],
+      "prices": [],
       "harvested": 0,
       "zones": [
         "Sungreetstrand"
@@ -4172,20 +4309,6 @@
         "Blacktidebay",
         "Sungreetstrand"
       ]
-    },
-    {
-      "id": "corroded_bronze_plate_pauldrons",
-      "gameId": null,
-      "name": "Corroded Bronze Plate Pauldrons",
-      "droppedBy": [],
-      "prices": [
-        {
-          "copper": 163,
-          "count": 1
-        }
-      ],
-      "harvested": 0,
-      "zones": []
     },
     {
       "id": "corroded_bronze_plate_visor",
@@ -4484,12 +4607,7 @@
           "rate": 0.017543859649122806
         }
       ],
-      "prices": [
-        {
-          "copper": 163,
-          "count": 1
-        }
-      ],
+      "prices": [],
       "harvested": 0,
       "zones": [
         "Sungreetstrand",
@@ -4562,9 +4680,21 @@
           "rate": 0.4166666666666667
         },
         {
+          "mob": "a Plagueborn chaplain",
+          "drops": 2,
+          "corpses": 5,
+          "rate": 0.4
+        },
+        {
           "mob": "a famished ghoul",
           "drops": 2,
           "corpses": 6,
+          "rate": 0.3333333333333333
+        },
+        {
+          "mob": "a Plagueborn knight",
+          "drops": 8,
+          "corpses": 24,
           "rate": 0.3333333333333333
         },
         {
@@ -4578,6 +4708,12 @@
           "drops": 1,
           "corpses": 3,
           "rate": 0.3333333333333333
+        },
+        {
+          "mob": "a Plagueborn veteran",
+          "drops": 4,
+          "corpses": 13,
+          "rate": 0.3076923076923077
         },
         {
           "mob": "a poacher bruiser",
@@ -4620,6 +4756,12 @@
           "drops": 25,
           "corpses": 92,
           "rate": 0.2717391304347826
+        },
+        {
+          "mob": "a Plagueborn watchman",
+          "drops": 12,
+          "corpses": 48,
+          "rate": 0.25
         },
         {
           "mob": "a glutted ghoul",
@@ -4755,6 +4897,12 @@
       "name": "Cracked Ironbark Staff",
       "droppedBy": [
         {
+          "mob": "a Plagueborn watchman",
+          "drops": 1,
+          "corpses": 48,
+          "rate": 0.020833333333333332
+        },
+        {
           "mob": "a poacher pathfinder",
           "drops": 2,
           "corpses": 128,
@@ -4770,7 +4918,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Fallenpass"
       ]
     },
     {
@@ -5091,7 +5240,7 @@
       "name": "Duneleaf",
       "droppedBy": [],
       "prices": [],
-      "harvested": 13,
+      "harvested": 25,
       "zones": [
         "Sungreetstrand"
       ]
@@ -5130,6 +5279,12 @@
           "drops": 2,
           "corpses": 5,
           "rate": 0.4
+        },
+        {
+          "mob": "a Plagueborn watchman",
+          "drops": 17,
+          "corpses": 48,
+          "rate": 0.3541666666666667
         },
         {
           "mob": "Seamas Growt",
@@ -5205,6 +5360,24 @@
       "harvested": 0,
       "zones": [
         "Sungreetstrand"
+      ]
+    },
+    {
+      "id": "eth_ur_metallurgical_journal_page",
+      "gameId": "e3c9250ef498f9e2f2c0c8e3",
+      "name": "Eth-ur Metallurgical Journal Page",
+      "droppedBy": [
+        {
+          "mob": "a Plagueborn watchman",
+          "drops": 1,
+          "corpses": 48,
+          "rate": 0.020833333333333332
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
       ]
     },
     {
@@ -5812,8 +5985,9 @@
       "name": "Ghost Poppy",
       "droppedBy": [],
       "prices": [],
-      "harvested": 2,
+      "harvested": 7,
       "zones": [
+        "Sungreetstrand",
         "Shaded Dunes"
       ]
     },
@@ -5829,10 +6003,28 @@
           "rate": 0.3
         },
         {
+          "mob": "a Plagueborn veteran",
+          "drops": 1,
+          "corpses": 13,
+          "rate": 0.07692307692307693
+        },
+        {
           "mob": "a Plagueborn patrolman",
           "drops": 2,
           "corpses": 29,
           "rate": 0.06896551724137931
+        },
+        {
+          "mob": "a Plagueborn watchman",
+          "drops": 3,
+          "corpses": 48,
+          "rate": 0.0625
+        },
+        {
+          "mob": "a Plagueborn knight",
+          "drops": 1,
+          "corpses": 24,
+          "rate": 0.041666666666666664
         },
         {
           "mob": "a Plagueborn citizen",
@@ -5853,6 +6045,18 @@
       "name": "Ghoul Skin",
       "droppedBy": [
         {
+          "mob": "a Plagueborn watchman",
+          "drops": 18,
+          "corpses": 48,
+          "rate": 0.375
+        },
+        {
+          "mob": "a Plagueborn knight",
+          "drops": 7,
+          "corpses": 24,
+          "rate": 0.2916666666666667
+        },
+        {
           "mob": "a Plagueborn patrolman",
           "drops": 8,
           "corpses": 29,
@@ -5863,6 +6067,12 @@
           "drops": 20,
           "corpses": 92,
           "rate": 0.21739130434782608
+        },
+        {
+          "mob": "a Plagueborn veteran",
+          "drops": 2,
+          "corpses": 13,
+          "rate": 0.15384615384615385
         },
         {
           "mob": "a Plagueborn constable",
@@ -6382,7 +6592,7 @@
           "count": 1
         }
       ],
-      "harvested": 9,
+      "harvested": 8,
       "zones": [
         "Fallenpass",
         "Keepersbight",
@@ -6415,6 +6625,10 @@
         {
           "copper": 151,
           "count": 2
+        },
+        {
+          "copper": 153,
+          "count": 1
         },
         {
           "copper": 164,
@@ -6451,6 +6665,10 @@
           "count": 2
         },
         {
+          "copper": 153,
+          "count": 1
+        },
+        {
           "copper": 164,
           "count": 1
         },
@@ -6459,7 +6677,7 @@
           "count": 1
         }
       ],
-      "harvested": 7,
+      "harvested": 6,
       "zones": [
         "Keepersbight",
         "Fallenpass",
@@ -6514,7 +6732,7 @@
           "count": 1
         }
       ],
-      "harvested": 10,
+      "harvested": 9,
       "zones": [
         "Fallenpass",
         "Keepersbight",
@@ -6554,7 +6772,7 @@
           "count": 1
         }
       ],
-      "harvested": 12,
+      "harvested": 11,
       "zones": [
         "Fallenpass",
         "Keepersbight",
@@ -6589,7 +6807,7 @@
         },
         {
           "copper": 153,
-          "count": 1
+          "count": 2
         }
       ],
       "harvested": 7,
@@ -6617,7 +6835,7 @@
           "count": 2
         }
       ],
-      "harvested": 9,
+      "harvested": 8,
       "zones": [
         "Fallenpass",
         "Keepersbight",
@@ -6643,7 +6861,7 @@
         },
         {
           "copper": 302,
-          "count": 1
+          "count": 2
         },
         {
           "copper": 315,
@@ -6735,13 +6953,14 @@
       "prices": [
         {
           "copper": 1,
-          "count": 23
+          "count": 15
         }
       ],
-      "harvested": 940,
+      "harvested": 799,
       "zones": [
         "Fallenpass",
-        "Shallowshoals"
+        "Shallowshoals",
+        "Glassflats"
       ]
     },
     {
@@ -6786,10 +7005,22 @@
           "rate": 0.2
         },
         {
+          "mob": "a Plagueborn chaplain",
+          "drops": 1,
+          "corpses": 5,
+          "rate": 0.2
+        },
+        {
           "mob": "Kallen Oison",
           "drops": 1,
           "corpses": 5,
           "rate": 0.2
+        },
+        {
+          "mob": "a Plagueborn watchman",
+          "drops": 7,
+          "corpses": 48,
+          "rate": 0.14583333333333334
         },
         {
           "mob": "Seamas Growt",
@@ -6852,7 +7083,7 @@
       "name": "Ironroot",
       "droppedBy": [],
       "prices": [],
-      "harvested": 80,
+      "harvested": 74,
       "zones": [
         "Fallenpass",
         "Sungreetstrand",
@@ -6883,11 +7114,11 @@
           "count": 7
         }
       ],
-      "harvested": 22,
+      "harvested": 23,
       "zones": [
         "Scarwood",
-        "Fallenpass",
-        "Sungreetstrand"
+        "Sungreetstrand",
+        "Fallenpass"
       ]
     },
     {
@@ -7096,9 +7327,27 @@
           "rate": 0.2222222222222222
         },
         {
+          "mob": "a Plagueborn watchman",
+          "drops": 10,
+          "corpses": 48,
+          "rate": 0.20833333333333334
+        },
+        {
+          "mob": "a Plagueborn knight",
+          "drops": 5,
+          "corpses": 24,
+          "rate": 0.20833333333333334
+        },
+        {
           "mob": "a skeletal farmer",
           "drops": 3,
           "corpses": 15,
+          "rate": 0.2
+        },
+        {
+          "mob": "a Plagueborn chaplain",
+          "drops": 1,
+          "corpses": 5,
           "rate": 0.2
         },
         {
@@ -7130,6 +7379,12 @@
           "drops": 2,
           "corpses": 12,
           "rate": 0.16666666666666666
+        },
+        {
+          "mob": "a Plagueborn veteran",
+          "drops": 2,
+          "corpses": 13,
+          "rate": 0.15384615384615385
         },
         {
           "mob": "a craven cultist",
@@ -7277,17 +7532,30 @@
       "gameId": null,
       "name": "Limestone",
       "droppedBy": [],
-      "prices": [
-        {
-          "copper": 1,
-          "count": 1
-        }
-      ],
-      "harvested": 410,
+      "prices": [],
+      "harvested": 388,
       "zones": [
         "Sungreetstrand",
-        "Fallenpass",
-        "Scarwood"
+        "Scarwood",
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "linen_scraps",
+      "gameId": "05a0fb6a248bb844855c6e23",
+      "name": "Linen Scraps",
+      "droppedBy": [
+        {
+          "mob": "Observer Samvel",
+          "drops": 2,
+          "corpses": 4,
+          "rate": 0.5
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
       ]
     },
     {
@@ -7616,7 +7884,7 @@
       "name": "Nomad's Grace",
       "droppedBy": [],
       "prices": [],
-      "harvested": 30,
+      "harvested": 32,
       "zones": [
         "Sungreetstrand",
         "Shaded Dunes",
@@ -7625,10 +7893,34 @@
       ]
     },
     {
+      "id": "observer_s_manacle",
+      "gameId": "ad5a5191b865ce221830fc49",
+      "name": "Observer's Manacle",
+      "droppedBy": [
+        {
+          "mob": "Observer Samvel",
+          "drops": 1,
+          "corpses": 4,
+          "rate": 0.25
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
       "id": "onion",
       "gameId": "93190eda5810e51decab6837",
       "name": "Onion",
       "droppedBy": [
+        {
+          "mob": "a Plagueborn chaplain",
+          "drops": 1,
+          "corpses": 5,
+          "rate": 0.2
+        },
         {
           "mob": "Poacher Garrus",
           "drops": 1,
@@ -7710,6 +8002,48 @@
       ]
     },
     {
+      "id": "ornate_medallion",
+      "gameId": "1d2c9f52a428f3869fbfe8c8",
+      "name": "Ornate Medallion",
+      "droppedBy": [
+        {
+          "mob": "a Plagueborn chaplain",
+          "drops": 3,
+          "corpses": 5,
+          "rate": 0.6
+        },
+        {
+          "mob": "a Plagueborn veteran",
+          "drops": 7,
+          "corpses": 13,
+          "rate": 0.5384615384615384
+        },
+        {
+          "mob": "a Plagueborn knight",
+          "drops": 9,
+          "corpses": 24,
+          "rate": 0.375
+        },
+        {
+          "mob": "Captain Haring",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        },
+        {
+          "mob": "a Plagueborn watchman",
+          "drops": 14,
+          "corpses": 48,
+          "rate": 0.2916666666666667
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
       "id": "overseer_s_spyglass",
       "gameId": "c50259f70ce7ec3f743f49ac",
       "name": "Overseer's Spyglass",
@@ -7756,6 +8090,24 @@
         "Shallowshoals",
         "Sungreetstrand",
         "Scarwood"
+      ]
+    },
+    {
+      "id": "pestilent_captain_s_ring",
+      "gameId": "106e7c2d85bf5aedd7969d8d",
+      "name": "Pestilent Captain's Ring",
+      "droppedBy": [
+        {
+          "mob": "Captain Haring",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
       ]
     },
     {
@@ -8226,6 +8578,12 @@
       "gameId": "0aba99615b57b2523938d9ae",
       "name": "Raw Human Meat",
       "droppedBy": [
+        {
+          "mob": "a Plagueborn chaplain",
+          "drops": 3,
+          "corpses": 5,
+          "rate": 0.6
+        },
         {
           "mob": "a poacher herbalist",
           "drops": 4,
@@ -8826,6 +9184,12 @@
       "name": "Rusty Iron Chain Coif",
       "droppedBy": [
         {
+          "mob": "a Plagueborn watchman",
+          "drops": 1,
+          "corpses": 48,
+          "rate": 0.020833333333333332
+        },
+        {
           "mob": "a poacher pathfinder",
           "drops": 2,
           "corpses": 128,
@@ -8846,7 +9210,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Fallenpass"
       ]
     },
     {
@@ -8969,13 +9334,32 @@
           "rate": 0.010869565217391304
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 204,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Keepersbight",
         "Fallenpass",
         "Graincellar"
       ]
+    },
+    {
+      "id": "rusty_iron_chain_mask",
+      "gameId": null,
+      "name": "Rusty Iron Chain Mask",
+      "droppedBy": [],
+      "prices": [
+        {
+          "copper": 153,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "rusty_iron_chain_shoulderguards",
@@ -9065,6 +9449,18 @@
       "name": "Rusty Iron Dagger",
       "droppedBy": [
         {
+          "mob": "a Plagueborn veteran",
+          "drops": 1,
+          "corpses": 13,
+          "rate": 0.07692307692307693
+        },
+        {
+          "mob": "a Plagueborn knight",
+          "drops": 1,
+          "corpses": 24,
+          "rate": 0.041666666666666664
+        },
+        {
           "mob": "a poacher bruiser",
           "drops": 5,
           "corpses": 280,
@@ -9080,7 +9476,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Fallenpass"
       ]
     },
     {
@@ -9119,6 +9516,12 @@
           "rate": 0.25
         },
         {
+          "mob": "a Plagueborn knight",
+          "drops": 1,
+          "corpses": 24,
+          "rate": 0.041666666666666664
+        },
+        {
           "mob": "a poacher bruiser",
           "drops": 5,
           "corpses": 280,
@@ -9129,7 +9532,8 @@
       "harvested": 0,
       "zones": [
         "Keepersbight",
-        "Graincellar"
+        "Graincellar",
+        "Fallenpass"
       ]
     },
     {
@@ -9150,6 +9554,12 @@
           "rate": 0.1
         },
         {
+          "mob": "a Plagueborn watchman",
+          "drops": 1,
+          "corpses": 48,
+          "rate": 0.020833333333333332
+        },
+        {
           "mob": "a poacher bruiser",
           "drops": 2,
           "corpses": 280,
@@ -9160,8 +9570,8 @@
       "harvested": 0,
       "zones": [
         "Keepersbight",
-        "Graincellar",
-        "Fallenpass"
+        "Fallenpass",
+        "Graincellar"
       ]
     },
     {
@@ -9182,6 +9592,12 @@
           "rate": 0.1
         },
         {
+          "mob": "a Plagueborn watchman",
+          "drops": 1,
+          "corpses": 48,
+          "rate": 0.020833333333333332
+        },
+        {
           "mob": "a poacher bruiser",
           "drops": 5,
           "corpses": 280,
@@ -9198,9 +9614,9 @@
       "harvested": 0,
       "zones": [
         "Keepersbight",
+        "Fallenpass",
         "Deepdunes",
-        "Graincellar",
-        "Fallenpass"
+        "Graincellar"
       ]
     },
     {
@@ -9345,6 +9761,12 @@
           "rate": 0.034482758620689655
         },
         {
+          "mob": "a Plagueborn watchman",
+          "drops": 1,
+          "corpses": 48,
+          "rate": 0.020833333333333332
+        },
+        {
           "mob": "a poacher bruiser",
           "drops": 1,
           "corpses": 280,
@@ -9365,6 +9787,12 @@
       "name": "Rusty Iron Plate Boots",
       "droppedBy": [
         {
+          "mob": "a Plagueborn knight",
+          "drops": 1,
+          "corpses": 24,
+          "rate": 0.041666666666666664
+        },
+        {
           "mob": "a poacher bruiser",
           "drops": 2,
           "corpses": 280,
@@ -9374,8 +9802,23 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight"
+        "Keepersbight",
+        "Fallenpass"
       ]
+    },
+    {
+      "id": "rusty_iron_plate_bracer",
+      "gameId": null,
+      "name": "Rusty Iron Plate Bracer",
+      "droppedBy": [],
+      "prices": [
+        {
+          "copper": 204,
+          "count": 1
+        }
+      ],
+      "harvested": 0,
+      "zones": []
     },
     {
       "id": "rusty_iron_plate_breastplate",
@@ -9541,6 +9984,12 @@
       "name": "Rusty Iron Plate Helm",
       "droppedBy": [
         {
+          "mob": "a Plagueborn chaplain",
+          "drops": 1,
+          "corpses": 5,
+          "rate": 0.2
+        },
+        {
           "mob": "a famished ghoul",
           "drops": 1,
           "corpses": 6,
@@ -9557,7 +10006,8 @@
       "harvested": 0,
       "zones": [
         "Deepdunes",
-        "Keepersbight"
+        "Keepersbight",
+        "Fallenpass"
       ]
     },
     {
@@ -9597,6 +10047,12 @@
           "rate": 0.06896551724137931
         },
         {
+          "mob": "a Plagueborn watchman",
+          "drops": 1,
+          "corpses": 48,
+          "rate": 0.020833333333333332
+        },
+        {
           "mob": "a poacher bruiser",
           "drops": 4,
           "corpses": 280,
@@ -9612,7 +10068,7 @@
       "prices": [
         {
           "copper": 255,
-          "count": 2
+          "count": 3
         },
         {
           "copper": 276,
@@ -9621,8 +10077,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Keepersbight",
-        "Fallenpass"
+        "Fallenpass",
+        "Keepersbight"
       ]
     },
     {
@@ -9630,6 +10086,18 @@
       "gameId": "fc77d30906b8ae62bf371830",
       "name": "Rusty Iron Scythe",
       "droppedBy": [
+        {
+          "mob": "a Plagueborn watchman",
+          "drops": 3,
+          "corpses": 48,
+          "rate": 0.0625
+        },
+        {
+          "mob": "a Plagueborn knight",
+          "drops": 1,
+          "corpses": 24,
+          "rate": 0.041666666666666664
+        },
         {
           "mob": "a Plagueborn citizen",
           "drops": 1,
@@ -9646,8 +10114,8 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight",
-        "Fallenpass"
+        "Fallenpass",
+        "Keepersbight"
       ]
     },
     {
@@ -9747,10 +10215,22 @@
       "name": "Rusty Iron Tower Shield",
       "droppedBy": [
         {
+          "mob": "a Plagueborn veteran",
+          "drops": 1,
+          "corpses": 13,
+          "rate": 0.07692307692307693
+        },
+        {
           "mob": "a Plagueborn patrolman",
           "drops": 1,
           "corpses": 29,
           "rate": 0.034482758620689655
+        },
+        {
+          "mob": "a Plagueborn watchman",
+          "drops": 1,
+          "corpses": 48,
+          "rate": 0.020833333333333332
         },
         {
           "mob": "a poacher pathfinder",
@@ -9853,10 +10333,22 @@
       "name": "Rusty Iron Warhammer",
       "droppedBy": [
         {
+          "mob": "a Plagueborn veteran",
+          "drops": 1,
+          "corpses": 13,
+          "rate": 0.07692307692307693
+        },
+        {
           "mob": "a grizzled smuggler",
           "drops": 1,
           "corpses": 21,
           "rate": 0.047619047619047616
+        },
+        {
+          "mob": "a Plagueborn watchman",
+          "drops": 1,
+          "corpses": 48,
+          "rate": 0.020833333333333332
         },
         {
           "mob": "a poacher bruiser",
@@ -9868,7 +10360,43 @@
       "prices": [],
       "harvested": 0,
       "zones": [
-        "Keepersbight",
+        "Fallenpass",
+        "Keepersbight"
+      ]
+    },
+    {
+      "id": "rusty_steel_greatsword",
+      "gameId": "f4ae7baf0a0997457359eb34",
+      "name": "Rusty Steel Greatsword",
+      "droppedBy": [
+        {
+          "mob": "Observer Samvel",
+          "drops": 1,
+          "corpses": 4,
+          "rate": 0.25
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
+      ]
+    },
+    {
+      "id": "rusty_steel_plate_bracer",
+      "gameId": "2c5abe681b7c5c0d333d358b",
+      "name": "Rusty Steel Plate Bracer",
+      "droppedBy": [
+        {
+          "mob": "Captain Haring",
+          "drops": 1,
+          "corpses": 3,
+          "rate": 0.3333333333333333
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
         "Fallenpass"
       ]
     },
@@ -10080,7 +10608,7 @@
       "name": "Shining Crystallized Magic",
       "droppedBy": [],
       "prices": [],
-      "harvested": 13,
+      "harvested": 11,
       "zones": [
         "Fallenpass",
         "Shallowshoals"
@@ -10092,7 +10620,7 @@
       "name": "Silver Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 15,
+      "harvested": 17,
       "zones": [
         "Scarwood",
         "Sungreetstrand"
@@ -10177,7 +10705,7 @@
         },
         {
           "copper": 70,
-          "count": 2
+          "count": 1
         }
       ],
       "harvested": 0,
@@ -10235,7 +10763,7 @@
         },
         {
           "copper": 377,
-          "count": 1
+          "count": 2
         },
         {
           "copper": 392,
@@ -10565,6 +11093,24 @@
       ]
     },
     {
+      "id": "tattered_cloth_robe",
+      "gameId": "eaf4513f72004256d4fccf0a",
+      "name": "Tattered Cloth Robe",
+      "droppedBy": [
+        {
+          "mob": "a stumbling zombie",
+          "drops": 1,
+          "corpses": 1,
+          "rate": 1
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Shaded Dunes"
+      ]
+    },
+    {
       "id": "tattered_cotton_boots",
       "gameId": "3ea77f5ce6a02a5b168ef239",
       "name": "Tattered Cotton Boots",
@@ -10620,6 +11166,12 @@
       "name": "Tattered Cotton Cap",
       "droppedBy": [
         {
+          "mob": "a Plagueborn watchman",
+          "drops": 1,
+          "corpses": 48,
+          "rate": 0.020833333333333332
+        },
+        {
           "mob": "a poacher bruiser",
           "drops": 1,
           "corpses": 280,
@@ -10629,6 +11181,7 @@
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Fallenpass",
         "Keepersbight"
       ]
     },
@@ -10667,6 +11220,12 @@
           "drops": 1,
           "corpses": 29,
           "rate": 0.034482758620689655
+        },
+        {
+          "mob": "a Plagueborn watchman",
+          "drops": 1,
+          "corpses": 48,
+          "rate": 0.020833333333333332
         },
         {
           "mob": "a poacher pathfinder",
@@ -11144,6 +11703,12 @@
       "name": "Tattered Leather Belt",
       "droppedBy": [
         {
+          "mob": "a Plagueborn veteran",
+          "drops": 2,
+          "corpses": 13,
+          "rate": 0.15384615384615385
+        },
+        {
           "mob": "a poacher bruiser",
           "drops": 1,
           "corpses": 280,
@@ -11153,6 +11718,7 @@
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Fallenpass",
         "Keepersbight"
       ]
     },
@@ -11274,6 +11840,12 @@
       "name": "Tattered Leather Gloves",
       "droppedBy": [
         {
+          "mob": "a Plagueborn veteran",
+          "drops": 1,
+          "corpses": 13,
+          "rate": 0.07692307692307693
+        },
+        {
           "mob": "a Plagueborn citizen",
           "drops": 1,
           "corpses": 92,
@@ -11292,6 +11864,12 @@
       "name": "Tattered Leather Gorget",
       "droppedBy": [
         {
+          "mob": "a Plagueborn knight",
+          "drops": 1,
+          "corpses": 24,
+          "rate": 0.041666666666666664
+        },
+        {
           "mob": "a poacher bruiser",
           "drops": 2,
           "corpses": 280,
@@ -11301,6 +11879,7 @@
       "prices": [],
       "harvested": 0,
       "zones": [
+        "Fallenpass",
         "Keepersbight"
       ]
     },
@@ -11845,6 +12424,12 @@
           "rate": 0.05555555555555555
         },
         {
+          "mob": "a Plagueborn knight",
+          "drops": 1,
+          "corpses": 24,
+          "rate": 0.041666666666666664
+        },
+        {
           "mob": "a hired tracker",
           "drops": 1,
           "corpses": 82,
@@ -11876,7 +12461,8 @@
         "Sungreetstrand",
         "Blacktidebay",
         "Valeofzintar",
-        "Graincellar"
+        "Graincellar",
+        "Fallenpass"
       ]
     },
     {
@@ -11895,6 +12481,24 @@
       "harvested": 0,
       "zones": [
         "Keepersbight"
+      ]
+    },
+    {
+      "id": "trousers_of_shattered_sight",
+      "gameId": "f8ba20b62abf5238bb24122a",
+      "name": "Trousers of Shattered Sight",
+      "droppedBy": [
+        {
+          "mob": "Observer Samvel",
+          "drops": 1,
+          "corpses": 4,
+          "rate": 0.25
+        }
+      ],
+      "prices": [],
+      "harvested": 0,
+      "zones": [
+        "Fallenpass"
       ]
     },
     {
@@ -12000,7 +12604,7 @@
         },
         {
           "copper": 19,
-          "count": 2
+          "count": 1
         }
       ],
       "harvested": 0,
@@ -12035,17 +12639,18 @@
       "prices": [
         {
           "copper": 1,
-          "count": 15
+          "count": 11
         },
         {
           "copper": 3,
           "count": 6
         }
       ],
-      "harvested": 241,
+      "harvested": 216,
       "zones": [
         "Fallenpass",
-        "Shallowshoals"
+        "Shallowshoals",
+        "Glassflats"
       ]
     },
     {
@@ -12054,7 +12659,7 @@
       "name": "Whispering Sage",
       "droppedBy": [],
       "prices": [],
-      "harvested": 60,
+      "harvested": 68,
       "zones": [
         "Sungreetstrand",
         "Keepersbight",
@@ -12287,12 +12892,7 @@
           "rate": 0.024390243902439025
         }
       ],
-      "prices": [
-        {
-          "copper": 271,
-          "count": 1
-        }
-      ],
+      "prices": [],
       "harvested": 0,
       "zones": [
         "Sungreetstrand"
@@ -12337,7 +12937,7 @@
       "prices": [
         {
           "copper": 54,
-          "count": 3
+          "count": 1
         }
       ],
       "harvested": 0,
@@ -12431,6 +13031,12 @@
           "rate": 0.021739130434782608
         },
         {
+          "mob": "a Plagueborn watchman",
+          "drops": 1,
+          "corpses": 48,
+          "rate": 0.020833333333333332
+        },
+        {
           "mob": "a poacher bruiser",
           "drops": 1,
           "corpses": 280,
@@ -12445,8 +13051,8 @@
       ],
       "harvested": 0,
       "zones": [
-        "Keepersbight",
         "Fallenpass",
+        "Keepersbight",
         "Graincellar"
       ]
     },
@@ -12460,6 +13066,12 @@
           "drops": 1,
           "corpses": 6,
           "rate": 0.16666666666666666
+        },
+        {
+          "mob": "a Plagueborn veteran",
+          "drops": 1,
+          "corpses": 13,
+          "rate": 0.07692307692307693
         },
         {
           "mob": "a poacher pathfinder",
@@ -12477,13 +13089,14 @@
       "prices": [
         {
           "copper": 892,
-          "count": 1
+          "count": 2
         }
       ],
       "harvested": 0,
       "zones": [
         "Keepersbight",
-        "Deepdunes"
+        "Deepdunes",
+        "Fallenpass"
       ]
     },
     {
@@ -12547,24 +13160,22 @@
     }
   ],
   "harvest": {
-    "Limestone": 410,
-    "Clouded Crystallized Magic": 6,
-    "Iron Ore": 940,
-    "Weighty Stone": 241,
-    "Ironroot": 80,
-    "Imperfect Sapphire": 9,
-    "Imperfect Peridot": 12,
-    "Imperfect Emerald": 7,
-    "Imperfect Jade": 10,
-    "Shining Crystallized Magic": 13,
-    "Imperfect Cat's Eye Agate": 9,
+    "Iron Ore": 799,
+    "Weighty Stone": 216,
+    "Imperfect Sapphire": 8,
     "Gold Ore": 146,
+    "Shining Crystallized Magic": 11,
+    "Imperfect Peridot": 11,
+    "Imperfect Emerald": 6,
     "Imperfect Ruby": 7,
     "Imperfect Diamond": 7,
-    "Nomad's Grace": 30,
+    "Ironroot": 74,
+    "Imperfect Jade": 9,
+    "Imperfect Cat's Eye Agate": 8,
+    "Nomad's Grace": 32,
     "Tin Ore": 98,
-    "Jagged Stone": 22,
-    "Whispering Sage": 60,
+    "Jagged Stone": 23,
+    "Whispering Sage": 68,
     "Magic Frond": 2,
     "Coal": 1171,
     "Brilliant Crystallized Magic": 18,
@@ -12574,18 +13185,20 @@
     "Jade": 8,
     "Cat's Eye Agate": 9,
     "Ruby": 7,
+    "Limestone": 388,
     "Lionleaf": 12,
     "Moonveil": 34,
     "Wood": 195,
     "Resin": 242,
     "Copper Ore": 130,
+    "Clouded Crystallized Magic": 5,
     "Brittle Stone": 35,
     "Chipped Emerald": 4,
     "Diamond": 6,
     "Peridot": 9,
     "Emerald": 10,
     "Enchanted Frond": 4,
-    "Silver Ore": 15,
+    "Silver Ore": 17,
     "Fine Wood": 21,
     "Flawed Sapphire": 2,
     "Alunite Ore": 1,
@@ -12599,71 +13212,71 @@
     "Flawed Jade": 2,
     "Flawed Cat's Eye Agate": 1,
     "Sylvine": 3,
-    "Ghost Poppy": 2,
+    "Ghost Poppy": 7,
     "Stranglevine": 62,
-    "Duneleaf": 13,
+    "Duneleaf": 25,
     "Flawed Emerald": 1,
     "Whisperpine Wood": 3
   },
   "harvestNodes": [
     {
       "name": "Coal",
-      "pulls": 1202,
+      "pulls": 1328,
       "yields": [
         {
           "res": "Coal",
           "count": 1171,
-          "rate": 0.9742096505823628
+          "rate": 0.8817771084337349
         },
         {
           "res": "Rigid Stone",
           "count": 256,
-          "rate": 0.2129783693843594
+          "rate": 0.1927710843373494
         },
         {
           "res": "Platinum Ore",
-          "count": 31,
-          "rate": 0.025790349417637273
+          "count": 157,
+          "rate": 0.11822289156626506
         },
         {
           "res": "Brilliant Crystallized Magic",
-          "count": 15,
-          "rate": 0.012479201331114808
+          "count": 18,
+          "rate": 0.01355421686746988
         },
         {
           "res": "Emerald",
           "count": 10,
-          "rate": 0.008319467554076539
+          "rate": 0.007530120481927711
         },
         {
           "res": "Cat's Eye Agate",
+          "count": 9,
+          "rate": 0.00677710843373494
+        },
+        {
+          "res": "Peridot",
+          "count": 9,
+          "rate": 0.00677710843373494
+        },
+        {
+          "res": "Jade",
           "count": 8,
-          "rate": 0.0066555740432612314
+          "rate": 0.006024096385542169
         },
         {
           "res": "Ruby",
-          "count": 6,
-          "rate": 0.004991680532445923
+          "count": 7,
+          "rate": 0.005271084337349397
         },
         {
           "res": "Diamond",
           "count": 6,
-          "rate": 0.004991680532445923
-        },
-        {
-          "res": "Peridot",
-          "count": 6,
-          "rate": 0.004991680532445923
-        },
-        {
-          "res": "Jade",
-          "count": 5,
-          "rate": 0.004159733777038269
+          "rate": 0.004518072289156626
         },
         {
           "res": "Sapphire",
-          "count": 4,
-          "rate": 0.0033277870216306157
+          "count": 5,
+          "rate": 0.0037650602409638554
         }
       ],
       "zones": [
@@ -12677,67 +13290,68 @@
     },
     {
       "name": "Iron Ore",
-      "pulls": 963,
+      "pulls": 823,
       "yields": [
         {
           "res": "Iron Ore",
-          "count": 939,
-          "rate": 0.9750778816199377
+          "count": 799,
+          "rate": 0.9708383961117861
         },
         {
           "res": "Weighty Stone",
-          "count": 241,
-          "rate": 0.2502596053997923
+          "count": 216,
+          "rate": 0.2624544349939247
         },
         {
           "res": "Gold Ore",
           "count": 24,
-          "rate": 0.024922118380062305
+          "rate": 0.02916160388821385
         },
         {
           "res": "Imperfect Peridot",
-          "count": 10,
-          "rate": 0.010384215991692628
-        },
-        {
-          "res": "Shining Crystallized Magic",
-          "count": 10,
-          "rate": 0.010384215991692628
+          "count": 9,
+          "rate": 0.010935601458080195
         },
         {
           "res": "Imperfect Sapphire",
-          "count": 9,
-          "rate": 0.009345794392523364
+          "count": 8,
+          "rate": 0.009720534629404616
+        },
+        {
+          "res": "Shining Crystallized Magic",
+          "count": 8,
+          "rate": 0.009720534629404616
         },
         {
           "res": "Imperfect Jade",
-          "count": 8,
-          "rate": 0.008307372793354102
+          "count": 7,
+          "rate": 0.00850546780072904
         },
         {
           "res": "Imperfect Emerald",
-          "count": 7,
-          "rate": 0.007268951194184839
-        },
-        {
-          "res": "Imperfect Cat's Eye Agate",
           "count": 6,
-          "rate": 0.006230529595015576
+          "rate": 0.007290400972053463
         },
         {
           "res": "Imperfect Ruby",
           "count": 6,
-          "rate": 0.006230529595015576
+          "rate": 0.007290400972053463
         },
         {
           "res": "Imperfect Diamond",
           "count": 6,
-          "rate": 0.006230529595015576
+          "rate": 0.007290400972053463
+        },
+        {
+          "res": "Imperfect Cat's Eye Agate",
+          "count": 5,
+          "rate": 0.006075334143377886
         }
       ],
       "zones": [
         "Fallenpass",
-        "Shallowshoals"
+        "Shallowshoals",
+        "Glassflats"
       ]
     },
     {
@@ -12772,38 +13386,38 @@
     },
     {
       "name": "Limestone",
-      "pulls": 207,
+      "pulls": 197,
       "yields": [
         {
           "res": "Limestone",
-          "count": 207,
+          "count": 197,
           "rate": 1
         },
         {
           "res": "Tin Ore",
           "count": 6,
-          "rate": 0.028985507246376812
+          "rate": 0.030456852791878174
         },
         {
           "res": "Clouded Crystallized Magic",
-          "count": 4,
-          "rate": 0.01932367149758454
+          "count": 3,
+          "rate": 0.015228426395939087
         },
         {
           "res": "Silver Ore",
           "count": 2,
-          "rate": 0.00966183574879227
+          "rate": 0.01015228426395939
         },
         {
           "res": "Jagged Stone",
           "count": 1,
-          "rate": 0.004830917874396135
+          "rate": 0.005076142131979695
         }
       ],
       "zones": [
         "Sungreetstrand",
-        "Fallenpass",
-        "Scarwood"
+        "Scarwood",
+        "Fallenpass"
       ]
     },
     {
@@ -12867,53 +13481,6 @@
         "Nightharborw",
         "Shaded Dunes",
         "Sungreetstrand"
-      ]
-    },
-    {
-      "name": "Platinum Ore",
-      "pulls": 126,
-      "yields": [
-        {
-          "res": "Platinum Ore",
-          "count": 126,
-          "rate": 1
-        },
-        {
-          "res": "Jade",
-          "count": 3,
-          "rate": 0.023809523809523808
-        },
-        {
-          "res": "Brilliant Crystallized Magic",
-          "count": 3,
-          "rate": 0.023809523809523808
-        },
-        {
-          "res": "Peridot",
-          "count": 3,
-          "rate": 0.023809523809523808
-        },
-        {
-          "res": "Ruby",
-          "count": 1,
-          "rate": 0.007936507936507936
-        },
-        {
-          "res": "Sapphire",
-          "count": 1,
-          "rate": 0.007936507936507936
-        },
-        {
-          "res": "Cat's Eye Agate",
-          "count": 1,
-          "rate": 0.007936507936507936
-        }
-      ],
-      "zones": [
-        "Sungreetstrand",
-        "Scarwood",
-        "Shallowshoals",
-        "Fallenpass"
       ]
     },
     {
@@ -13014,17 +13581,17 @@
     },
     {
       "name": "Ironroot",
-      "pulls": 56,
+      "pulls": 52,
       "yields": [
         {
           "res": "Ironroot",
-          "count": 56,
+          "count": 52,
           "rate": 1
         },
         {
           "res": "Enchanted Frond",
           "count": 2,
-          "rate": 0.03571428571428571
+          "rate": 0.038461538461538464
         }
       ],
       "zones": [
@@ -13035,17 +13602,17 @@
     },
     {
       "name": "Whispering Sage",
-      "pulls": 40,
+      "pulls": 45,
       "yields": [
         {
           "res": "Whispering Sage",
-          "count": 40,
+          "count": 45,
           "rate": 1
         },
         {
           "res": "Magic Frond",
           "count": 2,
-          "rate": 0.05
+          "rate": 0.044444444444444446
         }
       ],
       "zones": [
@@ -13075,11 +13642,11 @@
     },
     {
       "name": "Nomad's Grace",
-      "pulls": 19,
+      "pulls": 21,
       "yields": [
         {
           "res": "Nomad's Grace",
-          "count": 19,
+          "count": 21,
           "rate": 1
         }
       ],
@@ -13088,6 +13655,20 @@
         "Shaded Dunes",
         "Valeofzintar",
         "Evershade Weald"
+      ]
+    },
+    {
+      "name": "Duneleaf",
+      "pulls": 16,
+      "yields": [
+        {
+          "res": "Duneleaf",
+          "count": 16,
+          "rate": 1
+        }
+      ],
+      "zones": [
+        "Sungreetstrand"
       ]
     },
     {
@@ -13106,17 +13687,17 @@
     },
     {
       "name": "Silver Ore",
-      "pulls": 11,
+      "pulls": 12,
       "yields": [
         {
           "res": "Silver Ore",
-          "count": 11,
+          "count": 12,
           "rate": 1
         },
         {
           "res": "Flawed Jade",
           "count": 1,
-          "rate": 0.09090909090909091
+          "rate": 0.08333333333333333
         }
       ],
       "zones": [
@@ -13140,20 +13721,6 @@
       ]
     },
     {
-      "name": "Duneleaf",
-      "pulls": 8,
-      "yields": [
-        {
-          "res": "Duneleaf",
-          "count": 8,
-          "rate": 1
-        }
-      ],
-      "zones": [
-        "Sungreetstrand"
-      ]
-    },
-    {
       "name": "Fine Wood",
       "pulls": 7,
       "yields": [
@@ -13165,6 +13732,46 @@
       ],
       "zones": [
         "Keepersbight"
+      ]
+    },
+    {
+      "name": "Ghost Poppy",
+      "pulls": 5,
+      "yields": [
+        {
+          "res": "Ghost Poppy",
+          "count": 5,
+          "rate": 1
+        }
+      ],
+      "zones": [
+        "Sungreetstrand",
+        "Shaded Dunes"
+      ]
+    },
+    {
+      "name": "Silver Ore & Jagged Stone",
+      "pulls": 3,
+      "yields": [
+        {
+          "res": "Silver Ore",
+          "count": 3,
+          "rate": 1
+        },
+        {
+          "res": "Jagged Stone",
+          "count": 3,
+          "rate": 1
+        },
+        {
+          "res": "Flawed Sapphire",
+          "count": 1,
+          "rate": 0.3333333333333333
+        }
+      ],
+      "zones": [
+        "Scarwood",
+        "Sungreetstrand"
       ]
     },
     {
