@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-26T14:00:16.427Z",
+  "generatedAt": "2026-11-27T20:00:16.282Z",
   "source": "mnm-tools",
-  "ledgerFiles": 60,
-  "events": 13235,
+  "ledgerFiles": 62,
+  "events": 13145,
   "era": "early-access",
   "servers": [
     "estaire"
@@ -10,7 +10,7 @@
   "contributors": [
     {
       "character": "Boisterous",
-      "events": 13235
+      "events": 13145
     }
   ],
   "contributorCount": 1,
@@ -1092,14 +1092,14 @@
       "drops": {
         "Intact Wolf Claw": 1,
         "Medium-Quality Wolf Pelt": 2,
-        "Scuffed Canine Ear": 1,
+        "Scuffed Canine Ear": 2,
         "Raw Wolf Meat": 1
       },
       "zones": {
-        "Scarwood": 5
+        "Scarwood": 6
       },
       "coin": 0,
-      "corpses": 2
+      "corpses": 3
     },
     "an ancient elven skeleton": {
       "kills": 1,
@@ -1671,17 +1671,17 @@
       "corpses": 2
     },
     "a black drake": {
-      "kills": 10,
+      "kills": 12,
       "drops": {
-        "Hardened Drake Scale": 3,
-        "Drake Claw": 2,
+        "Hardened Drake Scale": 4,
+        "Drake Claw": 3,
         "Drake Fang": 1
       },
       "zones": {
-        "Scarwood": 16
+        "Scarwood": 20
       },
-      "coin": 2594,
-      "corpses": 4
+      "coin": 3246,
+      "corpses": 5
     },
     "a warped fae": {
       "kills": 2,
@@ -2285,6 +2285,17 @@
       "harvested": 1,
       "zones": [
         "Evershade Weald"
+      ]
+    },
+    {
+      "id": "arcane_frond",
+      "gameId": null,
+      "name": "Arcane Frond",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 4,
+      "zones": [
+        "Sungreet Strand"
       ]
     },
     {
@@ -3402,7 +3413,7 @@
       "name": "Clouded Crystallized Magic",
       "droppedBy": [],
       "prices": [],
-      "harvested": 5,
+      "harvested": 7,
       "zones": [
         "Sungreet Strand",
         "Keeper's Bight",
@@ -5109,9 +5120,9 @@
       "droppedBy": [
         {
           "mob": "a black drake",
-          "drops": 2,
-          "corpses": 4,
-          "rate": 0.5
+          "drops": 3,
+          "corpses": 5,
+          "rate": 0.6
         },
         {
           "mob": "a green drake",
@@ -5174,8 +5185,8 @@
         {
           "mob": "a black drake",
           "drops": 1,
-          "corpses": 4,
-          "rate": 0.25
+          "corpses": 5,
+          "rate": 0.2
         }
       ],
       "prices": [
@@ -5240,7 +5251,7 @@
       "name": "Duneleaf",
       "droppedBy": [],
       "prices": [],
-      "harvested": 25,
+      "harvested": 106,
       "zones": [
         "Sungreet Strand"
       ]
@@ -5386,8 +5397,9 @@
       "name": "Fine Wood",
       "droppedBy": [],
       "prices": [],
-      "harvested": 21,
+      "harvested": 106,
       "zones": [
+        "Sungreet Strand",
         "Keeper's Bight"
       ]
     },
@@ -5985,7 +5997,7 @@
       "name": "Ghost Poppy",
       "droppedBy": [],
       "prices": [],
-      "harvested": 7,
+      "harvested": 39,
       "zones": [
         "Sungreet Strand",
         "Shaded Dunes"
@@ -6256,13 +6268,8 @@
       "gameId": null,
       "name": "Gold Ore",
       "droppedBy": [],
-      "prices": [
-        {
-          "copper": 5,
-          "count": 1
-        }
-      ],
-      "harvested": 146,
+      "prices": [],
+      "harvested": 87,
       "zones": [
         "Fallen Pass",
         "Shallow Shoals"
@@ -6400,9 +6407,9 @@
       "droppedBy": [
         {
           "mob": "a black drake",
-          "drops": 3,
-          "corpses": 4,
-          "rate": 0.75
+          "drops": 4,
+          "corpses": 5,
+          "rate": 0.8
         },
         {
           "mob": "a green drake",
@@ -6577,7 +6584,7 @@
       "prices": [
         {
           "copper": 136,
-          "count": 2
+          "count": 1
         },
         {
           "copper": 151,
@@ -6592,10 +6599,10 @@
           "count": 1
         }
       ],
-      "harvested": 8,
+      "harvested": 5,
       "zones": [
-        "Fallen Pass",
         "Keeper's Bight",
+        "Fallen Pass",
         "Shallow Shoals"
       ]
     },
@@ -6635,10 +6642,10 @@
           "count": 1
         }
       ],
-      "harvested": 7,
+      "harvested": 3,
       "zones": [
-        "Fallen Pass",
-        "Keeper's Bight"
+        "Keeper's Bight",
+        "Fallen Pass"
       ]
     },
     {
@@ -6662,7 +6669,7 @@
       "prices": [
         {
           "copper": 136,
-          "count": 2
+          "count": 1
         },
         {
           "copper": 153,
@@ -6677,10 +6684,9 @@
           "count": 1
         }
       ],
-      "harvested": 6,
+      "harvested": 1,
       "zones": [
         "Keeper's Bight",
-        "Fallen Pass",
         "Shallow Shoals"
       ]
     },
@@ -6732,7 +6738,7 @@
           "count": 1
         }
       ],
-      "harvested": 9,
+      "harvested": 6,
       "zones": [
         "Fallen Pass",
         "Keeper's Bight",
@@ -6761,7 +6767,7 @@
       "prices": [
         {
           "copper": 136,
-          "count": 2
+          "count": 1
         },
         {
           "copper": 151,
@@ -6772,7 +6778,7 @@
           "count": 1
         }
       ],
-      "harvested": 11,
+      "harvested": 4,
       "zones": [
         "Fallen Pass",
         "Keeper's Bight",
@@ -6810,7 +6816,7 @@
           "count": 2
         }
       ],
-      "harvested": 7,
+      "harvested": 4,
       "zones": [
         "Fallen Pass",
         "Keeper's Bight",
@@ -6835,10 +6841,10 @@
           "count": 2
         }
       ],
-      "harvested": 8,
+      "harvested": 2,
       "zones": [
-        "Fallen Pass",
         "Keeper's Bight",
+        "Fallen Pass",
         "Shallow Shoals"
       ]
     },
@@ -6930,8 +6936,8 @@
         {
           "mob": "a timber wolf",
           "drops": 1,
-          "corpses": 2,
-          "rate": 0.5
+          "corpses": 3,
+          "rate": 0.3333333333333333
         }
       ],
       "prices": [
@@ -6950,13 +6956,8 @@
       "gameId": null,
       "name": "Iron Ore",
       "droppedBy": [],
-      "prices": [
-        {
-          "copper": 1,
-          "count": 15
-        }
-      ],
-      "harvested": 799,
+      "prices": [],
+      "harvested": 381,
       "zones": [
         "Fallen Pass",
         "Shallow Shoals",
@@ -7078,12 +7079,23 @@
       ]
     },
     {
+      "id": "ironbark_wood",
+      "gameId": null,
+      "name": "Ironbark Wood",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 16,
+      "zones": [
+        "Sungreet Strand"
+      ]
+    },
+    {
       "id": "ironroot",
       "gameId": null,
       "name": "Ironroot",
       "droppedBy": [],
       "prices": [],
-      "harvested": 74,
+      "harvested": 67,
       "zones": [
         "Fallen Pass",
         "Sungreet Strand",
@@ -7114,7 +7126,7 @@
           "count": 7
         }
       ],
-      "harvested": 23,
+      "harvested": 27,
       "zones": [
         "Scarwood",
         "Sungreet Strand",
@@ -7533,7 +7545,7 @@
       "name": "Limestone",
       "droppedBy": [],
       "prices": [],
-      "harvested": 388,
+      "harvested": 488,
       "zones": [
         "Sungreet Strand",
         "Scarwood",
@@ -7564,7 +7576,7 @@
       "name": "Lionleaf",
       "droppedBy": [],
       "prices": [],
-      "harvested": 12,
+      "harvested": 13,
       "zones": [
         "Sungreet Strand",
         "Shaded Dunes"
@@ -7617,7 +7629,7 @@
       "name": "Magic Frond",
       "droppedBy": [],
       "prices": [],
-      "harvested": 2,
+      "harvested": 3,
       "zones": [
         "Sungreet Strand",
         "Keeper's Bight"
@@ -7733,8 +7745,8 @@
         {
           "mob": "a timber wolf",
           "drops": 2,
-          "corpses": 2,
-          "rate": 1
+          "corpses": 3,
+          "rate": 0.6666666666666666
         },
         {
           "mob": "a forest stalker",
@@ -7887,9 +7899,9 @@
       "harvested": 32,
       "zones": [
         "Sungreet Strand",
-        "Shaded Dunes",
         "Vale of Zintar",
-        "Evershade Weald"
+        "Evershade Weald",
+        "Shaded Dunes"
       ]
     },
     {
@@ -8037,7 +8049,12 @@
           "rate": 0.2916666666666667
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 263,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Fallen Pass"
@@ -8724,7 +8741,7 @@
         },
         {
           "copper": 5,
-          "count": 4
+          "count": 5
         }
       ],
       "harvested": 0,
@@ -8881,8 +8898,8 @@
         {
           "mob": "a timber wolf",
           "drops": 1,
-          "corpses": 2,
-          "rate": 0.5
+          "corpses": 3,
+          "rate": 0.3333333333333333
         },
         {
           "mob": "a dismal cur",
@@ -8968,10 +8985,10 @@
       "name": "Resin",
       "droppedBy": [],
       "prices": [],
-      "harvested": 242,
+      "harvested": 363,
       "zones": [
-        "Keeper's Bight",
-        "Sungreet Strand"
+        "Sungreet Strand",
+        "Keeper's Bight"
       ]
     },
     {
@@ -10394,7 +10411,12 @@
           "rate": 0.3333333333333333
         }
       ],
-      "prices": [],
+      "prices": [
+        {
+          "copper": 408,
+          "count": 1
+        }
+      ],
       "harvested": 0,
       "zones": [
         "Fallen Pass"
@@ -10524,16 +10546,16 @@
       "name": "Scuffed Canine Ear",
       "droppedBy": [
         {
+          "mob": "a timber wolf",
+          "drops": 2,
+          "corpses": 3,
+          "rate": 0.6666666666666666
+        },
+        {
           "mob": "a forest stalker",
           "drops": 10,
           "corpses": 16,
           "rate": 0.625
-        },
-        {
-          "mob": "a timber wolf",
-          "drops": 1,
-          "corpses": 2,
-          "rate": 0.5
         },
         {
           "mob": "a dismal cur",
@@ -10608,7 +10630,7 @@
       "name": "Shining Crystallized Magic",
       "droppedBy": [],
       "prices": [],
-      "harvested": 11,
+      "harvested": 5,
       "zones": [
         "Fallen Pass",
         "Shallow Shoals"
@@ -10620,7 +10642,7 @@
       "name": "Silver Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 17,
+      "harvested": 21,
       "zones": [
         "Scarwood",
         "Sungreet Strand"
@@ -10970,6 +10992,17 @@
       "harvested": 62,
       "zones": [
         "Fallen Pass"
+      ]
+    },
+    {
+      "id": "stygian_moss",
+      "gameId": null,
+      "name": "Stygian Moss",
+      "droppedBy": [],
+      "prices": [],
+      "harvested": 95,
+      "zones": [
+        "Sungreet Strand"
       ]
     },
     {
@@ -12307,11 +12340,11 @@
       "name": "Tin Ore",
       "droppedBy": [],
       "prices": [],
-      "harvested": 98,
+      "harvested": 114,
       "zones": [
         "Scarwood",
-        "Fallen Pass",
-        "Sungreet Strand"
+        "Sungreet Strand",
+        "Fallen Pass"
       ]
     },
     {
@@ -12638,15 +12671,11 @@
       "droppedBy": [],
       "prices": [
         {
-          "copper": 1,
-          "count": 11
-        },
-        {
           "copper": 3,
           "count": 6
         }
       ],
-      "harvested": 216,
+      "harvested": 116,
       "zones": [
         "Fallen Pass",
         "Shallow Shoals",
@@ -12659,7 +12688,7 @@
       "name": "Whispering Sage",
       "droppedBy": [],
       "prices": [],
-      "harvested": 68,
+      "harvested": 86,
       "zones": [
         "Sungreet Strand",
         "Keeper's Bight",
@@ -13160,23 +13189,10 @@
     }
   ],
   "harvest": {
-    "Iron Ore": 799,
-    "Weighty Stone": 216,
-    "Imperfect Sapphire": 8,
-    "Gold Ore": 146,
-    "Shining Crystallized Magic": 11,
-    "Imperfect Peridot": 11,
-    "Imperfect Emerald": 6,
-    "Imperfect Ruby": 7,
-    "Imperfect Diamond": 7,
-    "Ironroot": 74,
-    "Imperfect Jade": 9,
-    "Imperfect Cat's Eye Agate": 8,
-    "Nomad's Grace": 32,
-    "Tin Ore": 98,
-    "Jagged Stone": 23,
-    "Whispering Sage": 68,
-    "Magic Frond": 2,
+    "Tin Ore": 114,
+    "Jagged Stone": 27,
+    "Whispering Sage": 86,
+    "Magic Frond": 3,
     "Coal": 1171,
     "Brilliant Crystallized Magic": 18,
     "Rigid Stone": 256,
@@ -13185,21 +13201,32 @@
     "Jade": 8,
     "Cat's Eye Agate": 9,
     "Ruby": 7,
-    "Limestone": 388,
-    "Lionleaf": 12,
+    "Limestone": 488,
+    "Lionleaf": 13,
+    "Nomad's Grace": 32,
+    "Ironroot": 67,
     "Moonveil": 34,
     "Wood": 195,
-    "Resin": 242,
+    "Resin": 363,
     "Copper Ore": 130,
-    "Clouded Crystallized Magic": 5,
+    "Clouded Crystallized Magic": 7,
     "Brittle Stone": 35,
     "Chipped Emerald": 4,
     "Diamond": 6,
     "Peridot": 9,
     "Emerald": 10,
+    "Iron Ore": 381,
+    "Weighty Stone": 116,
+    "Imperfect Ruby": 4,
+    "Gold Ore": 87,
+    "Imperfect Diamond": 3,
+    "Imperfect Cat's Eye Agate": 5,
+    "Imperfect Jade": 6,
+    "Shining Crystallized Magic": 5,
     "Enchanted Frond": 4,
-    "Silver Ore": 17,
-    "Fine Wood": 21,
+    "Imperfect Sapphire": 2,
+    "Silver Ore": 21,
+    "Fine Wood": 106,
     "Flawed Sapphire": 2,
     "Alunite Ore": 1,
     "Chipped Sapphire": 3,
@@ -13212,11 +13239,16 @@
     "Flawed Jade": 2,
     "Flawed Cat's Eye Agate": 1,
     "Sylvine": 3,
-    "Ghost Poppy": 7,
+    "Ghost Poppy": 39,
     "Stranglevine": 62,
-    "Duneleaf": 25,
+    "Imperfect Peridot": 4,
+    "Duneleaf": 106,
     "Flawed Emerald": 1,
-    "Whisperpine Wood": 3
+    "Whisperpine Wood": 3,
+    "Imperfect Emerald": 1,
+    "Arcane Frond": 4,
+    "Ironbark Wood": 16,
+    "Stygian Moss": 95
   },
   "harvestNodes": [
     {
@@ -13290,62 +13322,57 @@
     },
     {
       "name": "Iron Ore",
-      "pulls": 823,
+      "pulls": 381,
       "yields": [
         {
           "res": "Iron Ore",
-          "count": 799,
-          "rate": 0.9708383961117861
+          "count": 381,
+          "rate": 1
         },
         {
           "res": "Weighty Stone",
-          "count": 216,
-          "rate": 0.2624544349939247
-        },
-        {
-          "res": "Gold Ore",
-          "count": 24,
-          "rate": 0.02916160388821385
-        },
-        {
-          "res": "Imperfect Peridot",
-          "count": 9,
-          "rate": 0.010935601458080195
-        },
-        {
-          "res": "Imperfect Sapphire",
-          "count": 8,
-          "rate": 0.009720534629404616
-        },
-        {
-          "res": "Shining Crystallized Magic",
-          "count": 8,
-          "rate": 0.009720534629404616
+          "count": 100,
+          "rate": 0.26246719160104987
         },
         {
           "res": "Imperfect Jade",
-          "count": 7,
-          "rate": 0.00850546780072904
-        },
-        {
-          "res": "Imperfect Emerald",
-          "count": 6,
-          "rate": 0.007290400972053463
+          "count": 4,
+          "rate": 0.010498687664041995
         },
         {
           "res": "Imperfect Ruby",
-          "count": 6,
-          "rate": 0.007290400972053463
+          "count": 3,
+          "rate": 0.007874015748031496
         },
         {
           "res": "Imperfect Diamond",
-          "count": 6,
-          "rate": 0.007290400972053463
+          "count": 3,
+          "rate": 0.007874015748031496
+        },
+        {
+          "res": "Shining Crystallized Magic",
+          "count": 3,
+          "rate": 0.007874015748031496
         },
         {
           "res": "Imperfect Cat's Eye Agate",
-          "count": 5,
-          "rate": 0.006075334143377886
+          "count": 2,
+          "rate": 0.005249343832020997
+        },
+        {
+          "res": "Imperfect Sapphire",
+          "count": 2,
+          "rate": 0.005249343832020997
+        },
+        {
+          "res": "Imperfect Peridot",
+          "count": 2,
+          "rate": 0.005249343832020997
+        },
+        {
+          "res": "Imperfect Emerald",
+          "count": 1,
+          "rate": 0.0026246719160104987
         }
       ],
       "zones": [
@@ -13355,63 +13382,68 @@
       ]
     },
     {
-      "name": "Wood & Resin",
-      "pulls": 212,
+      "name": "Resin & Wood",
+      "pulls": 297,
       "yields": [
+        {
+          "res": "Resin",
+          "count": 263,
+          "rate": 0.8855218855218855
+        },
         {
           "res": "Wood",
           "count": 195,
-          "rate": 0.9198113207547169
-        },
-        {
-          "res": "Resin",
-          "count": 178,
-          "rate": 0.839622641509434
+          "rate": 0.6565656565656566
         },
         {
           "res": "Fine Wood",
-          "count": 14,
-          "rate": 0.0660377358490566
+          "count": 86,
+          "rate": 0.2895622895622896
+        },
+        {
+          "res": "Ironbark Wood",
+          "count": 13,
+          "rate": 0.04377104377104377
         },
         {
           "res": "Whisperpine Wood",
           "count": 3,
-          "rate": 0.014150943396226415
+          "rate": 0.010101010101010102
         }
       ],
       "zones": [
-        "Keeper's Bight",
-        "Sungreet Strand"
+        "Sungreet Strand",
+        "Keeper's Bight"
       ]
     },
     {
       "name": "Limestone",
-      "pulls": 197,
+      "pulls": 249,
       "yields": [
         {
           "res": "Limestone",
-          "count": 197,
+          "count": 249,
           "rate": 1
         },
         {
           "res": "Tin Ore",
-          "count": 6,
-          "rate": 0.030456852791878174
+          "count": 7,
+          "rate": 0.028112449799196786
         },
         {
           "res": "Clouded Crystallized Magic",
-          "count": 3,
-          "rate": 0.015228426395939087
+          "count": 5,
+          "rate": 0.020080321285140562
         },
         {
           "res": "Silver Ore",
-          "count": 2,
-          "rate": 0.01015228426395939
+          "count": 3,
+          "rate": 0.012048192771084338
         },
         {
           "res": "Jagged Stone",
           "count": 1,
-          "rate": 0.005076142131979695
+          "rate": 0.004016064257028112
         }
       ],
       "zones": [
@@ -13484,43 +13516,89 @@
       ]
     },
     {
-      "name": "Gold Ore",
-      "pulls": 122,
+      "name": "Tin Ore",
+      "pulls": 107,
       "yields": [
         {
-          "res": "Gold Ore",
-          "count": 122,
+          "res": "Tin Ore",
+          "count": 107,
           "rate": 1
         },
         {
-          "res": "Shining Crystallized Magic",
-          "count": 3,
-          "rate": 0.02459016393442623
+          "res": "Jagged Stone",
+          "count": 21,
+          "rate": 0.19626168224299065
+        },
+        {
+          "res": "Glinting Crystallized Magic",
+          "count": 2,
+          "rate": 0.018691588785046728
+        },
+        {
+          "res": "Flawed Peridot",
+          "count": 1,
+          "rate": 0.009345794392523364
+        },
+        {
+          "res": "Flawed Jade",
+          "count": 1,
+          "rate": 0.009345794392523364
+        },
+        {
+          "res": "Flawed Cat's Eye Agate",
+          "count": 1,
+          "rate": 0.009345794392523364
+        },
+        {
+          "res": "Flawed Sapphire",
+          "count": 1,
+          "rate": 0.009345794392523364
+        },
+        {
+          "res": "Flawed Emerald",
+          "count": 1,
+          "rate": 0.009345794392523364
+        }
+      ],
+      "zones": [
+        "Scarwood",
+        "Sungreet Strand",
+        "Fallen Pass"
+      ]
+    },
+    {
+      "name": "Gold Ore",
+      "pulls": 71,
+      "yields": [
+        {
+          "res": "Gold Ore",
+          "count": 71,
+          "rate": 1
         },
         {
           "res": "Imperfect Cat's Eye Agate",
           "count": 3,
-          "rate": 0.02459016393442623
-        },
-        {
-          "res": "Imperfect Peridot",
-          "count": 2,
-          "rate": 0.01639344262295082
+          "rate": 0.04225352112676056
         },
         {
           "res": "Imperfect Jade",
           "count": 2,
-          "rate": 0.01639344262295082
+          "rate": 0.028169014084507043
         },
         {
-          "res": "Imperfect Diamond",
+          "res": "Shining Crystallized Magic",
+          "count": 2,
+          "rate": 0.028169014084507043
+        },
+        {
+          "res": "Imperfect Peridot",
           "count": 1,
-          "rate": 0.00819672131147541
+          "rate": 0.014084507042253521
         },
         {
           "res": "Imperfect Ruby",
           "count": 1,
-          "rate": 0.00819672131147541
+          "rate": 0.014084507042253521
         }
       ],
       "zones": [
@@ -13529,95 +13607,82 @@
       ]
     },
     {
-      "name": "Tin Ore",
-      "pulls": 92,
+      "name": "Duneleaf",
+      "pulls": 66,
       "yields": [
         {
-          "res": "Tin Ore",
-          "count": 92,
+          "res": "Duneleaf",
+          "count": 66,
           "rate": 1
         },
         {
-          "res": "Jagged Stone",
-          "count": 19,
-          "rate": 0.20652173913043478
-        },
-        {
-          "res": "Glinting Crystallized Magic",
+          "res": "Arcane Frond",
           "count": 2,
-          "rate": 0.021739130434782608
-        },
-        {
-          "res": "Flawed Peridot",
-          "count": 1,
-          "rate": 0.010869565217391304
-        },
-        {
-          "res": "Flawed Jade",
-          "count": 1,
-          "rate": 0.010869565217391304
-        },
-        {
-          "res": "Flawed Cat's Eye Agate",
-          "count": 1,
-          "rate": 0.010869565217391304
-        },
-        {
-          "res": "Flawed Sapphire",
-          "count": 1,
-          "rate": 0.010869565217391304
-        },
-        {
-          "res": "Flawed Emerald",
-          "count": 1,
-          "rate": 0.010869565217391304
+          "rate": 0.030303030303030304
         }
       ],
       "zones": [
-        "Scarwood",
-        "Fallen Pass",
         "Sungreet Strand"
       ]
     },
     {
-      "name": "Ironroot",
-      "pulls": 52,
+      "name": "Stygian Moss",
+      "pulls": 62,
       "yields": [
         {
-          "res": "Ironroot",
-          "count": 52,
+          "res": "Stygian Moss",
+          "count": 62,
           "rate": 1
         },
         {
-          "res": "Enchanted Frond",
+          "res": "Arcane Frond",
           "count": 2,
-          "rate": 0.038461538461538464
+          "rate": 0.03225806451612903
         }
       ],
       "zones": [
-        "Fallen Pass",
-        "Sungreet Strand",
-        "Shaded Dunes"
+        "Sungreet Strand"
       ]
     },
     {
       "name": "Whispering Sage",
-      "pulls": 45,
+      "pulls": 58,
       "yields": [
         {
           "res": "Whispering Sage",
-          "count": 45,
+          "count": 58,
           "rate": 1
         },
         {
           "res": "Magic Frond",
-          "count": 2,
-          "rate": 0.044444444444444446
+          "count": 3,
+          "rate": 0.05172413793103448
         }
       ],
       "zones": [
         "Sungreet Strand",
         "Keeper's Bight",
+        "Shaded Dunes"
+      ]
+    },
+    {
+      "name": "Ironroot",
+      "pulls": 48,
+      "yields": [
+        {
+          "res": "Ironroot",
+          "count": 48,
+          "rate": 1
+        },
+        {
+          "res": "Enchanted Frond",
+          "count": 2,
+          "rate": 0.041666666666666664
+        }
+      ],
+      "zones": [
+        "Fallen Pass",
+        "Sungreet Strand",
         "Shaded Dunes"
       ]
     },
@@ -13642,33 +13707,74 @@
     },
     {
       "name": "Nomad's Grace",
-      "pulls": 21,
+      "pulls": 22,
       "yields": [
         {
           "res": "Nomad's Grace",
-          "count": 21,
+          "count": 22,
           "rate": 1
         }
       ],
       "zones": [
         "Sungreet Strand",
-        "Shaded Dunes",
         "Vale of Zintar",
-        "Evershade Weald"
+        "Evershade Weald",
+        "Shaded Dunes"
       ]
     },
     {
-      "name": "Duneleaf",
-      "pulls": 16,
+      "name": "Ghost Poppy",
+      "pulls": 22,
       "yields": [
         {
-          "res": "Duneleaf",
-          "count": 16,
+          "res": "Ghost Poppy",
+          "count": 22,
           "rate": 1
         }
       ],
       "zones": [
-        "Sungreet Strand"
+        "Sungreet Strand",
+        "Shaded Dunes"
+      ]
+    },
+    {
+      "name": "Fine Wood",
+      "pulls": 19,
+      "yields": [
+        {
+          "res": "Fine Wood",
+          "count": 19,
+          "rate": 1
+        }
+      ],
+      "zones": [
+        "Sungreet Strand",
+        "Keeper's Bight"
+      ]
+    },
+    {
+      "name": "Gold Ore & Weighty Stone",
+      "pulls": 16,
+      "yields": [
+        {
+          "res": "Gold Ore",
+          "count": 16,
+          "rate": 1
+        },
+        {
+          "res": "Weighty Stone",
+          "count": 16,
+          "rate": 1
+        },
+        {
+          "res": "Imperfect Peridot",
+          "count": 1,
+          "rate": 0.0625
+        }
+      ],
+      "zones": [
+        "Fallen Pass",
+        "Shallow Shoals"
       ]
     },
     {
@@ -13687,17 +13793,17 @@
     },
     {
       "name": "Silver Ore",
-      "pulls": 12,
+      "pulls": 13,
       "yields": [
         {
           "res": "Silver Ore",
-          "count": 12,
+          "count": 13,
           "rate": 1
         },
         {
           "res": "Flawed Jade",
           "count": 1,
-          "rate": 0.08333333333333333
+          "rate": 0.07692307692307693
         }
       ],
       "zones": [
@@ -13707,40 +13813,11 @@
     },
     {
       "name": "Lionleaf",
-      "pulls": 9,
+      "pulls": 10,
       "yields": [
         {
           "res": "Lionleaf",
-          "count": 9,
-          "rate": 1
-        }
-      ],
-      "zones": [
-        "Sungreet Strand",
-        "Shaded Dunes"
-      ]
-    },
-    {
-      "name": "Fine Wood",
-      "pulls": 7,
-      "yields": [
-        {
-          "res": "Fine Wood",
-          "count": 7,
-          "rate": 1
-        }
-      ],
-      "zones": [
-        "Keeper's Bight"
-      ]
-    },
-    {
-      "name": "Ghost Poppy",
-      "pulls": 5,
-      "yields": [
-        {
-          "res": "Ghost Poppy",
-          "count": 5,
+          "count": 10,
           "rate": 1
         }
       ],
@@ -13751,26 +13828,40 @@
     },
     {
       "name": "Silver Ore & Jagged Stone",
-      "pulls": 3,
+      "pulls": 5,
       "yields": [
         {
           "res": "Silver Ore",
-          "count": 3,
+          "count": 5,
           "rate": 1
         },
         {
           "res": "Jagged Stone",
-          "count": 3,
+          "count": 5,
           "rate": 1
         },
         {
           "res": "Flawed Sapphire",
           "count": 1,
-          "rate": 0.3333333333333333
+          "rate": 0.2
         }
       ],
       "zones": [
-        "Scarwood",
+        "Sungreet Strand",
+        "Scarwood"
+      ]
+    },
+    {
+      "name": "Ironbark Wood",
+      "pulls": 3,
+      "yields": [
+        {
+          "res": "Ironbark Wood",
+          "count": 3,
+          "rate": 1
+        }
+      ],
+      "zones": [
         "Sungreet Strand"
       ]
     },
